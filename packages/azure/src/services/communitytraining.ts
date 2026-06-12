@@ -7,7 +7,101 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
-import { SensitiveString } from "../sensitive.ts";
+import { SensitiveOutputString } from "../sensitive.ts";
+
+// Shared schemas
+const OperationSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  isDataAction: Schema.optional(Schema.Boolean),
+  display: Schema.optional(
+    Schema.Struct({
+      provider: Schema.optional(Schema.String),
+      resource: Schema.optional(Schema.String),
+      operation: Schema.optional(Schema.String),
+      description: Schema.optional(Schema.String),
+    }),
+  ),
+  origin: Schema.optional(Schema.Literals(["user", "system", "user,system"])),
+  actionType: Schema.optional(Schema.Literals(["Internal"])),
+});
+const CommunityTrainingSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+});
+const systemDataSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  createdBy: Schema.optional(Schema.String),
+  createdByType: Schema.optional(
+    Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+  ),
+  createdAt: Schema.optional(Schema.String),
+  lastModifiedBy: Schema.optional(Schema.String),
+  lastModifiedByType: Schema.optional(
+    Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+  ),
+  lastModifiedAt: Schema.optional(Schema.String),
+});
+const CommunityTrainingPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    portalName: Schema.String,
+    portalAdminEmailAddress: Schema.String,
+    portalOwnerOrganizationName: Schema.String,
+    portalOwnerEmailAddress: Schema.String,
+    identityConfiguration: Schema.suspend(
+      () => IdentityConfigurationPropertiesSchema,
+    ),
+    zoneRedundancyEnabled: Schema.Boolean,
+    disasterRecoveryEnabled: Schema.Boolean,
+    provisioningState: Schema.optional(
+      Schema.suspend(() => ProvisioningStateSchema),
+    ),
+  });
+const IdentityConfigurationPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    identityType: Schema.String,
+    teamsEnabled: Schema.optional(Schema.Boolean),
+    tenantId: Schema.String,
+    domainName: Schema.String,
+    clientId: Schema.String,
+    clientSecret: SensitiveOutputString,
+    b2cAuthenticationPolicy: Schema.optional(Schema.String),
+    b2cPasswordResetPolicy: Schema.optional(SensitiveOutputString),
+    customLoginParameters: Schema.optional(Schema.String),
+  });
+const ProvisioningStateSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Succeeded",
+  "Failed",
+  "Canceled",
+  "Provisioning",
+  "Updating",
+  "Deleting",
+  "Accepted",
+]);
+const SkuTierSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Free",
+  "Basic",
+  "Standard",
+  "Premium",
+]);
+const CommunityTrainingUpdatePropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    identityConfiguration: Schema.optional(
+      Schema.suspend(() => IdentityConfigurationPropertiesUpdateSchema),
+    ),
+  });
+const IdentityConfigurationPropertiesUpdateSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    identityType: Schema.optional(Schema.String),
+    teamsEnabled: Schema.optional(Schema.Boolean),
+    tenantId: Schema.optional(Schema.String),
+    domainName: Schema.optional(Schema.String),
+    clientId: Schema.optional(Schema.String),
+    clientSecret: Schema.optional(SensitiveOutputString),
+    b2cAuthenticationPolicy: Schema.optional(Schema.String),
+    b2cPasswordResetPolicy: Schema.optional(SensitiveOutputString),
+    customLoginParameters: Schema.optional(Schema.String),
+  });
 
 // Input Schema
 export const CommunityTrainingsCreateInput =
@@ -16,43 +110,12 @@ export const CommunityTrainingsCreateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     communityTrainingName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        portalName: Schema.String,
-        portalAdminEmailAddress: Schema.String,
-        portalOwnerOrganizationName: Schema.String,
-        portalOwnerEmailAddress: Schema.String,
-        identityConfiguration: Schema.Struct({
-          identityType: Schema.String,
-          teamsEnabled: Schema.optional(Schema.Boolean),
-          tenantId: Schema.String,
-          domainName: Schema.String,
-          clientId: Schema.String,
-          clientSecret: SensitiveString,
-          b2cAuthenticationPolicy: Schema.optional(Schema.String),
-          b2cPasswordResetPolicy: Schema.optional(SensitiveString),
-          customLoginParameters: Schema.optional(Schema.String),
-        }),
-        zoneRedundancyEnabled: Schema.Boolean,
-        disasterRecoveryEnabled: Schema.Boolean,
-        provisioningState: Schema.optional(
-          Schema.Literals([
-            "Succeeded",
-            "Failed",
-            "Canceled",
-            "Provisioning",
-            "Updating",
-            "Deleting",
-            "Accepted",
-          ]),
-        ),
-      }),
+      Schema.suspend(() => CommunityTrainingPropertiesSchema),
     ),
     sku: Schema.optional(
       Schema.Struct({
         name: Schema.String,
-        tier: Schema.optional(
-          Schema.Literals(["Free", "Basic", "Standard", "Premium"]),
-        ),
+        tier: Schema.optional(Schema.suspend(() => SkuTierSchema)),
         size: Schema.optional(Schema.String),
         family: Schema.optional(Schema.String),
         capacity: Schema.optional(Schema.Number),
@@ -74,23 +137,24 @@ export type CommunityTrainingsCreateInput =
 // Output Schema
 export const CommunityTrainingsCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => CommunityTrainingPropertiesSchema),
+    ),
+    sku: Schema.optional(
+      Schema.Struct({
+        name: Schema.String,
+        tier: Schema.optional(Schema.suspend(() => SkuTierSchema)),
+        size: Schema.optional(Schema.String),
+        family: Schema.optional(Schema.String),
+        capacity: Schema.optional(Schema.Number),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type CommunityTrainingsCreateOutput =
   typeof CommunityTrainingsCreateOutput.Type;
@@ -166,23 +230,24 @@ export type CommunityTrainingsGetInput = typeof CommunityTrainingsGetInput.Type;
 // Output Schema
 export const CommunityTrainingsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => CommunityTrainingPropertiesSchema),
+    ),
+    sku: Schema.optional(
+      Schema.Struct({
+        name: Schema.String,
+        tier: Schema.optional(Schema.suspend(() => SkuTierSchema)),
+        size: Schema.optional(Schema.String),
+        family: Schema.optional(Schema.String),
+        capacity: Schema.optional(Schema.Number),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type CommunityTrainingsGetOutput =
   typeof CommunityTrainingsGetOutput.Type;
@@ -220,37 +285,7 @@ export type CommunityTrainingsListByResourceGroupInput =
 // Output Schema
 export const CommunityTrainingsListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => CommunityTrainingSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type CommunityTrainingsListByResourceGroupOutput =
@@ -286,37 +321,7 @@ export type CommunityTrainingsListBySubscriptionInput =
 // Output Schema
 export const CommunityTrainingsListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => CommunityTrainingSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type CommunityTrainingsListBySubscriptionOutput =
@@ -343,9 +348,7 @@ export const CommunityTrainingsUpdateInput =
     sku: Schema.optional(
       Schema.Struct({
         name: Schema.String,
-        tier: Schema.optional(
-          Schema.Literals(["Free", "Basic", "Standard", "Premium"]),
-        ),
+        tier: Schema.optional(Schema.suspend(() => SkuTierSchema)),
         size: Schema.optional(Schema.String),
         family: Schema.optional(Schema.String),
         capacity: Schema.optional(Schema.Number),
@@ -353,21 +356,7 @@ export const CommunityTrainingsUpdateInput =
     ),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     properties: Schema.optional(
-      Schema.Struct({
-        identityConfiguration: Schema.optional(
-          Schema.Struct({
-            identityType: Schema.optional(Schema.String),
-            teamsEnabled: Schema.optional(Schema.Boolean),
-            tenantId: Schema.optional(Schema.String),
-            domainName: Schema.optional(Schema.String),
-            clientId: Schema.optional(Schema.String),
-            clientSecret: Schema.optional(SensitiveString),
-            b2cAuthenticationPolicy: Schema.optional(Schema.String),
-            b2cPasswordResetPolicy: Schema.optional(SensitiveString),
-            customLoginParameters: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
+      Schema.suspend(() => CommunityTrainingUpdatePropertiesSchema),
     ),
   }).pipe(
     T.Http({
@@ -383,23 +372,24 @@ export type CommunityTrainingsUpdateInput =
 // Output Schema
 export const CommunityTrainingsUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => CommunityTrainingPropertiesSchema),
+    ),
+    sku: Schema.optional(
+      Schema.Struct({
+        name: Schema.String,
+        tier: Schema.optional(Schema.suspend(() => SkuTierSchema)),
+        size: Schema.optional(Schema.String),
+        family: Schema.optional(Schema.String),
+        capacity: Schema.optional(Schema.Number),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type CommunityTrainingsUpdateOutput =
   typeof CommunityTrainingsUpdateOutput.Type;
@@ -433,26 +423,7 @@ export type OperationsListInput = typeof OperationsListInput.Type;
 
 // Output Schema
 export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  value: Schema.optional(
-    Schema.Array(
-      Schema.Struct({
-        name: Schema.optional(Schema.String),
-        isDataAction: Schema.optional(Schema.Boolean),
-        display: Schema.optional(
-          Schema.Struct({
-            provider: Schema.optional(Schema.String),
-            resource: Schema.optional(Schema.String),
-            operation: Schema.optional(Schema.String),
-            description: Schema.optional(Schema.String),
-          }),
-        ),
-        origin: Schema.optional(
-          Schema.Literals(["user", "system", "user,system"]),
-        ),
-        actionType: Schema.optional(Schema.Literals(["Internal"])),
-      }),
-    ),
-  ),
+  value: Schema.optional(Schema.Array(Schema.suspend(() => OperationSchema))),
   nextLink: Schema.optional(Schema.String),
 });
 export type OperationsListOutput = typeof OperationsListOutput.Type;

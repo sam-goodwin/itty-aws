@@ -8,6 +8,123 @@ import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
+// Shared schemas
+const OperationSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  isDataAction: Schema.optional(Schema.Boolean),
+  display: Schema.optional(
+    Schema.Struct({
+      provider: Schema.optional(Schema.String),
+      resource: Schema.optional(Schema.String),
+      operation: Schema.optional(Schema.String),
+      description: Schema.optional(Schema.String),
+    }),
+  ),
+  origin: Schema.optional(Schema.Literals(["user", "system", "user,system"])),
+  actionType: Schema.optional(Schema.Literals(["Internal"])),
+});
+const ResourceOperationSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  resourceId: Schema.optional(Schema.String),
+  errorCode: Schema.optional(Schema.String),
+  errorDetails: Schema.optional(Schema.String),
+  operation: Schema.optional(
+    Schema.suspend(() => ResourceOperationDetailsSchema),
+  ),
+});
+const ResourceOperationDetailsSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    operationId: Schema.String,
+    resourceId: Schema.optional(Schema.String),
+    opType: Schema.optional(
+      Schema.Literals(["Unknown", "Start", "Deallocate", "Hibernate"]),
+    ),
+    subscriptionId: Schema.optional(Schema.String),
+    deadline: Schema.optional(Schema.String),
+    deadlineType: Schema.optional(
+      Schema.Literals(["Unknown", "InitiateAt", "CompleteBy"]),
+    ),
+    state: Schema.optional(
+      Schema.Literals([
+        "Unknown",
+        "PendingScheduling",
+        "Scheduled",
+        "PendingExecution",
+        "Executing",
+        "Succeeded",
+        "Failed",
+        "Cancelled",
+        "Blocked",
+      ]),
+    ),
+    timezone: Schema.optional(Schema.String),
+    timeZone: Schema.optional(Schema.String),
+    resourceOperationError: Schema.optional(
+      Schema.suspend(() => ResourceOperationErrorSchema),
+    ),
+    completedAt: Schema.optional(Schema.String),
+    retryPolicy: Schema.optional(Schema.suspend(() => RetryPolicySchema)),
+  });
+const ResourceOperationErrorSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  errorCode: Schema.String,
+  errorDetails: Schema.String,
+});
+const RetryPolicySchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  retryCount: Schema.optional(Schema.Number),
+  retryWindowInMinutes: Schema.optional(Schema.Number),
+});
+const ResourceProvisionPayloadSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    baseProfile: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+    resourceOverrides: Schema.optional(
+      Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
+    ),
+    resourceCount: Schema.Number,
+    resourcePrefix: Schema.optional(Schema.String),
+  });
+const ExecutionParametersSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  optimizationPreference: Schema.optional(
+    Schema.suspend(() => OptimizationPreferenceSchema),
+  ),
+  retryPolicy: Schema.optional(Schema.suspend(() => RetryPolicySchema)),
+});
+const OptimizationPreferenceSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+    "Cost",
+    "Availability",
+    "CostAvailabilityBalanced",
+  ]);
+const Azure_Core_azureLocationSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.String;
+const ResourcesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  ids: Schema.Array(Schema.String),
+});
+const OperationErrorsResultSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  operationId: Schema.optional(Schema.String),
+  creationTime: Schema.optional(Schema.String),
+  activationTime: Schema.optional(Schema.String),
+  completedAt: Schema.optional(Schema.String),
+  operationErrors: Schema.optional(
+    Schema.Array(Schema.suspend(() => OperationErrorDetailsSchema)),
+  ),
+  requestErrorCode: Schema.optional(Schema.String),
+  requestErrorDetails: Schema.optional(Schema.String),
+});
+const OperationErrorDetailsSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  errorCode: Schema.String,
+  errorDetails: Schema.String,
+  timestamp: Schema.optional(Schema.String),
+  timeStamp: Schema.optional(Schema.String),
+  azureOperationName: Schema.optional(Schema.String),
+  crpOperationId: Schema.optional(Schema.String),
+});
+const ScheduleSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  deadline: Schema.optional(Schema.String),
+  deadLine: Schema.optional(Schema.String),
+  timezone: Schema.optional(Schema.String),
+  timeZone: Schema.optional(Schema.String),
+  deadlineType: Schema.Literals(["Unknown", "InitiateAt", "CompleteBy"]),
+});
+
 // Input Schema
 export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {},
@@ -22,26 +139,7 @@ export type OperationsListInput = typeof OperationsListInput.Type;
 
 // Output Schema
 export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  value: Schema.optional(
-    Schema.Array(
-      Schema.Struct({
-        name: Schema.optional(Schema.String),
-        isDataAction: Schema.optional(Schema.Boolean),
-        display: Schema.optional(
-          Schema.Struct({
-            provider: Schema.optional(Schema.String),
-            resource: Schema.optional(Schema.String),
-            operation: Schema.optional(Schema.String),
-            description: Schema.optional(Schema.String),
-          }),
-        ),
-        origin: Schema.optional(
-          Schema.Literals(["user", "system", "user,system"]),
-        ),
-        actionType: Schema.optional(Schema.Literals(["Internal"])),
-      }),
-    ),
-  ),
+  value: Schema.optional(Schema.Array(Schema.suspend(() => OperationSchema))),
   nextLink: Schema.optional(Schema.String),
 });
 export type OperationsListOutput = typeof OperationsListOutput.Type;
@@ -76,55 +174,7 @@ export type ScheduledActionsVirtualMachinesCancelOperationsInput =
 // Output Schema
 export const ScheduledActionsVirtualMachinesCancelOperationsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    results: Schema.Array(
-      Schema.Struct({
-        resourceId: Schema.optional(Schema.String),
-        errorCode: Schema.optional(Schema.String),
-        errorDetails: Schema.optional(Schema.String),
-        operation: Schema.optional(
-          Schema.Struct({
-            operationId: Schema.String,
-            resourceId: Schema.optional(Schema.String),
-            opType: Schema.optional(
-              Schema.Literals(["Unknown", "Start", "Deallocate", "Hibernate"]),
-            ),
-            subscriptionId: Schema.optional(Schema.String),
-            deadline: Schema.optional(Schema.String),
-            deadlineType: Schema.optional(
-              Schema.Literals(["Unknown", "InitiateAt", "CompleteBy"]),
-            ),
-            state: Schema.optional(
-              Schema.Literals([
-                "Unknown",
-                "PendingScheduling",
-                "Scheduled",
-                "PendingExecution",
-                "Executing",
-                "Succeeded",
-                "Failed",
-                "Cancelled",
-                "Blocked",
-              ]),
-            ),
-            timezone: Schema.optional(Schema.String),
-            timeZone: Schema.optional(Schema.String),
-            resourceOperationError: Schema.optional(
-              Schema.Struct({
-                errorCode: Schema.String,
-                errorDetails: Schema.String,
-              }),
-            ),
-            completedAt: Schema.optional(Schema.String),
-            retryPolicy: Schema.optional(
-              Schema.Struct({
-                retryCount: Schema.optional(Schema.Number),
-                retryWindowInMinutes: Schema.optional(Schema.Number),
-              }),
-            ),
-          }),
-        ),
-      }),
-    ),
+    results: Schema.Array(Schema.suspend(() => ResourceOperationSchema)),
   });
 export type ScheduledActionsVirtualMachinesCancelOperationsOutput =
   typeof ScheduledActionsVirtualMachinesCancelOperationsOutput.Type;
@@ -147,27 +197,10 @@ export const ScheduledActionsVirtualMachinesExecuteCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     locationparameter: Schema.String.pipe(T.PathParam()),
-    resourceConfigParameters: Schema.Struct({
-      baseProfile: Schema.optional(
-        Schema.Record(Schema.String, Schema.Unknown),
-      ),
-      resourceOverrides: Schema.optional(
-        Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
-      ),
-      resourceCount: Schema.Number,
-      resourcePrefix: Schema.optional(Schema.String),
-    }),
-    executionParameters: Schema.Struct({
-      optimizationPreference: Schema.optional(
-        Schema.Literals(["Cost", "Availability", "CostAvailabilityBalanced"]),
-      ),
-      retryPolicy: Schema.optional(
-        Schema.Struct({
-          retryCount: Schema.optional(Schema.Number),
-          retryWindowInMinutes: Schema.optional(Schema.Number),
-        }),
-      ),
-    }),
+    resourceConfigParameters: Schema.suspend(
+      () => ResourceProvisionPayloadSchema,
+    ),
+    executionParameters: Schema.suspend(() => ExecutionParametersSchema),
     correlationid: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
@@ -184,62 +217,9 @@ export const ScheduledActionsVirtualMachinesExecuteCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     description: Schema.String,
     type: Schema.String,
-    location: Schema.String,
+    location: Schema.suspend(() => Azure_Core_azureLocationSchema),
     results: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          resourceId: Schema.optional(Schema.String),
-          errorCode: Schema.optional(Schema.String),
-          errorDetails: Schema.optional(Schema.String),
-          operation: Schema.optional(
-            Schema.Struct({
-              operationId: Schema.String,
-              resourceId: Schema.optional(Schema.String),
-              opType: Schema.optional(
-                Schema.Literals([
-                  "Unknown",
-                  "Start",
-                  "Deallocate",
-                  "Hibernate",
-                ]),
-              ),
-              subscriptionId: Schema.optional(Schema.String),
-              deadline: Schema.optional(Schema.String),
-              deadlineType: Schema.optional(
-                Schema.Literals(["Unknown", "InitiateAt", "CompleteBy"]),
-              ),
-              state: Schema.optional(
-                Schema.Literals([
-                  "Unknown",
-                  "PendingScheduling",
-                  "Scheduled",
-                  "PendingExecution",
-                  "Executing",
-                  "Succeeded",
-                  "Failed",
-                  "Cancelled",
-                  "Blocked",
-                ]),
-              ),
-              timezone: Schema.optional(Schema.String),
-              timeZone: Schema.optional(Schema.String),
-              resourceOperationError: Schema.optional(
-                Schema.Struct({
-                  errorCode: Schema.String,
-                  errorDetails: Schema.String,
-                }),
-              ),
-              completedAt: Schema.optional(Schema.String),
-              retryPolicy: Schema.optional(
-                Schema.Struct({
-                  retryCount: Schema.optional(Schema.Number),
-                  retryWindowInMinutes: Schema.optional(Schema.Number),
-                }),
-              ),
-            }),
-          ),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => ResourceOperationSchema)),
     ),
   });
 export type ScheduledActionsVirtualMachinesExecuteCreateOutput =
@@ -263,20 +243,8 @@ export const ScheduledActionsVirtualMachinesExecuteDeallocateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     locationparameter: Schema.String.pipe(T.PathParam()),
-    executionParameters: Schema.Struct({
-      optimizationPreference: Schema.optional(
-        Schema.Literals(["Cost", "Availability", "CostAvailabilityBalanced"]),
-      ),
-      retryPolicy: Schema.optional(
-        Schema.Struct({
-          retryCount: Schema.optional(Schema.Number),
-          retryWindowInMinutes: Schema.optional(Schema.Number),
-        }),
-      ),
-    }),
-    resources: Schema.Struct({
-      ids: Schema.Array(Schema.String),
-    }),
+    executionParameters: Schema.suspend(() => ExecutionParametersSchema),
+    resources: Schema.suspend(() => ResourcesSchema),
     correlationid: Schema.String,
   }).pipe(
     T.Http({
@@ -293,62 +261,9 @@ export const ScheduledActionsVirtualMachinesExecuteDeallocateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     description: Schema.String,
     type: Schema.String,
-    location: Schema.String,
+    location: Schema.suspend(() => Azure_Core_azureLocationSchema),
     results: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          resourceId: Schema.optional(Schema.String),
-          errorCode: Schema.optional(Schema.String),
-          errorDetails: Schema.optional(Schema.String),
-          operation: Schema.optional(
-            Schema.Struct({
-              operationId: Schema.String,
-              resourceId: Schema.optional(Schema.String),
-              opType: Schema.optional(
-                Schema.Literals([
-                  "Unknown",
-                  "Start",
-                  "Deallocate",
-                  "Hibernate",
-                ]),
-              ),
-              subscriptionId: Schema.optional(Schema.String),
-              deadline: Schema.optional(Schema.String),
-              deadlineType: Schema.optional(
-                Schema.Literals(["Unknown", "InitiateAt", "CompleteBy"]),
-              ),
-              state: Schema.optional(
-                Schema.Literals([
-                  "Unknown",
-                  "PendingScheduling",
-                  "Scheduled",
-                  "PendingExecution",
-                  "Executing",
-                  "Succeeded",
-                  "Failed",
-                  "Cancelled",
-                  "Blocked",
-                ]),
-              ),
-              timezone: Schema.optional(Schema.String),
-              timeZone: Schema.optional(Schema.String),
-              resourceOperationError: Schema.optional(
-                Schema.Struct({
-                  errorCode: Schema.String,
-                  errorDetails: Schema.String,
-                }),
-              ),
-              completedAt: Schema.optional(Schema.String),
-              retryPolicy: Schema.optional(
-                Schema.Struct({
-                  retryCount: Schema.optional(Schema.Number),
-                  retryWindowInMinutes: Schema.optional(Schema.Number),
-                }),
-              ),
-            }),
-          ),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => ResourceOperationSchema)),
     ),
   });
 export type ScheduledActionsVirtualMachinesExecuteDeallocateOutput =
@@ -372,20 +287,8 @@ export const ScheduledActionsVirtualMachinesExecuteDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     locationparameter: Schema.String.pipe(T.PathParam()),
-    executionParameters: Schema.Struct({
-      optimizationPreference: Schema.optional(
-        Schema.Literals(["Cost", "Availability", "CostAvailabilityBalanced"]),
-      ),
-      retryPolicy: Schema.optional(
-        Schema.Struct({
-          retryCount: Schema.optional(Schema.Number),
-          retryWindowInMinutes: Schema.optional(Schema.Number),
-        }),
-      ),
-    }),
-    resources: Schema.Struct({
-      ids: Schema.Array(Schema.String),
-    }),
+    executionParameters: Schema.suspend(() => ExecutionParametersSchema),
+    resources: Schema.suspend(() => ResourcesSchema),
     correlationid: Schema.optional(Schema.String),
     forceDeletion: Schema.optional(Schema.Boolean),
   }).pipe(
@@ -403,62 +306,9 @@ export const ScheduledActionsVirtualMachinesExecuteDeleteOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     description: Schema.String,
     type: Schema.String,
-    location: Schema.String,
+    location: Schema.suspend(() => Azure_Core_azureLocationSchema),
     results: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          resourceId: Schema.optional(Schema.String),
-          errorCode: Schema.optional(Schema.String),
-          errorDetails: Schema.optional(Schema.String),
-          operation: Schema.optional(
-            Schema.Struct({
-              operationId: Schema.String,
-              resourceId: Schema.optional(Schema.String),
-              opType: Schema.optional(
-                Schema.Literals([
-                  "Unknown",
-                  "Start",
-                  "Deallocate",
-                  "Hibernate",
-                ]),
-              ),
-              subscriptionId: Schema.optional(Schema.String),
-              deadline: Schema.optional(Schema.String),
-              deadlineType: Schema.optional(
-                Schema.Literals(["Unknown", "InitiateAt", "CompleteBy"]),
-              ),
-              state: Schema.optional(
-                Schema.Literals([
-                  "Unknown",
-                  "PendingScheduling",
-                  "Scheduled",
-                  "PendingExecution",
-                  "Executing",
-                  "Succeeded",
-                  "Failed",
-                  "Cancelled",
-                  "Blocked",
-                ]),
-              ),
-              timezone: Schema.optional(Schema.String),
-              timeZone: Schema.optional(Schema.String),
-              resourceOperationError: Schema.optional(
-                Schema.Struct({
-                  errorCode: Schema.String,
-                  errorDetails: Schema.String,
-                }),
-              ),
-              completedAt: Schema.optional(Schema.String),
-              retryPolicy: Schema.optional(
-                Schema.Struct({
-                  retryCount: Schema.optional(Schema.Number),
-                  retryWindowInMinutes: Schema.optional(Schema.Number),
-                }),
-              ),
-            }),
-          ),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => ResourceOperationSchema)),
     ),
   });
 export type ScheduledActionsVirtualMachinesExecuteDeleteOutput =
@@ -482,20 +332,8 @@ export const ScheduledActionsVirtualMachinesExecuteHibernateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     locationparameter: Schema.String.pipe(T.PathParam()),
-    executionParameters: Schema.Struct({
-      optimizationPreference: Schema.optional(
-        Schema.Literals(["Cost", "Availability", "CostAvailabilityBalanced"]),
-      ),
-      retryPolicy: Schema.optional(
-        Schema.Struct({
-          retryCount: Schema.optional(Schema.Number),
-          retryWindowInMinutes: Schema.optional(Schema.Number),
-        }),
-      ),
-    }),
-    resources: Schema.Struct({
-      ids: Schema.Array(Schema.String),
-    }),
+    executionParameters: Schema.suspend(() => ExecutionParametersSchema),
+    resources: Schema.suspend(() => ResourcesSchema),
     correlationid: Schema.String,
   }).pipe(
     T.Http({
@@ -512,62 +350,9 @@ export const ScheduledActionsVirtualMachinesExecuteHibernateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     description: Schema.String,
     type: Schema.String,
-    location: Schema.String,
+    location: Schema.suspend(() => Azure_Core_azureLocationSchema),
     results: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          resourceId: Schema.optional(Schema.String),
-          errorCode: Schema.optional(Schema.String),
-          errorDetails: Schema.optional(Schema.String),
-          operation: Schema.optional(
-            Schema.Struct({
-              operationId: Schema.String,
-              resourceId: Schema.optional(Schema.String),
-              opType: Schema.optional(
-                Schema.Literals([
-                  "Unknown",
-                  "Start",
-                  "Deallocate",
-                  "Hibernate",
-                ]),
-              ),
-              subscriptionId: Schema.optional(Schema.String),
-              deadline: Schema.optional(Schema.String),
-              deadlineType: Schema.optional(
-                Schema.Literals(["Unknown", "InitiateAt", "CompleteBy"]),
-              ),
-              state: Schema.optional(
-                Schema.Literals([
-                  "Unknown",
-                  "PendingScheduling",
-                  "Scheduled",
-                  "PendingExecution",
-                  "Executing",
-                  "Succeeded",
-                  "Failed",
-                  "Cancelled",
-                  "Blocked",
-                ]),
-              ),
-              timezone: Schema.optional(Schema.String),
-              timeZone: Schema.optional(Schema.String),
-              resourceOperationError: Schema.optional(
-                Schema.Struct({
-                  errorCode: Schema.String,
-                  errorDetails: Schema.String,
-                }),
-              ),
-              completedAt: Schema.optional(Schema.String),
-              retryPolicy: Schema.optional(
-                Schema.Struct({
-                  retryCount: Schema.optional(Schema.Number),
-                  retryWindowInMinutes: Schema.optional(Schema.Number),
-                }),
-              ),
-            }),
-          ),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => ResourceOperationSchema)),
     ),
   });
 export type ScheduledActionsVirtualMachinesExecuteHibernateOutput =
@@ -591,20 +376,8 @@ export const ScheduledActionsVirtualMachinesExecuteStartInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     locationparameter: Schema.String.pipe(T.PathParam()),
-    executionParameters: Schema.Struct({
-      optimizationPreference: Schema.optional(
-        Schema.Literals(["Cost", "Availability", "CostAvailabilityBalanced"]),
-      ),
-      retryPolicy: Schema.optional(
-        Schema.Struct({
-          retryCount: Schema.optional(Schema.Number),
-          retryWindowInMinutes: Schema.optional(Schema.Number),
-        }),
-      ),
-    }),
-    resources: Schema.Struct({
-      ids: Schema.Array(Schema.String),
-    }),
+    executionParameters: Schema.suspend(() => ExecutionParametersSchema),
+    resources: Schema.suspend(() => ResourcesSchema),
     correlationid: Schema.String,
   }).pipe(
     T.Http({
@@ -621,62 +394,9 @@ export const ScheduledActionsVirtualMachinesExecuteStartOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     description: Schema.String,
     type: Schema.String,
-    location: Schema.String,
+    location: Schema.suspend(() => Azure_Core_azureLocationSchema),
     results: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          resourceId: Schema.optional(Schema.String),
-          errorCode: Schema.optional(Schema.String),
-          errorDetails: Schema.optional(Schema.String),
-          operation: Schema.optional(
-            Schema.Struct({
-              operationId: Schema.String,
-              resourceId: Schema.optional(Schema.String),
-              opType: Schema.optional(
-                Schema.Literals([
-                  "Unknown",
-                  "Start",
-                  "Deallocate",
-                  "Hibernate",
-                ]),
-              ),
-              subscriptionId: Schema.optional(Schema.String),
-              deadline: Schema.optional(Schema.String),
-              deadlineType: Schema.optional(
-                Schema.Literals(["Unknown", "InitiateAt", "CompleteBy"]),
-              ),
-              state: Schema.optional(
-                Schema.Literals([
-                  "Unknown",
-                  "PendingScheduling",
-                  "Scheduled",
-                  "PendingExecution",
-                  "Executing",
-                  "Succeeded",
-                  "Failed",
-                  "Cancelled",
-                  "Blocked",
-                ]),
-              ),
-              timezone: Schema.optional(Schema.String),
-              timeZone: Schema.optional(Schema.String),
-              resourceOperationError: Schema.optional(
-                Schema.Struct({
-                  errorCode: Schema.String,
-                  errorDetails: Schema.String,
-                }),
-              ),
-              completedAt: Schema.optional(Schema.String),
-              retryPolicy: Schema.optional(
-                Schema.Struct({
-                  retryCount: Schema.optional(Schema.Number),
-                  retryWindowInMinutes: Schema.optional(Schema.Number),
-                }),
-              ),
-            }),
-          ),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => ResourceOperationSchema)),
     ),
   });
 export type ScheduledActionsVirtualMachinesExecuteStartOutput =
@@ -714,28 +434,7 @@ export type ScheduledActionsVirtualMachinesGetOperationErrorsInput =
 // Output Schema
 export const ScheduledActionsVirtualMachinesGetOperationErrorsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    results: Schema.Array(
-      Schema.Struct({
-        operationId: Schema.optional(Schema.String),
-        creationTime: Schema.optional(Schema.String),
-        activationTime: Schema.optional(Schema.String),
-        completedAt: Schema.optional(Schema.String),
-        operationErrors: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              errorCode: Schema.String,
-              errorDetails: Schema.String,
-              timestamp: Schema.optional(Schema.String),
-              timeStamp: Schema.optional(Schema.String),
-              azureOperationName: Schema.optional(Schema.String),
-              crpOperationId: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        requestErrorCode: Schema.optional(Schema.String),
-        requestErrorDetails: Schema.optional(Schema.String),
-      }),
-    ),
+    results: Schema.Array(Schema.suspend(() => OperationErrorsResultSchema)),
   });
 export type ScheduledActionsVirtualMachinesGetOperationErrorsOutput =
   typeof ScheduledActionsVirtualMachinesGetOperationErrorsOutput.Type;
@@ -773,55 +472,7 @@ export type ScheduledActionsVirtualMachinesGetOperationStatusInput =
 // Output Schema
 export const ScheduledActionsVirtualMachinesGetOperationStatusOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    results: Schema.Array(
-      Schema.Struct({
-        resourceId: Schema.optional(Schema.String),
-        errorCode: Schema.optional(Schema.String),
-        errorDetails: Schema.optional(Schema.String),
-        operation: Schema.optional(
-          Schema.Struct({
-            operationId: Schema.String,
-            resourceId: Schema.optional(Schema.String),
-            opType: Schema.optional(
-              Schema.Literals(["Unknown", "Start", "Deallocate", "Hibernate"]),
-            ),
-            subscriptionId: Schema.optional(Schema.String),
-            deadline: Schema.optional(Schema.String),
-            deadlineType: Schema.optional(
-              Schema.Literals(["Unknown", "InitiateAt", "CompleteBy"]),
-            ),
-            state: Schema.optional(
-              Schema.Literals([
-                "Unknown",
-                "PendingScheduling",
-                "Scheduled",
-                "PendingExecution",
-                "Executing",
-                "Succeeded",
-                "Failed",
-                "Cancelled",
-                "Blocked",
-              ]),
-            ),
-            timezone: Schema.optional(Schema.String),
-            timeZone: Schema.optional(Schema.String),
-            resourceOperationError: Schema.optional(
-              Schema.Struct({
-                errorCode: Schema.String,
-                errorDetails: Schema.String,
-              }),
-            ),
-            completedAt: Schema.optional(Schema.String),
-            retryPolicy: Schema.optional(
-              Schema.Struct({
-                retryCount: Schema.optional(Schema.Number),
-                retryWindowInMinutes: Schema.optional(Schema.Number),
-              }),
-            ),
-          }),
-        ),
-      }),
-    ),
+    results: Schema.Array(Schema.suspend(() => ResourceOperationSchema)),
   });
 export type ScheduledActionsVirtualMachinesGetOperationStatusOutput =
   typeof ScheduledActionsVirtualMachinesGetOperationStatusOutput.Type;
@@ -844,27 +495,9 @@ export const ScheduledActionsVirtualMachinesSubmitDeallocateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     locationparameter: Schema.String.pipe(T.PathParam()),
-    schedule: Schema.Struct({
-      deadline: Schema.optional(Schema.String),
-      deadLine: Schema.optional(Schema.String),
-      timezone: Schema.optional(Schema.String),
-      timeZone: Schema.optional(Schema.String),
-      deadlineType: Schema.Literals(["Unknown", "InitiateAt", "CompleteBy"]),
-    }),
-    executionParameters: Schema.Struct({
-      optimizationPreference: Schema.optional(
-        Schema.Literals(["Cost", "Availability", "CostAvailabilityBalanced"]),
-      ),
-      retryPolicy: Schema.optional(
-        Schema.Struct({
-          retryCount: Schema.optional(Schema.Number),
-          retryWindowInMinutes: Schema.optional(Schema.Number),
-        }),
-      ),
-    }),
-    resources: Schema.Struct({
-      ids: Schema.Array(Schema.String),
-    }),
+    schedule: Schema.suspend(() => ScheduleSchema),
+    executionParameters: Schema.suspend(() => ExecutionParametersSchema),
+    resources: Schema.suspend(() => ResourcesSchema),
     correlationid: Schema.String,
   }).pipe(
     T.Http({
@@ -881,62 +514,9 @@ export const ScheduledActionsVirtualMachinesSubmitDeallocateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     description: Schema.String,
     type: Schema.String,
-    location: Schema.String,
+    location: Schema.suspend(() => Azure_Core_azureLocationSchema),
     results: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          resourceId: Schema.optional(Schema.String),
-          errorCode: Schema.optional(Schema.String),
-          errorDetails: Schema.optional(Schema.String),
-          operation: Schema.optional(
-            Schema.Struct({
-              operationId: Schema.String,
-              resourceId: Schema.optional(Schema.String),
-              opType: Schema.optional(
-                Schema.Literals([
-                  "Unknown",
-                  "Start",
-                  "Deallocate",
-                  "Hibernate",
-                ]),
-              ),
-              subscriptionId: Schema.optional(Schema.String),
-              deadline: Schema.optional(Schema.String),
-              deadlineType: Schema.optional(
-                Schema.Literals(["Unknown", "InitiateAt", "CompleteBy"]),
-              ),
-              state: Schema.optional(
-                Schema.Literals([
-                  "Unknown",
-                  "PendingScheduling",
-                  "Scheduled",
-                  "PendingExecution",
-                  "Executing",
-                  "Succeeded",
-                  "Failed",
-                  "Cancelled",
-                  "Blocked",
-                ]),
-              ),
-              timezone: Schema.optional(Schema.String),
-              timeZone: Schema.optional(Schema.String),
-              resourceOperationError: Schema.optional(
-                Schema.Struct({
-                  errorCode: Schema.String,
-                  errorDetails: Schema.String,
-                }),
-              ),
-              completedAt: Schema.optional(Schema.String),
-              retryPolicy: Schema.optional(
-                Schema.Struct({
-                  retryCount: Schema.optional(Schema.Number),
-                  retryWindowInMinutes: Schema.optional(Schema.Number),
-                }),
-              ),
-            }),
-          ),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => ResourceOperationSchema)),
     ),
   });
 export type ScheduledActionsVirtualMachinesSubmitDeallocateOutput =
@@ -960,27 +540,9 @@ export const ScheduledActionsVirtualMachinesSubmitHibernateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     locationparameter: Schema.String.pipe(T.PathParam()),
-    schedule: Schema.Struct({
-      deadline: Schema.optional(Schema.String),
-      deadLine: Schema.optional(Schema.String),
-      timezone: Schema.optional(Schema.String),
-      timeZone: Schema.optional(Schema.String),
-      deadlineType: Schema.Literals(["Unknown", "InitiateAt", "CompleteBy"]),
-    }),
-    executionParameters: Schema.Struct({
-      optimizationPreference: Schema.optional(
-        Schema.Literals(["Cost", "Availability", "CostAvailabilityBalanced"]),
-      ),
-      retryPolicy: Schema.optional(
-        Schema.Struct({
-          retryCount: Schema.optional(Schema.Number),
-          retryWindowInMinutes: Schema.optional(Schema.Number),
-        }),
-      ),
-    }),
-    resources: Schema.Struct({
-      ids: Schema.Array(Schema.String),
-    }),
+    schedule: Schema.suspend(() => ScheduleSchema),
+    executionParameters: Schema.suspend(() => ExecutionParametersSchema),
+    resources: Schema.suspend(() => ResourcesSchema),
     correlationid: Schema.String,
   }).pipe(
     T.Http({
@@ -997,62 +559,9 @@ export const ScheduledActionsVirtualMachinesSubmitHibernateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     description: Schema.String,
     type: Schema.String,
-    location: Schema.String,
+    location: Schema.suspend(() => Azure_Core_azureLocationSchema),
     results: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          resourceId: Schema.optional(Schema.String),
-          errorCode: Schema.optional(Schema.String),
-          errorDetails: Schema.optional(Schema.String),
-          operation: Schema.optional(
-            Schema.Struct({
-              operationId: Schema.String,
-              resourceId: Schema.optional(Schema.String),
-              opType: Schema.optional(
-                Schema.Literals([
-                  "Unknown",
-                  "Start",
-                  "Deallocate",
-                  "Hibernate",
-                ]),
-              ),
-              subscriptionId: Schema.optional(Schema.String),
-              deadline: Schema.optional(Schema.String),
-              deadlineType: Schema.optional(
-                Schema.Literals(["Unknown", "InitiateAt", "CompleteBy"]),
-              ),
-              state: Schema.optional(
-                Schema.Literals([
-                  "Unknown",
-                  "PendingScheduling",
-                  "Scheduled",
-                  "PendingExecution",
-                  "Executing",
-                  "Succeeded",
-                  "Failed",
-                  "Cancelled",
-                  "Blocked",
-                ]),
-              ),
-              timezone: Schema.optional(Schema.String),
-              timeZone: Schema.optional(Schema.String),
-              resourceOperationError: Schema.optional(
-                Schema.Struct({
-                  errorCode: Schema.String,
-                  errorDetails: Schema.String,
-                }),
-              ),
-              completedAt: Schema.optional(Schema.String),
-              retryPolicy: Schema.optional(
-                Schema.Struct({
-                  retryCount: Schema.optional(Schema.Number),
-                  retryWindowInMinutes: Schema.optional(Schema.Number),
-                }),
-              ),
-            }),
-          ),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => ResourceOperationSchema)),
     ),
   });
 export type ScheduledActionsVirtualMachinesSubmitHibernateOutput =
@@ -1076,27 +585,9 @@ export const ScheduledActionsVirtualMachinesSubmitStartInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     locationparameter: Schema.String.pipe(T.PathParam()),
-    schedule: Schema.Struct({
-      deadline: Schema.optional(Schema.String),
-      deadLine: Schema.optional(Schema.String),
-      timezone: Schema.optional(Schema.String),
-      timeZone: Schema.optional(Schema.String),
-      deadlineType: Schema.Literals(["Unknown", "InitiateAt", "CompleteBy"]),
-    }),
-    executionParameters: Schema.Struct({
-      optimizationPreference: Schema.optional(
-        Schema.Literals(["Cost", "Availability", "CostAvailabilityBalanced"]),
-      ),
-      retryPolicy: Schema.optional(
-        Schema.Struct({
-          retryCount: Schema.optional(Schema.Number),
-          retryWindowInMinutes: Schema.optional(Schema.Number),
-        }),
-      ),
-    }),
-    resources: Schema.Struct({
-      ids: Schema.Array(Schema.String),
-    }),
+    schedule: Schema.suspend(() => ScheduleSchema),
+    executionParameters: Schema.suspend(() => ExecutionParametersSchema),
+    resources: Schema.suspend(() => ResourcesSchema),
     correlationid: Schema.String,
   }).pipe(
     T.Http({
@@ -1113,62 +604,9 @@ export const ScheduledActionsVirtualMachinesSubmitStartOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     description: Schema.String,
     type: Schema.String,
-    location: Schema.String,
+    location: Schema.suspend(() => Azure_Core_azureLocationSchema),
     results: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          resourceId: Schema.optional(Schema.String),
-          errorCode: Schema.optional(Schema.String),
-          errorDetails: Schema.optional(Schema.String),
-          operation: Schema.optional(
-            Schema.Struct({
-              operationId: Schema.String,
-              resourceId: Schema.optional(Schema.String),
-              opType: Schema.optional(
-                Schema.Literals([
-                  "Unknown",
-                  "Start",
-                  "Deallocate",
-                  "Hibernate",
-                ]),
-              ),
-              subscriptionId: Schema.optional(Schema.String),
-              deadline: Schema.optional(Schema.String),
-              deadlineType: Schema.optional(
-                Schema.Literals(["Unknown", "InitiateAt", "CompleteBy"]),
-              ),
-              state: Schema.optional(
-                Schema.Literals([
-                  "Unknown",
-                  "PendingScheduling",
-                  "Scheduled",
-                  "PendingExecution",
-                  "Executing",
-                  "Succeeded",
-                  "Failed",
-                  "Cancelled",
-                  "Blocked",
-                ]),
-              ),
-              timezone: Schema.optional(Schema.String),
-              timeZone: Schema.optional(Schema.String),
-              resourceOperationError: Schema.optional(
-                Schema.Struct({
-                  errorCode: Schema.String,
-                  errorDetails: Schema.String,
-                }),
-              ),
-              completedAt: Schema.optional(Schema.String),
-              retryPolicy: Schema.optional(
-                Schema.Struct({
-                  retryCount: Schema.optional(Schema.Number),
-                  retryWindowInMinutes: Schema.optional(Schema.Number),
-                }),
-              ),
-            }),
-          ),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => ResourceOperationSchema)),
     ),
   });
 export type ScheduledActionsVirtualMachinesSubmitStartOutput =

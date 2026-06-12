@@ -8,6 +8,43 @@ import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
+// Shared schemas
+const AgreementPropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  publisher: Schema.optional(Schema.String),
+  product: Schema.optional(Schema.String),
+  plan: Schema.optional(Schema.String),
+  licenseTextLink: Schema.optional(Schema.String),
+  privacyPolicyLink: Schema.optional(Schema.String),
+  marketplaceTermsLink: Schema.optional(Schema.String),
+  retrieveDatetime: Schema.optional(Schema.String),
+  signature: Schema.optional(Schema.String),
+  accepted: Schema.optional(Schema.Boolean),
+});
+const OperationSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  display: Schema.optional(
+    Schema.Struct({
+      provider: Schema.optional(Schema.String),
+      resource: Schema.optional(Schema.String),
+      operation: Schema.optional(Schema.String),
+      description: Schema.optional(Schema.String),
+    }),
+  ),
+});
+const OldAgreementPropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  publisher: Schema.optional(Schema.String),
+  offer: Schema.optional(Schema.String),
+  signDate: Schema.optional(Schema.String),
+  cancelDate: Schema.optional(Schema.String),
+  state: Schema.optional(Schema.Literals(["Active", "Canceled"])),
+});
+const OldAgreementTermsSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
+
 // Input Schema
 export const MarketplaceAgreementsCancelInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
@@ -23,6 +60,9 @@ export type MarketplaceAgreementsCancelInput =
 // Output Schema
 export const MarketplaceAgreementsCancelOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => OldAgreementPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -44,17 +84,7 @@ export const MarketplaceAgreementsCancel = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const MarketplaceAgreementsCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     properties: Schema.optional(
-      Schema.Struct({
-        publisher: Schema.optional(Schema.String),
-        product: Schema.optional(Schema.String),
-        plan: Schema.optional(Schema.String),
-        licenseTextLink: Schema.optional(Schema.String),
-        privacyPolicyLink: Schema.optional(Schema.String),
-        marketplaceTermsLink: Schema.optional(Schema.String),
-        retrieveDatetime: Schema.optional(Schema.String),
-        signature: Schema.optional(Schema.String),
-        accepted: Schema.optional(Schema.Boolean),
-      }),
+      Schema.suspend(() => AgreementPropertiesSchema),
     ),
     systemData: Schema.optional(
       Schema.Struct({
@@ -86,6 +116,23 @@ export type MarketplaceAgreementsCreateInput =
 // Output Schema
 export const MarketplaceAgreementsCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => AgreementPropertiesSchema),
+    ),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -118,6 +165,23 @@ export type MarketplaceAgreementsGetInput =
 // Output Schema
 export const MarketplaceAgreementsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => AgreementPropertiesSchema),
+    ),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -150,6 +214,9 @@ export type MarketplaceAgreementsGetAgreementInput =
 // Output Schema
 export const MarketplaceAgreementsGetAgreementOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => OldAgreementPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -182,13 +249,7 @@ export type MarketplaceAgreementsListInput =
 export const MarketplaceAgreementsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => OldAgreementTermsSchema)),
     ),
   });
 export type MarketplaceAgreementsListOutput =
@@ -219,6 +280,9 @@ export type MarketplaceAgreementsSignInput =
 // Output Schema
 export const MarketplaceAgreementsSignOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => OldAgreementPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -250,21 +314,7 @@ export type OperationsListInput = typeof OperationsListInput.Type;
 
 // Output Schema
 export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  value: Schema.optional(
-    Schema.Array(
-      Schema.Struct({
-        name: Schema.optional(Schema.String),
-        display: Schema.optional(
-          Schema.Struct({
-            provider: Schema.optional(Schema.String),
-            resource: Schema.optional(Schema.String),
-            operation: Schema.optional(Schema.String),
-            description: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
-  ),
+  value: Schema.optional(Schema.Array(Schema.suspend(() => OperationSchema))),
   nextLink: Schema.optional(Schema.String),
 });
 export type OperationsListOutput = typeof OperationsListOutput.Type;

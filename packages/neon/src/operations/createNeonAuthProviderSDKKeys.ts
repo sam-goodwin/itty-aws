@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { NeonAuthSupportedAuthProviderSchema } from "./_schemas.ts";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
@@ -6,12 +7,7 @@ import * as T from "../traits.ts";
 export const CreateNeonAuthProviderSDKKeysInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String,
-    auth_provider: Schema.Literals([
-      "mock",
-      "stack",
-      "stack_v2",
-      "better_auth",
-    ]),
+    auth_provider: Schema.suspend(() => NeonAuthSupportedAuthProviderSchema),
   }).pipe(T.Http({ method: "POST", path: "/projects/auth/keys" }));
 export type CreateNeonAuthProviderSDKKeysInput =
   typeof CreateNeonAuthProviderSDKKeysInput.Type;
@@ -19,12 +15,7 @@ export type CreateNeonAuthProviderSDKKeysInput =
 // Output Schema
 export const CreateNeonAuthProviderSDKKeysOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    auth_provider: Schema.Literals([
-      "mock",
-      "stack",
-      "stack_v2",
-      "better_auth",
-    ]),
+    auth_provider: Schema.suspend(() => NeonAuthSupportedAuthProviderSchema),
     auth_provider_project_id: Schema.String,
     pub_client_key: Schema.String,
     secret_server_key: Schema.String,

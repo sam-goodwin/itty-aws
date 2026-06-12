@@ -8,6 +8,163 @@ import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
+// Shared schemas
+const CustomerSubscriptionSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  etag: Schema.optional(Schema.String),
+});
+const CustomerSubscriptionPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    tenantId: Schema.optional(Schema.String),
+  });
+const RegistrationSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  location: Schema.Literals(["global"]),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  etag: Schema.optional(Schema.String),
+});
+const RegistrationPropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  objectId: Schema.optional(Schema.String),
+  cloudId: Schema.optional(Schema.String),
+  billingModel: Schema.optional(Schema.String),
+});
+const ProductSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  etag: Schema.optional(Schema.String),
+});
+const ProductNestedPropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    displayName: Schema.optional(Schema.String),
+    description: Schema.optional(Schema.String),
+    publisherDisplayName: Schema.optional(Schema.String),
+    publisherIdentifier: Schema.optional(Schema.String),
+    offer: Schema.optional(Schema.String),
+    offerVersion: Schema.optional(Schema.String),
+    sku: Schema.optional(Schema.String),
+    billingPartNumber: Schema.optional(Schema.String),
+    vmExtensionType: Schema.optional(Schema.String),
+    galleryItemIdentity: Schema.optional(Schema.String),
+    iconUris: Schema.optional(Schema.suspend(() => IconUrisSchema)),
+    links: Schema.optional(
+      Schema.Array(Schema.suspend(() => ProductLinkSchema)),
+    ),
+    legalTerms: Schema.optional(Schema.String),
+    privacyPolicy: Schema.optional(Schema.String),
+    payloadLength: Schema.optional(Schema.Number),
+    productKind: Schema.optional(Schema.String),
+    productProperties: Schema.optional(
+      Schema.suspend(() => ProductPropertiesSchema),
+    ),
+    compatibility: Schema.optional(Schema.suspend(() => CompatibilitySchema)),
+  },
+);
+const IconUrisSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  large: Schema.optional(Schema.String),
+  wide: Schema.optional(Schema.String),
+  medium: Schema.optional(Schema.String),
+  small: Schema.optional(Schema.String),
+  hero: Schema.optional(Schema.String),
+});
+const ProductLinkSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  displayName: Schema.optional(Schema.String),
+  uri: Schema.optional(Schema.String),
+});
+const ProductPropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  version: Schema.optional(Schema.String),
+});
+const CompatibilitySchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  isCompatible: Schema.optional(Schema.Boolean),
+  message: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+  issues: Schema.optional(
+    Schema.Array(Schema.suspend(() => CompatibilityIssueSchema)),
+  ),
+});
+const CompatibilityIssueSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "HigherDeviceVersionRequired",
+  "LowerDeviceVersionRequired",
+  "CapacityBillingModelRequired",
+  "PayAsYouGoBillingModelRequired",
+  "DevelopmentBillingModelRequired",
+  "AzureADIdentitySystemRequired",
+  "ADFSIdentitySystemRequired",
+  "ConnectionToInternetRequired",
+  "ConnectionToAzureRequired",
+  "DisconnectedEnvironmentRequired",
+]);
+const ExtendedProductPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    computeRole: Schema.optional(Schema.suspend(() => ComputeRoleSchema)),
+    isSystemExtension: Schema.optional(Schema.Boolean),
+    sourceBlob: Schema.optional(Schema.suspend(() => UriSchema)),
+    supportMultipleExtensions: Schema.optional(Schema.Boolean),
+    version: Schema.optional(Schema.String),
+    vmOsType: Schema.optional(Schema.suspend(() => OperatingSystemSchema)),
+    vmScaleSetEnabled: Schema.optional(Schema.Boolean),
+    osDiskImage: Schema.optional(Schema.suspend(() => OsDiskImageSchema)),
+    dataDiskImages: Schema.optional(
+      Schema.Array(Schema.suspend(() => DataDiskImageSchema)),
+    ),
+  });
+const ComputeRoleSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "None",
+  "IaaS",
+  "PaaS",
+]);
+const UriSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  uri: Schema.optional(Schema.String),
+});
+const OperatingSystemSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "None",
+  "Windows",
+  "Linux",
+]);
+const OsDiskImageSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  operatingSystem: Schema.optional(Schema.suspend(() => OperatingSystemSchema)),
+  sourceBlobSasUri: Schema.optional(Schema.String),
+});
+const DataDiskImageSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  lun: Schema.optional(Schema.Number),
+  sourceBlobSasUri: Schema.optional(Schema.String),
+});
+const OperationSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  display: Schema.optional(Schema.suspend(() => DisplaySchema)),
+  origin: Schema.optional(Schema.String),
+});
+const DisplaySchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  provider: Schema.optional(Schema.String),
+  resource: Schema.optional(Schema.String),
+  operation: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+});
+const CloudManifestFilePropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    deploymentData: Schema.optional(
+      Schema.suspend(() => CloudManifestFileDeploymentDataSchema),
+    ),
+    signature: Schema.optional(Schema.String),
+  });
+const CloudManifestFileDeploymentDataSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    externalDsmsCertificates: Schema.optional(Schema.String),
+    customCloudVerificationKey: Schema.optional(Schema.String),
+    customEnvironmentEndpoints: Schema.optional(
+      Schema.suspend(() => CloudManifestFileEnvironmentEndpointsSchema),
+    ),
+  });
+const CloudManifestFileEnvironmentEndpointsSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    customCloudArmEndpoint: Schema.optional(Schema.String),
+    externalDsmsEndpoint: Schema.optional(Schema.String),
+  });
+
 // Input Schema
 export const CloudManifestFileGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -25,6 +182,9 @@ export type CloudManifestFileGetInput = typeof CloudManifestFileGetInput.Type;
 // Output Schema
 export const CloudManifestFileGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => CloudManifestFilePropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -59,6 +219,9 @@ export type CloudManifestFileListInput = typeof CloudManifestFileListInput.Type;
 // Output Schema
 export const CloudManifestFileListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => CloudManifestFilePropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -96,6 +259,9 @@ export type CustomerSubscriptionsCreateInput =
 // Output Schema
 export const CustomerSubscriptionsCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => CustomerSubscriptionPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -175,6 +341,9 @@ export type CustomerSubscriptionsGetInput =
 // Output Schema
 export const CustomerSubscriptionsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => CustomerSubscriptionPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -219,14 +388,7 @@ export const CustomerSubscriptionsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          etag: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => CustomerSubscriptionSchema)),
     ),
   });
 export type CustomerSubscriptionsListOutput =
@@ -292,22 +454,7 @@ export type OperationsListInput = typeof OperationsListInput.Type;
 
 // Output Schema
 export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  value: Schema.optional(
-    Schema.Array(
-      Schema.Struct({
-        name: Schema.optional(Schema.String),
-        display: Schema.optional(
-          Schema.Struct({
-            provider: Schema.optional(Schema.String),
-            resource: Schema.optional(Schema.String),
-            operation: Schema.optional(Schema.String),
-            description: Schema.optional(Schema.String),
-          }),
-        ),
-        origin: Schema.optional(Schema.String),
-      }),
-    ),
-  ),
+  value: Schema.optional(Schema.Array(Schema.suspend(() => OperationSchema))),
   nextLink: Schema.optional(Schema.String),
 });
 export type OperationsListOutput = typeof OperationsListOutput.Type;
@@ -336,6 +483,9 @@ export type ProductsGetInput = typeof ProductsGetInput.Type;
 
 // Output Schema
 export const ProductsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.optional(
+    Schema.suspend(() => ProductNestedPropertiesSchema),
+  ),
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -374,6 +524,9 @@ export type ProductsGetProductInput = typeof ProductsGetProductInput.Type;
 // Output Schema
 export const ProductsGetProductOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => ProductNestedPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -413,16 +566,7 @@ export type ProductsGetProductsInput = typeof ProductsGetProductsInput.Type;
 export const ProductsGetProductsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          etag: Schema.optional(Schema.String),
-        }),
-      ),
-    ),
+    value: Schema.optional(Schema.Array(Schema.suspend(() => ProductSchema))),
   });
 export type ProductsGetProductsOutput = typeof ProductsGetProductsOutput.Type;
 
@@ -456,16 +600,7 @@ export type ProductsListInput = typeof ProductsListInput.Type;
 // Output Schema
 export const ProductsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   nextLink: Schema.optional(Schema.String),
-  value: Schema.optional(
-    Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        etag: Schema.optional(Schema.String),
-      }),
-    ),
-  ),
+  value: Schema.optional(Schema.Array(Schema.suspend(() => ProductSchema))),
 });
 export type ProductsListOutput = typeof ProductsListOutput.Type;
 
@@ -503,37 +638,7 @@ export const ProductsListDetailsOutput =
     galleryPackageBlobSasUri: Schema.optional(Schema.String),
     productKind: Schema.optional(Schema.String),
     properties: Schema.optional(
-      Schema.Struct({
-        computeRole: Schema.optional(Schema.Literals(["None", "IaaS", "PaaS"])),
-        isSystemExtension: Schema.optional(Schema.Boolean),
-        sourceBlob: Schema.optional(
-          Schema.Struct({
-            uri: Schema.optional(Schema.String),
-          }),
-        ),
-        supportMultipleExtensions: Schema.optional(Schema.Boolean),
-        version: Schema.optional(Schema.String),
-        vmOsType: Schema.optional(
-          Schema.Literals(["None", "Windows", "Linux"]),
-        ),
-        vmScaleSetEnabled: Schema.optional(Schema.Boolean),
-        osDiskImage: Schema.optional(
-          Schema.Struct({
-            operatingSystem: Schema.optional(
-              Schema.Literals(["None", "Windows", "Linux"]),
-            ),
-            sourceBlobSasUri: Schema.optional(Schema.String),
-          }),
-        ),
-        dataDiskImages: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              lun: Schema.optional(Schema.Number),
-              sourceBlobSasUri: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-      }),
+      Schema.suspend(() => ExtendedProductPropertiesSchema),
     ),
   });
 export type ProductsListDetailsOutput = typeof ProductsListDetailsOutput.Type;
@@ -570,16 +675,7 @@ export type ProductsListProductsInput = typeof ProductsListProductsInput.Type;
 export const ProductsListProductsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          etag: Schema.optional(Schema.String),
-        }),
-      ),
-    ),
+    value: Schema.optional(Schema.Array(Schema.suspend(() => ProductSchema))),
   });
 export type ProductsListProductsOutput = typeof ProductsListProductsOutput.Type;
 
@@ -663,6 +759,9 @@ export type RegistrationsCreateOrUpdateInput =
 // Output Schema
 export const RegistrationsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => RegistrationPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -773,6 +872,9 @@ export type RegistrationsGetInput = typeof RegistrationsGetInput.Type;
 // Output Schema
 export const RegistrationsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
+    properties: Schema.optional(
+      Schema.suspend(() => RegistrationPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -854,16 +956,7 @@ export const RegistrationsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          location: Schema.Literals(["global"]),
-          tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-          etag: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => RegistrationSchema)),
     ),
   });
 export type RegistrationsListOutput = typeof RegistrationsListOutput.Type;
@@ -899,16 +992,7 @@ export const RegistrationsListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          location: Schema.Literals(["global"]),
-          tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-          etag: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => RegistrationSchema)),
     ),
   });
 export type RegistrationsListBySubscriptionOutput =
@@ -944,6 +1028,9 @@ export type RegistrationsUpdateInput = typeof RegistrationsUpdateInput.Type;
 // Output Schema
 export const RegistrationsUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => RegistrationPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),

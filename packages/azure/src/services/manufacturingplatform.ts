@@ -8,6 +8,255 @@ import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
+// Shared schemas
+const OperationSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  isDataAction: Schema.optional(Schema.Boolean),
+  display: Schema.optional(
+    Schema.Struct({
+      provider: Schema.optional(Schema.String),
+      resource: Schema.optional(Schema.String),
+      operation: Schema.optional(Schema.String),
+      description: Schema.optional(Schema.String),
+    }),
+  ),
+  origin: Schema.optional(Schema.Literals(["user", "system", "user,system"])),
+  actionType: Schema.optional(Schema.Literals(["Internal"])),
+});
+const MdsResourceSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+});
+const systemDataSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  createdBy: Schema.optional(Schema.String),
+  createdByType: Schema.optional(
+    Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+  ),
+  createdAt: Schema.optional(Schema.String),
+  lastModifiedBy: Schema.optional(Schema.String),
+  lastModifiedByType: Schema.optional(
+    Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+  ),
+  lastModifiedAt: Schema.optional(Schema.String),
+});
+const MdsResourcePropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  provisioningState: Schema.optional(
+    Schema.suspend(() => ProvisioningStateSchema),
+  ),
+  version: Schema.optional(Schema.String),
+  enableCopilot: Schema.optional(Schema.Boolean),
+  enableDiagnosticSettings: Schema.optional(Schema.Boolean),
+  aadApplicationId: Schema.String,
+  aksAdminGroupId: Schema.optional(Schema.String),
+  serviceUrl: Schema.optional(Schema.String),
+  aksProfile: Schema.optional(Schema.suspend(() => AksProfileSchema)),
+  storageProfile: Schema.optional(Schema.suspend(() => StorageProfileSchema)),
+  databaseProfile: Schema.optional(Schema.suspend(() => DatabaseProfileSchema)),
+  adxProfile: Schema.optional(Schema.suspend(() => AdxProfileSchema)),
+  redisProfile: Schema.optional(Schema.suspend(() => RedisProfileSchema)),
+  monitoringProfile: Schema.optional(
+    Schema.suspend(() => MonitoringProfileSchema),
+  ),
+  eventHubProfile: Schema.optional(Schema.suspend(() => EventHubProfileSchema)),
+  functionAppProfile: Schema.optional(
+    Schema.suspend(() => FunctionAppProfileSchema),
+  ),
+  openAIProfile: Schema.optional(Schema.suspend(() => OpenAIProfileSchema)),
+  managedResourceGroupConfiguration: Schema.optional(
+    Schema.suspend(() => ManagedResourceGroupConfigurationSchema),
+  ),
+  managedOnBehalfOfConfiguration: Schema.optional(
+    Schema.suspend(() => ManagedOnBehalfOfConfigurationSchema),
+  ),
+  cmkProfile: Schema.optional(Schema.suspend(() => CmkProfileSchema)),
+  fabricProfile: Schema.optional(Schema.suspend(() => FabricProfileSchema)),
+  userManagedOpenAIProfile: Schema.optional(
+    Schema.suspend(() => UserManagedOpenAIProfileSchema),
+  ),
+  denyAssignmentExclusions: Schema.optional(
+    Schema.Array(Schema.suspend(() => DenyAssignmentExclusionSchema)),
+  ),
+  resourceState: Schema.optional(Schema.suspend(() => ResourceStateSchema)),
+  redundancyState: Schema.optional(Schema.suspend(() => RedundancyStateSchema)),
+});
+const ProvisioningStateSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Succeeded",
+  "Failed",
+  "Canceled",
+  "Provisioning",
+  "Updating",
+  "Deleting",
+  "Accepted",
+]);
+const AksProfileSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+});
+const StorageProfileSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+});
+const DatabaseProfileSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  cosmosId: Schema.optional(Schema.String),
+});
+const AdxProfileSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  uri: Schema.optional(Schema.String),
+  dataIngestionUri: Schema.optional(Schema.String),
+});
+const RedisProfileSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+});
+const MonitoringProfileSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+});
+const EventHubProfileSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  adxInstanceId: Schema.optional(Schema.String),
+  hostName: Schema.optional(Schema.String),
+});
+const FunctionAppProfileSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+});
+const OpenAIProfileSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  gptModelName: Schema.optional(Schema.String),
+  gptModelVersion: Schema.optional(Schema.String),
+  gptModelCapacity: Schema.optional(Schema.Number),
+  gptModelSkuName: Schema.optional(Schema.String),
+  embeddingModelName: Schema.optional(Schema.String),
+  embeddingModelVersion: Schema.optional(Schema.String),
+  embeddingModelSkuName: Schema.optional(Schema.String),
+  embeddingModelCapacity: Schema.optional(Schema.Number),
+});
+const ManagedResourceGroupConfigurationSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String,
+    location: Schema.String,
+  });
+const ManagedOnBehalfOfConfigurationSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    moboBrokerResources: Schema.Array(
+      Schema.suspend(() => MoboBrokerResourceSchema),
+    ),
+  });
+const MoboBrokerResourceSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.String,
+});
+const CmkProfileSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  keyUri: Schema.String,
+});
+const FabricProfileSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  keyUri: Schema.String,
+  oneLakeUri: Schema.String,
+  oneLakePath: Schema.String,
+});
+const UserManagedOpenAIProfileSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.String,
+    gptModelDeploymentName: Schema.String,
+    embeddingModelDeploymentName: Schema.String,
+    embeddingModelType: Schema.optional(Schema.String),
+  });
+const DenyAssignmentExclusionSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    id: Schema.String,
+    type: Schema.String,
+  },
+);
+const ResourceStateSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Active",
+  "Inactive",
+]);
+const RedundancyStateSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Zonal",
+  "None",
+]);
+const ManagedServiceIdentityTypeSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+    "None",
+    "SystemAssigned",
+    "UserAssigned",
+    "SystemAssigned,UserAssigned",
+  ]);
+const UserAssignedIdentitiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Record(
+  Schema.String,
+  Schema.suspend(() => UserAssignedIdentitySchema),
+);
+const UserAssignedIdentitySchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  principalId: Schema.optional(Schema.String),
+  clientId: Schema.optional(Schema.String),
+});
+const SkuTierSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Free",
+  "Basic",
+  "Standard",
+  "Premium",
+]);
+const Azure_ResourceManager_CommonTypes_ManagedServiceIdentityUpdateSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    type: Schema.optional(
+      Schema.Literals([
+        "None",
+        "SystemAssigned",
+        "UserAssigned",
+        "SystemAssigned,UserAssigned",
+      ]),
+    ),
+    userAssignedIdentities: Schema.optional(
+      Schema.Record(
+        Schema.String,
+        Schema.Struct({
+          principalId: Schema.optional(Schema.String),
+          clientId: Schema.optional(Schema.String),
+        }),
+      ),
+    ),
+  });
+const Azure_ResourceManager_CommonTypes_SkuUpdateSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    tier: Schema.optional(
+      Schema.Literals(["Free", "Basic", "Standard", "Premium"]),
+    ),
+    size: Schema.optional(Schema.String),
+    family: Schema.optional(Schema.String),
+    capacity: Schema.optional(Schema.Number),
+  });
+const MdsResourceUpdatePropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    version: Schema.optional(Schema.String),
+    enableCopilot: Schema.optional(Schema.Boolean),
+    enableDiagnosticSettings: Schema.optional(Schema.Boolean),
+    openAIProfile: Schema.optional(Schema.suspend(() => OpenAIProfileSchema)),
+    fabricProfile: Schema.optional(
+      Schema.suspend(() => FabricProfileUpdateSchema),
+    ),
+    userManagedOpenAIProfile: Schema.optional(
+      Schema.suspend(() => UserManagedOpenAIProfileUpdateSchema),
+    ),
+    denyAssignmentExclusions: Schema.optional(
+      Schema.Array(Schema.suspend(() => DenyAssignmentExclusionSchema)),
+    ),
+    resourceState: Schema.optional(Schema.suspend(() => ResourceStateSchema)),
+  });
+const FabricProfileUpdateSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  keyUri: Schema.optional(Schema.String),
+  oneLakeUri: Schema.optional(Schema.String),
+  oneLakePath: Schema.optional(Schema.String),
+});
+const UserManagedOpenAIProfileUpdateSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    gptModelDeploymentName: Schema.optional(Schema.String),
+    embeddingModelDeploymentName: Schema.optional(Schema.String),
+  });
+const ApplicationVersionSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  version: Schema.String,
+  isLatest: Schema.Boolean,
+  isPreview: Schema.Boolean,
+  isDeprecated: Schema.Boolean,
+});
+
 // Input Schema
 export const ManufacturingDataServicesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -15,154 +264,22 @@ export const ManufacturingDataServicesCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     mdsResourceName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        provisioningState: Schema.optional(
-          Schema.Literals([
-            "Succeeded",
-            "Failed",
-            "Canceled",
-            "Provisioning",
-            "Updating",
-            "Deleting",
-            "Accepted",
-          ]),
-        ),
-        version: Schema.optional(Schema.String),
-        enableCopilot: Schema.optional(Schema.Boolean),
-        enableDiagnosticSettings: Schema.optional(Schema.Boolean),
-        aadApplicationId: Schema.String,
-        aksAdminGroupId: Schema.optional(Schema.String),
-        serviceUrl: Schema.optional(Schema.String),
-        aksProfile: Schema.optional(
-          Schema.Struct({
-            id: Schema.optional(Schema.String),
-          }),
-        ),
-        storageProfile: Schema.optional(
-          Schema.Struct({
-            id: Schema.optional(Schema.String),
-          }),
-        ),
-        databaseProfile: Schema.optional(
-          Schema.Struct({
-            cosmosId: Schema.optional(Schema.String),
-          }),
-        ),
-        adxProfile: Schema.optional(
-          Schema.Struct({
-            id: Schema.optional(Schema.String),
-            uri: Schema.optional(Schema.String),
-            dataIngestionUri: Schema.optional(Schema.String),
-          }),
-        ),
-        redisProfile: Schema.optional(
-          Schema.Struct({
-            id: Schema.optional(Schema.String),
-          }),
-        ),
-        monitoringProfile: Schema.optional(
-          Schema.Struct({
-            id: Schema.optional(Schema.String),
-          }),
-        ),
-        eventHubProfile: Schema.optional(
-          Schema.Struct({
-            adxInstanceId: Schema.optional(Schema.String),
-            hostName: Schema.optional(Schema.String),
-          }),
-        ),
-        functionAppProfile: Schema.optional(
-          Schema.Struct({
-            id: Schema.optional(Schema.String),
-          }),
-        ),
-        openAIProfile: Schema.optional(
-          Schema.Struct({
-            id: Schema.optional(Schema.String),
-            gptModelName: Schema.optional(Schema.String),
-            gptModelVersion: Schema.optional(Schema.String),
-            gptModelCapacity: Schema.optional(Schema.Number),
-            gptModelSkuName: Schema.optional(Schema.String),
-            embeddingModelName: Schema.optional(Schema.String),
-            embeddingModelVersion: Schema.optional(Schema.String),
-            embeddingModelSkuName: Schema.optional(Schema.String),
-            embeddingModelCapacity: Schema.optional(Schema.Number),
-          }),
-        ),
-        managedResourceGroupConfiguration: Schema.optional(
-          Schema.Struct({
-            name: Schema.String,
-            location: Schema.String,
-          }),
-        ),
-        managedOnBehalfOfConfiguration: Schema.optional(
-          Schema.Struct({
-            moboBrokerResources: Schema.Array(
-              Schema.Struct({
-                id: Schema.String,
-              }),
-            ),
-          }),
-        ),
-        cmkProfile: Schema.optional(
-          Schema.Struct({
-            keyUri: Schema.String,
-          }),
-        ),
-        fabricProfile: Schema.optional(
-          Schema.Struct({
-            keyUri: Schema.String,
-            oneLakeUri: Schema.String,
-            oneLakePath: Schema.String,
-          }),
-        ),
-        userManagedOpenAIProfile: Schema.optional(
-          Schema.Struct({
-            id: Schema.String,
-            gptModelDeploymentName: Schema.String,
-            embeddingModelDeploymentName: Schema.String,
-            embeddingModelType: Schema.optional(Schema.String),
-          }),
-        ),
-        denyAssignmentExclusions: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              id: Schema.String,
-              type: Schema.String,
-            }),
-          ),
-        ),
-        resourceState: Schema.optional(Schema.Literals(["Active", "Inactive"])),
-        redundancyState: Schema.optional(Schema.Literals(["Zonal", "None"])),
-      }),
+      Schema.suspend(() => MdsResourcePropertiesSchema),
     ),
     identity: Schema.optional(
       Schema.Struct({
         principalId: Schema.optional(Schema.String),
         tenantId: Schema.optional(Schema.String),
-        type: Schema.Literals([
-          "None",
-          "SystemAssigned",
-          "UserAssigned",
-          "SystemAssigned,UserAssigned",
-        ]),
+        type: Schema.suspend(() => ManagedServiceIdentityTypeSchema),
         userAssignedIdentities: Schema.optional(
-          Schema.Record(
-            Schema.String,
-            Schema.Struct({
-              principalId: Schema.optional(Schema.String),
-              clientId: Schema.optional(Schema.String),
-            }),
-          ),
+          Schema.suspend(() => UserAssignedIdentitiesSchema),
         ),
       }),
     ),
     sku: Schema.optional(
       Schema.Struct({
         name: Schema.String,
-        tier: Schema.optional(
-          Schema.Literals(["Free", "Basic", "Standard", "Premium"]),
-        ),
+        tier: Schema.optional(Schema.suspend(() => SkuTierSchema)),
         size: Schema.optional(Schema.String),
         family: Schema.optional(Schema.String),
         capacity: Schema.optional(Schema.Number),
@@ -184,23 +301,34 @@ export type ManufacturingDataServicesCreateOrUpdateInput =
 // Output Schema
 export const ManufacturingDataServicesCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => MdsResourcePropertiesSchema),
+    ),
+    identity: Schema.optional(
+      Schema.Struct({
+        principalId: Schema.optional(Schema.String),
+        tenantId: Schema.optional(Schema.String),
+        type: Schema.suspend(() => ManagedServiceIdentityTypeSchema),
+        userAssignedIdentities: Schema.optional(
+          Schema.suspend(() => UserAssignedIdentitiesSchema),
+        ),
+      }),
+    ),
+    sku: Schema.optional(
+      Schema.Struct({
+        name: Schema.String,
+        tier: Schema.optional(Schema.suspend(() => SkuTierSchema)),
+        size: Schema.optional(Schema.String),
+        family: Schema.optional(Schema.String),
+        capacity: Schema.optional(Schema.Number),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type ManufacturingDataServicesCreateOrUpdateOutput =
   typeof ManufacturingDataServicesCreateOrUpdateOutput.Type;
@@ -275,23 +403,34 @@ export type ManufacturingDataServicesGetInput =
 // Output Schema
 export const ManufacturingDataServicesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => MdsResourcePropertiesSchema),
+    ),
+    identity: Schema.optional(
+      Schema.Struct({
+        principalId: Schema.optional(Schema.String),
+        tenantId: Schema.optional(Schema.String),
+        type: Schema.suspend(() => ManagedServiceIdentityTypeSchema),
+        userAssignedIdentities: Schema.optional(
+          Schema.suspend(() => UserAssignedIdentitiesSchema),
+        ),
+      }),
+    ),
+    sku: Schema.optional(
+      Schema.Struct({
+        name: Schema.String,
+        tier: Schema.optional(Schema.suspend(() => SkuTierSchema)),
+        size: Schema.optional(Schema.String),
+        family: Schema.optional(Schema.String),
+        capacity: Schema.optional(Schema.Number),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type ManufacturingDataServicesGetOutput =
   typeof ManufacturingDataServicesGetOutput.Type;
@@ -329,14 +468,7 @@ export type ManufacturingDataServicesListAvailableVersionsInput =
 // Output Schema
 export const ManufacturingDataServicesListAvailableVersionsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    versions: Schema.Array(
-      Schema.Struct({
-        version: Schema.String,
-        isLatest: Schema.Boolean,
-        isPreview: Schema.Boolean,
-        isDeprecated: Schema.Boolean,
-      }),
-    ),
+    versions: Schema.Array(Schema.suspend(() => ApplicationVersionSchema)),
   });
 export type ManufacturingDataServicesListAvailableVersionsOutput =
   typeof ManufacturingDataServicesListAvailableVersionsOutput.Type;
@@ -373,37 +505,7 @@ export type ManufacturingDataServicesListByResourceGroupInput =
 // Output Schema
 export const ManufacturingDataServicesListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => MdsResourceSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type ManufacturingDataServicesListByResourceGroupOutput =
@@ -439,37 +541,7 @@ export type ManufacturingDataServicesListBySubscriptionInput =
 // Output Schema
 export const ManufacturingDataServicesListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => MdsResourceSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type ManufacturingDataServicesListBySubscriptionOutput =
@@ -494,80 +566,17 @@ export const ManufacturingDataServicesUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     mdsResourceName: Schema.String.pipe(T.PathParam()),
     identity: Schema.optional(
-      Schema.Struct({
-        type: Schema.optional(
-          Schema.Literals([
-            "None",
-            "SystemAssigned",
-            "UserAssigned",
-            "SystemAssigned,UserAssigned",
-          ]),
-        ),
-        userAssignedIdentities: Schema.optional(
-          Schema.Record(
-            Schema.String,
-            Schema.Struct({
-              principalId: Schema.optional(Schema.String),
-              clientId: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-      }),
+      Schema.suspend(
+        () =>
+          Azure_ResourceManager_CommonTypes_ManagedServiceIdentityUpdateSchema,
+      ),
     ),
     sku: Schema.optional(
-      Schema.Struct({
-        name: Schema.optional(Schema.String),
-        tier: Schema.optional(
-          Schema.Literals(["Free", "Basic", "Standard", "Premium"]),
-        ),
-        size: Schema.optional(Schema.String),
-        family: Schema.optional(Schema.String),
-        capacity: Schema.optional(Schema.Number),
-      }),
+      Schema.suspend(() => Azure_ResourceManager_CommonTypes_SkuUpdateSchema),
     ),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     properties: Schema.optional(
-      Schema.Struct({
-        version: Schema.optional(Schema.String),
-        enableCopilot: Schema.optional(Schema.Boolean),
-        enableDiagnosticSettings: Schema.optional(Schema.Boolean),
-        openAIProfile: Schema.optional(
-          Schema.Struct({
-            id: Schema.optional(Schema.String),
-            gptModelName: Schema.optional(Schema.String),
-            gptModelVersion: Schema.optional(Schema.String),
-            gptModelCapacity: Schema.optional(Schema.Number),
-            gptModelSkuName: Schema.optional(Schema.String),
-            embeddingModelName: Schema.optional(Schema.String),
-            embeddingModelVersion: Schema.optional(Schema.String),
-            embeddingModelSkuName: Schema.optional(Schema.String),
-            embeddingModelCapacity: Schema.optional(Schema.Number),
-          }),
-        ),
-        fabricProfile: Schema.optional(
-          Schema.Struct({
-            keyUri: Schema.optional(Schema.String),
-            oneLakeUri: Schema.optional(Schema.String),
-            oneLakePath: Schema.optional(Schema.String),
-          }),
-        ),
-        userManagedOpenAIProfile: Schema.optional(
-          Schema.Struct({
-            id: Schema.optional(Schema.String),
-            gptModelDeploymentName: Schema.optional(Schema.String),
-            embeddingModelDeploymentName: Schema.optional(Schema.String),
-          }),
-        ),
-        denyAssignmentExclusions: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              id: Schema.String,
-              type: Schema.String,
-            }),
-          ),
-        ),
-        resourceState: Schema.optional(Schema.Literals(["Active", "Inactive"])),
-      }),
+      Schema.suspend(() => MdsResourceUpdatePropertiesSchema),
     ),
   }).pipe(
     T.Http({
@@ -583,23 +592,34 @@ export type ManufacturingDataServicesUpdateInput =
 // Output Schema
 export const ManufacturingDataServicesUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => MdsResourcePropertiesSchema),
+    ),
+    identity: Schema.optional(
+      Schema.Struct({
+        principalId: Schema.optional(Schema.String),
+        tenantId: Schema.optional(Schema.String),
+        type: Schema.suspend(() => ManagedServiceIdentityTypeSchema),
+        userAssignedIdentities: Schema.optional(
+          Schema.suspend(() => UserAssignedIdentitiesSchema),
+        ),
+      }),
+    ),
+    sku: Schema.optional(
+      Schema.Struct({
+        name: Schema.String,
+        tier: Schema.optional(Schema.suspend(() => SkuTierSchema)),
+        size: Schema.optional(Schema.String),
+        family: Schema.optional(Schema.String),
+        capacity: Schema.optional(Schema.Number),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type ManufacturingDataServicesUpdateOutput =
   typeof ManufacturingDataServicesUpdateOutput.Type;
@@ -632,26 +652,7 @@ export type OperationsListInput = typeof OperationsListInput.Type;
 
 // Output Schema
 export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  value: Schema.optional(
-    Schema.Array(
-      Schema.Struct({
-        name: Schema.optional(Schema.String),
-        isDataAction: Schema.optional(Schema.Boolean),
-        display: Schema.optional(
-          Schema.Struct({
-            provider: Schema.optional(Schema.String),
-            resource: Schema.optional(Schema.String),
-            operation: Schema.optional(Schema.String),
-            description: Schema.optional(Schema.String),
-          }),
-        ),
-        origin: Schema.optional(
-          Schema.Literals(["user", "system", "user,system"]),
-        ),
-        actionType: Schema.optional(Schema.Literals(["Internal"])),
-      }),
-    ),
-  ),
+  value: Schema.optional(Schema.Array(Schema.suspend(() => OperationSchema))),
   nextLink: Schema.optional(Schema.String),
 });
 export type OperationsListOutput = typeof OperationsListOutput.Type;

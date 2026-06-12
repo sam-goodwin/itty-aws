@@ -8,6 +8,205 @@ import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
+// Shared schemas
+const OperationSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  isDataAction: Schema.optional(Schema.Boolean),
+  display: Schema.optional(
+    Schema.Struct({
+      provider: Schema.optional(Schema.String),
+      resource: Schema.optional(Schema.String),
+      operation: Schema.optional(Schema.String),
+      description: Schema.optional(Schema.String),
+    }),
+  ),
+  origin: Schema.optional(Schema.Literals(["user", "system", "user,system"])),
+  actionType: Schema.optional(Schema.Literals(["Internal"])),
+});
+const UnavailableReasonSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "None",
+  "InvalidName",
+  "SubscriptionIsDisabled",
+  "NameInUse",
+  "NameInLockdown",
+  "TooManyNamespaceInCurrentSubscription",
+]);
+const RelayNamespaceSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+});
+const systemDataSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  createdBy: Schema.optional(Schema.String),
+  createdByType: Schema.optional(
+    Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+  ),
+  createdAt: Schema.optional(Schema.String),
+  lastModifiedBy: Schema.optional(Schema.String),
+  lastModifiedByType: Schema.optional(
+    Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+  ),
+  lastModifiedAt: Schema.optional(Schema.String),
+});
+const RelayNamespacePropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    provisioningState: Schema.optional(Schema.String),
+    status: Schema.optional(Schema.String),
+    createdAt: Schema.optional(Schema.String),
+    updatedAt: Schema.optional(Schema.String),
+    serviceBusEndpoint: Schema.optional(Schema.String),
+    metricId: Schema.optional(Schema.String),
+    privateEndpointConnections: Schema.optional(
+      Schema.Array(Schema.suspend(() => PrivateEndpointConnectionSchema)),
+    ),
+    publicNetworkAccess: Schema.optional(
+      Schema.Literals(["Enabled", "Disabled", "SecuredByPerimeter"]),
+    ),
+  });
+const PrivateEndpointConnectionSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+  });
+const SkuSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.suspend(() => SkuNameSchema),
+  tier: Schema.optional(Schema.suspend(() => SkuTierSchema)),
+});
+const SkuNameSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals(["Standard"]);
+const SkuTierSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals(["Standard"]);
+const AuthorizationRuleSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+});
+const AuthorizationRulePropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    rights: Schema.Array(Schema.suspend(() => AccessRightsSchema)),
+  });
+const AccessRightsSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Manage",
+  "Send",
+  "Listen",
+]);
+const KeyTypeSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "PrimaryKey",
+  "SecondaryKey",
+]);
+const HybridConnectionSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+});
+const HybridConnectionPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    createdAt: Schema.optional(Schema.String),
+    updatedAt: Schema.optional(Schema.String),
+    listenerCount: Schema.optional(Schema.Number),
+    requiresClientAuthorization: Schema.optional(Schema.Boolean),
+    userMetadata: Schema.optional(Schema.String),
+  });
+const NetworkRuleSetPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    trustedServiceAccessEnabled: Schema.optional(Schema.Boolean),
+    defaultAction: Schema.optional(Schema.suspend(() => DefaultActionSchema)),
+    publicNetworkAccess: Schema.optional(
+      Schema.suspend(() => PublicNetworkAccessSchema),
+    ),
+    ipRules: Schema.optional(
+      Schema.Array(Schema.suspend(() => NWRuleSetIpRulesSchema)),
+    ),
+  });
+const DefaultActionSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Allow",
+  "Deny",
+]);
+const PublicNetworkAccessSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Enabled",
+  "Disabled",
+  "SecuredByPerimeter",
+]);
+const NWRuleSetIpRulesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  ipMask: Schema.optional(Schema.String),
+  action: Schema.optional(Schema.suspend(() => NetworkRuleIPActionSchema)),
+});
+const NetworkRuleIPActionSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Allow",
+]);
+const PrivateEndpointConnectionPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    privateEndpoint: Schema.optional(
+      Schema.suspend(() => PrivateEndpointSchema),
+    ),
+    privateLinkServiceConnectionState: Schema.optional(
+      Schema.suspend(() => ConnectionStateSchema),
+    ),
+    provisioningState: Schema.optional(
+      Schema.suspend(() => EndPointProvisioningStateSchema),
+    ),
+  });
+const PrivateEndpointSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+});
+const ConnectionStateSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  status: Schema.optional(
+    Schema.suspend(() => PrivateLinkConnectionStatusSchema),
+  ),
+  description: Schema.optional(Schema.String),
+});
+const PrivateLinkConnectionStatusSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+    "Pending",
+    "Approved",
+    "Rejected",
+    "Disconnected",
+  ]);
+const EndPointProvisioningStateSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+    "Creating",
+    "Updating",
+    "Deleting",
+    "Succeeded",
+    "Canceled",
+    "Failed",
+  ]);
+const PrivateLinkResourceSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+});
+const PrivateLinkResourcePropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    groupId: Schema.optional(Schema.String),
+    requiredMembers: Schema.optional(Schema.Array(Schema.String)),
+    requiredZoneNames: Schema.optional(Schema.Array(Schema.String)),
+  });
+const WcfRelaySchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+});
+const WcfRelayPropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  isDynamic: Schema.optional(Schema.Boolean),
+  createdAt: Schema.optional(Schema.String),
+  updatedAt: Schema.optional(Schema.String),
+  listenerCount: Schema.optional(Schema.Number),
+  relayType: Schema.optional(Schema.suspend(() => RelaytypeSchema)),
+  requiresClientAuthorization: Schema.optional(Schema.Boolean),
+  requiresTransportSecurity: Schema.optional(Schema.Boolean),
+  userMetadata: Schema.optional(Schema.String),
+});
+const RelaytypeSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "NetTcp",
+  "Http",
+]);
+
 // Input Schema
 export const HybridConnectionsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -16,13 +215,7 @@ export const HybridConnectionsCreateOrUpdateInput =
     namespaceName: Schema.String.pipe(T.PathParam()),
     hybridConnectionName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        createdAt: Schema.optional(Schema.String),
-        updatedAt: Schema.optional(Schema.String),
-        listenerCount: Schema.optional(Schema.Number),
-        requiresClientAuthorization: Schema.optional(Schema.Boolean),
-        userMetadata: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(() => HybridConnectionPropertiesSchema),
     ),
     location: Schema.optional(Schema.String),
   }).pipe(
@@ -38,23 +231,14 @@ export type HybridConnectionsCreateOrUpdateInput =
 // Output Schema
 export const HybridConnectionsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => HybridConnectionPropertiesSchema),
+    ),
+    location: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type HybridConnectionsCreateOrUpdateOutput =
   typeof HybridConnectionsCreateOrUpdateOutput.Type;
@@ -83,9 +267,7 @@ export const HybridConnectionsCreateOrUpdateAuthorizationRuleInput =
     hybridConnectionName: Schema.String.pipe(T.PathParam()),
     authorizationRuleName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        rights: Schema.Array(Schema.Literals(["Manage", "Send", "Listen"])),
-      }),
+      Schema.suspend(() => AuthorizationRulePropertiesSchema),
     ),
     location: Schema.optional(Schema.String),
   }).pipe(
@@ -101,23 +283,14 @@ export type HybridConnectionsCreateOrUpdateAuthorizationRuleInput =
 // Output Schema
 export const HybridConnectionsCreateOrUpdateAuthorizationRuleOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => AuthorizationRulePropertiesSchema),
+    ),
+    location: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type HybridConnectionsCreateOrUpdateAuthorizationRuleOutput =
   typeof HybridConnectionsCreateOrUpdateAuthorizationRuleOutput.Type;
@@ -236,23 +409,14 @@ export type HybridConnectionsGetInput = typeof HybridConnectionsGetInput.Type;
 // Output Schema
 export const HybridConnectionsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => HybridConnectionPropertiesSchema),
+    ),
+    location: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type HybridConnectionsGetOutput = typeof HybridConnectionsGetOutput.Type;
 
@@ -293,23 +457,14 @@ export type HybridConnectionsGetAuthorizationRuleInput =
 // Output Schema
 export const HybridConnectionsGetAuthorizationRuleOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => AuthorizationRulePropertiesSchema),
+    ),
+    location: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type HybridConnectionsGetAuthorizationRuleOutput =
   typeof HybridConnectionsGetAuthorizationRuleOutput.Type;
@@ -350,37 +505,7 @@ export type HybridConnectionsListAuthorizationRulesInput =
 // Output Schema
 export const HybridConnectionsListAuthorizationRulesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => AuthorizationRuleSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type HybridConnectionsListAuthorizationRulesOutput =
@@ -420,37 +545,7 @@ export type HybridConnectionsListByNamespaceInput =
 // Output Schema
 export const HybridConnectionsListByNamespaceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => HybridConnectionSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type HybridConnectionsListByNamespaceOutput =
@@ -525,7 +620,7 @@ export const HybridConnectionsRegenerateKeysInput =
     namespaceName: Schema.String.pipe(T.PathParam()),
     hybridConnectionName: Schema.String.pipe(T.PathParam()),
     authorizationRuleName: Schema.String.pipe(T.PathParam()),
-    keyType: Schema.Literals(["PrimaryKey", "SecondaryKey"]),
+    keyType: Schema.suspend(() => KeyTypeSchema),
     key: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
@@ -585,16 +680,7 @@ export const NamespacesCheckNameAvailabilityOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     message: Schema.optional(Schema.String),
     nameAvailable: Schema.optional(Schema.Boolean),
-    reason: Schema.optional(
-      Schema.Literals([
-        "None",
-        "InvalidName",
-        "SubscriptionIsDisabled",
-        "NameInUse",
-        "NameInLockdown",
-        "TooManyNamespaceInCurrentSubscription",
-      ]),
-    ),
+    reason: Schema.optional(Schema.suspend(() => UnavailableReasonSchema)),
   });
 export type NamespacesCheckNameAvailabilityOutput =
   typeof NamespacesCheckNameAvailabilityOutput.Type;
@@ -618,57 +704,9 @@ export const NamespacesCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     namespaceName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        provisioningState: Schema.optional(Schema.String),
-        status: Schema.optional(Schema.String),
-        createdAt: Schema.optional(Schema.String),
-        updatedAt: Schema.optional(Schema.String),
-        serviceBusEndpoint: Schema.optional(Schema.String),
-        metricId: Schema.optional(Schema.String),
-        privateEndpointConnections: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              id: Schema.optional(Schema.String),
-              name: Schema.optional(Schema.String),
-              type: Schema.optional(Schema.String),
-              systemData: Schema.optional(
-                Schema.Struct({
-                  createdBy: Schema.optional(Schema.String),
-                  createdByType: Schema.optional(
-                    Schema.Literals([
-                      "User",
-                      "Application",
-                      "ManagedIdentity",
-                      "Key",
-                    ]),
-                  ),
-                  createdAt: Schema.optional(Schema.String),
-                  lastModifiedBy: Schema.optional(Schema.String),
-                  lastModifiedByType: Schema.optional(
-                    Schema.Literals([
-                      "User",
-                      "Application",
-                      "ManagedIdentity",
-                      "Key",
-                    ]),
-                  ),
-                  lastModifiedAt: Schema.optional(Schema.String),
-                }),
-              ),
-            }),
-          ),
-        ),
-        publicNetworkAccess: Schema.optional(
-          Schema.Literals(["Enabled", "Disabled", "SecuredByPerimeter"]),
-        ),
-      }),
+      Schema.suspend(() => RelayNamespacePropertiesSchema),
     ),
-    sku: Schema.optional(
-      Schema.Struct({
-        name: Schema.Literals(["Standard"]),
-        tier: Schema.optional(Schema.Literals(["Standard"])),
-      }),
-    ),
+    sku: Schema.optional(Schema.suspend(() => SkuSchema)),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     location: Schema.String,
   }).pipe(
@@ -685,23 +723,16 @@ export type NamespacesCreateOrUpdateInput =
 // Output Schema
 export const NamespacesCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => RelayNamespacePropertiesSchema),
+    ),
+    sku: Schema.optional(Schema.suspend(() => SkuSchema)),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type NamespacesCreateOrUpdateOutput =
   typeof NamespacesCreateOrUpdateOutput.Type;
@@ -729,9 +760,7 @@ export const NamespacesCreateOrUpdateAuthorizationRuleInput =
     namespaceName: Schema.String.pipe(T.PathParam()),
     authorizationRuleName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        rights: Schema.Array(Schema.Literals(["Manage", "Send", "Listen"])),
-      }),
+      Schema.suspend(() => AuthorizationRulePropertiesSchema),
     ),
     location: Schema.optional(Schema.String),
   }).pipe(
@@ -747,23 +776,14 @@ export type NamespacesCreateOrUpdateAuthorizationRuleInput =
 // Output Schema
 export const NamespacesCreateOrUpdateAuthorizationRuleOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => AuthorizationRulePropertiesSchema),
+    ),
+    location: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type NamespacesCreateOrUpdateAuthorizationRuleOutput =
   typeof NamespacesCreateOrUpdateAuthorizationRuleOutput.Type;
@@ -790,21 +810,7 @@ export const NamespacesCreateOrUpdateNetworkRuleSetInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     namespaceName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        trustedServiceAccessEnabled: Schema.optional(Schema.Boolean),
-        defaultAction: Schema.optional(Schema.Literals(["Allow", "Deny"])),
-        publicNetworkAccess: Schema.optional(
-          Schema.Literals(["Enabled", "Disabled", "SecuredByPerimeter"]),
-        ),
-        ipRules: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              ipMask: Schema.optional(Schema.String),
-              action: Schema.optional(Schema.Literals(["Allow"])),
-            }),
-          ),
-        ),
-      }),
+      Schema.suspend(() => NetworkRuleSetPropertiesSchema),
     ),
   }).pipe(
     T.Http({
@@ -819,23 +825,13 @@ export type NamespacesCreateOrUpdateNetworkRuleSetInput =
 // Output Schema
 export const NamespacesCreateOrUpdateNetworkRuleSetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => NetworkRuleSetPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type NamespacesCreateOrUpdateNetworkRuleSetOutput =
   typeof NamespacesCreateOrUpdateNetworkRuleSetOutput.Type;
@@ -940,23 +936,16 @@ export type NamespacesGetInput = typeof NamespacesGetInput.Type;
 
 // Output Schema
 export const NamespacesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.optional(
+    Schema.suspend(() => RelayNamespacePropertiesSchema),
+  ),
+  sku: Schema.optional(Schema.suspend(() => SkuSchema)),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  location: Schema.String,
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
-  systemData: Schema.optional(
-    Schema.Struct({
-      createdBy: Schema.optional(Schema.String),
-      createdByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      createdAt: Schema.optional(Schema.String),
-      lastModifiedBy: Schema.optional(Schema.String),
-      lastModifiedByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      lastModifiedAt: Schema.optional(Schema.String),
-    }),
-  ),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
 });
 export type NamespacesGetOutput = typeof NamespacesGetOutput.Type;
 
@@ -993,23 +982,14 @@ export type NamespacesGetAuthorizationRuleInput =
 // Output Schema
 export const NamespacesGetAuthorizationRuleOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => AuthorizationRulePropertiesSchema),
+    ),
+    location: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type NamespacesGetAuthorizationRuleOutput =
   typeof NamespacesGetAuthorizationRuleOutput.Type;
@@ -1048,23 +1028,13 @@ export type NamespacesGetNetworkRuleSetInput =
 // Output Schema
 export const NamespacesGetNetworkRuleSetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => NetworkRuleSetPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type NamespacesGetNetworkRuleSetOutput =
   typeof NamespacesGetNetworkRuleSetOutput.Type;
@@ -1098,27 +1068,7 @@ export type NamespacesListInput = typeof NamespacesListInput.Type;
 
 // Output Schema
 export const NamespacesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  value: Schema.Array(
-    Schema.Struct({
-      id: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      type: Schema.optional(Schema.String),
-      systemData: Schema.optional(
-        Schema.Struct({
-          createdBy: Schema.optional(Schema.String),
-          createdByType: Schema.optional(
-            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-          ),
-          createdAt: Schema.optional(Schema.String),
-          lastModifiedBy: Schema.optional(Schema.String),
-          lastModifiedByType: Schema.optional(
-            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-          ),
-          lastModifiedAt: Schema.optional(Schema.String),
-        }),
-      ),
-    }),
-  ),
+  value: Schema.Array(Schema.suspend(() => RelayNamespaceSchema)),
   nextLink: Schema.optional(Schema.String),
 });
 export type NamespacesListOutput = typeof NamespacesListOutput.Type;
@@ -1153,37 +1103,7 @@ export type NamespacesListAuthorizationRulesInput =
 // Output Schema
 export const NamespacesListAuthorizationRulesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => AuthorizationRuleSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type NamespacesListAuthorizationRulesOutput =
@@ -1221,37 +1141,7 @@ export type NamespacesListByResourceGroupInput =
 // Output Schema
 export const NamespacesListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => RelayNamespaceSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type NamespacesListByResourceGroupOutput =
@@ -1318,7 +1208,7 @@ export const NamespacesRegenerateKeysInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     namespaceName: Schema.String.pipe(T.PathParam()),
     authorizationRuleName: Schema.String.pipe(T.PathParam()),
-    keyType: Schema.Literals(["PrimaryKey", "SecondaryKey"]),
+    keyType: Schema.suspend(() => KeyTypeSchema),
     key: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
@@ -1363,57 +1253,9 @@ export const NamespacesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   namespaceName: Schema.String.pipe(T.PathParam()),
-  sku: Schema.optional(
-    Schema.Struct({
-      name: Schema.Literals(["Standard"]),
-      tier: Schema.optional(Schema.Literals(["Standard"])),
-    }),
-  ),
+  sku: Schema.optional(Schema.suspend(() => SkuSchema)),
   properties: Schema.optional(
-    Schema.Struct({
-      provisioningState: Schema.optional(Schema.String),
-      status: Schema.optional(Schema.String),
-      createdAt: Schema.optional(Schema.String),
-      updatedAt: Schema.optional(Schema.String),
-      serviceBusEndpoint: Schema.optional(Schema.String),
-      metricId: Schema.optional(Schema.String),
-      privateEndpointConnections: Schema.optional(
-        Schema.Array(
-          Schema.Struct({
-            id: Schema.optional(Schema.String),
-            name: Schema.optional(Schema.String),
-            type: Schema.optional(Schema.String),
-            systemData: Schema.optional(
-              Schema.Struct({
-                createdBy: Schema.optional(Schema.String),
-                createdByType: Schema.optional(
-                  Schema.Literals([
-                    "User",
-                    "Application",
-                    "ManagedIdentity",
-                    "Key",
-                  ]),
-                ),
-                createdAt: Schema.optional(Schema.String),
-                lastModifiedBy: Schema.optional(Schema.String),
-                lastModifiedByType: Schema.optional(
-                  Schema.Literals([
-                    "User",
-                    "Application",
-                    "ManagedIdentity",
-                    "Key",
-                  ]),
-                ),
-                lastModifiedAt: Schema.optional(Schema.String),
-              }),
-            ),
-          }),
-        ),
-      ),
-      publicNetworkAccess: Schema.optional(
-        Schema.Literals(["Enabled", "Disabled", "SecuredByPerimeter"]),
-      ),
-    }),
+    Schema.suspend(() => RelayNamespacePropertiesSchema),
   ),
   tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
 }).pipe(
@@ -1428,23 +1270,16 @@ export type NamespacesUpdateInput = typeof NamespacesUpdateInput.Type;
 // Output Schema
 export const NamespacesUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
+    properties: Schema.optional(
+      Schema.suspend(() => RelayNamespacePropertiesSchema),
+    ),
+    sku: Schema.optional(Schema.suspend(() => SkuSchema)),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   },
 );
 export type NamespacesUpdateOutput = typeof NamespacesUpdateOutput.Type;
@@ -1476,26 +1311,7 @@ export type OperationsListInput = typeof OperationsListInput.Type;
 
 // Output Schema
 export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  value: Schema.optional(
-    Schema.Array(
-      Schema.Struct({
-        name: Schema.optional(Schema.String),
-        isDataAction: Schema.optional(Schema.Boolean),
-        display: Schema.optional(
-          Schema.Struct({
-            provider: Schema.optional(Schema.String),
-            resource: Schema.optional(Schema.String),
-            operation: Schema.optional(Schema.String),
-            description: Schema.optional(Schema.String),
-          }),
-        ),
-        origin: Schema.optional(
-          Schema.Literals(["user", "system", "user,system"]),
-        ),
-        actionType: Schema.optional(Schema.Literals(["Internal"])),
-      }),
-    ),
-  ),
+  value: Schema.optional(Schema.Array(Schema.suspend(() => OperationSchema))),
   nextLink: Schema.optional(Schema.String),
 });
 export type OperationsListOutput = typeof OperationsListOutput.Type;
@@ -1518,36 +1334,7 @@ export const PrivateEndpointConnectionsCreateOrUpdateInput =
     namespaceName: Schema.String.pipe(T.PathParam()),
     privateEndpointConnectionName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        privateEndpoint: Schema.optional(
-          Schema.Struct({
-            id: Schema.optional(Schema.String),
-          }),
-        ),
-        privateLinkServiceConnectionState: Schema.optional(
-          Schema.Struct({
-            status: Schema.optional(
-              Schema.Literals([
-                "Pending",
-                "Approved",
-                "Rejected",
-                "Disconnected",
-              ]),
-            ),
-            description: Schema.optional(Schema.String),
-          }),
-        ),
-        provisioningState: Schema.optional(
-          Schema.Literals([
-            "Creating",
-            "Updating",
-            "Deleting",
-            "Succeeded",
-            "Canceled",
-            "Failed",
-          ]),
-        ),
-      }),
+      Schema.suspend(() => PrivateEndpointConnectionPropertiesSchema),
     ),
     location: Schema.optional(Schema.String),
   }).pipe(
@@ -1563,23 +1350,14 @@ export type PrivateEndpointConnectionsCreateOrUpdateInput =
 // Output Schema
 export const PrivateEndpointConnectionsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => PrivateEndpointConnectionPropertiesSchema),
+    ),
+    location: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type PrivateEndpointConnectionsCreateOrUpdateOutput =
   typeof PrivateEndpointConnectionsCreateOrUpdateOutput.Type;
@@ -1658,23 +1436,14 @@ export type PrivateEndpointConnectionsGetInput =
 // Output Schema
 export const PrivateEndpointConnectionsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => PrivateEndpointConnectionPropertiesSchema),
+    ),
+    location: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type PrivateEndpointConnectionsGetOutput =
   typeof PrivateEndpointConnectionsGetOutput.Type;
@@ -1713,37 +1482,7 @@ export type PrivateEndpointConnectionsListInput =
 // Output Schema
 export const PrivateEndpointConnectionsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => PrivateEndpointConnectionSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type PrivateEndpointConnectionsListOutput =
@@ -1783,23 +1522,13 @@ export type PrivateLinkResourcesGetInput =
 // Output Schema
 export const PrivateLinkResourcesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => PrivateLinkResourcePropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type PrivateLinkResourcesGetOutput =
   typeof PrivateLinkResourcesGetOutput.Type;
@@ -1839,37 +1568,7 @@ export type PrivateLinkResourcesListInput =
 // Output Schema
 export const PrivateLinkResourcesListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => PrivateLinkResourceSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type PrivateLinkResourcesListOutput =
@@ -1897,18 +1596,7 @@ export const WCFRelaysCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     namespaceName: Schema.String.pipe(T.PathParam()),
     relayName: Schema.String.pipe(T.PathParam()),
-    properties: Schema.optional(
-      Schema.Struct({
-        isDynamic: Schema.optional(Schema.Boolean),
-        createdAt: Schema.optional(Schema.String),
-        updatedAt: Schema.optional(Schema.String),
-        listenerCount: Schema.optional(Schema.Number),
-        relayType: Schema.optional(Schema.Literals(["NetTcp", "Http"])),
-        requiresClientAuthorization: Schema.optional(Schema.Boolean),
-        requiresTransportSecurity: Schema.optional(Schema.Boolean),
-        userMetadata: Schema.optional(Schema.String),
-      }),
-    ),
+    properties: Schema.optional(Schema.suspend(() => WcfRelayPropertiesSchema)),
     location: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
@@ -1923,23 +1611,12 @@ export type WCFRelaysCreateOrUpdateInput =
 // Output Schema
 export const WCFRelaysCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(Schema.suspend(() => WcfRelayPropertiesSchema)),
+    location: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type WCFRelaysCreateOrUpdateOutput =
   typeof WCFRelaysCreateOrUpdateOutput.Type;
@@ -1969,9 +1646,7 @@ export const WCFRelaysCreateOrUpdateAuthorizationRuleInput =
     relayName: Schema.String.pipe(T.PathParam()),
     authorizationRuleName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        rights: Schema.Array(Schema.Literals(["Manage", "Send", "Listen"])),
-      }),
+      Schema.suspend(() => AuthorizationRulePropertiesSchema),
     ),
     location: Schema.optional(Schema.String),
   }).pipe(
@@ -1987,23 +1662,14 @@ export type WCFRelaysCreateOrUpdateAuthorizationRuleInput =
 // Output Schema
 export const WCFRelaysCreateOrUpdateAuthorizationRuleOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => AuthorizationRulePropertiesSchema),
+    ),
+    location: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type WCFRelaysCreateOrUpdateAuthorizationRuleOutput =
   typeof WCFRelaysCreateOrUpdateAuthorizationRuleOutput.Type;
@@ -2114,23 +1780,12 @@ export type WCFRelaysGetInput = typeof WCFRelaysGetInput.Type;
 
 // Output Schema
 export const WCFRelaysGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.optional(Schema.suspend(() => WcfRelayPropertiesSchema)),
+  location: Schema.optional(Schema.String),
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
-  systemData: Schema.optional(
-    Schema.Struct({
-      createdBy: Schema.optional(Schema.String),
-      createdByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      createdAt: Schema.optional(Schema.String),
-      lastModifiedBy: Schema.optional(Schema.String),
-      lastModifiedByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      lastModifiedAt: Schema.optional(Schema.String),
-    }),
-  ),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
 });
 export type WCFRelaysGetOutput = typeof WCFRelaysGetOutput.Type;
 
@@ -2169,23 +1824,14 @@ export type WCFRelaysGetAuthorizationRuleInput =
 // Output Schema
 export const WCFRelaysGetAuthorizationRuleOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => AuthorizationRulePropertiesSchema),
+    ),
+    location: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type WCFRelaysGetAuthorizationRuleOutput =
   typeof WCFRelaysGetAuthorizationRuleOutput.Type;
@@ -2226,37 +1872,7 @@ export type WCFRelaysListAuthorizationRulesInput =
 // Output Schema
 export const WCFRelaysListAuthorizationRulesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => AuthorizationRuleSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type WCFRelaysListAuthorizationRulesOutput =
@@ -2296,37 +1912,7 @@ export type WCFRelaysListByNamespaceInput =
 // Output Schema
 export const WCFRelaysListByNamespaceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => WcfRelaySchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type WCFRelaysListByNamespaceOutput =
@@ -2399,7 +1985,7 @@ export const WCFRelaysRegenerateKeysInput =
     namespaceName: Schema.String.pipe(T.PathParam()),
     relayName: Schema.String.pipe(T.PathParam()),
     authorizationRuleName: Schema.String.pipe(T.PathParam()),
-    keyType: Schema.Literals(["PrimaryKey", "SecondaryKey"]),
+    keyType: Schema.suspend(() => KeyTypeSchema),
     key: Schema.optional(Schema.String),
   }).pipe(
     T.Http({

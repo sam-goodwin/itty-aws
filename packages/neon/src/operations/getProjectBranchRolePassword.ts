@@ -2,7 +2,7 @@ import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 import { NotFound } from "../errors.ts";
-import { SensitiveString } from "../sensitive.ts";
+import { SensitiveOutputString } from "../sensitive.ts";
 
 // Input Schema
 export const GetProjectBranchRolePasswordInput =
@@ -22,7 +22,7 @@ export type GetProjectBranchRolePasswordInput =
 // Output Schema
 export const GetProjectBranchRolePasswordOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    password: SensitiveString,
+    password: SensitiveOutputString,
   });
 export type GetProjectBranchRolePasswordOutput =
   typeof GetProjectBranchRolePasswordOutput.Type;

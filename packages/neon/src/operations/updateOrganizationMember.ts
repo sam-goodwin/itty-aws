@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { MemberRoleSchema } from "./_schemas.ts";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
@@ -7,7 +8,7 @@ export const UpdateOrganizationMemberInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     org_id: Schema.String.pipe(T.PathParam()),
     member_id: Schema.String.pipe(T.PathParam()),
-    role: Schema.Literals(["admin", "member"]),
+    role: Schema.suspend(() => MemberRoleSchema),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -23,7 +24,7 @@ export const UpdateOrganizationMemberOutput =
     id: Schema.String,
     user_id: Schema.String,
     org_id: Schema.String,
-    role: Schema.Literals(["admin", "member"]),
+    role: Schema.suspend(() => MemberRoleSchema),
     joined_at: Schema.optional(Schema.String),
   });
 export type UpdateOrganizationMemberOutput =

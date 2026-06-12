@@ -8,6 +8,675 @@ import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
+// Shared schemas
+const OperationSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  display: Schema.optional(
+    Schema.Struct({
+      provider: Schema.optional(Schema.String),
+      resource: Schema.optional(Schema.String),
+      operation: Schema.optional(Schema.String),
+    }),
+  ),
+});
+const HubPropertiesFormatSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  apiEndpoint: Schema.optional(Schema.String),
+  webEndpoint: Schema.optional(Schema.String),
+  provisioningState: Schema.optional(Schema.String),
+  tenantFeatures: Schema.optional(Schema.Number),
+  hubBillingInfo: Schema.optional(
+    Schema.suspend(() => HubBillingInfoFormatSchema),
+  ),
+});
+const HubBillingInfoFormatSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  skuName: Schema.optional(Schema.String),
+  minUnits: Schema.optional(Schema.Number),
+  maxUnits: Schema.optional(Schema.Number),
+});
+const HubSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  location: Schema.optional(Schema.String),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+});
+const ProfileTypeDefinitionSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  attributes: Schema.optional(
+    Schema.Record(Schema.String, Schema.Array(Schema.String)),
+  ),
+  description: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  displayName: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  localizedAttributes: Schema.optional(
+    Schema.Record(Schema.String, Schema.Record(Schema.String, Schema.String)),
+  ),
+  smallImage: Schema.optional(Schema.String),
+  mediumImage: Schema.optional(Schema.String),
+  largeImage: Schema.optional(Schema.String),
+});
+const ProfileResourceFormatSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
+const KpiDefinitionSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  entityType: Schema.Literals([
+    "None",
+    "Profile",
+    "Interaction",
+    "Relationship",
+  ]),
+  entityTypeName: Schema.String,
+  tenantId: Schema.optional(Schema.String),
+  kpiName: Schema.optional(Schema.String),
+  displayName: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  description: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  calculationWindow: Schema.Literals([
+    "Lifetime",
+    "Hour",
+    "Day",
+    "Week",
+    "Month",
+  ]),
+  calculationWindowFieldName: Schema.optional(Schema.String),
+  function: Schema.Literals([
+    "Sum",
+    "Avg",
+    "Min",
+    "Max",
+    "Last",
+    "Count",
+    "None",
+    "CountDistinct",
+  ]),
+  expression: Schema.String,
+  unit: Schema.optional(Schema.String),
+  filter: Schema.optional(Schema.String),
+  groupBy: Schema.optional(Schema.Array(Schema.String)),
+  groupByMetadata: Schema.optional(
+    Schema.Array(Schema.suspend(() => KpiGroupByMetadataSchema)),
+  ),
+  participantProfilesMetadata: Schema.optional(
+    Schema.Array(Schema.suspend(() => KpiParticipantProfilesMetadataSchema)),
+  ),
+  provisioningState: Schema.optional(
+    Schema.suspend(() => ProvisioningStateSchema),
+  ),
+  thresHolds: Schema.optional(Schema.suspend(() => KpiThresholdsSchema)),
+  aliases: Schema.optional(Schema.Array(Schema.suspend(() => KpiAliasSchema))),
+  extracts: Schema.optional(
+    Schema.Array(Schema.suspend(() => KpiExtractSchema)),
+  ),
+});
+const KpiGroupByMetadataSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  displayName: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  fieldName: Schema.optional(Schema.String),
+  fieldType: Schema.optional(Schema.String),
+});
+const KpiParticipantProfilesMetadataSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    typeName: Schema.String,
+  });
+const ProvisioningStateSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Provisioning",
+  "Succeeded",
+  "Expiring",
+  "Deleting",
+  "HumanIntervention",
+  "Failed",
+]);
+const KpiThresholdsSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  lowerLimit: Schema.Number,
+  upperLimit: Schema.Number,
+  increasingKpi: Schema.Boolean,
+});
+const KpiAliasSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  aliasName: Schema.String,
+  expression: Schema.String,
+});
+const KpiExtractSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  extractName: Schema.String,
+  expression: Schema.String,
+});
+const InteractionTypeDefinitionSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    attributes: Schema.optional(
+      Schema.Record(Schema.String, Schema.Array(Schema.String)),
+    ),
+    description: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    displayName: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    localizedAttributes: Schema.optional(
+      Schema.Record(Schema.String, Schema.Record(Schema.String, Schema.String)),
+    ),
+    smallImage: Schema.optional(Schema.String),
+    mediumImage: Schema.optional(Schema.String),
+    largeImage: Schema.optional(Schema.String),
+  });
+const InteractionResourceFormatSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
+const RelationshipsLookupSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  profileName: Schema.optional(Schema.String),
+  profilePropertyReferences: Schema.optional(
+    Schema.Array(
+      Schema.suspend(() => ParticipantProfilePropertyReferenceSchema),
+    ),
+  ),
+  relatedProfileName: Schema.optional(Schema.String),
+  relatedProfilePropertyReferences: Schema.optional(
+    Schema.Array(
+      Schema.suspend(() => ParticipantProfilePropertyReferenceSchema),
+    ),
+  ),
+  existingRelationshipName: Schema.optional(Schema.String),
+});
+const ParticipantProfilePropertyReferenceSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    interactionPropertyName: Schema.String,
+    profilePropertyName: Schema.String,
+  });
+const RelationshipDefinitionSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  cardinality: Schema.optional(
+    Schema.Literals(["OneToOne", "OneToMany", "ManyToMany"]),
+  ),
+  displayName: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  description: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  expiryDateTimeUtc: Schema.optional(Schema.String),
+  fields: Schema.optional(
+    Schema.Array(Schema.suspend(() => PropertyDefinitionSchema)),
+  ),
+  lookupMappings: Schema.optional(
+    Schema.Array(Schema.suspend(() => RelationshipTypeMappingSchema)),
+  ),
+  profileType: Schema.String,
+  provisioningState: Schema.optional(
+    Schema.suspend(() => ProvisioningStateSchema),
+  ),
+  relationshipName: Schema.optional(Schema.String),
+  relatedProfileType: Schema.String,
+  relationshipGuidId: Schema.optional(Schema.String),
+  tenantId: Schema.optional(Schema.String),
+});
+const PropertyDefinitionSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  arrayValueSeparator: Schema.optional(Schema.String),
+  enumValidValues: Schema.optional(
+    Schema.Array(Schema.suspend(() => ProfileEnumValidValuesFormatSchema)),
+  ),
+  fieldName: Schema.String,
+  fieldType: Schema.String,
+  isArray: Schema.optional(Schema.Boolean),
+  isEnum: Schema.optional(Schema.Boolean),
+  isFlagEnum: Schema.optional(Schema.Boolean),
+  isImage: Schema.optional(Schema.Boolean),
+  isLocalizedString: Schema.optional(Schema.Boolean),
+  isName: Schema.optional(Schema.Boolean),
+  isRequired: Schema.optional(Schema.Boolean),
+  propertyId: Schema.optional(Schema.String),
+  schemaItemPropLink: Schema.optional(Schema.String),
+  maxLength: Schema.optional(Schema.Number),
+  isAvailableInGraph: Schema.optional(Schema.Boolean),
+  dataSourcePrecedenceRules: Schema.optional(
+    Schema.Array(Schema.suspend(() => DataSourcePrecedenceSchema)),
+  ),
+});
+const ProfileEnumValidValuesFormatSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    value: Schema.optional(Schema.Number),
+    localizedValueNames: Schema.optional(
+      Schema.Record(Schema.String, Schema.String),
+    ),
+  });
+const DataSourcePrecedenceSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  dataSource: Schema.optional(Schema.suspend(() => DataSourceSchema)),
+  precedence: Schema.optional(Schema.Number),
+});
+const DataSourceSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  dataSourceType: Schema.optional(
+    Schema.Literals(["Connector", "LinkInteraction", "SystemDefault"]),
+  ),
+  status: Schema.optional(Schema.Literals(["None", "Active", "Deleted"])),
+  id: Schema.optional(Schema.Number),
+  dataSourceReferenceId: Schema.optional(Schema.String),
+});
+const RelationshipTypeMappingSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    fieldMappings: Schema.Array(
+      Schema.suspend(() => RelationshipTypeFieldMappingSchema),
+    ),
+  },
+);
+const RelationshipTypeFieldMappingSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    profileFieldName: Schema.String,
+    relatedProfileKeyProperty: Schema.String,
+  });
+const RelationshipResourceFormatSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
+const RelationshipLinkDefinitionSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    displayName: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    description: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    interactionType: Schema.String,
+    linkName: Schema.optional(Schema.String),
+    mappings: Schema.optional(
+      Schema.Array(Schema.suspend(() => RelationshipLinkFieldMappingSchema)),
+    ),
+    profilePropertyReferences: Schema.Array(
+      Schema.suspend(() => ParticipantProfilePropertyReferenceSchema),
+    ),
+    provisioningState: Schema.optional(
+      Schema.suspend(() => ProvisioningStateSchema),
+    ),
+    relatedProfilePropertyReferences: Schema.Array(
+      Schema.suspend(() => ParticipantProfilePropertyReferenceSchema),
+    ),
+    relationshipName: Schema.String,
+    relationshipGuidId: Schema.optional(Schema.String),
+    tenantId: Schema.optional(Schema.String),
+  });
+const RelationshipLinkFieldMappingSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    interactionFieldName: Schema.String,
+    linkType: Schema.optional(Schema.Literals(["UpdateAlways", "CopyIfNull"])),
+    relationshipFieldName: Schema.String,
+  });
+const RelationshipLinkResourceFormatSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
+const AuthorizationPolicySchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  policyName: Schema.optional(Schema.String),
+  permissions: Schema.Array(Schema.suspend(() => PermissionTypesSchema)),
+  primaryKey: Schema.optional(Schema.String),
+  secondaryKey: Schema.optional(Schema.String),
+});
+const PermissionTypesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Read",
+  "Write",
+  "Manage",
+]);
+const AuthorizationPolicyResourceFormatSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
+const ConnectorSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  connectorId: Schema.optional(Schema.Number),
+  connectorName: Schema.optional(Schema.String),
+  connectorType: Schema.suspend(() => ConnectorTypeSchema),
+  displayName: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+  connectorProperties: Schema.Record(Schema.String, Schema.Unknown),
+  created: Schema.optional(Schema.String),
+  lastModified: Schema.optional(Schema.String),
+  state: Schema.optional(
+    Schema.Literals([
+      "Creating",
+      "Created",
+      "Ready",
+      "Expiring",
+      "Deleting",
+      "Failed",
+    ]),
+  ),
+  tenantId: Schema.optional(Schema.String),
+  isInternal: Schema.optional(Schema.Boolean),
+});
+const ConnectorTypeSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "None",
+  "CRM",
+  "AzureBlob",
+  "Salesforce",
+  "ExchangeOnline",
+  "Outbound",
+]);
+const ConnectorResourceFormatSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  },
+);
+const ConnectorMappingSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  connectorName: Schema.optional(Schema.String),
+  connectorType: Schema.optional(Schema.suspend(() => ConnectorTypeSchema)),
+  created: Schema.optional(Schema.String),
+  lastModified: Schema.optional(Schema.String),
+  entityType: Schema.Literals([
+    "None",
+    "Profile",
+    "Interaction",
+    "Relationship",
+  ]),
+  entityTypeName: Schema.String,
+  connectorMappingName: Schema.optional(Schema.String),
+  displayName: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+  dataFormatId: Schema.optional(Schema.String),
+  mappingProperties: Schema.suspend(() => ConnectorMappingPropertiesSchema),
+  nextRunTime: Schema.optional(Schema.String),
+  runId: Schema.optional(Schema.String),
+  state: Schema.optional(
+    Schema.Literals([
+      "Creating",
+      "Created",
+      "Failed",
+      "Ready",
+      "Running",
+      "Stopped",
+      "Expiring",
+    ]),
+  ),
+  tenantId: Schema.optional(Schema.String),
+});
+const ConnectorMappingPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    folderPath: Schema.optional(Schema.String),
+    fileFilter: Schema.optional(Schema.String),
+    hasHeader: Schema.optional(Schema.Boolean),
+    errorManagement: Schema.suspend(
+      () => ConnectorMappingErrorManagementSchema,
+    ),
+    format: Schema.suspend(() => ConnectorMappingFormatSchema),
+    availability: Schema.suspend(() => ConnectorMappingAvailabilitySchema),
+    structure: Schema.Array(
+      Schema.suspend(() => ConnectorMappingStructureSchema),
+    ),
+    completeOperation: Schema.suspend(
+      () => ConnectorMappingCompleteOperationSchema,
+    ),
+  });
+const ConnectorMappingErrorManagementSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    errorManagementType: Schema.Literals([
+      "RejectAndContinue",
+      "StopImport",
+      "RejectUntilLimit",
+    ]),
+    errorLimit: Schema.optional(Schema.Number),
+  });
+const ConnectorMappingFormatSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  formatType: Schema.Literals(["TextFormat"]),
+  columnDelimiter: Schema.optional(Schema.String),
+  acceptLanguage: Schema.optional(Schema.String),
+  quoteCharacter: Schema.optional(Schema.String),
+  quoteEscapeCharacter: Schema.optional(Schema.String),
+  arraySeparator: Schema.optional(Schema.String),
+});
+const ConnectorMappingAvailabilitySchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    frequency: Schema.optional(
+      Schema.Literals(["Minute", "Hour", "Day", "Week", "Month"]),
+    ),
+    interval: Schema.Number,
+  });
+const ConnectorMappingStructureSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    propertyName: Schema.String,
+    columnName: Schema.String,
+    customFormatSpecifier: Schema.optional(Schema.String),
+    isEncrypted: Schema.optional(Schema.Boolean),
+  });
+const ConnectorMappingCompleteOperationSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    completionOperationType: Schema.optional(
+      Schema.Literals(["DoNothing", "DeleteFile", "MoveFile"]),
+    ),
+    destinationFolder: Schema.optional(Schema.String),
+  });
+const ConnectorMappingResourceFormatSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
+const KpiResourceFormatSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
+const WidgetTypeResourceFormatSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
+const WidgetTypeSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  widgetTypeName: Schema.optional(Schema.String),
+  definition: Schema.String,
+  description: Schema.optional(Schema.String),
+  displayName: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  imageUrl: Schema.optional(Schema.String),
+  tenantId: Schema.optional(Schema.String),
+  widgetVersion: Schema.optional(Schema.String),
+  changed: Schema.optional(Schema.String),
+  created: Schema.optional(Schema.String),
+});
+const ViewResourceFormatSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
+const ViewSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  viewName: Schema.optional(Schema.String),
+  userId: Schema.optional(Schema.String),
+  tenantId: Schema.optional(Schema.String),
+  displayName: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  definition: Schema.String,
+  changed: Schema.optional(Schema.String),
+  created: Schema.optional(Schema.String),
+});
+const LinkDefinitionSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  tenantId: Schema.optional(Schema.String),
+  linkName: Schema.optional(Schema.String),
+  sourceEntityType: Schema.Literals([
+    "None",
+    "Profile",
+    "Interaction",
+    "Relationship",
+  ]),
+  targetEntityType: Schema.Literals([
+    "None",
+    "Profile",
+    "Interaction",
+    "Relationship",
+  ]),
+  sourceEntityTypeName: Schema.String,
+  targetEntityTypeName: Schema.String,
+  displayName: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  description: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  mappings: Schema.optional(
+    Schema.Array(Schema.suspend(() => TypePropertiesMappingSchema)),
+  ),
+  participantPropertyReferences: Schema.Array(
+    Schema.suspend(() => ParticipantPropertyReferenceSchema),
+  ),
+  provisioningState: Schema.optional(
+    Schema.suspend(() => ProvisioningStateSchema),
+  ),
+  referenceOnly: Schema.optional(Schema.Boolean),
+  operationType: Schema.optional(Schema.Literals(["Upsert", "Delete"])),
+});
+const TypePropertiesMappingSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  sourcePropertyName: Schema.String,
+  targetPropertyName: Schema.String,
+  linkType: Schema.optional(Schema.Literals(["UpdateAlways", "CopyIfNull"])),
+});
+const ParticipantPropertyReferenceSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    sourcePropertyName: Schema.String,
+    targetPropertyName: Schema.String,
+  });
+const LinkResourceFormatSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
+const RoleResourceFormatSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
+const RoleAssignmentResourceFormatSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
+const RoleAssignmentSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  tenantId: Schema.optional(Schema.String),
+  assignmentName: Schema.optional(Schema.String),
+  displayName: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  description: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  provisioningState: Schema.optional(
+    Schema.suspend(() => ProvisioningStateSchema),
+  ),
+  role: Schema.Literals([
+    "Admin",
+    "Reader",
+    "ManageAdmin",
+    "ManageReader",
+    "DataAdmin",
+    "DataReader",
+  ]),
+  principals: Schema.Array(Schema.suspend(() => AssignmentPrincipalSchema)),
+  profiles: Schema.optional(Schema.suspend(() => ResourceSetDescriptionSchema)),
+  interactions: Schema.optional(
+    Schema.suspend(() => ResourceSetDescriptionSchema),
+  ),
+  links: Schema.optional(Schema.suspend(() => ResourceSetDescriptionSchema)),
+  kpis: Schema.optional(Schema.suspend(() => ResourceSetDescriptionSchema)),
+  sasPolicies: Schema.optional(
+    Schema.suspend(() => ResourceSetDescriptionSchema),
+  ),
+  connectors: Schema.optional(
+    Schema.suspend(() => ResourceSetDescriptionSchema),
+  ),
+  views: Schema.optional(Schema.suspend(() => ResourceSetDescriptionSchema)),
+  relationshipLinks: Schema.optional(
+    Schema.suspend(() => ResourceSetDescriptionSchema),
+  ),
+  relationships: Schema.optional(
+    Schema.suspend(() => ResourceSetDescriptionSchema),
+  ),
+  widgetTypes: Schema.optional(
+    Schema.suspend(() => ResourceSetDescriptionSchema),
+  ),
+  roleAssignments: Schema.optional(
+    Schema.suspend(() => ResourceSetDescriptionSchema),
+  ),
+  conflationPolicies: Schema.optional(
+    Schema.suspend(() => ResourceSetDescriptionSchema),
+  ),
+  segments: Schema.optional(Schema.suspend(() => ResourceSetDescriptionSchema)),
+});
+const AssignmentPrincipalSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  principalId: Schema.String,
+  principalType: Schema.String,
+  principalMetadata: Schema.optional(
+    Schema.Record(Schema.String, Schema.String),
+  ),
+});
+const ResourceSetDescriptionSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  elements: Schema.optional(Schema.Array(Schema.String)),
+  exceptions: Schema.optional(Schema.Array(Schema.String)),
+});
+const PredictionSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  description: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  displayName: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  involvedInteractionTypes: Schema.optional(Schema.Array(Schema.String)),
+  involvedKpiTypes: Schema.optional(Schema.Array(Schema.String)),
+  involvedRelationships: Schema.optional(Schema.Array(Schema.String)),
+  negativeOutcomeExpression: Schema.String,
+  positiveOutcomeExpression: Schema.String,
+  primaryProfileType: Schema.String,
+  provisioningState: Schema.optional(
+    Schema.suspend(() => ProvisioningStateSchema),
+  ),
+  predictionName: Schema.optional(Schema.String),
+  scopeExpression: Schema.String,
+  tenantId: Schema.optional(Schema.String),
+  autoAnalyze: Schema.Boolean,
+  mappings: Schema.Struct({
+    score: Schema.String,
+    grade: Schema.String,
+    reason: Schema.String,
+  }),
+  scoreLabel: Schema.String,
+  grades: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        gradeName: Schema.optional(Schema.String),
+        minScoreThreshold: Schema.optional(Schema.Number),
+        maxScoreThreshold: Schema.optional(Schema.Number),
+      }),
+    ),
+  ),
+  systemGeneratedEntities: Schema.optional(
+    Schema.Struct({
+      generatedInteractionTypes: Schema.optional(Schema.Array(Schema.String)),
+      generatedLinks: Schema.optional(Schema.Array(Schema.String)),
+      generatedKpis: Schema.optional(
+        Schema.Record(Schema.String, Schema.String),
+      ),
+    }),
+  ),
+});
+const PredictionDistributionDefinitionSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    totalPositives: Schema.optional(Schema.Number),
+    totalNegatives: Schema.optional(Schema.Number),
+    distributions: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          scoreThreshold: Schema.optional(Schema.Number),
+          positives: Schema.optional(Schema.Number),
+          negatives: Schema.optional(Schema.Number),
+          positivesAboveThreshold: Schema.optional(Schema.Number),
+          negativesAboveThreshold: Schema.optional(Schema.Number),
+        }),
+      ),
+    ),
+  });
+const CanonicalProfileDefinitionSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    canonicalProfileId: Schema.optional(Schema.Number),
+    properties: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          profileName: Schema.optional(Schema.String),
+          profilePropertyName: Schema.optional(Schema.String),
+          rank: Schema.optional(Schema.Number),
+          type: Schema.optional(
+            Schema.Literals([
+              "Numeric",
+              "Categorical",
+              "DerivedCategorical",
+              "DerivedNumeric",
+            ]),
+          ),
+          value: Schema.optional(Schema.String),
+        }),
+      ),
+    ),
+  });
+const PredictionResourceFormatSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
+
 // Input Schema
 export const AuthorizationPoliciesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -15,12 +684,7 @@ export const AuthorizationPoliciesCreateOrUpdateInput =
     hubName: Schema.String.pipe(T.PathParam()),
     authorizationPolicyName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        policyName: Schema.optional(Schema.String),
-        permissions: Schema.Array(Schema.Literals(["Read", "Write", "Manage"])),
-        primaryKey: Schema.optional(Schema.String),
-        secondaryKey: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(() => AuthorizationPolicySchema),
     ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -38,6 +702,9 @@ export type AuthorizationPoliciesCreateOrUpdateInput =
 // Output Schema
 export const AuthorizationPoliciesCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => AuthorizationPolicySchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -77,6 +744,9 @@ export type AuthorizationPoliciesGetInput =
 // Output Schema
 export const AuthorizationPoliciesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => AuthorizationPolicySchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -118,11 +788,7 @@ export const AuthorizationPoliciesListByHubOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
+        Schema.suspend(() => AuthorizationPolicyResourceFormatSchema),
       ),
     ),
     nextLink: Schema.optional(Schema.String),
@@ -162,7 +828,7 @@ export type AuthorizationPoliciesRegeneratePrimaryKeyInput =
 export const AuthorizationPoliciesRegeneratePrimaryKeyOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     policyName: Schema.optional(Schema.String),
-    permissions: Schema.Array(Schema.Literals(["Read", "Write", "Manage"])),
+    permissions: Schema.Array(Schema.suspend(() => PermissionTypesSchema)),
     primaryKey: Schema.optional(Schema.String),
     secondaryKey: Schema.optional(Schema.String),
   });
@@ -202,7 +868,7 @@ export type AuthorizationPoliciesRegenerateSecondaryKeyInput =
 export const AuthorizationPoliciesRegenerateSecondaryKeyOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     policyName: Schema.optional(Schema.String),
-    permissions: Schema.Array(Schema.Literals(["Read", "Write", "Manage"])),
+    permissions: Schema.Array(Schema.suspend(() => PermissionTypesSchema)),
     primaryKey: Schema.optional(Schema.String),
     secondaryKey: Schema.optional(Schema.String),
   });
@@ -229,89 +895,7 @@ export const ConnectorMappingsCreateOrUpdateInput =
     hubName: Schema.String.pipe(T.PathParam()),
     connectorName: Schema.String.pipe(T.PathParam()),
     mappingName: Schema.String.pipe(T.PathParam()),
-    properties: Schema.optional(
-      Schema.Struct({
-        connectorName: Schema.optional(Schema.String),
-        connectorType: Schema.optional(
-          Schema.Literals([
-            "None",
-            "CRM",
-            "AzureBlob",
-            "Salesforce",
-            "ExchangeOnline",
-            "Outbound",
-          ]),
-        ),
-        created: Schema.optional(Schema.String),
-        lastModified: Schema.optional(Schema.String),
-        entityType: Schema.Literals([
-          "None",
-          "Profile",
-          "Interaction",
-          "Relationship",
-        ]),
-        entityTypeName: Schema.String,
-        connectorMappingName: Schema.optional(Schema.String),
-        displayName: Schema.optional(Schema.String),
-        description: Schema.optional(Schema.String),
-        dataFormatId: Schema.optional(Schema.String),
-        mappingProperties: Schema.Struct({
-          folderPath: Schema.optional(Schema.String),
-          fileFilter: Schema.optional(Schema.String),
-          hasHeader: Schema.optional(Schema.Boolean),
-          errorManagement: Schema.Struct({
-            errorManagementType: Schema.Literals([
-              "RejectAndContinue",
-              "StopImport",
-              "RejectUntilLimit",
-            ]),
-            errorLimit: Schema.optional(Schema.Number),
-          }),
-          format: Schema.Struct({
-            formatType: Schema.Literals(["TextFormat"]),
-            columnDelimiter: Schema.optional(Schema.String),
-            acceptLanguage: Schema.optional(Schema.String),
-            quoteCharacter: Schema.optional(Schema.String),
-            quoteEscapeCharacter: Schema.optional(Schema.String),
-            arraySeparator: Schema.optional(Schema.String),
-          }),
-          availability: Schema.Struct({
-            frequency: Schema.optional(
-              Schema.Literals(["Minute", "Hour", "Day", "Week", "Month"]),
-            ),
-            interval: Schema.Number,
-          }),
-          structure: Schema.Array(
-            Schema.Struct({
-              propertyName: Schema.String,
-              columnName: Schema.String,
-              customFormatSpecifier: Schema.optional(Schema.String),
-              isEncrypted: Schema.optional(Schema.Boolean),
-            }),
-          ),
-          completeOperation: Schema.Struct({
-            completionOperationType: Schema.optional(
-              Schema.Literals(["DoNothing", "DeleteFile", "MoveFile"]),
-            ),
-            destinationFolder: Schema.optional(Schema.String),
-          }),
-        }),
-        nextRunTime: Schema.optional(Schema.String),
-        runId: Schema.optional(Schema.String),
-        state: Schema.optional(
-          Schema.Literals([
-            "Creating",
-            "Created",
-            "Failed",
-            "Ready",
-            "Running",
-            "Stopped",
-            "Expiring",
-          ]),
-        ),
-        tenantId: Schema.optional(Schema.String),
-      }),
-    ),
+    properties: Schema.optional(Schema.suspend(() => ConnectorMappingSchema)),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -328,6 +912,7 @@ export type ConnectorMappingsCreateOrUpdateInput =
 // Output Schema
 export const ConnectorMappingsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(Schema.suspend(() => ConnectorMappingSchema)),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -406,6 +991,7 @@ export type ConnectorMappingsGetInput = typeof ConnectorMappingsGetInput.Type;
 // Output Schema
 export const ConnectorMappingsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(Schema.suspend(() => ConnectorMappingSchema)),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -447,13 +1033,7 @@ export type ConnectorMappingsListByConnectorInput =
 export const ConnectorMappingsListByConnectorOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => ConnectorMappingResourceFormatSchema)),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -479,37 +1059,7 @@ export const ConnectorsCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     hubName: Schema.String.pipe(T.PathParam()),
     connectorName: Schema.String.pipe(T.PathParam()),
-    properties: Schema.optional(
-      Schema.Struct({
-        connectorId: Schema.optional(Schema.Number),
-        connectorName: Schema.optional(Schema.String),
-        connectorType: Schema.Literals([
-          "None",
-          "CRM",
-          "AzureBlob",
-          "Salesforce",
-          "ExchangeOnline",
-          "Outbound",
-        ]),
-        displayName: Schema.optional(Schema.String),
-        description: Schema.optional(Schema.String),
-        connectorProperties: Schema.Record(Schema.String, Schema.Unknown),
-        created: Schema.optional(Schema.String),
-        lastModified: Schema.optional(Schema.String),
-        state: Schema.optional(
-          Schema.Literals([
-            "Creating",
-            "Created",
-            "Ready",
-            "Expiring",
-            "Deleting",
-            "Failed",
-          ]),
-        ),
-        tenantId: Schema.optional(Schema.String),
-        isInternal: Schema.optional(Schema.Boolean),
-      }),
-    ),
+    properties: Schema.optional(Schema.suspend(() => ConnectorSchema)),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -527,6 +1077,7 @@ export type ConnectorsCreateOrUpdateInput =
 // Output Schema
 export const ConnectorsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(Schema.suspend(() => ConnectorSchema)),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -595,6 +1146,7 @@ export type ConnectorsGetInput = typeof ConnectorsGetInput.Type;
 
 // Output Schema
 export const ConnectorsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.optional(Schema.suspend(() => ConnectorSchema)),
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -631,13 +1183,7 @@ export type ConnectorsListByHubInput = typeof ConnectorsListByHubInput.Type;
 export const ConnectorsListByHubOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => ConnectorResourceFormatSchema)),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -660,19 +1206,7 @@ export const HubsCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     hubName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        apiEndpoint: Schema.optional(Schema.String),
-        webEndpoint: Schema.optional(Schema.String),
-        provisioningState: Schema.optional(Schema.String),
-        tenantFeatures: Schema.optional(Schema.Number),
-        hubBillingInfo: Schema.optional(
-          Schema.Struct({
-            skuName: Schema.optional(Schema.String),
-            minUnits: Schema.optional(Schema.Number),
-            maxUnits: Schema.optional(Schema.Number),
-          }),
-        ),
-      }),
+      Schema.suspend(() => HubPropertiesFormatSchema),
     ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -691,6 +1225,9 @@ export type HubsCreateOrUpdateInput = typeof HubsCreateOrUpdateInput.Type;
 // Output Schema
 export const HubsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => HubPropertiesFormatSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -754,6 +1291,7 @@ export type HubsGetInput = typeof HubsGetInput.Type;
 
 // Output Schema
 export const HubsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.optional(Schema.suspend(() => HubPropertiesFormatSchema)),
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -785,17 +1323,7 @@ export type HubsListInput = typeof HubsListInput.Type;
 
 // Output Schema
 export const HubsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  value: Schema.optional(
-    Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        location: Schema.optional(Schema.String),
-        tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      }),
-    ),
-  ),
+  value: Schema.optional(Schema.Array(Schema.suspend(() => HubSchema))),
   nextLink: Schema.optional(Schema.String),
 });
 export type HubsListOutput = typeof HubsListOutput.Type;
@@ -825,17 +1353,7 @@ export type HubsListByResourceGroupInput =
 // Output Schema
 export const HubsListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          location: Schema.optional(Schema.String),
-          tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        }),
-      ),
-    ),
+    value: Schema.optional(Schema.Array(Schema.suspend(() => HubSchema))),
     nextLink: Schema.optional(Schema.String),
   });
 export type HubsListByResourceGroupOutput =
@@ -857,21 +1375,7 @@ export const HubsListByResourceGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const HubsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   hubName: Schema.String.pipe(T.PathParam()),
-  properties: Schema.optional(
-    Schema.Struct({
-      apiEndpoint: Schema.optional(Schema.String),
-      webEndpoint: Schema.optional(Schema.String),
-      provisioningState: Schema.optional(Schema.String),
-      tenantFeatures: Schema.optional(Schema.Number),
-      hubBillingInfo: Schema.optional(
-        Schema.Struct({
-          skuName: Schema.optional(Schema.String),
-          minUnits: Schema.optional(Schema.Number),
-          maxUnits: Schema.optional(Schema.Number),
-        }),
-      ),
-    }),
-  ),
+  properties: Schema.optional(Schema.suspend(() => HubPropertiesFormatSchema)),
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -888,6 +1392,7 @@ export type HubsUpdateInput = typeof HubsUpdateInput.Type;
 
 // Output Schema
 export const HubsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.optional(Schema.suspend(() => HubPropertiesFormatSchema)),
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -995,26 +1500,7 @@ export const InteractionsCreateOrUpdateInput =
     hubName: Schema.String.pipe(T.PathParam()),
     interactionName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        attributes: Schema.optional(
-          Schema.Record(Schema.String, Schema.Array(Schema.String)),
-        ),
-        description: Schema.optional(
-          Schema.Record(Schema.String, Schema.String),
-        ),
-        displayName: Schema.optional(
-          Schema.Record(Schema.String, Schema.String),
-        ),
-        localizedAttributes: Schema.optional(
-          Schema.Record(
-            Schema.String,
-            Schema.Record(Schema.String, Schema.String),
-          ),
-        ),
-        smallImage: Schema.optional(Schema.String),
-        mediumImage: Schema.optional(Schema.String),
-        largeImage: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(() => InteractionTypeDefinitionSchema),
     ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -1033,6 +1519,9 @@ export type InteractionsCreateOrUpdateInput =
 // Output Schema
 export const InteractionsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => InteractionTypeDefinitionSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1071,6 +1560,9 @@ export type InteractionsGetInput = typeof InteractionsGetInput.Type;
 
 // Output Schema
 export const InteractionsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.optional(
+    Schema.suspend(() => InteractionTypeDefinitionSchema),
+  ),
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -1109,13 +1601,7 @@ export type InteractionsListByHubInput = typeof InteractionsListByHubInput.Type;
 export const InteractionsListByHubOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => InteractionResourceFormatSchema)),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -1157,29 +1643,7 @@ export const InteractionsSuggestRelationshipLinksOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     interactionName: Schema.optional(Schema.String),
     suggestedRelationships: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          profileName: Schema.optional(Schema.String),
-          profilePropertyReferences: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                interactionPropertyName: Schema.String,
-                profilePropertyName: Schema.String,
-              }),
-            ),
-          ),
-          relatedProfileName: Schema.optional(Schema.String),
-          relatedProfilePropertyReferences: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                interactionPropertyName: Schema.String,
-                profilePropertyName: Schema.String,
-              }),
-            ),
-          ),
-          existingRelationshipName: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => RelationshipsLookupSchema)),
     ),
   });
 export type InteractionsSuggestRelationshipLinksOutput =
@@ -1204,98 +1668,7 @@ export const KpiCreateOrUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     hubName: Schema.String.pipe(T.PathParam()),
     kpiName: Schema.String.pipe(T.PathParam()),
-    properties: Schema.optional(
-      Schema.Struct({
-        entityType: Schema.Literals([
-          "None",
-          "Profile",
-          "Interaction",
-          "Relationship",
-        ]),
-        entityTypeName: Schema.String,
-        tenantId: Schema.optional(Schema.String),
-        kpiName: Schema.optional(Schema.String),
-        displayName: Schema.optional(
-          Schema.Record(Schema.String, Schema.String),
-        ),
-        description: Schema.optional(
-          Schema.Record(Schema.String, Schema.String),
-        ),
-        calculationWindow: Schema.Literals([
-          "Lifetime",
-          "Hour",
-          "Day",
-          "Week",
-          "Month",
-        ]),
-        calculationWindowFieldName: Schema.optional(Schema.String),
-        function: Schema.Literals([
-          "Sum",
-          "Avg",
-          "Min",
-          "Max",
-          "Last",
-          "Count",
-          "None",
-          "CountDistinct",
-        ]),
-        expression: Schema.String,
-        unit: Schema.optional(Schema.String),
-        filter: Schema.optional(Schema.String),
-        groupBy: Schema.optional(Schema.Array(Schema.String)),
-        groupByMetadata: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              displayName: Schema.optional(
-                Schema.Record(Schema.String, Schema.String),
-              ),
-              fieldName: Schema.optional(Schema.String),
-              fieldType: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        participantProfilesMetadata: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              typeName: Schema.String,
-            }),
-          ),
-        ),
-        provisioningState: Schema.optional(
-          Schema.Literals([
-            "Provisioning",
-            "Succeeded",
-            "Expiring",
-            "Deleting",
-            "HumanIntervention",
-            "Failed",
-          ]),
-        ),
-        thresHolds: Schema.optional(
-          Schema.Struct({
-            lowerLimit: Schema.Number,
-            upperLimit: Schema.Number,
-            increasingKpi: Schema.Boolean,
-          }),
-        ),
-        aliases: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              aliasName: Schema.String,
-              expression: Schema.String,
-            }),
-          ),
-        ),
-        extracts: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              extractName: Schema.String,
-              expression: Schema.String,
-            }),
-          ),
-        ),
-      }),
-    ),
+    properties: Schema.optional(Schema.suspend(() => KpiDefinitionSchema)),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1313,6 +1686,7 @@ export type KpiCreateOrUpdateInput = typeof KpiCreateOrUpdateInput.Type;
 // Output Schema
 export const KpiCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(Schema.suspend(() => KpiDefinitionSchema)),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1378,6 +1752,7 @@ export type KpiGetInput = typeof KpiGetInput.Type;
 
 // Output Schema
 export const KpiGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.optional(Schema.suspend(() => KpiDefinitionSchema)),
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -1412,13 +1787,7 @@ export type KpiListByHubInput = typeof KpiListByHubInput.Type;
 // Output Schema
 export const KpiListByHubOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.optional(
-    Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-      }),
-    ),
+    Schema.Array(Schema.suspend(() => KpiResourceFormatSchema)),
   ),
   nextLink: Schema.optional(Schema.String),
 });
@@ -1471,61 +1840,7 @@ export const LinksCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     hubName: Schema.String.pipe(T.PathParam()),
     linkName: Schema.String.pipe(T.PathParam()),
-    properties: Schema.optional(
-      Schema.Struct({
-        tenantId: Schema.optional(Schema.String),
-        linkName: Schema.optional(Schema.String),
-        sourceEntityType: Schema.Literals([
-          "None",
-          "Profile",
-          "Interaction",
-          "Relationship",
-        ]),
-        targetEntityType: Schema.Literals([
-          "None",
-          "Profile",
-          "Interaction",
-          "Relationship",
-        ]),
-        sourceEntityTypeName: Schema.String,
-        targetEntityTypeName: Schema.String,
-        displayName: Schema.optional(
-          Schema.Record(Schema.String, Schema.String),
-        ),
-        description: Schema.optional(
-          Schema.Record(Schema.String, Schema.String),
-        ),
-        mappings: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              sourcePropertyName: Schema.String,
-              targetPropertyName: Schema.String,
-              linkType: Schema.optional(
-                Schema.Literals(["UpdateAlways", "CopyIfNull"]),
-              ),
-            }),
-          ),
-        ),
-        participantPropertyReferences: Schema.Array(
-          Schema.Struct({
-            sourcePropertyName: Schema.String,
-            targetPropertyName: Schema.String,
-          }),
-        ),
-        provisioningState: Schema.optional(
-          Schema.Literals([
-            "Provisioning",
-            "Succeeded",
-            "Expiring",
-            "Deleting",
-            "HumanIntervention",
-            "Failed",
-          ]),
-        ),
-        referenceOnly: Schema.optional(Schema.Boolean),
-        operationType: Schema.optional(Schema.Literals(["Upsert", "Delete"])),
-      }),
-    ),
+    properties: Schema.optional(Schema.suspend(() => LinkDefinitionSchema)),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1542,6 +1857,7 @@ export type LinksCreateOrUpdateInput = typeof LinksCreateOrUpdateInput.Type;
 // Output Schema
 export const LinksCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(Schema.suspend(() => LinkDefinitionSchema)),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1606,6 +1922,7 @@ export type LinksGetInput = typeof LinksGetInput.Type;
 
 // Output Schema
 export const LinksGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.optional(Schema.suspend(() => LinkDefinitionSchema)),
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -1640,13 +1957,7 @@ export type LinksListByHubInput = typeof LinksListByHubInput.Type;
 // Output Schema
 export const LinksListByHubOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.optional(
-    Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-      }),
-    ),
+    Schema.Array(Schema.suspend(() => LinkResourceFormatSchema)),
   ),
   nextLink: Schema.optional(Schema.String),
 });
@@ -1677,20 +1988,7 @@ export type OperationsListInput = typeof OperationsListInput.Type;
 
 // Output Schema
 export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  value: Schema.optional(
-    Schema.Array(
-      Schema.Struct({
-        name: Schema.optional(Schema.String),
-        display: Schema.optional(
-          Schema.Struct({
-            provider: Schema.optional(Schema.String),
-            resource: Schema.optional(Schema.String),
-            operation: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
-  ),
+  value: Schema.optional(Schema.Array(Schema.suspend(() => OperationSchema))),
   nextLink: Schema.optional(Schema.String),
 });
 export type OperationsListOutput = typeof OperationsListOutput.Type;
@@ -1709,62 +2007,7 @@ export const PredictionsCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     hubName: Schema.String.pipe(T.PathParam()),
     predictionName: Schema.String.pipe(T.PathParam()),
-    properties: Schema.optional(
-      Schema.Struct({
-        description: Schema.optional(
-          Schema.Record(Schema.String, Schema.String),
-        ),
-        displayName: Schema.optional(
-          Schema.Record(Schema.String, Schema.String),
-        ),
-        involvedInteractionTypes: Schema.optional(Schema.Array(Schema.String)),
-        involvedKpiTypes: Schema.optional(Schema.Array(Schema.String)),
-        involvedRelationships: Schema.optional(Schema.Array(Schema.String)),
-        negativeOutcomeExpression: Schema.String,
-        positiveOutcomeExpression: Schema.String,
-        primaryProfileType: Schema.String,
-        provisioningState: Schema.optional(
-          Schema.Literals([
-            "Provisioning",
-            "Succeeded",
-            "Expiring",
-            "Deleting",
-            "HumanIntervention",
-            "Failed",
-          ]),
-        ),
-        predictionName: Schema.optional(Schema.String),
-        scopeExpression: Schema.String,
-        tenantId: Schema.optional(Schema.String),
-        autoAnalyze: Schema.Boolean,
-        mappings: Schema.Struct({
-          score: Schema.String,
-          grade: Schema.String,
-          reason: Schema.String,
-        }),
-        scoreLabel: Schema.String,
-        grades: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              gradeName: Schema.optional(Schema.String),
-              minScoreThreshold: Schema.optional(Schema.Number),
-              maxScoreThreshold: Schema.optional(Schema.Number),
-            }),
-          ),
-        ),
-        systemGeneratedEntities: Schema.optional(
-          Schema.Struct({
-            generatedInteractionTypes: Schema.optional(
-              Schema.Array(Schema.String),
-            ),
-            generatedLinks: Schema.optional(Schema.Array(Schema.String)),
-            generatedKpis: Schema.optional(
-              Schema.Record(Schema.String, Schema.String),
-            ),
-          }),
-        ),
-      }),
-    ),
+    properties: Schema.optional(Schema.suspend(() => PredictionSchema)),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1782,6 +2025,7 @@ export type PredictionsCreateOrUpdateInput =
 // Output Schema
 export const PredictionsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(Schema.suspend(() => PredictionSchema)),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1852,6 +2096,7 @@ export type PredictionsGetInput = typeof PredictionsGetInput.Type;
 
 // Output Schema
 export const PredictionsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.optional(Schema.suspend(() => PredictionSchema)),
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -1959,46 +2204,10 @@ export const PredictionsGetTrainingResultsOutput =
     tenantId: Schema.optional(Schema.String),
     scoreName: Schema.optional(Schema.String),
     predictionDistribution: Schema.optional(
-      Schema.Struct({
-        totalPositives: Schema.optional(Schema.Number),
-        totalNegatives: Schema.optional(Schema.Number),
-        distributions: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              scoreThreshold: Schema.optional(Schema.Number),
-              positives: Schema.optional(Schema.Number),
-              negatives: Schema.optional(Schema.Number),
-              positivesAboveThreshold: Schema.optional(Schema.Number),
-              negativesAboveThreshold: Schema.optional(Schema.Number),
-            }),
-          ),
-        ),
-      }),
+      Schema.suspend(() => PredictionDistributionDefinitionSchema),
     ),
     canonicalProfiles: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          canonicalProfileId: Schema.optional(Schema.Number),
-          properties: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                profileName: Schema.optional(Schema.String),
-                profilePropertyName: Schema.optional(Schema.String),
-                rank: Schema.optional(Schema.Number),
-                type: Schema.optional(
-                  Schema.Literals([
-                    "Numeric",
-                    "Categorical",
-                    "DerivedCategorical",
-                    "DerivedNumeric",
-                  ]),
-                ),
-                value: Schema.optional(Schema.String),
-              }),
-            ),
-          ),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => CanonicalProfileDefinitionSchema)),
     ),
     primaryProfileInstanceCount: Schema.optional(Schema.Number),
   });
@@ -2036,13 +2245,7 @@ export type PredictionsListByHubInput = typeof PredictionsListByHubInput.Type;
 export const PredictionsListByHubOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => PredictionResourceFormatSchema)),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -2133,26 +2336,7 @@ export const ProfilesCreateOrUpdateInput =
     hubName: Schema.String.pipe(T.PathParam()),
     profileName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        attributes: Schema.optional(
-          Schema.Record(Schema.String, Schema.Array(Schema.String)),
-        ),
-        description: Schema.optional(
-          Schema.Record(Schema.String, Schema.String),
-        ),
-        displayName: Schema.optional(
-          Schema.Record(Schema.String, Schema.String),
-        ),
-        localizedAttributes: Schema.optional(
-          Schema.Record(
-            Schema.String,
-            Schema.Record(Schema.String, Schema.String),
-          ),
-        ),
-        smallImage: Schema.optional(Schema.String),
-        mediumImage: Schema.optional(Schema.String),
-        largeImage: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(() => ProfileTypeDefinitionSchema),
     ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -2171,6 +2355,9 @@ export type ProfilesCreateOrUpdateInput =
 // Output Schema
 export const ProfilesCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => ProfileTypeDefinitionSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2242,6 +2429,9 @@ export type ProfilesGetInput = typeof ProfilesGetInput.Type;
 
 // Output Schema
 export const ProfilesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.optional(
+    Schema.suspend(() => ProfileTypeDefinitionSchema),
+  ),
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -2280,92 +2470,7 @@ export type ProfilesGetEnrichingKpisInput =
 // Output Schema
 export const ProfilesGetEnrichingKpisOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
-    Schema.Struct({
-      entityType: Schema.Literals([
-        "None",
-        "Profile",
-        "Interaction",
-        "Relationship",
-      ]),
-      entityTypeName: Schema.String,
-      tenantId: Schema.optional(Schema.String),
-      kpiName: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      description: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      calculationWindow: Schema.Literals([
-        "Lifetime",
-        "Hour",
-        "Day",
-        "Week",
-        "Month",
-      ]),
-      calculationWindowFieldName: Schema.optional(Schema.String),
-      function: Schema.Literals([
-        "Sum",
-        "Avg",
-        "Min",
-        "Max",
-        "Last",
-        "Count",
-        "None",
-        "CountDistinct",
-      ]),
-      expression: Schema.String,
-      unit: Schema.optional(Schema.String),
-      filter: Schema.optional(Schema.String),
-      groupBy: Schema.optional(Schema.Array(Schema.String)),
-      groupByMetadata: Schema.optional(
-        Schema.Array(
-          Schema.Struct({
-            displayName: Schema.optional(
-              Schema.Record(Schema.String, Schema.String),
-            ),
-            fieldName: Schema.optional(Schema.String),
-            fieldType: Schema.optional(Schema.String),
-          }),
-        ),
-      ),
-      participantProfilesMetadata: Schema.optional(
-        Schema.Array(
-          Schema.Struct({
-            typeName: Schema.String,
-          }),
-        ),
-      ),
-      provisioningState: Schema.optional(
-        Schema.Literals([
-          "Provisioning",
-          "Succeeded",
-          "Expiring",
-          "Deleting",
-          "HumanIntervention",
-          "Failed",
-        ]),
-      ),
-      thresHolds: Schema.optional(
-        Schema.Struct({
-          lowerLimit: Schema.Number,
-          upperLimit: Schema.Number,
-          increasingKpi: Schema.Boolean,
-        }),
-      ),
-      aliases: Schema.optional(
-        Schema.Array(
-          Schema.Struct({
-            aliasName: Schema.String,
-            expression: Schema.String,
-          }),
-        ),
-      ),
-      extracts: Schema.optional(
-        Schema.Array(
-          Schema.Struct({
-            extractName: Schema.String,
-            expression: Schema.String,
-          }),
-        ),
-      ),
-    }),
+    Schema.suspend(() => KpiDefinitionSchema),
   );
 export type ProfilesGetEnrichingKpisOutput =
   typeof ProfilesGetEnrichingKpisOutput.Type;
@@ -2404,13 +2509,7 @@ export type ProfilesListByHubInput = typeof ProfilesListByHubInput.Type;
 export const ProfilesListByHubOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => ProfileResourceFormatSchema)),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -2435,52 +2534,7 @@ export const RelationshipLinksCreateOrUpdateInput =
     hubName: Schema.String.pipe(T.PathParam()),
     relationshipLinkName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        displayName: Schema.optional(
-          Schema.Record(Schema.String, Schema.String),
-        ),
-        description: Schema.optional(
-          Schema.Record(Schema.String, Schema.String),
-        ),
-        interactionType: Schema.String,
-        linkName: Schema.optional(Schema.String),
-        mappings: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              interactionFieldName: Schema.String,
-              linkType: Schema.optional(
-                Schema.Literals(["UpdateAlways", "CopyIfNull"]),
-              ),
-              relationshipFieldName: Schema.String,
-            }),
-          ),
-        ),
-        profilePropertyReferences: Schema.Array(
-          Schema.Struct({
-            interactionPropertyName: Schema.String,
-            profilePropertyName: Schema.String,
-          }),
-        ),
-        provisioningState: Schema.optional(
-          Schema.Literals([
-            "Provisioning",
-            "Succeeded",
-            "Expiring",
-            "Deleting",
-            "HumanIntervention",
-            "Failed",
-          ]),
-        ),
-        relatedProfilePropertyReferences: Schema.Array(
-          Schema.Struct({
-            interactionPropertyName: Schema.String,
-            profilePropertyName: Schema.String,
-          }),
-        ),
-        relationshipName: Schema.String,
-        relationshipGuidId: Schema.optional(Schema.String),
-        tenantId: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(() => RelationshipLinkDefinitionSchema),
     ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -2499,6 +2553,9 @@ export type RelationshipLinksCreateOrUpdateInput =
 // Output Schema
 export const RelationshipLinksCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => RelationshipLinkDefinitionSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2574,6 +2631,9 @@ export type RelationshipLinksGetInput = typeof RelationshipLinksGetInput.Type;
 // Output Schema
 export const RelationshipLinksGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => RelationshipLinkDefinitionSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2613,13 +2673,7 @@ export type RelationshipLinksListByHubInput =
 export const RelationshipLinksListByHubOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => RelationshipLinkResourceFormatSchema)),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -2646,99 +2700,7 @@ export const RelationshipsCreateOrUpdateInput =
     hubName: Schema.String.pipe(T.PathParam()),
     relationshipName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        cardinality: Schema.optional(
-          Schema.Literals(["OneToOne", "OneToMany", "ManyToMany"]),
-        ),
-        displayName: Schema.optional(
-          Schema.Record(Schema.String, Schema.String),
-        ),
-        description: Schema.optional(
-          Schema.Record(Schema.String, Schema.String),
-        ),
-        expiryDateTimeUtc: Schema.optional(Schema.String),
-        fields: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              arrayValueSeparator: Schema.optional(Schema.String),
-              enumValidValues: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    value: Schema.optional(Schema.Number),
-                    localizedValueNames: Schema.optional(
-                      Schema.Record(Schema.String, Schema.String),
-                    ),
-                  }),
-                ),
-              ),
-              fieldName: Schema.String,
-              fieldType: Schema.String,
-              isArray: Schema.optional(Schema.Boolean),
-              isEnum: Schema.optional(Schema.Boolean),
-              isFlagEnum: Schema.optional(Schema.Boolean),
-              isImage: Schema.optional(Schema.Boolean),
-              isLocalizedString: Schema.optional(Schema.Boolean),
-              isName: Schema.optional(Schema.Boolean),
-              isRequired: Schema.optional(Schema.Boolean),
-              propertyId: Schema.optional(Schema.String),
-              schemaItemPropLink: Schema.optional(Schema.String),
-              maxLength: Schema.optional(Schema.Number),
-              isAvailableInGraph: Schema.optional(Schema.Boolean),
-              dataSourcePrecedenceRules: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    dataSource: Schema.optional(
-                      Schema.Struct({
-                        name: Schema.optional(Schema.String),
-                        dataSourceType: Schema.optional(
-                          Schema.Literals([
-                            "Connector",
-                            "LinkInteraction",
-                            "SystemDefault",
-                          ]),
-                        ),
-                        status: Schema.optional(
-                          Schema.Literals(["None", "Active", "Deleted"]),
-                        ),
-                        id: Schema.optional(Schema.Number),
-                        dataSourceReferenceId: Schema.optional(Schema.String),
-                      }),
-                    ),
-                    precedence: Schema.optional(Schema.Number),
-                  }),
-                ),
-              ),
-            }),
-          ),
-        ),
-        lookupMappings: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              fieldMappings: Schema.Array(
-                Schema.Struct({
-                  profileFieldName: Schema.String,
-                  relatedProfileKeyProperty: Schema.String,
-                }),
-              ),
-            }),
-          ),
-        ),
-        profileType: Schema.String,
-        provisioningState: Schema.optional(
-          Schema.Literals([
-            "Provisioning",
-            "Succeeded",
-            "Expiring",
-            "Deleting",
-            "HumanIntervention",
-            "Failed",
-          ]),
-        ),
-        relationshipName: Schema.optional(Schema.String),
-        relatedProfileType: Schema.String,
-        relationshipGuidId: Schema.optional(Schema.String),
-        tenantId: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(() => RelationshipDefinitionSchema),
     ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -2757,6 +2719,9 @@ export type RelationshipsCreateOrUpdateInput =
 // Output Schema
 export const RelationshipsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => RelationshipDefinitionSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2828,6 +2793,9 @@ export type RelationshipsGetInput = typeof RelationshipsGetInput.Type;
 // Output Schema
 export const RelationshipsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
+    properties: Schema.optional(
+      Schema.suspend(() => RelationshipDefinitionSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2866,13 +2834,7 @@ export type RelationshipsListByHubInput =
 export const RelationshipsListByHubOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => RelationshipResourceFormatSchema)),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -2898,123 +2860,7 @@ export const RoleAssignmentsCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     hubName: Schema.String.pipe(T.PathParam()),
     assignmentName: Schema.String.pipe(T.PathParam()),
-    properties: Schema.optional(
-      Schema.Struct({
-        tenantId: Schema.optional(Schema.String),
-        assignmentName: Schema.optional(Schema.String),
-        displayName: Schema.optional(
-          Schema.Record(Schema.String, Schema.String),
-        ),
-        description: Schema.optional(
-          Schema.Record(Schema.String, Schema.String),
-        ),
-        provisioningState: Schema.optional(
-          Schema.Literals([
-            "Provisioning",
-            "Succeeded",
-            "Expiring",
-            "Deleting",
-            "HumanIntervention",
-            "Failed",
-          ]),
-        ),
-        role: Schema.Literals([
-          "Admin",
-          "Reader",
-          "ManageAdmin",
-          "ManageReader",
-          "DataAdmin",
-          "DataReader",
-        ]),
-        principals: Schema.Array(
-          Schema.Struct({
-            principalId: Schema.String,
-            principalType: Schema.String,
-            principalMetadata: Schema.optional(
-              Schema.Record(Schema.String, Schema.String),
-            ),
-          }),
-        ),
-        profiles: Schema.optional(
-          Schema.Struct({
-            elements: Schema.optional(Schema.Array(Schema.String)),
-            exceptions: Schema.optional(Schema.Array(Schema.String)),
-          }),
-        ),
-        interactions: Schema.optional(
-          Schema.Struct({
-            elements: Schema.optional(Schema.Array(Schema.String)),
-            exceptions: Schema.optional(Schema.Array(Schema.String)),
-          }),
-        ),
-        links: Schema.optional(
-          Schema.Struct({
-            elements: Schema.optional(Schema.Array(Schema.String)),
-            exceptions: Schema.optional(Schema.Array(Schema.String)),
-          }),
-        ),
-        kpis: Schema.optional(
-          Schema.Struct({
-            elements: Schema.optional(Schema.Array(Schema.String)),
-            exceptions: Schema.optional(Schema.Array(Schema.String)),
-          }),
-        ),
-        sasPolicies: Schema.optional(
-          Schema.Struct({
-            elements: Schema.optional(Schema.Array(Schema.String)),
-            exceptions: Schema.optional(Schema.Array(Schema.String)),
-          }),
-        ),
-        connectors: Schema.optional(
-          Schema.Struct({
-            elements: Schema.optional(Schema.Array(Schema.String)),
-            exceptions: Schema.optional(Schema.Array(Schema.String)),
-          }),
-        ),
-        views: Schema.optional(
-          Schema.Struct({
-            elements: Schema.optional(Schema.Array(Schema.String)),
-            exceptions: Schema.optional(Schema.Array(Schema.String)),
-          }),
-        ),
-        relationshipLinks: Schema.optional(
-          Schema.Struct({
-            elements: Schema.optional(Schema.Array(Schema.String)),
-            exceptions: Schema.optional(Schema.Array(Schema.String)),
-          }),
-        ),
-        relationships: Schema.optional(
-          Schema.Struct({
-            elements: Schema.optional(Schema.Array(Schema.String)),
-            exceptions: Schema.optional(Schema.Array(Schema.String)),
-          }),
-        ),
-        widgetTypes: Schema.optional(
-          Schema.Struct({
-            elements: Schema.optional(Schema.Array(Schema.String)),
-            exceptions: Schema.optional(Schema.Array(Schema.String)),
-          }),
-        ),
-        roleAssignments: Schema.optional(
-          Schema.Struct({
-            elements: Schema.optional(Schema.Array(Schema.String)),
-            exceptions: Schema.optional(Schema.Array(Schema.String)),
-          }),
-        ),
-        conflationPolicies: Schema.optional(
-          Schema.Struct({
-            elements: Schema.optional(Schema.Array(Schema.String)),
-            exceptions: Schema.optional(Schema.Array(Schema.String)),
-          }),
-        ),
-        segments: Schema.optional(
-          Schema.Struct({
-            elements: Schema.optional(Schema.Array(Schema.String)),
-            exceptions: Schema.optional(Schema.Array(Schema.String)),
-          }),
-        ),
-      }),
-    ),
+    properties: Schema.optional(Schema.suspend(() => RoleAssignmentSchema)),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -3032,6 +2878,7 @@ export type RoleAssignmentsCreateOrUpdateInput =
 // Output Schema
 export const RoleAssignmentsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(Schema.suspend(() => RoleAssignmentSchema)),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -3105,6 +2952,7 @@ export type RoleAssignmentsGetInput = typeof RoleAssignmentsGetInput.Type;
 // Output Schema
 export const RoleAssignmentsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(Schema.suspend(() => RoleAssignmentSchema)),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -3142,13 +2990,7 @@ export type RoleAssignmentsListByHubInput =
 export const RoleAssignmentsListByHubOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => RoleAssignmentResourceFormatSchema)),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -3184,13 +3026,7 @@ export type RolesListByHubInput = typeof RolesListByHubInput.Type;
 // Output Schema
 export const RolesListByHubOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.optional(
-    Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-      }),
-    ),
+    Schema.Array(Schema.suspend(() => RoleResourceFormatSchema)),
   ),
   nextLink: Schema.optional(Schema.String),
 });
@@ -3213,19 +3049,7 @@ export const ViewsCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     hubName: Schema.String.pipe(T.PathParam()),
     viewName: Schema.String.pipe(T.PathParam()),
-    properties: Schema.optional(
-      Schema.Struct({
-        viewName: Schema.optional(Schema.String),
-        userId: Schema.optional(Schema.String),
-        tenantId: Schema.optional(Schema.String),
-        displayName: Schema.optional(
-          Schema.Record(Schema.String, Schema.String),
-        ),
-        definition: Schema.String,
-        changed: Schema.optional(Schema.String),
-        created: Schema.optional(Schema.String),
-      }),
-    ),
+    properties: Schema.optional(Schema.suspend(() => ViewSchema)),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -3241,6 +3065,7 @@ export type ViewsCreateOrUpdateInput = typeof ViewsCreateOrUpdateInput.Type;
 // Output Schema
 export const ViewsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(Schema.suspend(() => ViewSchema)),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -3308,6 +3133,7 @@ export type ViewsGetInput = typeof ViewsGetInput.Type;
 
 // Output Schema
 export const ViewsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.optional(Schema.suspend(() => ViewSchema)),
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -3344,13 +3170,7 @@ export type ViewsListByHubInput = typeof ViewsListByHubInput.Type;
 // Output Schema
 export const ViewsListByHubOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.optional(
-    Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-      }),
-    ),
+    Schema.Array(Schema.suspend(() => ViewResourceFormatSchema)),
   ),
   nextLink: Schema.optional(Schema.String),
 });
@@ -3384,6 +3204,7 @@ export type WidgetTypesGetInput = typeof WidgetTypesGetInput.Type;
 
 // Output Schema
 export const WidgetTypesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.optional(Schema.suspend(() => WidgetTypeSchema)),
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -3420,13 +3241,7 @@ export type WidgetTypesListByHubInput = typeof WidgetTypesListByHubInput.Type;
 export const WidgetTypesListByHubOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => WidgetTypeResourceFormatSchema)),
     ),
     nextLink: Schema.optional(Schema.String),
   });

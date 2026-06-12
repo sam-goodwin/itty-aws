@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { ApiKeysListResponseItemSchema } from "./_schemas.ts";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
@@ -10,18 +11,7 @@ export type ListApiKeysInput = typeof ListApiKeysInput.Type;
 
 // Output Schema
 export const ListApiKeysOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
-  Schema.Struct({
-    id: Schema.Number,
-    name: Schema.String,
-    created_at: Schema.String,
-    created_by: Schema.Struct({
-      id: Schema.String,
-      name: Schema.String,
-      image: Schema.String,
-    }),
-    last_used_at: Schema.optional(Schema.NullOr(Schema.String)),
-    last_used_from_addr: Schema.String,
-  }),
+  Schema.suspend(() => ApiKeysListResponseItemSchema),
 );
 export type ListApiKeysOutput = typeof ListApiKeysOutput.Type;
 

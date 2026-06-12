@@ -8,6 +8,152 @@ import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
+// Shared schemas
+const PermissionSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  actions: Schema.optional(Schema.Array(Schema.String)),
+  notActions: Schema.optional(Schema.Array(Schema.String)),
+  dataActions: Schema.optional(Schema.Array(Schema.String)),
+  notDataActions: Schema.optional(Schema.Array(Schema.String)),
+});
+const RoleDefinitionPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    roleName: Schema.optional(Schema.String),
+    description: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    permissions: Schema.optional(
+      Schema.Array(Schema.suspend(() => PermissionSchema)),
+    ),
+    assignableScopes: Schema.optional(Schema.Array(Schema.String)),
+    createdOn: Schema.optional(Schema.String),
+    updatedOn: Schema.optional(Schema.String),
+    createdBy: Schema.optional(Schema.String),
+    updatedBy: Schema.optional(Schema.String),
+  });
+const RoleDefinitionSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  properties: Schema.optional(
+    Schema.suspend(() => RoleDefinitionPropertiesSchema),
+  ),
+});
+const DenyAssignmentSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  properties: Schema.optional(
+    Schema.suspend(() => DenyAssignmentPropertiesSchema),
+  ),
+});
+const DenyAssignmentPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    denyAssignmentName: Schema.optional(Schema.String),
+    description: Schema.optional(Schema.String),
+    permissions: Schema.optional(
+      Schema.Array(Schema.suspend(() => DenyAssignmentPermissionSchema)),
+    ),
+    scope: Schema.optional(Schema.String),
+    doNotApplyToChildScopes: Schema.optional(Schema.Boolean),
+    principals: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          displayName: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
+          email: Schema.optional(Schema.String),
+        }),
+      ),
+    ),
+    excludePrincipals: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          displayName: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
+          email: Schema.optional(Schema.String),
+        }),
+      ),
+    ),
+    isSystemProtected: Schema.optional(Schema.Boolean),
+    condition: Schema.optional(Schema.String),
+    conditionVersion: Schema.optional(Schema.String),
+    createdOn: Schema.optional(Schema.String),
+    updatedOn: Schema.optional(Schema.String),
+    createdBy: Schema.optional(Schema.String),
+    updatedBy: Schema.optional(Schema.String),
+  });
+const DenyAssignmentPermissionSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    actions: Schema.optional(Schema.Array(Schema.String)),
+    notActions: Schema.optional(Schema.Array(Schema.String)),
+    dataActions: Schema.optional(Schema.Array(Schema.String)),
+    notDataActions: Schema.optional(Schema.Array(Schema.String)),
+    condition: Schema.optional(Schema.String),
+    conditionVersion: Schema.optional(Schema.String),
+  });
+const RoleAssignmentPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    scope: Schema.optional(Schema.String),
+    roleDefinitionId: Schema.String,
+    principalId: Schema.String,
+    principalType: Schema.optional(
+      Schema.Literals([
+        "User",
+        "Group",
+        "ServicePrincipal",
+        "ForeignGroup",
+        "Device",
+      ]),
+    ),
+    description: Schema.optional(Schema.String),
+    condition: Schema.optional(Schema.String),
+    conditionVersion: Schema.optional(Schema.String),
+    createdOn: Schema.optional(Schema.String),
+    updatedOn: Schema.optional(Schema.String),
+    createdBy: Schema.optional(Schema.String),
+    updatedBy: Schema.optional(Schema.String),
+    delegatedManagedIdentityResourceId: Schema.optional(Schema.String),
+  });
+const systemDataSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  createdBy: Schema.optional(Schema.String),
+  createdByType: Schema.optional(
+    Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+  ),
+  createdAt: Schema.optional(Schema.String),
+  lastModifiedBy: Schema.optional(Schema.String),
+  lastModifiedByType: Schema.optional(
+    Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+  ),
+  lastModifiedAt: Schema.optional(Schema.String),
+});
+const RoleAssignmentSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+});
+const ProviderOperationsMetadataSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
+const ResourceTypeSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  displayName: Schema.optional(Schema.String),
+  operations: Schema.optional(
+    Schema.Array(Schema.suspend(() => ProviderOperationSchema)),
+  ),
+});
+const ProviderOperationSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  displayName: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+  origin: Schema.optional(Schema.String),
+  properties: Schema.optional(Schema.Unknown),
+  isDataAction: Schema.optional(Schema.Boolean),
+});
+
 // Input Schema
 export const DenyAssignmentsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -29,51 +175,7 @@ export const DenyAssignmentsGetOutput =
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
     properties: Schema.optional(
-      Schema.Struct({
-        denyAssignmentName: Schema.optional(Schema.String),
-        description: Schema.optional(Schema.String),
-        permissions: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              actions: Schema.optional(Schema.Array(Schema.String)),
-              notActions: Schema.optional(Schema.Array(Schema.String)),
-              dataActions: Schema.optional(Schema.Array(Schema.String)),
-              notDataActions: Schema.optional(Schema.Array(Schema.String)),
-              condition: Schema.optional(Schema.String),
-              conditionVersion: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        scope: Schema.optional(Schema.String),
-        doNotApplyToChildScopes: Schema.optional(Schema.Boolean),
-        principals: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              id: Schema.optional(Schema.String),
-              displayName: Schema.optional(Schema.String),
-              type: Schema.optional(Schema.String),
-              email: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        excludePrincipals: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              id: Schema.optional(Schema.String),
-              displayName: Schema.optional(Schema.String),
-              type: Schema.optional(Schema.String),
-              email: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        isSystemProtected: Schema.optional(Schema.Boolean),
-        condition: Schema.optional(Schema.String),
-        conditionVersion: Schema.optional(Schema.String),
-        createdOn: Schema.optional(Schema.String),
-        updatedOn: Schema.optional(Schema.String),
-        createdBy: Schema.optional(Schema.String),
-        updatedBy: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(() => DenyAssignmentPropertiesSchema),
     ),
   });
 export type DenyAssignmentsGetOutput = typeof DenyAssignmentsGetOutput.Type;
@@ -111,51 +213,7 @@ export const DenyAssignmentsGetByIdOutput =
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
     properties: Schema.optional(
-      Schema.Struct({
-        denyAssignmentName: Schema.optional(Schema.String),
-        description: Schema.optional(Schema.String),
-        permissions: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              actions: Schema.optional(Schema.Array(Schema.String)),
-              notActions: Schema.optional(Schema.Array(Schema.String)),
-              dataActions: Schema.optional(Schema.Array(Schema.String)),
-              notDataActions: Schema.optional(Schema.Array(Schema.String)),
-              condition: Schema.optional(Schema.String),
-              conditionVersion: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        scope: Schema.optional(Schema.String),
-        doNotApplyToChildScopes: Schema.optional(Schema.Boolean),
-        principals: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              id: Schema.optional(Schema.String),
-              displayName: Schema.optional(Schema.String),
-              type: Schema.optional(Schema.String),
-              email: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        excludePrincipals: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              id: Schema.optional(Schema.String),
-              displayName: Schema.optional(Schema.String),
-              type: Schema.optional(Schema.String),
-              email: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        isSystemProtected: Schema.optional(Schema.Boolean),
-        condition: Schema.optional(Schema.String),
-        conditionVersion: Schema.optional(Schema.String),
-        createdOn: Schema.optional(Schema.String),
-        updatedOn: Schema.optional(Schema.String),
-        createdBy: Schema.optional(Schema.String),
-        updatedBy: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(() => DenyAssignmentPropertiesSchema),
     ),
   });
 export type DenyAssignmentsGetByIdOutput =
@@ -191,62 +249,7 @@ export type DenyAssignmentsListInput = typeof DenyAssignmentsListInput.Type;
 export const DenyAssignmentsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          properties: Schema.optional(
-            Schema.Struct({
-              denyAssignmentName: Schema.optional(Schema.String),
-              description: Schema.optional(Schema.String),
-              permissions: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    actions: Schema.optional(Schema.Array(Schema.String)),
-                    notActions: Schema.optional(Schema.Array(Schema.String)),
-                    dataActions: Schema.optional(Schema.Array(Schema.String)),
-                    notDataActions: Schema.optional(
-                      Schema.Array(Schema.String),
-                    ),
-                    condition: Schema.optional(Schema.String),
-                    conditionVersion: Schema.optional(Schema.String),
-                  }),
-                ),
-              ),
-              scope: Schema.optional(Schema.String),
-              doNotApplyToChildScopes: Schema.optional(Schema.Boolean),
-              principals: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    id: Schema.optional(Schema.String),
-                    displayName: Schema.optional(Schema.String),
-                    type: Schema.optional(Schema.String),
-                    email: Schema.optional(Schema.String),
-                  }),
-                ),
-              ),
-              excludePrincipals: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    id: Schema.optional(Schema.String),
-                    displayName: Schema.optional(Schema.String),
-                    type: Schema.optional(Schema.String),
-                    email: Schema.optional(Schema.String),
-                  }),
-                ),
-              ),
-              isSystemProtected: Schema.optional(Schema.Boolean),
-              condition: Schema.optional(Schema.String),
-              conditionVersion: Schema.optional(Schema.String),
-              createdOn: Schema.optional(Schema.String),
-              updatedOn: Schema.optional(Schema.String),
-              createdBy: Schema.optional(Schema.String),
-              updatedBy: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => DenyAssignmentSchema)),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -285,62 +288,7 @@ export type DenyAssignmentsListForResourceInput =
 export const DenyAssignmentsListForResourceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          properties: Schema.optional(
-            Schema.Struct({
-              denyAssignmentName: Schema.optional(Schema.String),
-              description: Schema.optional(Schema.String),
-              permissions: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    actions: Schema.optional(Schema.Array(Schema.String)),
-                    notActions: Schema.optional(Schema.Array(Schema.String)),
-                    dataActions: Schema.optional(Schema.Array(Schema.String)),
-                    notDataActions: Schema.optional(
-                      Schema.Array(Schema.String),
-                    ),
-                    condition: Schema.optional(Schema.String),
-                    conditionVersion: Schema.optional(Schema.String),
-                  }),
-                ),
-              ),
-              scope: Schema.optional(Schema.String),
-              doNotApplyToChildScopes: Schema.optional(Schema.Boolean),
-              principals: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    id: Schema.optional(Schema.String),
-                    displayName: Schema.optional(Schema.String),
-                    type: Schema.optional(Schema.String),
-                    email: Schema.optional(Schema.String),
-                  }),
-                ),
-              ),
-              excludePrincipals: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    id: Schema.optional(Schema.String),
-                    displayName: Schema.optional(Schema.String),
-                    type: Schema.optional(Schema.String),
-                    email: Schema.optional(Schema.String),
-                  }),
-                ),
-              ),
-              isSystemProtected: Schema.optional(Schema.Boolean),
-              condition: Schema.optional(Schema.String),
-              conditionVersion: Schema.optional(Schema.String),
-              createdOn: Schema.optional(Schema.String),
-              updatedOn: Schema.optional(Schema.String),
-              createdBy: Schema.optional(Schema.String),
-              updatedBy: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => DenyAssignmentSchema)),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -382,62 +330,7 @@ export type DenyAssignmentsListForResourceGroupInput =
 export const DenyAssignmentsListForResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          properties: Schema.optional(
-            Schema.Struct({
-              denyAssignmentName: Schema.optional(Schema.String),
-              description: Schema.optional(Schema.String),
-              permissions: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    actions: Schema.optional(Schema.Array(Schema.String)),
-                    notActions: Schema.optional(Schema.Array(Schema.String)),
-                    dataActions: Schema.optional(Schema.Array(Schema.String)),
-                    notDataActions: Schema.optional(
-                      Schema.Array(Schema.String),
-                    ),
-                    condition: Schema.optional(Schema.String),
-                    conditionVersion: Schema.optional(Schema.String),
-                  }),
-                ),
-              ),
-              scope: Schema.optional(Schema.String),
-              doNotApplyToChildScopes: Schema.optional(Schema.Boolean),
-              principals: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    id: Schema.optional(Schema.String),
-                    displayName: Schema.optional(Schema.String),
-                    type: Schema.optional(Schema.String),
-                    email: Schema.optional(Schema.String),
-                  }),
-                ),
-              ),
-              excludePrincipals: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    id: Schema.optional(Schema.String),
-                    displayName: Schema.optional(Schema.String),
-                    type: Schema.optional(Schema.String),
-                    email: Schema.optional(Schema.String),
-                  }),
-                ),
-              ),
-              isSystemProtected: Schema.optional(Schema.Boolean),
-              condition: Schema.optional(Schema.String),
-              conditionVersion: Schema.optional(Schema.String),
-              createdOn: Schema.optional(Schema.String),
-              updatedOn: Schema.optional(Schema.String),
-              createdBy: Schema.optional(Schema.String),
-              updatedBy: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => DenyAssignmentSchema)),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -475,62 +368,7 @@ export type DenyAssignmentsListForScopeInput =
 export const DenyAssignmentsListForScopeOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          properties: Schema.optional(
-            Schema.Struct({
-              denyAssignmentName: Schema.optional(Schema.String),
-              description: Schema.optional(Schema.String),
-              permissions: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    actions: Schema.optional(Schema.Array(Schema.String)),
-                    notActions: Schema.optional(Schema.Array(Schema.String)),
-                    dataActions: Schema.optional(Schema.Array(Schema.String)),
-                    notDataActions: Schema.optional(
-                      Schema.Array(Schema.String),
-                    ),
-                    condition: Schema.optional(Schema.String),
-                    conditionVersion: Schema.optional(Schema.String),
-                  }),
-                ),
-              ),
-              scope: Schema.optional(Schema.String),
-              doNotApplyToChildScopes: Schema.optional(Schema.Boolean),
-              principals: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    id: Schema.optional(Schema.String),
-                    displayName: Schema.optional(Schema.String),
-                    type: Schema.optional(Schema.String),
-                    email: Schema.optional(Schema.String),
-                  }),
-                ),
-              ),
-              excludePrincipals: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    id: Schema.optional(Schema.String),
-                    displayName: Schema.optional(Schema.String),
-                    type: Schema.optional(Schema.String),
-                    email: Schema.optional(Schema.String),
-                  }),
-                ),
-              ),
-              isSystemProtected: Schema.optional(Schema.Boolean),
-              condition: Schema.optional(Schema.String),
-              conditionVersion: Schema.optional(Schema.String),
-              createdOn: Schema.optional(Schema.String),
-              updatedOn: Schema.optional(Schema.String),
-              createdBy: Schema.optional(Schema.String),
-              updatedBy: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => DenyAssignmentSchema)),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -573,14 +411,7 @@ export type PermissionsListForResourceInput =
 export const PermissionsListForResourceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          actions: Schema.optional(Schema.Array(Schema.String)),
-          notActions: Schema.optional(Schema.Array(Schema.String)),
-          dataActions: Schema.optional(Schema.Array(Schema.String)),
-          notDataActions: Schema.optional(Schema.Array(Schema.String)),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => PermissionSchema)),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -624,14 +455,7 @@ export type PermissionsListForResourceGroupInput =
 export const PermissionsListForResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          actions: Schema.optional(Schema.Array(Schema.String)),
-          notActions: Schema.optional(Schema.Array(Schema.String)),
-          dataActions: Schema.optional(Schema.Array(Schema.String)),
-          notDataActions: Schema.optional(Schema.Array(Schema.String)),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => PermissionSchema)),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -669,6 +493,13 @@ export type ProviderOperationsMetadataGetInput =
 // Output Schema
 export const ProviderOperationsMetadataGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    displayName: Schema.optional(Schema.String),
+    resourceTypes: Schema.optional(
+      Schema.Array(Schema.suspend(() => ResourceTypeSchema)),
+    ),
+    operations: Schema.optional(
+      Schema.Array(Schema.suspend(() => ProviderOperationSchema)),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -706,13 +537,7 @@ export type ProviderOperationsMetadataListInput =
 // Output Schema
 export const ProviderOperationsMetadataListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => ProviderOperationsMetadataSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type ProviderOperationsMetadataListOutput =
@@ -735,28 +560,7 @@ export const RoleAssignmentsCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     scope: Schema.String.pipe(T.PathParam()),
     roleAssignmentName: Schema.String.pipe(T.PathParam()),
-    properties: Schema.Struct({
-      scope: Schema.optional(Schema.String),
-      roleDefinitionId: Schema.String,
-      principalId: Schema.String,
-      principalType: Schema.optional(
-        Schema.Literals([
-          "User",
-          "Group",
-          "ServicePrincipal",
-          "ForeignGroup",
-          "Device",
-        ]),
-      ),
-      description: Schema.optional(Schema.String),
-      condition: Schema.optional(Schema.String),
-      conditionVersion: Schema.optional(Schema.String),
-      createdOn: Schema.optional(Schema.String),
-      updatedOn: Schema.optional(Schema.String),
-      createdBy: Schema.optional(Schema.String),
-      updatedBy: Schema.optional(Schema.String),
-      delegatedManagedIdentityResourceId: Schema.optional(Schema.String),
-    }),
+    properties: Schema.suspend(() => RoleAssignmentPropertiesSchema),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -769,23 +573,13 @@ export type RoleAssignmentsCreateInput = typeof RoleAssignmentsCreateInput.Type;
 // Output Schema
 export const RoleAssignmentsCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => RoleAssignmentPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type RoleAssignmentsCreateOutput =
   typeof RoleAssignmentsCreateOutput.Type;
@@ -808,28 +602,7 @@ export const RoleAssignmentsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const RoleAssignmentsCreateByIdInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     roleAssignmentId: Schema.String.pipe(T.PathParam()),
-    properties: Schema.Struct({
-      scope: Schema.optional(Schema.String),
-      roleDefinitionId: Schema.String,
-      principalId: Schema.String,
-      principalType: Schema.optional(
-        Schema.Literals([
-          "User",
-          "Group",
-          "ServicePrincipal",
-          "ForeignGroup",
-          "Device",
-        ]),
-      ),
-      description: Schema.optional(Schema.String),
-      condition: Schema.optional(Schema.String),
-      conditionVersion: Schema.optional(Schema.String),
-      createdOn: Schema.optional(Schema.String),
-      updatedOn: Schema.optional(Schema.String),
-      createdBy: Schema.optional(Schema.String),
-      updatedBy: Schema.optional(Schema.String),
-      delegatedManagedIdentityResourceId: Schema.optional(Schema.String),
-    }),
+    properties: Schema.suspend(() => RoleAssignmentPropertiesSchema),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -843,23 +616,13 @@ export type RoleAssignmentsCreateByIdInput =
 // Output Schema
 export const RoleAssignmentsCreateByIdOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => RoleAssignmentPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type RoleAssignmentsCreateByIdOutput =
   typeof RoleAssignmentsCreateByIdOutput.Type;
@@ -895,23 +658,13 @@ export type RoleAssignmentsDeleteInput = typeof RoleAssignmentsDeleteInput.Type;
 // Output Schema
 export const RoleAssignmentsDeleteOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => RoleAssignmentPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type RoleAssignmentsDeleteOutput =
   typeof RoleAssignmentsDeleteOutput.Type;
@@ -949,23 +702,13 @@ export type RoleAssignmentsDeleteByIdInput =
 // Output Schema
 export const RoleAssignmentsDeleteByIdOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => RoleAssignmentPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type RoleAssignmentsDeleteByIdOutput =
   typeof RoleAssignmentsDeleteByIdOutput.Type;
@@ -1002,23 +745,13 @@ export type RoleAssignmentsGetInput = typeof RoleAssignmentsGetInput.Type;
 // Output Schema
 export const RoleAssignmentsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => RoleAssignmentPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type RoleAssignmentsGetOutput = typeof RoleAssignmentsGetOutput.Type;
 
@@ -1053,23 +786,13 @@ export type RoleAssignmentsGetByIdInput =
 // Output Schema
 export const RoleAssignmentsGetByIdOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => RoleAssignmentPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type RoleAssignmentsGetByIdOutput =
   typeof RoleAssignmentsGetByIdOutput.Type;
@@ -1111,37 +834,7 @@ export type RoleAssignmentsListForResourceInput =
 // Output Schema
 export const RoleAssignmentsListForResourceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => RoleAssignmentSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type RoleAssignmentsListForResourceOutput =
@@ -1185,37 +878,7 @@ export type RoleAssignmentsListForResourceGroupInput =
 // Output Schema
 export const RoleAssignmentsListForResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => RoleAssignmentSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type RoleAssignmentsListForResourceGroupOutput =
@@ -1256,37 +919,7 @@ export type RoleAssignmentsListForScopeInput =
 // Output Schema
 export const RoleAssignmentsListForScopeOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => RoleAssignmentSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type RoleAssignmentsListForScopeOutput =
@@ -1327,37 +960,7 @@ export type RoleAssignmentsListForSubscriptionInput =
 // Output Schema
 export const RoleAssignmentsListForSubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => RoleAssignmentSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type RoleAssignmentsListForSubscriptionOutput =
@@ -1386,26 +989,7 @@ export const RoleDefinitionsCreateOrUpdateInput =
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
     properties: Schema.optional(
-      Schema.Struct({
-        roleName: Schema.optional(Schema.String),
-        description: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        permissions: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              actions: Schema.optional(Schema.Array(Schema.String)),
-              notActions: Schema.optional(Schema.Array(Schema.String)),
-              dataActions: Schema.optional(Schema.Array(Schema.String)),
-              notDataActions: Schema.optional(Schema.Array(Schema.String)),
-            }),
-          ),
-        ),
-        assignableScopes: Schema.optional(Schema.Array(Schema.String)),
-        createdOn: Schema.optional(Schema.String),
-        updatedOn: Schema.optional(Schema.String),
-        createdBy: Schema.optional(Schema.String),
-        updatedBy: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(() => RoleDefinitionPropertiesSchema),
     ),
   }).pipe(
     T.Http({
@@ -1424,26 +1008,7 @@ export const RoleDefinitionsCreateOrUpdateOutput =
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
     properties: Schema.optional(
-      Schema.Struct({
-        roleName: Schema.optional(Schema.String),
-        description: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        permissions: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              actions: Schema.optional(Schema.Array(Schema.String)),
-              notActions: Schema.optional(Schema.Array(Schema.String)),
-              dataActions: Schema.optional(Schema.Array(Schema.String)),
-              notDataActions: Schema.optional(Schema.Array(Schema.String)),
-            }),
-          ),
-        ),
-        assignableScopes: Schema.optional(Schema.Array(Schema.String)),
-        createdOn: Schema.optional(Schema.String),
-        updatedOn: Schema.optional(Schema.String),
-        createdBy: Schema.optional(Schema.String),
-        updatedBy: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(() => RoleDefinitionPropertiesSchema),
     ),
   });
 export type RoleDefinitionsCreateOrUpdateOutput =
@@ -1483,26 +1048,7 @@ export const RoleDefinitionsDeleteOutput =
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
     properties: Schema.optional(
-      Schema.Struct({
-        roleName: Schema.optional(Schema.String),
-        description: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        permissions: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              actions: Schema.optional(Schema.Array(Schema.String)),
-              notActions: Schema.optional(Schema.Array(Schema.String)),
-              dataActions: Schema.optional(Schema.Array(Schema.String)),
-              notDataActions: Schema.optional(Schema.Array(Schema.String)),
-            }),
-          ),
-        ),
-        assignableScopes: Schema.optional(Schema.Array(Schema.String)),
-        createdOn: Schema.optional(Schema.String),
-        updatedOn: Schema.optional(Schema.String),
-        createdBy: Schema.optional(Schema.String),
-        updatedBy: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(() => RoleDefinitionPropertiesSchema),
     ),
   });
 export type RoleDefinitionsDeleteOutput =
@@ -1543,26 +1089,7 @@ export const RoleDefinitionsGetOutput =
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
     properties: Schema.optional(
-      Schema.Struct({
-        roleName: Schema.optional(Schema.String),
-        description: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        permissions: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              actions: Schema.optional(Schema.Array(Schema.String)),
-              notActions: Schema.optional(Schema.Array(Schema.String)),
-              dataActions: Schema.optional(Schema.Array(Schema.String)),
-              notDataActions: Schema.optional(Schema.Array(Schema.String)),
-            }),
-          ),
-        ),
-        assignableScopes: Schema.optional(Schema.Array(Schema.String)),
-        createdOn: Schema.optional(Schema.String),
-        updatedOn: Schema.optional(Schema.String),
-        createdBy: Schema.optional(Schema.String),
-        updatedBy: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(() => RoleDefinitionPropertiesSchema),
     ),
   });
 export type RoleDefinitionsGetOutput = typeof RoleDefinitionsGetOutput.Type;
@@ -1597,37 +1124,7 @@ export type RoleDefinitionsListInput = typeof RoleDefinitionsListInput.Type;
 export const RoleDefinitionsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          properties: Schema.optional(
-            Schema.Struct({
-              roleName: Schema.optional(Schema.String),
-              description: Schema.optional(Schema.String),
-              type: Schema.optional(Schema.String),
-              permissions: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    actions: Schema.optional(Schema.Array(Schema.String)),
-                    notActions: Schema.optional(Schema.Array(Schema.String)),
-                    dataActions: Schema.optional(Schema.Array(Schema.String)),
-                    notDataActions: Schema.optional(
-                      Schema.Array(Schema.String),
-                    ),
-                  }),
-                ),
-              ),
-              assignableScopes: Schema.optional(Schema.Array(Schema.String)),
-              createdOn: Schema.optional(Schema.String),
-              updatedOn: Schema.optional(Schema.String),
-              createdBy: Schema.optional(Schema.String),
-              updatedBy: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => RoleDefinitionSchema)),
     ),
     nextLink: Schema.optional(Schema.String),
   });

@@ -8,6 +8,698 @@ import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
+// Shared schemas
+const BackupInstanceResourceSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+});
+const systemDataSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  createdBy: Schema.optional(Schema.String),
+  createdByType: Schema.optional(
+    Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+  ),
+  createdAt: Schema.optional(Schema.String),
+  lastModifiedBy: Schema.optional(Schema.String),
+  lastModifiedByType: Schema.optional(
+    Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+  ),
+  lastModifiedAt: Schema.optional(Schema.String),
+});
+const OperationSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  isDataAction: Schema.optional(Schema.Boolean),
+  display: Schema.optional(
+    Schema.Struct({
+      provider: Schema.optional(Schema.String),
+      resource: Schema.optional(Schema.String),
+      operation: Schema.optional(Schema.String),
+      description: Schema.optional(Schema.String),
+    }),
+  ),
+  origin: Schema.optional(Schema.Literals(["user", "system", "user,system"])),
+  actionType: Schema.optional(Schema.Literals(["Internal"])),
+});
+const BackupVaultResourceSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+});
+const DeletedBackupVaultResourceSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+  });
+const DeletedBackupVaultSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  monitoringSettings: Schema.optional(
+    Schema.suspend(() => MonitoringSettingsSchema),
+  ),
+  provisioningState: Schema.optional(
+    Schema.suspend(() => ProvisioningStateSchema),
+  ),
+  resourceMoveState: Schema.optional(
+    Schema.suspend(() => ResourceMoveStateSchema),
+  ),
+  resourceMoveDetails: Schema.optional(
+    Schema.suspend(() => ResourceMoveDetailsSchema),
+  ),
+  securitySettings: Schema.optional(
+    Schema.suspend(() => SecuritySettingsSchema),
+  ),
+  storageSettings: Schema.optional(
+    Schema.Array(Schema.suspend(() => StorageSettingSchema)),
+  ),
+  isVaultProtectedByResourceGuard: Schema.optional(Schema.Boolean),
+  featureSettings: Schema.optional(Schema.suspend(() => FeatureSettingsSchema)),
+  secureScore: Schema.optional(Schema.suspend(() => SecureScoreLevelSchema)),
+  bcdrSecurityLevel: Schema.optional(
+    Schema.suspend(() => BCDRSecurityLevelSchema),
+  ),
+  resourceGuardOperationRequests: Schema.optional(Schema.Array(Schema.String)),
+  replicatedRegions: Schema.optional(Schema.Array(Schema.String)),
+  originalBackupVaultId: Schema.String,
+  originalBackupVaultName: Schema.String,
+  originalBackupVaultResourcePath: Schema.String,
+  resourceDeletionInfo: Schema.suspend(() => ResourceDeletionInfoSchema),
+});
+const MonitoringSettingsSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  azureMonitorAlertSettings: Schema.optional(
+    Schema.suspend(() => AzureMonitorAlertSettingsSchema),
+  ),
+});
+const AzureMonitorAlertSettingsSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    alertsForAllJobFailures: Schema.optional(
+      Schema.suspend(() => AlertsStateSchema),
+    ),
+  });
+const AlertsStateSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Enabled",
+  "Disabled",
+]);
+const ProvisioningStateSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Failed",
+  "Provisioning",
+  "Succeeded",
+  "Unknown",
+  "Updating",
+]);
+const ResourceMoveStateSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Unknown",
+  "InProgress",
+  "PrepareFailed",
+  "CommitFailed",
+  "Failed",
+  "PrepareTimedout",
+  "CommitTimedout",
+  "CriticalFailure",
+  "PartialSuccess",
+  "MoveSucceeded",
+]);
+const ResourceMoveDetailsSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  operationId: Schema.optional(Schema.String),
+  startTimeUtc: Schema.optional(Schema.String),
+  completionTimeUtc: Schema.optional(Schema.String),
+  sourceResourcePath: Schema.optional(Schema.String),
+  targetResourcePath: Schema.optional(Schema.String),
+});
+const SecuritySettingsSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  softDeleteSettings: Schema.optional(
+    Schema.suspend(() => SoftDeleteSettingsSchema),
+  ),
+  immutabilitySettings: Schema.optional(
+    Schema.suspend(() => ImmutabilitySettingsSchema),
+  ),
+  encryptionSettings: Schema.optional(
+    Schema.suspend(() => encryptionSettingsSchema),
+  ),
+});
+const SoftDeleteSettingsSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  state: Schema.optional(Schema.suspend(() => SoftDeleteStateSchema)),
+  retentionDurationInDays: Schema.optional(Schema.Number),
+});
+const SoftDeleteStateSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Off",
+  "On",
+  "AlwaysOn",
+]);
+const ImmutabilitySettingsSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  state: Schema.optional(Schema.suspend(() => ImmutabilityStateSchema)),
+});
+const ImmutabilityStateSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Disabled",
+  "Unlocked",
+  "Locked",
+]);
+const encryptionSettingsSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  state: Schema.optional(Schema.suspend(() => EncryptionStateSchema)),
+  keyVaultProperties: Schema.optional(
+    Schema.suspend(() => CmkKeyVaultPropertiesSchema),
+  ),
+  kekIdentity: Schema.optional(Schema.suspend(() => CmkKekIdentitySchema)),
+  infrastructureEncryption: Schema.optional(
+    Schema.suspend(() => InfrastructureEncryptionStateSchema),
+  ),
+});
+const EncryptionStateSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Enabled",
+  "Disabled",
+  "Inconsistent",
+]);
+const CmkKeyVaultPropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  keyUri: Schema.optional(Schema.String),
+});
+const CmkKekIdentitySchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  identityType: Schema.optional(Schema.suspend(() => IdentityTypeSchema)),
+  identityId: Schema.optional(Schema.String),
+});
+const IdentityTypeSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "SystemAssigned",
+  "UserAssigned",
+]);
+const InfrastructureEncryptionStateSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Literals(["Enabled", "Disabled"]);
+const StorageSettingSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  datastoreType: Schema.optional(
+    Schema.suspend(() => StorageSettingStoreTypesSchema),
+  ),
+  type: Schema.optional(Schema.suspend(() => StorageSettingTypesSchema)),
+});
+const StorageSettingStoreTypesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+    "ArchiveStore",
+    "OperationalStore",
+    "VaultStore",
+  ]);
+const StorageSettingTypesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "GeoRedundant",
+  "LocallyRedundant",
+  "ZoneRedundant",
+]);
+const FeatureSettingsSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  crossSubscriptionRestoreSettings: Schema.optional(
+    Schema.suspend(() => CrossSubscriptionRestoreSettingsSchema),
+  ),
+  crossRegionRestoreSettings: Schema.optional(
+    Schema.suspend(() => CrossRegionRestoreSettingsSchema),
+  ),
+});
+const CrossSubscriptionRestoreSettingsSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    state: Schema.optional(
+      Schema.suspend(() => CrossSubscriptionRestoreStateSchema),
+    ),
+  });
+const CrossSubscriptionRestoreStateSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+    "Disabled",
+    "PermanentlyDisabled",
+    "Enabled",
+  ]);
+const CrossRegionRestoreSettingsSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    state: Schema.optional(Schema.suspend(() => CrossRegionRestoreStateSchema)),
+  });
+const CrossRegionRestoreStateSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Literals(["Disabled", "Enabled"]);
+const SecureScoreLevelSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "None",
+  "Minimum",
+  "Adequate",
+  "Maximum",
+  "NotSupported",
+]);
+const BCDRSecurityLevelSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Poor",
+  "Fair",
+  "Good",
+  "Excellent",
+  "NotSupported",
+]);
+const ResourceDeletionInfoSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  deletionTime: Schema.optional(Schema.String),
+  scheduledPurgeTime: Schema.optional(Schema.String),
+  deleteActivityId: Schema.optional(Schema.String),
+});
+const ErrorSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  additionalInfo: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        type: Schema.optional(Schema.String),
+        info: Schema.optional(Schema.Unknown),
+      }),
+    ),
+  ),
+  code: Schema.optional(Schema.String),
+  details: Schema.optional(Schema.Array(Schema.Unknown)),
+  message: Schema.optional(Schema.String),
+  target: Schema.optional(Schema.String),
+});
+const OperationExtendedInfoSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  objectType: Schema.String,
+});
+const ResourceGuardResourceSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+});
+const BackupVaultSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  monitoringSettings: Schema.optional(
+    Schema.suspend(() => MonitoringSettingsSchema),
+  ),
+  provisioningState: Schema.optional(
+    Schema.suspend(() => ProvisioningStateSchema),
+  ),
+  resourceMoveState: Schema.optional(
+    Schema.suspend(() => ResourceMoveStateSchema),
+  ),
+  resourceMoveDetails: Schema.optional(
+    Schema.suspend(() => ResourceMoveDetailsSchema),
+  ),
+  securitySettings: Schema.optional(
+    Schema.suspend(() => SecuritySettingsSchema),
+  ),
+  storageSettings: Schema.optional(
+    Schema.Array(Schema.suspend(() => StorageSettingSchema)),
+  ),
+  isVaultProtectedByResourceGuard: Schema.optional(Schema.Boolean),
+  featureSettings: Schema.optional(Schema.suspend(() => FeatureSettingsSchema)),
+  secureScore: Schema.optional(Schema.suspend(() => SecureScoreLevelSchema)),
+  bcdrSecurityLevel: Schema.optional(
+    Schema.suspend(() => BCDRSecurityLevelSchema),
+  ),
+  resourceGuardOperationRequests: Schema.optional(Schema.Array(Schema.String)),
+  replicatedRegions: Schema.optional(Schema.Array(Schema.String)),
+});
+const DppIdentityDetailsSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  principalId: Schema.optional(Schema.String),
+  tenantId: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  userAssignedIdentities: Schema.optional(
+    Schema.Record(
+      Schema.String,
+      Schema.Struct({
+        principalId: Schema.optional(Schema.String),
+        clientId: Schema.optional(Schema.String),
+      }),
+    ),
+  ),
+});
+const PatchBackupVaultInputSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  monitoringSettings: Schema.optional(
+    Schema.suspend(() => MonitoringSettingsSchema),
+  ),
+  securitySettings: Schema.optional(
+    Schema.suspend(() => SecuritySettingsSchema),
+  ),
+  featureSettings: Schema.optional(Schema.suspend(() => FeatureSettingsSchema)),
+  resourceGuardOperationRequests: Schema.optional(Schema.Array(Schema.String)),
+});
+const BackupInstanceSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  friendlyName: Schema.optional(Schema.String),
+  dataSourceInfo: Schema.suspend(() => DatasourceSchema),
+  dataSourceSetInfo: Schema.optional(Schema.suspend(() => DatasourceSetSchema)),
+  policyInfo: Schema.suspend(() => PolicyInfoSchema),
+  resourceGuardOperationRequests: Schema.optional(Schema.Array(Schema.String)),
+  protectionStatus: Schema.optional(
+    Schema.suspend(() => ProtectionStatusDetailsSchema),
+  ),
+  currentProtectionState: Schema.optional(
+    Schema.suspend(() => CurrentProtectionStateSchema),
+  ),
+  protectionErrorDetails: Schema.optional(
+    Schema.suspend(() => UserFacingErrorSchema),
+  ),
+  provisioningState: Schema.optional(Schema.String),
+  datasourceAuthCredentials: Schema.optional(
+    Schema.suspend(() => AuthCredentialsSchema),
+  ),
+  validationType: Schema.optional(Schema.suspend(() => ValidationTypeSchema)),
+  identityDetails: Schema.optional(Schema.suspend(() => IdentityDetailsSchema)),
+  objectType: Schema.String,
+});
+const DatasourceSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  datasourceType: Schema.optional(Schema.String),
+  objectType: Schema.optional(Schema.String),
+  resourceID: Schema.String,
+  resourceLocation: Schema.optional(Schema.String),
+  resourceName: Schema.optional(Schema.String),
+  resourceType: Schema.optional(Schema.String),
+  resourceUri: Schema.optional(Schema.String),
+  resourceProperties: Schema.optional(
+    Schema.suspend(() => BaseResourcePropertiesSchema),
+  ),
+});
+const BaseResourcePropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  objectType: Schema.suspend(() => ResourcePropertiesObjectTypeSchema),
+});
+const ResourcePropertiesObjectTypeSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Literals(["DefaultResourceProperties"]);
+const DatasourceSetSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  datasourceType: Schema.optional(Schema.String),
+  objectType: Schema.optional(Schema.String),
+  resourceID: Schema.String,
+  resourceLocation: Schema.optional(Schema.String),
+  resourceName: Schema.optional(Schema.String),
+  resourceType: Schema.optional(Schema.String),
+  resourceUri: Schema.optional(Schema.String),
+  resourceProperties: Schema.optional(
+    Schema.suspend(() => BaseResourcePropertiesSchema),
+  ),
+});
+const PolicyInfoSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  policyId: Schema.String,
+  policyVersion: Schema.optional(Schema.String),
+  policyParameters: Schema.optional(
+    Schema.suspend(() => PolicyParametersSchema),
+  ),
+});
+const PolicyParametersSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  dataStoreParametersList: Schema.optional(
+    Schema.Array(Schema.suspend(() => DataStoreParametersSchema)),
+  ),
+  backupDatasourceParametersList: Schema.optional(
+    Schema.Array(Schema.suspend(() => BackupDatasourceParametersSchema)),
+  ),
+});
+const DataStoreParametersSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  objectType: Schema.String,
+  dataStoreType: Schema.suspend(() => DataStoreTypesSchema),
+});
+const DataStoreTypesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "OperationalStore",
+  "VaultStore",
+  "ArchiveStore",
+]);
+const BackupDatasourceParametersSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    objectType: Schema.String,
+  });
+const ProtectionStatusDetailsSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    errorDetails: Schema.optional(Schema.suspend(() => UserFacingErrorSchema)),
+    status: Schema.optional(Schema.suspend(() => StatusSchema)),
+  },
+);
+const UserFacingErrorSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  code: Schema.optional(Schema.String),
+  details: Schema.optional(Schema.Array(Schema.Unknown)),
+  innerError: Schema.optional(Schema.suspend(() => InnerErrorSchema)),
+  isRetryable: Schema.optional(Schema.Boolean),
+  isUserError: Schema.optional(Schema.Boolean),
+  properties: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  message: Schema.optional(Schema.String),
+  recommendedAction: Schema.optional(Schema.Array(Schema.String)),
+  target: Schema.optional(Schema.String),
+});
+const InnerErrorSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  additionalInfo: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  code: Schema.optional(Schema.String),
+  embeddedInnerError: Schema.optional(Schema.Unknown),
+});
+const StatusSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "ConfiguringProtection",
+  "ConfiguringProtectionFailed",
+  "ProtectionConfigured",
+  "ProtectionStopped",
+  "SoftDeleted",
+  "SoftDeleting",
+]);
+const CurrentProtectionStateSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+    "Invalid",
+    "NotProtected",
+    "ConfiguringProtection",
+    "ProtectionConfigured",
+    "BackupSchedulesSuspended",
+    "RetentionSchedulesSuspended",
+    "ProtectionStopped",
+    "ProtectionError",
+    "ConfiguringProtectionFailed",
+    "SoftDeleting",
+    "SoftDeleted",
+    "UpdatingProtection",
+  ]);
+const AuthCredentialsSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  objectType: Schema.String,
+});
+const ValidationTypeSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "ShallowValidation",
+  "DeepValidation",
+]);
+const IdentityDetailsSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  useSystemAssignedIdentity: Schema.optional(Schema.Boolean),
+  userAssignedIdentityArmUrl: Schema.optional(Schema.String),
+});
+const AdHocBackupRuleOptionsSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  ruleName: Schema.String,
+  triggerOption: Schema.suspend(() => AdhocBackupTriggerOptionSchema),
+});
+const AdhocBackupTriggerOptionSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    retentionTagOverride: Schema.optional(Schema.String),
+  });
+const RestoreSourceDataStoreTypeSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+    "OperationalStore",
+    "VaultStore",
+    "ArchiveStore",
+  ]);
+const AzureBackupFindRestorableTimeRangesResponseSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    restorableTimeRanges: Schema.optional(
+      Schema.Array(Schema.suspend(() => RestorableTimeRangeSchema)),
+    ),
+    objectType: Schema.optional(Schema.String),
+  });
+const RestorableTimeRangeSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  startTime: Schema.String,
+  endTime: Schema.String,
+  objectType: Schema.optional(Schema.String),
+});
+const AzureBackupRecoveryPointResourceSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+  });
+const AzureBackupRecoveryPointSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    objectType: Schema.String,
+  });
+const RehydrationPrioritySchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Invalid",
+  "High",
+  "Standard",
+]);
+const RestoreTargetInfoBaseSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  objectType: Schema.String,
+  recoveryOption: Schema.suspend(() => RecoveryOptionSchema),
+  restoreLocation: Schema.optional(Schema.String),
+});
+const RecoveryOptionSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "FailIfExists",
+]);
+const SourceDataStoreTypeSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "ArchiveStore",
+  "SnapshotStore",
+  "OperationalStore",
+  "VaultStore",
+]);
+const SyncTypeSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Default",
+  "ForceResync",
+]);
+const AzureBackupRestoreRequestSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    objectType: Schema.String,
+    restoreTargetInfo: Schema.suspend(() => RestoreTargetInfoBaseSchema),
+    sourceDataStoreType: Schema.suspend(() => SourceDataStoreTypeSchema),
+    sourceResourceId: Schema.optional(Schema.String),
+    resourceGuardOperationRequests: Schema.optional(
+      Schema.Array(Schema.String),
+    ),
+    identityDetails: Schema.optional(
+      Schema.suspend(() => IdentityDetailsSchema),
+    ),
+  });
+const AzureBackupJobResourceSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+});
+const AzureBackupJobSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  activityID: Schema.String,
+  backupInstanceFriendlyName: Schema.String,
+  backupInstanceId: Schema.optional(Schema.String),
+  dataSourceId: Schema.String,
+  dataSourceLocation: Schema.String,
+  dataSourceName: Schema.String,
+  dataSourceSetName: Schema.optional(Schema.String),
+  dataSourceType: Schema.String,
+  duration: Schema.optional(Schema.String),
+  endTime: Schema.optional(Schema.String),
+  errorDetails: Schema.optional(
+    Schema.Array(Schema.suspend(() => UserFacingErrorSchema)),
+  ),
+  extendedInfo: Schema.optional(Schema.suspend(() => JobExtendedInfoSchema)),
+  isUserTriggered: Schema.Boolean,
+  operation: Schema.String,
+  operationCategory: Schema.String,
+  policyId: Schema.optional(Schema.String),
+  policyName: Schema.optional(Schema.String),
+  progressEnabled: Schema.Boolean,
+  progressUrl: Schema.optional(Schema.String),
+  rehydrationPriority: Schema.optional(Schema.String),
+  restoreType: Schema.optional(Schema.String),
+  sourceResourceGroup: Schema.String,
+  sourceSubscriptionID: Schema.String,
+  startTime: Schema.String,
+  status: Schema.String,
+  subscriptionId: Schema.String,
+  supportedActions: Schema.Array(Schema.String),
+  vaultName: Schema.String,
+  etag: Schema.optional(Schema.String),
+  sourceDataStoreName: Schema.optional(Schema.String),
+  destinationDataStoreName: Schema.optional(Schema.String),
+});
+const JobExtendedInfoSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  additionalDetails: Schema.optional(
+    Schema.Record(Schema.String, Schema.String),
+  ),
+  backupInstanceState: Schema.optional(Schema.String),
+  dataTransferredInBytes: Schema.optional(Schema.Number),
+  recoveryDestination: Schema.optional(Schema.String),
+  sourceRecoverPoint: Schema.optional(
+    Schema.suspend(() => RestoreJobRecoveryPointDetailsSchema),
+  ),
+  subTasks: Schema.optional(
+    Schema.Array(Schema.suspend(() => JobSubTaskSchema)),
+  ),
+  targetRecoverPoint: Schema.optional(
+    Schema.suspend(() => RestoreJobRecoveryPointDetailsSchema),
+  ),
+  warningDetails: Schema.optional(
+    Schema.Array(Schema.suspend(() => UserFacingWarningDetailSchema)),
+  ),
+});
+const RestoreJobRecoveryPointDetailsSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    recoveryPointID: Schema.optional(Schema.String),
+    recoveryPointTime: Schema.optional(Schema.String),
+  });
+const JobSubTaskSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  additionalDetails: Schema.optional(
+    Schema.Record(Schema.String, Schema.String),
+  ),
+  taskId: Schema.Number,
+  taskName: Schema.String,
+  taskProgress: Schema.optional(Schema.String),
+  taskStatus: Schema.String,
+});
+const UserFacingWarningDetailSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    resourceName: Schema.optional(Schema.String),
+    warning: Schema.suspend(() => UserFacingErrorSchema),
+  },
+);
+const BaseBackupPolicyResourceSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+  });
+const BaseBackupPolicySchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  datasourceTypes: Schema.Array(Schema.String),
+  objectType: Schema.String,
+});
+const ResourceGuardProxyBaseResourceSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+  });
+const ResourceGuardProxyBaseSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  resourceGuardResourceId: Schema.optional(Schema.String),
+  resourceGuardOperationDetails: Schema.optional(
+    Schema.Array(Schema.suspend(() => ResourceGuardOperationDetailSchema)),
+  ),
+  lastUpdatedTime: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+});
+const ResourceGuardOperationDetailSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    vaultCriticalOperation: Schema.optional(Schema.String),
+    defaultResourceRequest: Schema.optional(Schema.String),
+  });
+const DeletedBackupInstanceResourceSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+  });
+const DeletedBackupInstanceSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  friendlyName: Schema.optional(Schema.String),
+  dataSourceInfo: Schema.suspend(() => DatasourceSchema),
+  dataSourceSetInfo: Schema.optional(Schema.suspend(() => DatasourceSetSchema)),
+  policyInfo: Schema.suspend(() => PolicyInfoSchema),
+  resourceGuardOperationRequests: Schema.optional(Schema.Array(Schema.String)),
+  protectionStatus: Schema.optional(
+    Schema.suspend(() => ProtectionStatusDetailsSchema),
+  ),
+  currentProtectionState: Schema.optional(
+    Schema.suspend(() => CurrentProtectionStateSchema),
+  ),
+  protectionErrorDetails: Schema.optional(
+    Schema.suspend(() => UserFacingErrorSchema),
+  ),
+  provisioningState: Schema.optional(Schema.String),
+  datasourceAuthCredentials: Schema.optional(
+    Schema.suspend(() => AuthCredentialsSchema),
+  ),
+  validationType: Schema.optional(Schema.suspend(() => ValidationTypeSchema)),
+  identityDetails: Schema.optional(Schema.suspend(() => IdentityDetailsSchema)),
+  objectType: Schema.String,
+});
+const CrossRegionRestoreDetailsSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    sourceRegion: Schema.String,
+    sourceBackupInstanceId: Schema.String,
+  });
+const ResourceGuardSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  provisioningState: Schema.optional(
+    Schema.suspend(() => ProvisioningStateSchema),
+  ),
+  allowAutoApprovals: Schema.optional(Schema.Boolean),
+  resourceGuardOperations: Schema.optional(
+    Schema.Array(Schema.suspend(() => ResourceGuardOperationSchema)),
+  ),
+  vaultCriticalOperationExclusionList: Schema.optional(
+    Schema.Array(Schema.String),
+  ),
+  description: Schema.optional(Schema.String),
+});
+const ResourceGuardOperationSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  vaultCriticalOperation: Schema.optional(Schema.String),
+  requestResourceType: Schema.optional(Schema.String),
+});
+const DppBaseResourceSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+});
+
 // Input Schema
 export const BackupInstancesAdhocBackupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -15,12 +707,7 @@ export const BackupInstancesAdhocBackupInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vaultName: Schema.String.pipe(T.PathParam()),
     backupInstanceName: Schema.String.pipe(T.PathParam()),
-    backupRuleOptions: Schema.Struct({
-      ruleName: Schema.String,
-      triggerOption: Schema.Struct({
-        retentionTagOverride: Schema.optional(Schema.String),
-      }),
-    }),
+    backupRuleOptions: Schema.suspend(() => AdHocBackupRuleOptionsSchema),
   }).pipe(
     T.Http({
       method: "POST",
@@ -35,6 +722,7 @@ export type BackupInstancesAdhocBackupInput =
 // Output Schema
 export const BackupInstancesAdhocBackupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    jobId: Schema.optional(Schema.String),
     objectType: Schema.String,
   });
 export type BackupInstancesAdhocBackupOutput =
@@ -63,163 +751,7 @@ export const BackupInstancesCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vaultName: Schema.String.pipe(T.PathParam()),
     backupInstanceName: Schema.String.pipe(T.PathParam()),
-    properties: Schema.optional(
-      Schema.Struct({
-        friendlyName: Schema.optional(Schema.String),
-        dataSourceInfo: Schema.Struct({
-          datasourceType: Schema.optional(Schema.String),
-          objectType: Schema.optional(Schema.String),
-          resourceID: Schema.String,
-          resourceLocation: Schema.optional(Schema.String),
-          resourceName: Schema.optional(Schema.String),
-          resourceType: Schema.optional(Schema.String),
-          resourceUri: Schema.optional(Schema.String),
-          resourceProperties: Schema.optional(
-            Schema.Struct({
-              objectType: Schema.Literals(["DefaultResourceProperties"]),
-            }),
-          ),
-        }),
-        dataSourceSetInfo: Schema.optional(
-          Schema.Struct({
-            datasourceType: Schema.optional(Schema.String),
-            objectType: Schema.optional(Schema.String),
-            resourceID: Schema.String,
-            resourceLocation: Schema.optional(Schema.String),
-            resourceName: Schema.optional(Schema.String),
-            resourceType: Schema.optional(Schema.String),
-            resourceUri: Schema.optional(Schema.String),
-            resourceProperties: Schema.optional(
-              Schema.Struct({
-                objectType: Schema.Literals(["DefaultResourceProperties"]),
-              }),
-            ),
-          }),
-        ),
-        policyInfo: Schema.Struct({
-          policyId: Schema.String,
-          policyVersion: Schema.optional(Schema.String),
-          policyParameters: Schema.optional(
-            Schema.Struct({
-              dataStoreParametersList: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    objectType: Schema.String,
-                    dataStoreType: Schema.Literals([
-                      "OperationalStore",
-                      "VaultStore",
-                      "ArchiveStore",
-                    ]),
-                  }),
-                ),
-              ),
-              backupDatasourceParametersList: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    objectType: Schema.String,
-                  }),
-                ),
-              ),
-            }),
-          ),
-        }),
-        resourceGuardOperationRequests: Schema.optional(
-          Schema.Array(Schema.String),
-        ),
-        protectionStatus: Schema.optional(
-          Schema.Struct({
-            errorDetails: Schema.optional(
-              Schema.Struct({
-                code: Schema.optional(Schema.String),
-                details: Schema.optional(Schema.Array(Schema.Unknown)),
-                innerError: Schema.optional(
-                  Schema.Struct({
-                    additionalInfo: Schema.optional(
-                      Schema.Record(Schema.String, Schema.String),
-                    ),
-                    code: Schema.optional(Schema.String),
-                    embeddedInnerError: Schema.optional(Schema.Unknown),
-                  }),
-                ),
-                isRetryable: Schema.optional(Schema.Boolean),
-                isUserError: Schema.optional(Schema.Boolean),
-                properties: Schema.optional(
-                  Schema.Record(Schema.String, Schema.String),
-                ),
-                message: Schema.optional(Schema.String),
-                recommendedAction: Schema.optional(Schema.Array(Schema.String)),
-                target: Schema.optional(Schema.String),
-              }),
-            ),
-            status: Schema.optional(
-              Schema.Literals([
-                "ConfiguringProtection",
-                "ConfiguringProtectionFailed",
-                "ProtectionConfigured",
-                "ProtectionStopped",
-                "SoftDeleted",
-                "SoftDeleting",
-              ]),
-            ),
-          }),
-        ),
-        currentProtectionState: Schema.optional(
-          Schema.Literals([
-            "Invalid",
-            "NotProtected",
-            "ConfiguringProtection",
-            "ProtectionConfigured",
-            "BackupSchedulesSuspended",
-            "RetentionSchedulesSuspended",
-            "ProtectionStopped",
-            "ProtectionError",
-            "ConfiguringProtectionFailed",
-            "SoftDeleting",
-            "SoftDeleted",
-            "UpdatingProtection",
-          ]),
-        ),
-        protectionErrorDetails: Schema.optional(
-          Schema.Struct({
-            code: Schema.optional(Schema.String),
-            details: Schema.optional(Schema.Array(Schema.Unknown)),
-            innerError: Schema.optional(
-              Schema.Struct({
-                additionalInfo: Schema.optional(
-                  Schema.Record(Schema.String, Schema.String),
-                ),
-                code: Schema.optional(Schema.String),
-                embeddedInnerError: Schema.optional(Schema.Unknown),
-              }),
-            ),
-            isRetryable: Schema.optional(Schema.Boolean),
-            isUserError: Schema.optional(Schema.Boolean),
-            properties: Schema.optional(
-              Schema.Record(Schema.String, Schema.String),
-            ),
-            message: Schema.optional(Schema.String),
-            recommendedAction: Schema.optional(Schema.Array(Schema.String)),
-            target: Schema.optional(Schema.String),
-          }),
-        ),
-        provisioningState: Schema.optional(Schema.String),
-        datasourceAuthCredentials: Schema.optional(
-          Schema.Struct({
-            objectType: Schema.String,
-          }),
-        ),
-        validationType: Schema.optional(
-          Schema.Literals(["ShallowValidation", "DeepValidation"]),
-        ),
-        identityDetails: Schema.optional(
-          Schema.Struct({
-            useSystemAssignedIdentity: Schema.optional(Schema.Boolean),
-            userAssignedIdentityArmUrl: Schema.optional(Schema.String),
-          }),
-        ),
-        objectType: Schema.String,
-      }),
-    ),
+    properties: Schema.optional(Schema.suspend(() => BackupInstanceSchema)),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
@@ -235,23 +767,12 @@ export type BackupInstancesCreateOrUpdateInput =
 // Output Schema
 export const BackupInstancesCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(Schema.suspend(() => BackupInstanceSchema)),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type BackupInstancesCreateOrUpdateOutput =
   typeof BackupInstancesCreateOrUpdateOutput.Type;
@@ -327,6 +848,9 @@ export type BackupInstancesExtensionRoutingListInput =
 // Output Schema
 export const BackupInstancesExtensionRoutingListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    value: Schema.optional(
+      Schema.Array(Schema.suspend(() => BackupInstanceResourceSchema)),
+    ),
     nextLink: Schema.optional(Schema.String),
   });
 export type BackupInstancesExtensionRoutingListOutput =
@@ -363,23 +887,12 @@ export type BackupInstancesGetInput = typeof BackupInstancesGetInput.Type;
 // Output Schema
 export const BackupInstancesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(Schema.suspend(() => BackupInstanceSchema)),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type BackupInstancesGetOutput = typeof BackupInstancesGetOutput.Type;
 
@@ -418,23 +931,12 @@ export type BackupInstancesGetBackupInstanceOperationResultInput =
 // Output Schema
 export const BackupInstancesGetBackupInstanceOperationResultOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(Schema.suspend(() => BackupInstanceSchema)),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type BackupInstancesGetBackupInstanceOperationResultOutput =
   typeof BackupInstancesGetBackupInstanceOperationResultOutput.Type;
@@ -473,6 +975,9 @@ export type BackupInstancesListInput = typeof BackupInstancesListInput.Type;
 // Output Schema
 export const BackupInstancesListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    value: Schema.optional(
+      Schema.Array(Schema.suspend(() => BackupInstanceResourceSchema)),
+    ),
     nextLink: Schema.optional(Schema.String),
   });
 export type BackupInstancesListOutput = typeof BackupInstancesListOutput.Type;
@@ -659,7 +1164,7 @@ export const BackupInstancesSyncBackupInstanceInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vaultName: Schema.String.pipe(T.PathParam()),
     backupInstanceName: Schema.String.pipe(T.PathParam()),
-    syncType: Schema.optional(Schema.Literals(["Default", "ForceResync"])),
+    syncType: Schema.optional(Schema.suspend(() => SyncTypeSchema)),
   }).pipe(
     T.Http({
       method: "POST",
@@ -699,34 +1204,10 @@ export const BackupInstancesTriggerCrossRegionRestoreInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
-    restoreRequestObject: Schema.Struct({
-      objectType: Schema.String,
-      restoreTargetInfo: Schema.Struct({
-        objectType: Schema.String,
-        recoveryOption: Schema.Literals(["FailIfExists"]),
-        restoreLocation: Schema.optional(Schema.String),
-      }),
-      sourceDataStoreType: Schema.Literals([
-        "ArchiveStore",
-        "SnapshotStore",
-        "OperationalStore",
-        "VaultStore",
-      ]),
-      sourceResourceId: Schema.optional(Schema.String),
-      resourceGuardOperationRequests: Schema.optional(
-        Schema.Array(Schema.String),
-      ),
-      identityDetails: Schema.optional(
-        Schema.Struct({
-          useSystemAssignedIdentity: Schema.optional(Schema.Boolean),
-          userAssignedIdentityArmUrl: Schema.optional(Schema.String),
-        }),
-      ),
-    }),
-    crossRegionRestoreDetails: Schema.Struct({
-      sourceRegion: Schema.String,
-      sourceBackupInstanceId: Schema.String,
-    }),
+    restoreRequestObject: Schema.suspend(() => AzureBackupRestoreRequestSchema),
+    crossRegionRestoreDetails: Schema.suspend(
+      () => CrossRegionRestoreDetailsSchema,
+    ),
   }).pipe(
     T.Http({
       method: "POST",
@@ -741,6 +1222,7 @@ export type BackupInstancesTriggerCrossRegionRestoreInput =
 // Output Schema
 export const BackupInstancesTriggerCrossRegionRestoreOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    jobId: Schema.optional(Schema.String),
     objectType: Schema.String,
   });
 export type BackupInstancesTriggerCrossRegionRestoreOutput =
@@ -769,7 +1251,7 @@ export const BackupInstancesTriggerRehydrateInput =
     backupInstanceName: Schema.String.pipe(T.PathParam()),
     recoveryPointId: Schema.String,
     rehydrationPriority: Schema.optional(
-      Schema.Literals(["Invalid", "High", "Standard"]),
+      Schema.suspend(() => RehydrationPrioritySchema),
     ),
     rehydrationRetentionDuration: Schema.String,
   }).pipe(
@@ -812,26 +1294,14 @@ export const BackupInstancesTriggerRestoreInput =
     vaultName: Schema.String.pipe(T.PathParam()),
     backupInstanceName: Schema.String.pipe(T.PathParam()),
     objectType: Schema.String,
-    restoreTargetInfo: Schema.Struct({
-      objectType: Schema.String,
-      recoveryOption: Schema.Literals(["FailIfExists"]),
-      restoreLocation: Schema.optional(Schema.String),
-    }),
-    sourceDataStoreType: Schema.Literals([
-      "ArchiveStore",
-      "SnapshotStore",
-      "OperationalStore",
-      "VaultStore",
-    ]),
+    restoreTargetInfo: Schema.suspend(() => RestoreTargetInfoBaseSchema),
+    sourceDataStoreType: Schema.suspend(() => SourceDataStoreTypeSchema),
     sourceResourceId: Schema.optional(Schema.String),
     resourceGuardOperationRequests: Schema.optional(
       Schema.Array(Schema.String),
     ),
     identityDetails: Schema.optional(
-      Schema.Struct({
-        useSystemAssignedIdentity: Schema.optional(Schema.Boolean),
-        userAssignedIdentityArmUrl: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(() => IdentityDetailsSchema),
     ),
   }).pipe(
     T.Http({
@@ -847,6 +1317,7 @@ export type BackupInstancesTriggerRestoreInput =
 // Output Schema
 export const BackupInstancesTriggerRestoreOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    jobId: Schema.optional(Schema.String),
     objectType: Schema.String,
   });
 export type BackupInstancesTriggerRestoreOutput =
@@ -873,34 +1344,10 @@ export const BackupInstancesValidateCrossRegionRestoreInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
-    restoreRequestObject: Schema.Struct({
-      objectType: Schema.String,
-      restoreTargetInfo: Schema.Struct({
-        objectType: Schema.String,
-        recoveryOption: Schema.Literals(["FailIfExists"]),
-        restoreLocation: Schema.optional(Schema.String),
-      }),
-      sourceDataStoreType: Schema.Literals([
-        "ArchiveStore",
-        "SnapshotStore",
-        "OperationalStore",
-        "VaultStore",
-      ]),
-      sourceResourceId: Schema.optional(Schema.String),
-      resourceGuardOperationRequests: Schema.optional(
-        Schema.Array(Schema.String),
-      ),
-      identityDetails: Schema.optional(
-        Schema.Struct({
-          useSystemAssignedIdentity: Schema.optional(Schema.Boolean),
-          userAssignedIdentityArmUrl: Schema.optional(Schema.String),
-        }),
-      ),
-    }),
-    crossRegionRestoreDetails: Schema.Struct({
-      sourceRegion: Schema.String,
-      sourceBackupInstanceId: Schema.String,
-    }),
+    restoreRequestObject: Schema.suspend(() => AzureBackupRestoreRequestSchema),
+    crossRegionRestoreDetails: Schema.suspend(
+      () => CrossRegionRestoreDetailsSchema,
+    ),
   }).pipe(
     T.Http({
       method: "POST",
@@ -915,6 +1362,7 @@ export type BackupInstancesValidateCrossRegionRestoreInput =
 // Output Schema
 export const BackupInstancesValidateCrossRegionRestoreOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    jobId: Schema.optional(Schema.String),
     objectType: Schema.String,
   });
 export type BackupInstancesValidateCrossRegionRestoreOutput =
@@ -940,161 +1388,7 @@ export const BackupInstancesValidateForBackupInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vaultName: Schema.String.pipe(T.PathParam()),
-    backupInstance: Schema.Struct({
-      friendlyName: Schema.optional(Schema.String),
-      dataSourceInfo: Schema.Struct({
-        datasourceType: Schema.optional(Schema.String),
-        objectType: Schema.optional(Schema.String),
-        resourceID: Schema.String,
-        resourceLocation: Schema.optional(Schema.String),
-        resourceName: Schema.optional(Schema.String),
-        resourceType: Schema.optional(Schema.String),
-        resourceUri: Schema.optional(Schema.String),
-        resourceProperties: Schema.optional(
-          Schema.Struct({
-            objectType: Schema.Literals(["DefaultResourceProperties"]),
-          }),
-        ),
-      }),
-      dataSourceSetInfo: Schema.optional(
-        Schema.Struct({
-          datasourceType: Schema.optional(Schema.String),
-          objectType: Schema.optional(Schema.String),
-          resourceID: Schema.String,
-          resourceLocation: Schema.optional(Schema.String),
-          resourceName: Schema.optional(Schema.String),
-          resourceType: Schema.optional(Schema.String),
-          resourceUri: Schema.optional(Schema.String),
-          resourceProperties: Schema.optional(
-            Schema.Struct({
-              objectType: Schema.Literals(["DefaultResourceProperties"]),
-            }),
-          ),
-        }),
-      ),
-      policyInfo: Schema.Struct({
-        policyId: Schema.String,
-        policyVersion: Schema.optional(Schema.String),
-        policyParameters: Schema.optional(
-          Schema.Struct({
-            dataStoreParametersList: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  objectType: Schema.String,
-                  dataStoreType: Schema.Literals([
-                    "OperationalStore",
-                    "VaultStore",
-                    "ArchiveStore",
-                  ]),
-                }),
-              ),
-            ),
-            backupDatasourceParametersList: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  objectType: Schema.String,
-                }),
-              ),
-            ),
-          }),
-        ),
-      }),
-      resourceGuardOperationRequests: Schema.optional(
-        Schema.Array(Schema.String),
-      ),
-      protectionStatus: Schema.optional(
-        Schema.Struct({
-          errorDetails: Schema.optional(
-            Schema.Struct({
-              code: Schema.optional(Schema.String),
-              details: Schema.optional(Schema.Array(Schema.Unknown)),
-              innerError: Schema.optional(
-                Schema.Struct({
-                  additionalInfo: Schema.optional(
-                    Schema.Record(Schema.String, Schema.String),
-                  ),
-                  code: Schema.optional(Schema.String),
-                  embeddedInnerError: Schema.optional(Schema.Unknown),
-                }),
-              ),
-              isRetryable: Schema.optional(Schema.Boolean),
-              isUserError: Schema.optional(Schema.Boolean),
-              properties: Schema.optional(
-                Schema.Record(Schema.String, Schema.String),
-              ),
-              message: Schema.optional(Schema.String),
-              recommendedAction: Schema.optional(Schema.Array(Schema.String)),
-              target: Schema.optional(Schema.String),
-            }),
-          ),
-          status: Schema.optional(
-            Schema.Literals([
-              "ConfiguringProtection",
-              "ConfiguringProtectionFailed",
-              "ProtectionConfigured",
-              "ProtectionStopped",
-              "SoftDeleted",
-              "SoftDeleting",
-            ]),
-          ),
-        }),
-      ),
-      currentProtectionState: Schema.optional(
-        Schema.Literals([
-          "Invalid",
-          "NotProtected",
-          "ConfiguringProtection",
-          "ProtectionConfigured",
-          "BackupSchedulesSuspended",
-          "RetentionSchedulesSuspended",
-          "ProtectionStopped",
-          "ProtectionError",
-          "ConfiguringProtectionFailed",
-          "SoftDeleting",
-          "SoftDeleted",
-          "UpdatingProtection",
-        ]),
-      ),
-      protectionErrorDetails: Schema.optional(
-        Schema.Struct({
-          code: Schema.optional(Schema.String),
-          details: Schema.optional(Schema.Array(Schema.Unknown)),
-          innerError: Schema.optional(
-            Schema.Struct({
-              additionalInfo: Schema.optional(
-                Schema.Record(Schema.String, Schema.String),
-              ),
-              code: Schema.optional(Schema.String),
-              embeddedInnerError: Schema.optional(Schema.Unknown),
-            }),
-          ),
-          isRetryable: Schema.optional(Schema.Boolean),
-          isUserError: Schema.optional(Schema.Boolean),
-          properties: Schema.optional(
-            Schema.Record(Schema.String, Schema.String),
-          ),
-          message: Schema.optional(Schema.String),
-          recommendedAction: Schema.optional(Schema.Array(Schema.String)),
-          target: Schema.optional(Schema.String),
-        }),
-      ),
-      provisioningState: Schema.optional(Schema.String),
-      datasourceAuthCredentials: Schema.optional(
-        Schema.Struct({
-          objectType: Schema.String,
-        }),
-      ),
-      validationType: Schema.optional(
-        Schema.Literals(["ShallowValidation", "DeepValidation"]),
-      ),
-      identityDetails: Schema.optional(
-        Schema.Struct({
-          useSystemAssignedIdentity: Schema.optional(Schema.Boolean),
-          userAssignedIdentityArmUrl: Schema.optional(Schema.String),
-        }),
-      ),
-      objectType: Schema.String,
-    }),
+    backupInstance: Schema.suspend(() => BackupInstanceSchema),
   }).pipe(
     T.Http({
       method: "POST",
@@ -1109,6 +1403,7 @@ export type BackupInstancesValidateForBackupInput =
 // Output Schema
 export const BackupInstancesValidateForBackupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    jobId: Schema.optional(Schema.String),
     objectType: Schema.String,
   });
 export type BackupInstancesValidateForBackupOutput =
@@ -1135,161 +1430,7 @@ export const BackupInstancesValidateForModifyBackupInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vaultName: Schema.String.pipe(T.PathParam()),
     backupInstanceName: Schema.String.pipe(T.PathParam()),
-    backupInstance: Schema.Struct({
-      friendlyName: Schema.optional(Schema.String),
-      dataSourceInfo: Schema.Struct({
-        datasourceType: Schema.optional(Schema.String),
-        objectType: Schema.optional(Schema.String),
-        resourceID: Schema.String,
-        resourceLocation: Schema.optional(Schema.String),
-        resourceName: Schema.optional(Schema.String),
-        resourceType: Schema.optional(Schema.String),
-        resourceUri: Schema.optional(Schema.String),
-        resourceProperties: Schema.optional(
-          Schema.Struct({
-            objectType: Schema.Literals(["DefaultResourceProperties"]),
-          }),
-        ),
-      }),
-      dataSourceSetInfo: Schema.optional(
-        Schema.Struct({
-          datasourceType: Schema.optional(Schema.String),
-          objectType: Schema.optional(Schema.String),
-          resourceID: Schema.String,
-          resourceLocation: Schema.optional(Schema.String),
-          resourceName: Schema.optional(Schema.String),
-          resourceType: Schema.optional(Schema.String),
-          resourceUri: Schema.optional(Schema.String),
-          resourceProperties: Schema.optional(
-            Schema.Struct({
-              objectType: Schema.Literals(["DefaultResourceProperties"]),
-            }),
-          ),
-        }),
-      ),
-      policyInfo: Schema.Struct({
-        policyId: Schema.String,
-        policyVersion: Schema.optional(Schema.String),
-        policyParameters: Schema.optional(
-          Schema.Struct({
-            dataStoreParametersList: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  objectType: Schema.String,
-                  dataStoreType: Schema.Literals([
-                    "OperationalStore",
-                    "VaultStore",
-                    "ArchiveStore",
-                  ]),
-                }),
-              ),
-            ),
-            backupDatasourceParametersList: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  objectType: Schema.String,
-                }),
-              ),
-            ),
-          }),
-        ),
-      }),
-      resourceGuardOperationRequests: Schema.optional(
-        Schema.Array(Schema.String),
-      ),
-      protectionStatus: Schema.optional(
-        Schema.Struct({
-          errorDetails: Schema.optional(
-            Schema.Struct({
-              code: Schema.optional(Schema.String),
-              details: Schema.optional(Schema.Array(Schema.Unknown)),
-              innerError: Schema.optional(
-                Schema.Struct({
-                  additionalInfo: Schema.optional(
-                    Schema.Record(Schema.String, Schema.String),
-                  ),
-                  code: Schema.optional(Schema.String),
-                  embeddedInnerError: Schema.optional(Schema.Unknown),
-                }),
-              ),
-              isRetryable: Schema.optional(Schema.Boolean),
-              isUserError: Schema.optional(Schema.Boolean),
-              properties: Schema.optional(
-                Schema.Record(Schema.String, Schema.String),
-              ),
-              message: Schema.optional(Schema.String),
-              recommendedAction: Schema.optional(Schema.Array(Schema.String)),
-              target: Schema.optional(Schema.String),
-            }),
-          ),
-          status: Schema.optional(
-            Schema.Literals([
-              "ConfiguringProtection",
-              "ConfiguringProtectionFailed",
-              "ProtectionConfigured",
-              "ProtectionStopped",
-              "SoftDeleted",
-              "SoftDeleting",
-            ]),
-          ),
-        }),
-      ),
-      currentProtectionState: Schema.optional(
-        Schema.Literals([
-          "Invalid",
-          "NotProtected",
-          "ConfiguringProtection",
-          "ProtectionConfigured",
-          "BackupSchedulesSuspended",
-          "RetentionSchedulesSuspended",
-          "ProtectionStopped",
-          "ProtectionError",
-          "ConfiguringProtectionFailed",
-          "SoftDeleting",
-          "SoftDeleted",
-          "UpdatingProtection",
-        ]),
-      ),
-      protectionErrorDetails: Schema.optional(
-        Schema.Struct({
-          code: Schema.optional(Schema.String),
-          details: Schema.optional(Schema.Array(Schema.Unknown)),
-          innerError: Schema.optional(
-            Schema.Struct({
-              additionalInfo: Schema.optional(
-                Schema.Record(Schema.String, Schema.String),
-              ),
-              code: Schema.optional(Schema.String),
-              embeddedInnerError: Schema.optional(Schema.Unknown),
-            }),
-          ),
-          isRetryable: Schema.optional(Schema.Boolean),
-          isUserError: Schema.optional(Schema.Boolean),
-          properties: Schema.optional(
-            Schema.Record(Schema.String, Schema.String),
-          ),
-          message: Schema.optional(Schema.String),
-          recommendedAction: Schema.optional(Schema.Array(Schema.String)),
-          target: Schema.optional(Schema.String),
-        }),
-      ),
-      provisioningState: Schema.optional(Schema.String),
-      datasourceAuthCredentials: Schema.optional(
-        Schema.Struct({
-          objectType: Schema.String,
-        }),
-      ),
-      validationType: Schema.optional(
-        Schema.Literals(["ShallowValidation", "DeepValidation"]),
-      ),
-      identityDetails: Schema.optional(
-        Schema.Struct({
-          useSystemAssignedIdentity: Schema.optional(Schema.Boolean),
-          userAssignedIdentityArmUrl: Schema.optional(Schema.String),
-        }),
-      ),
-      objectType: Schema.String,
-    }),
+    backupInstance: Schema.suspend(() => BackupInstanceSchema),
   }).pipe(
     T.Http({
       method: "POST",
@@ -1329,30 +1470,7 @@ export const BackupInstancesValidateForRestoreInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vaultName: Schema.String.pipe(T.PathParam()),
     backupInstanceName: Schema.String.pipe(T.PathParam()),
-    restoreRequestObject: Schema.Struct({
-      objectType: Schema.String,
-      restoreTargetInfo: Schema.Struct({
-        objectType: Schema.String,
-        recoveryOption: Schema.Literals(["FailIfExists"]),
-        restoreLocation: Schema.optional(Schema.String),
-      }),
-      sourceDataStoreType: Schema.Literals([
-        "ArchiveStore",
-        "SnapshotStore",
-        "OperationalStore",
-        "VaultStore",
-      ]),
-      sourceResourceId: Schema.optional(Schema.String),
-      resourceGuardOperationRequests: Schema.optional(
-        Schema.Array(Schema.String),
-      ),
-      identityDetails: Schema.optional(
-        Schema.Struct({
-          useSystemAssignedIdentity: Schema.optional(Schema.Boolean),
-          userAssignedIdentityArmUrl: Schema.optional(Schema.String),
-        }),
-      ),
-    }),
+    restoreRequestObject: Schema.suspend(() => AzureBackupRestoreRequestSchema),
   }).pipe(
     T.Http({
       method: "POST",
@@ -1367,6 +1485,7 @@ export type BackupInstancesValidateForRestoreInput =
 // Output Schema
 export const BackupInstancesValidateForRestoreOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    jobId: Schema.optional(Schema.String),
     objectType: Schema.String,
   });
 export type BackupInstancesValidateForRestoreOutput =
@@ -1394,12 +1513,7 @@ export const BackupPoliciesCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vaultName: Schema.String.pipe(T.PathParam()),
     backupPolicyName: Schema.String.pipe(T.PathParam()),
-    properties: Schema.optional(
-      Schema.Struct({
-        datasourceTypes: Schema.Array(Schema.String),
-        objectType: Schema.String,
-      }),
-    ),
+    properties: Schema.optional(Schema.suspend(() => BaseBackupPolicySchema)),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -1413,23 +1527,11 @@ export type BackupPoliciesCreateOrUpdateInput =
 // Output Schema
 export const BackupPoliciesCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(Schema.suspend(() => BaseBackupPolicySchema)),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type BackupPoliciesCreateOrUpdateOutput =
   typeof BackupPoliciesCreateOrUpdateOutput.Type;
@@ -1504,23 +1606,11 @@ export type BackupPoliciesGetInput = typeof BackupPoliciesGetInput.Type;
 // Output Schema
 export const BackupPoliciesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(Schema.suspend(() => BaseBackupPolicySchema)),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type BackupPoliciesGetOutput = typeof BackupPoliciesGetOutput.Type;
 
@@ -1555,6 +1645,9 @@ export type BackupPoliciesListInput = typeof BackupPoliciesListInput.Type;
 // Output Schema
 export const BackupPoliciesListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    value: Schema.optional(
+      Schema.Array(Schema.suspend(() => BaseBackupPolicyResourceSchema)),
+    ),
     nextLink: Schema.optional(Schema.String),
   });
 export type BackupPoliciesListOutput = typeof BackupPoliciesListOutput.Type;
@@ -1592,23 +1685,15 @@ export type BackupVaultOperationResultsGetInput =
 // Output Schema
 export const BackupVaultOperationResultsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.suspend(() => BackupVaultSchema),
+    identity: Schema.optional(Schema.suspend(() => DppIdentityDetailsSchema)),
+    eTag: Schema.optional(Schema.String),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type BackupVaultOperationResultsGetOutput =
   typeof BackupVaultOperationResultsGetOutput.Type;
@@ -1676,162 +1761,8 @@ export const BackupVaultsCreateOrUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vaultName: Schema.String.pipe(T.PathParam()),
-    properties: Schema.Struct({
-      monitoringSettings: Schema.optional(
-        Schema.Struct({
-          azureMonitorAlertSettings: Schema.optional(
-            Schema.Struct({
-              alertsForAllJobFailures: Schema.optional(
-                Schema.Literals(["Enabled", "Disabled"]),
-              ),
-            }),
-          ),
-        }),
-      ),
-      provisioningState: Schema.optional(
-        Schema.Literals([
-          "Failed",
-          "Provisioning",
-          "Succeeded",
-          "Unknown",
-          "Updating",
-        ]),
-      ),
-      resourceMoveState: Schema.optional(
-        Schema.Literals([
-          "Unknown",
-          "InProgress",
-          "PrepareFailed",
-          "CommitFailed",
-          "Failed",
-          "PrepareTimedout",
-          "CommitTimedout",
-          "CriticalFailure",
-          "PartialSuccess",
-          "MoveSucceeded",
-        ]),
-      ),
-      resourceMoveDetails: Schema.optional(
-        Schema.Struct({
-          operationId: Schema.optional(Schema.String),
-          startTimeUtc: Schema.optional(Schema.String),
-          completionTimeUtc: Schema.optional(Schema.String),
-          sourceResourcePath: Schema.optional(Schema.String),
-          targetResourcePath: Schema.optional(Schema.String),
-        }),
-      ),
-      securitySettings: Schema.optional(
-        Schema.Struct({
-          softDeleteSettings: Schema.optional(
-            Schema.Struct({
-              state: Schema.optional(
-                Schema.Literals(["Off", "On", "AlwaysOn"]),
-              ),
-              retentionDurationInDays: Schema.optional(Schema.Number),
-            }),
-          ),
-          immutabilitySettings: Schema.optional(
-            Schema.Struct({
-              state: Schema.optional(
-                Schema.Literals(["Disabled", "Unlocked", "Locked"]),
-              ),
-            }),
-          ),
-          encryptionSettings: Schema.optional(
-            Schema.Struct({
-              state: Schema.optional(
-                Schema.Literals(["Enabled", "Disabled", "Inconsistent"]),
-              ),
-              keyVaultProperties: Schema.optional(
-                Schema.Struct({
-                  keyUri: Schema.optional(Schema.String),
-                }),
-              ),
-              kekIdentity: Schema.optional(
-                Schema.Struct({
-                  identityType: Schema.optional(
-                    Schema.Literals(["SystemAssigned", "UserAssigned"]),
-                  ),
-                  identityId: Schema.optional(Schema.String),
-                }),
-              ),
-              infrastructureEncryption: Schema.optional(
-                Schema.Literals(["Enabled", "Disabled"]),
-              ),
-            }),
-          ),
-        }),
-      ),
-      storageSettings: Schema.optional(
-        Schema.Array(
-          Schema.Struct({
-            datastoreType: Schema.optional(
-              Schema.Literals([
-                "ArchiveStore",
-                "OperationalStore",
-                "VaultStore",
-              ]),
-            ),
-            type: Schema.optional(
-              Schema.Literals([
-                "GeoRedundant",
-                "LocallyRedundant",
-                "ZoneRedundant",
-              ]),
-            ),
-          }),
-        ),
-      ),
-      isVaultProtectedByResourceGuard: Schema.optional(Schema.Boolean),
-      featureSettings: Schema.optional(
-        Schema.Struct({
-          crossSubscriptionRestoreSettings: Schema.optional(
-            Schema.Struct({
-              state: Schema.optional(
-                Schema.Literals(["Disabled", "PermanentlyDisabled", "Enabled"]),
-              ),
-            }),
-          ),
-          crossRegionRestoreSettings: Schema.optional(
-            Schema.Struct({
-              state: Schema.optional(Schema.Literals(["Disabled", "Enabled"])),
-            }),
-          ),
-        }),
-      ),
-      secureScore: Schema.optional(
-        Schema.Literals([
-          "None",
-          "Minimum",
-          "Adequate",
-          "Maximum",
-          "NotSupported",
-        ]),
-      ),
-      bcdrSecurityLevel: Schema.optional(
-        Schema.Literals(["Poor", "Fair", "Good", "Excellent", "NotSupported"]),
-      ),
-      resourceGuardOperationRequests: Schema.optional(
-        Schema.Array(Schema.String),
-      ),
-      replicatedRegions: Schema.optional(Schema.Array(Schema.String)),
-    }),
-    identity: Schema.optional(
-      Schema.Struct({
-        principalId: Schema.optional(Schema.String),
-        tenantId: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        userAssignedIdentities: Schema.optional(
-          Schema.Record(
-            Schema.String,
-            Schema.Struct({
-              principalId: Schema.optional(Schema.String),
-              clientId: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-      }),
-    ),
+    properties: Schema.suspend(() => BackupVaultSchema),
+    identity: Schema.optional(Schema.suspend(() => DppIdentityDetailsSchema)),
     eTag: Schema.optional(Schema.String),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     location: Schema.String,
@@ -1849,23 +1780,15 @@ export type BackupVaultsCreateOrUpdateInput =
 // Output Schema
 export const BackupVaultsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.suspend(() => BackupVaultSchema),
+    identity: Schema.optional(Schema.suspend(() => DppIdentityDetailsSchema)),
+    eTag: Schema.optional(Schema.String),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type BackupVaultsCreateOrUpdateOutput =
   typeof BackupVaultsCreateOrUpdateOutput.Type;
@@ -1935,23 +1858,15 @@ export type BackupVaultsGetInput = typeof BackupVaultsGetInput.Type;
 
 // Output Schema
 export const BackupVaultsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.suspend(() => BackupVaultSchema),
+  identity: Schema.optional(Schema.suspend(() => DppIdentityDetailsSchema)),
+  eTag: Schema.optional(Schema.String),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  location: Schema.String,
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
-  systemData: Schema.optional(
-    Schema.Struct({
-      createdBy: Schema.optional(Schema.String),
-      createdByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      createdAt: Schema.optional(Schema.String),
-      lastModifiedBy: Schema.optional(Schema.String),
-      lastModifiedByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      lastModifiedAt: Schema.optional(Schema.String),
-    }),
-  ),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
 });
 export type BackupVaultsGetOutput = typeof BackupVaultsGetOutput.Type;
 
@@ -1986,6 +1901,9 @@ export type BackupVaultsGetInResourceGroupInput =
 // Output Schema
 export const BackupVaultsGetInResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    value: Schema.optional(
+      Schema.Array(Schema.suspend(() => BackupVaultResourceSchema)),
+    ),
     nextLink: Schema.optional(Schema.String),
   });
 export type BackupVaultsGetInResourceGroupOutput =
@@ -2021,6 +1939,9 @@ export type BackupVaultsGetInSubscriptionInput =
 // Output Schema
 export const BackupVaultsGetInSubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    value: Schema.optional(
+      Schema.Array(Schema.suspend(() => BackupVaultResourceSchema)),
+    ),
     nextLink: Schema.optional(Schema.String),
   });
 export type BackupVaultsGetInSubscriptionOutput =
@@ -2044,103 +1965,9 @@ export const BackupVaultsUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vaultName: Schema.String.pipe(T.PathParam()),
-    identity: Schema.optional(
-      Schema.Struct({
-        principalId: Schema.optional(Schema.String),
-        tenantId: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        userAssignedIdentities: Schema.optional(
-          Schema.Record(
-            Schema.String,
-            Schema.Struct({
-              principalId: Schema.optional(Schema.String),
-              clientId: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-      }),
-    ),
+    identity: Schema.optional(Schema.suspend(() => DppIdentityDetailsSchema)),
     properties: Schema.optional(
-      Schema.Struct({
-        monitoringSettings: Schema.optional(
-          Schema.Struct({
-            azureMonitorAlertSettings: Schema.optional(
-              Schema.Struct({
-                alertsForAllJobFailures: Schema.optional(
-                  Schema.Literals(["Enabled", "Disabled"]),
-                ),
-              }),
-            ),
-          }),
-        ),
-        securitySettings: Schema.optional(
-          Schema.Struct({
-            softDeleteSettings: Schema.optional(
-              Schema.Struct({
-                state: Schema.optional(
-                  Schema.Literals(["Off", "On", "AlwaysOn"]),
-                ),
-                retentionDurationInDays: Schema.optional(Schema.Number),
-              }),
-            ),
-            immutabilitySettings: Schema.optional(
-              Schema.Struct({
-                state: Schema.optional(
-                  Schema.Literals(["Disabled", "Unlocked", "Locked"]),
-                ),
-              }),
-            ),
-            encryptionSettings: Schema.optional(
-              Schema.Struct({
-                state: Schema.optional(
-                  Schema.Literals(["Enabled", "Disabled", "Inconsistent"]),
-                ),
-                keyVaultProperties: Schema.optional(
-                  Schema.Struct({
-                    keyUri: Schema.optional(Schema.String),
-                  }),
-                ),
-                kekIdentity: Schema.optional(
-                  Schema.Struct({
-                    identityType: Schema.optional(
-                      Schema.Literals(["SystemAssigned", "UserAssigned"]),
-                    ),
-                    identityId: Schema.optional(Schema.String),
-                  }),
-                ),
-                infrastructureEncryption: Schema.optional(
-                  Schema.Literals(["Enabled", "Disabled"]),
-                ),
-              }),
-            ),
-          }),
-        ),
-        featureSettings: Schema.optional(
-          Schema.Struct({
-            crossSubscriptionRestoreSettings: Schema.optional(
-              Schema.Struct({
-                state: Schema.optional(
-                  Schema.Literals([
-                    "Disabled",
-                    "PermanentlyDisabled",
-                    "Enabled",
-                  ]),
-                ),
-              }),
-            ),
-            crossRegionRestoreSettings: Schema.optional(
-              Schema.Struct({
-                state: Schema.optional(
-                  Schema.Literals(["Disabled", "Enabled"]),
-                ),
-              }),
-            ),
-          }),
-        ),
-        resourceGuardOperationRequests: Schema.optional(
-          Schema.Array(Schema.String),
-        ),
-      }),
+      Schema.suspend(() => PatchBackupVaultInputSchema),
     ),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
@@ -2156,23 +1983,15 @@ export type BackupVaultsUpdateInput = typeof BackupVaultsUpdateInput.Type;
 // Output Schema
 export const BackupVaultsUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.suspend(() => BackupVaultSchema),
+    identity: Schema.optional(Schema.suspend(() => DppIdentityDetailsSchema)),
+    eTag: Schema.optional(Schema.String),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type BackupVaultsUpdateOutput = typeof BackupVaultsUpdateOutput.Type;
 
@@ -2241,26 +2060,7 @@ export type DataProtectionOperationsListInput =
 // Output Schema
 export const DataProtectionOperationsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          name: Schema.optional(Schema.String),
-          isDataAction: Schema.optional(Schema.Boolean),
-          display: Schema.optional(
-            Schema.Struct({
-              provider: Schema.optional(Schema.String),
-              resource: Schema.optional(Schema.String),
-              operation: Schema.optional(Schema.String),
-              description: Schema.optional(Schema.String),
-            }),
-          ),
-          origin: Schema.optional(
-            Schema.Literals(["user", "system", "user,system"]),
-          ),
-          actionType: Schema.optional(Schema.Literals(["Internal"])),
-        }),
-      ),
-    ),
+    value: Schema.optional(Schema.Array(Schema.suspend(() => OperationSchema))),
     nextLink: Schema.optional(Schema.String),
   });
 export type DataProtectionOperationsListOutput =
@@ -2297,23 +2097,13 @@ export type DeletedBackupInstancesGetInput =
 // Output Schema
 export const DeletedBackupInstancesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => DeletedBackupInstanceSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type DeletedBackupInstancesGetOutput =
   typeof DeletedBackupInstancesGetOutput.Type;
@@ -2353,6 +2143,9 @@ export type DeletedBackupInstancesListInput =
 // Output Schema
 export const DeletedBackupInstancesListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    value: Schema.optional(
+      Schema.Array(Schema.suspend(() => DeletedBackupInstanceResourceSchema)),
+    ),
     nextLink: Schema.optional(Schema.String),
   });
 export type DeletedBackupInstancesListOutput =
@@ -2431,23 +2224,11 @@ export type DeletedBackupVaultsGetInput =
 // Output Schema
 export const DeletedBackupVaultsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(Schema.suspend(() => DeletedBackupVaultSchema)),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type DeletedBackupVaultsGetOutput =
   typeof DeletedBackupVaultsGetOutput.Type;
@@ -2485,37 +2266,7 @@ export type DeletedBackupVaultsListByLocationInput =
 // Output Schema
 export const DeletedBackupVaultsListByLocationOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => DeletedBackupVaultResourceSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type DeletedBackupVaultsListByLocationOutput =
@@ -2542,19 +2293,7 @@ export const DppResourceGuardProxyCreateOrUpdateInput =
     vaultName: Schema.String.pipe(T.PathParam()),
     resourceGuardProxyName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        resourceGuardResourceId: Schema.optional(Schema.String),
-        resourceGuardOperationDetails: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              vaultCriticalOperation: Schema.optional(Schema.String),
-              defaultResourceRequest: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        lastUpdatedTime: Schema.optional(Schema.String),
-        description: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(() => ResourceGuardProxyBaseSchema),
     ),
   }).pipe(
     T.Http({
@@ -2569,23 +2308,13 @@ export type DppResourceGuardProxyCreateOrUpdateInput =
 // Output Schema
 export const DppResourceGuardProxyCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => ResourceGuardProxyBaseSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type DppResourceGuardProxyCreateOrUpdateOutput =
   typeof DppResourceGuardProxyCreateOrUpdateOutput.Type;
@@ -2664,23 +2393,13 @@ export type DppResourceGuardProxyGetInput =
 // Output Schema
 export const DppResourceGuardProxyGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => ResourceGuardProxyBaseSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type DppResourceGuardProxyGetOutput =
   typeof DppResourceGuardProxyGetOutput.Type;
@@ -2720,6 +2439,9 @@ export type DppResourceGuardProxyListInput =
 // Output Schema
 export const DppResourceGuardProxyListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    value: Schema.optional(
+      Schema.Array(Schema.suspend(() => ResourceGuardProxyBaseResourceSchema)),
+    ),
     nextLink: Schema.optional(Schema.String),
   });
 export type DppResourceGuardProxyListOutput =
@@ -2883,23 +2605,11 @@ export type FetchCrossRegionRestoreJobGetInput =
 // Output Schema
 export const FetchCrossRegionRestoreJobGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(Schema.suspend(() => AzureBackupJobSchema)),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type FetchCrossRegionRestoreJobGetOutput =
   typeof FetchCrossRegionRestoreJobGetOutput.Type;
@@ -2940,6 +2650,9 @@ export type FetchCrossRegionRestoreJobsListInput =
 // Output Schema
 export const FetchCrossRegionRestoreJobsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    value: Schema.optional(
+      Schema.Array(Schema.suspend(() => AzureBackupJobResourceSchema)),
+    ),
     nextLink: Schema.optional(Schema.String),
   });
 export type FetchCrossRegionRestoreJobsListOutput =
@@ -2983,6 +2696,11 @@ export type FetchSecondaryRecoveryPointsListInput =
 // Output Schema
 export const FetchSecondaryRecoveryPointsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    value: Schema.optional(
+      Schema.Array(
+        Schema.suspend(() => AzureBackupRecoveryPointResourceSchema),
+      ),
+    ),
     nextLink: Schema.optional(Schema.String),
   });
 export type FetchSecondaryRecoveryPointsListOutput =
@@ -3021,23 +2739,11 @@ export type JobsGetInput = typeof JobsGetInput.Type;
 
 // Output Schema
 export const JobsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.optional(Schema.suspend(() => AzureBackupJobSchema)),
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
-  systemData: Schema.optional(
-    Schema.Struct({
-      createdBy: Schema.optional(Schema.String),
-      createdByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      createdAt: Schema.optional(Schema.String),
-      lastModifiedBy: Schema.optional(Schema.String),
-      lastModifiedByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      lastModifiedAt: Schema.optional(Schema.String),
-    }),
-  ),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
 });
 export type JobsGetOutput = typeof JobsGetOutput.Type;
 
@@ -3071,6 +2777,9 @@ export type JobsListInput = typeof JobsListInput.Type;
 
 // Output Schema
 export const JobsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  value: Schema.optional(
+    Schema.Array(Schema.suspend(() => AzureBackupJobResourceSchema)),
+  ),
   nextLink: Schema.optional(Schema.String),
 });
 export type JobsListOutput = typeof JobsListOutput.Type;
@@ -3106,6 +2815,7 @@ export type OperationResultGetInput = typeof OperationResultGetInput.Type;
 // Output Schema
 export const OperationResultGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    jobId: Schema.optional(Schema.String),
     objectType: Schema.String,
   });
 export type OperationResultGetOutput = typeof OperationResultGetOutput.Type;
@@ -3145,28 +2855,11 @@ export type OperationStatusBackupVaultContextGetInput =
 export const OperationStatusBackupVaultContextGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     endTime: Schema.optional(Schema.String),
-    error: Schema.optional(
-      Schema.Struct({
-        additionalInfo: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              type: Schema.optional(Schema.String),
-              info: Schema.optional(Schema.Unknown),
-            }),
-          ),
-        ),
-        code: Schema.optional(Schema.String),
-        details: Schema.optional(Schema.Array(Schema.Unknown)),
-        message: Schema.optional(Schema.String),
-        target: Schema.optional(Schema.String),
-      }),
-    ),
+    error: Schema.optional(Schema.suspend(() => ErrorSchema)),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     properties: Schema.optional(
-      Schema.Struct({
-        objectType: Schema.String,
-      }),
+      Schema.suspend(() => OperationExtendedInfoSchema),
     ),
     startTime: Schema.optional(Schema.String),
     status: Schema.optional(Schema.String),
@@ -3207,28 +2900,11 @@ export type OperationStatusGetInput = typeof OperationStatusGetInput.Type;
 export const OperationStatusGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     endTime: Schema.optional(Schema.String),
-    error: Schema.optional(
-      Schema.Struct({
-        additionalInfo: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              type: Schema.optional(Schema.String),
-              info: Schema.optional(Schema.Unknown),
-            }),
-          ),
-        ),
-        code: Schema.optional(Schema.String),
-        details: Schema.optional(Schema.Array(Schema.Unknown)),
-        message: Schema.optional(Schema.String),
-        target: Schema.optional(Schema.String),
-      }),
-    ),
+    error: Schema.optional(Schema.suspend(() => ErrorSchema)),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     properties: Schema.optional(
-      Schema.Struct({
-        objectType: Schema.String,
-      }),
+      Schema.suspend(() => OperationExtendedInfoSchema),
     ),
     startTime: Schema.optional(Schema.String),
     status: Schema.optional(Schema.String),
@@ -3267,28 +2943,11 @@ export type OperationStatusResourceGroupContextGetInput =
 export const OperationStatusResourceGroupContextGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     endTime: Schema.optional(Schema.String),
-    error: Schema.optional(
-      Schema.Struct({
-        additionalInfo: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              type: Schema.optional(Schema.String),
-              info: Schema.optional(Schema.Unknown),
-            }),
-          ),
-        ),
-        code: Schema.optional(Schema.String),
-        details: Schema.optional(Schema.Array(Schema.Unknown)),
-        message: Schema.optional(Schema.String),
-        target: Schema.optional(Schema.String),
-      }),
-    ),
+    error: Schema.optional(Schema.suspend(() => ErrorSchema)),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     properties: Schema.optional(
-      Schema.Struct({
-        objectType: Schema.String,
-      }),
+      Schema.suspend(() => OperationExtendedInfoSchema),
     ),
     startTime: Schema.optional(Schema.String),
     status: Schema.optional(Schema.String),
@@ -3330,23 +2989,13 @@ export type RecoveryPointsGetInput = typeof RecoveryPointsGetInput.Type;
 // Output Schema
 export const RecoveryPointsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => AzureBackupRecoveryPointSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type RecoveryPointsGetOutput = typeof RecoveryPointsGetOutput.Type;
 
@@ -3385,6 +3034,11 @@ export type RecoveryPointsListInput = typeof RecoveryPointsListInput.Type;
 // Output Schema
 export const RecoveryPointsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    value: Schema.optional(
+      Schema.Array(
+        Schema.suspend(() => AzureBackupRecoveryPointResourceSchema),
+      ),
+    ),
     nextLink: Schema.optional(Schema.String),
   });
 export type RecoveryPointsListOutput = typeof RecoveryPointsListOutput.Type;
@@ -3459,23 +3113,14 @@ export type ResourceGuardsGetInput = typeof ResourceGuardsGetInput.Type;
 // Output Schema
 export const ResourceGuardsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(Schema.suspend(() => ResourceGuardSchema)),
+    eTag: Schema.optional(Schema.String),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type ResourceGuardsGetOutput = typeof ResourceGuardsGetOutput.Type;
 
@@ -3511,37 +3156,7 @@ export type ResourceGuardsGetBackupSecurityPINRequestsObjectsInput =
 // Output Schema
 export const ResourceGuardsGetBackupSecurityPINRequestsObjectsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => DppBaseResourceSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type ResourceGuardsGetBackupSecurityPINRequestsObjectsOutput =
@@ -3584,20 +3199,7 @@ export const ResourceGuardsGetDefaultBackupSecurityPINRequestsObjectOutput =
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type ResourceGuardsGetDefaultBackupSecurityPINRequestsObjectOutput =
   typeof ResourceGuardsGetDefaultBackupSecurityPINRequestsObjectOutput.Type;
@@ -3640,20 +3242,7 @@ export const ResourceGuardsGetDefaultDeleteProtectedItemRequestsObjectOutput =
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type ResourceGuardsGetDefaultDeleteProtectedItemRequestsObjectOutput =
   typeof ResourceGuardsGetDefaultDeleteProtectedItemRequestsObjectOutput.Type;
@@ -3697,20 +3286,7 @@ export const ResourceGuardsGetDefaultDeleteResourceGuardProxyRequestsObjectOutpu
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type ResourceGuardsGetDefaultDeleteResourceGuardProxyRequestsObjectOutput =
   typeof ResourceGuardsGetDefaultDeleteResourceGuardProxyRequestsObjectOutput.Type;
@@ -3755,20 +3331,7 @@ export const ResourceGuardsGetDefaultDisableSoftDeleteRequestsObjectOutput =
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type ResourceGuardsGetDefaultDisableSoftDeleteRequestsObjectOutput =
   typeof ResourceGuardsGetDefaultDisableSoftDeleteRequestsObjectOutput.Type;
@@ -3811,20 +3374,7 @@ export const ResourceGuardsGetDefaultUpdateProtectedItemRequestsObjectOutput =
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type ResourceGuardsGetDefaultUpdateProtectedItemRequestsObjectOutput =
   typeof ResourceGuardsGetDefaultUpdateProtectedItemRequestsObjectOutput.Type;
@@ -3868,20 +3418,7 @@ export const ResourceGuardsGetDefaultUpdateProtectionPolicyRequestsObjectOutput 
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type ResourceGuardsGetDefaultUpdateProtectionPolicyRequestsObjectOutput =
   typeof ResourceGuardsGetDefaultUpdateProtectionPolicyRequestsObjectOutput.Type;
@@ -3922,37 +3459,7 @@ export type ResourceGuardsGetDeleteProtectedItemRequestsObjectsInput =
 // Output Schema
 export const ResourceGuardsGetDeleteProtectedItemRequestsObjectsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => DppBaseResourceSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type ResourceGuardsGetDeleteProtectedItemRequestsObjectsOutput =
@@ -3991,37 +3498,7 @@ export type ResourceGuardsGetDeleteResourceGuardProxyRequestsObjectsInput =
 // Output Schema
 export const ResourceGuardsGetDeleteResourceGuardProxyRequestsObjectsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => DppBaseResourceSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type ResourceGuardsGetDeleteResourceGuardProxyRequestsObjectsOutput =
@@ -4061,37 +3538,7 @@ export type ResourceGuardsGetDisableSoftDeleteRequestsObjectsInput =
 // Output Schema
 export const ResourceGuardsGetDisableSoftDeleteRequestsObjectsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => DppBaseResourceSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type ResourceGuardsGetDisableSoftDeleteRequestsObjectsOutput =
@@ -4129,6 +3576,9 @@ export type ResourceGuardsGetResourcesInResourceGroupInput =
 // Output Schema
 export const ResourceGuardsGetResourcesInResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    value: Schema.optional(
+      Schema.Array(Schema.suspend(() => ResourceGuardResourceSchema)),
+    ),
     nextLink: Schema.optional(Schema.String),
   });
 export type ResourceGuardsGetResourcesInResourceGroupOutput =
@@ -4164,6 +3614,9 @@ export type ResourceGuardsGetResourcesInSubscriptionInput =
 // Output Schema
 export const ResourceGuardsGetResourcesInSubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    value: Schema.optional(
+      Schema.Array(Schema.suspend(() => ResourceGuardResourceSchema)),
+    ),
     nextLink: Schema.optional(Schema.String),
   });
 export type ResourceGuardsGetResourcesInSubscriptionOutput =
@@ -4200,37 +3653,7 @@ export type ResourceGuardsGetUpdateProtectedItemRequestsObjectsInput =
 // Output Schema
 export const ResourceGuardsGetUpdateProtectedItemRequestsObjectsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => DppBaseResourceSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type ResourceGuardsGetUpdateProtectedItemRequestsObjectsOutput =
@@ -4269,37 +3692,7 @@ export type ResourceGuardsGetUpdateProtectionPolicyRequestsObjectsInput =
 // Output Schema
 export const ResourceGuardsGetUpdateProtectionPolicyRequestsObjectsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => DppBaseResourceSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type ResourceGuardsGetUpdateProtectionPolicyRequestsObjectsOutput =
@@ -4338,23 +3731,14 @@ export type ResourceGuardsPatchInput = typeof ResourceGuardsPatchInput.Type;
 // Output Schema
 export const ResourceGuardsPatchOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(Schema.suspend(() => ResourceGuardSchema)),
+    eTag: Schema.optional(Schema.String),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type ResourceGuardsPatchOutput = typeof ResourceGuardsPatchOutput.Type;
 
@@ -4377,32 +3761,7 @@ export const ResourceGuardsPutInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceGuardsName: Schema.String.pipe(T.PathParam()),
-    properties: Schema.optional(
-      Schema.Struct({
-        provisioningState: Schema.optional(
-          Schema.Literals([
-            "Failed",
-            "Provisioning",
-            "Succeeded",
-            "Unknown",
-            "Updating",
-          ]),
-        ),
-        allowAutoApprovals: Schema.optional(Schema.Boolean),
-        resourceGuardOperations: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              vaultCriticalOperation: Schema.optional(Schema.String),
-              requestResourceType: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        vaultCriticalOperationExclusionList: Schema.optional(
-          Schema.Array(Schema.String),
-        ),
-        description: Schema.optional(Schema.String),
-      }),
-    ),
+    properties: Schema.optional(Schema.suspend(() => ResourceGuardSchema)),
     eTag: Schema.optional(Schema.String),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     location: Schema.String,
@@ -4419,23 +3778,14 @@ export type ResourceGuardsPutInput = typeof ResourceGuardsPutInput.Type;
 // Output Schema
 export const ResourceGuardsPutOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(Schema.suspend(() => ResourceGuardSchema)),
+    eTag: Schema.optional(Schema.String),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type ResourceGuardsPutOutput = typeof ResourceGuardsPutOutput.Type;
 
@@ -4459,11 +3809,7 @@ export const RestorableTimeRangesFindInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vaultName: Schema.String.pipe(T.PathParam()),
     backupInstanceName: Schema.String.pipe(T.PathParam()),
-    sourceDataStoreType: Schema.Literals([
-      "OperationalStore",
-      "VaultStore",
-      "ArchiveStore",
-    ]),
+    sourceDataStoreType: Schema.suspend(() => RestoreSourceDataStoreTypeSchema),
     startTime: Schema.optional(Schema.String),
     endTime: Schema.optional(Schema.String),
   }).pipe(
@@ -4479,6 +3825,9 @@ export type RestorableTimeRangesFindInput =
 // Output Schema
 export const RestorableTimeRangesFindOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => AzureBackupFindRestorableTimeRangesResponseSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),

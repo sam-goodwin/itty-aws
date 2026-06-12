@@ -8,6 +8,38 @@ import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
+// Shared schemas
+const AzureSkuSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.Literals(["S1"]),
+  tier: Schema.Literals(["Standard"]),
+});
+const WorkspaceCollectionSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  location: Schema.optional(Schema.String),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  sku: Schema.optional(Schema.suspend(() => AzureSkuSchema)),
+  properties: Schema.optional(Schema.Unknown),
+});
+const OperationSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  display: Schema.optional(Schema.suspend(() => DisplaySchema)),
+});
+const DisplaySchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  provider: Schema.optional(Schema.String),
+  resource: Schema.optional(Schema.String),
+  operation: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+  origin: Schema.optional(Schema.String),
+});
+const WorkspaceSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  properties: Schema.optional(Schema.Unknown),
+});
+
 // Input Schema
 export const GetAvailableOperationsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
@@ -23,22 +55,7 @@ export type GetAvailableOperationsInput =
 // Output Schema
 export const GetAvailableOperationsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          name: Schema.optional(Schema.String),
-          display: Schema.optional(
-            Schema.Struct({
-              provider: Schema.optional(Schema.String),
-              resource: Schema.optional(Schema.String),
-              operation: Schema.optional(Schema.String),
-              description: Schema.optional(Schema.String),
-              origin: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
-    ),
+    value: Schema.optional(Schema.Array(Schema.suspend(() => OperationSchema))),
   });
 export type GetAvailableOperationsOutput =
   typeof GetAvailableOperationsOutput.Type;
@@ -97,12 +114,7 @@ export const WorkspaceCollectionsCreateInput =
     workspaceCollectionName: Schema.String.pipe(T.PathParam()),
     location: Schema.optional(Schema.String),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    sku: Schema.optional(
-      Schema.Struct({
-        name: Schema.Literals(["S1"]),
-        tier: Schema.Literals(["Standard"]),
-      }),
-    ),
+    sku: Schema.optional(Schema.suspend(() => AzureSkuSchema)),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -121,12 +133,7 @@ export const WorkspaceCollectionsCreateOutput =
     type: Schema.optional(Schema.String),
     location: Schema.optional(Schema.String),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    sku: Schema.optional(
-      Schema.Struct({
-        name: Schema.Literals(["S1"]),
-        tier: Schema.Literals(["Standard"]),
-      }),
-    ),
+    sku: Schema.optional(Schema.suspend(() => AzureSkuSchema)),
     properties: Schema.optional(Schema.Unknown),
   });
 export type WorkspaceCollectionsCreateOutput =
@@ -239,12 +246,7 @@ export const WorkspaceCollectionsGetByNameOutput =
     type: Schema.optional(Schema.String),
     location: Schema.optional(Schema.String),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    sku: Schema.optional(
-      Schema.Struct({
-        name: Schema.Literals(["S1"]),
-        tier: Schema.Literals(["Standard"]),
-      }),
-    ),
+    sku: Schema.optional(Schema.suspend(() => AzureSkuSchema)),
     properties: Schema.optional(Schema.Unknown),
   });
 export type WorkspaceCollectionsGetByNameOutput =
@@ -280,22 +282,7 @@ export type WorkspaceCollectionsListByResourceGroupInput =
 export const WorkspaceCollectionsListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          location: Schema.optional(Schema.String),
-          tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-          sku: Schema.optional(
-            Schema.Struct({
-              name: Schema.Literals(["S1"]),
-              tier: Schema.Literals(["Standard"]),
-            }),
-          ),
-          properties: Schema.optional(Schema.Unknown),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => WorkspaceCollectionSchema)),
     ),
   });
 export type WorkspaceCollectionsListByResourceGroupOutput =
@@ -328,22 +315,7 @@ export type WorkspaceCollectionsListBySubscriptionInput =
 export const WorkspaceCollectionsListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          location: Schema.optional(Schema.String),
-          tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-          sku: Schema.optional(
-            Schema.Struct({
-              name: Schema.Literals(["S1"]),
-              tier: Schema.Literals(["Standard"]),
-            }),
-          ),
-          properties: Schema.optional(Schema.Unknown),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => WorkspaceCollectionSchema)),
     ),
   });
 export type WorkspaceCollectionsListBySubscriptionOutput =
@@ -435,12 +407,7 @@ export const WorkspaceCollectionsUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceCollectionName: Schema.String.pipe(T.PathParam()),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    sku: Schema.optional(
-      Schema.Struct({
-        name: Schema.Literals(["S1"]),
-        tier: Schema.Literals(["Standard"]),
-      }),
-    ),
+    sku: Schema.optional(Schema.suspend(() => AzureSkuSchema)),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -459,12 +426,7 @@ export const WorkspaceCollectionsUpdateOutput =
     type: Schema.optional(Schema.String),
     location: Schema.optional(Schema.String),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    sku: Schema.optional(
-      Schema.Struct({
-        name: Schema.Literals(["S1"]),
-        tier: Schema.Literals(["Standard"]),
-      }),
-    ),
+    sku: Schema.optional(Schema.suspend(() => AzureSkuSchema)),
     properties: Schema.optional(Schema.Unknown),
   });
 export type WorkspaceCollectionsUpdateOutput =
@@ -498,16 +460,7 @@ export type WorkspacesListInput = typeof WorkspacesListInput.Type;
 
 // Output Schema
 export const WorkspacesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  value: Schema.optional(
-    Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        properties: Schema.optional(Schema.Unknown),
-      }),
-    ),
-  ),
+  value: Schema.optional(Schema.Array(Schema.suspend(() => WorkspaceSchema))),
 });
 export type WorkspacesListOutput = typeof WorkspacesListOutput.Type;
 

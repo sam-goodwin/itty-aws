@@ -8,6 +8,194 @@ import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
+// Shared schemas
+const StoragePoolRPOperationSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.String,
+  isDataAction: Schema.Boolean,
+  actionType: Schema.optional(Schema.String),
+  display: Schema.suspend(() => StoragePoolOperationDisplaySchema),
+  origin: Schema.optional(Schema.String),
+});
+const StoragePoolOperationDisplaySchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    provider: Schema.String,
+    resource: Schema.String,
+    operation: Schema.String,
+    description: Schema.String,
+  });
+const DiskPoolSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
+const SkuSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.String,
+  tier: Schema.optional(Schema.String),
+});
+const DiskPoolPropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  provisioningState: Schema.suspend(() => ProvisioningStateSchema),
+  availabilityZones: Schema.Array(Schema.suspend(() => AvailabilityZoneSchema)),
+  status: Schema.suspend(() => OperationalStatusSchema),
+  disks: Schema.optional(Schema.Array(Schema.suspend(() => DiskSchema))),
+  subnetId: Schema.String,
+  additionalCapabilities: Schema.optional(
+    Schema.Array(Schema.suspend(() => AdditionalCapabilitySchema)),
+  ),
+});
+const ProvisioningStateSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Invalid",
+  "Succeeded",
+  "Failed",
+  "Canceled",
+  "Pending",
+  "Creating",
+  "Updating",
+  "Deleting",
+]);
+const AvailabilityZoneSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.String;
+const OperationalStatusSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Invalid",
+  "Unknown",
+  "Healthy",
+  "Unhealthy",
+  "Updating",
+  "Running",
+  "Stopped",
+  "Stopped (deallocated)",
+]);
+const DiskSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.String,
+});
+const AdditionalCapabilitySchema = /*@__PURE__*/ /*#__PURE__*/ Schema.String;
+const ManagedBySchema = /*@__PURE__*/ /*#__PURE__*/ Schema.String;
+const ManagedByExtendedSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
+  Schema.suspend(() => ManagedBySchema),
+);
+const SystemMetadataSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  createdBy: Schema.optional(Schema.String),
+  createdByType: Schema.optional(
+    Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+  ),
+  createdAt: Schema.optional(Schema.String),
+  lastModifiedBy: Schema.optional(Schema.String),
+  lastModifiedByType: Schema.optional(
+    Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+  ),
+  lastModifiedAt: Schema.optional(Schema.String),
+});
+const DiskPoolZoneInfoSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  availabilityZones: Schema.optional(
+    Schema.Array(Schema.suspend(() => AvailabilityZoneSchema)),
+  ),
+  additionalCapabilities: Schema.optional(
+    Schema.Array(Schema.suspend(() => AdditionalCapabilitySchema)),
+  ),
+  sku: Schema.optional(Schema.suspend(() => SkuSchema)),
+});
+const ResourceSkuInfoSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  apiVersion: Schema.optional(Schema.String),
+  resourceType: Schema.optional(Schema.String),
+  capabilities: Schema.optional(
+    Schema.Array(Schema.suspend(() => ResourceSkuCapabilitySchema)),
+  ),
+  locationInfo: Schema.optional(
+    Schema.suspend(() => ResourceSkuLocationInfoSchema),
+  ),
+  name: Schema.optional(Schema.String),
+  tier: Schema.optional(Schema.String),
+  restrictions: Schema.optional(
+    Schema.Array(Schema.suspend(() => ResourceSkuRestrictionsSchema)),
+  ),
+});
+const ResourceSkuCapabilitySchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  value: Schema.optional(Schema.String),
+});
+const ResourceSkuLocationInfoSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    location: Schema.optional(Schema.String),
+    zones: Schema.optional(
+      Schema.Array(Schema.suspend(() => AvailabilityZoneSchema)),
+    ),
+    zoneDetails: Schema.optional(
+      Schema.Array(Schema.suspend(() => ResourceSkuZoneDetailsSchema)),
+    ),
+  },
+);
+const ResourceSkuZoneDetailsSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(
+    Schema.Array(Schema.suspend(() => AvailabilityZoneSchema)),
+  ),
+  capabilities: Schema.optional(
+    Schema.Array(Schema.suspend(() => ResourceSkuCapabilitySchema)),
+  ),
+});
+const ResourceSkuRestrictionsSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    type: Schema.optional(Schema.Literals(["Location", "Zone"])),
+    values: Schema.optional(Schema.Array(Schema.String)),
+    restrictionInfo: Schema.optional(
+      Schema.suspend(() => ResourceSkuRestrictionInfoSchema),
+    ),
+    reasonCode: Schema.optional(
+      Schema.Literals(["QuotaId", "NotAvailableForSubscription"]),
+    ),
+  },
+);
+const ResourceSkuRestrictionInfoSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    locations: Schema.optional(Schema.Array(Schema.String)),
+    zones: Schema.optional(Schema.Array(Schema.String)),
+  });
+const OutboundEnvironmentEndpointSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    category: Schema.optional(Schema.String),
+    endpoints: Schema.optional(
+      Schema.Array(Schema.suspend(() => EndpointDependencySchema)),
+    ),
+  });
+const EndpointDependencySchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  domainName: Schema.optional(Schema.String),
+  endpointDetails: Schema.optional(
+    Schema.Array(Schema.suspend(() => EndpointDetailSchema)),
+  ),
+});
+const EndpointDetailSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  ipAddress: Schema.optional(Schema.String),
+  port: Schema.optional(Schema.Number),
+  latency: Schema.optional(Schema.Number),
+  isAccessible: Schema.optional(Schema.Boolean),
+});
+const IscsiTargetSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
+const IscsiTargetPropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  aclMode: Schema.suspend(() => AclModeSchema),
+  staticAcls: Schema.optional(Schema.Array(Schema.suspend(() => AclSchema))),
+  luns: Schema.optional(Schema.Array(Schema.suspend(() => IscsiLunSchema))),
+  targetIqn: Schema.String,
+  provisioningState: Schema.suspend(() => ProvisioningStateSchema),
+  status: Schema.suspend(() => OperationalStatusSchema),
+  endpoints: Schema.optional(Schema.Array(Schema.String)),
+  port: Schema.optional(Schema.Number),
+  sessions: Schema.optional(Schema.Array(Schema.String)),
+});
+const AclModeSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Dynamic",
+  "Static",
+]);
+const AclSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  initiatorIqn: Schema.String,
+  mappedLuns: Schema.Array(Schema.String),
+});
+const IscsiLunSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.String,
+  managedDiskAzureResourceId: Schema.String,
+  lun: Schema.optional(Schema.Number),
+});
+
 // Input Schema
 export const DiskPoolsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
@@ -24,6 +212,15 @@ export type DiskPoolsCreateOrUpdateInput =
 // Output Schema
 export const DiskPoolsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    sku: Schema.optional(Schema.suspend(() => SkuSchema)),
+    properties: Schema.suspend(() => DiskPoolPropertiesSchema),
+    managedBy: Schema.optional(Schema.suspend(() => ManagedBySchema)),
+    managedByExtended: Schema.optional(
+      Schema.suspend(() => ManagedByExtendedSchema),
+    ),
+    systemData: Schema.optional(Schema.suspend(() => SystemMetadataSchema)),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -105,6 +302,15 @@ export type DiskPoolsGetInput = typeof DiskPoolsGetInput.Type;
 
 // Output Schema
 export const DiskPoolsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  sku: Schema.optional(Schema.suspend(() => SkuSchema)),
+  properties: Schema.suspend(() => DiskPoolPropertiesSchema),
+  managedBy: Schema.optional(Schema.suspend(() => ManagedBySchema)),
+  managedByExtended: Schema.optional(
+    Schema.suspend(() => ManagedByExtendedSchema),
+  ),
+  systemData: Schema.optional(Schema.suspend(() => SystemMetadataSchema)),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  location: Schema.String,
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -134,13 +340,7 @@ export type DiskPoolsListByResourceGroupInput =
 // Output Schema
 export const DiskPoolsListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => DiskPoolSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type DiskPoolsListByResourceGroupOutput =
@@ -170,13 +370,7 @@ export type DiskPoolsListBySubscriptionInput =
 // Output Schema
 export const DiskPoolsListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => DiskPoolSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type DiskPoolsListBySubscriptionOutput =
@@ -208,26 +402,7 @@ export type DiskPoolsListOutboundNetworkDependenciesEndpointsInput =
 export const DiskPoolsListOutboundNetworkDependenciesEndpointsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
-      Schema.Struct({
-        category: Schema.optional(Schema.String),
-        endpoints: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              domainName: Schema.optional(Schema.String),
-              endpointDetails: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    ipAddress: Schema.optional(Schema.String),
-                    port: Schema.optional(Schema.Number),
-                    latency: Schema.optional(Schema.Number),
-                    isAccessible: Schema.optional(Schema.Boolean),
-                  }),
-                ),
-              ),
-            }),
-          ),
-        ),
-      }),
+      Schema.suspend(() => OutboundEnvironmentEndpointSchema),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -283,6 +458,15 @@ export type DiskPoolsUpdateInput = typeof DiskPoolsUpdateInput.Type;
 
 // Output Schema
 export const DiskPoolsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  sku: Schema.optional(Schema.suspend(() => SkuSchema)),
+  properties: Schema.suspend(() => DiskPoolPropertiesSchema),
+  managedBy: Schema.optional(Schema.suspend(() => ManagedBySchema)),
+  managedByExtended: Schema.optional(
+    Schema.suspend(() => ManagedByExtendedSchema),
+  ),
+  systemData: Schema.optional(Schema.suspend(() => SystemMetadataSchema)),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  location: Schema.String,
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -338,18 +522,7 @@ export type DiskPoolZonesListInput = typeof DiskPoolZonesListInput.Type;
 export const DiskPoolZonesListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          availabilityZones: Schema.optional(Schema.Array(Schema.String)),
-          additionalCapabilities: Schema.optional(Schema.Array(Schema.String)),
-          sku: Schema.optional(
-            Schema.Struct({
-              name: Schema.String,
-              tier: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => DiskPoolZoneInfoSchema)),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -379,6 +552,12 @@ export type IscsiTargetsCreateOrUpdateInput =
 // Output Schema
 export const IscsiTargetsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.suspend(() => IscsiTargetPropertiesSchema),
+    systemData: Schema.optional(Schema.suspend(() => SystemMetadataSchema)),
+    managedBy: Schema.optional(Schema.suspend(() => ManagedBySchema)),
+    managedByExtended: Schema.optional(
+      Schema.suspend(() => ManagedByExtendedSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -434,6 +613,12 @@ export type IscsiTargetsGetInput = typeof IscsiTargetsGetInput.Type;
 
 // Output Schema
 export const IscsiTargetsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.suspend(() => IscsiTargetPropertiesSchema),
+  systemData: Schema.optional(Schema.suspend(() => SystemMetadataSchema)),
+  managedBy: Schema.optional(Schema.suspend(() => ManagedBySchema)),
+  managedByExtended: Schema.optional(
+    Schema.suspend(() => ManagedByExtendedSchema),
+  ),
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -463,13 +648,7 @@ export type IscsiTargetsListByDiskPoolInput =
 // Output Schema
 export const IscsiTargetsListByDiskPoolOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => IscsiTargetSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type IscsiTargetsListByDiskPoolOutput =
@@ -500,6 +679,12 @@ export type IscsiTargetsUpdateInput = typeof IscsiTargetsUpdateInput.Type;
 // Output Schema
 export const IscsiTargetsUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.suspend(() => IscsiTargetPropertiesSchema),
+    systemData: Schema.optional(Schema.suspend(() => SystemMetadataSchema)),
+    managedBy: Schema.optional(Schema.suspend(() => ManagedBySchema)),
+    managedByExtended: Schema.optional(
+      Schema.suspend(() => ManagedByExtendedSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -528,20 +713,7 @@ export type OperationsListInput = typeof OperationsListInput.Type;
 
 // Output Schema
 export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  value: Schema.Array(
-    Schema.Struct({
-      name: Schema.String,
-      isDataAction: Schema.Boolean,
-      actionType: Schema.optional(Schema.String),
-      display: Schema.Struct({
-        provider: Schema.String,
-        resource: Schema.String,
-        operation: Schema.String,
-        description: Schema.String,
-      }),
-      origin: Schema.optional(Schema.String),
-    }),
-  ),
+  value: Schema.Array(Schema.suspend(() => StoragePoolRPOperationSchema)),
   nextLink: Schema.optional(Schema.String),
 });
 export type OperationsListOutput = typeof OperationsListOutput.Type;
@@ -570,60 +742,7 @@ export type ResourceSkusListInput = typeof ResourceSkusListInput.Type;
 export const ResourceSkusListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          apiVersion: Schema.optional(Schema.String),
-          resourceType: Schema.optional(Schema.String),
-          capabilities: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                name: Schema.optional(Schema.String),
-                value: Schema.optional(Schema.String),
-              }),
-            ),
-          ),
-          locationInfo: Schema.optional(
-            Schema.Struct({
-              location: Schema.optional(Schema.String),
-              zones: Schema.optional(Schema.Array(Schema.String)),
-              zoneDetails: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    name: Schema.optional(Schema.Array(Schema.String)),
-                    capabilities: Schema.optional(
-                      Schema.Array(
-                        Schema.Struct({
-                          name: Schema.optional(Schema.String),
-                          value: Schema.optional(Schema.String),
-                        }),
-                      ),
-                    ),
-                  }),
-                ),
-              ),
-            }),
-          ),
-          name: Schema.optional(Schema.String),
-          tier: Schema.optional(Schema.String),
-          restrictions: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                type: Schema.optional(Schema.Literals(["Location", "Zone"])),
-                values: Schema.optional(Schema.Array(Schema.String)),
-                restrictionInfo: Schema.optional(
-                  Schema.Struct({
-                    locations: Schema.optional(Schema.Array(Schema.String)),
-                    zones: Schema.optional(Schema.Array(Schema.String)),
-                  }),
-                ),
-                reasonCode: Schema.optional(
-                  Schema.Literals(["QuotaId", "NotAvailableForSubscription"]),
-                ),
-              }),
-            ),
-          ),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => ResourceSkuInfoSchema)),
     ),
     nextLink: Schema.optional(Schema.String),
   },

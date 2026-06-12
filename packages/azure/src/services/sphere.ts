@@ -8,6 +8,239 @@ import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
+// Shared schemas
+const OperationSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  isDataAction: Schema.optional(Schema.Boolean),
+  display: Schema.optional(
+    Schema.Struct({
+      provider: Schema.optional(Schema.String),
+      resource: Schema.optional(Schema.String),
+      operation: Schema.optional(Schema.String),
+      description: Schema.optional(Schema.String),
+    }),
+  ),
+  origin: Schema.optional(Schema.Literals(["user", "system", "user,system"])),
+  actionType: Schema.optional(Schema.Literals(["Internal"])),
+});
+const CatalogSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+});
+const systemDataSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  createdBy: Schema.optional(Schema.String),
+  createdByType: Schema.optional(
+    Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+  ),
+  createdAt: Schema.optional(Schema.String),
+  lastModifiedBy: Schema.optional(Schema.String),
+  lastModifiedByType: Schema.optional(
+    Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+  ),
+  lastModifiedAt: Schema.optional(Schema.String),
+});
+const CatalogPropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  tenantId: Schema.optional(Schema.String),
+  provisioningState: Schema.optional(
+    Schema.suspend(() => ProvisioningStateSchema),
+  ),
+});
+const ProvisioningStateSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Succeeded",
+  "Failed",
+  "Canceled",
+  "Provisioning",
+  "Updating",
+  "Deleting",
+  "Accepted",
+]);
+const CertificateSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+});
+const CertificatePropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  certificate: Schema.optional(Schema.String),
+  status: Schema.optional(Schema.suspend(() => CertificateStatusSchema)),
+  subject: Schema.optional(Schema.String),
+  thumbprint: Schema.optional(Schema.String),
+  expiryUtc: Schema.optional(Schema.String),
+  notBeforeUtc: Schema.optional(Schema.String),
+  provisioningState: Schema.optional(
+    Schema.suspend(() => ProvisioningStateSchema),
+  ),
+});
+const CertificateStatusSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Active",
+  "Inactive",
+  "Expired",
+  "Revoked",
+]);
+const ImageSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+});
+const ImagePropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  image: Schema.optional(Schema.String),
+  imageId: Schema.optional(Schema.String),
+  imageName: Schema.optional(Schema.String),
+  regionalDataBoundary: Schema.optional(
+    Schema.suspend(() => RegionalDataBoundarySchema),
+  ),
+  uri: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+  componentId: Schema.optional(Schema.String),
+  imageType: Schema.optional(Schema.suspend(() => ImageTypeSchema)),
+  provisioningState: Schema.optional(
+    Schema.suspend(() => ProvisioningStateSchema),
+  ),
+});
+const RegionalDataBoundarySchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "None",
+  "EU",
+]);
+const ImageTypeSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "InvalidImageType",
+  "OneBl",
+  "PlutonRuntime",
+  "WifiFirmware",
+  "SecurityMonitor",
+  "NormalWorldLoader",
+  "NormalWorldDtb",
+  "NormalWorldKernel",
+  "RootFs",
+  "Services",
+  "Applications",
+  "FwConfig",
+  "BootManifest",
+  "Nwfs",
+  "TrustedKeystore",
+  "Policy",
+  "CustomerBoardConfig",
+  "UpdateCertStore",
+  "BaseSystemUpdateManifest",
+  "FirmwareUpdateManifest",
+  "CustomerUpdateManifest",
+  "RecoveryManifest",
+  "ManifestSet",
+  "Other",
+]);
+const DeploymentSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+});
+const DeviceGroupSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+});
+const DeviceInsightSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  deviceId: Schema.String,
+  description: Schema.String,
+  startTimestampUtc: Schema.String,
+  endTimestampUtc: Schema.String,
+  eventCategory: Schema.String,
+  eventClass: Schema.String,
+  eventType: Schema.String,
+  eventCount: Schema.Number,
+});
+const DeviceSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+});
+const ProductSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+});
+const ProductPropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  description: Schema.optional(Schema.String),
+  provisioningState: Schema.optional(
+    Schema.suspend(() => ProvisioningStateSchema),
+  ),
+});
+const ProductUpdatePropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    description: Schema.optional(Schema.String),
+  },
+);
+const DeviceGroupPropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  description: Schema.optional(Schema.String),
+  osFeedType: Schema.optional(Schema.suspend(() => OSFeedTypeSchema)),
+  updatePolicy: Schema.optional(Schema.suspend(() => UpdatePolicySchema)),
+  allowCrashDumpsCollection: Schema.optional(
+    Schema.suspend(() => AllowCrashDumpCollectionSchema),
+  ),
+  regionalDataBoundary: Schema.optional(
+    Schema.suspend(() => RegionalDataBoundarySchema),
+  ),
+  hasDeployment: Schema.optional(Schema.Boolean),
+  provisioningState: Schema.optional(
+    Schema.suspend(() => ProvisioningStateSchema),
+  ),
+});
+const OSFeedTypeSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Retail",
+  "RetailEval",
+]);
+const UpdatePolicySchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "UpdateAll",
+  "No3rdPartyAppUpdates",
+]);
+const AllowCrashDumpCollectionSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Literals(["Enabled", "Disabled"]);
+const DeviceGroupUpdatePropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    description: Schema.optional(Schema.String),
+    osFeedType: Schema.optional(Schema.suspend(() => OSFeedTypeSchema)),
+    updatePolicy: Schema.optional(Schema.suspend(() => UpdatePolicySchema)),
+    allowCrashDumpsCollection: Schema.optional(
+      Schema.suspend(() => AllowCrashDumpCollectionSchema),
+    ),
+    regionalDataBoundary: Schema.optional(
+      Schema.suspend(() => RegionalDataBoundarySchema),
+    ),
+  });
+const DeploymentPropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  deploymentId: Schema.optional(Schema.String),
+  deployedImages: Schema.optional(
+    Schema.Array(Schema.suspend(() => ImageSchema)),
+  ),
+  deploymentDateUtc: Schema.optional(Schema.String),
+  provisioningState: Schema.optional(
+    Schema.suspend(() => ProvisioningStateSchema),
+  ),
+});
+const DevicePropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  deviceId: Schema.optional(Schema.String),
+  chipSku: Schema.optional(Schema.String),
+  lastAvailableOsVersion: Schema.optional(Schema.String),
+  lastInstalledOsVersion: Schema.optional(Schema.String),
+  lastOsUpdateUtc: Schema.optional(Schema.String),
+  lastUpdateRequestUtc: Schema.optional(Schema.String),
+  provisioningState: Schema.optional(
+    Schema.suspend(() => ProvisioningStateSchema),
+  ),
+});
+const DeviceUpdatePropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  deviceGroupId: Schema.optional(Schema.String),
+});
+const CapabilityTypeSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "ApplicationDevelopment",
+  "FieldServicing",
+]);
+
 // Input Schema
 export const CatalogsCountDevicesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -51,22 +284,7 @@ export const CatalogsCreateOrUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     catalogName: Schema.String.pipe(T.PathParam()),
-    properties: Schema.optional(
-      Schema.Struct({
-        tenantId: Schema.optional(Schema.String),
-        provisioningState: Schema.optional(
-          Schema.Literals([
-            "Succeeded",
-            "Failed",
-            "Canceled",
-            "Provisioning",
-            "Updating",
-            "Deleting",
-            "Accepted",
-          ]),
-        ),
-      }),
-    ),
+    properties: Schema.optional(Schema.suspend(() => CatalogPropertiesSchema)),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     location: Schema.String,
   }).pipe(
@@ -83,23 +301,13 @@ export type CatalogsCreateOrUpdateInput =
 // Output Schema
 export const CatalogsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(Schema.suspend(() => CatalogPropertiesSchema)),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type CatalogsCreateOrUpdateOutput =
   typeof CatalogsCreateOrUpdateOutput.Type;
@@ -167,23 +375,13 @@ export type CatalogsGetInput = typeof CatalogsGetInput.Type;
 
 // Output Schema
 export const CatalogsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.optional(Schema.suspend(() => CatalogPropertiesSchema)),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  location: Schema.String,
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
-  systemData: Schema.optional(
-    Schema.Struct({
-      createdBy: Schema.optional(Schema.String),
-      createdByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      createdAt: Schema.optional(Schema.String),
-      lastModifiedBy: Schema.optional(Schema.String),
-      lastModifiedByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      lastModifiedAt: Schema.optional(Schema.String),
-    }),
-  ),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
 });
 export type CatalogsGetOutput = typeof CatalogsGetOutput.Type;
 
@@ -218,37 +416,7 @@ export type CatalogsListByResourceGroupInput =
 // Output Schema
 export const CatalogsListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => CatalogSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type CatalogsListByResourceGroupOutput =
@@ -285,37 +453,7 @@ export type CatalogsListBySubscriptionInput =
 // Output Schema
 export const CatalogsListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => CatalogSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type CatalogsListBySubscriptionOutput =
@@ -353,37 +491,7 @@ export type CatalogsListDeploymentsInput =
 // Output Schema
 export const CatalogsListDeploymentsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => DeploymentSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type CatalogsListDeploymentsOutput =
@@ -424,37 +532,7 @@ export type CatalogsListDeviceGroupsInput =
 // Output Schema
 export const CatalogsListDeviceGroupsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => DeviceGroupSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type CatalogsListDeviceGroupsOutput =
@@ -494,18 +572,7 @@ export type CatalogsListDeviceInsightsInput =
 // Output Schema
 export const CatalogsListDeviceInsightsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        deviceId: Schema.String,
-        description: Schema.String,
-        startTimestampUtc: Schema.String,
-        endTimestampUtc: Schema.String,
-        eventCategory: Schema.String,
-        eventClass: Schema.String,
-        eventType: Schema.String,
-        eventCount: Schema.Number,
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => DeviceInsightSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type CatalogsListDeviceInsightsOutput =
@@ -544,37 +611,7 @@ export type CatalogsListDevicesInput = typeof CatalogsListDevicesInput.Type;
 // Output Schema
 export const CatalogsListDevicesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => DeviceSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type CatalogsListDevicesOutput = typeof CatalogsListDevicesOutput.Type;
@@ -609,23 +646,13 @@ export type CatalogsUpdateInput = typeof CatalogsUpdateInput.Type;
 
 // Output Schema
 export const CatalogsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.optional(Schema.suspend(() => CatalogPropertiesSchema)),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  location: Schema.String,
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
-  systemData: Schema.optional(
-    Schema.Struct({
-      createdBy: Schema.optional(Schema.String),
-      createdByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      createdAt: Schema.optional(Schema.String),
-      lastModifiedBy: Schema.optional(Schema.String),
-      lastModifiedByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      lastModifiedAt: Schema.optional(Schema.String),
-    }),
-  ),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
 });
 export type CatalogsUpdateOutput = typeof CatalogsUpdateOutput.Type;
 
@@ -648,56 +675,7 @@ export const CatalogsUploadImageInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     catalogName: Schema.String.pipe(T.PathParam()),
-    properties: Schema.optional(
-      Schema.Struct({
-        image: Schema.optional(Schema.String),
-        imageId: Schema.optional(Schema.String),
-        imageName: Schema.optional(Schema.String),
-        regionalDataBoundary: Schema.optional(Schema.Literals(["None", "EU"])),
-        uri: Schema.optional(Schema.String),
-        description: Schema.optional(Schema.String),
-        componentId: Schema.optional(Schema.String),
-        imageType: Schema.optional(
-          Schema.Literals([
-            "InvalidImageType",
-            "OneBl",
-            "PlutonRuntime",
-            "WifiFirmware",
-            "SecurityMonitor",
-            "NormalWorldLoader",
-            "NormalWorldDtb",
-            "NormalWorldKernel",
-            "RootFs",
-            "Services",
-            "Applications",
-            "FwConfig",
-            "BootManifest",
-            "Nwfs",
-            "TrustedKeystore",
-            "Policy",
-            "CustomerBoardConfig",
-            "UpdateCertStore",
-            "BaseSystemUpdateManifest",
-            "FirmwareUpdateManifest",
-            "CustomerUpdateManifest",
-            "RecoveryManifest",
-            "ManifestSet",
-            "Other",
-          ]),
-        ),
-        provisioningState: Schema.optional(
-          Schema.Literals([
-            "Succeeded",
-            "Failed",
-            "Canceled",
-            "Provisioning",
-            "Updating",
-            "Deleting",
-            "Accepted",
-          ]),
-        ),
-      }),
-    ),
+    properties: Schema.optional(Schema.suspend(() => ImagePropertiesSchema)),
   }).pipe(
     T.Http({
       method: "POST",
@@ -743,23 +721,13 @@ export type CertificatesGetInput = typeof CertificatesGetInput.Type;
 
 // Output Schema
 export const CertificatesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.optional(
+    Schema.suspend(() => CertificatePropertiesSchema),
+  ),
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
-  systemData: Schema.optional(
-    Schema.Struct({
-      createdBy: Schema.optional(Schema.String),
-      createdByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      createdAt: Schema.optional(Schema.String),
-      lastModifiedBy: Schema.optional(Schema.String),
-      lastModifiedByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      lastModifiedAt: Schema.optional(Schema.String),
-    }),
-  ),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
 });
 export type CertificatesGetOutput = typeof CertificatesGetOutput.Type;
 
@@ -796,37 +764,7 @@ export type CertificatesListByCatalogInput =
 // Output Schema
 export const CertificatesListByCatalogOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => CertificateSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type CertificatesListByCatalogOutput =
@@ -909,23 +847,13 @@ export type CertificatesRetrieveProofOfPossessionNonceInput =
 export const CertificatesRetrieveProofOfPossessionNonceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     certificate: Schema.optional(Schema.String),
-    status: Schema.optional(
-      Schema.Literals(["Active", "Inactive", "Expired", "Revoked"]),
-    ),
+    status: Schema.optional(Schema.suspend(() => CertificateStatusSchema)),
     subject: Schema.optional(Schema.String),
     thumbprint: Schema.optional(Schema.String),
     expiryUtc: Schema.optional(Schema.String),
     notBeforeUtc: Schema.optional(Schema.String),
     provisioningState: Schema.optional(
-      Schema.Literals([
-        "Succeeded",
-        "Failed",
-        "Canceled",
-        "Provisioning",
-        "Updating",
-        "Deleting",
-        "Accepted",
-      ]),
+      Schema.suspend(() => ProvisioningStateSchema),
     ),
   });
 export type CertificatesRetrieveProofOfPossessionNonceOutput =
@@ -956,54 +884,7 @@ export const DeploymentsCreateOrUpdateInput =
     deviceGroupName: Schema.String.pipe(T.PathParam()),
     deploymentName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        deploymentId: Schema.optional(Schema.String),
-        deployedImages: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              id: Schema.optional(Schema.String),
-              name: Schema.optional(Schema.String),
-              type: Schema.optional(Schema.String),
-              systemData: Schema.optional(
-                Schema.Struct({
-                  createdBy: Schema.optional(Schema.String),
-                  createdByType: Schema.optional(
-                    Schema.Literals([
-                      "User",
-                      "Application",
-                      "ManagedIdentity",
-                      "Key",
-                    ]),
-                  ),
-                  createdAt: Schema.optional(Schema.String),
-                  lastModifiedBy: Schema.optional(Schema.String),
-                  lastModifiedByType: Schema.optional(
-                    Schema.Literals([
-                      "User",
-                      "Application",
-                      "ManagedIdentity",
-                      "Key",
-                    ]),
-                  ),
-                  lastModifiedAt: Schema.optional(Schema.String),
-                }),
-              ),
-            }),
-          ),
-        ),
-        deploymentDateUtc: Schema.optional(Schema.String),
-        provisioningState: Schema.optional(
-          Schema.Literals([
-            "Succeeded",
-            "Failed",
-            "Canceled",
-            "Provisioning",
-            "Updating",
-            "Deleting",
-            "Accepted",
-          ]),
-        ),
-      }),
+      Schema.suspend(() => DeploymentPropertiesSchema),
     ),
   }).pipe(
     T.Http({
@@ -1019,23 +900,13 @@ export type DeploymentsCreateOrUpdateInput =
 // Output Schema
 export const DeploymentsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => DeploymentPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type DeploymentsCreateOrUpdateOutput =
   typeof DeploymentsCreateOrUpdateOutput.Type;
@@ -1117,23 +988,11 @@ export type DeploymentsGetInput = typeof DeploymentsGetInput.Type;
 
 // Output Schema
 export const DeploymentsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.optional(Schema.suspend(() => DeploymentPropertiesSchema)),
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
-  systemData: Schema.optional(
-    Schema.Struct({
-      createdBy: Schema.optional(Schema.String),
-      createdByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      createdAt: Schema.optional(Schema.String),
-      lastModifiedBy: Schema.optional(Schema.String),
-      lastModifiedByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      lastModifiedAt: Schema.optional(Schema.String),
-    }),
-  ),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
 });
 export type DeploymentsGetOutput = typeof DeploymentsGetOutput.Type;
 
@@ -1174,37 +1033,7 @@ export type DeploymentsListByDeviceGroupInput =
 // Output Schema
 export const DeploymentsListByDeviceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => DeploymentSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type DeploymentsListByDeviceGroupOutput =
@@ -1321,29 +1150,7 @@ export const DeviceGroupsCreateOrUpdateInput =
     productName: Schema.String.pipe(T.PathParam()),
     deviceGroupName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        description: Schema.optional(Schema.String),
-        osFeedType: Schema.optional(Schema.Literals(["Retail", "RetailEval"])),
-        updatePolicy: Schema.optional(
-          Schema.Literals(["UpdateAll", "No3rdPartyAppUpdates"]),
-        ),
-        allowCrashDumpsCollection: Schema.optional(
-          Schema.Literals(["Enabled", "Disabled"]),
-        ),
-        regionalDataBoundary: Schema.optional(Schema.Literals(["None", "EU"])),
-        hasDeployment: Schema.optional(Schema.Boolean),
-        provisioningState: Schema.optional(
-          Schema.Literals([
-            "Succeeded",
-            "Failed",
-            "Canceled",
-            "Provisioning",
-            "Updating",
-            "Deleting",
-            "Accepted",
-          ]),
-        ),
-      }),
+      Schema.suspend(() => DeviceGroupPropertiesSchema),
     ),
   }).pipe(
     T.Http({
@@ -1359,23 +1166,13 @@ export type DeviceGroupsCreateOrUpdateInput =
 // Output Schema
 export const DeviceGroupsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => DeviceGroupPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type DeviceGroupsCreateOrUpdateOutput =
   typeof DeviceGroupsCreateOrUpdateOutput.Type;
@@ -1452,23 +1249,13 @@ export type DeviceGroupsGetInput = typeof DeviceGroupsGetInput.Type;
 
 // Output Schema
 export const DeviceGroupsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.optional(
+    Schema.suspend(() => DeviceGroupPropertiesSchema),
+  ),
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
-  systemData: Schema.optional(
-    Schema.Struct({
-      createdBy: Schema.optional(Schema.String),
-      createdByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      createdAt: Schema.optional(Schema.String),
-      lastModifiedBy: Schema.optional(Schema.String),
-      lastModifiedByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      lastModifiedAt: Schema.optional(Schema.String),
-    }),
-  ),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
 });
 export type DeviceGroupsGetOutput = typeof DeviceGroupsGetOutput.Type;
 
@@ -1507,37 +1294,7 @@ export type DeviceGroupsListByProductInput =
 // Output Schema
 export const DeviceGroupsListByProductOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => DeviceGroupSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type DeviceGroupsListByProductOutput =
@@ -1568,17 +1325,7 @@ export const DeviceGroupsUpdateInput =
     productName: Schema.String.pipe(T.PathParam()),
     deviceGroupName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        description: Schema.optional(Schema.String),
-        osFeedType: Schema.optional(Schema.Literals(["Retail", "RetailEval"])),
-        updatePolicy: Schema.optional(
-          Schema.Literals(["UpdateAll", "No3rdPartyAppUpdates"]),
-        ),
-        allowCrashDumpsCollection: Schema.optional(
-          Schema.Literals(["Enabled", "Disabled"]),
-        ),
-        regionalDataBoundary: Schema.optional(Schema.Literals(["None", "EU"])),
-      }),
+      Schema.suspend(() => DeviceGroupUpdatePropertiesSchema),
     ),
   }).pipe(
     T.Http({
@@ -1593,23 +1340,13 @@ export type DeviceGroupsUpdateInput = typeof DeviceGroupsUpdateInput.Type;
 // Output Schema
 export const DeviceGroupsUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => DeviceGroupPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type DeviceGroupsUpdateOutput = typeof DeviceGroupsUpdateOutput.Type;
 
@@ -1637,27 +1374,7 @@ export const DevicesCreateOrUpdateInput =
     productName: Schema.String.pipe(T.PathParam()),
     deviceGroupName: Schema.String.pipe(T.PathParam()),
     deviceName: Schema.String.pipe(T.PathParam()),
-    properties: Schema.optional(
-      Schema.Struct({
-        deviceId: Schema.optional(Schema.String),
-        chipSku: Schema.optional(Schema.String),
-        lastAvailableOsVersion: Schema.optional(Schema.String),
-        lastInstalledOsVersion: Schema.optional(Schema.String),
-        lastOsUpdateUtc: Schema.optional(Schema.String),
-        lastUpdateRequestUtc: Schema.optional(Schema.String),
-        provisioningState: Schema.optional(
-          Schema.Literals([
-            "Succeeded",
-            "Failed",
-            "Canceled",
-            "Provisioning",
-            "Updating",
-            "Deleting",
-            "Accepted",
-          ]),
-        ),
-      }),
-    ),
+    properties: Schema.optional(Schema.suspend(() => DevicePropertiesSchema)),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -1671,23 +1388,11 @@ export type DevicesCreateOrUpdateInput = typeof DevicesCreateOrUpdateInput.Type;
 // Output Schema
 export const DevicesCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(Schema.suspend(() => DevicePropertiesSchema)),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type DevicesCreateOrUpdateOutput =
   typeof DevicesCreateOrUpdateOutput.Type;
@@ -1757,9 +1462,7 @@ export const DevicesGenerateCapabilityImageInput =
     productName: Schema.String.pipe(T.PathParam()),
     deviceGroupName: Schema.String.pipe(T.PathParam()),
     deviceName: Schema.String.pipe(T.PathParam()),
-    capabilities: Schema.Array(
-      Schema.Literals(["ApplicationDevelopment", "FieldServicing"]),
-    ),
+    capabilities: Schema.Array(Schema.suspend(() => CapabilityTypeSchema)),
   }).pipe(
     T.Http({
       method: "POST",
@@ -1815,23 +1518,11 @@ export type DevicesGetInput = typeof DevicesGetInput.Type;
 
 // Output Schema
 export const DevicesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.optional(Schema.suspend(() => DevicePropertiesSchema)),
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
-  systemData: Schema.optional(
-    Schema.Struct({
-      createdBy: Schema.optional(Schema.String),
-      createdByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      createdAt: Schema.optional(Schema.String),
-      lastModifiedBy: Schema.optional(Schema.String),
-      lastModifiedByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      lastModifiedAt: Schema.optional(Schema.String),
-    }),
-  ),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
 });
 export type DevicesGetOutput = typeof DevicesGetOutput.Type;
 
@@ -1872,37 +1563,7 @@ export type DevicesListByDeviceGroupInput =
 // Output Schema
 export const DevicesListByDeviceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => DeviceSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type DevicesListByDeviceGroupOutput =
@@ -1934,9 +1595,7 @@ export const DevicesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   deviceGroupName: Schema.String.pipe(T.PathParam()),
   deviceName: Schema.String.pipe(T.PathParam()),
   properties: Schema.optional(
-    Schema.Struct({
-      deviceGroupId: Schema.optional(Schema.String),
-    }),
+    Schema.suspend(() => DeviceUpdatePropertiesSchema),
   ),
 }).pipe(
   T.Http({
@@ -1950,23 +1609,11 @@ export type DevicesUpdateInput = typeof DevicesUpdateInput.Type;
 
 // Output Schema
 export const DevicesUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.optional(Schema.suspend(() => DevicePropertiesSchema)),
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
-  systemData: Schema.optional(
-    Schema.Struct({
-      createdBy: Schema.optional(Schema.String),
-      createdByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      createdAt: Schema.optional(Schema.String),
-      lastModifiedBy: Schema.optional(Schema.String),
-      lastModifiedByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      lastModifiedAt: Schema.optional(Schema.String),
-    }),
-  ),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
 });
 export type DevicesUpdateOutput = typeof DevicesUpdateOutput.Type;
 
@@ -1993,56 +1640,7 @@ export const ImagesCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     catalogName: Schema.String.pipe(T.PathParam()),
     imageName: Schema.String.pipe(T.PathParam()),
-    properties: Schema.optional(
-      Schema.Struct({
-        image: Schema.optional(Schema.String),
-        imageId: Schema.optional(Schema.String),
-        imageName: Schema.optional(Schema.String),
-        regionalDataBoundary: Schema.optional(Schema.Literals(["None", "EU"])),
-        uri: Schema.optional(Schema.String),
-        description: Schema.optional(Schema.String),
-        componentId: Schema.optional(Schema.String),
-        imageType: Schema.optional(
-          Schema.Literals([
-            "InvalidImageType",
-            "OneBl",
-            "PlutonRuntime",
-            "WifiFirmware",
-            "SecurityMonitor",
-            "NormalWorldLoader",
-            "NormalWorldDtb",
-            "NormalWorldKernel",
-            "RootFs",
-            "Services",
-            "Applications",
-            "FwConfig",
-            "BootManifest",
-            "Nwfs",
-            "TrustedKeystore",
-            "Policy",
-            "CustomerBoardConfig",
-            "UpdateCertStore",
-            "BaseSystemUpdateManifest",
-            "FirmwareUpdateManifest",
-            "CustomerUpdateManifest",
-            "RecoveryManifest",
-            "ManifestSet",
-            "Other",
-          ]),
-        ),
-        provisioningState: Schema.optional(
-          Schema.Literals([
-            "Succeeded",
-            "Failed",
-            "Canceled",
-            "Provisioning",
-            "Updating",
-            "Deleting",
-            "Accepted",
-          ]),
-        ),
-      }),
-    ),
+    properties: Schema.optional(Schema.suspend(() => ImagePropertiesSchema)),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -2056,23 +1654,11 @@ export type ImagesCreateOrUpdateInput = typeof ImagesCreateOrUpdateInput.Type;
 // Output Schema
 export const ImagesCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(Schema.suspend(() => ImagePropertiesSchema)),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type ImagesCreateOrUpdateOutput = typeof ImagesCreateOrUpdateOutput.Type;
 
@@ -2143,23 +1729,11 @@ export type ImagesGetInput = typeof ImagesGetInput.Type;
 
 // Output Schema
 export const ImagesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.optional(Schema.suspend(() => ImagePropertiesSchema)),
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
-  systemData: Schema.optional(
-    Schema.Struct({
-      createdBy: Schema.optional(Schema.String),
-      createdByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      createdAt: Schema.optional(Schema.String),
-      lastModifiedBy: Schema.optional(Schema.String),
-      lastModifiedByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      lastModifiedAt: Schema.optional(Schema.String),
-    }),
-  ),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
 });
 export type ImagesGetOutput = typeof ImagesGetOutput.Type;
 
@@ -2195,37 +1769,7 @@ export type ImagesListByCatalogInput = typeof ImagesListByCatalogInput.Type;
 // Output Schema
 export const ImagesListByCatalogOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => ImageSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type ImagesListByCatalogOutput = typeof ImagesListByCatalogOutput.Type;
@@ -2257,26 +1801,7 @@ export type OperationsListInput = typeof OperationsListInput.Type;
 
 // Output Schema
 export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  value: Schema.optional(
-    Schema.Array(
-      Schema.Struct({
-        name: Schema.optional(Schema.String),
-        isDataAction: Schema.optional(Schema.Boolean),
-        display: Schema.optional(
-          Schema.Struct({
-            provider: Schema.optional(Schema.String),
-            resource: Schema.optional(Schema.String),
-            operation: Schema.optional(Schema.String),
-            description: Schema.optional(Schema.String),
-          }),
-        ),
-        origin: Schema.optional(
-          Schema.Literals(["user", "system", "user,system"]),
-        ),
-        actionType: Schema.optional(Schema.Literals(["Internal"])),
-      }),
-    ),
-  ),
+  value: Schema.optional(Schema.Array(Schema.suspend(() => OperationSchema))),
   nextLink: Schema.optional(Schema.String),
 });
 export type OperationsListOutput = typeof OperationsListOutput.Type;
@@ -2337,22 +1862,7 @@ export const ProductsCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     catalogName: Schema.String.pipe(T.PathParam()),
     productName: Schema.String.pipe(T.PathParam()),
-    properties: Schema.optional(
-      Schema.Struct({
-        description: Schema.optional(Schema.String),
-        provisioningState: Schema.optional(
-          Schema.Literals([
-            "Succeeded",
-            "Failed",
-            "Canceled",
-            "Provisioning",
-            "Updating",
-            "Deleting",
-            "Accepted",
-          ]),
-        ),
-      }),
-    ),
+    properties: Schema.optional(Schema.suspend(() => ProductPropertiesSchema)),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -2367,23 +1877,11 @@ export type ProductsCreateOrUpdateInput =
 // Output Schema
 export const ProductsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(Schema.suspend(() => ProductPropertiesSchema)),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type ProductsCreateOrUpdateOutput =
   typeof ProductsCreateOrUpdateOutput.Type;
@@ -2458,37 +1956,7 @@ export type ProductsGenerateDefaultDeviceGroupsInput =
 // Output Schema
 export const ProductsGenerateDefaultDeviceGroupsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => DeviceGroupSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type ProductsGenerateDefaultDeviceGroupsOutput =
@@ -2526,23 +1994,11 @@ export type ProductsGetInput = typeof ProductsGetInput.Type;
 
 // Output Schema
 export const ProductsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.optional(Schema.suspend(() => ProductPropertiesSchema)),
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
-  systemData: Schema.optional(
-    Schema.Struct({
-      createdBy: Schema.optional(Schema.String),
-      createdByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      createdAt: Schema.optional(Schema.String),
-      lastModifiedBy: Schema.optional(Schema.String),
-      lastModifiedByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      lastModifiedAt: Schema.optional(Schema.String),
-    }),
-  ),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
 });
 export type ProductsGetOutput = typeof ProductsGetOutput.Type;
 
@@ -2578,37 +2034,7 @@ export type ProductsListByCatalogInput = typeof ProductsListByCatalogInput.Type;
 // Output Schema
 export const ProductsListByCatalogOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => ProductSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type ProductsListByCatalogOutput =
@@ -2636,9 +2062,7 @@ export const ProductsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   catalogName: Schema.String.pipe(T.PathParam()),
   productName: Schema.String.pipe(T.PathParam()),
   properties: Schema.optional(
-    Schema.Struct({
-      description: Schema.optional(Schema.String),
-    }),
+    Schema.suspend(() => ProductUpdatePropertiesSchema),
   ),
 }).pipe(
   T.Http({
@@ -2652,23 +2076,11 @@ export type ProductsUpdateInput = typeof ProductsUpdateInput.Type;
 
 // Output Schema
 export const ProductsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.optional(Schema.suspend(() => ProductPropertiesSchema)),
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
-  systemData: Schema.optional(
-    Schema.Struct({
-      createdBy: Schema.optional(Schema.String),
-      createdByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      createdAt: Schema.optional(Schema.String),
-      lastModifiedBy: Schema.optional(Schema.String),
-      lastModifiedByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      lastModifiedAt: Schema.optional(Schema.String),
-    }),
-  ),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
 });
 export type ProductsUpdateOutput = typeof ProductsUpdateOutput.Type;
 

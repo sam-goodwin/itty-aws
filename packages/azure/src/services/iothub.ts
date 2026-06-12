@@ -7,21 +7,540 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
-import { SensitiveString } from "../sensitive.ts";
+import { SensitiveOutputString } from "../sensitive.ts";
+
+// Shared schemas
+const OperationSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  display: Schema.optional(
+    Schema.Struct({
+      provider: Schema.optional(Schema.String),
+      resource: Schema.optional(Schema.String),
+      operation: Schema.optional(Schema.String),
+      description: Schema.optional(Schema.String),
+    }),
+  ),
+});
+const IotHubPropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  authorizationPolicies: Schema.optional(
+    Schema.Array(
+      Schema.suspend(() => SharedAccessSignatureAuthorizationRuleSchema),
+    ),
+  ),
+  disableLocalAuth: Schema.optional(Schema.Boolean),
+  disableDeviceSAS: Schema.optional(Schema.Boolean),
+  disableModuleSAS: Schema.optional(Schema.Boolean),
+  restrictOutboundNetworkAccess: Schema.optional(Schema.Boolean),
+  allowedFqdnList: Schema.optional(Schema.Array(Schema.String)),
+  publicNetworkAccess: Schema.optional(
+    Schema.Literals(["Enabled", "Disabled"]),
+  ),
+  ipFilterRules: Schema.optional(
+    Schema.Array(Schema.suspend(() => IpFilterRuleSchema)),
+  ),
+  networkRuleSets: Schema.optional(
+    Schema.suspend(() => NetworkRuleSetPropertiesSchema),
+  ),
+  minTlsVersion: Schema.optional(Schema.String),
+  privateEndpointConnections: Schema.optional(
+    Schema.Array(Schema.suspend(() => PrivateEndpointConnectionSchema)),
+  ),
+  provisioningState: Schema.optional(Schema.String),
+  state: Schema.optional(Schema.String),
+  hostName: Schema.optional(Schema.String),
+  eventHubEndpoints: Schema.optional(
+    Schema.Record(
+      Schema.String,
+      Schema.suspend(() => EventHubPropertiesSchema),
+    ),
+  ),
+  routing: Schema.optional(Schema.suspend(() => RoutingPropertiesSchema)),
+  storageEndpoints: Schema.optional(
+    Schema.Record(
+      Schema.String,
+      Schema.suspend(() => StorageEndpointPropertiesSchema),
+    ),
+  ),
+  messagingEndpoints: Schema.optional(
+    Schema.Record(
+      Schema.String,
+      Schema.suspend(() => MessagingEndpointPropertiesSchema),
+    ),
+  ),
+  enableFileUploadNotifications: Schema.optional(Schema.Boolean),
+  cloudToDevice: Schema.optional(
+    Schema.suspend(() => CloudToDevicePropertiesSchema),
+  ),
+  comments: Schema.optional(Schema.String),
+  features: Schema.optional(Schema.Literals(["None", "DeviceManagement"])),
+  locations: Schema.optional(
+    Schema.Array(Schema.suspend(() => IotHubLocationDescriptionSchema)),
+  ),
+  enableDataResidency: Schema.optional(Schema.Boolean),
+});
+const SharedAccessSignatureAuthorizationRuleSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    keyName: Schema.String,
+    primaryKey: Schema.optional(Schema.String),
+    secondaryKey: Schema.optional(Schema.String),
+    rights: Schema.Literals([
+      "RegistryRead",
+      "RegistryWrite",
+      "ServiceConnect",
+      "DeviceConnect",
+      "RegistryRead, RegistryWrite",
+      "RegistryRead, ServiceConnect",
+      "RegistryRead, DeviceConnect",
+      "RegistryWrite, ServiceConnect",
+      "RegistryWrite, DeviceConnect",
+      "ServiceConnect, DeviceConnect",
+      "RegistryRead, RegistryWrite, ServiceConnect",
+      "RegistryRead, RegistryWrite, DeviceConnect",
+      "RegistryRead, ServiceConnect, DeviceConnect",
+      "RegistryWrite, ServiceConnect, DeviceConnect",
+      "RegistryRead, RegistryWrite, ServiceConnect, DeviceConnect",
+    ]),
+  });
+const IpFilterRuleSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  filterName: Schema.String,
+  action: Schema.Literals(["Accept", "Reject"]),
+  ipMask: Schema.String,
+});
+const NetworkRuleSetPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    defaultAction: Schema.optional(Schema.Literals(["Deny", "Allow"])),
+    applyToBuiltInEventHubEndpoint: Schema.Boolean,
+    ipRules: Schema.Array(Schema.suspend(() => NetworkRuleSetIpRuleSchema)),
+  });
+const NetworkRuleSetIpRuleSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  filterName: Schema.String,
+  action: Schema.optional(Schema.Literals(["Allow"])),
+  ipMask: Schema.String,
+});
+const PrivateEndpointConnectionSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    properties: Schema.suspend(() => PrivateEndpointConnectionPropertiesSchema),
+  });
+const PrivateEndpointConnectionPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    privateEndpoint: Schema.optional(
+      Schema.suspend(() => PrivateEndpointSchema),
+    ),
+    privateLinkServiceConnectionState: Schema.suspend(
+      () => PrivateLinkServiceConnectionStateSchema,
+    ),
+  });
+const PrivateEndpointSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+});
+const PrivateLinkServiceConnectionStateSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    status: Schema.Literals([
+      "Pending",
+      "Approved",
+      "Rejected",
+      "Disconnected",
+    ]),
+    description: Schema.String,
+    actionsRequired: Schema.optional(Schema.String),
+  });
+const EventHubPropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  retentionTimeInDays: Schema.optional(Schema.Number),
+  partitionCount: Schema.optional(Schema.Number),
+  partitionIds: Schema.optional(Schema.Array(Schema.String)),
+  path: Schema.optional(Schema.String),
+  endpoint: Schema.optional(Schema.String),
+});
+const RoutingPropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  endpoints: Schema.optional(Schema.suspend(() => RoutingEndpointsSchema)),
+  routes: Schema.optional(
+    Schema.Array(Schema.suspend(() => RoutePropertiesSchema)),
+  ),
+  fallbackRoute: Schema.optional(
+    Schema.suspend(() => FallbackRoutePropertiesSchema),
+  ),
+  enrichments: Schema.optional(
+    Schema.Array(Schema.suspend(() => EnrichmentPropertiesSchema)),
+  ),
+});
+const RoutingEndpointsSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  serviceBusQueues: Schema.optional(
+    Schema.Array(
+      Schema.suspend(() => RoutingServiceBusQueueEndpointPropertiesSchema),
+    ),
+  ),
+  serviceBusTopics: Schema.optional(
+    Schema.Array(
+      Schema.suspend(() => RoutingServiceBusTopicEndpointPropertiesSchema),
+    ),
+  ),
+  eventHubs: Schema.optional(
+    Schema.Array(Schema.suspend(() => RoutingEventHubPropertiesSchema)),
+  ),
+  storageContainers: Schema.optional(
+    Schema.Array(Schema.suspend(() => RoutingStorageContainerPropertiesSchema)),
+  ),
+  cosmosDBSqlContainers: Schema.optional(
+    Schema.Array(Schema.suspend(() => RoutingCosmosDBSqlApiPropertiesSchema)),
+  ),
+});
+const RoutingServiceBusQueueEndpointPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    connectionString: Schema.optional(SensitiveOutputString),
+    endpointUri: Schema.optional(Schema.String),
+    entityPath: Schema.optional(Schema.String),
+    authenticationType: Schema.optional(
+      Schema.Literals(["keyBased", "identityBased"]),
+    ),
+    identity: Schema.optional(Schema.suspend(() => ManagedIdentitySchema)),
+    name: Schema.String,
+    subscriptionId: Schema.optional(Schema.String),
+    resourceGroup: Schema.optional(Schema.String),
+  });
+const ManagedIdentitySchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  userAssignedIdentity: Schema.optional(Schema.String),
+});
+const RoutingServiceBusTopicEndpointPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    connectionString: Schema.optional(SensitiveOutputString),
+    endpointUri: Schema.optional(Schema.String),
+    entityPath: Schema.optional(Schema.String),
+    authenticationType: Schema.optional(
+      Schema.Literals(["keyBased", "identityBased"]),
+    ),
+    identity: Schema.optional(Schema.suspend(() => ManagedIdentitySchema)),
+    name: Schema.String,
+    subscriptionId: Schema.optional(Schema.String),
+    resourceGroup: Schema.optional(Schema.String),
+  });
+const RoutingEventHubPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    connectionString: Schema.optional(SensitiveOutputString),
+    endpointUri: Schema.optional(Schema.String),
+    entityPath: Schema.optional(Schema.String),
+    authenticationType: Schema.optional(
+      Schema.Literals(["keyBased", "identityBased"]),
+    ),
+    identity: Schema.optional(Schema.suspend(() => ManagedIdentitySchema)),
+    name: Schema.String,
+    subscriptionId: Schema.optional(Schema.String),
+    resourceGroup: Schema.optional(Schema.String),
+  });
+const RoutingStorageContainerPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    connectionString: Schema.optional(SensitiveOutputString),
+    endpointUri: Schema.optional(Schema.String),
+    authenticationType: Schema.optional(
+      Schema.Literals(["keyBased", "identityBased"]),
+    ),
+    identity: Schema.optional(Schema.suspend(() => ManagedIdentitySchema)),
+    name: Schema.String,
+    subscriptionId: Schema.optional(Schema.String),
+    resourceGroup: Schema.optional(Schema.String),
+    containerName: Schema.String,
+    fileNameFormat: Schema.optional(Schema.String),
+    batchFrequencyInSeconds: Schema.optional(Schema.Number),
+    maxChunkSizeInBytes: Schema.optional(Schema.Number),
+    encoding: Schema.optional(Schema.Literals(["Avro", "AvroDeflate", "JSON"])),
+  });
+const RoutingCosmosDBSqlApiPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String,
+    id: Schema.optional(Schema.String),
+    subscriptionId: Schema.optional(Schema.String),
+    resourceGroup: Schema.optional(Schema.String),
+    endpointUri: Schema.String,
+    authenticationType: Schema.optional(
+      Schema.Literals(["keyBased", "identityBased"]),
+    ),
+    identity: Schema.optional(Schema.suspend(() => ManagedIdentitySchema)),
+    primaryKey: Schema.optional(Schema.String),
+    secondaryKey: Schema.optional(Schema.String),
+    databaseName: Schema.String,
+    containerName: Schema.String,
+    partitionKeyName: Schema.optional(Schema.String),
+    partitionKeyTemplate: Schema.optional(Schema.String),
+  });
+const RoutePropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.String,
+  source: Schema.Literals([
+    "Invalid",
+    "DeviceMessages",
+    "TwinChangeEvents",
+    "DeviceLifecycleEvents",
+    "DeviceJobLifecycleEvents",
+    "DeviceConnectionStateEvents",
+  ]),
+  condition: Schema.optional(Schema.String),
+  endpointNames: Schema.Array(Schema.String),
+  isEnabled: Schema.Boolean,
+});
+const FallbackRoutePropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    name: Schema.optional(Schema.String),
+    source: Schema.Literals(["DeviceMessages"]),
+    condition: Schema.optional(Schema.String),
+    endpointNames: Schema.Array(Schema.String),
+    isEnabled: Schema.Boolean,
+  },
+);
+const EnrichmentPropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  key: Schema.String,
+  value: Schema.String,
+  endpointNames: Schema.Array(Schema.String),
+});
+const StorageEndpointPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    sasTtlAsIso8601: Schema.optional(Schema.String),
+    connectionString: SensitiveOutputString,
+    containerName: Schema.String,
+    authenticationType: Schema.optional(
+      Schema.Literals(["keyBased", "identityBased"]),
+    ),
+    identity: Schema.optional(Schema.suspend(() => ManagedIdentitySchema)),
+  });
+const MessagingEndpointPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    lockDurationAsIso8601: Schema.optional(Schema.String),
+    ttlAsIso8601: Schema.optional(Schema.String),
+    maxDeliveryCount: Schema.optional(Schema.Number),
+  });
+const CloudToDevicePropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    maxDeliveryCount: Schema.optional(Schema.Number),
+    defaultTtlAsIso8601: Schema.optional(Schema.String),
+    feedback: Schema.optional(Schema.suspend(() => FeedbackPropertiesSchema)),
+  },
+);
+const FeedbackPropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  lockDurationAsIso8601: Schema.optional(Schema.String),
+  ttlAsIso8601: Schema.optional(Schema.String),
+  maxDeliveryCount: Schema.optional(Schema.Number),
+});
+const IotHubLocationDescriptionSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    location: Schema.optional(Schema.String),
+    role: Schema.optional(Schema.Literals(["primary", "secondary"])),
+  });
+const IotHubSkuInfoSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.Literals(["F1", "S1", "S2", "S3", "B1", "B2", "B3"]),
+  tier: Schema.optional(Schema.Literals(["Free", "Standard", "Basic"])),
+  capacity: Schema.optional(Schema.Number),
+});
+const ArmIdentitySchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  principalId: Schema.optional(Schema.String),
+  tenantId: Schema.optional(Schema.String),
+  type: Schema.optional(
+    Schema.Literals([
+      "SystemAssigned",
+      "UserAssigned",
+      "SystemAssigned, UserAssigned",
+      "None",
+    ]),
+  ),
+  userAssignedIdentities: Schema.optional(
+    Schema.Record(
+      Schema.String,
+      Schema.suspend(() => ArmUserIdentitySchema),
+    ),
+  ),
+});
+const ArmUserIdentitySchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  principalId: Schema.optional(Schema.String),
+  clientId: Schema.optional(Schema.String),
+});
+const systemDataSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  createdBy: Schema.optional(Schema.String),
+  createdByType: Schema.optional(
+    Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+  ),
+  createdAt: Schema.optional(Schema.String),
+  lastModifiedBy: Schema.optional(Schema.String),
+  lastModifiedByType: Schema.optional(
+    Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+  ),
+  lastModifiedAt: Schema.optional(Schema.String),
+});
+const IotHubDescriptionSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  location: Schema.String,
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+});
+const IotHubSkuDescriptionSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  resourceType: Schema.optional(Schema.String),
+  sku: Schema.suspend(() => IotHubSkuInfoSchema),
+  capacity: Schema.suspend(() => IotHubCapacitySchema),
+});
+const IotHubCapacitySchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  minimum: Schema.optional(Schema.Number),
+  maximum: Schema.optional(Schema.Number),
+  default: Schema.optional(Schema.Number),
+  scaleType: Schema.optional(Schema.Literals(["Automatic", "Manual", "None"])),
+});
+const EventHubConsumerGroupInfoSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    etag: Schema.optional(Schema.String),
+  });
+const EventHubConsumerGroupNameSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String,
+  });
+const JobResponseSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  jobId: Schema.optional(Schema.String),
+  startTimeUtc: Schema.optional(Schema.String),
+  endTimeUtc: Schema.optional(Schema.String),
+  type: Schema.optional(
+    Schema.Literals([
+      "unknown",
+      "export",
+      "import",
+      "backup",
+      "readDeviceProperties",
+      "writeDeviceProperties",
+      "updateDeviceConfiguration",
+      "rebootDevice",
+      "factoryResetDevice",
+      "firmwareUpdate",
+    ]),
+  ),
+  status: Schema.optional(
+    Schema.Literals([
+      "unknown",
+      "enqueued",
+      "running",
+      "completed",
+      "failed",
+      "cancelled",
+    ]),
+  ),
+  failureReason: Schema.optional(Schema.String),
+  statusMessage: Schema.optional(Schema.String),
+  parentJobId: Schema.optional(Schema.String),
+});
+const IotHubQuotaMetricInfoSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  currentValue: Schema.optional(Schema.Number),
+  maxValue: Schema.optional(Schema.Number),
+});
+const EndpointHealthDataSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  endpointId: Schema.optional(Schema.String),
+  healthStatus: Schema.optional(
+    Schema.Literals(["unknown", "healthy", "degraded", "unhealthy", "dead"]),
+  ),
+  lastKnownError: Schema.optional(Schema.String),
+  lastKnownErrorTime: Schema.optional(Schema.String),
+  lastSuccessfulSendAttemptTime: Schema.optional(Schema.String),
+  lastSendAttemptTime: Schema.optional(Schema.String),
+});
+const UserSubscriptionQuotaSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  unit: Schema.optional(Schema.String),
+  currentValue: Schema.optional(Schema.Number),
+  limit: Schema.optional(Schema.Number),
+  name: Schema.optional(Schema.suspend(() => NameSchema)),
+});
+const NameSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  value: Schema.optional(Schema.String),
+  localizedValue: Schema.optional(Schema.String),
+});
+const RoutingMessageSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  body: Schema.optional(Schema.String),
+  appProperties: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  systemProperties: Schema.optional(
+    Schema.Record(Schema.String, Schema.String),
+  ),
+});
+const RoutingTwinSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  tags: Schema.optional(Schema.Unknown),
+  properties: Schema.optional(
+    Schema.Struct({
+      desired: Schema.optional(Schema.Unknown),
+      reported: Schema.optional(Schema.Unknown),
+    }),
+  ),
+});
+const MatchedRouteSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.optional(Schema.suspend(() => RoutePropertiesSchema)),
+});
+const TestRouteResultDetailsSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  compilationErrors: Schema.optional(
+    Schema.Array(Schema.suspend(() => RouteCompilationErrorSchema)),
+  ),
+});
+const RouteCompilationErrorSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  message: Schema.optional(Schema.String),
+  severity: Schema.optional(Schema.Literals(["error", "warning"])),
+  location: Schema.optional(Schema.suspend(() => RouteErrorRangeSchema)),
+});
+const RouteErrorRangeSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  start: Schema.optional(Schema.suspend(() => RouteErrorPositionSchema)),
+  end: Schema.optional(Schema.suspend(() => RouteErrorPositionSchema)),
+});
+const RouteErrorPositionSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  line: Schema.optional(Schema.Number),
+  column: Schema.optional(Schema.Number),
+});
+const CertificateDescriptionSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.optional(
+    Schema.suspend(() => CertificatePropertiesSchema),
+  ),
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  etag: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
+const CertificatePropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subject: Schema.optional(Schema.String),
+  expiry: Schema.optional(Schema.String),
+  thumbprint: Schema.optional(Schema.String),
+  isVerified: Schema.optional(Schema.Boolean),
+  created: Schema.optional(Schema.String),
+  updated: Schema.optional(Schema.String),
+  certificate: Schema.optional(Schema.String),
+});
+const CertificatePropertiesWithNonceSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subject: Schema.optional(Schema.String),
+    expiry: Schema.optional(Schema.String),
+    thumbprint: Schema.optional(Schema.String),
+    isVerified: Schema.optional(Schema.Boolean),
+    created: Schema.optional(Schema.String),
+    updated: Schema.optional(Schema.String),
+    verificationCode: Schema.optional(Schema.String),
+    certificate: Schema.optional(Schema.String),
+  });
+const GroupIdInformationSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  properties: Schema.suspend(() => GroupIdInformationPropertiesSchema),
+});
+const GroupIdInformationPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    groupId: Schema.optional(Schema.String),
+    requiredMembers: Schema.optional(Schema.Array(Schema.String)),
+    requiredZoneNames: Schema.optional(Schema.Array(Schema.String)),
+  });
 
 // Input Schema
 export const CertificatesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     properties: Schema.optional(
-      Schema.Struct({
-        subject: Schema.optional(Schema.String),
-        expiry: Schema.optional(Schema.String),
-        thumbprint: Schema.optional(Schema.String),
-        isVerified: Schema.optional(Schema.Boolean),
-        created: Schema.optional(Schema.String),
-        updated: Schema.optional(Schema.String),
-        certificate: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(() => CertificatePropertiesSchema),
     ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -41,15 +560,7 @@ export type CertificatesCreateOrUpdateInput =
 export const CertificatesCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     properties: Schema.optional(
-      Schema.Struct({
-        subject: Schema.optional(Schema.String),
-        expiry: Schema.optional(Schema.String),
-        thumbprint: Schema.optional(Schema.String),
-        isVerified: Schema.optional(Schema.Boolean),
-        created: Schema.optional(Schema.String),
-        updated: Schema.optional(Schema.String),
-        certificate: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(() => CertificatePropertiesSchema),
     ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -116,16 +627,7 @@ export type CertificatesGenerateVerificationCodeInput =
 export const CertificatesGenerateVerificationCodeOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     properties: Schema.optional(
-      Schema.Struct({
-        subject: Schema.optional(Schema.String),
-        expiry: Schema.optional(Schema.String),
-        thumbprint: Schema.optional(Schema.String),
-        isVerified: Schema.optional(Schema.Boolean),
-        created: Schema.optional(Schema.String),
-        updated: Schema.optional(Schema.String),
-        verificationCode: Schema.optional(Schema.String),
-        certificate: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(() => CertificatePropertiesWithNonceSchema),
     ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -163,15 +665,7 @@ export type CertificatesGetInput = typeof CertificatesGetInput.Type;
 // Output Schema
 export const CertificatesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   properties: Schema.optional(
-    Schema.Struct({
-      subject: Schema.optional(Schema.String),
-      expiry: Schema.optional(Schema.String),
-      thumbprint: Schema.optional(Schema.String),
-      isVerified: Schema.optional(Schema.Boolean),
-      created: Schema.optional(Schema.String),
-      updated: Schema.optional(Schema.String),
-      certificate: Schema.optional(Schema.String),
-    }),
+    Schema.suspend(() => CertificatePropertiesSchema),
   ),
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -206,25 +700,7 @@ export type CertificatesListByIotHubInput =
 export const CertificatesListByIotHubOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          properties: Schema.optional(
-            Schema.Struct({
-              subject: Schema.optional(Schema.String),
-              expiry: Schema.optional(Schema.String),
-              thumbprint: Schema.optional(Schema.String),
-              isVerified: Schema.optional(Schema.Boolean),
-              created: Schema.optional(Schema.String),
-              updated: Schema.optional(Schema.String),
-              certificate: Schema.optional(Schema.String),
-            }),
-          ),
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          etag: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => CertificateDescriptionSchema)),
     ),
   });
 export type CertificatesListByIotHubOutput =
@@ -259,15 +735,7 @@ export type CertificatesVerifyInput = typeof CertificatesVerifyInput.Type;
 export const CertificatesVerifyOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     properties: Schema.optional(
-      Schema.Struct({
-        subject: Schema.optional(Schema.String),
-        expiry: Schema.optional(Schema.String),
-        thumbprint: Schema.optional(Schema.String),
-        isVerified: Schema.optional(Schema.Boolean),
-        created: Schema.optional(Schema.String),
-        updated: Schema.optional(Schema.String),
-        certificate: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(() => CertificatePropertiesSchema),
     ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -364,9 +832,7 @@ export const IotHubResourceCreateEventHubConsumerGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     eventHubEndpointName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    properties: Schema.Struct({
-      name: Schema.String,
-    }),
+    properties: Schema.suspend(() => EventHubConsumerGroupNameSchema),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -407,364 +873,10 @@ export const IotHubResourceCreateEventHubConsumerGroup =
 export const IotHubResourceCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     etag: Schema.optional(Schema.String),
-    properties: Schema.optional(
-      Schema.Struct({
-        authorizationPolicies: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              keyName: Schema.String,
-              primaryKey: Schema.optional(Schema.String),
-              secondaryKey: Schema.optional(Schema.String),
-              rights: Schema.Literals([
-                "RegistryRead",
-                "RegistryWrite",
-                "ServiceConnect",
-                "DeviceConnect",
-                "RegistryRead, RegistryWrite",
-                "RegistryRead, ServiceConnect",
-                "RegistryRead, DeviceConnect",
-                "RegistryWrite, ServiceConnect",
-                "RegistryWrite, DeviceConnect",
-                "ServiceConnect, DeviceConnect",
-                "RegistryRead, RegistryWrite, ServiceConnect",
-                "RegistryRead, RegistryWrite, DeviceConnect",
-                "RegistryRead, ServiceConnect, DeviceConnect",
-                "RegistryWrite, ServiceConnect, DeviceConnect",
-                "RegistryRead, RegistryWrite, ServiceConnect, DeviceConnect",
-              ]),
-            }),
-          ),
-        ),
-        disableLocalAuth: Schema.optional(Schema.Boolean),
-        disableDeviceSAS: Schema.optional(Schema.Boolean),
-        disableModuleSAS: Schema.optional(Schema.Boolean),
-        restrictOutboundNetworkAccess: Schema.optional(Schema.Boolean),
-        allowedFqdnList: Schema.optional(Schema.Array(Schema.String)),
-        publicNetworkAccess: Schema.optional(
-          Schema.Literals(["Enabled", "Disabled"]),
-        ),
-        ipFilterRules: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              filterName: Schema.String,
-              action: Schema.Literals(["Accept", "Reject"]),
-              ipMask: Schema.String,
-            }),
-          ),
-        ),
-        networkRuleSets: Schema.optional(
-          Schema.Struct({
-            defaultAction: Schema.optional(Schema.Literals(["Deny", "Allow"])),
-            applyToBuiltInEventHubEndpoint: Schema.Boolean,
-            ipRules: Schema.Array(
-              Schema.Struct({
-                filterName: Schema.String,
-                action: Schema.optional(Schema.Literals(["Allow"])),
-                ipMask: Schema.String,
-              }),
-            ),
-          }),
-        ),
-        minTlsVersion: Schema.optional(Schema.String),
-        privateEndpointConnections: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              id: Schema.optional(Schema.String),
-              name: Schema.optional(Schema.String),
-              type: Schema.optional(Schema.String),
-              properties: Schema.Struct({
-                privateEndpoint: Schema.optional(
-                  Schema.Struct({
-                    id: Schema.optional(Schema.String),
-                  }),
-                ),
-                privateLinkServiceConnectionState: Schema.Struct({
-                  status: Schema.Literals([
-                    "Pending",
-                    "Approved",
-                    "Rejected",
-                    "Disconnected",
-                  ]),
-                  description: Schema.String,
-                  actionsRequired: Schema.optional(Schema.String),
-                }),
-              }),
-            }),
-          ),
-        ),
-        provisioningState: Schema.optional(Schema.String),
-        state: Schema.optional(Schema.String),
-        hostName: Schema.optional(Schema.String),
-        eventHubEndpoints: Schema.optional(
-          Schema.Record(
-            Schema.String,
-            Schema.Struct({
-              retentionTimeInDays: Schema.optional(Schema.Number),
-              partitionCount: Schema.optional(Schema.Number),
-              partitionIds: Schema.optional(Schema.Array(Schema.String)),
-              path: Schema.optional(Schema.String),
-              endpoint: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        routing: Schema.optional(
-          Schema.Struct({
-            endpoints: Schema.optional(
-              Schema.Struct({
-                serviceBusQueues: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      id: Schema.optional(Schema.String),
-                      connectionString: Schema.optional(SensitiveString),
-                      endpointUri: Schema.optional(Schema.String),
-                      entityPath: Schema.optional(Schema.String),
-                      authenticationType: Schema.optional(
-                        Schema.Literals(["keyBased", "identityBased"]),
-                      ),
-                      identity: Schema.optional(
-                        Schema.Struct({
-                          userAssignedIdentity: Schema.optional(Schema.String),
-                        }),
-                      ),
-                      name: Schema.String,
-                      subscriptionId: Schema.optional(Schema.String),
-                      resourceGroup: Schema.optional(Schema.String),
-                    }),
-                  ),
-                ),
-                serviceBusTopics: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      id: Schema.optional(Schema.String),
-                      connectionString: Schema.optional(SensitiveString),
-                      endpointUri: Schema.optional(Schema.String),
-                      entityPath: Schema.optional(Schema.String),
-                      authenticationType: Schema.optional(
-                        Schema.Literals(["keyBased", "identityBased"]),
-                      ),
-                      identity: Schema.optional(
-                        Schema.Struct({
-                          userAssignedIdentity: Schema.optional(Schema.String),
-                        }),
-                      ),
-                      name: Schema.String,
-                      subscriptionId: Schema.optional(Schema.String),
-                      resourceGroup: Schema.optional(Schema.String),
-                    }),
-                  ),
-                ),
-                eventHubs: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      id: Schema.optional(Schema.String),
-                      connectionString: Schema.optional(SensitiveString),
-                      endpointUri: Schema.optional(Schema.String),
-                      entityPath: Schema.optional(Schema.String),
-                      authenticationType: Schema.optional(
-                        Schema.Literals(["keyBased", "identityBased"]),
-                      ),
-                      identity: Schema.optional(
-                        Schema.Struct({
-                          userAssignedIdentity: Schema.optional(Schema.String),
-                        }),
-                      ),
-                      name: Schema.String,
-                      subscriptionId: Schema.optional(Schema.String),
-                      resourceGroup: Schema.optional(Schema.String),
-                    }),
-                  ),
-                ),
-                storageContainers: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      id: Schema.optional(Schema.String),
-                      connectionString: Schema.optional(SensitiveString),
-                      endpointUri: Schema.optional(Schema.String),
-                      authenticationType: Schema.optional(
-                        Schema.Literals(["keyBased", "identityBased"]),
-                      ),
-                      identity: Schema.optional(
-                        Schema.Struct({
-                          userAssignedIdentity: Schema.optional(Schema.String),
-                        }),
-                      ),
-                      name: Schema.String,
-                      subscriptionId: Schema.optional(Schema.String),
-                      resourceGroup: Schema.optional(Schema.String),
-                      containerName: Schema.String,
-                      fileNameFormat: Schema.optional(Schema.String),
-                      batchFrequencyInSeconds: Schema.optional(Schema.Number),
-                      maxChunkSizeInBytes: Schema.optional(Schema.Number),
-                      encoding: Schema.optional(
-                        Schema.Literals(["Avro", "AvroDeflate", "JSON"]),
-                      ),
-                    }),
-                  ),
-                ),
-                cosmosDBSqlContainers: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      name: Schema.String,
-                      id: Schema.optional(Schema.String),
-                      subscriptionId: Schema.optional(Schema.String),
-                      resourceGroup: Schema.optional(Schema.String),
-                      endpointUri: Schema.String,
-                      authenticationType: Schema.optional(
-                        Schema.Literals(["keyBased", "identityBased"]),
-                      ),
-                      identity: Schema.optional(
-                        Schema.Struct({
-                          userAssignedIdentity: Schema.optional(Schema.String),
-                        }),
-                      ),
-                      primaryKey: Schema.optional(Schema.String),
-                      secondaryKey: Schema.optional(Schema.String),
-                      databaseName: Schema.String,
-                      containerName: Schema.String,
-                      partitionKeyName: Schema.optional(Schema.String),
-                      partitionKeyTemplate: Schema.optional(Schema.String),
-                    }),
-                  ),
-                ),
-              }),
-            ),
-            routes: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  name: Schema.String,
-                  source: Schema.Literals([
-                    "Invalid",
-                    "DeviceMessages",
-                    "TwinChangeEvents",
-                    "DeviceLifecycleEvents",
-                    "DeviceJobLifecycleEvents",
-                    "DeviceConnectionStateEvents",
-                  ]),
-                  condition: Schema.optional(Schema.String),
-                  endpointNames: Schema.Array(Schema.String),
-                  isEnabled: Schema.Boolean,
-                }),
-              ),
-            ),
-            fallbackRoute: Schema.optional(
-              Schema.Struct({
-                name: Schema.optional(Schema.String),
-                source: Schema.Literals(["DeviceMessages"]),
-                condition: Schema.optional(Schema.String),
-                endpointNames: Schema.Array(Schema.String),
-                isEnabled: Schema.Boolean,
-              }),
-            ),
-            enrichments: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  key: Schema.String,
-                  value: Schema.String,
-                  endpointNames: Schema.Array(Schema.String),
-                }),
-              ),
-            ),
-          }),
-        ),
-        storageEndpoints: Schema.optional(
-          Schema.Record(
-            Schema.String,
-            Schema.Struct({
-              sasTtlAsIso8601: Schema.optional(Schema.String),
-              connectionString: SensitiveString,
-              containerName: Schema.String,
-              authenticationType: Schema.optional(
-                Schema.Literals(["keyBased", "identityBased"]),
-              ),
-              identity: Schema.optional(
-                Schema.Struct({
-                  userAssignedIdentity: Schema.optional(Schema.String),
-                }),
-              ),
-            }),
-          ),
-        ),
-        messagingEndpoints: Schema.optional(
-          Schema.Record(
-            Schema.String,
-            Schema.Struct({
-              lockDurationAsIso8601: Schema.optional(Schema.String),
-              ttlAsIso8601: Schema.optional(Schema.String),
-              maxDeliveryCount: Schema.optional(Schema.Number),
-            }),
-          ),
-        ),
-        enableFileUploadNotifications: Schema.optional(Schema.Boolean),
-        cloudToDevice: Schema.optional(
-          Schema.Struct({
-            maxDeliveryCount: Schema.optional(Schema.Number),
-            defaultTtlAsIso8601: Schema.optional(Schema.String),
-            feedback: Schema.optional(
-              Schema.Struct({
-                lockDurationAsIso8601: Schema.optional(Schema.String),
-                ttlAsIso8601: Schema.optional(Schema.String),
-                maxDeliveryCount: Schema.optional(Schema.Number),
-              }),
-            ),
-          }),
-        ),
-        comments: Schema.optional(Schema.String),
-        features: Schema.optional(
-          Schema.Literals(["None", "DeviceManagement"]),
-        ),
-        locations: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              location: Schema.optional(Schema.String),
-              role: Schema.optional(Schema.Literals(["primary", "secondary"])),
-            }),
-          ),
-        ),
-        enableDataResidency: Schema.optional(Schema.Boolean),
-      }),
-    ),
-    sku: Schema.Struct({
-      name: Schema.Literals(["F1", "S1", "S2", "S3", "B1", "B2", "B3"]),
-      tier: Schema.optional(Schema.Literals(["Free", "Standard", "Basic"])),
-      capacity: Schema.optional(Schema.Number),
-    }),
-    identity: Schema.optional(
-      Schema.Struct({
-        principalId: Schema.optional(Schema.String),
-        tenantId: Schema.optional(Schema.String),
-        type: Schema.optional(
-          Schema.Literals([
-            "SystemAssigned",
-            "UserAssigned",
-            "SystemAssigned, UserAssigned",
-            "None",
-          ]),
-        ),
-        userAssignedIdentities: Schema.optional(
-          Schema.Record(
-            Schema.String,
-            Schema.Struct({
-              principalId: Schema.optional(Schema.String),
-              clientId: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-      }),
-    ),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    properties: Schema.optional(Schema.suspend(() => IotHubPropertiesSchema)),
+    sku: Schema.suspend(() => IotHubSkuInfoSchema),
+    identity: Schema.optional(Schema.suspend(() => ArmIdentitySchema)),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -784,6 +896,11 @@ export type IotHubResourceCreateOrUpdateInput =
 // Output Schema
 export const IotHubResourceCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    etag: Schema.optional(Schema.String),
+    properties: Schema.optional(Schema.suspend(() => IotHubPropertiesSchema)),
+    sku: Schema.suspend(() => IotHubSkuInfoSchema),
+    identity: Schema.optional(Schema.suspend(() => ArmIdentitySchema)),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -821,6 +938,11 @@ export type IotHubResourceDeleteInput = typeof IotHubResourceDeleteInput.Type;
 // Output Schema
 export const IotHubResourceDeleteOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    etag: Schema.optional(Schema.String),
+    properties: Schema.optional(Schema.suspend(() => IotHubPropertiesSchema)),
+    sku: Schema.suspend(() => IotHubSkuInfoSchema),
+    identity: Schema.optional(Schema.suspend(() => ArmIdentitySchema)),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -885,11 +1007,7 @@ export const IotHubResourceExportDevicesInput =
     authenticationType: Schema.optional(
       Schema.Literals(["keyBased", "identityBased"]),
     ),
-    identity: Schema.optional(
-      Schema.Struct({
-        userAssignedIdentity: Schema.optional(Schema.String),
-      }),
-    ),
+    identity: Schema.optional(Schema.suspend(() => ManagedIdentitySchema)),
     includeConfigurations: Schema.optional(Schema.Boolean),
     configurationsBlobName: Schema.optional(Schema.String),
   }).pipe(
@@ -966,6 +1084,11 @@ export type IotHubResourceGetInput = typeof IotHubResourceGetInput.Type;
 // Output Schema
 export const IotHubResourceGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    etag: Schema.optional(Schema.String),
+    properties: Schema.optional(Schema.suspend(() => IotHubPropertiesSchema)),
+    sku: Schema.suspend(() => IotHubSkuInfoSchema),
+    identity: Schema.optional(Schema.suspend(() => ArmIdentitySchema)),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1003,24 +1126,7 @@ export type IotHubResourceGetEndpointHealthInput =
 export const IotHubResourceGetEndpointHealthOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          endpointId: Schema.optional(Schema.String),
-          healthStatus: Schema.optional(
-            Schema.Literals([
-              "unknown",
-              "healthy",
-              "degraded",
-              "unhealthy",
-              "dead",
-            ]),
-          ),
-          lastKnownError: Schema.optional(Schema.String),
-          lastKnownErrorTime: Schema.optional(Schema.String),
-          lastSuccessfulSendAttemptTime: Schema.optional(Schema.String),
-          lastSendAttemptTime: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => EndpointHealthDataSchema)),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -1212,13 +1318,7 @@ export type IotHubResourceGetQuotaMetricsInput =
 export const IotHubResourceGetQuotaMetricsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          name: Schema.optional(Schema.String),
-          currentValue: Schema.optional(Schema.Number),
-          maxValue: Schema.optional(Schema.Number),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => IotHubQuotaMetricInfoSchema)),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -1286,26 +1386,7 @@ export type IotHubResourceGetValidSkusInput =
 export const IotHubResourceGetValidSkusOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          resourceType: Schema.optional(Schema.String),
-          sku: Schema.Struct({
-            name: Schema.Literals(["F1", "S1", "S2", "S3", "B1", "B2", "B3"]),
-            tier: Schema.optional(
-              Schema.Literals(["Free", "Standard", "Basic"]),
-            ),
-            capacity: Schema.optional(Schema.Number),
-          }),
-          capacity: Schema.Struct({
-            minimum: Schema.optional(Schema.Number),
-            maximum: Schema.optional(Schema.Number),
-            default: Schema.optional(Schema.Number),
-            scaleType: Schema.optional(
-              Schema.Literals(["Automatic", "Manual", "None"]),
-            ),
-          }),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => IotHubSkuDescriptionSchema)),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -1334,11 +1415,7 @@ export const IotHubResourceImportDevicesInput =
     authenticationType: Schema.optional(
       Schema.Literals(["keyBased", "identityBased"]),
     ),
-    identity: Schema.optional(
-      Schema.Struct({
-        userAssignedIdentity: Schema.optional(Schema.String),
-      }),
-    ),
+    identity: Schema.optional(Schema.suspend(() => ManagedIdentitySchema)),
     includeConfigurations: Schema.optional(Schema.Boolean),
     configurationsBlobName: Schema.optional(Schema.String),
   }).pipe(
@@ -1416,15 +1493,7 @@ export type IotHubResourceListByResourceGroupInput =
 export const IotHubResourceListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          location: Schema.String,
-          tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => IotHubDescriptionSchema)),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -1458,15 +1527,7 @@ export type IotHubResourceListBySubscriptionInput =
 export const IotHubResourceListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          location: Schema.String,
-          tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => IotHubDescriptionSchema)),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -1502,17 +1563,7 @@ export type IotHubResourceListEventHubConsumerGroupsInput =
 export const IotHubResourceListEventHubConsumerGroupsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          properties: Schema.optional(
-            Schema.Record(Schema.String, Schema.Unknown),
-          ),
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          etag: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => EventHubConsumerGroupInfoSchema)),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -1548,40 +1599,7 @@ export type IotHubResourceListJobsInput =
 export const IotHubResourceListJobsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          jobId: Schema.optional(Schema.String),
-          startTimeUtc: Schema.optional(Schema.String),
-          endTimeUtc: Schema.optional(Schema.String),
-          type: Schema.optional(
-            Schema.Literals([
-              "unknown",
-              "export",
-              "import",
-              "backup",
-              "readDeviceProperties",
-              "writeDeviceProperties",
-              "updateDeviceConfiguration",
-              "rebootDevice",
-              "factoryResetDevice",
-              "firmwareUpdate",
-            ]),
-          ),
-          status: Schema.optional(
-            Schema.Literals([
-              "unknown",
-              "enqueued",
-              "running",
-              "completed",
-              "failed",
-              "cancelled",
-            ]),
-          ),
-          failureReason: Schema.optional(Schema.String),
-          statusMessage: Schema.optional(Schema.String),
-          parentJobId: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => JobResponseSchema)),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -1617,28 +1635,7 @@ export const IotHubResourceListKeysOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
-        Schema.Struct({
-          keyName: Schema.String,
-          primaryKey: Schema.optional(Schema.String),
-          secondaryKey: Schema.optional(Schema.String),
-          rights: Schema.Literals([
-            "RegistryRead",
-            "RegistryWrite",
-            "ServiceConnect",
-            "DeviceConnect",
-            "RegistryRead, RegistryWrite",
-            "RegistryRead, ServiceConnect",
-            "RegistryRead, DeviceConnect",
-            "RegistryWrite, ServiceConnect",
-            "RegistryWrite, DeviceConnect",
-            "ServiceConnect, DeviceConnect",
-            "RegistryRead, RegistryWrite, ServiceConnect",
-            "RegistryRead, RegistryWrite, DeviceConnect",
-            "RegistryRead, ServiceConnect, DeviceConnect",
-            "RegistryWrite, ServiceConnect, DeviceConnect",
-            "RegistryRead, RegistryWrite, ServiceConnect, DeviceConnect",
-          ]),
-        }),
+        Schema.suspend(() => SharedAccessSignatureAuthorizationRuleSchema),
       ),
     ),
     nextLink: Schema.optional(Schema.String),
@@ -1673,28 +1670,8 @@ export const IotHubResourceTestAllRoutesInput =
         "DeviceConnectionStateEvents",
       ]),
     ),
-    message: Schema.optional(
-      Schema.Struct({
-        body: Schema.optional(Schema.String),
-        appProperties: Schema.optional(
-          Schema.Record(Schema.String, Schema.String),
-        ),
-        systemProperties: Schema.optional(
-          Schema.Record(Schema.String, Schema.String),
-        ),
-      }),
-    ),
-    twin: Schema.optional(
-      Schema.Struct({
-        tags: Schema.optional(Schema.Unknown),
-        properties: Schema.optional(
-          Schema.Struct({
-            desired: Schema.optional(Schema.Unknown),
-            reported: Schema.optional(Schema.Unknown),
-          }),
-        ),
-      }),
-    ),
+    message: Schema.optional(Schema.suspend(() => RoutingMessageSchema)),
+    twin: Schema.optional(Schema.suspend(() => RoutingTwinSchema)),
   }).pipe(
     T.Http({
       method: "POST",
@@ -1709,26 +1686,7 @@ export type IotHubResourceTestAllRoutesInput =
 export const IotHubResourceTestAllRoutesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     routes: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          properties: Schema.optional(
-            Schema.Struct({
-              name: Schema.String,
-              source: Schema.Literals([
-                "Invalid",
-                "DeviceMessages",
-                "TwinChangeEvents",
-                "DeviceLifecycleEvents",
-                "DeviceJobLifecycleEvents",
-                "DeviceConnectionStateEvents",
-              ]),
-              condition: Schema.optional(Schema.String),
-              endpointNames: Schema.Array(Schema.String),
-              isEnabled: Schema.Boolean,
-            }),
-          ),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => MatchedRouteSchema)),
     ),
   });
 export type IotHubResourceTestAllRoutesOutput =
@@ -1754,42 +1712,9 @@ export const IotHubResourceTestRouteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     iotHubName: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    message: Schema.optional(
-      Schema.Struct({
-        body: Schema.optional(Schema.String),
-        appProperties: Schema.optional(
-          Schema.Record(Schema.String, Schema.String),
-        ),
-        systemProperties: Schema.optional(
-          Schema.Record(Schema.String, Schema.String),
-        ),
-      }),
-    ),
-    route: Schema.Struct({
-      name: Schema.String,
-      source: Schema.Literals([
-        "Invalid",
-        "DeviceMessages",
-        "TwinChangeEvents",
-        "DeviceLifecycleEvents",
-        "DeviceJobLifecycleEvents",
-        "DeviceConnectionStateEvents",
-      ]),
-      condition: Schema.optional(Schema.String),
-      endpointNames: Schema.Array(Schema.String),
-      isEnabled: Schema.Boolean,
-    }),
-    twin: Schema.optional(
-      Schema.Struct({
-        tags: Schema.optional(Schema.Unknown),
-        properties: Schema.optional(
-          Schema.Struct({
-            desired: Schema.optional(Schema.Unknown),
-            reported: Schema.optional(Schema.Unknown),
-          }),
-        ),
-      }),
-    ),
+    message: Schema.optional(Schema.suspend(() => RoutingMessageSchema)),
+    route: Schema.suspend(() => RoutePropertiesSchema),
+    twin: Schema.optional(Schema.suspend(() => RoutingTwinSchema)),
   }).pipe(
     T.Http({
       method: "POST",
@@ -1805,32 +1730,7 @@ export const IotHubResourceTestRouteOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     result: Schema.optional(Schema.Literals(["undefined", "false", "true"])),
     details: Schema.optional(
-      Schema.Struct({
-        compilationErrors: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              message: Schema.optional(Schema.String),
-              severity: Schema.optional(Schema.Literals(["error", "warning"])),
-              location: Schema.optional(
-                Schema.Struct({
-                  start: Schema.optional(
-                    Schema.Struct({
-                      line: Schema.optional(Schema.Number),
-                      column: Schema.optional(Schema.Number),
-                    }),
-                  ),
-                  end: Schema.optional(
-                    Schema.Struct({
-                      line: Schema.optional(Schema.Number),
-                      column: Schema.optional(Schema.Number),
-                    }),
-                  ),
-                }),
-              ),
-            }),
-          ),
-        ),
-      }),
+      Schema.suspend(() => TestRouteResultDetailsSchema),
     ),
   });
 export type IotHubResourceTestRouteOutput =
@@ -1870,6 +1770,11 @@ export type IotHubResourceUpdateInput = typeof IotHubResourceUpdateInput.Type;
 // Output Schema
 export const IotHubResourceUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    etag: Schema.optional(Schema.String),
+    properties: Schema.optional(Schema.suspend(() => IotHubPropertiesSchema)),
+    sku: Schema.suspend(() => IotHubSkuInfoSchema),
+    identity: Schema.optional(Schema.suspend(() => ArmIdentitySchema)),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1907,21 +1812,7 @@ export type OperationsListInput = typeof OperationsListInput.Type;
 
 // Output Schema
 export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  value: Schema.optional(
-    Schema.Array(
-      Schema.Struct({
-        name: Schema.optional(Schema.String),
-        display: Schema.optional(
-          Schema.Struct({
-            provider: Schema.optional(Schema.String),
-            resource: Schema.optional(Schema.String),
-            operation: Schema.optional(Schema.String),
-            description: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
-  ),
+  value: Schema.optional(Schema.Array(Schema.suspend(() => OperationSchema))),
   nextLink: Schema.optional(Schema.String),
 });
 export type OperationsListOutput = typeof OperationsListOutput.Type;
@@ -1953,23 +1844,7 @@ export const PrivateEndpointConnectionsDeleteOutput =
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    properties: Schema.Struct({
-      privateEndpoint: Schema.optional(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-        }),
-      ),
-      privateLinkServiceConnectionState: Schema.Struct({
-        status: Schema.Literals([
-          "Pending",
-          "Approved",
-          "Rejected",
-          "Disconnected",
-        ]),
-        description: Schema.String,
-        actionsRequired: Schema.optional(Schema.String),
-      }),
-    }),
+    properties: Schema.suspend(() => PrivateEndpointConnectionPropertiesSchema),
   });
 export type PrivateEndpointConnectionsDeleteOutput =
   typeof PrivateEndpointConnectionsDeleteOutput.Type;
@@ -2003,23 +1878,7 @@ export const PrivateEndpointConnectionsGetOutput =
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    properties: Schema.Struct({
-      privateEndpoint: Schema.optional(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-        }),
-      ),
-      privateLinkServiceConnectionState: Schema.Struct({
-        status: Schema.Literals([
-          "Pending",
-          "Approved",
-          "Rejected",
-          "Disconnected",
-        ]),
-        description: Schema.String,
-        actionsRequired: Schema.optional(Schema.String),
-      }),
-    }),
+    properties: Schema.suspend(() => PrivateEndpointConnectionPropertiesSchema),
   });
 export type PrivateEndpointConnectionsGetOutput =
   typeof PrivateEndpointConnectionsGetOutput.Type;
@@ -2050,28 +1909,7 @@ export type PrivateEndpointConnectionsListInput =
 // Output Schema
 export const PrivateEndpointConnectionsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
-    Schema.Struct({
-      id: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      type: Schema.optional(Schema.String),
-      properties: Schema.Struct({
-        privateEndpoint: Schema.optional(
-          Schema.Struct({
-            id: Schema.optional(Schema.String),
-          }),
-        ),
-        privateLinkServiceConnectionState: Schema.Struct({
-          status: Schema.Literals([
-            "Pending",
-            "Approved",
-            "Rejected",
-            "Disconnected",
-          ]),
-          description: Schema.String,
-          actionsRequired: Schema.optional(Schema.String),
-        }),
-      }),
-    }),
+    Schema.suspend(() => PrivateEndpointConnectionSchema),
   );
 export type PrivateEndpointConnectionsListOutput =
   typeof PrivateEndpointConnectionsListOutput.Type;
@@ -2093,23 +1931,7 @@ export const PrivateEndpointConnectionsUpdateInput =
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    properties: Schema.Struct({
-      privateEndpoint: Schema.optional(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-        }),
-      ),
-      privateLinkServiceConnectionState: Schema.Struct({
-        status: Schema.Literals([
-          "Pending",
-          "Approved",
-          "Rejected",
-          "Disconnected",
-        ]),
-        description: Schema.String,
-        actionsRequired: Schema.optional(Schema.String),
-      }),
-    }),
+    properties: Schema.suspend(() => PrivateEndpointConnectionPropertiesSchema),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -2127,23 +1949,7 @@ export const PrivateEndpointConnectionsUpdateOutput =
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    properties: Schema.Struct({
-      privateEndpoint: Schema.optional(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-        }),
-      ),
-      privateLinkServiceConnectionState: Schema.Struct({
-        status: Schema.Literals([
-          "Pending",
-          "Approved",
-          "Rejected",
-          "Disconnected",
-        ]),
-        description: Schema.String,
-        actionsRequired: Schema.optional(Schema.String),
-      }),
-    }),
+    properties: Schema.suspend(() => PrivateEndpointConnectionPropertiesSchema),
   });
 export type PrivateEndpointConnectionsUpdateOutput =
   typeof PrivateEndpointConnectionsUpdateOutput.Type;
@@ -2177,11 +1983,7 @@ export const PrivateLinkResourcesGetOutput =
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    properties: Schema.Struct({
-      groupId: Schema.optional(Schema.String),
-      requiredMembers: Schema.optional(Schema.Array(Schema.String)),
-      requiredZoneNames: Schema.optional(Schema.Array(Schema.String)),
-    }),
+    properties: Schema.suspend(() => GroupIdInformationPropertiesSchema),
   });
 export type PrivateLinkResourcesGetOutput =
   typeof PrivateLinkResourcesGetOutput.Type;
@@ -2214,18 +2016,7 @@ export type PrivateLinkResourcesListInput =
 export const PrivateLinkResourcesListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          properties: Schema.Struct({
-            groupId: Schema.optional(Schema.String),
-            requiredMembers: Schema.optional(Schema.Array(Schema.String)),
-            requiredZoneNames: Schema.optional(Schema.Array(Schema.String)),
-          }),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => GroupIdInformationSchema)),
     ),
   });
 export type PrivateLinkResourcesListOutput =
@@ -2259,21 +2050,7 @@ export type ResourceProviderCommonGetSubscriptionQuotaInput =
 export const ResourceProviderCommonGetSubscriptionQuotaOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          unit: Schema.optional(Schema.String),
-          currentValue: Schema.optional(Schema.Number),
-          limit: Schema.optional(Schema.Number),
-          name: Schema.optional(
-            Schema.Struct({
-              value: Schema.optional(Schema.String),
-              localizedValue: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => UserSubscriptionQuotaSchema)),
     ),
     nextLink: Schema.optional(Schema.String),
   });

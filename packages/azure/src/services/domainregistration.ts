@@ -8,6 +8,275 @@ import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
+// Shared schemas
+const CsmOperationDescriptionSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    name: Schema.optional(Schema.String),
+    isDataAction: Schema.optional(Schema.Boolean),
+    display: Schema.optional(Schema.suspend(() => CsmOperationDisplaySchema)),
+    origin: Schema.optional(Schema.String),
+    properties: Schema.optional(
+      Schema.suspend(() => CsmOperationDescriptionPropertiesSchema),
+    ),
+  },
+);
+const CsmOperationDisplaySchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  provider: Schema.optional(Schema.String),
+  resource: Schema.optional(Schema.String),
+  operation: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+});
+const CsmOperationDescriptionPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    serviceSpecification: Schema.optional(
+      Schema.suspend(() => ServiceSpecificationSchema),
+    ),
+  });
+const ServiceSpecificationSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  metricSpecifications: Schema.optional(
+    Schema.Array(Schema.suspend(() => MetricSpecificationSchema)),
+  ),
+  logSpecifications: Schema.optional(
+    Schema.Array(Schema.suspend(() => LogSpecificationSchema)),
+  ),
+});
+const MetricSpecificationSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  displayName: Schema.optional(Schema.String),
+  displayDescription: Schema.optional(Schema.String),
+  unit: Schema.optional(Schema.String),
+  aggregationType: Schema.optional(Schema.String),
+  supportsInstanceLevelAggregation: Schema.optional(Schema.Boolean),
+  enableRegionalMdmAccount: Schema.optional(Schema.Boolean),
+  sourceMdmAccount: Schema.optional(Schema.String),
+  sourceMdmNamespace: Schema.optional(Schema.String),
+  metricFilterPattern: Schema.optional(Schema.String),
+  fillGapWithZero: Schema.optional(Schema.Boolean),
+  isInternal: Schema.optional(Schema.Boolean),
+  dimensions: Schema.optional(
+    Schema.Array(Schema.suspend(() => DimensionSchema)),
+  ),
+  category: Schema.optional(Schema.String),
+  availabilities: Schema.optional(
+    Schema.Array(Schema.suspend(() => MetricAvailabilitySchema)),
+  ),
+  supportedTimeGrainTypes: Schema.optional(Schema.Array(Schema.String)),
+  supportedAggregationTypes: Schema.optional(Schema.Array(Schema.String)),
+});
+const DimensionSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  displayName: Schema.optional(Schema.String),
+  internalName: Schema.optional(Schema.String),
+  toBeExportedForShoebox: Schema.optional(Schema.Boolean),
+});
+const MetricAvailabilitySchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  timeGrain: Schema.optional(Schema.String),
+  blobDuration: Schema.optional(Schema.String),
+});
+const LogSpecificationSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  displayName: Schema.optional(Schema.String),
+  blobDuration: Schema.optional(Schema.String),
+  logFilterPattern: Schema.optional(Schema.String),
+});
+const DomainTypeSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Regular",
+  "SoftDeleted",
+]);
+const DomainSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+});
+const systemDataSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  createdBy: Schema.optional(Schema.String),
+  createdByType: Schema.optional(
+    Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+  ),
+  createdAt: Schema.optional(Schema.String),
+  lastModifiedBy: Schema.optional(Schema.String),
+  lastModifiedByType: Schema.optional(
+    Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+  ),
+  lastModifiedAt: Schema.optional(Schema.String),
+});
+const NameIdentifierSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+});
+const TopLevelDomainSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+});
+const TopLevelDomainPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    privacy: Schema.optional(Schema.Boolean),
+  });
+const TldLegalAgreementSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  agreementKey: Schema.String,
+  title: Schema.String,
+  content: Schema.String,
+  url: Schema.optional(Schema.String),
+});
+const DomainPropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  contactAdmin: Schema.suspend(() => ContactSchema),
+  contactBilling: Schema.suspend(() => ContactSchema),
+  contactRegistrant: Schema.suspend(() => ContactSchema),
+  contactTech: Schema.suspend(() => ContactSchema),
+  registrationStatus: Schema.optional(Schema.suspend(() => DomainStatusSchema)),
+  provisioningState: Schema.optional(
+    Schema.suspend(() => ProvisioningStateSchema),
+  ),
+  nameServers: Schema.optional(Schema.Array(Schema.String)),
+  privacy: Schema.optional(Schema.Boolean),
+  createdTime: Schema.optional(Schema.String),
+  expirationTime: Schema.optional(Schema.String),
+  lastRenewedTime: Schema.optional(Schema.String),
+  autoRenew: Schema.optional(Schema.Boolean),
+  readyForDnsRecordManagement: Schema.optional(Schema.Boolean),
+  managedHostNames: Schema.optional(
+    Schema.Array(Schema.suspend(() => HostNameSchema)),
+  ),
+  consent: Schema.suspend(() => DomainPurchaseConsentSchema),
+  domainNotRenewableReasons: Schema.optional(
+    Schema.Array(Schema.suspend(() => ResourceNotRenewableReasonSchema)),
+  ),
+  dnsType: Schema.optional(Schema.suspend(() => DnsTypeSchema)),
+  dnsZoneId: Schema.optional(Schema.String),
+  targetDnsType: Schema.optional(Schema.suspend(() => DnsTypeSchema)),
+  authCode: Schema.optional(Schema.String),
+});
+const ContactSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  addressMailing: Schema.optional(Schema.suspend(() => AddressSchema)),
+  email: Schema.String,
+  fax: Schema.optional(Schema.String),
+  jobTitle: Schema.optional(Schema.String),
+  nameFirst: Schema.String,
+  nameLast: Schema.String,
+  nameMiddle: Schema.optional(Schema.String),
+  organization: Schema.optional(Schema.String),
+  phone: Schema.String,
+});
+const AddressSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  address1: Schema.String,
+  address2: Schema.optional(Schema.String),
+  city: Schema.String,
+  country: Schema.String,
+  postalCode: Schema.String,
+  state: Schema.String,
+});
+const DomainStatusSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Active",
+  "Awaiting",
+  "Cancelled",
+  "Confiscated",
+  "Disabled",
+  "Excluded",
+  "Expired",
+  "Failed",
+  "Held",
+  "Locked",
+  "Parked",
+  "Pending",
+  "Reserved",
+  "Reverted",
+  "Suspended",
+  "Transferred",
+  "Unknown",
+  "Unlocked",
+  "Unparked",
+  "Updated",
+  "JsonConverterFailed",
+]);
+const ProvisioningStateSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Succeeded",
+  "Failed",
+  "Canceled",
+  "InProgress",
+  "Deleting",
+]);
+const HostNameSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  siteNames: Schema.optional(Schema.Array(Schema.String)),
+  azureResourceName: Schema.optional(Schema.String),
+  azureResourceType: Schema.optional(
+    Schema.suspend(() => AzureResourceTypeSchema),
+  ),
+  customHostNameDnsRecordType: Schema.optional(
+    Schema.suspend(() => CustomHostNameDnsRecordTypeSchema),
+  ),
+  hostNameType: Schema.optional(Schema.suspend(() => HostNameTypeSchema)),
+});
+const AzureResourceTypeSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Website",
+  "TrafficManager",
+]);
+const CustomHostNameDnsRecordTypeSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Literals(["CName", "A"]);
+const HostNameTypeSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Verified",
+  "Managed",
+]);
+const DomainPurchaseConsentSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  agreementKeys: Schema.optional(Schema.Array(Schema.String)),
+  agreedBy: Schema.optional(Schema.String),
+  agreedAt: Schema.optional(Schema.String),
+});
+const ResourceNotRenewableReasonSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+    "RegistrationStatusNotSupportedForRenewal",
+    "ExpirationNotInRenewalTimeRange",
+    "SubscriptionNotActive",
+  ]);
+const DnsTypeSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "AzureDns",
+  "DefaultDomainRegistrarDns",
+]);
+const DomainPatchResourcePropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    contactAdmin: Schema.suspend(() => ContactSchema),
+    contactBilling: Schema.suspend(() => ContactSchema),
+    contactRegistrant: Schema.suspend(() => ContactSchema),
+    contactTech: Schema.suspend(() => ContactSchema),
+    registrationStatus: Schema.optional(
+      Schema.suspend(() => DomainStatusSchema),
+    ),
+    provisioningState: Schema.optional(
+      Schema.suspend(() => ProvisioningStateSchema),
+    ),
+    nameServers: Schema.optional(Schema.Array(Schema.String)),
+    privacy: Schema.optional(Schema.Boolean),
+    createdTime: Schema.optional(Schema.String),
+    expirationTime: Schema.optional(Schema.String),
+    lastRenewedTime: Schema.optional(Schema.String),
+    autoRenew: Schema.optional(Schema.Boolean),
+    readyForDnsRecordManagement: Schema.optional(Schema.Boolean),
+    managedHostNames: Schema.optional(
+      Schema.Array(Schema.suspend(() => HostNameSchema)),
+    ),
+    consent: Schema.suspend(() => DomainPurchaseConsentSchema),
+    domainNotRenewableReasons: Schema.optional(
+      Schema.Array(Schema.suspend(() => ResourceNotRenewableReasonSchema)),
+    ),
+    dnsType: Schema.optional(Schema.suspend(() => DnsTypeSchema)),
+    dnsZoneId: Schema.optional(Schema.String),
+    targetDnsType: Schema.optional(Schema.suspend(() => DnsTypeSchema)),
+    authCode: Schema.optional(Schema.String),
+  });
+const DomainOwnershipIdentifierSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+  });
+const DomainOwnershipIdentifierPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    ownershipId: Schema.optional(Schema.String),
+  });
+
 // Input Schema
 export const DomainRegistrationProviderListOperationsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
@@ -23,86 +292,7 @@ export type DomainRegistrationProviderListOperationsInput =
 // Output Schema
 export const DomainRegistrationProviderListOperationsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        name: Schema.optional(Schema.String),
-        isDataAction: Schema.optional(Schema.Boolean),
-        display: Schema.optional(
-          Schema.Struct({
-            provider: Schema.optional(Schema.String),
-            resource: Schema.optional(Schema.String),
-            operation: Schema.optional(Schema.String),
-            description: Schema.optional(Schema.String),
-          }),
-        ),
-        origin: Schema.optional(Schema.String),
-        properties: Schema.optional(
-          Schema.Struct({
-            serviceSpecification: Schema.optional(
-              Schema.Struct({
-                metricSpecifications: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      name: Schema.optional(Schema.String),
-                      displayName: Schema.optional(Schema.String),
-                      displayDescription: Schema.optional(Schema.String),
-                      unit: Schema.optional(Schema.String),
-                      aggregationType: Schema.optional(Schema.String),
-                      supportsInstanceLevelAggregation: Schema.optional(
-                        Schema.Boolean,
-                      ),
-                      enableRegionalMdmAccount: Schema.optional(Schema.Boolean),
-                      sourceMdmAccount: Schema.optional(Schema.String),
-                      sourceMdmNamespace: Schema.optional(Schema.String),
-                      metricFilterPattern: Schema.optional(Schema.String),
-                      fillGapWithZero: Schema.optional(Schema.Boolean),
-                      isInternal: Schema.optional(Schema.Boolean),
-                      dimensions: Schema.optional(
-                        Schema.Array(
-                          Schema.Struct({
-                            name: Schema.optional(Schema.String),
-                            displayName: Schema.optional(Schema.String),
-                            internalName: Schema.optional(Schema.String),
-                            toBeExportedForShoebox: Schema.optional(
-                              Schema.Boolean,
-                            ),
-                          }),
-                        ),
-                      ),
-                      category: Schema.optional(Schema.String),
-                      availabilities: Schema.optional(
-                        Schema.Array(
-                          Schema.Struct({
-                            timeGrain: Schema.optional(Schema.String),
-                            blobDuration: Schema.optional(Schema.String),
-                          }),
-                        ),
-                      ),
-                      supportedTimeGrainTypes: Schema.optional(
-                        Schema.Array(Schema.String),
-                      ),
-                      supportedAggregationTypes: Schema.optional(
-                        Schema.Array(Schema.String),
-                      ),
-                    }),
-                  ),
-                ),
-                logSpecifications: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      name: Schema.optional(Schema.String),
-                      displayName: Schema.optional(Schema.String),
-                      blobDuration: Schema.optional(Schema.String),
-                      logFilterPattern: Schema.optional(Schema.String),
-                    }),
-                  ),
-                ),
-              }),
-            ),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => CsmOperationDescriptionSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type DomainRegistrationProviderListOperationsOutput =
@@ -141,7 +331,7 @@ export const DomainsCheckAvailabilityOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     available: Schema.optional(Schema.Boolean),
-    domainType: Schema.optional(Schema.Literals(["Regular", "SoftDeleted"])),
+    domainType: Schema.optional(Schema.suspend(() => DomainTypeSchema)),
   });
 export type DomainsCheckAvailabilityOutput =
   typeof DomainsCheckAvailabilityOutput.Type;
@@ -167,171 +357,7 @@ export const DomainsCreateOrUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     domainName: Schema.String.pipe(T.PathParam()),
-    properties: Schema.optional(
-      Schema.Struct({
-        contactAdmin: Schema.Struct({
-          addressMailing: Schema.optional(
-            Schema.Struct({
-              address1: Schema.String,
-              address2: Schema.optional(Schema.String),
-              city: Schema.String,
-              country: Schema.String,
-              postalCode: Schema.String,
-              state: Schema.String,
-            }),
-          ),
-          email: Schema.String,
-          fax: Schema.optional(Schema.String),
-          jobTitle: Schema.optional(Schema.String),
-          nameFirst: Schema.String,
-          nameLast: Schema.String,
-          nameMiddle: Schema.optional(Schema.String),
-          organization: Schema.optional(Schema.String),
-          phone: Schema.String,
-        }),
-        contactBilling: Schema.Struct({
-          addressMailing: Schema.optional(
-            Schema.Struct({
-              address1: Schema.String,
-              address2: Schema.optional(Schema.String),
-              city: Schema.String,
-              country: Schema.String,
-              postalCode: Schema.String,
-              state: Schema.String,
-            }),
-          ),
-          email: Schema.String,
-          fax: Schema.optional(Schema.String),
-          jobTitle: Schema.optional(Schema.String),
-          nameFirst: Schema.String,
-          nameLast: Schema.String,
-          nameMiddle: Schema.optional(Schema.String),
-          organization: Schema.optional(Schema.String),
-          phone: Schema.String,
-        }),
-        contactRegistrant: Schema.Struct({
-          addressMailing: Schema.optional(
-            Schema.Struct({
-              address1: Schema.String,
-              address2: Schema.optional(Schema.String),
-              city: Schema.String,
-              country: Schema.String,
-              postalCode: Schema.String,
-              state: Schema.String,
-            }),
-          ),
-          email: Schema.String,
-          fax: Schema.optional(Schema.String),
-          jobTitle: Schema.optional(Schema.String),
-          nameFirst: Schema.String,
-          nameLast: Schema.String,
-          nameMiddle: Schema.optional(Schema.String),
-          organization: Schema.optional(Schema.String),
-          phone: Schema.String,
-        }),
-        contactTech: Schema.Struct({
-          addressMailing: Schema.optional(
-            Schema.Struct({
-              address1: Schema.String,
-              address2: Schema.optional(Schema.String),
-              city: Schema.String,
-              country: Schema.String,
-              postalCode: Schema.String,
-              state: Schema.String,
-            }),
-          ),
-          email: Schema.String,
-          fax: Schema.optional(Schema.String),
-          jobTitle: Schema.optional(Schema.String),
-          nameFirst: Schema.String,
-          nameLast: Schema.String,
-          nameMiddle: Schema.optional(Schema.String),
-          organization: Schema.optional(Schema.String),
-          phone: Schema.String,
-        }),
-        registrationStatus: Schema.optional(
-          Schema.Literals([
-            "Active",
-            "Awaiting",
-            "Cancelled",
-            "Confiscated",
-            "Disabled",
-            "Excluded",
-            "Expired",
-            "Failed",
-            "Held",
-            "Locked",
-            "Parked",
-            "Pending",
-            "Reserved",
-            "Reverted",
-            "Suspended",
-            "Transferred",
-            "Unknown",
-            "Unlocked",
-            "Unparked",
-            "Updated",
-            "JsonConverterFailed",
-          ]),
-        ),
-        provisioningState: Schema.optional(
-          Schema.Literals([
-            "Succeeded",
-            "Failed",
-            "Canceled",
-            "InProgress",
-            "Deleting",
-          ]),
-        ),
-        nameServers: Schema.optional(Schema.Array(Schema.String)),
-        privacy: Schema.optional(Schema.Boolean),
-        createdTime: Schema.optional(Schema.String),
-        expirationTime: Schema.optional(Schema.String),
-        lastRenewedTime: Schema.optional(Schema.String),
-        autoRenew: Schema.optional(Schema.Boolean),
-        readyForDnsRecordManagement: Schema.optional(Schema.Boolean),
-        managedHostNames: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              name: Schema.optional(Schema.String),
-              siteNames: Schema.optional(Schema.Array(Schema.String)),
-              azureResourceName: Schema.optional(Schema.String),
-              azureResourceType: Schema.optional(
-                Schema.Literals(["Website", "TrafficManager"]),
-              ),
-              customHostNameDnsRecordType: Schema.optional(
-                Schema.Literals(["CName", "A"]),
-              ),
-              hostNameType: Schema.optional(
-                Schema.Literals(["Verified", "Managed"]),
-              ),
-            }),
-          ),
-        ),
-        consent: Schema.Struct({
-          agreementKeys: Schema.optional(Schema.Array(Schema.String)),
-          agreedBy: Schema.optional(Schema.String),
-          agreedAt: Schema.optional(Schema.String),
-        }),
-        domainNotRenewableReasons: Schema.optional(
-          Schema.Array(
-            Schema.Literals([
-              "RegistrationStatusNotSupportedForRenewal",
-              "ExpirationNotInRenewalTimeRange",
-              "SubscriptionNotActive",
-            ]),
-          ),
-        ),
-        dnsType: Schema.optional(
-          Schema.Literals(["AzureDns", "DefaultDomainRegistrarDns"]),
-        ),
-        dnsZoneId: Schema.optional(Schema.String),
-        targetDnsType: Schema.optional(
-          Schema.Literals(["AzureDns", "DefaultDomainRegistrarDns"]),
-        ),
-        authCode: Schema.optional(Schema.String),
-      }),
-    ),
+    properties: Schema.optional(Schema.suspend(() => DomainPropertiesSchema)),
     kind: Schema.optional(Schema.String),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     location: Schema.String,
@@ -348,23 +374,14 @@ export type DomainsCreateOrUpdateInput = typeof DomainsCreateOrUpdateInput.Type;
 // Output Schema
 export const DomainsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(Schema.suspend(() => DomainPropertiesSchema)),
+    kind: Schema.optional(Schema.String),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type DomainsCreateOrUpdateOutput =
   typeof DomainsCreateOrUpdateOutput.Type;
@@ -394,9 +411,7 @@ export const DomainsCreateOrUpdateOwnershipIdentifierInput =
     domainName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        ownershipId: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(() => DomainOwnershipIdentifierPropertiesSchema),
     ),
     kind: Schema.optional(Schema.String),
   }).pipe(
@@ -412,23 +427,14 @@ export type DomainsCreateOrUpdateOwnershipIdentifierInput =
 // Output Schema
 export const DomainsCreateOrUpdateOwnershipIdentifierOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => DomainOwnershipIdentifierPropertiesSchema),
+    ),
+    kind: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type DomainsCreateOrUpdateOwnershipIdentifierOutput =
   typeof DomainsCreateOrUpdateOwnershipIdentifierOutput.Type;
@@ -541,23 +547,14 @@ export type DomainsGetInput = typeof DomainsGetInput.Type;
 
 // Output Schema
 export const DomainsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.optional(Schema.suspend(() => DomainPropertiesSchema)),
+  kind: Schema.optional(Schema.String),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  location: Schema.String,
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
-  systemData: Schema.optional(
-    Schema.Struct({
-      createdBy: Schema.optional(Schema.String),
-      createdByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      createdAt: Schema.optional(Schema.String),
-      lastModifiedBy: Schema.optional(Schema.String),
-      lastModifiedByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      lastModifiedAt: Schema.optional(Schema.String),
-    }),
-  ),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
 });
 export type DomainsGetOutput = typeof DomainsGetOutput.Type;
 
@@ -634,23 +631,14 @@ export type DomainsGetOwnershipIdentifierInput =
 // Output Schema
 export const DomainsGetOwnershipIdentifierOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => DomainOwnershipIdentifierPropertiesSchema),
+    ),
+    kind: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type DomainsGetOwnershipIdentifierOutput =
   typeof DomainsGetOwnershipIdentifierOutput.Type;
@@ -686,27 +674,7 @@ export type DomainsListInput = typeof DomainsListInput.Type;
 
 // Output Schema
 export const DomainsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  value: Schema.Array(
-    Schema.Struct({
-      id: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      type: Schema.optional(Schema.String),
-      systemData: Schema.optional(
-        Schema.Struct({
-          createdBy: Schema.optional(Schema.String),
-          createdByType: Schema.optional(
-            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-          ),
-          createdAt: Schema.optional(Schema.String),
-          lastModifiedBy: Schema.optional(Schema.String),
-          lastModifiedByType: Schema.optional(
-            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-          ),
-          lastModifiedAt: Schema.optional(Schema.String),
-        }),
-      ),
-    }),
-  ),
+  value: Schema.Array(Schema.suspend(() => DomainSchema)),
   nextLink: Schema.optional(Schema.String),
 });
 export type DomainsListOutput = typeof DomainsListOutput.Type;
@@ -742,37 +710,7 @@ export type DomainsListByResourceGroupInput =
 // Output Schema
 export const DomainsListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => DomainSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type DomainsListByResourceGroupOutput =
@@ -813,37 +751,7 @@ export type DomainsListOwnershipIdentifiersInput =
 // Output Schema
 export const DomainsListOwnershipIdentifiersOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => DomainOwnershipIdentifierSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type DomainsListOwnershipIdentifiersOutput =
@@ -884,11 +792,7 @@ export type DomainsListRecommendationsInput =
 // Output Schema
 export const DomainsListRecommendationsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        name: Schema.optional(Schema.String),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => NameIdentifierSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type DomainsListRecommendationsOutput =
@@ -960,23 +864,14 @@ export type DomainsTransferOutInput = typeof DomainsTransferOutInput.Type;
 // Output Schema
 export const DomainsTransferOutOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(Schema.suspend(() => DomainPropertiesSchema)),
+    kind: Schema.optional(Schema.String),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type DomainsTransferOutOutput = typeof DomainsTransferOutOutput.Type;
 
@@ -999,169 +894,7 @@ export const DomainsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   domainName: Schema.String.pipe(T.PathParam()),
   properties: Schema.optional(
-    Schema.Struct({
-      contactAdmin: Schema.Struct({
-        addressMailing: Schema.optional(
-          Schema.Struct({
-            address1: Schema.String,
-            address2: Schema.optional(Schema.String),
-            city: Schema.String,
-            country: Schema.String,
-            postalCode: Schema.String,
-            state: Schema.String,
-          }),
-        ),
-        email: Schema.String,
-        fax: Schema.optional(Schema.String),
-        jobTitle: Schema.optional(Schema.String),
-        nameFirst: Schema.String,
-        nameLast: Schema.String,
-        nameMiddle: Schema.optional(Schema.String),
-        organization: Schema.optional(Schema.String),
-        phone: Schema.String,
-      }),
-      contactBilling: Schema.Struct({
-        addressMailing: Schema.optional(
-          Schema.Struct({
-            address1: Schema.String,
-            address2: Schema.optional(Schema.String),
-            city: Schema.String,
-            country: Schema.String,
-            postalCode: Schema.String,
-            state: Schema.String,
-          }),
-        ),
-        email: Schema.String,
-        fax: Schema.optional(Schema.String),
-        jobTitle: Schema.optional(Schema.String),
-        nameFirst: Schema.String,
-        nameLast: Schema.String,
-        nameMiddle: Schema.optional(Schema.String),
-        organization: Schema.optional(Schema.String),
-        phone: Schema.String,
-      }),
-      contactRegistrant: Schema.Struct({
-        addressMailing: Schema.optional(
-          Schema.Struct({
-            address1: Schema.String,
-            address2: Schema.optional(Schema.String),
-            city: Schema.String,
-            country: Schema.String,
-            postalCode: Schema.String,
-            state: Schema.String,
-          }),
-        ),
-        email: Schema.String,
-        fax: Schema.optional(Schema.String),
-        jobTitle: Schema.optional(Schema.String),
-        nameFirst: Schema.String,
-        nameLast: Schema.String,
-        nameMiddle: Schema.optional(Schema.String),
-        organization: Schema.optional(Schema.String),
-        phone: Schema.String,
-      }),
-      contactTech: Schema.Struct({
-        addressMailing: Schema.optional(
-          Schema.Struct({
-            address1: Schema.String,
-            address2: Schema.optional(Schema.String),
-            city: Schema.String,
-            country: Schema.String,
-            postalCode: Schema.String,
-            state: Schema.String,
-          }),
-        ),
-        email: Schema.String,
-        fax: Schema.optional(Schema.String),
-        jobTitle: Schema.optional(Schema.String),
-        nameFirst: Schema.String,
-        nameLast: Schema.String,
-        nameMiddle: Schema.optional(Schema.String),
-        organization: Schema.optional(Schema.String),
-        phone: Schema.String,
-      }),
-      registrationStatus: Schema.optional(
-        Schema.Literals([
-          "Active",
-          "Awaiting",
-          "Cancelled",
-          "Confiscated",
-          "Disabled",
-          "Excluded",
-          "Expired",
-          "Failed",
-          "Held",
-          "Locked",
-          "Parked",
-          "Pending",
-          "Reserved",
-          "Reverted",
-          "Suspended",
-          "Transferred",
-          "Unknown",
-          "Unlocked",
-          "Unparked",
-          "Updated",
-          "JsonConverterFailed",
-        ]),
-      ),
-      provisioningState: Schema.optional(
-        Schema.Literals([
-          "Succeeded",
-          "Failed",
-          "Canceled",
-          "InProgress",
-          "Deleting",
-        ]),
-      ),
-      nameServers: Schema.optional(Schema.Array(Schema.String)),
-      privacy: Schema.optional(Schema.Boolean),
-      createdTime: Schema.optional(Schema.String),
-      expirationTime: Schema.optional(Schema.String),
-      lastRenewedTime: Schema.optional(Schema.String),
-      autoRenew: Schema.optional(Schema.Boolean),
-      readyForDnsRecordManagement: Schema.optional(Schema.Boolean),
-      managedHostNames: Schema.optional(
-        Schema.Array(
-          Schema.Struct({
-            name: Schema.optional(Schema.String),
-            siteNames: Schema.optional(Schema.Array(Schema.String)),
-            azureResourceName: Schema.optional(Schema.String),
-            azureResourceType: Schema.optional(
-              Schema.Literals(["Website", "TrafficManager"]),
-            ),
-            customHostNameDnsRecordType: Schema.optional(
-              Schema.Literals(["CName", "A"]),
-            ),
-            hostNameType: Schema.optional(
-              Schema.Literals(["Verified", "Managed"]),
-            ),
-          }),
-        ),
-      ),
-      consent: Schema.Struct({
-        agreementKeys: Schema.optional(Schema.Array(Schema.String)),
-        agreedBy: Schema.optional(Schema.String),
-        agreedAt: Schema.optional(Schema.String),
-      }),
-      domainNotRenewableReasons: Schema.optional(
-        Schema.Array(
-          Schema.Literals([
-            "RegistrationStatusNotSupportedForRenewal",
-            "ExpirationNotInRenewalTimeRange",
-            "SubscriptionNotActive",
-          ]),
-        ),
-      ),
-      dnsType: Schema.optional(
-        Schema.Literals(["AzureDns", "DefaultDomainRegistrarDns"]),
-      ),
-      dnsZoneId: Schema.optional(Schema.String),
-      targetDnsType: Schema.optional(
-        Schema.Literals(["AzureDns", "DefaultDomainRegistrarDns"]),
-      ),
-      authCode: Schema.optional(Schema.String),
-    }),
+    Schema.suspend(() => DomainPatchResourcePropertiesSchema),
   ),
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -1178,23 +911,14 @@ export type DomainsUpdateInput = typeof DomainsUpdateInput.Type;
 
 // Output Schema
 export const DomainsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.optional(Schema.suspend(() => DomainPropertiesSchema)),
+  kind: Schema.optional(Schema.String),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  location: Schema.String,
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
-  systemData: Schema.optional(
-    Schema.Struct({
-      createdBy: Schema.optional(Schema.String),
-      createdByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      createdAt: Schema.optional(Schema.String),
-      lastModifiedBy: Schema.optional(Schema.String),
-      lastModifiedByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      lastModifiedAt: Schema.optional(Schema.String),
-    }),
-  ),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
 });
 export type DomainsUpdateOutput = typeof DomainsUpdateOutput.Type;
 
@@ -1221,9 +945,7 @@ export const DomainsUpdateOwnershipIdentifierInput =
     domainName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        ownershipId: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(() => DomainOwnershipIdentifierPropertiesSchema),
     ),
     kind: Schema.optional(Schema.String),
   }).pipe(
@@ -1239,23 +961,14 @@ export type DomainsUpdateOwnershipIdentifierInput =
 // Output Schema
 export const DomainsUpdateOwnershipIdentifierOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => DomainOwnershipIdentifierPropertiesSchema),
+    ),
+    kind: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type DomainsUpdateOwnershipIdentifierOutput =
   typeof DomainsUpdateOwnershipIdentifierOutput.Type;
@@ -1294,23 +1007,14 @@ export type TopLevelDomainsGetInput = typeof TopLevelDomainsGetInput.Type;
 // Output Schema
 export const TopLevelDomainsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => TopLevelDomainPropertiesSchema),
+    ),
+    kind: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type TopLevelDomainsGetOutput = typeof TopLevelDomainsGetOutput.Type;
 
@@ -1344,37 +1048,7 @@ export type TopLevelDomainsListInput = typeof TopLevelDomainsListInput.Type;
 // Output Schema
 export const TopLevelDomainsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => TopLevelDomainSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type TopLevelDomainsListOutput = typeof TopLevelDomainsListOutput.Type;
@@ -1412,14 +1086,7 @@ export type TopLevelDomainsListAgreementsInput =
 // Output Schema
 export const TopLevelDomainsListAgreementsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        agreementKey: Schema.String,
-        title: Schema.String,
-        content: Schema.String,
-        url: Schema.optional(Schema.String),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => TldLegalAgreementSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type TopLevelDomainsListAgreementsOutput =

@@ -7,7 +7,706 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
-import { SensitiveNullableString } from "../sensitive.ts";
+import { SensitiveOutputNullableString } from "../sensitive.ts";
+
+// Shared schemas
+const OperatorTypeDefinitionSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Literals(["Flux"]);
+const ConfigurationProtectedSettingsSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Record(Schema.String, Schema.String);
+const OperatorScopeDefinitionSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Literals(["cluster", "namespace"]);
+const HelmOperatorPropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  chartVersion: Schema.optional(Schema.suspend(() => ChartVersionSchema)),
+  chartValues: Schema.optional(Schema.suspend(() => ChartValuesSchema)),
+});
+const ChartVersionSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.String;
+const ChartValuesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.String;
+const ComplianceStatusSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  complianceState: Schema.optional(
+    Schema.Literals([
+      "Pending",
+      "Compliant",
+      "Noncompliant",
+      "Installed",
+      "Failed",
+    ]),
+  ),
+  lastConfigApplied: Schema.optional(Schema.String),
+  message: Schema.optional(Schema.String),
+  messageLevel: Schema.optional(
+    Schema.Literals(["Error", "Warning", "Information"]),
+  ),
+});
+const SourceControlConfigurationSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
+const ScopeDefinitionSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "cluster",
+  "namespace",
+]);
+const SourceKindDefinitionSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "GitRepository",
+  "Bucket",
+  "AzureBlob",
+]);
+const GitRepositoryDefinitionSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.NullOr(
+  Schema.Struct({
+    url: Schema.optional(Schema.NullOr(Schema.String)),
+    timeoutInSeconds: Schema.optional(Schema.NullOr(Schema.Number)),
+    syncIntervalInSeconds: Schema.optional(Schema.NullOr(Schema.Number)),
+    repositoryRef: Schema.optional(
+      Schema.suspend(() => RepositoryRefDefinitionSchema),
+    ),
+    sshKnownHosts: Schema.optional(Schema.NullOr(Schema.String)),
+    httpsUser: Schema.optional(Schema.NullOr(Schema.String)),
+    httpsCACert: Schema.optional(Schema.NullOr(Schema.String)),
+    localAuthRef: Schema.optional(Schema.NullOr(Schema.String)),
+  }),
+);
+const RepositoryRefDefinitionSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.NullOr(
+  Schema.Struct({
+    branch: Schema.optional(Schema.NullOr(Schema.String)),
+    tag: Schema.optional(Schema.NullOr(Schema.String)),
+    semver: Schema.optional(Schema.NullOr(Schema.String)),
+    commit: Schema.optional(Schema.NullOr(Schema.String)),
+  }),
+);
+const BucketDefinitionSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.NullOr(
+  Schema.Struct({
+    url: Schema.optional(Schema.String),
+    bucketName: Schema.optional(Schema.String),
+    insecure: Schema.optional(Schema.Boolean),
+    timeoutInSeconds: Schema.optional(Schema.NullOr(Schema.Number)),
+    syncIntervalInSeconds: Schema.optional(Schema.NullOr(Schema.Number)),
+    accessKey: Schema.optional(Schema.NullOr(Schema.String)),
+    localAuthRef: Schema.optional(Schema.NullOr(Schema.String)),
+  }),
+);
+const AzureBlobDefinitionSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.NullOr(
+  Schema.Struct({
+    url: Schema.optional(Schema.NullOr(Schema.String)),
+    containerName: Schema.optional(Schema.NullOr(Schema.String)),
+    timeoutInSeconds: Schema.optional(Schema.NullOr(Schema.Number)),
+    syncIntervalInSeconds: Schema.optional(Schema.NullOr(Schema.Number)),
+    servicePrincipal: Schema.optional(
+      Schema.suspend(() => ServicePrincipalDefinitionSchema),
+    ),
+    accountKey: Schema.optional(Schema.NullOr(Schema.String)),
+    sasToken: Schema.optional(Schema.NullOr(Schema.String)),
+    managedIdentity: Schema.optional(
+      Schema.suspend(() => ManagedIdentityDefinitionSchema),
+    ),
+    localAuthRef: Schema.optional(Schema.NullOr(Schema.String)),
+  }),
+);
+const ServicePrincipalDefinitionSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.NullOr(
+    Schema.Struct({
+      clientId: Schema.optional(Schema.NullOr(Schema.String)),
+      tenantId: Schema.optional(Schema.NullOr(Schema.String)),
+      clientSecret: Schema.optional(SensitiveOutputNullableString),
+      clientCertificate: Schema.optional(Schema.NullOr(Schema.String)),
+      clientCertificatePassword: Schema.optional(SensitiveOutputNullableString),
+      clientCertificateSendChain: Schema.optional(Schema.Boolean),
+    }),
+  );
+const ManagedIdentityDefinitionSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.NullOr(
+    Schema.Struct({
+      clientId: Schema.optional(Schema.NullOr(Schema.String)),
+    }),
+  );
+const KustomizationDefinitionSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.NullOr(
+  Schema.Struct({
+    name: Schema.optional(Schema.String),
+    path: Schema.optional(Schema.String),
+    dependsOn: Schema.optional(Schema.NullOr(Schema.Array(Schema.String))),
+    timeoutInSeconds: Schema.optional(Schema.NullOr(Schema.Number)),
+    syncIntervalInSeconds: Schema.optional(Schema.NullOr(Schema.Number)),
+    retryIntervalInSeconds: Schema.optional(Schema.NullOr(Schema.Number)),
+    prune: Schema.optional(Schema.Boolean),
+    force: Schema.optional(Schema.Boolean),
+    wait: Schema.optional(Schema.Boolean),
+    postBuild: Schema.optional(Schema.suspend(() => PostBuildDefinitionSchema)),
+  }),
+);
+const PostBuildDefinitionSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.NullOr(
+  Schema.Struct({
+    substitute: Schema.optional(
+      Schema.NullOr(Schema.Record(Schema.String, Schema.String)),
+    ),
+    substituteFrom: Schema.optional(
+      Schema.NullOr(
+        Schema.Array(Schema.suspend(() => SubstituteFromDefinitionSchema)),
+      ),
+    ),
+  }),
+);
+const SubstituteFromDefinitionSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.NullOr(
+    Schema.Struct({
+      kind: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      optional: Schema.optional(Schema.Boolean),
+    }),
+  );
+const ObjectStatusDefinitionSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.NullOr(
+  Schema.Struct({
+    name: Schema.optional(Schema.String),
+    namespace: Schema.optional(Schema.String),
+    kind: Schema.optional(Schema.String),
+    complianceState: Schema.optional(
+      Schema.suspend(() => FluxComplianceStateDefinitionSchema),
+    ),
+    appliedBy: Schema.optional(
+      Schema.suspend(() => ObjectReferenceDefinitionSchema),
+    ),
+    statusConditions: Schema.optional(
+      Schema.NullOr(
+        Schema.Array(
+          Schema.suspend(() => ObjectStatusConditionDefinitionSchema),
+        ),
+      ),
+    ),
+    helmReleaseProperties: Schema.optional(
+      Schema.suspend(() => HelmReleasePropertiesDefinitionSchema),
+    ),
+  }),
+);
+const FluxComplianceStateDefinitionSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+    "Compliant",
+    "Non-Compliant",
+    "Pending",
+    "Suspended",
+    "Unknown",
+  ]);
+const ObjectReferenceDefinitionSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.NullOr(
+    Schema.Struct({
+      name: Schema.optional(Schema.String),
+      namespace: Schema.optional(Schema.String),
+    }),
+  );
+const ObjectStatusConditionDefinitionSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    lastTransitionTime: Schema.optional(Schema.String),
+    message: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    status: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
+const HelmReleasePropertiesDefinitionSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.NullOr(
+    Schema.Struct({
+      lastRevisionApplied: Schema.optional(Schema.NullOr(Schema.Number)),
+      helmChartRef: Schema.optional(
+        Schema.suspend(() => ObjectReferenceDefinitionSchema),
+      ),
+      failureCount: Schema.optional(Schema.NullOr(Schema.Number)),
+      installFailureCount: Schema.optional(Schema.NullOr(Schema.Number)),
+      upgradeFailureCount: Schema.optional(Schema.NullOr(Schema.Number)),
+    }),
+  );
+const GitRepositoryPatchDefinitionSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.NullOr(
+    Schema.Struct({
+      url: Schema.optional(Schema.NullOr(Schema.String)),
+      timeoutInSeconds: Schema.optional(Schema.NullOr(Schema.Number)),
+      syncIntervalInSeconds: Schema.optional(Schema.NullOr(Schema.Number)),
+      repositoryRef: Schema.optional(
+        Schema.suspend(() => RepositoryRefDefinitionSchema),
+      ),
+      sshKnownHosts: Schema.optional(Schema.NullOr(Schema.String)),
+      httpsUser: Schema.optional(Schema.NullOr(Schema.String)),
+      httpsCACert: Schema.optional(Schema.NullOr(Schema.String)),
+      localAuthRef: Schema.optional(Schema.NullOr(Schema.String)),
+    }),
+  );
+const BucketPatchDefinitionSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.NullOr(
+  Schema.Struct({
+    url: Schema.optional(Schema.NullOr(Schema.String)),
+    bucketName: Schema.optional(Schema.NullOr(Schema.String)),
+    insecure: Schema.optional(Schema.NullOr(Schema.Boolean)),
+    timeoutInSeconds: Schema.optional(Schema.NullOr(Schema.Number)),
+    syncIntervalInSeconds: Schema.optional(Schema.NullOr(Schema.Number)),
+    accessKey: Schema.optional(Schema.NullOr(Schema.String)),
+    localAuthRef: Schema.optional(Schema.NullOr(Schema.String)),
+  }),
+);
+const AzureBlobPatchDefinitionSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.NullOr(
+    Schema.Struct({
+      url: Schema.optional(Schema.NullOr(Schema.String)),
+      containerName: Schema.optional(Schema.NullOr(Schema.String)),
+      timeoutInSeconds: Schema.optional(Schema.NullOr(Schema.Number)),
+      syncIntervalInSeconds: Schema.optional(Schema.NullOr(Schema.Number)),
+      servicePrincipal: Schema.optional(
+        Schema.suspend(() => ServicePrincipalPatchDefinitionSchema),
+      ),
+      accountKey: Schema.optional(Schema.NullOr(Schema.String)),
+      sasToken: Schema.optional(Schema.NullOr(Schema.String)),
+      managedIdentity: Schema.optional(
+        Schema.suspend(() => ManagedIdentityPatchDefinitionSchema),
+      ),
+      localAuthRef: Schema.optional(Schema.NullOr(Schema.String)),
+    }),
+  );
+const ServicePrincipalPatchDefinitionSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.NullOr(
+    Schema.Struct({
+      clientId: Schema.optional(Schema.NullOr(Schema.String)),
+      tenantId: Schema.optional(Schema.NullOr(Schema.String)),
+      clientSecret: Schema.optional(SensitiveOutputNullableString),
+      clientCertificate: Schema.optional(Schema.NullOr(Schema.String)),
+      clientCertificatePassword: Schema.optional(SensitiveOutputNullableString),
+      clientCertificateSendChain: Schema.optional(Schema.Boolean),
+    }),
+  );
+const ManagedIdentityPatchDefinitionSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.NullOr(
+    Schema.Struct({
+      clientId: Schema.optional(Schema.NullOr(Schema.String)),
+    }),
+  );
+const KustomizationPatchDefinitionSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.NullOr(
+    Schema.Struct({
+      path: Schema.optional(Schema.NullOr(Schema.String)),
+      dependsOn: Schema.optional(Schema.NullOr(Schema.Array(Schema.String))),
+      timeoutInSeconds: Schema.optional(Schema.NullOr(Schema.Number)),
+      syncIntervalInSeconds: Schema.optional(Schema.NullOr(Schema.Number)),
+      retryIntervalInSeconds: Schema.optional(Schema.NullOr(Schema.Number)),
+      prune: Schema.optional(Schema.NullOr(Schema.Boolean)),
+      force: Schema.optional(Schema.NullOr(Schema.Boolean)),
+      wait: Schema.optional(Schema.NullOr(Schema.Boolean)),
+      postBuild: Schema.optional(
+        Schema.suspend(() => PostBuildDefinitionSchema),
+      ),
+    }),
+  );
+const FluxConfigurationSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
+const ErrorDetailSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  code: Schema.optional(Schema.String),
+  message: Schema.optional(Schema.String),
+  target: Schema.optional(Schema.String),
+  details: Schema.optional(Schema.Array(Schema.Unknown)),
+  additionalInfo: Schema.optional(
+    Schema.Array(Schema.suspend(() => ErrorAdditionalInfoSchema)),
+  ),
+});
+const ErrorAdditionalInfoSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  type: Schema.optional(Schema.String),
+  info: Schema.optional(Schema.Unknown),
+});
+const ScopeSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  cluster: Schema.optional(Schema.suspend(() => ScopeClusterSchema)),
+  namespace: Schema.optional(Schema.suspend(() => ScopeNamespaceSchema)),
+});
+const ScopeClusterSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  releaseNamespace: Schema.optional(Schema.String),
+});
+const ScopeNamespaceSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  targetNamespace: Schema.optional(Schema.String),
+});
+const ExtensionStatusSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  code: Schema.optional(Schema.String),
+  displayStatus: Schema.optional(Schema.String),
+  level: Schema.optional(Schema.Literals(["Error", "Warning", "Information"])),
+  message: Schema.optional(Schema.String),
+  time: Schema.optional(Schema.String),
+});
+const ExtensionSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
+const OperationStatusResultSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  status: Schema.String,
+  properties: Schema.optional(
+    Schema.NullOr(Schema.Record(Schema.String, Schema.String)),
+  ),
+  error: Schema.optional(
+    Schema.Struct({
+      code: Schema.optional(Schema.String),
+      message: Schema.optional(Schema.String),
+      target: Schema.optional(Schema.String),
+      details: Schema.optional(
+        Schema.Array(Schema.suspend(() => ErrorDetailSchema)),
+      ),
+      additionalInfo: Schema.optional(
+        Schema.Array(Schema.suspend(() => ErrorAdditionalInfoSchema)),
+      ),
+    }),
+  ),
+});
+const ResourceProviderOperationSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    display: Schema.optional(
+      Schema.Struct({
+        provider: Schema.optional(Schema.String),
+        resource: Schema.optional(Schema.String),
+        operation: Schema.optional(Schema.String),
+        description: Schema.optional(Schema.String),
+      }),
+    ),
+    isDataAction: Schema.optional(Schema.Boolean),
+    origin: Schema.optional(Schema.String),
+  });
+const ResourceProviderOperationDisplaySchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    provider: Schema.optional(Schema.String),
+    resource: Schema.optional(Schema.String),
+    operation: Schema.optional(Schema.String),
+    description: Schema.optional(Schema.String),
+  });
+const systemDataSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  createdBy: Schema.optional(Schema.String),
+  createdByType: Schema.optional(
+    Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+  ),
+  createdAt: Schema.optional(Schema.String),
+  lastModifiedBy: Schema.optional(Schema.String),
+  lastModifiedByType: Schema.optional(
+    Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+  ),
+  lastModifiedAt: Schema.optional(Schema.String),
+});
+const ExtensionPropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  extensionType: Schema.optional(Schema.String),
+  autoUpgradeMinorVersion: Schema.optional(Schema.Boolean),
+  releaseTrain: Schema.optional(Schema.String),
+  version: Schema.optional(Schema.NullOr(Schema.String)),
+  scope: Schema.optional(Schema.suspend(() => ScopeSchema)),
+  configurationSettings: Schema.optional(
+    Schema.NullOr(Schema.Record(Schema.String, Schema.String)),
+  ),
+  configurationProtectedSettings: Schema.optional(
+    Schema.NullOr(Schema.Record(Schema.String, Schema.String)),
+  ),
+  currentVersion: Schema.optional(Schema.NullOr(Schema.String)),
+  provisioningState: Schema.optional(
+    Schema.suspend(() => ProvisioningStateSchema),
+  ),
+  statuses: Schema.optional(
+    Schema.NullOr(Schema.Array(Schema.suspend(() => ExtensionStatusSchema))),
+  ),
+  errorInfo: Schema.optional(
+    Schema.Struct({
+      code: Schema.optional(Schema.String),
+      message: Schema.optional(Schema.String),
+      target: Schema.optional(Schema.String),
+      details: Schema.optional(
+        Schema.Array(Schema.suspend(() => ErrorDetailSchema)),
+      ),
+      additionalInfo: Schema.optional(
+        Schema.Array(Schema.suspend(() => ErrorAdditionalInfoSchema)),
+      ),
+    }),
+  ),
+  customLocationSettings: Schema.optional(
+    Schema.NullOr(Schema.Record(Schema.String, Schema.String)),
+  ),
+  packageUri: Schema.optional(Schema.NullOr(Schema.String)),
+  aksAssignedIdentity: Schema.optional(
+    Schema.suspend(() => ExtensionPropertiesAksAssignedIdentitySchema),
+  ),
+  isSystemExtension: Schema.optional(Schema.Boolean),
+  autoUpgradeMode: Schema.optional(
+    Schema.Literals(["none", "patch", "compatible"]),
+  ),
+  managementDetails: Schema.optional(
+    Schema.suspend(() => ManagementDetailsSchema),
+  ),
+  additionalDetails: Schema.optional(
+    Schema.suspend(() => AdditionalDetailsSchema),
+  ),
+  extensionState: Schema.optional(Schema.String),
+});
+const ProvisioningStateSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Succeeded",
+  "Failed",
+  "Canceled",
+  "Creating",
+  "Updating",
+  "Deleting",
+]);
+const ExtensionPropertiesAksAssignedIdentitySchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    principalId: Schema.optional(Schema.String),
+    tenantId: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.suspend(() => AKSIdentityTypeSchema)),
+    objectId: Schema.optional(Schema.String),
+    clientId: Schema.optional(Schema.String),
+    resourceId: Schema.optional(Schema.String),
+  });
+const AKSIdentityTypeSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "SystemAssigned",
+  "UserAssigned",
+  "Workload",
+]);
+const ManagementDetailsSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  category: Schema.optional(Schema.String),
+  accessDetails: Schema.optional(
+    Schema.Array(Schema.suspend(() => AccessDetailSchema)),
+  ),
+});
+const AccessDetailSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  entity: Schema.optional(Schema.String),
+  allowedActions: Schema.optional(Schema.Array(Schema.String)),
+  description: Schema.optional(Schema.String),
+});
+const AdditionalDetailsSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  docs: Schema.optional(Schema.String),
+  releaseNotes: Schema.optional(Schema.String),
+  troubleshootingGuide: Schema.optional(Schema.String),
+});
+const PatchExtensionPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    autoUpgradeMinorVersion: Schema.optional(Schema.Boolean),
+    autoUpgradeMode: Schema.optional(
+      Schema.Literals(["none", "patch", "compatible"]),
+    ),
+    releaseTrain: Schema.optional(Schema.String),
+    version: Schema.optional(Schema.NullOr(Schema.String)),
+    configurationSettings: Schema.optional(
+      Schema.NullOr(Schema.Record(Schema.String, Schema.String)),
+    ),
+    configurationProtectedSettings: Schema.optional(
+      Schema.NullOr(Schema.Record(Schema.String, Schema.String)),
+    ),
+  });
+const FluxConfigurationPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    scope: Schema.optional(Schema.Literals(["cluster", "namespace"])),
+    namespace: Schema.optional(Schema.String),
+    sourceKind: Schema.optional(
+      Schema.Literals([
+        "GitRepository",
+        "Bucket",
+        "AzureBlob",
+        "OCIRepository",
+      ]),
+    ),
+    suspend: Schema.optional(Schema.Boolean),
+    gitRepository: Schema.optional(
+      Schema.suspend(() => GitRepositoryDefinitionSchema),
+    ),
+    bucket: Schema.optional(Schema.suspend(() => BucketDefinitionSchema)),
+    azureBlob: Schema.optional(Schema.suspend(() => AzureBlobDefinitionSchema)),
+    ociRepository: Schema.optional(
+      Schema.suspend(() => OCIRepositoryDefinitionSchema),
+    ),
+    kustomizations: Schema.optional(
+      Schema.NullOr(
+        Schema.Record(
+          Schema.String,
+          Schema.suspend(() => KustomizationDefinitionSchema),
+        ),
+      ),
+    ),
+    configurationProtectedSettings: Schema.optional(
+      Schema.NullOr(Schema.Record(Schema.String, Schema.String)),
+    ),
+    statuses: Schema.optional(
+      Schema.NullOr(
+        Schema.Array(Schema.suspend(() => ObjectStatusDefinitionSchema)),
+      ),
+    ),
+    repositoryPublicKey: Schema.optional(Schema.NullOr(Schema.String)),
+    sourceSyncedCommitId: Schema.optional(Schema.NullOr(Schema.String)),
+    sourceUpdatedAt: Schema.optional(Schema.NullOr(Schema.String)),
+    statusUpdatedAt: Schema.optional(Schema.NullOr(Schema.String)),
+    waitForReconciliation: Schema.optional(Schema.NullOr(Schema.Boolean)),
+    reconciliationWaitDuration: Schema.optional(Schema.NullOr(Schema.String)),
+    complianceState: Schema.optional(
+      Schema.Literals([
+        "Compliant",
+        "Non-Compliant",
+        "Pending",
+        "Suspended",
+        "Unknown",
+      ]),
+    ),
+    provisioningState: Schema.optional(
+      Schema.suspend(() => ProvisioningStateSchema),
+    ),
+    errorMessage: Schema.optional(Schema.NullOr(Schema.String)),
+  });
+const ProviderTypeSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Azure",
+  "GitHub",
+  "Generic",
+]);
+const OCIRepositoryDefinitionSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    url: Schema.optional(Schema.NullOr(Schema.String)),
+    timeoutInSeconds: Schema.optional(Schema.NullOr(Schema.Number)),
+    syncIntervalInSeconds: Schema.optional(Schema.NullOr(Schema.Number)),
+    repositoryRef: Schema.optional(
+      Schema.suspend(() => OCIRepositoryRefDefinitionSchema),
+    ),
+    layerSelector: Schema.optional(
+      Schema.suspend(() => LayerSelectorDefinitionSchema),
+    ),
+    verify: Schema.optional(Schema.suspend(() => VerifyDefinitionSchema)),
+    insecure: Schema.optional(Schema.Boolean),
+    useWorkloadIdentity: Schema.optional(Schema.Boolean),
+    serviceAccountName: Schema.optional(Schema.NullOr(Schema.String)),
+    tlsConfig: Schema.optional(Schema.suspend(() => TlsConfigDefinitionSchema)),
+    localAuthRef: Schema.optional(Schema.NullOr(Schema.String)),
+  },
+);
+const OCIRepositoryRefDefinitionSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    tag: Schema.optional(Schema.NullOr(Schema.String)),
+    semver: Schema.optional(Schema.NullOr(Schema.String)),
+    digest: Schema.optional(Schema.NullOr(Schema.String)),
+  });
+const LayerSelectorDefinitionSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    mediaType: Schema.optional(Schema.NullOr(Schema.String)),
+    operation: Schema.optional(Schema.suspend(() => OperationTypeSchema)),
+  },
+);
+const OperationTypeSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "extract",
+  "copy",
+]);
+const VerifyDefinitionSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  provider: Schema.optional(Schema.String),
+  verificationConfig: Schema.optional(
+    Schema.NullOr(Schema.Record(Schema.String, Schema.String)),
+  ),
+  matchOidcIdentity: Schema.optional(
+    Schema.NullOr(
+      Schema.Array(Schema.suspend(() => MatchOidcIdentityDefinitionSchema)),
+    ),
+  ),
+});
+const MatchOidcIdentityDefinitionSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    issuer: Schema.optional(Schema.String),
+    subject: Schema.optional(Schema.String),
+  });
+const TlsConfigDefinitionSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  clientCertificate: Schema.optional(Schema.NullOr(Schema.String)),
+  privateKey: Schema.optional(SensitiveOutputNullableString),
+  caCertificate: Schema.optional(Schema.NullOr(Schema.String)),
+});
+const FluxConfigurationPatchPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    sourceKind: Schema.optional(Schema.suspend(() => SourceKindTypeSchema)),
+    suspend: Schema.optional(Schema.Boolean),
+    gitRepository: Schema.optional(
+      Schema.suspend(() => GitRepositoryPatchDefinitionSchema),
+    ),
+    bucket: Schema.optional(Schema.suspend(() => BucketPatchDefinitionSchema)),
+    azureBlob: Schema.optional(
+      Schema.suspend(() => AzureBlobPatchDefinitionSchema),
+    ),
+    ociRepository: Schema.optional(
+      Schema.suspend(() => OCIRepositoryPatchDefinitionSchema),
+    ),
+    kustomizations: Schema.optional(
+      Schema.Record(
+        Schema.String,
+        Schema.suspend(() => KustomizationPatchDefinitionSchema),
+      ),
+    ),
+    configurationProtectedSettings: Schema.optional(
+      Schema.Record(Schema.String, Schema.String),
+    ),
+  });
+const SourceKindTypeSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "GitRepository",
+  "Bucket",
+  "AzureBlob",
+  "OCIRepository",
+]);
+const OCIRepositoryPatchDefinitionSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    url: Schema.optional(Schema.NullOr(Schema.String)),
+    timeoutInSeconds: Schema.optional(Schema.NullOr(Schema.Number)),
+    syncIntervalInSeconds: Schema.optional(Schema.NullOr(Schema.Number)),
+    repositoryRef: Schema.optional(
+      Schema.suspend(() => OCIRepositoryRefPatchDefinitionSchema),
+    ),
+    layerSelector: Schema.optional(
+      Schema.suspend(() => LayerSelectorPatchDefinitionSchema),
+    ),
+    verify: Schema.optional(Schema.suspend(() => VerifyPatchDefinitionSchema)),
+    insecure: Schema.optional(Schema.Boolean),
+    useWorkloadIdentity: Schema.optional(Schema.Boolean),
+    serviceAccountName: Schema.optional(Schema.NullOr(Schema.String)),
+    tlsConfig: Schema.optional(
+      Schema.suspend(() => TlsConfigPatchDefinitionSchema),
+    ),
+    localAuthRef: Schema.optional(Schema.NullOr(Schema.String)),
+  });
+const OCIRepositoryRefPatchDefinitionSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    tag: Schema.optional(Schema.NullOr(Schema.String)),
+    semver: Schema.optional(Schema.NullOr(Schema.String)),
+    digest: Schema.optional(Schema.NullOr(Schema.String)),
+  });
+const LayerSelectorPatchDefinitionSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    mediaType: Schema.optional(Schema.NullOr(Schema.String)),
+    operation: Schema.optional(Schema.suspend(() => OperationTypeSchema)),
+  });
+const VerifyPatchDefinitionSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  provider: Schema.optional(Schema.String),
+  verificationConfig: Schema.optional(
+    Schema.NullOr(Schema.Record(Schema.String, Schema.String)),
+  ),
+  matchOidcIdentity: Schema.optional(
+    Schema.NullOr(
+      Schema.Array(
+        Schema.suspend(() => MatchOidcIdentityPatchDefinitionSchema),
+      ),
+    ),
+  ),
+});
+const MatchOidcIdentityPatchDefinitionSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    issuer: Schema.optional(Schema.String),
+    subject: Schema.optional(Schema.String),
+  });
+const TlsConfigPatchDefinitionSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    clientCertificate: Schema.optional(Schema.NullOr(Schema.String)),
+    privateKey: Schema.optional(SensitiveOutputNullableString),
+    caCertificate: Schema.optional(Schema.NullOr(Schema.String)),
+  });
+const PostBuildPatchDefinitionSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    substitute: Schema.optional(
+      Schema.NullOr(Schema.Record(Schema.String, Schema.String)),
+    ),
+    substituteFrom: Schema.optional(
+      Schema.NullOr(
+        Schema.Array(Schema.suspend(() => SubstituteFromPatchDefinitionSchema)),
+      ),
+    ),
+  });
+const SubstituteFromPatchDefinitionSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    kind: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    optional: Schema.optional(Schema.Boolean),
+  });
 
 // Input Schema
 export const ExtensionsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -22,20 +721,7 @@ export const ExtensionsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       autoUpgradeMinorVersion: Schema.optional(Schema.Boolean),
       releaseTrain: Schema.optional(Schema.String),
       version: Schema.optional(Schema.NullOr(Schema.String)),
-      scope: Schema.optional(
-        Schema.Struct({
-          cluster: Schema.optional(
-            Schema.Struct({
-              releaseNamespace: Schema.optional(Schema.String),
-            }),
-          ),
-          namespace: Schema.optional(
-            Schema.Struct({
-              targetNamespace: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
+      scope: Schema.optional(Schema.suspend(() => ScopeSchema)),
       configurationSettings: Schema.optional(
         Schema.NullOr(Schema.Record(Schema.String, Schema.String)),
       ),
@@ -55,17 +741,7 @@ export const ExtensionsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       ),
       statuses: Schema.optional(
         Schema.NullOr(
-          Schema.Array(
-            Schema.Struct({
-              code: Schema.optional(Schema.String),
-              displayStatus: Schema.optional(Schema.String),
-              level: Schema.optional(
-                Schema.Literals(["Error", "Warning", "Information"]),
-              ),
-              message: Schema.optional(Schema.String),
-              time: Schema.optional(Schema.String),
-            }),
-          ),
+          Schema.Array(Schema.suspend(() => ExtensionStatusSchema)),
         ),
       ),
       errorInfo: Schema.optional(
@@ -74,30 +750,10 @@ export const ExtensionsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
           message: Schema.optional(Schema.String),
           target: Schema.optional(Schema.String),
           details: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                code: Schema.optional(Schema.String),
-                message: Schema.optional(Schema.String),
-                target: Schema.optional(Schema.String),
-                details: Schema.optional(Schema.Array(Schema.Unknown)),
-                additionalInfo: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      type: Schema.optional(Schema.String),
-                      info: Schema.optional(Schema.Unknown),
-                    }),
-                  ),
-                ),
-              }),
-            ),
+            Schema.Array(Schema.suspend(() => ErrorDetailSchema)),
           ),
           additionalInfo: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                type: Schema.optional(Schema.String),
-                info: Schema.optional(Schema.Unknown),
-              }),
-            ),
+            Schema.Array(Schema.suspend(() => ErrorAdditionalInfoSchema)),
           ),
         }),
       ),
@@ -162,6 +818,96 @@ export type ExtensionsCreateInput = typeof ExtensionsCreateInput.Type;
 // Output Schema
 export const ExtensionsCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
+    properties: Schema.optional(
+      Schema.Struct({
+        extensionType: Schema.optional(Schema.String),
+        autoUpgradeMinorVersion: Schema.optional(Schema.Boolean),
+        releaseTrain: Schema.optional(Schema.String),
+        version: Schema.optional(Schema.NullOr(Schema.String)),
+        scope: Schema.optional(Schema.suspend(() => ScopeSchema)),
+        configurationSettings: Schema.optional(
+          Schema.NullOr(Schema.Record(Schema.String, Schema.String)),
+        ),
+        configurationProtectedSettings: Schema.optional(
+          Schema.NullOr(Schema.Record(Schema.String, Schema.String)),
+        ),
+        currentVersion: Schema.optional(Schema.NullOr(Schema.String)),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Succeeded",
+            "Failed",
+            "Canceled",
+            "Creating",
+            "Updating",
+            "Deleting",
+          ]),
+        ),
+        statuses: Schema.optional(
+          Schema.NullOr(
+            Schema.Array(Schema.suspend(() => ExtensionStatusSchema)),
+          ),
+        ),
+        errorInfo: Schema.optional(
+          Schema.Struct({
+            code: Schema.optional(Schema.String),
+            message: Schema.optional(Schema.String),
+            target: Schema.optional(Schema.String),
+            details: Schema.optional(
+              Schema.Array(Schema.suspend(() => ErrorDetailSchema)),
+            ),
+            additionalInfo: Schema.optional(
+              Schema.Array(Schema.suspend(() => ErrorAdditionalInfoSchema)),
+            ),
+          }),
+        ),
+        customLocationSettings: Schema.optional(
+          Schema.NullOr(Schema.Record(Schema.String, Schema.String)),
+        ),
+        packageUri: Schema.optional(Schema.NullOr(Schema.String)),
+        aksAssignedIdentity: Schema.optional(
+          Schema.NullOr(
+            Schema.Struct({
+              principalId: Schema.optional(Schema.String),
+              tenantId: Schema.optional(Schema.String),
+              type: Schema.optional(
+                Schema.Literals(["SystemAssigned", "UserAssigned"]),
+              ),
+            }),
+          ),
+        ),
+        isSystemExtension: Schema.optional(Schema.Boolean),
+      }),
+    ),
+    identity: Schema.optional(
+      Schema.Struct({
+        principalId: Schema.optional(Schema.String),
+        tenantId: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.Literals(["SystemAssigned"])),
+      }),
+    ),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+    plan: Schema.optional(
+      Schema.Struct({
+        name: Schema.String,
+        publisher: Schema.String,
+        product: Schema.String,
+        promotionCode: Schema.optional(Schema.String),
+        version: Schema.optional(Schema.String),
+      }),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -240,6 +986,96 @@ export type ExtensionsGetInput = typeof ExtensionsGetInput.Type;
 
 // Output Schema
 export const ExtensionsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.optional(
+    Schema.Struct({
+      extensionType: Schema.optional(Schema.String),
+      autoUpgradeMinorVersion: Schema.optional(Schema.Boolean),
+      releaseTrain: Schema.optional(Schema.String),
+      version: Schema.optional(Schema.NullOr(Schema.String)),
+      scope: Schema.optional(Schema.suspend(() => ScopeSchema)),
+      configurationSettings: Schema.optional(
+        Schema.NullOr(Schema.Record(Schema.String, Schema.String)),
+      ),
+      configurationProtectedSettings: Schema.optional(
+        Schema.NullOr(Schema.Record(Schema.String, Schema.String)),
+      ),
+      currentVersion: Schema.optional(Schema.NullOr(Schema.String)),
+      provisioningState: Schema.optional(
+        Schema.Literals([
+          "Succeeded",
+          "Failed",
+          "Canceled",
+          "Creating",
+          "Updating",
+          "Deleting",
+        ]),
+      ),
+      statuses: Schema.optional(
+        Schema.NullOr(
+          Schema.Array(Schema.suspend(() => ExtensionStatusSchema)),
+        ),
+      ),
+      errorInfo: Schema.optional(
+        Schema.Struct({
+          code: Schema.optional(Schema.String),
+          message: Schema.optional(Schema.String),
+          target: Schema.optional(Schema.String),
+          details: Schema.optional(
+            Schema.Array(Schema.suspend(() => ErrorDetailSchema)),
+          ),
+          additionalInfo: Schema.optional(
+            Schema.Array(Schema.suspend(() => ErrorAdditionalInfoSchema)),
+          ),
+        }),
+      ),
+      customLocationSettings: Schema.optional(
+        Schema.NullOr(Schema.Record(Schema.String, Schema.String)),
+      ),
+      packageUri: Schema.optional(Schema.NullOr(Schema.String)),
+      aksAssignedIdentity: Schema.optional(
+        Schema.NullOr(
+          Schema.Struct({
+            principalId: Schema.optional(Schema.String),
+            tenantId: Schema.optional(Schema.String),
+            type: Schema.optional(
+              Schema.Literals(["SystemAssigned", "UserAssigned"]),
+            ),
+          }),
+        ),
+      ),
+      isSystemExtension: Schema.optional(Schema.Boolean),
+    }),
+  ),
+  identity: Schema.optional(
+    Schema.Struct({
+      principalId: Schema.optional(Schema.String),
+      tenantId: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.Literals(["SystemAssigned"])),
+    }),
+  ),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+  plan: Schema.optional(
+    Schema.Struct({
+      name: Schema.String,
+      publisher: Schema.String,
+      product: Schema.String,
+      promotionCode: Schema.optional(Schema.String),
+      version: Schema.optional(Schema.String),
+    }),
+  ),
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -279,15 +1115,7 @@ export type ExtensionsListInput = typeof ExtensionsListInput.Type;
 
 // Output Schema
 export const ExtensionsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  value: Schema.optional(
-    Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-      }),
-    ),
-  ),
+  value: Schema.optional(Schema.Array(Schema.suspend(() => ExtensionSchema))),
   nextLink: Schema.optional(Schema.String),
 });
 export type ExtensionsListOutput = typeof ExtensionsListOutput.Type;
@@ -340,6 +1168,96 @@ export type ExtensionsUpdateInput = typeof ExtensionsUpdateInput.Type;
 // Output Schema
 export const ExtensionsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
+    properties: Schema.optional(
+      Schema.Struct({
+        extensionType: Schema.optional(Schema.String),
+        autoUpgradeMinorVersion: Schema.optional(Schema.Boolean),
+        releaseTrain: Schema.optional(Schema.String),
+        version: Schema.optional(Schema.NullOr(Schema.String)),
+        scope: Schema.optional(Schema.suspend(() => ScopeSchema)),
+        configurationSettings: Schema.optional(
+          Schema.NullOr(Schema.Record(Schema.String, Schema.String)),
+        ),
+        configurationProtectedSettings: Schema.optional(
+          Schema.NullOr(Schema.Record(Schema.String, Schema.String)),
+        ),
+        currentVersion: Schema.optional(Schema.NullOr(Schema.String)),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Succeeded",
+            "Failed",
+            "Canceled",
+            "Creating",
+            "Updating",
+            "Deleting",
+          ]),
+        ),
+        statuses: Schema.optional(
+          Schema.NullOr(
+            Schema.Array(Schema.suspend(() => ExtensionStatusSchema)),
+          ),
+        ),
+        errorInfo: Schema.optional(
+          Schema.Struct({
+            code: Schema.optional(Schema.String),
+            message: Schema.optional(Schema.String),
+            target: Schema.optional(Schema.String),
+            details: Schema.optional(
+              Schema.Array(Schema.suspend(() => ErrorDetailSchema)),
+            ),
+            additionalInfo: Schema.optional(
+              Schema.Array(Schema.suspend(() => ErrorAdditionalInfoSchema)),
+            ),
+          }),
+        ),
+        customLocationSettings: Schema.optional(
+          Schema.NullOr(Schema.Record(Schema.String, Schema.String)),
+        ),
+        packageUri: Schema.optional(Schema.NullOr(Schema.String)),
+        aksAssignedIdentity: Schema.optional(
+          Schema.NullOr(
+            Schema.Struct({
+              principalId: Schema.optional(Schema.String),
+              tenantId: Schema.optional(Schema.String),
+              type: Schema.optional(
+                Schema.Literals(["SystemAssigned", "UserAssigned"]),
+              ),
+            }),
+          ),
+        ),
+        isSystemExtension: Schema.optional(Schema.Boolean),
+      }),
+    ),
+    identity: Schema.optional(
+      Schema.Struct({
+        principalId: Schema.optional(Schema.String),
+        tenantId: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.Literals(["SystemAssigned"])),
+      }),
+    ),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+    plan: Schema.optional(
+      Schema.Struct({
+        name: Schema.String,
+        publisher: Schema.String,
+        product: Schema.String,
+        promotionCode: Schema.optional(Schema.String),
+        version: Schema.optional(Schema.String),
+      }),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -396,30 +1314,10 @@ export const FluxConfigOperationStatusGetOutput =
         message: Schema.optional(Schema.String),
         target: Schema.optional(Schema.String),
         details: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              code: Schema.optional(Schema.String),
-              message: Schema.optional(Schema.String),
-              target: Schema.optional(Schema.String),
-              details: Schema.optional(Schema.Array(Schema.Unknown)),
-              additionalInfo: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    type: Schema.optional(Schema.String),
-                    info: Schema.optional(Schema.Unknown),
-                  }),
-                ),
-              ),
-            }),
-          ),
+          Schema.Array(Schema.suspend(() => ErrorDetailSchema)),
         ),
         additionalInfo: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              type: Schema.optional(Schema.String),
-              info: Schema.optional(Schema.Unknown),
-            }),
-          ),
+          Schema.Array(Schema.suspend(() => ErrorAdditionalInfoSchema)),
         ),
       }),
     ),
@@ -454,139 +1352,24 @@ export const FluxConfigurationsCreateOrUpdateInput =
     clusterName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
-        scope: Schema.optional(Schema.Literals(["cluster", "namespace"])),
+        scope: Schema.optional(Schema.suspend(() => ScopeDefinitionSchema)),
         namespace: Schema.optional(Schema.String),
         sourceKind: Schema.optional(
-          Schema.Literals(["GitRepository", "Bucket", "AzureBlob"]),
+          Schema.suspend(() => SourceKindDefinitionSchema),
         ),
         suspend: Schema.optional(Schema.Boolean),
         gitRepository: Schema.optional(
-          Schema.NullOr(
-            Schema.Struct({
-              url: Schema.optional(Schema.NullOr(Schema.String)),
-              timeoutInSeconds: Schema.optional(Schema.NullOr(Schema.Number)),
-              syncIntervalInSeconds: Schema.optional(
-                Schema.NullOr(Schema.Number),
-              ),
-              repositoryRef: Schema.optional(
-                Schema.NullOr(
-                  Schema.Struct({
-                    branch: Schema.optional(Schema.NullOr(Schema.String)),
-                    tag: Schema.optional(Schema.NullOr(Schema.String)),
-                    semver: Schema.optional(Schema.NullOr(Schema.String)),
-                    commit: Schema.optional(Schema.NullOr(Schema.String)),
-                  }),
-                ),
-              ),
-              sshKnownHosts: Schema.optional(Schema.NullOr(Schema.String)),
-              httpsUser: Schema.optional(Schema.NullOr(Schema.String)),
-              httpsCACert: Schema.optional(Schema.NullOr(Schema.String)),
-              localAuthRef: Schema.optional(Schema.NullOr(Schema.String)),
-            }),
-          ),
+          Schema.suspend(() => GitRepositoryDefinitionSchema),
         ),
-        bucket: Schema.optional(
-          Schema.NullOr(
-            Schema.Struct({
-              url: Schema.optional(Schema.String),
-              bucketName: Schema.optional(Schema.String),
-              insecure: Schema.optional(Schema.Boolean),
-              timeoutInSeconds: Schema.optional(Schema.NullOr(Schema.Number)),
-              syncIntervalInSeconds: Schema.optional(
-                Schema.NullOr(Schema.Number),
-              ),
-              accessKey: Schema.optional(Schema.NullOr(Schema.String)),
-              localAuthRef: Schema.optional(Schema.NullOr(Schema.String)),
-            }),
-          ),
-        ),
+        bucket: Schema.optional(Schema.suspend(() => BucketDefinitionSchema)),
         azureBlob: Schema.optional(
-          Schema.NullOr(
-            Schema.Struct({
-              url: Schema.optional(Schema.NullOr(Schema.String)),
-              containerName: Schema.optional(Schema.NullOr(Schema.String)),
-              timeoutInSeconds: Schema.optional(Schema.NullOr(Schema.Number)),
-              syncIntervalInSeconds: Schema.optional(
-                Schema.NullOr(Schema.Number),
-              ),
-              servicePrincipal: Schema.optional(
-                Schema.NullOr(
-                  Schema.Struct({
-                    clientId: Schema.optional(Schema.NullOr(Schema.String)),
-                    tenantId: Schema.optional(Schema.NullOr(Schema.String)),
-                    clientSecret: Schema.optional(SensitiveNullableString),
-                    clientCertificate: Schema.optional(
-                      Schema.NullOr(Schema.String),
-                    ),
-                    clientCertificatePassword: Schema.optional(
-                      SensitiveNullableString,
-                    ),
-                    clientCertificateSendChain: Schema.optional(Schema.Boolean),
-                  }),
-                ),
-              ),
-              accountKey: Schema.optional(Schema.NullOr(Schema.String)),
-              sasToken: Schema.optional(Schema.NullOr(Schema.String)),
-              managedIdentity: Schema.optional(
-                Schema.NullOr(
-                  Schema.Struct({
-                    clientId: Schema.optional(Schema.NullOr(Schema.String)),
-                  }),
-                ),
-              ),
-              localAuthRef: Schema.optional(Schema.NullOr(Schema.String)),
-            }),
-          ),
+          Schema.suspend(() => AzureBlobDefinitionSchema),
         ),
         kustomizations: Schema.optional(
           Schema.NullOr(
             Schema.Record(
               Schema.String,
-              Schema.NullOr(
-                Schema.Struct({
-                  name: Schema.optional(Schema.String),
-                  path: Schema.optional(Schema.String),
-                  dependsOn: Schema.optional(
-                    Schema.NullOr(Schema.Array(Schema.String)),
-                  ),
-                  timeoutInSeconds: Schema.optional(
-                    Schema.NullOr(Schema.Number),
-                  ),
-                  syncIntervalInSeconds: Schema.optional(
-                    Schema.NullOr(Schema.Number),
-                  ),
-                  retryIntervalInSeconds: Schema.optional(
-                    Schema.NullOr(Schema.Number),
-                  ),
-                  prune: Schema.optional(Schema.Boolean),
-                  force: Schema.optional(Schema.Boolean),
-                  wait: Schema.optional(Schema.Boolean),
-                  postBuild: Schema.optional(
-                    Schema.NullOr(
-                      Schema.Struct({
-                        substitute: Schema.optional(
-                          Schema.NullOr(
-                            Schema.Record(Schema.String, Schema.String),
-                          ),
-                        ),
-                        substituteFrom: Schema.optional(
-                          Schema.NullOr(
-                            Schema.Array(
-                              Schema.NullOr(
-                                Schema.Struct({
-                                  kind: Schema.optional(Schema.String),
-                                  name: Schema.optional(Schema.String),
-                                  optional: Schema.optional(Schema.Boolean),
-                                }),
-                              ),
-                            ),
-                          ),
-                        ),
-                      }),
-                    ),
-                  ),
-                }),
-              ),
+              Schema.suspend(() => KustomizationDefinitionSchema),
             ),
           ),
         ),
@@ -595,71 +1378,7 @@ export const FluxConfigurationsCreateOrUpdateInput =
         ),
         statuses: Schema.optional(
           Schema.NullOr(
-            Schema.Array(
-              Schema.NullOr(
-                Schema.Struct({
-                  name: Schema.optional(Schema.String),
-                  namespace: Schema.optional(Schema.String),
-                  kind: Schema.optional(Schema.String),
-                  complianceState: Schema.optional(
-                    Schema.Literals([
-                      "Compliant",
-                      "Non-Compliant",
-                      "Pending",
-                      "Suspended",
-                      "Unknown",
-                    ]),
-                  ),
-                  appliedBy: Schema.optional(
-                    Schema.NullOr(
-                      Schema.Struct({
-                        name: Schema.optional(Schema.String),
-                        namespace: Schema.optional(Schema.String),
-                      }),
-                    ),
-                  ),
-                  statusConditions: Schema.optional(
-                    Schema.NullOr(
-                      Schema.Array(
-                        Schema.Struct({
-                          lastTransitionTime: Schema.optional(Schema.String),
-                          message: Schema.optional(Schema.String),
-                          reason: Schema.optional(Schema.String),
-                          status: Schema.optional(Schema.String),
-                          type: Schema.optional(Schema.String),
-                        }),
-                      ),
-                    ),
-                  ),
-                  helmReleaseProperties: Schema.optional(
-                    Schema.NullOr(
-                      Schema.Struct({
-                        lastRevisionApplied: Schema.optional(
-                          Schema.NullOr(Schema.Number),
-                        ),
-                        helmChartRef: Schema.optional(
-                          Schema.NullOr(
-                            Schema.Struct({
-                              name: Schema.optional(Schema.String),
-                              namespace: Schema.optional(Schema.String),
-                            }),
-                          ),
-                        ),
-                        failureCount: Schema.optional(
-                          Schema.NullOr(Schema.Number),
-                        ),
-                        installFailureCount: Schema.optional(
-                          Schema.NullOr(Schema.Number),
-                        ),
-                        upgradeFailureCount: Schema.optional(
-                          Schema.NullOr(Schema.Number),
-                        ),
-                      }),
-                    ),
-                  ),
-                }),
-              ),
-            ),
+            Schema.Array(Schema.suspend(() => ObjectStatusDefinitionSchema)),
           ),
         ),
         repositoryPublicKey: Schema.optional(Schema.NullOr(Schema.String)),
@@ -671,13 +1390,7 @@ export const FluxConfigurationsCreateOrUpdateInput =
           Schema.NullOr(Schema.String),
         ),
         complianceState: Schema.optional(
-          Schema.Literals([
-            "Compliant",
-            "Non-Compliant",
-            "Pending",
-            "Suspended",
-            "Unknown",
-          ]),
+          Schema.suspend(() => FluxComplianceStateDefinitionSchema),
         ),
         provisioningState: Schema.optional(
           Schema.Literals([
@@ -720,6 +1433,75 @@ export type FluxConfigurationsCreateOrUpdateInput =
 // Output Schema
 export const FluxConfigurationsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.Struct({
+        scope: Schema.optional(Schema.suspend(() => ScopeDefinitionSchema)),
+        namespace: Schema.optional(Schema.String),
+        sourceKind: Schema.optional(
+          Schema.suspend(() => SourceKindDefinitionSchema),
+        ),
+        suspend: Schema.optional(Schema.Boolean),
+        gitRepository: Schema.optional(
+          Schema.suspend(() => GitRepositoryDefinitionSchema),
+        ),
+        bucket: Schema.optional(Schema.suspend(() => BucketDefinitionSchema)),
+        azureBlob: Schema.optional(
+          Schema.suspend(() => AzureBlobDefinitionSchema),
+        ),
+        kustomizations: Schema.optional(
+          Schema.NullOr(
+            Schema.Record(
+              Schema.String,
+              Schema.suspend(() => KustomizationDefinitionSchema),
+            ),
+          ),
+        ),
+        configurationProtectedSettings: Schema.optional(
+          Schema.NullOr(Schema.Record(Schema.String, Schema.String)),
+        ),
+        statuses: Schema.optional(
+          Schema.NullOr(
+            Schema.Array(Schema.suspend(() => ObjectStatusDefinitionSchema)),
+          ),
+        ),
+        repositoryPublicKey: Schema.optional(Schema.NullOr(Schema.String)),
+        sourceSyncedCommitId: Schema.optional(Schema.NullOr(Schema.String)),
+        sourceUpdatedAt: Schema.optional(Schema.NullOr(Schema.String)),
+        statusUpdatedAt: Schema.optional(Schema.NullOr(Schema.String)),
+        waitForReconciliation: Schema.optional(Schema.NullOr(Schema.Boolean)),
+        reconciliationWaitDuration: Schema.optional(
+          Schema.NullOr(Schema.String),
+        ),
+        complianceState: Schema.optional(
+          Schema.suspend(() => FluxComplianceStateDefinitionSchema),
+        ),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Succeeded",
+            "Failed",
+            "Canceled",
+            "Creating",
+            "Updating",
+            "Deleting",
+          ]),
+        ),
+        errorMessage: Schema.optional(Schema.NullOr(Schema.String)),
+      }),
+    ),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -807,6 +1589,75 @@ export type FluxConfigurationsGetInput = typeof FluxConfigurationsGetInput.Type;
 // Output Schema
 export const FluxConfigurationsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.Struct({
+        scope: Schema.optional(Schema.suspend(() => ScopeDefinitionSchema)),
+        namespace: Schema.optional(Schema.String),
+        sourceKind: Schema.optional(
+          Schema.suspend(() => SourceKindDefinitionSchema),
+        ),
+        suspend: Schema.optional(Schema.Boolean),
+        gitRepository: Schema.optional(
+          Schema.suspend(() => GitRepositoryDefinitionSchema),
+        ),
+        bucket: Schema.optional(Schema.suspend(() => BucketDefinitionSchema)),
+        azureBlob: Schema.optional(
+          Schema.suspend(() => AzureBlobDefinitionSchema),
+        ),
+        kustomizations: Schema.optional(
+          Schema.NullOr(
+            Schema.Record(
+              Schema.String,
+              Schema.suspend(() => KustomizationDefinitionSchema),
+            ),
+          ),
+        ),
+        configurationProtectedSettings: Schema.optional(
+          Schema.NullOr(Schema.Record(Schema.String, Schema.String)),
+        ),
+        statuses: Schema.optional(
+          Schema.NullOr(
+            Schema.Array(Schema.suspend(() => ObjectStatusDefinitionSchema)),
+          ),
+        ),
+        repositoryPublicKey: Schema.optional(Schema.NullOr(Schema.String)),
+        sourceSyncedCommitId: Schema.optional(Schema.NullOr(Schema.String)),
+        sourceUpdatedAt: Schema.optional(Schema.NullOr(Schema.String)),
+        statusUpdatedAt: Schema.optional(Schema.NullOr(Schema.String)),
+        waitForReconciliation: Schema.optional(Schema.NullOr(Schema.Boolean)),
+        reconciliationWaitDuration: Schema.optional(
+          Schema.NullOr(Schema.String),
+        ),
+        complianceState: Schema.optional(
+          Schema.suspend(() => FluxComplianceStateDefinitionSchema),
+        ),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Succeeded",
+            "Failed",
+            "Canceled",
+            "Creating",
+            "Updating",
+            "Deleting",
+          ]),
+        ),
+        errorMessage: Schema.optional(Schema.NullOr(Schema.String)),
+      }),
+    ),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -853,13 +1704,7 @@ export type FluxConfigurationsListInput =
 export const FluxConfigurationsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => FluxConfigurationSchema)),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -894,135 +1739,23 @@ export const FluxConfigurationsUpdateInput =
     properties: Schema.optional(
       Schema.Struct({
         sourceKind: Schema.optional(
-          Schema.Literals(["GitRepository", "Bucket", "AzureBlob"]),
+          Schema.suspend(() => SourceKindDefinitionSchema),
         ),
         suspend: Schema.optional(Schema.NullOr(Schema.Boolean)),
         gitRepository: Schema.optional(
-          Schema.NullOr(
-            Schema.Struct({
-              url: Schema.optional(Schema.NullOr(Schema.String)),
-              timeoutInSeconds: Schema.optional(Schema.NullOr(Schema.Number)),
-              syncIntervalInSeconds: Schema.optional(
-                Schema.NullOr(Schema.Number),
-              ),
-              repositoryRef: Schema.optional(
-                Schema.NullOr(
-                  Schema.Struct({
-                    branch: Schema.optional(Schema.NullOr(Schema.String)),
-                    tag: Schema.optional(Schema.NullOr(Schema.String)),
-                    semver: Schema.optional(Schema.NullOr(Schema.String)),
-                    commit: Schema.optional(Schema.NullOr(Schema.String)),
-                  }),
-                ),
-              ),
-              sshKnownHosts: Schema.optional(Schema.NullOr(Schema.String)),
-              httpsUser: Schema.optional(Schema.NullOr(Schema.String)),
-              httpsCACert: Schema.optional(Schema.NullOr(Schema.String)),
-              localAuthRef: Schema.optional(Schema.NullOr(Schema.String)),
-            }),
-          ),
+          Schema.suspend(() => GitRepositoryPatchDefinitionSchema),
         ),
         bucket: Schema.optional(
-          Schema.NullOr(
-            Schema.Struct({
-              url: Schema.optional(Schema.NullOr(Schema.String)),
-              bucketName: Schema.optional(Schema.NullOr(Schema.String)),
-              insecure: Schema.optional(Schema.NullOr(Schema.Boolean)),
-              timeoutInSeconds: Schema.optional(Schema.NullOr(Schema.Number)),
-              syncIntervalInSeconds: Schema.optional(
-                Schema.NullOr(Schema.Number),
-              ),
-              accessKey: Schema.optional(Schema.NullOr(Schema.String)),
-              localAuthRef: Schema.optional(Schema.NullOr(Schema.String)),
-            }),
-          ),
+          Schema.suspend(() => BucketPatchDefinitionSchema),
         ),
         azureBlob: Schema.optional(
-          Schema.NullOr(
-            Schema.Struct({
-              url: Schema.optional(Schema.NullOr(Schema.String)),
-              containerName: Schema.optional(Schema.NullOr(Schema.String)),
-              timeoutInSeconds: Schema.optional(Schema.NullOr(Schema.Number)),
-              syncIntervalInSeconds: Schema.optional(
-                Schema.NullOr(Schema.Number),
-              ),
-              servicePrincipal: Schema.optional(
-                Schema.NullOr(
-                  Schema.Struct({
-                    clientId: Schema.optional(Schema.NullOr(Schema.String)),
-                    tenantId: Schema.optional(Schema.NullOr(Schema.String)),
-                    clientSecret: Schema.optional(SensitiveNullableString),
-                    clientCertificate: Schema.optional(
-                      Schema.NullOr(Schema.String),
-                    ),
-                    clientCertificatePassword: Schema.optional(
-                      SensitiveNullableString,
-                    ),
-                    clientCertificateSendChain: Schema.optional(Schema.Boolean),
-                  }),
-                ),
-              ),
-              accountKey: Schema.optional(Schema.NullOr(Schema.String)),
-              sasToken: Schema.optional(Schema.NullOr(Schema.String)),
-              managedIdentity: Schema.optional(
-                Schema.NullOr(
-                  Schema.Struct({
-                    clientId: Schema.optional(Schema.NullOr(Schema.String)),
-                  }),
-                ),
-              ),
-              localAuthRef: Schema.optional(Schema.NullOr(Schema.String)),
-            }),
-          ),
+          Schema.suspend(() => AzureBlobPatchDefinitionSchema),
         ),
         kustomizations: Schema.optional(
           Schema.NullOr(
             Schema.Record(
               Schema.String,
-              Schema.NullOr(
-                Schema.Struct({
-                  path: Schema.optional(Schema.NullOr(Schema.String)),
-                  dependsOn: Schema.optional(
-                    Schema.NullOr(Schema.Array(Schema.String)),
-                  ),
-                  timeoutInSeconds: Schema.optional(
-                    Schema.NullOr(Schema.Number),
-                  ),
-                  syncIntervalInSeconds: Schema.optional(
-                    Schema.NullOr(Schema.Number),
-                  ),
-                  retryIntervalInSeconds: Schema.optional(
-                    Schema.NullOr(Schema.Number),
-                  ),
-                  prune: Schema.optional(Schema.NullOr(Schema.Boolean)),
-                  force: Schema.optional(Schema.NullOr(Schema.Boolean)),
-                  wait: Schema.optional(Schema.NullOr(Schema.Boolean)),
-                  postBuild: Schema.optional(
-                    Schema.NullOr(
-                      Schema.Struct({
-                        substitute: Schema.optional(
-                          Schema.NullOr(
-                            Schema.Record(Schema.String, Schema.String),
-                          ),
-                        ),
-                        substituteFrom: Schema.optional(
-                          Schema.NullOr(
-                            Schema.Array(
-                              Schema.NullOr(
-                                Schema.Struct({
-                                  kind: Schema.optional(Schema.String),
-                                  name: Schema.optional(Schema.String),
-                                  optional: Schema.optional(Schema.Boolean),
-                                }),
-                              ),
-                            ),
-                          ),
-                        ),
-                      }),
-                    ),
-                  ),
-                }),
-              ),
+              Schema.suspend(() => KustomizationPatchDefinitionSchema),
             ),
           ),
         ),
@@ -1045,6 +1778,75 @@ export type FluxConfigurationsUpdateInput =
 // Output Schema
 export const FluxConfigurationsUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.Struct({
+        scope: Schema.optional(Schema.suspend(() => ScopeDefinitionSchema)),
+        namespace: Schema.optional(Schema.String),
+        sourceKind: Schema.optional(
+          Schema.suspend(() => SourceKindDefinitionSchema),
+        ),
+        suspend: Schema.optional(Schema.Boolean),
+        gitRepository: Schema.optional(
+          Schema.suspend(() => GitRepositoryDefinitionSchema),
+        ),
+        bucket: Schema.optional(Schema.suspend(() => BucketDefinitionSchema)),
+        azureBlob: Schema.optional(
+          Schema.suspend(() => AzureBlobDefinitionSchema),
+        ),
+        kustomizations: Schema.optional(
+          Schema.NullOr(
+            Schema.Record(
+              Schema.String,
+              Schema.suspend(() => KustomizationDefinitionSchema),
+            ),
+          ),
+        ),
+        configurationProtectedSettings: Schema.optional(
+          Schema.NullOr(Schema.Record(Schema.String, Schema.String)),
+        ),
+        statuses: Schema.optional(
+          Schema.NullOr(
+            Schema.Array(Schema.suspend(() => ObjectStatusDefinitionSchema)),
+          ),
+        ),
+        repositoryPublicKey: Schema.optional(Schema.NullOr(Schema.String)),
+        sourceSyncedCommitId: Schema.optional(Schema.NullOr(Schema.String)),
+        sourceUpdatedAt: Schema.optional(Schema.NullOr(Schema.String)),
+        statusUpdatedAt: Schema.optional(Schema.NullOr(Schema.String)),
+        waitForReconciliation: Schema.optional(Schema.NullOr(Schema.Boolean)),
+        reconciliationWaitDuration: Schema.optional(
+          Schema.NullOr(Schema.String),
+        ),
+        complianceState: Schema.optional(
+          Schema.suspend(() => FluxComplianceStateDefinitionSchema),
+        ),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Succeeded",
+            "Failed",
+            "Canceled",
+            "Creating",
+            "Updating",
+            "Deleting",
+          ]),
+        ),
+        errorMessage: Schema.optional(Schema.NullOr(Schema.String)),
+      }),
+    ),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1084,21 +1886,7 @@ export type OperationsListInput = typeof OperationsListInput.Type;
 // Output Schema
 export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.optional(
-    Schema.Array(
-      Schema.Struct({
-        name: Schema.optional(Schema.String),
-        display: Schema.optional(
-          Schema.Struct({
-            provider: Schema.optional(Schema.String),
-            resource: Schema.optional(Schema.String),
-            operation: Schema.optional(Schema.String),
-            description: Schema.optional(Schema.String),
-          }),
-        ),
-        isDataAction: Schema.optional(Schema.Boolean),
-        origin: Schema.optional(Schema.String),
-      }),
-    ),
+    Schema.Array(Schema.suspend(() => ResourceProviderOperationSchema)),
   ),
   nextLink: Schema.optional(Schema.String),
 });
@@ -1147,30 +1935,10 @@ export const OperationStatusGetOutput =
         message: Schema.optional(Schema.String),
         target: Schema.optional(Schema.String),
         details: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              code: Schema.optional(Schema.String),
-              message: Schema.optional(Schema.String),
-              target: Schema.optional(Schema.String),
-              details: Schema.optional(Schema.Array(Schema.Unknown)),
-              additionalInfo: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    type: Schema.optional(Schema.String),
-                    info: Schema.optional(Schema.Unknown),
-                  }),
-                ),
-              ),
-            }),
-          ),
+          Schema.Array(Schema.suspend(() => ErrorDetailSchema)),
         ),
         additionalInfo: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              type: Schema.optional(Schema.String),
-              info: Schema.optional(Schema.Unknown),
-            }),
-          ),
+          Schema.Array(Schema.suspend(() => ErrorAdditionalInfoSchema)),
         ),
       }),
     ),
@@ -1214,49 +1982,7 @@ export type OperationStatusListInput = typeof OperationStatusListInput.Type;
 export const OperationStatusListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          status: Schema.String,
-          properties: Schema.optional(
-            Schema.NullOr(Schema.Record(Schema.String, Schema.String)),
-          ),
-          error: Schema.optional(
-            Schema.Struct({
-              code: Schema.optional(Schema.String),
-              message: Schema.optional(Schema.String),
-              target: Schema.optional(Schema.String),
-              details: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    code: Schema.optional(Schema.String),
-                    message: Schema.optional(Schema.String),
-                    target: Schema.optional(Schema.String),
-                    details: Schema.optional(Schema.Array(Schema.Unknown)),
-                    additionalInfo: Schema.optional(
-                      Schema.Array(
-                        Schema.Struct({
-                          type: Schema.optional(Schema.String),
-                          info: Schema.optional(Schema.Unknown),
-                        }),
-                      ),
-                    ),
-                  }),
-                ),
-              ),
-              additionalInfo: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    type: Schema.optional(Schema.String),
-                    info: Schema.optional(Schema.Unknown),
-                  }),
-                ),
-              ),
-            }),
-          ),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => OperationStatusResultSchema)),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -1290,22 +2016,21 @@ export const SourceControlConfigurationsCreateOrUpdateInput =
         repositoryUrl: Schema.optional(Schema.String),
         operatorNamespace: Schema.optional(Schema.String),
         operatorInstanceName: Schema.optional(Schema.String),
-        operatorType: Schema.optional(Schema.Literals(["Flux"])),
+        operatorType: Schema.optional(
+          Schema.suspend(() => OperatorTypeDefinitionSchema),
+        ),
         operatorParams: Schema.optional(Schema.String),
         configurationProtectedSettings: Schema.optional(
-          Schema.Record(Schema.String, Schema.String),
+          Schema.suspend(() => ConfigurationProtectedSettingsSchema),
         ),
         operatorScope: Schema.optional(
-          Schema.Literals(["cluster", "namespace"]),
+          Schema.suspend(() => OperatorScopeDefinitionSchema),
         ),
         repositoryPublicKey: Schema.optional(Schema.String),
         sshKnownHostsContents: Schema.optional(Schema.String),
         enableHelmOperator: Schema.optional(Schema.Boolean),
         helmOperatorProperties: Schema.optional(
-          Schema.Struct({
-            chartVersion: Schema.optional(Schema.String),
-            chartValues: Schema.optional(Schema.String),
-          }),
+          Schema.suspend(() => HelmOperatorPropertiesSchema),
         ),
         provisioningState: Schema.optional(
           Schema.Literals([
@@ -1317,22 +2042,7 @@ export const SourceControlConfigurationsCreateOrUpdateInput =
           ]),
         ),
         complianceStatus: Schema.optional(
-          Schema.Struct({
-            complianceState: Schema.optional(
-              Schema.Literals([
-                "Pending",
-                "Compliant",
-                "Noncompliant",
-                "Installed",
-                "Failed",
-              ]),
-            ),
-            lastConfigApplied: Schema.optional(Schema.String),
-            message: Schema.optional(Schema.String),
-            messageLevel: Schema.optional(
-              Schema.Literals(["Error", "Warning", "Information"]),
-            ),
-          }),
+          Schema.suspend(() => ComplianceStatusSchema),
         ),
       }),
     ),
@@ -1363,6 +2073,55 @@ export type SourceControlConfigurationsCreateOrUpdateInput =
 // Output Schema
 export const SourceControlConfigurationsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.Struct({
+        repositoryUrl: Schema.optional(Schema.String),
+        operatorNamespace: Schema.optional(Schema.String),
+        operatorInstanceName: Schema.optional(Schema.String),
+        operatorType: Schema.optional(
+          Schema.suspend(() => OperatorTypeDefinitionSchema),
+        ),
+        operatorParams: Schema.optional(Schema.String),
+        configurationProtectedSettings: Schema.optional(
+          Schema.suspend(() => ConfigurationProtectedSettingsSchema),
+        ),
+        operatorScope: Schema.optional(
+          Schema.suspend(() => OperatorScopeDefinitionSchema),
+        ),
+        repositoryPublicKey: Schema.optional(Schema.String),
+        sshKnownHostsContents: Schema.optional(Schema.String),
+        enableHelmOperator: Schema.optional(Schema.Boolean),
+        helmOperatorProperties: Schema.optional(
+          Schema.suspend(() => HelmOperatorPropertiesSchema),
+        ),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Accepted",
+            "Deleting",
+            "Running",
+            "Succeeded",
+            "Failed",
+          ]),
+        ),
+        complianceStatus: Schema.optional(
+          Schema.suspend(() => ComplianceStatusSchema),
+        ),
+      }),
+    ),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1448,6 +2207,55 @@ export type SourceControlConfigurationsGetInput =
 // Output Schema
 export const SourceControlConfigurationsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.Struct({
+        repositoryUrl: Schema.optional(Schema.String),
+        operatorNamespace: Schema.optional(Schema.String),
+        operatorInstanceName: Schema.optional(Schema.String),
+        operatorType: Schema.optional(
+          Schema.suspend(() => OperatorTypeDefinitionSchema),
+        ),
+        operatorParams: Schema.optional(Schema.String),
+        configurationProtectedSettings: Schema.optional(
+          Schema.suspend(() => ConfigurationProtectedSettingsSchema),
+        ),
+        operatorScope: Schema.optional(
+          Schema.suspend(() => OperatorScopeDefinitionSchema),
+        ),
+        repositoryPublicKey: Schema.optional(Schema.String),
+        sshKnownHostsContents: Schema.optional(Schema.String),
+        enableHelmOperator: Schema.optional(Schema.Boolean),
+        helmOperatorProperties: Schema.optional(
+          Schema.suspend(() => HelmOperatorPropertiesSchema),
+        ),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Accepted",
+            "Deleting",
+            "Running",
+            "Succeeded",
+            "Failed",
+          ]),
+        ),
+        complianceStatus: Schema.optional(
+          Schema.suspend(() => ComplianceStatusSchema),
+        ),
+      }),
+    ),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1493,13 +2301,7 @@ export type SourceControlConfigurationsListInput =
 export const SourceControlConfigurationsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => SourceControlConfigurationSchema)),
     ),
     nextLink: Schema.optional(Schema.String),
   });

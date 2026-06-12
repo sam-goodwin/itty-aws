@@ -8,30 +8,274 @@ import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
+// Shared schemas
+const DnsForwardingRulesetSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+});
+const systemDataSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  createdBy: Schema.optional(Schema.String),
+  createdByType: Schema.optional(
+    Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+  ),
+  createdAt: Schema.optional(Schema.String),
+  lastModifiedBy: Schema.optional(Schema.String),
+  lastModifiedByType: Schema.optional(
+    Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+  ),
+  lastModifiedAt: Schema.optional(Schema.String),
+});
+const DnsResolverDomainListSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+});
+const DnsResolverPolicySchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+});
+const DnsResolverSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+});
+const DnsForwardingRulesetPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    dnsResolverOutboundEndpoints: Schema.Array(
+      Schema.suspend(() => SubResourceSchema),
+    ),
+    provisioningState: Schema.optional(
+      Schema.suspend(() => ProvisioningStateSchema),
+    ),
+    resourceGuid: Schema.optional(Schema.String),
+  });
+const SubResourceSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.String,
+});
+const ProvisioningStateSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Creating",
+  "Updating",
+  "Deleting",
+  "Succeeded",
+  "Failed",
+  "Canceled",
+]);
+const ForwardingRuleSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+});
+const ForwardingRulePropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    domainName: Schema.String,
+    targetDnsServers: Schema.Array(Schema.suspend(() => TargetDnsServerSchema)),
+    metadata: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    forwardingRuleState: Schema.optional(
+      Schema.suspend(() => ForwardingRuleStateSchema),
+    ),
+    provisioningState: Schema.optional(
+      Schema.suspend(() => ProvisioningStateSchema),
+    ),
+  });
+const TargetDnsServerSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  ipAddress: Schema.String,
+  port: Schema.optional(Schema.Number),
+});
+const ForwardingRuleStateSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Enabled",
+  "Disabled",
+]);
+const ForwardingRulePatchPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    targetDnsServers: Schema.optional(
+      Schema.Array(Schema.suspend(() => TargetDnsServerSchema)),
+    ),
+    metadata: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    forwardingRuleState: Schema.optional(
+      Schema.Literals(["Enabled", "Disabled"]),
+    ),
+  });
+const VirtualNetworkLinkSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+});
+const VirtualNetworkLinkPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    virtualNetwork: Schema.suspend(() => SubResourceSchema),
+    metadata: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    provisioningState: Schema.optional(
+      Schema.suspend(() => ProvisioningStateSchema),
+    ),
+  });
+const VirtualNetworkLinkPatchPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    metadata: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  });
+const DnsResolverDomainListPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    domains: Schema.optional(Schema.Array(Schema.String)),
+    domainsUrl: Schema.optional(Schema.String),
+    provisioningState: Schema.optional(
+      Schema.suspend(() => ProvisioningStateSchema),
+    ),
+    resourceGuid: Schema.optional(Schema.String),
+  });
+const DnsResolverDomainListPatchPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    domains: Schema.optional(Schema.Array(Schema.String)),
+  });
+const DnsResolverDomainListBulkPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    storageUrl: Schema.String,
+    action: Schema.suspend(() => ActionSchema),
+  });
+const ActionSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Upload",
+  "Download",
+]);
+const DnsResolverPolicyPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    provisioningState: Schema.optional(
+      Schema.suspend(() => ProvisioningStateSchema),
+    ),
+    resourceGuid: Schema.optional(Schema.String),
+  });
+const DnsSecurityRuleSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+});
+const DnsSecurityRulePropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    priority: Schema.Number,
+    action: Schema.suspend(() => DnsSecurityRuleActionSchema),
+    dnsResolverDomainLists: Schema.Array(
+      Schema.suspend(() => SubResourceSchema),
+    ),
+    dnsSecurityRuleState: Schema.optional(
+      Schema.suspend(() => DnsSecurityRuleStateSchema),
+    ),
+    provisioningState: Schema.optional(
+      Schema.suspend(() => ProvisioningStateSchema),
+    ),
+  });
+const DnsSecurityRuleActionSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  actionType: Schema.optional(Schema.suspend(() => ActionTypeSchema)),
+});
+const ActionTypeSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Allow",
+  "Alert",
+  "Block",
+]);
+const DnsSecurityRuleStateSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Enabled",
+  "Disabled",
+]);
+const DnsSecurityRulePatchPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    action: Schema.optional(Schema.suspend(() => DnsSecurityRuleActionSchema)),
+    dnsResolverDomainLists: Schema.optional(
+      Schema.Array(Schema.suspend(() => SubResourceSchema)),
+    ),
+    dnsSecurityRuleState: Schema.optional(
+      Schema.suspend(() => DnsSecurityRuleStateSchema),
+    ),
+    priority: Schema.optional(Schema.Number),
+  });
+const DnsResolverPolicyVirtualNetworkLinkSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+  });
+const DnsResolverPolicyVirtualNetworkLinkPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    virtualNetwork: Schema.suspend(() => SubResourceSchema),
+    provisioningState: Schema.optional(
+      Schema.suspend(() => ProvisioningStateSchema),
+    ),
+  });
+const DnsResolverPropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  virtualNetwork: Schema.suspend(() => SubResourceSchema),
+  dnsResolverState: Schema.optional(
+    Schema.suspend(() => DnsResolverStateSchema),
+  ),
+  provisioningState: Schema.optional(
+    Schema.suspend(() => ProvisioningStateSchema),
+  ),
+  resourceGuid: Schema.optional(Schema.String),
+});
+const DnsResolverStateSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Connected",
+  "Disconnected",
+]);
+const InboundEndpointSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+});
+const InboundEndpointPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    ipConfigurations: Schema.Array(Schema.suspend(() => IpConfigurationSchema)),
+    provisioningState: Schema.optional(
+      Schema.suspend(() => ProvisioningStateSchema),
+    ),
+    resourceGuid: Schema.optional(Schema.String),
+  });
+const IpConfigurationSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subnet: Schema.suspend(() => SubResourceSchema),
+  privateIpAddress: Schema.optional(Schema.String),
+  privateIpAllocationMethod: Schema.optional(
+    Schema.Literals(["Static", "Dynamic"]),
+  ),
+});
+const OutboundEndpointSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+});
+const OutboundEndpointPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subnet: Schema.suspend(() => SubResourceSchema),
+    provisioningState: Schema.optional(
+      Schema.suspend(() => ProvisioningStateSchema),
+    ),
+    resourceGuid: Schema.optional(Schema.String),
+  });
+const VirtualNetworkDnsForwardingRulesetSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    properties: Schema.optional(
+      Schema.suspend(() => VirtualNetworkLinkSubResourcePropertiesSchema),
+    ),
+  });
+const VirtualNetworkLinkSubResourcePropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    virtualNetworkLink: Schema.optional(
+      Schema.suspend(() => SubResourceSchema),
+    ),
+  });
+
 // Input Schema
 export const DnsForwardingRulesetsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     dnsForwardingRulesetName: Schema.String.pipe(T.PathParam()),
-    properties: Schema.Struct({
-      dnsResolverOutboundEndpoints: Schema.Array(
-        Schema.Struct({
-          id: Schema.String,
-        }),
-      ),
-      provisioningState: Schema.optional(
-        Schema.Literals([
-          "Creating",
-          "Updating",
-          "Deleting",
-          "Succeeded",
-          "Failed",
-          "Canceled",
-        ]),
-      ),
-      resourceGuid: Schema.optional(Schema.String),
-    }),
+    properties: Schema.suspend(() => DnsForwardingRulesetPropertiesSchema),
     etag: Schema.optional(Schema.String),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     location: Schema.String,
@@ -49,23 +293,14 @@ export type DnsForwardingRulesetsCreateOrUpdateInput =
 // Output Schema
 export const DnsForwardingRulesetsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.suspend(() => DnsForwardingRulesetPropertiesSchema),
+    etag: Schema.optional(Schema.String),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type DnsForwardingRulesetsCreateOrUpdateOutput =
   typeof DnsForwardingRulesetsCreateOrUpdateOutput.Type;
@@ -144,23 +379,14 @@ export type DnsForwardingRulesetsGetInput =
 // Output Schema
 export const DnsForwardingRulesetsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.suspend(() => DnsForwardingRulesetPropertiesSchema),
+    etag: Schema.optional(Schema.String),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type DnsForwardingRulesetsGetOutput =
   typeof DnsForwardingRulesetsGetOutput.Type;
@@ -198,37 +424,7 @@ export type DnsForwardingRulesetsListInput =
 // Output Schema
 export const DnsForwardingRulesetsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => DnsForwardingRulesetSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type DnsForwardingRulesetsListOutput =
@@ -267,37 +463,7 @@ export type DnsForwardingRulesetsListByResourceGroupInput =
 // Output Schema
 export const DnsForwardingRulesetsListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => DnsForwardingRulesetSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type DnsForwardingRulesetsListByResourceGroupOutput =
@@ -338,18 +504,7 @@ export type DnsForwardingRulesetsListByVirtualNetworkInput =
 export const DnsForwardingRulesetsListByVirtualNetworkOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        properties: Schema.optional(
-          Schema.Struct({
-            virtualNetworkLink: Schema.optional(
-              Schema.Struct({
-                id: Schema.String,
-              }),
-            ),
-          }),
-        ),
-      }),
+      Schema.suspend(() => VirtualNetworkDnsForwardingRulesetSchema),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -378,11 +533,7 @@ export const DnsForwardingRulesetsUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     dnsForwardingRulesetName: Schema.String.pipe(T.PathParam()),
     dnsResolverOutboundEndpoints: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.String,
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => SubResourceSchema)),
     ),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
@@ -399,23 +550,14 @@ export type DnsForwardingRulesetsUpdateInput =
 // Output Schema
 export const DnsForwardingRulesetsUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.suspend(() => DnsForwardingRulesetPropertiesSchema),
+    etag: Schema.optional(Schema.String),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type DnsForwardingRulesetsUpdateOutput =
   typeof DnsForwardingRulesetsUpdateOutput.Type;
@@ -442,10 +584,7 @@ export const DnsResolverDomainListsBulkInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     dnsResolverDomainListName: Schema.String.pipe(T.PathParam()),
-    properties: Schema.Struct({
-      storageUrl: Schema.String,
-      action: Schema.Literals(["Upload", "Download"]),
-    }),
+    properties: Schema.suspend(() => DnsResolverDomainListBulkPropertiesSchema),
   }).pipe(
     T.Http({
       method: "POST",
@@ -460,23 +599,16 @@ export type DnsResolverDomainListsBulkInput =
 // Output Schema
 export const DnsResolverDomainListsBulkOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => DnsResolverDomainListPropertiesSchema),
+    ),
+    etag: Schema.optional(Schema.String),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type DnsResolverDomainListsBulkOutput =
   typeof DnsResolverDomainListsBulkOutput.Type;
@@ -505,21 +637,7 @@ export const DnsResolverDomainListsCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     dnsResolverDomainListName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        domains: Schema.optional(Schema.Array(Schema.String)),
-        domainsUrl: Schema.optional(Schema.String),
-        provisioningState: Schema.optional(
-          Schema.Literals([
-            "Creating",
-            "Updating",
-            "Deleting",
-            "Succeeded",
-            "Failed",
-            "Canceled",
-          ]),
-        ),
-        resourceGuid: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(() => DnsResolverDomainListPropertiesSchema),
     ),
     etag: Schema.optional(Schema.String),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
@@ -538,23 +656,16 @@ export type DnsResolverDomainListsCreateOrUpdateInput =
 // Output Schema
 export const DnsResolverDomainListsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => DnsResolverDomainListPropertiesSchema),
+    ),
+    etag: Schema.optional(Schema.String),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type DnsResolverDomainListsCreateOrUpdateOutput =
   typeof DnsResolverDomainListsCreateOrUpdateOutput.Type;
@@ -632,23 +743,16 @@ export type DnsResolverDomainListsGetInput =
 // Output Schema
 export const DnsResolverDomainListsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => DnsResolverDomainListPropertiesSchema),
+    ),
+    etag: Schema.optional(Schema.String),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type DnsResolverDomainListsGetOutput =
   typeof DnsResolverDomainListsGetOutput.Type;
@@ -686,37 +790,7 @@ export type DnsResolverDomainListsListInput =
 // Output Schema
 export const DnsResolverDomainListsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => DnsResolverDomainListSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type DnsResolverDomainListsListOutput =
@@ -755,37 +829,7 @@ export type DnsResolverDomainListsListByResourceGroupInput =
 // Output Schema
 export const DnsResolverDomainListsListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => DnsResolverDomainListSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type DnsResolverDomainListsListByResourceGroupOutput =
@@ -812,9 +856,7 @@ export const DnsResolverDomainListsUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     dnsResolverDomainListName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        domains: Schema.optional(Schema.Array(Schema.String)),
-      }),
+      Schema.suspend(() => DnsResolverDomainListPatchPropertiesSchema),
     ),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
@@ -831,23 +873,16 @@ export type DnsResolverDomainListsUpdateInput =
 // Output Schema
 export const DnsResolverDomainListsUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => DnsResolverDomainListPropertiesSchema),
+    ),
+    etag: Schema.optional(Schema.String),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type DnsResolverDomainListsUpdateOutput =
   typeof DnsResolverDomainListsUpdateOutput.Type;
@@ -874,19 +909,7 @@ export const DnsResolverPoliciesCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     dnsResolverPolicyName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        provisioningState: Schema.optional(
-          Schema.Literals([
-            "Creating",
-            "Updating",
-            "Deleting",
-            "Succeeded",
-            "Failed",
-            "Canceled",
-          ]),
-        ),
-        resourceGuid: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(() => DnsResolverPolicyPropertiesSchema),
     ),
     etag: Schema.optional(Schema.String),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
@@ -905,23 +928,16 @@ export type DnsResolverPoliciesCreateOrUpdateInput =
 // Output Schema
 export const DnsResolverPoliciesCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => DnsResolverPolicyPropertiesSchema),
+    ),
+    etag: Schema.optional(Schema.String),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type DnsResolverPoliciesCreateOrUpdateOutput =
   typeof DnsResolverPoliciesCreateOrUpdateOutput.Type;
@@ -1000,23 +1016,16 @@ export type DnsResolverPoliciesGetInput =
 // Output Schema
 export const DnsResolverPoliciesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => DnsResolverPolicyPropertiesSchema),
+    ),
+    etag: Schema.optional(Schema.String),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type DnsResolverPoliciesGetOutput =
   typeof DnsResolverPoliciesGetOutput.Type;
@@ -1054,37 +1063,7 @@ export type DnsResolverPoliciesListInput =
 // Output Schema
 export const DnsResolverPoliciesListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => DnsResolverPolicySchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type DnsResolverPoliciesListOutput =
@@ -1123,37 +1102,7 @@ export type DnsResolverPoliciesListByResourceGroupInput =
 // Output Schema
 export const DnsResolverPoliciesListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => DnsResolverPolicySchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type DnsResolverPoliciesListByResourceGroupOutput =
@@ -1192,11 +1141,7 @@ export type DnsResolverPoliciesListByVirtualNetworkInput =
 // Output Schema
 export const DnsResolverPoliciesListByVirtualNetworkOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.String,
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => SubResourceSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type DnsResolverPoliciesListByVirtualNetworkOutput =
@@ -1237,23 +1182,16 @@ export type DnsResolverPoliciesUpdateInput =
 // Output Schema
 export const DnsResolverPoliciesUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => DnsResolverPolicyPropertiesSchema),
+    ),
+    etag: Schema.optional(Schema.String),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type DnsResolverPoliciesUpdateOutput =
   typeof DnsResolverPoliciesUpdateOutput.Type;
@@ -1281,21 +1219,9 @@ export const DnsResolverPolicyVirtualNetworkLinksCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     dnsResolverPolicyName: Schema.String.pipe(T.PathParam()),
     dnsResolverPolicyVirtualNetworkLinkName: Schema.String.pipe(T.PathParam()),
-    properties: Schema.Struct({
-      virtualNetwork: Schema.Struct({
-        id: Schema.String,
-      }),
-      provisioningState: Schema.optional(
-        Schema.Literals([
-          "Creating",
-          "Updating",
-          "Deleting",
-          "Succeeded",
-          "Failed",
-          "Canceled",
-        ]),
-      ),
-    }),
+    properties: Schema.suspend(
+      () => DnsResolverPolicyVirtualNetworkLinkPropertiesSchema,
+    ),
     etag: Schema.optional(Schema.String),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     location: Schema.String,
@@ -1313,23 +1239,16 @@ export type DnsResolverPolicyVirtualNetworkLinksCreateOrUpdateInput =
 // Output Schema
 export const DnsResolverPolicyVirtualNetworkLinksCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.suspend(
+      () => DnsResolverPolicyVirtualNetworkLinkPropertiesSchema,
+    ),
+    etag: Schema.optional(Schema.String),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type DnsResolverPolicyVirtualNetworkLinksCreateOrUpdateOutput =
   typeof DnsResolverPolicyVirtualNetworkLinksCreateOrUpdateOutput.Type;
@@ -1411,23 +1330,16 @@ export type DnsResolverPolicyVirtualNetworkLinksGetInput =
 // Output Schema
 export const DnsResolverPolicyVirtualNetworkLinksGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.suspend(
+      () => DnsResolverPolicyVirtualNetworkLinkPropertiesSchema,
+    ),
+    etag: Schema.optional(Schema.String),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type DnsResolverPolicyVirtualNetworkLinksGetOutput =
   typeof DnsResolverPolicyVirtualNetworkLinksGetOutput.Type;
@@ -1468,35 +1380,7 @@ export type DnsResolverPolicyVirtualNetworkLinksListInput =
 export const DnsResolverPolicyVirtualNetworkLinksListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
+      Schema.suspend(() => DnsResolverPolicyVirtualNetworkLinkSchema),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -1540,23 +1424,16 @@ export type DnsResolverPolicyVirtualNetworkLinksUpdateInput =
 // Output Schema
 export const DnsResolverPolicyVirtualNetworkLinksUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.suspend(
+      () => DnsResolverPolicyVirtualNetworkLinkPropertiesSchema,
+    ),
+    etag: Schema.optional(Schema.String),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type DnsResolverPolicyVirtualNetworkLinksUpdateOutput =
   typeof DnsResolverPolicyVirtualNetworkLinksUpdateOutput.Type;
@@ -1583,25 +1460,7 @@ export const DnsResolversCreateOrUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     dnsResolverName: Schema.String.pipe(T.PathParam()),
-    properties: Schema.Struct({
-      virtualNetwork: Schema.Struct({
-        id: Schema.String,
-      }),
-      dnsResolverState: Schema.optional(
-        Schema.Literals(["Connected", "Disconnected"]),
-      ),
-      provisioningState: Schema.optional(
-        Schema.Literals([
-          "Creating",
-          "Updating",
-          "Deleting",
-          "Succeeded",
-          "Failed",
-          "Canceled",
-        ]),
-      ),
-      resourceGuid: Schema.optional(Schema.String),
-    }),
+    properties: Schema.suspend(() => DnsResolverPropertiesSchema),
     etag: Schema.optional(Schema.String),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     location: Schema.String,
@@ -1619,23 +1478,14 @@ export type DnsResolversCreateOrUpdateInput =
 // Output Schema
 export const DnsResolversCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.suspend(() => DnsResolverPropertiesSchema),
+    etag: Schema.optional(Schema.String),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type DnsResolversCreateOrUpdateOutput =
   typeof DnsResolversCreateOrUpdateOutput.Type;
@@ -1707,23 +1557,14 @@ export type DnsResolversGetInput = typeof DnsResolversGetInput.Type;
 
 // Output Schema
 export const DnsResolversGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.suspend(() => DnsResolverPropertiesSchema),
+  etag: Schema.optional(Schema.String),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  location: Schema.String,
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
-  systemData: Schema.optional(
-    Schema.Struct({
-      createdBy: Schema.optional(Schema.String),
-      createdByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      createdAt: Schema.optional(Schema.String),
-      lastModifiedBy: Schema.optional(Schema.String),
-      lastModifiedByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      lastModifiedAt: Schema.optional(Schema.String),
-    }),
-  ),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
 });
 export type DnsResolversGetOutput = typeof DnsResolversGetOutput.Type;
 
@@ -1756,37 +1597,7 @@ export type DnsResolversListInput = typeof DnsResolversListInput.Type;
 // Output Schema
 export const DnsResolversListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => DnsResolverSchema)),
     nextLink: Schema.optional(Schema.String),
   },
 );
@@ -1823,37 +1634,7 @@ export type DnsResolversListByResourceGroupInput =
 // Output Schema
 export const DnsResolversListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => DnsResolverSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type DnsResolversListByResourceGroupOutput =
@@ -1893,11 +1674,7 @@ export type DnsResolversListByVirtualNetworkInput =
 // Output Schema
 export const DnsResolversListByVirtualNetworkOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.String,
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => SubResourceSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type DnsResolversListByVirtualNetworkOutput =
@@ -1938,23 +1715,14 @@ export type DnsResolversUpdateInput = typeof DnsResolversUpdateInput.Type;
 // Output Schema
 export const DnsResolversUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.suspend(() => DnsResolverPropertiesSchema),
+    etag: Schema.optional(Schema.String),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type DnsResolversUpdateOutput = typeof DnsResolversUpdateOutput.Type;
 
@@ -1979,32 +1747,7 @@ export const DnsSecurityRulesCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     dnsResolverPolicyName: Schema.String.pipe(T.PathParam()),
     dnsSecurityRuleName: Schema.String.pipe(T.PathParam()),
-    properties: Schema.Struct({
-      priority: Schema.Number,
-      action: Schema.Struct({
-        actionType: Schema.optional(
-          Schema.Literals(["Allow", "Alert", "Block"]),
-        ),
-      }),
-      dnsResolverDomainLists: Schema.Array(
-        Schema.Struct({
-          id: Schema.String,
-        }),
-      ),
-      dnsSecurityRuleState: Schema.optional(
-        Schema.Literals(["Enabled", "Disabled"]),
-      ),
-      provisioningState: Schema.optional(
-        Schema.Literals([
-          "Creating",
-          "Updating",
-          "Deleting",
-          "Succeeded",
-          "Failed",
-          "Canceled",
-        ]),
-      ),
-    }),
+    properties: Schema.suspend(() => DnsSecurityRulePropertiesSchema),
     etag: Schema.optional(Schema.String),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     location: Schema.String,
@@ -2022,23 +1765,14 @@ export type DnsSecurityRulesCreateOrUpdateInput =
 // Output Schema
 export const DnsSecurityRulesCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.suspend(() => DnsSecurityRulePropertiesSchema),
+    etag: Schema.optional(Schema.String),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type DnsSecurityRulesCreateOrUpdateOutput =
   typeof DnsSecurityRulesCreateOrUpdateOutput.Type;
@@ -2120,23 +1854,14 @@ export type DnsSecurityRulesGetInput = typeof DnsSecurityRulesGetInput.Type;
 // Output Schema
 export const DnsSecurityRulesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.suspend(() => DnsSecurityRulePropertiesSchema),
+    etag: Schema.optional(Schema.String),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type DnsSecurityRulesGetOutput = typeof DnsSecurityRulesGetOutput.Type;
 
@@ -2173,37 +1898,7 @@ export type DnsSecurityRulesListInput = typeof DnsSecurityRulesListInput.Type;
 // Output Schema
 export const DnsSecurityRulesListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => DnsSecurityRuleSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type DnsSecurityRulesListOutput = typeof DnsSecurityRulesListOutput.Type;
@@ -2232,26 +1927,7 @@ export const DnsSecurityRulesUpdateInput =
     dnsResolverPolicyName: Schema.String.pipe(T.PathParam()),
     dnsSecurityRuleName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        action: Schema.optional(
-          Schema.Struct({
-            actionType: Schema.optional(
-              Schema.Literals(["Allow", "Alert", "Block"]),
-            ),
-          }),
-        ),
-        dnsResolverDomainLists: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              id: Schema.String,
-            }),
-          ),
-        ),
-        dnsSecurityRuleState: Schema.optional(
-          Schema.Literals(["Enabled", "Disabled"]),
-        ),
-        priority: Schema.optional(Schema.Number),
-      }),
+      Schema.suspend(() => DnsSecurityRulePatchPropertiesSchema),
     ),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
@@ -2268,23 +1944,14 @@ export type DnsSecurityRulesUpdateInput =
 // Output Schema
 export const DnsSecurityRulesUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.suspend(() => DnsSecurityRulePropertiesSchema),
+    etag: Schema.optional(Schema.String),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type DnsSecurityRulesUpdateOutput =
   typeof DnsSecurityRulesUpdateOutput.Type;
@@ -2313,29 +1980,7 @@ export const ForwardingRulesCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     dnsForwardingRulesetName: Schema.String.pipe(T.PathParam()),
     forwardingRuleName: Schema.String.pipe(T.PathParam()),
-    properties: Schema.Struct({
-      domainName: Schema.String,
-      targetDnsServers: Schema.Array(
-        Schema.Struct({
-          ipAddress: Schema.String,
-          port: Schema.optional(Schema.Number),
-        }),
-      ),
-      metadata: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      forwardingRuleState: Schema.optional(
-        Schema.Literals(["Enabled", "Disabled"]),
-      ),
-      provisioningState: Schema.optional(
-        Schema.Literals([
-          "Creating",
-          "Updating",
-          "Deleting",
-          "Succeeded",
-          "Failed",
-          "Canceled",
-        ]),
-      ),
-    }),
+    properties: Schema.suspend(() => ForwardingRulePropertiesSchema),
     etag: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
@@ -2350,23 +1995,12 @@ export type ForwardingRulesCreateOrUpdateInput =
 // Output Schema
 export const ForwardingRulesCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.suspend(() => ForwardingRulePropertiesSchema),
+    etag: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type ForwardingRulesCreateOrUpdateOutput =
   typeof ForwardingRulesCreateOrUpdateOutput.Type;
@@ -2446,23 +2080,12 @@ export type ForwardingRulesGetInput = typeof ForwardingRulesGetInput.Type;
 // Output Schema
 export const ForwardingRulesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.suspend(() => ForwardingRulePropertiesSchema),
+    etag: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type ForwardingRulesGetOutput = typeof ForwardingRulesGetOutput.Type;
 
@@ -2499,37 +2122,7 @@ export type ForwardingRulesListInput = typeof ForwardingRulesListInput.Type;
 // Output Schema
 export const ForwardingRulesListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => ForwardingRuleSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type ForwardingRulesListOutput = typeof ForwardingRulesListOutput.Type;
@@ -2556,20 +2149,7 @@ export const ForwardingRulesUpdateInput =
     dnsForwardingRulesetName: Schema.String.pipe(T.PathParam()),
     forwardingRuleName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        targetDnsServers: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              ipAddress: Schema.String,
-              port: Schema.optional(Schema.Number),
-            }),
-          ),
-        ),
-        metadata: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        forwardingRuleState: Schema.optional(
-          Schema.Literals(["Enabled", "Disabled"]),
-        ),
-      }),
+      Schema.suspend(() => ForwardingRulePatchPropertiesSchema),
     ),
   }).pipe(
     T.Http({
@@ -2583,23 +2163,12 @@ export type ForwardingRulesUpdateInput = typeof ForwardingRulesUpdateInput.Type;
 // Output Schema
 export const ForwardingRulesUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.suspend(() => ForwardingRulePropertiesSchema),
+    etag: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type ForwardingRulesUpdateOutput =
   typeof ForwardingRulesUpdateOutput.Type;
@@ -2628,30 +2197,7 @@ export const InboundEndpointsCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     dnsResolverName: Schema.String.pipe(T.PathParam()),
     inboundEndpointName: Schema.String.pipe(T.PathParam()),
-    properties: Schema.Struct({
-      ipConfigurations: Schema.Array(
-        Schema.Struct({
-          subnet: Schema.Struct({
-            id: Schema.String,
-          }),
-          privateIpAddress: Schema.optional(Schema.String),
-          privateIpAllocationMethod: Schema.optional(
-            Schema.Literals(["Static", "Dynamic"]),
-          ),
-        }),
-      ),
-      provisioningState: Schema.optional(
-        Schema.Literals([
-          "Creating",
-          "Updating",
-          "Deleting",
-          "Succeeded",
-          "Failed",
-          "Canceled",
-        ]),
-      ),
-      resourceGuid: Schema.optional(Schema.String),
-    }),
+    properties: Schema.suspend(() => InboundEndpointPropertiesSchema),
     etag: Schema.optional(Schema.String),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     location: Schema.String,
@@ -2669,23 +2215,14 @@ export type InboundEndpointsCreateOrUpdateInput =
 // Output Schema
 export const InboundEndpointsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.suspend(() => InboundEndpointPropertiesSchema),
+    etag: Schema.optional(Schema.String),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type InboundEndpointsCreateOrUpdateOutput =
   typeof InboundEndpointsCreateOrUpdateOutput.Type;
@@ -2767,23 +2304,14 @@ export type InboundEndpointsGetInput = typeof InboundEndpointsGetInput.Type;
 // Output Schema
 export const InboundEndpointsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.suspend(() => InboundEndpointPropertiesSchema),
+    etag: Schema.optional(Schema.String),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type InboundEndpointsGetOutput = typeof InboundEndpointsGetOutput.Type;
 
@@ -2820,37 +2348,7 @@ export type InboundEndpointsListInput = typeof InboundEndpointsListInput.Type;
 // Output Schema
 export const InboundEndpointsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => InboundEndpointSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type InboundEndpointsListOutput = typeof InboundEndpointsListOutput.Type;
@@ -2893,23 +2391,14 @@ export type InboundEndpointsUpdateInput =
 // Output Schema
 export const InboundEndpointsUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.suspend(() => InboundEndpointPropertiesSchema),
+    etag: Schema.optional(Schema.String),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type InboundEndpointsUpdateOutput =
   typeof InboundEndpointsUpdateOutput.Type;
@@ -2938,22 +2427,7 @@ export const OutboundEndpointsCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     dnsResolverName: Schema.String.pipe(T.PathParam()),
     outboundEndpointName: Schema.String.pipe(T.PathParam()),
-    properties: Schema.Struct({
-      subnet: Schema.Struct({
-        id: Schema.String,
-      }),
-      provisioningState: Schema.optional(
-        Schema.Literals([
-          "Creating",
-          "Updating",
-          "Deleting",
-          "Succeeded",
-          "Failed",
-          "Canceled",
-        ]),
-      ),
-      resourceGuid: Schema.optional(Schema.String),
-    }),
+    properties: Schema.suspend(() => OutboundEndpointPropertiesSchema),
     etag: Schema.optional(Schema.String),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     location: Schema.String,
@@ -2971,23 +2445,14 @@ export type OutboundEndpointsCreateOrUpdateInput =
 // Output Schema
 export const OutboundEndpointsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.suspend(() => OutboundEndpointPropertiesSchema),
+    etag: Schema.optional(Schema.String),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type OutboundEndpointsCreateOrUpdateOutput =
   typeof OutboundEndpointsCreateOrUpdateOutput.Type;
@@ -3069,23 +2534,14 @@ export type OutboundEndpointsGetInput = typeof OutboundEndpointsGetInput.Type;
 // Output Schema
 export const OutboundEndpointsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.suspend(() => OutboundEndpointPropertiesSchema),
+    etag: Schema.optional(Schema.String),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type OutboundEndpointsGetOutput = typeof OutboundEndpointsGetOutput.Type;
 
@@ -3124,37 +2580,7 @@ export type OutboundEndpointsListInput = typeof OutboundEndpointsListInput.Type;
 // Output Schema
 export const OutboundEndpointsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => OutboundEndpointSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type OutboundEndpointsListOutput =
@@ -3198,23 +2624,14 @@ export type OutboundEndpointsUpdateInput =
 // Output Schema
 export const OutboundEndpointsUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.suspend(() => OutboundEndpointPropertiesSchema),
+    etag: Schema.optional(Schema.String),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type OutboundEndpointsUpdateOutput =
   typeof OutboundEndpointsUpdateOutput.Type;
@@ -3243,22 +2660,7 @@ export const VirtualNetworkLinksCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     dnsForwardingRulesetName: Schema.String.pipe(T.PathParam()),
     virtualNetworkLinkName: Schema.String.pipe(T.PathParam()),
-    properties: Schema.Struct({
-      virtualNetwork: Schema.Struct({
-        id: Schema.String,
-      }),
-      metadata: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      provisioningState: Schema.optional(
-        Schema.Literals([
-          "Creating",
-          "Updating",
-          "Deleting",
-          "Succeeded",
-          "Failed",
-          "Canceled",
-        ]),
-      ),
-    }),
+    properties: Schema.suspend(() => VirtualNetworkLinkPropertiesSchema),
     etag: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
@@ -3274,23 +2676,12 @@ export type VirtualNetworkLinksCreateOrUpdateInput =
 // Output Schema
 export const VirtualNetworkLinksCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.suspend(() => VirtualNetworkLinkPropertiesSchema),
+    etag: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type VirtualNetworkLinksCreateOrUpdateOutput =
   typeof VirtualNetworkLinksCreateOrUpdateOutput.Type;
@@ -3373,23 +2764,12 @@ export type VirtualNetworkLinksGetInput =
 // Output Schema
 export const VirtualNetworkLinksGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.suspend(() => VirtualNetworkLinkPropertiesSchema),
+    etag: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type VirtualNetworkLinksGetOutput =
   typeof VirtualNetworkLinksGetOutput.Type;
@@ -3430,37 +2810,7 @@ export type VirtualNetworkLinksListInput =
 // Output Schema
 export const VirtualNetworkLinksListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => VirtualNetworkLinkSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type VirtualNetworkLinksListOutput =
@@ -3490,9 +2840,7 @@ export const VirtualNetworkLinksUpdateInput =
     dnsForwardingRulesetName: Schema.String.pipe(T.PathParam()),
     virtualNetworkLinkName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        metadata: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      }),
+      Schema.suspend(() => VirtualNetworkLinkPatchPropertiesSchema),
     ),
   }).pipe(
     T.Http({
@@ -3508,23 +2856,12 @@ export type VirtualNetworkLinksUpdateInput =
 // Output Schema
 export const VirtualNetworkLinksUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.suspend(() => VirtualNetworkLinkPropertiesSchema),
+    etag: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type VirtualNetworkLinksUpdateOutput =
   typeof VirtualNetworkLinksUpdateOutput.Type;

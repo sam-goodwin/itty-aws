@@ -8,6 +8,392 @@ import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
+// Shared schemas
+const SBAuthorizationRuleSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  location: Schema.optional(Schema.String),
+});
+const MigrationConfigPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    location: Schema.optional(Schema.String),
+  });
+const UnavailableReasonSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "None",
+  "InvalidName",
+  "SubscriptionIsDisabled",
+  "NameInUse",
+  "NameInLockdown",
+  "TooManyNamespaceInCurrentSubscription",
+]);
+const ArmDisasterRecoverySchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  location: Schema.optional(Schema.String),
+});
+const SBNamespaceSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
+const SBSkuSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.Literals(["Basic", "Standard", "Premium"]),
+  tier: Schema.optional(Schema.Literals(["Basic", "Standard", "Premium"])),
+  capacity: Schema.optional(Schema.Number),
+});
+const IdentitySchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  principalId: Schema.optional(Schema.String),
+  tenantId: Schema.optional(Schema.String),
+  type: Schema.optional(
+    Schema.Literals([
+      "SystemAssigned",
+      "UserAssigned",
+      "SystemAssigned, UserAssigned",
+      "None",
+    ]),
+  ),
+  userAssignedIdentities: Schema.optional(
+    Schema.Record(
+      Schema.String,
+      Schema.suspend(() => UserAssignedIdentitySchema),
+    ),
+  ),
+});
+const UserAssignedIdentitySchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  principalId: Schema.optional(Schema.String),
+  clientId: Schema.optional(Schema.String),
+});
+const SBNamespacePropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  minimumTlsVersion: Schema.optional(Schema.Literals(["1.0", "1.1", "1.2"])),
+  provisioningState: Schema.optional(Schema.String),
+  status: Schema.optional(Schema.String),
+  createdAt: Schema.optional(Schema.String),
+  updatedAt: Schema.optional(Schema.String),
+  serviceBusEndpoint: Schema.optional(Schema.String),
+  metricId: Schema.optional(Schema.String),
+  zoneRedundant: Schema.optional(Schema.Boolean),
+  encryption: Schema.optional(Schema.suspend(() => EncryptionSchema)),
+  privateEndpointConnections: Schema.optional(
+    Schema.Array(Schema.suspend(() => PrivateEndpointConnectionSchema)),
+  ),
+  disableLocalAuth: Schema.optional(Schema.Boolean),
+  alternateName: Schema.optional(Schema.String),
+  publicNetworkAccess: Schema.optional(
+    Schema.Literals(["Enabled", "Disabled", "SecuredByPerimeter"]),
+  ),
+  premiumMessagingPartitions: Schema.optional(Schema.Number),
+});
+const EncryptionSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  keyVaultProperties: Schema.optional(
+    Schema.Array(Schema.suspend(() => KeyVaultPropertiesSchema)),
+  ),
+  keySource: Schema.optional(Schema.Literals(["Microsoft.KeyVault"])),
+  requireInfrastructureEncryption: Schema.optional(Schema.Boolean),
+});
+const KeyVaultPropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  keyName: Schema.optional(Schema.String),
+  keyVaultUri: Schema.optional(Schema.String),
+  keyVersion: Schema.optional(Schema.String),
+  identity: Schema.optional(
+    Schema.suspend(() => userAssignedIdentityPropertiesSchema),
+  ),
+});
+const userAssignedIdentityPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    userAssignedIdentity: Schema.optional(Schema.String),
+  });
+const PrivateEndpointConnectionSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    location: Schema.optional(Schema.String),
+  });
+const SBNamespaceUpdatePropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    provisioningState: Schema.optional(Schema.String),
+    status: Schema.optional(Schema.String),
+    createdAt: Schema.optional(Schema.String),
+    updatedAt: Schema.optional(Schema.String),
+    serviceBusEndpoint: Schema.optional(Schema.String),
+    metricId: Schema.optional(Schema.String),
+    encryption: Schema.optional(Schema.suspend(() => EncryptionSchema)),
+    privateEndpointConnections: Schema.optional(
+      Schema.Array(Schema.suspend(() => PrivateEndpointConnectionSchema)),
+    ),
+    disableLocalAuth: Schema.optional(Schema.Boolean),
+    alternateName: Schema.optional(Schema.String),
+  });
+const PrivateEndpointConnectionPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    privateEndpoint: Schema.optional(
+      Schema.suspend(() => PrivateEndpointSchema),
+    ),
+    privateLinkServiceConnectionState: Schema.optional(
+      Schema.suspend(() => ConnectionStateSchema),
+    ),
+    provisioningState: Schema.optional(
+      Schema.Literals([
+        "Creating",
+        "Updating",
+        "Deleting",
+        "Succeeded",
+        "Canceled",
+        "Failed",
+      ]),
+    ),
+  });
+const PrivateEndpointSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+});
+const ConnectionStateSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  status: Schema.optional(
+    Schema.Literals(["Pending", "Approved", "Rejected", "Disconnected"]),
+  ),
+  description: Schema.optional(Schema.String),
+});
+const PrivateLinkResourceSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.optional(
+    Schema.suspend(() => PrivateLinkResourcePropertiesSchema),
+  ),
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
+const PrivateLinkResourcePropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    groupId: Schema.optional(Schema.String),
+    requiredMembers: Schema.optional(Schema.Array(Schema.String)),
+    requiredZoneNames: Schema.optional(Schema.Array(Schema.String)),
+  });
+const SBSubscriptionSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  location: Schema.optional(Schema.String),
+});
+const SBSubscriptionPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    messageCount: Schema.optional(Schema.Number),
+    createdAt: Schema.optional(Schema.String),
+    accessedAt: Schema.optional(Schema.String),
+    updatedAt: Schema.optional(Schema.String),
+    countDetails: Schema.optional(
+      Schema.Struct({
+        activeMessageCount: Schema.optional(Schema.Number),
+        deadLetterMessageCount: Schema.optional(Schema.Number),
+        scheduledMessageCount: Schema.optional(Schema.Number),
+        transferMessageCount: Schema.optional(Schema.Number),
+        transferDeadLetterMessageCount: Schema.optional(Schema.Number),
+      }),
+    ),
+    lockDuration: Schema.optional(Schema.String),
+    requiresSession: Schema.optional(Schema.Boolean),
+    defaultMessageTimeToLive: Schema.optional(Schema.String),
+    deadLetteringOnFilterEvaluationExceptions: Schema.optional(Schema.Boolean),
+    deadLetteringOnMessageExpiration: Schema.optional(Schema.Boolean),
+    duplicateDetectionHistoryTimeWindow: Schema.optional(Schema.String),
+    maxDeliveryCount: Schema.optional(Schema.Number),
+    status: Schema.optional(
+      Schema.Literals([
+        "Active",
+        "Disabled",
+        "Restoring",
+        "SendDisabled",
+        "ReceiveDisabled",
+        "Creating",
+        "Deleting",
+        "Renaming",
+        "Unknown",
+      ]),
+    ),
+    enableBatchedOperations: Schema.optional(Schema.Boolean),
+    autoDeleteOnIdle: Schema.optional(Schema.String),
+    forwardTo: Schema.optional(Schema.String),
+    forwardDeadLetteredMessagesTo: Schema.optional(Schema.String),
+    isClientAffine: Schema.optional(Schema.Boolean),
+    clientAffineProperties: Schema.optional(
+      Schema.suspend(() => SBClientAffinePropertiesSchema),
+    ),
+  });
+const SBClientAffinePropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    clientId: Schema.optional(Schema.String),
+    isDurable: Schema.optional(Schema.Boolean),
+    isShared: Schema.optional(Schema.Boolean),
+  });
+const SBQueueSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  location: Schema.optional(Schema.String),
+});
+const SBQueuePropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  countDetails: Schema.optional(
+    Schema.Struct({
+      activeMessageCount: Schema.optional(Schema.Number),
+      deadLetterMessageCount: Schema.optional(Schema.Number),
+      scheduledMessageCount: Schema.optional(Schema.Number),
+      transferMessageCount: Schema.optional(Schema.Number),
+      transferDeadLetterMessageCount: Schema.optional(Schema.Number),
+    }),
+  ),
+  createdAt: Schema.optional(Schema.String),
+  updatedAt: Schema.optional(Schema.String),
+  accessedAt: Schema.optional(Schema.String),
+  sizeInBytes: Schema.optional(Schema.Number),
+  messageCount: Schema.optional(Schema.Number),
+  lockDuration: Schema.optional(Schema.String),
+  maxSizeInMegabytes: Schema.optional(Schema.Number),
+  maxMessageSizeInKilobytes: Schema.optional(Schema.Number),
+  requiresDuplicateDetection: Schema.optional(Schema.Boolean),
+  requiresSession: Schema.optional(Schema.Boolean),
+  defaultMessageTimeToLive: Schema.optional(Schema.String),
+  deadLetteringOnMessageExpiration: Schema.optional(Schema.Boolean),
+  duplicateDetectionHistoryTimeWindow: Schema.optional(Schema.String),
+  maxDeliveryCount: Schema.optional(Schema.Number),
+  status: Schema.optional(
+    Schema.Literals([
+      "Active",
+      "Disabled",
+      "Restoring",
+      "SendDisabled",
+      "ReceiveDisabled",
+      "Creating",
+      "Deleting",
+      "Renaming",
+      "Unknown",
+    ]),
+  ),
+  enableBatchedOperations: Schema.optional(Schema.Boolean),
+  autoDeleteOnIdle: Schema.optional(Schema.String),
+  enablePartitioning: Schema.optional(Schema.Boolean),
+  enableExpress: Schema.optional(Schema.Boolean),
+  forwardTo: Schema.optional(Schema.String),
+  forwardDeadLetteredMessagesTo: Schema.optional(Schema.String),
+});
+const RuleSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  location: Schema.optional(Schema.String),
+});
+const RulepropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  action: Schema.optional(Schema.suspend(() => ActionSchema)),
+  filterType: Schema.optional(Schema.suspend(() => FilterTypeSchema)),
+  sqlFilter: Schema.optional(Schema.suspend(() => SqlFilterSchema)),
+  correlationFilter: Schema.optional(
+    Schema.suspend(() => CorrelationFilterSchema),
+  ),
+});
+const ActionSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  sqlExpression: Schema.optional(Schema.String),
+  compatibilityLevel: Schema.optional(Schema.Number),
+  requiresPreprocessing: Schema.optional(Schema.Boolean),
+});
+const FilterTypeSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "SqlFilter",
+  "CorrelationFilter",
+]);
+const SqlFilterSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  sqlExpression: Schema.optional(Schema.String),
+  compatibilityLevel: Schema.optional(Schema.Number),
+  requiresPreprocessing: Schema.optional(Schema.Boolean),
+});
+const CorrelationFilterSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  correlationId: Schema.optional(Schema.String),
+  messageId: Schema.optional(Schema.String),
+  to: Schema.optional(Schema.String),
+  replyTo: Schema.optional(Schema.String),
+  label: Schema.optional(Schema.String),
+  sessionId: Schema.optional(Schema.String),
+  replyToSessionId: Schema.optional(Schema.String),
+  contentType: Schema.optional(Schema.String),
+  requiresPreprocessing: Schema.optional(Schema.Boolean),
+});
+const NWRuleSetVirtualNetworkRulesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subnet: Schema.optional(Schema.suspend(() => SubnetSchema)),
+    ignoreMissingVnetServiceEndpoint: Schema.optional(Schema.Boolean),
+  });
+const SubnetSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.String,
+});
+const NWRuleSetIpRulesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  ipMask: Schema.optional(Schema.String),
+  action: Schema.optional(Schema.Literals(["Allow"])),
+});
+const NetworkRuleSetSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  location: Schema.optional(Schema.String),
+});
+const OperationSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  isDataAction: Schema.optional(Schema.Boolean),
+  display: Schema.optional(Schema.suspend(() => OperationDisplaySchema)),
+  origin: Schema.optional(Schema.String),
+  properties: Schema.optional(Schema.Unknown),
+});
+const OperationDisplaySchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  provider: Schema.optional(Schema.String),
+  resource: Schema.optional(Schema.String),
+  operation: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+});
+const SBTopicSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  location: Schema.optional(Schema.String),
+});
+const SBTopicPropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  sizeInBytes: Schema.optional(Schema.Number),
+  createdAt: Schema.optional(Schema.String),
+  updatedAt: Schema.optional(Schema.String),
+  accessedAt: Schema.optional(Schema.String),
+  subscriptionCount: Schema.optional(Schema.Number),
+  countDetails: Schema.optional(
+    Schema.Struct({
+      activeMessageCount: Schema.optional(Schema.Number),
+      deadLetterMessageCount: Schema.optional(Schema.Number),
+      scheduledMessageCount: Schema.optional(Schema.Number),
+      transferMessageCount: Schema.optional(Schema.Number),
+      transferDeadLetterMessageCount: Schema.optional(Schema.Number),
+    }),
+  ),
+  defaultMessageTimeToLive: Schema.optional(Schema.String),
+  maxSizeInMegabytes: Schema.optional(Schema.Number),
+  maxMessageSizeInKilobytes: Schema.optional(Schema.Number),
+  requiresDuplicateDetection: Schema.optional(Schema.Boolean),
+  duplicateDetectionHistoryTimeWindow: Schema.optional(Schema.String),
+  enableBatchedOperations: Schema.optional(Schema.Boolean),
+  status: Schema.optional(
+    Schema.Literals([
+      "Active",
+      "Disabled",
+      "Restoring",
+      "SendDisabled",
+      "ReceiveDisabled",
+      "Creating",
+      "Deleting",
+      "Renaming",
+      "Unknown",
+    ]),
+  ),
+  supportOrdering: Schema.optional(Schema.Boolean),
+  autoDeleteOnIdle: Schema.optional(Schema.String),
+  enablePartitioning: Schema.optional(Schema.Boolean),
+  enableExpress: Schema.optional(Schema.Boolean),
+});
+
 // Input Schema
 export const DisasterRecoveryConfigsBreakPairingInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -68,16 +454,7 @@ export const DisasterRecoveryConfigsCheckNameAvailabilityOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     message: Schema.optional(Schema.String),
     nameAvailable: Schema.optional(Schema.Boolean),
-    reason: Schema.optional(
-      Schema.Literals([
-        "None",
-        "InvalidName",
-        "SubscriptionIsDisabled",
-        "NameInUse",
-        "NameInLockdown",
-        "TooManyNamespaceInCurrentSubscription",
-      ]),
-    ),
+    reason: Schema.optional(Schema.suspend(() => UnavailableReasonSchema)),
   });
 export type DisasterRecoveryConfigsCheckNameAvailabilityOutput =
   typeof DisasterRecoveryConfigsCheckNameAvailabilityOutput.Type;
@@ -147,6 +524,33 @@ export type DisasterRecoveryConfigsCreateOrUpdateInput =
 // Output Schema
 export const DisasterRecoveryConfigsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.Struct({
+        provisioningState: Schema.optional(
+          Schema.Literals(["Accepted", "Succeeded", "Failed"]),
+        ),
+        pendingReplicationOperationsCount: Schema.optional(Schema.Number),
+        partnerNamespace: Schema.optional(Schema.String),
+        alternateName: Schema.optional(Schema.String),
+        role: Schema.optional(
+          Schema.Literals(["Primary", "PrimaryNotReplicating", "Secondary"]),
+        ),
+      }),
+    ),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -271,6 +675,33 @@ export type DisasterRecoveryConfigsGetInput =
 // Output Schema
 export const DisasterRecoveryConfigsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.Struct({
+        provisioningState: Schema.optional(
+          Schema.Literals(["Accepted", "Succeeded", "Failed"]),
+        ),
+        pendingReplicationOperationsCount: Schema.optional(Schema.Number),
+        partnerNamespace: Schema.optional(Schema.String),
+        alternateName: Schema.optional(Schema.String),
+        role: Schema.optional(
+          Schema.Literals(["Primary", "PrimaryNotReplicating", "Secondary"]),
+        ),
+      }),
+    ),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -316,6 +747,25 @@ export type DisasterRecoveryConfigsGetAuthorizationRuleInput =
 // Output Schema
 export const DisasterRecoveryConfigsGetAuthorizationRuleOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.Struct({
+        rights: Schema.Array(Schema.Literals(["Manage", "Send", "Listen"])),
+      }),
+    ),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -360,14 +810,7 @@ export type DisasterRecoveryConfigsListInput =
 export const DisasterRecoveryConfigsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          location: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => ArmDisasterRecoverySchema)),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -410,14 +853,7 @@ export type DisasterRecoveryConfigsListAuthorizationRulesInput =
 export const DisasterRecoveryConfigsListAuthorizationRulesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          location: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => SBAuthorizationRuleSchema)),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -573,6 +1009,29 @@ export type MigrationConfigsCreateAndStartMigrationInput =
 // Output Schema
 export const MigrationConfigsCreateAndStartMigrationOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.Struct({
+        provisioningState: Schema.optional(Schema.String),
+        pendingReplicationOperationsCount: Schema.optional(Schema.Number),
+        targetNamespace: Schema.String,
+        postMigrationName: Schema.String,
+        migrationState: Schema.optional(Schema.String),
+      }),
+    ),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -654,6 +1113,29 @@ export type MigrationConfigsGetInput = typeof MigrationConfigsGetInput.Type;
 // Output Schema
 export const MigrationConfigsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.Struct({
+        provisioningState: Schema.optional(Schema.String),
+        pendingReplicationOperationsCount: Schema.optional(Schema.Number),
+        targetNamespace: Schema.String,
+        postMigrationName: Schema.String,
+        migrationState: Schema.optional(Schema.String),
+      }),
+    ),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -694,14 +1176,7 @@ export type MigrationConfigsListInput = typeof MigrationConfigsListInput.Type;
 export const MigrationConfigsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          location: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => MigrationConfigPropertiesSchema)),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -781,16 +1256,7 @@ export const NamespacesCheckNameAvailabilityOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     message: Schema.optional(Schema.String),
     nameAvailable: Schema.optional(Schema.Boolean),
-    reason: Schema.optional(
-      Schema.Literals([
-        "None",
-        "InvalidName",
-        "SubscriptionIsDisabled",
-        "NameInUse",
-        "NameInLockdown",
-        "TooManyNamespaceInCurrentSubscription",
-      ]),
-    ),
+    reason: Schema.optional(Schema.suspend(() => UnavailableReasonSchema)),
   });
 export type NamespacesCheckNameAvailabilityOutput =
   typeof NamespacesCheckNameAvailabilityOutput.Type;
@@ -813,38 +1279,8 @@ export const NamespacesCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     namespaceName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    sku: Schema.optional(
-      Schema.Struct({
-        name: Schema.Literals(["Basic", "Standard", "Premium"]),
-        tier: Schema.optional(
-          Schema.Literals(["Basic", "Standard", "Premium"]),
-        ),
-        capacity: Schema.optional(Schema.Number),
-      }),
-    ),
-    identity: Schema.optional(
-      Schema.Struct({
-        principalId: Schema.optional(Schema.String),
-        tenantId: Schema.optional(Schema.String),
-        type: Schema.optional(
-          Schema.Literals([
-            "SystemAssigned",
-            "UserAssigned",
-            "SystemAssigned, UserAssigned",
-            "None",
-          ]),
-        ),
-        userAssignedIdentities: Schema.optional(
-          Schema.Record(
-            Schema.String,
-            Schema.Struct({
-              principalId: Schema.optional(Schema.String),
-              clientId: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-      }),
-    ),
+    sku: Schema.optional(Schema.suspend(() => SBSkuSchema)),
+    identity: Schema.optional(Schema.suspend(() => IdentitySchema)),
     systemData: Schema.optional(
       Schema.Struct({
         createdBy: Schema.optional(Schema.String),
@@ -860,54 +1296,7 @@ export const NamespacesCreateOrUpdateInput =
       }),
     ),
     properties: Schema.optional(
-      Schema.Struct({
-        minimumTlsVersion: Schema.optional(
-          Schema.Literals(["1.0", "1.1", "1.2"]),
-        ),
-        provisioningState: Schema.optional(Schema.String),
-        status: Schema.optional(Schema.String),
-        createdAt: Schema.optional(Schema.String),
-        updatedAt: Schema.optional(Schema.String),
-        serviceBusEndpoint: Schema.optional(Schema.String),
-        metricId: Schema.optional(Schema.String),
-        zoneRedundant: Schema.optional(Schema.Boolean),
-        encryption: Schema.optional(
-          Schema.Struct({
-            keyVaultProperties: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  keyName: Schema.optional(Schema.String),
-                  keyVaultUri: Schema.optional(Schema.String),
-                  keyVersion: Schema.optional(Schema.String),
-                  identity: Schema.optional(
-                    Schema.Struct({
-                      userAssignedIdentity: Schema.optional(Schema.String),
-                    }),
-                  ),
-                }),
-              ),
-            ),
-            keySource: Schema.optional(Schema.Literals(["Microsoft.KeyVault"])),
-            requireInfrastructureEncryption: Schema.optional(Schema.Boolean),
-          }),
-        ),
-        privateEndpointConnections: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              id: Schema.optional(Schema.String),
-              name: Schema.optional(Schema.String),
-              type: Schema.optional(Schema.String),
-              location: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        disableLocalAuth: Schema.optional(Schema.Boolean),
-        alternateName: Schema.optional(Schema.String),
-        publicNetworkAccess: Schema.optional(
-          Schema.Literals(["Enabled", "Disabled", "SecuredByPerimeter"]),
-        ),
-        premiumMessagingPartitions: Schema.optional(Schema.Number),
-      }),
+      Schema.suspend(() => SBNamespacePropertiesSchema),
     ),
     location: Schema.String,
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
@@ -925,6 +1314,27 @@ export type NamespacesCreateOrUpdateInput =
 // Output Schema
 export const NamespacesCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    sku: Schema.optional(Schema.suspend(() => SBSkuSchema)),
+    identity: Schema.optional(Schema.suspend(() => IdentitySchema)),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+    properties: Schema.optional(
+      Schema.suspend(() => SBNamespacePropertiesSchema),
+    ),
+    location: Schema.String,
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -990,6 +1400,25 @@ export type NamespacesCreateOrUpdateAuthorizationRuleInput =
 // Output Schema
 export const NamespacesCreateOrUpdateAuthorizationRuleOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.Struct({
+        rights: Schema.Array(Schema.Literals(["Manage", "Send", "Listen"])),
+      }),
+    ),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1025,23 +1454,11 @@ export const NamespacesCreateOrUpdateNetworkRuleSetInput =
         defaultAction: Schema.optional(Schema.Literals(["Allow", "Deny"])),
         virtualNetworkRules: Schema.optional(
           Schema.Array(
-            Schema.Struct({
-              subnet: Schema.optional(
-                Schema.Struct({
-                  id: Schema.String,
-                }),
-              ),
-              ignoreMissingVnetServiceEndpoint: Schema.optional(Schema.Boolean),
-            }),
+            Schema.suspend(() => NWRuleSetVirtualNetworkRulesSchema),
           ),
         ),
         ipRules: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              ipMask: Schema.optional(Schema.String),
-              action: Schema.optional(Schema.Literals(["Allow"])),
-            }),
-          ),
+          Schema.Array(Schema.suspend(() => NWRuleSetIpRulesSchema)),
         ),
         publicNetworkAccess: Schema.optional(
           Schema.Literals(["Enabled", "Disabled"]),
@@ -1079,6 +1496,37 @@ export type NamespacesCreateOrUpdateNetworkRuleSetInput =
 // Output Schema
 export const NamespacesCreateOrUpdateNetworkRuleSetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.Struct({
+        trustedServiceAccessEnabled: Schema.optional(Schema.Boolean),
+        defaultAction: Schema.optional(Schema.Literals(["Allow", "Deny"])),
+        virtualNetworkRules: Schema.optional(
+          Schema.Array(
+            Schema.suspend(() => NWRuleSetVirtualNetworkRulesSchema),
+          ),
+        ),
+        ipRules: Schema.optional(
+          Schema.Array(Schema.suspend(() => NWRuleSetIpRulesSchema)),
+        ),
+        publicNetworkAccess: Schema.optional(
+          Schema.Literals(["Enabled", "Disabled"]),
+        ),
+      }),
+    ),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1187,6 +1635,27 @@ export type NamespacesGetInput = typeof NamespacesGetInput.Type;
 
 // Output Schema
 export const NamespacesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  sku: Schema.optional(Schema.suspend(() => SBSkuSchema)),
+  identity: Schema.optional(Schema.suspend(() => IdentitySchema)),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+  properties: Schema.optional(
+    Schema.suspend(() => SBNamespacePropertiesSchema),
+  ),
+  location: Schema.String,
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -1226,6 +1695,25 @@ export type NamespacesGetAuthorizationRuleInput =
 // Output Schema
 export const NamespacesGetAuthorizationRuleOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.Struct({
+        rights: Schema.Array(Schema.Literals(["Manage", "Send", "Listen"])),
+      }),
+    ),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1268,6 +1756,37 @@ export type NamespacesGetNetworkRuleSetInput =
 // Output Schema
 export const NamespacesGetNetworkRuleSetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.Struct({
+        trustedServiceAccessEnabled: Schema.optional(Schema.Boolean),
+        defaultAction: Schema.optional(Schema.Literals(["Allow", "Deny"])),
+        virtualNetworkRules: Schema.optional(
+          Schema.Array(
+            Schema.suspend(() => NWRuleSetVirtualNetworkRulesSchema),
+          ),
+        ),
+        ipRules: Schema.optional(
+          Schema.Array(Schema.suspend(() => NWRuleSetIpRulesSchema)),
+        ),
+        publicNetworkAccess: Schema.optional(
+          Schema.Literals(["Enabled", "Disabled"]),
+        ),
+      }),
+    ),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1305,15 +1824,7 @@ export type NamespacesListInput = typeof NamespacesListInput.Type;
 
 // Output Schema
 export const NamespacesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  value: Schema.optional(
-    Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-      }),
-    ),
-  ),
+  value: Schema.optional(Schema.Array(Schema.suspend(() => SBNamespaceSchema))),
   nextLink: Schema.optional(Schema.String),
 });
 export type NamespacesListOutput = typeof NamespacesListOutput.Type;
@@ -1349,14 +1860,7 @@ export type NamespacesListAuthorizationRulesInput =
 export const NamespacesListAuthorizationRulesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          location: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => SBAuthorizationRuleSchema)),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -1396,13 +1900,7 @@ export type NamespacesListByResourceGroupInput =
 export const NamespacesListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => SBNamespaceSchema)),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -1485,14 +1983,7 @@ export type NamespacesListNetworkRuleSetsInput =
 export const NamespacesListNetworkRuleSetsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          location: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => NetworkRuleSetSchema)),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -1567,78 +2058,11 @@ export const NamespacesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   namespaceName: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
-  sku: Schema.optional(
-    Schema.Struct({
-      name: Schema.Literals(["Basic", "Standard", "Premium"]),
-      tier: Schema.optional(Schema.Literals(["Basic", "Standard", "Premium"])),
-      capacity: Schema.optional(Schema.Number),
-    }),
-  ),
+  sku: Schema.optional(Schema.suspend(() => SBSkuSchema)),
   properties: Schema.optional(
-    Schema.Struct({
-      provisioningState: Schema.optional(Schema.String),
-      status: Schema.optional(Schema.String),
-      createdAt: Schema.optional(Schema.String),
-      updatedAt: Schema.optional(Schema.String),
-      serviceBusEndpoint: Schema.optional(Schema.String),
-      metricId: Schema.optional(Schema.String),
-      encryption: Schema.optional(
-        Schema.Struct({
-          keyVaultProperties: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                keyName: Schema.optional(Schema.String),
-                keyVaultUri: Schema.optional(Schema.String),
-                keyVersion: Schema.optional(Schema.String),
-                identity: Schema.optional(
-                  Schema.Struct({
-                    userAssignedIdentity: Schema.optional(Schema.String),
-                  }),
-                ),
-              }),
-            ),
-          ),
-          keySource: Schema.optional(Schema.Literals(["Microsoft.KeyVault"])),
-          requireInfrastructureEncryption: Schema.optional(Schema.Boolean),
-        }),
-      ),
-      privateEndpointConnections: Schema.optional(
-        Schema.Array(
-          Schema.Struct({
-            id: Schema.optional(Schema.String),
-            name: Schema.optional(Schema.String),
-            type: Schema.optional(Schema.String),
-            location: Schema.optional(Schema.String),
-          }),
-        ),
-      ),
-      disableLocalAuth: Schema.optional(Schema.Boolean),
-      alternateName: Schema.optional(Schema.String),
-    }),
+    Schema.suspend(() => SBNamespaceUpdatePropertiesSchema),
   ),
-  identity: Schema.optional(
-    Schema.Struct({
-      principalId: Schema.optional(Schema.String),
-      tenantId: Schema.optional(Schema.String),
-      type: Schema.optional(
-        Schema.Literals([
-          "SystemAssigned",
-          "UserAssigned",
-          "SystemAssigned, UserAssigned",
-          "None",
-        ]),
-      ),
-      userAssignedIdentities: Schema.optional(
-        Schema.Record(
-          Schema.String,
-          Schema.Struct({
-            principalId: Schema.optional(Schema.String),
-            clientId: Schema.optional(Schema.String),
-          }),
-        ),
-      ),
-    }),
-  ),
+  identity: Schema.optional(Schema.suspend(() => IdentitySchema)),
   location: Schema.optional(Schema.String),
   tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
 }).pipe(
@@ -1653,6 +2077,27 @@ export type NamespacesUpdateInput = typeof NamespacesUpdateInput.Type;
 // Output Schema
 export const NamespacesUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
+    sku: Schema.optional(Schema.suspend(() => SBSkuSchema)),
+    identity: Schema.optional(Schema.suspend(() => IdentitySchema)),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+    properties: Schema.optional(
+      Schema.suspend(() => SBNamespacePropertiesSchema),
+    ),
+    location: Schema.String,
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1687,24 +2132,7 @@ export type OperationsListInput = typeof OperationsListInput.Type;
 
 // Output Schema
 export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  value: Schema.optional(
-    Schema.Array(
-      Schema.Struct({
-        name: Schema.optional(Schema.String),
-        isDataAction: Schema.optional(Schema.Boolean),
-        display: Schema.optional(
-          Schema.Struct({
-            provider: Schema.optional(Schema.String),
-            resource: Schema.optional(Schema.String),
-            operation: Schema.optional(Schema.String),
-            description: Schema.optional(Schema.String),
-          }),
-        ),
-        origin: Schema.optional(Schema.String),
-        properties: Schema.optional(Schema.Unknown),
-      }),
-    ),
-  ),
+  value: Schema.optional(Schema.Array(Schema.suspend(() => OperationSchema))),
   nextLink: Schema.optional(Schema.String),
 });
 export type OperationsListOutput = typeof OperationsListOutput.Type;
@@ -1727,36 +2155,7 @@ export const PrivateEndpointConnectionsCreateOrUpdateInput =
     namespaceName: Schema.String.pipe(T.PathParam()),
     privateEndpointConnectionName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        privateEndpoint: Schema.optional(
-          Schema.Struct({
-            id: Schema.optional(Schema.String),
-          }),
-        ),
-        privateLinkServiceConnectionState: Schema.optional(
-          Schema.Struct({
-            status: Schema.optional(
-              Schema.Literals([
-                "Pending",
-                "Approved",
-                "Rejected",
-                "Disconnected",
-              ]),
-            ),
-            description: Schema.optional(Schema.String),
-          }),
-        ),
-        provisioningState: Schema.optional(
-          Schema.Literals([
-            "Creating",
-            "Updating",
-            "Deleting",
-            "Succeeded",
-            "Canceled",
-            "Failed",
-          ]),
-        ),
-      }),
+      Schema.suspend(() => PrivateEndpointConnectionPropertiesSchema),
     ),
     systemData: Schema.optional(
       Schema.Struct({
@@ -1789,6 +2188,23 @@ export type PrivateEndpointConnectionsCreateOrUpdateInput =
 // Output Schema
 export const PrivateEndpointConnectionsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => PrivateEndpointConnectionPropertiesSchema),
+    ),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1871,6 +2287,23 @@ export type PrivateEndpointConnectionsGetInput =
 // Output Schema
 export const PrivateEndpointConnectionsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => PrivateEndpointConnectionPropertiesSchema),
+    ),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1914,14 +2347,7 @@ export type PrivateEndpointConnectionsListInput =
 export const PrivateEndpointConnectionsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          location: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => PrivateEndpointConnectionSchema)),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -1962,20 +2388,7 @@ export type PrivateLinkResourcesGetInput =
 export const PrivateLinkResourcesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          properties: Schema.optional(
-            Schema.Struct({
-              groupId: Schema.optional(Schema.String),
-              requiredMembers: Schema.optional(Schema.Array(Schema.String)),
-              requiredZoneNames: Schema.optional(Schema.Array(Schema.String)),
-            }),
-          ),
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => PrivateLinkResourceSchema)),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -2004,52 +2417,7 @@ export const QueuesCreateOrUpdateInput =
     namespaceName: Schema.String.pipe(T.PathParam()),
     queueName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    properties: Schema.optional(
-      Schema.Struct({
-        countDetails: Schema.optional(
-          Schema.Struct({
-            activeMessageCount: Schema.optional(Schema.Number),
-            deadLetterMessageCount: Schema.optional(Schema.Number),
-            scheduledMessageCount: Schema.optional(Schema.Number),
-            transferMessageCount: Schema.optional(Schema.Number),
-            transferDeadLetterMessageCount: Schema.optional(Schema.Number),
-          }),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        updatedAt: Schema.optional(Schema.String),
-        accessedAt: Schema.optional(Schema.String),
-        sizeInBytes: Schema.optional(Schema.Number),
-        messageCount: Schema.optional(Schema.Number),
-        lockDuration: Schema.optional(Schema.String),
-        maxSizeInMegabytes: Schema.optional(Schema.Number),
-        maxMessageSizeInKilobytes: Schema.optional(Schema.Number),
-        requiresDuplicateDetection: Schema.optional(Schema.Boolean),
-        requiresSession: Schema.optional(Schema.Boolean),
-        defaultMessageTimeToLive: Schema.optional(Schema.String),
-        deadLetteringOnMessageExpiration: Schema.optional(Schema.Boolean),
-        duplicateDetectionHistoryTimeWindow: Schema.optional(Schema.String),
-        maxDeliveryCount: Schema.optional(Schema.Number),
-        status: Schema.optional(
-          Schema.Literals([
-            "Active",
-            "Disabled",
-            "Restoring",
-            "SendDisabled",
-            "ReceiveDisabled",
-            "Creating",
-            "Deleting",
-            "Renaming",
-            "Unknown",
-          ]),
-        ),
-        enableBatchedOperations: Schema.optional(Schema.Boolean),
-        autoDeleteOnIdle: Schema.optional(Schema.String),
-        enablePartitioning: Schema.optional(Schema.Boolean),
-        enableExpress: Schema.optional(Schema.Boolean),
-        forwardTo: Schema.optional(Schema.String),
-        forwardDeadLetteredMessagesTo: Schema.optional(Schema.String),
-      }),
-    ),
+    properties: Schema.optional(Schema.suspend(() => SBQueuePropertiesSchema)),
     systemData: Schema.optional(
       Schema.Struct({
         createdBy: Schema.optional(Schema.String),
@@ -2080,6 +2448,21 @@ export type QueuesCreateOrUpdateInput = typeof QueuesCreateOrUpdateInput.Type;
 // Output Schema
 export const QueuesCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(Schema.suspend(() => SBQueuePropertiesSchema)),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2147,6 +2530,25 @@ export type QueuesCreateOrUpdateAuthorizationRuleInput =
 // Output Schema
 export const QueuesCreateOrUpdateAuthorizationRuleOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.Struct({
+        rights: Schema.Array(Schema.Literals(["Manage", "Send", "Listen"])),
+      }),
+    ),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2261,6 +2663,21 @@ export type QueuesGetInput = typeof QueuesGetInput.Type;
 
 // Output Schema
 export const QueuesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.optional(Schema.suspend(() => SBQueuePropertiesSchema)),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -2303,6 +2720,25 @@ export type QueuesGetAuthorizationRuleInput =
 // Output Schema
 export const QueuesGetAuthorizationRuleOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.Struct({
+        rights: Schema.Array(Schema.Literals(["Manage", "Send", "Listen"])),
+      }),
+    ),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2349,14 +2785,7 @@ export type QueuesListAuthorizationRulesInput =
 export const QueuesListAuthorizationRulesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          location: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => SBAuthorizationRuleSchema)),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -2398,16 +2827,7 @@ export type QueuesListByNamespaceInput = typeof QueuesListByNamespaceInput.Type;
 // Output Schema
 export const QueuesListByNamespaceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          location: Schema.optional(Schema.String),
-        }),
-      ),
-    ),
+    value: Schema.optional(Schema.Array(Schema.suspend(() => SBQueueSchema))),
     nextLink: Schema.optional(Schema.String),
   });
 export type QueuesListByNamespaceOutput =
@@ -2531,43 +2951,7 @@ export const RulesCreateOrUpdateInput =
     subscriptionName: Schema.String.pipe(T.PathParam()),
     ruleName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    properties: Schema.optional(
-      Schema.Struct({
-        action: Schema.optional(
-          Schema.Struct({
-            sqlExpression: Schema.optional(Schema.String),
-            compatibilityLevel: Schema.optional(Schema.Number),
-            requiresPreprocessing: Schema.optional(Schema.Boolean),
-          }),
-        ),
-        filterType: Schema.optional(
-          Schema.Literals(["SqlFilter", "CorrelationFilter"]),
-        ),
-        sqlFilter: Schema.optional(
-          Schema.Struct({
-            sqlExpression: Schema.optional(Schema.String),
-            compatibilityLevel: Schema.optional(Schema.Number),
-            requiresPreprocessing: Schema.optional(Schema.Boolean),
-          }),
-        ),
-        correlationFilter: Schema.optional(
-          Schema.Struct({
-            properties: Schema.optional(
-              Schema.Record(Schema.String, Schema.String),
-            ),
-            correlationId: Schema.optional(Schema.String),
-            messageId: Schema.optional(Schema.String),
-            to: Schema.optional(Schema.String),
-            replyTo: Schema.optional(Schema.String),
-            label: Schema.optional(Schema.String),
-            sessionId: Schema.optional(Schema.String),
-            replyToSessionId: Schema.optional(Schema.String),
-            contentType: Schema.optional(Schema.String),
-            requiresPreprocessing: Schema.optional(Schema.Boolean),
-          }),
-        ),
-      }),
-    ),
+    properties: Schema.optional(Schema.suspend(() => RulepropertiesSchema)),
     systemData: Schema.optional(
       Schema.Struct({
         createdBy: Schema.optional(Schema.String),
@@ -2598,6 +2982,21 @@ export type RulesCreateOrUpdateInput = typeof RulesCreateOrUpdateInput.Type;
 // Output Schema
 export const RulesCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(Schema.suspend(() => RulepropertiesSchema)),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2677,6 +3076,21 @@ export type RulesGetInput = typeof RulesGetInput.Type;
 
 // Output Schema
 export const RulesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.optional(Schema.suspend(() => RulepropertiesSchema)),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -2723,16 +3137,7 @@ export type RulesListBySubscriptionsInput =
 // Output Schema
 export const RulesListBySubscriptionsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          location: Schema.optional(Schema.String),
-        }),
-      ),
-    ),
+    value: Schema.optional(Schema.Array(Schema.suspend(() => RuleSchema))),
     nextLink: Schema.optional(Schema.String),
   });
 export type RulesListBySubscriptionsOutput =
@@ -2766,55 +3171,7 @@ export const SubscriptionsCreateOrUpdateInput =
     subscriptionName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        messageCount: Schema.optional(Schema.Number),
-        createdAt: Schema.optional(Schema.String),
-        accessedAt: Schema.optional(Schema.String),
-        updatedAt: Schema.optional(Schema.String),
-        countDetails: Schema.optional(
-          Schema.Struct({
-            activeMessageCount: Schema.optional(Schema.Number),
-            deadLetterMessageCount: Schema.optional(Schema.Number),
-            scheduledMessageCount: Schema.optional(Schema.Number),
-            transferMessageCount: Schema.optional(Schema.Number),
-            transferDeadLetterMessageCount: Schema.optional(Schema.Number),
-          }),
-        ),
-        lockDuration: Schema.optional(Schema.String),
-        requiresSession: Schema.optional(Schema.Boolean),
-        defaultMessageTimeToLive: Schema.optional(Schema.String),
-        deadLetteringOnFilterEvaluationExceptions: Schema.optional(
-          Schema.Boolean,
-        ),
-        deadLetteringOnMessageExpiration: Schema.optional(Schema.Boolean),
-        duplicateDetectionHistoryTimeWindow: Schema.optional(Schema.String),
-        maxDeliveryCount: Schema.optional(Schema.Number),
-        status: Schema.optional(
-          Schema.Literals([
-            "Active",
-            "Disabled",
-            "Restoring",
-            "SendDisabled",
-            "ReceiveDisabled",
-            "Creating",
-            "Deleting",
-            "Renaming",
-            "Unknown",
-          ]),
-        ),
-        enableBatchedOperations: Schema.optional(Schema.Boolean),
-        autoDeleteOnIdle: Schema.optional(Schema.String),
-        forwardTo: Schema.optional(Schema.String),
-        forwardDeadLetteredMessagesTo: Schema.optional(Schema.String),
-        isClientAffine: Schema.optional(Schema.Boolean),
-        clientAffineProperties: Schema.optional(
-          Schema.Struct({
-            clientId: Schema.optional(Schema.String),
-            isDurable: Schema.optional(Schema.Boolean),
-            isShared: Schema.optional(Schema.Boolean),
-          }),
-        ),
-      }),
+      Schema.suspend(() => SBSubscriptionPropertiesSchema),
     ),
     systemData: Schema.optional(
       Schema.Struct({
@@ -2847,6 +3204,23 @@ export type SubscriptionsCreateOrUpdateInput =
 // Output Schema
 export const SubscriptionsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => SBSubscriptionPropertiesSchema),
+    ),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2928,6 +3302,23 @@ export type SubscriptionsGetInput = typeof SubscriptionsGetInput.Type;
 // Output Schema
 export const SubscriptionsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
+    properties: Schema.optional(
+      Schema.suspend(() => SBSubscriptionPropertiesSchema),
+    ),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2974,14 +3365,7 @@ export type SubscriptionsListByTopicInput =
 export const SubscriptionsListByTopicOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          location: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => SBSubscriptionSchema)),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -3013,47 +3397,7 @@ export const TopicsCreateOrUpdateInput =
     namespaceName: Schema.String.pipe(T.PathParam()),
     topicName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    properties: Schema.optional(
-      Schema.Struct({
-        sizeInBytes: Schema.optional(Schema.Number),
-        createdAt: Schema.optional(Schema.String),
-        updatedAt: Schema.optional(Schema.String),
-        accessedAt: Schema.optional(Schema.String),
-        subscriptionCount: Schema.optional(Schema.Number),
-        countDetails: Schema.optional(
-          Schema.Struct({
-            activeMessageCount: Schema.optional(Schema.Number),
-            deadLetterMessageCount: Schema.optional(Schema.Number),
-            scheduledMessageCount: Schema.optional(Schema.Number),
-            transferMessageCount: Schema.optional(Schema.Number),
-            transferDeadLetterMessageCount: Schema.optional(Schema.Number),
-          }),
-        ),
-        defaultMessageTimeToLive: Schema.optional(Schema.String),
-        maxSizeInMegabytes: Schema.optional(Schema.Number),
-        maxMessageSizeInKilobytes: Schema.optional(Schema.Number),
-        requiresDuplicateDetection: Schema.optional(Schema.Boolean),
-        duplicateDetectionHistoryTimeWindow: Schema.optional(Schema.String),
-        enableBatchedOperations: Schema.optional(Schema.Boolean),
-        status: Schema.optional(
-          Schema.Literals([
-            "Active",
-            "Disabled",
-            "Restoring",
-            "SendDisabled",
-            "ReceiveDisabled",
-            "Creating",
-            "Deleting",
-            "Renaming",
-            "Unknown",
-          ]),
-        ),
-        supportOrdering: Schema.optional(Schema.Boolean),
-        autoDeleteOnIdle: Schema.optional(Schema.String),
-        enablePartitioning: Schema.optional(Schema.Boolean),
-        enableExpress: Schema.optional(Schema.Boolean),
-      }),
-    ),
+    properties: Schema.optional(Schema.suspend(() => SBTopicPropertiesSchema)),
     systemData: Schema.optional(
       Schema.Struct({
         createdBy: Schema.optional(Schema.String),
@@ -3084,6 +3428,21 @@ export type TopicsCreateOrUpdateInput = typeof TopicsCreateOrUpdateInput.Type;
 // Output Schema
 export const TopicsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(Schema.suspend(() => SBTopicPropertiesSchema)),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -3151,6 +3510,25 @@ export type TopicsCreateOrUpdateAuthorizationRuleInput =
 // Output Schema
 export const TopicsCreateOrUpdateAuthorizationRuleOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.Struct({
+        rights: Schema.Array(Schema.Literals(["Manage", "Send", "Listen"])),
+      }),
+    ),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -3265,6 +3643,21 @@ export type TopicsGetInput = typeof TopicsGetInput.Type;
 
 // Output Schema
 export const TopicsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.optional(Schema.suspend(() => SBTopicPropertiesSchema)),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -3307,6 +3700,25 @@ export type TopicsGetAuthorizationRuleInput =
 // Output Schema
 export const TopicsGetAuthorizationRuleOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.Struct({
+        rights: Schema.Array(Schema.Literals(["Manage", "Send", "Listen"])),
+      }),
+    ),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -3353,14 +3765,7 @@ export type TopicsListAuthorizationRulesInput =
 export const TopicsListAuthorizationRulesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          location: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => SBAuthorizationRuleSchema)),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -3402,16 +3807,7 @@ export type TopicsListByNamespaceInput = typeof TopicsListByNamespaceInput.Type;
 // Output Schema
 export const TopicsListByNamespaceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          location: Schema.optional(Schema.String),
-        }),
-      ),
-    ),
+    value: Schema.optional(Schema.Array(Schema.suspend(() => SBTopicSchema))),
     nextLink: Schema.optional(Schema.String),
   });
 export type TopicsListByNamespaceOutput =

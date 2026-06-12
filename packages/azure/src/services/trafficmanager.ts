@@ -8,6 +8,196 @@ import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
+// Shared schemas
+const GeographicHierarchyPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    geographicHierarchy: Schema.optional(Schema.suspend(() => RegionSchema)),
+  });
+const RegionSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  code: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  regions: Schema.optional(Schema.Array(Schema.Unknown)),
+});
+const UserMetricsPropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  key: Schema.optional(Schema.String),
+});
+const ProfileSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
+const ProfilePropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  profileStatus: Schema.optional(Schema.suspend(() => ProfileStatusSchema)),
+  trafficRoutingMethod: Schema.optional(
+    Schema.suspend(() => TrafficRoutingMethodSchema),
+  ),
+  dnsConfig: Schema.optional(Schema.suspend(() => DnsConfigSchema)),
+  monitorConfig: Schema.optional(Schema.suspend(() => MonitorConfigSchema)),
+  endpoints: Schema.optional(
+    Schema.Array(Schema.suspend(() => EndpointSchema)),
+  ),
+  trafficViewEnrollmentStatus: Schema.optional(
+    Schema.suspend(() => TrafficViewEnrollmentStatusSchema),
+  ),
+  allowedEndpointRecordTypes: Schema.optional(
+    Schema.Array(Schema.suspend(() => AllowedEndpointRecordTypeSchema)),
+  ),
+  maxReturn: Schema.optional(Schema.Number),
+});
+const ProfileStatusSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Enabled",
+  "Disabled",
+]);
+const TrafficRoutingMethodSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Performance",
+  "Priority",
+  "Weighted",
+  "Geographic",
+  "MultiValue",
+  "Subnet",
+]);
+const DnsConfigSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  relativeName: Schema.optional(Schema.String),
+  fqdn: Schema.optional(Schema.String),
+  ttl: Schema.optional(Schema.Number),
+});
+const MonitorConfigSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  profileMonitorStatus: Schema.optional(
+    Schema.suspend(() => ProfileMonitorStatusSchema),
+  ),
+  protocol: Schema.optional(Schema.suspend(() => MonitorProtocolSchema)),
+  port: Schema.optional(Schema.Number),
+  path: Schema.optional(Schema.String),
+  intervalInSeconds: Schema.optional(Schema.Number),
+  timeoutInSeconds: Schema.optional(Schema.Number),
+  toleratedNumberOfFailures: Schema.optional(Schema.Number),
+  customHeaders: Schema.optional(
+    Schema.Array(Schema.suspend(() => MonitorConfigCustomHeadersItemSchema)),
+  ),
+  expectedStatusCodeRanges: Schema.optional(
+    Schema.Array(
+      Schema.suspend(() => MonitorConfigExpectedStatusCodeRangesItemSchema),
+    ),
+  ),
+});
+const ProfileMonitorStatusSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "CheckingEndpoints",
+  "Online",
+  "Degraded",
+  "Disabled",
+  "Inactive",
+]);
+const MonitorProtocolSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "HTTP",
+  "HTTPS",
+  "TCP",
+]);
+const MonitorConfigCustomHeadersItemSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    value: Schema.optional(Schema.String),
+  });
+const MonitorConfigExpectedStatusCodeRangesItemSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    min: Schema.optional(Schema.Number),
+    max: Schema.optional(Schema.Number),
+  });
+const EndpointSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
+const TrafficViewEnrollmentStatusSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Literals(["Enabled", "Disabled"]);
+const AllowedEndpointRecordTypeSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+    "DomainName",
+    "IPv4Address",
+    "IPv6Address",
+    "Any",
+  ]);
+const EndpointPropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  targetResourceId: Schema.optional(Schema.String),
+  target: Schema.optional(Schema.String),
+  endpointStatus: Schema.optional(Schema.suspend(() => EndpointStatusSchema)),
+  weight: Schema.optional(Schema.Number),
+  priority: Schema.optional(Schema.Number),
+  endpointLocation: Schema.optional(Schema.String),
+  endpointMonitorStatus: Schema.optional(
+    Schema.suspend(() => EndpointMonitorStatusSchema),
+  ),
+  minChildEndpoints: Schema.optional(Schema.Number),
+  minChildEndpointsIPv4: Schema.optional(Schema.Number),
+  minChildEndpointsIPv6: Schema.optional(Schema.Number),
+  geoMapping: Schema.optional(Schema.Array(Schema.String)),
+  subnets: Schema.optional(
+    Schema.Array(Schema.suspend(() => EndpointPropertiesSubnetsItemSchema)),
+  ),
+  customHeaders: Schema.optional(
+    Schema.Array(
+      Schema.suspend(() => EndpointPropertiesCustomHeadersItemSchema),
+    ),
+  ),
+  alwaysServe: Schema.optional(Schema.suspend(() => AlwaysServeSchema)),
+});
+const EndpointStatusSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Enabled",
+  "Disabled",
+]);
+const EndpointMonitorStatusSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals(
+  [
+    "CheckingEndpoint",
+    "Online",
+    "Degraded",
+    "Disabled",
+    "Inactive",
+    "Stopped",
+    "Unmonitored",
+  ],
+);
+const EndpointPropertiesSubnetsItemSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    first: Schema.optional(Schema.String),
+    last: Schema.optional(Schema.String),
+    scope: Schema.optional(Schema.Number),
+  });
+const EndpointPropertiesCustomHeadersItemSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    value: Schema.optional(Schema.String),
+  });
+const AlwaysServeSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Enabled",
+  "Disabled",
+]);
+const HeatMapPropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  startTime: Schema.optional(Schema.String),
+  endTime: Schema.optional(Schema.String),
+  endpoints: Schema.optional(
+    Schema.Array(Schema.suspend(() => HeatMapEndpointSchema)),
+  ),
+  trafficFlows: Schema.optional(
+    Schema.Array(Schema.suspend(() => TrafficFlowSchema)),
+  ),
+});
+const HeatMapEndpointSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  resourceId: Schema.optional(Schema.String),
+  endpointId: Schema.optional(Schema.Number),
+});
+const TrafficFlowSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  sourceIp: Schema.optional(Schema.String),
+  latitude: Schema.optional(Schema.Number),
+  longitude: Schema.optional(Schema.Number),
+  queryExperiences: Schema.optional(
+    Schema.Array(Schema.suspend(() => QueryExperienceSchema)),
+  ),
+});
+const QueryExperienceSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  endpointId: Schema.Number,
+  queryCount: Schema.Number,
+  latency: Schema.optional(Schema.Number),
+});
+
 // Input Schema
 export const EndpointsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -20,51 +210,7 @@ export const EndpointsCreateOrUpdateInput =
       "NestedEndpoints",
     ]).pipe(T.PathParam()),
     endpointName: Schema.String.pipe(T.PathParam()),
-    properties: Schema.optional(
-      Schema.Struct({
-        targetResourceId: Schema.optional(Schema.String),
-        target: Schema.optional(Schema.String),
-        endpointStatus: Schema.optional(
-          Schema.Literals(["Enabled", "Disabled"]),
-        ),
-        weight: Schema.optional(Schema.Number),
-        priority: Schema.optional(Schema.Number),
-        endpointLocation: Schema.optional(Schema.String),
-        endpointMonitorStatus: Schema.optional(
-          Schema.Literals([
-            "CheckingEndpoint",
-            "Online",
-            "Degraded",
-            "Disabled",
-            "Inactive",
-            "Stopped",
-            "Unmonitored",
-          ]),
-        ),
-        minChildEndpoints: Schema.optional(Schema.Number),
-        minChildEndpointsIPv4: Schema.optional(Schema.Number),
-        minChildEndpointsIPv6: Schema.optional(Schema.Number),
-        geoMapping: Schema.optional(Schema.Array(Schema.String)),
-        subnets: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              first: Schema.optional(Schema.String),
-              last: Schema.optional(Schema.String),
-              scope: Schema.optional(Schema.Number),
-            }),
-          ),
-        ),
-        customHeaders: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              name: Schema.optional(Schema.String),
-              value: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        alwaysServe: Schema.optional(Schema.Literals(["Enabled", "Disabled"])),
-      }),
-    ),
+    properties: Schema.optional(Schema.suspend(() => EndpointPropertiesSchema)),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -78,6 +224,7 @@ export type EndpointsCreateOrUpdateInput =
 // Output Schema
 export const EndpointsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(Schema.suspend(() => EndpointPropertiesSchema)),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -165,6 +312,7 @@ export type EndpointsGetInput = typeof EndpointsGetInput.Type;
 
 // Output Schema
 export const EndpointsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.optional(Schema.suspend(() => EndpointPropertiesSchema)),
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -197,49 +345,7 @@ export const EndpointsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     "NestedEndpoints",
   ]).pipe(T.PathParam()),
   endpointName: Schema.String.pipe(T.PathParam()),
-  properties: Schema.optional(
-    Schema.Struct({
-      targetResourceId: Schema.optional(Schema.String),
-      target: Schema.optional(Schema.String),
-      endpointStatus: Schema.optional(Schema.Literals(["Enabled", "Disabled"])),
-      weight: Schema.optional(Schema.Number),
-      priority: Schema.optional(Schema.Number),
-      endpointLocation: Schema.optional(Schema.String),
-      endpointMonitorStatus: Schema.optional(
-        Schema.Literals([
-          "CheckingEndpoint",
-          "Online",
-          "Degraded",
-          "Disabled",
-          "Inactive",
-          "Stopped",
-          "Unmonitored",
-        ]),
-      ),
-      minChildEndpoints: Schema.optional(Schema.Number),
-      minChildEndpointsIPv4: Schema.optional(Schema.Number),
-      minChildEndpointsIPv6: Schema.optional(Schema.Number),
-      geoMapping: Schema.optional(Schema.Array(Schema.String)),
-      subnets: Schema.optional(
-        Schema.Array(
-          Schema.Struct({
-            first: Schema.optional(Schema.String),
-            last: Schema.optional(Schema.String),
-            scope: Schema.optional(Schema.Number),
-          }),
-        ),
-      ),
-      customHeaders: Schema.optional(
-        Schema.Array(
-          Schema.Struct({
-            name: Schema.optional(Schema.String),
-            value: Schema.optional(Schema.String),
-          }),
-        ),
-      ),
-      alwaysServe: Schema.optional(Schema.Literals(["Enabled", "Disabled"])),
-    }),
-  ),
+  properties: Schema.optional(Schema.suspend(() => EndpointPropertiesSchema)),
 }).pipe(
   T.Http({
     method: "PATCH",
@@ -251,6 +357,7 @@ export type EndpointsUpdateInput = typeof EndpointsUpdateInput.Type;
 
 // Output Schema
 export const EndpointsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.optional(Schema.suspend(() => EndpointPropertiesSchema)),
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -287,6 +394,9 @@ export type GeographicHierarchiesGetDefaultInput =
 // Output Schema
 export const GeographicHierarchiesGetDefaultOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => GeographicHierarchyPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -324,6 +434,7 @@ export type HeatMapGetInput = typeof HeatMapGetInput.Type;
 
 // Output Schema
 export const HeatMapGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.optional(Schema.suspend(() => HeatMapPropertiesSchema)),
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -430,90 +541,7 @@ export const ProfilesCreateOrUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     profileName: Schema.String.pipe(T.PathParam()),
-    properties: Schema.optional(
-      Schema.Struct({
-        profileStatus: Schema.optional(
-          Schema.Literals(["Enabled", "Disabled"]),
-        ),
-        trafficRoutingMethod: Schema.optional(
-          Schema.Literals([
-            "Performance",
-            "Priority",
-            "Weighted",
-            "Geographic",
-            "MultiValue",
-            "Subnet",
-          ]),
-        ),
-        dnsConfig: Schema.optional(
-          Schema.Struct({
-            relativeName: Schema.optional(Schema.String),
-            fqdn: Schema.optional(Schema.String),
-            ttl: Schema.optional(Schema.Number),
-          }),
-        ),
-        monitorConfig: Schema.optional(
-          Schema.Struct({
-            profileMonitorStatus: Schema.optional(
-              Schema.Literals([
-                "CheckingEndpoints",
-                "Online",
-                "Degraded",
-                "Disabled",
-                "Inactive",
-              ]),
-            ),
-            protocol: Schema.optional(
-              Schema.Literals(["HTTP", "HTTPS", "TCP"]),
-            ),
-            port: Schema.optional(Schema.Number),
-            path: Schema.optional(Schema.String),
-            intervalInSeconds: Schema.optional(Schema.Number),
-            timeoutInSeconds: Schema.optional(Schema.Number),
-            toleratedNumberOfFailures: Schema.optional(Schema.Number),
-            customHeaders: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  name: Schema.optional(Schema.String),
-                  value: Schema.optional(Schema.String),
-                }),
-              ),
-            ),
-            expectedStatusCodeRanges: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  min: Schema.optional(Schema.Number),
-                  max: Schema.optional(Schema.Number),
-                }),
-              ),
-            ),
-          }),
-        ),
-        endpoints: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              id: Schema.optional(Schema.String),
-              name: Schema.optional(Schema.String),
-              type: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        trafficViewEnrollmentStatus: Schema.optional(
-          Schema.Literals(["Enabled", "Disabled"]),
-        ),
-        allowedEndpointRecordTypes: Schema.optional(
-          Schema.Array(
-            Schema.Literals([
-              "DomainName",
-              "IPv4Address",
-              "IPv6Address",
-              "Any",
-            ]),
-          ),
-        ),
-        maxReturn: Schema.optional(Schema.Number),
-      }),
-    ),
+    properties: Schema.optional(Schema.suspend(() => ProfilePropertiesSchema)),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     location: Schema.optional(Schema.String),
   }).pipe(
@@ -529,6 +557,9 @@ export type ProfilesCreateOrUpdateInput =
 // Output Schema
 export const ProfilesCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(Schema.suspend(() => ProfilePropertiesSchema)),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -600,6 +631,9 @@ export type ProfilesGetInput = typeof ProfilesGetInput.Type;
 
 // Output Schema
 export const ProfilesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.optional(Schema.suspend(() => ProfilePropertiesSchema)),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  location: Schema.optional(Schema.String),
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -637,13 +671,7 @@ export type ProfilesListByResourceGroupInput =
 // Output Schema
 export const ProfilesListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => ProfileSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type ProfilesListByResourceGroupOutput =
@@ -680,13 +708,7 @@ export type ProfilesListBySubscriptionInput =
 // Output Schema
 export const ProfilesListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => ProfileSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type ProfilesListBySubscriptionOutput =
@@ -710,81 +732,7 @@ export const ProfilesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   profileName: Schema.String.pipe(T.PathParam()),
-  properties: Schema.optional(
-    Schema.Struct({
-      profileStatus: Schema.optional(Schema.Literals(["Enabled", "Disabled"])),
-      trafficRoutingMethod: Schema.optional(
-        Schema.Literals([
-          "Performance",
-          "Priority",
-          "Weighted",
-          "Geographic",
-          "MultiValue",
-          "Subnet",
-        ]),
-      ),
-      dnsConfig: Schema.optional(
-        Schema.Struct({
-          relativeName: Schema.optional(Schema.String),
-          fqdn: Schema.optional(Schema.String),
-          ttl: Schema.optional(Schema.Number),
-        }),
-      ),
-      monitorConfig: Schema.optional(
-        Schema.Struct({
-          profileMonitorStatus: Schema.optional(
-            Schema.Literals([
-              "CheckingEndpoints",
-              "Online",
-              "Degraded",
-              "Disabled",
-              "Inactive",
-            ]),
-          ),
-          protocol: Schema.optional(Schema.Literals(["HTTP", "HTTPS", "TCP"])),
-          port: Schema.optional(Schema.Number),
-          path: Schema.optional(Schema.String),
-          intervalInSeconds: Schema.optional(Schema.Number),
-          timeoutInSeconds: Schema.optional(Schema.Number),
-          toleratedNumberOfFailures: Schema.optional(Schema.Number),
-          customHeaders: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                name: Schema.optional(Schema.String),
-                value: Schema.optional(Schema.String),
-              }),
-            ),
-          ),
-          expectedStatusCodeRanges: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                min: Schema.optional(Schema.Number),
-                max: Schema.optional(Schema.Number),
-              }),
-            ),
-          ),
-        }),
-      ),
-      endpoints: Schema.optional(
-        Schema.Array(
-          Schema.Struct({
-            id: Schema.optional(Schema.String),
-            name: Schema.optional(Schema.String),
-            type: Schema.optional(Schema.String),
-          }),
-        ),
-      ),
-      trafficViewEnrollmentStatus: Schema.optional(
-        Schema.Literals(["Enabled", "Disabled"]),
-      ),
-      allowedEndpointRecordTypes: Schema.optional(
-        Schema.Array(
-          Schema.Literals(["DomainName", "IPv4Address", "IPv6Address", "Any"]),
-        ),
-      ),
-      maxReturn: Schema.optional(Schema.Number),
-    }),
-  ),
+  properties: Schema.optional(Schema.suspend(() => ProfilePropertiesSchema)),
   tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   location: Schema.optional(Schema.String),
 }).pipe(
@@ -798,6 +746,9 @@ export type ProfilesUpdateInput = typeof ProfilesUpdateInput.Type;
 
 // Output Schema
 export const ProfilesUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.optional(Schema.suspend(() => ProfilePropertiesSchema)),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  location: Schema.optional(Schema.String),
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -834,6 +785,9 @@ export type TrafficManagerUserMetricsKeysCreateOrUpdateInput =
 // Output Schema
 export const TrafficManagerUserMetricsKeysCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => UserMetricsPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -904,6 +858,9 @@ export type TrafficManagerUserMetricsKeysGetInput =
 // Output Schema
 export const TrafficManagerUserMetricsKeysGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => UserMetricsPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),

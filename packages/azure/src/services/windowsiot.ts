@@ -8,6 +8,34 @@ import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
+// Shared schemas
+const OperationEntitySchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  display: Schema.optional(Schema.suspend(() => OperationDisplayInfoSchema)),
+  isDataAction: Schema.optional(Schema.Boolean),
+  origin: Schema.optional(Schema.String),
+});
+const OperationDisplayInfoSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  description: Schema.optional(Schema.String),
+  operation: Schema.optional(Schema.String),
+  provider: Schema.optional(Schema.String),
+  resource: Schema.optional(Schema.String),
+});
+const DeviceServicePropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    notes: Schema.optional(Schema.String),
+    startDate: Schema.optional(Schema.String),
+    quantity: Schema.optional(Schema.Number),
+    billingDomainName: Schema.optional(Schema.String),
+    adminDomainName: Schema.optional(Schema.String),
+  },
+);
+const DeviceServiceSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
+
 // Input Schema
 export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {},
@@ -23,21 +51,7 @@ export type OperationsListInput = typeof OperationsListInput.Type;
 // Output Schema
 export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.optional(
-    Schema.Array(
-      Schema.Struct({
-        name: Schema.optional(Schema.String),
-        display: Schema.optional(
-          Schema.Struct({
-            description: Schema.optional(Schema.String),
-            operation: Schema.optional(Schema.String),
-            provider: Schema.optional(Schema.String),
-            resource: Schema.optional(Schema.String),
-          }),
-        ),
-        isDataAction: Schema.optional(Schema.Boolean),
-        origin: Schema.optional(Schema.String),
-      }),
-    ),
+    Schema.Array(Schema.suspend(() => OperationEntitySchema)),
   ),
   nextLink: Schema.optional(Schema.String),
 });
@@ -89,13 +103,7 @@ export const ServicesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     etag: Schema.optional(Schema.String),
     properties: Schema.optional(
-      Schema.Struct({
-        notes: Schema.optional(Schema.String),
-        startDate: Schema.optional(Schema.String),
-        quantity: Schema.optional(Schema.Number),
-        billingDomainName: Schema.optional(Schema.String),
-        adminDomainName: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(() => DeviceServicePropertiesSchema),
     ),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     location: Schema.optional(Schema.String),
@@ -112,6 +120,12 @@ export type ServicesCreateOrUpdateInput =
 // Output Schema
 export const ServicesCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    etag: Schema.optional(Schema.String),
+    properties: Schema.optional(
+      Schema.suspend(() => DeviceServicePropertiesSchema),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -147,6 +161,12 @@ export type ServicesDeleteInput = typeof ServicesDeleteInput.Type;
 
 // Output Schema
 export const ServicesDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  etag: Schema.optional(Schema.String),
+  properties: Schema.optional(
+    Schema.suspend(() => DeviceServicePropertiesSchema),
+  ),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  location: Schema.optional(Schema.String),
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -175,6 +195,12 @@ export type ServicesGetInput = typeof ServicesGetInput.Type;
 
 // Output Schema
 export const ServicesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  etag: Schema.optional(Schema.String),
+  properties: Schema.optional(
+    Schema.suspend(() => DeviceServicePropertiesSchema),
+  ),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  location: Schema.optional(Schema.String),
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -204,13 +230,7 @@ export type ServicesListInput = typeof ServicesListInput.Type;
 // Output Schema
 export const ServicesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.optional(
-    Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-      }),
-    ),
+    Schema.Array(Schema.suspend(() => DeviceServiceSchema)),
   ),
   nextLink: Schema.optional(Schema.String),
 });
@@ -240,13 +260,7 @@ export type ServicesListByResourceGroupInput =
 export const ServicesListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => DeviceServiceSchema)),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -267,13 +281,7 @@ export const ServicesListByResourceGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const ServicesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   etag: Schema.optional(Schema.String),
   properties: Schema.optional(
-    Schema.Struct({
-      notes: Schema.optional(Schema.String),
-      startDate: Schema.optional(Schema.String),
-      quantity: Schema.optional(Schema.Number),
-      billingDomainName: Schema.optional(Schema.String),
-      adminDomainName: Schema.optional(Schema.String),
-    }),
+    Schema.suspend(() => DeviceServicePropertiesSchema),
   ),
   tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   location: Schema.optional(Schema.String),
@@ -288,6 +296,12 @@ export type ServicesUpdateInput = typeof ServicesUpdateInput.Type;
 
 // Output Schema
 export const ServicesUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  etag: Schema.optional(Schema.String),
+  properties: Schema.optional(
+    Schema.suspend(() => DeviceServicePropertiesSchema),
+  ),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  location: Schema.optional(Schema.String),
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),

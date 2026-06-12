@@ -8,6 +8,27 @@ import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
+// Shared schemas
+const ResourceProviderOperationDefinitionSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    display: Schema.optional(
+      Schema.suspend(() => ResourceProviderOperationDisplaySchema),
+    ),
+  });
+const ResourceProviderOperationDisplaySchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    provider: Schema.optional(Schema.String),
+    resource: Schema.optional(Schema.String),
+    operation: Schema.optional(Schema.String),
+    description: Schema.optional(Schema.String),
+  });
+const ChangeSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
+
 // Input Schema
 export const ChangesListChangesByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -26,15 +47,7 @@ export type ChangesListChangesByResourceGroupInput =
 // Output Schema
 export const ChangesListChangesByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
-    ),
+    value: Schema.optional(Schema.Array(Schema.suspend(() => ChangeSchema))),
     nextLink: Schema.optional(Schema.String),
   });
 export type ChangesListChangesByResourceGroupOutput =
@@ -70,15 +83,7 @@ export type ChangesListChangesBySubscriptionInput =
 // Output Schema
 export const ChangesListChangesBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
-    ),
+    value: Schema.optional(Schema.Array(Schema.suspend(() => ChangeSchema))),
     nextLink: Schema.optional(Schema.String),
   });
 export type ChangesListChangesBySubscriptionOutput =
@@ -112,17 +117,7 @@ export type OperationsListInput = typeof OperationsListInput.Type;
 export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
-      Schema.Struct({
-        name: Schema.optional(Schema.String),
-        display: Schema.optional(
-          Schema.Struct({
-            provider: Schema.optional(Schema.String),
-            resource: Schema.optional(Schema.String),
-            operation: Schema.optional(Schema.String),
-            description: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
+      Schema.suspend(() => ResourceProviderOperationDefinitionSchema),
     ),
   ),
   nextLink: Schema.optional(Schema.String),
@@ -153,15 +148,7 @@ export type ResourceChangesListInput = typeof ResourceChangesListInput.Type;
 // Output Schema
 export const ResourceChangesListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
-    ),
+    value: Schema.optional(Schema.Array(Schema.suspend(() => ChangeSchema))),
     nextLink: Schema.optional(Schema.String),
   });
 export type ResourceChangesListOutput = typeof ResourceChangesListOutput.Type;

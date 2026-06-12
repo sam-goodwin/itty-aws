@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { SnapshotSchema } from "./_schemas.ts";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
@@ -19,18 +20,7 @@ export type UpdateSnapshotInput = typeof UpdateSnapshotInput.Type;
 
 // Output Schema
 export const UpdateSnapshotOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  snapshot: Schema.Struct({
-    id: Schema.String,
-    name: Schema.String,
-    lsn: Schema.optional(Schema.String),
-    timestamp: Schema.optional(Schema.String),
-    source_branch_id: Schema.optional(Schema.String),
-    created_at: Schema.String,
-    expires_at: Schema.optional(Schema.String),
-    manual: Schema.optional(Schema.Boolean),
-    full_size: Schema.optional(Schema.Number),
-    diff_size: Schema.optional(Schema.Number),
-  }),
+  snapshot: Schema.suspend(() => SnapshotSchema),
 });
 export type UpdateSnapshotOutput = typeof UpdateSnapshotOutput.Type;
 

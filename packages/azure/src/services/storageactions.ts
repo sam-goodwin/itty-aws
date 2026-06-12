@@ -8,6 +8,185 @@ import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
+// Shared schemas
+const OperationSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  isDataAction: Schema.optional(Schema.Boolean),
+  display: Schema.optional(
+    Schema.Struct({
+      provider: Schema.optional(Schema.String),
+      resource: Schema.optional(Schema.String),
+      operation: Schema.optional(Schema.String),
+      description: Schema.optional(Schema.String),
+    }),
+  ),
+  origin: Schema.optional(Schema.Literals(["user", "system", "user,system"])),
+  actionType: Schema.optional(Schema.Literals(["Internal"])),
+});
+const StorageTaskPreviewActionPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    container: Schema.suspend(
+      () => StorageTaskPreviewContainerPropertiesSchema,
+    ),
+    blobs: Schema.Array(
+      Schema.suspend(() => StorageTaskPreviewBlobPropertiesSchema),
+    ),
+    action: Schema.suspend(() => StorageTaskPreviewActionConditionSchema),
+  });
+const StorageTaskPreviewContainerPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    metadata: Schema.optional(
+      Schema.Array(
+        Schema.suspend(() => StorageTaskPreviewKeyValuePropertiesSchema),
+      ),
+    ),
+  });
+const StorageTaskPreviewKeyValuePropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    key: Schema.optional(Schema.String),
+    value: Schema.optional(Schema.String),
+  });
+const StorageTaskPreviewBlobPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    properties: Schema.optional(
+      Schema.Array(
+        Schema.suspend(() => StorageTaskPreviewKeyValuePropertiesSchema),
+      ),
+    ),
+    metadata: Schema.optional(
+      Schema.Array(
+        Schema.suspend(() => StorageTaskPreviewKeyValuePropertiesSchema),
+      ),
+    ),
+    tags: Schema.optional(
+      Schema.Array(
+        Schema.suspend(() => StorageTaskPreviewKeyValuePropertiesSchema),
+      ),
+    ),
+    matchedBlock: Schema.optional(Schema.suspend(() => MatchedBlockNameSchema)),
+  });
+const MatchedBlockNameSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "If",
+  "Else",
+  "None",
+]);
+const StorageTaskPreviewActionConditionSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    if: Schema.suspend(() => StorageTaskPreviewActionIfConditionSchema),
+    elseBlockExists: Schema.Boolean,
+  });
+const StorageTaskPreviewActionIfConditionSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    condition: Schema.optional(Schema.String),
+  });
+const StorageTaskSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+});
+const systemDataSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  createdBy: Schema.optional(Schema.String),
+  createdByType: Schema.optional(
+    Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+  ),
+  createdAt: Schema.optional(Schema.String),
+  lastModifiedBy: Schema.optional(Schema.String),
+  lastModifiedByType: Schema.optional(
+    Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+  ),
+  lastModifiedAt: Schema.optional(Schema.String),
+});
+const StorageTaskPropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  taskVersion: Schema.optional(Schema.Number),
+  enabled: Schema.Boolean,
+  description: Schema.String,
+  action: Schema.suspend(() => StorageTaskActionSchema),
+  provisioningState: Schema.optional(
+    Schema.suspend(() => ProvisioningStateSchema),
+  ),
+  creationTimeInUtc: Schema.optional(Schema.String),
+});
+const StorageTaskActionSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  if: Schema.suspend(() => IfConditionSchema),
+  else: Schema.optional(Schema.suspend(() => ElseConditionSchema)),
+});
+const IfConditionSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  condition: Schema.String,
+  operations: Schema.Array(Schema.suspend(() => StorageTaskOperationSchema)),
+});
+const StorageTaskOperationSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.suspend(() => StorageTaskOperationNameSchema),
+  parameters: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  onSuccess: Schema.optional(Schema.suspend(() => OnSuccessSchema)),
+  onFailure: Schema.optional(Schema.suspend(() => OnFailureSchema)),
+});
+const StorageTaskOperationNameSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+    "SetBlobTier",
+    "SetBlobTags",
+    "SetBlobImmutabilityPolicy",
+    "SetBlobLegalHold",
+    "SetBlobExpiry",
+    "DeleteBlob",
+    "UndeleteBlob",
+  ]);
+const OnSuccessSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "continue",
+]);
+const OnFailureSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals(["break"]);
+const ElseConditionSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  operations: Schema.Array(Schema.suspend(() => StorageTaskOperationSchema)),
+});
+const ProvisioningStateSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "ValidateSubscriptionQuotaBegin",
+  "ValidateSubscriptionQuotaEnd",
+  "Accepted",
+  "Creating",
+  "Succeeded",
+  "Deleting",
+  "Canceled",
+  "Failed",
+]);
+const ManagedServiceIdentityTypeSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+    "None",
+    "SystemAssigned",
+    "UserAssigned",
+    "SystemAssigned,UserAssigned",
+  ]);
+const UserAssignedIdentitiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Record(
+  Schema.String,
+  Schema.suspend(() => UserAssignedIdentitySchema),
+);
+const UserAssignedIdentitySchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  principalId: Schema.optional(Schema.String),
+  clientId: Schema.optional(Schema.String),
+});
+const StorageTaskUpdatePropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    taskVersion: Schema.optional(Schema.Number),
+    enabled: Schema.optional(Schema.Boolean),
+    description: Schema.optional(Schema.String),
+    action: Schema.optional(Schema.suspend(() => StorageTaskActionSchema)),
+    provisioningState: Schema.optional(
+      Schema.suspend(() => ProvisioningStateSchema),
+    ),
+    creationTimeInUtc: Schema.optional(Schema.String),
+  });
+const StorageTaskReportInstanceSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+  });
+const StorageTaskAssignmentSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+});
+
 // Input Schema
 export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {},
@@ -22,26 +201,7 @@ export type OperationsListInput = typeof OperationsListInput.Type;
 
 // Output Schema
 export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  value: Schema.optional(
-    Schema.Array(
-      Schema.Struct({
-        name: Schema.optional(Schema.String),
-        isDataAction: Schema.optional(Schema.Boolean),
-        display: Schema.optional(
-          Schema.Struct({
-            provider: Schema.optional(Schema.String),
-            resource: Schema.optional(Schema.String),
-            operation: Schema.optional(Schema.String),
-            description: Schema.optional(Schema.String),
-          }),
-        ),
-        origin: Schema.optional(
-          Schema.Literals(["user", "system", "user,system"]),
-        ),
-        actionType: Schema.optional(Schema.Literals(["Internal"])),
-      }),
-    ),
-  ),
+  value: Schema.optional(Schema.Array(Schema.suspend(() => OperationSchema))),
   nextLink: Schema.optional(Schema.String),
 });
 export type OperationsListOutput = typeof OperationsListOutput.Type;
@@ -76,11 +236,7 @@ export type StorageTaskAssignmentListInput =
 // Output Schema
 export const StorageTaskAssignmentListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => StorageTaskAssignmentSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type StorageTaskAssignmentListOutput =
@@ -108,86 +264,13 @@ export const StorageTasksCreateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     storageTaskName: Schema.String.pipe(T.PathParam()),
-    properties: Schema.Struct({
-      taskVersion: Schema.optional(Schema.Number),
-      enabled: Schema.Boolean,
-      description: Schema.String,
-      action: Schema.Struct({
-        if: Schema.Struct({
-          condition: Schema.String,
-          operations: Schema.Array(
-            Schema.Struct({
-              name: Schema.Literals([
-                "SetBlobTier",
-                "SetBlobTags",
-                "SetBlobImmutabilityPolicy",
-                "SetBlobLegalHold",
-                "SetBlobExpiry",
-                "DeleteBlob",
-                "UndeleteBlob",
-              ]),
-              parameters: Schema.optional(
-                Schema.Record(Schema.String, Schema.String),
-              ),
-              onSuccess: Schema.optional(Schema.Literals(["continue"])),
-              onFailure: Schema.optional(Schema.Literals(["break"])),
-            }),
-          ),
-        }),
-        else: Schema.optional(
-          Schema.Struct({
-            operations: Schema.Array(
-              Schema.Struct({
-                name: Schema.Literals([
-                  "SetBlobTier",
-                  "SetBlobTags",
-                  "SetBlobImmutabilityPolicy",
-                  "SetBlobLegalHold",
-                  "SetBlobExpiry",
-                  "DeleteBlob",
-                  "UndeleteBlob",
-                ]),
-                parameters: Schema.optional(
-                  Schema.Record(Schema.String, Schema.String),
-                ),
-                onSuccess: Schema.optional(Schema.Literals(["continue"])),
-                onFailure: Schema.optional(Schema.Literals(["break"])),
-              }),
-            ),
-          }),
-        ),
-      }),
-      provisioningState: Schema.optional(
-        Schema.Literals([
-          "ValidateSubscriptionQuotaBegin",
-          "ValidateSubscriptionQuotaEnd",
-          "Accepted",
-          "Creating",
-          "Succeeded",
-          "Deleting",
-          "Canceled",
-          "Failed",
-        ]),
-      ),
-      creationTimeInUtc: Schema.optional(Schema.String),
-    }),
+    properties: Schema.suspend(() => StorageTaskPropertiesSchema),
     identity: Schema.Struct({
       principalId: Schema.optional(Schema.String),
       tenantId: Schema.optional(Schema.String),
-      type: Schema.Literals([
-        "None",
-        "SystemAssigned",
-        "UserAssigned",
-        "SystemAssigned,UserAssigned",
-      ]),
+      type: Schema.suspend(() => ManagedServiceIdentityTypeSchema),
       userAssignedIdentities: Schema.optional(
-        Schema.Record(
-          Schema.String,
-          Schema.Struct({
-            principalId: Schema.optional(Schema.String),
-            clientId: Schema.optional(Schema.String),
-          }),
-        ),
+        Schema.suspend(() => UserAssignedIdentitiesSchema),
       ),
     }),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
@@ -205,23 +288,21 @@ export type StorageTasksCreateInput = typeof StorageTasksCreateInput.Type;
 // Output Schema
 export const StorageTasksCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.suspend(() => StorageTaskPropertiesSchema),
+    identity: Schema.Struct({
+      principalId: Schema.optional(Schema.String),
+      tenantId: Schema.optional(Schema.String),
+      type: Schema.suspend(() => ManagedServiceIdentityTypeSchema),
+      userAssignedIdentities: Schema.optional(
+        Schema.suspend(() => UserAssignedIdentitiesSchema),
+      ),
+    }),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type StorageTasksCreateOutput = typeof StorageTasksCreateOutput.Type;
 
@@ -287,23 +368,21 @@ export type StorageTasksGetInput = typeof StorageTasksGetInput.Type;
 
 // Output Schema
 export const StorageTasksGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.suspend(() => StorageTaskPropertiesSchema),
+  identity: Schema.Struct({
+    principalId: Schema.optional(Schema.String),
+    tenantId: Schema.optional(Schema.String),
+    type: Schema.suspend(() => ManagedServiceIdentityTypeSchema),
+    userAssignedIdentities: Schema.optional(
+      Schema.suspend(() => UserAssignedIdentitiesSchema),
+    ),
+  }),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  location: Schema.String,
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
-  systemData: Schema.optional(
-    Schema.Struct({
-      createdBy: Schema.optional(Schema.String),
-      createdByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      createdAt: Schema.optional(Schema.String),
-      lastModifiedBy: Schema.optional(Schema.String),
-      lastModifiedByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      lastModifiedAt: Schema.optional(Schema.String),
-    }),
-  ),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
 });
 export type StorageTasksGetOutput = typeof StorageTasksGetOutput.Type;
 
@@ -338,37 +417,7 @@ export type StorageTasksListByResourceGroupInput =
 // Output Schema
 export const StorageTasksListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => StorageTaskSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type StorageTasksListByResourceGroupOutput =
@@ -404,37 +453,7 @@ export type StorageTasksListBySubscriptionInput =
 // Output Schema
 export const StorageTasksListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => StorageTaskSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type StorageTasksListBySubscriptionOutput =
@@ -457,57 +476,7 @@ export const StorageTasksPreviewActionsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
-    properties: Schema.Struct({
-      container: Schema.Struct({
-        name: Schema.optional(Schema.String),
-        metadata: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              key: Schema.optional(Schema.String),
-              value: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-      }),
-      blobs: Schema.Array(
-        Schema.Struct({
-          name: Schema.optional(Schema.String),
-          properties: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                key: Schema.optional(Schema.String),
-                value: Schema.optional(Schema.String),
-              }),
-            ),
-          ),
-          metadata: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                key: Schema.optional(Schema.String),
-                value: Schema.optional(Schema.String),
-              }),
-            ),
-          ),
-          tags: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                key: Schema.optional(Schema.String),
-                value: Schema.optional(Schema.String),
-              }),
-            ),
-          ),
-          matchedBlock: Schema.optional(
-            Schema.Literals(["If", "Else", "None"]),
-          ),
-        }),
-      ),
-      action: Schema.Struct({
-        if: Schema.Struct({
-          condition: Schema.optional(Schema.String),
-        }),
-        elseBlockExists: Schema.Boolean,
-      }),
-    }),
+    properties: Schema.suspend(() => StorageTaskPreviewActionPropertiesSchema),
   }).pipe(
     T.Http({
       method: "POST",
@@ -521,57 +490,7 @@ export type StorageTasksPreviewActionsInput =
 // Output Schema
 export const StorageTasksPreviewActionsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    properties: Schema.Struct({
-      container: Schema.Struct({
-        name: Schema.optional(Schema.String),
-        metadata: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              key: Schema.optional(Schema.String),
-              value: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-      }),
-      blobs: Schema.Array(
-        Schema.Struct({
-          name: Schema.optional(Schema.String),
-          properties: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                key: Schema.optional(Schema.String),
-                value: Schema.optional(Schema.String),
-              }),
-            ),
-          ),
-          metadata: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                key: Schema.optional(Schema.String),
-                value: Schema.optional(Schema.String),
-              }),
-            ),
-          ),
-          tags: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                key: Schema.optional(Schema.String),
-                value: Schema.optional(Schema.String),
-              }),
-            ),
-          ),
-          matchedBlock: Schema.optional(
-            Schema.Literals(["If", "Else", "None"]),
-          ),
-        }),
-      ),
-      action: Schema.Struct({
-        if: Schema.Struct({
-          condition: Schema.optional(Schema.String),
-        }),
-        elseBlockExists: Schema.Boolean,
-      }),
-    }),
+    properties: Schema.suspend(() => StorageTaskPreviewActionPropertiesSchema),
   });
 export type StorageTasksPreviewActionsOutput =
   typeof StorageTasksPreviewActionsOutput.Type;
@@ -611,37 +530,7 @@ export type StorageTasksReportListInput =
 // Output Schema
 export const StorageTasksReportListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => StorageTaskReportInstanceSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type StorageTasksReportListOutput =
@@ -711,90 +600,15 @@ export const StorageTasksUpdateInput =
       Schema.Struct({
         principalId: Schema.optional(Schema.String),
         tenantId: Schema.optional(Schema.String),
-        type: Schema.Literals([
-          "None",
-          "SystemAssigned",
-          "UserAssigned",
-          "SystemAssigned,UserAssigned",
-        ]),
+        type: Schema.suspend(() => ManagedServiceIdentityTypeSchema),
         userAssignedIdentities: Schema.optional(
-          Schema.Record(
-            Schema.String,
-            Schema.Struct({
-              principalId: Schema.optional(Schema.String),
-              clientId: Schema.optional(Schema.String),
-            }),
-          ),
+          Schema.suspend(() => UserAssignedIdentitiesSchema),
         ),
       }),
     ),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     properties: Schema.optional(
-      Schema.Struct({
-        taskVersion: Schema.optional(Schema.Number),
-        enabled: Schema.optional(Schema.Boolean),
-        description: Schema.optional(Schema.String),
-        action: Schema.optional(
-          Schema.Struct({
-            if: Schema.Struct({
-              condition: Schema.String,
-              operations: Schema.Array(
-                Schema.Struct({
-                  name: Schema.Literals([
-                    "SetBlobTier",
-                    "SetBlobTags",
-                    "SetBlobImmutabilityPolicy",
-                    "SetBlobLegalHold",
-                    "SetBlobExpiry",
-                    "DeleteBlob",
-                    "UndeleteBlob",
-                  ]),
-                  parameters: Schema.optional(
-                    Schema.Record(Schema.String, Schema.String),
-                  ),
-                  onSuccess: Schema.optional(Schema.Literals(["continue"])),
-                  onFailure: Schema.optional(Schema.Literals(["break"])),
-                }),
-              ),
-            }),
-            else: Schema.optional(
-              Schema.Struct({
-                operations: Schema.Array(
-                  Schema.Struct({
-                    name: Schema.Literals([
-                      "SetBlobTier",
-                      "SetBlobTags",
-                      "SetBlobImmutabilityPolicy",
-                      "SetBlobLegalHold",
-                      "SetBlobExpiry",
-                      "DeleteBlob",
-                      "UndeleteBlob",
-                    ]),
-                    parameters: Schema.optional(
-                      Schema.Record(Schema.String, Schema.String),
-                    ),
-                    onSuccess: Schema.optional(Schema.Literals(["continue"])),
-                    onFailure: Schema.optional(Schema.Literals(["break"])),
-                  }),
-                ),
-              }),
-            ),
-          }),
-        ),
-        provisioningState: Schema.optional(
-          Schema.Literals([
-            "ValidateSubscriptionQuotaBegin",
-            "ValidateSubscriptionQuotaEnd",
-            "Accepted",
-            "Creating",
-            "Succeeded",
-            "Deleting",
-            "Canceled",
-            "Failed",
-          ]),
-        ),
-        creationTimeInUtc: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(() => StorageTaskUpdatePropertiesSchema),
     ),
   }).pipe(
     T.Http({
@@ -809,23 +623,21 @@ export type StorageTasksUpdateInput = typeof StorageTasksUpdateInput.Type;
 // Output Schema
 export const StorageTasksUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.suspend(() => StorageTaskPropertiesSchema),
+    identity: Schema.Struct({
+      principalId: Schema.optional(Schema.String),
+      tenantId: Schema.optional(Schema.String),
+      type: Schema.suspend(() => ManagedServiceIdentityTypeSchema),
+      userAssignedIdentities: Schema.optional(
+        Schema.suspend(() => UserAssignedIdentitiesSchema),
+      ),
+    }),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type StorageTasksUpdateOutput = typeof StorageTasksUpdateOutput.Type;
 

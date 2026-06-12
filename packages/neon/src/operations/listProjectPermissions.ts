@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { ProjectPermissionSchema } from "./_schemas.ts";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 import { NotFound } from "../errors.ts";
@@ -17,12 +18,7 @@ export type ListProjectPermissionsInput =
 export const ListProjectPermissionsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_permissions: Schema.Array(
-      Schema.Struct({
-        id: Schema.String,
-        granted_to_email: Schema.String,
-        granted_at: Schema.String,
-        revoked_at: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(() => ProjectPermissionSchema),
     ),
   });
 export type ListProjectPermissionsOutput =

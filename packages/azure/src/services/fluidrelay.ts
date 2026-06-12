@@ -8,6 +8,102 @@ import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
+// Shared schemas
+const OperationResultSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  display: Schema.optional(Schema.suspend(() => OperationDisplaySchema)),
+  isDataAction: Schema.optional(Schema.Boolean),
+});
+const OperationDisplaySchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  provider: Schema.optional(Schema.String),
+  resource: Schema.optional(Schema.String),
+  operation: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+});
+const FluidRelayServerPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    frsTenantId: Schema.optional(Schema.String),
+    fluidRelayEndpoints: Schema.optional(
+      Schema.suspend(() => FluidRelayEndpointsSchema),
+    ),
+    provisioningState: Schema.optional(
+      Schema.Literals(["Succeeded", "Failed", "Canceled"]),
+    ),
+    encryption: Schema.optional(
+      Schema.suspend(() => EncryptionPropertiesSchema),
+    ),
+    storagesku: Schema.optional(Schema.Literals(["standard", "basic"])),
+  });
+const FluidRelayEndpointsSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  ordererEndpoints: Schema.optional(Schema.Array(Schema.String)),
+  storageEndpoints: Schema.optional(Schema.Array(Schema.String)),
+  serviceEndpoints: Schema.optional(Schema.Array(Schema.String)),
+});
+const EncryptionPropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  customerManagedKeyEncryption: Schema.optional(
+    Schema.suspend(() => CustomerManagedKeyEncryptionPropertiesSchema),
+  ),
+});
+const CustomerManagedKeyEncryptionPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    keyEncryptionKeyIdentity: Schema.optional(
+      Schema.Struct({
+        identityType: Schema.optional(
+          Schema.Literals(["SystemAssigned", "UserAssigned"]),
+        ),
+        userAssignedIdentityResourceId: Schema.optional(Schema.String),
+      }),
+    ),
+    keyEncryptionKeyUrl: Schema.optional(Schema.String),
+  });
+const IdentitySchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  principalId: Schema.optional(Schema.String),
+  tenantId: Schema.optional(Schema.String),
+  type: Schema.optional(
+    Schema.Literals([
+      "SystemAssigned",
+      "UserAssigned",
+      "SystemAssigned, UserAssigned",
+      "None",
+    ]),
+  ),
+  userAssignedIdentities: Schema.optional(
+    Schema.Record(
+      Schema.String,
+      Schema.Struct({
+        principalId: Schema.optional(Schema.String),
+        clientId: Schema.optional(Schema.String),
+      }),
+    ),
+  ),
+});
+const FluidRelayServerUpdatePropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    encryption: Schema.optional(
+      Schema.suspend(() => EncryptionPropertiesSchema),
+    ),
+  });
+const FluidRelayServerSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
+const FluidRelayContainerPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    frsTenantId: Schema.optional(Schema.String),
+    frsContainerId: Schema.optional(Schema.String),
+    provisioningState: Schema.optional(
+      Schema.Literals(["Succeeded", "Failed", "Canceled"]),
+    ),
+    creationTime: Schema.optional(Schema.String),
+    lastAccessTime: Schema.optional(Schema.String),
+  });
+const FluidRelayContainerSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
+
 // Input Schema
 export const FluidRelayContainersDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
@@ -53,6 +149,23 @@ export type FluidRelayContainersGetInput =
 // Output Schema
 export const FluidRelayContainersGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => FluidRelayContainerPropertiesSchema),
+    ),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -88,13 +201,7 @@ export type FluidRelayContainersListByFluidRelayServersInput =
 export const FluidRelayContainersListByFluidRelayServersOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => FluidRelayContainerSchema)),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -128,20 +235,7 @@ export type FluidRelayOperationsListInput =
 export const FluidRelayOperationsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          name: Schema.optional(Schema.String),
-          display: Schema.optional(
-            Schema.Struct({
-              provider: Schema.optional(Schema.String),
-              resource: Schema.optional(Schema.String),
-              operation: Schema.optional(Schema.String),
-              description: Schema.optional(Schema.String),
-            }),
-          ),
-          isDataAction: Schema.optional(Schema.Boolean),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => OperationResultSchema)),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -164,39 +258,7 @@ export const FluidRelayOperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const FluidRelayServersCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     properties: Schema.optional(
-      Schema.Struct({
-        frsTenantId: Schema.optional(Schema.String),
-        fluidRelayEndpoints: Schema.optional(
-          Schema.Struct({
-            ordererEndpoints: Schema.optional(Schema.Array(Schema.String)),
-            storageEndpoints: Schema.optional(Schema.Array(Schema.String)),
-            serviceEndpoints: Schema.optional(Schema.Array(Schema.String)),
-          }),
-        ),
-        provisioningState: Schema.optional(
-          Schema.Literals(["Succeeded", "Failed", "Canceled"]),
-        ),
-        encryption: Schema.optional(
-          Schema.Struct({
-            customerManagedKeyEncryption: Schema.optional(
-              Schema.Struct({
-                keyEncryptionKeyIdentity: Schema.optional(
-                  Schema.Struct({
-                    identityType: Schema.optional(
-                      Schema.Literals(["SystemAssigned", "UserAssigned"]),
-                    ),
-                    userAssignedIdentityResourceId: Schema.optional(
-                      Schema.String,
-                    ),
-                  }),
-                ),
-                keyEncryptionKeyUrl: Schema.optional(Schema.String),
-              }),
-            ),
-          }),
-        ),
-        storagesku: Schema.optional(Schema.Literals(["standard", "basic"])),
-      }),
+      Schema.suspend(() => FluidRelayServerPropertiesSchema),
     ),
     systemData: Schema.optional(
       Schema.Struct({
@@ -212,29 +274,7 @@ export const FluidRelayServersCreateOrUpdateInput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-    identity: Schema.optional(
-      Schema.Struct({
-        principalId: Schema.optional(Schema.String),
-        tenantId: Schema.optional(Schema.String),
-        type: Schema.optional(
-          Schema.Literals([
-            "SystemAssigned",
-            "UserAssigned",
-            "SystemAssigned, UserAssigned",
-            "None",
-          ]),
-        ),
-        userAssignedIdentities: Schema.optional(
-          Schema.Record(
-            Schema.String,
-            Schema.Struct({
-              principalId: Schema.optional(Schema.String),
-              clientId: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-      }),
-    ),
+    identity: Schema.optional(Schema.suspend(() => IdentitySchema)),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     location: Schema.String,
   }).pipe(
@@ -250,6 +290,26 @@ export type FluidRelayServersCreateOrUpdateInput =
 // Output Schema
 export const FluidRelayServersCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => FluidRelayServerPropertiesSchema),
+    ),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+    identity: Schema.optional(Schema.suspend(() => IdentitySchema)),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -312,6 +372,26 @@ export type FluidRelayServersGetInput = typeof FluidRelayServersGetInput.Type;
 // Output Schema
 export const FluidRelayServersGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => FluidRelayServerPropertiesSchema),
+    ),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+    identity: Schema.optional(Schema.suspend(() => IdentitySchema)),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -345,13 +425,7 @@ export type FluidRelayServersListByResourceGroupInput =
 // Output Schema
 export const FluidRelayServersListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => FluidRelayServerSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type FluidRelayServersListByResourceGroupOutput =
@@ -383,13 +457,7 @@ export type FluidRelayServersListBySubscriptionInput =
 // Output Schema
 export const FluidRelayServersListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => FluidRelayServerSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type FluidRelayServersListBySubscriptionOutput =
@@ -477,52 +545,10 @@ export const FluidRelayServersRegenerateKey =
 export const FluidRelayServersUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     properties: Schema.optional(
-      Schema.Struct({
-        encryption: Schema.optional(
-          Schema.Struct({
-            customerManagedKeyEncryption: Schema.optional(
-              Schema.Struct({
-                keyEncryptionKeyIdentity: Schema.optional(
-                  Schema.Struct({
-                    identityType: Schema.optional(
-                      Schema.Literals(["SystemAssigned", "UserAssigned"]),
-                    ),
-                    userAssignedIdentityResourceId: Schema.optional(
-                      Schema.String,
-                    ),
-                  }),
-                ),
-                keyEncryptionKeyUrl: Schema.optional(Schema.String),
-              }),
-            ),
-          }),
-        ),
-      }),
+      Schema.suspend(() => FluidRelayServerUpdatePropertiesSchema),
     ),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    identity: Schema.optional(
-      Schema.Struct({
-        principalId: Schema.optional(Schema.String),
-        tenantId: Schema.optional(Schema.String),
-        type: Schema.optional(
-          Schema.Literals([
-            "SystemAssigned",
-            "UserAssigned",
-            "SystemAssigned, UserAssigned",
-            "None",
-          ]),
-        ),
-        userAssignedIdentities: Schema.optional(
-          Schema.Record(
-            Schema.String,
-            Schema.Struct({
-              principalId: Schema.optional(Schema.String),
-              clientId: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-      }),
-    ),
+    identity: Schema.optional(Schema.suspend(() => IdentitySchema)),
     location: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
@@ -537,6 +563,26 @@ export type FluidRelayServersUpdateInput =
 // Output Schema
 export const FluidRelayServersUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => FluidRelayServerPropertiesSchema),
+    ),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+    identity: Schema.optional(Schema.suspend(() => IdentitySchema)),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),

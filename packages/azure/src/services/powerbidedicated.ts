@@ -8,6 +8,136 @@ import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
+// Shared schemas
+const OperationSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  display: Schema.optional(
+    Schema.Struct({
+      provider: Schema.optional(Schema.String),
+      resource: Schema.optional(Schema.String),
+      operation: Schema.optional(Schema.String),
+      description: Schema.optional(Schema.String),
+    }),
+  ),
+  origin: Schema.optional(Schema.String),
+  properties: Schema.optional(Schema.suspend(() => OperationPropertiesSchema)),
+});
+const OperationPropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  serviceSpecification: Schema.optional(
+    Schema.suspend(() => ServiceSpecificationSchema),
+  ),
+});
+const ServiceSpecificationSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  metricSpecifications: Schema.optional(
+    Schema.Array(Schema.suspend(() => MetricSpecificationSchema)),
+  ),
+  logSpecifications: Schema.optional(
+    Schema.Array(Schema.suspend(() => LogSpecificationSchema)),
+  ),
+});
+const MetricSpecificationSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  displayName: Schema.optional(Schema.String),
+  displayDescription: Schema.optional(Schema.String),
+  unit: Schema.optional(Schema.String),
+  aggregationType: Schema.optional(Schema.String),
+  metricFilterPattern: Schema.optional(Schema.String),
+  dimensions: Schema.optional(
+    Schema.Array(Schema.suspend(() => MetricSpecificationDimensionsItemSchema)),
+  ),
+});
+const MetricSpecificationDimensionsItemSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    displayName: Schema.optional(Schema.String),
+  });
+const LogSpecificationSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  displayName: Schema.optional(Schema.String),
+  blobDuration: Schema.optional(Schema.String),
+});
+const AutoScaleVCoreSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+});
+const systemDataSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  createdBy: Schema.optional(Schema.String),
+  createdByType: Schema.optional(
+    Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+  ),
+  createdAt: Schema.optional(Schema.String),
+  lastModifiedBy: Schema.optional(Schema.String),
+  lastModifiedByType: Schema.optional(
+    Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+  ),
+  lastModifiedAt: Schema.optional(Schema.String),
+});
+const DedicatedCapacitySchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+});
+const CapacitySkuSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.String,
+  tier: Schema.optional(Schema.suspend(() => CapacitySkuTierSchema)),
+  capacity: Schema.optional(Schema.Number),
+});
+const CapacitySkuTierSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "PBIE_Azure",
+  "Premium",
+  "AutoPremiumHost",
+]);
+const AutoScaleVCorePropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    capacityLimit: Schema.optional(Schema.Number),
+  });
+const AutoScaleVCoreSkuSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.String,
+  tier: Schema.optional(Schema.suspend(() => VCoreSkuTierSchema)),
+  capacity: Schema.optional(Schema.Number),
+});
+const VCoreSkuTierSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "AutoScale",
+]);
+const AutoScaleVCoreMutablePropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    capacityLimit: Schema.optional(Schema.Number),
+  });
+const DedicatedCapacityPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    administration: Schema.optional(
+      Schema.suspend(() => DedicatedCapacityAdministratorsSchema),
+    ),
+    mode: Schema.optional(Schema.suspend(() => ModeSchema)),
+    tenantId: Schema.optional(Schema.String),
+    friendlyName: Schema.optional(Schema.String),
+  });
+const DedicatedCapacityAdministratorsSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    members: Schema.optional(Schema.Array(Schema.String)),
+  });
+const ModeSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Gen1",
+  "Gen2",
+]);
+const DedicatedCapacityMutablePropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    administration: Schema.optional(
+      Schema.suspend(() => DedicatedCapacityAdministratorsSchema),
+    ),
+    mode: Schema.optional(Schema.suspend(() => ModeSchema)),
+    tenantId: Schema.optional(Schema.String),
+    friendlyName: Schema.optional(Schema.String),
+  });
+const SkuDetailsForExistingResourceSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resourceType: Schema.optional(Schema.String),
+    sku: Schema.optional(Schema.suspend(() => CapacitySkuSchema)),
+  });
+
 // Input Schema
 export const AutoScaleVCoresCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -15,15 +145,9 @@ export const AutoScaleVCoresCreateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vcoreName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        capacityLimit: Schema.optional(Schema.Number),
-      }),
+      Schema.suspend(() => AutoScaleVCorePropertiesSchema),
     ),
-    sku: Schema.Struct({
-      name: Schema.String,
-      tier: Schema.optional(Schema.Literals(["AutoScale"])),
-      capacity: Schema.optional(Schema.Number),
-    }),
+    sku: Schema.suspend(() => AutoScaleVCoreSkuSchema),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     location: Schema.String,
   }).pipe(
@@ -38,23 +162,16 @@ export type AutoScaleVCoresCreateInput = typeof AutoScaleVCoresCreateInput.Type;
 // Output Schema
 export const AutoScaleVCoresCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => AutoScaleVCorePropertiesSchema),
+    ),
+    sku: Schema.suspend(() => AutoScaleVCoreSkuSchema),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type AutoScaleVCoresCreateOutput =
   typeof AutoScaleVCoresCreateOutput.Type;
@@ -128,23 +245,16 @@ export type AutoScaleVCoresGetInput = typeof AutoScaleVCoresGetInput.Type;
 // Output Schema
 export const AutoScaleVCoresGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => AutoScaleVCorePropertiesSchema),
+    ),
+    sku: Schema.suspend(() => AutoScaleVCoreSkuSchema),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type AutoScaleVCoresGetOutput = typeof AutoScaleVCoresGetOutput.Type;
 
@@ -179,37 +289,7 @@ export type AutoScaleVCoresListByResourceGroupInput =
 // Output Schema
 export const AutoScaleVCoresListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => AutoScaleVCoreSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type AutoScaleVCoresListByResourceGroupOutput =
@@ -245,37 +325,7 @@ export type AutoScaleVCoresListBySubscriptionInput =
 // Output Schema
 export const AutoScaleVCoresListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => AutoScaleVCoreSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type AutoScaleVCoresListBySubscriptionOutput =
@@ -299,18 +349,10 @@ export const AutoScaleVCoresUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vcoreName: Schema.String.pipe(T.PathParam()),
-    sku: Schema.optional(
-      Schema.Struct({
-        name: Schema.String,
-        tier: Schema.optional(Schema.Literals(["AutoScale"])),
-        capacity: Schema.optional(Schema.Number),
-      }),
-    ),
+    sku: Schema.optional(Schema.suspend(() => AutoScaleVCoreSkuSchema)),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     properties: Schema.optional(
-      Schema.Struct({
-        capacityLimit: Schema.optional(Schema.Number),
-      }),
+      Schema.suspend(() => AutoScaleVCoreMutablePropertiesSchema),
     ),
   }).pipe(
     T.Http({
@@ -324,23 +366,16 @@ export type AutoScaleVCoresUpdateInput = typeof AutoScaleVCoresUpdateInput.Type;
 // Output Schema
 export const AutoScaleVCoresUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => AutoScaleVCorePropertiesSchema),
+    ),
+    sku: Schema.suspend(() => AutoScaleVCoreSkuSchema),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type AutoScaleVCoresUpdateOutput =
   typeof AutoScaleVCoresUpdateOutput.Type;
@@ -406,24 +441,9 @@ export const CapacitiesCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   dedicatedCapacityName: Schema.String.pipe(T.PathParam()),
   properties: Schema.optional(
-    Schema.Struct({
-      administration: Schema.optional(
-        Schema.Struct({
-          members: Schema.optional(Schema.Array(Schema.String)),
-        }),
-      ),
-      mode: Schema.optional(Schema.Literals(["Gen1", "Gen2"])),
-      tenantId: Schema.optional(Schema.String),
-      friendlyName: Schema.optional(Schema.String),
-    }),
+    Schema.suspend(() => DedicatedCapacityPropertiesSchema),
   ),
-  sku: Schema.Struct({
-    name: Schema.String,
-    tier: Schema.optional(
-      Schema.Literals(["PBIE_Azure", "Premium", "AutoPremiumHost"]),
-    ),
-    capacity: Schema.optional(Schema.Number),
-  }),
+  sku: Schema.suspend(() => CapacitySkuSchema),
   tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   location: Schema.String,
 }).pipe(
@@ -439,23 +459,16 @@ export type CapacitiesCreateInput = typeof CapacitiesCreateInput.Type;
 // Output Schema
 export const CapacitiesCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
+    properties: Schema.optional(
+      Schema.suspend(() => DedicatedCapacityPropertiesSchema),
+    ),
+    sku: Schema.suspend(() => CapacitySkuSchema),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   },
 );
 export type CapacitiesCreateOutput = typeof CapacitiesCreateOutput.Type;
@@ -523,23 +536,16 @@ export type CapacitiesGetDetailsInput = typeof CapacitiesGetDetailsInput.Type;
 // Output Schema
 export const CapacitiesGetDetailsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => DedicatedCapacityPropertiesSchema),
+    ),
+    sku: Schema.suspend(() => CapacitySkuSchema),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type CapacitiesGetDetailsOutput = typeof CapacitiesGetDetailsOutput.Type;
 
@@ -572,27 +578,7 @@ export type CapacitiesListInput = typeof CapacitiesListInput.Type;
 
 // Output Schema
 export const CapacitiesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  value: Schema.Array(
-    Schema.Struct({
-      id: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      type: Schema.optional(Schema.String),
-      systemData: Schema.optional(
-        Schema.Struct({
-          createdBy: Schema.optional(Schema.String),
-          createdByType: Schema.optional(
-            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-          ),
-          createdAt: Schema.optional(Schema.String),
-          lastModifiedBy: Schema.optional(Schema.String),
-          lastModifiedByType: Schema.optional(
-            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-          ),
-          lastModifiedAt: Schema.optional(Schema.String),
-        }),
-      ),
-    }),
-  ),
+  value: Schema.Array(Schema.suspend(() => DedicatedCapacitySchema)),
   nextLink: Schema.optional(Schema.String),
 });
 export type CapacitiesListOutput = typeof CapacitiesListOutput.Type;
@@ -626,37 +612,7 @@ export type CapacitiesListByResourceGroupInput =
 // Output Schema
 export const CapacitiesListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => DedicatedCapacitySchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type CapacitiesListByResourceGroupOutput =
@@ -692,15 +648,7 @@ export type CapacitiesListSkusInput = typeof CapacitiesListSkusInput.Type;
 export const CapacitiesListSkusOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          name: Schema.String,
-          tier: Schema.optional(
-            Schema.Literals(["PBIE_Azure", "Premium", "AutoPremiumHost"]),
-          ),
-          capacity: Schema.optional(Schema.Number),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => CapacitySkuSchema)),
     ),
   });
 export type CapacitiesListSkusOutput = typeof CapacitiesListSkusOutput.Type;
@@ -736,20 +684,7 @@ export type CapacitiesListSkusForCapacityInput =
 export const CapacitiesListSkusForCapacityOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          resourceType: Schema.optional(Schema.String),
-          sku: Schema.optional(
-            Schema.Struct({
-              name: Schema.String,
-              tier: Schema.optional(
-                Schema.Literals(["PBIE_Azure", "Premium", "AutoPremiumHost"]),
-              ),
-              capacity: Schema.optional(Schema.Number),
-            }),
-          ),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => SkuDetailsForExistingResourceSchema)),
     ),
   });
 export type CapacitiesListSkusForCapacityOutput =
@@ -840,27 +775,10 @@ export const CapacitiesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   dedicatedCapacityName: Schema.String.pipe(T.PathParam()),
-  sku: Schema.optional(
-    Schema.Struct({
-      name: Schema.String,
-      tier: Schema.optional(
-        Schema.Literals(["PBIE_Azure", "Premium", "AutoPremiumHost"]),
-      ),
-      capacity: Schema.optional(Schema.Number),
-    }),
-  ),
+  sku: Schema.optional(Schema.suspend(() => CapacitySkuSchema)),
   tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   properties: Schema.optional(
-    Schema.Struct({
-      administration: Schema.optional(
-        Schema.Struct({
-          members: Schema.optional(Schema.Array(Schema.String)),
-        }),
-      ),
-      mode: Schema.optional(Schema.Literals(["Gen1", "Gen2"])),
-      tenantId: Schema.optional(Schema.String),
-      friendlyName: Schema.optional(Schema.String),
-    }),
+    Schema.suspend(() => DedicatedCapacityMutablePropertiesSchema),
   ),
 }).pipe(
   T.Http({
@@ -875,23 +793,16 @@ export type CapacitiesUpdateInput = typeof CapacitiesUpdateInput.Type;
 // Output Schema
 export const CapacitiesUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
+    properties: Schema.optional(
+      Schema.suspend(() => DedicatedCapacityPropertiesSchema),
+    ),
+    sku: Schema.suspend(() => CapacitySkuSchema),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   },
 );
 export type CapacitiesUpdateOutput = typeof CapacitiesUpdateOutput.Type;
@@ -923,59 +834,7 @@ export type OperationsListInput = typeof OperationsListInput.Type;
 
 // Output Schema
 export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  value: Schema.optional(
-    Schema.Array(
-      Schema.Struct({
-        name: Schema.optional(Schema.String),
-        display: Schema.optional(
-          Schema.Struct({
-            provider: Schema.optional(Schema.String),
-            resource: Schema.optional(Schema.String),
-            operation: Schema.optional(Schema.String),
-            description: Schema.optional(Schema.String),
-          }),
-        ),
-        origin: Schema.optional(Schema.String),
-        properties: Schema.optional(
-          Schema.Struct({
-            serviceSpecification: Schema.optional(
-              Schema.Struct({
-                metricSpecifications: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      name: Schema.optional(Schema.String),
-                      displayName: Schema.optional(Schema.String),
-                      displayDescription: Schema.optional(Schema.String),
-                      unit: Schema.optional(Schema.String),
-                      aggregationType: Schema.optional(Schema.String),
-                      metricFilterPattern: Schema.optional(Schema.String),
-                      dimensions: Schema.optional(
-                        Schema.Array(
-                          Schema.Struct({
-                            name: Schema.optional(Schema.String),
-                            displayName: Schema.optional(Schema.String),
-                          }),
-                        ),
-                      ),
-                    }),
-                  ),
-                ),
-                logSpecifications: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      name: Schema.optional(Schema.String),
-                      displayName: Schema.optional(Schema.String),
-                      blobDuration: Schema.optional(Schema.String),
-                    }),
-                  ),
-                ),
-              }),
-            ),
-          }),
-        ),
-      }),
-    ),
-  ),
+  value: Schema.optional(Schema.Array(Schema.suspend(() => OperationSchema))),
   nextLink: Schema.optional(Schema.String),
 });
 export type OperationsListOutput = typeof OperationsListOutput.Type;

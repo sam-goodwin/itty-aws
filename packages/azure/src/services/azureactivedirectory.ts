@@ -8,39 +8,76 @@ import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
+// Shared schemas
+const privateLinkPolicySchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
+const PrivateLinkResourceSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
+const PrivateLinkResourcePropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    groupId: Schema.optional(Schema.String),
+    requiredMembers: Schema.optional(Schema.Array(Schema.String)),
+  });
+const PrivateEndpointConnectionSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
+const PrivateEndpointConnectionPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    privateEndpoint: Schema.optional(
+      Schema.suspend(() => PrivateEndpointSchema),
+    ),
+    privateLinkServiceConnectionState: Schema.optional(
+      Schema.suspend(() => PrivateLinkServiceConnectionStateSchema),
+    ),
+    provisioningState: Schema.optional(
+      Schema.suspend(() => PrivateEndpointConnectionProvisioningStateSchema),
+    ),
+    privateLinkConnectionTags: Schema.optional(
+      Schema.suspend(() => TagsResourceSchema),
+    ),
+  });
+const PrivateEndpointSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+});
+const PrivateLinkServiceConnectionStateSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    status: Schema.optional(
+      Schema.suspend(() => PrivateEndpointServiceConnectionStatusSchema),
+    ),
+    description: Schema.optional(Schema.String),
+    actionsRequired: Schema.optional(Schema.String),
+  });
+const PrivateEndpointServiceConnectionStatusSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+    "Approved",
+    "Pending",
+    "Rejected",
+    "Disconnected",
+  ]);
+const PrivateEndpointConnectionProvisioningStateSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+    "Succeeded",
+    "Provisioning",
+    "Failed",
+  ]);
+const TagsResourceSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+});
+
 // Input Schema
 export const PrivateEndpointConnectionsCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     properties: Schema.optional(
-      Schema.Struct({
-        privateEndpoint: Schema.optional(
-          Schema.Struct({
-            id: Schema.optional(Schema.String),
-          }),
-        ),
-        privateLinkServiceConnectionState: Schema.optional(
-          Schema.Struct({
-            status: Schema.optional(
-              Schema.Literals([
-                "Approved",
-                "Pending",
-                "Rejected",
-                "Disconnected",
-              ]),
-            ),
-            description: Schema.optional(Schema.String),
-            actionsRequired: Schema.optional(Schema.String),
-          }),
-        ),
-        provisioningState: Schema.optional(
-          Schema.Literals(["Succeeded", "Provisioning", "Failed"]),
-        ),
-        privateLinkConnectionTags: Schema.optional(
-          Schema.Struct({
-            tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-          }),
-        ),
-      }),
+      Schema.suspend(() => PrivateEndpointConnectionPropertiesSchema),
     ),
   }).pipe(
     T.Http({
@@ -56,6 +93,9 @@ export type PrivateEndpointConnectionsCreateInput =
 // Output Schema
 export const PrivateEndpointConnectionsCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => PrivateEndpointConnectionPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -115,6 +155,9 @@ export type PrivateEndpointConnectionsGetInput =
 // Output Schema
 export const PrivateEndpointConnectionsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => PrivateEndpointConnectionPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -147,13 +190,7 @@ export type PrivateEndpointConnectionsListByPolicyNameInput =
 export const PrivateEndpointConnectionsListByPolicyNameOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => PrivateEndpointConnectionSchema)),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -196,8 +233,15 @@ export type PrivateLinkForAzureAdCreateInput =
 // Output Schema
 export const PrivateLinkForAzureAdCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
+    ownerTenantId: Schema.optional(Schema.String),
+    allTenants: Schema.optional(Schema.Boolean),
+    tenants: Schema.optional(Schema.Array(Schema.String)),
+    resourceName: Schema.optional(Schema.String),
+    subscriptionId: Schema.optional(Schema.String),
+    resourceGroup: Schema.optional(Schema.String),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    id: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
   });
 export type PrivateLinkForAzureAdCreateOutput =
@@ -256,8 +300,15 @@ export type PrivateLinkForAzureAdGetInput =
 // Output Schema
 export const PrivateLinkForAzureAdGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
+    ownerTenantId: Schema.optional(Schema.String),
+    allTenants: Schema.optional(Schema.Boolean),
+    tenants: Schema.optional(Schema.Array(Schema.String)),
+    resourceName: Schema.optional(Schema.String),
+    subscriptionId: Schema.optional(Schema.String),
+    resourceGroup: Schema.optional(Schema.String),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    id: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
   });
 export type PrivateLinkForAzureAdGetOutput =
@@ -289,13 +340,7 @@ export type PrivateLinkForAzureAdListInput =
 export const PrivateLinkForAzureAdListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => privateLinkPolicySchema)),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -328,13 +373,7 @@ export type PrivateLinkForAzureAdListBySubscriptionInput =
 export const PrivateLinkForAzureAdListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => privateLinkPolicySchema)),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -367,8 +406,15 @@ export type PrivateLinkForAzureAdUpdateInput =
 // Output Schema
 export const PrivateLinkForAzureAdUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
+    ownerTenantId: Schema.optional(Schema.String),
+    allTenants: Schema.optional(Schema.Boolean),
+    tenants: Schema.optional(Schema.Array(Schema.String)),
+    resourceName: Schema.optional(Schema.String),
+    subscriptionId: Schema.optional(Schema.String),
+    resourceGroup: Schema.optional(Schema.String),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    id: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
   });
 export type PrivateLinkForAzureAdUpdateOutput =
@@ -399,6 +445,9 @@ export type PrivateLinkResourcesGetInput =
 // Output Schema
 export const PrivateLinkResourcesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => PrivateLinkResourcePropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -432,13 +481,7 @@ export type PrivateLinkResourcesListByPrivateLinkPolicyInput =
 export const PrivateLinkResourcesListByPrivateLinkPolicyOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => PrivateLinkResourceSchema)),
     ),
     nextLink: Schema.optional(Schema.String),
   });

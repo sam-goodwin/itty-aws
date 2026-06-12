@@ -8,6 +8,167 @@ import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
+// Shared schemas
+const OperationSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  isDataAction: Schema.optional(Schema.Boolean),
+  display: Schema.optional(
+    Schema.Struct({
+      provider: Schema.optional(Schema.String),
+      resource: Schema.optional(Schema.String),
+      operation: Schema.optional(Schema.String),
+      description: Schema.optional(Schema.String),
+    }),
+  ),
+  origin: Schema.optional(Schema.Literals(["user", "system", "user,system"])),
+  actionType: Schema.optional(Schema.Literals(["Internal"])),
+});
+const TrafficControllerSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+});
+const systemDataSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  createdBy: Schema.optional(Schema.String),
+  createdByType: Schema.optional(
+    Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+  ),
+  createdAt: Schema.optional(Schema.String),
+  lastModifiedBy: Schema.optional(Schema.String),
+  lastModifiedByType: Schema.optional(
+    Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+  ),
+  lastModifiedAt: Schema.optional(Schema.String),
+});
+const TrafficControllerPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    configurationEndpoints: Schema.optional(Schema.Array(Schema.String)),
+    frontends: Schema.optional(
+      Schema.Array(Schema.suspend(() => ResourceIdSchema)),
+    ),
+    associations: Schema.optional(
+      Schema.Array(Schema.suspend(() => ResourceIdSchema)),
+    ),
+    securityPolicies: Schema.optional(
+      Schema.Array(Schema.suspend(() => ResourceIdSchema)),
+    ),
+    securityPolicyConfigurations: Schema.optional(
+      Schema.suspend(() => SecurityPolicyConfigurationsSchema),
+    ),
+    provisioningState: Schema.optional(
+      Schema.suspend(() => ProvisioningStateSchema),
+    ),
+  });
+const ResourceIdSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.String,
+});
+const SecurityPolicyConfigurationsSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    wafSecurityPolicy: Schema.optional(
+      Schema.suspend(() => WafSecurityPolicySchema),
+    ),
+  });
+const WafSecurityPolicySchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.String,
+});
+const ProvisioningStateSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Provisioning",
+  "Updating",
+  "Deleting",
+  "Accepted",
+  "Succeeded",
+  "Failed",
+  "Canceled",
+]);
+const TrafficControllerUpdatePropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    securityPolicyConfigurations: Schema.optional(
+      Schema.suspend(() => SecurityPolicyConfigurationsUpdateSchema),
+    ),
+  });
+const SecurityPolicyConfigurationsUpdateSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    wafSecurityPolicy: Schema.optional(
+      Schema.suspend(() => WafSecurityPolicyUpdateSchema),
+    ),
+  });
+const WafSecurityPolicyUpdateSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    id: Schema.optional(Schema.String),
+  },
+);
+const AssociationSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+});
+const AssociationPropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  associationType: Schema.suspend(() => AssociationTypeSchema),
+  subnet: Schema.optional(Schema.suspend(() => AssociationSubnetSchema)),
+  provisioningState: Schema.optional(
+    Schema.suspend(() => ProvisioningStateSchema),
+  ),
+});
+const AssociationTypeSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "subnets",
+]);
+const AssociationSubnetSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.String,
+});
+const AssociationUpdatePropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    associationType: Schema.optional(
+      Schema.suspend(() => AssociationTypeSchema),
+    ),
+    subnet: Schema.optional(
+      Schema.suspend(() => AssociationSubnetUpdateSchema),
+    ),
+  });
+const AssociationSubnetUpdateSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    id: Schema.optional(Schema.String),
+  },
+);
+const FrontendSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+});
+const FrontendPropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  fqdn: Schema.optional(Schema.String),
+  provisioningState: Schema.optional(
+    Schema.suspend(() => ProvisioningStateSchema),
+  ),
+});
+const SecurityPolicySchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+});
+const SecurityPolicyPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    policyType: Schema.optional(Schema.suspend(() => PolicyTypeSchema)),
+    wafPolicy: Schema.optional(Schema.suspend(() => WafPolicySchema)),
+    provisioningState: Schema.optional(
+      Schema.suspend(() => ProvisioningStateSchema),
+    ),
+  });
+const PolicyTypeSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals(["waf"]);
+const WafPolicySchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.String,
+});
+const SecurityPolicyUpdatePropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    wafPolicy: Schema.optional(Schema.suspend(() => WafPolicyUpdateSchema)),
+  });
+const WafPolicyUpdateSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+});
+
 // Input Schema
 export const AssociationsInterfaceCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -16,25 +177,7 @@ export const AssociationsInterfaceCreateOrUpdateInput =
     trafficControllerName: Schema.String.pipe(T.PathParam()),
     associationName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        associationType: Schema.Literals(["subnets"]),
-        subnet: Schema.optional(
-          Schema.Struct({
-            id: Schema.String,
-          }),
-        ),
-        provisioningState: Schema.optional(
-          Schema.Literals([
-            "Provisioning",
-            "Updating",
-            "Deleting",
-            "Accepted",
-            "Succeeded",
-            "Failed",
-            "Canceled",
-          ]),
-        ),
-      }),
+      Schema.suspend(() => AssociationPropertiesSchema),
     ),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     location: Schema.String,
@@ -52,23 +195,15 @@ export type AssociationsInterfaceCreateOrUpdateInput =
 // Output Schema
 export const AssociationsInterfaceCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => AssociationPropertiesSchema),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type AssociationsInterfaceCreateOrUpdateOutput =
   typeof AssociationsInterfaceCreateOrUpdateOutput.Type;
@@ -148,23 +283,15 @@ export type AssociationsInterfaceGetInput =
 // Output Schema
 export const AssociationsInterfaceGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => AssociationPropertiesSchema),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type AssociationsInterfaceGetOutput =
   typeof AssociationsInterfaceGetOutput.Type;
@@ -204,37 +331,7 @@ export type AssociationsInterfaceListByTrafficControllerInput =
 // Output Schema
 export const AssociationsInterfaceListByTrafficControllerOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => AssociationSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type AssociationsInterfaceListByTrafficControllerOutput =
@@ -263,14 +360,7 @@ export const AssociationsInterfaceUpdateInput =
     associationName: Schema.String.pipe(T.PathParam()),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     properties: Schema.optional(
-      Schema.Struct({
-        associationType: Schema.optional(Schema.Literals(["subnets"])),
-        subnet: Schema.optional(
-          Schema.Struct({
-            id: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
+      Schema.suspend(() => AssociationUpdatePropertiesSchema),
     ),
   }).pipe(
     T.Http({
@@ -285,23 +375,15 @@ export type AssociationsInterfaceUpdateInput =
 // Output Schema
 export const AssociationsInterfaceUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => AssociationPropertiesSchema),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type AssociationsInterfaceUpdateOutput =
   typeof AssociationsInterfaceUpdateOutput.Type;
@@ -329,22 +411,7 @@ export const FrontendsInterfaceCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     trafficControllerName: Schema.String.pipe(T.PathParam()),
     frontendName: Schema.String.pipe(T.PathParam()),
-    properties: Schema.optional(
-      Schema.Struct({
-        fqdn: Schema.optional(Schema.String),
-        provisioningState: Schema.optional(
-          Schema.Literals([
-            "Provisioning",
-            "Updating",
-            "Deleting",
-            "Accepted",
-            "Succeeded",
-            "Failed",
-            "Canceled",
-          ]),
-        ),
-      }),
-    ),
+    properties: Schema.optional(Schema.suspend(() => FrontendPropertiesSchema)),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     location: Schema.String,
   }).pipe(
@@ -361,23 +428,13 @@ export type FrontendsInterfaceCreateOrUpdateInput =
 // Output Schema
 export const FrontendsInterfaceCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(Schema.suspend(() => FrontendPropertiesSchema)),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type FrontendsInterfaceCreateOrUpdateOutput =
   typeof FrontendsInterfaceCreateOrUpdateOutput.Type;
@@ -456,23 +513,13 @@ export type FrontendsInterfaceGetInput = typeof FrontendsInterfaceGetInput.Type;
 // Output Schema
 export const FrontendsInterfaceGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(Schema.suspend(() => FrontendPropertiesSchema)),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type FrontendsInterfaceGetOutput =
   typeof FrontendsInterfaceGetOutput.Type;
@@ -512,37 +559,7 @@ export type FrontendsInterfaceListByTrafficControllerInput =
 // Output Schema
 export const FrontendsInterfaceListByTrafficControllerOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => FrontendSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type FrontendsInterfaceListByTrafficControllerOutput =
@@ -583,23 +600,13 @@ export type FrontendsInterfaceUpdateInput =
 // Output Schema
 export const FrontendsInterfaceUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(Schema.suspend(() => FrontendPropertiesSchema)),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type FrontendsInterfaceUpdateOutput =
   typeof FrontendsInterfaceUpdateOutput.Type;
@@ -634,26 +641,7 @@ export type OperationsListInput = typeof OperationsListInput.Type;
 
 // Output Schema
 export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  value: Schema.optional(
-    Schema.Array(
-      Schema.Struct({
-        name: Schema.optional(Schema.String),
-        isDataAction: Schema.optional(Schema.Boolean),
-        display: Schema.optional(
-          Schema.Struct({
-            provider: Schema.optional(Schema.String),
-            resource: Schema.optional(Schema.String),
-            operation: Schema.optional(Schema.String),
-            description: Schema.optional(Schema.String),
-          }),
-        ),
-        origin: Schema.optional(
-          Schema.Literals(["user", "system", "user,system"]),
-        ),
-        actionType: Schema.optional(Schema.Literals(["Internal"])),
-      }),
-    ),
-  ),
+  value: Schema.optional(Schema.Array(Schema.suspend(() => OperationSchema))),
   nextLink: Schema.optional(Schema.String),
 });
 export type OperationsListOutput = typeof OperationsListOutput.Type;
@@ -676,25 +664,7 @@ export const SecurityPoliciesInterfaceCreateOrUpdateInput =
     trafficControllerName: Schema.String.pipe(T.PathParam()),
     securityPolicyName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        policyType: Schema.optional(Schema.Literals(["waf"])),
-        wafPolicy: Schema.optional(
-          Schema.Struct({
-            id: Schema.String,
-          }),
-        ),
-        provisioningState: Schema.optional(
-          Schema.Literals([
-            "Provisioning",
-            "Updating",
-            "Deleting",
-            "Accepted",
-            "Succeeded",
-            "Failed",
-            "Canceled",
-          ]),
-        ),
-      }),
+      Schema.suspend(() => SecurityPolicyPropertiesSchema),
     ),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     location: Schema.String,
@@ -712,23 +682,15 @@ export type SecurityPoliciesInterfaceCreateOrUpdateInput =
 // Output Schema
 export const SecurityPoliciesInterfaceCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => SecurityPolicyPropertiesSchema),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type SecurityPoliciesInterfaceCreateOrUpdateOutput =
   typeof SecurityPoliciesInterfaceCreateOrUpdateOutput.Type;
@@ -807,23 +769,15 @@ export type SecurityPoliciesInterfaceGetInput =
 // Output Schema
 export const SecurityPoliciesInterfaceGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => SecurityPolicyPropertiesSchema),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type SecurityPoliciesInterfaceGetOutput =
   typeof SecurityPoliciesInterfaceGetOutput.Type;
@@ -862,37 +816,7 @@ export type SecurityPoliciesInterfaceListByTrafficControllerInput =
 // Output Schema
 export const SecurityPoliciesInterfaceListByTrafficControllerOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => SecurityPolicySchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type SecurityPoliciesInterfaceListByTrafficControllerOutput =
@@ -921,13 +845,7 @@ export const SecurityPoliciesInterfaceUpdateInput =
     securityPolicyName: Schema.String.pipe(T.PathParam()),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     properties: Schema.optional(
-      Schema.Struct({
-        wafPolicy: Schema.optional(
-          Schema.Struct({
-            id: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
+      Schema.suspend(() => SecurityPolicyUpdatePropertiesSchema),
     ),
   }).pipe(
     T.Http({
@@ -942,23 +860,15 @@ export type SecurityPoliciesInterfaceUpdateInput =
 // Output Schema
 export const SecurityPoliciesInterfaceUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => SecurityPolicyPropertiesSchema),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type SecurityPoliciesInterfaceUpdateOutput =
   typeof SecurityPoliciesInterfaceUpdateOutput.Type;
@@ -985,50 +895,7 @@ export const TrafficControllerInterfaceCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     trafficControllerName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        configurationEndpoints: Schema.optional(Schema.Array(Schema.String)),
-        frontends: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              id: Schema.String,
-            }),
-          ),
-        ),
-        associations: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              id: Schema.String,
-            }),
-          ),
-        ),
-        securityPolicies: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              id: Schema.String,
-            }),
-          ),
-        ),
-        securityPolicyConfigurations: Schema.optional(
-          Schema.Struct({
-            wafSecurityPolicy: Schema.optional(
-              Schema.Struct({
-                id: Schema.String,
-              }),
-            ),
-          }),
-        ),
-        provisioningState: Schema.optional(
-          Schema.Literals([
-            "Provisioning",
-            "Updating",
-            "Deleting",
-            "Accepted",
-            "Succeeded",
-            "Failed",
-            "Canceled",
-          ]),
-        ),
-      }),
+      Schema.suspend(() => TrafficControllerPropertiesSchema),
     ),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     location: Schema.String,
@@ -1046,23 +913,15 @@ export type TrafficControllerInterfaceCreateOrUpdateInput =
 // Output Schema
 export const TrafficControllerInterfaceCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => TrafficControllerPropertiesSchema),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type TrafficControllerInterfaceCreateOrUpdateOutput =
   typeof TrafficControllerInterfaceCreateOrUpdateOutput.Type;
@@ -1137,23 +996,15 @@ export type TrafficControllerInterfaceGetInput =
 // Output Schema
 export const TrafficControllerInterfaceGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => TrafficControllerPropertiesSchema),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type TrafficControllerInterfaceGetOutput =
   typeof TrafficControllerInterfaceGetOutput.Type;
@@ -1190,37 +1041,7 @@ export type TrafficControllerInterfaceListByResourceGroupInput =
 // Output Schema
 export const TrafficControllerInterfaceListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => TrafficControllerSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type TrafficControllerInterfaceListByResourceGroupOutput =
@@ -1256,37 +1077,7 @@ export type TrafficControllerInterfaceListBySubscriptionInput =
 // Output Schema
 export const TrafficControllerInterfaceListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => TrafficControllerSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type TrafficControllerInterfaceListBySubscriptionOutput =
@@ -1312,17 +1103,7 @@ export const TrafficControllerInterfaceUpdateInput =
     trafficControllerName: Schema.String.pipe(T.PathParam()),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     properties: Schema.optional(
-      Schema.Struct({
-        securityPolicyConfigurations: Schema.optional(
-          Schema.Struct({
-            wafSecurityPolicy: Schema.optional(
-              Schema.Struct({
-                id: Schema.optional(Schema.String),
-              }),
-            ),
-          }),
-        ),
-      }),
+      Schema.suspend(() => TrafficControllerUpdatePropertiesSchema),
     ),
   }).pipe(
     T.Http({
@@ -1337,23 +1118,15 @@ export type TrafficControllerInterfaceUpdateInput =
 // Output Schema
 export const TrafficControllerInterfaceUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => TrafficControllerPropertiesSchema),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type TrafficControllerInterfaceUpdateOutput =
   typeof TrafficControllerInterfaceUpdateOutput.Type;

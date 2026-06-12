@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { MemberRoleSchema } from "./_schemas.ts";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
@@ -21,7 +22,7 @@ export const GetOrganizationMemberOutput =
     id: Schema.String,
     user_id: Schema.String,
     org_id: Schema.String,
-    role: Schema.Literals(["admin", "member"]),
+    role: Schema.suspend(() => MemberRoleSchema),
     joined_at: Schema.optional(Schema.String),
   });
 export type GetOrganizationMemberOutput =

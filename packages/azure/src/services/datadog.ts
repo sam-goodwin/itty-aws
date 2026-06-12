@@ -7,7 +7,310 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
-import { SensitiveOutputString, SensitiveString } from "../sensitive.ts";
+import { SensitiveOutputString } from "../sensitive.ts";
+
+// Shared schemas
+const OperationResultSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  display: Schema.optional(Schema.suspend(() => OperationDisplaySchema)),
+  isDataAction: Schema.optional(Schema.Boolean),
+});
+const OperationDisplaySchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  provider: Schema.optional(Schema.String),
+  resource: Schema.optional(Schema.String),
+  operation: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+});
+const DatadogAgreementResourceSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    properties: Schema.optional(
+      Schema.suspend(() => DatadogAgreementPropertiesSchema),
+    ),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+  });
+const DatadogAgreementPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    publisher: Schema.optional(Schema.String),
+    product: Schema.optional(Schema.String),
+    plan: Schema.optional(Schema.String),
+    licenseTextLink: Schema.optional(Schema.String),
+    privacyPolicyLink: Schema.optional(Schema.String),
+    retrieveDatetime: Schema.optional(Schema.String),
+    signature: Schema.optional(Schema.String),
+    accepted: Schema.optional(Schema.Boolean),
+  });
+const DatadogMonitorResourceSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+});
+const systemDataSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  createdBy: Schema.optional(Schema.String),
+  createdByType: Schema.optional(
+    Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+  ),
+  createdAt: Schema.optional(Schema.String),
+  lastModifiedBy: Schema.optional(Schema.String),
+  lastModifiedByType: Schema.optional(
+    Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+  ),
+  lastModifiedAt: Schema.optional(Schema.String),
+});
+const CreateResourceSupportedResponseSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => CreateResourceSupportedPropertiesSchema),
+    ),
+  });
+const CreateResourceSupportedPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    creationSupported: Schema.optional(Schema.Boolean),
+  });
+const MonitorPropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  provisioningState: Schema.optional(
+    Schema.suspend(() => ProvisioningStateSchema),
+  ),
+  monitoringStatus: Schema.optional(Schema.Literals(["Enabled", "Disabled"])),
+  marketplaceSubscriptionStatus: Schema.optional(
+    Schema.suspend(() => MarketplaceSubscriptionStatusSchema),
+  ),
+  datadogOrganizationProperties: Schema.optional(
+    Schema.suspend(() => DatadogOrganizationPropertiesSchema),
+  ),
+  userInfo: Schema.optional(Schema.suspend(() => UserInfoSchema)),
+  liftrResourceCategory: Schema.optional(
+    Schema.suspend(() => LiftrResourceCategoriesSchema),
+  ),
+  liftrResourcePreference: Schema.optional(Schema.Number),
+});
+const ProvisioningStateSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Accepted",
+  "Creating",
+  "Updating",
+  "Deleting",
+  "Succeeded",
+  "Failed",
+  "Canceled",
+  "Deleted",
+  "NotSpecified",
+]);
+const MarketplaceSubscriptionStatusSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+    "Provisioning",
+    "Active",
+    "Suspended",
+    "Unsubscribed",
+  ]);
+const DatadogOrganizationPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    id: Schema.optional(Schema.String),
+    linkingAuthCode: Schema.optional(Schema.String),
+    linkingClientId: Schema.optional(Schema.String),
+    redirectUri: Schema.optional(Schema.String),
+    apiKey: Schema.optional(SensitiveOutputString),
+    applicationKey: Schema.optional(Schema.String),
+    enterpriseAppId: Schema.optional(Schema.String),
+    cspm: Schema.optional(Schema.Boolean),
+    resourceCollection: Schema.optional(Schema.Boolean),
+  });
+const UserInfoSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  emailAddress: Schema.optional(Schema.String),
+  phoneNumber: Schema.optional(Schema.String),
+});
+const LiftrResourceCategoriesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Literals(["Unknown", "MonitorLogs"]);
+const ResourceSkuSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.String,
+});
+const IdentityPropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  principalId: Schema.optional(Schema.String),
+  tenantId: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.suspend(() => ManagedIdentityTypesSchema)),
+});
+const ManagedIdentityTypesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "SystemAssigned",
+  "UserAssigned",
+]);
+const MonitorUpdatePropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    monitoringStatus: Schema.optional(Schema.Literals(["Enabled", "Disabled"])),
+    cspm: Schema.optional(Schema.Boolean),
+    resourceCollection: Schema.optional(Schema.Boolean),
+  },
+);
+const MarketplaceSaaSInfoSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  marketplaceSubscriptionId: Schema.optional(Schema.String),
+  marketplaceName: Schema.optional(Schema.String),
+  marketplaceStatus: Schema.optional(Schema.String),
+  billedAzureSubscriptionId: Schema.optional(Schema.String),
+  subscribed: Schema.optional(Schema.Boolean),
+});
+const PartnerBillingEntitySchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  partnerEntityUri: Schema.optional(Schema.String),
+});
+const DatadogApiKeySchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  createdBy: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  key: Schema.String,
+  created: Schema.optional(Schema.String),
+});
+const DatadogHostSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  aliases: Schema.optional(Schema.Array(Schema.String)),
+  apps: Schema.optional(Schema.Array(Schema.String)),
+  meta: Schema.optional(Schema.suspend(() => DatadogHostMetadataSchema)),
+});
+const DatadogHostMetadataSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  agentVersion: Schema.optional(Schema.String),
+  installMethod: Schema.optional(
+    Schema.suspend(() => DatadogInstallMethodSchema),
+  ),
+  logsAgent: Schema.optional(Schema.suspend(() => DatadogLogsAgentSchema)),
+});
+const DatadogInstallMethodSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  tool: Schema.optional(Schema.String),
+  toolVersion: Schema.optional(Schema.String),
+  installerVersion: Schema.optional(Schema.String),
+});
+const DatadogLogsAgentSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  transport: Schema.optional(Schema.String),
+});
+const LinkedResourceSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  location: Schema.optional(Schema.String),
+});
+const MonitoredResourceSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  sendingMetrics: Schema.optional(Schema.Boolean),
+  reasonForMetricsStatus: Schema.optional(Schema.String),
+  sendingLogs: Schema.optional(Schema.Boolean),
+  reasonForLogsStatus: Schema.optional(Schema.String),
+});
+const MonitoredSubscriptionPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+  });
+const SubscriptionListSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  operation: Schema.optional(Schema.suspend(() => OperationSchema)),
+  monitoredSubscriptionList: Schema.optional(
+    Schema.Array(Schema.suspend(() => MonitoredSubscriptionSchema)),
+  ),
+});
+const OperationSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "AddBegin",
+  "AddComplete",
+  "DeleteBegin",
+  "DeleteComplete",
+  "Active",
+]);
+const MonitoredSubscriptionSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.optional(Schema.String),
+  status: Schema.optional(Schema.suspend(() => StatusSchema)),
+  error: Schema.optional(Schema.String),
+  tagRules: Schema.optional(
+    Schema.suspend(() => MonitoringTagRulesPropertiesSchema),
+  ),
+});
+const StatusSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "InProgress",
+  "Active",
+  "Failed",
+  "Deleting",
+]);
+const MonitoringTagRulesPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    provisioningState: Schema.optional(
+      Schema.suspend(() => ProvisioningStateSchema),
+    ),
+    logRules: Schema.optional(Schema.suspend(() => LogRulesSchema)),
+    metricRules: Schema.optional(Schema.suspend(() => MetricRulesSchema)),
+    agentRules: Schema.optional(Schema.suspend(() => AgentRulesSchema)),
+    automuting: Schema.optional(Schema.Boolean),
+    customMetrics: Schema.optional(Schema.Boolean),
+  });
+const LogRulesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  sendAadLogs: Schema.optional(Schema.Boolean),
+  sendSubscriptionLogs: Schema.optional(Schema.Boolean),
+  sendResourceLogs: Schema.optional(Schema.Boolean),
+  filteringTags: Schema.optional(
+    Schema.Array(Schema.suspend(() => FilteringTagSchema)),
+  ),
+});
+const FilteringTagSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  value: Schema.optional(Schema.String),
+  action: Schema.optional(Schema.suspend(() => TagActionSchema)),
+});
+const TagActionSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Include",
+  "Exclude",
+]);
+const MetricRulesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  filteringTags: Schema.optional(
+    Schema.Array(Schema.suspend(() => FilteringTagSchema)),
+  ),
+});
+const AgentRulesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  enableAgentMonitoring: Schema.optional(Schema.Boolean),
+  filteringTags: Schema.optional(
+    Schema.Array(Schema.suspend(() => FilteringTagSchema)),
+  ),
+});
+const DatadogSingleSignOnResourceSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+  });
+const DatadogSingleSignOnPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    provisioningState: Schema.optional(
+      Schema.suspend(() => ProvisioningStateSchema),
+    ),
+    singleSignOnState: Schema.optional(
+      Schema.suspend(() => SingleSignOnStatesSchema),
+    ),
+    enterpriseAppId: Schema.optional(Schema.String),
+    singleSignOnUrl: Schema.optional(Schema.String),
+  });
+const SingleSignOnStatesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Initial",
+  "Enable",
+  "Disable",
+  "Existing",
+]);
+const MonitoringTagRulesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+});
 
 // Input Schema
 export const BillingInfoGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -26,20 +329,10 @@ export type BillingInfoGetInput = typeof BillingInfoGetInput.Type;
 // Output Schema
 export const BillingInfoGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   marketplaceSaasInfo: Schema.optional(
-    Schema.Struct({
-      marketplaceSubscriptionId: Schema.optional(Schema.String),
-      marketplaceName: Schema.optional(Schema.String),
-      marketplaceStatus: Schema.optional(Schema.String),
-      billedAzureSubscriptionId: Schema.optional(Schema.String),
-      subscribed: Schema.optional(Schema.Boolean),
-    }),
+    Schema.suspend(() => MarketplaceSaaSInfoSchema),
   ),
   partnerBillingEntity: Schema.optional(
-    Schema.Struct({
-      id: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      partnerEntityUri: Schema.optional(Schema.String),
-    }),
+    Schema.suspend(() => PartnerBillingEntitySchema),
   ),
 });
 export type BillingInfoGetOutput = typeof BillingInfoGetOutput.Type;
@@ -75,10 +368,7 @@ export type CreationSupportedGetInput = typeof CreationSupportedGetInput.Type;
 export const CreationSupportedGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     properties: Schema.optional(
-      Schema.Struct({
-        name: Schema.optional(Schema.String),
-        creationSupported: Schema.optional(Schema.Boolean),
-      }),
+      Schema.suspend(() => CreateResourceSupportedPropertiesSchema),
     ),
   });
 export type CreationSupportedGetOutput = typeof CreationSupportedGetOutput.Type;
@@ -115,14 +405,7 @@ export type CreationSupportedListInput = typeof CreationSupportedListInput.Type;
 export const CreationSupportedListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
-      Schema.Struct({
-        properties: Schema.optional(
-          Schema.Struct({
-            name: Schema.optional(Schema.String),
-            creationSupported: Schema.optional(Schema.Boolean),
-          }),
-        ),
-      }),
+      Schema.suspend(() => CreateResourceSupportedResponseSchema),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -151,16 +434,7 @@ export const MarketplaceAgreementsCreateOrUpdateInput =
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
     properties: Schema.optional(
-      Schema.Struct({
-        publisher: Schema.optional(Schema.String),
-        product: Schema.optional(Schema.String),
-        plan: Schema.optional(Schema.String),
-        licenseTextLink: Schema.optional(Schema.String),
-        privacyPolicyLink: Schema.optional(Schema.String),
-        retrieveDatetime: Schema.optional(Schema.String),
-        signature: Schema.optional(Schema.String),
-        accepted: Schema.optional(Schema.Boolean),
-      }),
+      Schema.suspend(() => DatadogAgreementPropertiesSchema),
     ),
     systemData: Schema.optional(
       Schema.Struct({
@@ -193,16 +467,7 @@ export const MarketplaceAgreementsCreateOrUpdateOutput =
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
     properties: Schema.optional(
-      Schema.Struct({
-        publisher: Schema.optional(Schema.String),
-        product: Schema.optional(Schema.String),
-        plan: Schema.optional(Schema.String),
-        licenseTextLink: Schema.optional(Schema.String),
-        privacyPolicyLink: Schema.optional(Schema.String),
-        retrieveDatetime: Schema.optional(Schema.String),
-        signature: Schema.optional(Schema.String),
-        accepted: Schema.optional(Schema.Boolean),
-      }),
+      Schema.suspend(() => DatadogAgreementPropertiesSchema),
     ),
     systemData: Schema.optional(
       Schema.Struct({
@@ -251,49 +516,7 @@ export type MarketplaceAgreementsListInput =
 // Output Schema
 export const MarketplaceAgreementsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        properties: Schema.optional(
-          Schema.Struct({
-            publisher: Schema.optional(Schema.String),
-            product: Schema.optional(Schema.String),
-            plan: Schema.optional(Schema.String),
-            licenseTextLink: Schema.optional(Schema.String),
-            privacyPolicyLink: Schema.optional(Schema.String),
-            retrieveDatetime: Schema.optional(Schema.String),
-            signature: Schema.optional(Schema.String),
-            accepted: Schema.optional(Schema.Boolean),
-          }),
-        ),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => DatadogAgreementResourceSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type MarketplaceAgreementsListOutput =
@@ -319,98 +542,7 @@ export const MonitoredSubscriptionsCreateorUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     monitorName: Schema.String.pipe(T.PathParam()),
     configurationName: Schema.String.pipe(T.PathParam()),
-    properties: Schema.optional(
-      Schema.Struct({
-        operation: Schema.optional(
-          Schema.Literals([
-            "AddBegin",
-            "AddComplete",
-            "DeleteBegin",
-            "DeleteComplete",
-            "Active",
-          ]),
-        ),
-        monitoredSubscriptionList: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              subscriptionId: Schema.optional(Schema.String),
-              status: Schema.optional(
-                Schema.Literals(["InProgress", "Active", "Failed", "Deleting"]),
-              ),
-              error: Schema.optional(Schema.String),
-              tagRules: Schema.optional(
-                Schema.Struct({
-                  provisioningState: Schema.optional(
-                    Schema.Literals([
-                      "Accepted",
-                      "Creating",
-                      "Updating",
-                      "Deleting",
-                      "Succeeded",
-                      "Failed",
-                      "Canceled",
-                      "Deleted",
-                      "NotSpecified",
-                    ]),
-                  ),
-                  logRules: Schema.optional(
-                    Schema.Struct({
-                      sendAadLogs: Schema.optional(Schema.Boolean),
-                      sendSubscriptionLogs: Schema.optional(Schema.Boolean),
-                      sendResourceLogs: Schema.optional(Schema.Boolean),
-                      filteringTags: Schema.optional(
-                        Schema.Array(
-                          Schema.Struct({
-                            name: Schema.optional(Schema.String),
-                            value: Schema.optional(Schema.String),
-                            action: Schema.optional(
-                              Schema.Literals(["Include", "Exclude"]),
-                            ),
-                          }),
-                        ),
-                      ),
-                    }),
-                  ),
-                  metricRules: Schema.optional(
-                    Schema.Struct({
-                      filteringTags: Schema.optional(
-                        Schema.Array(
-                          Schema.Struct({
-                            name: Schema.optional(Schema.String),
-                            value: Schema.optional(Schema.String),
-                            action: Schema.optional(
-                              Schema.Literals(["Include", "Exclude"]),
-                            ),
-                          }),
-                        ),
-                      ),
-                    }),
-                  ),
-                  agentRules: Schema.optional(
-                    Schema.Struct({
-                      enableAgentMonitoring: Schema.optional(Schema.Boolean),
-                      filteringTags: Schema.optional(
-                        Schema.Array(
-                          Schema.Struct({
-                            name: Schema.optional(Schema.String),
-                            value: Schema.optional(Schema.String),
-                            action: Schema.optional(
-                              Schema.Literals(["Include", "Exclude"]),
-                            ),
-                          }),
-                        ),
-                      ),
-                    }),
-                  ),
-                  automuting: Schema.optional(Schema.Boolean),
-                  customMetrics: Schema.optional(Schema.Boolean),
-                }),
-              ),
-            }),
-          ),
-        ),
-      }),
-    ),
+    properties: Schema.optional(Schema.suspend(() => SubscriptionListSchema)),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -425,23 +557,11 @@ export type MonitoredSubscriptionsCreateorUpdateInput =
 // Output Schema
 export const MonitoredSubscriptionsCreateorUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(Schema.suspend(() => SubscriptionListSchema)),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type MonitoredSubscriptionsCreateorUpdateOutput =
   typeof MonitoredSubscriptionsCreateorUpdateOutput.Type;
@@ -520,23 +640,11 @@ export type MonitoredSubscriptionsGetInput =
 // Output Schema
 export const MonitoredSubscriptionsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(Schema.suspend(() => SubscriptionListSchema)),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type MonitoredSubscriptionsGetOutput =
   typeof MonitoredSubscriptionsGetOutput.Type;
@@ -577,35 +685,7 @@ export type MonitoredSubscriptionsListInput =
 export const MonitoredSubscriptionsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
+      Schema.suspend(() => MonitoredSubscriptionPropertiesSchema),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -634,98 +714,7 @@ export const MonitoredSubscriptionsUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     monitorName: Schema.String.pipe(T.PathParam()),
     configurationName: Schema.String.pipe(T.PathParam()),
-    properties: Schema.optional(
-      Schema.Struct({
-        operation: Schema.optional(
-          Schema.Literals([
-            "AddBegin",
-            "AddComplete",
-            "DeleteBegin",
-            "DeleteComplete",
-            "Active",
-          ]),
-        ),
-        monitoredSubscriptionList: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              subscriptionId: Schema.optional(Schema.String),
-              status: Schema.optional(
-                Schema.Literals(["InProgress", "Active", "Failed", "Deleting"]),
-              ),
-              error: Schema.optional(Schema.String),
-              tagRules: Schema.optional(
-                Schema.Struct({
-                  provisioningState: Schema.optional(
-                    Schema.Literals([
-                      "Accepted",
-                      "Creating",
-                      "Updating",
-                      "Deleting",
-                      "Succeeded",
-                      "Failed",
-                      "Canceled",
-                      "Deleted",
-                      "NotSpecified",
-                    ]),
-                  ),
-                  logRules: Schema.optional(
-                    Schema.Struct({
-                      sendAadLogs: Schema.optional(Schema.Boolean),
-                      sendSubscriptionLogs: Schema.optional(Schema.Boolean),
-                      sendResourceLogs: Schema.optional(Schema.Boolean),
-                      filteringTags: Schema.optional(
-                        Schema.Array(
-                          Schema.Struct({
-                            name: Schema.optional(Schema.String),
-                            value: Schema.optional(Schema.String),
-                            action: Schema.optional(
-                              Schema.Literals(["Include", "Exclude"]),
-                            ),
-                          }),
-                        ),
-                      ),
-                    }),
-                  ),
-                  metricRules: Schema.optional(
-                    Schema.Struct({
-                      filteringTags: Schema.optional(
-                        Schema.Array(
-                          Schema.Struct({
-                            name: Schema.optional(Schema.String),
-                            value: Schema.optional(Schema.String),
-                            action: Schema.optional(
-                              Schema.Literals(["Include", "Exclude"]),
-                            ),
-                          }),
-                        ),
-                      ),
-                    }),
-                  ),
-                  agentRules: Schema.optional(
-                    Schema.Struct({
-                      enableAgentMonitoring: Schema.optional(Schema.Boolean),
-                      filteringTags: Schema.optional(
-                        Schema.Array(
-                          Schema.Struct({
-                            name: Schema.optional(Schema.String),
-                            value: Schema.optional(Schema.String),
-                            action: Schema.optional(
-                              Schema.Literals(["Include", "Exclude"]),
-                            ),
-                          }),
-                        ),
-                      ),
-                    }),
-                  ),
-                  automuting: Schema.optional(Schema.Boolean),
-                  customMetrics: Schema.optional(Schema.Boolean),
-                }),
-              ),
-            }),
-          ),
-        ),
-      }),
-    ),
+    properties: Schema.optional(Schema.suspend(() => SubscriptionListSchema)),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -740,23 +729,11 @@ export type MonitoredSubscriptionsUpdateInput =
 // Output Schema
 export const MonitoredSubscriptionsUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(Schema.suspend(() => SubscriptionListSchema)),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type MonitoredSubscriptionsUpdateOutput =
   typeof MonitoredSubscriptionsUpdateOutput.Type;
@@ -781,73 +758,9 @@ export const MonitorsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   monitorName: Schema.String.pipe(T.PathParam()),
-  properties: Schema.optional(
-    Schema.Struct({
-      provisioningState: Schema.optional(
-        Schema.Literals([
-          "Accepted",
-          "Creating",
-          "Updating",
-          "Deleting",
-          "Succeeded",
-          "Failed",
-          "Canceled",
-          "Deleted",
-          "NotSpecified",
-        ]),
-      ),
-      monitoringStatus: Schema.optional(
-        Schema.Literals(["Enabled", "Disabled"]),
-      ),
-      marketplaceSubscriptionStatus: Schema.optional(
-        Schema.Literals([
-          "Provisioning",
-          "Active",
-          "Suspended",
-          "Unsubscribed",
-        ]),
-      ),
-      datadogOrganizationProperties: Schema.optional(
-        Schema.Struct({
-          name: Schema.optional(Schema.String),
-          id: Schema.optional(Schema.String),
-          linkingAuthCode: Schema.optional(Schema.String),
-          linkingClientId: Schema.optional(Schema.String),
-          redirectUri: Schema.optional(Schema.String),
-          apiKey: Schema.optional(SensitiveString),
-          applicationKey: Schema.optional(Schema.String),
-          enterpriseAppId: Schema.optional(Schema.String),
-          cspm: Schema.optional(Schema.Boolean),
-          resourceCollection: Schema.optional(Schema.Boolean),
-        }),
-      ),
-      userInfo: Schema.optional(
-        Schema.Struct({
-          name: Schema.optional(Schema.String),
-          emailAddress: Schema.optional(Schema.String),
-          phoneNumber: Schema.optional(Schema.String),
-        }),
-      ),
-      liftrResourceCategory: Schema.optional(
-        Schema.Literals(["Unknown", "MonitorLogs"]),
-      ),
-      liftrResourcePreference: Schema.optional(Schema.Number),
-    }),
-  ),
-  sku: Schema.optional(
-    Schema.Struct({
-      name: Schema.String,
-    }),
-  ),
-  identity: Schema.optional(
-    Schema.Struct({
-      principalId: Schema.optional(Schema.String),
-      tenantId: Schema.optional(Schema.String),
-      type: Schema.optional(
-        Schema.Literals(["SystemAssigned", "UserAssigned"]),
-      ),
-    }),
-  ),
+  properties: Schema.optional(Schema.suspend(() => MonitorPropertiesSchema)),
+  sku: Schema.optional(Schema.suspend(() => ResourceSkuSchema)),
+  identity: Schema.optional(Schema.suspend(() => IdentityPropertiesSchema)),
   tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   location: Schema.String,
 }).pipe(
@@ -862,23 +775,15 @@ export type MonitorsCreateInput = typeof MonitorsCreateInput.Type;
 
 // Output Schema
 export const MonitorsCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.optional(Schema.suspend(() => MonitorPropertiesSchema)),
+  sku: Schema.optional(Schema.suspend(() => ResourceSkuSchema)),
+  identity: Schema.optional(Schema.suspend(() => IdentityPropertiesSchema)),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  location: Schema.String,
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
-  systemData: Schema.optional(
-    Schema.Struct({
-      createdBy: Schema.optional(Schema.String),
-      createdByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      createdAt: Schema.optional(Schema.String),
-      lastModifiedBy: Schema.optional(Schema.String),
-      lastModifiedByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      lastModifiedAt: Schema.optional(Schema.String),
-    }),
-  ),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
 });
 export type MonitorsCreateOutput = typeof MonitorsCreateOutput.Type;
 
@@ -943,23 +848,15 @@ export type MonitorsGetInput = typeof MonitorsGetInput.Type;
 
 // Output Schema
 export const MonitorsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.optional(Schema.suspend(() => MonitorPropertiesSchema)),
+  sku: Schema.optional(Schema.suspend(() => ResourceSkuSchema)),
+  identity: Schema.optional(Schema.suspend(() => IdentityPropertiesSchema)),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  location: Schema.String,
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
-  systemData: Schema.optional(
-    Schema.Struct({
-      createdBy: Schema.optional(Schema.String),
-      createdByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      createdAt: Schema.optional(Schema.String),
-      lastModifiedBy: Schema.optional(Schema.String),
-      lastModifiedByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      lastModifiedAt: Schema.optional(Schema.String),
-    }),
-  ),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
 });
 export type MonitorsGetOutput = typeof MonitorsGetOutput.Type;
 
@@ -1031,27 +928,7 @@ export type MonitorsListInput = typeof MonitorsListInput.Type;
 
 // Output Schema
 export const MonitorsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  value: Schema.Array(
-    Schema.Struct({
-      id: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      type: Schema.optional(Schema.String),
-      systemData: Schema.optional(
-        Schema.Struct({
-          createdBy: Schema.optional(Schema.String),
-          createdByType: Schema.optional(
-            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-          ),
-          createdAt: Schema.optional(Schema.String),
-          lastModifiedBy: Schema.optional(Schema.String),
-          lastModifiedByType: Schema.optional(
-            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-          ),
-          lastModifiedAt: Schema.optional(Schema.String),
-        }),
-      ),
-    }),
-  ),
+  value: Schema.Array(Schema.suspend(() => DatadogMonitorResourceSchema)),
   nextLink: Schema.optional(Schema.String),
 });
 export type MonitorsListOutput = typeof MonitorsListOutput.Type;
@@ -1085,14 +962,7 @@ export type MonitorsListApiKeysInput = typeof MonitorsListApiKeysInput.Type;
 // Output Schema
 export const MonitorsListApiKeysOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        key: Schema.String,
-        created: Schema.optional(Schema.String),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => DatadogApiKeySchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type MonitorsListApiKeysOutput = typeof MonitorsListApiKeysOutput.Type;
@@ -1128,37 +998,7 @@ export type MonitorsListByResourceGroupInput =
 // Output Schema
 export const MonitorsListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => DatadogMonitorResourceSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type MonitorsListByResourceGroupOutput =
@@ -1197,30 +1037,7 @@ export type MonitorsListHostsInput = typeof MonitorsListHostsInput.Type;
 // Output Schema
 export const MonitorsListHostsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        name: Schema.optional(Schema.String),
-        aliases: Schema.optional(Schema.Array(Schema.String)),
-        apps: Schema.optional(Schema.Array(Schema.String)),
-        meta: Schema.optional(
-          Schema.Struct({
-            agentVersion: Schema.optional(Schema.String),
-            installMethod: Schema.optional(
-              Schema.Struct({
-                tool: Schema.optional(Schema.String),
-                toolVersion: Schema.optional(Schema.String),
-                installerVersion: Schema.optional(Schema.String),
-              }),
-            ),
-            logsAgent: Schema.optional(
-              Schema.Struct({
-                transport: Schema.optional(Schema.String),
-              }),
-            ),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => DatadogHostSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type MonitorsListHostsOutput = typeof MonitorsListHostsOutput.Type;
@@ -1257,12 +1074,7 @@ export type MonitorsListLinkedResourcesInput =
 // Output Schema
 export const MonitorsListLinkedResourcesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        location: Schema.optional(Schema.String),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => LinkedResourceSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type MonitorsListLinkedResourcesOutput =
@@ -1302,15 +1114,7 @@ export type MonitorsListMonitoredResourcesInput =
 // Output Schema
 export const MonitorsListMonitoredResourcesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        sendingMetrics: Schema.optional(Schema.Boolean),
-        reasonForMetricsStatus: Schema.optional(Schema.String),
-        sendingLogs: Schema.optional(Schema.Boolean),
-        reasonForLogsStatus: Schema.optional(Schema.String),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => MonitoredResourceSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type MonitorsListMonitoredResourcesOutput =
@@ -1414,20 +1218,10 @@ export const MonitorsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   monitorName: Schema.String.pipe(T.PathParam()),
   properties: Schema.optional(
-    Schema.Struct({
-      monitoringStatus: Schema.optional(
-        Schema.Literals(["Enabled", "Disabled"]),
-      ),
-      cspm: Schema.optional(Schema.Boolean),
-      resourceCollection: Schema.optional(Schema.Boolean),
-    }),
+    Schema.suspend(() => MonitorUpdatePropertiesSchema),
   ),
   tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-  sku: Schema.optional(
-    Schema.Struct({
-      name: Schema.String,
-    }),
-  ),
+  sku: Schema.optional(Schema.suspend(() => ResourceSkuSchema)),
 }).pipe(
   T.Http({
     method: "PATCH",
@@ -1440,23 +1234,15 @@ export type MonitorsUpdateInput = typeof MonitorsUpdateInput.Type;
 
 // Output Schema
 export const MonitorsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.optional(Schema.suspend(() => MonitorPropertiesSchema)),
+  sku: Schema.optional(Schema.suspend(() => ResourceSkuSchema)),
+  identity: Schema.optional(Schema.suspend(() => IdentityPropertiesSchema)),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  location: Schema.String,
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
-  systemData: Schema.optional(
-    Schema.Struct({
-      createdBy: Schema.optional(Schema.String),
-      createdByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      createdAt: Schema.optional(Schema.String),
-      lastModifiedBy: Schema.optional(Schema.String),
-      lastModifiedByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      lastModifiedAt: Schema.optional(Schema.String),
-    }),
-  ),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
 });
 export type MonitorsUpdateOutput = typeof MonitorsUpdateOutput.Type;
 
@@ -1487,20 +1273,7 @@ export type OperationsListInput = typeof OperationsListInput.Type;
 
 // Output Schema
 export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  value: Schema.Array(
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      display: Schema.optional(
-        Schema.Struct({
-          provider: Schema.optional(Schema.String),
-          resource: Schema.optional(Schema.String),
-          operation: Schema.optional(Schema.String),
-          description: Schema.optional(Schema.String),
-        }),
-      ),
-      isDataAction: Schema.optional(Schema.Boolean),
-    }),
-  ),
+  value: Schema.Array(Schema.suspend(() => OperationResultSchema)),
   nextLink: Schema.optional(Schema.String),
 });
 export type OperationsListOutput = typeof OperationsListOutput.Type;
@@ -1521,11 +1294,7 @@ export const OrganizationsResubscribeInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     monitorName: Schema.String.pipe(T.PathParam()),
-    sku: Schema.optional(
-      Schema.Struct({
-        name: Schema.String,
-      }),
-    ),
+    sku: Schema.optional(Schema.suspend(() => ResourceSkuSchema)),
     azureSubscriptionId: Schema.optional(Schema.String),
     resourceGroup: Schema.optional(Schema.String),
   }).pipe(
@@ -1542,23 +1311,15 @@ export type OrganizationsResubscribeInput =
 // Output Schema
 export const OrganizationsResubscribeOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(Schema.suspend(() => MonitorPropertiesSchema)),
+    sku: Schema.optional(Schema.suspend(() => ResourceSkuSchema)),
+    identity: Schema.optional(Schema.suspend(() => IdentityPropertiesSchema)),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type OrganizationsResubscribeOutput =
   typeof OrganizationsResubscribeOutput.Type;
@@ -1586,26 +1347,7 @@ export const SingleSignOnConfigurationsCreateOrUpdateInput =
     monitorName: Schema.String.pipe(T.PathParam()),
     configurationName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        provisioningState: Schema.optional(
-          Schema.Literals([
-            "Accepted",
-            "Creating",
-            "Updating",
-            "Deleting",
-            "Succeeded",
-            "Failed",
-            "Canceled",
-            "Deleted",
-            "NotSpecified",
-          ]),
-        ),
-        singleSignOnState: Schema.optional(
-          Schema.Literals(["Initial", "Enable", "Disable", "Existing"]),
-        ),
-        enterpriseAppId: Schema.optional(Schema.String),
-        singleSignOnUrl: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(() => DatadogSingleSignOnPropertiesSchema),
     ),
   }).pipe(
     T.Http({
@@ -1621,23 +1363,13 @@ export type SingleSignOnConfigurationsCreateOrUpdateInput =
 // Output Schema
 export const SingleSignOnConfigurationsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => DatadogSingleSignOnPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type SingleSignOnConfigurationsCreateOrUpdateOutput =
   typeof SingleSignOnConfigurationsCreateOrUpdateOutput.Type;
@@ -1677,23 +1409,13 @@ export type SingleSignOnConfigurationsGetInput =
 // Output Schema
 export const SingleSignOnConfigurationsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => DatadogSingleSignOnPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type SingleSignOnConfigurationsGetOutput =
   typeof SingleSignOnConfigurationsGetOutput.Type;
@@ -1733,35 +1455,7 @@ export type SingleSignOnConfigurationsListInput =
 export const SingleSignOnConfigurationsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
+      Schema.suspend(() => DatadogSingleSignOnResourceSchema),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -1790,72 +1484,7 @@ export const TagRulesCreateOrUpdateInput =
     monitorName: Schema.String.pipe(T.PathParam()),
     ruleSetName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        provisioningState: Schema.optional(
-          Schema.Literals([
-            "Accepted",
-            "Creating",
-            "Updating",
-            "Deleting",
-            "Succeeded",
-            "Failed",
-            "Canceled",
-            "Deleted",
-            "NotSpecified",
-          ]),
-        ),
-        logRules: Schema.optional(
-          Schema.Struct({
-            sendAadLogs: Schema.optional(Schema.Boolean),
-            sendSubscriptionLogs: Schema.optional(Schema.Boolean),
-            sendResourceLogs: Schema.optional(Schema.Boolean),
-            filteringTags: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  name: Schema.optional(Schema.String),
-                  value: Schema.optional(Schema.String),
-                  action: Schema.optional(
-                    Schema.Literals(["Include", "Exclude"]),
-                  ),
-                }),
-              ),
-            ),
-          }),
-        ),
-        metricRules: Schema.optional(
-          Schema.Struct({
-            filteringTags: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  name: Schema.optional(Schema.String),
-                  value: Schema.optional(Schema.String),
-                  action: Schema.optional(
-                    Schema.Literals(["Include", "Exclude"]),
-                  ),
-                }),
-              ),
-            ),
-          }),
-        ),
-        agentRules: Schema.optional(
-          Schema.Struct({
-            enableAgentMonitoring: Schema.optional(Schema.Boolean),
-            filteringTags: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  name: Schema.optional(Schema.String),
-                  value: Schema.optional(Schema.String),
-                  action: Schema.optional(
-                    Schema.Literals(["Include", "Exclude"]),
-                  ),
-                }),
-              ),
-            ),
-          }),
-        ),
-        automuting: Schema.optional(Schema.Boolean),
-        customMetrics: Schema.optional(Schema.Boolean),
-      }),
+      Schema.suspend(() => MonitoringTagRulesPropertiesSchema),
     ),
   }).pipe(
     T.Http({
@@ -1870,23 +1499,13 @@ export type TagRulesCreateOrUpdateInput =
 // Output Schema
 export const TagRulesCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => MonitoringTagRulesPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type TagRulesCreateOrUpdateOutput =
   typeof TagRulesCreateOrUpdateOutput.Type;
@@ -1924,23 +1543,13 @@ export type TagRulesGetInput = typeof TagRulesGetInput.Type;
 
 // Output Schema
 export const TagRulesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.optional(
+    Schema.suspend(() => MonitoringTagRulesPropertiesSchema),
+  ),
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
-  systemData: Schema.optional(
-    Schema.Struct({
-      createdBy: Schema.optional(Schema.String),
-      createdByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      createdAt: Schema.optional(Schema.String),
-      lastModifiedBy: Schema.optional(Schema.String),
-      lastModifiedByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      lastModifiedAt: Schema.optional(Schema.String),
-    }),
-  ),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
 });
 export type TagRulesGetOutput = typeof TagRulesGetOutput.Type;
 
@@ -1974,27 +1583,7 @@ export type TagRulesListInput = typeof TagRulesListInput.Type;
 
 // Output Schema
 export const TagRulesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  value: Schema.Array(
-    Schema.Struct({
-      id: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      type: Schema.optional(Schema.String),
-      systemData: Schema.optional(
-        Schema.Struct({
-          createdBy: Schema.optional(Schema.String),
-          createdByType: Schema.optional(
-            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-          ),
-          createdAt: Schema.optional(Schema.String),
-          lastModifiedBy: Schema.optional(Schema.String),
-          lastModifiedByType: Schema.optional(
-            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-          ),
-          lastModifiedAt: Schema.optional(Schema.String),
-        }),
-      ),
-    }),
-  ),
+  value: Schema.Array(Schema.suspend(() => MonitoringTagRulesSchema)),
   nextLink: Schema.optional(Schema.String),
 });
 export type TagRulesListOutput = typeof TagRulesListOutput.Type;

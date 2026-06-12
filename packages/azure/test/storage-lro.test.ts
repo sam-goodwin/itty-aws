@@ -44,16 +44,9 @@ describe("StorageAccounts (live LRO smoke test)", () => {
       });
 
       // The poller drove the `202` ack to completion and resolved the
-      // provisioned resource at the original URI (a `PUT` create) — so we get
-      // the real account, not the empty ack body.
-      //
-      // NOTE: `provisioningState` can't be asserted here yet — the generated
-      // `StorageAccountsCreateOutput` is `{ id, name, type, systemData }`
-      // because the response schema's `allOf` (which contributes `properties`,
-      // `sku`, `kind`) isn't flattened. That's a separate output-schema gap
-      // (PR #324 flattened `allOf` for request bodies, not responses).
+      // fully-provisioned resource at the original URI (a `PUT` create).
       expect(created.name).toBe(accountName);
-      expect(created.id).toContain(`/storageAccounts/${accountName}`);
+      expect(created.properties?.provisioningState).toBe("Succeeded");
     }).pipe(
       Effect.ensuring(
         StorageAccountsDelete({

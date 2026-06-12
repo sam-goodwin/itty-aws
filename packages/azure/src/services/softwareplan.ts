@@ -8,6 +8,40 @@ import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
+// Shared schemas
+const HybridUseBenefitModelSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
+const SkuSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+});
+const HybridUseBenefitPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    provisioningState: Schema.optional(
+      Schema.suspend(() => ProvisioningStateSchema),
+    ),
+    createdDate: Schema.optional(Schema.String),
+    lastUpdatedDate: Schema.optional(Schema.String),
+  });
+const ProvisioningStateSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Succeeded",
+  "Cancelled",
+  "Failed",
+]);
+const OperationResponseSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  display: Schema.optional(Schema.suspend(() => OperationDisplaySchema)),
+  origin: Schema.optional(Schema.String),
+});
+const OperationDisplaySchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  provider: Schema.optional(Schema.String),
+  resource: Schema.optional(Schema.String),
+  operation: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+});
+
 // Input Schema
 export const HybridUseBenefitCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
@@ -23,6 +57,11 @@ export type HybridUseBenefitCreateInput =
 // Output Schema
 export const HybridUseBenefitCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    sku: Schema.suspend(() => SkuSchema),
+    etag: Schema.optional(Schema.Number),
+    properties: Schema.optional(
+      Schema.suspend(() => HybridUseBenefitPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -82,6 +121,11 @@ export type HybridUseBenefitGetInput = typeof HybridUseBenefitGetInput.Type;
 // Output Schema
 export const HybridUseBenefitGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    sku: Schema.suspend(() => SkuSchema),
+    etag: Schema.optional(Schema.Number),
+    properties: Schema.optional(
+      Schema.suspend(() => HybridUseBenefitPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -113,13 +157,7 @@ export type HybridUseBenefitListInput = typeof HybridUseBenefitListInput.Type;
 export const HybridUseBenefitListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => HybridUseBenefitModelSchema)),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -153,13 +191,7 @@ export type HybridUseBenefitRevisionListInput =
 export const HybridUseBenefitRevisionListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => HybridUseBenefitModelSchema)),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -190,6 +222,11 @@ export type HybridUseBenefitUpdateInput =
 // Output Schema
 export const HybridUseBenefitUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    sku: Schema.suspend(() => SkuSchema),
+    etag: Schema.optional(Schema.Number),
+    properties: Schema.optional(
+      Schema.suspend(() => HybridUseBenefitPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -222,20 +259,7 @@ export type OperationsListInput = typeof OperationsListInput.Type;
 // Output Schema
 export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.optional(
-    Schema.Array(
-      Schema.Struct({
-        name: Schema.optional(Schema.String),
-        display: Schema.optional(
-          Schema.Struct({
-            provider: Schema.optional(Schema.String),
-            resource: Schema.optional(Schema.String),
-            operation: Schema.optional(Schema.String),
-            description: Schema.optional(Schema.String),
-          }),
-        ),
-        origin: Schema.optional(Schema.String),
-      }),
-    ),
+    Schema.Array(Schema.suspend(() => OperationResponseSchema)),
   ),
   nextLink: Schema.optional(Schema.String),
 });

@@ -8,6 +8,186 @@ import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
+// Shared schemas
+const MaintenanceConfigurationSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+  });
+const MaintenanceConfigurationPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    namespace: Schema.optional(Schema.String),
+    extensionProperties: Schema.optional(
+      Schema.Record(Schema.String, Schema.String),
+    ),
+    maintenanceScope: Schema.optional(
+      Schema.Literals([
+        "Host",
+        "Resource",
+        "OSImage",
+        "Extension",
+        "InGuestPatch",
+        "SQLDB",
+        "SQLManagedInstance",
+      ]),
+    ),
+    maintenanceWindow: Schema.optional(
+      Schema.suspend(() => MaintenanceWindowSchema),
+    ),
+    visibility: Schema.optional(Schema.Literals(["Custom", "Public"])),
+    installPatches: Schema.optional(
+      Schema.suspend(() => InputPatchConfigurationSchema),
+    ),
+  });
+const MaintenanceWindowSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  startDateTime: Schema.optional(Schema.String),
+  expirationDateTime: Schema.optional(Schema.String),
+  duration: Schema.optional(Schema.String),
+  timeZone: Schema.optional(Schema.String),
+  recurEvery: Schema.optional(Schema.String),
+});
+const InputPatchConfigurationSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    rebootSetting: Schema.optional(
+      Schema.Literals(["IfRequired", "Never", "Always"]),
+    ),
+    windowsParameters: Schema.optional(
+      Schema.suspend(() => InputWindowsParametersSchema),
+    ),
+    linuxParameters: Schema.optional(
+      Schema.suspend(() => InputLinuxParametersSchema),
+    ),
+  },
+);
+const InputWindowsParametersSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  kbNumbersToExclude: Schema.optional(Schema.Array(Schema.String)),
+  kbNumbersToInclude: Schema.optional(Schema.Array(Schema.String)),
+  classificationsToInclude: Schema.optional(Schema.Array(Schema.String)),
+  excludeKbsRequiringReboot: Schema.optional(Schema.Boolean),
+});
+const InputLinuxParametersSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  packageNameMasksToExclude: Schema.optional(Schema.Array(Schema.String)),
+  packageNameMasksToInclude: Schema.optional(Schema.Array(Schema.String)),
+  classificationsToInclude: Schema.optional(Schema.Array(Schema.String)),
+});
+const ApplyUpdatePropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  status: Schema.optional(
+    Schema.Literals([
+      "Pending",
+      "InProgress",
+      "Completed",
+      "RetryNow",
+      "RetryLater",
+    ]),
+  ),
+  resourceId: Schema.optional(Schema.String),
+  lastUpdateTime: Schema.optional(Schema.String),
+});
+const ConfigurationAssignmentPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    maintenanceConfigurationId: Schema.optional(Schema.String),
+    resourceId: Schema.optional(Schema.String),
+    filter: Schema.optional(
+      Schema.suspend(() => ConfigurationAssignmentFilterPropertiesSchema),
+    ),
+  });
+const ConfigurationAssignmentFilterPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resourceTypes: Schema.optional(Schema.Array(Schema.String)),
+    resourceGroups: Schema.optional(Schema.Array(Schema.String)),
+    osTypes: Schema.optional(Schema.Array(Schema.String)),
+    locations: Schema.optional(Schema.Array(Schema.String)),
+    tagSettings: Schema.optional(
+      Schema.suspend(() => TagSettingsPropertiesSchema),
+    ),
+  });
+const TagSettingsPropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  tags: Schema.optional(
+    Schema.Record(Schema.String, Schema.Array(Schema.String)),
+  ),
+  filterOperator: Schema.optional(Schema.Literals(["All", "Any"])),
+});
+const ConfigurationAssignmentSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+  },
+);
+const OperationSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  display: Schema.optional(Schema.suspend(() => OperationInfoSchema)),
+  origin: Schema.optional(Schema.String),
+  properties: Schema.optional(Schema.Unknown),
+  isDataAction: Schema.optional(Schema.Boolean),
+});
+const OperationInfoSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  provider: Schema.optional(Schema.String),
+  resource: Schema.optional(Schema.String),
+  operation: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+});
+const UpdateSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  maintenanceScope: Schema.optional(
+    Schema.Literals([
+      "Host",
+      "Resource",
+      "OSImage",
+      "Extension",
+      "InGuestPatch",
+      "SQLDB",
+      "SQLManagedInstance",
+    ]),
+  ),
+  impactType: Schema.optional(
+    Schema.Literals(["None", "Freeze", "Restart", "Redeploy"]),
+  ),
+  status: Schema.optional(
+    Schema.Literals([
+      "Pending",
+      "InProgress",
+      "Completed",
+      "RetryNow",
+      "RetryLater",
+    ]),
+  ),
+  impactDurationInSec: Schema.optional(Schema.Number),
+  notBefore: Schema.optional(Schema.String),
+  properties: Schema.optional(Schema.suspend(() => UpdatePropertiesSchema)),
+});
+const UpdatePropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  resourceId: Schema.optional(Schema.String),
+});
+
 // Input Schema
 export const ApplyUpdatesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -28,6 +208,9 @@ export type ApplyUpdatesCreateOrUpdateInput =
 // Output Schema
 export const ApplyUpdatesCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => ApplyUpdatePropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -88,6 +271,9 @@ export type ApplyUpdatesCreateOrUpdateParentInput =
 // Output Schema
 export const ApplyUpdatesCreateOrUpdateParentOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => ApplyUpdatePropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -145,6 +331,9 @@ export type ApplyUpdatesGetInput = typeof ApplyUpdatesGetInput.Type;
 
 // Output Schema
 export const ApplyUpdatesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.optional(
+    Schema.suspend(() => ApplyUpdatePropertiesSchema),
+  ),
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -203,6 +392,9 @@ export type ApplyUpdatesGetParentInput = typeof ApplyUpdatesGetParentInput.Type;
 // Output Schema
 export const ApplyUpdatesGetParentOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => ApplyUpdatePropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -254,28 +446,7 @@ export const ConfigurationAssignmentsCreateOrUpdateInput =
     configurationAssignmentName: Schema.String.pipe(T.PathParam()),
     location: Schema.optional(Schema.String),
     properties: Schema.optional(
-      Schema.Struct({
-        maintenanceConfigurationId: Schema.optional(Schema.String),
-        resourceId: Schema.optional(Schema.String),
-        filter: Schema.optional(
-          Schema.Struct({
-            resourceTypes: Schema.optional(Schema.Array(Schema.String)),
-            resourceGroups: Schema.optional(Schema.Array(Schema.String)),
-            osTypes: Schema.optional(Schema.Array(Schema.String)),
-            locations: Schema.optional(Schema.Array(Schema.String)),
-            tagSettings: Schema.optional(
-              Schema.Struct({
-                tags: Schema.optional(
-                  Schema.Record(Schema.String, Schema.Array(Schema.String)),
-                ),
-                filterOperator: Schema.optional(
-                  Schema.Literals(["All", "Any"]),
-                ),
-              }),
-            ),
-          }),
-        ),
-      }),
+      Schema.suspend(() => ConfigurationAssignmentPropertiesSchema),
     ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -307,6 +478,10 @@ export type ConfigurationAssignmentsCreateOrUpdateInput =
 // Output Schema
 export const ConfigurationAssignmentsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    location: Schema.optional(Schema.String),
+    properties: Schema.optional(
+      Schema.suspend(() => ConfigurationAssignmentPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -357,28 +532,7 @@ export const ConfigurationAssignmentsCreateOrUpdateParentInput =
     configurationAssignmentName: Schema.String.pipe(T.PathParam()),
     location: Schema.optional(Schema.String),
     properties: Schema.optional(
-      Schema.Struct({
-        maintenanceConfigurationId: Schema.optional(Schema.String),
-        resourceId: Schema.optional(Schema.String),
-        filter: Schema.optional(
-          Schema.Struct({
-            resourceTypes: Schema.optional(Schema.Array(Schema.String)),
-            resourceGroups: Schema.optional(Schema.Array(Schema.String)),
-            osTypes: Schema.optional(Schema.Array(Schema.String)),
-            locations: Schema.optional(Schema.Array(Schema.String)),
-            tagSettings: Schema.optional(
-              Schema.Struct({
-                tags: Schema.optional(
-                  Schema.Record(Schema.String, Schema.Array(Schema.String)),
-                ),
-                filterOperator: Schema.optional(
-                  Schema.Literals(["All", "Any"]),
-                ),
-              }),
-            ),
-          }),
-        ),
-      }),
+      Schema.suspend(() => ConfigurationAssignmentPropertiesSchema),
     ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -410,6 +564,10 @@ export type ConfigurationAssignmentsCreateOrUpdateParentInput =
 // Output Schema
 export const ConfigurationAssignmentsCreateOrUpdateParentOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    location: Schema.optional(Schema.String),
+    properties: Schema.optional(
+      Schema.suspend(() => ConfigurationAssignmentPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -471,6 +629,10 @@ export type ConfigurationAssignmentsDeleteInput =
 // Output Schema
 export const ConfigurationAssignmentsDeleteOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    location: Schema.optional(Schema.String),
+    properties: Schema.optional(
+      Schema.suspend(() => ConfigurationAssignmentPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -532,6 +694,10 @@ export type ConfigurationAssignmentsDeleteParentInput =
 // Output Schema
 export const ConfigurationAssignmentsDeleteParentOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    location: Schema.optional(Schema.String),
+    properties: Schema.optional(
+      Schema.suspend(() => ConfigurationAssignmentPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -579,28 +745,7 @@ export const ConfigurationAssignmentsForResourceGroupCreateOrUpdateInput =
     configurationAssignmentName: Schema.String.pipe(T.PathParam()),
     location: Schema.optional(Schema.String),
     properties: Schema.optional(
-      Schema.Struct({
-        maintenanceConfigurationId: Schema.optional(Schema.String),
-        resourceId: Schema.optional(Schema.String),
-        filter: Schema.optional(
-          Schema.Struct({
-            resourceTypes: Schema.optional(Schema.Array(Schema.String)),
-            resourceGroups: Schema.optional(Schema.Array(Schema.String)),
-            osTypes: Schema.optional(Schema.Array(Schema.String)),
-            locations: Schema.optional(Schema.Array(Schema.String)),
-            tagSettings: Schema.optional(
-              Schema.Struct({
-                tags: Schema.optional(
-                  Schema.Record(Schema.String, Schema.Array(Schema.String)),
-                ),
-                filterOperator: Schema.optional(
-                  Schema.Literals(["All", "Any"]),
-                ),
-              }),
-            ),
-          }),
-        ),
-      }),
+      Schema.suspend(() => ConfigurationAssignmentPropertiesSchema),
     ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -632,6 +777,10 @@ export type ConfigurationAssignmentsForResourceGroupCreateOrUpdateInput =
 // Output Schema
 export const ConfigurationAssignmentsForResourceGroupCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    location: Schema.optional(Schema.String),
+    properties: Schema.optional(
+      Schema.suspend(() => ConfigurationAssignmentPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -685,6 +834,10 @@ export type ConfigurationAssignmentsForResourceGroupDeleteInput =
 // Output Schema
 export const ConfigurationAssignmentsForResourceGroupDeleteOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    location: Schema.optional(Schema.String),
+    properties: Schema.optional(
+      Schema.suspend(() => ConfigurationAssignmentPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -738,6 +891,10 @@ export type ConfigurationAssignmentsForResourceGroupGetInput =
 // Output Schema
 export const ConfigurationAssignmentsForResourceGroupGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    location: Schema.optional(Schema.String),
+    properties: Schema.optional(
+      Schema.suspend(() => ConfigurationAssignmentPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -780,28 +937,7 @@ export const ConfigurationAssignmentsForResourceGroupUpdateInput =
     configurationAssignmentName: Schema.String.pipe(T.PathParam()),
     location: Schema.optional(Schema.String),
     properties: Schema.optional(
-      Schema.Struct({
-        maintenanceConfigurationId: Schema.optional(Schema.String),
-        resourceId: Schema.optional(Schema.String),
-        filter: Schema.optional(
-          Schema.Struct({
-            resourceTypes: Schema.optional(Schema.Array(Schema.String)),
-            resourceGroups: Schema.optional(Schema.Array(Schema.String)),
-            osTypes: Schema.optional(Schema.Array(Schema.String)),
-            locations: Schema.optional(Schema.Array(Schema.String)),
-            tagSettings: Schema.optional(
-              Schema.Struct({
-                tags: Schema.optional(
-                  Schema.Record(Schema.String, Schema.Array(Schema.String)),
-                ),
-                filterOperator: Schema.optional(
-                  Schema.Literals(["All", "Any"]),
-                ),
-              }),
-            ),
-          }),
-        ),
-      }),
+      Schema.suspend(() => ConfigurationAssignmentPropertiesSchema),
     ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -833,6 +969,10 @@ export type ConfigurationAssignmentsForResourceGroupUpdateInput =
 // Output Schema
 export const ConfigurationAssignmentsForResourceGroupUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    location: Schema.optional(Schema.String),
+    properties: Schema.optional(
+      Schema.suspend(() => ConfigurationAssignmentPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -874,28 +1014,7 @@ export const ConfigurationAssignmentsForSubscriptionsCreateOrUpdateInput =
     configurationAssignmentName: Schema.String.pipe(T.PathParam()),
     location: Schema.optional(Schema.String),
     properties: Schema.optional(
-      Schema.Struct({
-        maintenanceConfigurationId: Schema.optional(Schema.String),
-        resourceId: Schema.optional(Schema.String),
-        filter: Schema.optional(
-          Schema.Struct({
-            resourceTypes: Schema.optional(Schema.Array(Schema.String)),
-            resourceGroups: Schema.optional(Schema.Array(Schema.String)),
-            osTypes: Schema.optional(Schema.Array(Schema.String)),
-            locations: Schema.optional(Schema.Array(Schema.String)),
-            tagSettings: Schema.optional(
-              Schema.Struct({
-                tags: Schema.optional(
-                  Schema.Record(Schema.String, Schema.Array(Schema.String)),
-                ),
-                filterOperator: Schema.optional(
-                  Schema.Literals(["All", "Any"]),
-                ),
-              }),
-            ),
-          }),
-        ),
-      }),
+      Schema.suspend(() => ConfigurationAssignmentPropertiesSchema),
     ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -927,6 +1046,10 @@ export type ConfigurationAssignmentsForSubscriptionsCreateOrUpdateInput =
 // Output Schema
 export const ConfigurationAssignmentsForSubscriptionsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    location: Schema.optional(Schema.String),
+    properties: Schema.optional(
+      Schema.suspend(() => ConfigurationAssignmentPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -978,6 +1101,10 @@ export type ConfigurationAssignmentsForSubscriptionsDeleteInput =
 // Output Schema
 export const ConfigurationAssignmentsForSubscriptionsDeleteOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    location: Schema.optional(Schema.String),
+    properties: Schema.optional(
+      Schema.suspend(() => ConfigurationAssignmentPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1029,6 +1156,10 @@ export type ConfigurationAssignmentsForSubscriptionsGetInput =
 // Output Schema
 export const ConfigurationAssignmentsForSubscriptionsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    location: Schema.optional(Schema.String),
+    properties: Schema.optional(
+      Schema.suspend(() => ConfigurationAssignmentPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1069,28 +1200,7 @@ export const ConfigurationAssignmentsForSubscriptionsUpdateInput =
     configurationAssignmentName: Schema.String.pipe(T.PathParam()),
     location: Schema.optional(Schema.String),
     properties: Schema.optional(
-      Schema.Struct({
-        maintenanceConfigurationId: Schema.optional(Schema.String),
-        resourceId: Schema.optional(Schema.String),
-        filter: Schema.optional(
-          Schema.Struct({
-            resourceTypes: Schema.optional(Schema.Array(Schema.String)),
-            resourceGroups: Schema.optional(Schema.Array(Schema.String)),
-            osTypes: Schema.optional(Schema.Array(Schema.String)),
-            locations: Schema.optional(Schema.Array(Schema.String)),
-            tagSettings: Schema.optional(
-              Schema.Struct({
-                tags: Schema.optional(
-                  Schema.Record(Schema.String, Schema.Array(Schema.String)),
-                ),
-                filterOperator: Schema.optional(
-                  Schema.Literals(["All", "Any"]),
-                ),
-              }),
-            ),
-          }),
-        ),
-      }),
+      Schema.suspend(() => ConfigurationAssignmentPropertiesSchema),
     ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -1122,6 +1232,10 @@ export type ConfigurationAssignmentsForSubscriptionsUpdateInput =
 // Output Schema
 export const ConfigurationAssignmentsForSubscriptionsUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    location: Schema.optional(Schema.String),
+    properties: Schema.optional(
+      Schema.suspend(() => ConfigurationAssignmentPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1177,6 +1291,10 @@ export type ConfigurationAssignmentsGetInput =
 // Output Schema
 export const ConfigurationAssignmentsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    location: Schema.optional(Schema.String),
+    properties: Schema.optional(
+      Schema.suspend(() => ConfigurationAssignmentPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1239,6 +1357,10 @@ export type ConfigurationAssignmentsGetParentInput =
 // Output Schema
 export const ConfigurationAssignmentsGetParentOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    location: Schema.optional(Schema.String),
+    properties: Schema.optional(
+      Schema.suspend(() => ConfigurationAssignmentPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1300,37 +1422,7 @@ export type ConfigurationAssignmentsListInput =
 export const ConfigurationAssignmentsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.String),
-              createdByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              createdAt: Schema.optional(Schema.String),
-              lastModifiedBy: Schema.optional(Schema.String),
-              lastModifiedByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              lastModifiedAt: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => ConfigurationAssignmentSchema)),
     ),
   });
 export type ConfigurationAssignmentsListOutput =
@@ -1375,37 +1467,7 @@ export type ConfigurationAssignmentsListParentInput =
 export const ConfigurationAssignmentsListParentOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.String),
-              createdByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              createdAt: Schema.optional(Schema.String),
-              lastModifiedBy: Schema.optional(Schema.String),
-              lastModifiedByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              lastModifiedAt: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => ConfigurationAssignmentSchema)),
     ),
   });
 export type ConfigurationAssignmentsListParentOutput =
@@ -1445,37 +1507,7 @@ export type ConfigurationAssignmentsWithinSubscriptionListInput =
 export const ConfigurationAssignmentsWithinSubscriptionListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.String),
-              createdByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              createdAt: Schema.optional(Schema.String),
-              lastModifiedBy: Schema.optional(Schema.String),
-              lastModifiedByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              lastModifiedAt: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => ConfigurationAssignmentSchema)),
     ),
   });
 export type ConfigurationAssignmentsWithinSubscriptionListOutput =
@@ -1498,67 +1530,7 @@ export const MaintenanceConfigurationsCreateOrUpdateInput =
     location: Schema.optional(Schema.String),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     properties: Schema.optional(
-      Schema.Struct({
-        namespace: Schema.optional(Schema.String),
-        extensionProperties: Schema.optional(
-          Schema.Record(Schema.String, Schema.String),
-        ),
-        maintenanceScope: Schema.optional(
-          Schema.Literals([
-            "Host",
-            "Resource",
-            "OSImage",
-            "Extension",
-            "InGuestPatch",
-            "SQLDB",
-            "SQLManagedInstance",
-          ]),
-        ),
-        maintenanceWindow: Schema.optional(
-          Schema.Struct({
-            startDateTime: Schema.optional(Schema.String),
-            expirationDateTime: Schema.optional(Schema.String),
-            duration: Schema.optional(Schema.String),
-            timeZone: Schema.optional(Schema.String),
-            recurEvery: Schema.optional(Schema.String),
-          }),
-        ),
-        visibility: Schema.optional(Schema.Literals(["Custom", "Public"])),
-        installPatches: Schema.optional(
-          Schema.Struct({
-            rebootSetting: Schema.optional(
-              Schema.Literals(["IfRequired", "Never", "Always"]),
-            ),
-            windowsParameters: Schema.optional(
-              Schema.Struct({
-                kbNumbersToExclude: Schema.optional(
-                  Schema.Array(Schema.String),
-                ),
-                kbNumbersToInclude: Schema.optional(
-                  Schema.Array(Schema.String),
-                ),
-                classificationsToInclude: Schema.optional(
-                  Schema.Array(Schema.String),
-                ),
-                excludeKbsRequiringReboot: Schema.optional(Schema.Boolean),
-              }),
-            ),
-            linuxParameters: Schema.optional(
-              Schema.Struct({
-                packageNameMasksToExclude: Schema.optional(
-                  Schema.Array(Schema.String),
-                ),
-                packageNameMasksToInclude: Schema.optional(
-                  Schema.Array(Schema.String),
-                ),
-                classificationsToInclude: Schema.optional(
-                  Schema.Array(Schema.String),
-                ),
-              }),
-            ),
-          }),
-        ),
-      }),
+      Schema.suspend(() => MaintenanceConfigurationPropertiesSchema),
     ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -1590,6 +1562,11 @@ export type MaintenanceConfigurationsCreateOrUpdateInput =
 // Output Schema
 export const MaintenanceConfigurationsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    location: Schema.optional(Schema.String),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    properties: Schema.optional(
+      Schema.suspend(() => MaintenanceConfigurationPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1641,6 +1618,11 @@ export type MaintenanceConfigurationsDeleteInput =
 // Output Schema
 export const MaintenanceConfigurationsDeleteOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    location: Schema.optional(Schema.String),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    properties: Schema.optional(
+      Schema.suspend(() => MaintenanceConfigurationPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1692,37 +1674,7 @@ export type MaintenanceConfigurationsForResourceGroupListInput =
 export const MaintenanceConfigurationsForResourceGroupListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.String),
-              createdByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              createdAt: Schema.optional(Schema.String),
-              lastModifiedBy: Schema.optional(Schema.String),
-              lastModifiedByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              lastModifiedAt: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => MaintenanceConfigurationSchema)),
     ),
   });
 export type MaintenanceConfigurationsForResourceGroupListOutput =
@@ -1757,6 +1709,11 @@ export type MaintenanceConfigurationsGetInput =
 // Output Schema
 export const MaintenanceConfigurationsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    location: Schema.optional(Schema.String),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    properties: Schema.optional(
+      Schema.suspend(() => MaintenanceConfigurationPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1806,37 +1763,7 @@ export type MaintenanceConfigurationsListInput =
 export const MaintenanceConfigurationsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.String),
-              createdByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              createdAt: Schema.optional(Schema.String),
-              lastModifiedBy: Schema.optional(Schema.String),
-              lastModifiedByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              lastModifiedAt: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => MaintenanceConfigurationSchema)),
     ),
   });
 export type MaintenanceConfigurationsListOutput =
@@ -1859,67 +1786,7 @@ export const MaintenanceConfigurationsUpdateInput =
     location: Schema.optional(Schema.String),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     properties: Schema.optional(
-      Schema.Struct({
-        namespace: Schema.optional(Schema.String),
-        extensionProperties: Schema.optional(
-          Schema.Record(Schema.String, Schema.String),
-        ),
-        maintenanceScope: Schema.optional(
-          Schema.Literals([
-            "Host",
-            "Resource",
-            "OSImage",
-            "Extension",
-            "InGuestPatch",
-            "SQLDB",
-            "SQLManagedInstance",
-          ]),
-        ),
-        maintenanceWindow: Schema.optional(
-          Schema.Struct({
-            startDateTime: Schema.optional(Schema.String),
-            expirationDateTime: Schema.optional(Schema.String),
-            duration: Schema.optional(Schema.String),
-            timeZone: Schema.optional(Schema.String),
-            recurEvery: Schema.optional(Schema.String),
-          }),
-        ),
-        visibility: Schema.optional(Schema.Literals(["Custom", "Public"])),
-        installPatches: Schema.optional(
-          Schema.Struct({
-            rebootSetting: Schema.optional(
-              Schema.Literals(["IfRequired", "Never", "Always"]),
-            ),
-            windowsParameters: Schema.optional(
-              Schema.Struct({
-                kbNumbersToExclude: Schema.optional(
-                  Schema.Array(Schema.String),
-                ),
-                kbNumbersToInclude: Schema.optional(
-                  Schema.Array(Schema.String),
-                ),
-                classificationsToInclude: Schema.optional(
-                  Schema.Array(Schema.String),
-                ),
-                excludeKbsRequiringReboot: Schema.optional(Schema.Boolean),
-              }),
-            ),
-            linuxParameters: Schema.optional(
-              Schema.Struct({
-                packageNameMasksToExclude: Schema.optional(
-                  Schema.Array(Schema.String),
-                ),
-                packageNameMasksToInclude: Schema.optional(
-                  Schema.Array(Schema.String),
-                ),
-                classificationsToInclude: Schema.optional(
-                  Schema.Array(Schema.String),
-                ),
-              }),
-            ),
-          }),
-        ),
-      }),
+      Schema.suspend(() => MaintenanceConfigurationPropertiesSchema),
     ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -1951,6 +1818,11 @@ export type MaintenanceConfigurationsUpdateInput =
 // Output Schema
 export const MaintenanceConfigurationsUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    location: Schema.optional(Schema.String),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    properties: Schema.optional(
+      Schema.suspend(() => MaintenanceConfigurationPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1998,24 +1870,7 @@ export type OperationsListInput = typeof OperationsListInput.Type;
 
 // Output Schema
 export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  value: Schema.optional(
-    Schema.Array(
-      Schema.Struct({
-        name: Schema.optional(Schema.String),
-        display: Schema.optional(
-          Schema.Struct({
-            provider: Schema.optional(Schema.String),
-            resource: Schema.optional(Schema.String),
-            operation: Schema.optional(Schema.String),
-            description: Schema.optional(Schema.String),
-          }),
-        ),
-        origin: Schema.optional(Schema.String),
-        properties: Schema.optional(Schema.Unknown),
-        isDataAction: Schema.optional(Schema.Boolean),
-      }),
-    ),
-  ),
+  value: Schema.optional(Schema.Array(Schema.suspend(() => OperationSchema))),
 });
 export type OperationsListOutput = typeof OperationsListOutput.Type;
 
@@ -2046,6 +1901,11 @@ export type PublicMaintenanceConfigurationsGetInput =
 // Output Schema
 export const PublicMaintenanceConfigurationsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    location: Schema.optional(Schema.String),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    properties: Schema.optional(
+      Schema.suspend(() => MaintenanceConfigurationPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2094,37 +1954,7 @@ export type PublicMaintenanceConfigurationsListInput =
 export const PublicMaintenanceConfigurationsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.String),
-              createdByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              createdAt: Schema.optional(Schema.String),
-              lastModifiedBy: Schema.optional(Schema.String),
-              lastModifiedByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              lastModifiedAt: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => MaintenanceConfigurationSchema)),
     ),
   });
 export type PublicMaintenanceConfigurationsListOutput =
@@ -2156,42 +1986,7 @@ export type UpdatesListInput = typeof UpdatesListInput.Type;
 
 // Output Schema
 export const UpdatesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  value: Schema.optional(
-    Schema.Array(
-      Schema.Struct({
-        maintenanceScope: Schema.optional(
-          Schema.Literals([
-            "Host",
-            "Resource",
-            "OSImage",
-            "Extension",
-            "InGuestPatch",
-            "SQLDB",
-            "SQLManagedInstance",
-          ]),
-        ),
-        impactType: Schema.optional(
-          Schema.Literals(["None", "Freeze", "Restart", "Redeploy"]),
-        ),
-        status: Schema.optional(
-          Schema.Literals([
-            "Pending",
-            "InProgress",
-            "Completed",
-            "RetryNow",
-            "RetryLater",
-          ]),
-        ),
-        impactDurationInSec: Schema.optional(Schema.Number),
-        notBefore: Schema.optional(Schema.String),
-        properties: Schema.optional(
-          Schema.Struct({
-            resourceId: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
-  ),
+  value: Schema.optional(Schema.Array(Schema.suspend(() => UpdateSchema))),
 });
 export type UpdatesListOutput = typeof UpdatesListOutput.Type;
 
@@ -2232,42 +2027,7 @@ export type UpdatesListParentInput = typeof UpdatesListParentInput.Type;
 // Output Schema
 export const UpdatesListParentOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          maintenanceScope: Schema.optional(
-            Schema.Literals([
-              "Host",
-              "Resource",
-              "OSImage",
-              "Extension",
-              "InGuestPatch",
-              "SQLDB",
-              "SQLManagedInstance",
-            ]),
-          ),
-          impactType: Schema.optional(
-            Schema.Literals(["None", "Freeze", "Restart", "Redeploy"]),
-          ),
-          status: Schema.optional(
-            Schema.Literals([
-              "Pending",
-              "InProgress",
-              "Completed",
-              "RetryNow",
-              "RetryLater",
-            ]),
-          ),
-          impactDurationInSec: Schema.optional(Schema.Number),
-          notBefore: Schema.optional(Schema.String),
-          properties: Schema.optional(
-            Schema.Struct({
-              resourceId: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
-    ),
+    value: Schema.optional(Schema.Array(Schema.suspend(() => UpdateSchema))),
   });
 export type UpdatesListParentOutput = typeof UpdatesListParentOutput.Type;
 

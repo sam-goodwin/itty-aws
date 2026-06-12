@@ -7,7 +7,101 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
-import { SensitiveString } from "../sensitive.ts";
+import { SensitiveOutputString } from "../sensitive.ts";
+
+// Shared schemas
+const AccountResourceSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
+const EndpointAuthenticationsListSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
+    Schema.suspend(() => EndpointAuthenticationSchema),
+  );
+const EndpointAuthenticationSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  aadTenantID: Schema.optional(Schema.String),
+  principalID: Schema.optional(Schema.String),
+  principalType: Schema.optional(Schema.Literals(["Application", "User"])),
+});
+const CorsRuleListSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
+  Schema.suspend(() => CorsRuleSchema),
+);
+const CorsRuleSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  allowedOrigins: Schema.Array(Schema.String),
+  allowedMethods: Schema.optional(Schema.Array(Schema.String)),
+  allowedHeaders: Schema.optional(Schema.Array(Schema.String)),
+  exposedHeaders: Schema.optional(Schema.Array(Schema.String)),
+  maxAgeInSeconds: Schema.optional(Schema.Number),
+});
+const TagsSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Record(
+  Schema.String,
+  Schema.String,
+);
+const ScopeStatusesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  scope: Schema.optional(Schema.String),
+  statuses: Schema.optional(
+    Schema.Array(Schema.suspend(() => StageStatusSchema)),
+  ),
+});
+const StageStatusSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  stage: Schema.optional(Schema.String),
+  status: Schema.optional(Schema.String),
+  time: Schema.optional(Schema.String),
+});
+const ModelingResourceSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
+const ModelingInputDataSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  connectionString: Schema.optional(SensitiveOutputString),
+});
+const ServiceEndpointResourceSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  },
+);
+const OperationStatusResultSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  resourceId: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  status: Schema.String,
+  percentComplete: Schema.optional(Schema.Number),
+  startTime: Schema.optional(Schema.String),
+  endTime: Schema.optional(Schema.String),
+  operations: Schema.optional(Schema.Array(Schema.Unknown)),
+  error: Schema.optional(Schema.suspend(() => ErrorDetailSchema)),
+});
+const ErrorDetailSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  code: Schema.optional(Schema.String),
+  message: Schema.optional(Schema.String),
+  target: Schema.optional(Schema.String),
+  details: Schema.optional(Schema.Array(Schema.Unknown)),
+  additionalInfo: Schema.optional(
+    Schema.Array(Schema.suspend(() => ErrorAdditionalInfoSchema)),
+  ),
+});
+const ErrorAdditionalInfoSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  type: Schema.optional(Schema.String),
+  info: Schema.optional(Schema.Unknown),
+});
+const OperationSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  isDataAction: Schema.optional(Schema.Boolean),
+  display: Schema.optional(
+    Schema.Struct({
+      provider: Schema.optional(Schema.String),
+      resource: Schema.optional(Schema.String),
+      operation: Schema.optional(Schema.String),
+      description: Schema.optional(Schema.String),
+    }),
+  ),
+  origin: Schema.optional(Schema.Literals(["user", "system", "user,system"])),
+  actionType: Schema.optional(Schema.Literals(["Internal"])),
+});
 
 // Input Schema
 export const AccountsCheckNameAvailabilityInput =
@@ -58,27 +152,9 @@ export const AccountsCreateOrUpdateInput =
       Schema.Struct({
         configuration: Schema.optional(Schema.Literals(["Free", "Capacity"])),
         endpointAuthentications: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              aadTenantID: Schema.optional(Schema.String),
-              principalID: Schema.optional(Schema.String),
-              principalType: Schema.optional(
-                Schema.Literals(["Application", "User"]),
-              ),
-            }),
-          ),
+          Schema.suspend(() => EndpointAuthenticationsListSchema),
         ),
-        cors: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              allowedOrigins: Schema.Array(Schema.String),
-              allowedMethods: Schema.optional(Schema.Array(Schema.String)),
-              allowedHeaders: Schema.optional(Schema.Array(Schema.String)),
-              exposedHeaders: Schema.optional(Schema.Array(Schema.String)),
-              maxAgeInSeconds: Schema.optional(Schema.Number),
-            }),
-          ),
-        ),
+        cors: Schema.optional(Schema.suspend(() => CorsRuleListSchema)),
         reportsConnectionString: Schema.optional(Schema.String),
         provisioningState: Schema.optional(Schema.String),
       }),
@@ -113,6 +189,33 @@ export type AccountsCreateOrUpdateInput =
 // Output Schema
 export const AccountsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.Struct({
+        configuration: Schema.optional(Schema.Literals(["Free", "Capacity"])),
+        endpointAuthentications: Schema.optional(
+          Schema.suspend(() => EndpointAuthenticationsListSchema),
+        ),
+        cors: Schema.optional(Schema.suspend(() => CorsRuleListSchema)),
+        reportsConnectionString: Schema.optional(Schema.String),
+        provisioningState: Schema.optional(Schema.String),
+      }),
+    ),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -179,6 +282,33 @@ export type AccountsGetInput = typeof AccountsGetInput.Type;
 
 // Output Schema
 export const AccountsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.optional(
+    Schema.Struct({
+      configuration: Schema.optional(Schema.Literals(["Free", "Capacity"])),
+      endpointAuthentications: Schema.optional(
+        Schema.suspend(() => EndpointAuthenticationsListSchema),
+      ),
+      cors: Schema.optional(Schema.suspend(() => CorsRuleListSchema)),
+      reportsConnectionString: Schema.optional(Schema.String),
+      provisioningState: Schema.optional(Schema.String),
+    }),
+  ),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  location: Schema.String,
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -216,20 +346,7 @@ export type AccountsGetStatusInput = typeof AccountsGetStatusInput.Type;
 export const AccountsGetStatusOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     scopesStatuses: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          scope: Schema.optional(Schema.String),
-          statuses: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                stage: Schema.optional(Schema.String),
-                status: Schema.optional(Schema.String),
-                time: Schema.optional(Schema.String),
-              }),
-            ),
-          ),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => ScopeStatusesSchema)),
     ),
   });
 export type AccountsGetStatusOutput = typeof AccountsGetStatusOutput.Type;
@@ -266,13 +383,7 @@ export const AccountsListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => AccountResourceSchema)),
     ),
   });
 export type AccountsListByResourceGroupOutput =
@@ -311,13 +422,7 @@ export const AccountsListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => AccountResourceSchema)),
     ),
   });
 export type AccountsListBySubscriptionOutput =
@@ -340,31 +445,13 @@ export const AccountsListBySubscription = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const AccountsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
-  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  tags: Schema.optional(Schema.suspend(() => TagsSchema)),
   properties: Schema.optional(
     Schema.Struct({
       endpointAuthentications: Schema.optional(
-        Schema.Array(
-          Schema.Struct({
-            aadTenantID: Schema.optional(Schema.String),
-            principalID: Schema.optional(Schema.String),
-            principalType: Schema.optional(
-              Schema.Literals(["Application", "User"]),
-            ),
-          }),
-        ),
+        Schema.suspend(() => EndpointAuthenticationsListSchema),
       ),
-      cors: Schema.optional(
-        Schema.Array(
-          Schema.Struct({
-            allowedOrigins: Schema.Array(Schema.String),
-            allowedMethods: Schema.optional(Schema.Array(Schema.String)),
-            allowedHeaders: Schema.optional(Schema.Array(Schema.String)),
-            exposedHeaders: Schema.optional(Schema.Array(Schema.String)),
-            maxAgeInSeconds: Schema.optional(Schema.Number),
-          }),
-        ),
-      ),
+      cors: Schema.optional(Schema.suspend(() => CorsRuleListSchema)),
       reportsConnectionString: Schema.optional(Schema.String),
     }),
   ),
@@ -380,6 +467,33 @@ export type AccountsUpdateInput = typeof AccountsUpdateInput.Type;
 
 // Output Schema
 export const AccountsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.optional(
+    Schema.Struct({
+      configuration: Schema.optional(Schema.Literals(["Free", "Capacity"])),
+      endpointAuthentications: Schema.optional(
+        Schema.suspend(() => EndpointAuthenticationsListSchema),
+      ),
+      cors: Schema.optional(Schema.suspend(() => CorsRuleListSchema)),
+      reportsConnectionString: Schema.optional(Schema.String),
+      provisioningState: Schema.optional(Schema.String),
+    }),
+  ),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  location: Schema.String,
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -411,9 +525,7 @@ export const ModelingCreateOrUpdateInput =
         frequency: Schema.optional(Schema.Literals(["Low", "Medium", "High"])),
         size: Schema.optional(Schema.Literals(["Small", "Medium", "Large"])),
         inputData: Schema.optional(
-          Schema.Struct({
-            connectionString: Schema.optional(SensitiveString),
-          }),
+          Schema.suspend(() => ModelingInputDataSchema),
         ),
         provisioningState: Schema.optional(Schema.String),
       }),
@@ -448,6 +560,35 @@ export type ModelingCreateOrUpdateInput =
 // Output Schema
 export const ModelingCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.Struct({
+        features: Schema.optional(
+          Schema.Literals(["Basic", "Standard", "Premium"]),
+        ),
+        frequency: Schema.optional(Schema.Literals(["Low", "Medium", "High"])),
+        size: Schema.optional(Schema.Literals(["Small", "Medium", "Large"])),
+        inputData: Schema.optional(
+          Schema.suspend(() => ModelingInputDataSchema),
+        ),
+        provisioningState: Schema.optional(Schema.String),
+      }),
+    ),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -514,6 +655,33 @@ export type ModelingGetInput = typeof ModelingGetInput.Type;
 
 // Output Schema
 export const ModelingGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.optional(
+    Schema.Struct({
+      features: Schema.optional(
+        Schema.Literals(["Basic", "Standard", "Premium"]),
+      ),
+      frequency: Schema.optional(Schema.Literals(["Low", "Medium", "High"])),
+      size: Schema.optional(Schema.Literals(["Small", "Medium", "Large"])),
+      inputData: Schema.optional(Schema.suspend(() => ModelingInputDataSchema)),
+      provisioningState: Schema.optional(Schema.String),
+    }),
+  ),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  location: Schema.String,
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -552,13 +720,7 @@ export const ModelingListByAccountResourceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => ModelingResourceSchema)),
     ),
   });
 export type ModelingListByAccountResourceOutput =
@@ -581,14 +743,10 @@ export const ModelingListByAccountResource =
 export const ModelingUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
-  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  tags: Schema.optional(Schema.suspend(() => TagsSchema)),
   properties: Schema.optional(
     Schema.Struct({
-      inputData: Schema.optional(
-        Schema.Struct({
-          connectionString: Schema.optional(SensitiveString),
-        }),
-      ),
+      inputData: Schema.optional(Schema.suspend(() => ModelingInputDataSchema)),
     }),
   ),
 }).pipe(
@@ -603,6 +761,33 @@ export type ModelingUpdateInput = typeof ModelingUpdateInput.Type;
 
 // Output Schema
 export const ModelingUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.optional(
+    Schema.Struct({
+      features: Schema.optional(
+        Schema.Literals(["Basic", "Standard", "Premium"]),
+      ),
+      frequency: Schema.optional(Schema.Literals(["Low", "Medium", "High"])),
+      size: Schema.optional(Schema.Literals(["Small", "Medium", "Large"])),
+      inputData: Schema.optional(Schema.suspend(() => ModelingInputDataSchema)),
+      provisioningState: Schema.optional(Schema.String),
+    }),
+  ),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  location: Schema.String,
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -635,26 +820,7 @@ export type OperationsListInput = typeof OperationsListInput.Type;
 
 // Output Schema
 export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  value: Schema.optional(
-    Schema.Array(
-      Schema.Struct({
-        name: Schema.optional(Schema.String),
-        isDataAction: Schema.optional(Schema.Boolean),
-        display: Schema.optional(
-          Schema.Struct({
-            provider: Schema.optional(Schema.String),
-            resource: Schema.optional(Schema.String),
-            operation: Schema.optional(Schema.String),
-            description: Schema.optional(Schema.String),
-          }),
-        ),
-        origin: Schema.optional(
-          Schema.Literals(["user", "system", "user,system"]),
-        ),
-        actionType: Schema.optional(Schema.Literals(["Internal"])),
-      }),
-    ),
-  ),
+  value: Schema.optional(Schema.Array(Schema.suspend(() => OperationSchema))),
   nextLink: Schema.optional(Schema.String),
 });
 export type OperationsListOutput = typeof OperationsListOutput.Type;
@@ -686,6 +852,7 @@ export type OperationStatusesGetInput = typeof OperationStatusesGetInput.Type;
 // Output Schema
 export const OperationStatusesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(Schema.Unknown),
     id: Schema.optional(Schema.String),
     resourceId: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -694,51 +861,9 @@ export const OperationStatusesGetOutput =
     startTime: Schema.optional(Schema.String),
     endTime: Schema.optional(Schema.String),
     operations: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          resourceId: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          status: Schema.String,
-          percentComplete: Schema.optional(Schema.Number),
-          startTime: Schema.optional(Schema.String),
-          endTime: Schema.optional(Schema.String),
-          operations: Schema.optional(Schema.Array(Schema.Unknown)),
-          error: Schema.optional(
-            Schema.Struct({
-              code: Schema.optional(Schema.String),
-              message: Schema.optional(Schema.String),
-              target: Schema.optional(Schema.String),
-              details: Schema.optional(Schema.Array(Schema.Unknown)),
-              additionalInfo: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    type: Schema.optional(Schema.String),
-                    info: Schema.optional(Schema.Unknown),
-                  }),
-                ),
-              ),
-            }),
-          ),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => OperationStatusResultSchema)),
     ),
-    error: Schema.optional(
-      Schema.Struct({
-        code: Schema.optional(Schema.String),
-        message: Schema.optional(Schema.String),
-        target: Schema.optional(Schema.String),
-        details: Schema.optional(Schema.Array(Schema.Unknown)),
-        additionalInfo: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              type: Schema.optional(Schema.String),
-              info: Schema.optional(Schema.Unknown),
-            }),
-          ),
-        ),
-      }),
-    ),
+    error: Schema.optional(Schema.suspend(() => ErrorDetailSchema)),
   });
 export type OperationStatusesGetOutput = typeof OperationStatusesGetOutput.Type;
 
@@ -799,6 +924,30 @@ export type ServiceEndpointsCreateOrUpdateInput =
 // Output Schema
 export const ServiceEndpointsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.Struct({
+        preAllocatedCapacity: Schema.optional(Schema.Number),
+        pairedLocation: Schema.optional(Schema.String),
+        url: Schema.optional(Schema.String),
+        provisioningState: Schema.optional(Schema.String),
+      }),
+    ),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -872,6 +1021,30 @@ export type ServiceEndpointsGetInput = typeof ServiceEndpointsGetInput.Type;
 // Output Schema
 export const ServiceEndpointsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.Struct({
+        preAllocatedCapacity: Schema.optional(Schema.Number),
+        pairedLocation: Schema.optional(Schema.String),
+        url: Schema.optional(Schema.String),
+        provisioningState: Schema.optional(Schema.String),
+      }),
+    ),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -910,13 +1083,7 @@ export const ServiceEndpointsListByAccountResourceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => ServiceEndpointResourceSchema)),
     ),
   });
 export type ServiceEndpointsListByAccountResourceOutput =
@@ -940,7 +1107,7 @@ export const ServiceEndpointsUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    tags: Schema.optional(Schema.suspend(() => TagsSchema)),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -955,6 +1122,30 @@ export type ServiceEndpointsUpdateInput =
 // Output Schema
 export const ServiceEndpointsUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.Struct({
+        preAllocatedCapacity: Schema.optional(Schema.Number),
+        pairedLocation: Schema.optional(Schema.String),
+        url: Schema.optional(Schema.String),
+        provisioningState: Schema.optional(Schema.String),
+      }),
+    ),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),

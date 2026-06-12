@@ -8,6 +8,349 @@ import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
+// Shared schemas
+const QuotaRequestDetailsSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+});
+const systemDataSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  createdBy: Schema.optional(Schema.String),
+  createdByType: Schema.optional(
+    Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+  ),
+  createdAt: Schema.optional(Schema.String),
+  lastModifiedBy: Schema.optional(Schema.String),
+  lastModifiedByType: Schema.optional(
+    Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+  ),
+  lastModifiedAt: Schema.optional(Schema.String),
+});
+const QuotaRequestPropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  provisioningState: Schema.optional(
+    Schema.suspend(() => QuotaRequestStateSchema),
+  ),
+  message: Schema.optional(Schema.String),
+  error: Schema.optional(Schema.suspend(() => ServiceErrorDetailSchema)),
+  requestSubmitTime: Schema.optional(Schema.String),
+  value: Schema.optional(Schema.Array(Schema.suspend(() => SubRequestSchema))),
+});
+const QuotaRequestStateSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Accepted",
+  "Invalid",
+  "Succeeded",
+  "Failed",
+  "InProgress",
+]);
+const ServiceErrorDetailSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  code: Schema.optional(Schema.String),
+  message: Schema.optional(Schema.String),
+});
+const SubRequestSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.suspend(() => ResourceNameSchema)),
+  resourceType: Schema.optional(Schema.String),
+  unit: Schema.optional(Schema.String),
+  provisioningState: Schema.optional(
+    Schema.suspend(() => QuotaRequestStateSchema),
+  ),
+  message: Schema.optional(Schema.String),
+  subRequestId: Schema.optional(Schema.String),
+  limit: Schema.optional(Schema.suspend(() => LimitJsonObjectSchema)),
+});
+const ResourceNameSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  value: Schema.optional(Schema.String),
+  localizedValue: Schema.optional(Schema.String),
+});
+const LimitJsonObjectSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  limitObjectType: Schema.suspend(() => LimitTypeSchema),
+});
+const LimitTypeSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "LimitValue",
+]);
+const CurrentQuotaLimitBaseSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+});
+const QuotaPropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  limit: Schema.optional(Schema.suspend(() => LimitJsonObjectSchema)),
+  unit: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.suspend(() => ResourceNameSchema)),
+  resourceType: Schema.optional(Schema.String),
+  quotaPeriod: Schema.optional(Schema.String),
+  isQuotaApplicable: Schema.optional(Schema.Boolean),
+  properties: Schema.optional(Schema.Unknown),
+});
+const CurrentUsagesBaseSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+});
+const UsagesPropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  usages: Schema.optional(Schema.suspend(() => UsagesObjectSchema)),
+  unit: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.suspend(() => ResourceNameSchema)),
+  resourceType: Schema.optional(Schema.String),
+  quotaPeriod: Schema.optional(Schema.String),
+  isQuotaApplicable: Schema.optional(Schema.Boolean),
+  properties: Schema.optional(Schema.Unknown),
+});
+const UsagesObjectSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  value: Schema.Number,
+  usagesType: Schema.optional(Schema.suspend(() => UsagesTypesSchema)),
+});
+const UsagesTypesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Individual",
+  "Combined",
+]);
+const GroupQuotasEntitySchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+});
+const GroupQuotasEntityPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    displayName: Schema.optional(Schema.String),
+    groupType: Schema.optional(Schema.suspend(() => GroupTypeSchema)),
+    provisioningState: Schema.optional(
+      Schema.suspend(() => RequestStateSchema),
+    ),
+  });
+const GroupTypeSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "AllocationGroup",
+  "EnforcedGroup",
+]);
+const RequestStateSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Accepted",
+  "Created",
+  "Invalid",
+  "Succeeded",
+  "Escalated",
+  "Failed",
+  "InProgress",
+  "Canceled",
+]);
+const GroupQuotasEntityPatchPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    displayName: Schema.optional(Schema.String),
+    provisioningState: Schema.optional(
+      Schema.suspend(() => RequestStateSchema),
+    ),
+  });
+const SubmittedResourceRequestStatusPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    requestedResource: Schema.optional(
+      Schema.suspend(() => GroupQuotaRequestBaseSchema),
+    ),
+    requestSubmitTime: Schema.optional(Schema.String),
+    provisioningState: Schema.optional(
+      Schema.suspend(() => RequestStateSchema),
+    ),
+    faultCode: Schema.optional(Schema.String),
+  });
+const GroupQuotaRequestBaseSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.optional(
+    Schema.suspend(() => GroupQuotaRequestBasePropertiesSchema),
+  ),
+});
+const GroupQuotaRequestBasePropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    limit: Schema.optional(Schema.Number),
+    name: Schema.optional(
+      Schema.suspend(() => GroupQuotaRequestBasePropertiesNameSchema),
+    ),
+    region: Schema.optional(Schema.String),
+    comments: Schema.optional(Schema.String),
+  });
+const GroupQuotaRequestBasePropertiesNameSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    value: Schema.optional(Schema.String),
+    localizedValue: Schema.optional(Schema.String),
+  });
+const GroupQuotaLimitListPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    provisioningState: Schema.optional(
+      Schema.suspend(() => RequestStateSchema),
+    ),
+    value: Schema.optional(
+      Schema.Array(Schema.suspend(() => GroupQuotaLimitSchema)),
+    ),
+    nextLink: Schema.optional(Schema.String),
+  });
+const GroupQuotaLimitSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.optional(
+    Schema.suspend(() => GroupQuotaLimitPropertiesSchema),
+  ),
+});
+const GroupQuotaLimitPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resourceName: Schema.optional(Schema.String),
+    limit: Schema.optional(Schema.Number),
+    comment: Schema.optional(Schema.String),
+    unit: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.suspend(() => GroupQuotaDetailsNameSchema)),
+    availableLimit: Schema.optional(Schema.Number),
+    allocatedToSubscriptions: Schema.optional(
+      Schema.suspend(() => AllocatedQuotaToSubscriptionListSchema),
+    ),
+  });
+const GroupQuotaDetailsNameSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  value: Schema.optional(Schema.String),
+  localizedValue: Schema.optional(Schema.String),
+});
+const AllocatedQuotaToSubscriptionListSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    value: Schema.optional(
+      Schema.Array(Schema.suspend(() => AllocatedToSubscriptionSchema)),
+    ),
+  });
+const AllocatedToSubscriptionSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    subscriptionId: Schema.optional(Schema.String),
+    quotaAllocated: Schema.optional(Schema.Number),
+  },
+);
+const SubmittedResourceRequestStatusSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+  });
+const GroupQuotasEnforcementStatusPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    enforcementEnabled: Schema.optional(
+      Schema.suspend(() => EnforcementStateSchema),
+    ),
+    enforcedGroupName: Schema.optional(Schema.String),
+    provisioningState: Schema.optional(
+      Schema.suspend(() => RequestStateSchema),
+    ),
+    faultCode: Schema.optional(Schema.String),
+  });
+const EnforcementStateSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Enabled",
+  "Disabled",
+  "NotAvailable",
+]);
+const ResourceUsagesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+});
+const GroupQuotaSubscriptionRequestStatusSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+  });
+const GroupQuotaSubscriptionRequestStatusPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.optional(Schema.String),
+    requestSubmitTime: Schema.optional(Schema.String),
+    provisioningState: Schema.optional(
+      Schema.suspend(() => RequestStateSchema),
+    ),
+  });
+const GroupQuotaSubscriptionIdSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+  });
+const GroupQuotaSubscriptionIdPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.optional(Schema.String),
+    provisioningState: Schema.optional(
+      Schema.suspend(() => RequestStateSchema),
+    ),
+  });
+const QuotaAllocationRequestStatusSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+  });
+const QuotaAllocationRequestStatusPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    requestedResource: Schema.optional(
+      Schema.suspend(() => QuotaAllocationRequestBaseSchema),
+    ),
+    requestSubmitTime: Schema.optional(Schema.String),
+    provisioningState: Schema.optional(
+      Schema.suspend(() => RequestStateSchema),
+    ),
+    faultCode: Schema.optional(Schema.String),
+  });
+const QuotaAllocationRequestBaseSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => QuotaAllocationRequestBasePropertiesSchema),
+    ),
+  });
+const QuotaAllocationRequestBasePropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    limit: Schema.optional(Schema.Number),
+    name: Schema.optional(
+      Schema.suspend(() => QuotaAllocationRequestBasePropertiesNameSchema),
+    ),
+    region: Schema.optional(Schema.String),
+  });
+const QuotaAllocationRequestBasePropertiesNameSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    value: Schema.optional(Schema.String),
+    localizedValue: Schema.optional(Schema.String),
+  });
+const SubscriptionQuotaAllocationsListPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    provisioningState: Schema.optional(
+      Schema.suspend(() => RequestStateSchema),
+    ),
+    value: Schema.optional(
+      Schema.Array(Schema.suspend(() => SubscriptionQuotaAllocationsSchema)),
+    ),
+    nextLink: Schema.optional(Schema.String),
+  });
+const SubscriptionQuotaAllocationsSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => SubscriptionQuotaAllocationsPropertiesSchema),
+    ),
+  });
+const SubscriptionQuotaAllocationsPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resourceName: Schema.optional(Schema.String),
+    limit: Schema.optional(Schema.Number),
+    shareableQuota: Schema.optional(Schema.Number),
+    name: Schema.optional(
+      Schema.suspend(() => SubscriptionQuotaDetailsNameSchema),
+    ),
+  });
+const SubscriptionQuotaDetailsNameSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    value: Schema.optional(Schema.String),
+    localizedValue: Schema.optional(Schema.String),
+  });
+const OperationResponseSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  display: Schema.optional(Schema.suspend(() => OperationDisplaySchema)),
+  origin: Schema.optional(Schema.String),
+});
+const OperationDisplaySchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  provider: Schema.optional(Schema.String),
+  resource: Schema.optional(Schema.String),
+  operation: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+});
+
 // Input Schema
 export const GroupQuotaLimitsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -27,23 +370,13 @@ export type GroupQuotaLimitsListInput = typeof GroupQuotaLimitsListInput.Type;
 // Output Schema
 export const GroupQuotaLimitsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => GroupQuotaLimitListPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type GroupQuotaLimitsListOutput = typeof GroupQuotaLimitsListOutput.Type;
 
@@ -82,23 +415,13 @@ export type GroupQuotaLimitsRequestGetInput =
 // Output Schema
 export const GroupQuotaLimitsRequestGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => SubmittedResourceRequestStatusPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type GroupQuotaLimitsRequestGetOutput =
   typeof GroupQuotaLimitsRequestGetOutput.Type;
@@ -139,35 +462,7 @@ export type GroupQuotaLimitsRequestListInput =
 export const GroupQuotaLimitsRequestListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
+      Schema.suspend(() => SubmittedResourceRequestStatusSchema),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -198,54 +493,7 @@ export const GroupQuotaLimitsRequestUpdateInput =
     resourceProviderName: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        provisioningState: Schema.optional(
-          Schema.Literals([
-            "Accepted",
-            "Created",
-            "Invalid",
-            "Succeeded",
-            "Escalated",
-            "Failed",
-            "InProgress",
-            "Canceled",
-          ]),
-        ),
-        value: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              properties: Schema.optional(
-                Schema.Struct({
-                  resourceName: Schema.optional(Schema.String),
-                  limit: Schema.optional(Schema.Number),
-                  comment: Schema.optional(Schema.String),
-                  unit: Schema.optional(Schema.String),
-                  name: Schema.optional(
-                    Schema.Struct({
-                      value: Schema.optional(Schema.String),
-                      localizedValue: Schema.optional(Schema.String),
-                    }),
-                  ),
-                  availableLimit: Schema.optional(Schema.Number),
-                  allocatedToSubscriptions: Schema.optional(
-                    Schema.Struct({
-                      value: Schema.optional(
-                        Schema.Array(
-                          Schema.Struct({
-                            subscriptionId: Schema.optional(Schema.String),
-                            quotaAllocated: Schema.optional(Schema.Number),
-                          }),
-                        ),
-                      ),
-                    }),
-                  ),
-                }),
-              ),
-            }),
-          ),
-        ),
-        nextLink: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(() => GroupQuotaLimitListPropertiesSchema),
     ),
   }).pipe(
     T.Http({
@@ -261,23 +509,13 @@ export type GroupQuotaLimitsRequestUpdateInput =
 // Output Schema
 export const GroupQuotaLimitsRequestUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => GroupQuotaLimitListPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type GroupQuotaLimitsRequestUpdateOutput =
   typeof GroupQuotaLimitsRequestUpdateOutput.Type;
@@ -306,25 +544,7 @@ export const GroupQuotaLocationSettingsCreateOrUpdateInput =
     resourceProviderName: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        enforcementEnabled: Schema.optional(
-          Schema.Literals(["Enabled", "Disabled", "NotAvailable"]),
-        ),
-        enforcedGroupName: Schema.optional(Schema.String),
-        provisioningState: Schema.optional(
-          Schema.Literals([
-            "Accepted",
-            "Created",
-            "Invalid",
-            "Succeeded",
-            "Escalated",
-            "Failed",
-            "InProgress",
-            "Canceled",
-          ]),
-        ),
-        faultCode: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(() => GroupQuotasEnforcementStatusPropertiesSchema),
     ),
   }).pipe(
     T.Http({
@@ -340,23 +560,13 @@ export type GroupQuotaLocationSettingsCreateOrUpdateInput =
 // Output Schema
 export const GroupQuotaLocationSettingsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => GroupQuotasEnforcementStatusPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type GroupQuotaLocationSettingsCreateOrUpdateOutput =
   typeof GroupQuotaLocationSettingsCreateOrUpdateOutput.Type;
@@ -400,23 +610,13 @@ export type GroupQuotaLocationSettingsGetInput =
 // Output Schema
 export const GroupQuotaLocationSettingsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => GroupQuotasEnforcementStatusPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type GroupQuotaLocationSettingsGetOutput =
   typeof GroupQuotaLocationSettingsGetOutput.Type;
@@ -444,25 +644,7 @@ export const GroupQuotaLocationSettingsUpdateInput =
     resourceProviderName: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        enforcementEnabled: Schema.optional(
-          Schema.Literals(["Enabled", "Disabled", "NotAvailable"]),
-        ),
-        enforcedGroupName: Schema.optional(Schema.String),
-        provisioningState: Schema.optional(
-          Schema.Literals([
-            "Accepted",
-            "Created",
-            "Invalid",
-            "Succeeded",
-            "Escalated",
-            "Failed",
-            "InProgress",
-            "Canceled",
-          ]),
-        ),
-        faultCode: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(() => GroupQuotasEnforcementStatusPropertiesSchema),
     ),
   }).pipe(
     T.Http({
@@ -478,23 +660,13 @@ export type GroupQuotaLocationSettingsUpdateInput =
 // Output Schema
 export const GroupQuotaLocationSettingsUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => GroupQuotasEnforcementStatusPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type GroupQuotaLocationSettingsUpdateOutput =
   typeof GroupQuotaLocationSettingsUpdateOutput.Type;
@@ -524,24 +696,7 @@ export const GroupQuotasCreateOrUpdateInput =
     managementGroupId: Schema.String.pipe(T.PathParam()),
     groupQuotaName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        displayName: Schema.optional(Schema.String),
-        groupType: Schema.optional(
-          Schema.Literals(["AllocationGroup", "EnforcedGroup"]),
-        ),
-        provisioningState: Schema.optional(
-          Schema.Literals([
-            "Accepted",
-            "Created",
-            "Invalid",
-            "Succeeded",
-            "Escalated",
-            "Failed",
-            "InProgress",
-            "Canceled",
-          ]),
-        ),
-      }),
+      Schema.suspend(() => GroupQuotasEntityPropertiesSchema),
     ),
   }).pipe(
     T.Http({
@@ -557,23 +712,13 @@ export type GroupQuotasCreateOrUpdateInput =
 // Output Schema
 export const GroupQuotasCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => GroupQuotasEntityPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type GroupQuotasCreateOrUpdateOutput =
   typeof GroupQuotasCreateOrUpdateOutput.Type;
@@ -639,23 +784,13 @@ export type GroupQuotasGetInput = typeof GroupQuotasGetInput.Type;
 
 // Output Schema
 export const GroupQuotasGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.optional(
+    Schema.suspend(() => GroupQuotasEntityPropertiesSchema),
+  ),
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
-  systemData: Schema.optional(
-    Schema.Struct({
-      createdBy: Schema.optional(Schema.String),
-      createdByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      createdAt: Schema.optional(Schema.String),
-      lastModifiedBy: Schema.optional(Schema.String),
-      lastModifiedByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      lastModifiedAt: Schema.optional(Schema.String),
-    }),
-  ),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
 });
 export type GroupQuotasGetOutput = typeof GroupQuotasGetOutput.Type;
 
@@ -685,27 +820,7 @@ export type GroupQuotasListInput = typeof GroupQuotasListInput.Type;
 
 // Output Schema
 export const GroupQuotasListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  value: Schema.Array(
-    Schema.Struct({
-      id: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      type: Schema.optional(Schema.String),
-      systemData: Schema.optional(
-        Schema.Struct({
-          createdBy: Schema.optional(Schema.String),
-          createdByType: Schema.optional(
-            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-          ),
-          createdAt: Schema.optional(Schema.String),
-          lastModifiedBy: Schema.optional(Schema.String),
-          lastModifiedByType: Schema.optional(
-            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-          ),
-          lastModifiedAt: Schema.optional(Schema.String),
-        }),
-      ),
-    }),
-  ),
+  value: Schema.Array(Schema.suspend(() => GroupQuotasEntitySchema)),
   nextLink: Schema.optional(Schema.String),
 });
 export type GroupQuotasListOutput = typeof GroupQuotasListOutput.Type;
@@ -742,23 +857,13 @@ export type GroupQuotaSubscriptionAllocationListInput =
 // Output Schema
 export const GroupQuotaSubscriptionAllocationListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => SubscriptionQuotaAllocationsListPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type GroupQuotaSubscriptionAllocationListOutput =
   typeof GroupQuotaSubscriptionAllocationListOutput.Type;
@@ -800,23 +905,13 @@ export type GroupQuotaSubscriptionAllocationRequestGetInput =
 // Output Schema
 export const GroupQuotaSubscriptionAllocationRequestGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => QuotaAllocationRequestStatusPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type GroupQuotaSubscriptionAllocationRequestGetOutput =
   typeof GroupQuotaSubscriptionAllocationRequestGetOutput.Type;
@@ -859,35 +954,7 @@ export type GroupQuotaSubscriptionAllocationRequestListInput =
 export const GroupQuotaSubscriptionAllocationRequestListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
+      Schema.suspend(() => QuotaAllocationRequestStatusSchema),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -923,40 +990,7 @@ export const GroupQuotaSubscriptionAllocationRequestUpdateInput =
     resourceProviderName: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        provisioningState: Schema.optional(
-          Schema.Literals([
-            "Accepted",
-            "Created",
-            "Invalid",
-            "Succeeded",
-            "Escalated",
-            "Failed",
-            "InProgress",
-            "Canceled",
-          ]),
-        ),
-        value: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              properties: Schema.optional(
-                Schema.Struct({
-                  resourceName: Schema.optional(Schema.String),
-                  limit: Schema.optional(Schema.Number),
-                  shareableQuota: Schema.optional(Schema.Number),
-                  name: Schema.optional(
-                    Schema.Struct({
-                      value: Schema.optional(Schema.String),
-                      localizedValue: Schema.optional(Schema.String),
-                    }),
-                  ),
-                }),
-              ),
-            }),
-          ),
-        ),
-        nextLink: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(() => SubscriptionQuotaAllocationsListPropertiesSchema),
     ),
   }).pipe(
     T.Http({
@@ -972,23 +1006,13 @@ export type GroupQuotaSubscriptionAllocationRequestUpdateInput =
 // Output Schema
 export const GroupQuotaSubscriptionAllocationRequestUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => SubscriptionQuotaAllocationsListPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type GroupQuotaSubscriptionAllocationRequestUpdateOutput =
   typeof GroupQuotaSubscriptionAllocationRequestUpdateOutput.Type;
@@ -1028,23 +1052,13 @@ export type GroupQuotaSubscriptionRequestsGetInput =
 // Output Schema
 export const GroupQuotaSubscriptionRequestsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => GroupQuotaSubscriptionRequestStatusPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type GroupQuotaSubscriptionRequestsGetOutput =
   typeof GroupQuotaSubscriptionRequestsGetOutput.Type;
@@ -1082,35 +1096,7 @@ export type GroupQuotaSubscriptionRequestsListInput =
 export const GroupQuotaSubscriptionRequestsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
+      Schema.suspend(() => GroupQuotaSubscriptionRequestStatusSchema),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -1150,23 +1136,13 @@ export type GroupQuotaSubscriptionsCreateOrUpdateInput =
 // Output Schema
 export const GroupQuotaSubscriptionsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => GroupQuotaSubscriptionIdPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type GroupQuotaSubscriptionsCreateOrUpdateOutput =
   typeof GroupQuotaSubscriptionsCreateOrUpdateOutput.Type;
@@ -1241,23 +1217,13 @@ export type GroupQuotaSubscriptionsGetInput =
 // Output Schema
 export const GroupQuotaSubscriptionsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => GroupQuotaSubscriptionIdPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type GroupQuotaSubscriptionsGetOutput =
   typeof GroupQuotaSubscriptionsGetOutput.Type;
@@ -1295,37 +1261,7 @@ export type GroupQuotaSubscriptionsListInput =
 // Output Schema
 export const GroupQuotaSubscriptionsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => GroupQuotaSubscriptionIdSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type GroupQuotaSubscriptionsListOutput =
@@ -1365,23 +1301,13 @@ export type GroupQuotaSubscriptionsUpdateInput =
 // Output Schema
 export const GroupQuotaSubscriptionsUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => GroupQuotaSubscriptionIdPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type GroupQuotaSubscriptionsUpdateOutput =
   typeof GroupQuotaSubscriptionsUpdateOutput.Type;
@@ -1406,21 +1332,7 @@ export const GroupQuotasUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     managementGroupId: Schema.String.pipe(T.PathParam()),
     groupQuotaName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        displayName: Schema.optional(Schema.String),
-        provisioningState: Schema.optional(
-          Schema.Literals([
-            "Accepted",
-            "Created",
-            "Invalid",
-            "Succeeded",
-            "Escalated",
-            "Failed",
-            "InProgress",
-            "Canceled",
-          ]),
-        ),
-      }),
+      Schema.suspend(() => GroupQuotasEntityPatchPropertiesSchema),
     ),
   },
 ).pipe(
@@ -1436,23 +1348,13 @@ export type GroupQuotasUpdateInput = typeof GroupQuotasUpdateInput.Type;
 // Output Schema
 export const GroupQuotasUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => GroupQuotasEntityPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type GroupQuotasUpdateOutput = typeof GroupQuotasUpdateOutput.Type;
 
@@ -1488,37 +1390,7 @@ export type GroupQuotaUsagesListInput = typeof GroupQuotaUsagesListInput.Type;
 // Output Schema
 export const GroupQuotaUsagesListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => ResourceUsagesSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type GroupQuotaUsagesListOutput = typeof GroupQuotaUsagesListOutput.Type;
@@ -1544,26 +1416,7 @@ export const QuotaCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     scope: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
-    properties: Schema.optional(
-      Schema.Struct({
-        limit: Schema.optional(
-          Schema.Struct({
-            limitObjectType: Schema.Literals(["LimitValue"]),
-          }),
-        ),
-        unit: Schema.optional(Schema.String),
-        name: Schema.optional(
-          Schema.Struct({
-            value: Schema.optional(Schema.String),
-            localizedValue: Schema.optional(Schema.String),
-          }),
-        ),
-        resourceType: Schema.optional(Schema.String),
-        quotaPeriod: Schema.optional(Schema.String),
-        isQuotaApplicable: Schema.optional(Schema.Boolean),
-        properties: Schema.optional(Schema.Unknown),
-      }),
-    ),
+    properties: Schema.optional(Schema.suspend(() => QuotaPropertiesSchema)),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -1577,23 +1430,11 @@ export type QuotaCreateOrUpdateInput = typeof QuotaCreateOrUpdateInput.Type;
 // Output Schema
 export const QuotaCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(Schema.suspend(() => QuotaPropertiesSchema)),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type QuotaCreateOrUpdateOutput = typeof QuotaCreateOrUpdateOutput.Type;
 
@@ -1629,23 +1470,11 @@ export type QuotaGetInput = typeof QuotaGetInput.Type;
 
 // Output Schema
 export const QuotaGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.optional(Schema.suspend(() => QuotaPropertiesSchema)),
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
-  systemData: Schema.optional(
-    Schema.Struct({
-      createdBy: Schema.optional(Schema.String),
-      createdByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      createdAt: Schema.optional(Schema.String),
-      lastModifiedBy: Schema.optional(Schema.String),
-      lastModifiedByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      lastModifiedAt: Schema.optional(Schema.String),
-    }),
-  ),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
 });
 export type QuotaGetOutput = typeof QuotaGetOutput.Type;
 
@@ -1678,27 +1507,7 @@ export type QuotaListInput = typeof QuotaListInput.Type;
 
 // Output Schema
 export const QuotaListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  value: Schema.Array(
-    Schema.Struct({
-      id: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      type: Schema.optional(Schema.String),
-      systemData: Schema.optional(
-        Schema.Struct({
-          createdBy: Schema.optional(Schema.String),
-          createdByType: Schema.optional(
-            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-          ),
-          createdAt: Schema.optional(Schema.String),
-          lastModifiedBy: Schema.optional(Schema.String),
-          lastModifiedByType: Schema.optional(
-            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-          ),
-          lastModifiedAt: Schema.optional(Schema.String),
-        }),
-      ),
-    }),
-  ),
+  value: Schema.Array(Schema.suspend(() => CurrentQuotaLimitBaseSchema)),
   nextLink: Schema.optional(Schema.String),
 });
 export type QuotaListOutput = typeof QuotaListOutput.Type;
@@ -1728,20 +1537,7 @@ export type QuotaOperationListInput = typeof QuotaOperationListInput.Type;
 // Output Schema
 export const QuotaOperationListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        name: Schema.optional(Schema.String),
-        display: Schema.optional(
-          Schema.Struct({
-            provider: Schema.optional(Schema.String),
-            resource: Schema.optional(Schema.String),
-            operation: Schema.optional(Schema.String),
-            description: Schema.optional(Schema.String),
-          }),
-        ),
-        origin: Schema.optional(Schema.String),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => OperationResponseSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type QuotaOperationListOutput = typeof QuotaOperationListOutput.Type;
@@ -1773,23 +1569,13 @@ export type QuotaRequestStatusGetInput = typeof QuotaRequestStatusGetInput.Type;
 // Output Schema
 export const QuotaRequestStatusGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => QuotaRequestPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type QuotaRequestStatusGetOutput =
   typeof QuotaRequestStatusGetOutput.Type;
@@ -1828,37 +1614,7 @@ export type QuotaRequestStatusListInput =
 // Output Schema
 export const QuotaRequestStatusListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => QuotaRequestDetailsSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type QuotaRequestStatusListOutput =
@@ -1889,26 +1645,7 @@ export const QuotaRequestStatusList = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const QuotaUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   scope: Schema.String.pipe(T.PathParam()),
   resourceName: Schema.String.pipe(T.PathParam()),
-  properties: Schema.optional(
-    Schema.Struct({
-      limit: Schema.optional(
-        Schema.Struct({
-          limitObjectType: Schema.Literals(["LimitValue"]),
-        }),
-      ),
-      unit: Schema.optional(Schema.String),
-      name: Schema.optional(
-        Schema.Struct({
-          value: Schema.optional(Schema.String),
-          localizedValue: Schema.optional(Schema.String),
-        }),
-      ),
-      resourceType: Schema.optional(Schema.String),
-      quotaPeriod: Schema.optional(Schema.String),
-      isQuotaApplicable: Schema.optional(Schema.Boolean),
-      properties: Schema.optional(Schema.Unknown),
-    }),
-  ),
+  properties: Schema.optional(Schema.suspend(() => QuotaPropertiesSchema)),
 }).pipe(
   T.Http({
     method: "PATCH",
@@ -1921,23 +1658,11 @@ export type QuotaUpdateInput = typeof QuotaUpdateInput.Type;
 
 // Output Schema
 export const QuotaUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.optional(Schema.suspend(() => QuotaPropertiesSchema)),
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
-  systemData: Schema.optional(
-    Schema.Struct({
-      createdBy: Schema.optional(Schema.String),
-      createdByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      createdAt: Schema.optional(Schema.String),
-      lastModifiedBy: Schema.optional(Schema.String),
-      lastModifiedByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      lastModifiedAt: Schema.optional(Schema.String),
-    }),
-  ),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
 });
 export type QuotaUpdateOutput = typeof QuotaUpdateOutput.Type;
 
@@ -1973,23 +1698,11 @@ export type UsagesGetInput = typeof UsagesGetInput.Type;
 
 // Output Schema
 export const UsagesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.optional(Schema.suspend(() => UsagesPropertiesSchema)),
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
-  systemData: Schema.optional(
-    Schema.Struct({
-      createdBy: Schema.optional(Schema.String),
-      createdByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      createdAt: Schema.optional(Schema.String),
-      lastModifiedBy: Schema.optional(Schema.String),
-      lastModifiedByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      lastModifiedAt: Schema.optional(Schema.String),
-    }),
-  ),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
 });
 export type UsagesGetOutput = typeof UsagesGetOutput.Type;
 
@@ -2022,27 +1735,7 @@ export type UsagesListInput = typeof UsagesListInput.Type;
 
 // Output Schema
 export const UsagesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  value: Schema.Array(
-    Schema.Struct({
-      id: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      type: Schema.optional(Schema.String),
-      systemData: Schema.optional(
-        Schema.Struct({
-          createdBy: Schema.optional(Schema.String),
-          createdByType: Schema.optional(
-            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-          ),
-          createdAt: Schema.optional(Schema.String),
-          lastModifiedBy: Schema.optional(Schema.String),
-          lastModifiedByType: Schema.optional(
-            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-          ),
-          lastModifiedAt: Schema.optional(Schema.String),
-        }),
-      ),
-    }),
-  ),
+  value: Schema.Array(Schema.suspend(() => CurrentUsagesBaseSchema)),
   nextLink: Schema.optional(Schema.String),
 });
 export type UsagesListOutput = typeof UsagesListOutput.Type;

@@ -8,83 +8,123 @@ import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
+// Shared schemas
+const ConnectedClusterIdentitySchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    principalId: Schema.optional(Schema.String),
+    tenantId: Schema.optional(Schema.String),
+    type: Schema.Literals(["None", "SystemAssigned"]),
+  });
+const ConnectedClusterKindSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "ProvisionedCluster",
+]);
+const ConnectedClusterPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    agentPublicKeyCertificate: Schema.String,
+    kubernetesVersion: Schema.optional(Schema.String),
+    totalNodeCount: Schema.optional(Schema.Number),
+    totalCoreCount: Schema.optional(Schema.Number),
+    agentVersion: Schema.optional(Schema.String),
+    provisioningState: Schema.optional(
+      Schema.suspend(() => ConnectedClusterProvisioningStateSchema),
+    ),
+    distribution: Schema.optional(Schema.String),
+    distributionVersion: Schema.optional(Schema.String),
+    infrastructure: Schema.optional(Schema.String),
+    offering: Schema.optional(Schema.String),
+    managedIdentityCertificateExpirationTime: Schema.optional(Schema.String),
+    lastConnectivityTime: Schema.optional(Schema.String),
+    connectivityStatus: Schema.optional(
+      Schema.Literals(["Connecting", "Connected", "Offline", "Expired"]),
+    ),
+    privateLinkState: Schema.optional(Schema.Literals(["Enabled", "Disabled"])),
+    privateLinkScopeResourceId: Schema.optional(Schema.String),
+    azureHybridBenefit: Schema.optional(
+      Schema.Literals(["True", "False", "NotApplicable"]),
+    ),
+    aadProfile: Schema.optional(Schema.suspend(() => AadProfileSchema)),
+    arcAgentProfile: Schema.optional(
+      Schema.suspend(() => ArcAgentProfileSchema),
+    ),
+    miscellaneousProperties: Schema.optional(
+      Schema.Record(Schema.String, Schema.String),
+    ),
+  });
+const ConnectedClusterProvisioningStateSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+    "Succeeded",
+    "Failed",
+    "Canceled",
+    "Provisioning",
+    "Updating",
+    "Deleting",
+    "Accepted",
+  ]);
+const AadProfileSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  enableAzureRBAC: Schema.optional(Schema.Boolean),
+  adminGroupObjectIDs: Schema.optional(Schema.Array(Schema.String)),
+  tenantID: Schema.optional(Schema.String),
+});
+const ArcAgentProfileSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  desiredAgentVersion: Schema.optional(Schema.String),
+  agentAutoUpgrade: Schema.optional(Schema.Literals(["Enabled", "Disabled"])),
+});
+const SystemDataSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  createdBy: Schema.optional(Schema.String),
+  createdByType: Schema.optional(
+    Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+  ),
+  createdAt: Schema.optional(Schema.String),
+  lastModifiedBy: Schema.optional(Schema.String),
+  lastModifiedByType: Schema.optional(
+    Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+  ),
+  lastModifiedAt: Schema.optional(Schema.String),
+});
+const ConnectedClusterPatchPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    distribution: Schema.optional(Schema.String),
+    distributionVersion: Schema.optional(Schema.String),
+    azureHybridBenefit: Schema.optional(
+      Schema.Literals(["True", "False", "NotApplicable"]),
+    ),
+  });
+const HybridConnectionConfigSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  expirationTime: Schema.optional(Schema.Number),
+  hybridConnectionName: Schema.optional(Schema.String),
+  relay: Schema.optional(Schema.String),
+  token: Schema.optional(Schema.String),
+});
+const CredentialResultSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  value: Schema.optional(Schema.String),
+});
+const ConnectedClusterSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
+const OperationSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  display: Schema.optional(
+    Schema.Struct({
+      provider: Schema.optional(Schema.String),
+      resource: Schema.optional(Schema.String),
+      operation: Schema.optional(Schema.String),
+      description: Schema.optional(Schema.String),
+    }),
+  ),
+});
+
 // Input Schema
 export const ConnectedClusterCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    identity: Schema.Struct({
-      principalId: Schema.optional(Schema.String),
-      tenantId: Schema.optional(Schema.String),
-      type: Schema.Literals(["None", "SystemAssigned"]),
-    }),
-    kind: Schema.optional(Schema.Literals(["ProvisionedCluster"])),
-    properties: Schema.Struct({
-      agentPublicKeyCertificate: Schema.String,
-      kubernetesVersion: Schema.optional(Schema.String),
-      totalNodeCount: Schema.optional(Schema.Number),
-      totalCoreCount: Schema.optional(Schema.Number),
-      agentVersion: Schema.optional(Schema.String),
-      provisioningState: Schema.optional(
-        Schema.Literals([
-          "Succeeded",
-          "Failed",
-          "Canceled",
-          "Provisioning",
-          "Updating",
-          "Deleting",
-          "Accepted",
-        ]),
-      ),
-      distribution: Schema.optional(Schema.String),
-      distributionVersion: Schema.optional(Schema.String),
-      infrastructure: Schema.optional(Schema.String),
-      offering: Schema.optional(Schema.String),
-      managedIdentityCertificateExpirationTime: Schema.optional(Schema.String),
-      lastConnectivityTime: Schema.optional(Schema.String),
-      connectivityStatus: Schema.optional(
-        Schema.Literals(["Connecting", "Connected", "Offline", "Expired"]),
-      ),
-      privateLinkState: Schema.optional(
-        Schema.Literals(["Enabled", "Disabled"]),
-      ),
-      privateLinkScopeResourceId: Schema.optional(Schema.String),
-      azureHybridBenefit: Schema.optional(
-        Schema.Literals(["True", "False", "NotApplicable"]),
-      ),
-      aadProfile: Schema.optional(
-        Schema.Struct({
-          enableAzureRBAC: Schema.optional(Schema.Boolean),
-          adminGroupObjectIDs: Schema.optional(Schema.Array(Schema.String)),
-          tenantID: Schema.optional(Schema.String),
-        }),
-      ),
-      arcAgentProfile: Schema.optional(
-        Schema.Struct({
-          desiredAgentVersion: Schema.optional(Schema.String),
-          agentAutoUpgrade: Schema.optional(
-            Schema.Literals(["Enabled", "Disabled"]),
-          ),
-        }),
-      ),
-      miscellaneousProperties: Schema.optional(
-        Schema.Record(Schema.String, Schema.String),
-      ),
-    }),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    identity: Schema.suspend(() => ConnectedClusterIdentitySchema),
+    kind: Schema.optional(Schema.suspend(() => ConnectedClusterKindSchema)),
+    properties: Schema.suspend(() => ConnectedClusterPropertiesSchema),
+    systemData: Schema.optional(Schema.suspend(() => SystemDataSchema)),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     location: Schema.String,
   }).pipe(
@@ -101,6 +141,12 @@ export type ConnectedClusterCreateInput =
 // Output Schema
 export const ConnectedClusterCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    identity: Schema.suspend(() => ConnectedClusterIdentitySchema),
+    kind: Schema.optional(Schema.suspend(() => ConnectedClusterKindSchema)),
+    properties: Schema.suspend(() => ConnectedClusterPropertiesSchema),
+    systemData: Schema.optional(Schema.suspend(() => SystemDataSchema)),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -179,6 +225,12 @@ export type ConnectedClusterGetInput = typeof ConnectedClusterGetInput.Type;
 // Output Schema
 export const ConnectedClusterGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    identity: Schema.suspend(() => ConnectedClusterIdentitySchema),
+    kind: Schema.optional(Schema.suspend(() => ConnectedClusterKindSchema)),
+    properties: Schema.suspend(() => ConnectedClusterPropertiesSchema),
+    systemData: Schema.optional(Schema.suspend(() => SystemDataSchema)),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -218,13 +270,7 @@ export type ConnectedClusterListByResourceGroupInput =
 export const ConnectedClusterListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => ConnectedClusterSchema)),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -264,13 +310,7 @@ export type ConnectedClusterListBySubscriptionInput =
 export const ConnectedClusterListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => ConnectedClusterSchema)),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -312,20 +352,10 @@ export type ConnectedClusterListClusterUserCredentialInput =
 export const ConnectedClusterListClusterUserCredentialOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     hybridConnectionConfig: Schema.optional(
-      Schema.Struct({
-        expirationTime: Schema.optional(Schema.Number),
-        hybridConnectionName: Schema.optional(Schema.String),
-        relay: Schema.optional(Schema.String),
-        token: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(() => HybridConnectionConfigSchema),
     ),
     kubeconfigs: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          name: Schema.optional(Schema.String),
-          value: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => CredentialResultSchema)),
     ),
   });
 export type ConnectedClusterListClusterUserCredentialOutput =
@@ -353,13 +383,7 @@ export const ConnectedClusterUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     properties: Schema.optional(
-      Schema.Struct({
-        distribution: Schema.optional(Schema.String),
-        distributionVersion: Schema.optional(Schema.String),
-        azureHybridBenefit: Schema.optional(
-          Schema.Literals(["True", "False", "NotApplicable"]),
-        ),
-      }),
+      Schema.suspend(() => ConnectedClusterPatchPropertiesSchema),
     ),
   }).pipe(
     T.Http({
@@ -374,6 +398,12 @@ export type ConnectedClusterUpdateInput =
 // Output Schema
 export const ConnectedClusterUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    identity: Schema.suspend(() => ConnectedClusterIdentitySchema),
+    kind: Schema.optional(Schema.suspend(() => ConnectedClusterKindSchema)),
+    properties: Schema.suspend(() => ConnectedClusterPropertiesSchema),
+    systemData: Schema.optional(Schema.suspend(() => SystemDataSchema)),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -411,21 +441,7 @@ export type OperationsGetInput = typeof OperationsGetInput.Type;
 
 // Output Schema
 export const OperationsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  value: Schema.optional(
-    Schema.Array(
-      Schema.Struct({
-        name: Schema.optional(Schema.String),
-        display: Schema.optional(
-          Schema.Struct({
-            provider: Schema.optional(Schema.String),
-            resource: Schema.optional(Schema.String),
-            operation: Schema.optional(Schema.String),
-            description: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
-  ),
+  value: Schema.optional(Schema.Array(Schema.suspend(() => OperationSchema))),
   nextLink: Schema.optional(Schema.String),
 });
 export type OperationsGetOutput = typeof OperationsGetOutput.Type;

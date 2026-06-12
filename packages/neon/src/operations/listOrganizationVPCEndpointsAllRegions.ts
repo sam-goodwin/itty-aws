@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { VPCEndpointWithRegionSchema } from "./_schemas.ts";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
@@ -18,13 +19,7 @@ export type ListOrganizationVPCEndpointsAllRegionsInput =
 // Output Schema
 export const ListOrganizationVPCEndpointsAllRegionsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    endpoints: Schema.Array(
-      Schema.Struct({
-        vpc_endpoint_id: Schema.String,
-        label: Schema.String,
-        region_id: Schema.String,
-      }),
-    ),
+    endpoints: Schema.Array(Schema.suspend(() => VPCEndpointWithRegionSchema)),
   });
 export type ListOrganizationVPCEndpointsAllRegionsOutput =
   typeof ListOrganizationVPCEndpointsAllRegionsOutput.Type;

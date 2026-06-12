@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { RegionResponseSchema } from "./_schemas.ts";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
@@ -11,15 +12,7 @@ export type GetActiveRegionsInput = typeof GetActiveRegionsInput.Type;
 // Output Schema
 export const GetActiveRegionsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
-    regions: Schema.Array(
-      Schema.Struct({
-        region_id: Schema.String,
-        name: Schema.String,
-        default: Schema.Boolean,
-        geo_lat: Schema.String,
-        geo_long: Schema.String,
-      }),
-    ),
+    regions: Schema.Array(Schema.suspend(() => RegionResponseSchema)),
   },
 );
 export type GetActiveRegionsOutput = typeof GetActiveRegionsOutput.Type;

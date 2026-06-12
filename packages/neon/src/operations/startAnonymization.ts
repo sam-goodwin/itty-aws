@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { AnonymizationRunMetadataSchema } from "./_schemas.ts";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
@@ -26,13 +27,7 @@ export const StartAnonymizationOutput =
     updated_at: Schema.String,
     failed_at: Schema.optional(Schema.String),
     last_run: Schema.optional(
-      Schema.Struct({
-        started_at: Schema.optional(Schema.String),
-        completed_at: Schema.optional(Schema.String),
-        triggered_by: Schema.optional(Schema.String),
-        triggered_by_username: Schema.optional(Schema.String),
-        masked_columns: Schema.optional(Schema.Number),
-      }),
+      Schema.suspend(() => AnonymizationRunMetadataSchema),
     ),
   });
 export type StartAnonymizationOutput = typeof StartAnonymizationOutput.Type;

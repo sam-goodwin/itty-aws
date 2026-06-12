@@ -8,29 +8,323 @@ import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
+// Shared schemas
+const AccountSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  systemData: Schema.optional(Schema.suspend(() => SystemDataSchema)),
+  type: Schema.optional(Schema.String),
+});
+const SystemDataSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  createdAt: Schema.optional(Schema.String),
+  createdBy: Schema.optional(Schema.String),
+  createdByType: Schema.optional(
+    Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+  ),
+  lastModifiedAt: Schema.optional(Schema.String),
+  lastModifiedBy: Schema.optional(Schema.String),
+  lastModifiedByType: Schema.optional(
+    Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+  ),
+});
+const IdentitySchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  principalId: Schema.optional(Schema.String),
+  tenantId: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.Literals(["SystemAssigned"])),
+});
+const AccountPropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  createdAt: Schema.optional(Schema.String),
+  provisioningState: Schema.optional(
+    Schema.Literals(["Succeeded", "Creating", "Deleting", "Moving", "Failed"]),
+  ),
+  userEmail: Schema.optional(Schema.String),
+  userName: Schema.optional(Schema.String),
+});
+const DataShareErrorInfoSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  code: Schema.String,
+  details: Schema.optional(Schema.Array(Schema.Unknown)),
+  message: Schema.String,
+  target: Schema.optional(Schema.String),
+});
+const ConsumerInvitationSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  systemData: Schema.optional(Schema.suspend(() => SystemDataSchema)),
+  type: Schema.optional(Schema.String),
+});
+const ConsumerInvitationPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    dataSetCount: Schema.optional(Schema.Number),
+    description: Schema.optional(Schema.String),
+    expirationDate: Schema.optional(Schema.String),
+    invitationId: Schema.String,
+    invitationStatus: Schema.optional(
+      Schema.Literals(["Pending", "Accepted", "Rejected", "Withdrawn"]),
+    ),
+    location: Schema.optional(Schema.String),
+    providerEmail: Schema.optional(Schema.String),
+    providerName: Schema.optional(Schema.String),
+    providerTenantName: Schema.optional(Schema.String),
+    respondedAt: Schema.optional(Schema.String),
+    sentAt: Schema.optional(Schema.String),
+    shareName: Schema.optional(Schema.String),
+    termsOfUse: Schema.optional(Schema.String),
+    userEmail: Schema.optional(Schema.String),
+    userName: Schema.optional(Schema.String),
+  });
+const DataSetSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  systemData: Schema.optional(Schema.suspend(() => SystemDataSchema)),
+  type: Schema.optional(Schema.String),
+});
+const DataSetMappingSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  systemData: Schema.optional(Schema.suspend(() => SystemDataSchema)),
+  type: Schema.optional(Schema.String),
+});
+const InvitationPropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  expirationDate: Schema.optional(Schema.String),
+  invitationId: Schema.optional(Schema.String),
+  invitationStatus: Schema.optional(
+    Schema.Literals(["Pending", "Accepted", "Rejected", "Withdrawn"]),
+  ),
+  respondedAt: Schema.optional(Schema.String),
+  sentAt: Schema.optional(Schema.String),
+  targetActiveDirectoryId: Schema.optional(Schema.String),
+  targetEmail: Schema.optional(Schema.String),
+  targetObjectId: Schema.optional(Schema.String),
+  userEmail: Schema.optional(Schema.String),
+  userName: Schema.optional(Schema.String),
+});
+const InvitationSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  systemData: Schema.optional(Schema.suspend(() => SystemDataSchema)),
+  type: Schema.optional(Schema.String),
+});
+const OperationModelSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  display: Schema.optional(
+    Schema.suspend(() => OperationModelPropertiesSchema),
+  ),
+  name: Schema.optional(Schema.String),
+  origin: Schema.optional(Schema.String),
+  properties: Schema.optional(
+    Schema.suspend(() => OperationMetaPropertyInfoSchema),
+  ),
+});
+const OperationModelPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    description: Schema.optional(Schema.String),
+    operation: Schema.optional(Schema.String),
+    provider: Schema.optional(Schema.String),
+    resource: Schema.optional(Schema.String),
+  });
+const OperationMetaPropertyInfoSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    serviceSpecification: Schema.optional(
+      Schema.suspend(() => OperationMetaServiceSpecificationSchema),
+    ),
+  });
+const OperationMetaServiceSpecificationSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    logSpecifications: Schema.optional(
+      Schema.Array(Schema.suspend(() => OperationMetaLogSpecificationSchema)),
+    ),
+    metricSpecifications: Schema.optional(
+      Schema.Array(
+        Schema.suspend(() => OperationMetaMetricSpecificationSchema),
+      ),
+    ),
+  });
+const OperationMetaLogSpecificationSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    blobDuration: Schema.optional(Schema.String),
+    displayName: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+  });
+const OperationMetaMetricSpecificationSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    aggregationType: Schema.optional(Schema.String),
+    dimensions: Schema.optional(
+      Schema.Array(Schema.suspend(() => DimensionPropertiesSchema)),
+    ),
+    displayDescription: Schema.optional(Schema.String),
+    displayName: Schema.optional(Schema.String),
+    enableRegionalMdmAccount: Schema.optional(Schema.String),
+    fillGapWithZero: Schema.optional(Schema.Boolean),
+    internalMetricName: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    resourceIdDimensionNameOverride: Schema.optional(Schema.String),
+    supportedAggregationTypes: Schema.optional(Schema.Array(Schema.String)),
+    supportedTimeGrainTypes: Schema.optional(Schema.Array(Schema.String)),
+    unit: Schema.optional(Schema.String),
+  });
+const DimensionPropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  displayName: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+});
+const SynchronizationDetailsSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  dataSetId: Schema.optional(Schema.String),
+  dataSetType: Schema.optional(
+    Schema.Literals([
+      "Blob",
+      "Container",
+      "BlobFolder",
+      "AdlsGen2FileSystem",
+      "AdlsGen2Folder",
+      "AdlsGen2File",
+      "AdlsGen1Folder",
+      "AdlsGen1File",
+      "KustoCluster",
+      "KustoDatabase",
+      "KustoTable",
+      "SqlDBTable",
+      "SqlDWTable",
+      "SynapseWorkspaceSqlPoolTable",
+    ]),
+  ),
+  durationMs: Schema.optional(Schema.Number),
+  endTime: Schema.optional(Schema.String),
+  filesRead: Schema.optional(Schema.Number),
+  filesWritten: Schema.optional(Schema.Number),
+  message: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  rowsCopied: Schema.optional(Schema.Number),
+  rowsRead: Schema.optional(Schema.Number),
+  sizeRead: Schema.optional(Schema.Number),
+  sizeWritten: Schema.optional(Schema.Number),
+  startTime: Schema.optional(Schema.String),
+  status: Schema.optional(Schema.String),
+  vCore: Schema.optional(Schema.Number),
+});
+const ShareSynchronizationSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  consumerEmail: Schema.optional(Schema.String),
+  consumerName: Schema.optional(Schema.String),
+  consumerTenantName: Schema.optional(Schema.String),
+  durationMs: Schema.optional(Schema.Number),
+  endTime: Schema.optional(Schema.String),
+  message: Schema.optional(Schema.String),
+  startTime: Schema.optional(Schema.String),
+  status: Schema.optional(Schema.String),
+  synchronizationId: Schema.optional(Schema.String),
+  synchronizationMode: Schema.optional(
+    Schema.Literals(["Incremental", "FullSync"]),
+  ),
+});
+const ProviderShareSubscriptionPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    consumerEmail: Schema.optional(Schema.String),
+    consumerName: Schema.optional(Schema.String),
+    consumerTenantName: Schema.optional(Schema.String),
+    createdAt: Schema.optional(Schema.String),
+    expirationDate: Schema.optional(Schema.String),
+    providerEmail: Schema.optional(Schema.String),
+    providerName: Schema.optional(Schema.String),
+    sharedAt: Schema.optional(Schema.String),
+    shareSubscriptionObjectId: Schema.optional(Schema.String),
+    shareSubscriptionStatus: Schema.optional(
+      Schema.Literals(["Active", "Revoked", "SourceDeleted", "Revoking"]),
+    ),
+  });
+const ProviderShareSubscriptionSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    systemData: Schema.optional(Schema.suspend(() => SystemDataSchema)),
+    type: Schema.optional(Schema.String),
+  });
+const SharePropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  createdAt: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+  provisioningState: Schema.optional(
+    Schema.Literals(["Succeeded", "Creating", "Deleting", "Moving", "Failed"]),
+  ),
+  shareKind: Schema.optional(Schema.Literals(["CopyBased", "InPlace"])),
+  terms: Schema.optional(Schema.String),
+  userEmail: Schema.optional(Schema.String),
+  userName: Schema.optional(Schema.String),
+});
+const ShareSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  systemData: Schema.optional(Schema.suspend(() => SystemDataSchema)),
+  type: Schema.optional(Schema.String),
+});
+const ConsumerSourceDataSetSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  systemData: Schema.optional(Schema.suspend(() => SystemDataSchema)),
+  type: Schema.optional(Schema.String),
+});
+const SourceShareSynchronizationSettingSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    kind: Schema.Literals(["ScheduleBased"]),
+  });
+const ShareSubscriptionSynchronizationSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    durationMs: Schema.optional(Schema.Number),
+    endTime: Schema.optional(Schema.String),
+    message: Schema.optional(Schema.String),
+    startTime: Schema.optional(Schema.String),
+    status: Schema.optional(Schema.String),
+    synchronizationId: Schema.String,
+    synchronizationMode: Schema.optional(
+      Schema.Literals(["Incremental", "FullSync"]),
+    ),
+  });
+const ShareSubscriptionPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    createdAt: Schema.optional(Schema.String),
+    expirationDate: Schema.optional(Schema.String),
+    invitationId: Schema.String,
+    providerEmail: Schema.optional(Schema.String),
+    providerName: Schema.optional(Schema.String),
+    providerTenantName: Schema.optional(Schema.String),
+    provisioningState: Schema.optional(
+      Schema.Literals([
+        "Succeeded",
+        "Creating",
+        "Deleting",
+        "Moving",
+        "Failed",
+      ]),
+    ),
+    shareDescription: Schema.optional(Schema.String),
+    shareKind: Schema.optional(Schema.Literals(["CopyBased", "InPlace"])),
+    shareName: Schema.optional(Schema.String),
+    shareSubscriptionStatus: Schema.optional(
+      Schema.Literals(["Active", "Revoked", "SourceDeleted", "Revoking"]),
+    ),
+    shareTerms: Schema.optional(Schema.String),
+    sourceShareLocation: Schema.String,
+    userEmail: Schema.optional(Schema.String),
+    userName: Schema.optional(Schema.String),
+  });
+const ShareSubscriptionSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  systemData: Schema.optional(Schema.suspend(() => SystemDataSchema)),
+  type: Schema.optional(Schema.String),
+});
+const SynchronizationSettingSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  systemData: Schema.optional(Schema.suspend(() => SystemDataSchema)),
+  type: Schema.optional(Schema.String),
+});
+const TriggerSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  systemData: Schema.optional(Schema.suspend(() => SystemDataSchema)),
+  type: Schema.optional(Schema.String),
+});
+
 // Input Schema
 export const AccountsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  identity: Schema.Struct({
-    principalId: Schema.optional(Schema.String),
-    tenantId: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.Literals(["SystemAssigned"])),
-  }),
-  properties: Schema.optional(
-    Schema.Struct({
-      createdAt: Schema.optional(Schema.String),
-      provisioningState: Schema.optional(
-        Schema.Literals([
-          "Succeeded",
-          "Creating",
-          "Deleting",
-          "Moving",
-          "Failed",
-        ]),
-      ),
-      userEmail: Schema.optional(Schema.String),
-      userName: Schema.optional(Schema.String),
-    }),
-  ),
+  identity: Schema.suspend(() => IdentitySchema),
+  properties: Schema.optional(Schema.suspend(() => AccountPropertiesSchema)),
   location: Schema.optional(Schema.String),
   tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
 }).pipe(
@@ -45,22 +339,13 @@ export type AccountsCreateInput = typeof AccountsCreateInput.Type;
 
 // Output Schema
 export const AccountsCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  identity: Schema.suspend(() => IdentitySchema),
+  properties: Schema.optional(Schema.suspend(() => AccountPropertiesSchema)),
+  location: Schema.optional(Schema.String),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
-  systemData: Schema.optional(
-    Schema.Struct({
-      createdAt: Schema.optional(Schema.String),
-      createdBy: Schema.optional(Schema.String),
-      createdByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      lastModifiedAt: Schema.optional(Schema.String),
-      lastModifiedBy: Schema.optional(Schema.String),
-      lastModifiedByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-    }),
-  ),
+  systemData: Schema.optional(Schema.suspend(() => SystemDataSchema)),
   type: Schema.optional(Schema.String),
 });
 export type AccountsCreateOutput = typeof AccountsCreateOutput.Type;
@@ -91,14 +376,7 @@ export type AccountsDeleteInput = typeof AccountsDeleteInput.Type;
 // Output Schema
 export const AccountsDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   endTime: Schema.optional(Schema.String),
-  error: Schema.optional(
-    Schema.Struct({
-      code: Schema.String,
-      details: Schema.optional(Schema.Array(Schema.Unknown)),
-      message: Schema.String,
-      target: Schema.optional(Schema.String),
-    }),
-  ),
+  error: Schema.optional(Schema.suspend(() => DataShareErrorInfoSchema)),
   startTime: Schema.optional(Schema.String),
   status: Schema.Literals([
     "Accepted",
@@ -135,22 +413,13 @@ export type AccountsGetInput = typeof AccountsGetInput.Type;
 
 // Output Schema
 export const AccountsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  identity: Schema.suspend(() => IdentitySchema),
+  properties: Schema.optional(Schema.suspend(() => AccountPropertiesSchema)),
+  location: Schema.optional(Schema.String),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
-  systemData: Schema.optional(
-    Schema.Struct({
-      createdAt: Schema.optional(Schema.String),
-      createdBy: Schema.optional(Schema.String),
-      createdByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      lastModifiedAt: Schema.optional(Schema.String),
-      lastModifiedBy: Schema.optional(Schema.String),
-      lastModifiedByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-    }),
-  ),
+  systemData: Schema.optional(Schema.suspend(() => SystemDataSchema)),
   type: Schema.optional(Schema.String),
 });
 export type AccountsGetOutput = typeof AccountsGetOutput.Type;
@@ -183,37 +452,7 @@ export type AccountsListByResourceGroupInput =
 export const AccountsListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdAt: Schema.optional(Schema.String),
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-          }),
-        ),
-        type: Schema.optional(Schema.String),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => AccountSchema)),
   });
 export type AccountsListByResourceGroupOutput =
   typeof AccountsListByResourceGroupOutput.Type;
@@ -250,37 +489,7 @@ export type AccountsListBySubscriptionInput =
 export const AccountsListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdAt: Schema.optional(Schema.String),
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-          }),
-        ),
-        type: Schema.optional(Schema.String),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => AccountSchema)),
   });
 export type AccountsListBySubscriptionOutput =
   typeof AccountsListBySubscriptionOutput.Type;
@@ -313,22 +522,13 @@ export type AccountsUpdateInput = typeof AccountsUpdateInput.Type;
 
 // Output Schema
 export const AccountsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  identity: Schema.suspend(() => IdentitySchema),
+  properties: Schema.optional(Schema.suspend(() => AccountPropertiesSchema)),
+  location: Schema.optional(Schema.String),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
-  systemData: Schema.optional(
-    Schema.Struct({
-      createdAt: Schema.optional(Schema.String),
-      createdBy: Schema.optional(Schema.String),
-      createdByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      lastModifiedAt: Schema.optional(Schema.String),
-      lastModifiedBy: Schema.optional(Schema.String),
-      lastModifiedByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-    }),
-  ),
+  systemData: Schema.optional(Schema.suspend(() => SystemDataSchema)),
   type: Schema.optional(Schema.String),
 });
 export type AccountsUpdateOutput = typeof AccountsUpdateOutput.Type;
@@ -361,22 +561,10 @@ export type ConsumerInvitationsGetInput =
 // Output Schema
 export const ConsumerInvitationsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.suspend(() => ConsumerInvitationPropertiesSchema),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdAt: Schema.optional(Schema.String),
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => SystemDataSchema)),
     type: Schema.optional(Schema.String),
   });
 export type ConsumerInvitationsGetOutput =
@@ -415,37 +603,7 @@ export type ConsumerInvitationsListInvitationsInput =
 export const ConsumerInvitationsListInvitationsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdAt: Schema.optional(Schema.String),
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-          }),
-        ),
-        type: Schema.optional(Schema.String),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => ConsumerInvitationSchema)),
   });
 export type ConsumerInvitationsListInvitationsOutput =
   typeof ConsumerInvitationsListInvitationsOutput.Type;
@@ -467,41 +625,10 @@ export const ConsumerInvitationsListInvitations =
 export const ConsumerInvitationsRejectInvitationInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     location: Schema.String.pipe(T.PathParam()),
-    properties: Schema.Struct({
-      dataSetCount: Schema.optional(Schema.Number),
-      description: Schema.optional(Schema.String),
-      expirationDate: Schema.optional(Schema.String),
-      invitationId: Schema.String,
-      invitationStatus: Schema.optional(
-        Schema.Literals(["Pending", "Accepted", "Rejected", "Withdrawn"]),
-      ),
-      location: Schema.optional(Schema.String),
-      providerEmail: Schema.optional(Schema.String),
-      providerName: Schema.optional(Schema.String),
-      providerTenantName: Schema.optional(Schema.String),
-      respondedAt: Schema.optional(Schema.String),
-      sentAt: Schema.optional(Schema.String),
-      shareName: Schema.optional(Schema.String),
-      termsOfUse: Schema.optional(Schema.String),
-      userEmail: Schema.optional(Schema.String),
-      userName: Schema.optional(Schema.String),
-    }),
+    properties: Schema.suspend(() => ConsumerInvitationPropertiesSchema),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdAt: Schema.optional(Schema.String),
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => SystemDataSchema)),
     type: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
@@ -516,22 +643,10 @@ export type ConsumerInvitationsRejectInvitationInput =
 // Output Schema
 export const ConsumerInvitationsRejectInvitationOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.suspend(() => ConsumerInvitationPropertiesSchema),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdAt: Schema.optional(Schema.String),
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => SystemDataSchema)),
     type: Schema.optional(Schema.String),
   });
 export type ConsumerInvitationsRejectInvitationOutput =
@@ -569,37 +684,7 @@ export type ConsumerSourceDataSetsListByShareSubscriptionInput =
 export const ConsumerSourceDataSetsListByShareSubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdAt: Schema.optional(Schema.String),
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-          }),
-        ),
-        type: Schema.optional(Schema.String),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => ConsumerSourceDataSetSchema)),
   });
 export type ConsumerSourceDataSetsListByShareSubscriptionOutput =
   typeof ConsumerSourceDataSetsListByShareSubscriptionOutput.Type;
@@ -639,20 +724,7 @@ export const DataSetMappingsCreateInput =
     ]),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdAt: Schema.optional(Schema.String),
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => SystemDataSchema)),
     type: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
@@ -666,22 +738,23 @@ export type DataSetMappingsCreateInput = typeof DataSetMappingsCreateInput.Type;
 // Output Schema
 export const DataSetMappingsCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    kind: Schema.Literals([
+      "Blob",
+      "Container",
+      "BlobFolder",
+      "AdlsGen2FileSystem",
+      "AdlsGen2Folder",
+      "AdlsGen2File",
+      "KustoCluster",
+      "KustoDatabase",
+      "KustoTable",
+      "SqlDBTable",
+      "SqlDWTable",
+      "SynapseWorkspaceSqlPoolTable",
+    ]),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdAt: Schema.optional(Schema.String),
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => SystemDataSchema)),
     type: Schema.optional(Schema.String),
   });
 export type DataSetMappingsCreateOutput =
@@ -755,22 +828,23 @@ export type DataSetMappingsGetInput = typeof DataSetMappingsGetInput.Type;
 // Output Schema
 export const DataSetMappingsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    kind: Schema.Literals([
+      "Blob",
+      "Container",
+      "BlobFolder",
+      "AdlsGen2FileSystem",
+      "AdlsGen2Folder",
+      "AdlsGen2File",
+      "KustoCluster",
+      "KustoDatabase",
+      "KustoTable",
+      "SqlDBTable",
+      "SqlDWTable",
+      "SynapseWorkspaceSqlPoolTable",
+    ]),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdAt: Schema.optional(Schema.String),
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => SystemDataSchema)),
     type: Schema.optional(Schema.String),
   });
 export type DataSetMappingsGetOutput = typeof DataSetMappingsGetOutput.Type;
@@ -809,37 +883,7 @@ export type DataSetMappingsListByShareSubscriptionInput =
 export const DataSetMappingsListByShareSubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdAt: Schema.optional(Schema.String),
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-          }),
-        ),
-        type: Schema.optional(Schema.String),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => DataSetMappingSchema)),
   });
 export type DataSetMappingsListByShareSubscriptionOutput =
   typeof DataSetMappingsListByShareSubscriptionOutput.Type;
@@ -882,20 +926,7 @@ export const DataSetsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   ]),
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
-  systemData: Schema.optional(
-    Schema.Struct({
-      createdAt: Schema.optional(Schema.String),
-      createdBy: Schema.optional(Schema.String),
-      createdByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      lastModifiedAt: Schema.optional(Schema.String),
-      lastModifiedBy: Schema.optional(Schema.String),
-      lastModifiedByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-    }),
-  ),
+  systemData: Schema.optional(Schema.suspend(() => SystemDataSchema)),
   type: Schema.optional(Schema.String),
 }).pipe(
   T.Http({
@@ -908,22 +939,25 @@ export type DataSetsCreateInput = typeof DataSetsCreateInput.Type;
 
 // Output Schema
 export const DataSetsCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  kind: Schema.Literals([
+    "Blob",
+    "Container",
+    "BlobFolder",
+    "AdlsGen2FileSystem",
+    "AdlsGen2Folder",
+    "AdlsGen2File",
+    "AdlsGen1Folder",
+    "AdlsGen1File",
+    "KustoCluster",
+    "KustoDatabase",
+    "KustoTable",
+    "SqlDBTable",
+    "SqlDWTable",
+    "SynapseWorkspaceSqlPoolTable",
+  ]),
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
-  systemData: Schema.optional(
-    Schema.Struct({
-      createdAt: Schema.optional(Schema.String),
-      createdBy: Schema.optional(Schema.String),
-      createdByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      lastModifiedAt: Schema.optional(Schema.String),
-      lastModifiedBy: Schema.optional(Schema.String),
-      lastModifiedByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-    }),
-  ),
+  systemData: Schema.optional(Schema.suspend(() => SystemDataSchema)),
   type: Schema.optional(Schema.String),
 });
 export type DataSetsCreateOutput = typeof DataSetsCreateOutput.Type;
@@ -987,22 +1021,25 @@ export type DataSetsGetInput = typeof DataSetsGetInput.Type;
 
 // Output Schema
 export const DataSetsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  kind: Schema.Literals([
+    "Blob",
+    "Container",
+    "BlobFolder",
+    "AdlsGen2FileSystem",
+    "AdlsGen2Folder",
+    "AdlsGen2File",
+    "AdlsGen1Folder",
+    "AdlsGen1File",
+    "KustoCluster",
+    "KustoDatabase",
+    "KustoTable",
+    "SqlDBTable",
+    "SqlDWTable",
+    "SynapseWorkspaceSqlPoolTable",
+  ]),
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
-  systemData: Schema.optional(
-    Schema.Struct({
-      createdAt: Schema.optional(Schema.String),
-      createdBy: Schema.optional(Schema.String),
-      createdByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      lastModifiedAt: Schema.optional(Schema.String),
-      lastModifiedBy: Schema.optional(Schema.String),
-      lastModifiedByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-    }),
-  ),
+  systemData: Schema.optional(Schema.suspend(() => SystemDataSchema)),
   type: Schema.optional(Schema.String),
 });
 export type DataSetsGetOutput = typeof DataSetsGetOutput.Type;
@@ -1040,37 +1077,7 @@ export type DataSetsListByShareInput = typeof DataSetsListByShareInput.Type;
 export const DataSetsListByShareOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdAt: Schema.optional(Schema.String),
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-          }),
-        ),
-        type: Schema.optional(Schema.String),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => DataSetSchema)),
   });
 export type DataSetsListByShareOutput = typeof DataSetsListByShareOutput.Type;
 
@@ -1196,37 +1203,11 @@ export const InvitationsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     shareName: Schema.String.pipe(T.PathParam()),
     invitationName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        expirationDate: Schema.optional(Schema.String),
-        invitationId: Schema.optional(Schema.String),
-        invitationStatus: Schema.optional(
-          Schema.Literals(["Pending", "Accepted", "Rejected", "Withdrawn"]),
-        ),
-        respondedAt: Schema.optional(Schema.String),
-        sentAt: Schema.optional(Schema.String),
-        targetActiveDirectoryId: Schema.optional(Schema.String),
-        targetEmail: Schema.optional(Schema.String),
-        targetObjectId: Schema.optional(Schema.String),
-        userEmail: Schema.optional(Schema.String),
-        userName: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(() => InvitationPropertiesSchema),
     ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdAt: Schema.optional(Schema.String),
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => SystemDataSchema)),
     type: Schema.optional(Schema.String),
   },
 ).pipe(
@@ -1241,22 +1222,12 @@ export type InvitationsCreateInput = typeof InvitationsCreateInput.Type;
 // Output Schema
 export const InvitationsCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => InvitationPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdAt: Schema.optional(Schema.String),
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => SystemDataSchema)),
     type: Schema.optional(Schema.String),
   });
 export type InvitationsCreateOutput = typeof InvitationsCreateOutput.Type;
@@ -1321,22 +1292,10 @@ export type InvitationsGetInput = typeof InvitationsGetInput.Type;
 
 // Output Schema
 export const InvitationsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.optional(Schema.suspend(() => InvitationPropertiesSchema)),
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
-  systemData: Schema.optional(
-    Schema.Struct({
-      createdAt: Schema.optional(Schema.String),
-      createdBy: Schema.optional(Schema.String),
-      createdByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      lastModifiedAt: Schema.optional(Schema.String),
-      lastModifiedBy: Schema.optional(Schema.String),
-      lastModifiedByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-    }),
-  ),
+  systemData: Schema.optional(Schema.suspend(() => SystemDataSchema)),
   type: Schema.optional(Schema.String),
 });
 export type InvitationsGetOutput = typeof InvitationsGetOutput.Type;
@@ -1375,37 +1334,7 @@ export type InvitationsListByShareInput =
 export const InvitationsListByShareOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdAt: Schema.optional(Schema.String),
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-          }),
-        ),
-        type: Schema.optional(Schema.String),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => InvitationSchema)),
   });
 export type InvitationsListByShareOutput =
   typeof InvitationsListByShareOutput.Type;
@@ -1442,68 +1371,7 @@ export type OperationsListInput = typeof OperationsListInput.Type;
 // Output Schema
 export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   nextLink: Schema.optional(Schema.String),
-  value: Schema.Array(
-    Schema.Struct({
-      display: Schema.optional(
-        Schema.Struct({
-          description: Schema.optional(Schema.String),
-          operation: Schema.optional(Schema.String),
-          provider: Schema.optional(Schema.String),
-          resource: Schema.optional(Schema.String),
-        }),
-      ),
-      name: Schema.optional(Schema.String),
-      origin: Schema.optional(Schema.String),
-      properties: Schema.optional(
-        Schema.Struct({
-          serviceSpecification: Schema.optional(
-            Schema.Struct({
-              logSpecifications: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    blobDuration: Schema.optional(Schema.String),
-                    displayName: Schema.optional(Schema.String),
-                    name: Schema.optional(Schema.String),
-                  }),
-                ),
-              ),
-              metricSpecifications: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    aggregationType: Schema.optional(Schema.String),
-                    dimensions: Schema.optional(
-                      Schema.Array(
-                        Schema.Struct({
-                          displayName: Schema.optional(Schema.String),
-                          name: Schema.optional(Schema.String),
-                        }),
-                      ),
-                    ),
-                    displayDescription: Schema.optional(Schema.String),
-                    displayName: Schema.optional(Schema.String),
-                    enableRegionalMdmAccount: Schema.optional(Schema.String),
-                    fillGapWithZero: Schema.optional(Schema.Boolean),
-                    internalMetricName: Schema.optional(Schema.String),
-                    name: Schema.optional(Schema.String),
-                    resourceIdDimensionNameOverride: Schema.optional(
-                      Schema.String,
-                    ),
-                    supportedAggregationTypes: Schema.optional(
-                      Schema.Array(Schema.String),
-                    ),
-                    supportedTimeGrainTypes: Schema.optional(
-                      Schema.Array(Schema.String),
-                    ),
-                    unit: Schema.optional(Schema.String),
-                  }),
-                ),
-              ),
-            }),
-          ),
-        }),
-      ),
-    }),
-  ),
+  value: Schema.Array(Schema.suspend(() => OperationModelSchema)),
 });
 export type OperationsListOutput = typeof OperationsListOutput.Type;
 
@@ -1523,37 +1391,11 @@ export const ProviderShareSubscriptionsAdjustInput =
     shareName: Schema.String.pipe(T.PathParam()),
     providerShareSubscriptionId: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        consumerEmail: Schema.optional(Schema.String),
-        consumerName: Schema.optional(Schema.String),
-        consumerTenantName: Schema.optional(Schema.String),
-        createdAt: Schema.optional(Schema.String),
-        expirationDate: Schema.optional(Schema.String),
-        providerEmail: Schema.optional(Schema.String),
-        providerName: Schema.optional(Schema.String),
-        sharedAt: Schema.optional(Schema.String),
-        shareSubscriptionObjectId: Schema.optional(Schema.String),
-        shareSubscriptionStatus: Schema.optional(
-          Schema.Literals(["Active", "Revoked", "SourceDeleted", "Revoking"]),
-        ),
-      }),
+      Schema.suspend(() => ProviderShareSubscriptionPropertiesSchema),
     ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdAt: Schema.optional(Schema.String),
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => SystemDataSchema)),
     type: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
@@ -1568,22 +1410,12 @@ export type ProviderShareSubscriptionsAdjustInput =
 // Output Schema
 export const ProviderShareSubscriptionsAdjustOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => ProviderShareSubscriptionPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdAt: Schema.optional(Schema.String),
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => SystemDataSchema)),
     type: Schema.optional(Schema.String),
   });
 export type ProviderShareSubscriptionsAdjustOutput =
@@ -1621,22 +1453,12 @@ export type ProviderShareSubscriptionsGetByShareInput =
 // Output Schema
 export const ProviderShareSubscriptionsGetByShareOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => ProviderShareSubscriptionPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdAt: Schema.optional(Schema.String),
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => SystemDataSchema)),
     type: Schema.optional(Schema.String),
   });
 export type ProviderShareSubscriptionsGetByShareOutput =
@@ -1675,37 +1497,7 @@ export type ProviderShareSubscriptionsListByShareInput =
 export const ProviderShareSubscriptionsListByShareOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdAt: Schema.optional(Schema.String),
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-          }),
-        ),
-        type: Schema.optional(Schema.String),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => ProviderShareSubscriptionSchema)),
   });
 export type ProviderShareSubscriptionsListByShareOutput =
   typeof ProviderShareSubscriptionsListByShareOutput.Type;
@@ -1730,37 +1522,11 @@ export const ProviderShareSubscriptionsReinstateInput =
     shareName: Schema.String.pipe(T.PathParam()),
     providerShareSubscriptionId: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        consumerEmail: Schema.optional(Schema.String),
-        consumerName: Schema.optional(Schema.String),
-        consumerTenantName: Schema.optional(Schema.String),
-        createdAt: Schema.optional(Schema.String),
-        expirationDate: Schema.optional(Schema.String),
-        providerEmail: Schema.optional(Schema.String),
-        providerName: Schema.optional(Schema.String),
-        sharedAt: Schema.optional(Schema.String),
-        shareSubscriptionObjectId: Schema.optional(Schema.String),
-        shareSubscriptionStatus: Schema.optional(
-          Schema.Literals(["Active", "Revoked", "SourceDeleted", "Revoking"]),
-        ),
-      }),
+      Schema.suspend(() => ProviderShareSubscriptionPropertiesSchema),
     ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdAt: Schema.optional(Schema.String),
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => SystemDataSchema)),
     type: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
@@ -1775,22 +1541,12 @@ export type ProviderShareSubscriptionsReinstateInput =
 // Output Schema
 export const ProviderShareSubscriptionsReinstateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => ProviderShareSubscriptionPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdAt: Schema.optional(Schema.String),
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => SystemDataSchema)),
     type: Schema.optional(Schema.String),
   });
 export type ProviderShareSubscriptionsReinstateOutput =
@@ -1829,22 +1585,12 @@ export type ProviderShareSubscriptionsRevokeInput =
 // Output Schema
 export const ProviderShareSubscriptionsRevokeOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => ProviderShareSubscriptionPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdAt: Schema.optional(Schema.String),
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => SystemDataSchema)),
     type: Schema.optional(Schema.String),
   });
 export type ProviderShareSubscriptionsRevokeOutput =
@@ -1867,41 +1613,10 @@ export const ProviderShareSubscriptionsRevoke =
 // Input Schema
 export const SharesCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   shareName: Schema.String.pipe(T.PathParam()),
-  properties: Schema.optional(
-    Schema.Struct({
-      createdAt: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      provisioningState: Schema.optional(
-        Schema.Literals([
-          "Succeeded",
-          "Creating",
-          "Deleting",
-          "Moving",
-          "Failed",
-        ]),
-      ),
-      shareKind: Schema.optional(Schema.Literals(["CopyBased", "InPlace"])),
-      terms: Schema.optional(Schema.String),
-      userEmail: Schema.optional(Schema.String),
-      userName: Schema.optional(Schema.String),
-    }),
-  ),
+  properties: Schema.optional(Schema.suspend(() => SharePropertiesSchema)),
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
-  systemData: Schema.optional(
-    Schema.Struct({
-      createdAt: Schema.optional(Schema.String),
-      createdBy: Schema.optional(Schema.String),
-      createdByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      lastModifiedAt: Schema.optional(Schema.String),
-      lastModifiedBy: Schema.optional(Schema.String),
-      lastModifiedByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-    }),
-  ),
+  systemData: Schema.optional(Schema.suspend(() => SystemDataSchema)),
   type: Schema.optional(Schema.String),
 }).pipe(
   T.Http({
@@ -1914,22 +1629,10 @@ export type SharesCreateInput = typeof SharesCreateInput.Type;
 
 // Output Schema
 export const SharesCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.optional(Schema.suspend(() => SharePropertiesSchema)),
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
-  systemData: Schema.optional(
-    Schema.Struct({
-      createdAt: Schema.optional(Schema.String),
-      createdBy: Schema.optional(Schema.String),
-      createdByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      lastModifiedAt: Schema.optional(Schema.String),
-      lastModifiedBy: Schema.optional(Schema.String),
-      lastModifiedByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-    }),
-  ),
+  systemData: Schema.optional(Schema.suspend(() => SystemDataSchema)),
   type: Schema.optional(Schema.String),
 });
 export type SharesCreateOutput = typeof SharesCreateOutput.Type;
@@ -1962,14 +1665,7 @@ export type SharesDeleteInput = typeof SharesDeleteInput.Type;
 // Output Schema
 export const SharesDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   endTime: Schema.optional(Schema.String),
-  error: Schema.optional(
-    Schema.Struct({
-      code: Schema.String,
-      details: Schema.optional(Schema.Array(Schema.Unknown)),
-      message: Schema.String,
-      target: Schema.optional(Schema.String),
-    }),
-  ),
+  error: Schema.optional(Schema.suspend(() => DataShareErrorInfoSchema)),
   startTime: Schema.optional(Schema.String),
   status: Schema.Literals([
     "Accepted",
@@ -2008,22 +1704,10 @@ export type SharesGetInput = typeof SharesGetInput.Type;
 
 // Output Schema
 export const SharesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.optional(Schema.suspend(() => SharePropertiesSchema)),
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
-  systemData: Schema.optional(
-    Schema.Struct({
-      createdAt: Schema.optional(Schema.String),
-      createdBy: Schema.optional(Schema.String),
-      createdByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      lastModifiedAt: Schema.optional(Schema.String),
-      lastModifiedBy: Schema.optional(Schema.String),
-      lastModifiedByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-    }),
-  ),
+  systemData: Schema.optional(Schema.suspend(() => SystemDataSchema)),
   type: Schema.optional(Schema.String),
 });
 export type SharesGetOutput = typeof SharesGetOutput.Type;
@@ -2059,37 +1743,7 @@ export type SharesListByAccountInput = typeof SharesListByAccountInput.Type;
 export const SharesListByAccountOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdAt: Schema.optional(Schema.String),
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-          }),
-        ),
-        type: Schema.optional(Schema.String),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => ShareSchema)),
   });
 export type SharesListByAccountOutput = typeof SharesListByAccountOutput.Type;
 
@@ -2140,42 +1794,7 @@ export type SharesListSynchronizationDetailsInput =
 export const SharesListSynchronizationDetailsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
-    value: Schema.Array(
-      Schema.Struct({
-        dataSetId: Schema.optional(Schema.String),
-        dataSetType: Schema.optional(
-          Schema.Literals([
-            "Blob",
-            "Container",
-            "BlobFolder",
-            "AdlsGen2FileSystem",
-            "AdlsGen2Folder",
-            "AdlsGen2File",
-            "AdlsGen1Folder",
-            "AdlsGen1File",
-            "KustoCluster",
-            "KustoDatabase",
-            "KustoTable",
-            "SqlDBTable",
-            "SqlDWTable",
-            "SynapseWorkspaceSqlPoolTable",
-          ]),
-        ),
-        durationMs: Schema.optional(Schema.Number),
-        endTime: Schema.optional(Schema.String),
-        filesRead: Schema.optional(Schema.Number),
-        filesWritten: Schema.optional(Schema.Number),
-        message: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        rowsCopied: Schema.optional(Schema.Number),
-        rowsRead: Schema.optional(Schema.Number),
-        sizeRead: Schema.optional(Schema.Number),
-        sizeWritten: Schema.optional(Schema.Number),
-        startTime: Schema.optional(Schema.String),
-        status: Schema.optional(Schema.String),
-        vCore: Schema.optional(Schema.Number),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => SynchronizationDetailsSchema)),
   });
 export type SharesListSynchronizationDetailsOutput =
   typeof SharesListSynchronizationDetailsOutput.Type;
@@ -2217,22 +1836,7 @@ export type SharesListSynchronizationsInput =
 export const SharesListSynchronizationsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
-    value: Schema.Array(
-      Schema.Struct({
-        consumerEmail: Schema.optional(Schema.String),
-        consumerName: Schema.optional(Schema.String),
-        consumerTenantName: Schema.optional(Schema.String),
-        durationMs: Schema.optional(Schema.Number),
-        endTime: Schema.optional(Schema.String),
-        message: Schema.optional(Schema.String),
-        startTime: Schema.optional(Schema.String),
-        status: Schema.optional(Schema.String),
-        synchronizationId: Schema.optional(Schema.String),
-        synchronizationMode: Schema.optional(
-          Schema.Literals(["Incremental", "FullSync"]),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => ShareSynchronizationSchema)),
   });
 export type SharesListSynchronizationsOutput =
   typeof SharesListSynchronizationsOutput.Type;
@@ -2311,49 +1915,10 @@ export const ShareSubscriptionsCancelSynchronization =
 export const ShareSubscriptionsCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     shareSubscriptionName: Schema.String.pipe(T.PathParam()),
-    properties: Schema.Struct({
-      createdAt: Schema.optional(Schema.String),
-      expirationDate: Schema.optional(Schema.String),
-      invitationId: Schema.String,
-      providerEmail: Schema.optional(Schema.String),
-      providerName: Schema.optional(Schema.String),
-      providerTenantName: Schema.optional(Schema.String),
-      provisioningState: Schema.optional(
-        Schema.Literals([
-          "Succeeded",
-          "Creating",
-          "Deleting",
-          "Moving",
-          "Failed",
-        ]),
-      ),
-      shareDescription: Schema.optional(Schema.String),
-      shareKind: Schema.optional(Schema.Literals(["CopyBased", "InPlace"])),
-      shareName: Schema.optional(Schema.String),
-      shareSubscriptionStatus: Schema.optional(
-        Schema.Literals(["Active", "Revoked", "SourceDeleted", "Revoking"]),
-      ),
-      shareTerms: Schema.optional(Schema.String),
-      sourceShareLocation: Schema.String,
-      userEmail: Schema.optional(Schema.String),
-      userName: Schema.optional(Schema.String),
-    }),
+    properties: Schema.suspend(() => ShareSubscriptionPropertiesSchema),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdAt: Schema.optional(Schema.String),
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => SystemDataSchema)),
     type: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
@@ -2368,22 +1933,10 @@ export type ShareSubscriptionsCreateInput =
 // Output Schema
 export const ShareSubscriptionsCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.suspend(() => ShareSubscriptionPropertiesSchema),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdAt: Schema.optional(Schema.String),
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => SystemDataSchema)),
     type: Schema.optional(Schema.String),
   });
 export type ShareSubscriptionsCreateOutput =
@@ -2422,14 +1975,7 @@ export type ShareSubscriptionsDeleteInput =
 export const ShareSubscriptionsDeleteOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     endTime: Schema.optional(Schema.String),
-    error: Schema.optional(
-      Schema.Struct({
-        code: Schema.String,
-        details: Schema.optional(Schema.Array(Schema.Unknown)),
-        message: Schema.String,
-        target: Schema.optional(Schema.String),
-      }),
-    ),
+    error: Schema.optional(Schema.suspend(() => DataShareErrorInfoSchema)),
     startTime: Schema.optional(Schema.String),
     status: Schema.Literals([
       "Accepted",
@@ -2473,22 +2019,10 @@ export type ShareSubscriptionsGetInput = typeof ShareSubscriptionsGetInput.Type;
 // Output Schema
 export const ShareSubscriptionsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.suspend(() => ShareSubscriptionPropertiesSchema),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdAt: Schema.optional(Schema.String),
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => SystemDataSchema)),
     type: Schema.optional(Schema.String),
   });
 export type ShareSubscriptionsGetOutput =
@@ -2528,37 +2062,7 @@ export type ShareSubscriptionsListByAccountInput =
 export const ShareSubscriptionsListByAccountOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdAt: Schema.optional(Schema.String),
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-          }),
-        ),
-        type: Schema.optional(Schema.String),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => ShareSubscriptionSchema)),
   });
 export type ShareSubscriptionsListByAccountOutput =
   typeof ShareSubscriptionsListByAccountOutput.Type;
@@ -2598,9 +2102,7 @@ export const ShareSubscriptionsListSourceShareSynchronizationSettingsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
     value: Schema.Array(
-      Schema.Struct({
-        kind: Schema.Literals(["ScheduleBased"]),
-      }),
+      Schema.suspend(() => SourceShareSynchronizationSettingSchema),
     ),
   });
 export type ShareSubscriptionsListSourceShareSynchronizationSettingsOutput =
@@ -2651,42 +2153,7 @@ export type ShareSubscriptionsListSynchronizationDetailsInput =
 export const ShareSubscriptionsListSynchronizationDetailsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
-    value: Schema.Array(
-      Schema.Struct({
-        dataSetId: Schema.optional(Schema.String),
-        dataSetType: Schema.optional(
-          Schema.Literals([
-            "Blob",
-            "Container",
-            "BlobFolder",
-            "AdlsGen2FileSystem",
-            "AdlsGen2Folder",
-            "AdlsGen2File",
-            "AdlsGen1Folder",
-            "AdlsGen1File",
-            "KustoCluster",
-            "KustoDatabase",
-            "KustoTable",
-            "SqlDBTable",
-            "SqlDWTable",
-            "SynapseWorkspaceSqlPoolTable",
-          ]),
-        ),
-        durationMs: Schema.optional(Schema.Number),
-        endTime: Schema.optional(Schema.String),
-        filesRead: Schema.optional(Schema.Number),
-        filesWritten: Schema.optional(Schema.Number),
-        message: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        rowsCopied: Schema.optional(Schema.Number),
-        rowsRead: Schema.optional(Schema.Number),
-        sizeRead: Schema.optional(Schema.Number),
-        sizeWritten: Schema.optional(Schema.Number),
-        startTime: Schema.optional(Schema.String),
-        status: Schema.optional(Schema.String),
-        vCore: Schema.optional(Schema.Number),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => SynchronizationDetailsSchema)),
   });
 export type ShareSubscriptionsListSynchronizationDetailsOutput =
   typeof ShareSubscriptionsListSynchronizationDetailsOutput.Type;
@@ -2729,17 +2196,7 @@ export const ShareSubscriptionsListSynchronizationsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
     value: Schema.Array(
-      Schema.Struct({
-        durationMs: Schema.optional(Schema.Number),
-        endTime: Schema.optional(Schema.String),
-        message: Schema.optional(Schema.String),
-        startTime: Schema.optional(Schema.String),
-        status: Schema.optional(Schema.String),
-        synchronizationId: Schema.String,
-        synchronizationMode: Schema.optional(
-          Schema.Literals(["Incremental", "FullSync"]),
-        ),
-      }),
+      Schema.suspend(() => ShareSubscriptionSynchronizationSchema),
     ),
   });
 export type ShareSubscriptionsListSynchronizationsOutput =
@@ -2816,20 +2273,7 @@ export const SynchronizationSettingsCreateInput =
     kind: Schema.Literals(["ScheduleBased"]),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdAt: Schema.optional(Schema.String),
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => SystemDataSchema)),
     type: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
@@ -2844,22 +2288,10 @@ export type SynchronizationSettingsCreateInput =
 // Output Schema
 export const SynchronizationSettingsCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    kind: Schema.Literals(["ScheduleBased"]),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdAt: Schema.optional(Schema.String),
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => SystemDataSchema)),
     type: Schema.optional(Schema.String),
   });
 export type SynchronizationSettingsCreateOutput =
@@ -2899,14 +2331,7 @@ export type SynchronizationSettingsDeleteInput =
 export const SynchronizationSettingsDeleteOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     endTime: Schema.optional(Schema.String),
-    error: Schema.optional(
-      Schema.Struct({
-        code: Schema.String,
-        details: Schema.optional(Schema.Array(Schema.Unknown)),
-        message: Schema.String,
-        target: Schema.optional(Schema.String),
-      }),
-    ),
+    error: Schema.optional(Schema.suspend(() => DataShareErrorInfoSchema)),
     startTime: Schema.optional(Schema.String),
     status: Schema.Literals([
       "Accepted",
@@ -2952,22 +2377,10 @@ export type SynchronizationSettingsGetInput =
 // Output Schema
 export const SynchronizationSettingsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    kind: Schema.Literals(["ScheduleBased"]),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdAt: Schema.optional(Schema.String),
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => SystemDataSchema)),
     type: Schema.optional(Schema.String),
   });
 export type SynchronizationSettingsGetOutput =
@@ -3007,37 +2420,7 @@ export type SynchronizationSettingsListByShareInput =
 export const SynchronizationSettingsListByShareOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdAt: Schema.optional(Schema.String),
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-          }),
-        ),
-        type: Schema.optional(Schema.String),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => SynchronizationSettingSchema)),
   });
 export type SynchronizationSettingsListByShareOutput =
   typeof SynchronizationSettingsListByShareOutput.Type;
@@ -3063,20 +2446,7 @@ export const TriggersCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   kind: Schema.Literals(["ScheduleBased"]),
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
-  systemData: Schema.optional(
-    Schema.Struct({
-      createdAt: Schema.optional(Schema.String),
-      createdBy: Schema.optional(Schema.String),
-      createdByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      lastModifiedAt: Schema.optional(Schema.String),
-      lastModifiedBy: Schema.optional(Schema.String),
-      lastModifiedByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-    }),
-  ),
+  systemData: Schema.optional(Schema.suspend(() => SystemDataSchema)),
   type: Schema.optional(Schema.String),
 }).pipe(
   T.Http({
@@ -3090,22 +2460,10 @@ export type TriggersCreateInput = typeof TriggersCreateInput.Type;
 
 // Output Schema
 export const TriggersCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  kind: Schema.Literals(["ScheduleBased"]),
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
-  systemData: Schema.optional(
-    Schema.Struct({
-      createdAt: Schema.optional(Schema.String),
-      createdBy: Schema.optional(Schema.String),
-      createdByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      lastModifiedAt: Schema.optional(Schema.String),
-      lastModifiedBy: Schema.optional(Schema.String),
-      lastModifiedByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-    }),
-  ),
+  systemData: Schema.optional(Schema.suspend(() => SystemDataSchema)),
   type: Schema.optional(Schema.String),
 });
 export type TriggersCreateOutput = typeof TriggersCreateOutput.Type;
@@ -3140,14 +2498,7 @@ export type TriggersDeleteInput = typeof TriggersDeleteInput.Type;
 // Output Schema
 export const TriggersDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   endTime: Schema.optional(Schema.String),
-  error: Schema.optional(
-    Schema.Struct({
-      code: Schema.String,
-      details: Schema.optional(Schema.Array(Schema.Unknown)),
-      message: Schema.String,
-      target: Schema.optional(Schema.String),
-    }),
-  ),
+  error: Schema.optional(Schema.suspend(() => DataShareErrorInfoSchema)),
   startTime: Schema.optional(Schema.String),
   status: Schema.Literals([
     "Accepted",
@@ -3188,22 +2539,10 @@ export type TriggersGetInput = typeof TriggersGetInput.Type;
 
 // Output Schema
 export const TriggersGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  kind: Schema.Literals(["ScheduleBased"]),
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
-  systemData: Schema.optional(
-    Schema.Struct({
-      createdAt: Schema.optional(Schema.String),
-      createdBy: Schema.optional(Schema.String),
-      createdByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      lastModifiedAt: Schema.optional(Schema.String),
-      lastModifiedBy: Schema.optional(Schema.String),
-      lastModifiedByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-    }),
-  ),
+  systemData: Schema.optional(Schema.suspend(() => SystemDataSchema)),
   type: Schema.optional(Schema.String),
 });
 export type TriggersGetOutput = typeof TriggersGetOutput.Type;
@@ -3240,37 +2579,7 @@ export type TriggersListByShareSubscriptionInput =
 export const TriggersListByShareSubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdAt: Schema.optional(Schema.String),
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-          }),
-        ),
-        type: Schema.optional(Schema.String),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => TriggerSchema)),
   });
 export type TriggersListByShareSubscriptionOutput =
   typeof TriggersListByShareSubscriptionOutput.Type;

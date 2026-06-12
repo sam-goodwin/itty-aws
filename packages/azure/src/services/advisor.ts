@@ -8,6 +8,219 @@ import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
+// Shared schemas
+const MetadataEntityPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    displayName: Schema.optional(Schema.String),
+    dependsOn: Schema.optional(Schema.Array(Schema.String)),
+    applicableScenarios: Schema.optional(
+      Schema.Array(Schema.Literals(["Alerts"])),
+    ),
+    supportedValues: Schema.optional(
+      Schema.Array(Schema.suspend(() => MetadataSupportedValueDetailSchema)),
+    ),
+  });
+const MetadataSupportedValueDetailSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    displayName: Schema.optional(Schema.String),
+  });
+const MetadataEntitySchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  properties: Schema.optional(
+    Schema.suspend(() => MetadataEntityPropertiesSchema),
+  ),
+});
+const ConfigDataSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+});
+const systemDataSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  createdBy: Schema.optional(Schema.String),
+  createdByType: Schema.optional(
+    Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+  ),
+  createdAt: Schema.optional(Schema.String),
+  lastModifiedBy: Schema.optional(Schema.String),
+  lastModifiedByType: Schema.optional(
+    Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+  ),
+  lastModifiedAt: Schema.optional(Schema.String),
+});
+const ConfigDataPropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  exclude: Schema.optional(Schema.Boolean),
+  lowCpuThreshold: Schema.optional(Schema.Literals(["5", "10", "15", "20"])),
+  duration: Schema.optional(
+    Schema.Literals(["7", "14", "21", "30", "60", "90"]),
+  ),
+  digests: Schema.optional(
+    Schema.Array(Schema.suspend(() => DigestConfigSchema)),
+  ),
+});
+const DigestConfigSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  actionGroupResourceId: Schema.optional(Schema.String),
+  frequency: Schema.optional(Schema.Number),
+  categories: Schema.optional(
+    Schema.Array(
+      Schema.Literals([
+        "HighAvailability",
+        "Security",
+        "Performance",
+        "Cost",
+        "OperationalExcellence",
+      ]),
+    ),
+  ),
+  language: Schema.optional(Schema.String),
+  state: Schema.optional(Schema.Literals(["Active", "Disabled"])),
+});
+const ResourceRecommendationBaseSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+  });
+const OperationEntitySchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  display: Schema.optional(Schema.suspend(() => OperationDisplayInfoSchema)),
+});
+const OperationDisplayInfoSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  description: Schema.optional(Schema.String),
+  operation: Schema.optional(Schema.String),
+  provider: Schema.optional(Schema.String),
+  resource: Schema.optional(Schema.String),
+});
+const RecommendationPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    category: Schema.optional(
+      Schema.Literals([
+        "HighAvailability",
+        "Security",
+        "Performance",
+        "Cost",
+        "OperationalExcellence",
+      ]),
+    ),
+    control: Schema.optional(
+      Schema.Literals([
+        "HighAvailability",
+        "BusinessContinuity",
+        "DisasterRecovery",
+        "Scalability",
+        "MonitoringAndAlerting",
+        "ServiceUpgradeAndRetirement",
+        "Other",
+        "PrioritizedRecommendations",
+        "Personalized",
+      ]),
+    ),
+    impact: Schema.optional(Schema.Literals(["High", "Medium", "Low"])),
+    impactedField: Schema.optional(Schema.String),
+    impactedValue: Schema.optional(Schema.String),
+    lastUpdated: Schema.optional(Schema.String),
+    metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+    recommendationTypeId: Schema.optional(Schema.String),
+    risk: Schema.optional(Schema.Literals(["Error", "Warning", "None"])),
+    shortDescription: Schema.optional(
+      Schema.suspend(() => ShortDescriptionSchema),
+    ),
+    suppressionIds: Schema.optional(Schema.Array(Schema.String)),
+    extendedProperties: Schema.optional(
+      Schema.Record(Schema.String, Schema.String),
+    ),
+    resourceMetadata: Schema.optional(
+      Schema.suspend(() => ResourceMetadataSchema),
+    ),
+    description: Schema.optional(Schema.String),
+    label: Schema.optional(Schema.String),
+    learnMoreLink: Schema.optional(Schema.String),
+    potentialBenefits: Schema.optional(Schema.String),
+    actions: Schema.optional(
+      Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
+    ),
+    remediation: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+    exposedMetadataProperties: Schema.optional(
+      Schema.Record(Schema.String, Schema.Unknown),
+    ),
+  });
+const ShortDescriptionSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  problem: Schema.optional(Schema.String),
+  solution: Schema.optional(Schema.String),
+});
+const ResourceMetadataSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  resourceId: Schema.optional(Schema.String),
+  source: Schema.optional(Schema.String),
+  action: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  singular: Schema.optional(Schema.String),
+  plural: Schema.optional(Schema.String),
+});
+const SuppressionPropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  suppressionId: Schema.optional(Schema.String),
+  ttl: Schema.optional(Schema.String),
+  expirationTimeStamp: Schema.optional(Schema.String),
+});
+const SuppressionContractSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+});
+const PredictionRequestPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    predictionType: Schema.optional(Schema.Literals(["PredictiveRightsizing"])),
+    extendedProperties: Schema.optional(Schema.Unknown),
+  });
+const PredictionResponsePropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    extendedProperties: Schema.optional(Schema.Unknown),
+    predictionType: Schema.optional(Schema.Literals(["PredictiveRightsizing"])),
+    category: Schema.optional(
+      Schema.Literals([
+        "HighAvailability",
+        "Security",
+        "Performance",
+        "Cost",
+        "OperationalExcellence",
+      ]),
+    ),
+    impact: Schema.optional(Schema.Literals(["High", "Medium", "Low"])),
+    impactedField: Schema.optional(Schema.String),
+    lastUpdated: Schema.optional(Schema.String),
+    shortDescription: Schema.optional(
+      Schema.suspend(() => ShortDescriptionSchema),
+    ),
+  });
+const advisorScoreEntitySchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+});
+const scoreEntitySchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  date: Schema.optional(Schema.String),
+  score: Schema.optional(Schema.Number),
+  consumptionUnits: Schema.optional(Schema.Number),
+  impactedResourceCount: Schema.optional(Schema.Number),
+  potentialScoreIncrease: Schema.optional(Schema.Number),
+  categoryCount: Schema.optional(Schema.Number),
+});
+const timeSeriesEntitySchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
+  Schema.Struct({
+    aggregationLevel: Schema.optional(
+      Schema.Literals(["week", "day", "month"]),
+    ),
+    scoreHistory: Schema.optional(
+      Schema.Array(Schema.suspend(() => scoreEntitySchema)),
+    ),
+  }),
+);
+
 // Input Schema
 export const AdvisorScoresGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   name: Schema.String.pipe(T.PathParam()),
@@ -23,23 +236,20 @@ export type AdvisorScoresGetInput = typeof AdvisorScoresGetInput.Type;
 // Output Schema
 export const AdvisorScoresGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
+    properties: Schema.optional(
+      Schema.Struct({
+        lastRefreshedScore: Schema.optional(
+          Schema.suspend(() => scoreEntitySchema),
+        ),
+        timeSeries: Schema.optional(
+          Schema.suspend(() => timeSeriesEntitySchema),
+        ),
+      }),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   },
 );
 export type AdvisorScoresGetOutput = typeof AdvisorScoresGetOutput.Type;
@@ -70,37 +280,7 @@ export type AdvisorScoresListInput = typeof AdvisorScoresListInput.Type;
 export const AdvisorScoresListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.String),
-              createdByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              createdAt: Schema.optional(Schema.String),
-              lastModifiedBy: Schema.optional(Schema.String),
-              lastModifiedByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              lastModifiedAt: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => advisorScoreEntitySchema)),
     ),
   });
 export type AdvisorScoresListOutput = typeof AdvisorScoresListOutput.Type;
@@ -119,55 +299,12 @@ export const ConfigurationsCreateInResourceGroupInput =
     configurationName: Schema.Literals(["default"]).pipe(T.PathParam()),
     resourceGroup: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        exclude: Schema.optional(Schema.Boolean),
-        lowCpuThreshold: Schema.optional(
-          Schema.Literals(["5", "10", "15", "20"]),
-        ),
-        duration: Schema.optional(
-          Schema.Literals(["7", "14", "21", "30", "60", "90"]),
-        ),
-        digests: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              name: Schema.optional(Schema.String),
-              actionGroupResourceId: Schema.optional(Schema.String),
-              frequency: Schema.optional(Schema.Number),
-              categories: Schema.optional(
-                Schema.Array(
-                  Schema.Literals([
-                    "HighAvailability",
-                    "Security",
-                    "Performance",
-                    "Cost",
-                    "OperationalExcellence",
-                  ]),
-                ),
-              ),
-              language: Schema.optional(Schema.String),
-              state: Schema.optional(Schema.Literals(["Active", "Disabled"])),
-            }),
-          ),
-        ),
-      }),
+      Schema.suspend(() => ConfigDataPropertiesSchema),
     ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -181,23 +318,13 @@ export type ConfigurationsCreateInResourceGroupInput =
 // Output Schema
 export const ConfigurationsCreateInResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => ConfigDataPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type ConfigurationsCreateInResourceGroupOutput =
   typeof ConfigurationsCreateInResourceGroupOutput.Type;
@@ -219,55 +346,12 @@ export const ConfigurationsCreateInSubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     configurationName: Schema.Literals(["default"]).pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        exclude: Schema.optional(Schema.Boolean),
-        lowCpuThreshold: Schema.optional(
-          Schema.Literals(["5", "10", "15", "20"]),
-        ),
-        duration: Schema.optional(
-          Schema.Literals(["7", "14", "21", "30", "60", "90"]),
-        ),
-        digests: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              name: Schema.optional(Schema.String),
-              actionGroupResourceId: Schema.optional(Schema.String),
-              frequency: Schema.optional(Schema.Number),
-              categories: Schema.optional(
-                Schema.Array(
-                  Schema.Literals([
-                    "HighAvailability",
-                    "Security",
-                    "Performance",
-                    "Cost",
-                    "OperationalExcellence",
-                  ]),
-                ),
-              ),
-              language: Schema.optional(Schema.String),
-              state: Schema.optional(Schema.Literals(["Active", "Disabled"])),
-            }),
-          ),
-        ),
-      }),
+      Schema.suspend(() => ConfigDataPropertiesSchema),
     ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -281,23 +365,13 @@ export type ConfigurationsCreateInSubscriptionInput =
 // Output Schema
 export const ConfigurationsCreateInSubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => ConfigDataPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type ConfigurationsCreateInSubscriptionOutput =
   typeof ConfigurationsCreateInSubscriptionOutput.Type;
@@ -333,37 +407,7 @@ export type ConfigurationsListByResourceGroupInput =
 export const ConfigurationsListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.String),
-              createdByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              createdAt: Schema.optional(Schema.String),
-              lastModifiedBy: Schema.optional(Schema.String),
-              lastModifiedByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              lastModifiedAt: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => ConfigDataSchema)),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -397,37 +441,7 @@ export type ConfigurationsListBySubscriptionInput =
 export const ConfigurationsListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.String),
-              createdByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              createdAt: Schema.optional(Schema.String),
-              lastModifiedBy: Schema.optional(Schema.String),
-              lastModifiedByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              lastModifiedAt: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => ConfigDataSchema)),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -461,19 +475,7 @@ export type OperationsListInput = typeof OperationsListInput.Type;
 export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   nextLink: Schema.optional(Schema.String),
   value: Schema.optional(
-    Schema.Array(
-      Schema.Struct({
-        name: Schema.optional(Schema.String),
-        display: Schema.optional(
-          Schema.Struct({
-            description: Schema.optional(Schema.String),
-            operation: Schema.optional(Schema.String),
-            provider: Schema.optional(Schema.String),
-            resource: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    Schema.Array(Schema.suspend(() => OperationEntitySchema)),
   ),
 });
 export type OperationsListOutput = typeof OperationsListOutput.Type;
@@ -489,12 +491,7 @@ export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const PredictInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   properties: Schema.optional(
-    Schema.Struct({
-      predictionType: Schema.optional(
-        Schema.Literals(["PredictiveRightsizing"]),
-      ),
-      extendedProperties: Schema.optional(Schema.Unknown),
-    }),
+    Schema.suspend(() => PredictionRequestPropertiesSchema),
   ),
 }).pipe(
   T.Http({
@@ -508,30 +505,7 @@ export type PredictInput = typeof PredictInput.Type;
 // Output Schema
 export const PredictOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   properties: Schema.optional(
-    Schema.Struct({
-      extendedProperties: Schema.optional(Schema.Unknown),
-      predictionType: Schema.optional(
-        Schema.Literals(["PredictiveRightsizing"]),
-      ),
-      category: Schema.optional(
-        Schema.Literals([
-          "HighAvailability",
-          "Security",
-          "Performance",
-          "Cost",
-          "OperationalExcellence",
-        ]),
-      ),
-      impact: Schema.optional(Schema.Literals(["High", "Medium", "Low"])),
-      impactedField: Schema.optional(Schema.String),
-      lastUpdated: Schema.optional(Schema.String),
-      shortDescription: Schema.optional(
-        Schema.Struct({
-          problem: Schema.optional(Schema.String),
-          solution: Schema.optional(Schema.String),
-        }),
-      ),
-    }),
+    Schema.suspend(() => PredictionResponsePropertiesSchema),
   ),
 });
 export type PredictOutput = typeof PredictOutput.Type;
@@ -565,21 +539,7 @@ export const RecommendationMetadataGetOutput =
     type: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     properties: Schema.optional(
-      Schema.Struct({
-        displayName: Schema.optional(Schema.String),
-        dependsOn: Schema.optional(Schema.Array(Schema.String)),
-        applicableScenarios: Schema.optional(
-          Schema.Array(Schema.Literals(["Alerts"])),
-        ),
-        supportedValues: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              id: Schema.optional(Schema.String),
-              displayName: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-      }),
+      Schema.suspend(() => MetadataEntityPropertiesSchema),
     ),
   });
 export type RecommendationMetadataGetOutput =
@@ -615,30 +575,7 @@ export type RecommendationMetadataListInput =
 export const RecommendationMetadataListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          properties: Schema.optional(
-            Schema.Struct({
-              displayName: Schema.optional(Schema.String),
-              dependsOn: Schema.optional(Schema.Array(Schema.String)),
-              applicableScenarios: Schema.optional(
-                Schema.Array(Schema.Literals(["Alerts"])),
-              ),
-              supportedValues: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    id: Schema.optional(Schema.String),
-                    displayName: Schema.optional(Schema.String),
-                  }),
-                ),
-              ),
-            }),
-          ),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => MetadataEntitySchema)),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -702,23 +639,13 @@ export type RecommendationsGetInput = typeof RecommendationsGetInput.Type;
 // Output Schema
 export const RecommendationsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => RecommendationPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type RecommendationsGetOutput = typeof RecommendationsGetOutput.Type;
 
@@ -784,37 +711,7 @@ export const RecommendationsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.String),
-              createdByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              createdAt: Schema.optional(Schema.String),
-              lastModifiedBy: Schema.optional(Schema.String),
-              lastModifiedByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              lastModifiedAt: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => ResourceRecommendationBaseSchema)),
     ),
   });
 export type RecommendationsListOutput = typeof RecommendationsListOutput.Type;
@@ -838,28 +735,11 @@ export const SuppressionsCreateInput =
     recommendationId: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        suppressionId: Schema.optional(Schema.String),
-        ttl: Schema.optional(Schema.String),
-        expirationTimeStamp: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(() => SuppressionPropertiesSchema),
     ),
     id: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -872,23 +752,13 @@ export type SuppressionsCreateInput = typeof SuppressionsCreateInput.Type;
 // Output Schema
 export const SuppressionsCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => SuppressionPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type SuppressionsCreateOutput = typeof SuppressionsCreateOutput.Type;
 
@@ -951,23 +821,13 @@ export type SuppressionsGetInput = typeof SuppressionsGetInput.Type;
 
 // Output Schema
 export const SuppressionsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.optional(
+    Schema.suspend(() => SuppressionPropertiesSchema),
+  ),
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
-  systemData: Schema.optional(
-    Schema.Struct({
-      createdBy: Schema.optional(Schema.String),
-      createdByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      createdAt: Schema.optional(Schema.String),
-      lastModifiedBy: Schema.optional(Schema.String),
-      lastModifiedByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      lastModifiedAt: Schema.optional(Schema.String),
-    }),
-  ),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
 });
 export type SuppressionsGetOutput = typeof SuppressionsGetOutput.Type;
 
@@ -1001,37 +861,7 @@ export const SuppressionsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     nextLink: Schema.optional(Schema.String),
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.String),
-              createdByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              createdAt: Schema.optional(Schema.String),
-              lastModifiedBy: Schema.optional(Schema.String),
-              lastModifiedByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              lastModifiedAt: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => SuppressionContractSchema)),
     ),
   },
 );

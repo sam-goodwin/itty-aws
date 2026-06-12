@@ -8,6 +8,141 @@ import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
+// Shared schemas
+const OperationSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  isDataAction: Schema.optional(Schema.Boolean),
+  display: Schema.optional(
+    Schema.Struct({
+      provider: Schema.optional(Schema.String),
+      resource: Schema.optional(Schema.String),
+      operation: Schema.optional(Schema.String),
+      description: Schema.optional(Schema.String),
+    }),
+  ),
+  origin: Schema.optional(Schema.Literals(["user", "system", "user,system"])),
+  actionType: Schema.optional(Schema.Literals(["Internal"])),
+});
+const NameUnavailabilityReasonSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+    "AccountNameInvalid",
+    "AlreadyExists",
+  ]);
+const CodeSigningAccountSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+});
+const systemDataSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  createdBy: Schema.optional(Schema.String),
+  createdByType: Schema.optional(
+    Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+  ),
+  createdAt: Schema.optional(Schema.String),
+  lastModifiedBy: Schema.optional(Schema.String),
+  lastModifiedByType: Schema.optional(
+    Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+  ),
+  lastModifiedAt: Schema.optional(Schema.String),
+});
+const CodeSigningAccountPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    accountUri: Schema.optional(Schema.String),
+    sku: Schema.optional(Schema.suspend(() => AccountSkuSchema)),
+    provisioningState: Schema.optional(
+      Schema.suspend(() => ProvisioningStateSchema),
+    ),
+  });
+const AccountSkuSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.suspend(() => SkuNameSchema),
+});
+const SkuNameSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Basic",
+  "Premium",
+]);
+const ProvisioningStateSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Succeeded",
+  "Failed",
+  "Canceled",
+  "Updating",
+  "Deleting",
+  "Accepted",
+]);
+const CodeSigningAccountPatchPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    sku: Schema.optional(Schema.suspend(() => AccountSkuPatchSchema)),
+  });
+const AccountSkuPatchSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.suspend(() => SkuNameSchema)),
+});
+const CertificateProfileSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+});
+const CertificateProfilePropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    profileType: Schema.suspend(() => ProfileTypeSchema),
+    includeStreetAddress: Schema.optional(Schema.Boolean),
+    includeCity: Schema.optional(Schema.Boolean),
+    includeState: Schema.optional(Schema.Boolean),
+    includeCountry: Schema.optional(Schema.Boolean),
+    includePostalCode: Schema.optional(Schema.Boolean),
+    identityValidationId: Schema.String,
+    provisioningState: Schema.optional(
+      Schema.suspend(() => ProvisioningStateSchema),
+    ),
+    status: Schema.optional(
+      Schema.suspend(() => CertificateProfileStatusSchema),
+    ),
+    certificates: Schema.optional(
+      Schema.Array(Schema.suspend(() => CertificateSchema)),
+    ),
+  });
+const ProfileTypeSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "PublicTrust",
+  "PrivateTrust",
+  "PrivateTrustCIPolicy",
+  "VBSEnclave",
+  "PublicTrustTest",
+]);
+const CertificateProfileStatusSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+    "Active",
+    "Disabled",
+    "Suspended",
+  ]);
+const CertificateSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  serialNumber: Schema.optional(Schema.String),
+  enhancedKeyUsage: Schema.optional(Schema.String),
+  subjectName: Schema.optional(Schema.String),
+  thumbprint: Schema.optional(Schema.String),
+  createdDate: Schema.optional(Schema.String),
+  expiryDate: Schema.optional(Schema.String),
+  status: Schema.optional(Schema.suspend(() => CertificateStatusSchema)),
+  revocation: Schema.optional(Schema.suspend(() => RevocationSchema)),
+});
+const CertificateStatusSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Active",
+  "Expired",
+  "Revoked",
+]);
+const RevocationSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  requestedAt: Schema.optional(Schema.String),
+  effectiveAt: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  remarks: Schema.optional(Schema.String),
+  status: Schema.optional(Schema.suspend(() => RevocationStatusSchema)),
+  failureReason: Schema.optional(Schema.String),
+});
+const RevocationStatusSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Succeeded",
+  "InProgress",
+  "Failed",
+]);
+
 // Input Schema
 export const CertificateProfilesCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -16,61 +151,7 @@ export const CertificateProfilesCreateInput =
     accountName: Schema.String.pipe(T.PathParam()),
     profileName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        profileType: Schema.Literals([
-          "PublicTrust",
-          "PrivateTrust",
-          "PrivateTrustCIPolicy",
-          "VBSEnclave",
-          "PublicTrustTest",
-        ]),
-        includeStreetAddress: Schema.optional(Schema.Boolean),
-        includeCity: Schema.optional(Schema.Boolean),
-        includeState: Schema.optional(Schema.Boolean),
-        includeCountry: Schema.optional(Schema.Boolean),
-        includePostalCode: Schema.optional(Schema.Boolean),
-        identityValidationId: Schema.String,
-        provisioningState: Schema.optional(
-          Schema.Literals([
-            "Succeeded",
-            "Failed",
-            "Canceled",
-            "Updating",
-            "Deleting",
-            "Accepted",
-          ]),
-        ),
-        status: Schema.optional(
-          Schema.Literals(["Active", "Disabled", "Suspended"]),
-        ),
-        certificates: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              serialNumber: Schema.optional(Schema.String),
-              enhancedKeyUsage: Schema.optional(Schema.String),
-              subjectName: Schema.optional(Schema.String),
-              thumbprint: Schema.optional(Schema.String),
-              createdDate: Schema.optional(Schema.String),
-              expiryDate: Schema.optional(Schema.String),
-              status: Schema.optional(
-                Schema.Literals(["Active", "Expired", "Revoked"]),
-              ),
-              revocation: Schema.optional(
-                Schema.Struct({
-                  requestedAt: Schema.optional(Schema.String),
-                  effectiveAt: Schema.optional(Schema.String),
-                  reason: Schema.optional(Schema.String),
-                  remarks: Schema.optional(Schema.String),
-                  status: Schema.optional(
-                    Schema.Literals(["Succeeded", "InProgress", "Failed"]),
-                  ),
-                  failureReason: Schema.optional(Schema.String),
-                }),
-              ),
-            }),
-          ),
-        ),
-      }),
+      Schema.suspend(() => CertificateProfilePropertiesSchema),
     ),
   }).pipe(
     T.Http({
@@ -86,23 +167,13 @@ export type CertificateProfilesCreateInput =
 // Output Schema
 export const CertificateProfilesCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => CertificateProfilePropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type CertificateProfilesCreateOutput =
   typeof CertificateProfilesCreateOutput.Type;
@@ -183,23 +254,13 @@ export type CertificateProfilesGetInput =
 // Output Schema
 export const CertificateProfilesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => CertificateProfilePropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type CertificateProfilesGetOutput =
   typeof CertificateProfilesGetOutput.Type;
@@ -239,37 +300,7 @@ export type CertificateProfilesListByCodeSigningAccountInput =
 // Output Schema
 export const CertificateProfilesListByCodeSigningAccountOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => CertificateProfileSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type CertificateProfilesListByCodeSigningAccountOutput =
@@ -353,7 +384,7 @@ export const CodeSigningAccountsCheckNameAvailabilityOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nameAvailable: Schema.optional(Schema.Boolean),
     reason: Schema.optional(
-      Schema.Literals(["AccountNameInvalid", "AlreadyExists"]),
+      Schema.suspend(() => NameUnavailabilityReasonSchema),
     ),
     message: Schema.optional(Schema.String),
   });
@@ -379,24 +410,7 @@ export const CodeSigningAccountsCreateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        accountUri: Schema.optional(Schema.String),
-        sku: Schema.optional(
-          Schema.Struct({
-            name: Schema.Literals(["Basic", "Premium"]),
-          }),
-        ),
-        provisioningState: Schema.optional(
-          Schema.Literals([
-            "Succeeded",
-            "Failed",
-            "Canceled",
-            "Updating",
-            "Deleting",
-            "Accepted",
-          ]),
-        ),
-      }),
+      Schema.suspend(() => CodeSigningAccountPropertiesSchema),
     ),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     location: Schema.String,
@@ -414,23 +428,15 @@ export type CodeSigningAccountsCreateInput =
 // Output Schema
 export const CodeSigningAccountsCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => CodeSigningAccountPropertiesSchema),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type CodeSigningAccountsCreateOutput =
   typeof CodeSigningAccountsCreateOutput.Type;
@@ -507,23 +513,15 @@ export type CodeSigningAccountsGetInput =
 // Output Schema
 export const CodeSigningAccountsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => CodeSigningAccountPropertiesSchema),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type CodeSigningAccountsGetOutput =
   typeof CodeSigningAccountsGetOutput.Type;
@@ -561,37 +559,7 @@ export type CodeSigningAccountsListByResourceGroupInput =
 // Output Schema
 export const CodeSigningAccountsListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => CodeSigningAccountSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type CodeSigningAccountsListByResourceGroupOutput =
@@ -627,37 +595,7 @@ export type CodeSigningAccountsListBySubscriptionInput =
 // Output Schema
 export const CodeSigningAccountsListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => CodeSigningAccountSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type CodeSigningAccountsListBySubscriptionOutput =
@@ -683,13 +621,7 @@ export const CodeSigningAccountsUpdateInput =
     accountName: Schema.String.pipe(T.PathParam()),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     properties: Schema.optional(
-      Schema.Struct({
-        sku: Schema.optional(
-          Schema.Struct({
-            name: Schema.optional(Schema.Literals(["Basic", "Premium"])),
-          }),
-        ),
-      }),
+      Schema.suspend(() => CodeSigningAccountPatchPropertiesSchema),
     ),
   }).pipe(
     T.Http({
@@ -705,23 +637,15 @@ export type CodeSigningAccountsUpdateInput =
 // Output Schema
 export const CodeSigningAccountsUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => CodeSigningAccountPropertiesSchema),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type CodeSigningAccountsUpdateOutput =
   typeof CodeSigningAccountsUpdateOutput.Type;
@@ -755,26 +679,7 @@ export type OperationsListInput = typeof OperationsListInput.Type;
 
 // Output Schema
 export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  value: Schema.optional(
-    Schema.Array(
-      Schema.Struct({
-        name: Schema.optional(Schema.String),
-        isDataAction: Schema.optional(Schema.Boolean),
-        display: Schema.optional(
-          Schema.Struct({
-            provider: Schema.optional(Schema.String),
-            resource: Schema.optional(Schema.String),
-            operation: Schema.optional(Schema.String),
-            description: Schema.optional(Schema.String),
-          }),
-        ),
-        origin: Schema.optional(
-          Schema.Literals(["user", "system", "user,system"]),
-        ),
-        actionType: Schema.optional(Schema.Literals(["Internal"])),
-      }),
-    ),
-  ),
+  value: Schema.optional(Schema.Array(Schema.suspend(() => OperationSchema))),
   nextLink: Schema.optional(Schema.String),
 });
 export type OperationsListOutput = typeof OperationsListOutput.Type;

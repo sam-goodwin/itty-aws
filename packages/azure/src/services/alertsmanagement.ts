@@ -8,6 +8,307 @@ import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
+// Shared schemas
+const AlertProcessingRuleSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+});
+const AlertProcessingRulePropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    scopes: Schema.Array(Schema.String),
+    conditions: Schema.optional(
+      Schema.Array(Schema.suspend(() => ConditionSchema)),
+    ),
+    schedule: Schema.optional(Schema.suspend(() => ScheduleSchema)),
+    actions: Schema.Array(Schema.suspend(() => ActionSchema)),
+    description: Schema.optional(Schema.String),
+    enabled: Schema.optional(Schema.Boolean),
+  });
+const ConditionSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  field: Schema.optional(Schema.suspend(() => FieldSchema)),
+  operator: Schema.optional(Schema.suspend(() => OperatorSchema)),
+  values: Schema.optional(Schema.Array(Schema.String)),
+});
+const FieldSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Severity",
+  "MonitorService",
+  "MonitorCondition",
+  "SignalType",
+  "TargetResourceType",
+  "TargetResource",
+  "TargetResourceGroup",
+  "AlertRuleId",
+  "AlertRuleName",
+  "Description",
+  "AlertContext",
+]);
+const OperatorSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Equals",
+  "NotEquals",
+  "Contains",
+  "DoesNotContain",
+]);
+const ScheduleSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  effectiveFrom: Schema.optional(Schema.String),
+  effectiveUntil: Schema.optional(Schema.String),
+  timeZone: Schema.optional(Schema.String),
+  recurrences: Schema.optional(
+    Schema.Array(Schema.suspend(() => RecurrenceSchema)),
+  ),
+});
+const RecurrenceSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  recurrenceType: Schema.suspend(() => RecurrenceTypeSchema),
+  startTime: Schema.optional(Schema.String),
+  endTime: Schema.optional(Schema.String),
+});
+const RecurrenceTypeSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Daily",
+  "Weekly",
+  "Monthly",
+]);
+const ActionSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  actionType: Schema.suspend(() => ActionTypeSchema),
+});
+const ActionTypeSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "AddActionGroups",
+  "RemoveAllActionGroups",
+]);
+const PatchPropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  enabled: Schema.optional(Schema.Boolean),
+});
+const operationSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  display: Schema.optional(
+    Schema.Struct({
+      provider: Schema.optional(Schema.String),
+      resource: Schema.optional(Schema.String),
+      operation: Schema.optional(Schema.String),
+      description: Schema.optional(Schema.String),
+    }),
+  ),
+});
+const alertsMetaDataPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    metadataIdentifier: Schema.Literals(["MonitorServiceList"]),
+  });
+const alertSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+});
+const alertPropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  essentials: Schema.optional(Schema.suspend(() => essentialsSchema)),
+  context: Schema.optional(Schema.suspend(() => alertContextSchema)),
+  egressConfig: Schema.optional(Schema.suspend(() => egressConfigSchema)),
+});
+const essentialsSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  severity: Schema.optional(
+    Schema.Literals(["Sev0", "Sev1", "Sev2", "Sev3", "Sev4"]),
+  ),
+  signalType: Schema.optional(Schema.Literals(["Metric", "Log", "Unknown"])),
+  alertState: Schema.optional(
+    Schema.Literals(["New", "Acknowledged", "Closed"]),
+  ),
+  monitorCondition: Schema.optional(Schema.Literals(["Fired", "Resolved"])),
+  targetResource: Schema.optional(Schema.String),
+  targetResourceName: Schema.optional(Schema.String),
+  targetResourceGroup: Schema.optional(Schema.String),
+  targetResourceType: Schema.optional(Schema.String),
+  monitorService: Schema.optional(
+    Schema.Literals([
+      "Application Insights",
+      "ActivityLog Administrative",
+      "ActivityLog Security",
+      "ActivityLog Recommendation",
+      "ActivityLog Policy",
+      "ActivityLog Autoscale",
+      "Log Analytics",
+      "Nagios",
+      "Platform",
+      "SCOM",
+      "ServiceHealth",
+      "SmartDetector",
+      "VM Insights",
+      "Zabbix",
+      "Resource Health",
+    ]),
+  ),
+  alertRule: Schema.optional(Schema.String),
+  sourceCreatedId: Schema.optional(Schema.String),
+  smartGroupId: Schema.optional(Schema.String),
+  smartGroupingReason: Schema.optional(Schema.String),
+  startDateTime: Schema.optional(Schema.String),
+  lastModifiedDateTime: Schema.optional(Schema.String),
+  monitorConditionResolvedDateTime: Schema.optional(Schema.String),
+  lastModifiedUserName: Schema.optional(Schema.String),
+  actionStatus: Schema.optional(Schema.suspend(() => actionStatusSchema)),
+  description: Schema.optional(Schema.String),
+});
+const actionStatusSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  isSuppressed: Schema.optional(Schema.Boolean),
+});
+const alertContextSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown;
+const egressConfigSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown;
+const alertModificationPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    alertId: Schema.optional(Schema.String),
+    modifications: Schema.optional(
+      Schema.Array(Schema.suspend(() => alertModificationItemSchema)),
+    ),
+  });
+const alertModificationItemSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  modificationEvent: Schema.optional(
+    Schema.Literals(["AlertCreated", "StateChange", "MonitorConditionChange"]),
+  ),
+  oldValue: Schema.optional(Schema.String),
+  newValue: Schema.optional(Schema.String),
+  modifiedAt: Schema.optional(Schema.String),
+  modifiedBy: Schema.optional(Schema.String),
+  comments: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+});
+const alertsSummaryGroupSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  total: Schema.optional(Schema.Number),
+  smartGroupsCount: Schema.optional(Schema.Number),
+  groupedby: Schema.optional(Schema.String),
+  values: Schema.optional(
+    Schema.Array(Schema.suspend(() => alertsSummaryGroupItemSchema)),
+  ),
+});
+const alertsSummaryGroupItemSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  count: Schema.optional(Schema.Number),
+  groupedby: Schema.optional(Schema.String),
+  values: Schema.optional(Schema.Array(Schema.Unknown)),
+});
+const AlertRuleSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  location: Schema.optional(Schema.String),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+});
+const AlertRulePropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  description: Schema.optional(Schema.String),
+  state: Schema.Literals(["Enabled", "Disabled"]),
+  severity: Schema.Literals(["Sev0", "Sev1", "Sev2", "Sev3", "Sev4"]),
+  frequency: Schema.String,
+  detector: Schema.suspend(() => DetectorSchema),
+  scope: Schema.Array(Schema.String),
+  actionGroups: Schema.suspend(() => ActionGroupsInformationSchema),
+  throttling: Schema.optional(
+    Schema.suspend(() => ThrottlingInformationSchema),
+  ),
+});
+const DetectorSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.String,
+  parameters: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  name: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+  supportedResourceTypes: Schema.optional(Schema.Array(Schema.String)),
+  imagePaths: Schema.optional(Schema.Array(Schema.String)),
+  parameterDefinitions: Schema.optional(
+    Schema.Array(Schema.suspend(() => DetectorParameterDefinitionSchema)),
+  ),
+  supportedCadences: Schema.optional(Schema.Array(Schema.Number)),
+});
+const DetectorParameterDefinitionSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    displayName: Schema.optional(Schema.String),
+    description: Schema.optional(Schema.String),
+    type: Schema.optional(
+      Schema.Literals(["String", "Integer", "Double", "Boolean", "DateTime"]),
+    ),
+    isMandatory: Schema.optional(Schema.Boolean),
+  });
+const ActionGroupsInformationSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    customEmailSubject: Schema.optional(Schema.String),
+    customWebhookPayload: Schema.optional(Schema.String),
+    groupIds: Schema.Array(Schema.String),
+  },
+);
+const ThrottlingInformationSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  duration: Schema.optional(Schema.String),
+});
+const AlertRulePatchPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    description: Schema.optional(Schema.String),
+    state: Schema.optional(Schema.Literals(["Enabled", "Disabled"])),
+    severity: Schema.optional(
+      Schema.Literals(["Sev0", "Sev1", "Sev2", "Sev3", "Sev4"]),
+    ),
+    frequency: Schema.optional(Schema.String),
+    actionGroups: Schema.optional(
+      Schema.suspend(() => ActionGroupsInformationSchema),
+    ),
+    throttling: Schema.optional(
+      Schema.suspend(() => ThrottlingInformationSchema),
+    ),
+  });
+const PrometheusRuleGroupResourceSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+  });
+const systemDataSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  createdBy: Schema.optional(Schema.String),
+  createdByType: Schema.optional(
+    Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+  ),
+  createdAt: Schema.optional(Schema.String),
+  lastModifiedBy: Schema.optional(Schema.String),
+  lastModifiedByType: Schema.optional(
+    Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+  ),
+  lastModifiedAt: Schema.optional(Schema.String),
+});
+const PrometheusRuleGroupPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    description: Schema.optional(Schema.String),
+    enabled: Schema.optional(Schema.Boolean),
+    clusterName: Schema.optional(Schema.String),
+    scopes: Schema.Array(Schema.String),
+    interval: Schema.optional(Schema.String),
+    rules: Schema.Array(Schema.suspend(() => PrometheusRuleSchema)),
+  });
+const PrometheusRuleSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  record: Schema.optional(Schema.String),
+  alert: Schema.optional(Schema.String),
+  enabled: Schema.optional(Schema.Boolean),
+  expression: Schema.String,
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  severity: Schema.optional(Schema.Number),
+  for: Schema.optional(Schema.String),
+  annotations: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  actions: Schema.optional(
+    Schema.Array(Schema.suspend(() => PrometheusRuleGroupActionSchema)),
+  ),
+  resolveConfiguration: Schema.optional(
+    Schema.suspend(() => PrometheusRuleResolveConfigurationSchema),
+  ),
+});
+const PrometheusRuleGroupActionSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    actionGroupId: Schema.optional(Schema.String),
+    actionProperties: Schema.optional(
+      Schema.Record(Schema.String, Schema.String),
+    ),
+  });
+const PrometheusRuleResolveConfigurationSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    autoResolved: Schema.optional(Schema.Boolean),
+    timeToResolve: Schema.optional(Schema.String),
+  });
+const PrometheusRuleGroupResourcePatchParametersPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    enabled: Schema.optional(Schema.Boolean),
+  });
+
 // Input Schema
 export const AlertProcessingRulesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -15,69 +316,7 @@ export const AlertProcessingRulesCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     alertProcessingRuleName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        scopes: Schema.Array(Schema.String),
-        conditions: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              field: Schema.optional(
-                Schema.Literals([
-                  "Severity",
-                  "MonitorService",
-                  "MonitorCondition",
-                  "SignalType",
-                  "TargetResourceType",
-                  "TargetResource",
-                  "TargetResourceGroup",
-                  "AlertRuleId",
-                  "AlertRuleName",
-                  "Description",
-                  "AlertContext",
-                ]),
-              ),
-              operator: Schema.optional(
-                Schema.Literals([
-                  "Equals",
-                  "NotEquals",
-                  "Contains",
-                  "DoesNotContain",
-                ]),
-              ),
-              values: Schema.optional(Schema.Array(Schema.String)),
-            }),
-          ),
-        ),
-        schedule: Schema.optional(
-          Schema.Struct({
-            effectiveFrom: Schema.optional(Schema.String),
-            effectiveUntil: Schema.optional(Schema.String),
-            timeZone: Schema.optional(Schema.String),
-            recurrences: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  recurrenceType: Schema.Literals([
-                    "Daily",
-                    "Weekly",
-                    "Monthly",
-                  ]),
-                  startTime: Schema.optional(Schema.String),
-                  endTime: Schema.optional(Schema.String),
-                }),
-              ),
-            ),
-          }),
-        ),
-        actions: Schema.Array(
-          Schema.Struct({
-            actionType: Schema.Literals([
-              "AddActionGroups",
-              "RemoveAllActionGroups",
-            ]),
-          }),
-        ),
-        description: Schema.optional(Schema.String),
-        enabled: Schema.optional(Schema.Boolean),
-      }),
+      Schema.suspend(() => AlertProcessingRulePropertiesSchema),
     ),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     location: Schema.String,
@@ -94,6 +333,11 @@ export type AlertProcessingRulesCreateOrUpdateInput =
 // Output Schema
 export const AlertProcessingRulesCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => AlertProcessingRulePropertiesSchema),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -171,6 +415,11 @@ export type AlertProcessingRulesGetByNameInput =
 // Output Schema
 export const AlertProcessingRulesGetByNameOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => AlertProcessingRulePropertiesSchema),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -210,13 +459,7 @@ export type AlertProcessingRulesListByResourceGroupInput =
 // Output Schema
 export const AlertProcessingRulesListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => AlertProcessingRuleSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type AlertProcessingRulesListByResourceGroupOutput =
@@ -252,13 +495,7 @@ export type AlertProcessingRulesListBySubscriptionInput =
 // Output Schema
 export const AlertProcessingRulesListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => AlertProcessingRuleSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type AlertProcessingRulesListBySubscriptionOutput =
@@ -282,11 +519,7 @@ export const AlertProcessingRulesUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     alertProcessingRuleName: Schema.String.pipe(T.PathParam()),
-    properties: Schema.optional(
-      Schema.Struct({
-        enabled: Schema.optional(Schema.Boolean),
-      }),
-    ),
+    properties: Schema.optional(Schema.suspend(() => PatchPropertiesSchema)),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
@@ -301,6 +534,11 @@ export type AlertProcessingRulesUpdateInput =
 // Output Schema
 export const AlertProcessingRulesUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => AlertProcessingRulePropertiesSchema),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -338,6 +576,7 @@ export type AlertsChangeStateInput = typeof AlertsChangeStateInput.Type;
 // Output Schema
 export const AlertsChangeStateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(Schema.suspend(() => alertPropertiesSchema)),
     id: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -367,15 +606,7 @@ export type AlertsGetAllInput = typeof AlertsGetAllInput.Type;
 // Output Schema
 export const AlertsGetAllOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   nextLink: Schema.optional(Schema.String),
-  value: Schema.optional(
-    Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-      }),
-    ),
-  ),
+  value: Schema.optional(Schema.Array(Schema.suspend(() => alertSchema))),
 });
 export type AlertsGetAllOutput = typeof AlertsGetAllOutput.Type;
 
@@ -401,6 +632,7 @@ export type AlertsGetByIdInput = typeof AlertsGetByIdInput.Type;
 
 // Output Schema
 export const AlertsGetByIdOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.optional(Schema.suspend(() => alertPropertiesSchema)),
   id: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -432,6 +664,9 @@ export type AlertsGetHistoryInput = typeof AlertsGetHistoryInput.Type;
 // Output Schema
 export const AlertsGetHistoryOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
+    properties: Schema.optional(
+      Schema.suspend(() => alertModificationPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -464,6 +699,7 @@ export type AlertsGetSummaryInput = typeof AlertsGetSummaryInput.Type;
 // Output Schema
 export const AlertsGetSummaryOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
+    properties: Schema.optional(Schema.suspend(() => alertsSummaryGroupSchema)),
     id: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -494,9 +730,7 @@ export type AlertsMetaDataInput = typeof AlertsMetaDataInput.Type;
 // Output Schema
 export const AlertsMetaDataOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   properties: Schema.optional(
-    Schema.Struct({
-      metadataIdentifier: Schema.Literals(["MonitorServiceList"]),
-    }),
+    Schema.suspend(() => alertsMetaDataPropertiesSchema),
   ),
 });
 export type AlertsMetaDataOutput = typeof AlertsMetaDataOutput.Type;
@@ -524,19 +758,7 @@ export type OperationsListInput = typeof OperationsListInput.Type;
 // Output Schema
 export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   nextLink: Schema.optional(Schema.String),
-  value: Schema.Array(
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      display: Schema.optional(
-        Schema.Struct({
-          provider: Schema.optional(Schema.String),
-          resource: Schema.optional(Schema.String),
-          operation: Schema.optional(Schema.String),
-          description: Schema.optional(Schema.String),
-        }),
-      ),
-    }),
-  ),
+  value: Schema.Array(Schema.suspend(() => operationSchema)),
 });
 export type OperationsListOutput = typeof OperationsListOutput.Type;
 
@@ -554,43 +776,7 @@ export const PrometheusRuleGroupsCreateOrUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     ruleGroupName: Schema.String.pipe(T.PathParam()),
-    properties: Schema.Struct({
-      description: Schema.optional(Schema.String),
-      enabled: Schema.optional(Schema.Boolean),
-      clusterName: Schema.optional(Schema.String),
-      scopes: Schema.Array(Schema.String),
-      interval: Schema.optional(Schema.String),
-      rules: Schema.Array(
-        Schema.Struct({
-          record: Schema.optional(Schema.String),
-          alert: Schema.optional(Schema.String),
-          enabled: Schema.optional(Schema.Boolean),
-          expression: Schema.String,
-          labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-          severity: Schema.optional(Schema.Number),
-          for: Schema.optional(Schema.String),
-          annotations: Schema.optional(
-            Schema.Record(Schema.String, Schema.String),
-          ),
-          actions: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                actionGroupId: Schema.optional(Schema.String),
-                actionProperties: Schema.optional(
-                  Schema.Record(Schema.String, Schema.String),
-                ),
-              }),
-            ),
-          ),
-          resolveConfiguration: Schema.optional(
-            Schema.Struct({
-              autoResolved: Schema.optional(Schema.Boolean),
-              timeToResolve: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
-    }),
+    properties: Schema.suspend(() => PrometheusRuleGroupPropertiesSchema),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     location: Schema.String,
   }).pipe(
@@ -606,23 +792,13 @@ export type PrometheusRuleGroupsCreateOrUpdateInput =
 // Output Schema
 export const PrometheusRuleGroupsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.suspend(() => PrometheusRuleGroupPropertiesSchema),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type PrometheusRuleGroupsCreateOrUpdateOutput =
   typeof PrometheusRuleGroupsCreateOrUpdateOutput.Type;
@@ -697,23 +873,13 @@ export type PrometheusRuleGroupsGetInput =
 // Output Schema
 export const PrometheusRuleGroupsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.suspend(() => PrometheusRuleGroupPropertiesSchema),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type PrometheusRuleGroupsGetOutput =
   typeof PrometheusRuleGroupsGetOutput.Type;
@@ -752,37 +918,7 @@ export type PrometheusRuleGroupsListByResourceGroupInput =
 export const PrometheusRuleGroupsListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.String),
-              createdByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              createdAt: Schema.optional(Schema.String),
-              lastModifiedBy: Schema.optional(Schema.String),
-              lastModifiedByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              lastModifiedAt: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => PrometheusRuleGroupResourceSchema)),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -820,37 +956,7 @@ export type PrometheusRuleGroupsListBySubscriptionInput =
 export const PrometheusRuleGroupsListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.String),
-              createdByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              createdAt: Schema.optional(Schema.String),
-              lastModifiedBy: Schema.optional(Schema.String),
-              lastModifiedByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              lastModifiedAt: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => PrometheusRuleGroupResourceSchema)),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -877,9 +983,9 @@ export const PrometheusRuleGroupsUpdateInput =
     ruleGroupName: Schema.String.pipe(T.PathParam()),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     properties: Schema.optional(
-      Schema.Struct({
-        enabled: Schema.optional(Schema.Boolean),
-      }),
+      Schema.suspend(
+        () => PrometheusRuleGroupResourcePatchParametersPropertiesSchema,
+      ),
     ),
   }).pipe(
     T.Http({
@@ -894,23 +1000,13 @@ export type PrometheusRuleGroupsUpdateInput =
 // Output Schema
 export const PrometheusRuleGroupsUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.suspend(() => PrometheusRuleGroupPropertiesSchema),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type PrometheusRuleGroupsUpdateOutput =
   typeof PrometheusRuleGroupsUpdateOutput.Type;
@@ -934,53 +1030,7 @@ export const PrometheusRuleGroupsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const SmartDetectorAlertRulesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     properties: Schema.optional(
-      Schema.Struct({
-        description: Schema.optional(Schema.String),
-        state: Schema.Literals(["Enabled", "Disabled"]),
-        severity: Schema.Literals(["Sev0", "Sev1", "Sev2", "Sev3", "Sev4"]),
-        frequency: Schema.String,
-        detector: Schema.Struct({
-          id: Schema.String,
-          parameters: Schema.optional(
-            Schema.Record(Schema.String, Schema.Unknown),
-          ),
-          name: Schema.optional(Schema.String),
-          description: Schema.optional(Schema.String),
-          supportedResourceTypes: Schema.optional(Schema.Array(Schema.String)),
-          imagePaths: Schema.optional(Schema.Array(Schema.String)),
-          parameterDefinitions: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                name: Schema.optional(Schema.String),
-                displayName: Schema.optional(Schema.String),
-                description: Schema.optional(Schema.String),
-                type: Schema.optional(
-                  Schema.Literals([
-                    "String",
-                    "Integer",
-                    "Double",
-                    "Boolean",
-                    "DateTime",
-                  ]),
-                ),
-                isMandatory: Schema.optional(Schema.Boolean),
-              }),
-            ),
-          ),
-          supportedCadences: Schema.optional(Schema.Array(Schema.Number)),
-        }),
-        scope: Schema.Array(Schema.String),
-        actionGroups: Schema.Struct({
-          customEmailSubject: Schema.optional(Schema.String),
-          customWebhookPayload: Schema.optional(Schema.String),
-          groupIds: Schema.Array(Schema.String),
-        }),
-        throttling: Schema.optional(
-          Schema.Struct({
-            duration: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
+      Schema.suspend(() => AlertRulePropertiesSchema),
     ),
     id: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1000,6 +1050,9 @@ export type SmartDetectorAlertRulesCreateOrUpdateInput =
 // Output Schema
 export const SmartDetectorAlertRulesCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => AlertRulePropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -1060,6 +1113,9 @@ export type SmartDetectorAlertRulesGetInput =
 // Output Schema
 export const SmartDetectorAlertRulesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => AlertRulePropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -1094,17 +1150,7 @@ export type SmartDetectorAlertRulesListInput =
 // Output Schema
 export const SmartDetectorAlertRulesListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          location: Schema.optional(Schema.String),
-          tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        }),
-      ),
-    ),
+    value: Schema.optional(Schema.Array(Schema.suspend(() => AlertRuleSchema))),
     nextLink: Schema.optional(Schema.String),
   });
 export type SmartDetectorAlertRulesListOutput =
@@ -1135,17 +1181,7 @@ export type SmartDetectorAlertRulesListByResourceGroupInput =
 // Output Schema
 export const SmartDetectorAlertRulesListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          location: Schema.optional(Schema.String),
-          tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        }),
-      ),
-    ),
+    value: Schema.optional(Schema.Array(Schema.suspend(() => AlertRuleSchema))),
     nextLink: Schema.optional(Schema.String),
   });
 export type SmartDetectorAlertRulesListByResourceGroupOutput =
@@ -1168,26 +1204,7 @@ export const SmartDetectorAlertRulesPatchInput =
     name: Schema.optional(Schema.String),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     properties: Schema.optional(
-      Schema.Struct({
-        description: Schema.optional(Schema.String),
-        state: Schema.optional(Schema.Literals(["Enabled", "Disabled"])),
-        severity: Schema.optional(
-          Schema.Literals(["Sev0", "Sev1", "Sev2", "Sev3", "Sev4"]),
-        ),
-        frequency: Schema.optional(Schema.String),
-        actionGroups: Schema.optional(
-          Schema.Struct({
-            customEmailSubject: Schema.optional(Schema.String),
-            customWebhookPayload: Schema.optional(Schema.String),
-            groupIds: Schema.Array(Schema.String),
-          }),
-        ),
-        throttling: Schema.optional(
-          Schema.Struct({
-            duration: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
+      Schema.suspend(() => AlertRulePatchPropertiesSchema),
     ),
   }).pipe(
     T.Http({
@@ -1202,6 +1219,9 @@ export type SmartDetectorAlertRulesPatchInput =
 // Output Schema
 export const SmartDetectorAlertRulesPatchOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => AlertRulePropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),

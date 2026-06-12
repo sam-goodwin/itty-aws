@@ -8,6 +8,62 @@ import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
+// Shared schemas
+const UserPropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  preferredOsType: Schema.Literals(["Windows", "Linux"]),
+  preferredLocation: Schema.String,
+  storageProfile: Schema.suspend(() => StorageProfileSchema),
+  terminalSettings: Schema.suspend(() => TerminalSettingsSchema),
+  preferredShellType: Schema.Literals(["bash", "pwsh", "powershell"]),
+});
+const StorageProfileSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  storageAccountResourceId: Schema.optional(Schema.String),
+  fileShareName: Schema.optional(Schema.String),
+  diskSizeInGB: Schema.optional(Schema.Number),
+});
+const TerminalSettingsSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  fontSize: Schema.optional(
+    Schema.Literals(["NotSpecified", "Small", "Medium", "Large"]),
+  ),
+  fontStyle: Schema.optional(
+    Schema.Literals(["NotSpecified", "Monospace", "Courier"]),
+  ),
+});
+const ConsolePropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  osType: Schema.Literals(["Linux", "Windows"]),
+  provisioningState: Schema.Literals([
+    "NotSpecified",
+    "Accepted",
+    "Pending",
+    "Updating",
+    "Creating",
+    "Repairing",
+    "Failed",
+    "Canceled",
+    "Succeeded",
+  ]),
+  uri: Schema.String,
+});
+const ConsoleCreatePropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    osType: Schema.Literals(["Linux", "Windows"]),
+    provisioningState: Schema.optional(
+      Schema.Literals([
+        "NotSpecified",
+        "Accepted",
+        "Pending",
+        "Updating",
+        "Creating",
+        "Repairing",
+        "Failed",
+        "Canceled",
+        "Succeeded",
+      ]),
+    ),
+    uri: Schema.optional(Schema.String),
+  },
+);
+
 // Input Schema
 export const DeleteConsoleInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {},
@@ -131,7 +187,9 @@ export const GetConsoleInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type GetConsoleInput = typeof GetConsoleInput.Type;
 
 // Output Schema
-export const GetConsoleOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown;
+export const GetConsoleOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.suspend(() => ConsolePropertiesSchema),
+});
 export type GetConsoleOutput = typeof GetConsoleOutput.Type;
 
 // The operation
@@ -158,7 +216,9 @@ export type GetConsoleWithLocationInput =
 
 // Output Schema
 export const GetConsoleWithLocationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.suspend(() => ConsolePropertiesSchema),
+  });
 export type GetConsoleWithLocationOutput =
   typeof GetConsoleWithLocationOutput.Type;
 
@@ -187,7 +247,9 @@ export const GetUserSettingsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type GetUserSettingsInput = typeof GetUserSettingsInput.Type;
 
 // Output Schema
-export const GetUserSettingsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown;
+export const GetUserSettingsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.suspend(() => UserPropertiesSchema),
+});
 export type GetUserSettingsOutput = typeof GetUserSettingsOutput.Type;
 
 // The operation
@@ -214,7 +276,9 @@ export type GetUserSettingsWithLocationInput =
 
 // Output Schema
 export const GetUserSettingsWithLocationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.suspend(() => UserPropertiesSchema),
+  });
 export type GetUserSettingsWithLocationOutput =
   typeof GetUserSettingsWithLocationOutput.Type;
 
@@ -288,26 +352,7 @@ export const keepAliveWithLocation = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const PatchUserSettingsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
-    properties: Schema.optional(
-      Schema.Struct({
-        preferredOsType: Schema.Literals(["Windows", "Linux"]),
-        preferredLocation: Schema.String,
-        storageProfile: Schema.Struct({
-          storageAccountResourceId: Schema.optional(Schema.String),
-          fileShareName: Schema.optional(Schema.String),
-          diskSizeInGB: Schema.optional(Schema.Number),
-        }),
-        terminalSettings: Schema.Struct({
-          fontSize: Schema.optional(
-            Schema.Literals(["NotSpecified", "Small", "Medium", "Large"]),
-          ),
-          fontStyle: Schema.optional(
-            Schema.Literals(["NotSpecified", "Monospace", "Courier"]),
-          ),
-        }),
-        preferredShellType: Schema.Literals(["bash", "pwsh", "powershell"]),
-      }),
-    ),
+    properties: Schema.optional(Schema.suspend(() => UserPropertiesSchema)),
   },
 ).pipe(
   T.Http({
@@ -320,7 +365,9 @@ export type PatchUserSettingsInput = typeof PatchUserSettingsInput.Type;
 
 // Output Schema
 export const PatchUserSettingsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.suspend(() => UserPropertiesSchema),
+  });
 export type PatchUserSettingsOutput = typeof PatchUserSettingsOutput.Type;
 
 // The operation
@@ -336,26 +383,7 @@ export const PatchUserSettings = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const PatchUserSettingsWithLocationInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    properties: Schema.optional(
-      Schema.Struct({
-        preferredOsType: Schema.Literals(["Windows", "Linux"]),
-        preferredLocation: Schema.String,
-        storageProfile: Schema.Struct({
-          storageAccountResourceId: Schema.optional(Schema.String),
-          fileShareName: Schema.optional(Schema.String),
-          diskSizeInGB: Schema.optional(Schema.Number),
-        }),
-        terminalSettings: Schema.Struct({
-          fontSize: Schema.optional(
-            Schema.Literals(["NotSpecified", "Small", "Medium", "Large"]),
-          ),
-          fontStyle: Schema.optional(
-            Schema.Literals(["NotSpecified", "Monospace", "Courier"]),
-          ),
-        }),
-        preferredShellType: Schema.Literals(["bash", "pwsh", "powershell"]),
-      }),
-    ),
+    properties: Schema.optional(Schema.suspend(() => UserPropertiesSchema)),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -368,7 +396,9 @@ export type PatchUserSettingsWithLocationInput =
 
 // Output Schema
 export const PatchUserSettingsWithLocationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.suspend(() => UserPropertiesSchema),
+  });
 export type PatchUserSettingsWithLocationOutput =
   typeof PatchUserSettingsWithLocationOutput.Type;
 
@@ -385,23 +415,7 @@ export const patchUserSettingsWithLocation =
   }));
 // Input Schema
 export const PutConsoleInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  properties: Schema.Struct({
-    osType: Schema.Literals(["Linux", "Windows"]),
-    provisioningState: Schema.optional(
-      Schema.Literals([
-        "NotSpecified",
-        "Accepted",
-        "Pending",
-        "Updating",
-        "Creating",
-        "Repairing",
-        "Failed",
-        "Canceled",
-        "Succeeded",
-      ]),
-    ),
-    uri: Schema.optional(Schema.String),
-  }),
+  properties: Schema.suspend(() => ConsoleCreatePropertiesSchema),
 }).pipe(
   T.Http({
     method: "PUT",
@@ -412,7 +426,9 @@ export const PutConsoleInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type PutConsoleInput = typeof PutConsoleInput.Type;
 
 // Output Schema
-export const PutConsoleOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown;
+export const PutConsoleOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.suspend(() => ConsolePropertiesSchema),
+});
 export type PutConsoleOutput = typeof PutConsoleOutput.Type;
 
 // The operation
@@ -439,7 +455,9 @@ export type PutConsoleWithLocationInput =
 
 // Output Schema
 export const PutConsoleWithLocationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.suspend(() => ConsolePropertiesSchema),
+  });
 export type PutConsoleWithLocationOutput =
   typeof PutConsoleWithLocationOutput.Type;
 
@@ -457,24 +475,7 @@ export const putConsoleWithLocation = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const PutUserSettingsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  properties: Schema.Struct({
-    preferredOsType: Schema.Literals(["Windows", "Linux"]),
-    preferredLocation: Schema.String,
-    storageProfile: Schema.Struct({
-      storageAccountResourceId: Schema.optional(Schema.String),
-      fileShareName: Schema.optional(Schema.String),
-      diskSizeInGB: Schema.optional(Schema.Number),
-    }),
-    terminalSettings: Schema.Struct({
-      fontSize: Schema.optional(
-        Schema.Literals(["NotSpecified", "Small", "Medium", "Large"]),
-      ),
-      fontStyle: Schema.optional(
-        Schema.Literals(["NotSpecified", "Monospace", "Courier"]),
-      ),
-    }),
-    preferredShellType: Schema.Literals(["bash", "pwsh", "powershell"]),
-  }),
+  properties: Schema.suspend(() => UserPropertiesSchema),
 }).pipe(
   T.Http({
     method: "PUT",
@@ -485,7 +486,9 @@ export const PutUserSettingsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type PutUserSettingsInput = typeof PutUserSettingsInput.Type;
 
 // Output Schema
-export const PutUserSettingsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown;
+export const PutUserSettingsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.suspend(() => UserPropertiesSchema),
+});
 export type PutUserSettingsOutput = typeof PutUserSettingsOutput.Type;
 
 // The operation
@@ -501,24 +504,7 @@ export const PutUserSettings = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const PutUserSettingsWithLocationInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    properties: Schema.Struct({
-      preferredOsType: Schema.Literals(["Windows", "Linux"]),
-      preferredLocation: Schema.String,
-      storageProfile: Schema.Struct({
-        storageAccountResourceId: Schema.optional(Schema.String),
-        fileShareName: Schema.optional(Schema.String),
-        diskSizeInGB: Schema.optional(Schema.Number),
-      }),
-      terminalSettings: Schema.Struct({
-        fontSize: Schema.optional(
-          Schema.Literals(["NotSpecified", "Small", "Medium", "Large"]),
-        ),
-        fontStyle: Schema.optional(
-          Schema.Literals(["NotSpecified", "Monospace", "Courier"]),
-        ),
-      }),
-      preferredShellType: Schema.Literals(["bash", "pwsh", "powershell"]),
-    }),
+    properties: Schema.suspend(() => UserPropertiesSchema),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -531,7 +517,9 @@ export type PutUserSettingsWithLocationInput =
 
 // Output Schema
 export const PutUserSettingsWithLocationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.suspend(() => UserPropertiesSchema),
+  });
 export type PutUserSettingsWithLocationOutput =
   typeof PutUserSettingsWithLocationOutput.Type;
 

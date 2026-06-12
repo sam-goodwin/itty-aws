@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { JWKSSchema } from "./_schemas.ts";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
@@ -10,19 +11,7 @@ export type GetProjectJWKSInput = typeof GetProjectJWKSInput.Type;
 
 // Output Schema
 export const GetProjectJWKSOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  jwks: Schema.Array(
-    Schema.Struct({
-      id: Schema.String,
-      project_id: Schema.String,
-      branch_id: Schema.optional(Schema.String),
-      jwks_url: Schema.String,
-      provider_name: Schema.String,
-      created_at: Schema.String,
-      updated_at: Schema.String,
-      jwt_audience: Schema.optional(Schema.String),
-      role_names: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ),
+  jwks: Schema.Array(Schema.suspend(() => JWKSSchema)),
 });
 export type GetProjectJWKSOutput = typeof GetProjectJWKSOutput.Type;
 

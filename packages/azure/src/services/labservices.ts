@@ -7,7 +7,449 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
-import { SensitiveString } from "../sensitive.ts";
+import { SensitiveOutputString, SensitiveString } from "../sensitive.ts";
+
+// Shared schemas
+const LabPlanSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
+const LabPlanPropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  defaultConnectionProfile: Schema.optional(
+    Schema.Struct({
+      webSshAccess: Schema.optional(Schema.suspend(() => connectionTypeSchema)),
+      webRdpAccess: Schema.optional(Schema.suspend(() => connectionTypeSchema)),
+      clientSshAccess: Schema.optional(
+        Schema.suspend(() => connectionTypeSchema),
+      ),
+      clientRdpAccess: Schema.optional(
+        Schema.suspend(() => connectionTypeSchema),
+      ),
+    }),
+  ),
+  defaultAutoShutdownProfile: Schema.optional(
+    Schema.Struct({
+      shutdownOnDisconnect: Schema.optional(
+        Schema.suspend(() => enableStateSchema),
+      ),
+      shutdownWhenNotConnected: Schema.optional(
+        Schema.suspend(() => enableStateSchema),
+      ),
+      shutdownOnIdle: Schema.optional(
+        Schema.suspend(() => shutdownOnIdleModeSchema),
+      ),
+      disconnectDelay: Schema.optional(Schema.String),
+      noConnectDelay: Schema.optional(Schema.String),
+      idleDelay: Schema.optional(Schema.String),
+    }),
+  ),
+  defaultNetworkProfile: Schema.optional(
+    Schema.suspend(() => LabPlanNetworkProfileSchema),
+  ),
+  allowedRegions: Schema.optional(Schema.Array(Schema.String)),
+  sharedGalleryId: Schema.optional(Schema.String),
+  supportInfo: Schema.optional(Schema.suspend(() => SupportInfoSchema)),
+  linkedLmsInstance: Schema.optional(Schema.String),
+});
+const connectionTypeSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Public",
+  "Private",
+  "None",
+]);
+const enableStateSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Enabled",
+  "Disabled",
+]);
+const shutdownOnIdleModeSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "None",
+  "UserAbsence",
+  "LowUsage",
+]);
+const LabPlanNetworkProfileSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subnetId: Schema.optional(Schema.String),
+});
+const SupportInfoSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  url: Schema.optional(Schema.String),
+  email: Schema.optional(Schema.String),
+  phone: Schema.optional(Schema.String),
+  instructions: Schema.optional(Schema.String),
+});
+const LabPlanUpdatePropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    defaultConnectionProfile: Schema.optional(
+      Schema.Struct({
+        webSshAccess: Schema.optional(
+          Schema.suspend(() => connectionTypeSchema),
+        ),
+        webRdpAccess: Schema.optional(
+          Schema.suspend(() => connectionTypeSchema),
+        ),
+        clientSshAccess: Schema.optional(
+          Schema.suspend(() => connectionTypeSchema),
+        ),
+        clientRdpAccess: Schema.optional(
+          Schema.suspend(() => connectionTypeSchema),
+        ),
+      }),
+    ),
+    defaultAutoShutdownProfile: Schema.optional(
+      Schema.Struct({
+        shutdownOnDisconnect: Schema.optional(
+          Schema.suspend(() => enableStateSchema),
+        ),
+        shutdownWhenNotConnected: Schema.optional(
+          Schema.suspend(() => enableStateSchema),
+        ),
+        shutdownOnIdle: Schema.optional(
+          Schema.suspend(() => shutdownOnIdleModeSchema),
+        ),
+        disconnectDelay: Schema.optional(Schema.String),
+        noConnectDelay: Schema.optional(Schema.String),
+        idleDelay: Schema.optional(Schema.String),
+      }),
+    ),
+    defaultNetworkProfile: Schema.optional(
+      Schema.suspend(() => LabPlanNetworkProfileSchema),
+    ),
+    allowedRegions: Schema.optional(Schema.Array(Schema.String)),
+    sharedGalleryId: Schema.optional(Schema.String),
+    supportInfo: Schema.optional(Schema.suspend(() => SupportInfoSchema)),
+    linkedLmsInstance: Schema.optional(Schema.String),
+  },
+);
+const OperationSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  isDataAction: Schema.optional(Schema.Boolean),
+  display: Schema.optional(
+    Schema.Struct({
+      provider: Schema.optional(Schema.String),
+      resource: Schema.optional(Schema.String),
+      operation: Schema.optional(Schema.String),
+      description: Schema.optional(Schema.String),
+    }),
+  ),
+  origin: Schema.optional(Schema.Literals(["user", "system", "user,system"])),
+  actionType: Schema.optional(Schema.Literals(["Internal"])),
+});
+const ImageSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
+const ImagePropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  enabledState: Schema.optional(Schema.Literals(["Enabled", "Disabled"])),
+});
+const ImageUpdatePropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  enabledState: Schema.optional(Schema.Literals(["Enabled", "Disabled"])),
+});
+const UserSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
+const UserPropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  additionalUsageQuota: Schema.optional(Schema.String),
+});
+const UserUpdatePropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  additionalUsageQuota: Schema.optional(Schema.String),
+});
+const LabSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
+const LabPropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  autoShutdownProfile: Schema.optional(
+    Schema.Struct({
+      shutdownOnDisconnect: Schema.optional(
+        Schema.suspend(() => enableStateSchema),
+      ),
+      shutdownWhenNotConnected: Schema.optional(
+        Schema.suspend(() => enableStateSchema),
+      ),
+      shutdownOnIdle: Schema.optional(
+        Schema.suspend(() => shutdownOnIdleModeSchema),
+      ),
+      disconnectDelay: Schema.optional(Schema.String),
+      noConnectDelay: Schema.optional(Schema.String),
+      idleDelay: Schema.optional(Schema.String),
+    }),
+  ),
+  connectionProfile: Schema.optional(
+    Schema.Struct({
+      webSshAccess: Schema.optional(Schema.suspend(() => connectionTypeSchema)),
+      webRdpAccess: Schema.optional(Schema.suspend(() => connectionTypeSchema)),
+      clientSshAccess: Schema.optional(
+        Schema.suspend(() => connectionTypeSchema),
+      ),
+      clientRdpAccess: Schema.optional(
+        Schema.suspend(() => connectionTypeSchema),
+      ),
+    }),
+  ),
+  virtualMachineProfile: Schema.optional(
+    Schema.suspend(() => VirtualMachineProfileSchema),
+  ),
+  securityProfile: Schema.optional(Schema.suspend(() => SecurityProfileSchema)),
+  rosterProfile: Schema.optional(Schema.suspend(() => RosterProfileSchema)),
+  labPlanId: Schema.optional(Schema.String),
+  title: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+});
+const VirtualMachineProfileSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  createOption: Schema.Literals(["Image", "TemplateVM"]),
+  imageReference: Schema.suspend(() => ImageReferenceSchema),
+  osType: Schema.optional(Schema.Literals(["Windows", "Linux"])),
+  sku: Schema.Struct({
+    name: Schema.String,
+    tier: Schema.optional(
+      Schema.Literals(["Free", "Basic", "Standard", "Premium"]),
+    ),
+    size: Schema.optional(Schema.String),
+    family: Schema.optional(Schema.String),
+    capacity: Schema.optional(Schema.Number),
+  }),
+  additionalCapabilities: Schema.optional(
+    Schema.suspend(() => VirtualMachineAdditionalCapabilitiesSchema),
+  ),
+  usageQuota: Schema.String,
+  useSharedPassword: Schema.optional(Schema.Literals(["Enabled", "Disabled"])),
+  adminUser: Schema.suspend(() => CredentialsSchema),
+  nonAdminUser: Schema.optional(Schema.suspend(() => CredentialsSchema)),
+});
+const ImageReferenceSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  offer: Schema.optional(Schema.String),
+  publisher: Schema.optional(Schema.String),
+  sku: Schema.optional(Schema.String),
+  version: Schema.optional(Schema.String),
+  exactVersion: Schema.optional(Schema.String),
+});
+const VirtualMachineAdditionalCapabilitiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    installGpuDrivers: Schema.optional(
+      Schema.Literals(["Enabled", "Disabled"]),
+    ),
+  });
+const CredentialsSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  username: Schema.String,
+  password: Schema.optional(SensitiveOutputString),
+});
+const SecurityProfileSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  registrationCode: Schema.optional(Schema.String),
+  openAccess: Schema.optional(Schema.Literals(["Enabled", "Disabled"])),
+});
+const RosterProfileSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  activeDirectoryGroupId: Schema.optional(Schema.String),
+  ltiContextId: Schema.optional(Schema.String),
+  lmsInstance: Schema.optional(Schema.String),
+  ltiClientId: Schema.optional(Schema.String),
+  ltiRosterEndpoint: Schema.optional(Schema.String),
+});
+const LabUpdatePropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  autoShutdownProfile: Schema.optional(
+    Schema.Struct({
+      shutdownOnDisconnect: Schema.optional(
+        Schema.suspend(() => enableStateSchema),
+      ),
+      shutdownWhenNotConnected: Schema.optional(
+        Schema.suspend(() => enableStateSchema),
+      ),
+      shutdownOnIdle: Schema.optional(
+        Schema.suspend(() => shutdownOnIdleModeSchema),
+      ),
+      disconnectDelay: Schema.optional(Schema.String),
+      noConnectDelay: Schema.optional(Schema.String),
+      idleDelay: Schema.optional(Schema.String),
+    }),
+  ),
+  connectionProfile: Schema.optional(
+    Schema.Struct({
+      webSshAccess: Schema.optional(Schema.suspend(() => connectionTypeSchema)),
+      webRdpAccess: Schema.optional(Schema.suspend(() => connectionTypeSchema)),
+      clientSshAccess: Schema.optional(
+        Schema.suspend(() => connectionTypeSchema),
+      ),
+      clientRdpAccess: Schema.optional(
+        Schema.suspend(() => connectionTypeSchema),
+      ),
+    }),
+  ),
+  virtualMachineProfile: Schema.optional(
+    Schema.suspend(() => VirtualMachineProfileSchema),
+  ),
+  securityProfile: Schema.optional(Schema.suspend(() => SecurityProfileSchema)),
+  rosterProfile: Schema.optional(Schema.suspend(() => RosterProfileSchema)),
+  labPlanId: Schema.optional(Schema.String),
+  title: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+});
+const VirtualMachineSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
+const VirtualMachinePropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    provisioningState: Schema.optional(
+      Schema.Literals([
+        "Creating",
+        "Updating",
+        "Deleting",
+        "Succeeded",
+        "Failed",
+        "Locked",
+      ]),
+    ),
+    state: Schema.optional(Schema.suspend(() => VirtualMachineStateSchema)),
+    resourceOperationError: Schema.optional(
+      Schema.Struct({
+        timestamp: Schema.optional(Schema.String),
+        code: Schema.optional(Schema.String),
+        message: Schema.optional(Schema.String),
+        action: Schema.optional(Schema.String),
+      }),
+    ),
+    connectionProfile: Schema.optional(
+      Schema.suspend(() => VirtualMachineConnectionProfileSchema),
+    ),
+    claimedByUserId: Schema.optional(Schema.String),
+    vmType: Schema.optional(Schema.suspend(() => VirtualMachineTypeSchema)),
+  });
+const VirtualMachineStateSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Stopped",
+  "Starting",
+  "Running",
+  "Stopping",
+  "ResettingPassword",
+  "Reimaging",
+  "Redeploying",
+]);
+const VirtualMachineConnectionProfileSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    privateIpAddress: Schema.optional(Schema.String),
+    sshAuthority: Schema.optional(Schema.String),
+    sshInBrowserUrl: Schema.optional(Schema.String),
+    rdpAuthority: Schema.optional(Schema.String),
+    rdpInBrowserUrl: Schema.optional(Schema.String),
+    adminUsername: Schema.optional(Schema.String),
+    nonAdminUsername: Schema.optional(Schema.String),
+  });
+const VirtualMachineTypeSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "User",
+  "Template",
+]);
+const ErrorDetailSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  code: Schema.optional(Schema.String),
+  message: Schema.optional(Schema.String),
+  target: Schema.optional(Schema.String),
+  details: Schema.optional(Schema.Array(Schema.Unknown)),
+  additionalInfo: Schema.optional(
+    Schema.Array(Schema.suspend(() => ErrorAdditionalInfoSchema)),
+  ),
+});
+const ErrorAdditionalInfoSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  type: Schema.optional(Schema.String),
+  info: Schema.optional(Schema.Unknown),
+});
+const LabServicesSkuSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  resourceType: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  tier: Schema.optional(Schema.Literals(["Standard", "Premium"])),
+  size: Schema.optional(Schema.String),
+  family: Schema.optional(Schema.String),
+  capacity: Schema.optional(Schema.suspend(() => LabServicesSkuCapacitySchema)),
+  capabilities: Schema.optional(
+    Schema.Array(Schema.suspend(() => LabServicesSkuCapabilitiesSchema)),
+  ),
+  locations: Schema.optional(Schema.Array(Schema.String)),
+  costs: Schema.optional(
+    Schema.Array(Schema.suspend(() => LabServicesSkuCostSchema)),
+  ),
+  restrictions: Schema.optional(
+    Schema.Array(Schema.suspend(() => LabServicesSkuRestrictionsSchema)),
+  ),
+});
+const LabServicesSkuCapacitySchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  default: Schema.optional(Schema.Number),
+  minimum: Schema.optional(Schema.Number),
+  maximum: Schema.optional(Schema.Number),
+  scaleType: Schema.optional(Schema.Literals(["None", "Manual", "Automatic"])),
+});
+const LabServicesSkuCapabilitiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    value: Schema.optional(Schema.String),
+  });
+const LabServicesSkuCostSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  meterId: Schema.optional(Schema.String),
+  quantity: Schema.optional(Schema.Number),
+  extendedUnit: Schema.optional(Schema.String),
+});
+const LabServicesSkuRestrictionsSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    type: Schema.optional(Schema.Literals(["Location"])),
+    values: Schema.optional(Schema.Array(Schema.String)),
+    reasonCode: Schema.optional(
+      Schema.Literals(["QuotaId", "NotAvailableForSubscription"]),
+    ),
+  });
+const ScheduleSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
+const SchedulePropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  startAt: Schema.optional(Schema.String),
+  stopAt: Schema.optional(Schema.String),
+  recurrencePattern: Schema.optional(
+    Schema.suspend(() => RecurrencePatternSchema),
+  ),
+  timeZoneId: Schema.optional(Schema.String),
+  notes: Schema.optional(Schema.String),
+});
+const RecurrencePatternSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  frequency: Schema.suspend(() => RecurrenceFrequencySchema),
+  weekDays: Schema.optional(Schema.Array(Schema.suspend(() => WeekDaySchema))),
+  interval: Schema.optional(Schema.Number),
+  expirationDate: Schema.String,
+});
+const RecurrenceFrequencySchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Daily",
+  "Weekly",
+]);
+const WeekDaySchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Sunday",
+  "Monday",
+  "Tuesday",
+  "Wednesday",
+  "Thursday",
+  "Friday",
+  "Saturday",
+]);
+const ScheduleUpdatePropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    startAt: Schema.optional(Schema.String),
+    stopAt: Schema.optional(Schema.String),
+    recurrencePattern: Schema.optional(
+      Schema.suspend(() => RecurrencePatternSchema),
+    ),
+    timeZoneId: Schema.optional(Schema.String),
+    notes: Schema.optional(Schema.String),
+  });
+const UsageSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  currentValue: Schema.optional(Schema.Number),
+  limit: Schema.optional(Schema.Number),
+  unit: Schema.optional(Schema.Literals(["Count"])),
+  name: Schema.optional(Schema.suspend(() => UsageNameSchema)),
+  id: Schema.optional(Schema.String),
+});
+const UsageNameSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  localizedValue: Schema.optional(Schema.String),
+  skuInstances: Schema.optional(Schema.Array(Schema.String)),
+  value: Schema.optional(Schema.String),
+});
 
 // Input Schema
 export const ImagesCreateOrUpdateInput =
@@ -26,9 +468,7 @@ export const ImagesCreateOrUpdateInput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-    properties: Schema.Struct({
-      enabledState: Schema.optional(Schema.Literals(["Enabled", "Disabled"])),
-    }),
+    properties: Schema.suspend(() => ImagePropertiesSchema),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -41,6 +481,21 @@ export type ImagesCreateOrUpdateInput = typeof ImagesCreateOrUpdateInput.Type;
 // Output Schema
 export const ImagesCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+    properties: Schema.suspend(() => ImagePropertiesSchema),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -73,6 +528,21 @@ export type ImagesGetInput = typeof ImagesGetInput.Type;
 
 // Output Schema
 export const ImagesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+  properties: Schema.suspend(() => ImagePropertiesSchema),
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -103,15 +573,7 @@ export type ImagesListByLabPlanInput = typeof ImagesListByLabPlanInput.Type;
 // Output Schema
 export const ImagesListByLabPlanOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
-    ),
+    value: Schema.optional(Schema.Array(Schema.suspend(() => ImageSchema))),
     nextLink: Schema.optional(Schema.String),
   });
 export type ImagesListByLabPlanOutput = typeof ImagesListByLabPlanOutput.Type;
@@ -129,9 +591,7 @@ export const ImagesListByLabPlan = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const ImagesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   properties: Schema.optional(
-    Schema.Struct({
-      enabledState: Schema.optional(Schema.Literals(["Enabled", "Disabled"])),
-    }),
+    Schema.suspend(() => ImageUpdatePropertiesSchema),
   ),
 }).pipe(
   T.Http({
@@ -144,6 +604,21 @@ export type ImagesUpdateInput = typeof ImagesUpdateInput.Type;
 
 // Output Schema
 export const ImagesUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+  properties: Schema.suspend(() => ImagePropertiesSchema),
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -177,56 +652,7 @@ export const LabPlansCreateOrUpdateInput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-    properties: Schema.Struct({
-      defaultConnectionProfile: Schema.optional(
-        Schema.Struct({
-          webSshAccess: Schema.optional(
-            Schema.Literals(["Public", "Private", "None"]),
-          ),
-          webRdpAccess: Schema.optional(
-            Schema.Literals(["Public", "Private", "None"]),
-          ),
-          clientSshAccess: Schema.optional(
-            Schema.Literals(["Public", "Private", "None"]),
-          ),
-          clientRdpAccess: Schema.optional(
-            Schema.Literals(["Public", "Private", "None"]),
-          ),
-        }),
-      ),
-      defaultAutoShutdownProfile: Schema.optional(
-        Schema.Struct({
-          shutdownOnDisconnect: Schema.optional(
-            Schema.Literals(["Enabled", "Disabled"]),
-          ),
-          shutdownWhenNotConnected: Schema.optional(
-            Schema.Literals(["Enabled", "Disabled"]),
-          ),
-          shutdownOnIdle: Schema.optional(
-            Schema.Literals(["None", "UserAbsence", "LowUsage"]),
-          ),
-          disconnectDelay: Schema.optional(Schema.String),
-          noConnectDelay: Schema.optional(Schema.String),
-          idleDelay: Schema.optional(Schema.String),
-        }),
-      ),
-      defaultNetworkProfile: Schema.optional(
-        Schema.Struct({
-          subnetId: Schema.optional(Schema.String),
-        }),
-      ),
-      allowedRegions: Schema.optional(Schema.Array(Schema.String)),
-      sharedGalleryId: Schema.optional(Schema.String),
-      supportInfo: Schema.optional(
-        Schema.Struct({
-          url: Schema.optional(Schema.String),
-          email: Schema.optional(Schema.String),
-          phone: Schema.optional(Schema.String),
-          instructions: Schema.optional(Schema.String),
-        }),
-      ),
-      linkedLmsInstance: Schema.optional(Schema.String),
-    }),
+    properties: Schema.suspend(() => LabPlanPropertiesSchema),
     identity: Schema.optional(
       Schema.Struct({
         principalId: Schema.optional(Schema.String),
@@ -250,6 +676,30 @@ export type LabPlansCreateOrUpdateInput =
 // Output Schema
 export const LabPlansCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+    properties: Schema.suspend(() => LabPlanPropertiesSchema),
+    identity: Schema.optional(
+      Schema.Struct({
+        principalId: Schema.optional(Schema.String),
+        tenantId: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.Literals(["SystemAssigned"])),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -310,6 +760,30 @@ export type LabPlansGetInput = typeof LabPlansGetInput.Type;
 
 // Output Schema
 export const LabPlansGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+  properties: Schema.suspend(() => LabPlanPropertiesSchema),
+  identity: Schema.optional(
+    Schema.Struct({
+      principalId: Schema.optional(Schema.String),
+      tenantId: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.Literals(["SystemAssigned"])),
+    }),
+  ),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  location: Schema.String,
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -341,15 +815,7 @@ export type LabPlansListByResourceGroupInput =
 // Output Schema
 export const LabPlansListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
-    ),
+    value: Schema.optional(Schema.Array(Schema.suspend(() => LabPlanSchema))),
     nextLink: Schema.optional(Schema.String),
   });
 export type LabPlansListByResourceGroupOutput =
@@ -382,15 +848,7 @@ export type LabPlansListBySubscriptionInput =
 // Output Schema
 export const LabPlansListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
-    ),
+    value: Schema.optional(Schema.Array(Schema.suspend(() => LabPlanSchema))),
     nextLink: Schema.optional(Schema.String),
   });
 export type LabPlansListBySubscriptionOutput =
@@ -441,56 +899,7 @@ export const LabPlansSaveImage = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const LabPlansUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   properties: Schema.optional(
-    Schema.Struct({
-      defaultConnectionProfile: Schema.optional(
-        Schema.Struct({
-          webSshAccess: Schema.optional(
-            Schema.Literals(["Public", "Private", "None"]),
-          ),
-          webRdpAccess: Schema.optional(
-            Schema.Literals(["Public", "Private", "None"]),
-          ),
-          clientSshAccess: Schema.optional(
-            Schema.Literals(["Public", "Private", "None"]),
-          ),
-          clientRdpAccess: Schema.optional(
-            Schema.Literals(["Public", "Private", "None"]),
-          ),
-        }),
-      ),
-      defaultAutoShutdownProfile: Schema.optional(
-        Schema.Struct({
-          shutdownOnDisconnect: Schema.optional(
-            Schema.Literals(["Enabled", "Disabled"]),
-          ),
-          shutdownWhenNotConnected: Schema.optional(
-            Schema.Literals(["Enabled", "Disabled"]),
-          ),
-          shutdownOnIdle: Schema.optional(
-            Schema.Literals(["None", "UserAbsence", "LowUsage"]),
-          ),
-          disconnectDelay: Schema.optional(Schema.String),
-          noConnectDelay: Schema.optional(Schema.String),
-          idleDelay: Schema.optional(Schema.String),
-        }),
-      ),
-      defaultNetworkProfile: Schema.optional(
-        Schema.Struct({
-          subnetId: Schema.optional(Schema.String),
-        }),
-      ),
-      allowedRegions: Schema.optional(Schema.Array(Schema.String)),
-      sharedGalleryId: Schema.optional(Schema.String),
-      supportInfo: Schema.optional(
-        Schema.Struct({
-          url: Schema.optional(Schema.String),
-          email: Schema.optional(Schema.String),
-          phone: Schema.optional(Schema.String),
-          instructions: Schema.optional(Schema.String),
-        }),
-      ),
-      linkedLmsInstance: Schema.optional(Schema.String),
-    }),
+    Schema.suspend(() => LabPlanUpdatePropertiesSchema),
   ),
   identity: Schema.optional(
     Schema.Struct({
@@ -512,6 +921,30 @@ export type LabPlansUpdateInput = typeof LabPlansUpdateInput.Type;
 
 // Output Schema
 export const LabPlansUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+  properties: Schema.suspend(() => LabPlanPropertiesSchema),
+  identity: Schema.optional(
+    Schema.Struct({
+      principalId: Schema.optional(Schema.String),
+      tenantId: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.Literals(["SystemAssigned"])),
+    }),
+  ),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  location: Schema.String,
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -545,102 +978,7 @@ export const LabsCreateOrUpdateInput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-    properties: Schema.Struct({
-      autoShutdownProfile: Schema.optional(
-        Schema.Struct({
-          shutdownOnDisconnect: Schema.optional(
-            Schema.Literals(["Enabled", "Disabled"]),
-          ),
-          shutdownWhenNotConnected: Schema.optional(
-            Schema.Literals(["Enabled", "Disabled"]),
-          ),
-          shutdownOnIdle: Schema.optional(
-            Schema.Literals(["None", "UserAbsence", "LowUsage"]),
-          ),
-          disconnectDelay: Schema.optional(Schema.String),
-          noConnectDelay: Schema.optional(Schema.String),
-          idleDelay: Schema.optional(Schema.String),
-        }),
-      ),
-      connectionProfile: Schema.optional(
-        Schema.Struct({
-          webSshAccess: Schema.optional(
-            Schema.Literals(["Public", "Private", "None"]),
-          ),
-          webRdpAccess: Schema.optional(
-            Schema.Literals(["Public", "Private", "None"]),
-          ),
-          clientSshAccess: Schema.optional(
-            Schema.Literals(["Public", "Private", "None"]),
-          ),
-          clientRdpAccess: Schema.optional(
-            Schema.Literals(["Public", "Private", "None"]),
-          ),
-        }),
-      ),
-      virtualMachineProfile: Schema.optional(
-        Schema.Struct({
-          createOption: Schema.Literals(["Image", "TemplateVM"]),
-          imageReference: Schema.Struct({
-            id: Schema.optional(Schema.String),
-            offer: Schema.optional(Schema.String),
-            publisher: Schema.optional(Schema.String),
-            sku: Schema.optional(Schema.String),
-            version: Schema.optional(Schema.String),
-            exactVersion: Schema.optional(Schema.String),
-          }),
-          osType: Schema.optional(Schema.Literals(["Windows", "Linux"])),
-          sku: Schema.Struct({
-            name: Schema.String,
-            tier: Schema.optional(
-              Schema.Literals(["Free", "Basic", "Standard", "Premium"]),
-            ),
-            size: Schema.optional(Schema.String),
-            family: Schema.optional(Schema.String),
-            capacity: Schema.optional(Schema.Number),
-          }),
-          additionalCapabilities: Schema.optional(
-            Schema.Struct({
-              installGpuDrivers: Schema.optional(
-                Schema.Literals(["Enabled", "Disabled"]),
-              ),
-            }),
-          ),
-          usageQuota: Schema.String,
-          useSharedPassword: Schema.optional(
-            Schema.Literals(["Enabled", "Disabled"]),
-          ),
-          adminUser: Schema.Struct({
-            username: Schema.String,
-            password: Schema.optional(SensitiveString),
-          }),
-          nonAdminUser: Schema.optional(
-            Schema.Struct({
-              username: Schema.String,
-              password: Schema.optional(SensitiveString),
-            }),
-          ),
-        }),
-      ),
-      securityProfile: Schema.optional(
-        Schema.Struct({
-          registrationCode: Schema.optional(Schema.String),
-          openAccess: Schema.optional(Schema.Literals(["Enabled", "Disabled"])),
-        }),
-      ),
-      rosterProfile: Schema.optional(
-        Schema.Struct({
-          activeDirectoryGroupId: Schema.optional(Schema.String),
-          ltiContextId: Schema.optional(Schema.String),
-          lmsInstance: Schema.optional(Schema.String),
-          ltiClientId: Schema.optional(Schema.String),
-          ltiRosterEndpoint: Schema.optional(Schema.String),
-        }),
-      ),
-      labPlanId: Schema.optional(Schema.String),
-      title: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-    }),
+    properties: Schema.suspend(() => LabPropertiesSchema),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     location: Schema.String,
   }).pipe(
@@ -656,6 +994,23 @@ export type LabsCreateOrUpdateInput = typeof LabsCreateOrUpdateInput.Type;
 // Output Schema
 export const LabsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+    properties: Schema.suspend(() => LabPropertiesSchema),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -711,6 +1066,23 @@ export type LabsGetInput = typeof LabsGetInput.Type;
 
 // Output Schema
 export const LabsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+  properties: Schema.suspend(() => LabPropertiesSchema),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  location: Schema.String,
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -742,15 +1114,7 @@ export type LabsListByResourceGroupInput =
 // Output Schema
 export const LabsListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
-    ),
+    value: Schema.optional(Schema.Array(Schema.suspend(() => LabSchema))),
     nextLink: Schema.optional(Schema.String),
   });
 export type LabsListByResourceGroupOutput =
@@ -783,15 +1147,7 @@ export type LabsListBySubscriptionInput =
 // Output Schema
 export const LabsListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
-    ),
+    value: Schema.optional(Schema.Array(Schema.suspend(() => LabSchema))),
     nextLink: Schema.optional(Schema.String),
   });
 export type LabsListBySubscriptionOutput =
@@ -865,104 +1221,7 @@ export const LabsSyncGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const LabsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  properties: Schema.optional(
-    Schema.Struct({
-      autoShutdownProfile: Schema.optional(
-        Schema.Struct({
-          shutdownOnDisconnect: Schema.optional(
-            Schema.Literals(["Enabled", "Disabled"]),
-          ),
-          shutdownWhenNotConnected: Schema.optional(
-            Schema.Literals(["Enabled", "Disabled"]),
-          ),
-          shutdownOnIdle: Schema.optional(
-            Schema.Literals(["None", "UserAbsence", "LowUsage"]),
-          ),
-          disconnectDelay: Schema.optional(Schema.String),
-          noConnectDelay: Schema.optional(Schema.String),
-          idleDelay: Schema.optional(Schema.String),
-        }),
-      ),
-      connectionProfile: Schema.optional(
-        Schema.Struct({
-          webSshAccess: Schema.optional(
-            Schema.Literals(["Public", "Private", "None"]),
-          ),
-          webRdpAccess: Schema.optional(
-            Schema.Literals(["Public", "Private", "None"]),
-          ),
-          clientSshAccess: Schema.optional(
-            Schema.Literals(["Public", "Private", "None"]),
-          ),
-          clientRdpAccess: Schema.optional(
-            Schema.Literals(["Public", "Private", "None"]),
-          ),
-        }),
-      ),
-      virtualMachineProfile: Schema.optional(
-        Schema.Struct({
-          createOption: Schema.Literals(["Image", "TemplateVM"]),
-          imageReference: Schema.Struct({
-            id: Schema.optional(Schema.String),
-            offer: Schema.optional(Schema.String),
-            publisher: Schema.optional(Schema.String),
-            sku: Schema.optional(Schema.String),
-            version: Schema.optional(Schema.String),
-            exactVersion: Schema.optional(Schema.String),
-          }),
-          osType: Schema.optional(Schema.Literals(["Windows", "Linux"])),
-          sku: Schema.Struct({
-            name: Schema.String,
-            tier: Schema.optional(
-              Schema.Literals(["Free", "Basic", "Standard", "Premium"]),
-            ),
-            size: Schema.optional(Schema.String),
-            family: Schema.optional(Schema.String),
-            capacity: Schema.optional(Schema.Number),
-          }),
-          additionalCapabilities: Schema.optional(
-            Schema.Struct({
-              installGpuDrivers: Schema.optional(
-                Schema.Literals(["Enabled", "Disabled"]),
-              ),
-            }),
-          ),
-          usageQuota: Schema.String,
-          useSharedPassword: Schema.optional(
-            Schema.Literals(["Enabled", "Disabled"]),
-          ),
-          adminUser: Schema.Struct({
-            username: Schema.String,
-            password: Schema.optional(SensitiveString),
-          }),
-          nonAdminUser: Schema.optional(
-            Schema.Struct({
-              username: Schema.String,
-              password: Schema.optional(SensitiveString),
-            }),
-          ),
-        }),
-      ),
-      securityProfile: Schema.optional(
-        Schema.Struct({
-          registrationCode: Schema.optional(Schema.String),
-          openAccess: Schema.optional(Schema.Literals(["Enabled", "Disabled"])),
-        }),
-      ),
-      rosterProfile: Schema.optional(
-        Schema.Struct({
-          activeDirectoryGroupId: Schema.optional(Schema.String),
-          ltiContextId: Schema.optional(Schema.String),
-          lmsInstance: Schema.optional(Schema.String),
-          ltiClientId: Schema.optional(Schema.String),
-          ltiRosterEndpoint: Schema.optional(Schema.String),
-        }),
-      ),
-      labPlanId: Schema.optional(Schema.String),
-      title: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-    }),
-  ),
+  properties: Schema.optional(Schema.suspend(() => LabUpdatePropertiesSchema)),
   tags: Schema.optional(Schema.Array(Schema.String)),
 }).pipe(
   T.Http({
@@ -976,6 +1235,23 @@ export type LabsUpdateInput = typeof LabsUpdateInput.Type;
 
 // Output Schema
 export const LabsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+  properties: Schema.suspend(() => LabPropertiesSchema),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  location: Schema.String,
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -1024,30 +1300,10 @@ export const OperationResultsGetOutput =
         message: Schema.optional(Schema.String),
         target: Schema.optional(Schema.String),
         details: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              code: Schema.optional(Schema.String),
-              message: Schema.optional(Schema.String),
-              target: Schema.optional(Schema.String),
-              details: Schema.optional(Schema.Array(Schema.Unknown)),
-              additionalInfo: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    type: Schema.optional(Schema.String),
-                    info: Schema.optional(Schema.Unknown),
-                  }),
-                ),
-              ),
-            }),
-          ),
+          Schema.Array(Schema.suspend(() => ErrorDetailSchema)),
         ),
         additionalInfo: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              type: Schema.optional(Schema.String),
-              info: Schema.optional(Schema.Unknown),
-            }),
-          ),
+          Schema.Array(Schema.suspend(() => ErrorAdditionalInfoSchema)),
         ),
       }),
     ),
@@ -1078,26 +1334,7 @@ export type OperationsListInput = typeof OperationsListInput.Type;
 
 // Output Schema
 export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  value: Schema.optional(
-    Schema.Array(
-      Schema.Struct({
-        name: Schema.optional(Schema.String),
-        isDataAction: Schema.optional(Schema.Boolean),
-        display: Schema.optional(
-          Schema.Struct({
-            provider: Schema.optional(Schema.String),
-            resource: Schema.optional(Schema.String),
-            operation: Schema.optional(Schema.String),
-            description: Schema.optional(Schema.String),
-          }),
-        ),
-        origin: Schema.optional(
-          Schema.Literals(["user", "system", "user,system"]),
-        ),
-        actionType: Schema.optional(Schema.Literals(["Internal"])),
-      }),
-    ),
-  ),
+  value: Schema.optional(Schema.Array(Schema.suspend(() => OperationSchema))),
   nextLink: Schema.optional(Schema.String),
 });
 export type OperationsListOutput = typeof OperationsListOutput.Type;
@@ -1129,32 +1366,7 @@ export const SchedulesCreateOrUpdateInput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-    properties: Schema.Struct({
-      startAt: Schema.optional(Schema.String),
-      stopAt: Schema.optional(Schema.String),
-      recurrencePattern: Schema.optional(
-        Schema.Struct({
-          frequency: Schema.Literals(["Daily", "Weekly"]),
-          weekDays: Schema.optional(
-            Schema.Array(
-              Schema.Literals([
-                "Sunday",
-                "Monday",
-                "Tuesday",
-                "Wednesday",
-                "Thursday",
-                "Friday",
-                "Saturday",
-              ]),
-            ),
-          ),
-          interval: Schema.optional(Schema.Number),
-          expirationDate: Schema.String,
-        }),
-      ),
-      timeZoneId: Schema.optional(Schema.String),
-      notes: Schema.optional(Schema.String),
-    }),
+    properties: Schema.suspend(() => SchedulePropertiesSchema),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -1168,6 +1380,21 @@ export type SchedulesCreateOrUpdateInput =
 // Output Schema
 export const SchedulesCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+    properties: Schema.suspend(() => SchedulePropertiesSchema),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1228,6 +1455,21 @@ export type SchedulesGetInput = typeof SchedulesGetInput.Type;
 
 // Output Schema
 export const SchedulesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+  properties: Schema.suspend(() => SchedulePropertiesSchema),
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -1258,15 +1500,7 @@ export type SchedulesListByLabInput = typeof SchedulesListByLabInput.Type;
 // Output Schema
 export const SchedulesListByLabOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
-    ),
+    value: Schema.optional(Schema.Array(Schema.suspend(() => ScheduleSchema))),
     nextLink: Schema.optional(Schema.String),
   });
 export type SchedulesListByLabOutput = typeof SchedulesListByLabOutput.Type;
@@ -1284,32 +1518,7 @@ export const SchedulesListByLab = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const SchedulesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   properties: Schema.optional(
-    Schema.Struct({
-      startAt: Schema.optional(Schema.String),
-      stopAt: Schema.optional(Schema.String),
-      recurrencePattern: Schema.optional(
-        Schema.Struct({
-          frequency: Schema.Literals(["Daily", "Weekly"]),
-          weekDays: Schema.optional(
-            Schema.Array(
-              Schema.Literals([
-                "Sunday",
-                "Monday",
-                "Tuesday",
-                "Wednesday",
-                "Thursday",
-                "Friday",
-                "Saturday",
-              ]),
-            ),
-          ),
-          interval: Schema.optional(Schema.Number),
-          expirationDate: Schema.String,
-        }),
-      ),
-      timeZoneId: Schema.optional(Schema.String),
-      notes: Schema.optional(Schema.String),
-    }),
+    Schema.suspend(() => ScheduleUpdatePropertiesSchema),
   ),
 }).pipe(
   T.Http({
@@ -1322,6 +1531,21 @@ export type SchedulesUpdateInput = typeof SchedulesUpdateInput.Type;
 
 // Output Schema
 export const SchedulesUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+  properties: Schema.suspend(() => SchedulePropertiesSchema),
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -1351,54 +1575,7 @@ export type SkusListInput = typeof SkusListInput.Type;
 // Output Schema
 export const SkusListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.optional(
-    Schema.Array(
-      Schema.Struct({
-        resourceType: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        tier: Schema.optional(Schema.Literals(["Standard", "Premium"])),
-        size: Schema.optional(Schema.String),
-        family: Schema.optional(Schema.String),
-        capacity: Schema.optional(
-          Schema.Struct({
-            default: Schema.optional(Schema.Number),
-            minimum: Schema.optional(Schema.Number),
-            maximum: Schema.optional(Schema.Number),
-            scaleType: Schema.optional(
-              Schema.Literals(["None", "Manual", "Automatic"]),
-            ),
-          }),
-        ),
-        capabilities: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              name: Schema.optional(Schema.String),
-              value: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        locations: Schema.optional(Schema.Array(Schema.String)),
-        costs: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              meterId: Schema.optional(Schema.String),
-              quantity: Schema.optional(Schema.Number),
-              extendedUnit: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        restrictions: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              type: Schema.optional(Schema.Literals(["Location"])),
-              values: Schema.optional(Schema.Array(Schema.String)),
-              reasonCode: Schema.optional(
-                Schema.Literals(["QuotaId", "NotAvailableForSubscription"]),
-              ),
-            }),
-          ),
-        ),
-      }),
-    ),
+    Schema.Array(Schema.suspend(() => LabServicesSkuSchema)),
   ),
   nextLink: Schema.optional(Schema.String),
 });
@@ -1428,23 +1605,7 @@ export type UsagesListByLocationInput = typeof UsagesListByLocationInput.Type;
 // Output Schema
 export const UsagesListByLocationOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          currentValue: Schema.optional(Schema.Number),
-          limit: Schema.optional(Schema.Number),
-          unit: Schema.optional(Schema.Literals(["Count"])),
-          name: Schema.optional(
-            Schema.Struct({
-              localizedValue: Schema.optional(Schema.String),
-              skuInstances: Schema.optional(Schema.Array(Schema.String)),
-              value: Schema.optional(Schema.String),
-            }),
-          ),
-          id: Schema.optional(Schema.String),
-        }),
-      ),
-    ),
+    value: Schema.optional(Schema.Array(Schema.suspend(() => UsageSchema))),
     nextLink: Schema.optional(Schema.String),
   });
 export type UsagesListByLocationOutput = typeof UsagesListByLocationOutput.Type;
@@ -1478,9 +1639,7 @@ export const UsersCreateOrUpdateInput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-    properties: Schema.Struct({
-      additionalUsageQuota: Schema.optional(Schema.String),
-    }),
+    properties: Schema.suspend(() => UserPropertiesSchema),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -1494,6 +1653,21 @@ export type UsersCreateOrUpdateInput = typeof UsersCreateOrUpdateInput.Type;
 // Output Schema
 export const UsersCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+    properties: Schema.suspend(() => UserPropertiesSchema),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1549,6 +1723,21 @@ export type UsersGetInput = typeof UsersGetInput.Type;
 
 // Output Schema
 export const UsersGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+  properties: Schema.suspend(() => UserPropertiesSchema),
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -1606,15 +1795,7 @@ export type UsersListByLabInput = typeof UsersListByLabInput.Type;
 
 // Output Schema
 export const UsersListByLabOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  value: Schema.optional(
-    Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-      }),
-    ),
-  ),
+  value: Schema.optional(Schema.Array(Schema.suspend(() => UserSchema))),
   nextLink: Schema.optional(Schema.String),
 });
 export type UsersListByLabOutput = typeof UsersListByLabOutput.Type;
@@ -1631,11 +1812,7 @@ export const UsersListByLab = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const UsersUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  properties: Schema.optional(
-    Schema.Struct({
-      additionalUsageQuota: Schema.optional(Schema.String),
-    }),
-  ),
+  properties: Schema.optional(Schema.suspend(() => UserUpdatePropertiesSchema)),
 }).pipe(
   T.Http({
     method: "PATCH",
@@ -1648,6 +1825,21 @@ export type UsersUpdateInput = typeof UsersUpdateInput.Type;
 
 // Output Schema
 export const UsersUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+  properties: Schema.suspend(() => UserPropertiesSchema),
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -1678,6 +1870,21 @@ export type VirtualMachinesGetInput = typeof VirtualMachinesGetInput.Type;
 // Output Schema
 export const VirtualMachinesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+    properties: Schema.suspend(() => VirtualMachinePropertiesSchema),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1710,13 +1917,7 @@ export type VirtualMachinesListByLabInput =
 export const VirtualMachinesListByLabOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => VirtualMachineSchema)),
     ),
     nextLink: Schema.optional(Schema.String),
   });

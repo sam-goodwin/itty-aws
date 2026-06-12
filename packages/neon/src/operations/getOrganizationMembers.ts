@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { CursorPaginationSchema, MemberWithUserSchema } from "./_schemas.ts";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
@@ -17,29 +18,8 @@ export type GetOrganizationMembersInput =
 // Output Schema
 export const GetOrganizationMembersOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    members: Schema.Array(
-      Schema.Struct({
-        member: Schema.Struct({
-          id: Schema.String,
-          user_id: Schema.String,
-          org_id: Schema.String,
-          role: Schema.Literals(["admin", "member"]),
-          joined_at: Schema.optional(Schema.String),
-        }),
-        user: Schema.Struct({
-          email: Schema.String,
-          has_mfa: Schema.optional(Schema.Boolean),
-          deactivated_at: Schema.optional(Schema.String),
-        }),
-      }),
-    ),
-    pagination: Schema.optional(
-      Schema.Struct({
-        next: Schema.optional(Schema.String),
-        sort_by: Schema.optional(Schema.String),
-        sort_order: Schema.optional(Schema.String),
-      }),
-    ),
+    members: Schema.Array(Schema.suspend(() => MemberWithUserSchema)),
+    pagination: Schema.optional(Schema.suspend(() => CursorPaginationSchema)),
   });
 export type GetOrganizationMembersOutput =
   typeof GetOrganizationMembersOutput.Type;

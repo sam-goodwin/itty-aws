@@ -8,6 +8,152 @@ import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
+// Shared schemas
+const OperationSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  isDataAction: Schema.optional(Schema.Boolean),
+  display: Schema.optional(
+    Schema.Struct({
+      provider: Schema.optional(Schema.String),
+      resource: Schema.optional(Schema.String),
+      operation: Schema.optional(Schema.String),
+      description: Schema.optional(Schema.String),
+    }),
+  ),
+  origin: Schema.optional(Schema.Literals(["user", "system", "user,system"])),
+  actionType: Schema.optional(Schema.Literals(["Internal"])),
+});
+const DevOpsInfrastructureResourceTypeSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+    "Microsoft.DevOpsInfrastructure/pools",
+  ]);
+const AvailabilityStatusSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Available",
+  "Unavailable",
+]);
+const CheckNameAvailabilityReasonSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Literals(["Invalid", "AlreadyExists"]);
+const ResourceSkuSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+});
+const systemDataSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  createdBy: Schema.optional(Schema.String),
+  createdByType: Schema.optional(
+    Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+  ),
+  createdAt: Schema.optional(Schema.String),
+  lastModifiedBy: Schema.optional(Schema.String),
+  lastModifiedByType: Schema.optional(
+    Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+  ),
+  lastModifiedAt: Schema.optional(Schema.String),
+});
+const QuotaSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.suspend(() => QuotaNameSchema)),
+  id: Schema.String,
+  unit: Schema.String,
+  currentValue: Schema.Number,
+  limit: Schema.Number,
+});
+const QuotaNameSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  value: Schema.optional(Schema.String),
+  localizedValue: Schema.optional(Schema.String),
+});
+const PoolSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+});
+const ImageVersionSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+});
+const PoolPropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  provisioningState: Schema.optional(
+    Schema.suspend(() => ProvisioningStateSchema),
+  ),
+  maximumConcurrency: Schema.Number,
+  organizationProfile: Schema.suspend(() => OrganizationProfileSchema),
+  agentProfile: Schema.suspend(() => AgentProfileSchema),
+  fabricProfile: Schema.suspend(() => FabricProfileSchema),
+  devCenterProjectResourceId: Schema.String,
+  runtimeConfiguration: Schema.optional(
+    Schema.suspend(() => RuntimeConfigurationSchema),
+  ),
+});
+const ProvisioningStateSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Succeeded",
+  "Failed",
+  "Canceled",
+  "Provisioning",
+  "Updating",
+  "Deleting",
+  "Accepted",
+]);
+const OrganizationProfileSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  kind: Schema.String,
+});
+const AgentProfileSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  kind: Schema.String,
+  resourcePredictions: Schema.optional(
+    Schema.suspend(() => ResourcePredictionsSchema),
+  ),
+  resourcePredictionsProfile: Schema.optional(
+    Schema.suspend(() => ResourcePredictionsProfileSchema),
+  ),
+});
+const ResourcePredictionsSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown;
+const ResourcePredictionsProfileSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    kind: Schema.suspend(() => ResourcePredictionsProfileTypeSchema),
+  });
+const ResourcePredictionsProfileTypeSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Literals(["Manual", "Automatic"]);
+const FabricProfileSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  kind: Schema.String,
+});
+const RuntimeConfigurationSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  workFolder: Schema.optional(Schema.String),
+});
+const ManagedServiceIdentityTypeSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+    "None",
+    "SystemAssigned",
+    "UserAssigned",
+    "SystemAssigned,UserAssigned",
+  ]);
+const UserAssignedIdentitySchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  principalId: Schema.optional(Schema.String),
+  clientId: Schema.optional(Schema.String),
+});
+const PoolUpdatePropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  provisioningState: Schema.optional(
+    Schema.suspend(() => ProvisioningStateSchema),
+  ),
+  maximumConcurrency: Schema.optional(Schema.Number),
+  organizationProfile: Schema.optional(
+    Schema.suspend(() => OrganizationProfileSchema),
+  ),
+  agentProfile: Schema.optional(Schema.suspend(() => AgentProfileSchema)),
+  fabricProfile: Schema.optional(Schema.suspend(() => FabricProfileSchema)),
+  devCenterProjectResourceId: Schema.optional(Schema.String),
+  runtimeConfiguration: Schema.optional(
+    Schema.suspend(() => RuntimeConfigurationSchema),
+  ),
+});
+const ResourceDetailsObjectSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+});
+
 // Input Schema
 export const ImageVersionsListByImageInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -27,37 +173,7 @@ export type ImageVersionsListByImageInput =
 // Output Schema
 export const ImageVersionsListByImageOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => ImageVersionSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type ImageVersionsListByImageOutput =
@@ -92,26 +208,7 @@ export type OperationsListInput = typeof OperationsListInput.Type;
 
 // Output Schema
 export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  value: Schema.optional(
-    Schema.Array(
-      Schema.Struct({
-        name: Schema.optional(Schema.String),
-        isDataAction: Schema.optional(Schema.Boolean),
-        display: Schema.optional(
-          Schema.Struct({
-            provider: Schema.optional(Schema.String),
-            resource: Schema.optional(Schema.String),
-            operation: Schema.optional(Schema.String),
-            description: Schema.optional(Schema.String),
-          }),
-        ),
-        origin: Schema.optional(
-          Schema.Literals(["user", "system", "user,system"]),
-        ),
-        actionType: Schema.optional(Schema.Literals(["Internal"])),
-      }),
-    ),
-  ),
+  value: Schema.optional(Schema.Array(Schema.suspend(() => OperationSchema))),
   nextLink: Schema.optional(Schema.String),
 });
 export type OperationsListOutput = typeof OperationsListOutput.Type;
@@ -131,7 +228,7 @@ export const PoolsCheckNameAvailabilityInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     name: Schema.String,
-    type: Schema.Literals(["Microsoft.DevOpsInfrastructure/pools"]),
+    type: Schema.suspend(() => DevOpsInfrastructureResourceTypeSchema),
   }).pipe(
     T.Http({
       method: "POST",
@@ -145,10 +242,10 @@ export type PoolsCheckNameAvailabilityInput =
 // Output Schema
 export const PoolsCheckNameAvailabilityOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    available: Schema.Literals(["Available", "Unavailable"]),
+    available: Schema.suspend(() => AvailabilityStatusSchema),
     message: Schema.String,
     name: Schema.String,
-    reason: Schema.Literals(["Invalid", "AlreadyExists"]),
+    reason: Schema.suspend(() => CheckNameAvailabilityReasonSchema),
   });
 export type PoolsCheckNameAvailabilityOutput =
   typeof PoolsCheckNameAvailabilityOutput.Type;
@@ -172,60 +269,16 @@ export const PoolsCreateOrUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     poolName: Schema.String.pipe(T.PathParam()),
-    properties: Schema.optional(
-      Schema.Struct({
-        provisioningState: Schema.optional(
-          Schema.Literals([
-            "Succeeded",
-            "Failed",
-            "Canceled",
-            "Provisioning",
-            "Updating",
-            "Deleting",
-            "Accepted",
-          ]),
-        ),
-        maximumConcurrency: Schema.Number,
-        organizationProfile: Schema.Struct({
-          kind: Schema.String,
-        }),
-        agentProfile: Schema.Struct({
-          kind: Schema.String,
-          resourcePredictions: Schema.optional(Schema.Unknown),
-          resourcePredictionsProfile: Schema.optional(
-            Schema.Struct({
-              kind: Schema.Literals(["Manual", "Automatic"]),
-            }),
-          ),
-        }),
-        fabricProfile: Schema.Struct({
-          kind: Schema.String,
-        }),
-        devCenterProjectResourceId: Schema.String,
-        runtimeConfiguration: Schema.optional(
-          Schema.Struct({
-            workFolder: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    properties: Schema.optional(Schema.suspend(() => PoolPropertiesSchema)),
     identity: Schema.optional(
       Schema.Struct({
         principalId: Schema.optional(Schema.String),
         tenantId: Schema.optional(Schema.String),
-        type: Schema.Literals([
-          "None",
-          "SystemAssigned",
-          "UserAssigned",
-          "SystemAssigned,UserAssigned",
-        ]),
+        type: Schema.suspend(() => ManagedServiceIdentityTypeSchema),
         userAssignedIdentities: Schema.optional(
           Schema.Record(
             Schema.String,
-            Schema.Struct({
-              principalId: Schema.optional(Schema.String),
-              clientId: Schema.optional(Schema.String),
-            }),
+            Schema.suspend(() => UserAssignedIdentitySchema),
           ),
         ),
       }),
@@ -245,23 +298,26 @@ export type PoolsCreateOrUpdateInput = typeof PoolsCreateOrUpdateInput.Type;
 // Output Schema
 export const PoolsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(Schema.suspend(() => PoolPropertiesSchema)),
+    identity: Schema.optional(
+      Schema.Struct({
+        principalId: Schema.optional(Schema.String),
+        tenantId: Schema.optional(Schema.String),
+        type: Schema.suspend(() => ManagedServiceIdentityTypeSchema),
+        userAssignedIdentities: Schema.optional(
+          Schema.Record(
+            Schema.String,
+            Schema.suspend(() => UserAssignedIdentitySchema),
+          ),
+        ),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type PoolsCreateOrUpdateOutput = typeof PoolsCreateOrUpdateOutput.Type;
 
@@ -362,23 +418,26 @@ export type PoolsGetInput = typeof PoolsGetInput.Type;
 
 // Output Schema
 export const PoolsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.optional(Schema.suspend(() => PoolPropertiesSchema)),
+  identity: Schema.optional(
+    Schema.Struct({
+      principalId: Schema.optional(Schema.String),
+      tenantId: Schema.optional(Schema.String),
+      type: Schema.suspend(() => ManagedServiceIdentityTypeSchema),
+      userAssignedIdentities: Schema.optional(
+        Schema.Record(
+          Schema.String,
+          Schema.suspend(() => UserAssignedIdentitySchema),
+        ),
+      ),
+    }),
+  ),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  location: Schema.String,
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
-  systemData: Schema.optional(
-    Schema.Struct({
-      createdBy: Schema.optional(Schema.String),
-      createdByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      createdAt: Schema.optional(Schema.String),
-      lastModifiedBy: Schema.optional(Schema.String),
-      lastModifiedByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      lastModifiedAt: Schema.optional(Schema.String),
-    }),
-  ),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
 });
 export type PoolsGetOutput = typeof PoolsGetOutput.Type;
 
@@ -413,37 +472,7 @@ export type PoolsListByResourceGroupInput =
 // Output Schema
 export const PoolsListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => PoolSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type PoolsListByResourceGroupOutput =
@@ -480,37 +509,7 @@ export type PoolsListBySubscriptionInput =
 // Output Schema
 export const PoolsListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => PoolSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type PoolsListBySubscriptionOutput =
@@ -538,67 +537,17 @@ export const PoolsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     Schema.Struct({
       principalId: Schema.optional(Schema.String),
       tenantId: Schema.optional(Schema.String),
-      type: Schema.Literals([
-        "None",
-        "SystemAssigned",
-        "UserAssigned",
-        "SystemAssigned,UserAssigned",
-      ]),
+      type: Schema.suspend(() => ManagedServiceIdentityTypeSchema),
       userAssignedIdentities: Schema.optional(
         Schema.Record(
           Schema.String,
-          Schema.Struct({
-            principalId: Schema.optional(Schema.String),
-            clientId: Schema.optional(Schema.String),
-          }),
+          Schema.suspend(() => UserAssignedIdentitySchema),
         ),
       ),
     }),
   ),
   tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-  properties: Schema.optional(
-    Schema.Struct({
-      provisioningState: Schema.optional(
-        Schema.Literals([
-          "Succeeded",
-          "Failed",
-          "Canceled",
-          "Provisioning",
-          "Updating",
-          "Deleting",
-          "Accepted",
-        ]),
-      ),
-      maximumConcurrency: Schema.optional(Schema.Number),
-      organizationProfile: Schema.optional(
-        Schema.Struct({
-          kind: Schema.String,
-        }),
-      ),
-      agentProfile: Schema.optional(
-        Schema.Struct({
-          kind: Schema.String,
-          resourcePredictions: Schema.optional(Schema.Unknown),
-          resourcePredictionsProfile: Schema.optional(
-            Schema.Struct({
-              kind: Schema.Literals(["Manual", "Automatic"]),
-            }),
-          ),
-        }),
-      ),
-      fabricProfile: Schema.optional(
-        Schema.Struct({
-          kind: Schema.String,
-        }),
-      ),
-      devCenterProjectResourceId: Schema.optional(Schema.String),
-      runtimeConfiguration: Schema.optional(
-        Schema.Struct({
-          workFolder: Schema.optional(Schema.String),
-        }),
-      ),
-    }),
-  ),
+  properties: Schema.optional(Schema.suspend(() => PoolUpdatePropertiesSchema)),
 }).pipe(
   T.Http({
     method: "PATCH",
@@ -611,23 +560,26 @@ export type PoolsUpdateInput = typeof PoolsUpdateInput.Type;
 
 // Output Schema
 export const PoolsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.optional(Schema.suspend(() => PoolPropertiesSchema)),
+  identity: Schema.optional(
+    Schema.Struct({
+      principalId: Schema.optional(Schema.String),
+      tenantId: Schema.optional(Schema.String),
+      type: Schema.suspend(() => ManagedServiceIdentityTypeSchema),
+      userAssignedIdentities: Schema.optional(
+        Schema.Record(
+          Schema.String,
+          Schema.suspend(() => UserAssignedIdentitySchema),
+        ),
+      ),
+    }),
+  ),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  location: Schema.String,
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
-  systemData: Schema.optional(
-    Schema.Struct({
-      createdBy: Schema.optional(Schema.String),
-      createdByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      createdAt: Schema.optional(Schema.String),
-      lastModifiedBy: Schema.optional(Schema.String),
-      lastModifiedByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      lastModifiedAt: Schema.optional(Schema.String),
-    }),
-  ),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
 });
 export type PoolsUpdateOutput = typeof PoolsUpdateOutput.Type;
 
@@ -663,37 +615,7 @@ export type ResourceDetailsListByPoolInput =
 // Output Schema
 export const ResourceDetailsListByPoolOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => ResourceDetailsObjectSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type ResourceDetailsListByPoolOutput =
@@ -732,37 +654,7 @@ export type SkuListByLocationInput = typeof SkuListByLocationInput.Type;
 // Output Schema
 export const SkuListByLocationOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => ResourceSkuSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type SkuListByLocationOutput = typeof SkuListByLocationOutput.Type;
@@ -797,20 +689,7 @@ export type SubscriptionUsagesUsagesInput =
 // Output Schema
 export const SubscriptionUsagesUsagesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        name: Schema.optional(
-          Schema.Struct({
-            value: Schema.optional(Schema.String),
-            localizedValue: Schema.optional(Schema.String),
-          }),
-        ),
-        id: Schema.String,
-        unit: Schema.String,
-        currentValue: Schema.Number,
-        limit: Schema.Number,
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => QuotaSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type SubscriptionUsagesUsagesOutput =

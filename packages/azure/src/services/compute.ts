@@ -7,7 +7,3374 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
-import { SensitiveOutputString, SensitiveString } from "../sensitive.ts";
+import { SensitiveOutputString } from "../sensitive.ts";
+
+// Shared schemas
+const OperationSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  isDataAction: Schema.optional(Schema.Boolean),
+  display: Schema.optional(
+    Schema.Struct({
+      provider: Schema.optional(Schema.String),
+      resource: Schema.optional(Schema.String),
+      operation: Schema.optional(Schema.String),
+      description: Schema.optional(Schema.String),
+    }),
+  ),
+  origin: Schema.optional(Schema.Literals(["user", "system", "user,system"])),
+  actionType: Schema.optional(Schema.Literals(["Internal"])),
+});
+const DiagnosticPropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  supportedResourceTypes: Schema.optional(Schema.Array(Schema.String)),
+});
+const systemDataSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  createdBy: Schema.optional(Schema.String),
+  createdByType: Schema.optional(
+    Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+  ),
+  createdAt: Schema.optional(Schema.String),
+  lastModifiedBy: Schema.optional(Schema.String),
+  lastModifiedByType: Schema.optional(
+    Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+  ),
+  lastModifiedAt: Schema.optional(Schema.String),
+});
+const ResourceSizeSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  sku: Schema.optional(Schema.String),
+});
+const PlacementScoreSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  sku: Schema.optional(Schema.String),
+  region: Schema.optional(Schema.String),
+  availabilityZone: Schema.optional(Schema.String),
+  score: Schema.optional(Schema.String),
+  isQuotaAvailable: Schema.optional(Schema.Boolean),
+});
+const AvailabilitySetSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+});
+const CapacityReservationGroupSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+  });
+const DedicatedHostGroupSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+});
+const ImageSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+});
+const VirtualMachineImageResourceSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+  });
+const VirtualMachineImagePropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    plan: Schema.optional(Schema.suspend(() => PurchasePlanSchema)),
+    osDiskImage: Schema.optional(Schema.suspend(() => OSDiskImageSchema)),
+    dataDiskImages: Schema.optional(
+      Schema.Array(Schema.suspend(() => DataDiskImageSchema)),
+    ),
+    automaticOSUpgradeProperties: Schema.optional(
+      Schema.suspend(() => AutomaticOSUpgradePropertiesSchema),
+    ),
+    hyperVGeneration: Schema.optional(
+      Schema.suspend(() => HyperVGenerationTypesSchema),
+    ),
+    disallowed: Schema.optional(
+      Schema.suspend(() => DisallowedConfigurationSchema),
+    ),
+    features: Schema.optional(
+      Schema.Array(Schema.suspend(() => VirtualMachineImageFeatureSchema)),
+    ),
+    architecture: Schema.optional(
+      Schema.suspend(() => ArchitectureTypesSchema),
+    ),
+    imageDeprecationStatus: Schema.optional(
+      Schema.suspend(() => ImageDeprecationStatusSchema),
+    ),
+  });
+const PurchasePlanSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  publisher: Schema.String,
+  name: Schema.String,
+  product: Schema.String,
+});
+const OSDiskImageSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  operatingSystem: Schema.suspend(() => Common_OperatingSystemTypesSchema),
+});
+const Common_OperatingSystemTypesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Literals(["Windows", "Linux"]);
+const DataDiskImageSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  lun: Schema.optional(Schema.Number),
+});
+const AutomaticOSUpgradePropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    automaticOSUpgradeSupported: Schema.Boolean,
+  });
+const HyperVGenerationTypesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals(
+  ["V1", "V2"],
+);
+const DisallowedConfigurationSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    vmDiskType: Schema.optional(Schema.suspend(() => VmDiskTypesSchema)),
+  },
+);
+const VmDiskTypesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "None",
+  "Unmanaged",
+]);
+const VirtualMachineImageFeatureSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    value: Schema.optional(Schema.String),
+  });
+const ArchitectureTypesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "x64",
+  "Arm64",
+]);
+const ImageDeprecationStatusSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  imageState: Schema.optional(Schema.suspend(() => ImageStateSchema)),
+  scheduledDeprecationTime: Schema.optional(Schema.String),
+  alternativeOption: Schema.optional(
+    Schema.suspend(() => AlternativeOptionSchema),
+  ),
+});
+const ImageStateSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Active",
+  "ScheduledForDeprecation",
+  "Deprecated",
+]);
+const AlternativeOptionSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  type: Schema.optional(Schema.suspend(() => AlternativeTypeSchema)),
+  value: Schema.optional(Schema.String),
+});
+const AlternativeTypeSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "None",
+  "Offer",
+  "Plan",
+]);
+const ExtendedLocationTypeSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "EdgeZone",
+]);
+const IntervalInMinsSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "ThreeMins",
+  "FiveMins",
+  "ThirtyMins",
+  "SixtyMins",
+]);
+const LogAnalyticsOutputSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  output: Schema.optional(Schema.String),
+});
+const VirtualMachineExtensionImageSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+  });
+const VirtualMachineExtensionImagePropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    operatingSystem: Schema.String,
+    computeRole: Schema.String,
+    handlerSchema: Schema.String,
+    vmScaleSetEnabled: Schema.optional(Schema.Boolean),
+    supportsMultipleExtensions: Schema.optional(Schema.Boolean),
+  });
+const RunCommandDocumentBaseSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  $schema: Schema.String,
+  id: Schema.String,
+  osType: Schema.suspend(() => Common_OperatingSystemTypesSchema),
+  label: Schema.String,
+  description: Schema.String,
+});
+const RunCommandParameterDefinitionSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String,
+    type: Schema.String,
+    defaultValue: Schema.optional(Schema.String),
+    required: Schema.optional(Schema.Boolean),
+  });
+const UsageSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  unit: Schema.Literals(["Count"]),
+  currentValue: Schema.Number,
+  limit: Schema.Number,
+  name: Schema.suspend(() => UsageNameSchema),
+});
+const UsageNameSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  value: Schema.optional(Schema.String),
+  localizedValue: Schema.optional(Schema.String),
+});
+const VirtualMachineScaleSetSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+});
+const VirtualMachineSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+});
+const VirtualMachineSizeSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  numberOfCores: Schema.optional(Schema.Number),
+  osDiskSizeInMB: Schema.optional(Schema.Number),
+  resourceDiskSizeInMB: Schema.optional(Schema.Number),
+  memoryInMB: Schema.optional(Schema.Number),
+  maxDataDiskCount: Schema.optional(Schema.Number),
+});
+const ProximityPlacementGroupSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+  },
+);
+const RestorePointCollectionSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+});
+const SshPublicKeyResourceSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+});
+const AvailabilitySetPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    platformUpdateDomainCount: Schema.optional(Schema.Number),
+    platformFaultDomainCount: Schema.optional(Schema.Number),
+    virtualMachines: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+        }),
+      ),
+    ),
+    proximityPlacementGroup: Schema.optional(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+      }),
+    ),
+    statuses: Schema.optional(
+      Schema.Array(Schema.suspend(() => InstanceViewStatusSchema)),
+    ),
+    scheduledEventsPolicy: Schema.optional(
+      Schema.suspend(() => ScheduledEventsPolicySchema),
+    ),
+    virtualMachineScaleSetMigrationInfo: Schema.optional(
+      Schema.suspend(() => VirtualMachineScaleSetMigrationInfoSchema),
+    ),
+  });
+const InstanceViewStatusSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  code: Schema.optional(Schema.String),
+  level: Schema.optional(Schema.suspend(() => StatusLevelTypesSchema)),
+  displayStatus: Schema.optional(Schema.String),
+  message: Schema.optional(Schema.String),
+  time: Schema.optional(Schema.String),
+});
+const StatusLevelTypesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Info",
+  "Warning",
+  "Error",
+]);
+const ScheduledEventsPolicySchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  userInitiatedRedeploy: Schema.optional(
+    Schema.suspend(() => UserInitiatedRedeploySchema),
+  ),
+  userInitiatedReboot: Schema.optional(
+    Schema.suspend(() => UserInitiatedRebootSchema),
+  ),
+  scheduledEventsAdditionalPublishingTargets: Schema.optional(
+    Schema.suspend(() => ScheduledEventsAdditionalPublishingTargetsSchema),
+  ),
+  allInstancesDown: Schema.optional(
+    Schema.suspend(() => AllInstancesDownSchema),
+  ),
+});
+const UserInitiatedRedeploySchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  automaticallyApprove: Schema.optional(Schema.Boolean),
+});
+const UserInitiatedRebootSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  automaticallyApprove: Schema.optional(Schema.Boolean),
+});
+const ScheduledEventsAdditionalPublishingTargetsSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    eventGridAndResourceGraph: Schema.optional(
+      Schema.suspend(() => EventGridAndResourceGraphSchema),
+    ),
+  });
+const EventGridAndResourceGraphSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    enable: Schema.optional(Schema.Boolean),
+    scheduledEventsApiVersion: Schema.optional(Schema.String),
+  });
+const AllInstancesDownSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  automaticallyApprove: Schema.optional(Schema.Boolean),
+});
+const VirtualMachineScaleSetMigrationInfoSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    defaultVirtualMachineScaleSetInfo: Schema.optional(
+      Schema.suspend(() => DefaultVirtualMachineScaleSetInfoSchema),
+    ),
+    migrateToVirtualMachineScaleSet: Schema.optional(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+      }),
+    ),
+  });
+const DefaultVirtualMachineScaleSetInfoSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    constrainedMaximumCapacity: Schema.optional(Schema.Boolean),
+    defaultVirtualMachineScaleSet: Schema.optional(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+      }),
+    ),
+  });
+const SkuSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  tier: Schema.optional(Schema.String),
+  capacity: Schema.optional(Schema.Number),
+});
+const CapacityReservationGroupPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    capacityReservations: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+        }),
+      ),
+    ),
+    virtualMachinesAssociated: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+        }),
+      ),
+    ),
+    instanceView: Schema.optional(
+      Schema.suspend(() => CapacityReservationGroupInstanceViewSchema),
+    ),
+    sharingProfile: Schema.optional(
+      Schema.suspend(() => ResourceSharingProfileSchema),
+    ),
+    reservationType: Schema.optional(
+      Schema.suspend(() => ReservationTypeSchema),
+    ),
+  });
+const CapacityReservationGroupInstanceViewSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    capacityReservations: Schema.optional(
+      Schema.Array(
+        Schema.suspend(() => CapacityReservationInstanceViewWithNameSchema),
+      ),
+    ),
+    sharedSubscriptionIds: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+        }),
+      ),
+    ),
+  });
+const CapacityReservationInstanceViewWithNameSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    utilizationInfo: Schema.optional(
+      Schema.suspend(() => CapacityReservationUtilizationSchema),
+    ),
+    statuses: Schema.optional(
+      Schema.Array(Schema.suspend(() => InstanceViewStatusSchema)),
+    ),
+  });
+const CapacityReservationUtilizationSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    currentCapacity: Schema.optional(Schema.Number),
+    virtualMachinesAllocated: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+        }),
+      ),
+    ),
+  });
+const ResourceSharingProfileSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionIds: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+      }),
+    ),
+  ),
+});
+const ReservationTypeSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Targeted",
+  "Block",
+]);
+const CapacityReservationSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+});
+const CapacityReservationPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    reservationId: Schema.optional(Schema.String),
+    platformFaultDomainCount: Schema.optional(Schema.Number),
+    virtualMachinesAssociated: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+        }),
+      ),
+    ),
+    provisioningTime: Schema.optional(Schema.String),
+    provisioningState: Schema.optional(Schema.String),
+    instanceView: Schema.optional(
+      Schema.suspend(() => CapacityReservationInstanceViewSchema),
+    ),
+    timeCreated: Schema.optional(Schema.String),
+    scheduleProfile: Schema.optional(
+      Schema.suspend(() => ScheduleProfileSchema),
+    ),
+  });
+const CapacityReservationInstanceViewSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    utilizationInfo: Schema.optional(
+      Schema.suspend(() => CapacityReservationUtilizationSchema),
+    ),
+    statuses: Schema.optional(
+      Schema.Array(Schema.suspend(() => InstanceViewStatusSchema)),
+    ),
+  });
+const ScheduleProfileSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  start: Schema.optional(Schema.String),
+  end: Schema.optional(Schema.String),
+});
+const DedicatedHostGroupPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    platformFaultDomainCount: Schema.Number,
+    hosts: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+        }),
+      ),
+    ),
+    instanceView: Schema.optional(
+      Schema.suspend(() => DedicatedHostGroupInstanceViewSchema),
+    ),
+    supportAutomaticPlacement: Schema.optional(Schema.Boolean),
+    additionalCapabilities: Schema.optional(
+      Schema.suspend(
+        () => DedicatedHostGroupPropertiesAdditionalCapabilitiesSchema,
+      ),
+    ),
+  });
+const DedicatedHostGroupInstanceViewSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    hosts: Schema.optional(
+      Schema.Array(
+        Schema.suspend(() => DedicatedHostInstanceViewWithNameSchema),
+      ),
+    ),
+  });
+const DedicatedHostInstanceViewWithNameSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    assetId: Schema.optional(Schema.String),
+    availableCapacity: Schema.optional(
+      Schema.suspend(() => DedicatedHostAvailableCapacitySchema),
+    ),
+    statuses: Schema.optional(
+      Schema.Array(Schema.suspend(() => InstanceViewStatusSchema)),
+    ),
+  });
+const DedicatedHostAvailableCapacitySchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    allocatableVMs: Schema.optional(
+      Schema.Array(Schema.suspend(() => DedicatedHostAllocatableVMSchema)),
+    ),
+  });
+const DedicatedHostAllocatableVMSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    vmSize: Schema.optional(Schema.String),
+    count: Schema.optional(Schema.Number),
+  });
+const DedicatedHostGroupPropertiesAdditionalCapabilitiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    ultraSSDEnabled: Schema.optional(Schema.Boolean),
+  });
+const DedicatedHostSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+});
+const DedicatedHostPropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    platformFaultDomain: Schema.optional(Schema.Number),
+    autoReplaceOnFailure: Schema.optional(Schema.Boolean),
+    hostId: Schema.optional(Schema.String),
+    virtualMachines: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+        }),
+      ),
+    ),
+    licenseType: Schema.optional(
+      Schema.suspend(() => DedicatedHostLicenseTypesSchema),
+    ),
+    provisioningTime: Schema.optional(Schema.String),
+    provisioningState: Schema.optional(Schema.String),
+    instanceView: Schema.optional(
+      Schema.suspend(() => DedicatedHostInstanceViewSchema),
+    ),
+    timeCreated: Schema.optional(Schema.String),
+  },
+);
+const DedicatedHostLicenseTypesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+    "None",
+    "Windows_Server_Hybrid",
+    "Windows_Server_Perpetual",
+  ]);
+const DedicatedHostInstanceViewSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    assetId: Schema.optional(Schema.String),
+    availableCapacity: Schema.optional(
+      Schema.suspend(() => DedicatedHostAvailableCapacitySchema),
+    ),
+    statuses: Schema.optional(
+      Schema.Array(Schema.suspend(() => InstanceViewStatusSchema)),
+    ),
+  });
+const ImagePropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  sourceVirtualMachine: Schema.optional(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+    }),
+  ),
+  storageProfile: Schema.optional(
+    Schema.suspend(() => ImageStorageProfileSchema),
+  ),
+  provisioningState: Schema.optional(Schema.String),
+  hyperVGeneration: Schema.optional(
+    Schema.suspend(() => HyperVGenerationTypesSchema),
+  ),
+});
+const ImageStorageProfileSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  osDisk: Schema.optional(Schema.suspend(() => ImageOSDiskSchema)),
+  dataDisks: Schema.optional(
+    Schema.Array(Schema.suspend(() => ImageDataDiskSchema)),
+  ),
+  zoneResilient: Schema.optional(Schema.Boolean),
+});
+const ImageOSDiskSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  snapshot: Schema.optional(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+    }),
+  ),
+  managedDisk: Schema.optional(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+    }),
+  ),
+  blobUri: Schema.optional(Schema.String),
+  caching: Schema.optional(Schema.suspend(() => CachingTypesSchema)),
+  diskSizeGB: Schema.optional(Schema.Number),
+  storageAccountType: Schema.optional(
+    Schema.suspend(() => StorageAccountTypesSchema),
+  ),
+  diskEncryptionSet: Schema.optional(
+    Schema.suspend(() => DiskEncryptionSetParametersSchema),
+  ),
+});
+const CachingTypesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "None",
+  "ReadOnly",
+  "ReadWrite",
+]);
+const StorageAccountTypesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Standard_LRS",
+  "Premium_LRS",
+  "StandardSSD_LRS",
+  "UltraSSD_LRS",
+  "Premium_ZRS",
+  "StandardSSD_ZRS",
+  "PremiumV2_LRS",
+]);
+const DiskEncryptionSetParametersSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+  });
+const ImageDataDiskSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  snapshot: Schema.optional(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+    }),
+  ),
+  managedDisk: Schema.optional(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+    }),
+  ),
+  blobUri: Schema.optional(Schema.String),
+  caching: Schema.optional(Schema.suspend(() => CachingTypesSchema)),
+  diskSizeGB: Schema.optional(Schema.Number),
+  storageAccountType: Schema.optional(
+    Schema.suspend(() => StorageAccountTypesSchema),
+  ),
+  diskEncryptionSet: Schema.optional(
+    Schema.suspend(() => DiskEncryptionSetParametersSchema),
+  ),
+});
+const ProximityPlacementGroupPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    proximityPlacementGroupType: Schema.optional(
+      Schema.suspend(() => ProximityPlacementGroupTypeSchema),
+    ),
+    virtualMachines: Schema.optional(
+      Schema.Array(Schema.suspend(() => SubResourceWithColocationStatusSchema)),
+    ),
+    virtualMachineScaleSets: Schema.optional(
+      Schema.Array(Schema.suspend(() => SubResourceWithColocationStatusSchema)),
+    ),
+    availabilitySets: Schema.optional(
+      Schema.Array(Schema.suspend(() => SubResourceWithColocationStatusSchema)),
+    ),
+    colocationStatus: Schema.optional(
+      Schema.suspend(() => InstanceViewStatusSchema),
+    ),
+    intent: Schema.optional(
+      Schema.suspend(() => ProximityPlacementGroupPropertiesIntentSchema),
+    ),
+  });
+const ProximityPlacementGroupTypeSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Literals(["Standard", "Ultra"]);
+const SubResourceWithColocationStatusSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+  });
+const ProximityPlacementGroupPropertiesIntentSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    vmSizes: Schema.optional(Schema.Array(Schema.String)),
+  });
+const RestorePointCollectionPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    source: Schema.optional(
+      Schema.suspend(() => RestorePointCollectionSourcePropertiesSchema),
+    ),
+    provisioningState: Schema.optional(Schema.String),
+    restorePointCollectionId: Schema.optional(Schema.String),
+    restorePoints: Schema.optional(
+      Schema.Array(Schema.suspend(() => RestorePointSchema)),
+    ),
+    instantAccess: Schema.optional(Schema.Boolean),
+  });
+const RestorePointCollectionSourcePropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    location: Schema.optional(Schema.String),
+    id: Schema.optional(Schema.String),
+  });
+const RestorePointSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+});
+const RestorePointPropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  excludeDisks: Schema.optional(
+    Schema.Array(Schema.suspend(() => ApiEntityReferenceSchema)),
+  ),
+  sourceMetadata: Schema.optional(
+    Schema.suspend(() => RestorePointSourceMetadataSchema),
+  ),
+  provisioningState: Schema.optional(Schema.String),
+  consistencyMode: Schema.optional(
+    Schema.suspend(() => ConsistencyModeTypesSchema),
+  ),
+  timeCreated: Schema.optional(Schema.String),
+  sourceRestorePoint: Schema.optional(
+    Schema.suspend(() => ApiEntityReferenceSchema),
+  ),
+  instanceView: Schema.optional(
+    Schema.suspend(() => RestorePointInstanceViewSchema),
+  ),
+  instantAccessDurationMinutes: Schema.optional(Schema.Number),
+});
+const ApiEntityReferenceSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+});
+const RestorePointSourceMetadataSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    hardwareProfile: Schema.optional(
+      Schema.suspend(() => HardwareProfileSchema),
+    ),
+    storageProfile: Schema.optional(
+      Schema.suspend(() => RestorePointSourceVMStorageProfileSchema),
+    ),
+    osProfile: Schema.optional(Schema.suspend(() => OSProfileSchema)),
+    diagnosticsProfile: Schema.optional(
+      Schema.suspend(() => DiagnosticsProfileSchema),
+    ),
+    licenseType: Schema.optional(Schema.String),
+    vmId: Schema.optional(Schema.String),
+    securityProfile: Schema.optional(
+      Schema.suspend(() => SecurityProfileSchema),
+    ),
+    location: Schema.optional(Schema.String),
+    userData: Schema.optional(Schema.String),
+    hyperVGeneration: Schema.optional(
+      Schema.suspend(() => HyperVGenerationTypesSchema),
+    ),
+  });
+const HardwareProfileSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  vmSize: Schema.optional(Schema.suspend(() => VirtualMachineSizeTypesSchema)),
+  vmSizeProperties: Schema.optional(
+    Schema.suspend(() => VMSizePropertiesSchema),
+  ),
+});
+const VirtualMachineSizeTypesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+    "Basic_A0",
+    "Basic_A1",
+    "Basic_A2",
+    "Basic_A3",
+    "Basic_A4",
+    "Standard_A0",
+    "Standard_A1",
+    "Standard_A2",
+    "Standard_A3",
+    "Standard_A4",
+    "Standard_A5",
+    "Standard_A6",
+    "Standard_A7",
+    "Standard_A8",
+    "Standard_A9",
+    "Standard_A10",
+    "Standard_A11",
+    "Standard_A1_v2",
+    "Standard_A2_v2",
+    "Standard_A4_v2",
+    "Standard_A8_v2",
+    "Standard_A2m_v2",
+    "Standard_A4m_v2",
+    "Standard_A8m_v2",
+    "Standard_B1s",
+    "Standard_B1ms",
+    "Standard_B2s",
+    "Standard_B2ms",
+    "Standard_B4ms",
+    "Standard_B8ms",
+    "Standard_D1",
+    "Standard_D2",
+    "Standard_D3",
+    "Standard_D4",
+    "Standard_D11",
+    "Standard_D12",
+    "Standard_D13",
+    "Standard_D14",
+    "Standard_D1_v2",
+    "Standard_D2_v2",
+    "Standard_D3_v2",
+    "Standard_D4_v2",
+    "Standard_D5_v2",
+    "Standard_D2_v3",
+    "Standard_D4_v3",
+    "Standard_D8_v3",
+    "Standard_D16_v3",
+    "Standard_D32_v3",
+    "Standard_D64_v3",
+    "Standard_D2s_v3",
+    "Standard_D4s_v3",
+    "Standard_D8s_v3",
+    "Standard_D16s_v3",
+    "Standard_D32s_v3",
+    "Standard_D64s_v3",
+    "Standard_D11_v2",
+    "Standard_D12_v2",
+    "Standard_D13_v2",
+    "Standard_D14_v2",
+    "Standard_D15_v2",
+    "Standard_DS1",
+    "Standard_DS2",
+    "Standard_DS3",
+    "Standard_DS4",
+    "Standard_DS11",
+    "Standard_DS12",
+    "Standard_DS13",
+    "Standard_DS14",
+    "Standard_DS1_v2",
+    "Standard_DS2_v2",
+    "Standard_DS3_v2",
+    "Standard_DS4_v2",
+    "Standard_DS5_v2",
+    "Standard_DS11_v2",
+    "Standard_DS12_v2",
+    "Standard_DS13_v2",
+    "Standard_DS14_v2",
+    "Standard_DS15_v2",
+    "Standard_DS13-4_v2",
+    "Standard_DS13-2_v2",
+    "Standard_DS14-8_v2",
+    "Standard_DS14-4_v2",
+    "Standard_E2_v3",
+    "Standard_E4_v3",
+    "Standard_E8_v3",
+    "Standard_E16_v3",
+    "Standard_E32_v3",
+    "Standard_E64_v3",
+    "Standard_E2s_v3",
+    "Standard_E4s_v3",
+    "Standard_E8s_v3",
+    "Standard_E16s_v3",
+    "Standard_E32s_v3",
+    "Standard_E64s_v3",
+    "Standard_E32-16_v3",
+    "Standard_E32-8s_v3",
+    "Standard_E64-32s_v3",
+    "Standard_E64-16s_v3",
+    "Standard_F1",
+    "Standard_F2",
+    "Standard_F4",
+    "Standard_F8",
+    "Standard_F16",
+    "Standard_F1s",
+    "Standard_F2s",
+    "Standard_F4s",
+    "Standard_F8s",
+    "Standard_F16s",
+    "Standard_F2s_v2",
+    "Standard_F4s_v2",
+    "Standard_F8s_v2",
+    "Standard_F16s_v2",
+    "Standard_F32s_v2",
+    "Standard_F64s_v2",
+    "Standard_F72s_v2",
+    "Standard_G1",
+    "Standard_G2",
+    "Standard_G3",
+    "Standard_G4",
+    "Standard_G5",
+    "Standard_GS1",
+    "Standard_GS2",
+    "Standard_GS3",
+    "Standard_GS4",
+    "Standard_GS5",
+    "Standard_GS4-8",
+    "Standard_GS4-4",
+    "Standard_GS5-16",
+    "Standard_GS5-8",
+    "Standard_H8",
+    "Standard_H16",
+    "Standard_H8m",
+    "Standard_H16m",
+    "Standard_H16r",
+    "Standard_H16mr",
+    "Standard_L4s",
+    "Standard_L8s",
+    "Standard_L16s",
+    "Standard_L32s",
+    "Standard_M64s",
+    "Standard_M64ms",
+    "Standard_M128s",
+    "Standard_M128ms",
+    "Standard_M64-32ms",
+    "Standard_M64-16ms",
+    "Standard_M128-64ms",
+    "Standard_M128-32ms",
+    "Standard_NC6",
+    "Standard_NC12",
+    "Standard_NC24",
+    "Standard_NC24r",
+    "Standard_NC6s_v2",
+    "Standard_NC12s_v2",
+    "Standard_NC24s_v2",
+    "Standard_NC24rs_v2",
+    "Standard_NC6s_v3",
+    "Standard_NC12s_v3",
+    "Standard_NC24s_v3",
+    "Standard_NC24rs_v3",
+    "Standard_ND6s",
+    "Standard_ND12s",
+    "Standard_ND24s",
+    "Standard_ND24rs",
+    "Standard_NV6",
+    "Standard_NV12",
+    "Standard_NV24",
+  ]);
+const VMSizePropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  vCPUsAvailable: Schema.optional(Schema.Number),
+  vCPUsPerCore: Schema.optional(Schema.Number),
+});
+const RestorePointSourceVMStorageProfileSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    osDisk: Schema.optional(
+      Schema.suspend(() => RestorePointSourceVMOSDiskSchema),
+    ),
+    dataDisks: Schema.optional(
+      Schema.Array(Schema.suspend(() => RestorePointSourceVMDataDiskSchema)),
+    ),
+    diskControllerType: Schema.optional(
+      Schema.suspend(() => DiskControllerTypesSchema),
+    ),
+  });
+const RestorePointSourceVMOSDiskSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    osType: Schema.optional(Schema.suspend(() => OperatingSystemTypeSchema)),
+    encryptionSettings: Schema.optional(
+      Schema.suspend(() => DiskEncryptionSettingsSchema),
+    ),
+    name: Schema.optional(Schema.String),
+    caching: Schema.optional(Schema.suspend(() => CachingTypesSchema)),
+    diskSizeGB: Schema.optional(Schema.Number),
+    managedDisk: Schema.optional(
+      Schema.suspend(() => ManagedDiskParametersSchema),
+    ),
+    diskRestorePoint: Schema.optional(
+      Schema.suspend(() => DiskRestorePointAttributesSchema),
+    ),
+    writeAcceleratorEnabled: Schema.optional(Schema.Boolean),
+  });
+const OperatingSystemTypeSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Windows",
+  "Linux",
+]);
+const DiskEncryptionSettingsSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  diskEncryptionKey: Schema.optional(
+    Schema.suspend(() => KeyVaultSecretReferenceSchema),
+  ),
+  keyEncryptionKey: Schema.optional(
+    Schema.suspend(() => KeyVaultKeyReferenceSchema),
+  ),
+  enabled: Schema.optional(Schema.Boolean),
+});
+const KeyVaultSecretReferenceSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    secretUrl: Schema.String,
+    sourceVault: Schema.Struct({
+      id: Schema.optional(Schema.String),
+    }),
+  },
+);
+const KeyVaultKeyReferenceSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  keyUrl: Schema.String,
+  sourceVault: Schema.Struct({
+    id: Schema.optional(Schema.String),
+  }),
+});
+const ManagedDiskParametersSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+});
+const DiskRestorePointAttributesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+  });
+const RestorePointSourceVMDataDiskSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    lun: Schema.optional(Schema.Number),
+    name: Schema.optional(Schema.String),
+    caching: Schema.optional(Schema.suspend(() => CachingTypesSchema)),
+    diskSizeGB: Schema.optional(Schema.Number),
+    managedDisk: Schema.optional(
+      Schema.suspend(() => ManagedDiskParametersSchema),
+    ),
+    diskRestorePoint: Schema.optional(
+      Schema.suspend(() => DiskRestorePointAttributesSchema),
+    ),
+    writeAcceleratorEnabled: Schema.optional(Schema.Boolean),
+  });
+const DiskControllerTypesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "SCSI",
+  "NVMe",
+]);
+const OSProfileSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  computerName: Schema.optional(Schema.String),
+  adminUsername: Schema.optional(Schema.String),
+  adminPassword: Schema.optional(SensitiveOutputString),
+  customData: Schema.optional(Schema.String),
+  windowsConfiguration: Schema.optional(
+    Schema.suspend(() => WindowsConfigurationSchema),
+  ),
+  linuxConfiguration: Schema.optional(
+    Schema.suspend(() => LinuxConfigurationSchema),
+  ),
+  secrets: Schema.optional(
+    Schema.Array(Schema.suspend(() => VaultSecretGroupSchema)),
+  ),
+  allowExtensionOperations: Schema.optional(Schema.Boolean),
+  requireGuestProvisionSignal: Schema.optional(Schema.Boolean),
+});
+const WindowsConfigurationSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  provisionVMAgent: Schema.optional(Schema.Boolean),
+  enableAutomaticUpdates: Schema.optional(Schema.Boolean),
+  timeZone: Schema.optional(Schema.String),
+  additionalUnattendContent: Schema.optional(
+    Schema.Array(Schema.suspend(() => AdditionalUnattendContentSchema)),
+  ),
+  patchSettings: Schema.optional(Schema.suspend(() => PatchSettingsSchema)),
+  winRM: Schema.optional(Schema.suspend(() => WinRMConfigurationSchema)),
+  enableVMAgentPlatformUpdates: Schema.optional(Schema.Boolean),
+});
+const AdditionalUnattendContentSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    passName: Schema.optional(Schema.suspend(() => PassNamesSchema)),
+    componentName: Schema.optional(Schema.suspend(() => ComponentNamesSchema)),
+    settingName: Schema.optional(Schema.suspend(() => SettingNamesSchema)),
+    content: Schema.optional(Schema.String),
+  });
+const PassNamesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "OobeSystem",
+]);
+const ComponentNamesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Microsoft-Windows-Shell-Setup",
+]);
+const SettingNamesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "AutoLogon",
+  "FirstLogonCommands",
+]);
+const PatchSettingsSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  patchMode: Schema.optional(
+    Schema.suspend(() => WindowsVMGuestPatchModeSchema),
+  ),
+  enableHotpatching: Schema.optional(Schema.Boolean),
+  assessmentMode: Schema.optional(
+    Schema.suspend(() => WindowsPatchAssessmentModeSchema),
+  ),
+  automaticByPlatformSettings: Schema.optional(
+    Schema.suspend(() => WindowsVMGuestPatchAutomaticByPlatformSettingsSchema),
+  ),
+});
+const WindowsVMGuestPatchModeSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+    "Manual",
+    "AutomaticByOS",
+    "AutomaticByPlatform",
+  ]);
+const WindowsPatchAssessmentModeSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+    "ImageDefault",
+    "AutomaticByPlatform",
+  ]);
+const WindowsVMGuestPatchAutomaticByPlatformSettingsSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    rebootSetting: Schema.optional(
+      Schema.suspend(
+        () => WindowsVMGuestPatchAutomaticByPlatformRebootSettingSchema,
+      ),
+    ),
+    bypassPlatformSafetyChecksOnUserSchedule: Schema.optional(Schema.Boolean),
+  });
+const WindowsVMGuestPatchAutomaticByPlatformRebootSettingSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+    "Unknown",
+    "IfRequired",
+    "Never",
+    "Always",
+  ]);
+const WinRMConfigurationSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  listeners: Schema.optional(
+    Schema.Array(Schema.suspend(() => WinRMListenerSchema)),
+  ),
+});
+const WinRMListenerSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  protocol: Schema.optional(Schema.suspend(() => ProtocolTypesSchema)),
+  certificateUrl: Schema.optional(Schema.String),
+});
+const ProtocolTypesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Http",
+  "Https",
+]);
+const LinuxConfigurationSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  disablePasswordAuthentication: Schema.optional(Schema.Boolean),
+  ssh: Schema.optional(Schema.suspend(() => SshConfigurationSchema)),
+  provisionVMAgent: Schema.optional(Schema.Boolean),
+  patchSettings: Schema.optional(
+    Schema.suspend(() => LinuxPatchSettingsSchema),
+  ),
+  enableVMAgentPlatformUpdates: Schema.optional(Schema.Boolean),
+});
+const SshConfigurationSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  publicKeys: Schema.optional(
+    Schema.Array(Schema.suspend(() => SshPublicKeySchema)),
+  ),
+});
+const SshPublicKeySchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  path: Schema.optional(Schema.String),
+  keyData: Schema.optional(Schema.String),
+});
+const LinuxPatchSettingsSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  patchMode: Schema.optional(Schema.suspend(() => LinuxVMGuestPatchModeSchema)),
+  assessmentMode: Schema.optional(
+    Schema.suspend(() => LinuxPatchAssessmentModeSchema),
+  ),
+  automaticByPlatformSettings: Schema.optional(
+    Schema.suspend(() => LinuxVMGuestPatchAutomaticByPlatformSettingsSchema),
+  ),
+});
+const LinuxVMGuestPatchModeSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals(
+  ["ImageDefault", "AutomaticByPlatform"],
+);
+const LinuxPatchAssessmentModeSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+    "ImageDefault",
+    "AutomaticByPlatform",
+  ]);
+const LinuxVMGuestPatchAutomaticByPlatformSettingsSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    rebootSetting: Schema.optional(
+      Schema.suspend(
+        () => LinuxVMGuestPatchAutomaticByPlatformRebootSettingSchema,
+      ),
+    ),
+    bypassPlatformSafetyChecksOnUserSchedule: Schema.optional(Schema.Boolean),
+  });
+const LinuxVMGuestPatchAutomaticByPlatformRebootSettingSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+    "Unknown",
+    "IfRequired",
+    "Never",
+    "Always",
+  ]);
+const VaultSecretGroupSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  sourceVault: Schema.optional(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+    }),
+  ),
+  vaultCertificates: Schema.optional(
+    Schema.Array(Schema.suspend(() => VaultCertificateSchema)),
+  ),
+});
+const VaultCertificateSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  certificateUrl: Schema.optional(Schema.String),
+  certificateStore: Schema.optional(Schema.String),
+});
+const DiagnosticsProfileSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  bootDiagnostics: Schema.optional(Schema.suspend(() => BootDiagnosticsSchema)),
+});
+const BootDiagnosticsSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  enabled: Schema.optional(Schema.Boolean),
+  storageUri: Schema.optional(Schema.String),
+});
+const SecurityProfileSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  uefiSettings: Schema.optional(Schema.suspend(() => UefiSettingsSchema)),
+  encryptionAtHost: Schema.optional(Schema.Boolean),
+  securityType: Schema.optional(Schema.suspend(() => SecurityTypesSchema)),
+  encryptionIdentity: Schema.optional(
+    Schema.suspend(() => EncryptionIdentitySchema),
+  ),
+  proxyAgentSettings: Schema.optional(
+    Schema.suspend(() => ProxyAgentSettingsSchema),
+  ),
+});
+const UefiSettingsSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  secureBootEnabled: Schema.optional(Schema.Boolean),
+  vTpmEnabled: Schema.optional(Schema.Boolean),
+});
+const SecurityTypesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "TrustedLaunch",
+  "ConfidentialVM",
+]);
+const EncryptionIdentitySchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  userAssignedIdentityResourceId: Schema.optional(Schema.String),
+});
+const ProxyAgentSettingsSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  enabled: Schema.optional(Schema.Boolean),
+  mode: Schema.optional(Schema.suspend(() => ModeSchema)),
+  keyIncarnationId: Schema.optional(Schema.Number),
+  wireServer: Schema.optional(Schema.suspend(() => HostEndpointSettingsSchema)),
+  imds: Schema.optional(Schema.suspend(() => HostEndpointSettingsSchema)),
+  addProxyAgentExtension: Schema.optional(Schema.Boolean),
+});
+const ModeSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Audit",
+  "Enforce",
+]);
+const HostEndpointSettingsSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  mode: Schema.optional(Schema.suspend(() => ModesSchema)),
+  inVMAccessControlProfileReferenceId: Schema.optional(Schema.String),
+});
+const ModesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Audit",
+  "Enforce",
+  "Disabled",
+]);
+const ConsistencyModeTypesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "CrashConsistent",
+  "FileSystemConsistent",
+  "ApplicationConsistent",
+]);
+const RestorePointInstanceViewSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    diskRestorePoints: Schema.optional(
+      Schema.Array(Schema.suspend(() => DiskRestorePointInstanceViewSchema)),
+    ),
+    statuses: Schema.optional(
+      Schema.Array(Schema.suspend(() => InstanceViewStatusSchema)),
+    ),
+  });
+const DiskRestorePointInstanceViewSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    snapshotAccessState: Schema.optional(
+      Schema.suspend(() => Common_SnapshotAccessStateSchema),
+    ),
+    replicationStatus: Schema.optional(
+      Schema.suspend(() => DiskRestorePointReplicationStatusSchema),
+    ),
+  });
+const Common_SnapshotAccessStateSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+    "Unknown",
+    "Pending",
+    "Available",
+    "InstantAccess",
+    "AvailableWithInstantAccess",
+  ]);
+const DiskRestorePointReplicationStatusSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    status: Schema.optional(Schema.suspend(() => InstanceViewStatusSchema)),
+    completionPercent: Schema.optional(Schema.Number),
+  });
+const SshPublicKeyResourcePropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    publicKey: Schema.optional(Schema.String),
+  });
+const SshEncryptionTypesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "RSA",
+  "Ed25519",
+]);
+const PlanSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  publisher: Schema.optional(Schema.String),
+  product: Schema.optional(Schema.String),
+  promotionCode: Schema.optional(Schema.String),
+});
+const VirtualMachineScaleSetPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    upgradePolicy: Schema.optional(Schema.suspend(() => UpgradePolicySchema)),
+    scheduledEventsPolicy: Schema.optional(
+      Schema.suspend(() => ScheduledEventsPolicySchema),
+    ),
+    automaticRepairsPolicy: Schema.optional(
+      Schema.suspend(() => AutomaticRepairsPolicySchema),
+    ),
+    virtualMachineProfile: Schema.optional(
+      Schema.suspend(() => VirtualMachineScaleSetVMProfileSchema),
+    ),
+    provisioningState: Schema.optional(Schema.String),
+    overprovision: Schema.optional(Schema.Boolean),
+    doNotRunExtensionsOnOverprovisionedVMs: Schema.optional(Schema.Boolean),
+    uniqueId: Schema.optional(Schema.String),
+    singlePlacementGroup: Schema.optional(Schema.Boolean),
+    zoneBalance: Schema.optional(Schema.Boolean),
+    platformFaultDomainCount: Schema.optional(Schema.Number),
+    proximityPlacementGroup: Schema.optional(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+      }),
+    ),
+    hostGroup: Schema.optional(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+      }),
+    ),
+    additionalCapabilities: Schema.optional(
+      Schema.suspend(() => AdditionalCapabilitiesSchema),
+    ),
+    scaleInPolicy: Schema.optional(Schema.suspend(() => ScaleInPolicySchema)),
+    orchestrationMode: Schema.optional(
+      Schema.suspend(() => OrchestrationModeSchema),
+    ),
+    spotRestorePolicy: Schema.optional(
+      Schema.suspend(() => SpotRestorePolicySchema),
+    ),
+    priorityMixPolicy: Schema.optional(
+      Schema.suspend(() => PriorityMixPolicySchema),
+    ),
+    timeCreated: Schema.optional(Schema.String),
+    constrainedMaximumCapacity: Schema.optional(Schema.Boolean),
+    resiliencyPolicy: Schema.optional(
+      Schema.suspend(() => ResiliencyPolicySchema),
+    ),
+    zonalPlatformFaultDomainAlignMode: Schema.optional(
+      Schema.suspend(() => ZonalPlatformFaultDomainAlignModeSchema),
+    ),
+    skuProfile: Schema.optional(Schema.suspend(() => SkuProfileSchema)),
+    highSpeedInterconnectPlacement: Schema.optional(
+      Schema.suspend(() => HighSpeedInterconnectPlacementSchema),
+    ),
+  });
+const UpgradePolicySchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  mode: Schema.optional(Schema.suspend(() => UpgradeModeSchema)),
+  rollingUpgradePolicy: Schema.optional(
+    Schema.suspend(() => RollingUpgradePolicySchema),
+  ),
+  automaticOSUpgradePolicy: Schema.optional(
+    Schema.suspend(() => AutomaticOSUpgradePolicySchema),
+  ),
+});
+const UpgradeModeSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Automatic",
+  "Manual",
+  "Rolling",
+]);
+const RollingUpgradePolicySchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  maxBatchInstancePercent: Schema.optional(Schema.Number),
+  maxUnhealthyInstancePercent: Schema.optional(Schema.Number),
+  maxUnhealthyUpgradedInstancePercent: Schema.optional(Schema.Number),
+  pauseTimeBetweenBatches: Schema.optional(Schema.String),
+  enableCrossZoneUpgrade: Schema.optional(Schema.Boolean),
+  prioritizeUnhealthyInstances: Schema.optional(Schema.Boolean),
+  rollbackFailedInstancesOnPolicyBreach: Schema.optional(Schema.Boolean),
+  maxSurge: Schema.optional(Schema.Boolean),
+});
+const AutomaticOSUpgradePolicySchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    enableAutomaticOSUpgrade: Schema.optional(Schema.Boolean),
+    disableAutomaticRollback: Schema.optional(Schema.Boolean),
+    useRollingUpgradePolicy: Schema.optional(Schema.Boolean),
+    osRollingUpgradeDeferral: Schema.optional(Schema.Boolean),
+  });
+const AutomaticRepairsPolicySchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  enabled: Schema.optional(Schema.Boolean),
+  gracePeriod: Schema.optional(Schema.String),
+  repairAction: Schema.optional(Schema.suspend(() => RepairActionSchema)),
+});
+const RepairActionSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Replace",
+  "Restart",
+  "Reimage",
+]);
+const VirtualMachineScaleSetVMProfileSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    osProfile: Schema.optional(
+      Schema.suspend(() => VirtualMachineScaleSetOSProfileSchema),
+    ),
+    storageProfile: Schema.optional(
+      Schema.suspend(() => VirtualMachineScaleSetStorageProfileSchema),
+    ),
+    networkProfile: Schema.optional(
+      Schema.suspend(() => VirtualMachineScaleSetNetworkProfileSchema),
+    ),
+    securityProfile: Schema.optional(
+      Schema.suspend(() => SecurityProfileSchema),
+    ),
+    diagnosticsProfile: Schema.optional(
+      Schema.suspend(() => DiagnosticsProfileSchema),
+    ),
+    extensionProfile: Schema.optional(
+      Schema.suspend(() => VirtualMachineScaleSetExtensionProfileSchema),
+    ),
+    licenseType: Schema.optional(Schema.String),
+    priority: Schema.optional(
+      Schema.suspend(() => VirtualMachinePriorityTypesSchema),
+    ),
+    evictionPolicy: Schema.optional(
+      Schema.suspend(() => VirtualMachineEvictionPolicyTypesSchema),
+    ),
+    billingProfile: Schema.optional(Schema.suspend(() => BillingProfileSchema)),
+    scheduledEventsProfile: Schema.optional(
+      Schema.suspend(() => ScheduledEventsProfileSchema),
+    ),
+    userData: Schema.optional(Schema.String),
+    capacityReservation: Schema.optional(
+      Schema.suspend(() => CapacityReservationProfileSchema),
+    ),
+    applicationProfile: Schema.optional(
+      Schema.suspend(() => ApplicationProfileSchema),
+    ),
+    hardwareProfile: Schema.optional(
+      Schema.suspend(() => VirtualMachineScaleSetHardwareProfileSchema),
+    ),
+    serviceArtifactReference: Schema.optional(
+      Schema.suspend(() => ServiceArtifactReferenceSchema),
+    ),
+    securityPostureReference: Schema.optional(
+      Schema.suspend(() => SecurityPostureReferenceSchema),
+    ),
+    timeCreated: Schema.optional(Schema.String),
+  });
+const VirtualMachineScaleSetOSProfileSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    computerNamePrefix: Schema.optional(Schema.String),
+    adminUsername: Schema.optional(Schema.String),
+    adminPassword: Schema.optional(SensitiveOutputString),
+    customData: Schema.optional(Schema.String),
+    windowsConfiguration: Schema.optional(
+      Schema.suspend(() => WindowsConfigurationSchema),
+    ),
+    linuxConfiguration: Schema.optional(
+      Schema.suspend(() => LinuxConfigurationSchema),
+    ),
+    secrets: Schema.optional(
+      Schema.Array(Schema.suspend(() => VaultSecretGroupSchema)),
+    ),
+    allowExtensionOperations: Schema.optional(Schema.Boolean),
+    requireGuestProvisionSignal: Schema.optional(Schema.Boolean),
+  });
+const VirtualMachineScaleSetStorageProfileSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    imageReference: Schema.optional(Schema.suspend(() => ImageReferenceSchema)),
+    osDisk: Schema.optional(
+      Schema.suspend(() => VirtualMachineScaleSetOSDiskSchema),
+    ),
+    dataDisks: Schema.optional(
+      Schema.Array(Schema.suspend(() => VirtualMachineScaleSetDataDiskSchema)),
+    ),
+    diskControllerType: Schema.optional(
+      Schema.suspend(() => DiskControllerTypesSchema),
+    ),
+  });
+const ImageReferenceSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+});
+const VirtualMachineScaleSetOSDiskSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    caching: Schema.optional(Schema.suspend(() => CachingTypesSchema)),
+    writeAcceleratorEnabled: Schema.optional(Schema.Boolean),
+    createOption: Schema.suspend(() => DiskCreateOptionTypesSchema),
+    diffDiskSettings: Schema.optional(
+      Schema.suspend(() => DiffDiskSettingsSchema),
+    ),
+    diskSizeGB: Schema.optional(Schema.Number),
+    osType: Schema.optional(
+      Schema.suspend(() => Common_OperatingSystemTypesSchema),
+    ),
+    image: Schema.optional(Schema.suspend(() => VirtualHardDiskSchema)),
+    vhdContainers: Schema.optional(Schema.Array(Schema.String)),
+    managedDisk: Schema.optional(
+      Schema.suspend(() => VirtualMachineScaleSetManagedDiskParametersSchema),
+    ),
+    deleteOption: Schema.optional(
+      Schema.suspend(() => DiskDeleteOptionTypesSchema),
+    ),
+  });
+const DiskCreateOptionTypesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals(
+  ["FromImage", "Empty", "Attach", "Copy", "Restore"],
+);
+const DiffDiskSettingsSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  option: Schema.optional(Schema.suspend(() => DiffDiskOptionsSchema)),
+  placement: Schema.optional(Schema.suspend(() => DiffDiskPlacementSchema)),
+});
+const DiffDiskOptionsSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Local",
+]);
+const DiffDiskPlacementSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "CacheDisk",
+  "ResourceDisk",
+  "NvmeDisk",
+]);
+const VirtualHardDiskSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  uri: Schema.optional(Schema.String),
+});
+const VirtualMachineScaleSetManagedDiskParametersSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    storageAccountType: Schema.optional(
+      Schema.suspend(() => StorageAccountTypesSchema),
+    ),
+    diskEncryptionSet: Schema.optional(
+      Schema.suspend(() => DiskEncryptionSetParametersSchema),
+    ),
+    securityProfile: Schema.optional(
+      Schema.suspend(() => VMDiskSecurityProfileSchema),
+    ),
+  });
+const VMDiskSecurityProfileSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  securityEncryptionType: Schema.optional(
+    Schema.suspend(() => SecurityEncryptionTypesSchema),
+  ),
+  diskEncryptionSet: Schema.optional(
+    Schema.suspend(() => DiskEncryptionSetParametersSchema),
+  ),
+});
+const SecurityEncryptionTypesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+    "VMGuestStateOnly",
+    "DiskWithVMGuestState",
+    "NonPersistedTPM",
+  ]);
+const DiskDeleteOptionTypesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals(
+  ["Delete", "Detach"],
+);
+const VirtualMachineScaleSetDataDiskSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    lun: Schema.Number,
+    caching: Schema.optional(Schema.suspend(() => CachingTypesSchema)),
+    writeAcceleratorEnabled: Schema.optional(Schema.Boolean),
+    createOption: Schema.suspend(() => DiskCreateOptionTypesSchema),
+    diskSizeGB: Schema.optional(Schema.Number),
+    managedDisk: Schema.optional(
+      Schema.suspend(() => VirtualMachineScaleSetManagedDiskParametersSchema),
+    ),
+    diskIOPSReadWrite: Schema.optional(Schema.Number),
+    diskMBpsReadWrite: Schema.optional(Schema.Number),
+    deleteOption: Schema.optional(
+      Schema.suspend(() => DiskDeleteOptionTypesSchema),
+    ),
+  });
+const VirtualMachineScaleSetNetworkProfileSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    healthProbe: Schema.optional(
+      Schema.suspend(() => ApiEntityReferenceSchema),
+    ),
+    networkInterfaceConfigurations: Schema.optional(
+      Schema.Array(
+        Schema.suspend(() => VirtualMachineScaleSetNetworkConfigurationSchema),
+      ),
+    ),
+    networkApiVersion: Schema.optional(
+      Schema.suspend(() => NetworkApiVersionSchema),
+    ),
+  });
+const VirtualMachineScaleSetNetworkConfigurationSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String,
+    properties: Schema.optional(
+      Schema.suspend(
+        () => VirtualMachineScaleSetNetworkConfigurationPropertiesSchema,
+      ),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  });
+const VirtualMachineScaleSetNetworkConfigurationPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    primary: Schema.optional(Schema.Boolean),
+    enableAcceleratedNetworking: Schema.optional(Schema.Boolean),
+    disableTcpStateTracking: Schema.optional(Schema.Boolean),
+    enableFpga: Schema.optional(Schema.Boolean),
+    networkSecurityGroup: Schema.optional(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+      }),
+    ),
+    dnsSettings: Schema.optional(
+      Schema.suspend(
+        () => VirtualMachineScaleSetNetworkConfigurationDnsSettingsSchema,
+      ),
+    ),
+    ipConfigurations: Schema.Array(
+      Schema.suspend(() => VirtualMachineScaleSetIPConfigurationSchema),
+    ),
+    enableIPForwarding: Schema.optional(Schema.Boolean),
+    deleteOption: Schema.optional(Schema.suspend(() => DeleteOptionsSchema)),
+    auxiliaryMode: Schema.optional(
+      Schema.suspend(() => NetworkInterfaceAuxiliaryModeSchema),
+    ),
+    auxiliarySku: Schema.optional(
+      Schema.suspend(() => NetworkInterfaceAuxiliarySkuSchema),
+    ),
+  });
+const VirtualMachineScaleSetNetworkConfigurationDnsSettingsSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    dnsServers: Schema.optional(Schema.Array(Schema.String)),
+  });
+const VirtualMachineScaleSetIPConfigurationSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String,
+    properties: Schema.optional(
+      Schema.suspend(
+        () => VirtualMachineScaleSetIPConfigurationPropertiesSchema,
+      ),
+    ),
+  });
+const VirtualMachineScaleSetIPConfigurationPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subnet: Schema.optional(Schema.suspend(() => ApiEntityReferenceSchema)),
+    primary: Schema.optional(Schema.Boolean),
+    publicIPAddressConfiguration: Schema.optional(
+      Schema.suspend(
+        () => VirtualMachineScaleSetPublicIPAddressConfigurationSchema,
+      ),
+    ),
+    privateIPAddressVersion: Schema.optional(
+      Schema.suspend(() => IPVersionSchema),
+    ),
+    applicationGatewayBackendAddressPools: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+        }),
+      ),
+    ),
+    applicationSecurityGroups: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+        }),
+      ),
+    ),
+    loadBalancerBackendAddressPools: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+        }),
+      ),
+    ),
+    loadBalancerInboundNatPools: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+        }),
+      ),
+    ),
+  });
+const VirtualMachineScaleSetPublicIPAddressConfigurationSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String,
+    properties: Schema.optional(
+      Schema.suspend(
+        () =>
+          VirtualMachineScaleSetPublicIPAddressConfigurationPropertiesSchema,
+      ),
+    ),
+    sku: Schema.optional(Schema.suspend(() => PublicIPAddressSkuSchema)),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  });
+const VirtualMachineScaleSetPublicIPAddressConfigurationPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    idleTimeoutInMinutes: Schema.optional(Schema.Number),
+    dnsSettings: Schema.optional(
+      Schema.suspend(
+        () =>
+          VirtualMachineScaleSetPublicIPAddressConfigurationDnsSettingsSchema,
+      ),
+    ),
+    ipTags: Schema.optional(
+      Schema.Array(Schema.suspend(() => VirtualMachineScaleSetIpTagSchema)),
+    ),
+    publicIPPrefix: Schema.optional(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+      }),
+    ),
+    publicIPAddressVersion: Schema.optional(
+      Schema.suspend(() => IPVersionSchema),
+    ),
+    deleteOption: Schema.optional(Schema.suspend(() => DeleteOptionsSchema)),
+  });
+const VirtualMachineScaleSetPublicIPAddressConfigurationDnsSettingsSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    domainNameLabel: Schema.String,
+    domainNameLabelScope: Schema.optional(
+      Schema.suspend(() => DomainNameLabelScopeTypesSchema),
+    ),
+  });
+const DomainNameLabelScopeTypesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+    "TenantReuse",
+    "SubscriptionReuse",
+    "ResourceGroupReuse",
+    "NoReuse",
+  ]);
+const VirtualMachineScaleSetIpTagSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    ipTagType: Schema.optional(Schema.String),
+    tag: Schema.optional(Schema.String),
+  });
+const IPVersionSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "IPv4",
+  "IPv6",
+]);
+const DeleteOptionsSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Delete",
+  "Detach",
+]);
+const PublicIPAddressSkuSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.suspend(() => PublicIPAddressSkuNameSchema)),
+  tier: Schema.optional(Schema.suspend(() => PublicIPAddressSkuTierSchema)),
+});
+const PublicIPAddressSkuNameSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Literals(["Basic", "Standard"]);
+const PublicIPAddressSkuTierSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Literals(["Regional", "Global"]);
+const NetworkInterfaceAuxiliaryModeSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+    "None",
+    "AcceleratedConnections",
+    "Floating",
+  ]);
+const NetworkInterfaceAuxiliarySkuSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Literals(["None", "A1", "A2", "A4", "A8"]);
+const NetworkApiVersionSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "2020-11-01",
+  "2022-11-01",
+]);
+const VirtualMachineScaleSetExtensionProfileSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    extensions: Schema.optional(
+      Schema.Array(Schema.suspend(() => VirtualMachineScaleSetExtensionSchema)),
+    ),
+    extensionsTimeBudget: Schema.optional(Schema.String),
+  });
+const VirtualMachineScaleSetExtensionSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+  });
+const VirtualMachinePriorityTypesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Literals(["Regular", "Low", "Spot"]);
+const VirtualMachineEvictionPolicyTypesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Literals(["Deallocate", "Delete"]);
+const BillingProfileSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  maxPrice: Schema.optional(Schema.Number),
+});
+const ScheduledEventsProfileSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  terminateNotificationProfile: Schema.optional(
+    Schema.suspend(() => TerminateNotificationProfileSchema),
+  ),
+  osImageNotificationProfile: Schema.optional(
+    Schema.suspend(() => OSImageNotificationProfileSchema),
+  ),
+});
+const TerminateNotificationProfileSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    notBeforeTimeout: Schema.optional(Schema.String),
+    enable: Schema.optional(Schema.Boolean),
+  });
+const OSImageNotificationProfileSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    notBeforeTimeout: Schema.optional(Schema.String),
+    enable: Schema.optional(Schema.Boolean),
+  });
+const CapacityReservationProfileSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    capacityReservationGroup: Schema.optional(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+      }),
+    ),
+  });
+const ApplicationProfileSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  galleryApplications: Schema.optional(
+    Schema.Array(Schema.suspend(() => VMGalleryApplicationSchema)),
+  ),
+});
+const VMGalleryApplicationSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  tags: Schema.optional(Schema.String),
+  order: Schema.optional(Schema.Number),
+  packageReferenceId: Schema.String,
+  configurationReference: Schema.optional(Schema.String),
+  treatFailureAsDeploymentFailure: Schema.optional(Schema.Boolean),
+  enableAutomaticUpgrade: Schema.optional(Schema.Boolean),
+});
+const VirtualMachineScaleSetHardwareProfileSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    vmSizeProperties: Schema.optional(
+      Schema.suspend(() => VMSizePropertiesSchema),
+    ),
+  });
+const ServiceArtifactReferenceSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+  });
+const SecurityPostureReferenceSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.String,
+    excludeExtensions: Schema.optional(Schema.Array(Schema.String)),
+    isOverridable: Schema.optional(Schema.Boolean),
+  });
+const AdditionalCapabilitiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  ultraSSDEnabled: Schema.optional(Schema.Boolean),
+  hibernationEnabled: Schema.optional(Schema.Boolean),
+  enableFips1403Encryption: Schema.optional(Schema.Boolean),
+});
+const ScaleInPolicySchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  rules: Schema.optional(
+    Schema.Array(
+      Schema.suspend(() => VirtualMachineScaleSetScaleInRulesSchema),
+    ),
+  ),
+  forceDeletion: Schema.optional(Schema.Boolean),
+  prioritizeUnhealthyVMs: Schema.optional(Schema.Boolean),
+});
+const VirtualMachineScaleSetScaleInRulesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+    "Default",
+    "OldestVM",
+    "NewestVM",
+  ]);
+const OrchestrationModeSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Uniform",
+  "Flexible",
+]);
+const SpotRestorePolicySchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  enabled: Schema.optional(Schema.Boolean),
+  restoreTimeout: Schema.optional(Schema.String),
+});
+const PriorityMixPolicySchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  baseRegularPriorityCount: Schema.optional(Schema.Number),
+  regularPriorityPercentageAboveBase: Schema.optional(Schema.Number),
+});
+const ResiliencyPolicySchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  resilientVMCreationPolicy: Schema.optional(
+    Schema.suspend(() => ResilientVMCreationPolicySchema),
+  ),
+  resilientVMDeletionPolicy: Schema.optional(
+    Schema.suspend(() => ResilientVMDeletionPolicySchema),
+  ),
+  automaticZoneRebalancingPolicy: Schema.optional(
+    Schema.suspend(() => AutomaticZoneRebalancingPolicySchema),
+  ),
+  zoneAllocationPolicy: Schema.optional(
+    Schema.suspend(() => ZoneAllocationPolicySchema),
+  ),
+});
+const ResilientVMCreationPolicySchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    enabled: Schema.optional(Schema.Boolean),
+  });
+const ResilientVMDeletionPolicySchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    enabled: Schema.optional(Schema.Boolean),
+  });
+const AutomaticZoneRebalancingPolicySchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    enabled: Schema.optional(Schema.Boolean),
+    rebalanceStrategy: Schema.optional(
+      Schema.suspend(() => RebalanceStrategySchema),
+    ),
+    rebalanceBehavior: Schema.optional(
+      Schema.suspend(() => RebalanceBehaviorSchema),
+    ),
+  });
+const RebalanceStrategySchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Recreate",
+]);
+const RebalanceBehaviorSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "CreateBeforeDelete",
+]);
+const ZoneAllocationPolicySchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  maxZoneCount: Schema.optional(Schema.Number),
+  maxInstancePercentPerZonePolicy: Schema.optional(
+    Schema.suspend(() => MaxInstancePercentPerZonePolicySchema),
+  ),
+});
+const MaxInstancePercentPerZonePolicySchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    enabled: Schema.optional(Schema.Boolean),
+    value: Schema.optional(Schema.Number),
+  });
+const ZonalPlatformFaultDomainAlignModeSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Literals(["Aligned", "Unaligned"]);
+const SkuProfileSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  vmSizes: Schema.optional(
+    Schema.Array(Schema.suspend(() => SkuProfileVMSizeSchema)),
+  ),
+  allocationStrategy: Schema.optional(
+    Schema.suspend(() => AllocationStrategySchema),
+  ),
+});
+const SkuProfileVMSizeSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  rank: Schema.optional(Schema.Number),
+});
+const AllocationStrategySchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "LowestPrice",
+  "CapacityOptimized",
+  "Prioritized",
+]);
+const HighSpeedInterconnectPlacementSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Literals(["None", "Trunk"]);
+const VirtualMachineScaleSetIdentitySchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    principalId: Schema.optional(Schema.String),
+    tenantId: Schema.optional(Schema.String),
+    type: Schema.optional(
+      Schema.suspend(() => Common_ResourceIdentityTypeSchema),
+    ),
+    userAssignedIdentities: Schema.optional(
+      Schema.Record(
+        Schema.String,
+        Schema.suspend(() => Common_UserAssignedIdentitiesValueSchema),
+      ),
+    ),
+  });
+const Common_ResourceIdentityTypeSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+    "SystemAssigned",
+    "UserAssigned",
+    "SystemAssigned, UserAssigned",
+    "None",
+  ]);
+const Common_UserAssignedIdentitiesValueSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    principalId: Schema.optional(Schema.String),
+    clientId: Schema.optional(Schema.String),
+  });
+const PlacementSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  zonePlacementPolicy: Schema.optional(
+    Schema.suspend(() => ZonePlacementPolicyTypeSchema),
+  ),
+  includeZones: Schema.optional(Schema.Array(Schema.String)),
+  excludeZones: Schema.optional(Schema.Array(Schema.String)),
+});
+const ZonePlacementPolicyTypeSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Literals(["Any", "Auto"]);
+const VirtualMachineScaleSetUpdatePropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    upgradePolicy: Schema.optional(Schema.suspend(() => UpgradePolicySchema)),
+    automaticRepairsPolicy: Schema.optional(
+      Schema.suspend(() => AutomaticRepairsPolicySchema),
+    ),
+    virtualMachineProfile: Schema.optional(
+      Schema.suspend(() => VirtualMachineScaleSetUpdateVMProfileSchema),
+    ),
+    overprovision: Schema.optional(Schema.Boolean),
+    doNotRunExtensionsOnOverprovisionedVMs: Schema.optional(Schema.Boolean),
+    singlePlacementGroup: Schema.optional(Schema.Boolean),
+    additionalCapabilities: Schema.optional(
+      Schema.suspend(() => AdditionalCapabilitiesSchema),
+    ),
+    scaleInPolicy: Schema.optional(Schema.suspend(() => ScaleInPolicySchema)),
+    proximityPlacementGroup: Schema.optional(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+      }),
+    ),
+    priorityMixPolicy: Schema.optional(
+      Schema.suspend(() => PriorityMixPolicySchema),
+    ),
+    spotRestorePolicy: Schema.optional(
+      Schema.suspend(() => SpotRestorePolicySchema),
+    ),
+    resiliencyPolicy: Schema.optional(
+      Schema.suspend(() => ResiliencyPolicySchema),
+    ),
+    zonalPlatformFaultDomainAlignMode: Schema.optional(
+      Schema.suspend(() => ZonalPlatformFaultDomainAlignModeSchema),
+    ),
+    skuProfile: Schema.optional(Schema.suspend(() => SkuProfileSchema)),
+  });
+const VirtualMachineScaleSetUpdateVMProfileSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    osProfile: Schema.optional(
+      Schema.suspend(() => VirtualMachineScaleSetUpdateOSProfileSchema),
+    ),
+    storageProfile: Schema.optional(
+      Schema.suspend(() => VirtualMachineScaleSetUpdateStorageProfileSchema),
+    ),
+    networkProfile: Schema.optional(
+      Schema.suspend(() => VirtualMachineScaleSetUpdateNetworkProfileSchema),
+    ),
+    securityPostureReference: Schema.optional(
+      Schema.suspend(() => SecurityPostureReferenceUpdateSchema),
+    ),
+    securityProfile: Schema.optional(
+      Schema.suspend(() => SecurityProfileSchema),
+    ),
+    diagnosticsProfile: Schema.optional(
+      Schema.suspend(() => DiagnosticsProfileSchema),
+    ),
+    extensionProfile: Schema.optional(
+      Schema.suspend(() => VirtualMachineScaleSetExtensionProfileSchema),
+    ),
+    licenseType: Schema.optional(Schema.String),
+    billingProfile: Schema.optional(Schema.suspend(() => BillingProfileSchema)),
+    scheduledEventsProfile: Schema.optional(
+      Schema.suspend(() => ScheduledEventsProfileSchema),
+    ),
+    userData: Schema.optional(Schema.String),
+    hardwareProfile: Schema.optional(
+      Schema.suspend(() => VirtualMachineScaleSetHardwareProfileSchema),
+    ),
+  });
+const VirtualMachineScaleSetUpdateOSProfileSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    customData: Schema.optional(Schema.String),
+    windowsConfiguration: Schema.optional(
+      Schema.suspend(() => WindowsConfigurationSchema),
+    ),
+    linuxConfiguration: Schema.optional(
+      Schema.suspend(() => LinuxConfigurationSchema),
+    ),
+    secrets: Schema.optional(
+      Schema.Array(Schema.suspend(() => VaultSecretGroupSchema)),
+    ),
+  });
+const VirtualMachineScaleSetUpdateStorageProfileSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    imageReference: Schema.optional(Schema.suspend(() => ImageReferenceSchema)),
+    osDisk: Schema.optional(
+      Schema.suspend(() => VirtualMachineScaleSetUpdateOSDiskSchema),
+    ),
+    dataDisks: Schema.optional(
+      Schema.Array(Schema.suspend(() => VirtualMachineScaleSetDataDiskSchema)),
+    ),
+    diskControllerType: Schema.optional(
+      Schema.suspend(() => DiskControllerTypesSchema),
+    ),
+  });
+const VirtualMachineScaleSetUpdateOSDiskSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    caching: Schema.optional(Schema.suspend(() => CachingTypesSchema)),
+    writeAcceleratorEnabled: Schema.optional(Schema.Boolean),
+    diffDiskSettings: Schema.optional(
+      Schema.suspend(() => DiffDiskSettingsSchema),
+    ),
+    diskSizeGB: Schema.optional(Schema.Number),
+    image: Schema.optional(Schema.suspend(() => VirtualHardDiskSchema)),
+    vhdContainers: Schema.optional(Schema.Array(Schema.String)),
+    managedDisk: Schema.optional(
+      Schema.suspend(() => VirtualMachineScaleSetManagedDiskParametersSchema),
+    ),
+    deleteOption: Schema.optional(
+      Schema.suspend(() => DiskDeleteOptionTypesSchema),
+    ),
+  });
+const VirtualMachineScaleSetUpdateNetworkProfileSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    healthProbe: Schema.optional(
+      Schema.suspend(() => ApiEntityReferenceSchema),
+    ),
+    networkInterfaceConfigurations: Schema.optional(
+      Schema.Array(
+        Schema.suspend(
+          () => VirtualMachineScaleSetUpdateNetworkConfigurationSchema,
+        ),
+      ),
+    ),
+    networkApiVersion: Schema.optional(
+      Schema.suspend(() => NetworkApiVersionSchema),
+    ),
+  });
+const VirtualMachineScaleSetUpdateNetworkConfigurationSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    properties: Schema.optional(
+      Schema.suspend(
+        () => VirtualMachineScaleSetUpdateNetworkConfigurationPropertiesSchema,
+      ),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  });
+const VirtualMachineScaleSetUpdateNetworkConfigurationPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    primary: Schema.optional(Schema.Boolean),
+    enableAcceleratedNetworking: Schema.optional(Schema.Boolean),
+    disableTcpStateTracking: Schema.optional(Schema.Boolean),
+    enableFpga: Schema.optional(Schema.Boolean),
+    networkSecurityGroup: Schema.optional(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+      }),
+    ),
+    dnsSettings: Schema.optional(
+      Schema.suspend(
+        () => VirtualMachineScaleSetNetworkConfigurationDnsSettingsSchema,
+      ),
+    ),
+    ipConfigurations: Schema.optional(
+      Schema.Array(
+        Schema.suspend(() => VirtualMachineScaleSetUpdateIPConfigurationSchema),
+      ),
+    ),
+    enableIPForwarding: Schema.optional(Schema.Boolean),
+    deleteOption: Schema.optional(Schema.suspend(() => DeleteOptionsSchema)),
+    auxiliaryMode: Schema.optional(
+      Schema.suspend(() => NetworkInterfaceAuxiliaryModeSchema),
+    ),
+    auxiliarySku: Schema.optional(
+      Schema.suspend(() => NetworkInterfaceAuxiliarySkuSchema),
+    ),
+  });
+const VirtualMachineScaleSetUpdateIPConfigurationSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    properties: Schema.optional(
+      Schema.suspend(
+        () => VirtualMachineScaleSetUpdateIPConfigurationPropertiesSchema,
+      ),
+    ),
+  });
+const VirtualMachineScaleSetUpdateIPConfigurationPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subnet: Schema.optional(Schema.suspend(() => ApiEntityReferenceSchema)),
+    primary: Schema.optional(Schema.Boolean),
+    publicIPAddressConfiguration: Schema.optional(
+      Schema.suspend(
+        () => VirtualMachineScaleSetUpdatePublicIPAddressConfigurationSchema,
+      ),
+    ),
+    privateIPAddressVersion: Schema.optional(
+      Schema.suspend(() => IPVersionSchema),
+    ),
+    applicationGatewayBackendAddressPools: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+        }),
+      ),
+    ),
+    applicationSecurityGroups: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+        }),
+      ),
+    ),
+    loadBalancerBackendAddressPools: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+        }),
+      ),
+    ),
+    loadBalancerInboundNatPools: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+        }),
+      ),
+    ),
+  });
+const VirtualMachineScaleSetUpdatePublicIPAddressConfigurationSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    properties: Schema.optional(
+      Schema.suspend(
+        () =>
+          VirtualMachineScaleSetUpdatePublicIPAddressConfigurationPropertiesSchema,
+      ),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  });
+const VirtualMachineScaleSetUpdatePublicIPAddressConfigurationPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    idleTimeoutInMinutes: Schema.optional(Schema.Number),
+    dnsSettings: Schema.optional(
+      Schema.suspend(
+        () =>
+          VirtualMachineScaleSetPublicIPAddressConfigurationDnsSettingsSchema,
+      ),
+    ),
+    publicIPPrefix: Schema.optional(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+      }),
+    ),
+    deleteOption: Schema.optional(Schema.suspend(() => DeleteOptionsSchema)),
+  });
+const SecurityPostureReferenceUpdateSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    excludeExtensions: Schema.optional(Schema.Array(Schema.String)),
+    isOverridable: Schema.optional(Schema.Boolean),
+  });
+const VirtualMachineScaleSetExtensionPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    forceUpdateTag: Schema.optional(Schema.String),
+    publisher: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    typeHandlerVersion: Schema.optional(Schema.String),
+    autoUpgradeMinorVersion: Schema.optional(Schema.Boolean),
+    enableAutomaticUpgrade: Schema.optional(Schema.Boolean),
+    settings: Schema.optional(Schema.Unknown),
+    protectedSettings: Schema.optional(Schema.Unknown),
+    provisioningState: Schema.optional(Schema.String),
+    provisionAfterExtensions: Schema.optional(Schema.Array(Schema.String)),
+    suppressFailures: Schema.optional(Schema.Boolean),
+    protectedSettingsFromKeyVault: Schema.optional(
+      Schema.suspend(() => KeyVaultSecretReferenceSchema),
+    ),
+  });
+const VirtualMachineScaleSetInstanceViewStatusesSummarySchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    statusesSummary: Schema.optional(
+      Schema.Array(Schema.suspend(() => VirtualMachineStatusCodeCountSchema)),
+    ),
+  });
+const VirtualMachineStatusCodeCountSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    code: Schema.optional(Schema.String),
+    count: Schema.optional(Schema.Number),
+  });
+const VirtualMachineScaleSetVMExtensionsSummarySchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    statusesSummary: Schema.optional(
+      Schema.Array(Schema.suspend(() => VirtualMachineStatusCodeCountSchema)),
+    ),
+  });
+const OrchestrationServiceSummarySchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    serviceName: Schema.optional(
+      Schema.suspend(() => OrchestrationServiceNamesSchema),
+    ),
+    serviceState: Schema.optional(
+      Schema.suspend(() => OrchestrationServiceStateSchema),
+    ),
+    latestOperationStatus: Schema.optional(
+      Schema.suspend(() => OrchestrationServiceOperationStatusSchema),
+    ),
+    lastStatusChangeTime: Schema.optional(Schema.String),
+  });
+const OrchestrationServiceNamesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+    "AutomaticRepairs",
+    "AutomaticZoneRebalancing",
+  ]);
+const OrchestrationServiceStateSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+    "NotRunning",
+    "Running",
+    "Suspended",
+  ]);
+const OrchestrationServiceOperationStatusSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Literals(["InProgress", "Completed"]);
+const UpgradeOperationHistoricalStatusInfoSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(
+        () => UpgradeOperationHistoricalStatusInfoPropertiesSchema,
+      ),
+    ),
+    type: Schema.optional(Schema.String),
+    location: Schema.optional(Schema.String),
+  });
+const UpgradeOperationHistoricalStatusInfoPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    runningStatus: Schema.optional(
+      Schema.suspend(() => UpgradeOperationHistoryStatusSchema),
+    ),
+    progress: Schema.optional(
+      Schema.suspend(() => RollingUpgradeProgressInfoSchema),
+    ),
+    error: Schema.optional(
+      Schema.Struct({
+        details: Schema.optional(
+          Schema.Array(Schema.suspend(() => ApiErrorBaseSchema)),
+        ),
+        innererror: Schema.optional(Schema.suspend(() => InnerErrorSchema)),
+        code: Schema.optional(Schema.String),
+        target: Schema.optional(Schema.String),
+        message: Schema.optional(Schema.String),
+      }),
+    ),
+    startedBy: Schema.optional(
+      Schema.suspend(() => UpgradeOperationInvokerSchema),
+    ),
+    targetImageReference: Schema.optional(
+      Schema.suspend(() => ImageReferenceSchema),
+    ),
+    rollbackInfo: Schema.optional(
+      Schema.suspend(() => RollbackStatusInfoSchema),
+    ),
+  });
+const UpgradeOperationHistoryStatusSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    code: Schema.optional(Schema.suspend(() => UpgradeStateSchema)),
+    startTime: Schema.optional(Schema.String),
+    endTime: Schema.optional(Schema.String),
+  });
+const UpgradeStateSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "RollingForward",
+  "Cancelled",
+  "Completed",
+  "Faulted",
+]);
+const RollingUpgradeProgressInfoSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    successfulInstanceCount: Schema.optional(Schema.Number),
+    failedInstanceCount: Schema.optional(Schema.Number),
+    inProgressInstanceCount: Schema.optional(Schema.Number),
+    pendingInstanceCount: Schema.optional(Schema.Number),
+  });
+const ApiErrorBaseSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  code: Schema.optional(Schema.String),
+  target: Schema.optional(Schema.String),
+  message: Schema.optional(Schema.String),
+});
+const InnerErrorSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  exceptiontype: Schema.optional(Schema.String),
+  errordetail: Schema.optional(Schema.String),
+});
+const UpgradeOperationInvokerSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Literals(["Unknown", "User", "Platform"]);
+const RollbackStatusInfoSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  successfullyRolledbackInstanceCount: Schema.optional(Schema.Number),
+  failedRolledbackInstanceCount: Schema.optional(Schema.Number),
+  rollbackError: Schema.optional(
+    Schema.Struct({
+      details: Schema.optional(
+        Schema.Array(Schema.suspend(() => ApiErrorBaseSchema)),
+      ),
+      innererror: Schema.optional(Schema.suspend(() => InnerErrorSchema)),
+      code: Schema.optional(Schema.String),
+      target: Schema.optional(Schema.String),
+      message: Schema.optional(Schema.String),
+    }),
+  ),
+});
+const RollingUpgradeStatusInfoPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    policy: Schema.optional(Schema.suspend(() => RollingUpgradePolicySchema)),
+    runningStatus: Schema.optional(
+      Schema.suspend(() => RollingUpgradeRunningStatusSchema),
+    ),
+    progress: Schema.optional(
+      Schema.suspend(() => RollingUpgradeProgressInfoSchema),
+    ),
+    error: Schema.optional(
+      Schema.Struct({
+        details: Schema.optional(
+          Schema.Array(Schema.suspend(() => ApiErrorBaseSchema)),
+        ),
+        innererror: Schema.optional(Schema.suspend(() => InnerErrorSchema)),
+        code: Schema.optional(Schema.String),
+        target: Schema.optional(Schema.String),
+        message: Schema.optional(Schema.String),
+      }),
+    ),
+  });
+const RollingUpgradeRunningStatusSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    code: Schema.optional(Schema.suspend(() => RollingUpgradeStatusCodeSchema)),
+    startTime: Schema.optional(Schema.String),
+    lastAction: Schema.optional(
+      Schema.suspend(() => RollingUpgradeActionTypeSchema),
+    ),
+    lastActionTime: Schema.optional(Schema.String),
+  });
+const RollingUpgradeStatusCodeSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+    "RollingForward",
+    "Cancelled",
+    "Completed",
+    "Faulted",
+  ]);
+const RollingUpgradeActionTypeSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Literals(["Start", "Cancel"]);
+const VMScaleSetScaleOutInputPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    zone: Schema.optional(Schema.String),
+  });
+const OrchestrationServiceStateActionSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Literals(["Resume", "Suspend"]);
+const VirtualMachineScaleSetSkuSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resourceType: Schema.optional(Schema.String),
+    sku: Schema.optional(Schema.suspend(() => SkuSchema)),
+    capacity: Schema.optional(
+      Schema.suspend(() => VirtualMachineScaleSetSkuCapacitySchema),
+    ),
+  });
+const VirtualMachineScaleSetSkuCapacitySchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    minimum: Schema.optional(Schema.Number),
+    maximum: Schema.optional(Schema.Number),
+    defaultCapacity: Schema.optional(Schema.Number),
+    scaleType: Schema.optional(
+      Schema.suspend(() => VirtualMachineScaleSetSkuScaleTypeSchema),
+    ),
+  });
+const VirtualMachineScaleSetSkuScaleTypeSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Literals(["Automatic", "None"]);
+const VirtualMachineScaleSetVMSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+  });
+const VirtualMachineScaleSetVMPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    latestModelApplied: Schema.optional(Schema.Boolean),
+    vmId: Schema.optional(Schema.String),
+    instanceView: Schema.optional(
+      Schema.suspend(() => VirtualMachineScaleSetVMInstanceViewSchema),
+    ),
+    hardwareProfile: Schema.optional(
+      Schema.suspend(() => HardwareProfileSchema),
+    ),
+    resilientVMDeletionStatus: Schema.optional(
+      Schema.suspend(() => ResilientVMDeletionStatusSchema),
+    ),
+    storageProfile: Schema.optional(Schema.suspend(() => StorageProfileSchema)),
+    additionalCapabilities: Schema.optional(
+      Schema.suspend(() => AdditionalCapabilitiesSchema),
+    ),
+    osProfile: Schema.optional(Schema.suspend(() => OSProfileSchema)),
+    securityProfile: Schema.optional(
+      Schema.suspend(() => SecurityProfileSchema),
+    ),
+    networkProfile: Schema.optional(Schema.suspend(() => NetworkProfileSchema)),
+    networkProfileConfiguration: Schema.optional(
+      Schema.suspend(
+        () => VirtualMachineScaleSetVMNetworkProfileConfigurationSchema,
+      ),
+    ),
+    diagnosticsProfile: Schema.optional(
+      Schema.suspend(() => DiagnosticsProfileSchema),
+    ),
+    availabilitySet: Schema.optional(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+      }),
+    ),
+    provisioningState: Schema.optional(Schema.String),
+    licenseType: Schema.optional(Schema.String),
+    modelDefinitionApplied: Schema.optional(Schema.String),
+    protectionPolicy: Schema.optional(
+      Schema.suspend(() => VirtualMachineScaleSetVMProtectionPolicySchema),
+    ),
+    userData: Schema.optional(Schema.String),
+    timeCreated: Schema.optional(Schema.String),
+  });
+const VirtualMachineScaleSetVMInstanceViewSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    platformUpdateDomain: Schema.optional(Schema.Number),
+    platformFaultDomain: Schema.optional(Schema.Number),
+    rdpThumbPrint: Schema.optional(Schema.String),
+    vmAgent: Schema.optional(
+      Schema.suspend(() => VirtualMachineAgentInstanceViewSchema),
+    ),
+    maintenanceRedeployStatus: Schema.optional(
+      Schema.suspend(() => MaintenanceRedeployStatusSchema),
+    ),
+    disks: Schema.optional(
+      Schema.Array(Schema.suspend(() => DiskInstanceViewSchema)),
+    ),
+    extensions: Schema.optional(
+      Schema.Array(
+        Schema.suspend(() => VirtualMachineExtensionInstanceViewSchema),
+      ),
+    ),
+    vmHealth: Schema.optional(
+      Schema.suspend(() => VirtualMachineHealthStatusSchema),
+    ),
+    bootDiagnostics: Schema.optional(
+      Schema.suspend(() => BootDiagnosticsInstanceViewSchema),
+    ),
+    statuses: Schema.optional(
+      Schema.Array(Schema.suspend(() => InstanceViewStatusSchema)),
+    ),
+    assignedHost: Schema.optional(Schema.String),
+    placementGroupId: Schema.optional(Schema.String),
+    computerName: Schema.optional(Schema.String),
+    osName: Schema.optional(Schema.String),
+    osVersion: Schema.optional(Schema.String),
+    hyperVGeneration: Schema.optional(
+      Schema.suspend(() => Common_HyperVGenerationSchema),
+    ),
+  });
+const VirtualMachineAgentInstanceViewSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    vmAgentVersion: Schema.optional(Schema.String),
+    extensionHandlers: Schema.optional(
+      Schema.Array(
+        Schema.suspend(() => VirtualMachineExtensionHandlerInstanceViewSchema),
+      ),
+    ),
+    statuses: Schema.optional(
+      Schema.Array(Schema.suspend(() => InstanceViewStatusSchema)),
+    ),
+  });
+const VirtualMachineExtensionHandlerInstanceViewSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    type: Schema.optional(Schema.String),
+    typeHandlerVersion: Schema.optional(Schema.String),
+    status: Schema.optional(Schema.suspend(() => InstanceViewStatusSchema)),
+  });
+const MaintenanceRedeployStatusSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    isCustomerInitiatedMaintenanceAllowed: Schema.optional(Schema.Boolean),
+    preMaintenanceWindowStartTime: Schema.optional(Schema.String),
+    preMaintenanceWindowEndTime: Schema.optional(Schema.String),
+    maintenanceWindowStartTime: Schema.optional(Schema.String),
+    maintenanceWindowEndTime: Schema.optional(Schema.String),
+    lastOperationResultCode: Schema.optional(
+      Schema.suspend(() => MaintenanceOperationResultCodeTypesSchema),
+    ),
+    lastOperationMessage: Schema.optional(Schema.String),
+  });
+const MaintenanceOperationResultCodeTypesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+    "None",
+    "RetryLater",
+    "MaintenanceAborted",
+    "MaintenanceCompleted",
+  ]);
+const DiskInstanceViewSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  encryptionSettings: Schema.optional(
+    Schema.Array(Schema.suspend(() => DiskEncryptionSettingsSchema)),
+  ),
+  statuses: Schema.optional(
+    Schema.Array(Schema.suspend(() => InstanceViewStatusSchema)),
+  ),
+});
+const VirtualMachineExtensionInstanceViewSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    typeHandlerVersion: Schema.optional(Schema.String),
+    substatuses: Schema.optional(
+      Schema.Array(Schema.suspend(() => InstanceViewStatusSchema)),
+    ),
+    statuses: Schema.optional(
+      Schema.Array(Schema.suspend(() => InstanceViewStatusSchema)),
+    ),
+  });
+const VirtualMachineHealthStatusSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    status: Schema.optional(Schema.suspend(() => InstanceViewStatusSchema)),
+  });
+const BootDiagnosticsInstanceViewSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    consoleScreenshotBlobUri: Schema.optional(Schema.String),
+    serialConsoleLogBlobUri: Schema.optional(Schema.String),
+    status: Schema.optional(Schema.suspend(() => InstanceViewStatusSchema)),
+  });
+const Common_HyperVGenerationSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Literals(["V1", "V2"]);
+const ResilientVMDeletionStatusSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+    "Enabled",
+    "Disabled",
+    "InProgress",
+    "Failed",
+  ]);
+const StorageProfileSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  imageReference: Schema.optional(Schema.suspend(() => ImageReferenceSchema)),
+  osDisk: Schema.optional(Schema.suspend(() => OSDiskSchema)),
+  dataDisks: Schema.optional(
+    Schema.Array(Schema.suspend(() => DataDiskSchema)),
+  ),
+  diskControllerType: Schema.optional(
+    Schema.suspend(() => DiskControllerTypesSchema),
+  ),
+  alignRegionalDisksToVMZone: Schema.optional(Schema.Boolean),
+});
+const OSDiskSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  osType: Schema.optional(
+    Schema.suspend(() => Common_OperatingSystemTypesSchema),
+  ),
+  encryptionSettings: Schema.optional(
+    Schema.suspend(() => DiskEncryptionSettingsSchema),
+  ),
+  name: Schema.optional(Schema.String),
+  vhd: Schema.optional(Schema.suspend(() => VirtualHardDiskSchema)),
+  image: Schema.optional(Schema.suspend(() => VirtualHardDiskSchema)),
+  caching: Schema.optional(Schema.suspend(() => CachingTypesSchema)),
+  writeAcceleratorEnabled: Schema.optional(Schema.Boolean),
+  diffDiskSettings: Schema.optional(
+    Schema.suspend(() => DiffDiskSettingsSchema),
+  ),
+  createOption: Schema.suspend(() => DiskCreateOptionTypesSchema),
+  diskSizeGB: Schema.optional(Schema.Number),
+  managedDisk: Schema.optional(
+    Schema.suspend(() => ManagedDiskParametersSchema),
+  ),
+  deleteOption: Schema.optional(
+    Schema.suspend(() => DiskDeleteOptionTypesSchema),
+  ),
+});
+const DataDiskSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  lun: Schema.Number,
+  name: Schema.optional(Schema.String),
+  vhd: Schema.optional(Schema.suspend(() => VirtualHardDiskSchema)),
+  image: Schema.optional(Schema.suspend(() => VirtualHardDiskSchema)),
+  caching: Schema.optional(Schema.suspend(() => CachingTypesSchema)),
+  writeAcceleratorEnabled: Schema.optional(Schema.Boolean),
+  createOption: Schema.suspend(() => DiskCreateOptionTypesSchema),
+  diskSizeGB: Schema.optional(Schema.Number),
+  managedDisk: Schema.optional(
+    Schema.suspend(() => ManagedDiskParametersSchema),
+  ),
+  sourceResource: Schema.optional(
+    Schema.suspend(() => ApiEntityReferenceSchema),
+  ),
+  toBeDetached: Schema.optional(Schema.Boolean),
+  diskIOPSReadWrite: Schema.optional(Schema.Number),
+  diskMBpsReadWrite: Schema.optional(Schema.Number),
+  detachOption: Schema.optional(
+    Schema.suspend(() => DiskDetachOptionTypesSchema),
+  ),
+  deleteOption: Schema.optional(
+    Schema.suspend(() => DiskDeleteOptionTypesSchema),
+  ),
+});
+const DiskDetachOptionTypesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals(
+  ["ForceDetach"],
+);
+const NetworkProfileSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  networkInterfaces: Schema.optional(
+    Schema.Array(Schema.suspend(() => NetworkInterfaceReferenceSchema)),
+  ),
+  networkApiVersion: Schema.optional(
+    Schema.suspend(() => NetworkApiVersionSchema),
+  ),
+  networkInterfaceConfigurations: Schema.optional(
+    Schema.Array(
+      Schema.suspend(() => VirtualMachineNetworkInterfaceConfigurationSchema),
+    ),
+  ),
+});
+const NetworkInterfaceReferenceSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+  });
+const VirtualMachineNetworkInterfaceConfigurationSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String,
+    properties: Schema.optional(
+      Schema.suspend(
+        () => VirtualMachineNetworkInterfaceConfigurationPropertiesSchema,
+      ),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  });
+const VirtualMachineNetworkInterfaceConfigurationPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    primary: Schema.optional(Schema.Boolean),
+    deleteOption: Schema.optional(Schema.suspend(() => DeleteOptionsSchema)),
+    enableAcceleratedNetworking: Schema.optional(Schema.Boolean),
+    disableTcpStateTracking: Schema.optional(Schema.Boolean),
+    enableFpga: Schema.optional(Schema.Boolean),
+    enableIPForwarding: Schema.optional(Schema.Boolean),
+    networkSecurityGroup: Schema.optional(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+      }),
+    ),
+    dnsSettings: Schema.optional(
+      Schema.suspend(
+        () => VirtualMachineNetworkInterfaceDnsSettingsConfigurationSchema,
+      ),
+    ),
+    ipConfigurations: Schema.Array(
+      Schema.suspend(() => VirtualMachineNetworkInterfaceIPConfigurationSchema),
+    ),
+    dscpConfiguration: Schema.optional(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+      }),
+    ),
+    auxiliaryMode: Schema.optional(
+      Schema.suspend(() => NetworkInterfaceAuxiliaryModeSchema),
+    ),
+    auxiliarySku: Schema.optional(
+      Schema.suspend(() => NetworkInterfaceAuxiliarySkuSchema),
+    ),
+  });
+const VirtualMachineNetworkInterfaceDnsSettingsConfigurationSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    dnsServers: Schema.optional(Schema.Array(Schema.String)),
+  });
+const VirtualMachineNetworkInterfaceIPConfigurationSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String,
+    properties: Schema.optional(
+      Schema.suspend(
+        () => VirtualMachineNetworkInterfaceIPConfigurationPropertiesSchema,
+      ),
+    ),
+  });
+const VirtualMachineNetworkInterfaceIPConfigurationPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subnet: Schema.optional(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+      }),
+    ),
+    primary: Schema.optional(Schema.Boolean),
+    publicIPAddressConfiguration: Schema.optional(
+      Schema.suspend(() => VirtualMachinePublicIPAddressConfigurationSchema),
+    ),
+    privateIPAddressVersion: Schema.optional(
+      Schema.suspend(() => IPVersionsSchema),
+    ),
+    applicationSecurityGroups: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+        }),
+      ),
+    ),
+    applicationGatewayBackendAddressPools: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+        }),
+      ),
+    ),
+    loadBalancerBackendAddressPools: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+        }),
+      ),
+    ),
+  });
+const VirtualMachinePublicIPAddressConfigurationSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String,
+    properties: Schema.optional(
+      Schema.suspend(
+        () => VirtualMachinePublicIPAddressConfigurationPropertiesSchema,
+      ),
+    ),
+    sku: Schema.optional(Schema.suspend(() => PublicIPAddressSkuSchema)),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  });
+const VirtualMachinePublicIPAddressConfigurationPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    idleTimeoutInMinutes: Schema.optional(Schema.Number),
+    deleteOption: Schema.optional(Schema.suspend(() => DeleteOptionsSchema)),
+    dnsSettings: Schema.optional(
+      Schema.suspend(
+        () => VirtualMachinePublicIPAddressDnsSettingsConfigurationSchema,
+      ),
+    ),
+    ipTags: Schema.optional(
+      Schema.Array(Schema.suspend(() => VirtualMachineIpTagSchema)),
+    ),
+    publicIPPrefix: Schema.optional(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+      }),
+    ),
+    publicIPAddressVersion: Schema.optional(
+      Schema.suspend(() => IPVersionsSchema),
+    ),
+    publicIPAllocationMethod: Schema.optional(
+      Schema.suspend(() => PublicIPAllocationMethodSchema),
+    ),
+  });
+const VirtualMachinePublicIPAddressDnsSettingsConfigurationSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    domainNameLabel: Schema.String,
+    domainNameLabelScope: Schema.optional(
+      Schema.suspend(() => DomainNameLabelScopeTypesSchema),
+    ),
+  });
+const VirtualMachineIpTagSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  ipTagType: Schema.optional(Schema.String),
+  tag: Schema.optional(Schema.String),
+});
+const IPVersionsSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "IPv4",
+  "IPv6",
+]);
+const PublicIPAllocationMethodSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Literals(["Dynamic", "Static"]);
+const VirtualMachineScaleSetVMNetworkProfileConfigurationSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    networkInterfaceConfigurations: Schema.optional(
+      Schema.Array(
+        Schema.suspend(() => VirtualMachineScaleSetNetworkConfigurationSchema),
+      ),
+    ),
+  });
+const VirtualMachineScaleSetVMProtectionPolicySchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    protectFromScaleIn: Schema.optional(Schema.Boolean),
+    protectFromScaleSetActions: Schema.optional(Schema.Boolean),
+  });
+const VirtualMachineExtensionSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+  },
+);
+const VirtualMachineIdentitySchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  principalId: Schema.optional(Schema.String),
+  tenantId: Schema.optional(Schema.String),
+  type: Schema.optional(
+    Schema.suspend(() => Common_ResourceIdentityTypeSchema),
+  ),
+  userAssignedIdentities: Schema.optional(
+    Schema.Record(
+      Schema.String,
+      Schema.suspend(() => Common_UserAssignedIdentitiesValueSchema),
+    ),
+  ),
+});
+const DataDisksToAttachSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  diskId: Schema.String,
+  lun: Schema.optional(Schema.Number),
+  caching: Schema.optional(Schema.suspend(() => CachingTypesSchema)),
+  deleteOption: Schema.optional(
+    Schema.suspend(() => DiskDeleteOptionTypesSchema),
+  ),
+  diskEncryptionSet: Schema.optional(
+    Schema.suspend(() => DiskEncryptionSetParametersSchema),
+  ),
+  writeAcceleratorEnabled: Schema.optional(Schema.Boolean),
+});
+const DataDisksToDetachSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  diskId: Schema.String,
+  detachOption: Schema.optional(
+    Schema.suspend(() => DiskDetachOptionTypesSchema),
+  ),
+});
+const VirtualMachineScaleSetVMExtensionSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+  });
+const VirtualMachineExtensionPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    forceUpdateTag: Schema.optional(Schema.String),
+    publisher: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    typeHandlerVersion: Schema.optional(Schema.String),
+    autoUpgradeMinorVersion: Schema.optional(Schema.Boolean),
+    enableAutomaticUpgrade: Schema.optional(Schema.Boolean),
+    settings: Schema.optional(Schema.Unknown),
+    protectedSettings: Schema.optional(Schema.Unknown),
+    provisioningState: Schema.optional(Schema.String),
+    instanceView: Schema.optional(
+      Schema.suspend(() => VirtualMachineExtensionInstanceViewSchema),
+    ),
+    suppressFailures: Schema.optional(Schema.Boolean),
+    protectedSettingsFromKeyVault: Schema.optional(
+      Schema.suspend(() => KeyVaultSecretReferenceSchema),
+    ),
+    provisionAfterExtensions: Schema.optional(Schema.Array(Schema.String)),
+  });
+const VirtualMachineExtensionUpdatePropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    forceUpdateTag: Schema.optional(Schema.String),
+    publisher: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    typeHandlerVersion: Schema.optional(Schema.String),
+    autoUpgradeMinorVersion: Schema.optional(Schema.Boolean),
+    enableAutomaticUpgrade: Schema.optional(Schema.Boolean),
+    settings: Schema.optional(Schema.Unknown),
+    protectedSettings: Schema.optional(Schema.Unknown),
+    suppressFailures: Schema.optional(Schema.Boolean),
+    protectedSettingsFromKeyVault: Schema.optional(
+      Schema.suspend(() => KeyVaultSecretReferenceSchema),
+    ),
+  });
+const OSProfileProvisioningDataSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    adminPassword: Schema.optional(SensitiveOutputString),
+    customData: Schema.optional(Schema.String),
+  });
+const RunCommandInputParameterSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String,
+    value: Schema.String,
+  });
+const VirtualMachineRunCommandSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+  });
+const VirtualMachineRunCommandPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    source: Schema.optional(
+      Schema.suspend(() => VirtualMachineRunCommandScriptSourceSchema),
+    ),
+    parameters: Schema.optional(
+      Schema.Array(Schema.suspend(() => RunCommandInputParameterSchema)),
+    ),
+    protectedParameters: Schema.optional(
+      Schema.Array(Schema.suspend(() => RunCommandInputParameterSchema)),
+    ),
+    asyncExecution: Schema.optional(Schema.Boolean),
+    runAsUser: Schema.optional(Schema.String),
+    runAsPassword: Schema.optional(SensitiveOutputString),
+    timeoutInSeconds: Schema.optional(Schema.Number),
+    outputBlobUri: Schema.optional(Schema.String),
+    errorBlobUri: Schema.optional(Schema.String),
+    outputBlobManagedIdentity: Schema.optional(
+      Schema.suspend(() => RunCommandManagedIdentitySchema),
+    ),
+    errorBlobManagedIdentity: Schema.optional(
+      Schema.suspend(() => RunCommandManagedIdentitySchema),
+    ),
+    provisioningState: Schema.optional(Schema.String),
+    instanceView: Schema.optional(
+      Schema.suspend(() => VirtualMachineRunCommandInstanceViewSchema),
+    ),
+    treatFailureAsDeploymentFailure: Schema.optional(Schema.Boolean),
+  });
+const VirtualMachineRunCommandScriptSourceSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    script: Schema.optional(Schema.String),
+    scriptUri: Schema.optional(Schema.String),
+    commandId: Schema.optional(Schema.String),
+    scriptUriManagedIdentity: Schema.optional(
+      Schema.suspend(() => RunCommandManagedIdentitySchema),
+    ),
+    scriptShell: Schema.optional(Schema.suspend(() => ScriptShellTypesSchema)),
+    galleryScriptReferenceId: Schema.optional(Schema.String),
+  });
+const RunCommandManagedIdentitySchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    clientId: Schema.optional(Schema.String),
+    objectId: Schema.optional(Schema.String),
+  });
+const ScriptShellTypesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Default",
+  "Powershell7",
+]);
+const VirtualMachineRunCommandInstanceViewSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    executionState: Schema.optional(Schema.suspend(() => ExecutionStateSchema)),
+    executionMessage: Schema.optional(Schema.String),
+    exitCode: Schema.optional(Schema.Number),
+    output: Schema.optional(Schema.String),
+    error: Schema.optional(Schema.String),
+    startTime: Schema.optional(Schema.String),
+    endTime: Schema.optional(Schema.String),
+    statuses: Schema.optional(
+      Schema.Array(Schema.suspend(() => InstanceViewStatusSchema)),
+    ),
+  });
+const ExecutionStateSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Unknown",
+  "Pending",
+  "Running",
+  "Failed",
+  "Succeeded",
+  "TimedOut",
+  "Canceled",
+]);
+const VirtualMachinePropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    hardwareProfile: Schema.optional(
+      Schema.suspend(() => HardwareProfileSchema),
+    ),
+    scheduledEventsPolicy: Schema.optional(
+      Schema.suspend(() => ScheduledEventsPolicySchema),
+    ),
+    storageProfile: Schema.optional(Schema.suspend(() => StorageProfileSchema)),
+    additionalCapabilities: Schema.optional(
+      Schema.suspend(() => AdditionalCapabilitiesSchema),
+    ),
+    osProfile: Schema.optional(Schema.suspend(() => OSProfileSchema)),
+    networkProfile: Schema.optional(Schema.suspend(() => NetworkProfileSchema)),
+    securityProfile: Schema.optional(
+      Schema.suspend(() => SecurityProfileSchema),
+    ),
+    diagnosticsProfile: Schema.optional(
+      Schema.suspend(() => DiagnosticsProfileSchema),
+    ),
+    availabilitySet: Schema.optional(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+      }),
+    ),
+    virtualMachineScaleSet: Schema.optional(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+      }),
+    ),
+    proximityPlacementGroup: Schema.optional(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+      }),
+    ),
+    priority: Schema.optional(
+      Schema.suspend(() => VirtualMachinePriorityTypesSchema),
+    ),
+    evictionPolicy: Schema.optional(
+      Schema.suspend(() => VirtualMachineEvictionPolicyTypesSchema),
+    ),
+    billingProfile: Schema.optional(Schema.suspend(() => BillingProfileSchema)),
+    host: Schema.optional(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+      }),
+    ),
+    hostGroup: Schema.optional(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+      }),
+    ),
+    provisioningState: Schema.optional(Schema.String),
+    instanceView: Schema.optional(
+      Schema.suspend(() => VirtualMachineInstanceViewSchema),
+    ),
+    licenseType: Schema.optional(Schema.String),
+    vmId: Schema.optional(Schema.String),
+    extensionsTimeBudget: Schema.optional(Schema.String),
+    platformFaultDomain: Schema.optional(Schema.Number),
+    scheduledEventsProfile: Schema.optional(
+      Schema.suspend(() => ScheduledEventsProfileSchema),
+    ),
+    userData: Schema.optional(Schema.String),
+    capacityReservation: Schema.optional(
+      Schema.suspend(() => CapacityReservationProfileSchema),
+    ),
+    applicationProfile: Schema.optional(
+      Schema.suspend(() => ApplicationProfileSchema),
+    ),
+    timeCreated: Schema.optional(Schema.String),
+  });
+const VirtualMachineInstanceViewSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    platformUpdateDomain: Schema.optional(Schema.Number),
+    platformFaultDomain: Schema.optional(Schema.Number),
+    computerName: Schema.optional(Schema.String),
+    osName: Schema.optional(Schema.String),
+    osVersion: Schema.optional(Schema.String),
+    hyperVGeneration: Schema.optional(
+      Schema.suspend(() => HyperVGenerationTypeSchema),
+    ),
+    rdpThumbPrint: Schema.optional(Schema.String),
+    vmAgent: Schema.optional(
+      Schema.suspend(() => VirtualMachineAgentInstanceViewSchema),
+    ),
+    maintenanceRedeployStatus: Schema.optional(
+      Schema.suspend(() => MaintenanceRedeployStatusSchema),
+    ),
+    disks: Schema.optional(
+      Schema.Array(Schema.suspend(() => DiskInstanceViewSchema)),
+    ),
+    extensions: Schema.optional(
+      Schema.Array(
+        Schema.suspend(() => VirtualMachineExtensionInstanceViewSchema),
+      ),
+    ),
+    vmHealth: Schema.optional(
+      Schema.suspend(() => VirtualMachineHealthStatusSchema),
+    ),
+    bootDiagnostics: Schema.optional(
+      Schema.suspend(() => BootDiagnosticsInstanceViewSchema),
+    ),
+    assignedHost: Schema.optional(Schema.String),
+    statuses: Schema.optional(
+      Schema.Array(Schema.suspend(() => InstanceViewStatusSchema)),
+    ),
+    patchStatus: Schema.optional(
+      Schema.suspend(() => VirtualMachinePatchStatusSchema),
+    ),
+    isVMInStandbyPool: Schema.optional(Schema.Boolean),
+  });
+const HyperVGenerationTypeSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "V1",
+  "V2",
+]);
+const VirtualMachinePatchStatusSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    availablePatchSummary: Schema.optional(
+      Schema.suspend(() => AvailablePatchSummarySchema),
+    ),
+    lastPatchInstallationSummary: Schema.optional(
+      Schema.suspend(() => LastPatchInstallationSummarySchema),
+    ),
+    configurationStatuses: Schema.optional(
+      Schema.Array(Schema.suspend(() => InstanceViewStatusSchema)),
+    ),
+  });
+const AvailablePatchSummarySchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  status: Schema.optional(Schema.suspend(() => PatchOperationStatusSchema)),
+  assessmentActivityId: Schema.optional(Schema.String),
+  rebootPending: Schema.optional(Schema.Boolean),
+  criticalAndSecurityPatchCount: Schema.optional(Schema.Number),
+  otherPatchCount: Schema.optional(Schema.Number),
+  startTime: Schema.optional(Schema.String),
+  lastModifiedTime: Schema.optional(Schema.String),
+  error: Schema.optional(
+    Schema.Struct({
+      details: Schema.optional(
+        Schema.Array(Schema.suspend(() => ApiErrorBaseSchema)),
+      ),
+      innererror: Schema.optional(Schema.suspend(() => InnerErrorSchema)),
+      code: Schema.optional(Schema.String),
+      target: Schema.optional(Schema.String),
+      message: Schema.optional(Schema.String),
+    }),
+  ),
+});
+const PatchOperationStatusSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Unknown",
+  "InProgress",
+  "Failed",
+  "Succeeded",
+  "CompletedWithWarnings",
+]);
+const LastPatchInstallationSummarySchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    status: Schema.optional(Schema.suspend(() => PatchOperationStatusSchema)),
+    installationActivityId: Schema.optional(Schema.String),
+    maintenanceWindowExceeded: Schema.optional(Schema.Boolean),
+    notSelectedPatchCount: Schema.optional(Schema.Number),
+    excludedPatchCount: Schema.optional(Schema.Number),
+    pendingPatchCount: Schema.optional(Schema.Number),
+    installedPatchCount: Schema.optional(Schema.Number),
+    failedPatchCount: Schema.optional(Schema.Number),
+    startTime: Schema.optional(Schema.String),
+    lastModifiedTime: Schema.optional(Schema.String),
+    error: Schema.optional(
+      Schema.Struct({
+        details: Schema.optional(
+          Schema.Array(Schema.suspend(() => ApiErrorBaseSchema)),
+        ),
+        innererror: Schema.optional(Schema.suspend(() => InnerErrorSchema)),
+        code: Schema.optional(Schema.String),
+        target: Schema.optional(Schema.String),
+        message: Schema.optional(Schema.String),
+      }),
+    ),
+  });
+const VirtualMachineSoftwarePatchPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    patchId: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    version: Schema.optional(Schema.String),
+    kbId: Schema.optional(Schema.String),
+    classifications: Schema.optional(Schema.Array(Schema.String)),
+    rebootBehavior: Schema.optional(
+      Schema.suspend(() => VMGuestPatchRebootBehaviorSchema),
+    ),
+    activityId: Schema.optional(Schema.String),
+    publishedDate: Schema.optional(Schema.String),
+    lastModifiedDateTime: Schema.optional(Schema.String),
+    assessmentState: Schema.optional(
+      Schema.suspend(() => PatchAssessmentStateSchema),
+    ),
+  });
+const VMGuestPatchRebootBehaviorSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+    "Unknown",
+    "NeverReboots",
+    "AlwaysRequiresReboot",
+    "CanRequestReboot",
+  ]);
+const PatchAssessmentStateSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Unknown",
+  "Available",
+]);
+const VMGuestPatchRebootSettingSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+    "IfRequired",
+    "Never",
+    "Always",
+  ]);
+const WindowsParametersSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  classificationsToInclude: Schema.optional(
+    Schema.Array(Schema.suspend(() => VMGuestPatchClassificationWindowsSchema)),
+  ),
+  kbNumbersToInclude: Schema.optional(Schema.Array(Schema.String)),
+  kbNumbersToExclude: Schema.optional(Schema.Array(Schema.String)),
+  excludeKbsRequiringReboot: Schema.optional(Schema.Boolean),
+  maxPatchPublishDate: Schema.optional(Schema.String),
+  patchNameMasksToInclude: Schema.optional(Schema.Array(Schema.String)),
+  patchNameMasksToExclude: Schema.optional(Schema.Array(Schema.String)),
+});
+const VMGuestPatchClassificationWindowsSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+    "Critical",
+    "Security",
+    "UpdateRollUp",
+    "FeaturePack",
+    "ServicePack",
+    "Definition",
+    "Tools",
+    "Updates",
+  ]);
+const LinuxParametersSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  classificationsToInclude: Schema.optional(
+    Schema.Array(Schema.suspend(() => VMGuestPatchClassificationLinuxSchema)),
+  ),
+  packageNameMasksToInclude: Schema.optional(Schema.Array(Schema.String)),
+  packageNameMasksToExclude: Schema.optional(Schema.Array(Schema.String)),
+  maintenanceRunId: Schema.optional(Schema.String),
+});
+const VMGuestPatchClassificationLinuxSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+    "Critical",
+    "Security",
+    "Other",
+  ]);
+const VMGuestPatchRebootStatusSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+    "Unknown",
+    "NotNeeded",
+    "Required",
+    "Started",
+    "Failed",
+    "Completed",
+  ]);
+const PatchInstallationDetailSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    patchId: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    version: Schema.optional(Schema.String),
+    kbId: Schema.optional(Schema.String),
+    classifications: Schema.optional(Schema.Array(Schema.String)),
+    installationState: Schema.optional(
+      Schema.suspend(() => PatchInstallationStateSchema),
+    ),
+  },
+);
+const PatchInstallationStateSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+    "Unknown",
+    "Installed",
+    "Failed",
+    "Excluded",
+    "NotSelected",
+    "Pending",
+  ]);
+const ContainerServiceSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  location: Schema.String,
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+});
+const ContainerServicePropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    provisioningState: Schema.optional(Schema.String),
+    orchestratorProfile: Schema.optional(
+      Schema.suspend(() => ContainerServiceOrchestratorProfileSchema),
+    ),
+    customProfile: Schema.optional(
+      Schema.suspend(() => ContainerServiceCustomProfileSchema),
+    ),
+    servicePrincipalProfile: Schema.optional(
+      Schema.suspend(() => ContainerServiceServicePrincipalProfileSchema),
+    ),
+    masterProfile: Schema.suspend(() => ContainerServiceMasterProfileSchema),
+    agentPoolProfiles: Schema.Array(
+      Schema.suspend(() => ContainerServiceAgentPoolProfileSchema),
+    ),
+    windowsProfile: Schema.optional(
+      Schema.suspend(() => ContainerServiceWindowsProfileSchema),
+    ),
+    linuxProfile: Schema.suspend(() => ContainerServiceLinuxProfileSchema),
+    diagnosticsProfile: Schema.optional(
+      Schema.suspend(() => ContainerServiceDiagnosticsProfileSchema),
+    ),
+  });
+const ContainerServiceOrchestratorProfileSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    orchestratorType: Schema.Literals([
+      "Swarm",
+      "DCOS",
+      "Custom",
+      "Kubernetes",
+    ]),
+  });
+const ContainerServiceCustomProfileSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    orchestrator: Schema.String,
+  });
+const ContainerServiceServicePrincipalProfileSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    clientId: Schema.String,
+    secret: SensitiveOutputString,
+  });
+const ContainerServiceMasterProfileSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    count: Schema.optional(Schema.Literals([1, 3, 5])),
+    dnsPrefix: Schema.String,
+    fqdn: Schema.optional(Schema.String),
+  });
+const ContainerServiceAgentPoolProfileSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String,
+    count: Schema.Number,
+    vmSize: Schema.Literals([
+      "Standard_A0",
+      "Standard_A1",
+      "Standard_A2",
+      "Standard_A3",
+      "Standard_A4",
+      "Standard_A5",
+      "Standard_A6",
+      "Standard_A7",
+      "Standard_A8",
+      "Standard_A9",
+      "Standard_A10",
+      "Standard_A11",
+      "Standard_D1",
+      "Standard_D2",
+      "Standard_D3",
+      "Standard_D4",
+      "Standard_D11",
+      "Standard_D12",
+      "Standard_D13",
+      "Standard_D14",
+      "Standard_D1_v2",
+      "Standard_D2_v2",
+      "Standard_D3_v2",
+      "Standard_D4_v2",
+      "Standard_D5_v2",
+      "Standard_D11_v2",
+      "Standard_D12_v2",
+      "Standard_D13_v2",
+      "Standard_D14_v2",
+      "Standard_G1",
+      "Standard_G2",
+      "Standard_G3",
+      "Standard_G4",
+      "Standard_G5",
+      "Standard_DS1",
+      "Standard_DS2",
+      "Standard_DS3",
+      "Standard_DS4",
+      "Standard_DS11",
+      "Standard_DS12",
+      "Standard_DS13",
+      "Standard_DS14",
+      "Standard_GS1",
+      "Standard_GS2",
+      "Standard_GS3",
+      "Standard_GS4",
+      "Standard_GS5",
+    ]),
+    dnsPrefix: Schema.String,
+    fqdn: Schema.optional(Schema.String),
+  });
+const ContainerServiceWindowsProfileSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    adminUsername: Schema.String,
+    adminPassword: SensitiveOutputString,
+  });
+const ContainerServiceLinuxProfileSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    adminUsername: Schema.String,
+    ssh: Schema.suspend(() => ContainerServiceSshConfigurationSchema),
+  });
+const ContainerServiceSshConfigurationSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    publicKeys: Schema.Array(
+      Schema.suspend(() => ContainerServiceSshPublicKeySchema),
+    ),
+  });
+const ContainerServiceSshPublicKeySchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    keyData: Schema.String,
+  });
+const ContainerServiceDiagnosticsProfileSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    vmDiagnostics: Schema.suspend(() => ContainerServiceVMDiagnosticsSchema),
+  });
+const ContainerServiceVMDiagnosticsSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    enabled: Schema.Boolean,
+    storageUri: Schema.optional(Schema.String),
+  });
 
 // Input Schema
 export const AvailabilitySetsCancelMigrationToVirtualMachineScaleSetInput =
@@ -90,91 +3457,9 @@ export const AvailabilitySetsCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     availabilitySetName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        platformUpdateDomainCount: Schema.optional(Schema.Number),
-        platformFaultDomainCount: Schema.optional(Schema.Number),
-        virtualMachines: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              id: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        proximityPlacementGroup: Schema.optional(
-          Schema.Struct({
-            id: Schema.optional(Schema.String),
-          }),
-        ),
-        statuses: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              code: Schema.optional(Schema.String),
-              level: Schema.optional(
-                Schema.Literals(["Info", "Warning", "Error"]),
-              ),
-              displayStatus: Schema.optional(Schema.String),
-              message: Schema.optional(Schema.String),
-              time: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        scheduledEventsPolicy: Schema.optional(
-          Schema.Struct({
-            userInitiatedRedeploy: Schema.optional(
-              Schema.Struct({
-                automaticallyApprove: Schema.optional(Schema.Boolean),
-              }),
-            ),
-            userInitiatedReboot: Schema.optional(
-              Schema.Struct({
-                automaticallyApprove: Schema.optional(Schema.Boolean),
-              }),
-            ),
-            scheduledEventsAdditionalPublishingTargets: Schema.optional(
-              Schema.Struct({
-                eventGridAndResourceGraph: Schema.optional(
-                  Schema.Struct({
-                    enable: Schema.optional(Schema.Boolean),
-                    scheduledEventsApiVersion: Schema.optional(Schema.String),
-                  }),
-                ),
-              }),
-            ),
-            allInstancesDown: Schema.optional(
-              Schema.Struct({
-                automaticallyApprove: Schema.optional(Schema.Boolean),
-              }),
-            ),
-          }),
-        ),
-        virtualMachineScaleSetMigrationInfo: Schema.optional(
-          Schema.Struct({
-            defaultVirtualMachineScaleSetInfo: Schema.optional(
-              Schema.Struct({
-                constrainedMaximumCapacity: Schema.optional(Schema.Boolean),
-                defaultVirtualMachineScaleSet: Schema.optional(
-                  Schema.Struct({
-                    id: Schema.optional(Schema.String),
-                  }),
-                ),
-              }),
-            ),
-            migrateToVirtualMachineScaleSet: Schema.optional(
-              Schema.Struct({
-                id: Schema.optional(Schema.String),
-              }),
-            ),
-          }),
-        ),
-      }),
+      Schema.suspend(() => AvailabilitySetPropertiesSchema),
     ),
-    sku: Schema.optional(
-      Schema.Struct({
-        name: Schema.optional(Schema.String),
-        tier: Schema.optional(Schema.String),
-        capacity: Schema.optional(Schema.Number),
-      }),
-    ),
+    sku: Schema.optional(Schema.suspend(() => SkuSchema)),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     location: Schema.String,
   }).pipe(
@@ -190,23 +3475,16 @@ export type AvailabilitySetsCreateOrUpdateInput =
 // Output Schema
 export const AvailabilitySetsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => AvailabilitySetPropertiesSchema),
+    ),
+    sku: Schema.optional(Schema.suspend(() => SkuSchema)),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type AvailabilitySetsCreateOrUpdateOutput =
   typeof AvailabilitySetsCreateOrUpdateOutput.Type;
@@ -280,23 +3558,16 @@ export type AvailabilitySetsGetInput = typeof AvailabilitySetsGetInput.Type;
 // Output Schema
 export const AvailabilitySetsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => AvailabilitySetPropertiesSchema),
+    ),
+    sku: Schema.optional(Schema.suspend(() => SkuSchema)),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type AvailabilitySetsGetOutput = typeof AvailabilitySetsGetOutput.Type;
 
@@ -330,37 +3601,7 @@ export type AvailabilitySetsListInput = typeof AvailabilitySetsListInput.Type;
 // Output Schema
 export const AvailabilitySetsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => AvailabilitySetSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type AvailabilitySetsListOutput = typeof AvailabilitySetsListOutput.Type;
@@ -399,16 +3640,7 @@ export type AvailabilitySetsListAvailableSizesInput =
 export const AvailabilitySetsListAvailableSizesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          name: Schema.optional(Schema.String),
-          numberOfCores: Schema.optional(Schema.Number),
-          osDiskSizeInMB: Schema.optional(Schema.Number),
-          resourceDiskSizeInMB: Schema.optional(Schema.Number),
-          memoryInMB: Schema.optional(Schema.Number),
-          maxDataDiskCount: Schema.optional(Schema.Number),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => VirtualMachineSizeSchema)),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -447,37 +3679,7 @@ export type AvailabilitySetsListBySubscriptionInput =
 // Output Schema
 export const AvailabilitySetsListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => AvailabilitySetSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type AvailabilitySetsListBySubscriptionOutput =
@@ -542,91 +3744,9 @@ export const AvailabilitySetsUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     availabilitySetName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        platformUpdateDomainCount: Schema.optional(Schema.Number),
-        platformFaultDomainCount: Schema.optional(Schema.Number),
-        virtualMachines: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              id: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        proximityPlacementGroup: Schema.optional(
-          Schema.Struct({
-            id: Schema.optional(Schema.String),
-          }),
-        ),
-        statuses: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              code: Schema.optional(Schema.String),
-              level: Schema.optional(
-                Schema.Literals(["Info", "Warning", "Error"]),
-              ),
-              displayStatus: Schema.optional(Schema.String),
-              message: Schema.optional(Schema.String),
-              time: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        scheduledEventsPolicy: Schema.optional(
-          Schema.Struct({
-            userInitiatedRedeploy: Schema.optional(
-              Schema.Struct({
-                automaticallyApprove: Schema.optional(Schema.Boolean),
-              }),
-            ),
-            userInitiatedReboot: Schema.optional(
-              Schema.Struct({
-                automaticallyApprove: Schema.optional(Schema.Boolean),
-              }),
-            ),
-            scheduledEventsAdditionalPublishingTargets: Schema.optional(
-              Schema.Struct({
-                eventGridAndResourceGraph: Schema.optional(
-                  Schema.Struct({
-                    enable: Schema.optional(Schema.Boolean),
-                    scheduledEventsApiVersion: Schema.optional(Schema.String),
-                  }),
-                ),
-              }),
-            ),
-            allInstancesDown: Schema.optional(
-              Schema.Struct({
-                automaticallyApprove: Schema.optional(Schema.Boolean),
-              }),
-            ),
-          }),
-        ),
-        virtualMachineScaleSetMigrationInfo: Schema.optional(
-          Schema.Struct({
-            defaultVirtualMachineScaleSetInfo: Schema.optional(
-              Schema.Struct({
-                constrainedMaximumCapacity: Schema.optional(Schema.Boolean),
-                defaultVirtualMachineScaleSet: Schema.optional(
-                  Schema.Struct({
-                    id: Schema.optional(Schema.String),
-                  }),
-                ),
-              }),
-            ),
-            migrateToVirtualMachineScaleSet: Schema.optional(
-              Schema.Struct({
-                id: Schema.optional(Schema.String),
-              }),
-            ),
-          }),
-        ),
-      }),
+      Schema.suspend(() => AvailabilitySetPropertiesSchema),
     ),
-    sku: Schema.optional(
-      Schema.Struct({
-        name: Schema.optional(Schema.String),
-        tier: Schema.optional(Schema.String),
-        capacity: Schema.optional(Schema.Number),
-      }),
-    ),
+    sku: Schema.optional(Schema.suspend(() => SkuSchema)),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
@@ -641,23 +3761,16 @@ export type AvailabilitySetsUpdateInput =
 // Output Schema
 export const AvailabilitySetsUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => AvailabilitySetPropertiesSchema),
+    ),
+    sku: Schema.optional(Schema.suspend(() => SkuSchema)),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type AvailabilitySetsUpdateOutput =
   typeof AvailabilitySetsUpdateOutput.Type;
@@ -724,78 +3837,7 @@ export const CapacityReservationGroupsCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     capacityReservationGroupName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        capacityReservations: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              id: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        virtualMachinesAssociated: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              id: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        instanceView: Schema.optional(
-          Schema.Struct({
-            capacityReservations: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  utilizationInfo: Schema.optional(
-                    Schema.Struct({
-                      currentCapacity: Schema.optional(Schema.Number),
-                      virtualMachinesAllocated: Schema.optional(
-                        Schema.Array(
-                          Schema.Struct({
-                            id: Schema.optional(Schema.String),
-                          }),
-                        ),
-                      ),
-                    }),
-                  ),
-                  statuses: Schema.optional(
-                    Schema.Array(
-                      Schema.Struct({
-                        code: Schema.optional(Schema.String),
-                        level: Schema.optional(
-                          Schema.Literals(["Info", "Warning", "Error"]),
-                        ),
-                        displayStatus: Schema.optional(Schema.String),
-                        message: Schema.optional(Schema.String),
-                        time: Schema.optional(Schema.String),
-                      }),
-                    ),
-                  ),
-                }),
-              ),
-            ),
-            sharedSubscriptionIds: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  id: Schema.optional(Schema.String),
-                }),
-              ),
-            ),
-          }),
-        ),
-        sharingProfile: Schema.optional(
-          Schema.Struct({
-            subscriptionIds: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  id: Schema.optional(Schema.String),
-                }),
-              ),
-            ),
-          }),
-        ),
-        reservationType: Schema.optional(
-          Schema.Literals(["Targeted", "Block"]),
-        ),
-      }),
+      Schema.suspend(() => CapacityReservationGroupPropertiesSchema),
     ),
     zones: Schema.optional(Schema.Array(Schema.String)),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
@@ -813,23 +3855,16 @@ export type CapacityReservationGroupsCreateOrUpdateInput =
 // Output Schema
 export const CapacityReservationGroupsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => CapacityReservationGroupPropertiesSchema),
+    ),
+    zones: Schema.optional(Schema.Array(Schema.String)),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type CapacityReservationGroupsCreateOrUpdateOutput =
   typeof CapacityReservationGroupsCreateOrUpdateOutput.Type;
@@ -904,23 +3939,16 @@ export type CapacityReservationGroupsGetInput =
 // Output Schema
 export const CapacityReservationGroupsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => CapacityReservationGroupPropertiesSchema),
+    ),
+    zones: Schema.optional(Schema.Array(Schema.String)),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type CapacityReservationGroupsGetOutput =
   typeof CapacityReservationGroupsGetOutput.Type;
@@ -964,37 +3992,7 @@ export type CapacityReservationGroupsListByResourceGroupInput =
 // Output Schema
 export const CapacityReservationGroupsListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => CapacityReservationGroupSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type CapacityReservationGroupsListByResourceGroupOutput =
@@ -1044,37 +4042,7 @@ export type CapacityReservationGroupsListBySubscriptionInput =
 // Output Schema
 export const CapacityReservationGroupsListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => CapacityReservationGroupSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type CapacityReservationGroupsListBySubscriptionOutput =
@@ -1101,78 +4069,7 @@ export const CapacityReservationGroupsUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     capacityReservationGroupName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        capacityReservations: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              id: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        virtualMachinesAssociated: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              id: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        instanceView: Schema.optional(
-          Schema.Struct({
-            capacityReservations: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  utilizationInfo: Schema.optional(
-                    Schema.Struct({
-                      currentCapacity: Schema.optional(Schema.Number),
-                      virtualMachinesAllocated: Schema.optional(
-                        Schema.Array(
-                          Schema.Struct({
-                            id: Schema.optional(Schema.String),
-                          }),
-                        ),
-                      ),
-                    }),
-                  ),
-                  statuses: Schema.optional(
-                    Schema.Array(
-                      Schema.Struct({
-                        code: Schema.optional(Schema.String),
-                        level: Schema.optional(
-                          Schema.Literals(["Info", "Warning", "Error"]),
-                        ),
-                        displayStatus: Schema.optional(Schema.String),
-                        message: Schema.optional(Schema.String),
-                        time: Schema.optional(Schema.String),
-                      }),
-                    ),
-                  ),
-                }),
-              ),
-            ),
-            sharedSubscriptionIds: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  id: Schema.optional(Schema.String),
-                }),
-              ),
-            ),
-          }),
-        ),
-        sharingProfile: Schema.optional(
-          Schema.Struct({
-            subscriptionIds: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  id: Schema.optional(Schema.String),
-                }),
-              ),
-            ),
-          }),
-        ),
-        reservationType: Schema.optional(
-          Schema.Literals(["Targeted", "Block"]),
-        ),
-      }),
+      Schema.suspend(() => CapacityReservationGroupPropertiesSchema),
     ),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
@@ -1188,23 +4085,16 @@ export type CapacityReservationGroupsUpdateInput =
 // Output Schema
 export const CapacityReservationGroupsUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => CapacityReservationGroupPropertiesSchema),
+    ),
+    zones: Schema.optional(Schema.Array(Schema.String)),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type CapacityReservationGroupsUpdateOutput =
   typeof CapacityReservationGroupsUpdateOutput.Type;
@@ -1231,61 +4121,9 @@ export const CapacityReservationsCreateOrUpdateInput =
     capacityReservationGroupName: Schema.String.pipe(T.PathParam()),
     capacityReservationName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        reservationId: Schema.optional(Schema.String),
-        platformFaultDomainCount: Schema.optional(Schema.Number),
-        virtualMachinesAssociated: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              id: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        provisioningTime: Schema.optional(Schema.String),
-        provisioningState: Schema.optional(Schema.String),
-        instanceView: Schema.optional(
-          Schema.Struct({
-            utilizationInfo: Schema.optional(
-              Schema.Struct({
-                currentCapacity: Schema.optional(Schema.Number),
-                virtualMachinesAllocated: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      id: Schema.optional(Schema.String),
-                    }),
-                  ),
-                ),
-              }),
-            ),
-            statuses: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  code: Schema.optional(Schema.String),
-                  level: Schema.optional(
-                    Schema.Literals(["Info", "Warning", "Error"]),
-                  ),
-                  displayStatus: Schema.optional(Schema.String),
-                  message: Schema.optional(Schema.String),
-                  time: Schema.optional(Schema.String),
-                }),
-              ),
-            ),
-          }),
-        ),
-        timeCreated: Schema.optional(Schema.String),
-        scheduleProfile: Schema.optional(
-          Schema.Struct({
-            start: Schema.optional(Schema.String),
-            end: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
+      Schema.suspend(() => CapacityReservationPropertiesSchema),
     ),
-    sku: Schema.Struct({
-      name: Schema.optional(Schema.String),
-      tier: Schema.optional(Schema.String),
-      capacity: Schema.optional(Schema.Number),
-    }),
+    sku: Schema.suspend(() => SkuSchema),
     zones: Schema.optional(Schema.Array(Schema.String)),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     location: Schema.String,
@@ -1303,23 +4141,17 @@ export type CapacityReservationsCreateOrUpdateInput =
 // Output Schema
 export const CapacityReservationsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => CapacityReservationPropertiesSchema),
+    ),
+    sku: Schema.suspend(() => SkuSchema),
+    zones: Schema.optional(Schema.Array(Schema.String)),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type CapacityReservationsCreateOrUpdateOutput =
   typeof CapacityReservationsCreateOrUpdateOutput.Type;
@@ -1400,23 +4232,17 @@ export type CapacityReservationsGetInput =
 // Output Schema
 export const CapacityReservationsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => CapacityReservationPropertiesSchema),
+    ),
+    sku: Schema.suspend(() => SkuSchema),
+    zones: Schema.optional(Schema.Array(Schema.String)),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type CapacityReservationsGetOutput =
   typeof CapacityReservationsGetOutput.Type;
@@ -1463,37 +4289,7 @@ export type CapacityReservationsListByCapacityReservationGroupInput =
 // Output Schema
 export const CapacityReservationsListByCapacityReservationGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => CapacityReservationSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type CapacityReservationsListByCapacityReservationGroupOutput =
@@ -1522,63 +4318,9 @@ export const CapacityReservationsUpdateInput =
     capacityReservationGroupName: Schema.String.pipe(T.PathParam()),
     capacityReservationName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        reservationId: Schema.optional(Schema.String),
-        platformFaultDomainCount: Schema.optional(Schema.Number),
-        virtualMachinesAssociated: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              id: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        provisioningTime: Schema.optional(Schema.String),
-        provisioningState: Schema.optional(Schema.String),
-        instanceView: Schema.optional(
-          Schema.Struct({
-            utilizationInfo: Schema.optional(
-              Schema.Struct({
-                currentCapacity: Schema.optional(Schema.Number),
-                virtualMachinesAllocated: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      id: Schema.optional(Schema.String),
-                    }),
-                  ),
-                ),
-              }),
-            ),
-            statuses: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  code: Schema.optional(Schema.String),
-                  level: Schema.optional(
-                    Schema.Literals(["Info", "Warning", "Error"]),
-                  ),
-                  displayStatus: Schema.optional(Schema.String),
-                  message: Schema.optional(Schema.String),
-                  time: Schema.optional(Schema.String),
-                }),
-              ),
-            ),
-          }),
-        ),
-        timeCreated: Schema.optional(Schema.String),
-        scheduleProfile: Schema.optional(
-          Schema.Struct({
-            start: Schema.optional(Schema.String),
-            end: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
+      Schema.suspend(() => CapacityReservationPropertiesSchema),
     ),
-    sku: Schema.optional(
-      Schema.Struct({
-        name: Schema.optional(Schema.String),
-        tier: Schema.optional(Schema.String),
-        capacity: Schema.optional(Schema.Number),
-      }),
-    ),
+    sku: Schema.optional(Schema.suspend(() => SkuSchema)),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
@@ -1594,23 +4336,17 @@ export type CapacityReservationsUpdateInput =
 // Output Schema
 export const CapacityReservationsUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => CapacityReservationPropertiesSchema),
+    ),
+    sku: Schema.suspend(() => SkuSchema),
+    zones: Schema.optional(Schema.Array(Schema.String)),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type CapacityReservationsUpdateOutput =
   typeof CapacityReservationsUpdateOutput.Type;
@@ -1637,116 +4373,7 @@ export const ContainerServicesCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     containerServiceName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        provisioningState: Schema.optional(Schema.String),
-        orchestratorProfile: Schema.optional(
-          Schema.Struct({
-            orchestratorType: Schema.Literals([
-              "Swarm",
-              "DCOS",
-              "Custom",
-              "Kubernetes",
-            ]),
-          }),
-        ),
-        customProfile: Schema.optional(
-          Schema.Struct({
-            orchestrator: Schema.String,
-          }),
-        ),
-        servicePrincipalProfile: Schema.optional(
-          Schema.Struct({
-            clientId: Schema.String,
-            secret: SensitiveString,
-          }),
-        ),
-        masterProfile: Schema.Struct({
-          count: Schema.optional(Schema.Literals([1, 3, 5])),
-          dnsPrefix: Schema.String,
-          fqdn: Schema.optional(Schema.String),
-        }),
-        agentPoolProfiles: Schema.Array(
-          Schema.Struct({
-            name: Schema.String,
-            count: Schema.Number,
-            vmSize: Schema.Literals([
-              "Standard_A0",
-              "Standard_A1",
-              "Standard_A2",
-              "Standard_A3",
-              "Standard_A4",
-              "Standard_A5",
-              "Standard_A6",
-              "Standard_A7",
-              "Standard_A8",
-              "Standard_A9",
-              "Standard_A10",
-              "Standard_A11",
-              "Standard_D1",
-              "Standard_D2",
-              "Standard_D3",
-              "Standard_D4",
-              "Standard_D11",
-              "Standard_D12",
-              "Standard_D13",
-              "Standard_D14",
-              "Standard_D1_v2",
-              "Standard_D2_v2",
-              "Standard_D3_v2",
-              "Standard_D4_v2",
-              "Standard_D5_v2",
-              "Standard_D11_v2",
-              "Standard_D12_v2",
-              "Standard_D13_v2",
-              "Standard_D14_v2",
-              "Standard_G1",
-              "Standard_G2",
-              "Standard_G3",
-              "Standard_G4",
-              "Standard_G5",
-              "Standard_DS1",
-              "Standard_DS2",
-              "Standard_DS3",
-              "Standard_DS4",
-              "Standard_DS11",
-              "Standard_DS12",
-              "Standard_DS13",
-              "Standard_DS14",
-              "Standard_GS1",
-              "Standard_GS2",
-              "Standard_GS3",
-              "Standard_GS4",
-              "Standard_GS5",
-            ]),
-            dnsPrefix: Schema.String,
-            fqdn: Schema.optional(Schema.String),
-          }),
-        ),
-        windowsProfile: Schema.optional(
-          Schema.Struct({
-            adminUsername: Schema.String,
-            adminPassword: SensitiveString,
-          }),
-        ),
-        linuxProfile: Schema.Struct({
-          adminUsername: Schema.String,
-          ssh: Schema.Struct({
-            publicKeys: Schema.Array(
-              Schema.Struct({
-                keyData: Schema.String,
-              }),
-            ),
-          }),
-        }),
-        diagnosticsProfile: Schema.optional(
-          Schema.Struct({
-            vmDiagnostics: Schema.Struct({
-              enabled: Schema.Boolean,
-              storageUri: Schema.optional(Schema.String),
-            }),
-          }),
-        ),
-      }),
+      Schema.suspend(() => ContainerServicePropertiesSchema),
     ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -1767,6 +4394,9 @@ export type ContainerServicesCreateOrUpdateInput =
 // Output Schema
 export const ContainerServicesCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => ContainerServicePropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1844,6 +4474,9 @@ export type ContainerServicesGetInput = typeof ContainerServicesGetInput.Type;
 // Output Schema
 export const ContainerServicesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => ContainerServicePropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1882,15 +4515,7 @@ export type ContainerServicesListInput = typeof ContainerServicesListInput.Type;
 export const ContainerServicesListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          location: Schema.String,
-          tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => ContainerServiceSchema)),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -1927,15 +4552,7 @@ export type ContainerServicesListByResourceGroupInput =
 export const ContainerServicesListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          location: Schema.String,
-          tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => ContainerServiceSchema)),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -1962,58 +4579,7 @@ export const DedicatedHostGroupsCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     hostGroupName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        platformFaultDomainCount: Schema.Number,
-        hosts: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              id: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        instanceView: Schema.optional(
-          Schema.Struct({
-            hosts: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  assetId: Schema.optional(Schema.String),
-                  availableCapacity: Schema.optional(
-                    Schema.Struct({
-                      allocatableVMs: Schema.optional(
-                        Schema.Array(
-                          Schema.Struct({
-                            vmSize: Schema.optional(Schema.String),
-                            count: Schema.optional(Schema.Number),
-                          }),
-                        ),
-                      ),
-                    }),
-                  ),
-                  statuses: Schema.optional(
-                    Schema.Array(
-                      Schema.Struct({
-                        code: Schema.optional(Schema.String),
-                        level: Schema.optional(
-                          Schema.Literals(["Info", "Warning", "Error"]),
-                        ),
-                        displayStatus: Schema.optional(Schema.String),
-                        message: Schema.optional(Schema.String),
-                        time: Schema.optional(Schema.String),
-                      }),
-                    ),
-                  ),
-                }),
-              ),
-            ),
-          }),
-        ),
-        supportAutomaticPlacement: Schema.optional(Schema.Boolean),
-        additionalCapabilities: Schema.optional(
-          Schema.Struct({
-            ultraSSDEnabled: Schema.optional(Schema.Boolean),
-          }),
-        ),
-      }),
+      Schema.suspend(() => DedicatedHostGroupPropertiesSchema),
     ),
     zones: Schema.optional(Schema.Array(Schema.String)),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
@@ -2031,23 +4597,16 @@ export type DedicatedHostGroupsCreateOrUpdateInput =
 // Output Schema
 export const DedicatedHostGroupsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => DedicatedHostGroupPropertiesSchema),
+    ),
+    zones: Schema.optional(Schema.Array(Schema.String)),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type DedicatedHostGroupsCreateOrUpdateOutput =
   typeof DedicatedHostGroupsCreateOrUpdateOutput.Type;
@@ -2125,23 +4684,16 @@ export type DedicatedHostGroupsGetInput =
 // Output Schema
 export const DedicatedHostGroupsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => DedicatedHostGroupPropertiesSchema),
+    ),
+    zones: Schema.optional(Schema.Array(Schema.String)),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type DedicatedHostGroupsGetOutput =
   typeof DedicatedHostGroupsGetOutput.Type;
@@ -2180,37 +4732,7 @@ export type DedicatedHostGroupsListByResourceGroupInput =
 // Output Schema
 export const DedicatedHostGroupsListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => DedicatedHostGroupSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type DedicatedHostGroupsListByResourceGroupOutput =
@@ -2246,37 +4768,7 @@ export type DedicatedHostGroupsListBySubscriptionInput =
 // Output Schema
 export const DedicatedHostGroupsListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => DedicatedHostGroupSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type DedicatedHostGroupsListBySubscriptionOutput =
@@ -2301,58 +4793,7 @@ export const DedicatedHostGroupsUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     hostGroupName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        platformFaultDomainCount: Schema.Number,
-        hosts: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              id: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        instanceView: Schema.optional(
-          Schema.Struct({
-            hosts: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  assetId: Schema.optional(Schema.String),
-                  availableCapacity: Schema.optional(
-                    Schema.Struct({
-                      allocatableVMs: Schema.optional(
-                        Schema.Array(
-                          Schema.Struct({
-                            vmSize: Schema.optional(Schema.String),
-                            count: Schema.optional(Schema.Number),
-                          }),
-                        ),
-                      ),
-                    }),
-                  ),
-                  statuses: Schema.optional(
-                    Schema.Array(
-                      Schema.Struct({
-                        code: Schema.optional(Schema.String),
-                        level: Schema.optional(
-                          Schema.Literals(["Info", "Warning", "Error"]),
-                        ),
-                        displayStatus: Schema.optional(Schema.String),
-                        message: Schema.optional(Schema.String),
-                        time: Schema.optional(Schema.String),
-                      }),
-                    ),
-                  ),
-                }),
-              ),
-            ),
-          }),
-        ),
-        supportAutomaticPlacement: Schema.optional(Schema.Boolean),
-        additionalCapabilities: Schema.optional(
-          Schema.Struct({
-            ultraSSDEnabled: Schema.optional(Schema.Boolean),
-          }),
-        ),
-      }),
+      Schema.suspend(() => DedicatedHostGroupPropertiesSchema),
     ),
     zones: Schema.optional(Schema.Array(Schema.String)),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
@@ -2369,23 +4810,16 @@ export type DedicatedHostGroupsUpdateInput =
 // Output Schema
 export const DedicatedHostGroupsUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => DedicatedHostGroupPropertiesSchema),
+    ),
+    zones: Schema.optional(Schema.Array(Schema.String)),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type DedicatedHostGroupsUpdateOutput =
   typeof DedicatedHostGroupsUpdateOutput.Type;
@@ -2413,64 +4847,9 @@ export const DedicatedHostsCreateOrUpdateInput =
     hostGroupName: Schema.String.pipe(T.PathParam()),
     hostName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        platformFaultDomain: Schema.optional(Schema.Number),
-        autoReplaceOnFailure: Schema.optional(Schema.Boolean),
-        hostId: Schema.optional(Schema.String),
-        virtualMachines: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              id: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        licenseType: Schema.optional(
-          Schema.Literals([
-            "None",
-            "Windows_Server_Hybrid",
-            "Windows_Server_Perpetual",
-          ]),
-        ),
-        provisioningTime: Schema.optional(Schema.String),
-        provisioningState: Schema.optional(Schema.String),
-        instanceView: Schema.optional(
-          Schema.Struct({
-            assetId: Schema.optional(Schema.String),
-            availableCapacity: Schema.optional(
-              Schema.Struct({
-                allocatableVMs: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      vmSize: Schema.optional(Schema.String),
-                      count: Schema.optional(Schema.Number),
-                    }),
-                  ),
-                ),
-              }),
-            ),
-            statuses: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  code: Schema.optional(Schema.String),
-                  level: Schema.optional(
-                    Schema.Literals(["Info", "Warning", "Error"]),
-                  ),
-                  displayStatus: Schema.optional(Schema.String),
-                  message: Schema.optional(Schema.String),
-                  time: Schema.optional(Schema.String),
-                }),
-              ),
-            ),
-          }),
-        ),
-        timeCreated: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(() => DedicatedHostPropertiesSchema),
     ),
-    sku: Schema.Struct({
-      name: Schema.optional(Schema.String),
-      tier: Schema.optional(Schema.String),
-      capacity: Schema.optional(Schema.Number),
-    }),
+    sku: Schema.suspend(() => SkuSchema),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     location: Schema.String,
   }).pipe(
@@ -2487,23 +4866,16 @@ export type DedicatedHostsCreateOrUpdateInput =
 // Output Schema
 export const DedicatedHostsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => DedicatedHostPropertiesSchema),
+    ),
+    sku: Schema.suspend(() => SkuSchema),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type DedicatedHostsCreateOrUpdateOutput =
   typeof DedicatedHostsCreateOrUpdateOutput.Type;
@@ -2584,23 +4956,16 @@ export type DedicatedHostsGetInput = typeof DedicatedHostsGetInput.Type;
 // Output Schema
 export const DedicatedHostsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => DedicatedHostPropertiesSchema),
+    ),
+    sku: Schema.suspend(() => SkuSchema),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type DedicatedHostsGetOutput = typeof DedicatedHostsGetOutput.Type;
 
@@ -2679,37 +5044,7 @@ export type DedicatedHostsListByHostGroupInput =
 // Output Schema
 export const DedicatedHostsListByHostGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => DedicatedHostSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type DedicatedHostsListByHostGroupOutput =
@@ -2816,66 +5151,9 @@ export const DedicatedHostsUpdateInput =
     hostGroupName: Schema.String.pipe(T.PathParam()),
     hostName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        platformFaultDomain: Schema.optional(Schema.Number),
-        autoReplaceOnFailure: Schema.optional(Schema.Boolean),
-        hostId: Schema.optional(Schema.String),
-        virtualMachines: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              id: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        licenseType: Schema.optional(
-          Schema.Literals([
-            "None",
-            "Windows_Server_Hybrid",
-            "Windows_Server_Perpetual",
-          ]),
-        ),
-        provisioningTime: Schema.optional(Schema.String),
-        provisioningState: Schema.optional(Schema.String),
-        instanceView: Schema.optional(
-          Schema.Struct({
-            assetId: Schema.optional(Schema.String),
-            availableCapacity: Schema.optional(
-              Schema.Struct({
-                allocatableVMs: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      vmSize: Schema.optional(Schema.String),
-                      count: Schema.optional(Schema.Number),
-                    }),
-                  ),
-                ),
-              }),
-            ),
-            statuses: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  code: Schema.optional(Schema.String),
-                  level: Schema.optional(
-                    Schema.Literals(["Info", "Warning", "Error"]),
-                  ),
-                  displayStatus: Schema.optional(Schema.String),
-                  message: Schema.optional(Schema.String),
-                  time: Schema.optional(Schema.String),
-                }),
-              ),
-            ),
-          }),
-        ),
-        timeCreated: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(() => DedicatedHostPropertiesSchema),
     ),
-    sku: Schema.optional(
-      Schema.Struct({
-        name: Schema.optional(Schema.String),
-        tier: Schema.optional(Schema.String),
-        capacity: Schema.optional(Schema.Number),
-      }),
-    ),
+    sku: Schema.optional(Schema.suspend(() => SkuSchema)),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
@@ -2890,23 +5168,16 @@ export type DedicatedHostsUpdateInput = typeof DedicatedHostsUpdateInput.Type;
 // Output Schema
 export const DedicatedHostsUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => DedicatedHostPropertiesSchema),
+    ),
+    sku: Schema.suspend(() => SkuSchema),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type DedicatedHostsUpdateOutput = typeof DedicatedHostsUpdateOutput.Type;
 
@@ -2932,98 +5203,11 @@ export const ImagesCreateOrUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     imageName: Schema.String.pipe(T.PathParam()),
-    properties: Schema.optional(
-      Schema.Struct({
-        sourceVirtualMachine: Schema.optional(
-          Schema.Struct({
-            id: Schema.optional(Schema.String),
-          }),
-        ),
-        storageProfile: Schema.optional(
-          Schema.Struct({
-            osDisk: Schema.optional(
-              Schema.Struct({
-                snapshot: Schema.optional(
-                  Schema.Struct({
-                    id: Schema.optional(Schema.String),
-                  }),
-                ),
-                managedDisk: Schema.optional(
-                  Schema.Struct({
-                    id: Schema.optional(Schema.String),
-                  }),
-                ),
-                blobUri: Schema.optional(Schema.String),
-                caching: Schema.optional(
-                  Schema.Literals(["None", "ReadOnly", "ReadWrite"]),
-                ),
-                diskSizeGB: Schema.optional(Schema.Number),
-                storageAccountType: Schema.optional(
-                  Schema.Literals([
-                    "Standard_LRS",
-                    "Premium_LRS",
-                    "StandardSSD_LRS",
-                    "UltraSSD_LRS",
-                    "Premium_ZRS",
-                    "StandardSSD_ZRS",
-                    "PremiumV2_LRS",
-                  ]),
-                ),
-                diskEncryptionSet: Schema.optional(
-                  Schema.Struct({
-                    id: Schema.optional(Schema.String),
-                  }),
-                ),
-              }),
-            ),
-            dataDisks: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  snapshot: Schema.optional(
-                    Schema.Struct({
-                      id: Schema.optional(Schema.String),
-                    }),
-                  ),
-                  managedDisk: Schema.optional(
-                    Schema.Struct({
-                      id: Schema.optional(Schema.String),
-                    }),
-                  ),
-                  blobUri: Schema.optional(Schema.String),
-                  caching: Schema.optional(
-                    Schema.Literals(["None", "ReadOnly", "ReadWrite"]),
-                  ),
-                  diskSizeGB: Schema.optional(Schema.Number),
-                  storageAccountType: Schema.optional(
-                    Schema.Literals([
-                      "Standard_LRS",
-                      "Premium_LRS",
-                      "StandardSSD_LRS",
-                      "UltraSSD_LRS",
-                      "Premium_ZRS",
-                      "StandardSSD_ZRS",
-                      "PremiumV2_LRS",
-                    ]),
-                  ),
-                  diskEncryptionSet: Schema.optional(
-                    Schema.Struct({
-                      id: Schema.optional(Schema.String),
-                    }),
-                  ),
-                }),
-              ),
-            ),
-            zoneResilient: Schema.optional(Schema.Boolean),
-          }),
-        ),
-        provisioningState: Schema.optional(Schema.String),
-        hyperVGeneration: Schema.optional(Schema.Literals(["V1", "V2"])),
-      }),
-    ),
+    properties: Schema.optional(Schema.suspend(() => ImagePropertiesSchema)),
     extendedLocation: Schema.optional(
       Schema.Struct({
         name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.Literals(["EdgeZone"])),
+        type: Schema.optional(Schema.suspend(() => ExtendedLocationTypeSchema)),
       }),
     ),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
@@ -3041,23 +5225,19 @@ export type ImagesCreateOrUpdateInput = typeof ImagesCreateOrUpdateInput.Type;
 // Output Schema
 export const ImagesCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(Schema.suspend(() => ImagePropertiesSchema)),
+    extendedLocation: Schema.optional(
+      Schema.Struct({
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.suspend(() => ExtendedLocationTypeSchema)),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type ImagesCreateOrUpdateOutput = typeof ImagesCreateOrUpdateOutput.Type;
 
@@ -3125,23 +5305,19 @@ export type ImagesGetInput = typeof ImagesGetInput.Type;
 
 // Output Schema
 export const ImagesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.optional(Schema.suspend(() => ImagePropertiesSchema)),
+  extendedLocation: Schema.optional(
+    Schema.Struct({
+      name: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.suspend(() => ExtendedLocationTypeSchema)),
+    }),
+  ),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  location: Schema.String,
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
-  systemData: Schema.optional(
-    Schema.Struct({
-      createdBy: Schema.optional(Schema.String),
-      createdByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      createdAt: Schema.optional(Schema.String),
-      lastModifiedBy: Schema.optional(Schema.String),
-      lastModifiedByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      lastModifiedAt: Schema.optional(Schema.String),
-    }),
-  ),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
 });
 export type ImagesGetOutput = typeof ImagesGetOutput.Type;
 
@@ -3173,27 +5349,7 @@ export type ImagesListInput = typeof ImagesListInput.Type;
 
 // Output Schema
 export const ImagesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  value: Schema.Array(
-    Schema.Struct({
-      id: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      type: Schema.optional(Schema.String),
-      systemData: Schema.optional(
-        Schema.Struct({
-          createdBy: Schema.optional(Schema.String),
-          createdByType: Schema.optional(
-            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-          ),
-          createdAt: Schema.optional(Schema.String),
-          lastModifiedBy: Schema.optional(Schema.String),
-          lastModifiedByType: Schema.optional(
-            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-          ),
-          lastModifiedAt: Schema.optional(Schema.String),
-        }),
-      ),
-    }),
-  ),
+  value: Schema.Array(Schema.suspend(() => ImageSchema)),
   nextLink: Schema.optional(Schema.String),
 });
 export type ImagesListOutput = typeof ImagesListOutput.Type;
@@ -3227,37 +5383,7 @@ export type ImagesListByResourceGroupInput =
 // Output Schema
 export const ImagesListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => ImageSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type ImagesListByResourceGroupOutput =
@@ -3282,94 +5408,7 @@ export const ImagesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   imageName: Schema.String.pipe(T.PathParam()),
-  properties: Schema.optional(
-    Schema.Struct({
-      sourceVirtualMachine: Schema.optional(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-        }),
-      ),
-      storageProfile: Schema.optional(
-        Schema.Struct({
-          osDisk: Schema.optional(
-            Schema.Struct({
-              snapshot: Schema.optional(
-                Schema.Struct({
-                  id: Schema.optional(Schema.String),
-                }),
-              ),
-              managedDisk: Schema.optional(
-                Schema.Struct({
-                  id: Schema.optional(Schema.String),
-                }),
-              ),
-              blobUri: Schema.optional(Schema.String),
-              caching: Schema.optional(
-                Schema.Literals(["None", "ReadOnly", "ReadWrite"]),
-              ),
-              diskSizeGB: Schema.optional(Schema.Number),
-              storageAccountType: Schema.optional(
-                Schema.Literals([
-                  "Standard_LRS",
-                  "Premium_LRS",
-                  "StandardSSD_LRS",
-                  "UltraSSD_LRS",
-                  "Premium_ZRS",
-                  "StandardSSD_ZRS",
-                  "PremiumV2_LRS",
-                ]),
-              ),
-              diskEncryptionSet: Schema.optional(
-                Schema.Struct({
-                  id: Schema.optional(Schema.String),
-                }),
-              ),
-            }),
-          ),
-          dataDisks: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                snapshot: Schema.optional(
-                  Schema.Struct({
-                    id: Schema.optional(Schema.String),
-                  }),
-                ),
-                managedDisk: Schema.optional(
-                  Schema.Struct({
-                    id: Schema.optional(Schema.String),
-                  }),
-                ),
-                blobUri: Schema.optional(Schema.String),
-                caching: Schema.optional(
-                  Schema.Literals(["None", "ReadOnly", "ReadWrite"]),
-                ),
-                diskSizeGB: Schema.optional(Schema.Number),
-                storageAccountType: Schema.optional(
-                  Schema.Literals([
-                    "Standard_LRS",
-                    "Premium_LRS",
-                    "StandardSSD_LRS",
-                    "UltraSSD_LRS",
-                    "Premium_ZRS",
-                    "StandardSSD_ZRS",
-                    "PremiumV2_LRS",
-                  ]),
-                ),
-                diskEncryptionSet: Schema.optional(
-                  Schema.Struct({
-                    id: Schema.optional(Schema.String),
-                  }),
-                ),
-              }),
-            ),
-          ),
-          zoneResilient: Schema.optional(Schema.Boolean),
-        }),
-      ),
-      provisioningState: Schema.optional(Schema.String),
-      hyperVGeneration: Schema.optional(Schema.Literals(["V1", "V2"])),
-    }),
-  ),
+  properties: Schema.optional(Schema.suspend(() => ImagePropertiesSchema)),
   tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
 }).pipe(
   T.Http({
@@ -3383,23 +5422,19 @@ export type ImagesUpdateInput = typeof ImagesUpdateInput.Type;
 
 // Output Schema
 export const ImagesUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.optional(Schema.suspend(() => ImagePropertiesSchema)),
+  extendedLocation: Schema.optional(
+    Schema.Struct({
+      name: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.suspend(() => ExtendedLocationTypeSchema)),
+    }),
+  ),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  location: Schema.String,
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
-  systemData: Schema.optional(
-    Schema.Struct({
-      createdBy: Schema.optional(Schema.String),
-      createdByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      createdAt: Schema.optional(Schema.String),
-      lastModifiedBy: Schema.optional(Schema.String),
-      lastModifiedByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      lastModifiedAt: Schema.optional(Schema.String),
-    }),
-  ),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
 });
 export type ImagesUpdateOutput = typeof ImagesUpdateOutput.Type;
 
@@ -3421,12 +5456,7 @@ export const LogAnalyticsExportRequestRateByIntervalInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
-    intervalLength: Schema.Literals([
-      "ThreeMins",
-      "FiveMins",
-      "ThirtyMins",
-      "SixtyMins",
-    ]),
+    intervalLength: Schema.suspend(() => IntervalInMinsSchema),
     blobContainerSasUri: Schema.String,
     fromTime: Schema.String,
     toTime: Schema.String,
@@ -3449,11 +5479,7 @@ export type LogAnalyticsExportRequestRateByIntervalInput =
 // Output Schema
 export const LogAnalyticsExportRequestRateByIntervalOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    properties: Schema.optional(
-      Schema.Struct({
-        output: Schema.optional(Schema.String),
-      }),
-    ),
+    properties: Schema.optional(Schema.suspend(() => LogAnalyticsOutputSchema)),
   });
 export type LogAnalyticsExportRequestRateByIntervalOutput =
   typeof LogAnalyticsExportRequestRateByIntervalOutput.Type;
@@ -3498,11 +5524,7 @@ export type LogAnalyticsExportThrottledRequestsInput =
 // Output Schema
 export const LogAnalyticsExportThrottledRequestsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    properties: Schema.optional(
-      Schema.Struct({
-        output: Schema.optional(Schema.String),
-      }),
-    ),
+    properties: Schema.optional(Schema.suspend(() => LogAnalyticsOutputSchema)),
   });
 export type LogAnalyticsExportThrottledRequestsOutput =
   typeof LogAnalyticsExportThrottledRequestsOutput.Type;
@@ -3534,26 +5556,7 @@ export type OperationsListInput = typeof OperationsListInput.Type;
 
 // Output Schema
 export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  value: Schema.optional(
-    Schema.Array(
-      Schema.Struct({
-        name: Schema.optional(Schema.String),
-        isDataAction: Schema.optional(Schema.Boolean),
-        display: Schema.optional(
-          Schema.Struct({
-            provider: Schema.optional(Schema.String),
-            resource: Schema.optional(Schema.String),
-            operation: Schema.optional(Schema.String),
-            description: Schema.optional(Schema.String),
-          }),
-        ),
-        origin: Schema.optional(
-          Schema.Literals(["user", "system", "user,system"]),
-        ),
-        actionType: Schema.optional(Schema.Literals(["Internal"])),
-      }),
-    ),
-  ),
+  value: Schema.optional(Schema.Array(Schema.suspend(() => OperationSchema))),
   nextLink: Schema.optional(Schema.String),
 });
 export type OperationsListOutput = typeof OperationsListOutput.Type;
@@ -3575,48 +5578,7 @@ export const ProximityPlacementGroupsCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     proximityPlacementGroupName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        proximityPlacementGroupType: Schema.optional(
-          Schema.Literals(["Standard", "Ultra"]),
-        ),
-        virtualMachines: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              id: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        virtualMachineScaleSets: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              id: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        availabilitySets: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              id: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        colocationStatus: Schema.optional(
-          Schema.Struct({
-            code: Schema.optional(Schema.String),
-            level: Schema.optional(
-              Schema.Literals(["Info", "Warning", "Error"]),
-            ),
-            displayStatus: Schema.optional(Schema.String),
-            message: Schema.optional(Schema.String),
-            time: Schema.optional(Schema.String),
-          }),
-        ),
-        intent: Schema.optional(
-          Schema.Struct({
-            vmSizes: Schema.optional(Schema.Array(Schema.String)),
-          }),
-        ),
-      }),
+      Schema.suspend(() => ProximityPlacementGroupPropertiesSchema),
     ),
     zones: Schema.optional(Schema.Array(Schema.String)),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
@@ -3634,23 +5596,16 @@ export type ProximityPlacementGroupsCreateOrUpdateInput =
 // Output Schema
 export const ProximityPlacementGroupsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => ProximityPlacementGroupPropertiesSchema),
+    ),
+    zones: Schema.optional(Schema.Array(Schema.String)),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type ProximityPlacementGroupsCreateOrUpdateOutput =
   typeof ProximityPlacementGroupsCreateOrUpdateOutput.Type;
@@ -3725,23 +5680,16 @@ export type ProximityPlacementGroupsGetInput =
 // Output Schema
 export const ProximityPlacementGroupsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => ProximityPlacementGroupPropertiesSchema),
+    ),
+    zones: Schema.optional(Schema.Array(Schema.String)),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type ProximityPlacementGroupsGetOutput =
   typeof ProximityPlacementGroupsGetOutput.Type;
@@ -3780,37 +5728,7 @@ export type ProximityPlacementGroupsListByResourceGroupInput =
 // Output Schema
 export const ProximityPlacementGroupsListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => ProximityPlacementGroupSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type ProximityPlacementGroupsListByResourceGroupOutput =
@@ -3846,37 +5764,7 @@ export type ProximityPlacementGroupsListBySubscriptionInput =
 // Output Schema
 export const ProximityPlacementGroupsListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => ProximityPlacementGroupSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type ProximityPlacementGroupsListBySubscriptionOutput =
@@ -3914,23 +5802,16 @@ export type ProximityPlacementGroupsUpdateInput =
 // Output Schema
 export const ProximityPlacementGroupsUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => ProximityPlacementGroupPropertiesSchema),
+    ),
+    zones: Schema.optional(Schema.Array(Schema.String)),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type ProximityPlacementGroupsUpdateOutput =
   typeof ProximityPlacementGroupsUpdateOutput.Type;
@@ -3956,50 +5837,7 @@ export const RestorePointCollectionsCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     restorePointCollectionName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        source: Schema.optional(
-          Schema.Struct({
-            location: Schema.optional(Schema.String),
-            id: Schema.optional(Schema.String),
-          }),
-        ),
-        provisioningState: Schema.optional(Schema.String),
-        restorePointCollectionId: Schema.optional(Schema.String),
-        restorePoints: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              id: Schema.optional(Schema.String),
-              name: Schema.optional(Schema.String),
-              type: Schema.optional(Schema.String),
-              systemData: Schema.optional(
-                Schema.Struct({
-                  createdBy: Schema.optional(Schema.String),
-                  createdByType: Schema.optional(
-                    Schema.Literals([
-                      "User",
-                      "Application",
-                      "ManagedIdentity",
-                      "Key",
-                    ]),
-                  ),
-                  createdAt: Schema.optional(Schema.String),
-                  lastModifiedBy: Schema.optional(Schema.String),
-                  lastModifiedByType: Schema.optional(
-                    Schema.Literals([
-                      "User",
-                      "Application",
-                      "ManagedIdentity",
-                      "Key",
-                    ]),
-                  ),
-                  lastModifiedAt: Schema.optional(Schema.String),
-                }),
-              ),
-            }),
-          ),
-        ),
-        instantAccess: Schema.optional(Schema.Boolean),
-      }),
+      Schema.suspend(() => RestorePointCollectionPropertiesSchema),
     ),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     location: Schema.String,
@@ -4016,23 +5854,15 @@ export type RestorePointCollectionsCreateOrUpdateInput =
 // Output Schema
 export const RestorePointCollectionsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => RestorePointCollectionPropertiesSchema),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type RestorePointCollectionsCreateOrUpdateOutput =
   typeof RestorePointCollectionsCreateOrUpdateOutput.Type;
@@ -4108,23 +5938,15 @@ export type RestorePointCollectionsGetInput =
 // Output Schema
 export const RestorePointCollectionsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => RestorePointCollectionPropertiesSchema),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type RestorePointCollectionsGetOutput =
   typeof RestorePointCollectionsGetOutput.Type;
@@ -4163,37 +5985,7 @@ export type RestorePointCollectionsListInput =
 // Output Schema
 export const RestorePointCollectionsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => RestorePointCollectionSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type RestorePointCollectionsListOutput =
@@ -4230,37 +6022,7 @@ export type RestorePointCollectionsListAllInput =
 // Output Schema
 export const RestorePointCollectionsListAllOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => RestorePointCollectionSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type RestorePointCollectionsListAllOutput =
@@ -4285,50 +6047,7 @@ export const RestorePointCollectionsUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     restorePointCollectionName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        source: Schema.optional(
-          Schema.Struct({
-            location: Schema.optional(Schema.String),
-            id: Schema.optional(Schema.String),
-          }),
-        ),
-        provisioningState: Schema.optional(Schema.String),
-        restorePointCollectionId: Schema.optional(Schema.String),
-        restorePoints: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              id: Schema.optional(Schema.String),
-              name: Schema.optional(Schema.String),
-              type: Schema.optional(Schema.String),
-              systemData: Schema.optional(
-                Schema.Struct({
-                  createdBy: Schema.optional(Schema.String),
-                  createdByType: Schema.optional(
-                    Schema.Literals([
-                      "User",
-                      "Application",
-                      "ManagedIdentity",
-                      "Key",
-                    ]),
-                  ),
-                  createdAt: Schema.optional(Schema.String),
-                  lastModifiedBy: Schema.optional(Schema.String),
-                  lastModifiedByType: Schema.optional(
-                    Schema.Literals([
-                      "User",
-                      "Application",
-                      "ManagedIdentity",
-                      "Key",
-                    ]),
-                  ),
-                  lastModifiedAt: Schema.optional(Schema.String),
-                }),
-              ),
-            }),
-          ),
-        ),
-        instantAccess: Schema.optional(Schema.Boolean),
-      }),
+      Schema.suspend(() => RestorePointCollectionPropertiesSchema),
     ),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
@@ -4344,23 +6063,15 @@ export type RestorePointCollectionsUpdateInput =
 // Output Schema
 export const RestorePointCollectionsUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => RestorePointCollectionPropertiesSchema),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type RestorePointCollectionsUpdateOutput =
   typeof RestorePointCollectionsUpdateOutput.Type;
@@ -4387,560 +6098,7 @@ export const RestorePointsCreateInput =
     restorePointCollectionName: Schema.String.pipe(T.PathParam()),
     restorePointName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        excludeDisks: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              id: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        sourceMetadata: Schema.optional(
-          Schema.Struct({
-            hardwareProfile: Schema.optional(
-              Schema.Struct({
-                vmSize: Schema.optional(
-                  Schema.Literals([
-                    "Basic_A0",
-                    "Basic_A1",
-                    "Basic_A2",
-                    "Basic_A3",
-                    "Basic_A4",
-                    "Standard_A0",
-                    "Standard_A1",
-                    "Standard_A2",
-                    "Standard_A3",
-                    "Standard_A4",
-                    "Standard_A5",
-                    "Standard_A6",
-                    "Standard_A7",
-                    "Standard_A8",
-                    "Standard_A9",
-                    "Standard_A10",
-                    "Standard_A11",
-                    "Standard_A1_v2",
-                    "Standard_A2_v2",
-                    "Standard_A4_v2",
-                    "Standard_A8_v2",
-                    "Standard_A2m_v2",
-                    "Standard_A4m_v2",
-                    "Standard_A8m_v2",
-                    "Standard_B1s",
-                    "Standard_B1ms",
-                    "Standard_B2s",
-                    "Standard_B2ms",
-                    "Standard_B4ms",
-                    "Standard_B8ms",
-                    "Standard_D1",
-                    "Standard_D2",
-                    "Standard_D3",
-                    "Standard_D4",
-                    "Standard_D11",
-                    "Standard_D12",
-                    "Standard_D13",
-                    "Standard_D14",
-                    "Standard_D1_v2",
-                    "Standard_D2_v2",
-                    "Standard_D3_v2",
-                    "Standard_D4_v2",
-                    "Standard_D5_v2",
-                    "Standard_D2_v3",
-                    "Standard_D4_v3",
-                    "Standard_D8_v3",
-                    "Standard_D16_v3",
-                    "Standard_D32_v3",
-                    "Standard_D64_v3",
-                    "Standard_D2s_v3",
-                    "Standard_D4s_v3",
-                    "Standard_D8s_v3",
-                    "Standard_D16s_v3",
-                    "Standard_D32s_v3",
-                    "Standard_D64s_v3",
-                    "Standard_D11_v2",
-                    "Standard_D12_v2",
-                    "Standard_D13_v2",
-                    "Standard_D14_v2",
-                    "Standard_D15_v2",
-                    "Standard_DS1",
-                    "Standard_DS2",
-                    "Standard_DS3",
-                    "Standard_DS4",
-                    "Standard_DS11",
-                    "Standard_DS12",
-                    "Standard_DS13",
-                    "Standard_DS14",
-                    "Standard_DS1_v2",
-                    "Standard_DS2_v2",
-                    "Standard_DS3_v2",
-                    "Standard_DS4_v2",
-                    "Standard_DS5_v2",
-                    "Standard_DS11_v2",
-                    "Standard_DS12_v2",
-                    "Standard_DS13_v2",
-                    "Standard_DS14_v2",
-                    "Standard_DS15_v2",
-                    "Standard_DS13-4_v2",
-                    "Standard_DS13-2_v2",
-                    "Standard_DS14-8_v2",
-                    "Standard_DS14-4_v2",
-                    "Standard_E2_v3",
-                    "Standard_E4_v3",
-                    "Standard_E8_v3",
-                    "Standard_E16_v3",
-                    "Standard_E32_v3",
-                    "Standard_E64_v3",
-                    "Standard_E2s_v3",
-                    "Standard_E4s_v3",
-                    "Standard_E8s_v3",
-                    "Standard_E16s_v3",
-                    "Standard_E32s_v3",
-                    "Standard_E64s_v3",
-                    "Standard_E32-16_v3",
-                    "Standard_E32-8s_v3",
-                    "Standard_E64-32s_v3",
-                    "Standard_E64-16s_v3",
-                    "Standard_F1",
-                    "Standard_F2",
-                    "Standard_F4",
-                    "Standard_F8",
-                    "Standard_F16",
-                    "Standard_F1s",
-                    "Standard_F2s",
-                    "Standard_F4s",
-                    "Standard_F8s",
-                    "Standard_F16s",
-                    "Standard_F2s_v2",
-                    "Standard_F4s_v2",
-                    "Standard_F8s_v2",
-                    "Standard_F16s_v2",
-                    "Standard_F32s_v2",
-                    "Standard_F64s_v2",
-                    "Standard_F72s_v2",
-                    "Standard_G1",
-                    "Standard_G2",
-                    "Standard_G3",
-                    "Standard_G4",
-                    "Standard_G5",
-                    "Standard_GS1",
-                    "Standard_GS2",
-                    "Standard_GS3",
-                    "Standard_GS4",
-                    "Standard_GS5",
-                    "Standard_GS4-8",
-                    "Standard_GS4-4",
-                    "Standard_GS5-16",
-                    "Standard_GS5-8",
-                    "Standard_H8",
-                    "Standard_H16",
-                    "Standard_H8m",
-                    "Standard_H16m",
-                    "Standard_H16r",
-                    "Standard_H16mr",
-                    "Standard_L4s",
-                    "Standard_L8s",
-                    "Standard_L16s",
-                    "Standard_L32s",
-                    "Standard_M64s",
-                    "Standard_M64ms",
-                    "Standard_M128s",
-                    "Standard_M128ms",
-                    "Standard_M64-32ms",
-                    "Standard_M64-16ms",
-                    "Standard_M128-64ms",
-                    "Standard_M128-32ms",
-                    "Standard_NC6",
-                    "Standard_NC12",
-                    "Standard_NC24",
-                    "Standard_NC24r",
-                    "Standard_NC6s_v2",
-                    "Standard_NC12s_v2",
-                    "Standard_NC24s_v2",
-                    "Standard_NC24rs_v2",
-                    "Standard_NC6s_v3",
-                    "Standard_NC12s_v3",
-                    "Standard_NC24s_v3",
-                    "Standard_NC24rs_v3",
-                    "Standard_ND6s",
-                    "Standard_ND12s",
-                    "Standard_ND24s",
-                    "Standard_ND24rs",
-                    "Standard_NV6",
-                    "Standard_NV12",
-                    "Standard_NV24",
-                  ]),
-                ),
-                vmSizeProperties: Schema.optional(
-                  Schema.Struct({
-                    vCPUsAvailable: Schema.optional(Schema.Number),
-                    vCPUsPerCore: Schema.optional(Schema.Number),
-                  }),
-                ),
-              }),
-            ),
-            storageProfile: Schema.optional(
-              Schema.Struct({
-                osDisk: Schema.optional(
-                  Schema.Struct({
-                    osType: Schema.optional(
-                      Schema.Literals(["Windows", "Linux"]),
-                    ),
-                    encryptionSettings: Schema.optional(
-                      Schema.Struct({
-                        diskEncryptionKey: Schema.optional(
-                          Schema.Struct({
-                            secretUrl: Schema.String,
-                            sourceVault: Schema.Struct({
-                              id: Schema.optional(Schema.String),
-                            }),
-                          }),
-                        ),
-                        keyEncryptionKey: Schema.optional(
-                          Schema.Struct({
-                            keyUrl: Schema.String,
-                            sourceVault: Schema.Struct({
-                              id: Schema.optional(Schema.String),
-                            }),
-                          }),
-                        ),
-                        enabled: Schema.optional(Schema.Boolean),
-                      }),
-                    ),
-                    name: Schema.optional(Schema.String),
-                    caching: Schema.optional(
-                      Schema.Literals(["None", "ReadOnly", "ReadWrite"]),
-                    ),
-                    diskSizeGB: Schema.optional(Schema.Number),
-                    managedDisk: Schema.optional(
-                      Schema.Struct({
-                        id: Schema.optional(Schema.String),
-                      }),
-                    ),
-                    diskRestorePoint: Schema.optional(
-                      Schema.Struct({
-                        id: Schema.optional(Schema.String),
-                      }),
-                    ),
-                    writeAcceleratorEnabled: Schema.optional(Schema.Boolean),
-                  }),
-                ),
-                dataDisks: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      lun: Schema.optional(Schema.Number),
-                      name: Schema.optional(Schema.String),
-                      caching: Schema.optional(
-                        Schema.Literals(["None", "ReadOnly", "ReadWrite"]),
-                      ),
-                      diskSizeGB: Schema.optional(Schema.Number),
-                      managedDisk: Schema.optional(
-                        Schema.Struct({
-                          id: Schema.optional(Schema.String),
-                        }),
-                      ),
-                      diskRestorePoint: Schema.optional(
-                        Schema.Struct({
-                          id: Schema.optional(Schema.String),
-                        }),
-                      ),
-                      writeAcceleratorEnabled: Schema.optional(Schema.Boolean),
-                    }),
-                  ),
-                ),
-                diskControllerType: Schema.optional(
-                  Schema.Literals(["SCSI", "NVMe"]),
-                ),
-              }),
-            ),
-            osProfile: Schema.optional(
-              Schema.Struct({
-                computerName: Schema.optional(Schema.String),
-                adminUsername: Schema.optional(Schema.String),
-                adminPassword: Schema.optional(SensitiveString),
-                customData: Schema.optional(Schema.String),
-                windowsConfiguration: Schema.optional(
-                  Schema.Struct({
-                    provisionVMAgent: Schema.optional(Schema.Boolean),
-                    enableAutomaticUpdates: Schema.optional(Schema.Boolean),
-                    timeZone: Schema.optional(Schema.String),
-                    additionalUnattendContent: Schema.optional(
-                      Schema.Array(
-                        Schema.Struct({
-                          passName: Schema.optional(
-                            Schema.Literals(["OobeSystem"]),
-                          ),
-                          componentName: Schema.optional(
-                            Schema.Literals(["Microsoft-Windows-Shell-Setup"]),
-                          ),
-                          settingName: Schema.optional(
-                            Schema.Literals([
-                              "AutoLogon",
-                              "FirstLogonCommands",
-                            ]),
-                          ),
-                          content: Schema.optional(Schema.String),
-                        }),
-                      ),
-                    ),
-                    patchSettings: Schema.optional(
-                      Schema.Struct({
-                        patchMode: Schema.optional(
-                          Schema.Literals([
-                            "Manual",
-                            "AutomaticByOS",
-                            "AutomaticByPlatform",
-                          ]),
-                        ),
-                        enableHotpatching: Schema.optional(Schema.Boolean),
-                        assessmentMode: Schema.optional(
-                          Schema.Literals([
-                            "ImageDefault",
-                            "AutomaticByPlatform",
-                          ]),
-                        ),
-                        automaticByPlatformSettings: Schema.optional(
-                          Schema.Struct({
-                            rebootSetting: Schema.optional(
-                              Schema.Literals([
-                                "Unknown",
-                                "IfRequired",
-                                "Never",
-                                "Always",
-                              ]),
-                            ),
-                            bypassPlatformSafetyChecksOnUserSchedule:
-                              Schema.optional(Schema.Boolean),
-                          }),
-                        ),
-                      }),
-                    ),
-                    winRM: Schema.optional(
-                      Schema.Struct({
-                        listeners: Schema.optional(
-                          Schema.Array(
-                            Schema.Struct({
-                              protocol: Schema.optional(
-                                Schema.Literals(["Http", "Https"]),
-                              ),
-                              certificateUrl: Schema.optional(Schema.String),
-                            }),
-                          ),
-                        ),
-                      }),
-                    ),
-                    enableVMAgentPlatformUpdates: Schema.optional(
-                      Schema.Boolean,
-                    ),
-                  }),
-                ),
-                linuxConfiguration: Schema.optional(
-                  Schema.Struct({
-                    disablePasswordAuthentication: Schema.optional(
-                      Schema.Boolean,
-                    ),
-                    ssh: Schema.optional(
-                      Schema.Struct({
-                        publicKeys: Schema.optional(
-                          Schema.Array(
-                            Schema.Struct({
-                              path: Schema.optional(Schema.String),
-                              keyData: Schema.optional(Schema.String),
-                            }),
-                          ),
-                        ),
-                      }),
-                    ),
-                    provisionVMAgent: Schema.optional(Schema.Boolean),
-                    patchSettings: Schema.optional(
-                      Schema.Struct({
-                        patchMode: Schema.optional(
-                          Schema.Literals([
-                            "ImageDefault",
-                            "AutomaticByPlatform",
-                          ]),
-                        ),
-                        assessmentMode: Schema.optional(
-                          Schema.Literals([
-                            "ImageDefault",
-                            "AutomaticByPlatform",
-                          ]),
-                        ),
-                        automaticByPlatformSettings: Schema.optional(
-                          Schema.Struct({
-                            rebootSetting: Schema.optional(
-                              Schema.Literals([
-                                "Unknown",
-                                "IfRequired",
-                                "Never",
-                                "Always",
-                              ]),
-                            ),
-                            bypassPlatformSafetyChecksOnUserSchedule:
-                              Schema.optional(Schema.Boolean),
-                          }),
-                        ),
-                      }),
-                    ),
-                    enableVMAgentPlatformUpdates: Schema.optional(
-                      Schema.Boolean,
-                    ),
-                  }),
-                ),
-                secrets: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      sourceVault: Schema.optional(
-                        Schema.Struct({
-                          id: Schema.optional(Schema.String),
-                        }),
-                      ),
-                      vaultCertificates: Schema.optional(
-                        Schema.Array(
-                          Schema.Struct({
-                            certificateUrl: Schema.optional(Schema.String),
-                            certificateStore: Schema.optional(Schema.String),
-                          }),
-                        ),
-                      ),
-                    }),
-                  ),
-                ),
-                allowExtensionOperations: Schema.optional(Schema.Boolean),
-                requireGuestProvisionSignal: Schema.optional(Schema.Boolean),
-              }),
-            ),
-            diagnosticsProfile: Schema.optional(
-              Schema.Struct({
-                bootDiagnostics: Schema.optional(
-                  Schema.Struct({
-                    enabled: Schema.optional(Schema.Boolean),
-                    storageUri: Schema.optional(Schema.String),
-                  }),
-                ),
-              }),
-            ),
-            licenseType: Schema.optional(Schema.String),
-            vmId: Schema.optional(Schema.String),
-            securityProfile: Schema.optional(
-              Schema.Struct({
-                uefiSettings: Schema.optional(
-                  Schema.Struct({
-                    secureBootEnabled: Schema.optional(Schema.Boolean),
-                    vTpmEnabled: Schema.optional(Schema.Boolean),
-                  }),
-                ),
-                encryptionAtHost: Schema.optional(Schema.Boolean),
-                securityType: Schema.optional(
-                  Schema.Literals(["TrustedLaunch", "ConfidentialVM"]),
-                ),
-                encryptionIdentity: Schema.optional(
-                  Schema.Struct({
-                    userAssignedIdentityResourceId: Schema.optional(
-                      Schema.String,
-                    ),
-                  }),
-                ),
-                proxyAgentSettings: Schema.optional(
-                  Schema.Struct({
-                    enabled: Schema.optional(Schema.Boolean),
-                    mode: Schema.optional(
-                      Schema.Literals(["Audit", "Enforce"]),
-                    ),
-                    keyIncarnationId: Schema.optional(Schema.Number),
-                    wireServer: Schema.optional(
-                      Schema.Struct({
-                        mode: Schema.optional(
-                          Schema.Literals(["Audit", "Enforce", "Disabled"]),
-                        ),
-                        inVMAccessControlProfileReferenceId: Schema.optional(
-                          Schema.String,
-                        ),
-                      }),
-                    ),
-                    imds: Schema.optional(
-                      Schema.Struct({
-                        mode: Schema.optional(
-                          Schema.Literals(["Audit", "Enforce", "Disabled"]),
-                        ),
-                        inVMAccessControlProfileReferenceId: Schema.optional(
-                          Schema.String,
-                        ),
-                      }),
-                    ),
-                    addProxyAgentExtension: Schema.optional(Schema.Boolean),
-                  }),
-                ),
-              }),
-            ),
-            location: Schema.optional(Schema.String),
-            userData: Schema.optional(Schema.String),
-            hyperVGeneration: Schema.optional(Schema.Literals(["V1", "V2"])),
-          }),
-        ),
-        provisioningState: Schema.optional(Schema.String),
-        consistencyMode: Schema.optional(
-          Schema.Literals([
-            "CrashConsistent",
-            "FileSystemConsistent",
-            "ApplicationConsistent",
-          ]),
-        ),
-        timeCreated: Schema.optional(Schema.String),
-        sourceRestorePoint: Schema.optional(
-          Schema.Struct({
-            id: Schema.optional(Schema.String),
-          }),
-        ),
-        instanceView: Schema.optional(
-          Schema.Struct({
-            diskRestorePoints: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  id: Schema.optional(Schema.String),
-                  snapshotAccessState: Schema.optional(
-                    Schema.Literals([
-                      "Unknown",
-                      "Pending",
-                      "Available",
-                      "InstantAccess",
-                      "AvailableWithInstantAccess",
-                    ]),
-                  ),
-                  replicationStatus: Schema.optional(
-                    Schema.Struct({
-                      status: Schema.optional(
-                        Schema.Struct({
-                          code: Schema.optional(Schema.String),
-                          level: Schema.optional(
-                            Schema.Literals(["Info", "Warning", "Error"]),
-                          ),
-                          displayStatus: Schema.optional(Schema.String),
-                          message: Schema.optional(Schema.String),
-                          time: Schema.optional(Schema.String),
-                        }),
-                      ),
-                      completionPercent: Schema.optional(Schema.Number),
-                    }),
-                  ),
-                }),
-              ),
-            ),
-            statuses: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  code: Schema.optional(Schema.String),
-                  level: Schema.optional(
-                    Schema.Literals(["Info", "Warning", "Error"]),
-                  ),
-                  displayStatus: Schema.optional(Schema.String),
-                  message: Schema.optional(Schema.String),
-                  time: Schema.optional(Schema.String),
-                }),
-              ),
-            ),
-          }),
-        ),
-        instantAccessDurationMinutes: Schema.optional(Schema.Number),
-      }),
+      Schema.suspend(() => RestorePointPropertiesSchema),
     ),
   }).pipe(
     T.Http({
@@ -4955,23 +6113,13 @@ export type RestorePointsCreateInput = typeof RestorePointsCreateInput.Type;
 // Output Schema
 export const RestorePointsCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => RestorePointPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type RestorePointsCreateOutput = typeof RestorePointsCreateOutput.Type;
 
@@ -5044,23 +6192,13 @@ export type RestorePointsGetInput = typeof RestorePointsGetInput.Type;
 // Output Schema
 export const RestorePointsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
+    properties: Schema.optional(
+      Schema.suspend(() => RestorePointPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   },
 );
 export type RestorePointsGetOutput = typeof RestorePointsGetOutput.Type;
@@ -5098,23 +6236,13 @@ export type SpotPlacementScoresGetInput =
 // Output Schema
 export const SpotPlacementScoresGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => DiagnosticPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type SpotPlacementScoresGetOutput =
   typeof SpotPlacementScoresGetOutput.Type;
@@ -5140,11 +6268,7 @@ export const SpotPlacementScoresPostInput =
     location: Schema.String.pipe(T.PathParam()),
     desiredLocations: Schema.optional(Schema.Array(Schema.String)),
     desiredSizes: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          sku: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => ResourceSizeSchema)),
     ),
     desiredCount: Schema.optional(Schema.Number),
     availabilityZones: Schema.optional(Schema.Boolean),
@@ -5163,24 +6287,12 @@ export const SpotPlacementScoresPostOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     desiredLocations: Schema.optional(Schema.Array(Schema.String)),
     desiredSizes: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          sku: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => ResourceSizeSchema)),
     ),
     desiredCount: Schema.optional(Schema.Number),
     availabilityZones: Schema.optional(Schema.Boolean),
     placementScores: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          sku: Schema.optional(Schema.String),
-          region: Schema.optional(Schema.String),
-          availabilityZone: Schema.optional(Schema.String),
-          score: Schema.optional(Schema.String),
-          isQuotaAvailable: Schema.optional(Schema.Boolean),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => PlacementScoreSchema)),
     ),
   });
 export type SpotPlacementScoresPostOutput =
@@ -5207,9 +6319,7 @@ export const SshPublicKeysCreateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     sshPublicKeyName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        publicKey: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(() => SshPublicKeyResourcePropertiesSchema),
     ),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     location: Schema.String,
@@ -5225,23 +6335,15 @@ export type SshPublicKeysCreateInput = typeof SshPublicKeysCreateInput.Type;
 // Output Schema
 export const SshPublicKeysCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => SshPublicKeyResourcePropertiesSchema),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type SshPublicKeysCreateOutput = typeof SshPublicKeysCreateOutput.Type;
 
@@ -5297,7 +6399,9 @@ export const SshPublicKeysGenerateKeyPairInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     sshPublicKeyName: Schema.String.pipe(T.PathParam()),
-    encryptionType: Schema.optional(Schema.Literals(["RSA", "Ed25519"])),
+    encryptionType: Schema.optional(
+      Schema.suspend(() => SshEncryptionTypesSchema),
+    ),
   }).pipe(
     T.Http({
       method: "POST",
@@ -5349,23 +6453,15 @@ export type SshPublicKeysGetInput = typeof SshPublicKeysGetInput.Type;
 // Output Schema
 export const SshPublicKeysGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
+    properties: Schema.optional(
+      Schema.suspend(() => SshPublicKeyResourcePropertiesSchema),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   },
 );
 export type SshPublicKeysGetOutput = typeof SshPublicKeysGetOutput.Type;
@@ -5401,37 +6497,7 @@ export type SshPublicKeysListByResourceGroupInput =
 // Output Schema
 export const SshPublicKeysListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => SshPublicKeyResourceSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type SshPublicKeysListByResourceGroupOutput =
@@ -5467,37 +6533,7 @@ export type SshPublicKeysListBySubscriptionInput =
 // Output Schema
 export const SshPublicKeysListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => SshPublicKeyResourceSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type SshPublicKeysListBySubscriptionOutput =
@@ -5522,9 +6558,7 @@ export const SshPublicKeysUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     sshPublicKeyName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        publicKey: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(() => SshPublicKeyResourcePropertiesSchema),
     ),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
@@ -5539,23 +6573,15 @@ export type SshPublicKeysUpdateInput = typeof SshPublicKeysUpdateInput.Type;
 // Output Schema
 export const SshPublicKeysUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => SshPublicKeyResourcePropertiesSchema),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type SshPublicKeysUpdateOutput = typeof SshPublicKeysUpdateOutput.Type;
 
@@ -5587,17 +6613,7 @@ export type UsageListInput = typeof UsageListInput.Type;
 
 // Output Schema
 export const UsageListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  value: Schema.Array(
-    Schema.Struct({
-      unit: Schema.Literals(["Count"]),
-      currentValue: Schema.Number,
-      limit: Schema.Number,
-      name: Schema.Struct({
-        value: Schema.optional(Schema.String),
-        localizedValue: Schema.optional(Schema.String),
-      }),
-    }),
-  ),
+  value: Schema.Array(Schema.suspend(() => UsageSchema)),
   nextLink: Schema.optional(Schema.String),
 });
 export type UsageListOutput = typeof UsageListOutput.Type;
@@ -5635,23 +6651,15 @@ export type VirtualMachineExtensionImagesGetInput =
 // Output Schema
 export const VirtualMachineExtensionImagesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => VirtualMachineExtensionImagePropertiesSchema),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type VirtualMachineExtensionImagesGetOutput =
   typeof VirtualMachineExtensionImagesGetOutput.Type;
@@ -5688,25 +6696,7 @@ export type VirtualMachineExtensionImagesListTypesInput =
 // Output Schema
 export const VirtualMachineExtensionImagesListTypesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
-    Schema.Struct({
-      id: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      type: Schema.optional(Schema.String),
-      systemData: Schema.optional(
-        Schema.Struct({
-          createdBy: Schema.optional(Schema.String),
-          createdByType: Schema.optional(
-            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-          ),
-          createdAt: Schema.optional(Schema.String),
-          lastModifiedBy: Schema.optional(Schema.String),
-          lastModifiedByType: Schema.optional(
-            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-          ),
-          lastModifiedAt: Schema.optional(Schema.String),
-        }),
-      ),
-    }),
+    Schema.suspend(() => VirtualMachineExtensionImageSchema),
   );
 export type VirtualMachineExtensionImagesListTypesOutput =
   typeof VirtualMachineExtensionImagesListTypesOutput.Type;
@@ -5747,25 +6737,7 @@ export type VirtualMachineExtensionImagesListVersionsInput =
 // Output Schema
 export const VirtualMachineExtensionImagesListVersionsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
-    Schema.Struct({
-      id: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      type: Schema.optional(Schema.String),
-      systemData: Schema.optional(
-        Schema.Struct({
-          createdBy: Schema.optional(Schema.String),
-          createdByType: Schema.optional(
-            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-          ),
-          createdAt: Schema.optional(Schema.String),
-          lastModifiedBy: Schema.optional(Schema.String),
-          lastModifiedByType: Schema.optional(
-            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-          ),
-          lastModifiedAt: Schema.optional(Schema.String),
-        }),
-      ),
-    }),
+    Schema.suspend(() => VirtualMachineExtensionImageSchema),
   );
 export type VirtualMachineExtensionImagesListVersionsOutput =
   typeof VirtualMachineExtensionImagesListVersionsOutput.Type;
@@ -5792,60 +6764,7 @@ export const VirtualMachineExtensionsCreateOrUpdateInput =
     vmName: Schema.String.pipe(T.PathParam()),
     vmExtensionName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        forceUpdateTag: Schema.optional(Schema.String),
-        publisher: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        typeHandlerVersion: Schema.optional(Schema.String),
-        autoUpgradeMinorVersion: Schema.optional(Schema.Boolean),
-        enableAutomaticUpgrade: Schema.optional(Schema.Boolean),
-        settings: Schema.optional(Schema.Unknown),
-        protectedSettings: Schema.optional(Schema.Unknown),
-        provisioningState: Schema.optional(Schema.String),
-        instanceView: Schema.optional(
-          Schema.Struct({
-            name: Schema.optional(Schema.String),
-            type: Schema.optional(Schema.String),
-            typeHandlerVersion: Schema.optional(Schema.String),
-            substatuses: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  code: Schema.optional(Schema.String),
-                  level: Schema.optional(
-                    Schema.Literals(["Info", "Warning", "Error"]),
-                  ),
-                  displayStatus: Schema.optional(Schema.String),
-                  message: Schema.optional(Schema.String),
-                  time: Schema.optional(Schema.String),
-                }),
-              ),
-            ),
-            statuses: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  code: Schema.optional(Schema.String),
-                  level: Schema.optional(
-                    Schema.Literals(["Info", "Warning", "Error"]),
-                  ),
-                  displayStatus: Schema.optional(Schema.String),
-                  message: Schema.optional(Schema.String),
-                  time: Schema.optional(Schema.String),
-                }),
-              ),
-            ),
-          }),
-        ),
-        suppressFailures: Schema.optional(Schema.Boolean),
-        protectedSettingsFromKeyVault: Schema.optional(
-          Schema.Struct({
-            secretUrl: Schema.String,
-            sourceVault: Schema.Struct({
-              id: Schema.optional(Schema.String),
-            }),
-          }),
-        ),
-        provisionAfterExtensions: Schema.optional(Schema.Array(Schema.String)),
-      }),
+      Schema.suspend(() => VirtualMachineExtensionPropertiesSchema),
     ),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     location: Schema.String,
@@ -5863,23 +6782,15 @@ export type VirtualMachineExtensionsCreateOrUpdateInput =
 // Output Schema
 export const VirtualMachineExtensionsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => VirtualMachineExtensionPropertiesSchema),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type VirtualMachineExtensionsCreateOrUpdateOutput =
   typeof VirtualMachineExtensionsCreateOrUpdateOutput.Type;
@@ -5959,23 +6870,15 @@ export type VirtualMachineExtensionsGetInput =
 // Output Schema
 export const VirtualMachineExtensionsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => VirtualMachineExtensionPropertiesSchema),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type VirtualMachineExtensionsGetOutput =
   typeof VirtualMachineExtensionsGetOutput.Type;
@@ -6018,37 +6921,7 @@ export type VirtualMachineExtensionsListInput =
 export const VirtualMachineExtensionsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.String),
-              createdByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              createdAt: Schema.optional(Schema.String),
-              lastModifiedBy: Schema.optional(Schema.String),
-              lastModifiedByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              lastModifiedAt: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => VirtualMachineExtensionSchema)),
     ),
   });
 export type VirtualMachineExtensionsListOutput =
@@ -6077,25 +6950,7 @@ export const VirtualMachineExtensionsUpdateInput =
     vmName: Schema.String.pipe(T.PathParam()),
     vmExtensionName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        forceUpdateTag: Schema.optional(Schema.String),
-        publisher: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        typeHandlerVersion: Schema.optional(Schema.String),
-        autoUpgradeMinorVersion: Schema.optional(Schema.Boolean),
-        enableAutomaticUpgrade: Schema.optional(Schema.Boolean),
-        settings: Schema.optional(Schema.Unknown),
-        protectedSettings: Schema.optional(Schema.Unknown),
-        suppressFailures: Schema.optional(Schema.Boolean),
-        protectedSettingsFromKeyVault: Schema.optional(
-          Schema.Struct({
-            secretUrl: Schema.String,
-            sourceVault: Schema.Struct({
-              id: Schema.optional(Schema.String),
-            }),
-          }),
-        ),
-      }),
+      Schema.suspend(() => VirtualMachineExtensionUpdatePropertiesSchema),
     ),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
@@ -6112,23 +6967,15 @@ export type VirtualMachineExtensionsUpdateInput =
 // Output Schema
 export const VirtualMachineExtensionsUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => VirtualMachineExtensionPropertiesSchema),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type VirtualMachineExtensionsUpdateOutput =
   typeof VirtualMachineExtensionsUpdateOutput.Type;
@@ -6171,6 +7018,18 @@ export type VirtualMachineImagesEdgeZoneGetInput =
 // Output Schema
 export const VirtualMachineImagesEdgeZoneGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => VirtualMachineImagePropertiesSchema),
+    ),
+    name: Schema.String,
+    location: Schema.String,
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    extendedLocation: Schema.optional(
+      Schema.Struct({
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.suspend(() => ExtendedLocationTypeSchema)),
+      }),
+    ),
     id: Schema.optional(Schema.String),
   });
 export type VirtualMachineImagesEdgeZoneGetOutput =
@@ -6219,9 +7078,7 @@ export type VirtualMachineImagesEdgeZoneListInput =
 // Output Schema
 export const VirtualMachineImagesEdgeZoneListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
-    Schema.Struct({
-      id: Schema.optional(Schema.String),
-    }),
+    Schema.suspend(() => VirtualMachineImageResourceSchema),
   );
 export type VirtualMachineImagesEdgeZoneListOutput =
   typeof VirtualMachineImagesEdgeZoneListOutput.Type;
@@ -6266,9 +7123,7 @@ export type VirtualMachineImagesEdgeZoneListOffersInput =
 // Output Schema
 export const VirtualMachineImagesEdgeZoneListOffersOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
-    Schema.Struct({
-      id: Schema.optional(Schema.String),
-    }),
+    Schema.suspend(() => VirtualMachineImageResourceSchema),
   );
 export type VirtualMachineImagesEdgeZoneListOffersOutput =
   typeof VirtualMachineImagesEdgeZoneListOffersOutput.Type;
@@ -6307,9 +7162,7 @@ export type VirtualMachineImagesEdgeZoneListPublishersInput =
 // Output Schema
 export const VirtualMachineImagesEdgeZoneListPublishersOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
-    Schema.Struct({
-      id: Schema.optional(Schema.String),
-    }),
+    Schema.suspend(() => VirtualMachineImageResourceSchema),
   );
 export type VirtualMachineImagesEdgeZoneListPublishersOutput =
   typeof VirtualMachineImagesEdgeZoneListPublishersOutput.Type;
@@ -6349,9 +7202,7 @@ export type VirtualMachineImagesEdgeZoneListSkusInput =
 // Output Schema
 export const VirtualMachineImagesEdgeZoneListSkusOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
-    Schema.Struct({
-      id: Schema.optional(Schema.String),
-    }),
+    Schema.suspend(() => VirtualMachineImageResourceSchema),
   );
 export type VirtualMachineImagesEdgeZoneListSkusOutput =
   typeof VirtualMachineImagesEdgeZoneListSkusOutput.Type;
@@ -6394,6 +7245,18 @@ export type VirtualMachineImagesGetInput =
 // Output Schema
 export const VirtualMachineImagesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => VirtualMachineImagePropertiesSchema),
+    ),
+    name: Schema.String,
+    location: Schema.String,
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    extendedLocation: Schema.optional(
+      Schema.Struct({
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.suspend(() => ExtendedLocationTypeSchema)),
+      }),
+    ),
     id: Schema.optional(Schema.String),
   });
 export type VirtualMachineImagesGetOutput =
@@ -6441,9 +7304,7 @@ export type VirtualMachineImagesListInput =
 // Output Schema
 export const VirtualMachineImagesListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
-    Schema.Struct({
-      id: Schema.optional(Schema.String),
-    }),
+    Schema.suspend(() => VirtualMachineImageResourceSchema),
   );
 export type VirtualMachineImagesListOutput =
   typeof VirtualMachineImagesListOutput.Type;
@@ -6486,11 +7347,7 @@ export type VirtualMachineImagesListByEdgeZoneInput =
 export const VirtualMachineImagesListByEdgeZoneOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => VirtualMachineImageResourceSchema)),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -6530,9 +7387,7 @@ export type VirtualMachineImagesListOffersInput =
 // Output Schema
 export const VirtualMachineImagesListOffersOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
-    Schema.Struct({
-      id: Schema.optional(Schema.String),
-    }),
+    Schema.suspend(() => VirtualMachineImageResourceSchema),
   );
 export type VirtualMachineImagesListOffersOutput =
   typeof VirtualMachineImagesListOffersOutput.Type;
@@ -6569,9 +7424,7 @@ export type VirtualMachineImagesListPublishersInput =
 // Output Schema
 export const VirtualMachineImagesListPublishersOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
-    Schema.Struct({
-      id: Schema.optional(Schema.String),
-    }),
+    Schema.suspend(() => VirtualMachineImageResourceSchema),
   );
 export type VirtualMachineImagesListPublishersOutput =
   typeof VirtualMachineImagesListPublishersOutput.Type;
@@ -6609,9 +7462,7 @@ export type VirtualMachineImagesListSkusInput =
 // Output Schema
 export const VirtualMachineImagesListSkusOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
-    Schema.Struct({
-      id: Schema.optional(Schema.String),
-    }),
+    Schema.suspend(() => VirtualMachineImageResourceSchema),
   );
 export type VirtualMachineImagesListSkusOutput =
   typeof VirtualMachineImagesListSkusOutput.Type;
@@ -6639,95 +7490,7 @@ export const VirtualMachineRunCommandsCreateOrUpdateInput =
     vmName: Schema.String.pipe(T.PathParam()),
     runCommandName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        source: Schema.optional(
-          Schema.Struct({
-            script: Schema.optional(Schema.String),
-            scriptUri: Schema.optional(Schema.String),
-            commandId: Schema.optional(Schema.String),
-            scriptUriManagedIdentity: Schema.optional(
-              Schema.Struct({
-                clientId: Schema.optional(Schema.String),
-                objectId: Schema.optional(Schema.String),
-              }),
-            ),
-            scriptShell: Schema.optional(
-              Schema.Literals(["Default", "Powershell7"]),
-            ),
-            galleryScriptReferenceId: Schema.optional(Schema.String),
-          }),
-        ),
-        parameters: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              name: Schema.String,
-              value: Schema.String,
-            }),
-          ),
-        ),
-        protectedParameters: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              name: Schema.String,
-              value: Schema.String,
-            }),
-          ),
-        ),
-        asyncExecution: Schema.optional(Schema.Boolean),
-        runAsUser: Schema.optional(Schema.String),
-        runAsPassword: Schema.optional(SensitiveString),
-        timeoutInSeconds: Schema.optional(Schema.Number),
-        outputBlobUri: Schema.optional(Schema.String),
-        errorBlobUri: Schema.optional(Schema.String),
-        outputBlobManagedIdentity: Schema.optional(
-          Schema.Struct({
-            clientId: Schema.optional(Schema.String),
-            objectId: Schema.optional(Schema.String),
-          }),
-        ),
-        errorBlobManagedIdentity: Schema.optional(
-          Schema.Struct({
-            clientId: Schema.optional(Schema.String),
-            objectId: Schema.optional(Schema.String),
-          }),
-        ),
-        provisioningState: Schema.optional(Schema.String),
-        instanceView: Schema.optional(
-          Schema.Struct({
-            executionState: Schema.optional(
-              Schema.Literals([
-                "Unknown",
-                "Pending",
-                "Running",
-                "Failed",
-                "Succeeded",
-                "TimedOut",
-                "Canceled",
-              ]),
-            ),
-            executionMessage: Schema.optional(Schema.String),
-            exitCode: Schema.optional(Schema.Number),
-            output: Schema.optional(Schema.String),
-            error: Schema.optional(Schema.String),
-            startTime: Schema.optional(Schema.String),
-            endTime: Schema.optional(Schema.String),
-            statuses: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  code: Schema.optional(Schema.String),
-                  level: Schema.optional(
-                    Schema.Literals(["Info", "Warning", "Error"]),
-                  ),
-                  displayStatus: Schema.optional(Schema.String),
-                  message: Schema.optional(Schema.String),
-                  time: Schema.optional(Schema.String),
-                }),
-              ),
-            ),
-          }),
-        ),
-        treatFailureAsDeploymentFailure: Schema.optional(Schema.Boolean),
-      }),
+      Schema.suspend(() => VirtualMachineRunCommandPropertiesSchema),
     ),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     location: Schema.String,
@@ -6745,23 +7508,15 @@ export type VirtualMachineRunCommandsCreateOrUpdateInput =
 // Output Schema
 export const VirtualMachineRunCommandsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => VirtualMachineRunCommandPropertiesSchema),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type VirtualMachineRunCommandsCreateOrUpdateOutput =
   typeof VirtualMachineRunCommandsCreateOrUpdateOutput.Type;
@@ -6839,9 +7594,13 @@ export type VirtualMachineRunCommandsGetInput =
 // Output Schema
 export const VirtualMachineRunCommandsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    script: Schema.Array(Schema.String),
+    parameters: Schema.optional(
+      Schema.Array(Schema.suspend(() => RunCommandParameterDefinitionSchema)),
+    ),
     $schema: Schema.String,
     id: Schema.String,
-    osType: Schema.Literals(["Windows", "Linux"]),
+    osType: Schema.suspend(() => Common_OperatingSystemTypesSchema),
     label: Schema.String,
     description: Schema.String,
   });
@@ -6883,23 +7642,15 @@ export type VirtualMachineRunCommandsGetByVirtualMachineInput =
 // Output Schema
 export const VirtualMachineRunCommandsGetByVirtualMachineOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => VirtualMachineRunCommandPropertiesSchema),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type VirtualMachineRunCommandsGetByVirtualMachineOutput =
   typeof VirtualMachineRunCommandsGetByVirtualMachineOutput.Type;
@@ -6938,15 +7689,7 @@ export type VirtualMachineRunCommandsListInput =
 // Output Schema
 export const VirtualMachineRunCommandsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        $schema: Schema.String,
-        id: Schema.String,
-        osType: Schema.Literals(["Windows", "Linux"]),
-        label: Schema.String,
-        description: Schema.String,
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => RunCommandDocumentBaseSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type VirtualMachineRunCommandsListOutput =
@@ -6985,37 +7728,7 @@ export type VirtualMachineRunCommandsListByVirtualMachineInput =
 // Output Schema
 export const VirtualMachineRunCommandsListByVirtualMachineOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => VirtualMachineRunCommandSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type VirtualMachineRunCommandsListByVirtualMachineOutput =
@@ -7044,95 +7757,7 @@ export const VirtualMachineRunCommandsUpdateInput =
     vmName: Schema.String.pipe(T.PathParam()),
     runCommandName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        source: Schema.optional(
-          Schema.Struct({
-            script: Schema.optional(Schema.String),
-            scriptUri: Schema.optional(Schema.String),
-            commandId: Schema.optional(Schema.String),
-            scriptUriManagedIdentity: Schema.optional(
-              Schema.Struct({
-                clientId: Schema.optional(Schema.String),
-                objectId: Schema.optional(Schema.String),
-              }),
-            ),
-            scriptShell: Schema.optional(
-              Schema.Literals(["Default", "Powershell7"]),
-            ),
-            galleryScriptReferenceId: Schema.optional(Schema.String),
-          }),
-        ),
-        parameters: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              name: Schema.String,
-              value: Schema.String,
-            }),
-          ),
-        ),
-        protectedParameters: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              name: Schema.String,
-              value: Schema.String,
-            }),
-          ),
-        ),
-        asyncExecution: Schema.optional(Schema.Boolean),
-        runAsUser: Schema.optional(Schema.String),
-        runAsPassword: Schema.optional(SensitiveString),
-        timeoutInSeconds: Schema.optional(Schema.Number),
-        outputBlobUri: Schema.optional(Schema.String),
-        errorBlobUri: Schema.optional(Schema.String),
-        outputBlobManagedIdentity: Schema.optional(
-          Schema.Struct({
-            clientId: Schema.optional(Schema.String),
-            objectId: Schema.optional(Schema.String),
-          }),
-        ),
-        errorBlobManagedIdentity: Schema.optional(
-          Schema.Struct({
-            clientId: Schema.optional(Schema.String),
-            objectId: Schema.optional(Schema.String),
-          }),
-        ),
-        provisioningState: Schema.optional(Schema.String),
-        instanceView: Schema.optional(
-          Schema.Struct({
-            executionState: Schema.optional(
-              Schema.Literals([
-                "Unknown",
-                "Pending",
-                "Running",
-                "Failed",
-                "Succeeded",
-                "TimedOut",
-                "Canceled",
-              ]),
-            ),
-            executionMessage: Schema.optional(Schema.String),
-            exitCode: Schema.optional(Schema.Number),
-            output: Schema.optional(Schema.String),
-            error: Schema.optional(Schema.String),
-            startTime: Schema.optional(Schema.String),
-            endTime: Schema.optional(Schema.String),
-            statuses: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  code: Schema.optional(Schema.String),
-                  level: Schema.optional(
-                    Schema.Literals(["Info", "Warning", "Error"]),
-                  ),
-                  displayStatus: Schema.optional(Schema.String),
-                  message: Schema.optional(Schema.String),
-                  time: Schema.optional(Schema.String),
-                }),
-              ),
-            ),
-          }),
-        ),
-        treatFailureAsDeploymentFailure: Schema.optional(Schema.Boolean),
-      }),
+      Schema.suspend(() => VirtualMachineRunCommandPropertiesSchema),
     ),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
@@ -7149,23 +7774,15 @@ export type VirtualMachineRunCommandsUpdateInput =
 // Output Schema
 export const VirtualMachineRunCommandsUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => VirtualMachineRunCommandPropertiesSchema),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type VirtualMachineRunCommandsUpdateOutput =
   typeof VirtualMachineRunCommandsUpdateOutput.Type;
@@ -7205,15 +7822,7 @@ export type VirtualMachinesAssessPatchesInput =
 // Output Schema
 export const VirtualMachinesAssessPatchesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    status: Schema.optional(
-      Schema.Literals([
-        "Unknown",
-        "InProgress",
-        "Failed",
-        "Succeeded",
-        "CompletedWithWarnings",
-      ]),
-    ),
+    status: Schema.optional(Schema.suspend(() => PatchOperationStatusSchema)),
     assessmentActivityId: Schema.optional(Schema.String),
     rebootPending: Schema.optional(Schema.Boolean),
     criticalAndSecurityPatchCount: Schema.optional(Schema.Number),
@@ -7221,46 +7830,15 @@ export const VirtualMachinesAssessPatchesOutput =
     startDateTime: Schema.optional(Schema.String),
     availablePatches: Schema.optional(
       Schema.Array(
-        Schema.Struct({
-          patchId: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          version: Schema.optional(Schema.String),
-          kbId: Schema.optional(Schema.String),
-          classifications: Schema.optional(Schema.Array(Schema.String)),
-          rebootBehavior: Schema.optional(
-            Schema.Literals([
-              "Unknown",
-              "NeverReboots",
-              "AlwaysRequiresReboot",
-              "CanRequestReboot",
-            ]),
-          ),
-          activityId: Schema.optional(Schema.String),
-          publishedDate: Schema.optional(Schema.String),
-          lastModifiedDateTime: Schema.optional(Schema.String),
-          assessmentState: Schema.optional(
-            Schema.Literals(["Unknown", "Available"]),
-          ),
-        }),
+        Schema.suspend(() => VirtualMachineSoftwarePatchPropertiesSchema),
       ),
     ),
     error: Schema.optional(
       Schema.Struct({
         details: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              code: Schema.optional(Schema.String),
-              target: Schema.optional(Schema.String),
-              message: Schema.optional(Schema.String),
-            }),
-          ),
+          Schema.Array(Schema.suspend(() => ApiErrorBaseSchema)),
         ),
-        innererror: Schema.optional(
-          Schema.Struct({
-            exceptiontype: Schema.optional(Schema.String),
-            errordetail: Schema.optional(Schema.String),
-          }),
-        ),
+        innererror: Schema.optional(Schema.suspend(() => InnerErrorSchema)),
         code: Schema.optional(Schema.String),
         target: Schema.optional(Schema.String),
         message: Schema.optional(Schema.String),
@@ -7291,30 +7869,10 @@ export const VirtualMachinesAttachDetachDataDisksInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vmName: Schema.String.pipe(T.PathParam()),
     dataDisksToAttach: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          diskId: Schema.String,
-          lun: Schema.optional(Schema.Number),
-          caching: Schema.optional(
-            Schema.Literals(["None", "ReadOnly", "ReadWrite"]),
-          ),
-          deleteOption: Schema.optional(Schema.Literals(["Delete", "Detach"])),
-          diskEncryptionSet: Schema.optional(
-            Schema.Struct({
-              id: Schema.optional(Schema.String),
-            }),
-          ),
-          writeAcceleratorEnabled: Schema.optional(Schema.Boolean),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => DataDisksToAttachSchema)),
     ),
     dataDisksToDetach: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          diskId: Schema.String,
-          detachOption: Schema.optional(Schema.Literals(["ForceDetach"])),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => DataDisksToDetachSchema)),
     ),
   }).pipe(
     T.Http({
@@ -7330,120 +7888,14 @@ export type VirtualMachinesAttachDetachDataDisksInput =
 // Output Schema
 export const VirtualMachinesAttachDetachDataDisksOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    imageReference: Schema.optional(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-      }),
-    ),
-    osDisk: Schema.optional(
-      Schema.Struct({
-        osType: Schema.optional(Schema.Literals(["Windows", "Linux"])),
-        encryptionSettings: Schema.optional(
-          Schema.Struct({
-            diskEncryptionKey: Schema.optional(
-              Schema.Struct({
-                secretUrl: Schema.String,
-                sourceVault: Schema.Struct({
-                  id: Schema.optional(Schema.String),
-                }),
-              }),
-            ),
-            keyEncryptionKey: Schema.optional(
-              Schema.Struct({
-                keyUrl: Schema.String,
-                sourceVault: Schema.Struct({
-                  id: Schema.optional(Schema.String),
-                }),
-              }),
-            ),
-            enabled: Schema.optional(Schema.Boolean),
-          }),
-        ),
-        name: Schema.optional(Schema.String),
-        vhd: Schema.optional(
-          Schema.Struct({
-            uri: Schema.optional(Schema.String),
-          }),
-        ),
-        image: Schema.optional(
-          Schema.Struct({
-            uri: Schema.optional(Schema.String),
-          }),
-        ),
-        caching: Schema.optional(
-          Schema.Literals(["None", "ReadOnly", "ReadWrite"]),
-        ),
-        writeAcceleratorEnabled: Schema.optional(Schema.Boolean),
-        diffDiskSettings: Schema.optional(
-          Schema.Struct({
-            option: Schema.optional(Schema.Literals(["Local"])),
-            placement: Schema.optional(
-              Schema.Literals(["CacheDisk", "ResourceDisk", "NvmeDisk"]),
-            ),
-          }),
-        ),
-        createOption: Schema.Literals([
-          "FromImage",
-          "Empty",
-          "Attach",
-          "Copy",
-          "Restore",
-        ]),
-        diskSizeGB: Schema.optional(Schema.Number),
-        managedDisk: Schema.optional(
-          Schema.Struct({
-            id: Schema.optional(Schema.String),
-          }),
-        ),
-        deleteOption: Schema.optional(Schema.Literals(["Delete", "Detach"])),
-      }),
-    ),
+    imageReference: Schema.optional(Schema.suspend(() => ImageReferenceSchema)),
+    osDisk: Schema.optional(Schema.suspend(() => OSDiskSchema)),
     dataDisks: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          lun: Schema.Number,
-          name: Schema.optional(Schema.String),
-          vhd: Schema.optional(
-            Schema.Struct({
-              uri: Schema.optional(Schema.String),
-            }),
-          ),
-          image: Schema.optional(
-            Schema.Struct({
-              uri: Schema.optional(Schema.String),
-            }),
-          ),
-          caching: Schema.optional(
-            Schema.Literals(["None", "ReadOnly", "ReadWrite"]),
-          ),
-          writeAcceleratorEnabled: Schema.optional(Schema.Boolean),
-          createOption: Schema.Literals([
-            "FromImage",
-            "Empty",
-            "Attach",
-            "Copy",
-            "Restore",
-          ]),
-          diskSizeGB: Schema.optional(Schema.Number),
-          managedDisk: Schema.optional(
-            Schema.Struct({
-              id: Schema.optional(Schema.String),
-            }),
-          ),
-          sourceResource: Schema.optional(
-            Schema.Struct({
-              id: Schema.optional(Schema.String),
-            }),
-          ),
-          toBeDetached: Schema.optional(Schema.Boolean),
-          diskIOPSReadWrite: Schema.optional(Schema.Number),
-          diskMBpsReadWrite: Schema.optional(Schema.Number),
-          detachOption: Schema.optional(Schema.Literals(["ForceDetach"])),
-          deleteOption: Schema.optional(Schema.Literals(["Delete", "Detach"])),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => DataDiskSchema)),
     ),
-    diskControllerType: Schema.optional(Schema.Literals(["SCSI", "NVMe"])),
+    diskControllerType: Schema.optional(
+      Schema.suspend(() => DiskControllerTypesSchema),
+    ),
     alignRegionalDisksToVMZone: Schema.optional(Schema.Boolean),
   });
 export type VirtualMachinesAttachDetachDataDisksOutput =
@@ -7471,27 +7923,7 @@ export const VirtualMachineScaleSetExtensionsCreateOrUpdateInput =
     vmScaleSetName: Schema.String.pipe(T.PathParam()),
     vmssExtensionName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        forceUpdateTag: Schema.optional(Schema.String),
-        publisher: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        typeHandlerVersion: Schema.optional(Schema.String),
-        autoUpgradeMinorVersion: Schema.optional(Schema.Boolean),
-        enableAutomaticUpgrade: Schema.optional(Schema.Boolean),
-        settings: Schema.optional(Schema.Unknown),
-        protectedSettings: Schema.optional(Schema.Unknown),
-        provisioningState: Schema.optional(Schema.String),
-        provisionAfterExtensions: Schema.optional(Schema.Array(Schema.String)),
-        suppressFailures: Schema.optional(Schema.Boolean),
-        protectedSettingsFromKeyVault: Schema.optional(
-          Schema.Struct({
-            secretUrl: Schema.String,
-            sourceVault: Schema.Struct({
-              id: Schema.optional(Schema.String),
-            }),
-          }),
-        ),
-      }),
+      Schema.suspend(() => VirtualMachineScaleSetExtensionPropertiesSchema),
     ),
     type: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -7510,6 +7942,11 @@ export type VirtualMachineScaleSetExtensionsCreateOrUpdateInput =
 // Output Schema
 export const VirtualMachineScaleSetExtensionsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => VirtualMachineScaleSetExtensionPropertiesSchema),
+    ),
+    type: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
   });
 export type VirtualMachineScaleSetExtensionsCreateOrUpdateOutput =
@@ -7590,6 +8027,11 @@ export type VirtualMachineScaleSetExtensionsGetInput =
 // Output Schema
 export const VirtualMachineScaleSetExtensionsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => VirtualMachineScaleSetExtensionPropertiesSchema),
+    ),
+    type: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
   });
 export type VirtualMachineScaleSetExtensionsGetOutput =
@@ -7631,9 +8073,7 @@ export type VirtualMachineScaleSetExtensionsListInput =
 export const VirtualMachineScaleSetExtensionsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(() => VirtualMachineScaleSetExtensionSchema),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -7664,27 +8104,7 @@ export const VirtualMachineScaleSetExtensionsUpdateInput =
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
     properties: Schema.optional(
-      Schema.Struct({
-        forceUpdateTag: Schema.optional(Schema.String),
-        publisher: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        typeHandlerVersion: Schema.optional(Schema.String),
-        autoUpgradeMinorVersion: Schema.optional(Schema.Boolean),
-        enableAutomaticUpgrade: Schema.optional(Schema.Boolean),
-        settings: Schema.optional(Schema.Unknown),
-        protectedSettings: Schema.optional(Schema.Unknown),
-        provisioningState: Schema.optional(Schema.String),
-        provisionAfterExtensions: Schema.optional(Schema.Array(Schema.String)),
-        suppressFailures: Schema.optional(Schema.Boolean),
-        protectedSettingsFromKeyVault: Schema.optional(
-          Schema.Struct({
-            secretUrl: Schema.String,
-            sourceVault: Schema.Struct({
-              id: Schema.optional(Schema.String),
-            }),
-          }),
-        ),
-      }),
+      Schema.suspend(() => VirtualMachineScaleSetExtensionPropertiesSchema),
     ),
     id: Schema.optional(Schema.String),
   }).pipe(
@@ -7701,6 +8121,11 @@ export type VirtualMachineScaleSetExtensionsUpdateInput =
 // Output Schema
 export const VirtualMachineScaleSetExtensionsUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => VirtualMachineScaleSetExtensionPropertiesSchema),
+    ),
+    type: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
   });
 export type VirtualMachineScaleSetExtensionsUpdateOutput =
@@ -7777,23 +8202,15 @@ export type VirtualMachineScaleSetRollingUpgradesGetLatestInput =
 // Output Schema
 export const VirtualMachineScaleSetRollingUpgradesGetLatestOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => RollingUpgradeStatusInfoPropertiesSchema),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type VirtualMachineScaleSetRollingUpgradesGetLatestOutput =
   typeof VirtualMachineScaleSetRollingUpgradesGetLatestOutput.Type;
@@ -7969,893 +8386,23 @@ export const VirtualMachineScaleSetsCreateOrUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vmScaleSetName: Schema.String.pipe(T.PathParam()),
-    sku: Schema.optional(
-      Schema.Struct({
-        name: Schema.optional(Schema.String),
-        tier: Schema.optional(Schema.String),
-        capacity: Schema.optional(Schema.Number),
-      }),
-    ),
-    plan: Schema.optional(
-      Schema.Struct({
-        name: Schema.optional(Schema.String),
-        publisher: Schema.optional(Schema.String),
-        product: Schema.optional(Schema.String),
-        promotionCode: Schema.optional(Schema.String),
-      }),
-    ),
+    sku: Schema.optional(Schema.suspend(() => SkuSchema)),
+    plan: Schema.optional(Schema.suspend(() => PlanSchema)),
     properties: Schema.optional(
-      Schema.Struct({
-        upgradePolicy: Schema.optional(
-          Schema.Struct({
-            mode: Schema.optional(
-              Schema.Literals(["Automatic", "Manual", "Rolling"]),
-            ),
-            rollingUpgradePolicy: Schema.optional(
-              Schema.Struct({
-                maxBatchInstancePercent: Schema.optional(Schema.Number),
-                maxUnhealthyInstancePercent: Schema.optional(Schema.Number),
-                maxUnhealthyUpgradedInstancePercent: Schema.optional(
-                  Schema.Number,
-                ),
-                pauseTimeBetweenBatches: Schema.optional(Schema.String),
-                enableCrossZoneUpgrade: Schema.optional(Schema.Boolean),
-                prioritizeUnhealthyInstances: Schema.optional(Schema.Boolean),
-                rollbackFailedInstancesOnPolicyBreach: Schema.optional(
-                  Schema.Boolean,
-                ),
-                maxSurge: Schema.optional(Schema.Boolean),
-              }),
-            ),
-            automaticOSUpgradePolicy: Schema.optional(
-              Schema.Struct({
-                enableAutomaticOSUpgrade: Schema.optional(Schema.Boolean),
-                disableAutomaticRollback: Schema.optional(Schema.Boolean),
-                useRollingUpgradePolicy: Schema.optional(Schema.Boolean),
-                osRollingUpgradeDeferral: Schema.optional(Schema.Boolean),
-              }),
-            ),
-          }),
-        ),
-        scheduledEventsPolicy: Schema.optional(
-          Schema.Struct({
-            userInitiatedRedeploy: Schema.optional(
-              Schema.Struct({
-                automaticallyApprove: Schema.optional(Schema.Boolean),
-              }),
-            ),
-            userInitiatedReboot: Schema.optional(
-              Schema.Struct({
-                automaticallyApprove: Schema.optional(Schema.Boolean),
-              }),
-            ),
-            scheduledEventsAdditionalPublishingTargets: Schema.optional(
-              Schema.Struct({
-                eventGridAndResourceGraph: Schema.optional(
-                  Schema.Struct({
-                    enable: Schema.optional(Schema.Boolean),
-                    scheduledEventsApiVersion: Schema.optional(Schema.String),
-                  }),
-                ),
-              }),
-            ),
-            allInstancesDown: Schema.optional(
-              Schema.Struct({
-                automaticallyApprove: Schema.optional(Schema.Boolean),
-              }),
-            ),
-          }),
-        ),
-        automaticRepairsPolicy: Schema.optional(
-          Schema.Struct({
-            enabled: Schema.optional(Schema.Boolean),
-            gracePeriod: Schema.optional(Schema.String),
-            repairAction: Schema.optional(
-              Schema.Literals(["Replace", "Restart", "Reimage"]),
-            ),
-          }),
-        ),
-        virtualMachineProfile: Schema.optional(
-          Schema.Struct({
-            osProfile: Schema.optional(
-              Schema.Struct({
-                computerNamePrefix: Schema.optional(Schema.String),
-                adminUsername: Schema.optional(Schema.String),
-                adminPassword: Schema.optional(SensitiveString),
-                customData: Schema.optional(Schema.String),
-                windowsConfiguration: Schema.optional(
-                  Schema.Struct({
-                    provisionVMAgent: Schema.optional(Schema.Boolean),
-                    enableAutomaticUpdates: Schema.optional(Schema.Boolean),
-                    timeZone: Schema.optional(Schema.String),
-                    additionalUnattendContent: Schema.optional(
-                      Schema.Array(
-                        Schema.Struct({
-                          passName: Schema.optional(
-                            Schema.Literals(["OobeSystem"]),
-                          ),
-                          componentName: Schema.optional(
-                            Schema.Literals(["Microsoft-Windows-Shell-Setup"]),
-                          ),
-                          settingName: Schema.optional(
-                            Schema.Literals([
-                              "AutoLogon",
-                              "FirstLogonCommands",
-                            ]),
-                          ),
-                          content: Schema.optional(Schema.String),
-                        }),
-                      ),
-                    ),
-                    patchSettings: Schema.optional(
-                      Schema.Struct({
-                        patchMode: Schema.optional(
-                          Schema.Literals([
-                            "Manual",
-                            "AutomaticByOS",
-                            "AutomaticByPlatform",
-                          ]),
-                        ),
-                        enableHotpatching: Schema.optional(Schema.Boolean),
-                        assessmentMode: Schema.optional(
-                          Schema.Literals([
-                            "ImageDefault",
-                            "AutomaticByPlatform",
-                          ]),
-                        ),
-                        automaticByPlatformSettings: Schema.optional(
-                          Schema.Struct({
-                            rebootSetting: Schema.optional(
-                              Schema.Literals([
-                                "Unknown",
-                                "IfRequired",
-                                "Never",
-                                "Always",
-                              ]),
-                            ),
-                            bypassPlatformSafetyChecksOnUserSchedule:
-                              Schema.optional(Schema.Boolean),
-                          }),
-                        ),
-                      }),
-                    ),
-                    winRM: Schema.optional(
-                      Schema.Struct({
-                        listeners: Schema.optional(
-                          Schema.Array(
-                            Schema.Struct({
-                              protocol: Schema.optional(
-                                Schema.Literals(["Http", "Https"]),
-                              ),
-                              certificateUrl: Schema.optional(Schema.String),
-                            }),
-                          ),
-                        ),
-                      }),
-                    ),
-                    enableVMAgentPlatformUpdates: Schema.optional(
-                      Schema.Boolean,
-                    ),
-                  }),
-                ),
-                linuxConfiguration: Schema.optional(
-                  Schema.Struct({
-                    disablePasswordAuthentication: Schema.optional(
-                      Schema.Boolean,
-                    ),
-                    ssh: Schema.optional(
-                      Schema.Struct({
-                        publicKeys: Schema.optional(
-                          Schema.Array(
-                            Schema.Struct({
-                              path: Schema.optional(Schema.String),
-                              keyData: Schema.optional(Schema.String),
-                            }),
-                          ),
-                        ),
-                      }),
-                    ),
-                    provisionVMAgent: Schema.optional(Schema.Boolean),
-                    patchSettings: Schema.optional(
-                      Schema.Struct({
-                        patchMode: Schema.optional(
-                          Schema.Literals([
-                            "ImageDefault",
-                            "AutomaticByPlatform",
-                          ]),
-                        ),
-                        assessmentMode: Schema.optional(
-                          Schema.Literals([
-                            "ImageDefault",
-                            "AutomaticByPlatform",
-                          ]),
-                        ),
-                        automaticByPlatformSettings: Schema.optional(
-                          Schema.Struct({
-                            rebootSetting: Schema.optional(
-                              Schema.Literals([
-                                "Unknown",
-                                "IfRequired",
-                                "Never",
-                                "Always",
-                              ]),
-                            ),
-                            bypassPlatformSafetyChecksOnUserSchedule:
-                              Schema.optional(Schema.Boolean),
-                          }),
-                        ),
-                      }),
-                    ),
-                    enableVMAgentPlatformUpdates: Schema.optional(
-                      Schema.Boolean,
-                    ),
-                  }),
-                ),
-                secrets: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      sourceVault: Schema.optional(
-                        Schema.Struct({
-                          id: Schema.optional(Schema.String),
-                        }),
-                      ),
-                      vaultCertificates: Schema.optional(
-                        Schema.Array(
-                          Schema.Struct({
-                            certificateUrl: Schema.optional(Schema.String),
-                            certificateStore: Schema.optional(Schema.String),
-                          }),
-                        ),
-                      ),
-                    }),
-                  ),
-                ),
-                allowExtensionOperations: Schema.optional(Schema.Boolean),
-                requireGuestProvisionSignal: Schema.optional(Schema.Boolean),
-              }),
-            ),
-            storageProfile: Schema.optional(
-              Schema.Struct({
-                imageReference: Schema.optional(
-                  Schema.Struct({
-                    id: Schema.optional(Schema.String),
-                  }),
-                ),
-                osDisk: Schema.optional(
-                  Schema.Struct({
-                    name: Schema.optional(Schema.String),
-                    caching: Schema.optional(
-                      Schema.Literals(["None", "ReadOnly", "ReadWrite"]),
-                    ),
-                    writeAcceleratorEnabled: Schema.optional(Schema.Boolean),
-                    createOption: Schema.Literals([
-                      "FromImage",
-                      "Empty",
-                      "Attach",
-                      "Copy",
-                      "Restore",
-                    ]),
-                    diffDiskSettings: Schema.optional(
-                      Schema.Struct({
-                        option: Schema.optional(Schema.Literals(["Local"])),
-                        placement: Schema.optional(
-                          Schema.Literals([
-                            "CacheDisk",
-                            "ResourceDisk",
-                            "NvmeDisk",
-                          ]),
-                        ),
-                      }),
-                    ),
-                    diskSizeGB: Schema.optional(Schema.Number),
-                    osType: Schema.optional(
-                      Schema.Literals(["Windows", "Linux"]),
-                    ),
-                    image: Schema.optional(
-                      Schema.Struct({
-                        uri: Schema.optional(Schema.String),
-                      }),
-                    ),
-                    vhdContainers: Schema.optional(Schema.Array(Schema.String)),
-                    managedDisk: Schema.optional(
-                      Schema.Struct({
-                        storageAccountType: Schema.optional(
-                          Schema.Literals([
-                            "Standard_LRS",
-                            "Premium_LRS",
-                            "StandardSSD_LRS",
-                            "UltraSSD_LRS",
-                            "Premium_ZRS",
-                            "StandardSSD_ZRS",
-                            "PremiumV2_LRS",
-                          ]),
-                        ),
-                        diskEncryptionSet: Schema.optional(
-                          Schema.Struct({
-                            id: Schema.optional(Schema.String),
-                          }),
-                        ),
-                        securityProfile: Schema.optional(
-                          Schema.Struct({
-                            securityEncryptionType: Schema.optional(
-                              Schema.Literals([
-                                "VMGuestStateOnly",
-                                "DiskWithVMGuestState",
-                                "NonPersistedTPM",
-                              ]),
-                            ),
-                            diskEncryptionSet: Schema.optional(
-                              Schema.Struct({
-                                id: Schema.optional(Schema.String),
-                              }),
-                            ),
-                          }),
-                        ),
-                      }),
-                    ),
-                    deleteOption: Schema.optional(
-                      Schema.Literals(["Delete", "Detach"]),
-                    ),
-                  }),
-                ),
-                dataDisks: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      name: Schema.optional(Schema.String),
-                      lun: Schema.Number,
-                      caching: Schema.optional(
-                        Schema.Literals(["None", "ReadOnly", "ReadWrite"]),
-                      ),
-                      writeAcceleratorEnabled: Schema.optional(Schema.Boolean),
-                      createOption: Schema.Literals([
-                        "FromImage",
-                        "Empty",
-                        "Attach",
-                        "Copy",
-                        "Restore",
-                      ]),
-                      diskSizeGB: Schema.optional(Schema.Number),
-                      managedDisk: Schema.optional(
-                        Schema.Struct({
-                          storageAccountType: Schema.optional(
-                            Schema.Literals([
-                              "Standard_LRS",
-                              "Premium_LRS",
-                              "StandardSSD_LRS",
-                              "UltraSSD_LRS",
-                              "Premium_ZRS",
-                              "StandardSSD_ZRS",
-                              "PremiumV2_LRS",
-                            ]),
-                          ),
-                          diskEncryptionSet: Schema.optional(
-                            Schema.Struct({
-                              id: Schema.optional(Schema.String),
-                            }),
-                          ),
-                          securityProfile: Schema.optional(
-                            Schema.Struct({
-                              securityEncryptionType: Schema.optional(
-                                Schema.Literals([
-                                  "VMGuestStateOnly",
-                                  "DiskWithVMGuestState",
-                                  "NonPersistedTPM",
-                                ]),
-                              ),
-                              diskEncryptionSet: Schema.optional(
-                                Schema.Struct({
-                                  id: Schema.optional(Schema.String),
-                                }),
-                              ),
-                            }),
-                          ),
-                        }),
-                      ),
-                      diskIOPSReadWrite: Schema.optional(Schema.Number),
-                      diskMBpsReadWrite: Schema.optional(Schema.Number),
-                      deleteOption: Schema.optional(
-                        Schema.Literals(["Delete", "Detach"]),
-                      ),
-                    }),
-                  ),
-                ),
-                diskControllerType: Schema.optional(
-                  Schema.Literals(["SCSI", "NVMe"]),
-                ),
-              }),
-            ),
-            networkProfile: Schema.optional(
-              Schema.Struct({
-                healthProbe: Schema.optional(
-                  Schema.Struct({
-                    id: Schema.optional(Schema.String),
-                  }),
-                ),
-                networkInterfaceConfigurations: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      name: Schema.String,
-                      properties: Schema.optional(
-                        Schema.Struct({
-                          primary: Schema.optional(Schema.Boolean),
-                          enableAcceleratedNetworking: Schema.optional(
-                            Schema.Boolean,
-                          ),
-                          disableTcpStateTracking: Schema.optional(
-                            Schema.Boolean,
-                          ),
-                          enableFpga: Schema.optional(Schema.Boolean),
-                          networkSecurityGroup: Schema.optional(
-                            Schema.Struct({
-                              id: Schema.optional(Schema.String),
-                            }),
-                          ),
-                          dnsSettings: Schema.optional(
-                            Schema.Struct({
-                              dnsServers: Schema.optional(
-                                Schema.Array(Schema.String),
-                              ),
-                            }),
-                          ),
-                          ipConfigurations: Schema.Array(
-                            Schema.Struct({
-                              name: Schema.String,
-                              properties: Schema.optional(
-                                Schema.Struct({
-                                  subnet: Schema.optional(
-                                    Schema.Struct({
-                                      id: Schema.optional(Schema.String),
-                                    }),
-                                  ),
-                                  primary: Schema.optional(Schema.Boolean),
-                                  publicIPAddressConfiguration: Schema.optional(
-                                    Schema.Struct({
-                                      name: Schema.String,
-                                      properties: Schema.optional(
-                                        Schema.Struct({
-                                          idleTimeoutInMinutes: Schema.optional(
-                                            Schema.Number,
-                                          ),
-                                          dnsSettings: Schema.optional(
-                                            Schema.Struct({
-                                              domainNameLabel: Schema.String,
-                                              domainNameLabelScope:
-                                                Schema.optional(
-                                                  Schema.Literals([
-                                                    "TenantReuse",
-                                                    "SubscriptionReuse",
-                                                    "ResourceGroupReuse",
-                                                    "NoReuse",
-                                                  ]),
-                                                ),
-                                            }),
-                                          ),
-                                          ipTags: Schema.optional(
-                                            Schema.Array(
-                                              Schema.Struct({
-                                                ipTagType: Schema.optional(
-                                                  Schema.String,
-                                                ),
-                                                tag: Schema.optional(
-                                                  Schema.String,
-                                                ),
-                                              }),
-                                            ),
-                                          ),
-                                          publicIPPrefix: Schema.optional(
-                                            Schema.Struct({
-                                              id: Schema.optional(
-                                                Schema.String,
-                                              ),
-                                            }),
-                                          ),
-                                          publicIPAddressVersion:
-                                            Schema.optional(
-                                              Schema.Literals(["IPv4", "IPv6"]),
-                                            ),
-                                          deleteOption: Schema.optional(
-                                            Schema.Literals([
-                                              "Delete",
-                                              "Detach",
-                                            ]),
-                                          ),
-                                        }),
-                                      ),
-                                      sku: Schema.optional(
-                                        Schema.Struct({
-                                          name: Schema.optional(
-                                            Schema.Literals([
-                                              "Basic",
-                                              "Standard",
-                                            ]),
-                                          ),
-                                          tier: Schema.optional(
-                                            Schema.Literals([
-                                              "Regional",
-                                              "Global",
-                                            ]),
-                                          ),
-                                        }),
-                                      ),
-                                      tags: Schema.optional(
-                                        Schema.Record(
-                                          Schema.String,
-                                          Schema.String,
-                                        ),
-                                      ),
-                                    }),
-                                  ),
-                                  privateIPAddressVersion: Schema.optional(
-                                    Schema.Literals(["IPv4", "IPv6"]),
-                                  ),
-                                  applicationGatewayBackendAddressPools:
-                                    Schema.optional(
-                                      Schema.Array(
-                                        Schema.Struct({
-                                          id: Schema.optional(Schema.String),
-                                        }),
-                                      ),
-                                    ),
-                                  applicationSecurityGroups: Schema.optional(
-                                    Schema.Array(
-                                      Schema.Struct({
-                                        id: Schema.optional(Schema.String),
-                                      }),
-                                    ),
-                                  ),
-                                  loadBalancerBackendAddressPools:
-                                    Schema.optional(
-                                      Schema.Array(
-                                        Schema.Struct({
-                                          id: Schema.optional(Schema.String),
-                                        }),
-                                      ),
-                                    ),
-                                  loadBalancerInboundNatPools: Schema.optional(
-                                    Schema.Array(
-                                      Schema.Struct({
-                                        id: Schema.optional(Schema.String),
-                                      }),
-                                    ),
-                                  ),
-                                }),
-                              ),
-                            }),
-                          ),
-                          enableIPForwarding: Schema.optional(Schema.Boolean),
-                          deleteOption: Schema.optional(
-                            Schema.Literals(["Delete", "Detach"]),
-                          ),
-                          auxiliaryMode: Schema.optional(
-                            Schema.Literals([
-                              "None",
-                              "AcceleratedConnections",
-                              "Floating",
-                            ]),
-                          ),
-                          auxiliarySku: Schema.optional(
-                            Schema.Literals(["None", "A1", "A2", "A4", "A8"]),
-                          ),
-                        }),
-                      ),
-                      tags: Schema.optional(
-                        Schema.Record(Schema.String, Schema.String),
-                      ),
-                    }),
-                  ),
-                ),
-                networkApiVersion: Schema.optional(
-                  Schema.Literals(["2020-11-01", "2022-11-01"]),
-                ),
-              }),
-            ),
-            securityProfile: Schema.optional(
-              Schema.Struct({
-                uefiSettings: Schema.optional(
-                  Schema.Struct({
-                    secureBootEnabled: Schema.optional(Schema.Boolean),
-                    vTpmEnabled: Schema.optional(Schema.Boolean),
-                  }),
-                ),
-                encryptionAtHost: Schema.optional(Schema.Boolean),
-                securityType: Schema.optional(
-                  Schema.Literals(["TrustedLaunch", "ConfidentialVM"]),
-                ),
-                encryptionIdentity: Schema.optional(
-                  Schema.Struct({
-                    userAssignedIdentityResourceId: Schema.optional(
-                      Schema.String,
-                    ),
-                  }),
-                ),
-                proxyAgentSettings: Schema.optional(
-                  Schema.Struct({
-                    enabled: Schema.optional(Schema.Boolean),
-                    mode: Schema.optional(
-                      Schema.Literals(["Audit", "Enforce"]),
-                    ),
-                    keyIncarnationId: Schema.optional(Schema.Number),
-                    wireServer: Schema.optional(
-                      Schema.Struct({
-                        mode: Schema.optional(
-                          Schema.Literals(["Audit", "Enforce", "Disabled"]),
-                        ),
-                        inVMAccessControlProfileReferenceId: Schema.optional(
-                          Schema.String,
-                        ),
-                      }),
-                    ),
-                    imds: Schema.optional(
-                      Schema.Struct({
-                        mode: Schema.optional(
-                          Schema.Literals(["Audit", "Enforce", "Disabled"]),
-                        ),
-                        inVMAccessControlProfileReferenceId: Schema.optional(
-                          Schema.String,
-                        ),
-                      }),
-                    ),
-                    addProxyAgentExtension: Schema.optional(Schema.Boolean),
-                  }),
-                ),
-              }),
-            ),
-            diagnosticsProfile: Schema.optional(
-              Schema.Struct({
-                bootDiagnostics: Schema.optional(
-                  Schema.Struct({
-                    enabled: Schema.optional(Schema.Boolean),
-                    storageUri: Schema.optional(Schema.String),
-                  }),
-                ),
-              }),
-            ),
-            extensionProfile: Schema.optional(
-              Schema.Struct({
-                extensions: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      id: Schema.optional(Schema.String),
-                    }),
-                  ),
-                ),
-                extensionsTimeBudget: Schema.optional(Schema.String),
-              }),
-            ),
-            licenseType: Schema.optional(Schema.String),
-            priority: Schema.optional(
-              Schema.Literals(["Regular", "Low", "Spot"]),
-            ),
-            evictionPolicy: Schema.optional(
-              Schema.Literals(["Deallocate", "Delete"]),
-            ),
-            billingProfile: Schema.optional(
-              Schema.Struct({
-                maxPrice: Schema.optional(Schema.Number),
-              }),
-            ),
-            scheduledEventsProfile: Schema.optional(
-              Schema.Struct({
-                terminateNotificationProfile: Schema.optional(
-                  Schema.Struct({
-                    notBeforeTimeout: Schema.optional(Schema.String),
-                    enable: Schema.optional(Schema.Boolean),
-                  }),
-                ),
-                osImageNotificationProfile: Schema.optional(
-                  Schema.Struct({
-                    notBeforeTimeout: Schema.optional(Schema.String),
-                    enable: Schema.optional(Schema.Boolean),
-                  }),
-                ),
-              }),
-            ),
-            userData: Schema.optional(Schema.String),
-            capacityReservation: Schema.optional(
-              Schema.Struct({
-                capacityReservationGroup: Schema.optional(
-                  Schema.Struct({
-                    id: Schema.optional(Schema.String),
-                  }),
-                ),
-              }),
-            ),
-            applicationProfile: Schema.optional(
-              Schema.Struct({
-                galleryApplications: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      tags: Schema.optional(Schema.String),
-                      order: Schema.optional(Schema.Number),
-                      packageReferenceId: Schema.String,
-                      configurationReference: Schema.optional(Schema.String),
-                      treatFailureAsDeploymentFailure: Schema.optional(
-                        Schema.Boolean,
-                      ),
-                      enableAutomaticUpgrade: Schema.optional(Schema.Boolean),
-                    }),
-                  ),
-                ),
-              }),
-            ),
-            hardwareProfile: Schema.optional(
-              Schema.Struct({
-                vmSizeProperties: Schema.optional(
-                  Schema.Struct({
-                    vCPUsAvailable: Schema.optional(Schema.Number),
-                    vCPUsPerCore: Schema.optional(Schema.Number),
-                  }),
-                ),
-              }),
-            ),
-            serviceArtifactReference: Schema.optional(
-              Schema.Struct({
-                id: Schema.optional(Schema.String),
-              }),
-            ),
-            securityPostureReference: Schema.optional(
-              Schema.Struct({
-                id: Schema.String,
-                excludeExtensions: Schema.optional(Schema.Array(Schema.String)),
-                isOverridable: Schema.optional(Schema.Boolean),
-              }),
-            ),
-            timeCreated: Schema.optional(Schema.String),
-          }),
-        ),
-        provisioningState: Schema.optional(Schema.String),
-        overprovision: Schema.optional(Schema.Boolean),
-        doNotRunExtensionsOnOverprovisionedVMs: Schema.optional(Schema.Boolean),
-        uniqueId: Schema.optional(Schema.String),
-        singlePlacementGroup: Schema.optional(Schema.Boolean),
-        zoneBalance: Schema.optional(Schema.Boolean),
-        platformFaultDomainCount: Schema.optional(Schema.Number),
-        proximityPlacementGroup: Schema.optional(
-          Schema.Struct({
-            id: Schema.optional(Schema.String),
-          }),
-        ),
-        hostGroup: Schema.optional(
-          Schema.Struct({
-            id: Schema.optional(Schema.String),
-          }),
-        ),
-        additionalCapabilities: Schema.optional(
-          Schema.Struct({
-            ultraSSDEnabled: Schema.optional(Schema.Boolean),
-            hibernationEnabled: Schema.optional(Schema.Boolean),
-            enableFips1403Encryption: Schema.optional(Schema.Boolean),
-          }),
-        ),
-        scaleInPolicy: Schema.optional(
-          Schema.Struct({
-            rules: Schema.optional(
-              Schema.Array(
-                Schema.Literals(["Default", "OldestVM", "NewestVM"]),
-              ),
-            ),
-            forceDeletion: Schema.optional(Schema.Boolean),
-            prioritizeUnhealthyVMs: Schema.optional(Schema.Boolean),
-          }),
-        ),
-        orchestrationMode: Schema.optional(
-          Schema.Literals(["Uniform", "Flexible"]),
-        ),
-        spotRestorePolicy: Schema.optional(
-          Schema.Struct({
-            enabled: Schema.optional(Schema.Boolean),
-            restoreTimeout: Schema.optional(Schema.String),
-          }),
-        ),
-        priorityMixPolicy: Schema.optional(
-          Schema.Struct({
-            baseRegularPriorityCount: Schema.optional(Schema.Number),
-            regularPriorityPercentageAboveBase: Schema.optional(Schema.Number),
-          }),
-        ),
-        timeCreated: Schema.optional(Schema.String),
-        constrainedMaximumCapacity: Schema.optional(Schema.Boolean),
-        resiliencyPolicy: Schema.optional(
-          Schema.Struct({
-            resilientVMCreationPolicy: Schema.optional(
-              Schema.Struct({
-                enabled: Schema.optional(Schema.Boolean),
-              }),
-            ),
-            resilientVMDeletionPolicy: Schema.optional(
-              Schema.Struct({
-                enabled: Schema.optional(Schema.Boolean),
-              }),
-            ),
-            automaticZoneRebalancingPolicy: Schema.optional(
-              Schema.Struct({
-                enabled: Schema.optional(Schema.Boolean),
-                rebalanceStrategy: Schema.optional(
-                  Schema.Literals(["Recreate"]),
-                ),
-                rebalanceBehavior: Schema.optional(
-                  Schema.Literals(["CreateBeforeDelete"]),
-                ),
-              }),
-            ),
-            zoneAllocationPolicy: Schema.optional(
-              Schema.Struct({
-                maxZoneCount: Schema.optional(Schema.Number),
-                maxInstancePercentPerZonePolicy: Schema.optional(
-                  Schema.Struct({
-                    enabled: Schema.optional(Schema.Boolean),
-                    value: Schema.optional(Schema.Number),
-                  }),
-                ),
-              }),
-            ),
-          }),
-        ),
-        zonalPlatformFaultDomainAlignMode: Schema.optional(
-          Schema.Literals(["Aligned", "Unaligned"]),
-        ),
-        skuProfile: Schema.optional(
-          Schema.Struct({
-            vmSizes: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  name: Schema.optional(Schema.String),
-                  rank: Schema.optional(Schema.Number),
-                }),
-              ),
-            ),
-            allocationStrategy: Schema.optional(
-              Schema.Literals([
-                "LowestPrice",
-                "CapacityOptimized",
-                "Prioritized",
-              ]),
-            ),
-          }),
-        ),
-        highSpeedInterconnectPlacement: Schema.optional(
-          Schema.Literals(["None", "Trunk"]),
-        ),
-      }),
+      Schema.suspend(() => VirtualMachineScaleSetPropertiesSchema),
     ),
     identity: Schema.optional(
-      Schema.Struct({
-        principalId: Schema.optional(Schema.String),
-        tenantId: Schema.optional(Schema.String),
-        type: Schema.optional(
-          Schema.Literals([
-            "SystemAssigned",
-            "UserAssigned",
-            "SystemAssigned, UserAssigned",
-            "None",
-          ]),
-        ),
-        userAssignedIdentities: Schema.optional(
-          Schema.Record(
-            Schema.String,
-            Schema.Struct({
-              principalId: Schema.optional(Schema.String),
-              clientId: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-      }),
+      Schema.suspend(() => VirtualMachineScaleSetIdentitySchema),
     ),
     zones: Schema.optional(Schema.Array(Schema.String)),
     extendedLocation: Schema.optional(
       Schema.Struct({
         name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.Literals(["EdgeZone"])),
+        type: Schema.optional(Schema.suspend(() => ExtendedLocationTypeSchema)),
       }),
     ),
     etag: Schema.optional(Schema.String),
-    placement: Schema.optional(
-      Schema.Struct({
-        zonePlacementPolicy: Schema.optional(Schema.Literals(["Any", "Auto"])),
-        includeZones: Schema.optional(Schema.Array(Schema.String)),
-        excludeZones: Schema.optional(Schema.Array(Schema.String)),
-      }),
-    ),
+    placement: Schema.optional(Schema.suspend(() => PlacementSchema)),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     location: Schema.String,
   }).pipe(
@@ -8872,23 +8419,29 @@ export type VirtualMachineScaleSetsCreateOrUpdateInput =
 // Output Schema
 export const VirtualMachineScaleSetsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    sku: Schema.optional(Schema.suspend(() => SkuSchema)),
+    plan: Schema.optional(Schema.suspend(() => PlanSchema)),
+    properties: Schema.optional(
+      Schema.suspend(() => VirtualMachineScaleSetPropertiesSchema),
+    ),
+    identity: Schema.optional(
+      Schema.suspend(() => VirtualMachineScaleSetIdentitySchema),
+    ),
+    zones: Schema.optional(Schema.Array(Schema.String)),
+    extendedLocation: Schema.optional(
+      Schema.Struct({
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.suspend(() => ExtendedLocationTypeSchema)),
+      }),
+    ),
+    etag: Schema.optional(Schema.String),
+    placement: Schema.optional(Schema.suspend(() => PlacementSchema)),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type VirtualMachineScaleSetsCreateOrUpdateOutput =
   typeof VirtualMachineScaleSetsCreateOrUpdateOutput.Type;
@@ -9095,23 +8648,29 @@ export type VirtualMachineScaleSetsGetInput =
 // Output Schema
 export const VirtualMachineScaleSetsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    sku: Schema.optional(Schema.suspend(() => SkuSchema)),
+    plan: Schema.optional(Schema.suspend(() => PlanSchema)),
+    properties: Schema.optional(
+      Schema.suspend(() => VirtualMachineScaleSetPropertiesSchema),
+    ),
+    identity: Schema.optional(
+      Schema.suspend(() => VirtualMachineScaleSetIdentitySchema),
+    ),
+    zones: Schema.optional(Schema.Array(Schema.String)),
+    extendedLocation: Schema.optional(
+      Schema.Struct({
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.suspend(() => ExtendedLocationTypeSchema)),
+      }),
+    ),
+    etag: Schema.optional(Schema.String),
+    placement: Schema.optional(Schema.suspend(() => PlacementSchema)),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type VirtualMachineScaleSetsGetOutput =
   typeof VirtualMachineScaleSetsGetOutput.Type;
@@ -9152,58 +8711,20 @@ export type VirtualMachineScaleSetsGetInstanceViewInput =
 export const VirtualMachineScaleSetsGetInstanceViewOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     virtualMachine: Schema.optional(
-      Schema.Struct({
-        statusesSummary: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              code: Schema.optional(Schema.String),
-              count: Schema.optional(Schema.Number),
-            }),
-          ),
-        ),
-      }),
+      Schema.suspend(
+        () => VirtualMachineScaleSetInstanceViewStatusesSummarySchema,
+      ),
     ),
     extensions: Schema.optional(
       Schema.Array(
-        Schema.Struct({
-          name: Schema.optional(Schema.String),
-          statusesSummary: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                code: Schema.optional(Schema.String),
-                count: Schema.optional(Schema.Number),
-              }),
-            ),
-          ),
-        }),
+        Schema.suspend(() => VirtualMachineScaleSetVMExtensionsSummarySchema),
       ),
     ),
     statuses: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          code: Schema.optional(Schema.String),
-          level: Schema.optional(Schema.Literals(["Info", "Warning", "Error"])),
-          displayStatus: Schema.optional(Schema.String),
-          message: Schema.optional(Schema.String),
-          time: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => InstanceViewStatusSchema)),
     ),
     orchestrationServices: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          serviceName: Schema.optional(
-            Schema.Literals(["AutomaticRepairs", "AutomaticZoneRebalancing"]),
-          ),
-          serviceState: Schema.optional(
-            Schema.Literals(["NotRunning", "Running", "Suspended"]),
-          ),
-          latestOperationStatus: Schema.optional(
-            Schema.Literals(["InProgress", "Completed"]),
-          ),
-          lastStatusChangeTime: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => OrchestrationServiceSummarySchema)),
     ),
   });
 export type VirtualMachineScaleSetsGetInstanceViewOutput =
@@ -9243,96 +8764,7 @@ export type VirtualMachineScaleSetsGetOSUpgradeHistoryInput =
 export const VirtualMachineScaleSetsGetOSUpgradeHistoryOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
-      Schema.Struct({
-        properties: Schema.optional(
-          Schema.Struct({
-            runningStatus: Schema.optional(
-              Schema.Struct({
-                code: Schema.optional(
-                  Schema.Literals([
-                    "RollingForward",
-                    "Cancelled",
-                    "Completed",
-                    "Faulted",
-                  ]),
-                ),
-                startTime: Schema.optional(Schema.String),
-                endTime: Schema.optional(Schema.String),
-              }),
-            ),
-            progress: Schema.optional(
-              Schema.Struct({
-                successfulInstanceCount: Schema.optional(Schema.Number),
-                failedInstanceCount: Schema.optional(Schema.Number),
-                inProgressInstanceCount: Schema.optional(Schema.Number),
-                pendingInstanceCount: Schema.optional(Schema.Number),
-              }),
-            ),
-            error: Schema.optional(
-              Schema.Struct({
-                details: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      code: Schema.optional(Schema.String),
-                      target: Schema.optional(Schema.String),
-                      message: Schema.optional(Schema.String),
-                    }),
-                  ),
-                ),
-                innererror: Schema.optional(
-                  Schema.Struct({
-                    exceptiontype: Schema.optional(Schema.String),
-                    errordetail: Schema.optional(Schema.String),
-                  }),
-                ),
-                code: Schema.optional(Schema.String),
-                target: Schema.optional(Schema.String),
-                message: Schema.optional(Schema.String),
-              }),
-            ),
-            startedBy: Schema.optional(
-              Schema.Literals(["Unknown", "User", "Platform"]),
-            ),
-            targetImageReference: Schema.optional(
-              Schema.Struct({
-                id: Schema.optional(Schema.String),
-              }),
-            ),
-            rollbackInfo: Schema.optional(
-              Schema.Struct({
-                successfullyRolledbackInstanceCount: Schema.optional(
-                  Schema.Number,
-                ),
-                failedRolledbackInstanceCount: Schema.optional(Schema.Number),
-                rollbackError: Schema.optional(
-                  Schema.Struct({
-                    details: Schema.optional(
-                      Schema.Array(
-                        Schema.Struct({
-                          code: Schema.optional(Schema.String),
-                          target: Schema.optional(Schema.String),
-                          message: Schema.optional(Schema.String),
-                        }),
-                      ),
-                    ),
-                    innererror: Schema.optional(
-                      Schema.Struct({
-                        exceptiontype: Schema.optional(Schema.String),
-                        errordetail: Schema.optional(Schema.String),
-                      }),
-                    ),
-                    code: Schema.optional(Schema.String),
-                    target: Schema.optional(Schema.String),
-                    message: Schema.optional(Schema.String),
-                  }),
-                ),
-              }),
-            ),
-          }),
-        ),
-        type: Schema.optional(Schema.String),
-        location: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(() => UpgradeOperationHistoricalStatusInfoSchema),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -9371,37 +8803,7 @@ export type VirtualMachineScaleSetsListInput =
 // Output Schema
 export const VirtualMachineScaleSetsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => VirtualMachineScaleSetSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type VirtualMachineScaleSetsListOutput =
@@ -9438,37 +8840,7 @@ export type VirtualMachineScaleSetsListAllInput =
 // Output Schema
 export const VirtualMachineScaleSetsListAllOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => VirtualMachineScaleSetSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type VirtualMachineScaleSetsListAllOutput =
@@ -9504,37 +8876,7 @@ export type VirtualMachineScaleSetsListByLocationInput =
 // Output Schema
 export const VirtualMachineScaleSetsListByLocationOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => VirtualMachineScaleSetSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type VirtualMachineScaleSetsListByLocationOutput =
@@ -9572,26 +8914,7 @@ export type VirtualMachineScaleSetsListSkusInput =
 // Output Schema
 export const VirtualMachineScaleSetsListSkusOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        resourceType: Schema.optional(Schema.String),
-        sku: Schema.optional(
-          Schema.Struct({
-            name: Schema.optional(Schema.String),
-            tier: Schema.optional(Schema.String),
-            capacity: Schema.optional(Schema.Number),
-          }),
-        ),
-        capacity: Schema.optional(
-          Schema.Struct({
-            minimum: Schema.optional(Schema.Number),
-            maximum: Schema.optional(Schema.Number),
-            defaultCapacity: Schema.optional(Schema.Number),
-            scaleType: Schema.optional(Schema.Literals(["Automatic", "None"])),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => VirtualMachineScaleSetSkuSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type VirtualMachineScaleSetsListSkusOutput =
@@ -9887,9 +9210,7 @@ export const VirtualMachineScaleSetsScaleOutInput =
     vmScaleSetName: Schema.String.pipe(T.PathParam()),
     capacity: Schema.Number,
     properties: Schema.optional(
-      Schema.Struct({
-        zone: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(() => VMScaleSetScaleOutInputPropertiesSchema),
     ),
   }).pipe(
     T.Http({
@@ -9928,11 +9249,8 @@ export const VirtualMachineScaleSetsSetOrchestrationServiceStateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vmScaleSetName: Schema.String.pipe(T.PathParam()),
-    serviceName: Schema.Literals([
-      "AutomaticRepairs",
-      "AutomaticZoneRebalancing",
-    ]),
-    action: Schema.Literals(["Resume", "Suspend"]),
+    serviceName: Schema.suspend(() => OrchestrationServiceNamesSchema),
+    action: Schema.suspend(() => OrchestrationServiceStateActionSchema),
   }).pipe(
     T.Http({
       method: "POST",
@@ -10008,748 +9326,13 @@ export const VirtualMachineScaleSetsUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vmScaleSetName: Schema.String.pipe(T.PathParam()),
-    sku: Schema.optional(
-      Schema.Struct({
-        name: Schema.optional(Schema.String),
-        tier: Schema.optional(Schema.String),
-        capacity: Schema.optional(Schema.Number),
-      }),
-    ),
-    plan: Schema.optional(
-      Schema.Struct({
-        name: Schema.optional(Schema.String),
-        publisher: Schema.optional(Schema.String),
-        product: Schema.optional(Schema.String),
-        promotionCode: Schema.optional(Schema.String),
-      }),
-    ),
+    sku: Schema.optional(Schema.suspend(() => SkuSchema)),
+    plan: Schema.optional(Schema.suspend(() => PlanSchema)),
     properties: Schema.optional(
-      Schema.Struct({
-        upgradePolicy: Schema.optional(
-          Schema.Struct({
-            mode: Schema.optional(
-              Schema.Literals(["Automatic", "Manual", "Rolling"]),
-            ),
-            rollingUpgradePolicy: Schema.optional(
-              Schema.Struct({
-                maxBatchInstancePercent: Schema.optional(Schema.Number),
-                maxUnhealthyInstancePercent: Schema.optional(Schema.Number),
-                maxUnhealthyUpgradedInstancePercent: Schema.optional(
-                  Schema.Number,
-                ),
-                pauseTimeBetweenBatches: Schema.optional(Schema.String),
-                enableCrossZoneUpgrade: Schema.optional(Schema.Boolean),
-                prioritizeUnhealthyInstances: Schema.optional(Schema.Boolean),
-                rollbackFailedInstancesOnPolicyBreach: Schema.optional(
-                  Schema.Boolean,
-                ),
-                maxSurge: Schema.optional(Schema.Boolean),
-              }),
-            ),
-            automaticOSUpgradePolicy: Schema.optional(
-              Schema.Struct({
-                enableAutomaticOSUpgrade: Schema.optional(Schema.Boolean),
-                disableAutomaticRollback: Schema.optional(Schema.Boolean),
-                useRollingUpgradePolicy: Schema.optional(Schema.Boolean),
-                osRollingUpgradeDeferral: Schema.optional(Schema.Boolean),
-              }),
-            ),
-          }),
-        ),
-        automaticRepairsPolicy: Schema.optional(
-          Schema.Struct({
-            enabled: Schema.optional(Schema.Boolean),
-            gracePeriod: Schema.optional(Schema.String),
-            repairAction: Schema.optional(
-              Schema.Literals(["Replace", "Restart", "Reimage"]),
-            ),
-          }),
-        ),
-        virtualMachineProfile: Schema.optional(
-          Schema.Struct({
-            osProfile: Schema.optional(
-              Schema.Struct({
-                customData: Schema.optional(Schema.String),
-                windowsConfiguration: Schema.optional(
-                  Schema.Struct({
-                    provisionVMAgent: Schema.optional(Schema.Boolean),
-                    enableAutomaticUpdates: Schema.optional(Schema.Boolean),
-                    timeZone: Schema.optional(Schema.String),
-                    additionalUnattendContent: Schema.optional(
-                      Schema.Array(
-                        Schema.Struct({
-                          passName: Schema.optional(
-                            Schema.Literals(["OobeSystem"]),
-                          ),
-                          componentName: Schema.optional(
-                            Schema.Literals(["Microsoft-Windows-Shell-Setup"]),
-                          ),
-                          settingName: Schema.optional(
-                            Schema.Literals([
-                              "AutoLogon",
-                              "FirstLogonCommands",
-                            ]),
-                          ),
-                          content: Schema.optional(Schema.String),
-                        }),
-                      ),
-                    ),
-                    patchSettings: Schema.optional(
-                      Schema.Struct({
-                        patchMode: Schema.optional(
-                          Schema.Literals([
-                            "Manual",
-                            "AutomaticByOS",
-                            "AutomaticByPlatform",
-                          ]),
-                        ),
-                        enableHotpatching: Schema.optional(Schema.Boolean),
-                        assessmentMode: Schema.optional(
-                          Schema.Literals([
-                            "ImageDefault",
-                            "AutomaticByPlatform",
-                          ]),
-                        ),
-                        automaticByPlatformSettings: Schema.optional(
-                          Schema.Struct({
-                            rebootSetting: Schema.optional(
-                              Schema.Literals([
-                                "Unknown",
-                                "IfRequired",
-                                "Never",
-                                "Always",
-                              ]),
-                            ),
-                            bypassPlatformSafetyChecksOnUserSchedule:
-                              Schema.optional(Schema.Boolean),
-                          }),
-                        ),
-                      }),
-                    ),
-                    winRM: Schema.optional(
-                      Schema.Struct({
-                        listeners: Schema.optional(
-                          Schema.Array(
-                            Schema.Struct({
-                              protocol: Schema.optional(
-                                Schema.Literals(["Http", "Https"]),
-                              ),
-                              certificateUrl: Schema.optional(Schema.String),
-                            }),
-                          ),
-                        ),
-                      }),
-                    ),
-                    enableVMAgentPlatformUpdates: Schema.optional(
-                      Schema.Boolean,
-                    ),
-                  }),
-                ),
-                linuxConfiguration: Schema.optional(
-                  Schema.Struct({
-                    disablePasswordAuthentication: Schema.optional(
-                      Schema.Boolean,
-                    ),
-                    ssh: Schema.optional(
-                      Schema.Struct({
-                        publicKeys: Schema.optional(
-                          Schema.Array(
-                            Schema.Struct({
-                              path: Schema.optional(Schema.String),
-                              keyData: Schema.optional(Schema.String),
-                            }),
-                          ),
-                        ),
-                      }),
-                    ),
-                    provisionVMAgent: Schema.optional(Schema.Boolean),
-                    patchSettings: Schema.optional(
-                      Schema.Struct({
-                        patchMode: Schema.optional(
-                          Schema.Literals([
-                            "ImageDefault",
-                            "AutomaticByPlatform",
-                          ]),
-                        ),
-                        assessmentMode: Schema.optional(
-                          Schema.Literals([
-                            "ImageDefault",
-                            "AutomaticByPlatform",
-                          ]),
-                        ),
-                        automaticByPlatformSettings: Schema.optional(
-                          Schema.Struct({
-                            rebootSetting: Schema.optional(
-                              Schema.Literals([
-                                "Unknown",
-                                "IfRequired",
-                                "Never",
-                                "Always",
-                              ]),
-                            ),
-                            bypassPlatformSafetyChecksOnUserSchedule:
-                              Schema.optional(Schema.Boolean),
-                          }),
-                        ),
-                      }),
-                    ),
-                    enableVMAgentPlatformUpdates: Schema.optional(
-                      Schema.Boolean,
-                    ),
-                  }),
-                ),
-                secrets: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      sourceVault: Schema.optional(
-                        Schema.Struct({
-                          id: Schema.optional(Schema.String),
-                        }),
-                      ),
-                      vaultCertificates: Schema.optional(
-                        Schema.Array(
-                          Schema.Struct({
-                            certificateUrl: Schema.optional(Schema.String),
-                            certificateStore: Schema.optional(Schema.String),
-                          }),
-                        ),
-                      ),
-                    }),
-                  ),
-                ),
-              }),
-            ),
-            storageProfile: Schema.optional(
-              Schema.Struct({
-                imageReference: Schema.optional(
-                  Schema.Struct({
-                    id: Schema.optional(Schema.String),
-                  }),
-                ),
-                osDisk: Schema.optional(
-                  Schema.Struct({
-                    caching: Schema.optional(
-                      Schema.Literals(["None", "ReadOnly", "ReadWrite"]),
-                    ),
-                    writeAcceleratorEnabled: Schema.optional(Schema.Boolean),
-                    diffDiskSettings: Schema.optional(
-                      Schema.Struct({
-                        option: Schema.optional(Schema.Literals(["Local"])),
-                        placement: Schema.optional(
-                          Schema.Literals([
-                            "CacheDisk",
-                            "ResourceDisk",
-                            "NvmeDisk",
-                          ]),
-                        ),
-                      }),
-                    ),
-                    diskSizeGB: Schema.optional(Schema.Number),
-                    image: Schema.optional(
-                      Schema.Struct({
-                        uri: Schema.optional(Schema.String),
-                      }),
-                    ),
-                    vhdContainers: Schema.optional(Schema.Array(Schema.String)),
-                    managedDisk: Schema.optional(
-                      Schema.Struct({
-                        storageAccountType: Schema.optional(
-                          Schema.Literals([
-                            "Standard_LRS",
-                            "Premium_LRS",
-                            "StandardSSD_LRS",
-                            "UltraSSD_LRS",
-                            "Premium_ZRS",
-                            "StandardSSD_ZRS",
-                            "PremiumV2_LRS",
-                          ]),
-                        ),
-                        diskEncryptionSet: Schema.optional(
-                          Schema.Struct({
-                            id: Schema.optional(Schema.String),
-                          }),
-                        ),
-                        securityProfile: Schema.optional(
-                          Schema.Struct({
-                            securityEncryptionType: Schema.optional(
-                              Schema.Literals([
-                                "VMGuestStateOnly",
-                                "DiskWithVMGuestState",
-                                "NonPersistedTPM",
-                              ]),
-                            ),
-                            diskEncryptionSet: Schema.optional(
-                              Schema.Struct({
-                                id: Schema.optional(Schema.String),
-                              }),
-                            ),
-                          }),
-                        ),
-                      }),
-                    ),
-                    deleteOption: Schema.optional(
-                      Schema.Literals(["Delete", "Detach"]),
-                    ),
-                  }),
-                ),
-                dataDisks: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      name: Schema.optional(Schema.String),
-                      lun: Schema.Number,
-                      caching: Schema.optional(
-                        Schema.Literals(["None", "ReadOnly", "ReadWrite"]),
-                      ),
-                      writeAcceleratorEnabled: Schema.optional(Schema.Boolean),
-                      createOption: Schema.Literals([
-                        "FromImage",
-                        "Empty",
-                        "Attach",
-                        "Copy",
-                        "Restore",
-                      ]),
-                      diskSizeGB: Schema.optional(Schema.Number),
-                      managedDisk: Schema.optional(
-                        Schema.Struct({
-                          storageAccountType: Schema.optional(
-                            Schema.Literals([
-                              "Standard_LRS",
-                              "Premium_LRS",
-                              "StandardSSD_LRS",
-                              "UltraSSD_LRS",
-                              "Premium_ZRS",
-                              "StandardSSD_ZRS",
-                              "PremiumV2_LRS",
-                            ]),
-                          ),
-                          diskEncryptionSet: Schema.optional(
-                            Schema.Struct({
-                              id: Schema.optional(Schema.String),
-                            }),
-                          ),
-                          securityProfile: Schema.optional(
-                            Schema.Struct({
-                              securityEncryptionType: Schema.optional(
-                                Schema.Literals([
-                                  "VMGuestStateOnly",
-                                  "DiskWithVMGuestState",
-                                  "NonPersistedTPM",
-                                ]),
-                              ),
-                              diskEncryptionSet: Schema.optional(
-                                Schema.Struct({
-                                  id: Schema.optional(Schema.String),
-                                }),
-                              ),
-                            }),
-                          ),
-                        }),
-                      ),
-                      diskIOPSReadWrite: Schema.optional(Schema.Number),
-                      diskMBpsReadWrite: Schema.optional(Schema.Number),
-                      deleteOption: Schema.optional(
-                        Schema.Literals(["Delete", "Detach"]),
-                      ),
-                    }),
-                  ),
-                ),
-                diskControllerType: Schema.optional(
-                  Schema.Literals(["SCSI", "NVMe"]),
-                ),
-              }),
-            ),
-            networkProfile: Schema.optional(
-              Schema.Struct({
-                healthProbe: Schema.optional(
-                  Schema.Struct({
-                    id: Schema.optional(Schema.String),
-                  }),
-                ),
-                networkInterfaceConfigurations: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      name: Schema.optional(Schema.String),
-                      properties: Schema.optional(
-                        Schema.Struct({
-                          primary: Schema.optional(Schema.Boolean),
-                          enableAcceleratedNetworking: Schema.optional(
-                            Schema.Boolean,
-                          ),
-                          disableTcpStateTracking: Schema.optional(
-                            Schema.Boolean,
-                          ),
-                          enableFpga: Schema.optional(Schema.Boolean),
-                          networkSecurityGroup: Schema.optional(
-                            Schema.Struct({
-                              id: Schema.optional(Schema.String),
-                            }),
-                          ),
-                          dnsSettings: Schema.optional(
-                            Schema.Struct({
-                              dnsServers: Schema.optional(
-                                Schema.Array(Schema.String),
-                              ),
-                            }),
-                          ),
-                          ipConfigurations: Schema.optional(
-                            Schema.Array(
-                              Schema.Struct({
-                                name: Schema.optional(Schema.String),
-                                properties: Schema.optional(
-                                  Schema.Struct({
-                                    subnet: Schema.optional(
-                                      Schema.Struct({
-                                        id: Schema.optional(Schema.String),
-                                      }),
-                                    ),
-                                    primary: Schema.optional(Schema.Boolean),
-                                    publicIPAddressConfiguration:
-                                      Schema.optional(
-                                        Schema.Struct({
-                                          name: Schema.optional(Schema.String),
-                                          properties: Schema.optional(
-                                            Schema.Struct({
-                                              idleTimeoutInMinutes:
-                                                Schema.optional(Schema.Number),
-                                              dnsSettings: Schema.optional(
-                                                Schema.Struct({
-                                                  domainNameLabel:
-                                                    Schema.String,
-                                                  domainNameLabelScope:
-                                                    Schema.optional(
-                                                      Schema.Literals([
-                                                        "TenantReuse",
-                                                        "SubscriptionReuse",
-                                                        "ResourceGroupReuse",
-                                                        "NoReuse",
-                                                      ]),
-                                                    ),
-                                                }),
-                                              ),
-                                              publicIPPrefix: Schema.optional(
-                                                Schema.Struct({
-                                                  id: Schema.optional(
-                                                    Schema.String,
-                                                  ),
-                                                }),
-                                              ),
-                                              deleteOption: Schema.optional(
-                                                Schema.Literals([
-                                                  "Delete",
-                                                  "Detach",
-                                                ]),
-                                              ),
-                                            }),
-                                          ),
-                                          tags: Schema.optional(
-                                            Schema.Record(
-                                              Schema.String,
-                                              Schema.String,
-                                            ),
-                                          ),
-                                        }),
-                                      ),
-                                    privateIPAddressVersion: Schema.optional(
-                                      Schema.Literals(["IPv4", "IPv6"]),
-                                    ),
-                                    applicationGatewayBackendAddressPools:
-                                      Schema.optional(
-                                        Schema.Array(
-                                          Schema.Struct({
-                                            id: Schema.optional(Schema.String),
-                                          }),
-                                        ),
-                                      ),
-                                    applicationSecurityGroups: Schema.optional(
-                                      Schema.Array(
-                                        Schema.Struct({
-                                          id: Schema.optional(Schema.String),
-                                        }),
-                                      ),
-                                    ),
-                                    loadBalancerBackendAddressPools:
-                                      Schema.optional(
-                                        Schema.Array(
-                                          Schema.Struct({
-                                            id: Schema.optional(Schema.String),
-                                          }),
-                                        ),
-                                      ),
-                                    loadBalancerInboundNatPools:
-                                      Schema.optional(
-                                        Schema.Array(
-                                          Schema.Struct({
-                                            id: Schema.optional(Schema.String),
-                                          }),
-                                        ),
-                                      ),
-                                  }),
-                                ),
-                              }),
-                            ),
-                          ),
-                          enableIPForwarding: Schema.optional(Schema.Boolean),
-                          deleteOption: Schema.optional(
-                            Schema.Literals(["Delete", "Detach"]),
-                          ),
-                          auxiliaryMode: Schema.optional(
-                            Schema.Literals([
-                              "None",
-                              "AcceleratedConnections",
-                              "Floating",
-                            ]),
-                          ),
-                          auxiliarySku: Schema.optional(
-                            Schema.Literals(["None", "A1", "A2", "A4", "A8"]),
-                          ),
-                        }),
-                      ),
-                      tags: Schema.optional(
-                        Schema.Record(Schema.String, Schema.String),
-                      ),
-                    }),
-                  ),
-                ),
-                networkApiVersion: Schema.optional(
-                  Schema.Literals(["2020-11-01", "2022-11-01"]),
-                ),
-              }),
-            ),
-            securityPostureReference: Schema.optional(
-              Schema.Struct({
-                id: Schema.optional(Schema.String),
-                excludeExtensions: Schema.optional(Schema.Array(Schema.String)),
-                isOverridable: Schema.optional(Schema.Boolean),
-              }),
-            ),
-            securityProfile: Schema.optional(
-              Schema.Struct({
-                uefiSettings: Schema.optional(
-                  Schema.Struct({
-                    secureBootEnabled: Schema.optional(Schema.Boolean),
-                    vTpmEnabled: Schema.optional(Schema.Boolean),
-                  }),
-                ),
-                encryptionAtHost: Schema.optional(Schema.Boolean),
-                securityType: Schema.optional(
-                  Schema.Literals(["TrustedLaunch", "ConfidentialVM"]),
-                ),
-                encryptionIdentity: Schema.optional(
-                  Schema.Struct({
-                    userAssignedIdentityResourceId: Schema.optional(
-                      Schema.String,
-                    ),
-                  }),
-                ),
-                proxyAgentSettings: Schema.optional(
-                  Schema.Struct({
-                    enabled: Schema.optional(Schema.Boolean),
-                    mode: Schema.optional(
-                      Schema.Literals(["Audit", "Enforce"]),
-                    ),
-                    keyIncarnationId: Schema.optional(Schema.Number),
-                    wireServer: Schema.optional(
-                      Schema.Struct({
-                        mode: Schema.optional(
-                          Schema.Literals(["Audit", "Enforce", "Disabled"]),
-                        ),
-                        inVMAccessControlProfileReferenceId: Schema.optional(
-                          Schema.String,
-                        ),
-                      }),
-                    ),
-                    imds: Schema.optional(
-                      Schema.Struct({
-                        mode: Schema.optional(
-                          Schema.Literals(["Audit", "Enforce", "Disabled"]),
-                        ),
-                        inVMAccessControlProfileReferenceId: Schema.optional(
-                          Schema.String,
-                        ),
-                      }),
-                    ),
-                    addProxyAgentExtension: Schema.optional(Schema.Boolean),
-                  }),
-                ),
-              }),
-            ),
-            diagnosticsProfile: Schema.optional(
-              Schema.Struct({
-                bootDiagnostics: Schema.optional(
-                  Schema.Struct({
-                    enabled: Schema.optional(Schema.Boolean),
-                    storageUri: Schema.optional(Schema.String),
-                  }),
-                ),
-              }),
-            ),
-            extensionProfile: Schema.optional(
-              Schema.Struct({
-                extensions: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      id: Schema.optional(Schema.String),
-                    }),
-                  ),
-                ),
-                extensionsTimeBudget: Schema.optional(Schema.String),
-              }),
-            ),
-            licenseType: Schema.optional(Schema.String),
-            billingProfile: Schema.optional(
-              Schema.Struct({
-                maxPrice: Schema.optional(Schema.Number),
-              }),
-            ),
-            scheduledEventsProfile: Schema.optional(
-              Schema.Struct({
-                terminateNotificationProfile: Schema.optional(
-                  Schema.Struct({
-                    notBeforeTimeout: Schema.optional(Schema.String),
-                    enable: Schema.optional(Schema.Boolean),
-                  }),
-                ),
-                osImageNotificationProfile: Schema.optional(
-                  Schema.Struct({
-                    notBeforeTimeout: Schema.optional(Schema.String),
-                    enable: Schema.optional(Schema.Boolean),
-                  }),
-                ),
-              }),
-            ),
-            userData: Schema.optional(Schema.String),
-            hardwareProfile: Schema.optional(
-              Schema.Struct({
-                vmSizeProperties: Schema.optional(
-                  Schema.Struct({
-                    vCPUsAvailable: Schema.optional(Schema.Number),
-                    vCPUsPerCore: Schema.optional(Schema.Number),
-                  }),
-                ),
-              }),
-            ),
-          }),
-        ),
-        overprovision: Schema.optional(Schema.Boolean),
-        doNotRunExtensionsOnOverprovisionedVMs: Schema.optional(Schema.Boolean),
-        singlePlacementGroup: Schema.optional(Schema.Boolean),
-        additionalCapabilities: Schema.optional(
-          Schema.Struct({
-            ultraSSDEnabled: Schema.optional(Schema.Boolean),
-            hibernationEnabled: Schema.optional(Schema.Boolean),
-            enableFips1403Encryption: Schema.optional(Schema.Boolean),
-          }),
-        ),
-        scaleInPolicy: Schema.optional(
-          Schema.Struct({
-            rules: Schema.optional(
-              Schema.Array(
-                Schema.Literals(["Default", "OldestVM", "NewestVM"]),
-              ),
-            ),
-            forceDeletion: Schema.optional(Schema.Boolean),
-            prioritizeUnhealthyVMs: Schema.optional(Schema.Boolean),
-          }),
-        ),
-        proximityPlacementGroup: Schema.optional(
-          Schema.Struct({
-            id: Schema.optional(Schema.String),
-          }),
-        ),
-        priorityMixPolicy: Schema.optional(
-          Schema.Struct({
-            baseRegularPriorityCount: Schema.optional(Schema.Number),
-            regularPriorityPercentageAboveBase: Schema.optional(Schema.Number),
-          }),
-        ),
-        spotRestorePolicy: Schema.optional(
-          Schema.Struct({
-            enabled: Schema.optional(Schema.Boolean),
-            restoreTimeout: Schema.optional(Schema.String),
-          }),
-        ),
-        resiliencyPolicy: Schema.optional(
-          Schema.Struct({
-            resilientVMCreationPolicy: Schema.optional(
-              Schema.Struct({
-                enabled: Schema.optional(Schema.Boolean),
-              }),
-            ),
-            resilientVMDeletionPolicy: Schema.optional(
-              Schema.Struct({
-                enabled: Schema.optional(Schema.Boolean),
-              }),
-            ),
-            automaticZoneRebalancingPolicy: Schema.optional(
-              Schema.Struct({
-                enabled: Schema.optional(Schema.Boolean),
-                rebalanceStrategy: Schema.optional(
-                  Schema.Literals(["Recreate"]),
-                ),
-                rebalanceBehavior: Schema.optional(
-                  Schema.Literals(["CreateBeforeDelete"]),
-                ),
-              }),
-            ),
-            zoneAllocationPolicy: Schema.optional(
-              Schema.Struct({
-                maxZoneCount: Schema.optional(Schema.Number),
-                maxInstancePercentPerZonePolicy: Schema.optional(
-                  Schema.Struct({
-                    enabled: Schema.optional(Schema.Boolean),
-                    value: Schema.optional(Schema.Number),
-                  }),
-                ),
-              }),
-            ),
-          }),
-        ),
-        zonalPlatformFaultDomainAlignMode: Schema.optional(
-          Schema.Literals(["Aligned", "Unaligned"]),
-        ),
-        skuProfile: Schema.optional(
-          Schema.Struct({
-            vmSizes: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  name: Schema.optional(Schema.String),
-                  rank: Schema.optional(Schema.Number),
-                }),
-              ),
-            ),
-            allocationStrategy: Schema.optional(
-              Schema.Literals([
-                "LowestPrice",
-                "CapacityOptimized",
-                "Prioritized",
-              ]),
-            ),
-          }),
-        ),
-      }),
+      Schema.suspend(() => VirtualMachineScaleSetUpdatePropertiesSchema),
     ),
     identity: Schema.optional(
-      Schema.Struct({
-        principalId: Schema.optional(Schema.String),
-        tenantId: Schema.optional(Schema.String),
-        type: Schema.optional(
-          Schema.Literals([
-            "SystemAssigned",
-            "UserAssigned",
-            "SystemAssigned, UserAssigned",
-            "None",
-          ]),
-        ),
-        userAssignedIdentities: Schema.optional(
-          Schema.Record(
-            Schema.String,
-            Schema.Struct({
-              principalId: Schema.optional(Schema.String),
-              clientId: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-      }),
+      Schema.suspend(() => VirtualMachineScaleSetIdentitySchema),
     ),
     zones: Schema.optional(Schema.Array(Schema.String)),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
@@ -10767,23 +9350,29 @@ export type VirtualMachineScaleSetsUpdateInput =
 // Output Schema
 export const VirtualMachineScaleSetsUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    sku: Schema.optional(Schema.suspend(() => SkuSchema)),
+    plan: Schema.optional(Schema.suspend(() => PlanSchema)),
+    properties: Schema.optional(
+      Schema.suspend(() => VirtualMachineScaleSetPropertiesSchema),
+    ),
+    identity: Schema.optional(
+      Schema.suspend(() => VirtualMachineScaleSetIdentitySchema),
+    ),
+    zones: Schema.optional(Schema.Array(Schema.String)),
+    extendedLocation: Schema.optional(
+      Schema.Struct({
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.suspend(() => ExtendedLocationTypeSchema)),
+      }),
+    ),
+    etag: Schema.optional(Schema.String),
+    placement: Schema.optional(Schema.suspend(() => PlacementSchema)),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type VirtualMachineScaleSetsUpdateOutput =
   typeof VirtualMachineScaleSetsUpdateOutput.Type;
@@ -10851,60 +9440,7 @@ export const VirtualMachineScaleSetVMExtensionsCreateOrUpdateInput =
     instanceId: Schema.String.pipe(T.PathParam()),
     vmExtensionName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        forceUpdateTag: Schema.optional(Schema.String),
-        publisher: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        typeHandlerVersion: Schema.optional(Schema.String),
-        autoUpgradeMinorVersion: Schema.optional(Schema.Boolean),
-        enableAutomaticUpgrade: Schema.optional(Schema.Boolean),
-        settings: Schema.optional(Schema.Unknown),
-        protectedSettings: Schema.optional(Schema.Unknown),
-        provisioningState: Schema.optional(Schema.String),
-        instanceView: Schema.optional(
-          Schema.Struct({
-            name: Schema.optional(Schema.String),
-            type: Schema.optional(Schema.String),
-            typeHandlerVersion: Schema.optional(Schema.String),
-            substatuses: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  code: Schema.optional(Schema.String),
-                  level: Schema.optional(
-                    Schema.Literals(["Info", "Warning", "Error"]),
-                  ),
-                  displayStatus: Schema.optional(Schema.String),
-                  message: Schema.optional(Schema.String),
-                  time: Schema.optional(Schema.String),
-                }),
-              ),
-            ),
-            statuses: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  code: Schema.optional(Schema.String),
-                  level: Schema.optional(
-                    Schema.Literals(["Info", "Warning", "Error"]),
-                  ),
-                  displayStatus: Schema.optional(Schema.String),
-                  message: Schema.optional(Schema.String),
-                  time: Schema.optional(Schema.String),
-                }),
-              ),
-            ),
-          }),
-        ),
-        suppressFailures: Schema.optional(Schema.Boolean),
-        protectedSettingsFromKeyVault: Schema.optional(
-          Schema.Struct({
-            secretUrl: Schema.String,
-            sourceVault: Schema.Struct({
-              id: Schema.optional(Schema.String),
-            }),
-          }),
-        ),
-        provisionAfterExtensions: Schema.optional(Schema.Array(Schema.String)),
-      }),
+      Schema.suspend(() => VirtualMachineExtensionPropertiesSchema),
     ),
     location: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -10924,6 +9460,12 @@ export type VirtualMachineScaleSetVMExtensionsCreateOrUpdateInput =
 // Output Schema
 export const VirtualMachineScaleSetVMExtensionsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => VirtualMachineExtensionPropertiesSchema),
+    ),
+    location: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
   });
 export type VirtualMachineScaleSetVMExtensionsCreateOrUpdateOutput =
@@ -11008,6 +9550,12 @@ export type VirtualMachineScaleSetVMExtensionsGetInput =
 // Output Schema
 export const VirtualMachineScaleSetVMExtensionsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => VirtualMachineExtensionPropertiesSchema),
+    ),
+    location: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
   });
 export type VirtualMachineScaleSetVMExtensionsGetOutput =
@@ -11053,9 +9601,7 @@ export const VirtualMachineScaleSetVMExtensionsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-        }),
+        Schema.suspend(() => VirtualMachineScaleSetVMExtensionSchema),
       ),
     ),
   });
@@ -11089,25 +9635,7 @@ export const VirtualMachineScaleSetVMExtensionsUpdateInput =
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
     properties: Schema.optional(
-      Schema.Struct({
-        forceUpdateTag: Schema.optional(Schema.String),
-        publisher: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        typeHandlerVersion: Schema.optional(Schema.String),
-        autoUpgradeMinorVersion: Schema.optional(Schema.Boolean),
-        enableAutomaticUpgrade: Schema.optional(Schema.Boolean),
-        settings: Schema.optional(Schema.Unknown),
-        protectedSettings: Schema.optional(Schema.Unknown),
-        suppressFailures: Schema.optional(Schema.Boolean),
-        protectedSettingsFromKeyVault: Schema.optional(
-          Schema.Struct({
-            secretUrl: Schema.String,
-            sourceVault: Schema.Struct({
-              id: Schema.optional(Schema.String),
-            }),
-          }),
-        ),
-      }),
+      Schema.suspend(() => VirtualMachineExtensionUpdatePropertiesSchema),
     ),
     id: Schema.optional(Schema.String),
   }).pipe(
@@ -11124,6 +9652,12 @@ export type VirtualMachineScaleSetVMExtensionsUpdateInput =
 // Output Schema
 export const VirtualMachineScaleSetVMExtensionsUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => VirtualMachineExtensionPropertiesSchema),
+    ),
+    location: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
   });
 export type VirtualMachineScaleSetVMExtensionsUpdateOutput =
@@ -11154,95 +9688,7 @@ export const VirtualMachineScaleSetVMRunCommandsCreateOrUpdateInput =
     instanceId: Schema.String.pipe(T.PathParam()),
     runCommandName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        source: Schema.optional(
-          Schema.Struct({
-            script: Schema.optional(Schema.String),
-            scriptUri: Schema.optional(Schema.String),
-            commandId: Schema.optional(Schema.String),
-            scriptUriManagedIdentity: Schema.optional(
-              Schema.Struct({
-                clientId: Schema.optional(Schema.String),
-                objectId: Schema.optional(Schema.String),
-              }),
-            ),
-            scriptShell: Schema.optional(
-              Schema.Literals(["Default", "Powershell7"]),
-            ),
-            galleryScriptReferenceId: Schema.optional(Schema.String),
-          }),
-        ),
-        parameters: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              name: Schema.String,
-              value: Schema.String,
-            }),
-          ),
-        ),
-        protectedParameters: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              name: Schema.String,
-              value: Schema.String,
-            }),
-          ),
-        ),
-        asyncExecution: Schema.optional(Schema.Boolean),
-        runAsUser: Schema.optional(Schema.String),
-        runAsPassword: Schema.optional(SensitiveString),
-        timeoutInSeconds: Schema.optional(Schema.Number),
-        outputBlobUri: Schema.optional(Schema.String),
-        errorBlobUri: Schema.optional(Schema.String),
-        outputBlobManagedIdentity: Schema.optional(
-          Schema.Struct({
-            clientId: Schema.optional(Schema.String),
-            objectId: Schema.optional(Schema.String),
-          }),
-        ),
-        errorBlobManagedIdentity: Schema.optional(
-          Schema.Struct({
-            clientId: Schema.optional(Schema.String),
-            objectId: Schema.optional(Schema.String),
-          }),
-        ),
-        provisioningState: Schema.optional(Schema.String),
-        instanceView: Schema.optional(
-          Schema.Struct({
-            executionState: Schema.optional(
-              Schema.Literals([
-                "Unknown",
-                "Pending",
-                "Running",
-                "Failed",
-                "Succeeded",
-                "TimedOut",
-                "Canceled",
-              ]),
-            ),
-            executionMessage: Schema.optional(Schema.String),
-            exitCode: Schema.optional(Schema.Number),
-            output: Schema.optional(Schema.String),
-            error: Schema.optional(Schema.String),
-            startTime: Schema.optional(Schema.String),
-            endTime: Schema.optional(Schema.String),
-            statuses: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  code: Schema.optional(Schema.String),
-                  level: Schema.optional(
-                    Schema.Literals(["Info", "Warning", "Error"]),
-                  ),
-                  displayStatus: Schema.optional(Schema.String),
-                  message: Schema.optional(Schema.String),
-                  time: Schema.optional(Schema.String),
-                }),
-              ),
-            ),
-          }),
-        ),
-        treatFailureAsDeploymentFailure: Schema.optional(Schema.Boolean),
-      }),
+      Schema.suspend(() => VirtualMachineRunCommandPropertiesSchema),
     ),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     location: Schema.String,
@@ -11260,23 +9706,15 @@ export type VirtualMachineScaleSetVMRunCommandsCreateOrUpdateInput =
 // Output Schema
 export const VirtualMachineScaleSetVMRunCommandsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => VirtualMachineRunCommandPropertiesSchema),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type VirtualMachineScaleSetVMRunCommandsCreateOrUpdateOutput =
   typeof VirtualMachineScaleSetVMRunCommandsCreateOrUpdateOutput.Type;
@@ -11360,23 +9798,15 @@ export type VirtualMachineScaleSetVMRunCommandsGetInput =
 // Output Schema
 export const VirtualMachineScaleSetVMRunCommandsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => VirtualMachineRunCommandPropertiesSchema),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type VirtualMachineScaleSetVMRunCommandsGetOutput =
   typeof VirtualMachineScaleSetVMRunCommandsGetOutput.Type;
@@ -11419,37 +9849,7 @@ export type VirtualMachineScaleSetVMRunCommandsListInput =
 // Output Schema
 export const VirtualMachineScaleSetVMRunCommandsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => VirtualMachineRunCommandSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type VirtualMachineScaleSetVMRunCommandsListOutput =
@@ -11480,95 +9880,7 @@ export const VirtualMachineScaleSetVMRunCommandsUpdateInput =
     instanceId: Schema.String.pipe(T.PathParam()),
     runCommandName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        source: Schema.optional(
-          Schema.Struct({
-            script: Schema.optional(Schema.String),
-            scriptUri: Schema.optional(Schema.String),
-            commandId: Schema.optional(Schema.String),
-            scriptUriManagedIdentity: Schema.optional(
-              Schema.Struct({
-                clientId: Schema.optional(Schema.String),
-                objectId: Schema.optional(Schema.String),
-              }),
-            ),
-            scriptShell: Schema.optional(
-              Schema.Literals(["Default", "Powershell7"]),
-            ),
-            galleryScriptReferenceId: Schema.optional(Schema.String),
-          }),
-        ),
-        parameters: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              name: Schema.String,
-              value: Schema.String,
-            }),
-          ),
-        ),
-        protectedParameters: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              name: Schema.String,
-              value: Schema.String,
-            }),
-          ),
-        ),
-        asyncExecution: Schema.optional(Schema.Boolean),
-        runAsUser: Schema.optional(Schema.String),
-        runAsPassword: Schema.optional(SensitiveString),
-        timeoutInSeconds: Schema.optional(Schema.Number),
-        outputBlobUri: Schema.optional(Schema.String),
-        errorBlobUri: Schema.optional(Schema.String),
-        outputBlobManagedIdentity: Schema.optional(
-          Schema.Struct({
-            clientId: Schema.optional(Schema.String),
-            objectId: Schema.optional(Schema.String),
-          }),
-        ),
-        errorBlobManagedIdentity: Schema.optional(
-          Schema.Struct({
-            clientId: Schema.optional(Schema.String),
-            objectId: Schema.optional(Schema.String),
-          }),
-        ),
-        provisioningState: Schema.optional(Schema.String),
-        instanceView: Schema.optional(
-          Schema.Struct({
-            executionState: Schema.optional(
-              Schema.Literals([
-                "Unknown",
-                "Pending",
-                "Running",
-                "Failed",
-                "Succeeded",
-                "TimedOut",
-                "Canceled",
-              ]),
-            ),
-            executionMessage: Schema.optional(Schema.String),
-            exitCode: Schema.optional(Schema.Number),
-            output: Schema.optional(Schema.String),
-            error: Schema.optional(Schema.String),
-            startTime: Schema.optional(Schema.String),
-            endTime: Schema.optional(Schema.String),
-            statuses: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  code: Schema.optional(Schema.String),
-                  level: Schema.optional(
-                    Schema.Literals(["Info", "Warning", "Error"]),
-                  ),
-                  displayStatus: Schema.optional(Schema.String),
-                  message: Schema.optional(Schema.String),
-                  time: Schema.optional(Schema.String),
-                }),
-              ),
-            ),
-          }),
-        ),
-        treatFailureAsDeploymentFailure: Schema.optional(Schema.Boolean),
-      }),
+      Schema.suspend(() => VirtualMachineRunCommandPropertiesSchema),
     ),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
@@ -11585,23 +9897,15 @@ export type VirtualMachineScaleSetVMRunCommandsUpdateInput =
 // Output Schema
 export const VirtualMachineScaleSetVMRunCommandsUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => VirtualMachineRunCommandPropertiesSchema),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type VirtualMachineScaleSetVMRunCommandsUpdateOutput =
   typeof VirtualMachineScaleSetVMRunCommandsUpdateOutput.Type;
@@ -11669,30 +9973,10 @@ export const VirtualMachineScaleSetVMsAttachDetachDataDisksInput =
     vmScaleSetName: Schema.String.pipe(T.PathParam()),
     instanceId: Schema.String.pipe(T.PathParam()),
     dataDisksToAttach: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          diskId: Schema.String,
-          lun: Schema.optional(Schema.Number),
-          caching: Schema.optional(
-            Schema.Literals(["None", "ReadOnly", "ReadWrite"]),
-          ),
-          deleteOption: Schema.optional(Schema.Literals(["Delete", "Detach"])),
-          diskEncryptionSet: Schema.optional(
-            Schema.Struct({
-              id: Schema.optional(Schema.String),
-            }),
-          ),
-          writeAcceleratorEnabled: Schema.optional(Schema.Boolean),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => DataDisksToAttachSchema)),
     ),
     dataDisksToDetach: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          diskId: Schema.String,
-          detachOption: Schema.optional(Schema.Literals(["ForceDetach"])),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => DataDisksToDetachSchema)),
     ),
   }).pipe(
     T.Http({
@@ -11708,120 +9992,14 @@ export type VirtualMachineScaleSetVMsAttachDetachDataDisksInput =
 // Output Schema
 export const VirtualMachineScaleSetVMsAttachDetachDataDisksOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    imageReference: Schema.optional(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-      }),
-    ),
-    osDisk: Schema.optional(
-      Schema.Struct({
-        osType: Schema.optional(Schema.Literals(["Windows", "Linux"])),
-        encryptionSettings: Schema.optional(
-          Schema.Struct({
-            diskEncryptionKey: Schema.optional(
-              Schema.Struct({
-                secretUrl: Schema.String,
-                sourceVault: Schema.Struct({
-                  id: Schema.optional(Schema.String),
-                }),
-              }),
-            ),
-            keyEncryptionKey: Schema.optional(
-              Schema.Struct({
-                keyUrl: Schema.String,
-                sourceVault: Schema.Struct({
-                  id: Schema.optional(Schema.String),
-                }),
-              }),
-            ),
-            enabled: Schema.optional(Schema.Boolean),
-          }),
-        ),
-        name: Schema.optional(Schema.String),
-        vhd: Schema.optional(
-          Schema.Struct({
-            uri: Schema.optional(Schema.String),
-          }),
-        ),
-        image: Schema.optional(
-          Schema.Struct({
-            uri: Schema.optional(Schema.String),
-          }),
-        ),
-        caching: Schema.optional(
-          Schema.Literals(["None", "ReadOnly", "ReadWrite"]),
-        ),
-        writeAcceleratorEnabled: Schema.optional(Schema.Boolean),
-        diffDiskSettings: Schema.optional(
-          Schema.Struct({
-            option: Schema.optional(Schema.Literals(["Local"])),
-            placement: Schema.optional(
-              Schema.Literals(["CacheDisk", "ResourceDisk", "NvmeDisk"]),
-            ),
-          }),
-        ),
-        createOption: Schema.Literals([
-          "FromImage",
-          "Empty",
-          "Attach",
-          "Copy",
-          "Restore",
-        ]),
-        diskSizeGB: Schema.optional(Schema.Number),
-        managedDisk: Schema.optional(
-          Schema.Struct({
-            id: Schema.optional(Schema.String),
-          }),
-        ),
-        deleteOption: Schema.optional(Schema.Literals(["Delete", "Detach"])),
-      }),
-    ),
+    imageReference: Schema.optional(Schema.suspend(() => ImageReferenceSchema)),
+    osDisk: Schema.optional(Schema.suspend(() => OSDiskSchema)),
     dataDisks: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          lun: Schema.Number,
-          name: Schema.optional(Schema.String),
-          vhd: Schema.optional(
-            Schema.Struct({
-              uri: Schema.optional(Schema.String),
-            }),
-          ),
-          image: Schema.optional(
-            Schema.Struct({
-              uri: Schema.optional(Schema.String),
-            }),
-          ),
-          caching: Schema.optional(
-            Schema.Literals(["None", "ReadOnly", "ReadWrite"]),
-          ),
-          writeAcceleratorEnabled: Schema.optional(Schema.Boolean),
-          createOption: Schema.Literals([
-            "FromImage",
-            "Empty",
-            "Attach",
-            "Copy",
-            "Restore",
-          ]),
-          diskSizeGB: Schema.optional(Schema.Number),
-          managedDisk: Schema.optional(
-            Schema.Struct({
-              id: Schema.optional(Schema.String),
-            }),
-          ),
-          sourceResource: Schema.optional(
-            Schema.Struct({
-              id: Schema.optional(Schema.String),
-            }),
-          ),
-          toBeDetached: Schema.optional(Schema.Boolean),
-          diskIOPSReadWrite: Schema.optional(Schema.Number),
-          diskMBpsReadWrite: Schema.optional(Schema.Number),
-          detachOption: Schema.optional(Schema.Literals(["ForceDetach"])),
-          deleteOption: Schema.optional(Schema.Literals(["Delete", "Detach"])),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => DataDiskSchema)),
     ),
-    diskControllerType: Schema.optional(Schema.Literals(["SCSI", "NVMe"])),
+    diskControllerType: Schema.optional(
+      Schema.suspend(() => DiskControllerTypesSchema),
+    ),
     alignRegionalDisksToVMZone: Schema.optional(Schema.Boolean),
   });
 export type VirtualMachineScaleSetVMsAttachDetachDataDisksOutput =
@@ -11945,23 +10123,26 @@ export type VirtualMachineScaleSetVMsGetInput =
 // Output Schema
 export const VirtualMachineScaleSetVMsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => VirtualMachineScaleSetVMPropertiesSchema),
+    ),
+    instanceId: Schema.optional(Schema.String),
+    sku: Schema.optional(Schema.suspend(() => SkuSchema)),
+    plan: Schema.optional(Schema.suspend(() => PlanSchema)),
+    resources: Schema.optional(
+      Schema.Array(Schema.suspend(() => VirtualMachineExtensionSchema)),
+    ),
+    zones: Schema.optional(Schema.Array(Schema.String)),
+    identity: Schema.optional(
+      Schema.suspend(() => VirtualMachineIdentitySchema),
+    ),
+    etag: Schema.optional(Schema.String),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type VirtualMachineScaleSetVMsGetOutput =
   typeof VirtualMachineScaleSetVMsGetOutput.Type;
@@ -12006,187 +10187,36 @@ export const VirtualMachineScaleSetVMsGetInstanceViewOutput =
     platformFaultDomain: Schema.optional(Schema.Number),
     rdpThumbPrint: Schema.optional(Schema.String),
     vmAgent: Schema.optional(
-      Schema.Struct({
-        vmAgentVersion: Schema.optional(Schema.String),
-        extensionHandlers: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              type: Schema.optional(Schema.String),
-              typeHandlerVersion: Schema.optional(Schema.String),
-              status: Schema.optional(
-                Schema.Struct({
-                  code: Schema.optional(Schema.String),
-                  level: Schema.optional(
-                    Schema.Literals(["Info", "Warning", "Error"]),
-                  ),
-                  displayStatus: Schema.optional(Schema.String),
-                  message: Schema.optional(Schema.String),
-                  time: Schema.optional(Schema.String),
-                }),
-              ),
-            }),
-          ),
-        ),
-        statuses: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              code: Schema.optional(Schema.String),
-              level: Schema.optional(
-                Schema.Literals(["Info", "Warning", "Error"]),
-              ),
-              displayStatus: Schema.optional(Schema.String),
-              message: Schema.optional(Schema.String),
-              time: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-      }),
+      Schema.suspend(() => VirtualMachineAgentInstanceViewSchema),
     ),
     maintenanceRedeployStatus: Schema.optional(
-      Schema.Struct({
-        isCustomerInitiatedMaintenanceAllowed: Schema.optional(Schema.Boolean),
-        preMaintenanceWindowStartTime: Schema.optional(Schema.String),
-        preMaintenanceWindowEndTime: Schema.optional(Schema.String),
-        maintenanceWindowStartTime: Schema.optional(Schema.String),
-        maintenanceWindowEndTime: Schema.optional(Schema.String),
-        lastOperationResultCode: Schema.optional(
-          Schema.Literals([
-            "None",
-            "RetryLater",
-            "MaintenanceAborted",
-            "MaintenanceCompleted",
-          ]),
-        ),
-        lastOperationMessage: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(() => MaintenanceRedeployStatusSchema),
     ),
     disks: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          name: Schema.optional(Schema.String),
-          encryptionSettings: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                diskEncryptionKey: Schema.optional(
-                  Schema.Struct({
-                    secretUrl: Schema.String,
-                    sourceVault: Schema.Struct({
-                      id: Schema.optional(Schema.String),
-                    }),
-                  }),
-                ),
-                keyEncryptionKey: Schema.optional(
-                  Schema.Struct({
-                    keyUrl: Schema.String,
-                    sourceVault: Schema.Struct({
-                      id: Schema.optional(Schema.String),
-                    }),
-                  }),
-                ),
-                enabled: Schema.optional(Schema.Boolean),
-              }),
-            ),
-          ),
-          statuses: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                code: Schema.optional(Schema.String),
-                level: Schema.optional(
-                  Schema.Literals(["Info", "Warning", "Error"]),
-                ),
-                displayStatus: Schema.optional(Schema.String),
-                message: Schema.optional(Schema.String),
-                time: Schema.optional(Schema.String),
-              }),
-            ),
-          ),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => DiskInstanceViewSchema)),
     ),
     extensions: Schema.optional(
       Schema.Array(
-        Schema.Struct({
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          typeHandlerVersion: Schema.optional(Schema.String),
-          substatuses: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                code: Schema.optional(Schema.String),
-                level: Schema.optional(
-                  Schema.Literals(["Info", "Warning", "Error"]),
-                ),
-                displayStatus: Schema.optional(Schema.String),
-                message: Schema.optional(Schema.String),
-                time: Schema.optional(Schema.String),
-              }),
-            ),
-          ),
-          statuses: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                code: Schema.optional(Schema.String),
-                level: Schema.optional(
-                  Schema.Literals(["Info", "Warning", "Error"]),
-                ),
-                displayStatus: Schema.optional(Schema.String),
-                message: Schema.optional(Schema.String),
-                time: Schema.optional(Schema.String),
-              }),
-            ),
-          ),
-        }),
+        Schema.suspend(() => VirtualMachineExtensionInstanceViewSchema),
       ),
     ),
     vmHealth: Schema.optional(
-      Schema.Struct({
-        status: Schema.optional(
-          Schema.Struct({
-            code: Schema.optional(Schema.String),
-            level: Schema.optional(
-              Schema.Literals(["Info", "Warning", "Error"]),
-            ),
-            displayStatus: Schema.optional(Schema.String),
-            message: Schema.optional(Schema.String),
-            time: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
+      Schema.suspend(() => VirtualMachineHealthStatusSchema),
     ),
     bootDiagnostics: Schema.optional(
-      Schema.Struct({
-        consoleScreenshotBlobUri: Schema.optional(Schema.String),
-        serialConsoleLogBlobUri: Schema.optional(Schema.String),
-        status: Schema.optional(
-          Schema.Struct({
-            code: Schema.optional(Schema.String),
-            level: Schema.optional(
-              Schema.Literals(["Info", "Warning", "Error"]),
-            ),
-            displayStatus: Schema.optional(Schema.String),
-            message: Schema.optional(Schema.String),
-            time: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
+      Schema.suspend(() => BootDiagnosticsInstanceViewSchema),
     ),
     statuses: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          code: Schema.optional(Schema.String),
-          level: Schema.optional(Schema.Literals(["Info", "Warning", "Error"])),
-          displayStatus: Schema.optional(Schema.String),
-          message: Schema.optional(Schema.String),
-          time: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => InstanceViewStatusSchema)),
     ),
     assignedHost: Schema.optional(Schema.String),
     placementGroupId: Schema.optional(Schema.String),
     computerName: Schema.optional(Schema.String),
     osName: Schema.optional(Schema.String),
     osVersion: Schema.optional(Schema.String),
-    hyperVGeneration: Schema.optional(Schema.Literals(["V1", "V2"])),
+    hyperVGeneration: Schema.optional(
+      Schema.suspend(() => Common_HyperVGenerationSchema),
+    ),
   });
 export type VirtualMachineScaleSetVMsGetInstanceViewOutput =
   typeof VirtualMachineScaleSetVMsGetInstanceViewOutput.Type;
@@ -12228,37 +10258,7 @@ export type VirtualMachineScaleSetVMsListInput =
 // Output Schema
 export const VirtualMachineScaleSetVMsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => VirtualMachineScaleSetVMSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type VirtualMachineScaleSetVMsListOutput =
@@ -12411,10 +10411,7 @@ export const VirtualMachineScaleSetVMsReimageInput =
     tempDisk: Schema.optional(Schema.Boolean),
     exactVersion: Schema.optional(Schema.String),
     osProfile: Schema.optional(
-      Schema.Struct({
-        adminPassword: Schema.optional(SensitiveString),
-        customData: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(() => OSProfileProvisioningDataSchema),
     ),
   }).pipe(
     T.Http({
@@ -12579,12 +10576,7 @@ export const VirtualMachineScaleSetVMsRunCommandInput =
     commandId: Schema.String,
     script: Schema.optional(Schema.Array(Schema.String)),
     parameters: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          name: Schema.String,
-          value: Schema.String,
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => RunCommandInputParameterSchema)),
     ),
   }).pipe(
     T.Http({
@@ -12601,15 +10593,7 @@ export type VirtualMachineScaleSetVMsRunCommandInput =
 export const VirtualMachineScaleSetVMsRunCommandOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          code: Schema.optional(Schema.String),
-          level: Schema.optional(Schema.Literals(["Info", "Warning", "Error"])),
-          displayStatus: Schema.optional(Schema.String),
-          message: Schema.optional(Schema.String),
-          time: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => InstanceViewStatusSchema)),
     ),
   });
 export type VirtualMachineScaleSetVMsRunCommandOutput =
@@ -12715,1131 +10699,16 @@ export const VirtualMachineScaleSetVMsUpdateInput =
     vmScaleSetName: Schema.String.pipe(T.PathParam()),
     instanceId: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        latestModelApplied: Schema.optional(Schema.Boolean),
-        vmId: Schema.optional(Schema.String),
-        instanceView: Schema.optional(
-          Schema.Struct({
-            platformUpdateDomain: Schema.optional(Schema.Number),
-            platformFaultDomain: Schema.optional(Schema.Number),
-            rdpThumbPrint: Schema.optional(Schema.String),
-            vmAgent: Schema.optional(
-              Schema.Struct({
-                vmAgentVersion: Schema.optional(Schema.String),
-                extensionHandlers: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      type: Schema.optional(Schema.String),
-                      typeHandlerVersion: Schema.optional(Schema.String),
-                      status: Schema.optional(
-                        Schema.Struct({
-                          code: Schema.optional(Schema.String),
-                          level: Schema.optional(
-                            Schema.Literals(["Info", "Warning", "Error"]),
-                          ),
-                          displayStatus: Schema.optional(Schema.String),
-                          message: Schema.optional(Schema.String),
-                          time: Schema.optional(Schema.String),
-                        }),
-                      ),
-                    }),
-                  ),
-                ),
-                statuses: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      code: Schema.optional(Schema.String),
-                      level: Schema.optional(
-                        Schema.Literals(["Info", "Warning", "Error"]),
-                      ),
-                      displayStatus: Schema.optional(Schema.String),
-                      message: Schema.optional(Schema.String),
-                      time: Schema.optional(Schema.String),
-                    }),
-                  ),
-                ),
-              }),
-            ),
-            maintenanceRedeployStatus: Schema.optional(
-              Schema.Struct({
-                isCustomerInitiatedMaintenanceAllowed: Schema.optional(
-                  Schema.Boolean,
-                ),
-                preMaintenanceWindowStartTime: Schema.optional(Schema.String),
-                preMaintenanceWindowEndTime: Schema.optional(Schema.String),
-                maintenanceWindowStartTime: Schema.optional(Schema.String),
-                maintenanceWindowEndTime: Schema.optional(Schema.String),
-                lastOperationResultCode: Schema.optional(
-                  Schema.Literals([
-                    "None",
-                    "RetryLater",
-                    "MaintenanceAborted",
-                    "MaintenanceCompleted",
-                  ]),
-                ),
-                lastOperationMessage: Schema.optional(Schema.String),
-              }),
-            ),
-            disks: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  name: Schema.optional(Schema.String),
-                  encryptionSettings: Schema.optional(
-                    Schema.Array(
-                      Schema.Struct({
-                        diskEncryptionKey: Schema.optional(
-                          Schema.Struct({
-                            secretUrl: Schema.String,
-                            sourceVault: Schema.Struct({
-                              id: Schema.optional(Schema.String),
-                            }),
-                          }),
-                        ),
-                        keyEncryptionKey: Schema.optional(
-                          Schema.Struct({
-                            keyUrl: Schema.String,
-                            sourceVault: Schema.Struct({
-                              id: Schema.optional(Schema.String),
-                            }),
-                          }),
-                        ),
-                        enabled: Schema.optional(Schema.Boolean),
-                      }),
-                    ),
-                  ),
-                  statuses: Schema.optional(
-                    Schema.Array(
-                      Schema.Struct({
-                        code: Schema.optional(Schema.String),
-                        level: Schema.optional(
-                          Schema.Literals(["Info", "Warning", "Error"]),
-                        ),
-                        displayStatus: Schema.optional(Schema.String),
-                        message: Schema.optional(Schema.String),
-                        time: Schema.optional(Schema.String),
-                      }),
-                    ),
-                  ),
-                }),
-              ),
-            ),
-            extensions: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  name: Schema.optional(Schema.String),
-                  type: Schema.optional(Schema.String),
-                  typeHandlerVersion: Schema.optional(Schema.String),
-                  substatuses: Schema.optional(
-                    Schema.Array(
-                      Schema.Struct({
-                        code: Schema.optional(Schema.String),
-                        level: Schema.optional(
-                          Schema.Literals(["Info", "Warning", "Error"]),
-                        ),
-                        displayStatus: Schema.optional(Schema.String),
-                        message: Schema.optional(Schema.String),
-                        time: Schema.optional(Schema.String),
-                      }),
-                    ),
-                  ),
-                  statuses: Schema.optional(
-                    Schema.Array(
-                      Schema.Struct({
-                        code: Schema.optional(Schema.String),
-                        level: Schema.optional(
-                          Schema.Literals(["Info", "Warning", "Error"]),
-                        ),
-                        displayStatus: Schema.optional(Schema.String),
-                        message: Schema.optional(Schema.String),
-                        time: Schema.optional(Schema.String),
-                      }),
-                    ),
-                  ),
-                }),
-              ),
-            ),
-            vmHealth: Schema.optional(
-              Schema.Struct({
-                status: Schema.optional(
-                  Schema.Struct({
-                    code: Schema.optional(Schema.String),
-                    level: Schema.optional(
-                      Schema.Literals(["Info", "Warning", "Error"]),
-                    ),
-                    displayStatus: Schema.optional(Schema.String),
-                    message: Schema.optional(Schema.String),
-                    time: Schema.optional(Schema.String),
-                  }),
-                ),
-              }),
-            ),
-            bootDiagnostics: Schema.optional(
-              Schema.Struct({
-                consoleScreenshotBlobUri: Schema.optional(Schema.String),
-                serialConsoleLogBlobUri: Schema.optional(Schema.String),
-                status: Schema.optional(
-                  Schema.Struct({
-                    code: Schema.optional(Schema.String),
-                    level: Schema.optional(
-                      Schema.Literals(["Info", "Warning", "Error"]),
-                    ),
-                    displayStatus: Schema.optional(Schema.String),
-                    message: Schema.optional(Schema.String),
-                    time: Schema.optional(Schema.String),
-                  }),
-                ),
-              }),
-            ),
-            statuses: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  code: Schema.optional(Schema.String),
-                  level: Schema.optional(
-                    Schema.Literals(["Info", "Warning", "Error"]),
-                  ),
-                  displayStatus: Schema.optional(Schema.String),
-                  message: Schema.optional(Schema.String),
-                  time: Schema.optional(Schema.String),
-                }),
-              ),
-            ),
-            assignedHost: Schema.optional(Schema.String),
-            placementGroupId: Schema.optional(Schema.String),
-            computerName: Schema.optional(Schema.String),
-            osName: Schema.optional(Schema.String),
-            osVersion: Schema.optional(Schema.String),
-            hyperVGeneration: Schema.optional(Schema.Literals(["V1", "V2"])),
-          }),
-        ),
-        hardwareProfile: Schema.optional(
-          Schema.Struct({
-            vmSize: Schema.optional(
-              Schema.Literals([
-                "Basic_A0",
-                "Basic_A1",
-                "Basic_A2",
-                "Basic_A3",
-                "Basic_A4",
-                "Standard_A0",
-                "Standard_A1",
-                "Standard_A2",
-                "Standard_A3",
-                "Standard_A4",
-                "Standard_A5",
-                "Standard_A6",
-                "Standard_A7",
-                "Standard_A8",
-                "Standard_A9",
-                "Standard_A10",
-                "Standard_A11",
-                "Standard_A1_v2",
-                "Standard_A2_v2",
-                "Standard_A4_v2",
-                "Standard_A8_v2",
-                "Standard_A2m_v2",
-                "Standard_A4m_v2",
-                "Standard_A8m_v2",
-                "Standard_B1s",
-                "Standard_B1ms",
-                "Standard_B2s",
-                "Standard_B2ms",
-                "Standard_B4ms",
-                "Standard_B8ms",
-                "Standard_D1",
-                "Standard_D2",
-                "Standard_D3",
-                "Standard_D4",
-                "Standard_D11",
-                "Standard_D12",
-                "Standard_D13",
-                "Standard_D14",
-                "Standard_D1_v2",
-                "Standard_D2_v2",
-                "Standard_D3_v2",
-                "Standard_D4_v2",
-                "Standard_D5_v2",
-                "Standard_D2_v3",
-                "Standard_D4_v3",
-                "Standard_D8_v3",
-                "Standard_D16_v3",
-                "Standard_D32_v3",
-                "Standard_D64_v3",
-                "Standard_D2s_v3",
-                "Standard_D4s_v3",
-                "Standard_D8s_v3",
-                "Standard_D16s_v3",
-                "Standard_D32s_v3",
-                "Standard_D64s_v3",
-                "Standard_D11_v2",
-                "Standard_D12_v2",
-                "Standard_D13_v2",
-                "Standard_D14_v2",
-                "Standard_D15_v2",
-                "Standard_DS1",
-                "Standard_DS2",
-                "Standard_DS3",
-                "Standard_DS4",
-                "Standard_DS11",
-                "Standard_DS12",
-                "Standard_DS13",
-                "Standard_DS14",
-                "Standard_DS1_v2",
-                "Standard_DS2_v2",
-                "Standard_DS3_v2",
-                "Standard_DS4_v2",
-                "Standard_DS5_v2",
-                "Standard_DS11_v2",
-                "Standard_DS12_v2",
-                "Standard_DS13_v2",
-                "Standard_DS14_v2",
-                "Standard_DS15_v2",
-                "Standard_DS13-4_v2",
-                "Standard_DS13-2_v2",
-                "Standard_DS14-8_v2",
-                "Standard_DS14-4_v2",
-                "Standard_E2_v3",
-                "Standard_E4_v3",
-                "Standard_E8_v3",
-                "Standard_E16_v3",
-                "Standard_E32_v3",
-                "Standard_E64_v3",
-                "Standard_E2s_v3",
-                "Standard_E4s_v3",
-                "Standard_E8s_v3",
-                "Standard_E16s_v3",
-                "Standard_E32s_v3",
-                "Standard_E64s_v3",
-                "Standard_E32-16_v3",
-                "Standard_E32-8s_v3",
-                "Standard_E64-32s_v3",
-                "Standard_E64-16s_v3",
-                "Standard_F1",
-                "Standard_F2",
-                "Standard_F4",
-                "Standard_F8",
-                "Standard_F16",
-                "Standard_F1s",
-                "Standard_F2s",
-                "Standard_F4s",
-                "Standard_F8s",
-                "Standard_F16s",
-                "Standard_F2s_v2",
-                "Standard_F4s_v2",
-                "Standard_F8s_v2",
-                "Standard_F16s_v2",
-                "Standard_F32s_v2",
-                "Standard_F64s_v2",
-                "Standard_F72s_v2",
-                "Standard_G1",
-                "Standard_G2",
-                "Standard_G3",
-                "Standard_G4",
-                "Standard_G5",
-                "Standard_GS1",
-                "Standard_GS2",
-                "Standard_GS3",
-                "Standard_GS4",
-                "Standard_GS5",
-                "Standard_GS4-8",
-                "Standard_GS4-4",
-                "Standard_GS5-16",
-                "Standard_GS5-8",
-                "Standard_H8",
-                "Standard_H16",
-                "Standard_H8m",
-                "Standard_H16m",
-                "Standard_H16r",
-                "Standard_H16mr",
-                "Standard_L4s",
-                "Standard_L8s",
-                "Standard_L16s",
-                "Standard_L32s",
-                "Standard_M64s",
-                "Standard_M64ms",
-                "Standard_M128s",
-                "Standard_M128ms",
-                "Standard_M64-32ms",
-                "Standard_M64-16ms",
-                "Standard_M128-64ms",
-                "Standard_M128-32ms",
-                "Standard_NC6",
-                "Standard_NC12",
-                "Standard_NC24",
-                "Standard_NC24r",
-                "Standard_NC6s_v2",
-                "Standard_NC12s_v2",
-                "Standard_NC24s_v2",
-                "Standard_NC24rs_v2",
-                "Standard_NC6s_v3",
-                "Standard_NC12s_v3",
-                "Standard_NC24s_v3",
-                "Standard_NC24rs_v3",
-                "Standard_ND6s",
-                "Standard_ND12s",
-                "Standard_ND24s",
-                "Standard_ND24rs",
-                "Standard_NV6",
-                "Standard_NV12",
-                "Standard_NV24",
-              ]),
-            ),
-            vmSizeProperties: Schema.optional(
-              Schema.Struct({
-                vCPUsAvailable: Schema.optional(Schema.Number),
-                vCPUsPerCore: Schema.optional(Schema.Number),
-              }),
-            ),
-          }),
-        ),
-        resilientVMDeletionStatus: Schema.optional(
-          Schema.Literals(["Enabled", "Disabled", "InProgress", "Failed"]),
-        ),
-        storageProfile: Schema.optional(
-          Schema.Struct({
-            imageReference: Schema.optional(
-              Schema.Struct({
-                id: Schema.optional(Schema.String),
-              }),
-            ),
-            osDisk: Schema.optional(
-              Schema.Struct({
-                osType: Schema.optional(Schema.Literals(["Windows", "Linux"])),
-                encryptionSettings: Schema.optional(
-                  Schema.Struct({
-                    diskEncryptionKey: Schema.optional(
-                      Schema.Struct({
-                        secretUrl: Schema.String,
-                        sourceVault: Schema.Struct({
-                          id: Schema.optional(Schema.String),
-                        }),
-                      }),
-                    ),
-                    keyEncryptionKey: Schema.optional(
-                      Schema.Struct({
-                        keyUrl: Schema.String,
-                        sourceVault: Schema.Struct({
-                          id: Schema.optional(Schema.String),
-                        }),
-                      }),
-                    ),
-                    enabled: Schema.optional(Schema.Boolean),
-                  }),
-                ),
-                name: Schema.optional(Schema.String),
-                vhd: Schema.optional(
-                  Schema.Struct({
-                    uri: Schema.optional(Schema.String),
-                  }),
-                ),
-                image: Schema.optional(
-                  Schema.Struct({
-                    uri: Schema.optional(Schema.String),
-                  }),
-                ),
-                caching: Schema.optional(
-                  Schema.Literals(["None", "ReadOnly", "ReadWrite"]),
-                ),
-                writeAcceleratorEnabled: Schema.optional(Schema.Boolean),
-                diffDiskSettings: Schema.optional(
-                  Schema.Struct({
-                    option: Schema.optional(Schema.Literals(["Local"])),
-                    placement: Schema.optional(
-                      Schema.Literals([
-                        "CacheDisk",
-                        "ResourceDisk",
-                        "NvmeDisk",
-                      ]),
-                    ),
-                  }),
-                ),
-                createOption: Schema.Literals([
-                  "FromImage",
-                  "Empty",
-                  "Attach",
-                  "Copy",
-                  "Restore",
-                ]),
-                diskSizeGB: Schema.optional(Schema.Number),
-                managedDisk: Schema.optional(
-                  Schema.Struct({
-                    id: Schema.optional(Schema.String),
-                  }),
-                ),
-                deleteOption: Schema.optional(
-                  Schema.Literals(["Delete", "Detach"]),
-                ),
-              }),
-            ),
-            dataDisks: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  lun: Schema.Number,
-                  name: Schema.optional(Schema.String),
-                  vhd: Schema.optional(
-                    Schema.Struct({
-                      uri: Schema.optional(Schema.String),
-                    }),
-                  ),
-                  image: Schema.optional(
-                    Schema.Struct({
-                      uri: Schema.optional(Schema.String),
-                    }),
-                  ),
-                  caching: Schema.optional(
-                    Schema.Literals(["None", "ReadOnly", "ReadWrite"]),
-                  ),
-                  writeAcceleratorEnabled: Schema.optional(Schema.Boolean),
-                  createOption: Schema.Literals([
-                    "FromImage",
-                    "Empty",
-                    "Attach",
-                    "Copy",
-                    "Restore",
-                  ]),
-                  diskSizeGB: Schema.optional(Schema.Number),
-                  managedDisk: Schema.optional(
-                    Schema.Struct({
-                      id: Schema.optional(Schema.String),
-                    }),
-                  ),
-                  sourceResource: Schema.optional(
-                    Schema.Struct({
-                      id: Schema.optional(Schema.String),
-                    }),
-                  ),
-                  toBeDetached: Schema.optional(Schema.Boolean),
-                  diskIOPSReadWrite: Schema.optional(Schema.Number),
-                  diskMBpsReadWrite: Schema.optional(Schema.Number),
-                  detachOption: Schema.optional(
-                    Schema.Literals(["ForceDetach"]),
-                  ),
-                  deleteOption: Schema.optional(
-                    Schema.Literals(["Delete", "Detach"]),
-                  ),
-                }),
-              ),
-            ),
-            diskControllerType: Schema.optional(
-              Schema.Literals(["SCSI", "NVMe"]),
-            ),
-            alignRegionalDisksToVMZone: Schema.optional(Schema.Boolean),
-          }),
-        ),
-        additionalCapabilities: Schema.optional(
-          Schema.Struct({
-            ultraSSDEnabled: Schema.optional(Schema.Boolean),
-            hibernationEnabled: Schema.optional(Schema.Boolean),
-            enableFips1403Encryption: Schema.optional(Schema.Boolean),
-          }),
-        ),
-        osProfile: Schema.optional(
-          Schema.Struct({
-            computerName: Schema.optional(Schema.String),
-            adminUsername: Schema.optional(Schema.String),
-            adminPassword: Schema.optional(SensitiveString),
-            customData: Schema.optional(Schema.String),
-            windowsConfiguration: Schema.optional(
-              Schema.Struct({
-                provisionVMAgent: Schema.optional(Schema.Boolean),
-                enableAutomaticUpdates: Schema.optional(Schema.Boolean),
-                timeZone: Schema.optional(Schema.String),
-                additionalUnattendContent: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      passName: Schema.optional(
-                        Schema.Literals(["OobeSystem"]),
-                      ),
-                      componentName: Schema.optional(
-                        Schema.Literals(["Microsoft-Windows-Shell-Setup"]),
-                      ),
-                      settingName: Schema.optional(
-                        Schema.Literals(["AutoLogon", "FirstLogonCommands"]),
-                      ),
-                      content: Schema.optional(Schema.String),
-                    }),
-                  ),
-                ),
-                patchSettings: Schema.optional(
-                  Schema.Struct({
-                    patchMode: Schema.optional(
-                      Schema.Literals([
-                        "Manual",
-                        "AutomaticByOS",
-                        "AutomaticByPlatform",
-                      ]),
-                    ),
-                    enableHotpatching: Schema.optional(Schema.Boolean),
-                    assessmentMode: Schema.optional(
-                      Schema.Literals(["ImageDefault", "AutomaticByPlatform"]),
-                    ),
-                    automaticByPlatformSettings: Schema.optional(
-                      Schema.Struct({
-                        rebootSetting: Schema.optional(
-                          Schema.Literals([
-                            "Unknown",
-                            "IfRequired",
-                            "Never",
-                            "Always",
-                          ]),
-                        ),
-                        bypassPlatformSafetyChecksOnUserSchedule:
-                          Schema.optional(Schema.Boolean),
-                      }),
-                    ),
-                  }),
-                ),
-                winRM: Schema.optional(
-                  Schema.Struct({
-                    listeners: Schema.optional(
-                      Schema.Array(
-                        Schema.Struct({
-                          protocol: Schema.optional(
-                            Schema.Literals(["Http", "Https"]),
-                          ),
-                          certificateUrl: Schema.optional(Schema.String),
-                        }),
-                      ),
-                    ),
-                  }),
-                ),
-                enableVMAgentPlatformUpdates: Schema.optional(Schema.Boolean),
-              }),
-            ),
-            linuxConfiguration: Schema.optional(
-              Schema.Struct({
-                disablePasswordAuthentication: Schema.optional(Schema.Boolean),
-                ssh: Schema.optional(
-                  Schema.Struct({
-                    publicKeys: Schema.optional(
-                      Schema.Array(
-                        Schema.Struct({
-                          path: Schema.optional(Schema.String),
-                          keyData: Schema.optional(Schema.String),
-                        }),
-                      ),
-                    ),
-                  }),
-                ),
-                provisionVMAgent: Schema.optional(Schema.Boolean),
-                patchSettings: Schema.optional(
-                  Schema.Struct({
-                    patchMode: Schema.optional(
-                      Schema.Literals(["ImageDefault", "AutomaticByPlatform"]),
-                    ),
-                    assessmentMode: Schema.optional(
-                      Schema.Literals(["ImageDefault", "AutomaticByPlatform"]),
-                    ),
-                    automaticByPlatformSettings: Schema.optional(
-                      Schema.Struct({
-                        rebootSetting: Schema.optional(
-                          Schema.Literals([
-                            "Unknown",
-                            "IfRequired",
-                            "Never",
-                            "Always",
-                          ]),
-                        ),
-                        bypassPlatformSafetyChecksOnUserSchedule:
-                          Schema.optional(Schema.Boolean),
-                      }),
-                    ),
-                  }),
-                ),
-                enableVMAgentPlatformUpdates: Schema.optional(Schema.Boolean),
-              }),
-            ),
-            secrets: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  sourceVault: Schema.optional(
-                    Schema.Struct({
-                      id: Schema.optional(Schema.String),
-                    }),
-                  ),
-                  vaultCertificates: Schema.optional(
-                    Schema.Array(
-                      Schema.Struct({
-                        certificateUrl: Schema.optional(Schema.String),
-                        certificateStore: Schema.optional(Schema.String),
-                      }),
-                    ),
-                  ),
-                }),
-              ),
-            ),
-            allowExtensionOperations: Schema.optional(Schema.Boolean),
-            requireGuestProvisionSignal: Schema.optional(Schema.Boolean),
-          }),
-        ),
-        securityProfile: Schema.optional(
-          Schema.Struct({
-            uefiSettings: Schema.optional(
-              Schema.Struct({
-                secureBootEnabled: Schema.optional(Schema.Boolean),
-                vTpmEnabled: Schema.optional(Schema.Boolean),
-              }),
-            ),
-            encryptionAtHost: Schema.optional(Schema.Boolean),
-            securityType: Schema.optional(
-              Schema.Literals(["TrustedLaunch", "ConfidentialVM"]),
-            ),
-            encryptionIdentity: Schema.optional(
-              Schema.Struct({
-                userAssignedIdentityResourceId: Schema.optional(Schema.String),
-              }),
-            ),
-            proxyAgentSettings: Schema.optional(
-              Schema.Struct({
-                enabled: Schema.optional(Schema.Boolean),
-                mode: Schema.optional(Schema.Literals(["Audit", "Enforce"])),
-                keyIncarnationId: Schema.optional(Schema.Number),
-                wireServer: Schema.optional(
-                  Schema.Struct({
-                    mode: Schema.optional(
-                      Schema.Literals(["Audit", "Enforce", "Disabled"]),
-                    ),
-                    inVMAccessControlProfileReferenceId: Schema.optional(
-                      Schema.String,
-                    ),
-                  }),
-                ),
-                imds: Schema.optional(
-                  Schema.Struct({
-                    mode: Schema.optional(
-                      Schema.Literals(["Audit", "Enforce", "Disabled"]),
-                    ),
-                    inVMAccessControlProfileReferenceId: Schema.optional(
-                      Schema.String,
-                    ),
-                  }),
-                ),
-                addProxyAgentExtension: Schema.optional(Schema.Boolean),
-              }),
-            ),
-          }),
-        ),
-        networkProfile: Schema.optional(
-          Schema.Struct({
-            networkInterfaces: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  id: Schema.optional(Schema.String),
-                }),
-              ),
-            ),
-            networkApiVersion: Schema.optional(
-              Schema.Literals(["2020-11-01", "2022-11-01"]),
-            ),
-            networkInterfaceConfigurations: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  name: Schema.String,
-                  properties: Schema.optional(
-                    Schema.Struct({
-                      primary: Schema.optional(Schema.Boolean),
-                      deleteOption: Schema.optional(
-                        Schema.Literals(["Delete", "Detach"]),
-                      ),
-                      enableAcceleratedNetworking: Schema.optional(
-                        Schema.Boolean,
-                      ),
-                      disableTcpStateTracking: Schema.optional(Schema.Boolean),
-                      enableFpga: Schema.optional(Schema.Boolean),
-                      enableIPForwarding: Schema.optional(Schema.Boolean),
-                      networkSecurityGroup: Schema.optional(
-                        Schema.Struct({
-                          id: Schema.optional(Schema.String),
-                        }),
-                      ),
-                      dnsSettings: Schema.optional(
-                        Schema.Struct({
-                          dnsServers: Schema.optional(
-                            Schema.Array(Schema.String),
-                          ),
-                        }),
-                      ),
-                      ipConfigurations: Schema.Array(
-                        Schema.Struct({
-                          name: Schema.String,
-                          properties: Schema.optional(
-                            Schema.Struct({
-                              subnet: Schema.optional(
-                                Schema.Struct({
-                                  id: Schema.optional(Schema.String),
-                                }),
-                              ),
-                              primary: Schema.optional(Schema.Boolean),
-                              publicIPAddressConfiguration: Schema.optional(
-                                Schema.Struct({
-                                  name: Schema.String,
-                                  properties: Schema.optional(
-                                    Schema.Struct({
-                                      idleTimeoutInMinutes: Schema.optional(
-                                        Schema.Number,
-                                      ),
-                                      deleteOption: Schema.optional(
-                                        Schema.Literals(["Delete", "Detach"]),
-                                      ),
-                                      dnsSettings: Schema.optional(
-                                        Schema.Struct({
-                                          domainNameLabel: Schema.String,
-                                          domainNameLabelScope: Schema.optional(
-                                            Schema.Literals([
-                                              "TenantReuse",
-                                              "SubscriptionReuse",
-                                              "ResourceGroupReuse",
-                                              "NoReuse",
-                                            ]),
-                                          ),
-                                        }),
-                                      ),
-                                      ipTags: Schema.optional(
-                                        Schema.Array(
-                                          Schema.Struct({
-                                            ipTagType: Schema.optional(
-                                              Schema.String,
-                                            ),
-                                            tag: Schema.optional(Schema.String),
-                                          }),
-                                        ),
-                                      ),
-                                      publicIPPrefix: Schema.optional(
-                                        Schema.Struct({
-                                          id: Schema.optional(Schema.String),
-                                        }),
-                                      ),
-                                      publicIPAddressVersion: Schema.optional(
-                                        Schema.Literals(["IPv4", "IPv6"]),
-                                      ),
-                                      publicIPAllocationMethod: Schema.optional(
-                                        Schema.Literals(["Dynamic", "Static"]),
-                                      ),
-                                    }),
-                                  ),
-                                  sku: Schema.optional(
-                                    Schema.Struct({
-                                      name: Schema.optional(
-                                        Schema.Literals(["Basic", "Standard"]),
-                                      ),
-                                      tier: Schema.optional(
-                                        Schema.Literals(["Regional", "Global"]),
-                                      ),
-                                    }),
-                                  ),
-                                  tags: Schema.optional(
-                                    Schema.Record(Schema.String, Schema.String),
-                                  ),
-                                }),
-                              ),
-                              privateIPAddressVersion: Schema.optional(
-                                Schema.Literals(["IPv4", "IPv6"]),
-                              ),
-                              applicationSecurityGroups: Schema.optional(
-                                Schema.Array(
-                                  Schema.Struct({
-                                    id: Schema.optional(Schema.String),
-                                  }),
-                                ),
-                              ),
-                              applicationGatewayBackendAddressPools:
-                                Schema.optional(
-                                  Schema.Array(
-                                    Schema.Struct({
-                                      id: Schema.optional(Schema.String),
-                                    }),
-                                  ),
-                                ),
-                              loadBalancerBackendAddressPools: Schema.optional(
-                                Schema.Array(
-                                  Schema.Struct({
-                                    id: Schema.optional(Schema.String),
-                                  }),
-                                ),
-                              ),
-                            }),
-                          ),
-                        }),
-                      ),
-                      dscpConfiguration: Schema.optional(
-                        Schema.Struct({
-                          id: Schema.optional(Schema.String),
-                        }),
-                      ),
-                      auxiliaryMode: Schema.optional(
-                        Schema.Literals([
-                          "None",
-                          "AcceleratedConnections",
-                          "Floating",
-                        ]),
-                      ),
-                      auxiliarySku: Schema.optional(
-                        Schema.Literals(["None", "A1", "A2", "A4", "A8"]),
-                      ),
-                    }),
-                  ),
-                  tags: Schema.optional(
-                    Schema.Record(Schema.String, Schema.String),
-                  ),
-                }),
-              ),
-            ),
-          }),
-        ),
-        networkProfileConfiguration: Schema.optional(
-          Schema.Struct({
-            networkInterfaceConfigurations: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  name: Schema.String,
-                  properties: Schema.optional(
-                    Schema.Struct({
-                      primary: Schema.optional(Schema.Boolean),
-                      enableAcceleratedNetworking: Schema.optional(
-                        Schema.Boolean,
-                      ),
-                      disableTcpStateTracking: Schema.optional(Schema.Boolean),
-                      enableFpga: Schema.optional(Schema.Boolean),
-                      networkSecurityGroup: Schema.optional(
-                        Schema.Struct({
-                          id: Schema.optional(Schema.String),
-                        }),
-                      ),
-                      dnsSettings: Schema.optional(
-                        Schema.Struct({
-                          dnsServers: Schema.optional(
-                            Schema.Array(Schema.String),
-                          ),
-                        }),
-                      ),
-                      ipConfigurations: Schema.Array(
-                        Schema.Struct({
-                          name: Schema.String,
-                          properties: Schema.optional(
-                            Schema.Struct({
-                              subnet: Schema.optional(
-                                Schema.Struct({
-                                  id: Schema.optional(Schema.String),
-                                }),
-                              ),
-                              primary: Schema.optional(Schema.Boolean),
-                              publicIPAddressConfiguration: Schema.optional(
-                                Schema.Struct({
-                                  name: Schema.String,
-                                  properties: Schema.optional(
-                                    Schema.Struct({
-                                      idleTimeoutInMinutes: Schema.optional(
-                                        Schema.Number,
-                                      ),
-                                      dnsSettings: Schema.optional(
-                                        Schema.Struct({
-                                          domainNameLabel: Schema.String,
-                                          domainNameLabelScope: Schema.optional(
-                                            Schema.Literals([
-                                              "TenantReuse",
-                                              "SubscriptionReuse",
-                                              "ResourceGroupReuse",
-                                              "NoReuse",
-                                            ]),
-                                          ),
-                                        }),
-                                      ),
-                                      ipTags: Schema.optional(
-                                        Schema.Array(
-                                          Schema.Struct({
-                                            ipTagType: Schema.optional(
-                                              Schema.String,
-                                            ),
-                                            tag: Schema.optional(Schema.String),
-                                          }),
-                                        ),
-                                      ),
-                                      publicIPPrefix: Schema.optional(
-                                        Schema.Struct({
-                                          id: Schema.optional(Schema.String),
-                                        }),
-                                      ),
-                                      publicIPAddressVersion: Schema.optional(
-                                        Schema.Literals(["IPv4", "IPv6"]),
-                                      ),
-                                      deleteOption: Schema.optional(
-                                        Schema.Literals(["Delete", "Detach"]),
-                                      ),
-                                    }),
-                                  ),
-                                  sku: Schema.optional(
-                                    Schema.Struct({
-                                      name: Schema.optional(
-                                        Schema.Literals(["Basic", "Standard"]),
-                                      ),
-                                      tier: Schema.optional(
-                                        Schema.Literals(["Regional", "Global"]),
-                                      ),
-                                    }),
-                                  ),
-                                  tags: Schema.optional(
-                                    Schema.Record(Schema.String, Schema.String),
-                                  ),
-                                }),
-                              ),
-                              privateIPAddressVersion: Schema.optional(
-                                Schema.Literals(["IPv4", "IPv6"]),
-                              ),
-                              applicationGatewayBackendAddressPools:
-                                Schema.optional(
-                                  Schema.Array(
-                                    Schema.Struct({
-                                      id: Schema.optional(Schema.String),
-                                    }),
-                                  ),
-                                ),
-                              applicationSecurityGroups: Schema.optional(
-                                Schema.Array(
-                                  Schema.Struct({
-                                    id: Schema.optional(Schema.String),
-                                  }),
-                                ),
-                              ),
-                              loadBalancerBackendAddressPools: Schema.optional(
-                                Schema.Array(
-                                  Schema.Struct({
-                                    id: Schema.optional(Schema.String),
-                                  }),
-                                ),
-                              ),
-                              loadBalancerInboundNatPools: Schema.optional(
-                                Schema.Array(
-                                  Schema.Struct({
-                                    id: Schema.optional(Schema.String),
-                                  }),
-                                ),
-                              ),
-                            }),
-                          ),
-                        }),
-                      ),
-                      enableIPForwarding: Schema.optional(Schema.Boolean),
-                      deleteOption: Schema.optional(
-                        Schema.Literals(["Delete", "Detach"]),
-                      ),
-                      auxiliaryMode: Schema.optional(
-                        Schema.Literals([
-                          "None",
-                          "AcceleratedConnections",
-                          "Floating",
-                        ]),
-                      ),
-                      auxiliarySku: Schema.optional(
-                        Schema.Literals(["None", "A1", "A2", "A4", "A8"]),
-                      ),
-                    }),
-                  ),
-                  tags: Schema.optional(
-                    Schema.Record(Schema.String, Schema.String),
-                  ),
-                }),
-              ),
-            ),
-          }),
-        ),
-        diagnosticsProfile: Schema.optional(
-          Schema.Struct({
-            bootDiagnostics: Schema.optional(
-              Schema.Struct({
-                enabled: Schema.optional(Schema.Boolean),
-                storageUri: Schema.optional(Schema.String),
-              }),
-            ),
-          }),
-        ),
-        availabilitySet: Schema.optional(
-          Schema.Struct({
-            id: Schema.optional(Schema.String),
-          }),
-        ),
-        provisioningState: Schema.optional(Schema.String),
-        licenseType: Schema.optional(Schema.String),
-        modelDefinitionApplied: Schema.optional(Schema.String),
-        protectionPolicy: Schema.optional(
-          Schema.Struct({
-            protectFromScaleIn: Schema.optional(Schema.Boolean),
-            protectFromScaleSetActions: Schema.optional(Schema.Boolean),
-          }),
-        ),
-        userData: Schema.optional(Schema.String),
-        timeCreated: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(() => VirtualMachineScaleSetVMPropertiesSchema),
     ),
-    sku: Schema.optional(
-      Schema.Struct({
-        name: Schema.optional(Schema.String),
-        tier: Schema.optional(Schema.String),
-        capacity: Schema.optional(Schema.Number),
-      }),
-    ),
-    plan: Schema.optional(
-      Schema.Struct({
-        name: Schema.optional(Schema.String),
-        publisher: Schema.optional(Schema.String),
-        product: Schema.optional(Schema.String),
-        promotionCode: Schema.optional(Schema.String),
-      }),
-    ),
+    sku: Schema.optional(Schema.suspend(() => SkuSchema)),
+    plan: Schema.optional(Schema.suspend(() => PlanSchema)),
     resources: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.String),
-              createdByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              createdAt: Schema.optional(Schema.String),
-              lastModifiedBy: Schema.optional(Schema.String),
-              lastModifiedByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              lastModifiedAt: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => VirtualMachineExtensionSchema)),
     ),
     zones: Schema.optional(Schema.Array(Schema.String)),
     identity: Schema.optional(
-      Schema.Struct({
-        principalId: Schema.optional(Schema.String),
-        tenantId: Schema.optional(Schema.String),
-        type: Schema.optional(
-          Schema.Literals([
-            "SystemAssigned",
-            "UserAssigned",
-            "SystemAssigned, UserAssigned",
-            "None",
-          ]),
-        ),
-        userAssignedIdentities: Schema.optional(
-          Schema.Record(
-            Schema.String,
-            Schema.Struct({
-              principalId: Schema.optional(Schema.String),
-              clientId: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-      }),
+      Schema.suspend(() => VirtualMachineIdentitySchema),
     ),
     etag: Schema.optional(Schema.String),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
@@ -13858,23 +10727,26 @@ export type VirtualMachineScaleSetVMsUpdateInput =
 // Output Schema
 export const VirtualMachineScaleSetVMsUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => VirtualMachineScaleSetVMPropertiesSchema),
+    ),
+    instanceId: Schema.optional(Schema.String),
+    sku: Schema.optional(Schema.suspend(() => SkuSchema)),
+    plan: Schema.optional(Schema.suspend(() => PlanSchema)),
+    resources: Schema.optional(
+      Schema.Array(Schema.suspend(() => VirtualMachineExtensionSchema)),
+    ),
+    zones: Schema.optional(Schema.Array(Schema.String)),
+    identity: Schema.optional(
+      Schema.suspend(() => VirtualMachineIdentitySchema),
+    ),
+    etag: Schema.optional(Schema.String),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type VirtualMachineScaleSetVMsUpdateOutput =
   typeof VirtualMachineScaleSetVMsUpdateOutput.Type;
@@ -13919,6 +10791,10 @@ export type VirtualMachinesCaptureInput =
 // Output Schema
 export const VirtualMachinesCaptureOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    $schema: Schema.optional(Schema.String),
+    contentVersion: Schema.optional(Schema.String),
+    parameters: Schema.optional(Schema.Unknown),
+    resources: Schema.optional(Schema.Array(Schema.Unknown)),
     id: Schema.optional(Schema.String),
   });
 export type VirtualMachinesCaptureOutput =
@@ -13983,1180 +10859,25 @@ export const VirtualMachinesCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vmName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        hardwareProfile: Schema.optional(
-          Schema.Struct({
-            vmSize: Schema.optional(
-              Schema.Literals([
-                "Basic_A0",
-                "Basic_A1",
-                "Basic_A2",
-                "Basic_A3",
-                "Basic_A4",
-                "Standard_A0",
-                "Standard_A1",
-                "Standard_A2",
-                "Standard_A3",
-                "Standard_A4",
-                "Standard_A5",
-                "Standard_A6",
-                "Standard_A7",
-                "Standard_A8",
-                "Standard_A9",
-                "Standard_A10",
-                "Standard_A11",
-                "Standard_A1_v2",
-                "Standard_A2_v2",
-                "Standard_A4_v2",
-                "Standard_A8_v2",
-                "Standard_A2m_v2",
-                "Standard_A4m_v2",
-                "Standard_A8m_v2",
-                "Standard_B1s",
-                "Standard_B1ms",
-                "Standard_B2s",
-                "Standard_B2ms",
-                "Standard_B4ms",
-                "Standard_B8ms",
-                "Standard_D1",
-                "Standard_D2",
-                "Standard_D3",
-                "Standard_D4",
-                "Standard_D11",
-                "Standard_D12",
-                "Standard_D13",
-                "Standard_D14",
-                "Standard_D1_v2",
-                "Standard_D2_v2",
-                "Standard_D3_v2",
-                "Standard_D4_v2",
-                "Standard_D5_v2",
-                "Standard_D2_v3",
-                "Standard_D4_v3",
-                "Standard_D8_v3",
-                "Standard_D16_v3",
-                "Standard_D32_v3",
-                "Standard_D64_v3",
-                "Standard_D2s_v3",
-                "Standard_D4s_v3",
-                "Standard_D8s_v3",
-                "Standard_D16s_v3",
-                "Standard_D32s_v3",
-                "Standard_D64s_v3",
-                "Standard_D11_v2",
-                "Standard_D12_v2",
-                "Standard_D13_v2",
-                "Standard_D14_v2",
-                "Standard_D15_v2",
-                "Standard_DS1",
-                "Standard_DS2",
-                "Standard_DS3",
-                "Standard_DS4",
-                "Standard_DS11",
-                "Standard_DS12",
-                "Standard_DS13",
-                "Standard_DS14",
-                "Standard_DS1_v2",
-                "Standard_DS2_v2",
-                "Standard_DS3_v2",
-                "Standard_DS4_v2",
-                "Standard_DS5_v2",
-                "Standard_DS11_v2",
-                "Standard_DS12_v2",
-                "Standard_DS13_v2",
-                "Standard_DS14_v2",
-                "Standard_DS15_v2",
-                "Standard_DS13-4_v2",
-                "Standard_DS13-2_v2",
-                "Standard_DS14-8_v2",
-                "Standard_DS14-4_v2",
-                "Standard_E2_v3",
-                "Standard_E4_v3",
-                "Standard_E8_v3",
-                "Standard_E16_v3",
-                "Standard_E32_v3",
-                "Standard_E64_v3",
-                "Standard_E2s_v3",
-                "Standard_E4s_v3",
-                "Standard_E8s_v3",
-                "Standard_E16s_v3",
-                "Standard_E32s_v3",
-                "Standard_E64s_v3",
-                "Standard_E32-16_v3",
-                "Standard_E32-8s_v3",
-                "Standard_E64-32s_v3",
-                "Standard_E64-16s_v3",
-                "Standard_F1",
-                "Standard_F2",
-                "Standard_F4",
-                "Standard_F8",
-                "Standard_F16",
-                "Standard_F1s",
-                "Standard_F2s",
-                "Standard_F4s",
-                "Standard_F8s",
-                "Standard_F16s",
-                "Standard_F2s_v2",
-                "Standard_F4s_v2",
-                "Standard_F8s_v2",
-                "Standard_F16s_v2",
-                "Standard_F32s_v2",
-                "Standard_F64s_v2",
-                "Standard_F72s_v2",
-                "Standard_G1",
-                "Standard_G2",
-                "Standard_G3",
-                "Standard_G4",
-                "Standard_G5",
-                "Standard_GS1",
-                "Standard_GS2",
-                "Standard_GS3",
-                "Standard_GS4",
-                "Standard_GS5",
-                "Standard_GS4-8",
-                "Standard_GS4-4",
-                "Standard_GS5-16",
-                "Standard_GS5-8",
-                "Standard_H8",
-                "Standard_H16",
-                "Standard_H8m",
-                "Standard_H16m",
-                "Standard_H16r",
-                "Standard_H16mr",
-                "Standard_L4s",
-                "Standard_L8s",
-                "Standard_L16s",
-                "Standard_L32s",
-                "Standard_M64s",
-                "Standard_M64ms",
-                "Standard_M128s",
-                "Standard_M128ms",
-                "Standard_M64-32ms",
-                "Standard_M64-16ms",
-                "Standard_M128-64ms",
-                "Standard_M128-32ms",
-                "Standard_NC6",
-                "Standard_NC12",
-                "Standard_NC24",
-                "Standard_NC24r",
-                "Standard_NC6s_v2",
-                "Standard_NC12s_v2",
-                "Standard_NC24s_v2",
-                "Standard_NC24rs_v2",
-                "Standard_NC6s_v3",
-                "Standard_NC12s_v3",
-                "Standard_NC24s_v3",
-                "Standard_NC24rs_v3",
-                "Standard_ND6s",
-                "Standard_ND12s",
-                "Standard_ND24s",
-                "Standard_ND24rs",
-                "Standard_NV6",
-                "Standard_NV12",
-                "Standard_NV24",
-              ]),
-            ),
-            vmSizeProperties: Schema.optional(
-              Schema.Struct({
-                vCPUsAvailable: Schema.optional(Schema.Number),
-                vCPUsPerCore: Schema.optional(Schema.Number),
-              }),
-            ),
-          }),
-        ),
-        scheduledEventsPolicy: Schema.optional(
-          Schema.Struct({
-            userInitiatedRedeploy: Schema.optional(
-              Schema.Struct({
-                automaticallyApprove: Schema.optional(Schema.Boolean),
-              }),
-            ),
-            userInitiatedReboot: Schema.optional(
-              Schema.Struct({
-                automaticallyApprove: Schema.optional(Schema.Boolean),
-              }),
-            ),
-            scheduledEventsAdditionalPublishingTargets: Schema.optional(
-              Schema.Struct({
-                eventGridAndResourceGraph: Schema.optional(
-                  Schema.Struct({
-                    enable: Schema.optional(Schema.Boolean),
-                    scheduledEventsApiVersion: Schema.optional(Schema.String),
-                  }),
-                ),
-              }),
-            ),
-            allInstancesDown: Schema.optional(
-              Schema.Struct({
-                automaticallyApprove: Schema.optional(Schema.Boolean),
-              }),
-            ),
-          }),
-        ),
-        storageProfile: Schema.optional(
-          Schema.Struct({
-            imageReference: Schema.optional(
-              Schema.Struct({
-                id: Schema.optional(Schema.String),
-              }),
-            ),
-            osDisk: Schema.optional(
-              Schema.Struct({
-                osType: Schema.optional(Schema.Literals(["Windows", "Linux"])),
-                encryptionSettings: Schema.optional(
-                  Schema.Struct({
-                    diskEncryptionKey: Schema.optional(
-                      Schema.Struct({
-                        secretUrl: Schema.String,
-                        sourceVault: Schema.Struct({
-                          id: Schema.optional(Schema.String),
-                        }),
-                      }),
-                    ),
-                    keyEncryptionKey: Schema.optional(
-                      Schema.Struct({
-                        keyUrl: Schema.String,
-                        sourceVault: Schema.Struct({
-                          id: Schema.optional(Schema.String),
-                        }),
-                      }),
-                    ),
-                    enabled: Schema.optional(Schema.Boolean),
-                  }),
-                ),
-                name: Schema.optional(Schema.String),
-                vhd: Schema.optional(
-                  Schema.Struct({
-                    uri: Schema.optional(Schema.String),
-                  }),
-                ),
-                image: Schema.optional(
-                  Schema.Struct({
-                    uri: Schema.optional(Schema.String),
-                  }),
-                ),
-                caching: Schema.optional(
-                  Schema.Literals(["None", "ReadOnly", "ReadWrite"]),
-                ),
-                writeAcceleratorEnabled: Schema.optional(Schema.Boolean),
-                diffDiskSettings: Schema.optional(
-                  Schema.Struct({
-                    option: Schema.optional(Schema.Literals(["Local"])),
-                    placement: Schema.optional(
-                      Schema.Literals([
-                        "CacheDisk",
-                        "ResourceDisk",
-                        "NvmeDisk",
-                      ]),
-                    ),
-                  }),
-                ),
-                createOption: Schema.Literals([
-                  "FromImage",
-                  "Empty",
-                  "Attach",
-                  "Copy",
-                  "Restore",
-                ]),
-                diskSizeGB: Schema.optional(Schema.Number),
-                managedDisk: Schema.optional(
-                  Schema.Struct({
-                    id: Schema.optional(Schema.String),
-                  }),
-                ),
-                deleteOption: Schema.optional(
-                  Schema.Literals(["Delete", "Detach"]),
-                ),
-              }),
-            ),
-            dataDisks: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  lun: Schema.Number,
-                  name: Schema.optional(Schema.String),
-                  vhd: Schema.optional(
-                    Schema.Struct({
-                      uri: Schema.optional(Schema.String),
-                    }),
-                  ),
-                  image: Schema.optional(
-                    Schema.Struct({
-                      uri: Schema.optional(Schema.String),
-                    }),
-                  ),
-                  caching: Schema.optional(
-                    Schema.Literals(["None", "ReadOnly", "ReadWrite"]),
-                  ),
-                  writeAcceleratorEnabled: Schema.optional(Schema.Boolean),
-                  createOption: Schema.Literals([
-                    "FromImage",
-                    "Empty",
-                    "Attach",
-                    "Copy",
-                    "Restore",
-                  ]),
-                  diskSizeGB: Schema.optional(Schema.Number),
-                  managedDisk: Schema.optional(
-                    Schema.Struct({
-                      id: Schema.optional(Schema.String),
-                    }),
-                  ),
-                  sourceResource: Schema.optional(
-                    Schema.Struct({
-                      id: Schema.optional(Schema.String),
-                    }),
-                  ),
-                  toBeDetached: Schema.optional(Schema.Boolean),
-                  diskIOPSReadWrite: Schema.optional(Schema.Number),
-                  diskMBpsReadWrite: Schema.optional(Schema.Number),
-                  detachOption: Schema.optional(
-                    Schema.Literals(["ForceDetach"]),
-                  ),
-                  deleteOption: Schema.optional(
-                    Schema.Literals(["Delete", "Detach"]),
-                  ),
-                }),
-              ),
-            ),
-            diskControllerType: Schema.optional(
-              Schema.Literals(["SCSI", "NVMe"]),
-            ),
-            alignRegionalDisksToVMZone: Schema.optional(Schema.Boolean),
-          }),
-        ),
-        additionalCapabilities: Schema.optional(
-          Schema.Struct({
-            ultraSSDEnabled: Schema.optional(Schema.Boolean),
-            hibernationEnabled: Schema.optional(Schema.Boolean),
-            enableFips1403Encryption: Schema.optional(Schema.Boolean),
-          }),
-        ),
-        osProfile: Schema.optional(
-          Schema.Struct({
-            computerName: Schema.optional(Schema.String),
-            adminUsername: Schema.optional(Schema.String),
-            adminPassword: Schema.optional(SensitiveString),
-            customData: Schema.optional(Schema.String),
-            windowsConfiguration: Schema.optional(
-              Schema.Struct({
-                provisionVMAgent: Schema.optional(Schema.Boolean),
-                enableAutomaticUpdates: Schema.optional(Schema.Boolean),
-                timeZone: Schema.optional(Schema.String),
-                additionalUnattendContent: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      passName: Schema.optional(
-                        Schema.Literals(["OobeSystem"]),
-                      ),
-                      componentName: Schema.optional(
-                        Schema.Literals(["Microsoft-Windows-Shell-Setup"]),
-                      ),
-                      settingName: Schema.optional(
-                        Schema.Literals(["AutoLogon", "FirstLogonCommands"]),
-                      ),
-                      content: Schema.optional(Schema.String),
-                    }),
-                  ),
-                ),
-                patchSettings: Schema.optional(
-                  Schema.Struct({
-                    patchMode: Schema.optional(
-                      Schema.Literals([
-                        "Manual",
-                        "AutomaticByOS",
-                        "AutomaticByPlatform",
-                      ]),
-                    ),
-                    enableHotpatching: Schema.optional(Schema.Boolean),
-                    assessmentMode: Schema.optional(
-                      Schema.Literals(["ImageDefault", "AutomaticByPlatform"]),
-                    ),
-                    automaticByPlatformSettings: Schema.optional(
-                      Schema.Struct({
-                        rebootSetting: Schema.optional(
-                          Schema.Literals([
-                            "Unknown",
-                            "IfRequired",
-                            "Never",
-                            "Always",
-                          ]),
-                        ),
-                        bypassPlatformSafetyChecksOnUserSchedule:
-                          Schema.optional(Schema.Boolean),
-                      }),
-                    ),
-                  }),
-                ),
-                winRM: Schema.optional(
-                  Schema.Struct({
-                    listeners: Schema.optional(
-                      Schema.Array(
-                        Schema.Struct({
-                          protocol: Schema.optional(
-                            Schema.Literals(["Http", "Https"]),
-                          ),
-                          certificateUrl: Schema.optional(Schema.String),
-                        }),
-                      ),
-                    ),
-                  }),
-                ),
-                enableVMAgentPlatformUpdates: Schema.optional(Schema.Boolean),
-              }),
-            ),
-            linuxConfiguration: Schema.optional(
-              Schema.Struct({
-                disablePasswordAuthentication: Schema.optional(Schema.Boolean),
-                ssh: Schema.optional(
-                  Schema.Struct({
-                    publicKeys: Schema.optional(
-                      Schema.Array(
-                        Schema.Struct({
-                          path: Schema.optional(Schema.String),
-                          keyData: Schema.optional(Schema.String),
-                        }),
-                      ),
-                    ),
-                  }),
-                ),
-                provisionVMAgent: Schema.optional(Schema.Boolean),
-                patchSettings: Schema.optional(
-                  Schema.Struct({
-                    patchMode: Schema.optional(
-                      Schema.Literals(["ImageDefault", "AutomaticByPlatform"]),
-                    ),
-                    assessmentMode: Schema.optional(
-                      Schema.Literals(["ImageDefault", "AutomaticByPlatform"]),
-                    ),
-                    automaticByPlatformSettings: Schema.optional(
-                      Schema.Struct({
-                        rebootSetting: Schema.optional(
-                          Schema.Literals([
-                            "Unknown",
-                            "IfRequired",
-                            "Never",
-                            "Always",
-                          ]),
-                        ),
-                        bypassPlatformSafetyChecksOnUserSchedule:
-                          Schema.optional(Schema.Boolean),
-                      }),
-                    ),
-                  }),
-                ),
-                enableVMAgentPlatformUpdates: Schema.optional(Schema.Boolean),
-              }),
-            ),
-            secrets: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  sourceVault: Schema.optional(
-                    Schema.Struct({
-                      id: Schema.optional(Schema.String),
-                    }),
-                  ),
-                  vaultCertificates: Schema.optional(
-                    Schema.Array(
-                      Schema.Struct({
-                        certificateUrl: Schema.optional(Schema.String),
-                        certificateStore: Schema.optional(Schema.String),
-                      }),
-                    ),
-                  ),
-                }),
-              ),
-            ),
-            allowExtensionOperations: Schema.optional(Schema.Boolean),
-            requireGuestProvisionSignal: Schema.optional(Schema.Boolean),
-          }),
-        ),
-        networkProfile: Schema.optional(
-          Schema.Struct({
-            networkInterfaces: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  id: Schema.optional(Schema.String),
-                }),
-              ),
-            ),
-            networkApiVersion: Schema.optional(
-              Schema.Literals(["2020-11-01", "2022-11-01"]),
-            ),
-            networkInterfaceConfigurations: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  name: Schema.String,
-                  properties: Schema.optional(
-                    Schema.Struct({
-                      primary: Schema.optional(Schema.Boolean),
-                      deleteOption: Schema.optional(
-                        Schema.Literals(["Delete", "Detach"]),
-                      ),
-                      enableAcceleratedNetworking: Schema.optional(
-                        Schema.Boolean,
-                      ),
-                      disableTcpStateTracking: Schema.optional(Schema.Boolean),
-                      enableFpga: Schema.optional(Schema.Boolean),
-                      enableIPForwarding: Schema.optional(Schema.Boolean),
-                      networkSecurityGroup: Schema.optional(
-                        Schema.Struct({
-                          id: Schema.optional(Schema.String),
-                        }),
-                      ),
-                      dnsSettings: Schema.optional(
-                        Schema.Struct({
-                          dnsServers: Schema.optional(
-                            Schema.Array(Schema.String),
-                          ),
-                        }),
-                      ),
-                      ipConfigurations: Schema.Array(
-                        Schema.Struct({
-                          name: Schema.String,
-                          properties: Schema.optional(
-                            Schema.Struct({
-                              subnet: Schema.optional(
-                                Schema.Struct({
-                                  id: Schema.optional(Schema.String),
-                                }),
-                              ),
-                              primary: Schema.optional(Schema.Boolean),
-                              publicIPAddressConfiguration: Schema.optional(
-                                Schema.Struct({
-                                  name: Schema.String,
-                                  properties: Schema.optional(
-                                    Schema.Struct({
-                                      idleTimeoutInMinutes: Schema.optional(
-                                        Schema.Number,
-                                      ),
-                                      deleteOption: Schema.optional(
-                                        Schema.Literals(["Delete", "Detach"]),
-                                      ),
-                                      dnsSettings: Schema.optional(
-                                        Schema.Struct({
-                                          domainNameLabel: Schema.String,
-                                          domainNameLabelScope: Schema.optional(
-                                            Schema.Literals([
-                                              "TenantReuse",
-                                              "SubscriptionReuse",
-                                              "ResourceGroupReuse",
-                                              "NoReuse",
-                                            ]),
-                                          ),
-                                        }),
-                                      ),
-                                      ipTags: Schema.optional(
-                                        Schema.Array(
-                                          Schema.Struct({
-                                            ipTagType: Schema.optional(
-                                              Schema.String,
-                                            ),
-                                            tag: Schema.optional(Schema.String),
-                                          }),
-                                        ),
-                                      ),
-                                      publicIPPrefix: Schema.optional(
-                                        Schema.Struct({
-                                          id: Schema.optional(Schema.String),
-                                        }),
-                                      ),
-                                      publicIPAddressVersion: Schema.optional(
-                                        Schema.Literals(["IPv4", "IPv6"]),
-                                      ),
-                                      publicIPAllocationMethod: Schema.optional(
-                                        Schema.Literals(["Dynamic", "Static"]),
-                                      ),
-                                    }),
-                                  ),
-                                  sku: Schema.optional(
-                                    Schema.Struct({
-                                      name: Schema.optional(
-                                        Schema.Literals(["Basic", "Standard"]),
-                                      ),
-                                      tier: Schema.optional(
-                                        Schema.Literals(["Regional", "Global"]),
-                                      ),
-                                    }),
-                                  ),
-                                  tags: Schema.optional(
-                                    Schema.Record(Schema.String, Schema.String),
-                                  ),
-                                }),
-                              ),
-                              privateIPAddressVersion: Schema.optional(
-                                Schema.Literals(["IPv4", "IPv6"]),
-                              ),
-                              applicationSecurityGroups: Schema.optional(
-                                Schema.Array(
-                                  Schema.Struct({
-                                    id: Schema.optional(Schema.String),
-                                  }),
-                                ),
-                              ),
-                              applicationGatewayBackendAddressPools:
-                                Schema.optional(
-                                  Schema.Array(
-                                    Schema.Struct({
-                                      id: Schema.optional(Schema.String),
-                                    }),
-                                  ),
-                                ),
-                              loadBalancerBackendAddressPools: Schema.optional(
-                                Schema.Array(
-                                  Schema.Struct({
-                                    id: Schema.optional(Schema.String),
-                                  }),
-                                ),
-                              ),
-                            }),
-                          ),
-                        }),
-                      ),
-                      dscpConfiguration: Schema.optional(
-                        Schema.Struct({
-                          id: Schema.optional(Schema.String),
-                        }),
-                      ),
-                      auxiliaryMode: Schema.optional(
-                        Schema.Literals([
-                          "None",
-                          "AcceleratedConnections",
-                          "Floating",
-                        ]),
-                      ),
-                      auxiliarySku: Schema.optional(
-                        Schema.Literals(["None", "A1", "A2", "A4", "A8"]),
-                      ),
-                    }),
-                  ),
-                  tags: Schema.optional(
-                    Schema.Record(Schema.String, Schema.String),
-                  ),
-                }),
-              ),
-            ),
-          }),
-        ),
-        securityProfile: Schema.optional(
-          Schema.Struct({
-            uefiSettings: Schema.optional(
-              Schema.Struct({
-                secureBootEnabled: Schema.optional(Schema.Boolean),
-                vTpmEnabled: Schema.optional(Schema.Boolean),
-              }),
-            ),
-            encryptionAtHost: Schema.optional(Schema.Boolean),
-            securityType: Schema.optional(
-              Schema.Literals(["TrustedLaunch", "ConfidentialVM"]),
-            ),
-            encryptionIdentity: Schema.optional(
-              Schema.Struct({
-                userAssignedIdentityResourceId: Schema.optional(Schema.String),
-              }),
-            ),
-            proxyAgentSettings: Schema.optional(
-              Schema.Struct({
-                enabled: Schema.optional(Schema.Boolean),
-                mode: Schema.optional(Schema.Literals(["Audit", "Enforce"])),
-                keyIncarnationId: Schema.optional(Schema.Number),
-                wireServer: Schema.optional(
-                  Schema.Struct({
-                    mode: Schema.optional(
-                      Schema.Literals(["Audit", "Enforce", "Disabled"]),
-                    ),
-                    inVMAccessControlProfileReferenceId: Schema.optional(
-                      Schema.String,
-                    ),
-                  }),
-                ),
-                imds: Schema.optional(
-                  Schema.Struct({
-                    mode: Schema.optional(
-                      Schema.Literals(["Audit", "Enforce", "Disabled"]),
-                    ),
-                    inVMAccessControlProfileReferenceId: Schema.optional(
-                      Schema.String,
-                    ),
-                  }),
-                ),
-                addProxyAgentExtension: Schema.optional(Schema.Boolean),
-              }),
-            ),
-          }),
-        ),
-        diagnosticsProfile: Schema.optional(
-          Schema.Struct({
-            bootDiagnostics: Schema.optional(
-              Schema.Struct({
-                enabled: Schema.optional(Schema.Boolean),
-                storageUri: Schema.optional(Schema.String),
-              }),
-            ),
-          }),
-        ),
-        availabilitySet: Schema.optional(
-          Schema.Struct({
-            id: Schema.optional(Schema.String),
-          }),
-        ),
-        virtualMachineScaleSet: Schema.optional(
-          Schema.Struct({
-            id: Schema.optional(Schema.String),
-          }),
-        ),
-        proximityPlacementGroup: Schema.optional(
-          Schema.Struct({
-            id: Schema.optional(Schema.String),
-          }),
-        ),
-        priority: Schema.optional(Schema.Literals(["Regular", "Low", "Spot"])),
-        evictionPolicy: Schema.optional(
-          Schema.Literals(["Deallocate", "Delete"]),
-        ),
-        billingProfile: Schema.optional(
-          Schema.Struct({
-            maxPrice: Schema.optional(Schema.Number),
-          }),
-        ),
-        host: Schema.optional(
-          Schema.Struct({
-            id: Schema.optional(Schema.String),
-          }),
-        ),
-        hostGroup: Schema.optional(
-          Schema.Struct({
-            id: Schema.optional(Schema.String),
-          }),
-        ),
-        provisioningState: Schema.optional(Schema.String),
-        instanceView: Schema.optional(
-          Schema.Struct({
-            platformUpdateDomain: Schema.optional(Schema.Number),
-            platformFaultDomain: Schema.optional(Schema.Number),
-            computerName: Schema.optional(Schema.String),
-            osName: Schema.optional(Schema.String),
-            osVersion: Schema.optional(Schema.String),
-            hyperVGeneration: Schema.optional(Schema.Literals(["V1", "V2"])),
-            rdpThumbPrint: Schema.optional(Schema.String),
-            vmAgent: Schema.optional(
-              Schema.Struct({
-                vmAgentVersion: Schema.optional(Schema.String),
-                extensionHandlers: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      type: Schema.optional(Schema.String),
-                      typeHandlerVersion: Schema.optional(Schema.String),
-                      status: Schema.optional(
-                        Schema.Struct({
-                          code: Schema.optional(Schema.String),
-                          level: Schema.optional(
-                            Schema.Literals(["Info", "Warning", "Error"]),
-                          ),
-                          displayStatus: Schema.optional(Schema.String),
-                          message: Schema.optional(Schema.String),
-                          time: Schema.optional(Schema.String),
-                        }),
-                      ),
-                    }),
-                  ),
-                ),
-                statuses: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      code: Schema.optional(Schema.String),
-                      level: Schema.optional(
-                        Schema.Literals(["Info", "Warning", "Error"]),
-                      ),
-                      displayStatus: Schema.optional(Schema.String),
-                      message: Schema.optional(Schema.String),
-                      time: Schema.optional(Schema.String),
-                    }),
-                  ),
-                ),
-              }),
-            ),
-            maintenanceRedeployStatus: Schema.optional(
-              Schema.Struct({
-                isCustomerInitiatedMaintenanceAllowed: Schema.optional(
-                  Schema.Boolean,
-                ),
-                preMaintenanceWindowStartTime: Schema.optional(Schema.String),
-                preMaintenanceWindowEndTime: Schema.optional(Schema.String),
-                maintenanceWindowStartTime: Schema.optional(Schema.String),
-                maintenanceWindowEndTime: Schema.optional(Schema.String),
-                lastOperationResultCode: Schema.optional(
-                  Schema.Literals([
-                    "None",
-                    "RetryLater",
-                    "MaintenanceAborted",
-                    "MaintenanceCompleted",
-                  ]),
-                ),
-                lastOperationMessage: Schema.optional(Schema.String),
-              }),
-            ),
-            disks: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  name: Schema.optional(Schema.String),
-                  encryptionSettings: Schema.optional(
-                    Schema.Array(
-                      Schema.Struct({
-                        diskEncryptionKey: Schema.optional(
-                          Schema.Struct({
-                            secretUrl: Schema.String,
-                            sourceVault: Schema.Struct({
-                              id: Schema.optional(Schema.String),
-                            }),
-                          }),
-                        ),
-                        keyEncryptionKey: Schema.optional(
-                          Schema.Struct({
-                            keyUrl: Schema.String,
-                            sourceVault: Schema.Struct({
-                              id: Schema.optional(Schema.String),
-                            }),
-                          }),
-                        ),
-                        enabled: Schema.optional(Schema.Boolean),
-                      }),
-                    ),
-                  ),
-                  statuses: Schema.optional(
-                    Schema.Array(
-                      Schema.Struct({
-                        code: Schema.optional(Schema.String),
-                        level: Schema.optional(
-                          Schema.Literals(["Info", "Warning", "Error"]),
-                        ),
-                        displayStatus: Schema.optional(Schema.String),
-                        message: Schema.optional(Schema.String),
-                        time: Schema.optional(Schema.String),
-                      }),
-                    ),
-                  ),
-                }),
-              ),
-            ),
-            extensions: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  name: Schema.optional(Schema.String),
-                  type: Schema.optional(Schema.String),
-                  typeHandlerVersion: Schema.optional(Schema.String),
-                  substatuses: Schema.optional(
-                    Schema.Array(
-                      Schema.Struct({
-                        code: Schema.optional(Schema.String),
-                        level: Schema.optional(
-                          Schema.Literals(["Info", "Warning", "Error"]),
-                        ),
-                        displayStatus: Schema.optional(Schema.String),
-                        message: Schema.optional(Schema.String),
-                        time: Schema.optional(Schema.String),
-                      }),
-                    ),
-                  ),
-                  statuses: Schema.optional(
-                    Schema.Array(
-                      Schema.Struct({
-                        code: Schema.optional(Schema.String),
-                        level: Schema.optional(
-                          Schema.Literals(["Info", "Warning", "Error"]),
-                        ),
-                        displayStatus: Schema.optional(Schema.String),
-                        message: Schema.optional(Schema.String),
-                        time: Schema.optional(Schema.String),
-                      }),
-                    ),
-                  ),
-                }),
-              ),
-            ),
-            vmHealth: Schema.optional(
-              Schema.Struct({
-                status: Schema.optional(
-                  Schema.Struct({
-                    code: Schema.optional(Schema.String),
-                    level: Schema.optional(
-                      Schema.Literals(["Info", "Warning", "Error"]),
-                    ),
-                    displayStatus: Schema.optional(Schema.String),
-                    message: Schema.optional(Schema.String),
-                    time: Schema.optional(Schema.String),
-                  }),
-                ),
-              }),
-            ),
-            bootDiagnostics: Schema.optional(
-              Schema.Struct({
-                consoleScreenshotBlobUri: Schema.optional(Schema.String),
-                serialConsoleLogBlobUri: Schema.optional(Schema.String),
-                status: Schema.optional(
-                  Schema.Struct({
-                    code: Schema.optional(Schema.String),
-                    level: Schema.optional(
-                      Schema.Literals(["Info", "Warning", "Error"]),
-                    ),
-                    displayStatus: Schema.optional(Schema.String),
-                    message: Schema.optional(Schema.String),
-                    time: Schema.optional(Schema.String),
-                  }),
-                ),
-              }),
-            ),
-            assignedHost: Schema.optional(Schema.String),
-            statuses: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  code: Schema.optional(Schema.String),
-                  level: Schema.optional(
-                    Schema.Literals(["Info", "Warning", "Error"]),
-                  ),
-                  displayStatus: Schema.optional(Schema.String),
-                  message: Schema.optional(Schema.String),
-                  time: Schema.optional(Schema.String),
-                }),
-              ),
-            ),
-            patchStatus: Schema.optional(
-              Schema.Struct({
-                availablePatchSummary: Schema.optional(
-                  Schema.Struct({
-                    status: Schema.optional(
-                      Schema.Literals([
-                        "Unknown",
-                        "InProgress",
-                        "Failed",
-                        "Succeeded",
-                        "CompletedWithWarnings",
-                      ]),
-                    ),
-                    assessmentActivityId: Schema.optional(Schema.String),
-                    rebootPending: Schema.optional(Schema.Boolean),
-                    criticalAndSecurityPatchCount: Schema.optional(
-                      Schema.Number,
-                    ),
-                    otherPatchCount: Schema.optional(Schema.Number),
-                    startTime: Schema.optional(Schema.String),
-                    lastModifiedTime: Schema.optional(Schema.String),
-                    error: Schema.optional(
-                      Schema.Struct({
-                        details: Schema.optional(
-                          Schema.Array(
-                            Schema.Struct({
-                              code: Schema.optional(Schema.String),
-                              target: Schema.optional(Schema.String),
-                              message: Schema.optional(Schema.String),
-                            }),
-                          ),
-                        ),
-                        innererror: Schema.optional(
-                          Schema.Struct({
-                            exceptiontype: Schema.optional(Schema.String),
-                            errordetail: Schema.optional(Schema.String),
-                          }),
-                        ),
-                        code: Schema.optional(Schema.String),
-                        target: Schema.optional(Schema.String),
-                        message: Schema.optional(Schema.String),
-                      }),
-                    ),
-                  }),
-                ),
-                lastPatchInstallationSummary: Schema.optional(
-                  Schema.Struct({
-                    status: Schema.optional(
-                      Schema.Literals([
-                        "Unknown",
-                        "InProgress",
-                        "Failed",
-                        "Succeeded",
-                        "CompletedWithWarnings",
-                      ]),
-                    ),
-                    installationActivityId: Schema.optional(Schema.String),
-                    maintenanceWindowExceeded: Schema.optional(Schema.Boolean),
-                    notSelectedPatchCount: Schema.optional(Schema.Number),
-                    excludedPatchCount: Schema.optional(Schema.Number),
-                    pendingPatchCount: Schema.optional(Schema.Number),
-                    installedPatchCount: Schema.optional(Schema.Number),
-                    failedPatchCount: Schema.optional(Schema.Number),
-                    startTime: Schema.optional(Schema.String),
-                    lastModifiedTime: Schema.optional(Schema.String),
-                    error: Schema.optional(
-                      Schema.Struct({
-                        details: Schema.optional(
-                          Schema.Array(
-                            Schema.Struct({
-                              code: Schema.optional(Schema.String),
-                              target: Schema.optional(Schema.String),
-                              message: Schema.optional(Schema.String),
-                            }),
-                          ),
-                        ),
-                        innererror: Schema.optional(
-                          Schema.Struct({
-                            exceptiontype: Schema.optional(Schema.String),
-                            errordetail: Schema.optional(Schema.String),
-                          }),
-                        ),
-                        code: Schema.optional(Schema.String),
-                        target: Schema.optional(Schema.String),
-                        message: Schema.optional(Schema.String),
-                      }),
-                    ),
-                  }),
-                ),
-                configurationStatuses: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      code: Schema.optional(Schema.String),
-                      level: Schema.optional(
-                        Schema.Literals(["Info", "Warning", "Error"]),
-                      ),
-                      displayStatus: Schema.optional(Schema.String),
-                      message: Schema.optional(Schema.String),
-                      time: Schema.optional(Schema.String),
-                    }),
-                  ),
-                ),
-              }),
-            ),
-            isVMInStandbyPool: Schema.optional(Schema.Boolean),
-          }),
-        ),
-        licenseType: Schema.optional(Schema.String),
-        vmId: Schema.optional(Schema.String),
-        extensionsTimeBudget: Schema.optional(Schema.String),
-        platformFaultDomain: Schema.optional(Schema.Number),
-        scheduledEventsProfile: Schema.optional(
-          Schema.Struct({
-            terminateNotificationProfile: Schema.optional(
-              Schema.Struct({
-                notBeforeTimeout: Schema.optional(Schema.String),
-                enable: Schema.optional(Schema.Boolean),
-              }),
-            ),
-            osImageNotificationProfile: Schema.optional(
-              Schema.Struct({
-                notBeforeTimeout: Schema.optional(Schema.String),
-                enable: Schema.optional(Schema.Boolean),
-              }),
-            ),
-          }),
-        ),
-        userData: Schema.optional(Schema.String),
-        capacityReservation: Schema.optional(
-          Schema.Struct({
-            capacityReservationGroup: Schema.optional(
-              Schema.Struct({
-                id: Schema.optional(Schema.String),
-              }),
-            ),
-          }),
-        ),
-        applicationProfile: Schema.optional(
-          Schema.Struct({
-            galleryApplications: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  tags: Schema.optional(Schema.String),
-                  order: Schema.optional(Schema.Number),
-                  packageReferenceId: Schema.String,
-                  configurationReference: Schema.optional(Schema.String),
-                  treatFailureAsDeploymentFailure: Schema.optional(
-                    Schema.Boolean,
-                  ),
-                  enableAutomaticUpgrade: Schema.optional(Schema.Boolean),
-                }),
-              ),
-            ),
-          }),
-        ),
-        timeCreated: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(() => VirtualMachinePropertiesSchema),
     ),
-    plan: Schema.optional(
-      Schema.Struct({
-        name: Schema.optional(Schema.String),
-        publisher: Schema.optional(Schema.String),
-        product: Schema.optional(Schema.String),
-        promotionCode: Schema.optional(Schema.String),
-      }),
-    ),
+    plan: Schema.optional(Schema.suspend(() => PlanSchema)),
     resources: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.String),
-              createdByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              createdAt: Schema.optional(Schema.String),
-              lastModifiedBy: Schema.optional(Schema.String),
-              lastModifiedByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              lastModifiedAt: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => VirtualMachineExtensionSchema)),
     ),
     identity: Schema.optional(
-      Schema.Struct({
-        principalId: Schema.optional(Schema.String),
-        tenantId: Schema.optional(Schema.String),
-        type: Schema.optional(
-          Schema.Literals([
-            "SystemAssigned",
-            "UserAssigned",
-            "SystemAssigned, UserAssigned",
-            "None",
-          ]),
-        ),
-        userAssignedIdentities: Schema.optional(
-          Schema.Record(
-            Schema.String,
-            Schema.Struct({
-              principalId: Schema.optional(Schema.String),
-              clientId: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-      }),
+      Schema.suspend(() => VirtualMachineIdentitySchema),
     ),
     zones: Schema.optional(Schema.Array(Schema.String)),
     extendedLocation: Schema.optional(
       Schema.Struct({
         name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.Literals(["EdgeZone"])),
+        type: Schema.optional(Schema.suspend(() => ExtendedLocationTypeSchema)),
       }),
     ),
     managedBy: Schema.optional(Schema.String),
     etag: Schema.optional(Schema.String),
-    placement: Schema.optional(
-      Schema.Struct({
-        zonePlacementPolicy: Schema.optional(Schema.Literals(["Any", "Auto"])),
-        includeZones: Schema.optional(Schema.Array(Schema.String)),
-        excludeZones: Schema.optional(Schema.Array(Schema.String)),
-      }),
-    ),
+    placement: Schema.optional(Schema.suspend(() => PlacementSchema)),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     location: Schema.String,
   }).pipe(
@@ -15173,23 +10894,32 @@ export type VirtualMachinesCreateOrUpdateInput =
 // Output Schema
 export const VirtualMachinesCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => VirtualMachinePropertiesSchema),
+    ),
+    plan: Schema.optional(Schema.suspend(() => PlanSchema)),
+    resources: Schema.optional(
+      Schema.Array(Schema.suspend(() => VirtualMachineExtensionSchema)),
+    ),
+    identity: Schema.optional(
+      Schema.suspend(() => VirtualMachineIdentitySchema),
+    ),
+    zones: Schema.optional(Schema.Array(Schema.String)),
+    extendedLocation: Schema.optional(
+      Schema.Struct({
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.suspend(() => ExtendedLocationTypeSchema)),
+      }),
+    ),
+    managedBy: Schema.optional(Schema.String),
+    etag: Schema.optional(Schema.String),
+    placement: Schema.optional(Schema.suspend(() => PlacementSchema)),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type VirtualMachinesCreateOrUpdateOutput =
   typeof VirtualMachinesCreateOrUpdateOutput.Type;
@@ -15347,23 +11077,32 @@ export type VirtualMachinesGetInput = typeof VirtualMachinesGetInput.Type;
 // Output Schema
 export const VirtualMachinesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => VirtualMachinePropertiesSchema),
+    ),
+    plan: Schema.optional(Schema.suspend(() => PlanSchema)),
+    resources: Schema.optional(
+      Schema.Array(Schema.suspend(() => VirtualMachineExtensionSchema)),
+    ),
+    identity: Schema.optional(
+      Schema.suspend(() => VirtualMachineIdentitySchema),
+    ),
+    zones: Schema.optional(Schema.Array(Schema.String)),
+    extendedLocation: Schema.optional(
+      Schema.Struct({
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.suspend(() => ExtendedLocationTypeSchema)),
+      }),
+    ),
+    managedBy: Schema.optional(Schema.String),
+    etag: Schema.optional(Schema.String),
+    placement: Schema.optional(Schema.suspend(() => PlacementSchema)),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type VirtualMachinesGetOutput = typeof VirtualMachinesGetOutput.Type;
 
@@ -15388,40 +11127,12 @@ export const VirtualMachinesInstallPatchesInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vmName: Schema.String.pipe(T.PathParam()),
     maximumDuration: Schema.optional(Schema.String),
-    rebootSetting: Schema.Literals(["IfRequired", "Never", "Always"]),
+    rebootSetting: Schema.suspend(() => VMGuestPatchRebootSettingSchema),
     windowsParameters: Schema.optional(
-      Schema.Struct({
-        classificationsToInclude: Schema.optional(
-          Schema.Array(
-            Schema.Literals([
-              "Critical",
-              "Security",
-              "UpdateRollUp",
-              "FeaturePack",
-              "ServicePack",
-              "Definition",
-              "Tools",
-              "Updates",
-            ]),
-          ),
-        ),
-        kbNumbersToInclude: Schema.optional(Schema.Array(Schema.String)),
-        kbNumbersToExclude: Schema.optional(Schema.Array(Schema.String)),
-        excludeKbsRequiringReboot: Schema.optional(Schema.Boolean),
-        maxPatchPublishDate: Schema.optional(Schema.String),
-        patchNameMasksToInclude: Schema.optional(Schema.Array(Schema.String)),
-        patchNameMasksToExclude: Schema.optional(Schema.Array(Schema.String)),
-      }),
+      Schema.suspend(() => WindowsParametersSchema),
     ),
     linuxParameters: Schema.optional(
-      Schema.Struct({
-        classificationsToInclude: Schema.optional(
-          Schema.Array(Schema.Literals(["Critical", "Security", "Other"])),
-        ),
-        packageNameMasksToInclude: Schema.optional(Schema.Array(Schema.String)),
-        packageNameMasksToExclude: Schema.optional(Schema.Array(Schema.String)),
-        maintenanceRunId: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(() => LinuxParametersSchema),
     ),
   }).pipe(
     T.Http({
@@ -15437,25 +11148,10 @@ export type VirtualMachinesInstallPatchesInput =
 // Output Schema
 export const VirtualMachinesInstallPatchesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    status: Schema.optional(
-      Schema.Literals([
-        "Unknown",
-        "InProgress",
-        "Failed",
-        "Succeeded",
-        "CompletedWithWarnings",
-      ]),
-    ),
+    status: Schema.optional(Schema.suspend(() => PatchOperationStatusSchema)),
     installationActivityId: Schema.optional(Schema.String),
     rebootStatus: Schema.optional(
-      Schema.Literals([
-        "Unknown",
-        "NotNeeded",
-        "Required",
-        "Started",
-        "Failed",
-        "Completed",
-      ]),
+      Schema.suspend(() => VMGuestPatchRebootStatusSchema),
     ),
     maintenanceWindowExceeded: Schema.optional(Schema.Boolean),
     excludedPatchCount: Schema.optional(Schema.Number),
@@ -15464,44 +11160,15 @@ export const VirtualMachinesInstallPatchesOutput =
     installedPatchCount: Schema.optional(Schema.Number),
     failedPatchCount: Schema.optional(Schema.Number),
     patches: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          patchId: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          version: Schema.optional(Schema.String),
-          kbId: Schema.optional(Schema.String),
-          classifications: Schema.optional(Schema.Array(Schema.String)),
-          installationState: Schema.optional(
-            Schema.Literals([
-              "Unknown",
-              "Installed",
-              "Failed",
-              "Excluded",
-              "NotSelected",
-              "Pending",
-            ]),
-          ),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => PatchInstallationDetailSchema)),
     ),
     startDateTime: Schema.optional(Schema.String),
     error: Schema.optional(
       Schema.Struct({
         details: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              code: Schema.optional(Schema.String),
-              target: Schema.optional(Schema.String),
-              message: Schema.optional(Schema.String),
-            }),
-          ),
+          Schema.Array(Schema.suspend(() => ApiErrorBaseSchema)),
         ),
-        innererror: Schema.optional(
-          Schema.Struct({
-            exceptiontype: Schema.optional(Schema.String),
-            errordetail: Schema.optional(Schema.String),
-          }),
-        ),
+        innererror: Schema.optional(Schema.suspend(() => InnerErrorSchema)),
         code: Schema.optional(Schema.String),
         target: Schema.optional(Schema.String),
         message: Schema.optional(Schema.String),
@@ -15549,286 +11216,36 @@ export const VirtualMachinesInstanceViewOutput =
     computerName: Schema.optional(Schema.String),
     osName: Schema.optional(Schema.String),
     osVersion: Schema.optional(Schema.String),
-    hyperVGeneration: Schema.optional(Schema.Literals(["V1", "V2"])),
+    hyperVGeneration: Schema.optional(
+      Schema.suspend(() => HyperVGenerationTypeSchema),
+    ),
     rdpThumbPrint: Schema.optional(Schema.String),
     vmAgent: Schema.optional(
-      Schema.Struct({
-        vmAgentVersion: Schema.optional(Schema.String),
-        extensionHandlers: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              type: Schema.optional(Schema.String),
-              typeHandlerVersion: Schema.optional(Schema.String),
-              status: Schema.optional(
-                Schema.Struct({
-                  code: Schema.optional(Schema.String),
-                  level: Schema.optional(
-                    Schema.Literals(["Info", "Warning", "Error"]),
-                  ),
-                  displayStatus: Schema.optional(Schema.String),
-                  message: Schema.optional(Schema.String),
-                  time: Schema.optional(Schema.String),
-                }),
-              ),
-            }),
-          ),
-        ),
-        statuses: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              code: Schema.optional(Schema.String),
-              level: Schema.optional(
-                Schema.Literals(["Info", "Warning", "Error"]),
-              ),
-              displayStatus: Schema.optional(Schema.String),
-              message: Schema.optional(Schema.String),
-              time: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-      }),
+      Schema.suspend(() => VirtualMachineAgentInstanceViewSchema),
     ),
     maintenanceRedeployStatus: Schema.optional(
-      Schema.Struct({
-        isCustomerInitiatedMaintenanceAllowed: Schema.optional(Schema.Boolean),
-        preMaintenanceWindowStartTime: Schema.optional(Schema.String),
-        preMaintenanceWindowEndTime: Schema.optional(Schema.String),
-        maintenanceWindowStartTime: Schema.optional(Schema.String),
-        maintenanceWindowEndTime: Schema.optional(Schema.String),
-        lastOperationResultCode: Schema.optional(
-          Schema.Literals([
-            "None",
-            "RetryLater",
-            "MaintenanceAborted",
-            "MaintenanceCompleted",
-          ]),
-        ),
-        lastOperationMessage: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(() => MaintenanceRedeployStatusSchema),
     ),
     disks: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          name: Schema.optional(Schema.String),
-          encryptionSettings: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                diskEncryptionKey: Schema.optional(
-                  Schema.Struct({
-                    secretUrl: Schema.String,
-                    sourceVault: Schema.Struct({
-                      id: Schema.optional(Schema.String),
-                    }),
-                  }),
-                ),
-                keyEncryptionKey: Schema.optional(
-                  Schema.Struct({
-                    keyUrl: Schema.String,
-                    sourceVault: Schema.Struct({
-                      id: Schema.optional(Schema.String),
-                    }),
-                  }),
-                ),
-                enabled: Schema.optional(Schema.Boolean),
-              }),
-            ),
-          ),
-          statuses: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                code: Schema.optional(Schema.String),
-                level: Schema.optional(
-                  Schema.Literals(["Info", "Warning", "Error"]),
-                ),
-                displayStatus: Schema.optional(Schema.String),
-                message: Schema.optional(Schema.String),
-                time: Schema.optional(Schema.String),
-              }),
-            ),
-          ),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => DiskInstanceViewSchema)),
     ),
     extensions: Schema.optional(
       Schema.Array(
-        Schema.Struct({
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          typeHandlerVersion: Schema.optional(Schema.String),
-          substatuses: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                code: Schema.optional(Schema.String),
-                level: Schema.optional(
-                  Schema.Literals(["Info", "Warning", "Error"]),
-                ),
-                displayStatus: Schema.optional(Schema.String),
-                message: Schema.optional(Schema.String),
-                time: Schema.optional(Schema.String),
-              }),
-            ),
-          ),
-          statuses: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                code: Schema.optional(Schema.String),
-                level: Schema.optional(
-                  Schema.Literals(["Info", "Warning", "Error"]),
-                ),
-                displayStatus: Schema.optional(Schema.String),
-                message: Schema.optional(Schema.String),
-                time: Schema.optional(Schema.String),
-              }),
-            ),
-          ),
-        }),
+        Schema.suspend(() => VirtualMachineExtensionInstanceViewSchema),
       ),
     ),
     vmHealth: Schema.optional(
-      Schema.Struct({
-        status: Schema.optional(
-          Schema.Struct({
-            code: Schema.optional(Schema.String),
-            level: Schema.optional(
-              Schema.Literals(["Info", "Warning", "Error"]),
-            ),
-            displayStatus: Schema.optional(Schema.String),
-            message: Schema.optional(Schema.String),
-            time: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
+      Schema.suspend(() => VirtualMachineHealthStatusSchema),
     ),
     bootDiagnostics: Schema.optional(
-      Schema.Struct({
-        consoleScreenshotBlobUri: Schema.optional(Schema.String),
-        serialConsoleLogBlobUri: Schema.optional(Schema.String),
-        status: Schema.optional(
-          Schema.Struct({
-            code: Schema.optional(Schema.String),
-            level: Schema.optional(
-              Schema.Literals(["Info", "Warning", "Error"]),
-            ),
-            displayStatus: Schema.optional(Schema.String),
-            message: Schema.optional(Schema.String),
-            time: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
+      Schema.suspend(() => BootDiagnosticsInstanceViewSchema),
     ),
     assignedHost: Schema.optional(Schema.String),
     statuses: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          code: Schema.optional(Schema.String),
-          level: Schema.optional(Schema.Literals(["Info", "Warning", "Error"])),
-          displayStatus: Schema.optional(Schema.String),
-          message: Schema.optional(Schema.String),
-          time: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => InstanceViewStatusSchema)),
     ),
     patchStatus: Schema.optional(
-      Schema.Struct({
-        availablePatchSummary: Schema.optional(
-          Schema.Struct({
-            status: Schema.optional(
-              Schema.Literals([
-                "Unknown",
-                "InProgress",
-                "Failed",
-                "Succeeded",
-                "CompletedWithWarnings",
-              ]),
-            ),
-            assessmentActivityId: Schema.optional(Schema.String),
-            rebootPending: Schema.optional(Schema.Boolean),
-            criticalAndSecurityPatchCount: Schema.optional(Schema.Number),
-            otherPatchCount: Schema.optional(Schema.Number),
-            startTime: Schema.optional(Schema.String),
-            lastModifiedTime: Schema.optional(Schema.String),
-            error: Schema.optional(
-              Schema.Struct({
-                details: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      code: Schema.optional(Schema.String),
-                      target: Schema.optional(Schema.String),
-                      message: Schema.optional(Schema.String),
-                    }),
-                  ),
-                ),
-                innererror: Schema.optional(
-                  Schema.Struct({
-                    exceptiontype: Schema.optional(Schema.String),
-                    errordetail: Schema.optional(Schema.String),
-                  }),
-                ),
-                code: Schema.optional(Schema.String),
-                target: Schema.optional(Schema.String),
-                message: Schema.optional(Schema.String),
-              }),
-            ),
-          }),
-        ),
-        lastPatchInstallationSummary: Schema.optional(
-          Schema.Struct({
-            status: Schema.optional(
-              Schema.Literals([
-                "Unknown",
-                "InProgress",
-                "Failed",
-                "Succeeded",
-                "CompletedWithWarnings",
-              ]),
-            ),
-            installationActivityId: Schema.optional(Schema.String),
-            maintenanceWindowExceeded: Schema.optional(Schema.Boolean),
-            notSelectedPatchCount: Schema.optional(Schema.Number),
-            excludedPatchCount: Schema.optional(Schema.Number),
-            pendingPatchCount: Schema.optional(Schema.Number),
-            installedPatchCount: Schema.optional(Schema.Number),
-            failedPatchCount: Schema.optional(Schema.Number),
-            startTime: Schema.optional(Schema.String),
-            lastModifiedTime: Schema.optional(Schema.String),
-            error: Schema.optional(
-              Schema.Struct({
-                details: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      code: Schema.optional(Schema.String),
-                      target: Schema.optional(Schema.String),
-                      message: Schema.optional(Schema.String),
-                    }),
-                  ),
-                ),
-                innererror: Schema.optional(
-                  Schema.Struct({
-                    exceptiontype: Schema.optional(Schema.String),
-                    errordetail: Schema.optional(Schema.String),
-                  }),
-                ),
-                code: Schema.optional(Schema.String),
-                target: Schema.optional(Schema.String),
-                message: Schema.optional(Schema.String),
-              }),
-            ),
-          }),
-        ),
-        configurationStatuses: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              code: Schema.optional(Schema.String),
-              level: Schema.optional(
-                Schema.Literals(["Info", "Warning", "Error"]),
-              ),
-              displayStatus: Schema.optional(Schema.String),
-              message: Schema.optional(Schema.String),
-              time: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-      }),
+      Schema.suspend(() => VirtualMachinePatchStatusSchema),
     ),
     isVMInStandbyPool: Schema.optional(Schema.Boolean),
   });
@@ -15869,16 +11286,7 @@ export type VirtualMachineSizesListInput =
 export const VirtualMachineSizesListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          name: Schema.optional(Schema.String),
-          numberOfCores: Schema.optional(Schema.Number),
-          osDiskSizeInMB: Schema.optional(Schema.Number),
-          resourceDiskSizeInMB: Schema.optional(Schema.Number),
-          memoryInMB: Schema.optional(Schema.Number),
-          maxDataDiskCount: Schema.optional(Schema.Number),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => VirtualMachineSizeSchema)),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -15918,37 +11326,7 @@ export type VirtualMachinesListInput = typeof VirtualMachinesListInput.Type;
 // Output Schema
 export const VirtualMachinesListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => VirtualMachineSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type VirtualMachinesListOutput = typeof VirtualMachinesListOutput.Type;
@@ -15987,37 +11365,7 @@ export type VirtualMachinesListAllInput =
 // Output Schema
 export const VirtualMachinesListAllOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => VirtualMachineSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type VirtualMachinesListAllOutput =
@@ -16059,16 +11407,7 @@ export type VirtualMachinesListAvailableSizesInput =
 export const VirtualMachinesListAvailableSizesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          name: Schema.optional(Schema.String),
-          numberOfCores: Schema.optional(Schema.Number),
-          osDiskSizeInMB: Schema.optional(Schema.Number),
-          resourceDiskSizeInMB: Schema.optional(Schema.Number),
-          memoryInMB: Schema.optional(Schema.Number),
-          maxDataDiskCount: Schema.optional(Schema.Number),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => VirtualMachineSizeSchema)),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -16107,37 +11446,7 @@ export type VirtualMachinesListByLocationInput =
 // Output Schema
 export const VirtualMachinesListByLocationOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => VirtualMachineSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type VirtualMachinesListByLocationOutput =
@@ -16358,10 +11667,7 @@ export const VirtualMachinesReimageInput =
     tempDisk: Schema.optional(Schema.Boolean),
     exactVersion: Schema.optional(Schema.String),
     osProfile: Schema.optional(
-      Schema.Struct({
-        adminPassword: Schema.optional(SensitiveString),
-        customData: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(() => OSProfileProvisioningDataSchema),
     ),
   }).pipe(
     T.Http({
@@ -16483,12 +11789,7 @@ export const VirtualMachinesRunCommandInput =
     commandId: Schema.String,
     script: Schema.optional(Schema.Array(Schema.String)),
     parameters: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          name: Schema.String,
-          value: Schema.String,
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => RunCommandInputParameterSchema)),
     ),
   }).pipe(
     T.Http({
@@ -16505,15 +11806,7 @@ export type VirtualMachinesRunCommandInput =
 export const VirtualMachinesRunCommandOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          code: Schema.optional(Schema.String),
-          level: Schema.optional(Schema.Literals(["Info", "Warning", "Error"])),
-          displayStatus: Schema.optional(Schema.String),
-          message: Schema.optional(Schema.String),
-          time: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => InstanceViewStatusSchema)),
     ),
   });
 export type VirtualMachinesRunCommandOutput =
@@ -16612,1131 +11905,12 @@ export const VirtualMachinesUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vmName: Schema.String.pipe(T.PathParam()),
-    plan: Schema.optional(
-      Schema.Struct({
-        name: Schema.optional(Schema.String),
-        publisher: Schema.optional(Schema.String),
-        product: Schema.optional(Schema.String),
-        promotionCode: Schema.optional(Schema.String),
-      }),
-    ),
+    plan: Schema.optional(Schema.suspend(() => PlanSchema)),
     properties: Schema.optional(
-      Schema.Struct({
-        hardwareProfile: Schema.optional(
-          Schema.Struct({
-            vmSize: Schema.optional(
-              Schema.Literals([
-                "Basic_A0",
-                "Basic_A1",
-                "Basic_A2",
-                "Basic_A3",
-                "Basic_A4",
-                "Standard_A0",
-                "Standard_A1",
-                "Standard_A2",
-                "Standard_A3",
-                "Standard_A4",
-                "Standard_A5",
-                "Standard_A6",
-                "Standard_A7",
-                "Standard_A8",
-                "Standard_A9",
-                "Standard_A10",
-                "Standard_A11",
-                "Standard_A1_v2",
-                "Standard_A2_v2",
-                "Standard_A4_v2",
-                "Standard_A8_v2",
-                "Standard_A2m_v2",
-                "Standard_A4m_v2",
-                "Standard_A8m_v2",
-                "Standard_B1s",
-                "Standard_B1ms",
-                "Standard_B2s",
-                "Standard_B2ms",
-                "Standard_B4ms",
-                "Standard_B8ms",
-                "Standard_D1",
-                "Standard_D2",
-                "Standard_D3",
-                "Standard_D4",
-                "Standard_D11",
-                "Standard_D12",
-                "Standard_D13",
-                "Standard_D14",
-                "Standard_D1_v2",
-                "Standard_D2_v2",
-                "Standard_D3_v2",
-                "Standard_D4_v2",
-                "Standard_D5_v2",
-                "Standard_D2_v3",
-                "Standard_D4_v3",
-                "Standard_D8_v3",
-                "Standard_D16_v3",
-                "Standard_D32_v3",
-                "Standard_D64_v3",
-                "Standard_D2s_v3",
-                "Standard_D4s_v3",
-                "Standard_D8s_v3",
-                "Standard_D16s_v3",
-                "Standard_D32s_v3",
-                "Standard_D64s_v3",
-                "Standard_D11_v2",
-                "Standard_D12_v2",
-                "Standard_D13_v2",
-                "Standard_D14_v2",
-                "Standard_D15_v2",
-                "Standard_DS1",
-                "Standard_DS2",
-                "Standard_DS3",
-                "Standard_DS4",
-                "Standard_DS11",
-                "Standard_DS12",
-                "Standard_DS13",
-                "Standard_DS14",
-                "Standard_DS1_v2",
-                "Standard_DS2_v2",
-                "Standard_DS3_v2",
-                "Standard_DS4_v2",
-                "Standard_DS5_v2",
-                "Standard_DS11_v2",
-                "Standard_DS12_v2",
-                "Standard_DS13_v2",
-                "Standard_DS14_v2",
-                "Standard_DS15_v2",
-                "Standard_DS13-4_v2",
-                "Standard_DS13-2_v2",
-                "Standard_DS14-8_v2",
-                "Standard_DS14-4_v2",
-                "Standard_E2_v3",
-                "Standard_E4_v3",
-                "Standard_E8_v3",
-                "Standard_E16_v3",
-                "Standard_E32_v3",
-                "Standard_E64_v3",
-                "Standard_E2s_v3",
-                "Standard_E4s_v3",
-                "Standard_E8s_v3",
-                "Standard_E16s_v3",
-                "Standard_E32s_v3",
-                "Standard_E64s_v3",
-                "Standard_E32-16_v3",
-                "Standard_E32-8s_v3",
-                "Standard_E64-32s_v3",
-                "Standard_E64-16s_v3",
-                "Standard_F1",
-                "Standard_F2",
-                "Standard_F4",
-                "Standard_F8",
-                "Standard_F16",
-                "Standard_F1s",
-                "Standard_F2s",
-                "Standard_F4s",
-                "Standard_F8s",
-                "Standard_F16s",
-                "Standard_F2s_v2",
-                "Standard_F4s_v2",
-                "Standard_F8s_v2",
-                "Standard_F16s_v2",
-                "Standard_F32s_v2",
-                "Standard_F64s_v2",
-                "Standard_F72s_v2",
-                "Standard_G1",
-                "Standard_G2",
-                "Standard_G3",
-                "Standard_G4",
-                "Standard_G5",
-                "Standard_GS1",
-                "Standard_GS2",
-                "Standard_GS3",
-                "Standard_GS4",
-                "Standard_GS5",
-                "Standard_GS4-8",
-                "Standard_GS4-4",
-                "Standard_GS5-16",
-                "Standard_GS5-8",
-                "Standard_H8",
-                "Standard_H16",
-                "Standard_H8m",
-                "Standard_H16m",
-                "Standard_H16r",
-                "Standard_H16mr",
-                "Standard_L4s",
-                "Standard_L8s",
-                "Standard_L16s",
-                "Standard_L32s",
-                "Standard_M64s",
-                "Standard_M64ms",
-                "Standard_M128s",
-                "Standard_M128ms",
-                "Standard_M64-32ms",
-                "Standard_M64-16ms",
-                "Standard_M128-64ms",
-                "Standard_M128-32ms",
-                "Standard_NC6",
-                "Standard_NC12",
-                "Standard_NC24",
-                "Standard_NC24r",
-                "Standard_NC6s_v2",
-                "Standard_NC12s_v2",
-                "Standard_NC24s_v2",
-                "Standard_NC24rs_v2",
-                "Standard_NC6s_v3",
-                "Standard_NC12s_v3",
-                "Standard_NC24s_v3",
-                "Standard_NC24rs_v3",
-                "Standard_ND6s",
-                "Standard_ND12s",
-                "Standard_ND24s",
-                "Standard_ND24rs",
-                "Standard_NV6",
-                "Standard_NV12",
-                "Standard_NV24",
-              ]),
-            ),
-            vmSizeProperties: Schema.optional(
-              Schema.Struct({
-                vCPUsAvailable: Schema.optional(Schema.Number),
-                vCPUsPerCore: Schema.optional(Schema.Number),
-              }),
-            ),
-          }),
-        ),
-        scheduledEventsPolicy: Schema.optional(
-          Schema.Struct({
-            userInitiatedRedeploy: Schema.optional(
-              Schema.Struct({
-                automaticallyApprove: Schema.optional(Schema.Boolean),
-              }),
-            ),
-            userInitiatedReboot: Schema.optional(
-              Schema.Struct({
-                automaticallyApprove: Schema.optional(Schema.Boolean),
-              }),
-            ),
-            scheduledEventsAdditionalPublishingTargets: Schema.optional(
-              Schema.Struct({
-                eventGridAndResourceGraph: Schema.optional(
-                  Schema.Struct({
-                    enable: Schema.optional(Schema.Boolean),
-                    scheduledEventsApiVersion: Schema.optional(Schema.String),
-                  }),
-                ),
-              }),
-            ),
-            allInstancesDown: Schema.optional(
-              Schema.Struct({
-                automaticallyApprove: Schema.optional(Schema.Boolean),
-              }),
-            ),
-          }),
-        ),
-        storageProfile: Schema.optional(
-          Schema.Struct({
-            imageReference: Schema.optional(
-              Schema.Struct({
-                id: Schema.optional(Schema.String),
-              }),
-            ),
-            osDisk: Schema.optional(
-              Schema.Struct({
-                osType: Schema.optional(Schema.Literals(["Windows", "Linux"])),
-                encryptionSettings: Schema.optional(
-                  Schema.Struct({
-                    diskEncryptionKey: Schema.optional(
-                      Schema.Struct({
-                        secretUrl: Schema.String,
-                        sourceVault: Schema.Struct({
-                          id: Schema.optional(Schema.String),
-                        }),
-                      }),
-                    ),
-                    keyEncryptionKey: Schema.optional(
-                      Schema.Struct({
-                        keyUrl: Schema.String,
-                        sourceVault: Schema.Struct({
-                          id: Schema.optional(Schema.String),
-                        }),
-                      }),
-                    ),
-                    enabled: Schema.optional(Schema.Boolean),
-                  }),
-                ),
-                name: Schema.optional(Schema.String),
-                vhd: Schema.optional(
-                  Schema.Struct({
-                    uri: Schema.optional(Schema.String),
-                  }),
-                ),
-                image: Schema.optional(
-                  Schema.Struct({
-                    uri: Schema.optional(Schema.String),
-                  }),
-                ),
-                caching: Schema.optional(
-                  Schema.Literals(["None", "ReadOnly", "ReadWrite"]),
-                ),
-                writeAcceleratorEnabled: Schema.optional(Schema.Boolean),
-                diffDiskSettings: Schema.optional(
-                  Schema.Struct({
-                    option: Schema.optional(Schema.Literals(["Local"])),
-                    placement: Schema.optional(
-                      Schema.Literals([
-                        "CacheDisk",
-                        "ResourceDisk",
-                        "NvmeDisk",
-                      ]),
-                    ),
-                  }),
-                ),
-                createOption: Schema.Literals([
-                  "FromImage",
-                  "Empty",
-                  "Attach",
-                  "Copy",
-                  "Restore",
-                ]),
-                diskSizeGB: Schema.optional(Schema.Number),
-                managedDisk: Schema.optional(
-                  Schema.Struct({
-                    id: Schema.optional(Schema.String),
-                  }),
-                ),
-                deleteOption: Schema.optional(
-                  Schema.Literals(["Delete", "Detach"]),
-                ),
-              }),
-            ),
-            dataDisks: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  lun: Schema.Number,
-                  name: Schema.optional(Schema.String),
-                  vhd: Schema.optional(
-                    Schema.Struct({
-                      uri: Schema.optional(Schema.String),
-                    }),
-                  ),
-                  image: Schema.optional(
-                    Schema.Struct({
-                      uri: Schema.optional(Schema.String),
-                    }),
-                  ),
-                  caching: Schema.optional(
-                    Schema.Literals(["None", "ReadOnly", "ReadWrite"]),
-                  ),
-                  writeAcceleratorEnabled: Schema.optional(Schema.Boolean),
-                  createOption: Schema.Literals([
-                    "FromImage",
-                    "Empty",
-                    "Attach",
-                    "Copy",
-                    "Restore",
-                  ]),
-                  diskSizeGB: Schema.optional(Schema.Number),
-                  managedDisk: Schema.optional(
-                    Schema.Struct({
-                      id: Schema.optional(Schema.String),
-                    }),
-                  ),
-                  sourceResource: Schema.optional(
-                    Schema.Struct({
-                      id: Schema.optional(Schema.String),
-                    }),
-                  ),
-                  toBeDetached: Schema.optional(Schema.Boolean),
-                  diskIOPSReadWrite: Schema.optional(Schema.Number),
-                  diskMBpsReadWrite: Schema.optional(Schema.Number),
-                  detachOption: Schema.optional(
-                    Schema.Literals(["ForceDetach"]),
-                  ),
-                  deleteOption: Schema.optional(
-                    Schema.Literals(["Delete", "Detach"]),
-                  ),
-                }),
-              ),
-            ),
-            diskControllerType: Schema.optional(
-              Schema.Literals(["SCSI", "NVMe"]),
-            ),
-            alignRegionalDisksToVMZone: Schema.optional(Schema.Boolean),
-          }),
-        ),
-        additionalCapabilities: Schema.optional(
-          Schema.Struct({
-            ultraSSDEnabled: Schema.optional(Schema.Boolean),
-            hibernationEnabled: Schema.optional(Schema.Boolean),
-            enableFips1403Encryption: Schema.optional(Schema.Boolean),
-          }),
-        ),
-        osProfile: Schema.optional(
-          Schema.Struct({
-            computerName: Schema.optional(Schema.String),
-            adminUsername: Schema.optional(Schema.String),
-            adminPassword: Schema.optional(SensitiveString),
-            customData: Schema.optional(Schema.String),
-            windowsConfiguration: Schema.optional(
-              Schema.Struct({
-                provisionVMAgent: Schema.optional(Schema.Boolean),
-                enableAutomaticUpdates: Schema.optional(Schema.Boolean),
-                timeZone: Schema.optional(Schema.String),
-                additionalUnattendContent: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      passName: Schema.optional(
-                        Schema.Literals(["OobeSystem"]),
-                      ),
-                      componentName: Schema.optional(
-                        Schema.Literals(["Microsoft-Windows-Shell-Setup"]),
-                      ),
-                      settingName: Schema.optional(
-                        Schema.Literals(["AutoLogon", "FirstLogonCommands"]),
-                      ),
-                      content: Schema.optional(Schema.String),
-                    }),
-                  ),
-                ),
-                patchSettings: Schema.optional(
-                  Schema.Struct({
-                    patchMode: Schema.optional(
-                      Schema.Literals([
-                        "Manual",
-                        "AutomaticByOS",
-                        "AutomaticByPlatform",
-                      ]),
-                    ),
-                    enableHotpatching: Schema.optional(Schema.Boolean),
-                    assessmentMode: Schema.optional(
-                      Schema.Literals(["ImageDefault", "AutomaticByPlatform"]),
-                    ),
-                    automaticByPlatformSettings: Schema.optional(
-                      Schema.Struct({
-                        rebootSetting: Schema.optional(
-                          Schema.Literals([
-                            "Unknown",
-                            "IfRequired",
-                            "Never",
-                            "Always",
-                          ]),
-                        ),
-                        bypassPlatformSafetyChecksOnUserSchedule:
-                          Schema.optional(Schema.Boolean),
-                      }),
-                    ),
-                  }),
-                ),
-                winRM: Schema.optional(
-                  Schema.Struct({
-                    listeners: Schema.optional(
-                      Schema.Array(
-                        Schema.Struct({
-                          protocol: Schema.optional(
-                            Schema.Literals(["Http", "Https"]),
-                          ),
-                          certificateUrl: Schema.optional(Schema.String),
-                        }),
-                      ),
-                    ),
-                  }),
-                ),
-                enableVMAgentPlatformUpdates: Schema.optional(Schema.Boolean),
-              }),
-            ),
-            linuxConfiguration: Schema.optional(
-              Schema.Struct({
-                disablePasswordAuthentication: Schema.optional(Schema.Boolean),
-                ssh: Schema.optional(
-                  Schema.Struct({
-                    publicKeys: Schema.optional(
-                      Schema.Array(
-                        Schema.Struct({
-                          path: Schema.optional(Schema.String),
-                          keyData: Schema.optional(Schema.String),
-                        }),
-                      ),
-                    ),
-                  }),
-                ),
-                provisionVMAgent: Schema.optional(Schema.Boolean),
-                patchSettings: Schema.optional(
-                  Schema.Struct({
-                    patchMode: Schema.optional(
-                      Schema.Literals(["ImageDefault", "AutomaticByPlatform"]),
-                    ),
-                    assessmentMode: Schema.optional(
-                      Schema.Literals(["ImageDefault", "AutomaticByPlatform"]),
-                    ),
-                    automaticByPlatformSettings: Schema.optional(
-                      Schema.Struct({
-                        rebootSetting: Schema.optional(
-                          Schema.Literals([
-                            "Unknown",
-                            "IfRequired",
-                            "Never",
-                            "Always",
-                          ]),
-                        ),
-                        bypassPlatformSafetyChecksOnUserSchedule:
-                          Schema.optional(Schema.Boolean),
-                      }),
-                    ),
-                  }),
-                ),
-                enableVMAgentPlatformUpdates: Schema.optional(Schema.Boolean),
-              }),
-            ),
-            secrets: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  sourceVault: Schema.optional(
-                    Schema.Struct({
-                      id: Schema.optional(Schema.String),
-                    }),
-                  ),
-                  vaultCertificates: Schema.optional(
-                    Schema.Array(
-                      Schema.Struct({
-                        certificateUrl: Schema.optional(Schema.String),
-                        certificateStore: Schema.optional(Schema.String),
-                      }),
-                    ),
-                  ),
-                }),
-              ),
-            ),
-            allowExtensionOperations: Schema.optional(Schema.Boolean),
-            requireGuestProvisionSignal: Schema.optional(Schema.Boolean),
-          }),
-        ),
-        networkProfile: Schema.optional(
-          Schema.Struct({
-            networkInterfaces: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  id: Schema.optional(Schema.String),
-                }),
-              ),
-            ),
-            networkApiVersion: Schema.optional(
-              Schema.Literals(["2020-11-01", "2022-11-01"]),
-            ),
-            networkInterfaceConfigurations: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  name: Schema.String,
-                  properties: Schema.optional(
-                    Schema.Struct({
-                      primary: Schema.optional(Schema.Boolean),
-                      deleteOption: Schema.optional(
-                        Schema.Literals(["Delete", "Detach"]),
-                      ),
-                      enableAcceleratedNetworking: Schema.optional(
-                        Schema.Boolean,
-                      ),
-                      disableTcpStateTracking: Schema.optional(Schema.Boolean),
-                      enableFpga: Schema.optional(Schema.Boolean),
-                      enableIPForwarding: Schema.optional(Schema.Boolean),
-                      networkSecurityGroup: Schema.optional(
-                        Schema.Struct({
-                          id: Schema.optional(Schema.String),
-                        }),
-                      ),
-                      dnsSettings: Schema.optional(
-                        Schema.Struct({
-                          dnsServers: Schema.optional(
-                            Schema.Array(Schema.String),
-                          ),
-                        }),
-                      ),
-                      ipConfigurations: Schema.Array(
-                        Schema.Struct({
-                          name: Schema.String,
-                          properties: Schema.optional(
-                            Schema.Struct({
-                              subnet: Schema.optional(
-                                Schema.Struct({
-                                  id: Schema.optional(Schema.String),
-                                }),
-                              ),
-                              primary: Schema.optional(Schema.Boolean),
-                              publicIPAddressConfiguration: Schema.optional(
-                                Schema.Struct({
-                                  name: Schema.String,
-                                  properties: Schema.optional(
-                                    Schema.Struct({
-                                      idleTimeoutInMinutes: Schema.optional(
-                                        Schema.Number,
-                                      ),
-                                      deleteOption: Schema.optional(
-                                        Schema.Literals(["Delete", "Detach"]),
-                                      ),
-                                      dnsSettings: Schema.optional(
-                                        Schema.Struct({
-                                          domainNameLabel: Schema.String,
-                                          domainNameLabelScope: Schema.optional(
-                                            Schema.Literals([
-                                              "TenantReuse",
-                                              "SubscriptionReuse",
-                                              "ResourceGroupReuse",
-                                              "NoReuse",
-                                            ]),
-                                          ),
-                                        }),
-                                      ),
-                                      ipTags: Schema.optional(
-                                        Schema.Array(
-                                          Schema.Struct({
-                                            ipTagType: Schema.optional(
-                                              Schema.String,
-                                            ),
-                                            tag: Schema.optional(Schema.String),
-                                          }),
-                                        ),
-                                      ),
-                                      publicIPPrefix: Schema.optional(
-                                        Schema.Struct({
-                                          id: Schema.optional(Schema.String),
-                                        }),
-                                      ),
-                                      publicIPAddressVersion: Schema.optional(
-                                        Schema.Literals(["IPv4", "IPv6"]),
-                                      ),
-                                      publicIPAllocationMethod: Schema.optional(
-                                        Schema.Literals(["Dynamic", "Static"]),
-                                      ),
-                                    }),
-                                  ),
-                                  sku: Schema.optional(
-                                    Schema.Struct({
-                                      name: Schema.optional(
-                                        Schema.Literals(["Basic", "Standard"]),
-                                      ),
-                                      tier: Schema.optional(
-                                        Schema.Literals(["Regional", "Global"]),
-                                      ),
-                                    }),
-                                  ),
-                                  tags: Schema.optional(
-                                    Schema.Record(Schema.String, Schema.String),
-                                  ),
-                                }),
-                              ),
-                              privateIPAddressVersion: Schema.optional(
-                                Schema.Literals(["IPv4", "IPv6"]),
-                              ),
-                              applicationSecurityGroups: Schema.optional(
-                                Schema.Array(
-                                  Schema.Struct({
-                                    id: Schema.optional(Schema.String),
-                                  }),
-                                ),
-                              ),
-                              applicationGatewayBackendAddressPools:
-                                Schema.optional(
-                                  Schema.Array(
-                                    Schema.Struct({
-                                      id: Schema.optional(Schema.String),
-                                    }),
-                                  ),
-                                ),
-                              loadBalancerBackendAddressPools: Schema.optional(
-                                Schema.Array(
-                                  Schema.Struct({
-                                    id: Schema.optional(Schema.String),
-                                  }),
-                                ),
-                              ),
-                            }),
-                          ),
-                        }),
-                      ),
-                      dscpConfiguration: Schema.optional(
-                        Schema.Struct({
-                          id: Schema.optional(Schema.String),
-                        }),
-                      ),
-                      auxiliaryMode: Schema.optional(
-                        Schema.Literals([
-                          "None",
-                          "AcceleratedConnections",
-                          "Floating",
-                        ]),
-                      ),
-                      auxiliarySku: Schema.optional(
-                        Schema.Literals(["None", "A1", "A2", "A4", "A8"]),
-                      ),
-                    }),
-                  ),
-                  tags: Schema.optional(
-                    Schema.Record(Schema.String, Schema.String),
-                  ),
-                }),
-              ),
-            ),
-          }),
-        ),
-        securityProfile: Schema.optional(
-          Schema.Struct({
-            uefiSettings: Schema.optional(
-              Schema.Struct({
-                secureBootEnabled: Schema.optional(Schema.Boolean),
-                vTpmEnabled: Schema.optional(Schema.Boolean),
-              }),
-            ),
-            encryptionAtHost: Schema.optional(Schema.Boolean),
-            securityType: Schema.optional(
-              Schema.Literals(["TrustedLaunch", "ConfidentialVM"]),
-            ),
-            encryptionIdentity: Schema.optional(
-              Schema.Struct({
-                userAssignedIdentityResourceId: Schema.optional(Schema.String),
-              }),
-            ),
-            proxyAgentSettings: Schema.optional(
-              Schema.Struct({
-                enabled: Schema.optional(Schema.Boolean),
-                mode: Schema.optional(Schema.Literals(["Audit", "Enforce"])),
-                keyIncarnationId: Schema.optional(Schema.Number),
-                wireServer: Schema.optional(
-                  Schema.Struct({
-                    mode: Schema.optional(
-                      Schema.Literals(["Audit", "Enforce", "Disabled"]),
-                    ),
-                    inVMAccessControlProfileReferenceId: Schema.optional(
-                      Schema.String,
-                    ),
-                  }),
-                ),
-                imds: Schema.optional(
-                  Schema.Struct({
-                    mode: Schema.optional(
-                      Schema.Literals(["Audit", "Enforce", "Disabled"]),
-                    ),
-                    inVMAccessControlProfileReferenceId: Schema.optional(
-                      Schema.String,
-                    ),
-                  }),
-                ),
-                addProxyAgentExtension: Schema.optional(Schema.Boolean),
-              }),
-            ),
-          }),
-        ),
-        diagnosticsProfile: Schema.optional(
-          Schema.Struct({
-            bootDiagnostics: Schema.optional(
-              Schema.Struct({
-                enabled: Schema.optional(Schema.Boolean),
-                storageUri: Schema.optional(Schema.String),
-              }),
-            ),
-          }),
-        ),
-        availabilitySet: Schema.optional(
-          Schema.Struct({
-            id: Schema.optional(Schema.String),
-          }),
-        ),
-        virtualMachineScaleSet: Schema.optional(
-          Schema.Struct({
-            id: Schema.optional(Schema.String),
-          }),
-        ),
-        proximityPlacementGroup: Schema.optional(
-          Schema.Struct({
-            id: Schema.optional(Schema.String),
-          }),
-        ),
-        priority: Schema.optional(Schema.Literals(["Regular", "Low", "Spot"])),
-        evictionPolicy: Schema.optional(
-          Schema.Literals(["Deallocate", "Delete"]),
-        ),
-        billingProfile: Schema.optional(
-          Schema.Struct({
-            maxPrice: Schema.optional(Schema.Number),
-          }),
-        ),
-        host: Schema.optional(
-          Schema.Struct({
-            id: Schema.optional(Schema.String),
-          }),
-        ),
-        hostGroup: Schema.optional(
-          Schema.Struct({
-            id: Schema.optional(Schema.String),
-          }),
-        ),
-        provisioningState: Schema.optional(Schema.String),
-        instanceView: Schema.optional(
-          Schema.Struct({
-            platformUpdateDomain: Schema.optional(Schema.Number),
-            platformFaultDomain: Schema.optional(Schema.Number),
-            computerName: Schema.optional(Schema.String),
-            osName: Schema.optional(Schema.String),
-            osVersion: Schema.optional(Schema.String),
-            hyperVGeneration: Schema.optional(Schema.Literals(["V1", "V2"])),
-            rdpThumbPrint: Schema.optional(Schema.String),
-            vmAgent: Schema.optional(
-              Schema.Struct({
-                vmAgentVersion: Schema.optional(Schema.String),
-                extensionHandlers: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      type: Schema.optional(Schema.String),
-                      typeHandlerVersion: Schema.optional(Schema.String),
-                      status: Schema.optional(
-                        Schema.Struct({
-                          code: Schema.optional(Schema.String),
-                          level: Schema.optional(
-                            Schema.Literals(["Info", "Warning", "Error"]),
-                          ),
-                          displayStatus: Schema.optional(Schema.String),
-                          message: Schema.optional(Schema.String),
-                          time: Schema.optional(Schema.String),
-                        }),
-                      ),
-                    }),
-                  ),
-                ),
-                statuses: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      code: Schema.optional(Schema.String),
-                      level: Schema.optional(
-                        Schema.Literals(["Info", "Warning", "Error"]),
-                      ),
-                      displayStatus: Schema.optional(Schema.String),
-                      message: Schema.optional(Schema.String),
-                      time: Schema.optional(Schema.String),
-                    }),
-                  ),
-                ),
-              }),
-            ),
-            maintenanceRedeployStatus: Schema.optional(
-              Schema.Struct({
-                isCustomerInitiatedMaintenanceAllowed: Schema.optional(
-                  Schema.Boolean,
-                ),
-                preMaintenanceWindowStartTime: Schema.optional(Schema.String),
-                preMaintenanceWindowEndTime: Schema.optional(Schema.String),
-                maintenanceWindowStartTime: Schema.optional(Schema.String),
-                maintenanceWindowEndTime: Schema.optional(Schema.String),
-                lastOperationResultCode: Schema.optional(
-                  Schema.Literals([
-                    "None",
-                    "RetryLater",
-                    "MaintenanceAborted",
-                    "MaintenanceCompleted",
-                  ]),
-                ),
-                lastOperationMessage: Schema.optional(Schema.String),
-              }),
-            ),
-            disks: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  name: Schema.optional(Schema.String),
-                  encryptionSettings: Schema.optional(
-                    Schema.Array(
-                      Schema.Struct({
-                        diskEncryptionKey: Schema.optional(
-                          Schema.Struct({
-                            secretUrl: Schema.String,
-                            sourceVault: Schema.Struct({
-                              id: Schema.optional(Schema.String),
-                            }),
-                          }),
-                        ),
-                        keyEncryptionKey: Schema.optional(
-                          Schema.Struct({
-                            keyUrl: Schema.String,
-                            sourceVault: Schema.Struct({
-                              id: Schema.optional(Schema.String),
-                            }),
-                          }),
-                        ),
-                        enabled: Schema.optional(Schema.Boolean),
-                      }),
-                    ),
-                  ),
-                  statuses: Schema.optional(
-                    Schema.Array(
-                      Schema.Struct({
-                        code: Schema.optional(Schema.String),
-                        level: Schema.optional(
-                          Schema.Literals(["Info", "Warning", "Error"]),
-                        ),
-                        displayStatus: Schema.optional(Schema.String),
-                        message: Schema.optional(Schema.String),
-                        time: Schema.optional(Schema.String),
-                      }),
-                    ),
-                  ),
-                }),
-              ),
-            ),
-            extensions: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  name: Schema.optional(Schema.String),
-                  type: Schema.optional(Schema.String),
-                  typeHandlerVersion: Schema.optional(Schema.String),
-                  substatuses: Schema.optional(
-                    Schema.Array(
-                      Schema.Struct({
-                        code: Schema.optional(Schema.String),
-                        level: Schema.optional(
-                          Schema.Literals(["Info", "Warning", "Error"]),
-                        ),
-                        displayStatus: Schema.optional(Schema.String),
-                        message: Schema.optional(Schema.String),
-                        time: Schema.optional(Schema.String),
-                      }),
-                    ),
-                  ),
-                  statuses: Schema.optional(
-                    Schema.Array(
-                      Schema.Struct({
-                        code: Schema.optional(Schema.String),
-                        level: Schema.optional(
-                          Schema.Literals(["Info", "Warning", "Error"]),
-                        ),
-                        displayStatus: Schema.optional(Schema.String),
-                        message: Schema.optional(Schema.String),
-                        time: Schema.optional(Schema.String),
-                      }),
-                    ),
-                  ),
-                }),
-              ),
-            ),
-            vmHealth: Schema.optional(
-              Schema.Struct({
-                status: Schema.optional(
-                  Schema.Struct({
-                    code: Schema.optional(Schema.String),
-                    level: Schema.optional(
-                      Schema.Literals(["Info", "Warning", "Error"]),
-                    ),
-                    displayStatus: Schema.optional(Schema.String),
-                    message: Schema.optional(Schema.String),
-                    time: Schema.optional(Schema.String),
-                  }),
-                ),
-              }),
-            ),
-            bootDiagnostics: Schema.optional(
-              Schema.Struct({
-                consoleScreenshotBlobUri: Schema.optional(Schema.String),
-                serialConsoleLogBlobUri: Schema.optional(Schema.String),
-                status: Schema.optional(
-                  Schema.Struct({
-                    code: Schema.optional(Schema.String),
-                    level: Schema.optional(
-                      Schema.Literals(["Info", "Warning", "Error"]),
-                    ),
-                    displayStatus: Schema.optional(Schema.String),
-                    message: Schema.optional(Schema.String),
-                    time: Schema.optional(Schema.String),
-                  }),
-                ),
-              }),
-            ),
-            assignedHost: Schema.optional(Schema.String),
-            statuses: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  code: Schema.optional(Schema.String),
-                  level: Schema.optional(
-                    Schema.Literals(["Info", "Warning", "Error"]),
-                  ),
-                  displayStatus: Schema.optional(Schema.String),
-                  message: Schema.optional(Schema.String),
-                  time: Schema.optional(Schema.String),
-                }),
-              ),
-            ),
-            patchStatus: Schema.optional(
-              Schema.Struct({
-                availablePatchSummary: Schema.optional(
-                  Schema.Struct({
-                    status: Schema.optional(
-                      Schema.Literals([
-                        "Unknown",
-                        "InProgress",
-                        "Failed",
-                        "Succeeded",
-                        "CompletedWithWarnings",
-                      ]),
-                    ),
-                    assessmentActivityId: Schema.optional(Schema.String),
-                    rebootPending: Schema.optional(Schema.Boolean),
-                    criticalAndSecurityPatchCount: Schema.optional(
-                      Schema.Number,
-                    ),
-                    otherPatchCount: Schema.optional(Schema.Number),
-                    startTime: Schema.optional(Schema.String),
-                    lastModifiedTime: Schema.optional(Schema.String),
-                    error: Schema.optional(
-                      Schema.Struct({
-                        details: Schema.optional(
-                          Schema.Array(
-                            Schema.Struct({
-                              code: Schema.optional(Schema.String),
-                              target: Schema.optional(Schema.String),
-                              message: Schema.optional(Schema.String),
-                            }),
-                          ),
-                        ),
-                        innererror: Schema.optional(
-                          Schema.Struct({
-                            exceptiontype: Schema.optional(Schema.String),
-                            errordetail: Schema.optional(Schema.String),
-                          }),
-                        ),
-                        code: Schema.optional(Schema.String),
-                        target: Schema.optional(Schema.String),
-                        message: Schema.optional(Schema.String),
-                      }),
-                    ),
-                  }),
-                ),
-                lastPatchInstallationSummary: Schema.optional(
-                  Schema.Struct({
-                    status: Schema.optional(
-                      Schema.Literals([
-                        "Unknown",
-                        "InProgress",
-                        "Failed",
-                        "Succeeded",
-                        "CompletedWithWarnings",
-                      ]),
-                    ),
-                    installationActivityId: Schema.optional(Schema.String),
-                    maintenanceWindowExceeded: Schema.optional(Schema.Boolean),
-                    notSelectedPatchCount: Schema.optional(Schema.Number),
-                    excludedPatchCount: Schema.optional(Schema.Number),
-                    pendingPatchCount: Schema.optional(Schema.Number),
-                    installedPatchCount: Schema.optional(Schema.Number),
-                    failedPatchCount: Schema.optional(Schema.Number),
-                    startTime: Schema.optional(Schema.String),
-                    lastModifiedTime: Schema.optional(Schema.String),
-                    error: Schema.optional(
-                      Schema.Struct({
-                        details: Schema.optional(
-                          Schema.Array(
-                            Schema.Struct({
-                              code: Schema.optional(Schema.String),
-                              target: Schema.optional(Schema.String),
-                              message: Schema.optional(Schema.String),
-                            }),
-                          ),
-                        ),
-                        innererror: Schema.optional(
-                          Schema.Struct({
-                            exceptiontype: Schema.optional(Schema.String),
-                            errordetail: Schema.optional(Schema.String),
-                          }),
-                        ),
-                        code: Schema.optional(Schema.String),
-                        target: Schema.optional(Schema.String),
-                        message: Schema.optional(Schema.String),
-                      }),
-                    ),
-                  }),
-                ),
-                configurationStatuses: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      code: Schema.optional(Schema.String),
-                      level: Schema.optional(
-                        Schema.Literals(["Info", "Warning", "Error"]),
-                      ),
-                      displayStatus: Schema.optional(Schema.String),
-                      message: Schema.optional(Schema.String),
-                      time: Schema.optional(Schema.String),
-                    }),
-                  ),
-                ),
-              }),
-            ),
-            isVMInStandbyPool: Schema.optional(Schema.Boolean),
-          }),
-        ),
-        licenseType: Schema.optional(Schema.String),
-        vmId: Schema.optional(Schema.String),
-        extensionsTimeBudget: Schema.optional(Schema.String),
-        platformFaultDomain: Schema.optional(Schema.Number),
-        scheduledEventsProfile: Schema.optional(
-          Schema.Struct({
-            terminateNotificationProfile: Schema.optional(
-              Schema.Struct({
-                notBeforeTimeout: Schema.optional(Schema.String),
-                enable: Schema.optional(Schema.Boolean),
-              }),
-            ),
-            osImageNotificationProfile: Schema.optional(
-              Schema.Struct({
-                notBeforeTimeout: Schema.optional(Schema.String),
-                enable: Schema.optional(Schema.Boolean),
-              }),
-            ),
-          }),
-        ),
-        userData: Schema.optional(Schema.String),
-        capacityReservation: Schema.optional(
-          Schema.Struct({
-            capacityReservationGroup: Schema.optional(
-              Schema.Struct({
-                id: Schema.optional(Schema.String),
-              }),
-            ),
-          }),
-        ),
-        applicationProfile: Schema.optional(
-          Schema.Struct({
-            galleryApplications: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  tags: Schema.optional(Schema.String),
-                  order: Schema.optional(Schema.Number),
-                  packageReferenceId: Schema.String,
-                  configurationReference: Schema.optional(Schema.String),
-                  treatFailureAsDeploymentFailure: Schema.optional(
-                    Schema.Boolean,
-                  ),
-                  enableAutomaticUpgrade: Schema.optional(Schema.Boolean),
-                }),
-              ),
-            ),
-          }),
-        ),
-        timeCreated: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(() => VirtualMachinePropertiesSchema),
     ),
     identity: Schema.optional(
-      Schema.Struct({
-        principalId: Schema.optional(Schema.String),
-        tenantId: Schema.optional(Schema.String),
-        type: Schema.optional(
-          Schema.Literals([
-            "SystemAssigned",
-            "UserAssigned",
-            "SystemAssigned, UserAssigned",
-            "None",
-          ]),
-        ),
-        userAssignedIdentities: Schema.optional(
-          Schema.Record(
-            Schema.String,
-            Schema.Struct({
-              principalId: Schema.optional(Schema.String),
-              clientId: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-      }),
+      Schema.suspend(() => VirtualMachineIdentitySchema),
     ),
     zones: Schema.optional(Schema.Array(Schema.String)),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
@@ -17753,23 +11927,32 @@ export type VirtualMachinesUpdateInput = typeof VirtualMachinesUpdateInput.Type;
 // Output Schema
 export const VirtualMachinesUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => VirtualMachinePropertiesSchema),
+    ),
+    plan: Schema.optional(Schema.suspend(() => PlanSchema)),
+    resources: Schema.optional(
+      Schema.Array(Schema.suspend(() => VirtualMachineExtensionSchema)),
+    ),
+    identity: Schema.optional(
+      Schema.suspend(() => VirtualMachineIdentitySchema),
+    ),
+    zones: Schema.optional(Schema.Array(Schema.String)),
+    extendedLocation: Schema.optional(
+      Schema.Struct({
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.suspend(() => ExtendedLocationTypeSchema)),
+      }),
+    ),
+    managedBy: Schema.optional(Schema.String),
+    etag: Schema.optional(Schema.String),
+    placement: Schema.optional(Schema.suspend(() => PlacementSchema)),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type VirtualMachinesUpdateOutput =
   typeof VirtualMachinesUpdateOutput.Type;

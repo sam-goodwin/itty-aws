@@ -9,6 +9,341 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 import { SensitiveOutputString, SensitiveString } from "../sensitive.ts";
 
+// Shared schemas
+const OperationResultSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  isDataAction: Schema.optional(Schema.Boolean),
+  display: Schema.optional(Schema.suspend(() => OperationDisplaySchema)),
+  origin: Schema.optional(Schema.String),
+});
+const OperationDisplaySchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  provider: Schema.optional(Schema.String),
+  resource: Schema.optional(Schema.String),
+  operation: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+});
+const ElasticVersionListFormatSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => ElasticVersionListPropertiesSchema),
+    ),
+  });
+const ElasticVersionListPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    version: Schema.optional(Schema.String),
+  });
+const ElasticOrganizationToAzureSubscriptionMappingResponsePropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    billedAzureSubscriptionId: Schema.optional(Schema.String),
+    marketplaceSaasInfo: Schema.optional(
+      Schema.suspend(() => MarketplaceSaaSInfoSchema),
+    ),
+    elasticOrganizationId: Schema.optional(Schema.String),
+    elasticOrganizationName: Schema.optional(Schema.String),
+  });
+const MarketplaceSaaSInfoSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  marketplaceSubscription: Schema.optional(
+    Schema.suspend(() => MarketplaceSaaSInfoMarketplaceSubscriptionSchema),
+  ),
+  marketplaceName: Schema.optional(Schema.String),
+  marketplaceResourceId: Schema.optional(Schema.String),
+  marketplaceStatus: Schema.optional(Schema.String),
+  billedAzureSubscriptionId: Schema.optional(Schema.String),
+  subscribed: Schema.optional(Schema.Boolean),
+});
+const MarketplaceSaaSInfoMarketplaceSubscriptionSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    publisherId: Schema.optional(Schema.String),
+    offerId: Schema.optional(Schema.String),
+  });
+const UserApiKeyResponsePropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    apiKey: Schema.optional(SensitiveOutputString),
+  });
+const ElasticMonitorResourceSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+});
+const systemDataSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  createdBy: Schema.optional(Schema.String),
+  createdByType: Schema.optional(
+    Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+  ),
+  createdAt: Schema.optional(Schema.String),
+  lastModifiedBy: Schema.optional(Schema.String),
+  lastModifiedByType: Schema.optional(
+    Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+  ),
+  lastModifiedAt: Schema.optional(Schema.String),
+});
+const MonitorPropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  provisioningState: Schema.optional(
+    Schema.suspend(() => ProvisioningStateSchema),
+  ),
+  monitoringStatus: Schema.optional(
+    Schema.suspend(() => MonitoringStatusSchema),
+  ),
+  elasticProperties: Schema.optional(
+    Schema.suspend(() => ElasticPropertiesSchema),
+  ),
+  userInfo: Schema.optional(Schema.suspend(() => UserInfoSchema)),
+  planDetails: Schema.optional(Schema.suspend(() => PlanDetailsSchema)),
+  version: Schema.optional(Schema.String),
+  subscriptionState: Schema.optional(Schema.String),
+  saaSAzureSubscriptionStatus: Schema.optional(Schema.String),
+  sourceCampaignName: Schema.optional(Schema.String),
+  sourceCampaignId: Schema.optional(Schema.String),
+  liftrResourceCategory: Schema.optional(
+    Schema.suspend(() => LiftrResourceCategoriesSchema),
+  ),
+  liftrResourcePreference: Schema.optional(Schema.Number),
+  generateApiKey: Schema.optional(Schema.Boolean),
+  hostingType: Schema.optional(Schema.suspend(() => HostingTypeSchema)),
+  projectDetails: Schema.optional(Schema.suspend(() => ProjectDetailsSchema)),
+});
+const ProvisioningStateSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Accepted",
+  "Creating",
+  "Updating",
+  "Deleting",
+  "Succeeded",
+  "Failed",
+  "Canceled",
+  "Deleted",
+  "NotSpecified",
+]);
+const MonitoringStatusSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Enabled",
+  "Disabled",
+]);
+const ElasticPropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  elasticCloudUser: Schema.optional(
+    Schema.suspend(() => ElasticCloudUserSchema),
+  ),
+  elasticCloudDeployment: Schema.optional(
+    Schema.suspend(() => ElasticCloudDeploymentSchema),
+  ),
+});
+const ElasticCloudUserSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  emailAddress: Schema.optional(Schema.String),
+  id: Schema.optional(Schema.String),
+  elasticCloudSsoDefaultUrl: Schema.optional(Schema.String),
+});
+const ElasticCloudDeploymentSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  deploymentId: Schema.optional(Schema.String),
+  azureSubscriptionId: Schema.optional(Schema.String),
+  elasticsearchRegion: Schema.optional(Schema.String),
+  elasticsearchServiceUrl: Schema.optional(Schema.String),
+  kibanaServiceUrl: Schema.optional(Schema.String),
+  kibanaSsoUrl: Schema.optional(Schema.String),
+});
+const UserInfoSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  firstName: Schema.optional(Schema.String),
+  lastName: Schema.optional(Schema.String),
+  companyName: Schema.optional(Schema.String),
+  emailAddress: Schema.optional(Schema.String),
+  companyInfo: Schema.optional(Schema.suspend(() => CompanyInfoSchema)),
+});
+const CompanyInfoSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  domain: Schema.optional(Schema.String),
+  business: Schema.optional(Schema.String),
+  employeesNumber: Schema.optional(Schema.String),
+  state: Schema.optional(Schema.String),
+  country: Schema.optional(Schema.String),
+});
+const PlanDetailsSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  offerID: Schema.optional(Schema.String),
+  publisherID: Schema.optional(Schema.String),
+  termID: Schema.optional(Schema.String),
+  planID: Schema.optional(Schema.String),
+  planName: Schema.optional(Schema.String),
+});
+const LiftrResourceCategoriesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Literals(["Unknown", "MonitorLogs"]);
+const HostingTypeSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Hosted",
+  "Serverless",
+]);
+const ProjectDetailsSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  projectType: Schema.optional(Schema.suspend(() => ProjectTypeSchema)),
+  configurationType: Schema.optional(
+    Schema.suspend(() => ConfigurationTypeSchema),
+  ),
+});
+const ProjectTypeSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Elasticsearch",
+  "Observability",
+  "Security",
+  "NotApplicable",
+]);
+const ConfigurationTypeSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "GeneralPurpose",
+  "Vector",
+  "TimeSeries",
+  "NotApplicable",
+]);
+const ResourceSkuSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.String,
+});
+const IdentityPropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  principalId: Schema.optional(Schema.String),
+  tenantId: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.suspend(() => ManagedIdentityTypesSchema)),
+});
+const ManagedIdentityTypesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "SystemAssigned",
+]);
+const PartnerBillingEntitySchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  partnerEntityUri: Schema.optional(Schema.String),
+});
+const ElasticTrafficFilterSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+  region: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.suspend(() => TypeSchema)),
+  includeByDefault: Schema.optional(Schema.Boolean),
+  rules: Schema.optional(
+    Schema.Array(Schema.suspend(() => ElasticTrafficFilterRuleSchema)),
+  ),
+});
+const TypeSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "ip",
+  "azure_private_endpoint",
+]);
+const ElasticTrafficFilterRuleSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    source: Schema.optional(Schema.String),
+    description: Schema.optional(Schema.String),
+    azureEndpointGuid: Schema.optional(Schema.String),
+    azureEndpointName: Schema.optional(Schema.String),
+    id: Schema.optional(Schema.String),
+  });
+const ConnectedPartnerResourcesListFormatSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => ConnectedPartnerResourcePropertiesSchema),
+    ),
+  });
+const ConnectedPartnerResourcePropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    partnerDeploymentName: Schema.optional(Schema.String),
+    partnerDeploymentUri: Schema.optional(Schema.String),
+    azureResourceId: Schema.optional(Schema.String),
+    location: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
+const ElasticDeploymentStatusSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Literals(["Healthy", "Unhealthy"]);
+const MonitoredResourceSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  sendingLogs: Schema.optional(Schema.suspend(() => SendingLogsSchema)),
+  reasonForLogsStatus: Schema.optional(Schema.String),
+});
+const SendingLogsSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "True",
+  "False",
+]);
+const VMResourcesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  vmResourceId: Schema.optional(Schema.String),
+});
+const MonitoredSubscriptionPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+  });
+const SubscriptionListSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  operation: Schema.optional(Schema.suspend(() => OperationSchema)),
+  monitoredSubscriptionList: Schema.optional(
+    Schema.Array(Schema.suspend(() => MonitoredSubscriptionSchema)),
+  ),
+  provisioningState: Schema.optional(
+    Schema.suspend(() => ProvisioningStateSchema),
+  ),
+});
+const OperationSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "AddBegin",
+  "AddComplete",
+  "DeleteBegin",
+  "DeleteComplete",
+  "Active",
+]);
+const MonitoredSubscriptionSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String,
+  status: Schema.optional(Schema.suspend(() => StatusSchema)),
+  error: Schema.optional(Schema.String),
+  tagRules: Schema.optional(
+    Schema.suspend(() => MonitoringTagRulesPropertiesSchema),
+  ),
+});
+const StatusSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "InProgress",
+  "Active",
+  "Failed",
+  "Deleting",
+]);
+const MonitoringTagRulesPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    provisioningState: Schema.optional(
+      Schema.suspend(() => ProvisioningStateSchema),
+    ),
+    logRules: Schema.optional(Schema.suspend(() => LogRulesSchema)),
+  });
+const LogRulesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  sendAadLogs: Schema.optional(Schema.Boolean),
+  sendSubscriptionLogs: Schema.optional(Schema.Boolean),
+  sendActivityLogs: Schema.optional(Schema.Boolean),
+  filteringTags: Schema.optional(
+    Schema.Array(Schema.suspend(() => FilteringTagSchema)),
+  ),
+});
+const FilteringTagSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  value: Schema.optional(Schema.String),
+  action: Schema.optional(Schema.suspend(() => TagActionSchema)),
+});
+const TagActionSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Include",
+  "Exclude",
+]);
+const OpenAIIntegrationRPModelSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+  });
+const OpenAIIntegrationPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    openAIResourceId: Schema.optional(Schema.String),
+    openAIResourceEndpoint: Schema.optional(Schema.String),
+    openAIConnectorId: Schema.optional(Schema.String),
+    key: Schema.optional(Schema.String),
+    lastRefreshAt: Schema.optional(Schema.String),
+  });
+const OpenAIIntegrationStatusResponsePropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    status: Schema.optional(Schema.String),
+  });
+const MonitoringTagRulesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+});
+const OperationNameSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Add",
+  "Delete",
+]);
+
 // Input Schema
 export const AllTrafficFiltersListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -28,29 +363,7 @@ export type AllTrafficFiltersListInput = typeof AllTrafficFiltersListInput.Type;
 export const AllTrafficFiltersListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     rulesets: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          description: Schema.optional(Schema.String),
-          region: Schema.optional(Schema.String),
-          type: Schema.optional(
-            Schema.Literals(["ip", "azure_private_endpoint"]),
-          ),
-          includeByDefault: Schema.optional(Schema.Boolean),
-          rules: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                source: Schema.optional(Schema.String),
-                description: Schema.optional(Schema.String),
-                azureEndpointGuid: Schema.optional(Schema.String),
-                azureEndpointName: Schema.optional(Schema.String),
-                id: Schema.optional(Schema.String),
-              }),
-            ),
-          ),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => ElasticTrafficFilterSchema)),
     ),
   });
 export type AllTrafficFiltersListOutput =
@@ -127,27 +440,10 @@ export type BillingInfoGetInput = typeof BillingInfoGetInput.Type;
 // Output Schema
 export const BillingInfoGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   marketplaceSaasInfo: Schema.optional(
-    Schema.Struct({
-      marketplaceSubscription: Schema.optional(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          publisherId: Schema.optional(Schema.String),
-          offerId: Schema.optional(Schema.String),
-        }),
-      ),
-      marketplaceName: Schema.optional(Schema.String),
-      marketplaceResourceId: Schema.optional(Schema.String),
-      marketplaceStatus: Schema.optional(Schema.String),
-      billedAzureSubscriptionId: Schema.optional(Schema.String),
-      subscribed: Schema.optional(Schema.Boolean),
-    }),
+    Schema.suspend(() => MarketplaceSaaSInfoSchema),
   ),
   partnerBillingEntity: Schema.optional(
-    Schema.Struct({
-      id: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      partnerEntityUri: Schema.optional(Schema.String),
-    }),
+    Schema.suspend(() => PartnerBillingEntitySchema),
   ),
 });
 export type BillingInfoGetOutput = typeof BillingInfoGetOutput.Type;
@@ -185,17 +481,7 @@ export type ConnectedPartnerResourcesListInput =
 export const ConnectedPartnerResourcesListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
-      Schema.Struct({
-        properties: Schema.optional(
-          Schema.Struct({
-            partnerDeploymentName: Schema.optional(Schema.String),
-            partnerDeploymentUri: Schema.optional(Schema.String),
-            azureResourceId: Schema.optional(Schema.String),
-            location: Schema.optional(Schema.String),
-            type: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
+      Schema.suspend(() => ConnectedPartnerResourcesListFormatSchema),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -318,27 +604,16 @@ export type DeploymentInfoListInput = typeof DeploymentInfoListInput.Type;
 // Output Schema
 export const DeploymentInfoListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    status: Schema.optional(Schema.Literals(["Healthy", "Unhealthy"])),
+    status: Schema.optional(
+      Schema.suspend(() => ElasticDeploymentStatusSchema),
+    ),
     version: Schema.optional(Schema.String),
     memoryCapacity: Schema.optional(Schema.String),
     diskCapacity: Schema.optional(Schema.String),
     elasticsearchEndPoint: Schema.optional(Schema.String),
     deploymentUrl: Schema.optional(Schema.String),
     marketplaceSaasInfo: Schema.optional(
-      Schema.Struct({
-        marketplaceSubscription: Schema.optional(
-          Schema.Struct({
-            id: Schema.optional(Schema.String),
-            publisherId: Schema.optional(Schema.String),
-            offerId: Schema.optional(Schema.String),
-          }),
-        ),
-        marketplaceName: Schema.optional(Schema.String),
-        marketplaceResourceId: Schema.optional(Schema.String),
-        marketplaceStatus: Schema.optional(Schema.String),
-        billedAzureSubscriptionId: Schema.optional(Schema.String),
-        subscribed: Schema.optional(Schema.Boolean),
-      }),
+      Schema.suspend(() => MarketplaceSaaSInfoSchema),
     ),
     projectType: Schema.optional(Schema.String),
     configurationType: Schema.optional(Schema.String),
@@ -453,15 +728,7 @@ export type ElasticVersionsListInput = typeof ElasticVersionsListInput.Type;
 // Output Schema
 export const ElasticVersionsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        properties: Schema.optional(
-          Schema.Struct({
-            version: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => ElasticVersionListFormatSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type ElasticVersionsListOutput = typeof ElasticVersionsListOutput.Type;
@@ -542,29 +809,7 @@ export type ListAssociatedTrafficFiltersListInput =
 export const ListAssociatedTrafficFiltersListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     rulesets: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          description: Schema.optional(Schema.String),
-          region: Schema.optional(Schema.String),
-          type: Schema.optional(
-            Schema.Literals(["ip", "azure_private_endpoint"]),
-          ),
-          includeByDefault: Schema.optional(Schema.Boolean),
-          rules: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                source: Schema.optional(Schema.String),
-                description: Schema.optional(Schema.String),
-                azureEndpointGuid: Schema.optional(Schema.String),
-                azureEndpointName: Schema.optional(Schema.String),
-                id: Schema.optional(Schema.String),
-              }),
-            ),
-          ),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => ElasticTrafficFilterSchema)),
     ),
   });
 export type ListAssociatedTrafficFiltersListOutput =
@@ -603,13 +848,7 @@ export type MonitoredResourcesListInput =
 // Output Schema
 export const MonitoredResourcesListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        sendingLogs: Schema.optional(Schema.Literals(["True", "False"])),
-        reasonForLogsStatus: Schema.optional(Schema.String),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => MonitoredResourceSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type MonitoredResourcesListOutput =
@@ -637,78 +876,7 @@ export const MonitoredSubscriptionsCreateorUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     monitorName: Schema.String.pipe(T.PathParam()),
     configurationName: Schema.String.pipe(T.PathParam()),
-    properties: Schema.optional(
-      Schema.Struct({
-        operation: Schema.optional(
-          Schema.Literals([
-            "AddBegin",
-            "AddComplete",
-            "DeleteBegin",
-            "DeleteComplete",
-            "Active",
-          ]),
-        ),
-        monitoredSubscriptionList: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              subscriptionId: Schema.String,
-              status: Schema.optional(
-                Schema.Literals(["InProgress", "Active", "Failed", "Deleting"]),
-              ),
-              error: Schema.optional(Schema.String),
-              tagRules: Schema.optional(
-                Schema.Struct({
-                  provisioningState: Schema.optional(
-                    Schema.Literals([
-                      "Accepted",
-                      "Creating",
-                      "Updating",
-                      "Deleting",
-                      "Succeeded",
-                      "Failed",
-                      "Canceled",
-                      "Deleted",
-                      "NotSpecified",
-                    ]),
-                  ),
-                  logRules: Schema.optional(
-                    Schema.Struct({
-                      sendAadLogs: Schema.optional(Schema.Boolean),
-                      sendSubscriptionLogs: Schema.optional(Schema.Boolean),
-                      sendActivityLogs: Schema.optional(Schema.Boolean),
-                      filteringTags: Schema.optional(
-                        Schema.Array(
-                          Schema.Struct({
-                            name: Schema.optional(Schema.String),
-                            value: Schema.optional(Schema.String),
-                            action: Schema.optional(
-                              Schema.Literals(["Include", "Exclude"]),
-                            ),
-                          }),
-                        ),
-                      ),
-                    }),
-                  ),
-                }),
-              ),
-            }),
-          ),
-        ),
-        provisioningState: Schema.optional(
-          Schema.Literals([
-            "Accepted",
-            "Creating",
-            "Updating",
-            "Deleting",
-            "Succeeded",
-            "Failed",
-            "Canceled",
-            "Deleted",
-            "NotSpecified",
-          ]),
-        ),
-      }),
-    ),
+    properties: Schema.optional(Schema.suspend(() => SubscriptionListSchema)),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -723,23 +891,11 @@ export type MonitoredSubscriptionsCreateorUpdateInput =
 // Output Schema
 export const MonitoredSubscriptionsCreateorUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(Schema.suspend(() => SubscriptionListSchema)),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type MonitoredSubscriptionsCreateorUpdateOutput =
   typeof MonitoredSubscriptionsCreateorUpdateOutput.Type;
@@ -816,23 +972,11 @@ export type MonitoredSubscriptionsGetInput =
 // Output Schema
 export const MonitoredSubscriptionsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(Schema.suspend(() => SubscriptionListSchema)),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type MonitoredSubscriptionsGetOutput =
   typeof MonitoredSubscriptionsGetOutput.Type;
@@ -873,35 +1017,7 @@ export type MonitoredSubscriptionsListInput =
 export const MonitoredSubscriptionsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
+      Schema.suspend(() => MonitoredSubscriptionPropertiesSchema),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -930,78 +1046,7 @@ export const MonitoredSubscriptionsUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     monitorName: Schema.String.pipe(T.PathParam()),
     configurationName: Schema.String.pipe(T.PathParam()),
-    properties: Schema.optional(
-      Schema.Struct({
-        operation: Schema.optional(
-          Schema.Literals([
-            "AddBegin",
-            "AddComplete",
-            "DeleteBegin",
-            "DeleteComplete",
-            "Active",
-          ]),
-        ),
-        monitoredSubscriptionList: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              subscriptionId: Schema.String,
-              status: Schema.optional(
-                Schema.Literals(["InProgress", "Active", "Failed", "Deleting"]),
-              ),
-              error: Schema.optional(Schema.String),
-              tagRules: Schema.optional(
-                Schema.Struct({
-                  provisioningState: Schema.optional(
-                    Schema.Literals([
-                      "Accepted",
-                      "Creating",
-                      "Updating",
-                      "Deleting",
-                      "Succeeded",
-                      "Failed",
-                      "Canceled",
-                      "Deleted",
-                      "NotSpecified",
-                    ]),
-                  ),
-                  logRules: Schema.optional(
-                    Schema.Struct({
-                      sendAadLogs: Schema.optional(Schema.Boolean),
-                      sendSubscriptionLogs: Schema.optional(Schema.Boolean),
-                      sendActivityLogs: Schema.optional(Schema.Boolean),
-                      filteringTags: Schema.optional(
-                        Schema.Array(
-                          Schema.Struct({
-                            name: Schema.optional(Schema.String),
-                            value: Schema.optional(Schema.String),
-                            action: Schema.optional(
-                              Schema.Literals(["Include", "Exclude"]),
-                            ),
-                          }),
-                        ),
-                      ),
-                    }),
-                  ),
-                }),
-              ),
-            }),
-          ),
-        ),
-        provisioningState: Schema.optional(
-          Schema.Literals([
-            "Accepted",
-            "Creating",
-            "Updating",
-            "Deleting",
-            "Succeeded",
-            "Failed",
-            "Canceled",
-            "Deleted",
-            "NotSpecified",
-          ]),
-        ),
-      }),
-    ),
+    properties: Schema.optional(Schema.suspend(() => SubscriptionListSchema)),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -1016,23 +1061,11 @@ export type MonitoredSubscriptionsUpdateInput =
 // Output Schema
 export const MonitoredSubscriptionsUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(Schema.suspend(() => SubscriptionListSchema)),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type MonitoredSubscriptionsUpdateOutput =
   typeof MonitoredSubscriptionsUpdateOutput.Type;
@@ -1055,118 +1088,10 @@ export const MonitorsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   monitorName: Schema.String.pipe(T.PathParam()),
-  properties: Schema.optional(
-    Schema.Struct({
-      provisioningState: Schema.optional(
-        Schema.Literals([
-          "Accepted",
-          "Creating",
-          "Updating",
-          "Deleting",
-          "Succeeded",
-          "Failed",
-          "Canceled",
-          "Deleted",
-          "NotSpecified",
-        ]),
-      ),
-      monitoringStatus: Schema.optional(
-        Schema.Literals(["Enabled", "Disabled"]),
-      ),
-      elasticProperties: Schema.optional(
-        Schema.Struct({
-          elasticCloudUser: Schema.optional(
-            Schema.Struct({
-              emailAddress: Schema.optional(Schema.String),
-              id: Schema.optional(Schema.String),
-              elasticCloudSsoDefaultUrl: Schema.optional(Schema.String),
-            }),
-          ),
-          elasticCloudDeployment: Schema.optional(
-            Schema.Struct({
-              name: Schema.optional(Schema.String),
-              deploymentId: Schema.optional(Schema.String),
-              azureSubscriptionId: Schema.optional(Schema.String),
-              elasticsearchRegion: Schema.optional(Schema.String),
-              elasticsearchServiceUrl: Schema.optional(Schema.String),
-              kibanaServiceUrl: Schema.optional(Schema.String),
-              kibanaSsoUrl: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
-      userInfo: Schema.optional(
-        Schema.Struct({
-          firstName: Schema.optional(Schema.String),
-          lastName: Schema.optional(Schema.String),
-          companyName: Schema.optional(Schema.String),
-          emailAddress: Schema.optional(Schema.String),
-          companyInfo: Schema.optional(
-            Schema.Struct({
-              domain: Schema.optional(Schema.String),
-              business: Schema.optional(Schema.String),
-              employeesNumber: Schema.optional(Schema.String),
-              state: Schema.optional(Schema.String),
-              country: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
-      planDetails: Schema.optional(
-        Schema.Struct({
-          offerID: Schema.optional(Schema.String),
-          publisherID: Schema.optional(Schema.String),
-          termID: Schema.optional(Schema.String),
-          planID: Schema.optional(Schema.String),
-          planName: Schema.optional(Schema.String),
-        }),
-      ),
-      version: Schema.optional(Schema.String),
-      subscriptionState: Schema.optional(Schema.String),
-      saaSAzureSubscriptionStatus: Schema.optional(Schema.String),
-      sourceCampaignName: Schema.optional(Schema.String),
-      sourceCampaignId: Schema.optional(Schema.String),
-      liftrResourceCategory: Schema.optional(
-        Schema.Literals(["Unknown", "MonitorLogs"]),
-      ),
-      liftrResourcePreference: Schema.optional(Schema.Number),
-      generateApiKey: Schema.optional(Schema.Boolean),
-      hostingType: Schema.optional(Schema.Literals(["Hosted", "Serverless"])),
-      projectDetails: Schema.optional(
-        Schema.Struct({
-          projectType: Schema.optional(
-            Schema.Literals([
-              "Elasticsearch",
-              "Observability",
-              "Security",
-              "NotApplicable",
-            ]),
-          ),
-          configurationType: Schema.optional(
-            Schema.Literals([
-              "GeneralPurpose",
-              "Vector",
-              "TimeSeries",
-              "NotApplicable",
-            ]),
-          ),
-        }),
-      ),
-    }),
-  ),
+  properties: Schema.optional(Schema.suspend(() => MonitorPropertiesSchema)),
   kind: Schema.optional(Schema.String),
-  sku: Schema.optional(
-    Schema.Struct({
-      name: Schema.String,
-    }),
-  ),
-  identity: Schema.optional(
-    Schema.Struct({
-      principalId: Schema.optional(Schema.String),
-      tenantId: Schema.optional(Schema.String),
-      type: Schema.optional(Schema.Literals(["SystemAssigned"])),
-    }),
-  ),
+  sku: Schema.optional(Schema.suspend(() => ResourceSkuSchema)),
+  identity: Schema.optional(Schema.suspend(() => IdentityPropertiesSchema)),
   tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   location: Schema.String,
 }).pipe(
@@ -1181,23 +1106,16 @@ export type MonitorsCreateInput = typeof MonitorsCreateInput.Type;
 
 // Output Schema
 export const MonitorsCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.optional(Schema.suspend(() => MonitorPropertiesSchema)),
+  kind: Schema.optional(Schema.String),
+  sku: Schema.optional(Schema.suspend(() => ResourceSkuSchema)),
+  identity: Schema.optional(Schema.suspend(() => IdentityPropertiesSchema)),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  location: Schema.String,
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
-  systemData: Schema.optional(
-    Schema.Struct({
-      createdBy: Schema.optional(Schema.String),
-      createdByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      createdAt: Schema.optional(Schema.String),
-      lastModifiedBy: Schema.optional(Schema.String),
-      lastModifiedByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      lastModifiedAt: Schema.optional(Schema.String),
-    }),
-  ),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
 });
 export type MonitorsCreateOutput = typeof MonitorsCreateOutput.Type;
 
@@ -1261,23 +1179,16 @@ export type MonitorsGetInput = typeof MonitorsGetInput.Type;
 
 // Output Schema
 export const MonitorsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.optional(Schema.suspend(() => MonitorPropertiesSchema)),
+  kind: Schema.optional(Schema.String),
+  sku: Schema.optional(Schema.suspend(() => ResourceSkuSchema)),
+  identity: Schema.optional(Schema.suspend(() => IdentityPropertiesSchema)),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  location: Schema.String,
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
-  systemData: Schema.optional(
-    Schema.Struct({
-      createdBy: Schema.optional(Schema.String),
-      createdByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      createdAt: Schema.optional(Schema.String),
-      lastModifiedBy: Schema.optional(Schema.String),
-      lastModifiedByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      lastModifiedAt: Schema.optional(Schema.String),
-    }),
-  ),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
 });
 export type MonitorsGetOutput = typeof MonitorsGetOutput.Type;
 
@@ -1308,27 +1219,7 @@ export type MonitorsListInput = typeof MonitorsListInput.Type;
 
 // Output Schema
 export const MonitorsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  value: Schema.Array(
-    Schema.Struct({
-      id: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      type: Schema.optional(Schema.String),
-      systemData: Schema.optional(
-        Schema.Struct({
-          createdBy: Schema.optional(Schema.String),
-          createdByType: Schema.optional(
-            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-          ),
-          createdAt: Schema.optional(Schema.String),
-          lastModifiedBy: Schema.optional(Schema.String),
-          lastModifiedByType: Schema.optional(
-            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-          ),
-          lastModifiedAt: Schema.optional(Schema.String),
-        }),
-      ),
-    }),
-  ),
+  value: Schema.Array(Schema.suspend(() => ElasticMonitorResourceSchema)),
   nextLink: Schema.optional(Schema.String),
 });
 export type MonitorsListOutput = typeof MonitorsListOutput.Type;
@@ -1362,37 +1253,7 @@ export type MonitorsListByResourceGroupInput =
 // Output Schema
 export const MonitorsListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => ElasticMonitorResourceSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type MonitorsListByResourceGroupOutput =
@@ -1430,23 +1291,16 @@ export type MonitorsUpdateInput = typeof MonitorsUpdateInput.Type;
 
 // Output Schema
 export const MonitorsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.optional(Schema.suspend(() => MonitorPropertiesSchema)),
+  kind: Schema.optional(Schema.String),
+  sku: Schema.optional(Schema.suspend(() => ResourceSkuSchema)),
+  identity: Schema.optional(Schema.suspend(() => IdentityPropertiesSchema)),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  location: Schema.String,
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
-  systemData: Schema.optional(
-    Schema.Struct({
-      createdBy: Schema.optional(Schema.String),
-      createdByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      createdAt: Schema.optional(Schema.String),
-      lastModifiedBy: Schema.optional(Schema.String),
-      lastModifiedByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      lastModifiedAt: Schema.optional(Schema.String),
-    }),
-  ),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
 });
 export type MonitorsUpdateOutput = typeof MonitorsUpdateOutput.Type;
 
@@ -1503,13 +1357,7 @@ export const OpenAICreateOrUpdateInput =
     monitorName: Schema.String.pipe(T.PathParam()),
     integrationName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        openAIResourceId: Schema.optional(Schema.String),
-        openAIResourceEndpoint: Schema.optional(Schema.String),
-        openAIConnectorId: Schema.optional(Schema.String),
-        key: Schema.optional(Schema.String),
-        lastRefreshAt: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(() => OpenAIIntegrationPropertiesSchema),
     ),
   }).pipe(
     T.Http({
@@ -1523,23 +1371,13 @@ export type OpenAICreateOrUpdateInput = typeof OpenAICreateOrUpdateInput.Type;
 // Output Schema
 export const OpenAICreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => OpenAIIntegrationPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type OpenAICreateOrUpdateOutput = typeof OpenAICreateOrUpdateOutput.Type;
 
@@ -1607,23 +1445,13 @@ export type OpenAIGetInput = typeof OpenAIGetInput.Type;
 
 // Output Schema
 export const OpenAIGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.optional(
+    Schema.suspend(() => OpenAIIntegrationPropertiesSchema),
+  ),
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
-  systemData: Schema.optional(
-    Schema.Struct({
-      createdBy: Schema.optional(Schema.String),
-      createdByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      createdAt: Schema.optional(Schema.String),
-      lastModifiedBy: Schema.optional(Schema.String),
-      lastModifiedByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      lastModifiedAt: Schema.optional(Schema.String),
-    }),
-  ),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
 });
 export type OpenAIGetOutput = typeof OpenAIGetOutput.Type;
 
@@ -1659,9 +1487,7 @@ export type OpenAIGetStatusInput = typeof OpenAIGetStatusInput.Type;
 // Output Schema
 export const OpenAIGetStatusOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   properties: Schema.optional(
-    Schema.Struct({
-      status: Schema.optional(Schema.String),
-    }),
+    Schema.suspend(() => OpenAIIntegrationStatusResponsePropertiesSchema),
   ),
 });
 export type OpenAIGetStatusOutput = typeof OpenAIGetStatusOutput.Type;
@@ -1696,27 +1522,7 @@ export type OpenAIListInput = typeof OpenAIListInput.Type;
 
 // Output Schema
 export const OpenAIListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  value: Schema.Array(
-    Schema.Struct({
-      id: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      type: Schema.optional(Schema.String),
-      systemData: Schema.optional(
-        Schema.Struct({
-          createdBy: Schema.optional(Schema.String),
-          createdByType: Schema.optional(
-            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-          ),
-          createdAt: Schema.optional(Schema.String),
-          lastModifiedBy: Schema.optional(Schema.String),
-          lastModifiedByType: Schema.optional(
-            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-          ),
-          lastModifiedAt: Schema.optional(Schema.String),
-        }),
-      ),
-    }),
-  ),
+  value: Schema.Array(Schema.suspend(() => OpenAIIntegrationRPModelSchema)),
   nextLink: Schema.optional(Schema.String),
 });
 export type OpenAIListOutput = typeof OpenAIListOutput.Type;
@@ -1748,21 +1554,7 @@ export type OperationsListInput = typeof OperationsListInput.Type;
 
 // Output Schema
 export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  value: Schema.Array(
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      isDataAction: Schema.optional(Schema.Boolean),
-      display: Schema.optional(
-        Schema.Struct({
-          provider: Schema.optional(Schema.String),
-          resource: Schema.optional(Schema.String),
-          operation: Schema.optional(Schema.String),
-          description: Schema.optional(Schema.String),
-        }),
-      ),
-      origin: Schema.optional(Schema.String),
-    }),
-  ),
+  value: Schema.Array(Schema.suspend(() => OperationResultSchema)),
   nextLink: Schema.optional(Schema.String),
 });
 export type OperationsListOutput = typeof OperationsListOutput.Type;
@@ -1796,9 +1588,7 @@ export type OrganizationsGetApiKeyInput =
 export const OrganizationsGetApiKeyOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     properties: Schema.optional(
-      Schema.Struct({
-        apiKey: Schema.optional(SensitiveOutputString),
-      }),
+      Schema.suspend(() => UserApiKeyResponsePropertiesSchema),
     ),
   });
 export type OrganizationsGetApiKeyOutput =
@@ -1835,27 +1625,10 @@ export type OrganizationsGetElasticToAzureSubscriptionMappingInput =
 export const OrganizationsGetElasticToAzureSubscriptionMappingOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     properties: Schema.optional(
-      Schema.Struct({
-        billedAzureSubscriptionId: Schema.optional(Schema.String),
-        marketplaceSaasInfo: Schema.optional(
-          Schema.Struct({
-            marketplaceSubscription: Schema.optional(
-              Schema.Struct({
-                id: Schema.optional(Schema.String),
-                publisherId: Schema.optional(Schema.String),
-                offerId: Schema.optional(Schema.String),
-              }),
-            ),
-            marketplaceName: Schema.optional(Schema.String),
-            marketplaceResourceId: Schema.optional(Schema.String),
-            marketplaceStatus: Schema.optional(Schema.String),
-            billedAzureSubscriptionId: Schema.optional(Schema.String),
-            subscribed: Schema.optional(Schema.Boolean),
-          }),
-        ),
-        elasticOrganizationId: Schema.optional(Schema.String),
-        elasticOrganizationName: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () =>
+          ElasticOrganizationToAzureSubscriptionMappingResponsePropertiesSchema,
+      ),
     ),
   });
 export type OrganizationsGetElasticToAzureSubscriptionMappingOutput =
@@ -1901,23 +1674,16 @@ export type OrganizationsResubscribeInput =
 // Output Schema
 export const OrganizationsResubscribeOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(Schema.suspend(() => MonitorPropertiesSchema)),
+    kind: Schema.optional(Schema.String),
+    sku: Schema.optional(Schema.suspend(() => ResourceSkuSchema)),
+    identity: Schema.optional(Schema.suspend(() => IdentityPropertiesSchema)),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type OrganizationsResubscribeOutput =
   typeof OrganizationsResubscribeOutput.Type;
@@ -1945,39 +1711,7 @@ export const TagRulesCreateOrUpdateInput =
     monitorName: Schema.String.pipe(T.PathParam()),
     ruleSetName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        provisioningState: Schema.optional(
-          Schema.Literals([
-            "Accepted",
-            "Creating",
-            "Updating",
-            "Deleting",
-            "Succeeded",
-            "Failed",
-            "Canceled",
-            "Deleted",
-            "NotSpecified",
-          ]),
-        ),
-        logRules: Schema.optional(
-          Schema.Struct({
-            sendAadLogs: Schema.optional(Schema.Boolean),
-            sendSubscriptionLogs: Schema.optional(Schema.Boolean),
-            sendActivityLogs: Schema.optional(Schema.Boolean),
-            filteringTags: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  name: Schema.optional(Schema.String),
-                  value: Schema.optional(Schema.String),
-                  action: Schema.optional(
-                    Schema.Literals(["Include", "Exclude"]),
-                  ),
-                }),
-              ),
-            ),
-          }),
-        ),
-      }),
+      Schema.suspend(() => MonitoringTagRulesPropertiesSchema),
     ),
   }).pipe(
     T.Http({
@@ -1992,23 +1726,13 @@ export type TagRulesCreateOrUpdateInput =
 // Output Schema
 export const TagRulesCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => MonitoringTagRulesPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type TagRulesCreateOrUpdateOutput =
   typeof TagRulesCreateOrUpdateOutput.Type;
@@ -2078,23 +1802,13 @@ export type TagRulesGetInput = typeof TagRulesGetInput.Type;
 
 // Output Schema
 export const TagRulesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.optional(
+    Schema.suspend(() => MonitoringTagRulesPropertiesSchema),
+  ),
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
-  systemData: Schema.optional(
-    Schema.Struct({
-      createdBy: Schema.optional(Schema.String),
-      createdByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      createdAt: Schema.optional(Schema.String),
-      lastModifiedBy: Schema.optional(Schema.String),
-      lastModifiedByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      lastModifiedAt: Schema.optional(Schema.String),
-    }),
-  ),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
 });
 export type TagRulesGetOutput = typeof TagRulesGetOutput.Type;
 
@@ -2128,27 +1842,7 @@ export type TagRulesListInput = typeof TagRulesListInput.Type;
 
 // Output Schema
 export const TagRulesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  value: Schema.Array(
-    Schema.Struct({
-      id: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      type: Schema.optional(Schema.String),
-      systemData: Schema.optional(
-        Schema.Struct({
-          createdBy: Schema.optional(Schema.String),
-          createdByType: Schema.optional(
-            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-          ),
-          createdAt: Schema.optional(Schema.String),
-          lastModifiedBy: Schema.optional(Schema.String),
-          lastModifiedByType: Schema.optional(
-            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-          ),
-          lastModifiedAt: Schema.optional(Schema.String),
-        }),
-      ),
-    }),
-  ),
+  value: Schema.Array(Schema.suspend(() => MonitoringTagRulesSchema)),
   nextLink: Schema.optional(Schema.String),
 });
 export type TagRulesListOutput = typeof TagRulesListOutput.Type;
@@ -2250,7 +1944,7 @@ export const VMCollectionUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     monitorName: Schema.String.pipe(T.PathParam()),
     vmResourceId: Schema.optional(Schema.String),
-    operationName: Schema.optional(Schema.Literals(["Add", "Delete"])),
+    operationName: Schema.optional(Schema.suspend(() => OperationNameSchema)),
   }).pipe(
     T.Http({
       method: "POST",
@@ -2293,11 +1987,7 @@ export type VMHostListInput = typeof VMHostListInput.Type;
 
 // Output Schema
 export const VMHostListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  value: Schema.Array(
-    Schema.Struct({
-      vmResourceId: Schema.optional(Schema.String),
-    }),
-  ),
+  value: Schema.Array(Schema.suspend(() => VMResourcesSchema)),
   nextLink: Schema.optional(Schema.String),
 });
 export type VMHostListOutput = typeof VMHostListOutput.Type;

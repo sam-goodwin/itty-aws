@@ -7,7 +7,1039 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
-import { SensitiveString } from "../sensitive.ts";
+import { SensitiveOutputString } from "../sensitive.ts";
+
+// Shared schemas
+const OperationSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  isDataAction: Schema.optional(Schema.Boolean),
+  display: Schema.optional(Schema.suspend(() => OperationDisplaySchema)),
+  origin: Schema.optional(Schema.String),
+  properties: Schema.optional(Schema.Unknown),
+});
+const OperationDisplaySchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  provider: Schema.optional(Schema.String),
+  operation: Schema.optional(Schema.String),
+  resource: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+});
+const BatchAccountSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+});
+const systemDataSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  createdBy: Schema.optional(Schema.String),
+  createdByType: Schema.optional(
+    Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+  ),
+  createdAt: Schema.optional(Schema.String),
+  lastModifiedBy: Schema.optional(Schema.String),
+  lastModifiedByType: Schema.optional(
+    Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+  ),
+  lastModifiedAt: Schema.optional(Schema.String),
+});
+const ResourceTypeSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Microsoft.Batch/batchAccounts",
+]);
+const NameAvailabilityReasonSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Literals(["Invalid", "AlreadyExists"]);
+const SupportedSkuSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  familyName: Schema.optional(Schema.String),
+  capabilities: Schema.optional(
+    Schema.Array(Schema.suspend(() => SkuCapabilitySchema)),
+  ),
+  batchSupportEndOfLife: Schema.optional(Schema.String),
+});
+const SkuCapabilitySchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  value: Schema.optional(Schema.String),
+});
+const BatchAccountPropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  accountEndpoint: Schema.optional(Schema.String),
+  nodeManagementEndpoint: Schema.optional(Schema.String),
+  provisioningState: Schema.optional(
+    Schema.suspend(() => ProvisioningStateSchema),
+  ),
+  poolAllocationMode: Schema.optional(
+    Schema.suspend(() => PoolAllocationModeSchema),
+  ),
+  keyVaultReference: Schema.optional(
+    Schema.suspend(() => KeyVaultReferenceSchema),
+  ),
+  publicNetworkAccess: Schema.optional(
+    Schema.NullOr(
+      Schema.Literals(["Enabled", "Disabled", "SecuredByPerimeter"]),
+    ),
+  ),
+  networkProfile: Schema.optional(Schema.suspend(() => NetworkProfileSchema)),
+  privateEndpointConnections: Schema.optional(
+    Schema.NullOr(
+      Schema.Array(Schema.suspend(() => PrivateEndpointConnectionSchema)),
+    ),
+  ),
+  autoStorage: Schema.optional(
+    Schema.suspend(() => AutoStoragePropertiesSchema),
+  ),
+  encryption: Schema.optional(Schema.suspend(() => EncryptionPropertiesSchema)),
+  dedicatedCoreQuota: Schema.optional(Schema.NullOr(Schema.Number)),
+  lowPriorityCoreQuota: Schema.optional(Schema.NullOr(Schema.Number)),
+  dedicatedCoreQuotaPerVMFamily: Schema.optional(
+    Schema.NullOr(
+      Schema.Array(Schema.suspend(() => VirtualMachineFamilyCoreQuotaSchema)),
+    ),
+  ),
+  dedicatedCoreQuotaPerVMFamilyEnforced: Schema.optional(Schema.Boolean),
+  poolQuota: Schema.optional(Schema.Number),
+  activeJobAndJobScheduleQuota: Schema.optional(Schema.Number),
+  allowedAuthenticationModes: Schema.optional(
+    Schema.NullOr(Schema.Array(Schema.suspend(() => AuthenticationModeSchema))),
+  ),
+});
+const ProvisioningStateSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Invalid",
+  "Creating",
+  "Deleting",
+  "Succeeded",
+  "Failed",
+  "Cancelled",
+]);
+const PoolAllocationModeSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "BatchService",
+  "UserSubscription",
+]);
+const KeyVaultReferenceSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.String,
+  url: Schema.String,
+});
+const NetworkProfileSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  accountAccess: Schema.optional(
+    Schema.suspend(() => EndpointAccessProfileSchema),
+  ),
+  nodeManagementAccess: Schema.optional(
+    Schema.suspend(() => EndpointAccessProfileSchema),
+  ),
+});
+const EndpointAccessProfileSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  defaultAction: Schema.suspend(() => EndpointAccessDefaultActionSchema),
+  ipRules: Schema.optional(Schema.Array(Schema.suspend(() => IPRuleSchema))),
+});
+const EndpointAccessDefaultActionSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Literals(["Allow", "Deny"]);
+const IPRuleSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  action: Schema.suspend(() => IPRuleActionSchema),
+  value: Schema.String,
+});
+const IPRuleActionSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Allow",
+]);
+const PrivateEndpointConnectionSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+  });
+const AutoStoragePropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  storageAccountId: Schema.String,
+  authenticationMode: Schema.optional(
+    Schema.Literals(["StorageKeys", "BatchAccountManagedIdentity"]),
+  ),
+  nodeIdentityReference: Schema.optional(
+    Schema.suspend(() => ComputeNodeIdentityReferenceSchema),
+  ),
+});
+const ComputeNodeIdentityReferenceSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resourceId: Schema.optional(Schema.String),
+  });
+const EncryptionPropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  keySource: Schema.optional(Schema.suspend(() => KeySourceSchema)),
+  keyVaultProperties: Schema.optional(
+    Schema.suspend(() => KeyVaultPropertiesSchema),
+  ),
+});
+const KeySourceSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Microsoft.Batch",
+  "Microsoft.KeyVault",
+]);
+const KeyVaultPropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  keyIdentifier: Schema.optional(Schema.String),
+});
+const VirtualMachineFamilyCoreQuotaSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    coreQuota: Schema.optional(Schema.Number),
+  });
+const AuthenticationModeSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "SharedKey",
+  "AAD",
+  "TaskAuthenticationToken",
+]);
+const BatchAccountIdentitySchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  principalId: Schema.optional(Schema.String),
+  tenantId: Schema.optional(Schema.String),
+  type: Schema.suspend(() => ResourceIdentityTypeSchema),
+  userAssignedIdentities: Schema.optional(
+    Schema.Record(
+      Schema.String,
+      Schema.suspend(() => UserAssignedIdentitiesSchema),
+    ),
+  ),
+});
+const ResourceIdentityTypeSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "SystemAssigned",
+  "UserAssigned",
+  "None",
+]);
+const UserAssignedIdentitiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  principalId: Schema.optional(Schema.String),
+  clientId: Schema.optional(Schema.String),
+});
+const BatchAccountCreatePropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    autoStorage: Schema.optional(
+      Schema.suspend(() => AutoStorageBasePropertiesSchema),
+    ),
+    poolAllocationMode: Schema.optional(
+      Schema.suspend(() => PoolAllocationModeSchema),
+    ),
+    keyVaultReference: Schema.optional(
+      Schema.suspend(() => KeyVaultReferenceSchema),
+    ),
+    publicNetworkAccess: Schema.optional(
+      Schema.Literals(["Enabled", "Disabled", "SecuredByPerimeter"]),
+    ),
+    networkProfile: Schema.optional(Schema.suspend(() => NetworkProfileSchema)),
+    encryption: Schema.optional(
+      Schema.suspend(() => EncryptionPropertiesSchema),
+    ),
+    allowedAuthenticationModes: Schema.optional(
+      Schema.NullOr(
+        Schema.Array(Schema.suspend(() => AuthenticationModeSchema)),
+      ),
+    ),
+  });
+const AutoStorageBasePropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    storageAccountId: Schema.String,
+    authenticationMode: Schema.optional(
+      Schema.Literals(["StorageKeys", "BatchAccountManagedIdentity"]),
+    ),
+    nodeIdentityReference: Schema.optional(
+      Schema.suspend(() => ComputeNodeIdentityReferenceSchema),
+    ),
+  });
+const BatchAccountUpdatePropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    autoStorage: Schema.optional(
+      Schema.suspend(() => AutoStorageBasePropertiesSchema),
+    ),
+    encryption: Schema.optional(
+      Schema.suspend(() => EncryptionPropertiesSchema),
+    ),
+    allowedAuthenticationModes: Schema.optional(
+      Schema.NullOr(
+        Schema.Array(Schema.suspend(() => AuthenticationModeSchema)),
+      ),
+    ),
+    publicNetworkAccess: Schema.optional(
+      Schema.Literals(["Enabled", "Disabled", "SecuredByPerimeter"]),
+    ),
+    networkProfile: Schema.optional(Schema.suspend(() => NetworkProfileSchema)),
+  });
+const ApplicationSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+});
+const ApplicationPropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  displayName: Schema.optional(Schema.String),
+  allowUpdates: Schema.optional(Schema.Boolean),
+  defaultVersion: Schema.optional(Schema.String),
+});
+const ApplicationPackageSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+});
+const ApplicationPackagePropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    state: Schema.optional(Schema.suspend(() => PackageStateSchema)),
+    format: Schema.optional(Schema.String),
+    storageUrl: Schema.optional(Schema.String),
+    storageUrlExpiry: Schema.optional(Schema.String),
+    lastActivationTime: Schema.optional(Schema.String),
+  });
+const PackageStateSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Pending",
+  "Active",
+]);
+const DetectorResponseSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+});
+const DetectorResponsePropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    value: Schema.optional(Schema.String),
+  });
+const NetworkSecurityPerimeterConfigurationPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    provisioningState: Schema.optional(
+      Schema.suspend(
+        () => NetworkSecurityPerimeterConfigurationProvisioningStateSchema,
+      ),
+    ),
+    provisioningIssues: Schema.optional(
+      Schema.Array(Schema.suspend(() => ProvisioningIssueSchema)),
+    ),
+    networkSecurityPerimeter: Schema.optional(
+      Schema.suspend(() => NetworkSecurityPerimeterSchema),
+    ),
+    resourceAssociation: Schema.optional(
+      Schema.suspend(() => ResourceAssociationSchema),
+    ),
+    profile: Schema.optional(
+      Schema.suspend(() => NetworkSecurityProfileSchema),
+    ),
+  });
+const NetworkSecurityPerimeterConfigurationProvisioningStateSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+    "Succeeded",
+    "Creating",
+    "Updating",
+    "Deleting",
+    "Accepted",
+    "Failed",
+    "Canceled",
+  ]);
+const ProvisioningIssueSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  properties: Schema.optional(
+    Schema.suspend(() => ProvisioningIssuePropertiesSchema),
+  ),
+});
+const ProvisioningIssuePropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    issueType: Schema.optional(
+      Schema.Literals([
+        "Unknown",
+        "ConfigurationPropagationFailure",
+        "MissingPerimeterConfiguration",
+        "MissingIdentityConfiguration",
+      ]),
+    ),
+    severity: Schema.optional(Schema.Literals(["Warning", "Error"])),
+    description: Schema.optional(Schema.String),
+    suggestedResourceIds: Schema.optional(Schema.Array(Schema.String)),
+    suggestedAccessRules: Schema.optional(
+      Schema.Array(Schema.suspend(() => AccessRuleSchema)),
+    ),
+  });
+const AccessRuleSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  properties: Schema.optional(Schema.suspend(() => AccessRulePropertiesSchema)),
+});
+const AccessRulePropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  direction: Schema.optional(Schema.suspend(() => AccessRuleDirectionSchema)),
+  addressPrefixes: Schema.optional(Schema.Array(Schema.String)),
+  subscriptions: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+      }),
+    ),
+  ),
+  networkSecurityPerimeters: Schema.optional(
+    Schema.Array(Schema.suspend(() => NetworkSecurityPerimeterSchema)),
+  ),
+  fullyQualifiedDomainNames: Schema.optional(Schema.Array(Schema.String)),
+  emailAddresses: Schema.optional(Schema.Array(Schema.String)),
+  phoneNumbers: Schema.optional(Schema.Array(Schema.String)),
+});
+const AccessRuleDirectionSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Inbound",
+  "Outbound",
+]);
+const NetworkSecurityPerimeterSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    perimeterGuid: Schema.optional(Schema.String),
+    location: Schema.optional(Schema.String),
+  });
+const ResourceAssociationSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  accessMode: Schema.optional(
+    Schema.suspend(() => ResourceAssociationAccessModeSchema),
+  ),
+});
+const ResourceAssociationAccessModeSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+    "Enforced",
+    "Learning",
+    "Audit",
+  ]);
+const NetworkSecurityProfileSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  accessRulesVersion: Schema.optional(Schema.Number),
+  accessRules: Schema.optional(
+    Schema.Array(Schema.suspend(() => AccessRuleSchema)),
+  ),
+  diagnosticSettingsVersion: Schema.optional(Schema.Number),
+  enabledLogCategories: Schema.optional(Schema.Array(Schema.String)),
+});
+const OutboundEnvironmentEndpointSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    category: Schema.optional(Schema.String),
+    endpoints: Schema.optional(
+      Schema.Array(Schema.suspend(() => EndpointDependencySchema)),
+    ),
+  });
+const EndpointDependencySchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  domainName: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+  endpointDetails: Schema.optional(
+    Schema.Array(Schema.suspend(() => EndpointDetailSchema)),
+  ),
+});
+const EndpointDetailSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  port: Schema.optional(Schema.Number),
+});
+const PoolSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+});
+const PoolPropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  displayName: Schema.optional(Schema.String),
+  lastModified: Schema.optional(Schema.String),
+  creationTime: Schema.optional(Schema.String),
+  provisioningState: Schema.optional(
+    Schema.suspend(() => PoolProvisioningStateSchema),
+  ),
+  provisioningStateTransitionTime: Schema.optional(Schema.String),
+  allocationState: Schema.optional(Schema.suspend(() => AllocationStateSchema)),
+  allocationStateTransitionTime: Schema.optional(Schema.String),
+  vmSize: Schema.optional(Schema.String),
+  deploymentConfiguration: Schema.optional(
+    Schema.suspend(() => DeploymentConfigurationSchema),
+  ),
+  currentDedicatedNodes: Schema.optional(Schema.Number),
+  currentLowPriorityNodes: Schema.optional(Schema.Number),
+  scaleSettings: Schema.optional(Schema.suspend(() => ScaleSettingsSchema)),
+  autoScaleRun: Schema.optional(Schema.suspend(() => AutoScaleRunSchema)),
+  interNodeCommunication: Schema.optional(
+    Schema.suspend(() => InterNodeCommunicationStateSchema),
+  ),
+  networkConfiguration: Schema.optional(
+    Schema.suspend(() => NetworkConfigurationSchema),
+  ),
+  taskSlotsPerNode: Schema.optional(Schema.Number),
+  taskSchedulingPolicy: Schema.optional(
+    Schema.suspend(() => TaskSchedulingPolicySchema),
+  ),
+  userAccounts: Schema.optional(
+    Schema.Array(Schema.suspend(() => UserAccountSchema)),
+  ),
+  metadata: Schema.optional(
+    Schema.Array(Schema.suspend(() => MetadataItemSchema)),
+  ),
+  startTask: Schema.optional(Schema.suspend(() => StartTaskSchema)),
+  applicationPackages: Schema.optional(
+    Schema.Array(Schema.suspend(() => ApplicationPackageReferenceSchema)),
+  ),
+  resizeOperationStatus: Schema.optional(
+    Schema.suspend(() => ResizeOperationStatusSchema),
+  ),
+  mountConfiguration: Schema.optional(
+    Schema.Array(Schema.suspend(() => MountConfigurationSchema)),
+  ),
+  upgradePolicy: Schema.optional(Schema.suspend(() => UpgradePolicySchema)),
+});
+const PoolProvisioningStateSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals(
+  ["Succeeded", "Deleting"],
+);
+const AllocationStateSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Steady",
+  "Resizing",
+  "Stopping",
+]);
+const DeploymentConfigurationSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    virtualMachineConfiguration: Schema.optional(
+      Schema.suspend(() => VirtualMachineConfigurationSchema),
+    ),
+  },
+);
+const VirtualMachineConfigurationSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    imageReference: Schema.suspend(() => ImageReferenceSchema),
+    nodeAgentSkuId: Schema.String,
+    windowsConfiguration: Schema.optional(
+      Schema.suspend(() => WindowsConfigurationSchema),
+    ),
+    dataDisks: Schema.optional(
+      Schema.Array(Schema.suspend(() => DataDiskSchema)),
+    ),
+    licenseType: Schema.optional(Schema.String),
+    containerConfiguration: Schema.optional(
+      Schema.suspend(() => ContainerConfigurationSchema),
+    ),
+    diskEncryptionConfiguration: Schema.optional(
+      Schema.suspend(() => DiskEncryptionConfigurationSchema),
+    ),
+    nodePlacementConfiguration: Schema.optional(
+      Schema.suspend(() => NodePlacementConfigurationSchema),
+    ),
+    extensions: Schema.optional(
+      Schema.Array(Schema.suspend(() => VMExtensionSchema)),
+    ),
+    osDisk: Schema.optional(Schema.suspend(() => OSDiskSchema)),
+    securityProfile: Schema.optional(
+      Schema.suspend(() => SecurityProfileSchema),
+    ),
+    serviceArtifactReference: Schema.optional(
+      Schema.suspend(() => ServiceArtifactReferenceSchema),
+    ),
+  });
+const ImageReferenceSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  publisher: Schema.optional(Schema.String),
+  offer: Schema.optional(Schema.String),
+  sku: Schema.optional(Schema.String),
+  version: Schema.optional(Schema.String),
+  id: Schema.optional(Schema.String),
+  sharedGalleryImageId: Schema.optional(Schema.String),
+  communityGalleryImageId: Schema.optional(Schema.String),
+});
+const WindowsConfigurationSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  enableAutomaticUpdates: Schema.optional(Schema.Boolean),
+});
+const DataDiskSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  lun: Schema.Number,
+  caching: Schema.optional(Schema.suspend(() => CachingTypeSchema)),
+  diskSizeGB: Schema.Number,
+  managedDisk: Schema.optional(Schema.suspend(() => ManagedDiskSchema)),
+});
+const CachingTypeSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "None",
+  "ReadOnly",
+  "ReadWrite",
+]);
+const ManagedDiskSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  storageAccountType: Schema.optional(
+    Schema.suspend(() => StorageAccountTypeSchema),
+  ),
+  securityProfile: Schema.optional(
+    Schema.suspend(() => VMDiskSecurityProfileSchema),
+  ),
+  diskEncryptionSet: Schema.optional(
+    Schema.suspend(() => DiskEncryptionSetParametersSchema),
+  ),
+});
+const StorageAccountTypeSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Standard_LRS",
+  "Premium_LRS",
+  "StandardSSD_LRS",
+]);
+const VMDiskSecurityProfileSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  securityEncryptionType: Schema.optional(
+    Schema.suspend(() => SecurityEncryptionTypesSchema),
+  ),
+  diskEncryptionSet: Schema.optional(
+    Schema.suspend(() => DiskEncryptionSetParametersSchema),
+  ),
+});
+const SecurityEncryptionTypesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+    "NonPersistedTPM",
+    "VMGuestStateOnly",
+    "DiskWithVMGuestState",
+  ]);
+const DiskEncryptionSetParametersSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.String,
+  });
+const ContainerConfigurationSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  type: Schema.suspend(() => ContainerTypeSchema),
+  containerImageNames: Schema.optional(Schema.Array(Schema.String)),
+  containerRegistries: Schema.optional(
+    Schema.Array(Schema.suspend(() => ContainerRegistrySchema)),
+  ),
+});
+const ContainerTypeSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "DockerCompatible",
+  "CriCompatible",
+]);
+const ContainerRegistrySchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  username: Schema.optional(Schema.String),
+  password: Schema.optional(SensitiveOutputString),
+  registryServer: Schema.optional(Schema.String),
+  identityReference: Schema.optional(
+    Schema.suspend(() => ComputeNodeIdentityReferenceSchema),
+  ),
+});
+const DiskEncryptionConfigurationSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    targets: Schema.optional(
+      Schema.Array(Schema.suspend(() => DiskEncryptionTargetSchema)),
+    ),
+    customerManagedKey: Schema.optional(
+      Schema.suspend(() => DiskCustomerManagedKeySchema),
+    ),
+  });
+const DiskEncryptionTargetSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "OsDisk",
+  "TemporaryDisk",
+]);
+const DiskCustomerManagedKeySchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  keyUrl: Schema.optional(Schema.String),
+  rotationToLatestKeyVersionEnabled: Schema.optional(Schema.Boolean),
+  identityReference: Schema.optional(
+    Schema.suspend(() => ComputeNodeIdentityReferenceSchema),
+  ),
+});
+const NodePlacementConfigurationSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    policy: Schema.optional(
+      Schema.suspend(() => NodePlacementPolicyTypeSchema),
+    ),
+  });
+const NodePlacementPolicyTypeSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Literals(["Regional", "Zonal"]);
+const VMExtensionSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.String,
+  publisher: Schema.String,
+  type: Schema.String,
+  typeHandlerVersion: Schema.optional(Schema.String),
+  autoUpgradeMinorVersion: Schema.optional(Schema.Boolean),
+  enableAutomaticUpgrade: Schema.optional(Schema.Boolean),
+  settings: Schema.optional(Schema.Unknown),
+  protectedSettings: Schema.optional(Schema.Unknown),
+  provisionAfterExtensions: Schema.optional(Schema.Array(Schema.String)),
+});
+const OSDiskSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  ephemeralOSDiskSettings: Schema.optional(
+    Schema.suspend(() => DiffDiskSettingsSchema),
+  ),
+  caching: Schema.optional(Schema.suspend(() => CachingTypeSchema)),
+  managedDisk: Schema.optional(Schema.suspend(() => ManagedDiskSchema)),
+  diskSizeGB: Schema.optional(Schema.Number),
+  writeAcceleratorEnabled: Schema.optional(Schema.Boolean),
+});
+const DiffDiskSettingsSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  placement: Schema.optional(Schema.suspend(() => DiffDiskPlacementSchema)),
+});
+const DiffDiskPlacementSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "CacheDisk",
+]);
+const SecurityProfileSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  securityType: Schema.optional(Schema.suspend(() => SecurityTypesSchema)),
+  encryptionAtHost: Schema.optional(Schema.Boolean),
+  uefiSettings: Schema.optional(Schema.suspend(() => UefiSettingsSchema)),
+  proxyAgentSettings: Schema.optional(
+    Schema.suspend(() => ProxyAgentSettingsSchema),
+  ),
+});
+const SecurityTypesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "trustedLaunch",
+  "confidentialVM",
+]);
+const UefiSettingsSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  secureBootEnabled: Schema.optional(Schema.Boolean),
+  vTpmEnabled: Schema.optional(Schema.Boolean),
+});
+const ProxyAgentSettingsSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  enabled: Schema.optional(Schema.Boolean),
+  imds: Schema.optional(Schema.suspend(() => HostEndpointSettingsSchema)),
+  wireServer: Schema.optional(Schema.suspend(() => HostEndpointSettingsSchema)),
+});
+const HostEndpointSettingsSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  mode: Schema.optional(
+    Schema.suspend(() => HostEndpointSettingsModeTypesSchema),
+  ),
+  inVMAccessControlProfileReferenceId: Schema.optional(Schema.String),
+});
+const HostEndpointSettingsModeTypesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Literals(["Audit", "Enforce"]);
+const ServiceArtifactReferenceSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.String,
+  });
+const ScaleSettingsSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  fixedScale: Schema.optional(Schema.suspend(() => FixedScaleSettingsSchema)),
+  autoScale: Schema.optional(Schema.suspend(() => AutoScaleSettingsSchema)),
+});
+const FixedScaleSettingsSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  resizeTimeout: Schema.optional(Schema.String),
+  targetDedicatedNodes: Schema.optional(Schema.Number),
+  targetLowPriorityNodes: Schema.optional(Schema.Number),
+  nodeDeallocationOption: Schema.optional(
+    Schema.suspend(() => ComputeNodeDeallocationOptionSchema),
+  ),
+});
+const ComputeNodeDeallocationOptionSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+    "Requeue",
+    "Terminate",
+    "TaskCompletion",
+    "RetainedData",
+  ]);
+const AutoScaleSettingsSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  formula: Schema.String,
+  evaluationInterval: Schema.optional(Schema.String),
+});
+const AutoScaleRunSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  evaluationTime: Schema.String,
+  results: Schema.optional(Schema.String),
+  error: Schema.optional(Schema.suspend(() => AutoScaleRunErrorSchema)),
+});
+const AutoScaleRunErrorSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  code: Schema.String,
+  message: Schema.String,
+  details: Schema.optional(Schema.Array(Schema.Unknown)),
+});
+const InterNodeCommunicationStateSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Literals(["Enabled", "Disabled"]);
+const NetworkConfigurationSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subnetId: Schema.optional(Schema.String),
+  dynamicVnetAssignmentScope: Schema.optional(Schema.Literals(["none", "job"])),
+  endpointConfiguration: Schema.optional(
+    Schema.suspend(() => PoolEndpointConfigurationSchema),
+  ),
+  publicIPAddressConfiguration: Schema.optional(
+    Schema.suspend(() => PublicIPAddressConfigurationSchema),
+  ),
+  enableAcceleratedNetworking: Schema.optional(Schema.Boolean),
+});
+const PoolEndpointConfigurationSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    inboundNatPools: Schema.Array(Schema.suspend(() => InboundNatPoolSchema)),
+  });
+const InboundNatPoolSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.String,
+  protocol: Schema.suspend(() => InboundEndpointProtocolSchema),
+  backendPort: Schema.Number,
+  frontendPortRangeStart: Schema.Number,
+  frontendPortRangeEnd: Schema.Number,
+  networkSecurityGroupRules: Schema.optional(
+    Schema.Array(Schema.suspend(() => NetworkSecurityGroupRuleSchema)),
+  ),
+});
+const InboundEndpointProtocolSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Literals(["TCP", "UDP"]);
+const NetworkSecurityGroupRuleSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    priority: Schema.Number,
+    access: Schema.suspend(() => NetworkSecurityGroupRuleAccessSchema),
+    sourceAddressPrefix: Schema.String,
+    sourcePortRanges: Schema.optional(Schema.Array(Schema.String)),
+  });
+const NetworkSecurityGroupRuleAccessSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Literals(["Allow", "Deny"]);
+const PublicIPAddressConfigurationSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    provision: Schema.optional(
+      Schema.suspend(() => IPAddressProvisioningTypeSchema),
+    ),
+    ipAddressIds: Schema.optional(Schema.Array(Schema.String)),
+    ipFamilies: Schema.optional(
+      Schema.Array(Schema.suspend(() => IPFamilySchema)),
+    ),
+    ipTags: Schema.optional(Schema.Array(Schema.suspend(() => IPTagSchema))),
+  });
+const IPAddressProvisioningTypeSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+    "BatchManaged",
+    "UserManaged",
+    "NoPublicIPAddresses",
+  ]);
+const IPFamilySchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "IPv4",
+  "IPv6",
+]);
+const IPTagSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  ipTagType: Schema.optional(Schema.String),
+  tag: Schema.optional(Schema.String),
+});
+const TaskSchedulingPolicySchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  jobDefaultOrder: Schema.optional(Schema.suspend(() => JobDefaultOrderSchema)),
+  nodeFillType: Schema.Literals(["Spread", "Pack"]),
+});
+const JobDefaultOrderSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "None",
+  "CreationTime",
+]);
+const UserAccountSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.String,
+  password: SensitiveOutputString,
+  elevationLevel: Schema.optional(Schema.suspend(() => ElevationLevelSchema)),
+  linuxUserConfiguration: Schema.optional(
+    Schema.suspend(() => LinuxUserConfigurationSchema),
+  ),
+  windowsUserConfiguration: Schema.optional(
+    Schema.suspend(() => WindowsUserConfigurationSchema),
+  ),
+});
+const ElevationLevelSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "NonAdmin",
+  "Admin",
+]);
+const LinuxUserConfigurationSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  uid: Schema.optional(Schema.Number),
+  gid: Schema.optional(Schema.Number),
+  sshPrivateKey: Schema.optional(Schema.String),
+});
+const WindowsUserConfigurationSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    loginMode: Schema.optional(Schema.suspend(() => LoginModeSchema)),
+  });
+const LoginModeSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Batch",
+  "Interactive",
+]);
+const MetadataItemSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.String,
+  value: Schema.String,
+});
+const StartTaskSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  commandLine: Schema.optional(Schema.String),
+  resourceFiles: Schema.optional(
+    Schema.Array(Schema.suspend(() => ResourceFileSchema)),
+  ),
+  environmentSettings: Schema.optional(
+    Schema.Array(Schema.suspend(() => EnvironmentSettingSchema)),
+  ),
+  userIdentity: Schema.optional(Schema.suspend(() => UserIdentitySchema)),
+  maxTaskRetryCount: Schema.optional(Schema.Number),
+  waitForSuccess: Schema.optional(Schema.Boolean),
+  containerSettings: Schema.optional(
+    Schema.suspend(() => TaskContainerSettingsSchema),
+  ),
+});
+const ResourceFileSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  autoStorageContainerName: Schema.optional(Schema.String),
+  storageContainerUrl: Schema.optional(Schema.String),
+  httpUrl: Schema.optional(Schema.String),
+  blobPrefix: Schema.optional(Schema.String),
+  filePath: Schema.optional(Schema.String),
+  fileMode: Schema.optional(Schema.String),
+  identityReference: Schema.optional(
+    Schema.suspend(() => ComputeNodeIdentityReferenceSchema),
+  ),
+});
+const EnvironmentSettingSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.String,
+  value: Schema.optional(Schema.String),
+});
+const UserIdentitySchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  userName: Schema.optional(Schema.String),
+  autoUser: Schema.optional(Schema.suspend(() => AutoUserSpecificationSchema)),
+});
+const AutoUserSpecificationSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  scope: Schema.optional(Schema.suspend(() => AutoUserScopeSchema)),
+  elevationLevel: Schema.optional(Schema.suspend(() => ElevationLevelSchema)),
+});
+const AutoUserScopeSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Task",
+  "Pool",
+]);
+const TaskContainerSettingsSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  containerRunOptions: Schema.optional(Schema.String),
+  imageName: Schema.String,
+  registry: Schema.optional(Schema.suspend(() => ContainerRegistrySchema)),
+  workingDirectory: Schema.optional(
+    Schema.suspend(() => ContainerWorkingDirectorySchema),
+  ),
+  containerHostBatchBindMounts: Schema.optional(
+    Schema.Array(Schema.suspend(() => ContainerHostBatchBindMountEntrySchema)),
+  ),
+});
+const ContainerWorkingDirectorySchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+    "TaskWorkingDirectory",
+    "ContainerImageDefault",
+  ]);
+const ContainerHostBatchBindMountEntrySchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    source: Schema.optional(Schema.suspend(() => ContainerHostDataPathSchema)),
+    isReadOnly: Schema.optional(Schema.Boolean),
+  });
+const ContainerHostDataPathSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals(
+  ["Shared", "Startup", "VfsMounts", "Task", "JobPrep", "Applications"],
+);
+const ApplicationPackageReferenceSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.String,
+    version: Schema.optional(Schema.String),
+  });
+const ResizeOperationStatusSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  targetDedicatedNodes: Schema.optional(Schema.Number),
+  targetLowPriorityNodes: Schema.optional(Schema.Number),
+  resizeTimeout: Schema.optional(Schema.String),
+  nodeDeallocationOption: Schema.optional(
+    Schema.suspend(() => ComputeNodeDeallocationOptionSchema),
+  ),
+  startTime: Schema.optional(Schema.String),
+  errors: Schema.optional(
+    Schema.Array(Schema.suspend(() => ResizeErrorSchema)),
+  ),
+});
+const ResizeErrorSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  code: Schema.String,
+  message: Schema.String,
+  details: Schema.optional(Schema.Array(Schema.Unknown)),
+});
+const MountConfigurationSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  azureBlobFileSystemConfiguration: Schema.optional(
+    Schema.suspend(() => AzureBlobFileSystemConfigurationSchema),
+  ),
+  nfsMountConfiguration: Schema.optional(
+    Schema.suspend(() => NFSMountConfigurationSchema),
+  ),
+  cifsMountConfiguration: Schema.optional(
+    Schema.suspend(() => CIFSMountConfigurationSchema),
+  ),
+  azureFileShareConfiguration: Schema.optional(
+    Schema.suspend(() => AzureFileShareConfigurationSchema),
+  ),
+});
+const AzureBlobFileSystemConfigurationSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    accountName: Schema.String,
+    containerName: Schema.String,
+    accountKey: Schema.optional(Schema.String),
+    sasKey: Schema.optional(Schema.String),
+    blobfuseOptions: Schema.optional(Schema.String),
+    relativeMountPath: Schema.String,
+    identityReference: Schema.optional(
+      Schema.suspend(() => ComputeNodeIdentityReferenceSchema),
+    ),
+  });
+const NFSMountConfigurationSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  source: Schema.String,
+  relativeMountPath: Schema.String,
+  mountOptions: Schema.optional(Schema.String),
+});
+const CIFSMountConfigurationSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  userName: Schema.String,
+  source: Schema.String,
+  relativeMountPath: Schema.String,
+  mountOptions: Schema.optional(Schema.String),
+  password: SensitiveOutputString,
+});
+const AzureFileShareConfigurationSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    accountName: Schema.String,
+    azureFileUrl: Schema.String,
+    accountKey: Schema.String,
+    relativeMountPath: Schema.String,
+    mountOptions: Schema.optional(Schema.String),
+  });
+const UpgradePolicySchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  mode: Schema.suspend(() => UpgradeModeSchema),
+  automaticOSUpgradePolicy: Schema.optional(
+    Schema.suspend(() => AutomaticOSUpgradePolicySchema),
+  ),
+  rollingUpgradePolicy: Schema.optional(
+    Schema.suspend(() => RollingUpgradePolicySchema),
+  ),
+});
+const UpgradeModeSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "automatic",
+  "manual",
+  "rolling",
+]);
+const AutomaticOSUpgradePolicySchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    disableAutomaticRollback: Schema.optional(Schema.Boolean),
+    enableAutomaticOSUpgrade: Schema.optional(Schema.Boolean),
+    useRollingUpgradePolicy: Schema.optional(Schema.Boolean),
+    osRollingUpgradeDeferral: Schema.optional(Schema.Boolean),
+  });
+const RollingUpgradePolicySchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  enableCrossZoneUpgrade: Schema.optional(Schema.Boolean),
+  maxBatchInstancePercent: Schema.optional(Schema.Number),
+  maxUnhealthyInstancePercent: Schema.optional(Schema.Number),
+  maxUnhealthyUpgradedInstancePercent: Schema.optional(Schema.Number),
+  pauseTimeBetweenBatches: Schema.optional(Schema.String),
+  prioritizeUnhealthyInstances: Schema.optional(Schema.Boolean),
+  rollbackFailedInstancesOnPolicyBreach: Schema.optional(Schema.Boolean),
+});
+const BatchPoolIdentitySchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  type: Schema.suspend(() => PoolIdentityTypeSchema),
+  userAssignedIdentities: Schema.optional(
+    Schema.Record(
+      Schema.String,
+      Schema.suspend(() => UserAssignedIdentitiesSchema),
+    ),
+  ),
+});
+const PoolIdentityTypeSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "UserAssigned",
+  "None",
+]);
+const PrivateEndpointConnectionPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    provisioningState: Schema.optional(
+      Schema.suspend(() => PrivateEndpointConnectionProvisioningStateSchema),
+    ),
+    privateEndpoint: Schema.optional(
+      Schema.suspend(() => PrivateEndpointSchema),
+    ),
+    groupIds: Schema.optional(Schema.Array(Schema.String)),
+    privateLinkServiceConnectionState: Schema.optional(
+      Schema.suspend(() => PrivateLinkServiceConnectionStateSchema),
+    ),
+  });
+const PrivateEndpointConnectionProvisioningStateSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+    "Creating",
+    "Updating",
+    "Deleting",
+    "Succeeded",
+    "Failed",
+    "Cancelled",
+  ]);
+const PrivateEndpointSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+});
+const PrivateLinkServiceConnectionStateSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    status: Schema.suspend(() => PrivateLinkServiceConnectionStatusSchema),
+    description: Schema.optional(Schema.String),
+    actionsRequired: Schema.optional(Schema.String),
+  });
+const PrivateLinkServiceConnectionStatusSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+    "Approved",
+    "Pending",
+    "Rejected",
+    "Disconnected",
+  ]);
+const PrivateLinkResourceSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+});
+const PrivateLinkResourcePropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    groupId: Schema.optional(Schema.String),
+    requiredMembers: Schema.optional(Schema.Array(Schema.String)),
+    requiredZoneNames: Schema.optional(Schema.Array(Schema.String)),
+  });
+const AccountKeyTypeSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Primary",
+  "Secondary",
+]);
 
 // Input Schema
 export const ApplicationCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
@@ -17,11 +1049,7 @@ export const ApplicationCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     accountName: Schema.String.pipe(T.PathParam()),
     applicationName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        displayName: Schema.optional(Schema.String),
-        allowUpdates: Schema.optional(Schema.Boolean),
-        defaultVersion: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(() => ApplicationPropertiesSchema),
     ),
     etag: Schema.optional(Schema.String),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
@@ -38,23 +1066,15 @@ export type ApplicationCreateInput = typeof ApplicationCreateInput.Type;
 // Output Schema
 export const ApplicationCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => ApplicationPropertiesSchema),
+    ),
+    etag: Schema.optional(Schema.String),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type ApplicationCreateOutput = typeof ApplicationCreateOutput.Type;
 
@@ -124,23 +1144,15 @@ export type ApplicationGetInput = typeof ApplicationGetInput.Type;
 
 // Output Schema
 export const ApplicationGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.optional(
+    Schema.suspend(() => ApplicationPropertiesSchema),
+  ),
+  etag: Schema.optional(Schema.String),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
-  systemData: Schema.optional(
-    Schema.Struct({
-      createdBy: Schema.optional(Schema.String),
-      createdByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      createdAt: Schema.optional(Schema.String),
-      lastModifiedBy: Schema.optional(Schema.String),
-      lastModifiedByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      lastModifiedAt: Schema.optional(Schema.String),
-    }),
-  ),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
 });
 export type ApplicationGetOutput = typeof ApplicationGetOutput.Type;
 
@@ -175,27 +1187,7 @@ export type ApplicationListInput = typeof ApplicationListInput.Type;
 
 // Output Schema
 export const ApplicationListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  value: Schema.Array(
-    Schema.Struct({
-      id: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      type: Schema.optional(Schema.String),
-      systemData: Schema.optional(
-        Schema.Struct({
-          createdBy: Schema.optional(Schema.String),
-          createdByType: Schema.optional(
-            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-          ),
-          createdAt: Schema.optional(Schema.String),
-          lastModifiedBy: Schema.optional(Schema.String),
-          lastModifiedByType: Schema.optional(
-            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-          ),
-          lastModifiedAt: Schema.optional(Schema.String),
-        }),
-      ),
-    }),
-  ),
+  value: Schema.Array(Schema.suspend(() => ApplicationSchema)),
   nextLink: Schema.optional(Schema.String),
 });
 export type ApplicationListOutput = typeof ApplicationListOutput.Type;
@@ -236,23 +1228,15 @@ export type ApplicationPackageActivateInput =
 // Output Schema
 export const ApplicationPackageActivateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => ApplicationPackagePropertiesSchema),
+    ),
+    etag: Schema.optional(Schema.String),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type ApplicationPackageActivateOutput =
   typeof ApplicationPackageActivateOutput.Type;
@@ -283,13 +1267,7 @@ export const ApplicationPackageCreateInput =
     applicationName: Schema.String.pipe(T.PathParam()),
     versionName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        state: Schema.optional(Schema.Literals(["Pending", "Active"])),
-        format: Schema.optional(Schema.String),
-        storageUrl: Schema.optional(Schema.String),
-        storageUrlExpiry: Schema.optional(Schema.String),
-        lastActivationTime: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(() => ApplicationPackagePropertiesSchema),
     ),
     etag: Schema.optional(Schema.String),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
@@ -306,23 +1284,15 @@ export type ApplicationPackageCreateInput =
 // Output Schema
 export const ApplicationPackageCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => ApplicationPackagePropertiesSchema),
+    ),
+    etag: Schema.optional(Schema.String),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type ApplicationPackageCreateOutput =
   typeof ApplicationPackageCreateOutput.Type;
@@ -405,23 +1375,15 @@ export type ApplicationPackageGetInput = typeof ApplicationPackageGetInput.Type;
 // Output Schema
 export const ApplicationPackageGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => ApplicationPackagePropertiesSchema),
+    ),
+    etag: Schema.optional(Schema.String),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type ApplicationPackageGetOutput =
   typeof ApplicationPackageGetOutput.Type;
@@ -464,37 +1426,7 @@ export type ApplicationPackageListInput =
 // Output Schema
 export const ApplicationPackageListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => ApplicationPackageSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type ApplicationPackageListOutput =
@@ -525,11 +1457,7 @@ export const ApplicationUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     accountName: Schema.String.pipe(T.PathParam()),
     applicationName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        displayName: Schema.optional(Schema.String),
-        allowUpdates: Schema.optional(Schema.Boolean),
-        defaultVersion: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(() => ApplicationPropertiesSchema),
     ),
     etag: Schema.optional(Schema.String),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
@@ -546,23 +1474,15 @@ export type ApplicationUpdateInput = typeof ApplicationUpdateInput.Type;
 // Output Schema
 export const ApplicationUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => ApplicationPropertiesSchema),
+    ),
+    etag: Schema.optional(Schema.String),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type ApplicationUpdateOutput = typeof ApplicationUpdateOutput.Type;
 
@@ -589,99 +1509,9 @@ export const BatchAccountCreateInput =
     location: Schema.String,
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     properties: Schema.optional(
-      Schema.Struct({
-        autoStorage: Schema.optional(
-          Schema.Struct({
-            storageAccountId: Schema.String,
-            authenticationMode: Schema.optional(
-              Schema.Literals(["StorageKeys", "BatchAccountManagedIdentity"]),
-            ),
-            nodeIdentityReference: Schema.optional(
-              Schema.Struct({
-                resourceId: Schema.optional(Schema.String),
-              }),
-            ),
-          }),
-        ),
-        poolAllocationMode: Schema.optional(
-          Schema.Literals(["BatchService", "UserSubscription"]),
-        ),
-        keyVaultReference: Schema.optional(
-          Schema.Struct({
-            id: Schema.String,
-            url: Schema.String,
-          }),
-        ),
-        publicNetworkAccess: Schema.optional(
-          Schema.Literals(["Enabled", "Disabled", "SecuredByPerimeter"]),
-        ),
-        networkProfile: Schema.optional(
-          Schema.Struct({
-            accountAccess: Schema.optional(
-              Schema.Struct({
-                defaultAction: Schema.Literals(["Allow", "Deny"]),
-                ipRules: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      action: Schema.Literals(["Allow"]),
-                      value: Schema.String,
-                    }),
-                  ),
-                ),
-              }),
-            ),
-            nodeManagementAccess: Schema.optional(
-              Schema.Struct({
-                defaultAction: Schema.Literals(["Allow", "Deny"]),
-                ipRules: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      action: Schema.Literals(["Allow"]),
-                      value: Schema.String,
-                    }),
-                  ),
-                ),
-              }),
-            ),
-          }),
-        ),
-        encryption: Schema.optional(
-          Schema.Struct({
-            keySource: Schema.optional(
-              Schema.Literals(["Microsoft.Batch", "Microsoft.KeyVault"]),
-            ),
-            keyVaultProperties: Schema.optional(
-              Schema.Struct({
-                keyIdentifier: Schema.optional(Schema.String),
-              }),
-            ),
-          }),
-        ),
-        allowedAuthenticationModes: Schema.optional(
-          Schema.NullOr(
-            Schema.Array(
-              Schema.Literals(["SharedKey", "AAD", "TaskAuthenticationToken"]),
-            ),
-          ),
-        ),
-      }),
+      Schema.suspend(() => BatchAccountCreatePropertiesSchema),
     ),
-    identity: Schema.optional(
-      Schema.Struct({
-        principalId: Schema.optional(Schema.String),
-        tenantId: Schema.optional(Schema.String),
-        type: Schema.Literals(["SystemAssigned", "UserAssigned", "None"]),
-        userAssignedIdentities: Schema.optional(
-          Schema.Record(
-            Schema.String,
-            Schema.Struct({
-              principalId: Schema.optional(Schema.String),
-              clientId: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-      }),
-    ),
+    identity: Schema.optional(Schema.suspend(() => BatchAccountIdentitySchema)),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -695,23 +1525,16 @@ export type BatchAccountCreateInput = typeof BatchAccountCreateInput.Type;
 // Output Schema
 export const BatchAccountCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => BatchAccountPropertiesSchema),
+    ),
+    identity: Schema.optional(Schema.suspend(() => BatchAccountIdentitySchema)),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type BatchAccountCreateOutput = typeof BatchAccountCreateOutput.Type;
 
@@ -777,23 +1600,16 @@ export type BatchAccountGetInput = typeof BatchAccountGetInput.Type;
 
 // Output Schema
 export const BatchAccountGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.optional(
+    Schema.suspend(() => BatchAccountPropertiesSchema),
+  ),
+  identity: Schema.optional(Schema.suspend(() => BatchAccountIdentitySchema)),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  location: Schema.String,
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
-  systemData: Schema.optional(
-    Schema.Struct({
-      createdBy: Schema.optional(Schema.String),
-      createdByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      createdAt: Schema.optional(Schema.String),
-      lastModifiedBy: Schema.optional(Schema.String),
-      lastModifiedByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      lastModifiedAt: Schema.optional(Schema.String),
-    }),
-  ),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
 });
 export type BatchAccountGetOutput = typeof BatchAccountGetOutput.Type;
 
@@ -830,23 +1646,15 @@ export type BatchAccountGetDetectorInput =
 // Output Schema
 export const BatchAccountGetDetectorOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => DetectorResponsePropertiesSchema),
+    ),
+    etag: Schema.optional(Schema.String),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type BatchAccountGetDetectorOutput =
   typeof BatchAccountGetDetectorOutput.Type;
@@ -921,37 +1729,7 @@ export type BatchAccountListInput = typeof BatchAccountListInput.Type;
 // Output Schema
 export const BatchAccountListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => BatchAccountSchema)),
     nextLink: Schema.optional(Schema.String),
   },
 );
@@ -986,37 +1764,7 @@ export type BatchAccountListByResourceGroupInput =
 // Output Schema
 export const BatchAccountListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => BatchAccountSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type BatchAccountListByResourceGroupOutput =
@@ -1054,37 +1802,7 @@ export type BatchAccountListDetectorsInput =
 // Output Schema
 export const BatchAccountListDetectorsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => DetectorResponseSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type BatchAccountListDetectorsOutput =
@@ -1125,24 +1843,7 @@ export type BatchAccountListOutboundNetworkDependenciesEndpointsInput =
 export const BatchAccountListOutboundNetworkDependenciesEndpointsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
-      Schema.Struct({
-        category: Schema.optional(Schema.String),
-        endpoints: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              domainName: Schema.optional(Schema.String),
-              description: Schema.optional(Schema.String),
-              endpointDetails: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    port: Schema.optional(Schema.Number),
-                  }),
-                ),
-              ),
-            }),
-          ),
-        ),
-      }),
+      Schema.suspend(() => OutboundEnvironmentEndpointSchema),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -1169,7 +1870,7 @@ export const BatchAccountRegenerateKeyInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
-    keyName: Schema.Literals(["Primary", "Secondary"]),
+    keyName: Schema.suspend(() => AccountKeyTypeSchema),
   }).pipe(
     T.Http({
       method: "POST",
@@ -1251,90 +1952,9 @@ export const BatchAccountUpdateInput =
     accountName: Schema.String.pipe(T.PathParam()),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     properties: Schema.optional(
-      Schema.Struct({
-        autoStorage: Schema.optional(
-          Schema.Struct({
-            storageAccountId: Schema.String,
-            authenticationMode: Schema.optional(
-              Schema.Literals(["StorageKeys", "BatchAccountManagedIdentity"]),
-            ),
-            nodeIdentityReference: Schema.optional(
-              Schema.Struct({
-                resourceId: Schema.optional(Schema.String),
-              }),
-            ),
-          }),
-        ),
-        encryption: Schema.optional(
-          Schema.Struct({
-            keySource: Schema.optional(
-              Schema.Literals(["Microsoft.Batch", "Microsoft.KeyVault"]),
-            ),
-            keyVaultProperties: Schema.optional(
-              Schema.Struct({
-                keyIdentifier: Schema.optional(Schema.String),
-              }),
-            ),
-          }),
-        ),
-        allowedAuthenticationModes: Schema.optional(
-          Schema.NullOr(
-            Schema.Array(
-              Schema.Literals(["SharedKey", "AAD", "TaskAuthenticationToken"]),
-            ),
-          ),
-        ),
-        publicNetworkAccess: Schema.optional(
-          Schema.Literals(["Enabled", "Disabled", "SecuredByPerimeter"]),
-        ),
-        networkProfile: Schema.optional(
-          Schema.Struct({
-            accountAccess: Schema.optional(
-              Schema.Struct({
-                defaultAction: Schema.Literals(["Allow", "Deny"]),
-                ipRules: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      action: Schema.Literals(["Allow"]),
-                      value: Schema.String,
-                    }),
-                  ),
-                ),
-              }),
-            ),
-            nodeManagementAccess: Schema.optional(
-              Schema.Struct({
-                defaultAction: Schema.Literals(["Allow", "Deny"]),
-                ipRules: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      action: Schema.Literals(["Allow"]),
-                      value: Schema.String,
-                    }),
-                  ),
-                ),
-              }),
-            ),
-          }),
-        ),
-      }),
+      Schema.suspend(() => BatchAccountUpdatePropertiesSchema),
     ),
-    identity: Schema.optional(
-      Schema.Struct({
-        principalId: Schema.optional(Schema.String),
-        tenantId: Schema.optional(Schema.String),
-        type: Schema.Literals(["SystemAssigned", "UserAssigned", "None"]),
-        userAssignedIdentities: Schema.optional(
-          Schema.Record(
-            Schema.String,
-            Schema.Struct({
-              principalId: Schema.optional(Schema.String),
-              clientId: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-      }),
-    ),
+    identity: Schema.optional(Schema.suspend(() => BatchAccountIdentitySchema)),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -1347,23 +1967,16 @@ export type BatchAccountUpdateInput = typeof BatchAccountUpdateInput.Type;
 // Output Schema
 export const BatchAccountUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => BatchAccountPropertiesSchema),
+    ),
+    identity: Schema.optional(Schema.suspend(() => BatchAccountIdentitySchema)),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type BatchAccountUpdateOutput = typeof BatchAccountUpdateOutput.Type;
 
@@ -1386,7 +1999,7 @@ export const LocationCheckNameAvailabilityInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     locationName: Schema.String.pipe(T.PathParam()),
     name: Schema.String,
-    type: Schema.Literals(["Microsoft.Batch/batchAccounts"]),
+    type: Schema.suspend(() => ResourceTypeSchema),
   }).pipe(
     T.Http({
       method: "POST",
@@ -1401,7 +2014,7 @@ export type LocationCheckNameAvailabilityInput =
 export const LocationCheckNameAvailabilityOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nameAvailable: Schema.optional(Schema.Boolean),
-    reason: Schema.optional(Schema.Literals(["Invalid", "AlreadyExists"])),
+    reason: Schema.optional(Schema.suspend(() => NameAvailabilityReasonSchema)),
     message: Schema.optional(Schema.String),
   });
 export type LocationCheckNameAvailabilityOutput =
@@ -1474,21 +2087,7 @@ export type LocationListSupportedVirtualMachineSkusInput =
 // Output Schema
 export const LocationListSupportedVirtualMachineSkusOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        name: Schema.optional(Schema.String),
-        familyName: Schema.optional(Schema.String),
-        capabilities: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              name: Schema.optional(Schema.String),
-              value: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        batchSupportEndOfLife: Schema.optional(Schema.String),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => SupportedSkuSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type LocationListSupportedVirtualMachineSkusOutput =
@@ -1531,23 +2130,15 @@ export type NetworkSecurityPerimeterGetConfigurationInput =
 // Output Schema
 export const NetworkSecurityPerimeterGetConfigurationOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(
+        () => NetworkSecurityPerimeterConfigurationPropertiesSchema,
+      ),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type NetworkSecurityPerimeterGetConfigurationOutput =
   typeof NetworkSecurityPerimeterGetConfigurationOutput.Type;
@@ -1591,30 +2182,7 @@ export const NetworkSecurityPerimeterListConfigurationsOutput =
         id: Schema.optional(Schema.String),
         name: Schema.optional(Schema.String),
         type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
+        systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
       }),
     ),
     nextLink: Schema.optional(Schema.String),
@@ -1691,22 +2259,7 @@ export type OperationsListInput = typeof OperationsListInput.Type;
 
 // Output Schema
 export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  value: Schema.Array(
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      isDataAction: Schema.optional(Schema.Boolean),
-      display: Schema.optional(
-        Schema.Struct({
-          provider: Schema.optional(Schema.String),
-          operation: Schema.optional(Schema.String),
-          resource: Schema.optional(Schema.String),
-          description: Schema.optional(Schema.String),
-        }),
-      ),
-      origin: Schema.optional(Schema.String),
-      properties: Schema.optional(Schema.Unknown),
-    }),
-  ),
+  value: Schema.Array(Schema.suspend(() => OperationSchema)),
   nextLink: Schema.optional(Schema.String),
 });
 export type OperationsListOutput = typeof OperationsListOutput.Type;
@@ -1727,596 +2280,8 @@ export const PoolCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   accountName: Schema.String.pipe(T.PathParam()),
   poolName: Schema.String.pipe(T.PathParam()),
-  properties: Schema.optional(
-    Schema.Struct({
-      displayName: Schema.optional(Schema.String),
-      lastModified: Schema.optional(Schema.String),
-      creationTime: Schema.optional(Schema.String),
-      provisioningState: Schema.optional(
-        Schema.Literals(["Succeeded", "Deleting"]),
-      ),
-      provisioningStateTransitionTime: Schema.optional(Schema.String),
-      allocationState: Schema.optional(
-        Schema.Literals(["Steady", "Resizing", "Stopping"]),
-      ),
-      allocationStateTransitionTime: Schema.optional(Schema.String),
-      vmSize: Schema.optional(Schema.String),
-      deploymentConfiguration: Schema.optional(
-        Schema.Struct({
-          virtualMachineConfiguration: Schema.optional(
-            Schema.Struct({
-              imageReference: Schema.Struct({
-                publisher: Schema.optional(Schema.String),
-                offer: Schema.optional(Schema.String),
-                sku: Schema.optional(Schema.String),
-                version: Schema.optional(Schema.String),
-                id: Schema.optional(Schema.String),
-                sharedGalleryImageId: Schema.optional(Schema.String),
-                communityGalleryImageId: Schema.optional(Schema.String),
-              }),
-              nodeAgentSkuId: Schema.String,
-              windowsConfiguration: Schema.optional(
-                Schema.Struct({
-                  enableAutomaticUpdates: Schema.optional(Schema.Boolean),
-                }),
-              ),
-              dataDisks: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    lun: Schema.Number,
-                    caching: Schema.optional(
-                      Schema.Literals(["None", "ReadOnly", "ReadWrite"]),
-                    ),
-                    diskSizeGB: Schema.Number,
-                    managedDisk: Schema.optional(
-                      Schema.Struct({
-                        storageAccountType: Schema.optional(
-                          Schema.Literals([
-                            "Standard_LRS",
-                            "Premium_LRS",
-                            "StandardSSD_LRS",
-                          ]),
-                        ),
-                        securityProfile: Schema.optional(
-                          Schema.Struct({
-                            securityEncryptionType: Schema.optional(
-                              Schema.Literals([
-                                "NonPersistedTPM",
-                                "VMGuestStateOnly",
-                                "DiskWithVMGuestState",
-                              ]),
-                            ),
-                            diskEncryptionSet: Schema.optional(
-                              Schema.Struct({
-                                id: Schema.String,
-                              }),
-                            ),
-                          }),
-                        ),
-                        diskEncryptionSet: Schema.optional(
-                          Schema.Struct({
-                            id: Schema.String,
-                          }),
-                        ),
-                      }),
-                    ),
-                  }),
-                ),
-              ),
-              licenseType: Schema.optional(Schema.String),
-              containerConfiguration: Schema.optional(
-                Schema.Struct({
-                  type: Schema.Literals(["DockerCompatible", "CriCompatible"]),
-                  containerImageNames: Schema.optional(
-                    Schema.Array(Schema.String),
-                  ),
-                  containerRegistries: Schema.optional(
-                    Schema.Array(
-                      Schema.Struct({
-                        username: Schema.optional(Schema.String),
-                        password: Schema.optional(SensitiveString),
-                        registryServer: Schema.optional(Schema.String),
-                        identityReference: Schema.optional(
-                          Schema.Struct({
-                            resourceId: Schema.optional(Schema.String),
-                          }),
-                        ),
-                      }),
-                    ),
-                  ),
-                }),
-              ),
-              diskEncryptionConfiguration: Schema.optional(
-                Schema.Struct({
-                  targets: Schema.optional(
-                    Schema.Array(Schema.Literals(["OsDisk", "TemporaryDisk"])),
-                  ),
-                  customerManagedKey: Schema.optional(
-                    Schema.Struct({
-                      keyUrl: Schema.optional(Schema.String),
-                      rotationToLatestKeyVersionEnabled: Schema.optional(
-                        Schema.Boolean,
-                      ),
-                      identityReference: Schema.optional(
-                        Schema.Struct({
-                          resourceId: Schema.optional(Schema.String),
-                        }),
-                      ),
-                    }),
-                  ),
-                }),
-              ),
-              nodePlacementConfiguration: Schema.optional(
-                Schema.Struct({
-                  policy: Schema.optional(
-                    Schema.Literals(["Regional", "Zonal"]),
-                  ),
-                }),
-              ),
-              extensions: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    name: Schema.String,
-                    publisher: Schema.String,
-                    type: Schema.String,
-                    typeHandlerVersion: Schema.optional(Schema.String),
-                    autoUpgradeMinorVersion: Schema.optional(Schema.Boolean),
-                    enableAutomaticUpgrade: Schema.optional(Schema.Boolean),
-                    settings: Schema.optional(Schema.Unknown),
-                    protectedSettings: Schema.optional(Schema.Unknown),
-                    provisionAfterExtensions: Schema.optional(
-                      Schema.Array(Schema.String),
-                    ),
-                  }),
-                ),
-              ),
-              osDisk: Schema.optional(
-                Schema.Struct({
-                  ephemeralOSDiskSettings: Schema.optional(
-                    Schema.Struct({
-                      placement: Schema.optional(
-                        Schema.Literals(["CacheDisk"]),
-                      ),
-                    }),
-                  ),
-                  caching: Schema.optional(
-                    Schema.Literals(["None", "ReadOnly", "ReadWrite"]),
-                  ),
-                  managedDisk: Schema.optional(
-                    Schema.Struct({
-                      storageAccountType: Schema.optional(
-                        Schema.Literals([
-                          "Standard_LRS",
-                          "Premium_LRS",
-                          "StandardSSD_LRS",
-                        ]),
-                      ),
-                      securityProfile: Schema.optional(
-                        Schema.Struct({
-                          securityEncryptionType: Schema.optional(
-                            Schema.Literals([
-                              "NonPersistedTPM",
-                              "VMGuestStateOnly",
-                              "DiskWithVMGuestState",
-                            ]),
-                          ),
-                          diskEncryptionSet: Schema.optional(
-                            Schema.Struct({
-                              id: Schema.String,
-                            }),
-                          ),
-                        }),
-                      ),
-                      diskEncryptionSet: Schema.optional(
-                        Schema.Struct({
-                          id: Schema.String,
-                        }),
-                      ),
-                    }),
-                  ),
-                  diskSizeGB: Schema.optional(Schema.Number),
-                  writeAcceleratorEnabled: Schema.optional(Schema.Boolean),
-                }),
-              ),
-              securityProfile: Schema.optional(
-                Schema.Struct({
-                  securityType: Schema.optional(
-                    Schema.Literals(["trustedLaunch", "confidentialVM"]),
-                  ),
-                  encryptionAtHost: Schema.optional(Schema.Boolean),
-                  uefiSettings: Schema.optional(
-                    Schema.Struct({
-                      secureBootEnabled: Schema.optional(Schema.Boolean),
-                      vTpmEnabled: Schema.optional(Schema.Boolean),
-                    }),
-                  ),
-                  proxyAgentSettings: Schema.optional(
-                    Schema.Struct({
-                      enabled: Schema.optional(Schema.Boolean),
-                      imds: Schema.optional(
-                        Schema.Struct({
-                          mode: Schema.optional(
-                            Schema.Literals(["Audit", "Enforce"]),
-                          ),
-                          inVMAccessControlProfileReferenceId: Schema.optional(
-                            Schema.String,
-                          ),
-                        }),
-                      ),
-                      wireServer: Schema.optional(
-                        Schema.Struct({
-                          mode: Schema.optional(
-                            Schema.Literals(["Audit", "Enforce"]),
-                          ),
-                          inVMAccessControlProfileReferenceId: Schema.optional(
-                            Schema.String,
-                          ),
-                        }),
-                      ),
-                    }),
-                  ),
-                }),
-              ),
-              serviceArtifactReference: Schema.optional(
-                Schema.Struct({
-                  id: Schema.String,
-                }),
-              ),
-            }),
-          ),
-        }),
-      ),
-      currentDedicatedNodes: Schema.optional(Schema.Number),
-      currentLowPriorityNodes: Schema.optional(Schema.Number),
-      scaleSettings: Schema.optional(
-        Schema.Struct({
-          fixedScale: Schema.optional(
-            Schema.Struct({
-              resizeTimeout: Schema.optional(Schema.String),
-              targetDedicatedNodes: Schema.optional(Schema.Number),
-              targetLowPriorityNodes: Schema.optional(Schema.Number),
-              nodeDeallocationOption: Schema.optional(
-                Schema.Literals([
-                  "Requeue",
-                  "Terminate",
-                  "TaskCompletion",
-                  "RetainedData",
-                ]),
-              ),
-            }),
-          ),
-          autoScale: Schema.optional(
-            Schema.Struct({
-              formula: Schema.String,
-              evaluationInterval: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
-      autoScaleRun: Schema.optional(
-        Schema.Struct({
-          evaluationTime: Schema.String,
-          results: Schema.optional(Schema.String),
-          error: Schema.optional(
-            Schema.Struct({
-              code: Schema.String,
-              message: Schema.String,
-              details: Schema.optional(Schema.Array(Schema.Unknown)),
-            }),
-          ),
-        }),
-      ),
-      interNodeCommunication: Schema.optional(
-        Schema.Literals(["Enabled", "Disabled"]),
-      ),
-      networkConfiguration: Schema.optional(
-        Schema.Struct({
-          subnetId: Schema.optional(Schema.String),
-          dynamicVnetAssignmentScope: Schema.optional(
-            Schema.Literals(["none", "job"]),
-          ),
-          endpointConfiguration: Schema.optional(
-            Schema.Struct({
-              inboundNatPools: Schema.Array(
-                Schema.Struct({
-                  name: Schema.String,
-                  protocol: Schema.Literals(["TCP", "UDP"]),
-                  backendPort: Schema.Number,
-                  frontendPortRangeStart: Schema.Number,
-                  frontendPortRangeEnd: Schema.Number,
-                  networkSecurityGroupRules: Schema.optional(
-                    Schema.Array(
-                      Schema.Struct({
-                        priority: Schema.Number,
-                        access: Schema.Literals(["Allow", "Deny"]),
-                        sourceAddressPrefix: Schema.String,
-                        sourcePortRanges: Schema.optional(
-                          Schema.Array(Schema.String),
-                        ),
-                      }),
-                    ),
-                  ),
-                }),
-              ),
-            }),
-          ),
-          publicIPAddressConfiguration: Schema.optional(
-            Schema.Struct({
-              provision: Schema.optional(
-                Schema.Literals([
-                  "BatchManaged",
-                  "UserManaged",
-                  "NoPublicIPAddresses",
-                ]),
-              ),
-              ipAddressIds: Schema.optional(Schema.Array(Schema.String)),
-              ipFamilies: Schema.optional(
-                Schema.Array(Schema.Literals(["IPv4", "IPv6"])),
-              ),
-              ipTags: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    ipTagType: Schema.optional(Schema.String),
-                    tag: Schema.optional(Schema.String),
-                  }),
-                ),
-              ),
-            }),
-          ),
-          enableAcceleratedNetworking: Schema.optional(Schema.Boolean),
-        }),
-      ),
-      taskSlotsPerNode: Schema.optional(Schema.Number),
-      taskSchedulingPolicy: Schema.optional(
-        Schema.Struct({
-          jobDefaultOrder: Schema.optional(
-            Schema.Literals(["None", "CreationTime"]),
-          ),
-          nodeFillType: Schema.Literals(["Spread", "Pack"]),
-        }),
-      ),
-      userAccounts: Schema.optional(
-        Schema.Array(
-          Schema.Struct({
-            name: Schema.String,
-            password: SensitiveString,
-            elevationLevel: Schema.optional(
-              Schema.Literals(["NonAdmin", "Admin"]),
-            ),
-            linuxUserConfiguration: Schema.optional(
-              Schema.Struct({
-                uid: Schema.optional(Schema.Number),
-                gid: Schema.optional(Schema.Number),
-                sshPrivateKey: Schema.optional(Schema.String),
-              }),
-            ),
-            windowsUserConfiguration: Schema.optional(
-              Schema.Struct({
-                loginMode: Schema.optional(
-                  Schema.Literals(["Batch", "Interactive"]),
-                ),
-              }),
-            ),
-          }),
-        ),
-      ),
-      metadata: Schema.optional(
-        Schema.Array(
-          Schema.Struct({
-            name: Schema.String,
-            value: Schema.String,
-          }),
-        ),
-      ),
-      startTask: Schema.optional(
-        Schema.Struct({
-          commandLine: Schema.optional(Schema.String),
-          resourceFiles: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                autoStorageContainerName: Schema.optional(Schema.String),
-                storageContainerUrl: Schema.optional(Schema.String),
-                httpUrl: Schema.optional(Schema.String),
-                blobPrefix: Schema.optional(Schema.String),
-                filePath: Schema.optional(Schema.String),
-                fileMode: Schema.optional(Schema.String),
-                identityReference: Schema.optional(
-                  Schema.Struct({
-                    resourceId: Schema.optional(Schema.String),
-                  }),
-                ),
-              }),
-            ),
-          ),
-          environmentSettings: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                name: Schema.String,
-                value: Schema.optional(Schema.String),
-              }),
-            ),
-          ),
-          userIdentity: Schema.optional(
-            Schema.Struct({
-              userName: Schema.optional(Schema.String),
-              autoUser: Schema.optional(
-                Schema.Struct({
-                  scope: Schema.optional(Schema.Literals(["Task", "Pool"])),
-                  elevationLevel: Schema.optional(
-                    Schema.Literals(["NonAdmin", "Admin"]),
-                  ),
-                }),
-              ),
-            }),
-          ),
-          maxTaskRetryCount: Schema.optional(Schema.Number),
-          waitForSuccess: Schema.optional(Schema.Boolean),
-          containerSettings: Schema.optional(
-            Schema.Struct({
-              containerRunOptions: Schema.optional(Schema.String),
-              imageName: Schema.String,
-              registry: Schema.optional(
-                Schema.Struct({
-                  username: Schema.optional(Schema.String),
-                  password: Schema.optional(SensitiveString),
-                  registryServer: Schema.optional(Schema.String),
-                  identityReference: Schema.optional(
-                    Schema.Struct({
-                      resourceId: Schema.optional(Schema.String),
-                    }),
-                  ),
-                }),
-              ),
-              workingDirectory: Schema.optional(
-                Schema.Literals([
-                  "TaskWorkingDirectory",
-                  "ContainerImageDefault",
-                ]),
-              ),
-              containerHostBatchBindMounts: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    source: Schema.optional(
-                      Schema.Literals([
-                        "Shared",
-                        "Startup",
-                        "VfsMounts",
-                        "Task",
-                        "JobPrep",
-                        "Applications",
-                      ]),
-                    ),
-                    isReadOnly: Schema.optional(Schema.Boolean),
-                  }),
-                ),
-              ),
-            }),
-          ),
-        }),
-      ),
-      applicationPackages: Schema.optional(
-        Schema.Array(
-          Schema.Struct({
-            id: Schema.String,
-            version: Schema.optional(Schema.String),
-          }),
-        ),
-      ),
-      resizeOperationStatus: Schema.optional(
-        Schema.Struct({
-          targetDedicatedNodes: Schema.optional(Schema.Number),
-          targetLowPriorityNodes: Schema.optional(Schema.Number),
-          resizeTimeout: Schema.optional(Schema.String),
-          nodeDeallocationOption: Schema.optional(
-            Schema.Literals([
-              "Requeue",
-              "Terminate",
-              "TaskCompletion",
-              "RetainedData",
-            ]),
-          ),
-          startTime: Schema.optional(Schema.String),
-          errors: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                code: Schema.String,
-                message: Schema.String,
-                details: Schema.optional(Schema.Array(Schema.Unknown)),
-              }),
-            ),
-          ),
-        }),
-      ),
-      mountConfiguration: Schema.optional(
-        Schema.Array(
-          Schema.Struct({
-            azureBlobFileSystemConfiguration: Schema.optional(
-              Schema.Struct({
-                accountName: Schema.String,
-                containerName: Schema.String,
-                accountKey: Schema.optional(Schema.String),
-                sasKey: Schema.optional(Schema.String),
-                blobfuseOptions: Schema.optional(Schema.String),
-                relativeMountPath: Schema.String,
-                identityReference: Schema.optional(
-                  Schema.Struct({
-                    resourceId: Schema.optional(Schema.String),
-                  }),
-                ),
-              }),
-            ),
-            nfsMountConfiguration: Schema.optional(
-              Schema.Struct({
-                source: Schema.String,
-                relativeMountPath: Schema.String,
-                mountOptions: Schema.optional(Schema.String),
-              }),
-            ),
-            cifsMountConfiguration: Schema.optional(
-              Schema.Struct({
-                userName: Schema.String,
-                source: Schema.String,
-                relativeMountPath: Schema.String,
-                mountOptions: Schema.optional(Schema.String),
-                password: SensitiveString,
-              }),
-            ),
-            azureFileShareConfiguration: Schema.optional(
-              Schema.Struct({
-                accountName: Schema.String,
-                azureFileUrl: Schema.String,
-                accountKey: Schema.String,
-                relativeMountPath: Schema.String,
-                mountOptions: Schema.optional(Schema.String),
-              }),
-            ),
-          }),
-        ),
-      ),
-      upgradePolicy: Schema.optional(
-        Schema.Struct({
-          mode: Schema.Literals(["automatic", "manual", "rolling"]),
-          automaticOSUpgradePolicy: Schema.optional(
-            Schema.Struct({
-              disableAutomaticRollback: Schema.optional(Schema.Boolean),
-              enableAutomaticOSUpgrade: Schema.optional(Schema.Boolean),
-              useRollingUpgradePolicy: Schema.optional(Schema.Boolean),
-              osRollingUpgradeDeferral: Schema.optional(Schema.Boolean),
-            }),
-          ),
-          rollingUpgradePolicy: Schema.optional(
-            Schema.Struct({
-              enableCrossZoneUpgrade: Schema.optional(Schema.Boolean),
-              maxBatchInstancePercent: Schema.optional(Schema.Number),
-              maxUnhealthyInstancePercent: Schema.optional(Schema.Number),
-              maxUnhealthyUpgradedInstancePercent: Schema.optional(
-                Schema.Number,
-              ),
-              pauseTimeBetweenBatches: Schema.optional(Schema.String),
-              prioritizeUnhealthyInstances: Schema.optional(Schema.Boolean),
-              rollbackFailedInstancesOnPolicyBreach: Schema.optional(
-                Schema.Boolean,
-              ),
-            }),
-          ),
-        }),
-      ),
-    }),
-  ),
-  identity: Schema.optional(
-    Schema.Struct({
-      type: Schema.Literals(["UserAssigned", "None"]),
-      userAssignedIdentities: Schema.optional(
-        Schema.Record(
-          Schema.String,
-          Schema.Struct({
-            principalId: Schema.optional(Schema.String),
-            clientId: Schema.optional(Schema.String),
-          }),
-        ),
-      ),
-    }),
-  ),
+  properties: Schema.optional(Schema.suspend(() => PoolPropertiesSchema)),
+  identity: Schema.optional(Schema.suspend(() => BatchPoolIdentitySchema)),
   etag: Schema.optional(Schema.String),
   tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
 }).pipe(
@@ -2330,23 +2295,14 @@ export type PoolCreateInput = typeof PoolCreateInput.Type;
 
 // Output Schema
 export const PoolCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.optional(Schema.suspend(() => PoolPropertiesSchema)),
+  identity: Schema.optional(Schema.suspend(() => BatchPoolIdentitySchema)),
+  etag: Schema.optional(Schema.String),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
-  systemData: Schema.optional(
-    Schema.Struct({
-      createdBy: Schema.optional(Schema.String),
-      createdByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      createdAt: Schema.optional(Schema.String),
-      lastModifiedBy: Schema.optional(Schema.String),
-      lastModifiedByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      lastModifiedAt: Schema.optional(Schema.String),
-    }),
-  ),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
 });
 export type PoolCreateOutput = typeof PoolCreateOutput.Type;
 
@@ -2419,23 +2375,14 @@ export type PoolDisableAutoScaleInput = typeof PoolDisableAutoScaleInput.Type;
 // Output Schema
 export const PoolDisableAutoScaleOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(Schema.suspend(() => PoolPropertiesSchema)),
+    identity: Schema.optional(Schema.suspend(() => BatchPoolIdentitySchema)),
+    etag: Schema.optional(Schema.String),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type PoolDisableAutoScaleOutput = typeof PoolDisableAutoScaleOutput.Type;
 
@@ -2472,23 +2419,14 @@ export type PoolGetInput = typeof PoolGetInput.Type;
 
 // Output Schema
 export const PoolGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.optional(Schema.suspend(() => PoolPropertiesSchema)),
+  identity: Schema.optional(Schema.suspend(() => BatchPoolIdentitySchema)),
+  etag: Schema.optional(Schema.String),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
-  systemData: Schema.optional(
-    Schema.Struct({
-      createdBy: Schema.optional(Schema.String),
-      createdByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      createdAt: Schema.optional(Schema.String),
-      lastModifiedBy: Schema.optional(Schema.String),
-      lastModifiedByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      lastModifiedAt: Schema.optional(Schema.String),
-    }),
-  ),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
 });
 export type PoolGetOutput = typeof PoolGetOutput.Type;
 
@@ -2528,37 +2466,7 @@ export type PoolListByBatchAccountInput =
 // Output Schema
 export const PoolListByBatchAccountOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => PoolSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type PoolListByBatchAccountOutput =
@@ -2611,23 +2519,14 @@ export type PoolStopResizeInput = typeof PoolStopResizeInput.Type;
 
 // Output Schema
 export const PoolStopResizeOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.optional(Schema.suspend(() => PoolPropertiesSchema)),
+  identity: Schema.optional(Schema.suspend(() => BatchPoolIdentitySchema)),
+  etag: Schema.optional(Schema.String),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
-  systemData: Schema.optional(
-    Schema.Struct({
-      createdBy: Schema.optional(Schema.String),
-      createdByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      createdAt: Schema.optional(Schema.String),
-      lastModifiedBy: Schema.optional(Schema.String),
-      lastModifiedByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      lastModifiedAt: Schema.optional(Schema.String),
-    }),
-  ),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
 });
 export type PoolStopResizeOutput = typeof PoolStopResizeOutput.Type;
 
@@ -2653,596 +2552,8 @@ export const PoolUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   accountName: Schema.String.pipe(T.PathParam()),
   poolName: Schema.String.pipe(T.PathParam()),
-  properties: Schema.optional(
-    Schema.Struct({
-      displayName: Schema.optional(Schema.String),
-      lastModified: Schema.optional(Schema.String),
-      creationTime: Schema.optional(Schema.String),
-      provisioningState: Schema.optional(
-        Schema.Literals(["Succeeded", "Deleting"]),
-      ),
-      provisioningStateTransitionTime: Schema.optional(Schema.String),
-      allocationState: Schema.optional(
-        Schema.Literals(["Steady", "Resizing", "Stopping"]),
-      ),
-      allocationStateTransitionTime: Schema.optional(Schema.String),
-      vmSize: Schema.optional(Schema.String),
-      deploymentConfiguration: Schema.optional(
-        Schema.Struct({
-          virtualMachineConfiguration: Schema.optional(
-            Schema.Struct({
-              imageReference: Schema.Struct({
-                publisher: Schema.optional(Schema.String),
-                offer: Schema.optional(Schema.String),
-                sku: Schema.optional(Schema.String),
-                version: Schema.optional(Schema.String),
-                id: Schema.optional(Schema.String),
-                sharedGalleryImageId: Schema.optional(Schema.String),
-                communityGalleryImageId: Schema.optional(Schema.String),
-              }),
-              nodeAgentSkuId: Schema.String,
-              windowsConfiguration: Schema.optional(
-                Schema.Struct({
-                  enableAutomaticUpdates: Schema.optional(Schema.Boolean),
-                }),
-              ),
-              dataDisks: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    lun: Schema.Number,
-                    caching: Schema.optional(
-                      Schema.Literals(["None", "ReadOnly", "ReadWrite"]),
-                    ),
-                    diskSizeGB: Schema.Number,
-                    managedDisk: Schema.optional(
-                      Schema.Struct({
-                        storageAccountType: Schema.optional(
-                          Schema.Literals([
-                            "Standard_LRS",
-                            "Premium_LRS",
-                            "StandardSSD_LRS",
-                          ]),
-                        ),
-                        securityProfile: Schema.optional(
-                          Schema.Struct({
-                            securityEncryptionType: Schema.optional(
-                              Schema.Literals([
-                                "NonPersistedTPM",
-                                "VMGuestStateOnly",
-                                "DiskWithVMGuestState",
-                              ]),
-                            ),
-                            diskEncryptionSet: Schema.optional(
-                              Schema.Struct({
-                                id: Schema.String,
-                              }),
-                            ),
-                          }),
-                        ),
-                        diskEncryptionSet: Schema.optional(
-                          Schema.Struct({
-                            id: Schema.String,
-                          }),
-                        ),
-                      }),
-                    ),
-                  }),
-                ),
-              ),
-              licenseType: Schema.optional(Schema.String),
-              containerConfiguration: Schema.optional(
-                Schema.Struct({
-                  type: Schema.Literals(["DockerCompatible", "CriCompatible"]),
-                  containerImageNames: Schema.optional(
-                    Schema.Array(Schema.String),
-                  ),
-                  containerRegistries: Schema.optional(
-                    Schema.Array(
-                      Schema.Struct({
-                        username: Schema.optional(Schema.String),
-                        password: Schema.optional(SensitiveString),
-                        registryServer: Schema.optional(Schema.String),
-                        identityReference: Schema.optional(
-                          Schema.Struct({
-                            resourceId: Schema.optional(Schema.String),
-                          }),
-                        ),
-                      }),
-                    ),
-                  ),
-                }),
-              ),
-              diskEncryptionConfiguration: Schema.optional(
-                Schema.Struct({
-                  targets: Schema.optional(
-                    Schema.Array(Schema.Literals(["OsDisk", "TemporaryDisk"])),
-                  ),
-                  customerManagedKey: Schema.optional(
-                    Schema.Struct({
-                      keyUrl: Schema.optional(Schema.String),
-                      rotationToLatestKeyVersionEnabled: Schema.optional(
-                        Schema.Boolean,
-                      ),
-                      identityReference: Schema.optional(
-                        Schema.Struct({
-                          resourceId: Schema.optional(Schema.String),
-                        }),
-                      ),
-                    }),
-                  ),
-                }),
-              ),
-              nodePlacementConfiguration: Schema.optional(
-                Schema.Struct({
-                  policy: Schema.optional(
-                    Schema.Literals(["Regional", "Zonal"]),
-                  ),
-                }),
-              ),
-              extensions: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    name: Schema.String,
-                    publisher: Schema.String,
-                    type: Schema.String,
-                    typeHandlerVersion: Schema.optional(Schema.String),
-                    autoUpgradeMinorVersion: Schema.optional(Schema.Boolean),
-                    enableAutomaticUpgrade: Schema.optional(Schema.Boolean),
-                    settings: Schema.optional(Schema.Unknown),
-                    protectedSettings: Schema.optional(Schema.Unknown),
-                    provisionAfterExtensions: Schema.optional(
-                      Schema.Array(Schema.String),
-                    ),
-                  }),
-                ),
-              ),
-              osDisk: Schema.optional(
-                Schema.Struct({
-                  ephemeralOSDiskSettings: Schema.optional(
-                    Schema.Struct({
-                      placement: Schema.optional(
-                        Schema.Literals(["CacheDisk"]),
-                      ),
-                    }),
-                  ),
-                  caching: Schema.optional(
-                    Schema.Literals(["None", "ReadOnly", "ReadWrite"]),
-                  ),
-                  managedDisk: Schema.optional(
-                    Schema.Struct({
-                      storageAccountType: Schema.optional(
-                        Schema.Literals([
-                          "Standard_LRS",
-                          "Premium_LRS",
-                          "StandardSSD_LRS",
-                        ]),
-                      ),
-                      securityProfile: Schema.optional(
-                        Schema.Struct({
-                          securityEncryptionType: Schema.optional(
-                            Schema.Literals([
-                              "NonPersistedTPM",
-                              "VMGuestStateOnly",
-                              "DiskWithVMGuestState",
-                            ]),
-                          ),
-                          diskEncryptionSet: Schema.optional(
-                            Schema.Struct({
-                              id: Schema.String,
-                            }),
-                          ),
-                        }),
-                      ),
-                      diskEncryptionSet: Schema.optional(
-                        Schema.Struct({
-                          id: Schema.String,
-                        }),
-                      ),
-                    }),
-                  ),
-                  diskSizeGB: Schema.optional(Schema.Number),
-                  writeAcceleratorEnabled: Schema.optional(Schema.Boolean),
-                }),
-              ),
-              securityProfile: Schema.optional(
-                Schema.Struct({
-                  securityType: Schema.optional(
-                    Schema.Literals(["trustedLaunch", "confidentialVM"]),
-                  ),
-                  encryptionAtHost: Schema.optional(Schema.Boolean),
-                  uefiSettings: Schema.optional(
-                    Schema.Struct({
-                      secureBootEnabled: Schema.optional(Schema.Boolean),
-                      vTpmEnabled: Schema.optional(Schema.Boolean),
-                    }),
-                  ),
-                  proxyAgentSettings: Schema.optional(
-                    Schema.Struct({
-                      enabled: Schema.optional(Schema.Boolean),
-                      imds: Schema.optional(
-                        Schema.Struct({
-                          mode: Schema.optional(
-                            Schema.Literals(["Audit", "Enforce"]),
-                          ),
-                          inVMAccessControlProfileReferenceId: Schema.optional(
-                            Schema.String,
-                          ),
-                        }),
-                      ),
-                      wireServer: Schema.optional(
-                        Schema.Struct({
-                          mode: Schema.optional(
-                            Schema.Literals(["Audit", "Enforce"]),
-                          ),
-                          inVMAccessControlProfileReferenceId: Schema.optional(
-                            Schema.String,
-                          ),
-                        }),
-                      ),
-                    }),
-                  ),
-                }),
-              ),
-              serviceArtifactReference: Schema.optional(
-                Schema.Struct({
-                  id: Schema.String,
-                }),
-              ),
-            }),
-          ),
-        }),
-      ),
-      currentDedicatedNodes: Schema.optional(Schema.Number),
-      currentLowPriorityNodes: Schema.optional(Schema.Number),
-      scaleSettings: Schema.optional(
-        Schema.Struct({
-          fixedScale: Schema.optional(
-            Schema.Struct({
-              resizeTimeout: Schema.optional(Schema.String),
-              targetDedicatedNodes: Schema.optional(Schema.Number),
-              targetLowPriorityNodes: Schema.optional(Schema.Number),
-              nodeDeallocationOption: Schema.optional(
-                Schema.Literals([
-                  "Requeue",
-                  "Terminate",
-                  "TaskCompletion",
-                  "RetainedData",
-                ]),
-              ),
-            }),
-          ),
-          autoScale: Schema.optional(
-            Schema.Struct({
-              formula: Schema.String,
-              evaluationInterval: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
-      autoScaleRun: Schema.optional(
-        Schema.Struct({
-          evaluationTime: Schema.String,
-          results: Schema.optional(Schema.String),
-          error: Schema.optional(
-            Schema.Struct({
-              code: Schema.String,
-              message: Schema.String,
-              details: Schema.optional(Schema.Array(Schema.Unknown)),
-            }),
-          ),
-        }),
-      ),
-      interNodeCommunication: Schema.optional(
-        Schema.Literals(["Enabled", "Disabled"]),
-      ),
-      networkConfiguration: Schema.optional(
-        Schema.Struct({
-          subnetId: Schema.optional(Schema.String),
-          dynamicVnetAssignmentScope: Schema.optional(
-            Schema.Literals(["none", "job"]),
-          ),
-          endpointConfiguration: Schema.optional(
-            Schema.Struct({
-              inboundNatPools: Schema.Array(
-                Schema.Struct({
-                  name: Schema.String,
-                  protocol: Schema.Literals(["TCP", "UDP"]),
-                  backendPort: Schema.Number,
-                  frontendPortRangeStart: Schema.Number,
-                  frontendPortRangeEnd: Schema.Number,
-                  networkSecurityGroupRules: Schema.optional(
-                    Schema.Array(
-                      Schema.Struct({
-                        priority: Schema.Number,
-                        access: Schema.Literals(["Allow", "Deny"]),
-                        sourceAddressPrefix: Schema.String,
-                        sourcePortRanges: Schema.optional(
-                          Schema.Array(Schema.String),
-                        ),
-                      }),
-                    ),
-                  ),
-                }),
-              ),
-            }),
-          ),
-          publicIPAddressConfiguration: Schema.optional(
-            Schema.Struct({
-              provision: Schema.optional(
-                Schema.Literals([
-                  "BatchManaged",
-                  "UserManaged",
-                  "NoPublicIPAddresses",
-                ]),
-              ),
-              ipAddressIds: Schema.optional(Schema.Array(Schema.String)),
-              ipFamilies: Schema.optional(
-                Schema.Array(Schema.Literals(["IPv4", "IPv6"])),
-              ),
-              ipTags: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    ipTagType: Schema.optional(Schema.String),
-                    tag: Schema.optional(Schema.String),
-                  }),
-                ),
-              ),
-            }),
-          ),
-          enableAcceleratedNetworking: Schema.optional(Schema.Boolean),
-        }),
-      ),
-      taskSlotsPerNode: Schema.optional(Schema.Number),
-      taskSchedulingPolicy: Schema.optional(
-        Schema.Struct({
-          jobDefaultOrder: Schema.optional(
-            Schema.Literals(["None", "CreationTime"]),
-          ),
-          nodeFillType: Schema.Literals(["Spread", "Pack"]),
-        }),
-      ),
-      userAccounts: Schema.optional(
-        Schema.Array(
-          Schema.Struct({
-            name: Schema.String,
-            password: SensitiveString,
-            elevationLevel: Schema.optional(
-              Schema.Literals(["NonAdmin", "Admin"]),
-            ),
-            linuxUserConfiguration: Schema.optional(
-              Schema.Struct({
-                uid: Schema.optional(Schema.Number),
-                gid: Schema.optional(Schema.Number),
-                sshPrivateKey: Schema.optional(Schema.String),
-              }),
-            ),
-            windowsUserConfiguration: Schema.optional(
-              Schema.Struct({
-                loginMode: Schema.optional(
-                  Schema.Literals(["Batch", "Interactive"]),
-                ),
-              }),
-            ),
-          }),
-        ),
-      ),
-      metadata: Schema.optional(
-        Schema.Array(
-          Schema.Struct({
-            name: Schema.String,
-            value: Schema.String,
-          }),
-        ),
-      ),
-      startTask: Schema.optional(
-        Schema.Struct({
-          commandLine: Schema.optional(Schema.String),
-          resourceFiles: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                autoStorageContainerName: Schema.optional(Schema.String),
-                storageContainerUrl: Schema.optional(Schema.String),
-                httpUrl: Schema.optional(Schema.String),
-                blobPrefix: Schema.optional(Schema.String),
-                filePath: Schema.optional(Schema.String),
-                fileMode: Schema.optional(Schema.String),
-                identityReference: Schema.optional(
-                  Schema.Struct({
-                    resourceId: Schema.optional(Schema.String),
-                  }),
-                ),
-              }),
-            ),
-          ),
-          environmentSettings: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                name: Schema.String,
-                value: Schema.optional(Schema.String),
-              }),
-            ),
-          ),
-          userIdentity: Schema.optional(
-            Schema.Struct({
-              userName: Schema.optional(Schema.String),
-              autoUser: Schema.optional(
-                Schema.Struct({
-                  scope: Schema.optional(Schema.Literals(["Task", "Pool"])),
-                  elevationLevel: Schema.optional(
-                    Schema.Literals(["NonAdmin", "Admin"]),
-                  ),
-                }),
-              ),
-            }),
-          ),
-          maxTaskRetryCount: Schema.optional(Schema.Number),
-          waitForSuccess: Schema.optional(Schema.Boolean),
-          containerSettings: Schema.optional(
-            Schema.Struct({
-              containerRunOptions: Schema.optional(Schema.String),
-              imageName: Schema.String,
-              registry: Schema.optional(
-                Schema.Struct({
-                  username: Schema.optional(Schema.String),
-                  password: Schema.optional(SensitiveString),
-                  registryServer: Schema.optional(Schema.String),
-                  identityReference: Schema.optional(
-                    Schema.Struct({
-                      resourceId: Schema.optional(Schema.String),
-                    }),
-                  ),
-                }),
-              ),
-              workingDirectory: Schema.optional(
-                Schema.Literals([
-                  "TaskWorkingDirectory",
-                  "ContainerImageDefault",
-                ]),
-              ),
-              containerHostBatchBindMounts: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    source: Schema.optional(
-                      Schema.Literals([
-                        "Shared",
-                        "Startup",
-                        "VfsMounts",
-                        "Task",
-                        "JobPrep",
-                        "Applications",
-                      ]),
-                    ),
-                    isReadOnly: Schema.optional(Schema.Boolean),
-                  }),
-                ),
-              ),
-            }),
-          ),
-        }),
-      ),
-      applicationPackages: Schema.optional(
-        Schema.Array(
-          Schema.Struct({
-            id: Schema.String,
-            version: Schema.optional(Schema.String),
-          }),
-        ),
-      ),
-      resizeOperationStatus: Schema.optional(
-        Schema.Struct({
-          targetDedicatedNodes: Schema.optional(Schema.Number),
-          targetLowPriorityNodes: Schema.optional(Schema.Number),
-          resizeTimeout: Schema.optional(Schema.String),
-          nodeDeallocationOption: Schema.optional(
-            Schema.Literals([
-              "Requeue",
-              "Terminate",
-              "TaskCompletion",
-              "RetainedData",
-            ]),
-          ),
-          startTime: Schema.optional(Schema.String),
-          errors: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                code: Schema.String,
-                message: Schema.String,
-                details: Schema.optional(Schema.Array(Schema.Unknown)),
-              }),
-            ),
-          ),
-        }),
-      ),
-      mountConfiguration: Schema.optional(
-        Schema.Array(
-          Schema.Struct({
-            azureBlobFileSystemConfiguration: Schema.optional(
-              Schema.Struct({
-                accountName: Schema.String,
-                containerName: Schema.String,
-                accountKey: Schema.optional(Schema.String),
-                sasKey: Schema.optional(Schema.String),
-                blobfuseOptions: Schema.optional(Schema.String),
-                relativeMountPath: Schema.String,
-                identityReference: Schema.optional(
-                  Schema.Struct({
-                    resourceId: Schema.optional(Schema.String),
-                  }),
-                ),
-              }),
-            ),
-            nfsMountConfiguration: Schema.optional(
-              Schema.Struct({
-                source: Schema.String,
-                relativeMountPath: Schema.String,
-                mountOptions: Schema.optional(Schema.String),
-              }),
-            ),
-            cifsMountConfiguration: Schema.optional(
-              Schema.Struct({
-                userName: Schema.String,
-                source: Schema.String,
-                relativeMountPath: Schema.String,
-                mountOptions: Schema.optional(Schema.String),
-                password: SensitiveString,
-              }),
-            ),
-            azureFileShareConfiguration: Schema.optional(
-              Schema.Struct({
-                accountName: Schema.String,
-                azureFileUrl: Schema.String,
-                accountKey: Schema.String,
-                relativeMountPath: Schema.String,
-                mountOptions: Schema.optional(Schema.String),
-              }),
-            ),
-          }),
-        ),
-      ),
-      upgradePolicy: Schema.optional(
-        Schema.Struct({
-          mode: Schema.Literals(["automatic", "manual", "rolling"]),
-          automaticOSUpgradePolicy: Schema.optional(
-            Schema.Struct({
-              disableAutomaticRollback: Schema.optional(Schema.Boolean),
-              enableAutomaticOSUpgrade: Schema.optional(Schema.Boolean),
-              useRollingUpgradePolicy: Schema.optional(Schema.Boolean),
-              osRollingUpgradeDeferral: Schema.optional(Schema.Boolean),
-            }),
-          ),
-          rollingUpgradePolicy: Schema.optional(
-            Schema.Struct({
-              enableCrossZoneUpgrade: Schema.optional(Schema.Boolean),
-              maxBatchInstancePercent: Schema.optional(Schema.Number),
-              maxUnhealthyInstancePercent: Schema.optional(Schema.Number),
-              maxUnhealthyUpgradedInstancePercent: Schema.optional(
-                Schema.Number,
-              ),
-              pauseTimeBetweenBatches: Schema.optional(Schema.String),
-              prioritizeUnhealthyInstances: Schema.optional(Schema.Boolean),
-              rollbackFailedInstancesOnPolicyBreach: Schema.optional(
-                Schema.Boolean,
-              ),
-            }),
-          ),
-        }),
-      ),
-    }),
-  ),
-  identity: Schema.optional(
-    Schema.Struct({
-      type: Schema.Literals(["UserAssigned", "None"]),
-      userAssignedIdentities: Schema.optional(
-        Schema.Record(
-          Schema.String,
-          Schema.Struct({
-            principalId: Schema.optional(Schema.String),
-            clientId: Schema.optional(Schema.String),
-          }),
-        ),
-      ),
-    }),
-  ),
+  properties: Schema.optional(Schema.suspend(() => PoolPropertiesSchema)),
+  identity: Schema.optional(Schema.suspend(() => BatchPoolIdentitySchema)),
   etag: Schema.optional(Schema.String),
   tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
 }).pipe(
@@ -3256,23 +2567,14 @@ export type PoolUpdateInput = typeof PoolUpdateInput.Type;
 
 // Output Schema
 export const PoolUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.optional(Schema.suspend(() => PoolPropertiesSchema)),
+  identity: Schema.optional(Schema.suspend(() => BatchPoolIdentitySchema)),
+  etag: Schema.optional(Schema.String),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
-  systemData: Schema.optional(
-    Schema.Struct({
-      createdBy: Schema.optional(Schema.String),
-      createdByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      createdAt: Schema.optional(Schema.String),
-      lastModifiedBy: Schema.optional(Schema.String),
-      lastModifiedByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      lastModifiedAt: Schema.optional(Schema.String),
-    }),
-  ),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
 });
 export type PoolUpdateOutput = typeof PoolUpdateOutput.Type;
 
@@ -3350,23 +2652,15 @@ export type PrivateEndpointConnectionGetInput =
 // Output Schema
 export const PrivateEndpointConnectionGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => PrivateEndpointConnectionPropertiesSchema),
+    ),
+    etag: Schema.optional(Schema.String),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type PrivateEndpointConnectionGetOutput =
   typeof PrivateEndpointConnectionGetOutput.Type;
@@ -3406,37 +2700,7 @@ export type PrivateEndpointConnectionListByBatchAccountInput =
 // Output Schema
 export const PrivateEndpointConnectionListByBatchAccountOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => PrivateEndpointConnectionSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type PrivateEndpointConnectionListByBatchAccountOutput =
@@ -3465,36 +2729,7 @@ export const PrivateEndpointConnectionUpdateInput =
     accountName: Schema.String.pipe(T.PathParam()),
     privateEndpointConnectionName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        provisioningState: Schema.optional(
-          Schema.Literals([
-            "Creating",
-            "Updating",
-            "Deleting",
-            "Succeeded",
-            "Failed",
-            "Cancelled",
-          ]),
-        ),
-        privateEndpoint: Schema.optional(
-          Schema.Struct({
-            id: Schema.optional(Schema.String),
-          }),
-        ),
-        groupIds: Schema.optional(Schema.Array(Schema.String)),
-        privateLinkServiceConnectionState: Schema.optional(
-          Schema.Struct({
-            status: Schema.Literals([
-              "Approved",
-              "Pending",
-              "Rejected",
-              "Disconnected",
-            ]),
-            description: Schema.optional(Schema.String),
-            actionsRequired: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
+      Schema.suspend(() => PrivateEndpointConnectionPropertiesSchema),
     ),
     etag: Schema.optional(Schema.String),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
@@ -3512,23 +2747,15 @@ export type PrivateEndpointConnectionUpdateInput =
 // Output Schema
 export const PrivateEndpointConnectionUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => PrivateEndpointConnectionPropertiesSchema),
+    ),
+    etag: Schema.optional(Schema.String),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type PrivateEndpointConnectionUpdateOutput =
   typeof PrivateEndpointConnectionUpdateOutput.Type;
@@ -3569,23 +2796,15 @@ export type PrivateLinkResourceGetInput =
 // Output Schema
 export const PrivateLinkResourceGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => PrivateLinkResourcePropertiesSchema),
+    ),
+    etag: Schema.optional(Schema.String),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type PrivateLinkResourceGetOutput =
   typeof PrivateLinkResourceGetOutput.Type;
@@ -3626,37 +2845,7 @@ export type PrivateLinkResourceListByBatchAccountInput =
 // Output Schema
 export const PrivateLinkResourceListByBatchAccountOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => PrivateLinkResourceSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type PrivateLinkResourceListByBatchAccountOutput =

@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { NeonAuthRedirectURIWhitelistDomainSchema } from "./_schemas.ts";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
@@ -20,15 +21,7 @@ export type ListBranchNeonAuthTrustedDomainsInput =
 export const ListBranchNeonAuthTrustedDomainsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     domains: Schema.Array(
-      Schema.Struct({
-        domain: Schema.String,
-        auth_provider: Schema.Literals([
-          "mock",
-          "stack",
-          "stack_v2",
-          "better_auth",
-        ]),
-      }),
+      Schema.suspend(() => NeonAuthRedirectURIWhitelistDomainSchema),
     ),
   });
 export type ListBranchNeonAuthTrustedDomainsOutput =

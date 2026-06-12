@@ -9,235 +9,677 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 import { SensitiveOutputString, SensitiveString } from "../sensitive.ts";
 
+// Shared schemas
+const VersionsCapabilitySchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  available: Schema.optional(
+    Schema.Array(Schema.suspend(() => VersionSpecSchema)),
+  ),
+});
+const VersionSpecSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  friendlyName: Schema.optional(Schema.String),
+  displayName: Schema.optional(Schema.String),
+  isDefault: Schema.optional(Schema.Boolean),
+  componentVersions: Schema.optional(
+    Schema.Record(Schema.String, Schema.String),
+  ),
+});
+const RegionsCapabilitySchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  available: Schema.optional(Schema.Array(Schema.String)),
+});
+const QuotaCapabilitySchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  coresUsed: Schema.optional(Schema.Number),
+  maxCoresAllowed: Schema.optional(Schema.Number),
+  regionalQuotas: Schema.optional(
+    Schema.Array(Schema.suspend(() => RegionalQuotaCapabilitySchema)),
+  ),
+});
+const RegionalQuotaCapabilitySchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    regionName: Schema.optional(Schema.String),
+    coresUsed: Schema.optional(Schema.Number),
+    coresAvailable: Schema.optional(Schema.Number),
+  },
+);
+const UsageSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  unit: Schema.optional(Schema.String),
+  currentValue: Schema.optional(Schema.Number),
+  limit: Schema.optional(Schema.Number),
+  name: Schema.optional(Schema.suspend(() => LocalizedNameSchema)),
+});
+const LocalizedNameSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  value: Schema.optional(Schema.String),
+  localizedValue: Schema.optional(Schema.String),
+});
+const VmSizeCompatibilityFilterV2Schema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    filterMode: Schema.optional(
+      Schema.Literals(["Exclude", "Include", "Recommend", "Default"]),
+    ),
+    regions: Schema.optional(Schema.Array(Schema.String)),
+    clusterFlavors: Schema.optional(Schema.Array(Schema.String)),
+    nodeTypes: Schema.optional(Schema.Array(Schema.String)),
+    clusterVersions: Schema.optional(Schema.Array(Schema.String)),
+    osType: Schema.optional(
+      Schema.Array(Schema.Literals(["Windows", "Linux"])),
+    ),
+    vmSizes: Schema.optional(Schema.Array(Schema.String)),
+    espApplied: Schema.optional(Schema.String),
+    computeIsolationSupported: Schema.optional(Schema.String),
+  });
+const VmSizePropertySchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  cores: Schema.optional(Schema.Number),
+  dataDiskStorageTier: Schema.optional(Schema.String),
+  label: Schema.optional(Schema.String),
+  maxDataDiskCount: Schema.optional(Schema.Number),
+  memoryInMb: Schema.optional(Schema.Number),
+  supportedByVirtualMachines: Schema.optional(Schema.Boolean),
+  supportedByWebWorkerRoles: Schema.optional(Schema.Boolean),
+  virtualMachineResourceDiskSizeInMb: Schema.optional(Schema.Number),
+  webWorkerResourceDiskSizeInMb: Schema.optional(Schema.Number),
+});
+const BillingResourcesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  region: Schema.optional(Schema.String),
+  billingMeters: Schema.optional(
+    Schema.Array(Schema.suspend(() => BillingMetersSchema)),
+  ),
+  diskBillingMeters: Schema.optional(
+    Schema.Array(Schema.suspend(() => DiskBillingMetersSchema)),
+  ),
+});
+const BillingMetersSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  meterParameter: Schema.optional(Schema.String),
+  meter: Schema.optional(Schema.String),
+  unit: Schema.optional(Schema.String),
+});
+const DiskBillingMetersSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  diskRpMeter: Schema.optional(Schema.String),
+  sku: Schema.optional(Schema.String),
+  tier: Schema.optional(Schema.Literals(["Standard", "Premium"])),
+});
+const ErrorsSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  code: Schema.optional(Schema.String),
+  message: Schema.optional(Schema.String),
+});
+const ClusterCreatePropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    clusterVersion: Schema.optional(Schema.String),
+    osType: Schema.optional(Schema.Literals(["Windows", "Linux"])),
+    tier: Schema.optional(Schema.Literals(["Standard", "Premium"])),
+    clusterDefinition: Schema.optional(
+      Schema.suspend(() => ClusterDefinitionSchema),
+    ),
+    kafkaRestProperties: Schema.optional(
+      Schema.suspend(() => KafkaRestPropertiesSchema),
+    ),
+    securityProfile: Schema.optional(
+      Schema.suspend(() => SecurityProfileSchema),
+    ),
+    computeProfile: Schema.optional(Schema.suspend(() => ComputeProfileSchema)),
+    storageProfile: Schema.optional(Schema.suspend(() => StorageProfileSchema)),
+    diskEncryptionProperties: Schema.optional(
+      Schema.suspend(() => DiskEncryptionPropertiesSchema),
+    ),
+    encryptionInTransitProperties: Schema.optional(
+      Schema.suspend(() => EncryptionInTransitPropertiesSchema),
+    ),
+    minSupportedTlsVersion: Schema.optional(Schema.String),
+    networkProperties: Schema.optional(
+      Schema.suspend(() => NetworkPropertiesSchema),
+    ),
+    computeIsolationProperties: Schema.optional(
+      Schema.suspend(() => ComputeIsolationPropertiesSchema),
+    ),
+    privateLinkConfigurations: Schema.optional(
+      Schema.Array(Schema.suspend(() => PrivateLinkConfigurationSchema)),
+    ),
+  },
+);
+const ClusterDefinitionSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  blueprint: Schema.optional(Schema.String),
+  kind: Schema.optional(Schema.String),
+  componentVersion: Schema.optional(
+    Schema.Record(Schema.String, Schema.String),
+  ),
+  configurations: Schema.optional(Schema.Unknown),
+});
+const KafkaRestPropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  clientGroupInfo: Schema.optional(Schema.suspend(() => ClientGroupInfoSchema)),
+  configurationOverride: Schema.optional(
+    Schema.Record(Schema.String, Schema.String),
+  ),
+});
+const ClientGroupInfoSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  groupName: Schema.optional(Schema.String),
+  groupId: Schema.optional(Schema.String),
+});
+const SecurityProfileSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  directoryType: Schema.optional(Schema.Literals(["ActiveDirectory"])),
+  domain: Schema.optional(Schema.String),
+  organizationalUnitDN: Schema.optional(Schema.String),
+  ldapsUrls: Schema.optional(Schema.Array(Schema.String)),
+  domainUsername: Schema.optional(Schema.String),
+  domainUserPassword: Schema.optional(SensitiveOutputString),
+  clusterUsersGroupDNs: Schema.optional(Schema.Array(Schema.String)),
+  aaddsResourceId: Schema.optional(Schema.String),
+  msiResourceId: Schema.optional(Schema.String),
+});
+const ComputeProfileSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  roles: Schema.optional(Schema.Array(Schema.suspend(() => RoleSchema))),
+});
+const RoleSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  minInstanceCount: Schema.optional(Schema.Number),
+  targetInstanceCount: Schema.optional(Schema.Number),
+  VMGroupName: Schema.optional(Schema.String),
+  autoscale: Schema.optional(Schema.suspend(() => AutoscaleSchema)),
+  hardwareProfile: Schema.optional(Schema.suspend(() => HardwareProfileSchema)),
+  osProfile: Schema.optional(Schema.suspend(() => OsProfileSchema)),
+  virtualNetworkProfile: Schema.optional(
+    Schema.suspend(() => VirtualNetworkProfileSchema),
+  ),
+  dataDisksGroups: Schema.optional(
+    Schema.Array(Schema.suspend(() => DataDisksGroupsSchema)),
+  ),
+  scriptActions: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        name: Schema.String,
+        uri: Schema.String,
+        parameters: Schema.String,
+      }),
+    ),
+  ),
+  encryptDataDisks: Schema.optional(Schema.Boolean),
+});
+const AutoscaleSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  capacity: Schema.optional(Schema.suspend(() => AutoscaleCapacitySchema)),
+  recurrence: Schema.optional(Schema.suspend(() => AutoscaleRecurrenceSchema)),
+});
+const AutoscaleCapacitySchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  minInstanceCount: Schema.optional(Schema.Number),
+  maxInstanceCount: Schema.optional(Schema.Number),
+});
+const AutoscaleRecurrenceSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  timeZone: Schema.optional(Schema.String),
+  schedule: Schema.optional(
+    Schema.Array(Schema.suspend(() => AutoscaleScheduleSchema)),
+  ),
+});
+const AutoscaleScheduleSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  days: Schema.optional(
+    Schema.Array(
+      Schema.Literals([
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday",
+        "Sunday",
+      ]),
+    ),
+  ),
+  timeAndCapacity: Schema.optional(
+    Schema.suspend(() => AutoscaleTimeAndCapacitySchema),
+  ),
+});
+const AutoscaleTimeAndCapacitySchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    time: Schema.optional(Schema.String),
+    minInstanceCount: Schema.optional(Schema.Number),
+    maxInstanceCount: Schema.optional(Schema.Number),
+  });
+const HardwareProfileSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  vmSize: Schema.optional(Schema.String),
+});
+const OsProfileSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  linuxOperatingSystemProfile: Schema.optional(
+    Schema.suspend(() => LinuxOperatingSystemProfileSchema),
+  ),
+});
+const LinuxOperatingSystemProfileSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    username: Schema.optional(Schema.String),
+    password: Schema.optional(SensitiveOutputString),
+    sshProfile: Schema.optional(Schema.suspend(() => SshProfileSchema)),
+  });
+const SshProfileSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  publicKeys: Schema.optional(
+    Schema.Array(Schema.suspend(() => SshPublicKeySchema)),
+  ),
+});
+const SshPublicKeySchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  certificateData: Schema.optional(Schema.String),
+});
+const VirtualNetworkProfileSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  subnet: Schema.optional(Schema.String),
+});
+const DataDisksGroupsSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  disksPerNode: Schema.optional(Schema.Number),
+  storageAccountType: Schema.optional(Schema.String),
+  diskSizeGB: Schema.optional(Schema.Number),
+});
+const StorageProfileSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  storageaccounts: Schema.optional(
+    Schema.Array(Schema.suspend(() => StorageAccountSchema)),
+  ),
+});
+const StorageAccountSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  isDefault: Schema.optional(Schema.Boolean),
+  container: Schema.optional(Schema.String),
+  fileSystem: Schema.optional(Schema.String),
+  key: Schema.optional(Schema.String),
+  resourceId: Schema.optional(Schema.String),
+  msiResourceId: Schema.optional(Schema.String),
+  saskey: Schema.optional(Schema.String),
+  fileshare: Schema.optional(Schema.String),
+});
+const DiskEncryptionPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    vaultUri: Schema.optional(Schema.String),
+    keyName: Schema.optional(Schema.String),
+    keyVersion: Schema.optional(Schema.String),
+    encryptionAlgorithm: Schema.optional(
+      Schema.Literals(["RSA-OAEP", "RSA-OAEP-256", "RSA1_5"]),
+    ),
+    msiResourceId: Schema.optional(Schema.String),
+    encryptionAtHost: Schema.optional(Schema.Boolean),
+  });
+const EncryptionInTransitPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    isEncryptionInTransitEnabled: Schema.optional(Schema.Boolean),
+  });
+const NetworkPropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  resourceProviderConnection: Schema.optional(
+    Schema.Literals(["Inbound", "Outbound"]),
+  ),
+  privateLink: Schema.optional(Schema.Literals(["Disabled", "Enabled"])),
+});
+const ComputeIsolationPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    enableComputeIsolation: Schema.optional(Schema.Boolean),
+    hostSku: Schema.optional(Schema.String),
+  });
+const PrivateLinkConfigurationSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.String,
+    type: Schema.optional(Schema.String),
+    properties: Schema.suspend(() => PrivateLinkConfigurationPropertiesSchema),
+  });
+const PrivateLinkConfigurationPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    groupId: Schema.String,
+    provisioningState: Schema.optional(
+      Schema.Literals([
+        "InProgress",
+        "Failed",
+        "Succeeded",
+        "Canceled",
+        "Deleting",
+      ]),
+    ),
+    ipConfigurations: Schema.Array(Schema.suspend(() => IPConfigurationSchema)),
+  });
+const IPConfigurationSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.String,
+  type: Schema.optional(Schema.String),
+  properties: Schema.optional(
+    Schema.suspend(() => IPConfigurationPropertiesSchema),
+  ),
+});
+const IPConfigurationPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    provisioningState: Schema.optional(
+      Schema.Literals([
+        "InProgress",
+        "Failed",
+        "Succeeded",
+        "Canceled",
+        "Deleting",
+      ]),
+    ),
+    primary: Schema.optional(Schema.Boolean),
+    privateIPAddress: Schema.optional(Schema.String),
+    privateIPAllocationMethod: Schema.optional(
+      Schema.Literals(["dynamic", "static"]),
+    ),
+    subnet: Schema.optional(Schema.suspend(() => ResourceIdSchema)),
+  });
+const ResourceIdSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+});
+const ClusterIdentitySchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  principalId: Schema.optional(Schema.String),
+  tenantId: Schema.optional(Schema.String),
+  type: Schema.optional(
+    Schema.Literals([
+      "SystemAssigned",
+      "UserAssigned",
+      "SystemAssigned, UserAssigned",
+      "None",
+    ]),
+  ),
+  userAssignedIdentities: Schema.optional(
+    Schema.Record(
+      Schema.String,
+      Schema.suspend(() => UserAssignedIdentitySchema),
+    ),
+  ),
+});
+const UserAssignedIdentitySchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  principalId: Schema.optional(Schema.String),
+  clientId: Schema.optional(Schema.String),
+  tenantId: Schema.optional(Schema.String),
+});
+const ValidationErrorInfoSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  code: Schema.optional(Schema.String),
+  message: Schema.optional(Schema.String),
+  errorResource: Schema.optional(Schema.String),
+  messageArguments: Schema.optional(Schema.Array(Schema.String)),
+});
+const AaddsResourceDetailsSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  domainName: Schema.optional(Schema.String),
+  initialSyncComplete: Schema.optional(Schema.Boolean),
+  ldapsEnabled: Schema.optional(Schema.Boolean),
+  ldapsPublicCertificateInBase64: Schema.optional(Schema.String),
+  resourceId: Schema.optional(Schema.String),
+  subnetId: Schema.optional(Schema.String),
+  tenantId: Schema.optional(Schema.String),
+});
+const RuntimeScriptActionSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.String,
+  uri: Schema.String,
+  parameters: Schema.optional(Schema.String),
+  roles: Schema.Array(Schema.String),
+  applicationName: Schema.optional(Schema.String),
+});
+const ScriptActionExecutionSummarySchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    status: Schema.optional(Schema.String),
+    instanceCount: Schema.optional(Schema.Number),
+  });
+const HostInfoSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  fqdn: Schema.optional(Schema.String),
+  effectiveDiskEncryptionKeyUrl: Schema.optional(Schema.String),
+});
+const AzureMonitorSelectedConfigurationsSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    configurationVersion: Schema.optional(Schema.String),
+    globalConfigurations: Schema.optional(
+      Schema.Record(Schema.String, Schema.String),
+    ),
+    tableList: Schema.optional(
+      Schema.Array(Schema.suspend(() => AzureMonitorTableConfigurationSchema)),
+    ),
+  });
+const AzureMonitorTableConfigurationSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+  });
+const ClusterGetPropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  clusterVersion: Schema.optional(Schema.String),
+  clusterHdpVersion: Schema.optional(Schema.String),
+  osType: Schema.optional(Schema.Literals(["Windows", "Linux"])),
+  tier: Schema.optional(Schema.Literals(["Standard", "Premium"])),
+  clusterId: Schema.optional(Schema.String),
+  clusterDefinition: Schema.suspend(() => ClusterDefinitionSchema),
+  kafkaRestProperties: Schema.optional(
+    Schema.suspend(() => KafkaRestPropertiesSchema),
+  ),
+  securityProfile: Schema.optional(Schema.suspend(() => SecurityProfileSchema)),
+  computeProfile: Schema.optional(Schema.suspend(() => ComputeProfileSchema)),
+  provisioningState: Schema.optional(
+    Schema.Literals([
+      "InProgress",
+      "Failed",
+      "Succeeded",
+      "Canceled",
+      "Deleting",
+    ]),
+  ),
+  createdDate: Schema.optional(Schema.String),
+  clusterState: Schema.optional(Schema.String),
+  quotaInfo: Schema.optional(Schema.suspend(() => QuotaInfoSchema)),
+  errors: Schema.optional(Schema.Array(Schema.suspend(() => ErrorsSchema))),
+  connectivityEndpoints: Schema.optional(
+    Schema.Array(Schema.suspend(() => ConnectivityEndpointSchema)),
+  ),
+  diskEncryptionProperties: Schema.optional(
+    Schema.suspend(() => DiskEncryptionPropertiesSchema),
+  ),
+  encryptionInTransitProperties: Schema.optional(
+    Schema.suspend(() => EncryptionInTransitPropertiesSchema),
+  ),
+  storageProfile: Schema.optional(Schema.suspend(() => StorageProfileSchema)),
+  minSupportedTlsVersion: Schema.optional(Schema.String),
+  excludedServicesConfig: Schema.optional(
+    Schema.suspend(() => ExcludedServicesConfigSchema),
+  ),
+  networkProperties: Schema.optional(
+    Schema.suspend(() => NetworkPropertiesSchema),
+  ),
+  computeIsolationProperties: Schema.optional(
+    Schema.suspend(() => ComputeIsolationPropertiesSchema),
+  ),
+  privateLinkConfigurations: Schema.optional(
+    Schema.Array(Schema.suspend(() => PrivateLinkConfigurationSchema)),
+  ),
+  privateEndpointConnections: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+      }),
+    ),
+  ),
+});
+const QuotaInfoSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  coresUsed: Schema.optional(Schema.Number),
+});
+const ConnectivityEndpointSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  protocol: Schema.optional(Schema.String),
+  location: Schema.optional(Schema.String),
+  port: Schema.optional(Schema.Number),
+  privateIPAddress: Schema.optional(Schema.String),
+});
+const ExcludedServicesConfigSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  excludedServicesConfigId: Schema.optional(Schema.String),
+  excludedServicesList: Schema.optional(Schema.String),
+});
+const ClusterSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
+const PrivateLinkResourceSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
+const PrivateEndpointConnectionSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
+const PrivateEndpointConnectionPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    privateEndpoint: Schema.optional(
+      Schema.suspend(() => PrivateEndpointSchema),
+    ),
+    privateLinkServiceConnectionState: Schema.suspend(
+      () => PrivateLinkServiceConnectionStateSchema,
+    ),
+    linkIdentifier: Schema.optional(Schema.String),
+    provisioningState: Schema.optional(
+      Schema.Literals([
+        "InProgress",
+        "Updating",
+        "Failed",
+        "Succeeded",
+        "Canceled",
+        "Deleting",
+      ]),
+    ),
+  });
+const PrivateEndpointSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+});
+const PrivateLinkServiceConnectionStateSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    status: Schema.Literals(["Approved", "Rejected", "Pending", "Removed"]),
+    description: Schema.optional(Schema.String),
+    actionsRequired: Schema.optional(Schema.String),
+  });
+const ApplicationSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
+const ApplicationPropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  computeProfile: Schema.optional(
+    Schema.Struct({
+      roles: Schema.optional(Schema.Array(Schema.suspend(() => RoleSchema))),
+    }),
+  ),
+  installScriptActions: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        name: Schema.String,
+        uri: Schema.String,
+        parameters: Schema.optional(Schema.String),
+        roles: Schema.Array(Schema.String),
+        applicationName: Schema.optional(Schema.String),
+      }),
+    ),
+  ),
+  uninstallScriptActions: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        name: Schema.String,
+        uri: Schema.String,
+        parameters: Schema.optional(Schema.String),
+        roles: Schema.Array(Schema.String),
+        applicationName: Schema.optional(Schema.String),
+      }),
+    ),
+  ),
+  httpsEndpoints: Schema.optional(
+    Schema.Array(Schema.suspend(() => ApplicationGetHttpsEndpointSchema)),
+  ),
+  sshEndpoints: Schema.optional(
+    Schema.Array(Schema.suspend(() => ApplicationGetEndpointSchema)),
+  ),
+  provisioningState: Schema.optional(Schema.String),
+  applicationType: Schema.optional(Schema.String),
+  applicationState: Schema.optional(Schema.String),
+  errors: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        code: Schema.optional(Schema.String),
+        message: Schema.optional(Schema.String),
+      }),
+    ),
+  ),
+  createdDate: Schema.optional(Schema.String),
+  marketplaceIdentifier: Schema.optional(Schema.String),
+  privateLinkConfigurations: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.String,
+        type: Schema.optional(Schema.String),
+        properties: Schema.suspend(
+          () => PrivateLinkConfigurationPropertiesSchema,
+        ),
+      }),
+    ),
+  ),
+});
+const ApplicationGetHttpsEndpointSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    accessModes: Schema.optional(Schema.Array(Schema.String)),
+    location: Schema.optional(Schema.String),
+    destinationPort: Schema.optional(Schema.Number),
+    publicPort: Schema.optional(Schema.Number),
+    privateIPAddress: Schema.optional(Schema.String),
+    subDomainSuffix: Schema.optional(Schema.String),
+    disableGatewayAuth: Schema.optional(Schema.Boolean),
+  });
+const ApplicationGetEndpointSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  location: Schema.optional(Schema.String),
+  destinationPort: Schema.optional(Schema.Number),
+  publicPort: Schema.optional(Schema.Number),
+  privateIPAddress: Schema.optional(Schema.String),
+});
+const OperationSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  display: Schema.optional(Schema.suspend(() => OperationDisplaySchema)),
+  properties: Schema.optional(Schema.suspend(() => OperationPropertiesSchema)),
+});
+const OperationDisplaySchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  provider: Schema.optional(Schema.String),
+  resource: Schema.optional(Schema.String),
+  operation: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+});
+const OperationPropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  serviceSpecification: Schema.optional(
+    Schema.suspend(() => ServiceSpecificationSchema),
+  ),
+});
+const ServiceSpecificationSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  metricSpecifications: Schema.optional(
+    Schema.Array(Schema.suspend(() => MetricSpecificationsSchema)),
+  ),
+});
+const MetricSpecificationsSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  displayName: Schema.optional(Schema.String),
+  displayDescription: Schema.optional(Schema.String),
+  unit: Schema.optional(Schema.String),
+  aggregationType: Schema.optional(Schema.String),
+  supportedAggregationTypes: Schema.optional(Schema.Array(Schema.String)),
+  supportedTimeGrainTypes: Schema.optional(Schema.Array(Schema.String)),
+  enableRegionalMdmAccount: Schema.optional(Schema.Boolean),
+  sourceMdmAccount: Schema.optional(Schema.String),
+  sourceMdmNamespace: Schema.optional(Schema.String),
+  metricFilterPattern: Schema.optional(Schema.String),
+  fillGapWithZero: Schema.optional(Schema.Boolean),
+  category: Schema.optional(Schema.String),
+  resourceIdDimensionNameOverride: Schema.optional(Schema.String),
+  isInternal: Schema.optional(Schema.Boolean),
+  delegateMetricNameOverride: Schema.optional(Schema.String),
+  dimensions: Schema.optional(
+    Schema.Array(Schema.suspend(() => DimensionSchema)),
+  ),
+});
+const DimensionSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  displayName: Schema.optional(Schema.String),
+  internalName: Schema.optional(Schema.String),
+  toBeExportedForShoebox: Schema.optional(Schema.Boolean),
+});
+const ClusterConfigurationSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Record(
+  Schema.String,
+  Schema.String,
+);
+
 // Input Schema
 export const ApplicationsCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     etag: Schema.optional(Schema.String),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     properties: Schema.optional(
-      Schema.Struct({
-        computeProfile: Schema.optional(
-          Schema.Struct({
-            roles: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  name: Schema.optional(Schema.String),
-                  minInstanceCount: Schema.optional(Schema.Number),
-                  targetInstanceCount: Schema.optional(Schema.Number),
-                  VMGroupName: Schema.optional(Schema.String),
-                  autoscale: Schema.optional(
-                    Schema.Struct({
-                      capacity: Schema.optional(
-                        Schema.Struct({
-                          minInstanceCount: Schema.optional(Schema.Number),
-                          maxInstanceCount: Schema.optional(Schema.Number),
-                        }),
-                      ),
-                      recurrence: Schema.optional(
-                        Schema.Struct({
-                          timeZone: Schema.optional(Schema.String),
-                          schedule: Schema.optional(
-                            Schema.Array(
-                              Schema.Struct({
-                                days: Schema.optional(
-                                  Schema.Array(
-                                    Schema.Literals([
-                                      "Monday",
-                                      "Tuesday",
-                                      "Wednesday",
-                                      "Thursday",
-                                      "Friday",
-                                      "Saturday",
-                                      "Sunday",
-                                    ]),
-                                  ),
-                                ),
-                                timeAndCapacity: Schema.optional(
-                                  Schema.Struct({
-                                    time: Schema.optional(Schema.String),
-                                    minInstanceCount: Schema.optional(
-                                      Schema.Number,
-                                    ),
-                                    maxInstanceCount: Schema.optional(
-                                      Schema.Number,
-                                    ),
-                                  }),
-                                ),
-                              }),
-                            ),
-                          ),
-                        }),
-                      ),
-                    }),
-                  ),
-                  hardwareProfile: Schema.optional(
-                    Schema.Struct({
-                      vmSize: Schema.optional(Schema.String),
-                    }),
-                  ),
-                  osProfile: Schema.optional(
-                    Schema.Struct({
-                      linuxOperatingSystemProfile: Schema.optional(
-                        Schema.Struct({
-                          username: Schema.optional(Schema.String),
-                          password: Schema.optional(SensitiveString),
-                          sshProfile: Schema.optional(
-                            Schema.Struct({
-                              publicKeys: Schema.optional(
-                                Schema.Array(
-                                  Schema.Struct({
-                                    certificateData: Schema.optional(
-                                      Schema.String,
-                                    ),
-                                  }),
-                                ),
-                              ),
-                            }),
-                          ),
-                        }),
-                      ),
-                    }),
-                  ),
-                  virtualNetworkProfile: Schema.optional(
-                    Schema.Struct({
-                      id: Schema.optional(Schema.String),
-                      subnet: Schema.optional(Schema.String),
-                    }),
-                  ),
-                  dataDisksGroups: Schema.optional(
-                    Schema.Array(
-                      Schema.Struct({
-                        disksPerNode: Schema.optional(Schema.Number),
-                        storageAccountType: Schema.optional(Schema.String),
-                        diskSizeGB: Schema.optional(Schema.Number),
-                      }),
-                    ),
-                  ),
-                  scriptActions: Schema.optional(
-                    Schema.Array(
-                      Schema.Struct({
-                        name: Schema.String,
-                        uri: Schema.String,
-                        parameters: Schema.String,
-                      }),
-                    ),
-                  ),
-                  encryptDataDisks: Schema.optional(Schema.Boolean),
-                }),
-              ),
-            ),
-          }),
-        ),
-        installScriptActions: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              name: Schema.String,
-              uri: Schema.String,
-              parameters: Schema.optional(Schema.String),
-              roles: Schema.Array(Schema.String),
-              applicationName: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        uninstallScriptActions: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              name: Schema.String,
-              uri: Schema.String,
-              parameters: Schema.optional(Schema.String),
-              roles: Schema.Array(Schema.String),
-              applicationName: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        httpsEndpoints: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              accessModes: Schema.optional(Schema.Array(Schema.String)),
-              location: Schema.optional(Schema.String),
-              destinationPort: Schema.optional(Schema.Number),
-              publicPort: Schema.optional(Schema.Number),
-              privateIPAddress: Schema.optional(Schema.String),
-              subDomainSuffix: Schema.optional(Schema.String),
-              disableGatewayAuth: Schema.optional(Schema.Boolean),
-            }),
-          ),
-        ),
-        sshEndpoints: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              location: Schema.optional(Schema.String),
-              destinationPort: Schema.optional(Schema.Number),
-              publicPort: Schema.optional(Schema.Number),
-              privateIPAddress: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        provisioningState: Schema.optional(Schema.String),
-        applicationType: Schema.optional(Schema.String),
-        applicationState: Schema.optional(Schema.String),
-        errors: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              code: Schema.optional(Schema.String),
-              message: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        createdDate: Schema.optional(Schema.String),
-        marketplaceIdentifier: Schema.optional(Schema.String),
-        privateLinkConfigurations: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              id: Schema.optional(Schema.String),
-              name: Schema.String,
-              type: Schema.optional(Schema.String),
-              properties: Schema.Struct({
-                groupId: Schema.String,
-                provisioningState: Schema.optional(
-                  Schema.Literals([
-                    "InProgress",
-                    "Failed",
-                    "Succeeded",
-                    "Canceled",
-                    "Deleting",
-                  ]),
-                ),
-                ipConfigurations: Schema.Array(
-                  Schema.Struct({
-                    id: Schema.optional(Schema.String),
-                    name: Schema.String,
-                    type: Schema.optional(Schema.String),
-                    properties: Schema.optional(
-                      Schema.Struct({
-                        provisioningState: Schema.optional(
-                          Schema.Literals([
-                            "InProgress",
-                            "Failed",
-                            "Succeeded",
-                            "Canceled",
-                            "Deleting",
-                          ]),
-                        ),
-                        primary: Schema.optional(Schema.Boolean),
-                        privateIPAddress: Schema.optional(Schema.String),
-                        privateIPAllocationMethod: Schema.optional(
-                          Schema.Literals(["dynamic", "static"]),
-                        ),
-                        subnet: Schema.optional(
-                          Schema.Struct({
-                            id: Schema.optional(Schema.String),
-                          }),
-                        ),
-                      }),
-                    ),
-                  }),
-                ),
-              }),
-            }),
-          ),
-        ),
-      }),
+      Schema.suspend(() => ApplicationPropertiesSchema),
     ),
     systemData: Schema.optional(
       Schema.Struct({
@@ -266,6 +708,25 @@ export type ApplicationsCreateInput = typeof ApplicationsCreateInput.Type;
 // Output Schema
 export const ApplicationsCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    etag: Schema.optional(Schema.String),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    properties: Schema.optional(
+      Schema.suspend(() => ApplicationPropertiesSchema),
+    ),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -318,6 +779,25 @@ export type ApplicationsGetInput = typeof ApplicationsGetInput.Type;
 
 // Output Schema
 export const ApplicationsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  etag: Schema.optional(Schema.String),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  properties: Schema.optional(
+    Schema.suspend(() => ApplicationPropertiesSchema),
+  ),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -350,12 +830,7 @@ export const ApplicationsGetAzureAsyncOperationStatusOutput =
     status: Schema.optional(
       Schema.Literals(["InProgress", "Succeeded", "Failed"]),
     ),
-    error: Schema.optional(
-      Schema.Struct({
-        code: Schema.optional(Schema.String),
-        message: Schema.optional(Schema.String),
-      }),
-    ),
+    error: Schema.optional(Schema.suspend(() => ErrorsSchema)),
   });
 export type ApplicationsGetAzureAsyncOperationStatusOutput =
   typeof ApplicationsGetAzureAsyncOperationStatusOutput.Type;
@@ -385,13 +860,7 @@ export type ApplicationsListByClusterInput =
 export const ApplicationsListByClusterOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => ApplicationSchema)),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -414,288 +883,9 @@ export const ClustersCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   zones: Schema.optional(Schema.Array(Schema.String)),
   properties: Schema.optional(
-    Schema.Struct({
-      clusterVersion: Schema.optional(Schema.String),
-      osType: Schema.optional(Schema.Literals(["Windows", "Linux"])),
-      tier: Schema.optional(Schema.Literals(["Standard", "Premium"])),
-      clusterDefinition: Schema.optional(
-        Schema.Struct({
-          blueprint: Schema.optional(Schema.String),
-          kind: Schema.optional(Schema.String),
-          componentVersion: Schema.optional(
-            Schema.Record(Schema.String, Schema.String),
-          ),
-          configurations: Schema.optional(Schema.Unknown),
-        }),
-      ),
-      kafkaRestProperties: Schema.optional(
-        Schema.Struct({
-          clientGroupInfo: Schema.optional(
-            Schema.Struct({
-              groupName: Schema.optional(Schema.String),
-              groupId: Schema.optional(Schema.String),
-            }),
-          ),
-          configurationOverride: Schema.optional(
-            Schema.Record(Schema.String, Schema.String),
-          ),
-        }),
-      ),
-      securityProfile: Schema.optional(
-        Schema.Struct({
-          directoryType: Schema.optional(Schema.Literals(["ActiveDirectory"])),
-          domain: Schema.optional(Schema.String),
-          organizationalUnitDN: Schema.optional(Schema.String),
-          ldapsUrls: Schema.optional(Schema.Array(Schema.String)),
-          domainUsername: Schema.optional(Schema.String),
-          domainUserPassword: Schema.optional(SensitiveString),
-          clusterUsersGroupDNs: Schema.optional(Schema.Array(Schema.String)),
-          aaddsResourceId: Schema.optional(Schema.String),
-          msiResourceId: Schema.optional(Schema.String),
-        }),
-      ),
-      computeProfile: Schema.optional(
-        Schema.Struct({
-          roles: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                name: Schema.optional(Schema.String),
-                minInstanceCount: Schema.optional(Schema.Number),
-                targetInstanceCount: Schema.optional(Schema.Number),
-                VMGroupName: Schema.optional(Schema.String),
-                autoscale: Schema.optional(
-                  Schema.Struct({
-                    capacity: Schema.optional(
-                      Schema.Struct({
-                        minInstanceCount: Schema.optional(Schema.Number),
-                        maxInstanceCount: Schema.optional(Schema.Number),
-                      }),
-                    ),
-                    recurrence: Schema.optional(
-                      Schema.Struct({
-                        timeZone: Schema.optional(Schema.String),
-                        schedule: Schema.optional(
-                          Schema.Array(
-                            Schema.Struct({
-                              days: Schema.optional(
-                                Schema.Array(
-                                  Schema.Literals([
-                                    "Monday",
-                                    "Tuesday",
-                                    "Wednesday",
-                                    "Thursday",
-                                    "Friday",
-                                    "Saturday",
-                                    "Sunday",
-                                  ]),
-                                ),
-                              ),
-                              timeAndCapacity: Schema.optional(
-                                Schema.Struct({
-                                  time: Schema.optional(Schema.String),
-                                  minInstanceCount: Schema.optional(
-                                    Schema.Number,
-                                  ),
-                                  maxInstanceCount: Schema.optional(
-                                    Schema.Number,
-                                  ),
-                                }),
-                              ),
-                            }),
-                          ),
-                        ),
-                      }),
-                    ),
-                  }),
-                ),
-                hardwareProfile: Schema.optional(
-                  Schema.Struct({
-                    vmSize: Schema.optional(Schema.String),
-                  }),
-                ),
-                osProfile: Schema.optional(
-                  Schema.Struct({
-                    linuxOperatingSystemProfile: Schema.optional(
-                      Schema.Struct({
-                        username: Schema.optional(Schema.String),
-                        password: Schema.optional(SensitiveString),
-                        sshProfile: Schema.optional(
-                          Schema.Struct({
-                            publicKeys: Schema.optional(
-                              Schema.Array(
-                                Schema.Struct({
-                                  certificateData: Schema.optional(
-                                    Schema.String,
-                                  ),
-                                }),
-                              ),
-                            ),
-                          }),
-                        ),
-                      }),
-                    ),
-                  }),
-                ),
-                virtualNetworkProfile: Schema.optional(
-                  Schema.Struct({
-                    id: Schema.optional(Schema.String),
-                    subnet: Schema.optional(Schema.String),
-                  }),
-                ),
-                dataDisksGroups: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      disksPerNode: Schema.optional(Schema.Number),
-                      storageAccountType: Schema.optional(Schema.String),
-                      diskSizeGB: Schema.optional(Schema.Number),
-                    }),
-                  ),
-                ),
-                scriptActions: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      name: Schema.String,
-                      uri: Schema.String,
-                      parameters: Schema.String,
-                    }),
-                  ),
-                ),
-                encryptDataDisks: Schema.optional(Schema.Boolean),
-              }),
-            ),
-          ),
-        }),
-      ),
-      storageProfile: Schema.optional(
-        Schema.Struct({
-          storageaccounts: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                name: Schema.optional(Schema.String),
-                isDefault: Schema.optional(Schema.Boolean),
-                container: Schema.optional(Schema.String),
-                fileSystem: Schema.optional(Schema.String),
-                key: Schema.optional(Schema.String),
-                resourceId: Schema.optional(Schema.String),
-                msiResourceId: Schema.optional(Schema.String),
-                saskey: Schema.optional(Schema.String),
-                fileshare: Schema.optional(Schema.String),
-              }),
-            ),
-          ),
-        }),
-      ),
-      diskEncryptionProperties: Schema.optional(
-        Schema.Struct({
-          vaultUri: Schema.optional(Schema.String),
-          keyName: Schema.optional(Schema.String),
-          keyVersion: Schema.optional(Schema.String),
-          encryptionAlgorithm: Schema.optional(
-            Schema.Literals(["RSA-OAEP", "RSA-OAEP-256", "RSA1_5"]),
-          ),
-          msiResourceId: Schema.optional(Schema.String),
-          encryptionAtHost: Schema.optional(Schema.Boolean),
-        }),
-      ),
-      encryptionInTransitProperties: Schema.optional(
-        Schema.Struct({
-          isEncryptionInTransitEnabled: Schema.optional(Schema.Boolean),
-        }),
-      ),
-      minSupportedTlsVersion: Schema.optional(Schema.String),
-      networkProperties: Schema.optional(
-        Schema.Struct({
-          resourceProviderConnection: Schema.optional(
-            Schema.Literals(["Inbound", "Outbound"]),
-          ),
-          privateLink: Schema.optional(
-            Schema.Literals(["Disabled", "Enabled"]),
-          ),
-        }),
-      ),
-      computeIsolationProperties: Schema.optional(
-        Schema.Struct({
-          enableComputeIsolation: Schema.optional(Schema.Boolean),
-          hostSku: Schema.optional(Schema.String),
-        }),
-      ),
-      privateLinkConfigurations: Schema.optional(
-        Schema.Array(
-          Schema.Struct({
-            id: Schema.optional(Schema.String),
-            name: Schema.String,
-            type: Schema.optional(Schema.String),
-            properties: Schema.Struct({
-              groupId: Schema.String,
-              provisioningState: Schema.optional(
-                Schema.Literals([
-                  "InProgress",
-                  "Failed",
-                  "Succeeded",
-                  "Canceled",
-                  "Deleting",
-                ]),
-              ),
-              ipConfigurations: Schema.Array(
-                Schema.Struct({
-                  id: Schema.optional(Schema.String),
-                  name: Schema.String,
-                  type: Schema.optional(Schema.String),
-                  properties: Schema.optional(
-                    Schema.Struct({
-                      provisioningState: Schema.optional(
-                        Schema.Literals([
-                          "InProgress",
-                          "Failed",
-                          "Succeeded",
-                          "Canceled",
-                          "Deleting",
-                        ]),
-                      ),
-                      primary: Schema.optional(Schema.Boolean),
-                      privateIPAddress: Schema.optional(Schema.String),
-                      privateIPAllocationMethod: Schema.optional(
-                        Schema.Literals(["dynamic", "static"]),
-                      ),
-                      subnet: Schema.optional(
-                        Schema.Struct({
-                          id: Schema.optional(Schema.String),
-                        }),
-                      ),
-                    }),
-                  ),
-                }),
-              ),
-            }),
-          }),
-        ),
-      ),
-    }),
+    Schema.suspend(() => ClusterCreatePropertiesSchema),
   ),
-  identity: Schema.optional(
-    Schema.Struct({
-      principalId: Schema.optional(Schema.String),
-      tenantId: Schema.optional(Schema.String),
-      type: Schema.optional(
-        Schema.Literals([
-          "SystemAssigned",
-          "UserAssigned",
-          "SystemAssigned, UserAssigned",
-          "None",
-        ]),
-      ),
-      userAssignedIdentities: Schema.optional(
-        Schema.Record(
-          Schema.String,
-          Schema.Struct({
-            principalId: Schema.optional(Schema.String),
-            clientId: Schema.optional(Schema.String),
-            tenantId: Schema.optional(Schema.String),
-          }),
-        ),
-      ),
-    }),
-  ),
+  identity: Schema.optional(Schema.suspend(() => ClusterIdentitySchema)),
 }).pipe(
   T.Http({
     method: "PUT",
@@ -708,6 +898,26 @@ export type ClustersCreateInput = typeof ClustersCreateInput.Type;
 
 // Output Schema
 export const ClustersCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  etag: Schema.optional(Schema.String),
+  zones: Schema.optional(Schema.Array(Schema.String)),
+  properties: Schema.optional(Schema.suspend(() => ClusterGetPropertiesSchema)),
+  identity: Schema.optional(Schema.suspend(() => ClusterIdentitySchema)),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  location: Schema.String,
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -751,15 +961,7 @@ export const ClustersDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const ClustersExecuteScriptActionsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     scriptActions: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          name: Schema.String,
-          uri: Schema.String,
-          parameters: Schema.optional(Schema.String),
-          roles: Schema.Array(Schema.String),
-          applicationName: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => RuntimeScriptActionSchema)),
     ),
     persistOnSuccess: Schema.Boolean,
   }).pipe(
@@ -804,6 +1006,26 @@ export type ClustersGetInput = typeof ClustersGetInput.Type;
 
 // Output Schema
 export const ClustersGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  etag: Schema.optional(Schema.String),
+  zones: Schema.optional(Schema.Array(Schema.String)),
+  properties: Schema.optional(Schema.suspend(() => ClusterGetPropertiesSchema)),
+  identity: Schema.optional(Schema.suspend(() => ClusterIdentitySchema)),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  location: Schema.String,
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -836,12 +1058,7 @@ export const ClustersGetAzureAsyncOperationStatusOutput =
     status: Schema.optional(
       Schema.Literals(["InProgress", "Succeeded", "Failed"]),
     ),
-    error: Schema.optional(
-      Schema.Struct({
-        code: Schema.optional(Schema.String),
-        message: Schema.optional(Schema.String),
-      }),
-    ),
+    error: Schema.optional(Schema.suspend(() => ErrorsSchema)),
   });
 export type ClustersGetAzureAsyncOperationStatusOutput =
   typeof ClustersGetAzureAsyncOperationStatusOutput.Type;
@@ -901,15 +1118,7 @@ export type ClustersListInput = typeof ClustersListInput.Type;
 
 // Output Schema
 export const ClustersListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  value: Schema.optional(
-    Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-      }),
-    ),
-  ),
+  value: Schema.optional(Schema.Array(Schema.suspend(() => ClusterSchema))),
   nextLink: Schema.optional(Schema.String),
 });
 export type ClustersListOutput = typeof ClustersListOutput.Type;
@@ -937,15 +1146,7 @@ export type ClustersListByResourceGroupInput =
 // Output Schema
 export const ClustersListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
-    ),
+    value: Schema.optional(Schema.Array(Schema.suspend(() => ClusterSchema))),
     nextLink: Schema.optional(Schema.String),
   });
 export type ClustersListByResourceGroupOutput =
@@ -1037,6 +1238,26 @@ export type ClustersUpdateInput = typeof ClustersUpdateInput.Type;
 
 // Output Schema
 export const ClustersUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  etag: Schema.optional(Schema.String),
+  zones: Schema.optional(Schema.Array(Schema.String)),
+  properties: Schema.optional(Schema.suspend(() => ClusterGetPropertiesSchema)),
+  identity: Schema.optional(Schema.suspend(() => ClusterIdentitySchema)),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  location: Schema.String,
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -1055,47 +1276,7 @@ export const ClustersUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const ClustersUpdateAutoScaleConfigurationInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     roleName: Schema.Literals(["workernode"]).pipe(T.PathParam()),
-    autoscale: Schema.optional(
-      Schema.Struct({
-        capacity: Schema.optional(
-          Schema.Struct({
-            minInstanceCount: Schema.optional(Schema.Number),
-            maxInstanceCount: Schema.optional(Schema.Number),
-          }),
-        ),
-        recurrence: Schema.optional(
-          Schema.Struct({
-            timeZone: Schema.optional(Schema.String),
-            schedule: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  days: Schema.optional(
-                    Schema.Array(
-                      Schema.Literals([
-                        "Monday",
-                        "Tuesday",
-                        "Wednesday",
-                        "Thursday",
-                        "Friday",
-                        "Saturday",
-                        "Sunday",
-                      ]),
-                    ),
-                  ),
-                  timeAndCapacity: Schema.optional(
-                    Schema.Struct({
-                      time: Schema.optional(Schema.String),
-                      minInstanceCount: Schema.optional(Schema.Number),
-                      maxInstanceCount: Schema.optional(Schema.Number),
-                    }),
-                  ),
-                }),
-              ),
-            ),
-          }),
-        ),
-      }),
-    ),
+    autoscale: Schema.optional(Schema.suspend(() => AutoscaleSchema)),
   }).pipe(
     T.Http({
       method: "POST",
@@ -1228,7 +1409,10 @@ export type ConfigurationsListInput = typeof ConfigurationsListInput.Type;
 export const ConfigurationsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     configurations: Schema.optional(
-      Schema.Record(Schema.String, Schema.Record(Schema.String, Schema.String)),
+      Schema.Record(
+        Schema.String,
+        Schema.suspend(() => ClusterConfigurationSchema),
+      ),
     ),
   });
 export type ConfigurationsListOutput = typeof ConfigurationsListOutput.Type;
@@ -1355,19 +1539,7 @@ export const ExtensionsEnableAzureMonitorInput =
     workspaceId: Schema.optional(Schema.String),
     primaryKey: Schema.optional(Schema.String),
     selectedConfigurations: Schema.optional(
-      Schema.Struct({
-        configurationVersion: Schema.optional(Schema.String),
-        globalConfigurations: Schema.optional(
-          Schema.Record(Schema.String, Schema.String),
-        ),
-        tableList: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              name: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-      }),
+      Schema.suspend(() => AzureMonitorSelectedConfigurationsSchema),
     ),
   }).pipe(
     T.Http({
@@ -1472,12 +1644,7 @@ export const ExtensionsGetAzureAsyncOperationStatusOutput =
     status: Schema.optional(
       Schema.Literals(["InProgress", "Succeeded", "Failed"]),
     ),
-    error: Schema.optional(
-      Schema.Struct({
-        code: Schema.optional(Schema.String),
-        message: Schema.optional(Schema.String),
-      }),
-    ),
+    error: Schema.optional(Schema.suspend(() => ErrorsSchema)),
   });
 export type ExtensionsGetAzureAsyncOperationStatusOutput =
   typeof ExtensionsGetAzureAsyncOperationStatusOutput.Type;
@@ -1509,19 +1676,7 @@ export const ExtensionsGetAzureMonitorStatusOutput =
     clusterMonitoringEnabled: Schema.optional(Schema.Boolean),
     workspaceId: Schema.optional(Schema.String),
     selectedConfigurations: Schema.optional(
-      Schema.Struct({
-        configurationVersion: Schema.optional(Schema.String),
-        globalConfigurations: Schema.optional(
-          Schema.Record(Schema.String, Schema.String),
-        ),
-        tableList: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              name: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-      }),
+      Schema.suspend(() => AzureMonitorSelectedConfigurationsSchema),
     ),
   });
 export type ExtensionsGetAzureMonitorStatusOutput =
@@ -1618,12 +1773,7 @@ export const LocationsGetAzureAsyncOperationStatusOutput =
     status: Schema.optional(
       Schema.Literals(["InProgress", "Succeeded", "Failed"]),
     ),
-    error: Schema.optional(
-      Schema.Struct({
-        code: Schema.optional(Schema.String),
-        message: Schema.optional(Schema.String),
-      }),
-    ),
+    error: Schema.optional(Schema.suspend(() => ErrorsSchema)),
   });
 export type LocationsGetAzureAsyncOperationStatusOutput =
   typeof LocationsGetAzureAsyncOperationStatusOutput.Type;
@@ -1655,46 +1805,17 @@ export const LocationsGetCapabilitiesOutput =
     versions: Schema.optional(
       Schema.Record(
         Schema.String,
-        Schema.Struct({
-          available: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                friendlyName: Schema.optional(Schema.String),
-                displayName: Schema.optional(Schema.String),
-                isDefault: Schema.optional(Schema.Boolean),
-                componentVersions: Schema.optional(
-                  Schema.Record(Schema.String, Schema.String),
-                ),
-              }),
-            ),
-          ),
-        }),
+        Schema.suspend(() => VersionsCapabilitySchema),
       ),
     ),
     regions: Schema.optional(
       Schema.Record(
         Schema.String,
-        Schema.Struct({
-          available: Schema.optional(Schema.Array(Schema.String)),
-        }),
+        Schema.suspend(() => RegionsCapabilitySchema),
       ),
     ),
     features: Schema.optional(Schema.Array(Schema.String)),
-    quota: Schema.optional(
-      Schema.Struct({
-        coresUsed: Schema.optional(Schema.Number),
-        maxCoresAllowed: Schema.optional(Schema.Number),
-        regionalQuotas: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              regionName: Schema.optional(Schema.String),
-              coresUsed: Schema.optional(Schema.Number),
-              coresAvailable: Schema.optional(Schema.Number),
-            }),
-          ),
-        ),
-      }),
-    ),
+    quota: Schema.optional(Schema.suspend(() => QuotaCapabilitySchema)),
   });
 export type LocationsGetCapabilitiesOutput =
   typeof LocationsGetCapabilitiesOutput.Type;
@@ -1727,64 +1848,13 @@ export const LocationsListBillingSpecsOutput =
     vmSizes: Schema.optional(Schema.Array(Schema.String)),
     vmSizesWithEncryptionAtHost: Schema.optional(Schema.Array(Schema.String)),
     vmSizeFilters: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          filterMode: Schema.optional(
-            Schema.Literals(["Exclude", "Include", "Recommend", "Default"]),
-          ),
-          regions: Schema.optional(Schema.Array(Schema.String)),
-          clusterFlavors: Schema.optional(Schema.Array(Schema.String)),
-          nodeTypes: Schema.optional(Schema.Array(Schema.String)),
-          clusterVersions: Schema.optional(Schema.Array(Schema.String)),
-          osType: Schema.optional(
-            Schema.Array(Schema.Literals(["Windows", "Linux"])),
-          ),
-          vmSizes: Schema.optional(Schema.Array(Schema.String)),
-          espApplied: Schema.optional(Schema.String),
-          computeIsolationSupported: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => VmSizeCompatibilityFilterV2Schema)),
     ),
     vmSizeProperties: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          name: Schema.optional(Schema.String),
-          cores: Schema.optional(Schema.Number),
-          dataDiskStorageTier: Schema.optional(Schema.String),
-          label: Schema.optional(Schema.String),
-          maxDataDiskCount: Schema.optional(Schema.Number),
-          memoryInMb: Schema.optional(Schema.Number),
-          supportedByVirtualMachines: Schema.optional(Schema.Boolean),
-          supportedByWebWorkerRoles: Schema.optional(Schema.Boolean),
-          virtualMachineResourceDiskSizeInMb: Schema.optional(Schema.Number),
-          webWorkerResourceDiskSizeInMb: Schema.optional(Schema.Number),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => VmSizePropertySchema)),
     ),
     billingResources: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          region: Schema.optional(Schema.String),
-          billingMeters: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                meterParameter: Schema.optional(Schema.String),
-                meter: Schema.optional(Schema.String),
-                unit: Schema.optional(Schema.String),
-              }),
-            ),
-          ),
-          diskBillingMeters: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                diskRpMeter: Schema.optional(Schema.String),
-                sku: Schema.optional(Schema.String),
-                tier: Schema.optional(Schema.Literals(["Standard", "Premium"])),
-              }),
-            ),
-          ),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => BillingResourcesSchema)),
     ),
   });
 export type LocationsListBillingSpecsOutput =
@@ -1814,21 +1884,7 @@ export type LocationsListUsagesInput = typeof LocationsListUsagesInput.Type;
 // Output Schema
 export const LocationsListUsagesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          unit: Schema.optional(Schema.String),
-          currentValue: Schema.optional(Schema.Number),
-          limit: Schema.optional(Schema.Number),
-          name: Schema.optional(
-            Schema.Struct({
-              value: Schema.optional(Schema.String),
-              localizedValue: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
-    ),
+    value: Schema.optional(Schema.Array(Schema.suspend(() => UsageSchema))),
   });
 export type LocationsListUsagesOutput = typeof LocationsListUsagesOutput.Type;
 
@@ -1851,290 +1907,9 @@ export const LocationsValidateClusterCreateRequestInput =
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     zones: Schema.optional(Schema.Array(Schema.String)),
     properties: Schema.optional(
-      Schema.Struct({
-        clusterVersion: Schema.optional(Schema.String),
-        osType: Schema.optional(Schema.Literals(["Windows", "Linux"])),
-        tier: Schema.optional(Schema.Literals(["Standard", "Premium"])),
-        clusterDefinition: Schema.optional(
-          Schema.Struct({
-            blueprint: Schema.optional(Schema.String),
-            kind: Schema.optional(Schema.String),
-            componentVersion: Schema.optional(
-              Schema.Record(Schema.String, Schema.String),
-            ),
-            configurations: Schema.optional(Schema.Unknown),
-          }),
-        ),
-        kafkaRestProperties: Schema.optional(
-          Schema.Struct({
-            clientGroupInfo: Schema.optional(
-              Schema.Struct({
-                groupName: Schema.optional(Schema.String),
-                groupId: Schema.optional(Schema.String),
-              }),
-            ),
-            configurationOverride: Schema.optional(
-              Schema.Record(Schema.String, Schema.String),
-            ),
-          }),
-        ),
-        securityProfile: Schema.optional(
-          Schema.Struct({
-            directoryType: Schema.optional(
-              Schema.Literals(["ActiveDirectory"]),
-            ),
-            domain: Schema.optional(Schema.String),
-            organizationalUnitDN: Schema.optional(Schema.String),
-            ldapsUrls: Schema.optional(Schema.Array(Schema.String)),
-            domainUsername: Schema.optional(Schema.String),
-            domainUserPassword: Schema.optional(SensitiveString),
-            clusterUsersGroupDNs: Schema.optional(Schema.Array(Schema.String)),
-            aaddsResourceId: Schema.optional(Schema.String),
-            msiResourceId: Schema.optional(Schema.String),
-          }),
-        ),
-        computeProfile: Schema.optional(
-          Schema.Struct({
-            roles: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  name: Schema.optional(Schema.String),
-                  minInstanceCount: Schema.optional(Schema.Number),
-                  targetInstanceCount: Schema.optional(Schema.Number),
-                  VMGroupName: Schema.optional(Schema.String),
-                  autoscale: Schema.optional(
-                    Schema.Struct({
-                      capacity: Schema.optional(
-                        Schema.Struct({
-                          minInstanceCount: Schema.optional(Schema.Number),
-                          maxInstanceCount: Schema.optional(Schema.Number),
-                        }),
-                      ),
-                      recurrence: Schema.optional(
-                        Schema.Struct({
-                          timeZone: Schema.optional(Schema.String),
-                          schedule: Schema.optional(
-                            Schema.Array(
-                              Schema.Struct({
-                                days: Schema.optional(
-                                  Schema.Array(
-                                    Schema.Literals([
-                                      "Monday",
-                                      "Tuesday",
-                                      "Wednesday",
-                                      "Thursday",
-                                      "Friday",
-                                      "Saturday",
-                                      "Sunday",
-                                    ]),
-                                  ),
-                                ),
-                                timeAndCapacity: Schema.optional(
-                                  Schema.Struct({
-                                    time: Schema.optional(Schema.String),
-                                    minInstanceCount: Schema.optional(
-                                      Schema.Number,
-                                    ),
-                                    maxInstanceCount: Schema.optional(
-                                      Schema.Number,
-                                    ),
-                                  }),
-                                ),
-                              }),
-                            ),
-                          ),
-                        }),
-                      ),
-                    }),
-                  ),
-                  hardwareProfile: Schema.optional(
-                    Schema.Struct({
-                      vmSize: Schema.optional(Schema.String),
-                    }),
-                  ),
-                  osProfile: Schema.optional(
-                    Schema.Struct({
-                      linuxOperatingSystemProfile: Schema.optional(
-                        Schema.Struct({
-                          username: Schema.optional(Schema.String),
-                          password: Schema.optional(SensitiveString),
-                          sshProfile: Schema.optional(
-                            Schema.Struct({
-                              publicKeys: Schema.optional(
-                                Schema.Array(
-                                  Schema.Struct({
-                                    certificateData: Schema.optional(
-                                      Schema.String,
-                                    ),
-                                  }),
-                                ),
-                              ),
-                            }),
-                          ),
-                        }),
-                      ),
-                    }),
-                  ),
-                  virtualNetworkProfile: Schema.optional(
-                    Schema.Struct({
-                      id: Schema.optional(Schema.String),
-                      subnet: Schema.optional(Schema.String),
-                    }),
-                  ),
-                  dataDisksGroups: Schema.optional(
-                    Schema.Array(
-                      Schema.Struct({
-                        disksPerNode: Schema.optional(Schema.Number),
-                        storageAccountType: Schema.optional(Schema.String),
-                        diskSizeGB: Schema.optional(Schema.Number),
-                      }),
-                    ),
-                  ),
-                  scriptActions: Schema.optional(
-                    Schema.Array(
-                      Schema.Struct({
-                        name: Schema.String,
-                        uri: Schema.String,
-                        parameters: Schema.String,
-                      }),
-                    ),
-                  ),
-                  encryptDataDisks: Schema.optional(Schema.Boolean),
-                }),
-              ),
-            ),
-          }),
-        ),
-        storageProfile: Schema.optional(
-          Schema.Struct({
-            storageaccounts: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  name: Schema.optional(Schema.String),
-                  isDefault: Schema.optional(Schema.Boolean),
-                  container: Schema.optional(Schema.String),
-                  fileSystem: Schema.optional(Schema.String),
-                  key: Schema.optional(Schema.String),
-                  resourceId: Schema.optional(Schema.String),
-                  msiResourceId: Schema.optional(Schema.String),
-                  saskey: Schema.optional(Schema.String),
-                  fileshare: Schema.optional(Schema.String),
-                }),
-              ),
-            ),
-          }),
-        ),
-        diskEncryptionProperties: Schema.optional(
-          Schema.Struct({
-            vaultUri: Schema.optional(Schema.String),
-            keyName: Schema.optional(Schema.String),
-            keyVersion: Schema.optional(Schema.String),
-            encryptionAlgorithm: Schema.optional(
-              Schema.Literals(["RSA-OAEP", "RSA-OAEP-256", "RSA1_5"]),
-            ),
-            msiResourceId: Schema.optional(Schema.String),
-            encryptionAtHost: Schema.optional(Schema.Boolean),
-          }),
-        ),
-        encryptionInTransitProperties: Schema.optional(
-          Schema.Struct({
-            isEncryptionInTransitEnabled: Schema.optional(Schema.Boolean),
-          }),
-        ),
-        minSupportedTlsVersion: Schema.optional(Schema.String),
-        networkProperties: Schema.optional(
-          Schema.Struct({
-            resourceProviderConnection: Schema.optional(
-              Schema.Literals(["Inbound", "Outbound"]),
-            ),
-            privateLink: Schema.optional(
-              Schema.Literals(["Disabled", "Enabled"]),
-            ),
-          }),
-        ),
-        computeIsolationProperties: Schema.optional(
-          Schema.Struct({
-            enableComputeIsolation: Schema.optional(Schema.Boolean),
-            hostSku: Schema.optional(Schema.String),
-          }),
-        ),
-        privateLinkConfigurations: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              id: Schema.optional(Schema.String),
-              name: Schema.String,
-              type: Schema.optional(Schema.String),
-              properties: Schema.Struct({
-                groupId: Schema.String,
-                provisioningState: Schema.optional(
-                  Schema.Literals([
-                    "InProgress",
-                    "Failed",
-                    "Succeeded",
-                    "Canceled",
-                    "Deleting",
-                  ]),
-                ),
-                ipConfigurations: Schema.Array(
-                  Schema.Struct({
-                    id: Schema.optional(Schema.String),
-                    name: Schema.String,
-                    type: Schema.optional(Schema.String),
-                    properties: Schema.optional(
-                      Schema.Struct({
-                        provisioningState: Schema.optional(
-                          Schema.Literals([
-                            "InProgress",
-                            "Failed",
-                            "Succeeded",
-                            "Canceled",
-                            "Deleting",
-                          ]),
-                        ),
-                        primary: Schema.optional(Schema.Boolean),
-                        privateIPAddress: Schema.optional(Schema.String),
-                        privateIPAllocationMethod: Schema.optional(
-                          Schema.Literals(["dynamic", "static"]),
-                        ),
-                        subnet: Schema.optional(
-                          Schema.Struct({
-                            id: Schema.optional(Schema.String),
-                          }),
-                        ),
-                      }),
-                    ),
-                  }),
-                ),
-              }),
-            }),
-          ),
-        ),
-      }),
+      Schema.suspend(() => ClusterCreatePropertiesSchema),
     ),
-    identity: Schema.optional(
-      Schema.Struct({
-        principalId: Schema.optional(Schema.String),
-        tenantId: Schema.optional(Schema.String),
-        type: Schema.optional(
-          Schema.Literals([
-            "SystemAssigned",
-            "UserAssigned",
-            "SystemAssigned, UserAssigned",
-            "None",
-          ]),
-        ),
-        userAssignedIdentities: Schema.optional(
-          Schema.Record(
-            Schema.String,
-            Schema.Struct({
-              principalId: Schema.optional(Schema.String),
-              clientId: Schema.optional(Schema.String),
-              tenantId: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-      }),
-    ),
+    identity: Schema.optional(Schema.suspend(() => ClusterIdentitySchema)),
   }).pipe(
     T.Http({
       method: "POST",
@@ -2149,38 +1924,14 @@ export type LocationsValidateClusterCreateRequestInput =
 export const LocationsValidateClusterCreateRequestOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     validationErrors: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          code: Schema.optional(Schema.String),
-          message: Schema.optional(Schema.String),
-          errorResource: Schema.optional(Schema.String),
-          messageArguments: Schema.optional(Schema.Array(Schema.String)),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => ValidationErrorInfoSchema)),
     ),
     validationWarnings: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          code: Schema.optional(Schema.String),
-          message: Schema.optional(Schema.String),
-          errorResource: Schema.optional(Schema.String),
-          messageArguments: Schema.optional(Schema.Array(Schema.String)),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => ValidationErrorInfoSchema)),
     ),
     estimatedCreationDuration: Schema.optional(Schema.String),
     aaddsResourcesDetails: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          domainName: Schema.optional(Schema.String),
-          initialSyncComplete: Schema.optional(Schema.Boolean),
-          ldapsEnabled: Schema.optional(Schema.Boolean),
-          ldapsPublicCertificateInBase64: Schema.optional(Schema.String),
-          resourceId: Schema.optional(Schema.String),
-          subnetId: Schema.optional(Schema.String),
-          tenantId: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => AaddsResourceDetailsSchema)),
     ),
   });
 export type LocationsValidateClusterCreateRequestOutput =
@@ -2209,71 +1960,7 @@ export type OperationsListInput = typeof OperationsListInput.Type;
 
 // Output Schema
 export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  value: Schema.optional(
-    Schema.Array(
-      Schema.Struct({
-        name: Schema.optional(Schema.String),
-        display: Schema.optional(
-          Schema.Struct({
-            provider: Schema.optional(Schema.String),
-            resource: Schema.optional(Schema.String),
-            operation: Schema.optional(Schema.String),
-            description: Schema.optional(Schema.String),
-          }),
-        ),
-        properties: Schema.optional(
-          Schema.Struct({
-            serviceSpecification: Schema.optional(
-              Schema.Struct({
-                metricSpecifications: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      name: Schema.optional(Schema.String),
-                      displayName: Schema.optional(Schema.String),
-                      displayDescription: Schema.optional(Schema.String),
-                      unit: Schema.optional(Schema.String),
-                      aggregationType: Schema.optional(Schema.String),
-                      supportedAggregationTypes: Schema.optional(
-                        Schema.Array(Schema.String),
-                      ),
-                      supportedTimeGrainTypes: Schema.optional(
-                        Schema.Array(Schema.String),
-                      ),
-                      enableRegionalMdmAccount: Schema.optional(Schema.Boolean),
-                      sourceMdmAccount: Schema.optional(Schema.String),
-                      sourceMdmNamespace: Schema.optional(Schema.String),
-                      metricFilterPattern: Schema.optional(Schema.String),
-                      fillGapWithZero: Schema.optional(Schema.Boolean),
-                      category: Schema.optional(Schema.String),
-                      resourceIdDimensionNameOverride: Schema.optional(
-                        Schema.String,
-                      ),
-                      isInternal: Schema.optional(Schema.Boolean),
-                      delegateMetricNameOverride: Schema.optional(
-                        Schema.String,
-                      ),
-                      dimensions: Schema.optional(
-                        Schema.Array(
-                          Schema.Struct({
-                            name: Schema.optional(Schema.String),
-                            displayName: Schema.optional(Schema.String),
-                            internalName: Schema.optional(Schema.String),
-                            toBeExportedForShoebox: Schema.optional(
-                              Schema.Boolean,
-                            ),
-                          }),
-                        ),
-                      ),
-                    }),
-                  ),
-                ),
-              }),
-            ),
-          }),
-        ),
-      }),
-    ),
-  ),
+  value: Schema.optional(Schema.Array(Schema.suspend(() => OperationSchema))),
   nextLink: Schema.optional(Schema.String),
 });
 export type OperationsListOutput = typeof OperationsListOutput.Type;
@@ -2289,29 +1976,7 @@ export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const PrivateEndpointConnectionsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    properties: Schema.Struct({
-      privateEndpoint: Schema.optional(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-        }),
-      ),
-      privateLinkServiceConnectionState: Schema.Struct({
-        status: Schema.Literals(["Approved", "Rejected", "Pending", "Removed"]),
-        description: Schema.optional(Schema.String),
-        actionsRequired: Schema.optional(Schema.String),
-      }),
-      linkIdentifier: Schema.optional(Schema.String),
-      provisioningState: Schema.optional(
-        Schema.Literals([
-          "InProgress",
-          "Updating",
-          "Failed",
-          "Succeeded",
-          "Canceled",
-          "Deleting",
-        ]),
-      ),
-    }),
+    properties: Schema.suspend(() => PrivateEndpointConnectionPropertiesSchema),
     systemData: Schema.optional(
       Schema.Struct({
         createdBy: Schema.optional(Schema.String),
@@ -2343,6 +2008,21 @@ export type PrivateEndpointConnectionsCreateOrUpdateInput =
 // Output Schema
 export const PrivateEndpointConnectionsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.suspend(() => PrivateEndpointConnectionPropertiesSchema),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2402,6 +2082,21 @@ export type PrivateEndpointConnectionsGetInput =
 // Output Schema
 export const PrivateEndpointConnectionsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.suspend(() => PrivateEndpointConnectionPropertiesSchema),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2434,13 +2129,7 @@ export type PrivateEndpointConnectionsListByClusterInput =
 export const PrivateEndpointConnectionsListByClusterOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => PrivateEndpointConnectionSchema)),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -2471,6 +2160,27 @@ export type PrivateLinkResourcesGetInput =
 // Output Schema
 export const PrivateLinkResourcesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.Struct({
+        groupId: Schema.optional(Schema.String),
+        requiredMembers: Schema.optional(Schema.Array(Schema.String)),
+        requiredZoneNames: Schema.optional(Schema.Array(Schema.String)),
+      }),
+    ),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2504,13 +2214,7 @@ export type PrivateLinkResourcesListByClusterInput =
 export const PrivateLinkResourcesListByClusterOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => PrivateLinkResourceSchema)),
     ),
   });
 export type PrivateLinkResourcesListByClusterOutput =
@@ -2567,12 +2271,7 @@ export const ScriptActionsGetExecutionAsyncOperationStatusOutput =
     status: Schema.optional(
       Schema.Literals(["InProgress", "Succeeded", "Failed"]),
     ),
-    error: Schema.optional(
-      Schema.Struct({
-        code: Schema.optional(Schema.String),
-        message: Schema.optional(Schema.String),
-      }),
-    ),
+    error: Schema.optional(Schema.suspend(() => ErrorsSchema)),
   });
 export type ScriptActionsGetExecutionAsyncOperationStatusOutput =
   typeof ScriptActionsGetExecutionAsyncOperationStatusOutput.Type;
@@ -2601,6 +2300,15 @@ export type ScriptActionsGetExecutionDetailInput =
 // Output Schema
 export const ScriptActionsGetExecutionDetailOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    scriptExecutionId: Schema.optional(Schema.Number),
+    startTime: Schema.optional(Schema.String),
+    endTime: Schema.optional(Schema.String),
+    status: Schema.optional(Schema.String),
+    operation: Schema.optional(Schema.String),
+    executionSummary: Schema.optional(
+      Schema.Array(Schema.suspend(() => ScriptActionExecutionSummarySchema)),
+    ),
+    debugInformation: Schema.optional(Schema.String),
     name: Schema.String,
     uri: Schema.String,
     parameters: Schema.optional(Schema.String),
@@ -2745,12 +2453,7 @@ export const VirtualMachinesGetAsyncOperationStatusOutput =
     status: Schema.optional(
       Schema.Literals(["InProgress", "Succeeded", "Failed"]),
     ),
-    error: Schema.optional(
-      Schema.Struct({
-        code: Schema.optional(Schema.String),
-        message: Schema.optional(Schema.String),
-      }),
-    ),
+    error: Schema.optional(Schema.suspend(() => ErrorsSchema)),
   });
 export type VirtualMachinesGetAsyncOperationStatusOutput =
   typeof VirtualMachinesGetAsyncOperationStatusOutput.Type;
@@ -2779,11 +2482,7 @@ export type VirtualMachinesListHostsInput =
 // Output Schema
 export const VirtualMachinesListHostsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      fqdn: Schema.optional(Schema.String),
-      effectiveDiskEncryptionKeyUrl: Schema.optional(Schema.String),
-    }),
+    Schema.suspend(() => HostInfoSchema),
   );
 export type VirtualMachinesListHostsOutput =
   typeof VirtualMachinesListHostsOutput.Type;

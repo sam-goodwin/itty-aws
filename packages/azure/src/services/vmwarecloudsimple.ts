@@ -7,7 +7,441 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
-import { SensitiveOutputString, SensitiveString } from "../sensitive.ts";
+import { SensitiveOutputString } from "../sensitive.ts";
+
+// Shared schemas
+const AvailableOperationSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  display: Schema.optional(
+    Schema.suspend(() => AvailableOperationDisplaySchema),
+  ),
+  isDataAction: Schema.optional(Schema.Boolean),
+  name: Schema.optional(Schema.String),
+  origin: Schema.optional(Schema.Literals(["user", "system", "user,system"])),
+  properties: Schema.optional(
+    Schema.suspend(
+      () => AvailableOperationDisplayPropertyServiceSpecificationSchema,
+    ),
+  ),
+});
+const AvailableOperationDisplaySchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    description: Schema.optional(Schema.String),
+    operation: Schema.optional(Schema.String),
+    provider: Schema.optional(Schema.String),
+    resource: Schema.optional(Schema.String),
+  });
+const AvailableOperationDisplayPropertyServiceSpecificationSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    serviceSpecification: Schema.optional(
+      Schema.suspend(
+        () =>
+          AvailableOperationDisplayPropertyServiceSpecificationMetricsListSchema,
+      ),
+    ),
+  });
+const AvailableOperationDisplayPropertyServiceSpecificationMetricsListSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    metricSpecifications: Schema.optional(
+      Schema.Array(
+        Schema.suspend(
+          () =>
+            AvailableOperationDisplayPropertyServiceSpecificationMetricsItemSchema,
+        ),
+      ),
+    ),
+  });
+const AvailableOperationDisplayPropertyServiceSpecificationMetricsItemSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    aggregationType: Schema.Literals(["Average", "Total"]),
+    displayDescription: Schema.String,
+    displayName: Schema.String,
+    name: Schema.String,
+    unit: Schema.String,
+  });
+const DedicatedCloudNodeSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  location: Schema.String,
+  name: Schema.optional(Schema.String),
+  properties: Schema.optional(
+    Schema.suspend(() => DedicatedCloudNodePropertiesSchema),
+  ),
+  sku: Schema.optional(Schema.suspend(() => SkuSchema)),
+  tags: Schema.optional(Schema.suspend(() => TagsSchema)),
+  type: Schema.optional(Schema.String),
+});
+const DedicatedCloudNodePropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    availabilityZoneId: Schema.String,
+    availabilityZoneName: Schema.optional(Schema.String),
+    cloudRackName: Schema.optional(Schema.String),
+    created: Schema.optional(Schema.String),
+    nodesCount: Schema.Number,
+    placementGroupId: Schema.String,
+    placementGroupName: Schema.optional(Schema.String),
+    privateCloudId: Schema.optional(Schema.String),
+    privateCloudName: Schema.optional(Schema.String),
+    provisioningState: Schema.optional(Schema.String),
+    purchaseId: Schema.String,
+    skuDescription: Schema.optional(Schema.suspend(() => SkuDescriptionSchema)),
+    status: Schema.optional(Schema.Literals(["unused", "used"])),
+    vmwareClusterName: Schema.optional(Schema.String),
+  });
+const SkuDescriptionSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.String,
+  name: Schema.String,
+});
+const SkuSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  capacity: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+  family: Schema.optional(Schema.String),
+  name: Schema.String,
+  tier: Schema.optional(Schema.String),
+});
+const TagsSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown;
+const DedicatedCloudServiceSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  location: Schema.String,
+  name: Schema.optional(Schema.String),
+  properties: Schema.optional(
+    Schema.suspend(() => DedicatedCloudServicePropertiesSchema),
+  ),
+  tags: Schema.optional(Schema.suspend(() => TagsSchema)),
+  type: Schema.optional(Schema.String),
+});
+const DedicatedCloudServicePropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    gatewaySubnet: Schema.String,
+    isAccountOnboarded: Schema.optional(
+      Schema.Literals([
+        "notOnBoarded",
+        "onBoarded",
+        "onBoardingFailed",
+        "onBoarding",
+      ]),
+    ),
+    nodes: Schema.optional(Schema.Number),
+    serviceURL: Schema.optional(Schema.String),
+  });
+const SkuAvailabilitySchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  dedicatedAvailabilityZoneId: Schema.optional(Schema.String),
+  dedicatedAvailabilityZoneName: Schema.optional(Schema.String),
+  dedicatedPlacementGroupId: Schema.optional(Schema.String),
+  dedicatedPlacementGroupName: Schema.optional(Schema.String),
+  limit: Schema.Number,
+  resourceType: Schema.optional(Schema.String),
+  skuId: Schema.optional(Schema.String),
+  skuName: Schema.optional(Schema.String),
+});
+const OperationErrorSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  code: Schema.optional(Schema.String),
+  message: Schema.optional(Schema.String),
+});
+const PrivateCloudSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  location: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  properties: Schema.optional(
+    Schema.suspend(() => PrivateCloudPropertiesSchema),
+  ),
+  type: Schema.optional(
+    Schema.Literals(["Microsoft.VMwareCloudSimple/privateClouds"]),
+  ),
+});
+const PrivateCloudPropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  availabilityZoneId: Schema.optional(Schema.String),
+  availabilityZoneName: Schema.optional(Schema.String),
+  clustersNumber: Schema.optional(Schema.Number),
+  createdBy: Schema.optional(Schema.String),
+  createdOn: Schema.optional(Schema.String),
+  dnsServers: Schema.optional(Schema.Array(Schema.String)),
+  expires: Schema.optional(Schema.String),
+  nsxType: Schema.optional(Schema.String),
+  placementGroupId: Schema.optional(Schema.String),
+  placementGroupName: Schema.optional(Schema.String),
+  privateCloudId: Schema.optional(Schema.String),
+  resourcePools: Schema.optional(
+    Schema.Array(Schema.suspend(() => ResourcePoolSchema)),
+  ),
+  state: Schema.optional(Schema.String),
+  totalCpuCores: Schema.optional(Schema.Number),
+  totalNodes: Schema.optional(Schema.Number),
+  totalRam: Schema.optional(Schema.Number),
+  totalStorage: Schema.optional(Schema.Number),
+  type: Schema.optional(Schema.String),
+  vSphereVersion: Schema.optional(Schema.String),
+  vcenterFqdn: Schema.optional(Schema.String),
+  vcenterRefid: Schema.optional(Schema.String),
+  virtualMachineTemplates: Schema.optional(
+    Schema.Array(Schema.suspend(() => VirtualMachineTemplateSchema)),
+  ),
+  virtualNetworks: Schema.optional(
+    Schema.Array(Schema.suspend(() => VirtualNetworkSchema)),
+  ),
+  vrOpsEnabled: Schema.optional(Schema.Boolean),
+});
+const ResourcePoolSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.String,
+  location: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  privateCloudId: Schema.optional(Schema.String),
+  properties: Schema.optional(
+    Schema.suspend(() => ResourcePoolPropertiesSchema),
+  ),
+  type: Schema.optional(Schema.String),
+});
+const ResourcePoolPropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  fullName: Schema.optional(Schema.String),
+});
+const VirtualMachineTemplateSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  location: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  properties: Schema.optional(
+    Schema.suspend(() => VirtualMachineTemplatePropertiesSchema),
+  ),
+  type: Schema.optional(Schema.String),
+});
+const VirtualMachineTemplatePropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    amountOfRam: Schema.optional(Schema.Number),
+    controllers: Schema.optional(
+      Schema.Array(Schema.suspend(() => VirtualDiskControllerSchema)),
+    ),
+    description: Schema.optional(Schema.String),
+    disks: Schema.optional(
+      Schema.Array(Schema.suspend(() => VirtualDiskSchema)),
+    ),
+    exposeToGuestVM: Schema.optional(Schema.Boolean),
+    guestOS: Schema.optional(Schema.String),
+    guestOSType: Schema.optional(Schema.String),
+    nics: Schema.optional(Schema.Array(Schema.suspend(() => VirtualNicSchema))),
+    numberOfCores: Schema.optional(Schema.Number),
+    path: Schema.optional(Schema.String),
+    privateCloudId: Schema.String,
+    vSphereNetworks: Schema.optional(Schema.Array(Schema.String)),
+    vSphereTags: Schema.optional(Schema.Array(Schema.String)),
+    vmwaretools: Schema.optional(Schema.String),
+  });
+const VirtualDiskControllerSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  subType: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
+const VirtualDiskSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  controllerId: Schema.String,
+  independenceMode: Schema.Literals([
+    "persistent",
+    "independent_persistent",
+    "independent_nonpersistent",
+  ]),
+  totalSize: Schema.Number,
+  virtualDiskId: Schema.optional(Schema.String),
+  virtualDiskName: Schema.optional(Schema.String),
+});
+const VirtualNicSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  customization: Schema.optional(
+    Schema.suspend(() => GuestOSNICCustomizationSchema),
+  ),
+  ipAddresses: Schema.optional(Schema.Array(Schema.String)),
+  macAddress: Schema.optional(Schema.String),
+  network: Schema.suspend(() => VirtualNetworkSchema),
+  nicType: Schema.Literals([
+    "E1000",
+    "E1000E",
+    "PCNET32",
+    "VMXNET",
+    "VMXNET2",
+    "VMXNET3",
+  ]),
+  powerOnBoot: Schema.optional(Schema.Boolean),
+  virtualNicId: Schema.optional(Schema.String),
+  virtualNicName: Schema.optional(Schema.String),
+});
+const GuestOSNICCustomizationSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    allocation: Schema.optional(Schema.Literals(["static", "dynamic"])),
+    dnsServers: Schema.optional(
+      Schema.Array(Schema.suspend(() => IPV4AddressSchema)),
+    ),
+    gateway: Schema.optional(
+      Schema.Array(Schema.suspend(() => IPV4AddressSchema)),
+    ),
+    ipAddress: Schema.optional(Schema.suspend(() => IPV4AddressSchema)),
+    mask: Schema.optional(Schema.suspend(() => IPV4AddressSchema)),
+    primaryWinsServer: Schema.optional(Schema.suspend(() => IPV4AddressSchema)),
+    secondaryWinsServer: Schema.optional(
+      Schema.suspend(() => IPV4AddressSchema),
+    ),
+  },
+);
+const IPV4AddressSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.String;
+const VirtualNetworkSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  assignable: Schema.optional(Schema.Boolean),
+  id: Schema.String,
+  location: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  properties: Schema.optional(
+    Schema.suspend(() => VirtualNetworkPropertiesSchema),
+  ),
+  type: Schema.optional(Schema.String),
+});
+const VirtualNetworkPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    privateCloudId: Schema.optional(Schema.String),
+  });
+const CustomizationPolicySchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  location: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  properties: Schema.optional(
+    Schema.suspend(() => CustomizationPolicyPropertiesSchema),
+  ),
+  type: Schema.optional(Schema.String),
+});
+const CustomizationPolicyPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    description: Schema.optional(Schema.String),
+    privateCloudId: Schema.optional(Schema.String),
+    specification: Schema.optional(
+      Schema.suspend(() => CustomizationSpecificationSchema),
+    ),
+    type: Schema.optional(Schema.Literals(["LINUX", "WINDOWS"])),
+    version: Schema.optional(Schema.String),
+  });
+const CustomizationSpecificationSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    identity: Schema.optional(
+      Schema.suspend(() => CustomizationIdentitySchema),
+    ),
+    nicSettings: Schema.optional(
+      Schema.Array(Schema.suspend(() => CustomizationNicSettingSchema)),
+    ),
+  });
+const CustomizationIdentitySchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  data: Schema.optional(Schema.String),
+  hostName: Schema.optional(Schema.suspend(() => CustomizationHostNameSchema)),
+  type: Schema.optional(Schema.Literals(["WINDOWS_TEXT", "WINDOWS", "LINUX"])),
+  userData: Schema.optional(
+    Schema.Struct({
+      isPasswordPredefined: Schema.optional(Schema.Boolean),
+    }),
+  ),
+});
+const CustomizationHostNameSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(
+    Schema.Literals([
+      "USER_DEFINED",
+      "PREFIX_BASED",
+      "FIXED",
+      "VIRTUAL_MACHINE_NAME",
+      "CUSTOM_NAME",
+    ]),
+  ),
+});
+const CustomizationNicSettingSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    adapter: Schema.optional(
+      Schema.suspend(() => CustomizationIPSettingsSchema),
+    ),
+    macAddress: Schema.optional(Schema.String),
+  },
+);
+const CustomizationIPSettingsSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    gateway: Schema.optional(Schema.Array(Schema.String)),
+    ip: Schema.optional(Schema.suspend(() => CustomizationIPAddressSchema)),
+    subnetMask: Schema.optional(Schema.String),
+  },
+);
+const CustomizationIPAddressSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  argument: Schema.optional(Schema.String),
+  ipAddress: Schema.optional(Schema.String),
+  type: Schema.optional(
+    Schema.Literals(["CUSTOM", "DHCP_IP", "FIXED_IP", "USER_DEFINED"]),
+  ),
+});
+const UsageSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  currentValue: Schema.Number,
+  limit: Schema.Number,
+  name: Schema.optional(Schema.suspend(() => UsageNameSchema)),
+  unit: Schema.optional(
+    Schema.Literals([
+      "Count",
+      "Bytes",
+      "Seconds",
+      "Percent",
+      "CountPerSecond",
+      "BytesPerSecond",
+    ]),
+  ),
+});
+const UsageNameSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  localizedValue: Schema.optional(Schema.String),
+  value: Schema.optional(Schema.String),
+});
+const VirtualMachineSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  location: Schema.String,
+  name: Schema.optional(Schema.String),
+  properties: Schema.optional(
+    Schema.suspend(() => VirtualMachinePropertiesSchema),
+  ),
+  tags: Schema.optional(Schema.suspend(() => TagsSchema)),
+  type: Schema.optional(Schema.String),
+});
+const VirtualMachinePropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    amountOfRam: Schema.Number,
+    controllers: Schema.optional(
+      Schema.Array(Schema.suspend(() => VirtualDiskControllerSchema)),
+    ),
+    customization: Schema.optional(
+      Schema.suspend(() => GuestOSCustomizationSchema),
+    ),
+    disks: Schema.optional(
+      Schema.Array(Schema.suspend(() => VirtualDiskSchema)),
+    ),
+    dnsname: Schema.optional(Schema.String),
+    exposeToGuestVM: Schema.optional(Schema.Boolean),
+    folder: Schema.optional(Schema.String),
+    guestOS: Schema.optional(Schema.String),
+    guestOSType: Schema.optional(
+      Schema.Literals(["linux", "windows", "other"]),
+    ),
+    nics: Schema.optional(Schema.Array(Schema.suspend(() => VirtualNicSchema))),
+    numberOfCores: Schema.Number,
+    password: Schema.optional(SensitiveOutputString),
+    privateCloudId: Schema.String,
+    provisioningState: Schema.optional(Schema.String),
+    publicIP: Schema.optional(Schema.String),
+    resourcePool: Schema.optional(Schema.suspend(() => ResourcePoolSchema)),
+    status: Schema.optional(
+      Schema.Literals([
+        "running",
+        "suspended",
+        "poweredoff",
+        "updating",
+        "deallocating",
+        "deleting",
+      ]),
+    ),
+    templateId: Schema.optional(Schema.String),
+    username: Schema.optional(Schema.String),
+    vSphereNetworks: Schema.optional(Schema.Array(Schema.String)),
+    vmId: Schema.optional(Schema.String),
+    vmwaretools: Schema.optional(Schema.String),
+  });
+const GuestOSCustomizationSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  dnsServers: Schema.optional(
+    Schema.Array(Schema.suspend(() => IPV4AddressSchema)),
+  ),
+  hostName: Schema.optional(Schema.String),
+  password: Schema.optional(SensitiveOutputString),
+  policyId: Schema.optional(Schema.String),
+  username: Schema.optional(Schema.String),
+});
 
 // Input Schema
 export const CustomizationPoliciesGetInput =
@@ -30,70 +464,7 @@ export const CustomizationPoliciesGetOutput =
     location: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     properties: Schema.optional(
-      Schema.Struct({
-        description: Schema.optional(Schema.String),
-        privateCloudId: Schema.optional(Schema.String),
-        specification: Schema.optional(
-          Schema.Struct({
-            identity: Schema.optional(
-              Schema.Struct({
-                data: Schema.optional(Schema.String),
-                hostName: Schema.optional(
-                  Schema.Struct({
-                    name: Schema.optional(Schema.String),
-                    type: Schema.optional(
-                      Schema.Literals([
-                        "USER_DEFINED",
-                        "PREFIX_BASED",
-                        "FIXED",
-                        "VIRTUAL_MACHINE_NAME",
-                        "CUSTOM_NAME",
-                      ]),
-                    ),
-                  }),
-                ),
-                type: Schema.optional(
-                  Schema.Literals(["WINDOWS_TEXT", "WINDOWS", "LINUX"]),
-                ),
-                userData: Schema.optional(
-                  Schema.Struct({
-                    isPasswordPredefined: Schema.optional(Schema.Boolean),
-                  }),
-                ),
-              }),
-            ),
-            nicSettings: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  adapter: Schema.optional(
-                    Schema.Struct({
-                      gateway: Schema.optional(Schema.Array(Schema.String)),
-                      ip: Schema.optional(
-                        Schema.Struct({
-                          argument: Schema.optional(Schema.String),
-                          ipAddress: Schema.optional(Schema.String),
-                          type: Schema.optional(
-                            Schema.Literals([
-                              "CUSTOM",
-                              "DHCP_IP",
-                              "FIXED_IP",
-                              "USER_DEFINED",
-                            ]),
-                          ),
-                        }),
-                      ),
-                      subnetMask: Schema.optional(Schema.String),
-                    }),
-                  ),
-                  macAddress: Schema.optional(Schema.String),
-                }),
-              ),
-            ),
-          }),
-        ),
-        type: Schema.optional(Schema.Literals(["LINUX", "WINDOWS"])),
-        version: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(() => CustomizationPolicyPropertiesSchema),
     ),
     type: Schema.optional(Schema.String),
   });
@@ -133,82 +504,7 @@ export const CustomizationPoliciesListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          location: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          properties: Schema.optional(
-            Schema.Struct({
-              description: Schema.optional(Schema.String),
-              privateCloudId: Schema.optional(Schema.String),
-              specification: Schema.optional(
-                Schema.Struct({
-                  identity: Schema.optional(
-                    Schema.Struct({
-                      data: Schema.optional(Schema.String),
-                      hostName: Schema.optional(
-                        Schema.Struct({
-                          name: Schema.optional(Schema.String),
-                          type: Schema.optional(
-                            Schema.Literals([
-                              "USER_DEFINED",
-                              "PREFIX_BASED",
-                              "FIXED",
-                              "VIRTUAL_MACHINE_NAME",
-                              "CUSTOM_NAME",
-                            ]),
-                          ),
-                        }),
-                      ),
-                      type: Schema.optional(
-                        Schema.Literals(["WINDOWS_TEXT", "WINDOWS", "LINUX"]),
-                      ),
-                      userData: Schema.optional(
-                        Schema.Struct({
-                          isPasswordPredefined: Schema.optional(Schema.Boolean),
-                        }),
-                      ),
-                    }),
-                  ),
-                  nicSettings: Schema.optional(
-                    Schema.Array(
-                      Schema.Struct({
-                        adapter: Schema.optional(
-                          Schema.Struct({
-                            gateway: Schema.optional(
-                              Schema.Array(Schema.String),
-                            ),
-                            ip: Schema.optional(
-                              Schema.Struct({
-                                argument: Schema.optional(Schema.String),
-                                ipAddress: Schema.optional(Schema.String),
-                                type: Schema.optional(
-                                  Schema.Literals([
-                                    "CUSTOM",
-                                    "DHCP_IP",
-                                    "FIXED_IP",
-                                    "USER_DEFINED",
-                                  ]),
-                                ),
-                              }),
-                            ),
-                            subnetMask: Schema.optional(Schema.String),
-                          }),
-                        ),
-                        macAddress: Schema.optional(Schema.String),
-                      }),
-                    ),
-                  ),
-                }),
-              ),
-              type: Schema.optional(Schema.Literals(["LINUX", "WINDOWS"])),
-              version: Schema.optional(Schema.String),
-            }),
-          ),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => CustomizationPolicySchema)),
     ),
   });
 export type CustomizationPoliciesListOutput =
@@ -236,38 +532,10 @@ export const DedicatedCloudNodesCreateOrUpdateInput =
     location: Schema.String,
     name: Schema.optional(Schema.String),
     properties: Schema.optional(
-      Schema.Struct({
-        availabilityZoneId: Schema.String,
-        availabilityZoneName: Schema.optional(Schema.String),
-        cloudRackName: Schema.optional(Schema.String),
-        created: Schema.optional(Schema.String),
-        nodesCount: Schema.Number,
-        placementGroupId: Schema.String,
-        placementGroupName: Schema.optional(Schema.String),
-        privateCloudId: Schema.optional(Schema.String),
-        privateCloudName: Schema.optional(Schema.String),
-        provisioningState: Schema.optional(Schema.String),
-        purchaseId: Schema.String,
-        skuDescription: Schema.optional(
-          Schema.Struct({
-            id: Schema.String,
-            name: Schema.String,
-          }),
-        ),
-        status: Schema.optional(Schema.Literals(["unused", "used"])),
-        vmwareClusterName: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(() => DedicatedCloudNodePropertiesSchema),
     ),
-    sku: Schema.optional(
-      Schema.Struct({
-        capacity: Schema.optional(Schema.String),
-        description: Schema.optional(Schema.String),
-        family: Schema.optional(Schema.String),
-        name: Schema.String,
-        tier: Schema.optional(Schema.String),
-      }),
-    ),
-    tags: Schema.optional(Schema.Unknown),
+    sku: Schema.optional(Schema.suspend(() => SkuSchema)),
+    tags: Schema.optional(Schema.suspend(() => TagsSchema)),
     type: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
@@ -287,38 +555,10 @@ export const DedicatedCloudNodesCreateOrUpdateOutput =
     location: Schema.String,
     name: Schema.optional(Schema.String),
     properties: Schema.optional(
-      Schema.Struct({
-        availabilityZoneId: Schema.String,
-        availabilityZoneName: Schema.optional(Schema.String),
-        cloudRackName: Schema.optional(Schema.String),
-        created: Schema.optional(Schema.String),
-        nodesCount: Schema.Number,
-        placementGroupId: Schema.String,
-        placementGroupName: Schema.optional(Schema.String),
-        privateCloudId: Schema.optional(Schema.String),
-        privateCloudName: Schema.optional(Schema.String),
-        provisioningState: Schema.optional(Schema.String),
-        purchaseId: Schema.String,
-        skuDescription: Schema.optional(
-          Schema.Struct({
-            id: Schema.String,
-            name: Schema.String,
-          }),
-        ),
-        status: Schema.optional(Schema.Literals(["unused", "used"])),
-        vmwareClusterName: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(() => DedicatedCloudNodePropertiesSchema),
     ),
-    sku: Schema.optional(
-      Schema.Struct({
-        capacity: Schema.optional(Schema.String),
-        description: Schema.optional(Schema.String),
-        family: Schema.optional(Schema.String),
-        name: Schema.String,
-        tier: Schema.optional(Schema.String),
-      }),
-    ),
-    tags: Schema.optional(Schema.Unknown),
+    sku: Schema.optional(Schema.suspend(() => SkuSchema)),
+    tags: Schema.optional(Schema.suspend(() => TagsSchema)),
     type: Schema.optional(Schema.String),
   });
 export type DedicatedCloudNodesCreateOrUpdateOutput =
@@ -392,38 +632,10 @@ export const DedicatedCloudNodesGetOutput =
     location: Schema.String,
     name: Schema.optional(Schema.String),
     properties: Schema.optional(
-      Schema.Struct({
-        availabilityZoneId: Schema.String,
-        availabilityZoneName: Schema.optional(Schema.String),
-        cloudRackName: Schema.optional(Schema.String),
-        created: Schema.optional(Schema.String),
-        nodesCount: Schema.Number,
-        placementGroupId: Schema.String,
-        placementGroupName: Schema.optional(Schema.String),
-        privateCloudId: Schema.optional(Schema.String),
-        privateCloudName: Schema.optional(Schema.String),
-        provisioningState: Schema.optional(Schema.String),
-        purchaseId: Schema.String,
-        skuDescription: Schema.optional(
-          Schema.Struct({
-            id: Schema.String,
-            name: Schema.String,
-          }),
-        ),
-        status: Schema.optional(Schema.Literals(["unused", "used"])),
-        vmwareClusterName: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(() => DedicatedCloudNodePropertiesSchema),
     ),
-    sku: Schema.optional(
-      Schema.Struct({
-        capacity: Schema.optional(Schema.String),
-        description: Schema.optional(Schema.String),
-        family: Schema.optional(Schema.String),
-        name: Schema.String,
-        tier: Schema.optional(Schema.String),
-      }),
-    ),
-    tags: Schema.optional(Schema.Unknown),
+    sku: Schema.optional(Schema.suspend(() => SkuSchema)),
+    tags: Schema.optional(Schema.suspend(() => TagsSchema)),
     type: Schema.optional(Schema.String),
   });
 export type DedicatedCloudNodesGetOutput =
@@ -464,47 +676,7 @@ export const DedicatedCloudNodesListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          location: Schema.String,
-          name: Schema.optional(Schema.String),
-          properties: Schema.optional(
-            Schema.Struct({
-              availabilityZoneId: Schema.String,
-              availabilityZoneName: Schema.optional(Schema.String),
-              cloudRackName: Schema.optional(Schema.String),
-              created: Schema.optional(Schema.String),
-              nodesCount: Schema.Number,
-              placementGroupId: Schema.String,
-              placementGroupName: Schema.optional(Schema.String),
-              privateCloudId: Schema.optional(Schema.String),
-              privateCloudName: Schema.optional(Schema.String),
-              provisioningState: Schema.optional(Schema.String),
-              purchaseId: Schema.String,
-              skuDescription: Schema.optional(
-                Schema.Struct({
-                  id: Schema.String,
-                  name: Schema.String,
-                }),
-              ),
-              status: Schema.optional(Schema.Literals(["unused", "used"])),
-              vmwareClusterName: Schema.optional(Schema.String),
-            }),
-          ),
-          sku: Schema.optional(
-            Schema.Struct({
-              capacity: Schema.optional(Schema.String),
-              description: Schema.optional(Schema.String),
-              family: Schema.optional(Schema.String),
-              name: Schema.String,
-              tier: Schema.optional(Schema.String),
-            }),
-          ),
-          tags: Schema.optional(Schema.Unknown),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => DedicatedCloudNodeSchema)),
     ),
   });
 export type DedicatedCloudNodesListByResourceGroupOutput =
@@ -546,47 +718,7 @@ export const DedicatedCloudNodesListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          location: Schema.String,
-          name: Schema.optional(Schema.String),
-          properties: Schema.optional(
-            Schema.Struct({
-              availabilityZoneId: Schema.String,
-              availabilityZoneName: Schema.optional(Schema.String),
-              cloudRackName: Schema.optional(Schema.String),
-              created: Schema.optional(Schema.String),
-              nodesCount: Schema.Number,
-              placementGroupId: Schema.String,
-              placementGroupName: Schema.optional(Schema.String),
-              privateCloudId: Schema.optional(Schema.String),
-              privateCloudName: Schema.optional(Schema.String),
-              provisioningState: Schema.optional(Schema.String),
-              purchaseId: Schema.String,
-              skuDescription: Schema.optional(
-                Schema.Struct({
-                  id: Schema.String,
-                  name: Schema.String,
-                }),
-              ),
-              status: Schema.optional(Schema.Literals(["unused", "used"])),
-              vmwareClusterName: Schema.optional(Schema.String),
-            }),
-          ),
-          sku: Schema.optional(
-            Schema.Struct({
-              capacity: Schema.optional(Schema.String),
-              description: Schema.optional(Schema.String),
-              family: Schema.optional(Schema.String),
-              name: Schema.String,
-              tier: Schema.optional(Schema.String),
-            }),
-          ),
-          tags: Schema.optional(Schema.Unknown),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => DedicatedCloudNodeSchema)),
     ),
   });
 export type DedicatedCloudNodesListBySubscriptionOutput =
@@ -611,7 +743,7 @@ export const DedicatedCloudNodesListBySubscription =
 export const DedicatedCloudNodesUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dedicatedCloudNodeName: Schema.String.pipe(T.PathParam()),
-    tags: Schema.optional(Schema.Unknown),
+    tags: Schema.optional(Schema.suspend(() => TagsSchema)),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -629,38 +761,10 @@ export const DedicatedCloudNodesUpdateOutput =
     location: Schema.String,
     name: Schema.optional(Schema.String),
     properties: Schema.optional(
-      Schema.Struct({
-        availabilityZoneId: Schema.String,
-        availabilityZoneName: Schema.optional(Schema.String),
-        cloudRackName: Schema.optional(Schema.String),
-        created: Schema.optional(Schema.String),
-        nodesCount: Schema.Number,
-        placementGroupId: Schema.String,
-        placementGroupName: Schema.optional(Schema.String),
-        privateCloudId: Schema.optional(Schema.String),
-        privateCloudName: Schema.optional(Schema.String),
-        provisioningState: Schema.optional(Schema.String),
-        purchaseId: Schema.String,
-        skuDescription: Schema.optional(
-          Schema.Struct({
-            id: Schema.String,
-            name: Schema.String,
-          }),
-        ),
-        status: Schema.optional(Schema.Literals(["unused", "used"])),
-        vmwareClusterName: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(() => DedicatedCloudNodePropertiesSchema),
     ),
-    sku: Schema.optional(
-      Schema.Struct({
-        capacity: Schema.optional(Schema.String),
-        description: Schema.optional(Schema.String),
-        family: Schema.optional(Schema.String),
-        name: Schema.String,
-        tier: Schema.optional(Schema.String),
-      }),
-    ),
-    tags: Schema.optional(Schema.Unknown),
+    sku: Schema.optional(Schema.suspend(() => SkuSchema)),
+    tags: Schema.optional(Schema.suspend(() => TagsSchema)),
     type: Schema.optional(Schema.String),
   });
 export type DedicatedCloudNodesUpdateOutput =
@@ -688,21 +792,9 @@ export const DedicatedCloudServicesCreateOrUpdateInput =
     location: Schema.String,
     name: Schema.optional(Schema.String),
     properties: Schema.optional(
-      Schema.Struct({
-        gatewaySubnet: Schema.String,
-        isAccountOnboarded: Schema.optional(
-          Schema.Literals([
-            "notOnBoarded",
-            "onBoarded",
-            "onBoardingFailed",
-            "onBoarding",
-          ]),
-        ),
-        nodes: Schema.optional(Schema.Number),
-        serviceURL: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(() => DedicatedCloudServicePropertiesSchema),
     ),
-    tags: Schema.optional(Schema.Unknown),
+    tags: Schema.optional(Schema.suspend(() => TagsSchema)),
     type: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
@@ -721,21 +813,9 @@ export const DedicatedCloudServicesCreateOrUpdateOutput =
     location: Schema.String,
     name: Schema.optional(Schema.String),
     properties: Schema.optional(
-      Schema.Struct({
-        gatewaySubnet: Schema.String,
-        isAccountOnboarded: Schema.optional(
-          Schema.Literals([
-            "notOnBoarded",
-            "onBoarded",
-            "onBoardingFailed",
-            "onBoarding",
-          ]),
-        ),
-        nodes: Schema.optional(Schema.Number),
-        serviceURL: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(() => DedicatedCloudServicePropertiesSchema),
     ),
-    tags: Schema.optional(Schema.Unknown),
+    tags: Schema.optional(Schema.suspend(() => TagsSchema)),
     type: Schema.optional(Schema.String),
   });
 export type DedicatedCloudServicesCreateOrUpdateOutput =
@@ -809,21 +889,9 @@ export const DedicatedCloudServicesGetOutput =
     location: Schema.String,
     name: Schema.optional(Schema.String),
     properties: Schema.optional(
-      Schema.Struct({
-        gatewaySubnet: Schema.String,
-        isAccountOnboarded: Schema.optional(
-          Schema.Literals([
-            "notOnBoarded",
-            "onBoarded",
-            "onBoardingFailed",
-            "onBoarding",
-          ]),
-        ),
-        nodes: Schema.optional(Schema.Number),
-        serviceURL: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(() => DedicatedCloudServicePropertiesSchema),
     ),
-    tags: Schema.optional(Schema.Unknown),
+    tags: Schema.optional(Schema.suspend(() => TagsSchema)),
     type: Schema.optional(Schema.String),
   });
 export type DedicatedCloudServicesGetOutput =
@@ -864,30 +932,7 @@ export const DedicatedCloudServicesListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          location: Schema.String,
-          name: Schema.optional(Schema.String),
-          properties: Schema.optional(
-            Schema.Struct({
-              gatewaySubnet: Schema.String,
-              isAccountOnboarded: Schema.optional(
-                Schema.Literals([
-                  "notOnBoarded",
-                  "onBoarded",
-                  "onBoardingFailed",
-                  "onBoarding",
-                ]),
-              ),
-              nodes: Schema.optional(Schema.Number),
-              serviceURL: Schema.optional(Schema.String),
-            }),
-          ),
-          tags: Schema.optional(Schema.Unknown),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => DedicatedCloudServiceSchema)),
     ),
   });
 export type DedicatedCloudServicesListByResourceGroupOutput =
@@ -929,30 +974,7 @@ export const DedicatedCloudServicesListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          location: Schema.String,
-          name: Schema.optional(Schema.String),
-          properties: Schema.optional(
-            Schema.Struct({
-              gatewaySubnet: Schema.String,
-              isAccountOnboarded: Schema.optional(
-                Schema.Literals([
-                  "notOnBoarded",
-                  "onBoarded",
-                  "onBoardingFailed",
-                  "onBoarding",
-                ]),
-              ),
-              nodes: Schema.optional(Schema.Number),
-              serviceURL: Schema.optional(Schema.String),
-            }),
-          ),
-          tags: Schema.optional(Schema.Unknown),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => DedicatedCloudServiceSchema)),
     ),
   });
 export type DedicatedCloudServicesListBySubscriptionOutput =
@@ -977,7 +999,7 @@ export const DedicatedCloudServicesListBySubscription =
 export const DedicatedCloudServicesUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dedicatedCloudServiceName: Schema.String.pipe(T.PathParam()),
-    tags: Schema.optional(Schema.Unknown),
+    tags: Schema.optional(Schema.suspend(() => TagsSchema)),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -995,21 +1017,9 @@ export const DedicatedCloudServicesUpdateOutput =
     location: Schema.String,
     name: Schema.optional(Schema.String),
     properties: Schema.optional(
-      Schema.Struct({
-        gatewaySubnet: Schema.String,
-        isAccountOnboarded: Schema.optional(
-          Schema.Literals([
-            "notOnBoarded",
-            "onBoarded",
-            "onBoardingFailed",
-            "onBoarding",
-          ]),
-        ),
-        nodes: Schema.optional(Schema.Number),
-        serviceURL: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(() => DedicatedCloudServicePropertiesSchema),
     ),
-    tags: Schema.optional(Schema.Unknown),
+    tags: Schema.optional(Schema.suspend(() => TagsSchema)),
     type: Schema.optional(Schema.String),
   });
 export type DedicatedCloudServicesUpdateOutput =
@@ -1043,12 +1053,7 @@ export type OperationsGetInput = typeof OperationsGetInput.Type;
 // Output Schema
 export const OperationsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   endTime: Schema.optional(Schema.String),
-  error: Schema.optional(
-    Schema.Struct({
-      code: Schema.optional(Schema.String),
-      message: Schema.optional(Schema.String),
-    }),
-  ),
+  error: Schema.optional(Schema.suspend(() => OperationErrorSchema)),
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   startTime: Schema.optional(Schema.String),
@@ -1084,42 +1089,7 @@ export type OperationsListInput = typeof OperationsListInput.Type;
 export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   nextLink: Schema.optional(Schema.String),
   value: Schema.optional(
-    Schema.Array(
-      Schema.Struct({
-        display: Schema.optional(
-          Schema.Struct({
-            description: Schema.optional(Schema.String),
-            operation: Schema.optional(Schema.String),
-            provider: Schema.optional(Schema.String),
-            resource: Schema.optional(Schema.String),
-          }),
-        ),
-        isDataAction: Schema.optional(Schema.Boolean),
-        name: Schema.optional(Schema.String),
-        origin: Schema.optional(
-          Schema.Literals(["user", "system", "user,system"]),
-        ),
-        properties: Schema.optional(
-          Schema.Struct({
-            serviceSpecification: Schema.optional(
-              Schema.Struct({
-                metricSpecifications: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      aggregationType: Schema.Literals(["Average", "Total"]),
-                      displayDescription: Schema.String,
-                      displayName: Schema.String,
-                      name: Schema.String,
-                      unit: Schema.String,
-                    }),
-                  ),
-                ),
-              }),
-            ),
-          }),
-        ),
-      }),
-    ),
+    Schema.Array(Schema.suspend(() => AvailableOperationSchema)),
   ),
 });
 export type OperationsListOutput = typeof OperationsListOutput.Type;
@@ -1153,161 +1123,7 @@ export const PrivateCloudsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     location: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     properties: Schema.optional(
-      Schema.Struct({
-        availabilityZoneId: Schema.optional(Schema.String),
-        availabilityZoneName: Schema.optional(Schema.String),
-        clustersNumber: Schema.optional(Schema.Number),
-        createdBy: Schema.optional(Schema.String),
-        createdOn: Schema.optional(Schema.String),
-        dnsServers: Schema.optional(Schema.Array(Schema.String)),
-        expires: Schema.optional(Schema.String),
-        nsxType: Schema.optional(Schema.String),
-        placementGroupId: Schema.optional(Schema.String),
-        placementGroupName: Schema.optional(Schema.String),
-        privateCloudId: Schema.optional(Schema.String),
-        resourcePools: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              id: Schema.String,
-              location: Schema.optional(Schema.String),
-              name: Schema.optional(Schema.String),
-              privateCloudId: Schema.optional(Schema.String),
-              properties: Schema.optional(
-                Schema.Struct({
-                  fullName: Schema.optional(Schema.String),
-                }),
-              ),
-              type: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        state: Schema.optional(Schema.String),
-        totalCpuCores: Schema.optional(Schema.Number),
-        totalNodes: Schema.optional(Schema.Number),
-        totalRam: Schema.optional(Schema.Number),
-        totalStorage: Schema.optional(Schema.Number),
-        type: Schema.optional(Schema.String),
-        vSphereVersion: Schema.optional(Schema.String),
-        vcenterFqdn: Schema.optional(Schema.String),
-        vcenterRefid: Schema.optional(Schema.String),
-        virtualMachineTemplates: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              id: Schema.optional(Schema.String),
-              location: Schema.optional(Schema.String),
-              name: Schema.optional(Schema.String),
-              properties: Schema.optional(
-                Schema.Struct({
-                  amountOfRam: Schema.optional(Schema.Number),
-                  controllers: Schema.optional(
-                    Schema.Array(
-                      Schema.Struct({
-                        id: Schema.optional(Schema.String),
-                        name: Schema.optional(Schema.String),
-                        subType: Schema.optional(Schema.String),
-                        type: Schema.optional(Schema.String),
-                      }),
-                    ),
-                  ),
-                  description: Schema.optional(Schema.String),
-                  disks: Schema.optional(
-                    Schema.Array(
-                      Schema.Struct({
-                        controllerId: Schema.String,
-                        independenceMode: Schema.Literals([
-                          "persistent",
-                          "independent_persistent",
-                          "independent_nonpersistent",
-                        ]),
-                        totalSize: Schema.Number,
-                        virtualDiskId: Schema.optional(Schema.String),
-                        virtualDiskName: Schema.optional(Schema.String),
-                      }),
-                    ),
-                  ),
-                  exposeToGuestVM: Schema.optional(Schema.Boolean),
-                  guestOS: Schema.optional(Schema.String),
-                  guestOSType: Schema.optional(Schema.String),
-                  nics: Schema.optional(
-                    Schema.Array(
-                      Schema.Struct({
-                        customization: Schema.optional(
-                          Schema.Struct({
-                            allocation: Schema.optional(
-                              Schema.Literals(["static", "dynamic"]),
-                            ),
-                            dnsServers: Schema.optional(
-                              Schema.Array(Schema.String),
-                            ),
-                            gateway: Schema.optional(
-                              Schema.Array(Schema.String),
-                            ),
-                            ipAddress: Schema.optional(Schema.String),
-                            mask: Schema.optional(Schema.String),
-                            primaryWinsServer: Schema.optional(Schema.String),
-                            secondaryWinsServer: Schema.optional(Schema.String),
-                          }),
-                        ),
-                        ipAddresses: Schema.optional(
-                          Schema.Array(Schema.String),
-                        ),
-                        macAddress: Schema.optional(Schema.String),
-                        network: Schema.Struct({
-                          assignable: Schema.optional(Schema.Boolean),
-                          id: Schema.String,
-                          location: Schema.optional(Schema.String),
-                          name: Schema.optional(Schema.String),
-                          properties: Schema.optional(
-                            Schema.Struct({
-                              privateCloudId: Schema.optional(Schema.String),
-                            }),
-                          ),
-                          type: Schema.optional(Schema.String),
-                        }),
-                        nicType: Schema.Literals([
-                          "E1000",
-                          "E1000E",
-                          "PCNET32",
-                          "VMXNET",
-                          "VMXNET2",
-                          "VMXNET3",
-                        ]),
-                        powerOnBoot: Schema.optional(Schema.Boolean),
-                        virtualNicId: Schema.optional(Schema.String),
-                        virtualNicName: Schema.optional(Schema.String),
-                      }),
-                    ),
-                  ),
-                  numberOfCores: Schema.optional(Schema.Number),
-                  path: Schema.optional(Schema.String),
-                  privateCloudId: Schema.String,
-                  vSphereNetworks: Schema.optional(Schema.Array(Schema.String)),
-                  vSphereTags: Schema.optional(Schema.Array(Schema.String)),
-                  vmwaretools: Schema.optional(Schema.String),
-                }),
-              ),
-              type: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        virtualNetworks: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              assignable: Schema.optional(Schema.Boolean),
-              id: Schema.String,
-              location: Schema.optional(Schema.String),
-              name: Schema.optional(Schema.String),
-              properties: Schema.optional(
-                Schema.Struct({
-                  privateCloudId: Schema.optional(Schema.String),
-                }),
-              ),
-              type: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        vrOpsEnabled: Schema.optional(Schema.Boolean),
-      }),
+      Schema.suspend(() => PrivateCloudPropertiesSchema),
     ),
     type: Schema.optional(
       Schema.Literals(["Microsoft.VMwareCloudSimple/privateClouds"]),
@@ -1343,183 +1159,7 @@ export const PrivateCloudsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          location: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          properties: Schema.optional(
-            Schema.Struct({
-              availabilityZoneId: Schema.optional(Schema.String),
-              availabilityZoneName: Schema.optional(Schema.String),
-              clustersNumber: Schema.optional(Schema.Number),
-              createdBy: Schema.optional(Schema.String),
-              createdOn: Schema.optional(Schema.String),
-              dnsServers: Schema.optional(Schema.Array(Schema.String)),
-              expires: Schema.optional(Schema.String),
-              nsxType: Schema.optional(Schema.String),
-              placementGroupId: Schema.optional(Schema.String),
-              placementGroupName: Schema.optional(Schema.String),
-              privateCloudId: Schema.optional(Schema.String),
-              resourcePools: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    id: Schema.String,
-                    location: Schema.optional(Schema.String),
-                    name: Schema.optional(Schema.String),
-                    privateCloudId: Schema.optional(Schema.String),
-                    properties: Schema.optional(
-                      Schema.Struct({
-                        fullName: Schema.optional(Schema.String),
-                      }),
-                    ),
-                    type: Schema.optional(Schema.String),
-                  }),
-                ),
-              ),
-              state: Schema.optional(Schema.String),
-              totalCpuCores: Schema.optional(Schema.Number),
-              totalNodes: Schema.optional(Schema.Number),
-              totalRam: Schema.optional(Schema.Number),
-              totalStorage: Schema.optional(Schema.Number),
-              type: Schema.optional(Schema.String),
-              vSphereVersion: Schema.optional(Schema.String),
-              vcenterFqdn: Schema.optional(Schema.String),
-              vcenterRefid: Schema.optional(Schema.String),
-              virtualMachineTemplates: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    id: Schema.optional(Schema.String),
-                    location: Schema.optional(Schema.String),
-                    name: Schema.optional(Schema.String),
-                    properties: Schema.optional(
-                      Schema.Struct({
-                        amountOfRam: Schema.optional(Schema.Number),
-                        controllers: Schema.optional(
-                          Schema.Array(
-                            Schema.Struct({
-                              id: Schema.optional(Schema.String),
-                              name: Schema.optional(Schema.String),
-                              subType: Schema.optional(Schema.String),
-                              type: Schema.optional(Schema.String),
-                            }),
-                          ),
-                        ),
-                        description: Schema.optional(Schema.String),
-                        disks: Schema.optional(
-                          Schema.Array(
-                            Schema.Struct({
-                              controllerId: Schema.String,
-                              independenceMode: Schema.Literals([
-                                "persistent",
-                                "independent_persistent",
-                                "independent_nonpersistent",
-                              ]),
-                              totalSize: Schema.Number,
-                              virtualDiskId: Schema.optional(Schema.String),
-                              virtualDiskName: Schema.optional(Schema.String),
-                            }),
-                          ),
-                        ),
-                        exposeToGuestVM: Schema.optional(Schema.Boolean),
-                        guestOS: Schema.optional(Schema.String),
-                        guestOSType: Schema.optional(Schema.String),
-                        nics: Schema.optional(
-                          Schema.Array(
-                            Schema.Struct({
-                              customization: Schema.optional(
-                                Schema.Struct({
-                                  allocation: Schema.optional(
-                                    Schema.Literals(["static", "dynamic"]),
-                                  ),
-                                  dnsServers: Schema.optional(
-                                    Schema.Array(Schema.String),
-                                  ),
-                                  gateway: Schema.optional(
-                                    Schema.Array(Schema.String),
-                                  ),
-                                  ipAddress: Schema.optional(Schema.String),
-                                  mask: Schema.optional(Schema.String),
-                                  primaryWinsServer: Schema.optional(
-                                    Schema.String,
-                                  ),
-                                  secondaryWinsServer: Schema.optional(
-                                    Schema.String,
-                                  ),
-                                }),
-                              ),
-                              ipAddresses: Schema.optional(
-                                Schema.Array(Schema.String),
-                              ),
-                              macAddress: Schema.optional(Schema.String),
-                              network: Schema.Struct({
-                                assignable: Schema.optional(Schema.Boolean),
-                                id: Schema.String,
-                                location: Schema.optional(Schema.String),
-                                name: Schema.optional(Schema.String),
-                                properties: Schema.optional(
-                                  Schema.Struct({
-                                    privateCloudId: Schema.optional(
-                                      Schema.String,
-                                    ),
-                                  }),
-                                ),
-                                type: Schema.optional(Schema.String),
-                              }),
-                              nicType: Schema.Literals([
-                                "E1000",
-                                "E1000E",
-                                "PCNET32",
-                                "VMXNET",
-                                "VMXNET2",
-                                "VMXNET3",
-                              ]),
-                              powerOnBoot: Schema.optional(Schema.Boolean),
-                              virtualNicId: Schema.optional(Schema.String),
-                              virtualNicName: Schema.optional(Schema.String),
-                            }),
-                          ),
-                        ),
-                        numberOfCores: Schema.optional(Schema.Number),
-                        path: Schema.optional(Schema.String),
-                        privateCloudId: Schema.String,
-                        vSphereNetworks: Schema.optional(
-                          Schema.Array(Schema.String),
-                        ),
-                        vSphereTags: Schema.optional(
-                          Schema.Array(Schema.String),
-                        ),
-                        vmwaretools: Schema.optional(Schema.String),
-                      }),
-                    ),
-                    type: Schema.optional(Schema.String),
-                  }),
-                ),
-              ),
-              virtualNetworks: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    assignable: Schema.optional(Schema.Boolean),
-                    id: Schema.String,
-                    location: Schema.optional(Schema.String),
-                    name: Schema.optional(Schema.String),
-                    properties: Schema.optional(
-                      Schema.Struct({
-                        privateCloudId: Schema.optional(Schema.String),
-                      }),
-                    ),
-                    type: Schema.optional(Schema.String),
-                  }),
-                ),
-              ),
-              vrOpsEnabled: Schema.optional(Schema.Boolean),
-            }),
-          ),
-          type: Schema.optional(
-            Schema.Literals(["Microsoft.VMwareCloudSimple/privateClouds"]),
-          ),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => PrivateCloudSchema)),
     ),
   });
 export type PrivateCloudsListOutput = typeof PrivateCloudsListOutput.Type;
@@ -1554,9 +1194,7 @@ export const ResourcePoolsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     name: Schema.optional(Schema.String),
     privateCloudId: Schema.optional(Schema.String),
     properties: Schema.optional(
-      Schema.Struct({
-        fullName: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(() => ResourcePoolPropertiesSchema),
     ),
     type: Schema.optional(Schema.String),
   },
@@ -1592,20 +1230,7 @@ export const ResourcePoolsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.String,
-          location: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          privateCloudId: Schema.optional(Schema.String),
-          properties: Schema.optional(
-            Schema.Struct({
-              fullName: Schema.optional(Schema.String),
-            }),
-          ),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => ResourcePoolSchema)),
     ),
   });
 export type ResourcePoolsListOutput = typeof ResourcePoolsListOutput.Type;
@@ -1638,18 +1263,7 @@ export const SkusAvailabilityListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          dedicatedAvailabilityZoneId: Schema.optional(Schema.String),
-          dedicatedAvailabilityZoneName: Schema.optional(Schema.String),
-          dedicatedPlacementGroupId: Schema.optional(Schema.String),
-          dedicatedPlacementGroupName: Schema.optional(Schema.String),
-          limit: Schema.Number,
-          resourceType: Schema.optional(Schema.String),
-          skuId: Schema.optional(Schema.String),
-          skuName: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => SkuAvailabilitySchema)),
     ),
   });
 export type SkusAvailabilityListOutput = typeof SkusAvailabilityListOutput.Type;
@@ -1683,30 +1297,7 @@ export type UsagesListInput = typeof UsagesListInput.Type;
 // Output Schema
 export const UsagesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   nextLink: Schema.optional(Schema.String),
-  value: Schema.optional(
-    Schema.Array(
-      Schema.Struct({
-        currentValue: Schema.Number,
-        limit: Schema.Number,
-        name: Schema.optional(
-          Schema.Struct({
-            localizedValue: Schema.optional(Schema.String),
-            value: Schema.optional(Schema.String),
-          }),
-        ),
-        unit: Schema.optional(
-          Schema.Literals([
-            "Count",
-            "Bytes",
-            "Seconds",
-            "Percent",
-            "CountPerSecond",
-            "BytesPerSecond",
-          ]),
-        ),
-      }),
-    ),
-  ),
+  value: Schema.optional(Schema.Array(Schema.suspend(() => UsageSchema))),
 });
 export type UsagesListOutput = typeof UsagesListOutput.Type;
 
@@ -1730,130 +1321,9 @@ export const VirtualMachinesCreateOrUpdateInput =
     location: Schema.String,
     name: Schema.optional(Schema.String),
     properties: Schema.optional(
-      Schema.Struct({
-        amountOfRam: Schema.Number,
-        controllers: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              id: Schema.optional(Schema.String),
-              name: Schema.optional(Schema.String),
-              subType: Schema.optional(Schema.String),
-              type: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        customization: Schema.optional(
-          Schema.Struct({
-            dnsServers: Schema.optional(Schema.Array(Schema.String)),
-            hostName: Schema.optional(Schema.String),
-            password: Schema.optional(SensitiveString),
-            policyId: Schema.optional(Schema.String),
-            username: Schema.optional(Schema.String),
-          }),
-        ),
-        disks: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              controllerId: Schema.String,
-              independenceMode: Schema.Literals([
-                "persistent",
-                "independent_persistent",
-                "independent_nonpersistent",
-              ]),
-              totalSize: Schema.Number,
-              virtualDiskId: Schema.optional(Schema.String),
-              virtualDiskName: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        dnsname: Schema.optional(Schema.String),
-        exposeToGuestVM: Schema.optional(Schema.Boolean),
-        folder: Schema.optional(Schema.String),
-        guestOS: Schema.optional(Schema.String),
-        guestOSType: Schema.optional(
-          Schema.Literals(["linux", "windows", "other"]),
-        ),
-        nics: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              customization: Schema.optional(
-                Schema.Struct({
-                  allocation: Schema.optional(
-                    Schema.Literals(["static", "dynamic"]),
-                  ),
-                  dnsServers: Schema.optional(Schema.Array(Schema.String)),
-                  gateway: Schema.optional(Schema.Array(Schema.String)),
-                  ipAddress: Schema.optional(Schema.String),
-                  mask: Schema.optional(Schema.String),
-                  primaryWinsServer: Schema.optional(Schema.String),
-                  secondaryWinsServer: Schema.optional(Schema.String),
-                }),
-              ),
-              ipAddresses: Schema.optional(Schema.Array(Schema.String)),
-              macAddress: Schema.optional(Schema.String),
-              network: Schema.Struct({
-                assignable: Schema.optional(Schema.Boolean),
-                id: Schema.String,
-                location: Schema.optional(Schema.String),
-                name: Schema.optional(Schema.String),
-                properties: Schema.optional(
-                  Schema.Struct({
-                    privateCloudId: Schema.optional(Schema.String),
-                  }),
-                ),
-                type: Schema.optional(Schema.String),
-              }),
-              nicType: Schema.Literals([
-                "E1000",
-                "E1000E",
-                "PCNET32",
-                "VMXNET",
-                "VMXNET2",
-                "VMXNET3",
-              ]),
-              powerOnBoot: Schema.optional(Schema.Boolean),
-              virtualNicId: Schema.optional(Schema.String),
-              virtualNicName: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        numberOfCores: Schema.Number,
-        password: Schema.optional(SensitiveString),
-        privateCloudId: Schema.String,
-        provisioningState: Schema.optional(Schema.String),
-        publicIP: Schema.optional(Schema.String),
-        resourcePool: Schema.optional(
-          Schema.Struct({
-            id: Schema.String,
-            location: Schema.optional(Schema.String),
-            name: Schema.optional(Schema.String),
-            privateCloudId: Schema.optional(Schema.String),
-            properties: Schema.optional(
-              Schema.Struct({
-                fullName: Schema.optional(Schema.String),
-              }),
-            ),
-            type: Schema.optional(Schema.String),
-          }),
-        ),
-        status: Schema.optional(
-          Schema.Literals([
-            "running",
-            "suspended",
-            "poweredoff",
-            "updating",
-            "deallocating",
-            "deleting",
-          ]),
-        ),
-        templateId: Schema.optional(Schema.String),
-        username: Schema.optional(Schema.String),
-        vSphereNetworks: Schema.optional(Schema.Array(Schema.String)),
-        vmId: Schema.optional(Schema.String),
-        vmwaretools: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(() => VirtualMachinePropertiesSchema),
     ),
-    tags: Schema.optional(Schema.Unknown),
+    tags: Schema.optional(Schema.suspend(() => TagsSchema)),
     type: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
@@ -1873,130 +1343,9 @@ export const VirtualMachinesCreateOrUpdateOutput =
     location: Schema.String,
     name: Schema.optional(Schema.String),
     properties: Schema.optional(
-      Schema.Struct({
-        amountOfRam: Schema.Number,
-        controllers: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              id: Schema.optional(Schema.String),
-              name: Schema.optional(Schema.String),
-              subType: Schema.optional(Schema.String),
-              type: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        customization: Schema.optional(
-          Schema.Struct({
-            dnsServers: Schema.optional(Schema.Array(Schema.String)),
-            hostName: Schema.optional(Schema.String),
-            password: Schema.optional(SensitiveOutputString),
-            policyId: Schema.optional(Schema.String),
-            username: Schema.optional(Schema.String),
-          }),
-        ),
-        disks: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              controllerId: Schema.String,
-              independenceMode: Schema.Literals([
-                "persistent",
-                "independent_persistent",
-                "independent_nonpersistent",
-              ]),
-              totalSize: Schema.Number,
-              virtualDiskId: Schema.optional(Schema.String),
-              virtualDiskName: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        dnsname: Schema.optional(Schema.String),
-        exposeToGuestVM: Schema.optional(Schema.Boolean),
-        folder: Schema.optional(Schema.String),
-        guestOS: Schema.optional(Schema.String),
-        guestOSType: Schema.optional(
-          Schema.Literals(["linux", "windows", "other"]),
-        ),
-        nics: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              customization: Schema.optional(
-                Schema.Struct({
-                  allocation: Schema.optional(
-                    Schema.Literals(["static", "dynamic"]),
-                  ),
-                  dnsServers: Schema.optional(Schema.Array(Schema.String)),
-                  gateway: Schema.optional(Schema.Array(Schema.String)),
-                  ipAddress: Schema.optional(Schema.String),
-                  mask: Schema.optional(Schema.String),
-                  primaryWinsServer: Schema.optional(Schema.String),
-                  secondaryWinsServer: Schema.optional(Schema.String),
-                }),
-              ),
-              ipAddresses: Schema.optional(Schema.Array(Schema.String)),
-              macAddress: Schema.optional(Schema.String),
-              network: Schema.Struct({
-                assignable: Schema.optional(Schema.Boolean),
-                id: Schema.String,
-                location: Schema.optional(Schema.String),
-                name: Schema.optional(Schema.String),
-                properties: Schema.optional(
-                  Schema.Struct({
-                    privateCloudId: Schema.optional(Schema.String),
-                  }),
-                ),
-                type: Schema.optional(Schema.String),
-              }),
-              nicType: Schema.Literals([
-                "E1000",
-                "E1000E",
-                "PCNET32",
-                "VMXNET",
-                "VMXNET2",
-                "VMXNET3",
-              ]),
-              powerOnBoot: Schema.optional(Schema.Boolean),
-              virtualNicId: Schema.optional(Schema.String),
-              virtualNicName: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        numberOfCores: Schema.Number,
-        password: Schema.optional(SensitiveOutputString),
-        privateCloudId: Schema.String,
-        provisioningState: Schema.optional(Schema.String),
-        publicIP: Schema.optional(Schema.String),
-        resourcePool: Schema.optional(
-          Schema.Struct({
-            id: Schema.String,
-            location: Schema.optional(Schema.String),
-            name: Schema.optional(Schema.String),
-            privateCloudId: Schema.optional(Schema.String),
-            properties: Schema.optional(
-              Schema.Struct({
-                fullName: Schema.optional(Schema.String),
-              }),
-            ),
-            type: Schema.optional(Schema.String),
-          }),
-        ),
-        status: Schema.optional(
-          Schema.Literals([
-            "running",
-            "suspended",
-            "poweredoff",
-            "updating",
-            "deallocating",
-            "deleting",
-          ]),
-        ),
-        templateId: Schema.optional(Schema.String),
-        username: Schema.optional(Schema.String),
-        vSphereNetworks: Schema.optional(Schema.Array(Schema.String)),
-        vmId: Schema.optional(Schema.String),
-        vmwaretools: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(() => VirtualMachinePropertiesSchema),
     ),
-    tags: Schema.optional(Schema.Unknown),
+    tags: Schema.optional(Schema.suspend(() => TagsSchema)),
     type: Schema.optional(Schema.String),
   });
 export type VirtualMachinesCreateOrUpdateOutput =
@@ -2069,130 +1418,9 @@ export const VirtualMachinesGetOutput =
     location: Schema.String,
     name: Schema.optional(Schema.String),
     properties: Schema.optional(
-      Schema.Struct({
-        amountOfRam: Schema.Number,
-        controllers: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              id: Schema.optional(Schema.String),
-              name: Schema.optional(Schema.String),
-              subType: Schema.optional(Schema.String),
-              type: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        customization: Schema.optional(
-          Schema.Struct({
-            dnsServers: Schema.optional(Schema.Array(Schema.String)),
-            hostName: Schema.optional(Schema.String),
-            password: Schema.optional(SensitiveOutputString),
-            policyId: Schema.optional(Schema.String),
-            username: Schema.optional(Schema.String),
-          }),
-        ),
-        disks: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              controllerId: Schema.String,
-              independenceMode: Schema.Literals([
-                "persistent",
-                "independent_persistent",
-                "independent_nonpersistent",
-              ]),
-              totalSize: Schema.Number,
-              virtualDiskId: Schema.optional(Schema.String),
-              virtualDiskName: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        dnsname: Schema.optional(Schema.String),
-        exposeToGuestVM: Schema.optional(Schema.Boolean),
-        folder: Schema.optional(Schema.String),
-        guestOS: Schema.optional(Schema.String),
-        guestOSType: Schema.optional(
-          Schema.Literals(["linux", "windows", "other"]),
-        ),
-        nics: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              customization: Schema.optional(
-                Schema.Struct({
-                  allocation: Schema.optional(
-                    Schema.Literals(["static", "dynamic"]),
-                  ),
-                  dnsServers: Schema.optional(Schema.Array(Schema.String)),
-                  gateway: Schema.optional(Schema.Array(Schema.String)),
-                  ipAddress: Schema.optional(Schema.String),
-                  mask: Schema.optional(Schema.String),
-                  primaryWinsServer: Schema.optional(Schema.String),
-                  secondaryWinsServer: Schema.optional(Schema.String),
-                }),
-              ),
-              ipAddresses: Schema.optional(Schema.Array(Schema.String)),
-              macAddress: Schema.optional(Schema.String),
-              network: Schema.Struct({
-                assignable: Schema.optional(Schema.Boolean),
-                id: Schema.String,
-                location: Schema.optional(Schema.String),
-                name: Schema.optional(Schema.String),
-                properties: Schema.optional(
-                  Schema.Struct({
-                    privateCloudId: Schema.optional(Schema.String),
-                  }),
-                ),
-                type: Schema.optional(Schema.String),
-              }),
-              nicType: Schema.Literals([
-                "E1000",
-                "E1000E",
-                "PCNET32",
-                "VMXNET",
-                "VMXNET2",
-                "VMXNET3",
-              ]),
-              powerOnBoot: Schema.optional(Schema.Boolean),
-              virtualNicId: Schema.optional(Schema.String),
-              virtualNicName: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        numberOfCores: Schema.Number,
-        password: Schema.optional(SensitiveOutputString),
-        privateCloudId: Schema.String,
-        provisioningState: Schema.optional(Schema.String),
-        publicIP: Schema.optional(Schema.String),
-        resourcePool: Schema.optional(
-          Schema.Struct({
-            id: Schema.String,
-            location: Schema.optional(Schema.String),
-            name: Schema.optional(Schema.String),
-            privateCloudId: Schema.optional(Schema.String),
-            properties: Schema.optional(
-              Schema.Struct({
-                fullName: Schema.optional(Schema.String),
-              }),
-            ),
-            type: Schema.optional(Schema.String),
-          }),
-        ),
-        status: Schema.optional(
-          Schema.Literals([
-            "running",
-            "suspended",
-            "poweredoff",
-            "updating",
-            "deallocating",
-            "deleting",
-          ]),
-        ),
-        templateId: Schema.optional(Schema.String),
-        username: Schema.optional(Schema.String),
-        vSphereNetworks: Schema.optional(Schema.Array(Schema.String)),
-        vmId: Schema.optional(Schema.String),
-        vmwaretools: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(() => VirtualMachinePropertiesSchema),
     ),
-    tags: Schema.optional(Schema.Unknown),
+    tags: Schema.optional(Schema.suspend(() => TagsSchema)),
     type: Schema.optional(Schema.String),
   });
 export type VirtualMachinesGetOutput = typeof VirtualMachinesGetOutput.Type;
@@ -2230,141 +1458,7 @@ export const VirtualMachinesListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          location: Schema.String,
-          name: Schema.optional(Schema.String),
-          properties: Schema.optional(
-            Schema.Struct({
-              amountOfRam: Schema.Number,
-              controllers: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    id: Schema.optional(Schema.String),
-                    name: Schema.optional(Schema.String),
-                    subType: Schema.optional(Schema.String),
-                    type: Schema.optional(Schema.String),
-                  }),
-                ),
-              ),
-              customization: Schema.optional(
-                Schema.Struct({
-                  dnsServers: Schema.optional(Schema.Array(Schema.String)),
-                  hostName: Schema.optional(Schema.String),
-                  password: Schema.optional(SensitiveOutputString),
-                  policyId: Schema.optional(Schema.String),
-                  username: Schema.optional(Schema.String),
-                }),
-              ),
-              disks: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    controllerId: Schema.String,
-                    independenceMode: Schema.Literals([
-                      "persistent",
-                      "independent_persistent",
-                      "independent_nonpersistent",
-                    ]),
-                    totalSize: Schema.Number,
-                    virtualDiskId: Schema.optional(Schema.String),
-                    virtualDiskName: Schema.optional(Schema.String),
-                  }),
-                ),
-              ),
-              dnsname: Schema.optional(Schema.String),
-              exposeToGuestVM: Schema.optional(Schema.Boolean),
-              folder: Schema.optional(Schema.String),
-              guestOS: Schema.optional(Schema.String),
-              guestOSType: Schema.optional(
-                Schema.Literals(["linux", "windows", "other"]),
-              ),
-              nics: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    customization: Schema.optional(
-                      Schema.Struct({
-                        allocation: Schema.optional(
-                          Schema.Literals(["static", "dynamic"]),
-                        ),
-                        dnsServers: Schema.optional(
-                          Schema.Array(Schema.String),
-                        ),
-                        gateway: Schema.optional(Schema.Array(Schema.String)),
-                        ipAddress: Schema.optional(Schema.String),
-                        mask: Schema.optional(Schema.String),
-                        primaryWinsServer: Schema.optional(Schema.String),
-                        secondaryWinsServer: Schema.optional(Schema.String),
-                      }),
-                    ),
-                    ipAddresses: Schema.optional(Schema.Array(Schema.String)),
-                    macAddress: Schema.optional(Schema.String),
-                    network: Schema.Struct({
-                      assignable: Schema.optional(Schema.Boolean),
-                      id: Schema.String,
-                      location: Schema.optional(Schema.String),
-                      name: Schema.optional(Schema.String),
-                      properties: Schema.optional(
-                        Schema.Struct({
-                          privateCloudId: Schema.optional(Schema.String),
-                        }),
-                      ),
-                      type: Schema.optional(Schema.String),
-                    }),
-                    nicType: Schema.Literals([
-                      "E1000",
-                      "E1000E",
-                      "PCNET32",
-                      "VMXNET",
-                      "VMXNET2",
-                      "VMXNET3",
-                    ]),
-                    powerOnBoot: Schema.optional(Schema.Boolean),
-                    virtualNicId: Schema.optional(Schema.String),
-                    virtualNicName: Schema.optional(Schema.String),
-                  }),
-                ),
-              ),
-              numberOfCores: Schema.Number,
-              password: Schema.optional(SensitiveOutputString),
-              privateCloudId: Schema.String,
-              provisioningState: Schema.optional(Schema.String),
-              publicIP: Schema.optional(Schema.String),
-              resourcePool: Schema.optional(
-                Schema.Struct({
-                  id: Schema.String,
-                  location: Schema.optional(Schema.String),
-                  name: Schema.optional(Schema.String),
-                  privateCloudId: Schema.optional(Schema.String),
-                  properties: Schema.optional(
-                    Schema.Struct({
-                      fullName: Schema.optional(Schema.String),
-                    }),
-                  ),
-                  type: Schema.optional(Schema.String),
-                }),
-              ),
-              status: Schema.optional(
-                Schema.Literals([
-                  "running",
-                  "suspended",
-                  "poweredoff",
-                  "updating",
-                  "deallocating",
-                  "deleting",
-                ]),
-              ),
-              templateId: Schema.optional(Schema.String),
-              username: Schema.optional(Schema.String),
-              vSphereNetworks: Schema.optional(Schema.Array(Schema.String)),
-              vmId: Schema.optional(Schema.String),
-              vmwaretools: Schema.optional(Schema.String),
-            }),
-          ),
-          tags: Schema.optional(Schema.Unknown),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => VirtualMachineSchema)),
     ),
   });
 export type VirtualMachinesListByResourceGroupOutput =
@@ -2406,141 +1500,7 @@ export const VirtualMachinesListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          location: Schema.String,
-          name: Schema.optional(Schema.String),
-          properties: Schema.optional(
-            Schema.Struct({
-              amountOfRam: Schema.Number,
-              controllers: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    id: Schema.optional(Schema.String),
-                    name: Schema.optional(Schema.String),
-                    subType: Schema.optional(Schema.String),
-                    type: Schema.optional(Schema.String),
-                  }),
-                ),
-              ),
-              customization: Schema.optional(
-                Schema.Struct({
-                  dnsServers: Schema.optional(Schema.Array(Schema.String)),
-                  hostName: Schema.optional(Schema.String),
-                  password: Schema.optional(SensitiveOutputString),
-                  policyId: Schema.optional(Schema.String),
-                  username: Schema.optional(Schema.String),
-                }),
-              ),
-              disks: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    controllerId: Schema.String,
-                    independenceMode: Schema.Literals([
-                      "persistent",
-                      "independent_persistent",
-                      "independent_nonpersistent",
-                    ]),
-                    totalSize: Schema.Number,
-                    virtualDiskId: Schema.optional(Schema.String),
-                    virtualDiskName: Schema.optional(Schema.String),
-                  }),
-                ),
-              ),
-              dnsname: Schema.optional(Schema.String),
-              exposeToGuestVM: Schema.optional(Schema.Boolean),
-              folder: Schema.optional(Schema.String),
-              guestOS: Schema.optional(Schema.String),
-              guestOSType: Schema.optional(
-                Schema.Literals(["linux", "windows", "other"]),
-              ),
-              nics: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    customization: Schema.optional(
-                      Schema.Struct({
-                        allocation: Schema.optional(
-                          Schema.Literals(["static", "dynamic"]),
-                        ),
-                        dnsServers: Schema.optional(
-                          Schema.Array(Schema.String),
-                        ),
-                        gateway: Schema.optional(Schema.Array(Schema.String)),
-                        ipAddress: Schema.optional(Schema.String),
-                        mask: Schema.optional(Schema.String),
-                        primaryWinsServer: Schema.optional(Schema.String),
-                        secondaryWinsServer: Schema.optional(Schema.String),
-                      }),
-                    ),
-                    ipAddresses: Schema.optional(Schema.Array(Schema.String)),
-                    macAddress: Schema.optional(Schema.String),
-                    network: Schema.Struct({
-                      assignable: Schema.optional(Schema.Boolean),
-                      id: Schema.String,
-                      location: Schema.optional(Schema.String),
-                      name: Schema.optional(Schema.String),
-                      properties: Schema.optional(
-                        Schema.Struct({
-                          privateCloudId: Schema.optional(Schema.String),
-                        }),
-                      ),
-                      type: Schema.optional(Schema.String),
-                    }),
-                    nicType: Schema.Literals([
-                      "E1000",
-                      "E1000E",
-                      "PCNET32",
-                      "VMXNET",
-                      "VMXNET2",
-                      "VMXNET3",
-                    ]),
-                    powerOnBoot: Schema.optional(Schema.Boolean),
-                    virtualNicId: Schema.optional(Schema.String),
-                    virtualNicName: Schema.optional(Schema.String),
-                  }),
-                ),
-              ),
-              numberOfCores: Schema.Number,
-              password: Schema.optional(SensitiveOutputString),
-              privateCloudId: Schema.String,
-              provisioningState: Schema.optional(Schema.String),
-              publicIP: Schema.optional(Schema.String),
-              resourcePool: Schema.optional(
-                Schema.Struct({
-                  id: Schema.String,
-                  location: Schema.optional(Schema.String),
-                  name: Schema.optional(Schema.String),
-                  privateCloudId: Schema.optional(Schema.String),
-                  properties: Schema.optional(
-                    Schema.Struct({
-                      fullName: Schema.optional(Schema.String),
-                    }),
-                  ),
-                  type: Schema.optional(Schema.String),
-                }),
-              ),
-              status: Schema.optional(
-                Schema.Literals([
-                  "running",
-                  "suspended",
-                  "poweredoff",
-                  "updating",
-                  "deallocating",
-                  "deleting",
-                ]),
-              ),
-              templateId: Schema.optional(Schema.String),
-              username: Schema.optional(Schema.String),
-              vSphereNetworks: Schema.optional(Schema.Array(Schema.String)),
-              vmId: Schema.optional(Schema.String),
-              vmwaretools: Schema.optional(Schema.String),
-            }),
-          ),
-          tags: Schema.optional(Schema.Unknown),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => VirtualMachineSchema)),
     ),
   });
 export type VirtualMachinesListBySubscriptionOutput =
@@ -2633,7 +1593,7 @@ export const VirtualMachinesStop = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const VirtualMachinesUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     virtualMachineName: Schema.String.pipe(T.PathParam()),
-    tags: Schema.optional(Schema.Unknown),
+    tags: Schema.optional(Schema.suspend(() => TagsSchema)),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -2651,130 +1611,9 @@ export const VirtualMachinesUpdateOutput =
     location: Schema.String,
     name: Schema.optional(Schema.String),
     properties: Schema.optional(
-      Schema.Struct({
-        amountOfRam: Schema.Number,
-        controllers: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              id: Schema.optional(Schema.String),
-              name: Schema.optional(Schema.String),
-              subType: Schema.optional(Schema.String),
-              type: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        customization: Schema.optional(
-          Schema.Struct({
-            dnsServers: Schema.optional(Schema.Array(Schema.String)),
-            hostName: Schema.optional(Schema.String),
-            password: Schema.optional(SensitiveOutputString),
-            policyId: Schema.optional(Schema.String),
-            username: Schema.optional(Schema.String),
-          }),
-        ),
-        disks: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              controllerId: Schema.String,
-              independenceMode: Schema.Literals([
-                "persistent",
-                "independent_persistent",
-                "independent_nonpersistent",
-              ]),
-              totalSize: Schema.Number,
-              virtualDiskId: Schema.optional(Schema.String),
-              virtualDiskName: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        dnsname: Schema.optional(Schema.String),
-        exposeToGuestVM: Schema.optional(Schema.Boolean),
-        folder: Schema.optional(Schema.String),
-        guestOS: Schema.optional(Schema.String),
-        guestOSType: Schema.optional(
-          Schema.Literals(["linux", "windows", "other"]),
-        ),
-        nics: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              customization: Schema.optional(
-                Schema.Struct({
-                  allocation: Schema.optional(
-                    Schema.Literals(["static", "dynamic"]),
-                  ),
-                  dnsServers: Schema.optional(Schema.Array(Schema.String)),
-                  gateway: Schema.optional(Schema.Array(Schema.String)),
-                  ipAddress: Schema.optional(Schema.String),
-                  mask: Schema.optional(Schema.String),
-                  primaryWinsServer: Schema.optional(Schema.String),
-                  secondaryWinsServer: Schema.optional(Schema.String),
-                }),
-              ),
-              ipAddresses: Schema.optional(Schema.Array(Schema.String)),
-              macAddress: Schema.optional(Schema.String),
-              network: Schema.Struct({
-                assignable: Schema.optional(Schema.Boolean),
-                id: Schema.String,
-                location: Schema.optional(Schema.String),
-                name: Schema.optional(Schema.String),
-                properties: Schema.optional(
-                  Schema.Struct({
-                    privateCloudId: Schema.optional(Schema.String),
-                  }),
-                ),
-                type: Schema.optional(Schema.String),
-              }),
-              nicType: Schema.Literals([
-                "E1000",
-                "E1000E",
-                "PCNET32",
-                "VMXNET",
-                "VMXNET2",
-                "VMXNET3",
-              ]),
-              powerOnBoot: Schema.optional(Schema.Boolean),
-              virtualNicId: Schema.optional(Schema.String),
-              virtualNicName: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        numberOfCores: Schema.Number,
-        password: Schema.optional(SensitiveOutputString),
-        privateCloudId: Schema.String,
-        provisioningState: Schema.optional(Schema.String),
-        publicIP: Schema.optional(Schema.String),
-        resourcePool: Schema.optional(
-          Schema.Struct({
-            id: Schema.String,
-            location: Schema.optional(Schema.String),
-            name: Schema.optional(Schema.String),
-            privateCloudId: Schema.optional(Schema.String),
-            properties: Schema.optional(
-              Schema.Struct({
-                fullName: Schema.optional(Schema.String),
-              }),
-            ),
-            type: Schema.optional(Schema.String),
-          }),
-        ),
-        status: Schema.optional(
-          Schema.Literals([
-            "running",
-            "suspended",
-            "poweredoff",
-            "updating",
-            "deallocating",
-            "deleting",
-          ]),
-        ),
-        templateId: Schema.optional(Schema.String),
-        username: Schema.optional(Schema.String),
-        vSphereNetworks: Schema.optional(Schema.Array(Schema.String)),
-        vmId: Schema.optional(Schema.String),
-        vmwaretools: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(() => VirtualMachinePropertiesSchema),
     ),
-    tags: Schema.optional(Schema.Unknown),
+    tags: Schema.optional(Schema.suspend(() => TagsSchema)),
     type: Schema.optional(Schema.String),
   });
 export type VirtualMachinesUpdateOutput =
@@ -2815,88 +1654,7 @@ export const VirtualMachineTemplatesGetOutput =
     location: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     properties: Schema.optional(
-      Schema.Struct({
-        amountOfRam: Schema.optional(Schema.Number),
-        controllers: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              id: Schema.optional(Schema.String),
-              name: Schema.optional(Schema.String),
-              subType: Schema.optional(Schema.String),
-              type: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        description: Schema.optional(Schema.String),
-        disks: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              controllerId: Schema.String,
-              independenceMode: Schema.Literals([
-                "persistent",
-                "independent_persistent",
-                "independent_nonpersistent",
-              ]),
-              totalSize: Schema.Number,
-              virtualDiskId: Schema.optional(Schema.String),
-              virtualDiskName: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        exposeToGuestVM: Schema.optional(Schema.Boolean),
-        guestOS: Schema.optional(Schema.String),
-        guestOSType: Schema.optional(Schema.String),
-        nics: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              customization: Schema.optional(
-                Schema.Struct({
-                  allocation: Schema.optional(
-                    Schema.Literals(["static", "dynamic"]),
-                  ),
-                  dnsServers: Schema.optional(Schema.Array(Schema.String)),
-                  gateway: Schema.optional(Schema.Array(Schema.String)),
-                  ipAddress: Schema.optional(Schema.String),
-                  mask: Schema.optional(Schema.String),
-                  primaryWinsServer: Schema.optional(Schema.String),
-                  secondaryWinsServer: Schema.optional(Schema.String),
-                }),
-              ),
-              ipAddresses: Schema.optional(Schema.Array(Schema.String)),
-              macAddress: Schema.optional(Schema.String),
-              network: Schema.Struct({
-                assignable: Schema.optional(Schema.Boolean),
-                id: Schema.String,
-                location: Schema.optional(Schema.String),
-                name: Schema.optional(Schema.String),
-                properties: Schema.optional(
-                  Schema.Struct({
-                    privateCloudId: Schema.optional(Schema.String),
-                  }),
-                ),
-                type: Schema.optional(Schema.String),
-              }),
-              nicType: Schema.Literals([
-                "E1000",
-                "E1000E",
-                "PCNET32",
-                "VMXNET",
-                "VMXNET2",
-                "VMXNET3",
-              ]),
-              powerOnBoot: Schema.optional(Schema.Boolean),
-              virtualNicId: Schema.optional(Schema.String),
-              virtualNicName: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        numberOfCores: Schema.optional(Schema.Number),
-        path: Schema.optional(Schema.String),
-        privateCloudId: Schema.String,
-        vSphereNetworks: Schema.optional(Schema.Array(Schema.String)),
-        vSphereTags: Schema.optional(Schema.Array(Schema.String)),
-        vmwaretools: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(() => VirtualMachineTemplatePropertiesSchema),
     ),
     type: Schema.optional(Schema.String),
   });
@@ -2936,100 +1694,7 @@ export const VirtualMachineTemplatesListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          location: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          properties: Schema.optional(
-            Schema.Struct({
-              amountOfRam: Schema.optional(Schema.Number),
-              controllers: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    id: Schema.optional(Schema.String),
-                    name: Schema.optional(Schema.String),
-                    subType: Schema.optional(Schema.String),
-                    type: Schema.optional(Schema.String),
-                  }),
-                ),
-              ),
-              description: Schema.optional(Schema.String),
-              disks: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    controllerId: Schema.String,
-                    independenceMode: Schema.Literals([
-                      "persistent",
-                      "independent_persistent",
-                      "independent_nonpersistent",
-                    ]),
-                    totalSize: Schema.Number,
-                    virtualDiskId: Schema.optional(Schema.String),
-                    virtualDiskName: Schema.optional(Schema.String),
-                  }),
-                ),
-              ),
-              exposeToGuestVM: Schema.optional(Schema.Boolean),
-              guestOS: Schema.optional(Schema.String),
-              guestOSType: Schema.optional(Schema.String),
-              nics: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    customization: Schema.optional(
-                      Schema.Struct({
-                        allocation: Schema.optional(
-                          Schema.Literals(["static", "dynamic"]),
-                        ),
-                        dnsServers: Schema.optional(
-                          Schema.Array(Schema.String),
-                        ),
-                        gateway: Schema.optional(Schema.Array(Schema.String)),
-                        ipAddress: Schema.optional(Schema.String),
-                        mask: Schema.optional(Schema.String),
-                        primaryWinsServer: Schema.optional(Schema.String),
-                        secondaryWinsServer: Schema.optional(Schema.String),
-                      }),
-                    ),
-                    ipAddresses: Schema.optional(Schema.Array(Schema.String)),
-                    macAddress: Schema.optional(Schema.String),
-                    network: Schema.Struct({
-                      assignable: Schema.optional(Schema.Boolean),
-                      id: Schema.String,
-                      location: Schema.optional(Schema.String),
-                      name: Schema.optional(Schema.String),
-                      properties: Schema.optional(
-                        Schema.Struct({
-                          privateCloudId: Schema.optional(Schema.String),
-                        }),
-                      ),
-                      type: Schema.optional(Schema.String),
-                    }),
-                    nicType: Schema.Literals([
-                      "E1000",
-                      "E1000E",
-                      "PCNET32",
-                      "VMXNET",
-                      "VMXNET2",
-                      "VMXNET3",
-                    ]),
-                    powerOnBoot: Schema.optional(Schema.Boolean),
-                    virtualNicId: Schema.optional(Schema.String),
-                    virtualNicName: Schema.optional(Schema.String),
-                  }),
-                ),
-              ),
-              numberOfCores: Schema.optional(Schema.Number),
-              path: Schema.optional(Schema.String),
-              privateCloudId: Schema.String,
-              vSphereNetworks: Schema.optional(Schema.Array(Schema.String)),
-              vSphereTags: Schema.optional(Schema.Array(Schema.String)),
-              vmwaretools: Schema.optional(Schema.String),
-            }),
-          ),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => VirtualMachineTemplateSchema)),
     ),
   });
 export type VirtualMachineTemplatesListOutput =
@@ -3070,9 +1735,7 @@ export const VirtualNetworksGetOutput =
     location: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     properties: Schema.optional(
-      Schema.Struct({
-        privateCloudId: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(() => VirtualNetworkPropertiesSchema),
     ),
     type: Schema.optional(Schema.String),
   });
@@ -3108,20 +1771,7 @@ export const VirtualNetworksListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          assignable: Schema.optional(Schema.Boolean),
-          id: Schema.String,
-          location: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          properties: Schema.optional(
-            Schema.Struct({
-              privateCloudId: Schema.optional(Schema.String),
-            }),
-          ),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => VirtualNetworkSchema)),
     ),
   });
 export type VirtualNetworksListOutput = typeof VirtualNetworksListOutput.Type;

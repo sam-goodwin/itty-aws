@@ -7,7 +7,1095 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
-import { SensitiveString } from "../sensitive.ts";
+import { SensitiveOutputString } from "../sensitive.ts";
+
+// Shared schemas
+const IntegrationRuntimeSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  type: Schema.suspend(() => IntegrationRuntimeTypeSchema),
+  description: Schema.optional(Schema.String),
+});
+const IntegrationRuntimeTypeSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Literals(["Managed", "SelfHosted"]);
+const IntegrationRuntimeAutoUpdateSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Literals(["On", "Off"]);
+const SsisObjectMetadataSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  type: Schema.suspend(() => SsisObjectMetadataTypeSchema),
+  id: Schema.optional(Schema.Number),
+  name: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+});
+const SsisObjectMetadataTypeSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+    "Folder",
+    "Project",
+    "Package",
+    "Environment",
+  ]);
+const IntegrationRuntimeResourceSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
+const IntegrationRuntimeStatusSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    type: Schema.suspend(() => IntegrationRuntimeTypeSchema),
+    dataFactoryName: Schema.optional(Schema.String),
+    state: Schema.optional(Schema.suspend(() => IntegrationRuntimeStateSchema)),
+  });
+const IntegrationRuntimeStateSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+    "Initial",
+    "Stopped",
+    "Started",
+    "Starting",
+    "Stopping",
+    "NeedRegistration",
+    "Online",
+    "Limited",
+    "Offline",
+    "AccessDenied",
+  ]);
+const IntegrationRuntimeNodeMonitoringDataSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    nodeName: Schema.optional(Schema.String),
+    availableMemoryInMB: Schema.optional(Schema.Number),
+    cpuUtilization: Schema.optional(Schema.Number),
+    concurrentJobsLimit: Schema.optional(Schema.Number),
+    concurrentJobsRunning: Schema.optional(Schema.Number),
+    maxConcurrentJobs: Schema.optional(Schema.Number),
+    sentBytes: Schema.optional(Schema.Number),
+    receivedBytes: Schema.optional(Schema.Number),
+  });
+const IntegrationRuntimeOutboundNetworkDependenciesCategoryEndpointSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    category: Schema.optional(Schema.String),
+    endpoints: Schema.optional(
+      Schema.Array(
+        Schema.suspend(
+          () => IntegrationRuntimeOutboundNetworkDependenciesEndpointSchema,
+        ),
+      ),
+    ),
+  });
+const IntegrationRuntimeOutboundNetworkDependenciesEndpointSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    domainName: Schema.optional(Schema.String),
+    endpointDetails: Schema.optional(
+      Schema.Array(
+        Schema.suspend(
+          () =>
+            IntegrationRuntimeOutboundNetworkDependenciesEndpointDetailsSchema,
+        ),
+      ),
+    ),
+  });
+const IntegrationRuntimeOutboundNetworkDependenciesEndpointDetailsSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    port: Schema.optional(Schema.Number),
+  });
+const WorkspaceSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
+const WorkspacePropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  defaultDataLakeStorage: Schema.optional(
+    Schema.suspend(() => DataLakeStorageAccountDetailsSchema),
+  ),
+  sqlAdministratorLoginPassword: Schema.optional(SensitiveOutputString),
+  managedResourceGroupName: Schema.optional(Schema.String),
+  provisioningState: Schema.optional(Schema.String),
+  sqlAdministratorLogin: Schema.optional(Schema.String),
+  virtualNetworkProfile: Schema.optional(
+    Schema.suspend(() => VirtualNetworkProfileSchema),
+  ),
+  connectivityEndpoints: Schema.optional(
+    Schema.Record(Schema.String, Schema.String),
+  ),
+  managedVirtualNetwork: Schema.optional(Schema.String),
+  privateEndpointConnections: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+      }),
+    ),
+  ),
+  encryption: Schema.optional(Schema.suspend(() => EncryptionDetailsSchema)),
+  workspaceUID: Schema.optional(Schema.String),
+  extraProperties: Schema.optional(Schema.Unknown),
+  managedVirtualNetworkSettings: Schema.optional(
+    Schema.suspend(() => ManagedVirtualNetworkSettingsSchema),
+  ),
+  workspaceRepositoryConfiguration: Schema.optional(
+    Schema.suspend(() => WorkspaceRepositoryConfigurationSchema),
+  ),
+  purviewConfiguration: Schema.optional(
+    Schema.suspend(() => PurviewConfigurationSchema),
+  ),
+  adlaResourceId: Schema.optional(Schema.String),
+  publicNetworkAccess: Schema.optional(
+    Schema.Literals(["Enabled", "Disabled"]),
+  ),
+  cspWorkspaceAdminProperties: Schema.optional(
+    Schema.suspend(() => CspWorkspaceAdminPropertiesSchema),
+  ),
+  settings: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  azureADOnlyAuthentication: Schema.optional(Schema.Boolean),
+  trustedServiceBypassEnabled: Schema.optional(Schema.Boolean),
+});
+const DataLakeStorageAccountDetailsSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    accountUrl: Schema.optional(Schema.String),
+    filesystem: Schema.optional(Schema.String),
+    resourceId: Schema.optional(Schema.String),
+    createManagedPrivateEndpoint: Schema.optional(Schema.Boolean),
+  });
+const VirtualNetworkProfileSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  computeSubnetId: Schema.optional(Schema.String),
+});
+const EncryptionDetailsSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  doubleEncryptionEnabled: Schema.optional(Schema.Boolean),
+  cmk: Schema.optional(Schema.suspend(() => CustomerManagedKeyDetailsSchema)),
+});
+const CustomerManagedKeyDetailsSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    status: Schema.optional(Schema.String),
+    key: Schema.optional(Schema.suspend(() => WorkspaceKeyDetailsSchema)),
+    kekIdentity: Schema.optional(
+      Schema.suspend(() => KekIdentityPropertiesSchema),
+    ),
+  });
+const WorkspaceKeyDetailsSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  keyVaultUrl: Schema.optional(Schema.String),
+});
+const KekIdentityPropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  userAssignedIdentity: Schema.optional(Schema.String),
+  useSystemAssignedIdentity: Schema.optional(Schema.Unknown),
+});
+const ManagedVirtualNetworkSettingsSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    preventDataExfiltration: Schema.optional(Schema.Boolean),
+    linkedAccessCheckOnTargetResource: Schema.optional(Schema.Boolean),
+    allowedAadTenantIdsForLinking: Schema.optional(Schema.Array(Schema.String)),
+  });
+const WorkspaceRepositoryConfigurationSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    type: Schema.optional(Schema.String),
+    hostName: Schema.optional(Schema.String),
+    accountName: Schema.optional(Schema.String),
+    projectName: Schema.optional(Schema.String),
+    repositoryName: Schema.optional(Schema.String),
+    collaborationBranch: Schema.optional(Schema.String),
+    rootFolder: Schema.optional(Schema.String),
+    lastCommitId: Schema.optional(Schema.String),
+    tenantId: Schema.optional(Schema.String),
+  });
+const PurviewConfigurationSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  purviewResourceId: Schema.optional(Schema.String),
+});
+const CspWorkspaceAdminPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    initialWorkspaceAdminObjectId: Schema.optional(Schema.String),
+  });
+const ManagedIdentitySchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  principalId: Schema.optional(Schema.String),
+  tenantId: Schema.optional(Schema.String),
+  type: Schema.optional(
+    Schema.Literals(["None", "SystemAssigned", "SystemAssigned,UserAssigned"]),
+  ),
+  userAssignedIdentities: Schema.optional(
+    Schema.suspend(() => UserAssignedManagedIdentitiesSchema),
+  ),
+});
+const UserAssignedManagedIdentitiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Record(
+    Schema.String,
+    Schema.suspend(() => UserAssignedManagedIdentitySchema),
+  );
+const UserAssignedManagedIdentitySchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    clientId: Schema.optional(Schema.NullOr(Schema.String)),
+    principalId: Schema.optional(Schema.NullOr(Schema.String)),
+  });
+const WorkspacePatchPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    sqlAdministratorLoginPassword: Schema.optional(SensitiveOutputString),
+    managedVirtualNetworkSettings: Schema.optional(
+      Schema.suspend(() => ManagedVirtualNetworkSettingsSchema),
+    ),
+    workspaceRepositoryConfiguration: Schema.optional(
+      Schema.suspend(() => WorkspaceRepositoryConfigurationSchema),
+    ),
+    purviewConfiguration: Schema.optional(
+      Schema.suspend(() => PurviewConfigurationSchema),
+    ),
+    provisioningState: Schema.optional(Schema.String),
+    encryption: Schema.optional(Schema.suspend(() => EncryptionDetailsSchema)),
+    publicNetworkAccess: Schema.optional(
+      Schema.Literals(["Enabled", "Disabled"]),
+    ),
+  });
+const AadAdminPropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  tenantId: Schema.optional(Schema.String),
+  login: Schema.optional(Schema.String),
+  administratorType: Schema.optional(Schema.String),
+  sid: Schema.optional(Schema.String),
+});
+const RestorableDroppedSqlPoolPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    databaseName: Schema.optional(Schema.String),
+    edition: Schema.optional(Schema.String),
+    maxSizeBytes: Schema.optional(Schema.String),
+    serviceLevelObjective: Schema.optional(Schema.String),
+    elasticPoolName: Schema.optional(Schema.String),
+    creationDate: Schema.optional(Schema.String),
+    deletionDate: Schema.optional(Schema.String),
+    earliestRestoreDate: Schema.optional(Schema.String),
+  });
+const RestorableDroppedSqlPoolSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
+const AzureADOnlyAuthenticationPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    azureADOnlyAuthentication: Schema.Boolean,
+    state: Schema.optional(
+      Schema.Literals(["Consistent", "InConsistent", "Updating"]),
+    ),
+    creationDate: Schema.optional(Schema.String),
+  });
+const AzureADOnlyAuthenticationSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
+const SkuSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  tier: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  capacity: Schema.optional(Schema.Number),
+});
+const SqlPoolResourcePropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    maxSizeBytes: Schema.optional(Schema.Number),
+    collation: Schema.optional(Schema.String),
+    sourceDatabaseId: Schema.optional(Schema.String),
+    recoverableDatabaseId: Schema.optional(Schema.String),
+    provisioningState: Schema.optional(Schema.String),
+    status: Schema.optional(Schema.String),
+    restorePointInTime: Schema.optional(Schema.String),
+    createMode: Schema.optional(
+      Schema.Literals(["Default", "PointInTimeRestore", "Recovery", "Restore"]),
+    ),
+    creationDate: Schema.optional(Schema.String),
+    storageAccountType: Schema.optional(Schema.Literals(["GRS", "LRS"])),
+    sourceDatabaseDeletionDate: Schema.optional(Schema.String),
+  });
+const SqlPoolSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
+const GeoBackupPolicySchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
+const GeoBackupPolicyPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    state: Schema.Literals(["Disabled", "Enabled"]),
+    storageType: Schema.optional(Schema.String),
+  });
+const DataWarehouseUserActivitiesPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    activeQueriesCount: Schema.optional(Schema.Number),
+  });
+const RestorePointSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
+const RestorePointPropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  restorePointType: Schema.optional(
+    Schema.Literals(["CONTINUOUS", "DISCRETE"]),
+  ),
+  earliestRestoreDate: Schema.optional(Schema.String),
+  restorePointCreationDate: Schema.optional(Schema.String),
+  restorePointLabel: Schema.optional(Schema.String),
+});
+const ReplicationLinkSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
+const ReplicationLinkPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    isTerminationAllowed: Schema.optional(Schema.Boolean),
+    replicationMode: Schema.optional(Schema.String),
+    partnerServer: Schema.optional(Schema.String),
+    partnerDatabase: Schema.optional(Schema.String),
+    partnerLocation: Schema.optional(Schema.String),
+    role: Schema.optional(
+      Schema.Literals([
+        "Primary",
+        "Secondary",
+        "NonReadableSecondary",
+        "Source",
+        "Copy",
+      ]),
+    ),
+    partnerRole: Schema.optional(
+      Schema.Literals([
+        "Primary",
+        "Secondary",
+        "NonReadableSecondary",
+        "Source",
+        "Copy",
+      ]),
+    ),
+    startTime: Schema.optional(Schema.String),
+    percentComplete: Schema.optional(Schema.Number),
+    replicationState: Schema.optional(
+      Schema.Literals(["PENDING", "SEEDING", "CATCH_UP", "SUSPENDED"]),
+    ),
+  });
+const MaintenanceWindowsPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    timeRanges: Schema.optional(
+      Schema.Array(Schema.suspend(() => MaintenanceWindowTimeRangeSchema)),
+    ),
+  });
+const MaintenanceWindowTimeRangeSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    dayOfWeek: Schema.optional(
+      Schema.Literals([
+        "Sunday",
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday",
+      ]),
+    ),
+    startTime: Schema.optional(Schema.String),
+    duration: Schema.optional(Schema.String),
+  });
+const MaintenanceWindowOptionsPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    isEnabled: Schema.optional(Schema.Boolean),
+    maintenanceWindowCycles: Schema.optional(
+      Schema.Array(Schema.suspend(() => MaintenanceWindowTimeRangeSchema)),
+    ),
+    minDurationInMinutes: Schema.optional(Schema.Number),
+    defaultDurationInMinutes: Schema.optional(Schema.Number),
+    minCycles: Schema.optional(Schema.Number),
+    timeGranularityInMinutes: Schema.optional(Schema.Number),
+    allowMultipleMaintenanceWindowsPerCycle: Schema.optional(Schema.Boolean),
+  });
+const TransparentDataEncryptionPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    status: Schema.optional(Schema.Literals(["Enabled", "Disabled"])),
+  });
+const TransparentDataEncryptionSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
+const SqlPoolBlobAuditingPolicyPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    state: Schema.Literals(["Enabled", "Disabled"]),
+    storageEndpoint: Schema.optional(Schema.String),
+    storageAccountAccessKey: Schema.optional(Schema.String),
+    retentionDays: Schema.optional(Schema.Number),
+    auditActionsAndGroups: Schema.optional(Schema.Array(Schema.String)),
+    storageAccountSubscriptionId: Schema.optional(Schema.String),
+    isStorageSecondaryKeyInUse: Schema.optional(Schema.Boolean),
+    isAzureMonitorTargetEnabled: Schema.optional(Schema.Boolean),
+  });
+const SqlPoolOperationSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
+const SqlPoolUsageSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  resourceName: Schema.optional(Schema.String),
+  displayName: Schema.optional(Schema.String),
+  currentValue: Schema.optional(Schema.Number),
+  limit: Schema.optional(Schema.Number),
+  unit: Schema.optional(Schema.String),
+  nextResetTime: Schema.optional(Schema.String),
+});
+const SensitivityLabelSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
+const SensitivityLabelUpdateSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
+const RecommendedSensitivityLabelUpdateSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
+const SensitivityLabelPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    schemaName: Schema.optional(Schema.String),
+    tableName: Schema.optional(Schema.String),
+    columnName: Schema.optional(Schema.String),
+    labelName: Schema.optional(Schema.String),
+    labelId: Schema.optional(Schema.String),
+    informationType: Schema.optional(Schema.String),
+    informationTypeId: Schema.optional(Schema.String),
+    isDisabled: Schema.optional(Schema.Boolean),
+    rank: Schema.optional(
+      Schema.Literals(["None", "Low", "Medium", "High", "Critical"]),
+    ),
+  });
+const SqlPoolSchemaSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
+const SqlPoolTableSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
+const SqlPoolColumnSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
+const SqlPoolVulnerabilityAssessmentSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
+const VulnerabilityAssessmentScanRecordSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
+const SqlPoolVulnerabilityAssessmentScanExportPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    exportedReportLocation: Schema.optional(Schema.String),
+  });
+const SqlPoolSecurityAlertPolicySchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
+const SecurityAlertPolicyPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    state: Schema.Literals(["New", "Enabled", "Disabled"]),
+    disabledAlerts: Schema.optional(Schema.Array(Schema.String)),
+    emailAddresses: Schema.optional(Schema.Array(Schema.String)),
+    emailAccountAdmins: Schema.optional(Schema.Boolean),
+    storageEndpoint: Schema.optional(Schema.String),
+    storageAccountAccessKey: Schema.optional(Schema.String),
+    retentionDays: Schema.optional(Schema.Number),
+    creationTime: Schema.optional(Schema.String),
+  });
+const SqlPoolVulnerabilityAssessmentRuleBaselinePropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    baselineResults: Schema.Array(
+      Schema.suspend(
+        () => SqlPoolVulnerabilityAssessmentRuleBaselineItemSchema,
+      ),
+    ),
+  });
+const SqlPoolVulnerabilityAssessmentRuleBaselineItemSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    result: Schema.Array(Schema.String),
+  });
+const SqlPoolVulnerabilityAssessmentPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    storageContainerPath: Schema.optional(Schema.String),
+    storageContainerSasKey: Schema.optional(Schema.String),
+    storageAccountAccessKey: Schema.optional(Schema.String),
+    recurringScans: Schema.optional(
+      Schema.suspend(
+        () => VulnerabilityAssessmentRecurringScansPropertiesSchema,
+      ),
+    ),
+  });
+const VulnerabilityAssessmentRecurringScansPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    isEnabled: Schema.optional(Schema.Boolean),
+    emailSubscriptionAdmins: Schema.optional(Schema.Boolean),
+    emails: Schema.optional(Schema.Array(Schema.String)),
+  });
+const ExtendedSqlPoolBlobAuditingPolicyPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    predicateExpression: Schema.optional(Schema.String),
+    state: Schema.Literals(["Enabled", "Disabled"]),
+    storageEndpoint: Schema.optional(Schema.String),
+    storageAccountAccessKey: Schema.optional(Schema.String),
+    retentionDays: Schema.optional(Schema.Number),
+    auditActionsAndGroups: Schema.optional(Schema.Array(Schema.String)),
+    storageAccountSubscriptionId: Schema.optional(Schema.String),
+    isStorageSecondaryKeyInUse: Schema.optional(Schema.Boolean),
+    isAzureMonitorTargetEnabled: Schema.optional(Schema.Boolean),
+    queueDelayMs: Schema.optional(Schema.Number),
+  });
+const ExtendedSqlPoolBlobAuditingPolicySchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
+const DataMaskingPolicyPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    dataMaskingState: Schema.Literals(["Disabled", "Enabled"]),
+    exemptPrincipals: Schema.optional(Schema.String),
+    applicationPrincipals: Schema.optional(Schema.String),
+    maskingLevel: Schema.optional(Schema.String),
+  });
+const DataMaskingRulePropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    aliasName: Schema.optional(Schema.String),
+    ruleState: Schema.optional(Schema.Literals(["Disabled", "Enabled"])),
+    schemaName: Schema.String,
+    tableName: Schema.String,
+    columnName: Schema.String,
+    maskingFunction: Schema.Literals([
+      "Default",
+      "CCN",
+      "Email",
+      "Number",
+      "SSN",
+      "Text",
+    ]),
+    numberFrom: Schema.optional(Schema.String),
+    numberTo: Schema.optional(Schema.String),
+    prefixSize: Schema.optional(Schema.String),
+    suffixSize: Schema.optional(Schema.String),
+    replacementString: Schema.optional(Schema.String),
+  });
+const DataMaskingRuleSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
+const SqlPoolBlobAuditingPolicySchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
+const SqlPoolColumnPropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    columnType: Schema.optional(
+      Schema.Literals([
+        "image",
+        "text",
+        "uniqueidentifier",
+        "date",
+        "time",
+        "datetime2",
+        "datetimeoffset",
+        "tinyint",
+        "smallint",
+        "int",
+        "smalldatetime",
+        "real",
+        "money",
+        "datetime",
+        "float",
+        "sql_variant",
+        "ntext",
+        "bit",
+        "decimal",
+        "numeric",
+        "smallmoney",
+        "bigint",
+        "hierarchyid",
+        "geometry",
+        "geography",
+        "varbinary",
+        "varchar",
+        "binary",
+        "char",
+        "timestamp",
+        "nvarchar",
+        "nchar",
+        "xml",
+        "sysname",
+      ]),
+    ),
+    isComputed: Schema.optional(Schema.Boolean),
+  },
+);
+const VulnerabilityAssessmentScanRecordPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    scanId: Schema.optional(Schema.String),
+    triggerType: Schema.optional(Schema.Literals(["OnDemand", "Recurring"])),
+    state: Schema.optional(
+      Schema.Literals(["Passed", "Failed", "FailedToRun", "InProgress"]),
+    ),
+    startTime: Schema.optional(Schema.String),
+    endTime: Schema.optional(Schema.String),
+    errors: Schema.optional(
+      Schema.Array(
+        Schema.suspend(() => VulnerabilityAssessmentScanErrorSchema),
+      ),
+    ),
+    storageContainerPath: Schema.optional(Schema.String),
+    numberOfFailedSecurityChecks: Schema.optional(Schema.Number),
+  });
+const VulnerabilityAssessmentScanErrorSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    code: Schema.optional(Schema.String),
+    message: Schema.optional(Schema.String),
+  });
+const WorkloadGroupPropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    minResourcePercent: Schema.Number,
+    maxResourcePercent: Schema.Number,
+    minResourcePercentPerRequest: Schema.Number,
+    maxResourcePercentPerRequest: Schema.optional(Schema.Number),
+    importance: Schema.optional(Schema.String),
+    queryExecutionTimeout: Schema.optional(Schema.Number),
+  },
+);
+const WorkloadGroupSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
+const WorkloadClassifierPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    memberName: Schema.String,
+    label: Schema.optional(Schema.String),
+    context: Schema.optional(Schema.String),
+    startTime: Schema.optional(Schema.String),
+    endTime: Schema.optional(Schema.String),
+    importance: Schema.optional(Schema.String),
+  });
+const WorkloadClassifierSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
+const LibraryResourceSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
+const KeySchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
+const KeyPropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  isActiveCMK: Schema.optional(Schema.Boolean),
+  keyVaultUrl: Schema.optional(Schema.String),
+});
+const PrivateLinkResourceSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
+const PrivateLinkResourcePropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    groupId: Schema.optional(Schema.String),
+    requiredMembers: Schema.optional(Schema.Array(Schema.String)),
+    requiredZoneNames: Schema.optional(Schema.Array(Schema.String)),
+  });
+const PrivateLinkHubSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
+const PrivateLinkHubPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    provisioningState: Schema.optional(Schema.String),
+    privateEndpointConnections: Schema.optional(
+      Schema.Array(
+        Schema.suspend(
+          () => PrivateEndpointConnectionForPrivateLinkHubBasicSchema,
+        ),
+      ),
+    ),
+  });
+const PrivateEndpointConnectionForPrivateLinkHubBasicSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    properties: Schema.optional(
+      Schema.Struct({
+        privateEndpoint: Schema.optional(
+          Schema.suspend(() => PrivateEndpointSchema),
+        ),
+        privateLinkServiceConnectionState: Schema.optional(
+          Schema.suspend(() => PrivateLinkServiceConnectionStateSchema),
+        ),
+        provisioningState: Schema.optional(Schema.String),
+      }),
+    ),
+  });
+const PrivateEndpointSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+});
+const PrivateLinkServiceConnectionStateSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    status: Schema.optional(Schema.String),
+    description: Schema.optional(Schema.String),
+    actionsRequired: Schema.optional(Schema.String),
+  });
+const PrivateEndpointConnectionForPrivateLinkHubSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    properties: Schema.optional(
+      Schema.Struct({
+        privateEndpoint: Schema.optional(
+          Schema.suspend(() => PrivateEndpointSchema),
+        ),
+        privateLinkServiceConnectionState: Schema.optional(
+          Schema.suspend(() => PrivateLinkServiceConnectionStateSchema),
+        ),
+        provisioningState: Schema.optional(Schema.String),
+      }),
+    ),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
+const PrivateEndpointConnectionPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    privateEndpoint: Schema.optional(
+      Schema.suspend(() => PrivateEndpointSchema),
+    ),
+    privateLinkServiceConnectionState: Schema.optional(
+      Schema.suspend(() => PrivateLinkServiceConnectionStateSchema),
+    ),
+    provisioningState: Schema.optional(Schema.String),
+  });
+const PrivateEndpointConnectionSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
+const ServerBlobAuditingPolicyPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    state: Schema.Literals(["Enabled", "Disabled"]),
+    storageEndpoint: Schema.optional(Schema.String),
+    storageAccountAccessKey: Schema.optional(Schema.String),
+    retentionDays: Schema.optional(Schema.Number),
+    auditActionsAndGroups: Schema.optional(Schema.Array(Schema.String)),
+    storageAccountSubscriptionId: Schema.optional(Schema.String),
+    isStorageSecondaryKeyInUse: Schema.optional(Schema.Boolean),
+    isAzureMonitorTargetEnabled: Schema.optional(Schema.Boolean),
+    queueDelayMs: Schema.optional(Schema.Number),
+    isDevopsAuditEnabled: Schema.optional(Schema.Boolean),
+  });
+const ServerBlobAuditingPolicySchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
+const ExtendedServerBlobAuditingPolicyPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    predicateExpression: Schema.optional(Schema.String),
+    state: Schema.Literals(["Enabled", "Disabled"]),
+    storageEndpoint: Schema.optional(Schema.String),
+    storageAccountAccessKey: Schema.optional(Schema.String),
+    retentionDays: Schema.optional(Schema.Number),
+    auditActionsAndGroups: Schema.optional(Schema.Array(Schema.String)),
+    storageAccountSubscriptionId: Schema.optional(Schema.String),
+    isStorageSecondaryKeyInUse: Schema.optional(Schema.Boolean),
+    isAzureMonitorTargetEnabled: Schema.optional(Schema.Boolean),
+    queueDelayMs: Schema.optional(Schema.Number),
+    isDevopsAuditEnabled: Schema.optional(Schema.Boolean),
+  });
+const ExtendedServerBlobAuditingPolicySchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
+const ServerSecurityAlertPolicyPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    state: Schema.Literals(["New", "Enabled", "Disabled"]),
+    disabledAlerts: Schema.optional(Schema.Array(Schema.String)),
+    emailAddresses: Schema.optional(Schema.Array(Schema.String)),
+    emailAccountAdmins: Schema.optional(Schema.Boolean),
+    storageEndpoint: Schema.optional(Schema.String),
+    storageAccountAccessKey: Schema.optional(Schema.String),
+    retentionDays: Schema.optional(Schema.Number),
+    creationTime: Schema.optional(Schema.String),
+  });
+const ServerSecurityAlertPolicySchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
+const ServerVulnerabilityAssessmentPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    storageContainerPath: Schema.String,
+    storageContainerSasKey: Schema.optional(Schema.String),
+    storageAccountAccessKey: Schema.optional(Schema.String),
+    recurringScans: Schema.optional(
+      Schema.suspend(
+        () => VulnerabilityAssessmentRecurringScansPropertiesSchema,
+      ),
+    ),
+  });
+const ServerVulnerabilityAssessmentSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
+const EncryptionProtectorPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subregion: Schema.optional(Schema.String),
+    serverKeyName: Schema.optional(Schema.String),
+    serverKeyType: Schema.Literals(["ServiceManaged", "AzureKeyVault"]),
+    uri: Schema.optional(Schema.String),
+    thumbprint: Schema.optional(Schema.String),
+  });
+const EncryptionProtectorSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
+const ServerUsageSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  resourceName: Schema.optional(Schema.String),
+  displayName: Schema.optional(Schema.String),
+  currentValue: Schema.optional(Schema.Number),
+  limit: Schema.optional(Schema.Number),
+  unit: Schema.optional(Schema.String),
+  nextResetTime: Schema.optional(Schema.String),
+});
+const RecoverableSqlPoolSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
+const RecoverableSqlPoolPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    edition: Schema.optional(Schema.String),
+    serviceLevelObjective: Schema.optional(Schema.String),
+    elasticPoolName: Schema.optional(Schema.String),
+    lastAvailableBackupDate: Schema.optional(Schema.String),
+  });
+const DedicatedSQLminimalTlsSettingsPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    minimalTlsVersion: Schema.optional(Schema.String),
+  });
+const DedicatedSQLminimalTlsSettingsSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
+const IpFirewallRuleInfoSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
+const IpFirewallRulePropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    endIpAddress: Schema.optional(Schema.String),
+    provisioningState: Schema.optional(
+      Schema.Literals([
+        "Provisioning",
+        "Succeeded",
+        "Deleting",
+        "Failed",
+        "DeleteError",
+      ]),
+    ),
+    startIpAddress: Schema.optional(Schema.String),
+  });
+const BigDataPoolResourcePropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    provisioningState: Schema.optional(Schema.String),
+    autoScale: Schema.optional(Schema.suspend(() => AutoScalePropertiesSchema)),
+    creationDate: Schema.optional(Schema.String),
+    autoPause: Schema.optional(Schema.suspend(() => AutoPausePropertiesSchema)),
+    isComputeIsolationEnabled: Schema.optional(Schema.Boolean),
+    isAutotuneEnabled: Schema.optional(Schema.Boolean),
+    sessionLevelPackagesEnabled: Schema.optional(Schema.Boolean),
+    cacheSize: Schema.optional(Schema.Number),
+    dynamicExecutorAllocation: Schema.optional(
+      Schema.suspend(() => DynamicExecutorAllocationSchema),
+    ),
+    sparkEventsFolder: Schema.optional(Schema.String),
+    nodeCount: Schema.optional(Schema.Number),
+    libraryRequirements: Schema.optional(
+      Schema.suspend(() => LibraryRequirementsSchema),
+    ),
+    customLibraries: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          name: Schema.optional(Schema.String),
+          path: Schema.optional(Schema.String),
+          containerName: Schema.optional(Schema.String),
+          uploadedTimestamp: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
+          provisioningStatus: Schema.optional(Schema.String),
+          creatorId: Schema.optional(Schema.String),
+        }),
+      ),
+    ),
+    sparkConfigProperties: Schema.optional(
+      Schema.suspend(() => SparkConfigPropertiesSchema),
+    ),
+    sparkVersion: Schema.optional(Schema.String),
+    defaultSparkLogFolder: Schema.optional(Schema.String),
+    nodeSize: Schema.optional(
+      Schema.Literals([
+        "None",
+        "Small",
+        "Medium",
+        "Large",
+        "XLarge",
+        "XXLarge",
+        "XXXLarge",
+      ]),
+    ),
+    nodeSizeFamily: Schema.optional(
+      Schema.Literals([
+        "None",
+        "MemoryOptimized",
+        "HardwareAcceleratedFPGA",
+        "HardwareAcceleratedGPU",
+      ]),
+    ),
+    lastSucceededTimestamp: Schema.optional(Schema.String),
+  });
+const AutoScalePropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  minNodeCount: Schema.optional(Schema.Number),
+  enabled: Schema.optional(Schema.Boolean),
+  maxNodeCount: Schema.optional(Schema.Number),
+});
+const AutoPausePropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  delayInMinutes: Schema.optional(Schema.Number),
+  enabled: Schema.optional(Schema.Boolean),
+});
+const DynamicExecutorAllocationSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    enabled: Schema.optional(Schema.Boolean),
+    minExecutors: Schema.optional(Schema.Number),
+    maxExecutors: Schema.optional(Schema.Number),
+  });
+const LibraryRequirementsSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  time: Schema.optional(Schema.String),
+  content: Schema.optional(Schema.String),
+  filename: Schema.optional(Schema.String),
+});
+const SparkConfigPropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  time: Schema.optional(Schema.String),
+  content: Schema.optional(Schema.String),
+  filename: Schema.optional(Schema.String),
+  configurationType: Schema.optional(Schema.Literals(["File", "Artifact"])),
+});
+const BigDataPoolResourceInfoSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  },
+);
+const AvailableRpOperationSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  display: Schema.optional(
+    Schema.suspend(() => AvailableRpOperationDisplayInfoSchema),
+  ),
+  isDataAction: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  properties: Schema.optional(
+    Schema.suspend(() => OperationMetaPropertyInfoSchema),
+  ),
+  origin: Schema.optional(Schema.String),
+});
+const AvailableRpOperationDisplayInfoSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    description: Schema.optional(Schema.String),
+    resource: Schema.optional(Schema.String),
+    provider: Schema.optional(Schema.String),
+    operation: Schema.optional(Schema.String),
+  });
+const OperationMetaPropertyInfoSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    serviceSpecification: Schema.optional(
+      Schema.suspend(() => OperationMetaServiceSpecificationSchema),
+    ),
+  });
+const OperationMetaServiceSpecificationSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    metricSpecifications: Schema.optional(
+      Schema.Array(
+        Schema.suspend(() => OperationMetaMetricSpecificationSchema),
+      ),
+    ),
+    logSpecifications: Schema.optional(
+      Schema.Array(Schema.suspend(() => OperationMetaLogSpecificationSchema)),
+    ),
+  });
+const OperationMetaMetricSpecificationSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    sourceMdmNamespace: Schema.optional(Schema.String),
+    displayName: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    aggregationType: Schema.optional(Schema.String),
+    displayDescription: Schema.optional(Schema.String),
+    sourceMdmAccount: Schema.optional(Schema.String),
+    enableRegionalMdmAccount: Schema.optional(Schema.Boolean),
+    unit: Schema.optional(Schema.String),
+    dimensions: Schema.optional(
+      Schema.Array(
+        Schema.suspend(() => OperationMetaMetricDimensionSpecificationSchema),
+      ),
+    ),
+    supportsInstanceLevelAggregation: Schema.optional(Schema.Boolean),
+    metricFilterPattern: Schema.optional(Schema.String),
+  });
+const OperationMetaMetricDimensionSpecificationSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    displayName: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    toBeExportedForShoebox: Schema.optional(Schema.Boolean),
+  });
+const OperationMetaLogSpecificationSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    displayName: Schema.optional(Schema.String),
+    blobDuration: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+  });
+const ErrorDetailSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  code: Schema.optional(Schema.String),
+  message: Schema.optional(Schema.String),
+  target: Schema.optional(Schema.String),
+  details: Schema.optional(Schema.Array(Schema.Unknown)),
+  additionalInfo: Schema.optional(
+    Schema.Array(Schema.suspend(() => ErrorAdditionalInfoSchema)),
+  ),
+});
+const ErrorAdditionalInfoSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  type: Schema.optional(Schema.String),
+  info: Schema.optional(Schema.Unknown),
+});
 
 // Input Schema
 export const AzureADOnlyAuthenticationsCreateInput =
@@ -19,13 +1107,7 @@ export const AzureADOnlyAuthenticationsCreateInput =
       T.PathParam(),
     ),
     properties: Schema.optional(
-      Schema.Struct({
-        azureADOnlyAuthentication: Schema.Boolean,
-        state: Schema.optional(
-          Schema.Literals(["Consistent", "InConsistent", "Updating"]),
-        ),
-        creationDate: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(() => AzureADOnlyAuthenticationPropertiesSchema),
     ),
   }).pipe(
     T.Http({
@@ -41,6 +1123,9 @@ export type AzureADOnlyAuthenticationsCreateInput =
 // Output Schema
 export const AzureADOnlyAuthenticationsCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => AzureADOnlyAuthenticationPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -87,6 +1172,9 @@ export type AzureADOnlyAuthenticationsGetInput =
 // Output Schema
 export const AzureADOnlyAuthenticationsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => AzureADOnlyAuthenticationPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -131,13 +1219,7 @@ export type AzureADOnlyAuthenticationsListInput =
 export const AzureADOnlyAuthenticationsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => AzureADOnlyAuthenticationSchema)),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -169,88 +1251,7 @@ export const BigDataPoolsCreateOrUpdateInput =
     bigDataPoolName: Schema.String.pipe(T.PathParam()),
     force: Schema.optional(Schema.Boolean),
     properties: Schema.optional(
-      Schema.Struct({
-        provisioningState: Schema.optional(Schema.String),
-        autoScale: Schema.optional(
-          Schema.Struct({
-            minNodeCount: Schema.optional(Schema.Number),
-            enabled: Schema.optional(Schema.Boolean),
-            maxNodeCount: Schema.optional(Schema.Number),
-          }),
-        ),
-        creationDate: Schema.optional(Schema.String),
-        autoPause: Schema.optional(
-          Schema.Struct({
-            delayInMinutes: Schema.optional(Schema.Number),
-            enabled: Schema.optional(Schema.Boolean),
-          }),
-        ),
-        isComputeIsolationEnabled: Schema.optional(Schema.Boolean),
-        isAutotuneEnabled: Schema.optional(Schema.Boolean),
-        sessionLevelPackagesEnabled: Schema.optional(Schema.Boolean),
-        cacheSize: Schema.optional(Schema.Number),
-        dynamicExecutorAllocation: Schema.optional(
-          Schema.Struct({
-            enabled: Schema.optional(Schema.Boolean),
-            minExecutors: Schema.optional(Schema.Number),
-            maxExecutors: Schema.optional(Schema.Number),
-          }),
-        ),
-        sparkEventsFolder: Schema.optional(Schema.String),
-        nodeCount: Schema.optional(Schema.Number),
-        libraryRequirements: Schema.optional(
-          Schema.Struct({
-            time: Schema.optional(Schema.String),
-            content: Schema.optional(Schema.String),
-            filename: Schema.optional(Schema.String),
-          }),
-        ),
-        customLibraries: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              name: Schema.optional(Schema.String),
-              path: Schema.optional(Schema.String),
-              containerName: Schema.optional(Schema.String),
-              uploadedTimestamp: Schema.optional(Schema.String),
-              type: Schema.optional(Schema.String),
-              provisioningStatus: Schema.optional(Schema.String),
-              creatorId: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        sparkConfigProperties: Schema.optional(
-          Schema.Struct({
-            time: Schema.optional(Schema.String),
-            content: Schema.optional(Schema.String),
-            filename: Schema.optional(Schema.String),
-            configurationType: Schema.optional(
-              Schema.Literals(["File", "Artifact"]),
-            ),
-          }),
-        ),
-        sparkVersion: Schema.optional(Schema.String),
-        defaultSparkLogFolder: Schema.optional(Schema.String),
-        nodeSize: Schema.optional(
-          Schema.Literals([
-            "None",
-            "Small",
-            "Medium",
-            "Large",
-            "XLarge",
-            "XXLarge",
-            "XXXLarge",
-          ]),
-        ),
-        nodeSizeFamily: Schema.optional(
-          Schema.Literals([
-            "None",
-            "MemoryOptimized",
-            "HardwareAcceleratedFPGA",
-            "HardwareAcceleratedGPU",
-          ]),
-        ),
-        lastSucceededTimestamp: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(() => BigDataPoolResourcePropertiesSchema),
     ),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     location: Schema.String,
@@ -268,6 +1269,11 @@ export type BigDataPoolsCreateOrUpdateInput =
 // Output Schema
 export const BigDataPoolsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => BigDataPoolResourcePropertiesSchema),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -314,6 +1320,11 @@ export type BigDataPoolsDeleteInput = typeof BigDataPoolsDeleteInput.Type;
 // Output Schema
 export const BigDataPoolsDeleteOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => BigDataPoolResourcePropertiesSchema),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -353,6 +1364,11 @@ export type BigDataPoolsGetInput = typeof BigDataPoolsGetInput.Type;
 
 // Output Schema
 export const BigDataPoolsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.optional(
+    Schema.suspend(() => BigDataPoolResourcePropertiesSchema),
+  ),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  location: Schema.String,
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -396,13 +1412,7 @@ export const BigDataPoolsListByWorkspaceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => BigDataPoolResourceInfoSchema)),
     ),
   });
 export type BigDataPoolsListByWorkspaceOutput =
@@ -445,6 +1455,11 @@ export type BigDataPoolsUpdateInput = typeof BigDataPoolsUpdateInput.Type;
 // Output Schema
 export const BigDataPoolsUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => BigDataPoolResourcePropertiesSchema),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -475,12 +1490,7 @@ export const DataMaskingPoliciesCreateOrUpdateInput =
     workspaceName: Schema.String.pipe(T.PathParam()),
     sqlPoolName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        dataMaskingState: Schema.Literals(["Disabled", "Enabled"]),
-        exemptPrincipals: Schema.optional(Schema.String),
-        applicationPrincipals: Schema.optional(Schema.String),
-        maskingLevel: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(() => DataMaskingPolicyPropertiesSchema),
     ),
     location: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
@@ -498,6 +1508,12 @@ export type DataMaskingPoliciesCreateOrUpdateInput =
 // Output Schema
 export const DataMaskingPoliciesCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => DataMaskingPolicyPropertiesSchema),
+    ),
+    location: Schema.optional(Schema.String),
+    kind: Schema.optional(Schema.String),
+    managedBy: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -540,6 +1556,12 @@ export type DataMaskingPoliciesGetInput =
 // Output Schema
 export const DataMaskingPoliciesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => DataMaskingPolicyPropertiesSchema),
+    ),
+    location: Schema.optional(Schema.String),
+    kind: Schema.optional(Schema.String),
+    managedBy: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -572,27 +1594,7 @@ export const DataMaskingRulesCreateOrUpdateInput =
     sqlPoolName: Schema.String.pipe(T.PathParam()),
     dataMaskingRuleName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        aliasName: Schema.optional(Schema.String),
-        ruleState: Schema.optional(Schema.Literals(["Disabled", "Enabled"])),
-        schemaName: Schema.String,
-        tableName: Schema.String,
-        columnName: Schema.String,
-        maskingFunction: Schema.Literals([
-          "Default",
-          "CCN",
-          "Email",
-          "Number",
-          "SSN",
-          "Text",
-        ]),
-        numberFrom: Schema.optional(Schema.String),
-        numberTo: Schema.optional(Schema.String),
-        prefixSize: Schema.optional(Schema.String),
-        suffixSize: Schema.optional(Schema.String),
-        replacementString: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(() => DataMaskingRulePropertiesSchema),
     ),
     location: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
@@ -609,6 +1611,11 @@ export type DataMaskingRulesCreateOrUpdateInput =
 // Output Schema
 export const DataMaskingRulesCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => DataMaskingRulePropertiesSchema),
+    ),
+    location: Schema.optional(Schema.String),
+    kind: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -652,6 +1659,11 @@ export type DataMaskingRulesGetInput = typeof DataMaskingRulesGetInput.Type;
 // Output Schema
 export const DataMaskingRulesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => DataMaskingRulePropertiesSchema),
+    ),
+    location: Schema.optional(Schema.String),
+    kind: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -694,13 +1706,7 @@ export type DataMaskingRulesListBySqlPoolInput =
 export const DataMaskingRulesListBySqlPoolOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => DataMaskingRuleSchema)),
     ),
   });
 export type DataMaskingRulesListBySqlPoolOutput =
@@ -730,18 +1736,7 @@ export const ExtendedSqlPoolBlobAuditingPoliciesCreateOrUpdateInput =
     sqlPoolName: Schema.String.pipe(T.PathParam()),
     blobAuditingPolicyName: Schema.Literals(["default"]).pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        predicateExpression: Schema.optional(Schema.String),
-        state: Schema.Literals(["Enabled", "Disabled"]),
-        storageEndpoint: Schema.optional(Schema.String),
-        storageAccountAccessKey: Schema.optional(Schema.String),
-        retentionDays: Schema.optional(Schema.Number),
-        auditActionsAndGroups: Schema.optional(Schema.Array(Schema.String)),
-        storageAccountSubscriptionId: Schema.optional(Schema.String),
-        isStorageSecondaryKeyInUse: Schema.optional(Schema.Boolean),
-        isAzureMonitorTargetEnabled: Schema.optional(Schema.Boolean),
-        queueDelayMs: Schema.optional(Schema.Number),
-      }),
+      Schema.suspend(() => ExtendedSqlPoolBlobAuditingPolicyPropertiesSchema),
     ),
   }).pipe(
     T.Http({
@@ -756,6 +1751,9 @@ export type ExtendedSqlPoolBlobAuditingPoliciesCreateOrUpdateInput =
 // Output Schema
 export const ExtendedSqlPoolBlobAuditingPoliciesCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => ExtendedSqlPoolBlobAuditingPolicyPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -800,6 +1798,9 @@ export type ExtendedSqlPoolBlobAuditingPoliciesGetInput =
 // Output Schema
 export const ExtendedSqlPoolBlobAuditingPoliciesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => ExtendedSqlPoolBlobAuditingPolicyPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -845,11 +1846,7 @@ export const ExtendedSqlPoolBlobAuditingPoliciesListBySqlPoolOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
+        Schema.suspend(() => ExtendedSqlPoolBlobAuditingPolicySchema),
       ),
     ),
     nextLink: Schema.optional(Schema.String),
@@ -1060,16 +2057,7 @@ export const IntegrationRuntimeMonitoringDataListOutput =
     name: Schema.optional(Schema.String),
     nodes: Schema.optional(
       Schema.Array(
-        Schema.Struct({
-          nodeName: Schema.optional(Schema.String),
-          availableMemoryInMB: Schema.optional(Schema.Number),
-          cpuUtilization: Schema.optional(Schema.Number),
-          concurrentJobsLimit: Schema.optional(Schema.Number),
-          concurrentJobsRunning: Schema.optional(Schema.Number),
-          maxConcurrentJobs: Schema.optional(Schema.Number),
-          sentBytes: Schema.optional(Schema.Number),
-          receivedBytes: Schema.optional(Schema.Number),
-        }),
+        Schema.suspend(() => IntegrationRuntimeNodeMonitoringDataSchema),
       ),
     ),
   });
@@ -1339,19 +2327,7 @@ export type IntegrationRuntimeObjectMetadataListInput =
 export const IntegrationRuntimeObjectMetadataListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          type: Schema.Literals([
-            "Folder",
-            "Project",
-            "Package",
-            "Environment",
-          ]),
-          id: Schema.optional(Schema.Number),
-          name: Schema.optional(Schema.String),
-          description: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => SsisObjectMetadataSchema)),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -1424,10 +2400,7 @@ export const IntegrationRuntimesCreateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
-    properties: Schema.Struct({
-      type: Schema.Literals(["Managed", "SelfHosted"]),
-      description: Schema.optional(Schema.String),
-    }),
+    properties: Schema.suspend(() => IntegrationRuntimeSchema),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -1442,6 +2415,8 @@ export type IntegrationRuntimesCreateInput =
 // Output Schema
 export const IntegrationRuntimesCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.suspend(() => IntegrationRuntimeSchema),
+    etag: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1600,6 +2575,8 @@ export type IntegrationRuntimesGetInput =
 // Output Schema
 export const IntegrationRuntimesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.suspend(() => IntegrationRuntimeSchema),
+    etag: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1644,13 +2621,7 @@ export type IntegrationRuntimesListByWorkspaceInput =
 // Output Schema
 export const IntegrationRuntimesListByWorkspaceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => IntegrationRuntimeResourceSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type IntegrationRuntimesListByWorkspaceOutput =
@@ -1693,23 +2664,10 @@ export const IntegrationRuntimesListOutboundNetworkDependenciesEndpointsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
-        Schema.Struct({
-          category: Schema.optional(Schema.String),
-          endpoints: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                domainName: Schema.optional(Schema.String),
-                endpointDetails: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      port: Schema.optional(Schema.Number),
-                    }),
-                  ),
-                ),
-              }),
-            ),
-          ),
-        }),
+        Schema.suspend(
+          () =>
+            IntegrationRuntimeOutboundNetworkDependenciesCategoryEndpointSchema,
+        ),
       ),
     ),
   });
@@ -1755,24 +2713,7 @@ export type IntegrationRuntimesStartInput =
 export const IntegrationRuntimesStartOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
-    properties: Schema.Struct({
-      type: Schema.Literals(["Managed", "SelfHosted"]),
-      dataFactoryName: Schema.optional(Schema.String),
-      state: Schema.optional(
-        Schema.Literals([
-          "Initial",
-          "Stopped",
-          "Started",
-          "Starting",
-          "Stopping",
-          "NeedRegistration",
-          "Online",
-          "Limited",
-          "Offline",
-          "AccessDenied",
-        ]),
-      ),
-    }),
+    properties: Schema.suspend(() => IntegrationRuntimeStatusSchema),
   });
 export type IntegrationRuntimesStartOutput =
   typeof IntegrationRuntimesStartOutput.Type;
@@ -1854,24 +2795,7 @@ export type IntegrationRuntimeStatusGetInput =
 export const IntegrationRuntimeStatusGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
-    properties: Schema.Struct({
-      type: Schema.Literals(["Managed", "SelfHosted"]),
-      dataFactoryName: Schema.optional(Schema.String),
-      state: Schema.optional(
-        Schema.Literals([
-          "Initial",
-          "Stopped",
-          "Started",
-          "Starting",
-          "Stopping",
-          "NeedRegistration",
-          "Online",
-          "Limited",
-          "Offline",
-          "AccessDenied",
-        ]),
-      ),
-    }),
+    properties: Schema.suspend(() => IntegrationRuntimeStatusSchema),
   });
 export type IntegrationRuntimeStatusGetOutput =
   typeof IntegrationRuntimeStatusGetOutput.Type;
@@ -1899,7 +2823,9 @@ export const IntegrationRuntimesUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
-    autoUpdate: Schema.optional(Schema.Literals(["On", "Off"])),
+    autoUpdate: Schema.optional(
+      Schema.suspend(() => IntegrationRuntimeAutoUpdateSchema),
+    ),
     updateDelayOffset: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
@@ -1914,6 +2840,8 @@ export type IntegrationRuntimesUpdateInput =
 // Output Schema
 export const IntegrationRuntimesUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.suspend(() => IntegrationRuntimeSchema),
+    etag: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1984,19 +2912,7 @@ export const IpFirewallRulesCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        endIpAddress: Schema.optional(Schema.String),
-        provisioningState: Schema.optional(
-          Schema.Literals([
-            "Provisioning",
-            "Succeeded",
-            "Deleting",
-            "Failed",
-            "DeleteError",
-          ]),
-        ),
-        startIpAddress: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(() => IpFirewallRulePropertiesSchema),
     ),
   }).pipe(
     T.Http({
@@ -2012,6 +2928,9 @@ export type IpFirewallRulesCreateOrUpdateInput =
 // Output Schema
 export const IpFirewallRulesCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => IpFirewallRulePropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2052,6 +2971,9 @@ export type IpFirewallRulesDeleteInput = typeof IpFirewallRulesDeleteInput.Type;
 // Output Schema
 export const IpFirewallRulesDeleteOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => IpFirewallRulePropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2092,6 +3014,9 @@ export type IpFirewallRulesGetInput = typeof IpFirewallRulesGetInput.Type;
 // Output Schema
 export const IpFirewallRulesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => IpFirewallRulePropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2132,13 +3057,7 @@ export const IpFirewallRulesListByWorkspaceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => IpFirewallRuleInfoSchema)),
     ),
   });
 export type IpFirewallRulesListByWorkspaceOutput =
@@ -2167,19 +3086,7 @@ export const IpFirewallRulesReplaceAllInput =
     ipFirewallRules: Schema.optional(
       Schema.Record(
         Schema.String,
-        Schema.Struct({
-          endIpAddress: Schema.optional(Schema.String),
-          provisioningState: Schema.optional(
-            Schema.Literals([
-              "Provisioning",
-              "Succeeded",
-              "Deleting",
-              "Failed",
-              "DeleteError",
-            ]),
-          ),
-          startIpAddress: Schema.optional(Schema.String),
-        }),
+        Schema.suspend(() => IpFirewallRulePropertiesSchema),
       ),
     ),
   }).pipe(
@@ -2222,12 +3129,7 @@ export const KeysCreateOrUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
-    properties: Schema.optional(
-      Schema.Struct({
-        isActiveCMK: Schema.optional(Schema.Boolean),
-        keyVaultUrl: Schema.optional(Schema.String),
-      }),
-    ),
+    properties: Schema.optional(Schema.suspend(() => KeyPropertiesSchema)),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -2240,6 +3142,7 @@ export type KeysCreateOrUpdateInput = typeof KeysCreateOrUpdateInput.Type;
 // Output Schema
 export const KeysCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(Schema.suspend(() => KeyPropertiesSchema)),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2275,6 +3178,7 @@ export type KeysDeleteInput = typeof KeysDeleteInput.Type;
 
 // Output Schema
 export const KeysDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.optional(Schema.suspend(() => KeyPropertiesSchema)),
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -2310,6 +3214,7 @@ export type KeysGetInput = typeof KeysGetInput.Type;
 
 // Output Schema
 export const KeysGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.optional(Schema.suspend(() => KeyPropertiesSchema)),
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -2348,15 +3253,7 @@ export type KeysListByWorkspaceInput = typeof KeysListByWorkspaceInput.Type;
 export const KeysListByWorkspaceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
-    ),
+    value: Schema.optional(Schema.Array(Schema.suspend(() => KeySchema))),
   });
 export type KeysListByWorkspaceOutput = typeof KeysListByWorkspaceOutput.Type;
 
@@ -2392,13 +3289,7 @@ export type LibrariesListByWorkspaceInput =
 // Output Schema
 export const LibrariesListByWorkspaceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => LibraryResourceSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type LibrariesListByWorkspaceOutput =
@@ -2437,6 +3328,16 @@ export type LibraryGetInput = typeof LibraryGetInput.Type;
 
 // Output Schema
 export const LibraryGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.Struct({
+    name: Schema.optional(Schema.String),
+    path: Schema.optional(Schema.String),
+    containerName: Schema.optional(Schema.String),
+    uploadedTimestamp: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    provisioningStatus: Schema.optional(Schema.String),
+    creatorId: Schema.optional(Schema.String),
+  }),
+  etag: Schema.optional(Schema.String),
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -2531,30 +3432,10 @@ export const OperationsGetAzureAsyncHeaderResultOutput =
         message: Schema.optional(Schema.String),
         target: Schema.optional(Schema.String),
         details: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              code: Schema.optional(Schema.String),
-              message: Schema.optional(Schema.String),
-              target: Schema.optional(Schema.String),
-              details: Schema.optional(Schema.Array(Schema.Unknown)),
-              additionalInfo: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    type: Schema.optional(Schema.String),
-                    info: Schema.optional(Schema.Unknown),
-                  }),
-                ),
-              ),
-            }),
-          ),
+          Schema.Array(Schema.suspend(() => ErrorDetailSchema)),
         ),
         additionalInfo: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              type: Schema.optional(Schema.String),
-              info: Schema.optional(Schema.Unknown),
-            }),
-          ),
+          Schema.Array(Schema.suspend(() => ErrorAdditionalInfoSchema)),
         ),
       }),
     ),
@@ -2636,63 +3517,7 @@ export type OperationsListInput = typeof OperationsListInput.Type;
 
 // Output Schema
 export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
-  Schema.Struct({
-    display: Schema.optional(
-      Schema.Struct({
-        description: Schema.optional(Schema.String),
-        resource: Schema.optional(Schema.String),
-        provider: Schema.optional(Schema.String),
-        operation: Schema.optional(Schema.String),
-      }),
-    ),
-    isDataAction: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    properties: Schema.optional(
-      Schema.Struct({
-        serviceSpecification: Schema.optional(
-          Schema.Struct({
-            metricSpecifications: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  sourceMdmNamespace: Schema.optional(Schema.String),
-                  displayName: Schema.optional(Schema.String),
-                  name: Schema.optional(Schema.String),
-                  aggregationType: Schema.optional(Schema.String),
-                  displayDescription: Schema.optional(Schema.String),
-                  sourceMdmAccount: Schema.optional(Schema.String),
-                  enableRegionalMdmAccount: Schema.optional(Schema.Boolean),
-                  unit: Schema.optional(Schema.String),
-                  dimensions: Schema.optional(
-                    Schema.Array(
-                      Schema.Struct({
-                        displayName: Schema.optional(Schema.String),
-                        name: Schema.optional(Schema.String),
-                        toBeExportedForShoebox: Schema.optional(Schema.Boolean),
-                      }),
-                    ),
-                  ),
-                  supportsInstanceLevelAggregation: Schema.optional(
-                    Schema.Boolean,
-                  ),
-                  metricFilterPattern: Schema.optional(Schema.String),
-                }),
-              ),
-            ),
-            logSpecifications: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  displayName: Schema.optional(Schema.String),
-                  blobDuration: Schema.optional(Schema.String),
-                  name: Schema.optional(Schema.String),
-                }),
-              ),
-            ),
-          }),
-        ),
-      }),
-    ),
-    origin: Schema.optional(Schema.String),
-  }),
+  Schema.suspend(() => AvailableRpOperationSchema),
 );
 export type OperationsListOutput = typeof OperationsListOutput.Type;
 
@@ -2710,21 +3535,7 @@ export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const PrivateEndpointConnectionsCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     properties: Schema.optional(
-      Schema.Struct({
-        privateEndpoint: Schema.optional(
-          Schema.Struct({
-            id: Schema.optional(Schema.String),
-          }),
-        ),
-        privateLinkServiceConnectionState: Schema.optional(
-          Schema.Struct({
-            status: Schema.optional(Schema.String),
-            description: Schema.optional(Schema.String),
-            actionsRequired: Schema.optional(Schema.String),
-          }),
-        ),
-        provisioningState: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(() => PrivateEndpointConnectionPropertiesSchema),
     ),
   }).pipe(
     T.Http({
@@ -2740,6 +3551,9 @@ export type PrivateEndpointConnectionsCreateInput =
 // Output Schema
 export const PrivateEndpointConnectionsCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => PrivateEndpointConnectionPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2800,6 +3614,9 @@ export type PrivateEndpointConnectionsGetInput =
 // Output Schema
 export const PrivateEndpointConnectionsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => PrivateEndpointConnectionPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2836,13 +3653,7 @@ export type PrivateEndpointConnectionsListInput =
 export const PrivateEndpointConnectionsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => PrivateEndpointConnectionSchema)),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -2882,16 +3693,10 @@ export const PrivateEndpointConnectionsPrivateLinkHubGetOutput =
     properties: Schema.optional(
       Schema.Struct({
         privateEndpoint: Schema.optional(
-          Schema.Struct({
-            id: Schema.optional(Schema.String),
-          }),
+          Schema.suspend(() => PrivateEndpointSchema),
         ),
         privateLinkServiceConnectionState: Schema.optional(
-          Schema.Struct({
-            status: Schema.optional(Schema.String),
-            description: Schema.optional(Schema.String),
-            actionsRequired: Schema.optional(Schema.String),
-          }),
+          Schema.suspend(() => PrivateLinkServiceConnectionStateSchema),
         ),
         provisioningState: Schema.optional(Schema.String),
       }),
@@ -2928,28 +3733,7 @@ export const PrivateEndpointConnectionsPrivateLinkHubListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          properties: Schema.optional(
-            Schema.Struct({
-              privateEndpoint: Schema.optional(
-                Schema.Struct({
-                  id: Schema.optional(Schema.String),
-                }),
-              ),
-              privateLinkServiceConnectionState: Schema.optional(
-                Schema.Struct({
-                  status: Schema.optional(Schema.String),
-                  description: Schema.optional(Schema.String),
-                  actionsRequired: Schema.optional(Schema.String),
-                }),
-              ),
-              provisioningState: Schema.optional(Schema.String),
-            }),
-          ),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
+        Schema.suspend(() => PrivateEndpointConnectionForPrivateLinkHubSchema),
       ),
     ),
     nextLink: Schema.optional(Schema.String),
@@ -2984,6 +3768,9 @@ export type PrivateLinkHubPrivateLinkResourcesGetInput =
 // Output Schema
 export const PrivateLinkHubPrivateLinkResourcesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => PrivateLinkResourcePropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -3025,13 +3812,7 @@ export type PrivateLinkHubPrivateLinkResourcesListInput =
 export const PrivateLinkHubPrivateLinkResourcesListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => PrivateLinkResourceSchema)),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -3057,33 +3838,7 @@ export const PrivateLinkHubPrivateLinkResourcesList =
 export const PrivateLinkHubsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     properties: Schema.optional(
-      Schema.Struct({
-        provisioningState: Schema.optional(Schema.String),
-        privateEndpointConnections: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              id: Schema.optional(Schema.String),
-              properties: Schema.optional(
-                Schema.Struct({
-                  privateEndpoint: Schema.optional(
-                    Schema.Struct({
-                      id: Schema.optional(Schema.String),
-                    }),
-                  ),
-                  privateLinkServiceConnectionState: Schema.optional(
-                    Schema.Struct({
-                      status: Schema.optional(Schema.String),
-                      description: Schema.optional(Schema.String),
-                      actionsRequired: Schema.optional(Schema.String),
-                    }),
-                  ),
-                  provisioningState: Schema.optional(Schema.String),
-                }),
-              ),
-            }),
-          ),
-        ),
-      }),
+      Schema.suspend(() => PrivateLinkHubPropertiesSchema),
     ),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     location: Schema.String,
@@ -3100,6 +3855,11 @@ export type PrivateLinkHubsCreateOrUpdateInput =
 // Output Schema
 export const PrivateLinkHubsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => PrivateLinkHubPropertiesSchema),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -3158,6 +3918,11 @@ export type PrivateLinkHubsGetInput = typeof PrivateLinkHubsGetInput.Type;
 // Output Schema
 export const PrivateLinkHubsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => PrivateLinkHubPropertiesSchema),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -3190,13 +3955,7 @@ export const PrivateLinkHubsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => PrivateLinkHubSchema)),
     ),
   });
 export type PrivateLinkHubsListOutput = typeof PrivateLinkHubsListOutput.Type;
@@ -3229,13 +3988,7 @@ export const PrivateLinkHubsListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => PrivateLinkHubSchema)),
     ),
   });
 export type PrivateLinkHubsListByResourceGroupOutput =
@@ -3266,6 +4019,11 @@ export type PrivateLinkHubsUpdateInput = typeof PrivateLinkHubsUpdateInput.Type;
 // Output Schema
 export const PrivateLinkHubsUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => PrivateLinkHubPropertiesSchema),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -3302,6 +4060,9 @@ export type PrivateLinkResourcesGetInput =
 // Output Schema
 export const PrivateLinkResourcesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => PrivateLinkResourcePropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -3346,13 +4107,7 @@ export type PrivateLinkResourcesListInput =
 export const PrivateLinkResourcesListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => PrivateLinkResourceSchema)),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -3396,6 +4151,10 @@ export type RestorableDroppedSqlPoolsGetInput =
 // Output Schema
 export const RestorableDroppedSqlPoolsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    location: Schema.optional(Schema.String),
+    properties: Schema.optional(
+      Schema.suspend(() => RestorableDroppedSqlPoolPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -3437,13 +4196,7 @@ export type RestorableDroppedSqlPoolsListByWorkspaceInput =
 // Output Schema
 export const RestorableDroppedSqlPoolsListByWorkspaceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => RestorableDroppedSqlPoolSchema)),
   });
 export type RestorableDroppedSqlPoolsListByWorkspaceOutput =
   typeof RestorableDroppedSqlPoolsListByWorkspaceOutput.Type;
@@ -3472,16 +4225,7 @@ export const SqlPoolBlobAuditingPoliciesCreateOrUpdateInput =
     blobAuditingPolicyName: Schema.Literals(["default"]).pipe(T.PathParam()),
     kind: Schema.optional(Schema.String),
     properties: Schema.optional(
-      Schema.Struct({
-        state: Schema.Literals(["Enabled", "Disabled"]),
-        storageEndpoint: Schema.optional(Schema.String),
-        storageAccountAccessKey: Schema.optional(Schema.String),
-        retentionDays: Schema.optional(Schema.Number),
-        auditActionsAndGroups: Schema.optional(Schema.Array(Schema.String)),
-        storageAccountSubscriptionId: Schema.optional(Schema.String),
-        isStorageSecondaryKeyInUse: Schema.optional(Schema.Boolean),
-        isAzureMonitorTargetEnabled: Schema.optional(Schema.Boolean),
-      }),
+      Schema.suspend(() => SqlPoolBlobAuditingPolicyPropertiesSchema),
     ),
   }).pipe(
     T.Http({
@@ -3496,6 +4240,10 @@ export type SqlPoolBlobAuditingPoliciesCreateOrUpdateInput =
 // Output Schema
 export const SqlPoolBlobAuditingPoliciesCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    kind: Schema.optional(Schema.String),
+    properties: Schema.optional(
+      Schema.suspend(() => SqlPoolBlobAuditingPolicyPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -3542,6 +4290,10 @@ export type SqlPoolBlobAuditingPoliciesGetInput =
 // Output Schema
 export const SqlPoolBlobAuditingPoliciesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    kind: Schema.optional(Schema.String),
+    properties: Schema.optional(
+      Schema.suspend(() => SqlPoolBlobAuditingPolicyPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -3588,13 +4340,7 @@ export type SqlPoolBlobAuditingPoliciesListBySqlPoolInput =
 export const SqlPoolBlobAuditingPoliciesListBySqlPoolOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => SqlPoolBlobAuditingPolicySchema)),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -3639,6 +4385,9 @@ export type SqlPoolColumnsGetInput = typeof SqlPoolColumnsGetInput.Type;
 // Output Schema
 export const SqlPoolColumnsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => SqlPoolColumnPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -3685,6 +4434,9 @@ export type SqlPoolDataWarehouseUserActivitiesGetInput =
 // Output Schema
 export const SqlPoolDataWarehouseUserActivitiesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => DataWarehouseUserActivitiesPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -3718,10 +4470,7 @@ export const SqlPoolGeoBackupPoliciesCreateOrUpdateInput =
     workspaceName: Schema.String.pipe(T.PathParam()),
     sqlPoolName: Schema.String.pipe(T.PathParam()),
     geoBackupPolicyName: Schema.Literals(["Default"]).pipe(T.PathParam()),
-    properties: Schema.Struct({
-      state: Schema.Literals(["Disabled", "Enabled"]),
-      storageType: Schema.optional(Schema.String),
-    }),
+    properties: Schema.suspend(() => GeoBackupPolicyPropertiesSchema),
     kind: Schema.optional(Schema.String),
     location: Schema.optional(Schema.String),
   }).pipe(
@@ -3737,6 +4486,9 @@ export type SqlPoolGeoBackupPoliciesCreateOrUpdateInput =
 // Output Schema
 export const SqlPoolGeoBackupPoliciesCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.suspend(() => GeoBackupPolicyPropertiesSchema),
+    kind: Schema.optional(Schema.String),
+    location: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -3781,6 +4533,9 @@ export type SqlPoolGeoBackupPoliciesGetInput =
 // Output Schema
 export const SqlPoolGeoBackupPoliciesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.suspend(() => GeoBackupPolicyPropertiesSchema),
+    kind: Schema.optional(Schema.String),
+    location: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -3828,13 +4583,7 @@ export type SqlPoolGeoBackupPoliciesListInput =
 export const SqlPoolGeoBackupPoliciesListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => GeoBackupPolicySchema)),
     ),
   });
 export type SqlPoolGeoBackupPoliciesListOutput =
@@ -3878,6 +4627,9 @@ export type SqlPoolMaintenanceWindowOptionsGetInput =
 // Output Schema
 export const SqlPoolMaintenanceWindowOptionsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => MaintenanceWindowOptionsPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -3912,27 +4664,7 @@ export const SqlPoolMaintenanceWindowsCreateOrUpdateInput =
     sqlPoolName: Schema.String.pipe(T.PathParam()),
     maintenanceWindowName: Schema.String,
     properties: Schema.optional(
-      Schema.Struct({
-        timeRanges: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              dayOfWeek: Schema.optional(
-                Schema.Literals([
-                  "Sunday",
-                  "Monday",
-                  "Tuesday",
-                  "Wednesday",
-                  "Thursday",
-                  "Friday",
-                  "Saturday",
-                ]),
-              ),
-              startTime: Schema.optional(Schema.String),
-              duration: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-      }),
+      Schema.suspend(() => MaintenanceWindowsPropertiesSchema),
     ),
   }).pipe(
     T.Http({
@@ -3987,6 +4719,9 @@ export type SqlPoolMaintenanceWindowsGetInput =
 // Output Schema
 export const SqlPoolMaintenanceWindowsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => MaintenanceWindowsPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -4032,6 +4767,12 @@ export type SqlPoolOperationResultsGetLocationHeaderResultInput =
 // Output Schema
 export const SqlPoolOperationResultsGetLocationHeaderResultOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    sku: Schema.optional(Schema.suspend(() => SkuSchema)),
+    properties: Schema.optional(
+      Schema.suspend(() => SqlPoolResourcePropertiesSchema),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -4077,13 +4818,7 @@ export type SqlPoolOperationsListInput = typeof SqlPoolOperationsListInput.Type;
 export const SqlPoolOperationsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => SqlPoolOperationSchema)),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -4117,11 +4852,7 @@ export const SqlPoolRecommendedSensitivityLabelsUpdateInput =
     sqlPoolName: Schema.String.pipe(T.PathParam()),
     operations: Schema.optional(
       Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
+        Schema.suspend(() => RecommendedSensitivityLabelUpdateSchema),
       ),
     ),
   }).pipe(
@@ -4176,9 +4907,13 @@ export type SqlPoolReplicationLinksGetByNameInput =
 // Output Schema
 export const SqlPoolReplicationLinksGetByNameOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    location: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    properties: Schema.optional(
+      Schema.suspend(() => ReplicationLinkPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
   });
 export type SqlPoolReplicationLinksGetByNameOutput =
   typeof SqlPoolReplicationLinksGetByNameOutput.Type;
@@ -4222,13 +4957,7 @@ export type SqlPoolReplicationLinksListInput =
 export const SqlPoolReplicationLinksListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => ReplicationLinkSchema)),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -4275,6 +5004,10 @@ export type SqlPoolRestorePointsCreateInput =
 // Output Schema
 export const SqlPoolRestorePointsCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    location: Schema.optional(Schema.String),
+    properties: Schema.optional(
+      Schema.suspend(() => RestorePointPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -4360,6 +5093,10 @@ export type SqlPoolRestorePointsGetInput =
 // Output Schema
 export const SqlPoolRestorePointsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    location: Schema.optional(Schema.String),
+    properties: Schema.optional(
+      Schema.suspend(() => RestorePointPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -4405,13 +5142,7 @@ export type SqlPoolRestorePointsListInput =
 export const SqlPoolRestorePointsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => RestorePointSchema)),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -4499,13 +5230,7 @@ export type SqlPoolSchemasListInput = typeof SqlPoolSchemasListInput.Type;
 export const SqlPoolSchemasListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => SqlPoolSchemaSchema)),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -4534,34 +5259,9 @@ export const SqlPoolsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   workspaceName: Schema.String.pipe(T.PathParam()),
   sqlPoolName: Schema.String.pipe(T.PathParam()),
-  sku: Schema.optional(
-    Schema.Struct({
-      tier: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      capacity: Schema.optional(Schema.Number),
-    }),
-  ),
+  sku: Schema.optional(Schema.suspend(() => SkuSchema)),
   properties: Schema.optional(
-    Schema.Struct({
-      maxSizeBytes: Schema.optional(Schema.Number),
-      collation: Schema.optional(Schema.String),
-      sourceDatabaseId: Schema.optional(Schema.String),
-      recoverableDatabaseId: Schema.optional(Schema.String),
-      provisioningState: Schema.optional(Schema.String),
-      status: Schema.optional(Schema.String),
-      restorePointInTime: Schema.optional(Schema.String),
-      createMode: Schema.optional(
-        Schema.Literals([
-          "Default",
-          "PointInTimeRestore",
-          "Recovery",
-          "Restore",
-        ]),
-      ),
-      creationDate: Schema.optional(Schema.String),
-      storageAccountType: Schema.optional(Schema.Literals(["GRS", "LRS"])),
-      sourceDatabaseDeletionDate: Schema.optional(Schema.String),
-    }),
+    Schema.suspend(() => SqlPoolResourcePropertiesSchema),
   ),
   tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   location: Schema.String,
@@ -4577,6 +5277,12 @@ export type SqlPoolsCreateInput = typeof SqlPoolsCreateInput.Type;
 
 // Output Schema
 export const SqlPoolsCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  sku: Schema.optional(Schema.suspend(() => SkuSchema)),
+  properties: Schema.optional(
+    Schema.suspend(() => SqlPoolResourcePropertiesSchema),
+  ),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  location: Schema.String,
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -4617,6 +5323,12 @@ export type SqlPoolsDeleteInput = typeof SqlPoolsDeleteInput.Type;
 
 // Output Schema
 export const SqlPoolsDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  sku: Schema.optional(Schema.suspend(() => SkuSchema)),
+  properties: Schema.optional(
+    Schema.suspend(() => SqlPoolResourcePropertiesSchema),
+  ),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  location: Schema.String,
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -4648,16 +5360,7 @@ export const SqlPoolSecurityAlertPoliciesCreateOrUpdateInput =
     sqlPoolName: Schema.String.pipe(T.PathParam()),
     securityAlertPolicyName: Schema.Literals(["default"]).pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        state: Schema.Literals(["New", "Enabled", "Disabled"]),
-        disabledAlerts: Schema.optional(Schema.Array(Schema.String)),
-        emailAddresses: Schema.optional(Schema.Array(Schema.String)),
-        emailAccountAdmins: Schema.optional(Schema.Boolean),
-        storageEndpoint: Schema.optional(Schema.String),
-        storageAccountAccessKey: Schema.optional(Schema.String),
-        retentionDays: Schema.optional(Schema.Number),
-        creationTime: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(() => SecurityAlertPolicyPropertiesSchema),
     ),
   }).pipe(
     T.Http({
@@ -4672,6 +5375,9 @@ export type SqlPoolSecurityAlertPoliciesCreateOrUpdateInput =
 // Output Schema
 export const SqlPoolSecurityAlertPoliciesCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => SecurityAlertPolicyPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -4718,6 +5424,9 @@ export type SqlPoolSecurityAlertPoliciesGetInput =
 // Output Schema
 export const SqlPoolSecurityAlertPoliciesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => SecurityAlertPolicyPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -4764,13 +5473,7 @@ export type SqlPoolSecurityAlertPoliciesListInput =
 export const SqlPoolSecurityAlertPoliciesListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => SqlPoolSecurityAlertPolicySchema)),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -4806,19 +5509,7 @@ export const SqlPoolSensitivityLabelsCreateOrUpdateInput =
     columnName: Schema.String.pipe(T.PathParam()),
     sensitivityLabelSource: Schema.Literals(["current"]).pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        schemaName: Schema.optional(Schema.String),
-        tableName: Schema.optional(Schema.String),
-        columnName: Schema.optional(Schema.String),
-        labelName: Schema.optional(Schema.String),
-        labelId: Schema.optional(Schema.String),
-        informationType: Schema.optional(Schema.String),
-        informationTypeId: Schema.optional(Schema.String),
-        isDisabled: Schema.optional(Schema.Boolean),
-        rank: Schema.optional(
-          Schema.Literals(["None", "Low", "Medium", "High", "Critical"]),
-        ),
-      }),
+      Schema.suspend(() => SensitivityLabelPropertiesSchema),
     ),
     managedBy: Schema.optional(Schema.String),
   }).pipe(
@@ -4834,6 +5525,10 @@ export type SqlPoolSensitivityLabelsCreateOrUpdateInput =
 // Output Schema
 export const SqlPoolSensitivityLabelsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => SensitivityLabelPropertiesSchema),
+    ),
+    managedBy: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -5028,6 +5723,10 @@ export type SqlPoolSensitivityLabelsGetInput =
 // Output Schema
 export const SqlPoolSensitivityLabelsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => SensitivityLabelPropertiesSchema),
+    ),
+    managedBy: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -5077,13 +5776,7 @@ export type SqlPoolSensitivityLabelsListCurrentInput =
 export const SqlPoolSensitivityLabelsListCurrentOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => SensitivityLabelSchema)),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -5132,13 +5825,7 @@ export type SqlPoolSensitivityLabelsListRecommendedInput =
 export const SqlPoolSensitivityLabelsListRecommendedOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => SensitivityLabelSchema)),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -5173,13 +5860,7 @@ export const SqlPoolSensitivityLabelsUpdateInput =
     workspaceName: Schema.String.pipe(T.PathParam()),
     sqlPoolName: Schema.String.pipe(T.PathParam()),
     operations: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => SensitivityLabelUpdateSchema)),
     ),
   }).pipe(
     T.Http({
@@ -5229,6 +5910,12 @@ export type SqlPoolsGetInput = typeof SqlPoolsGetInput.Type;
 
 // Output Schema
 export const SqlPoolsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  sku: Schema.optional(Schema.suspend(() => SkuSchema)),
+  properties: Schema.optional(
+    Schema.suspend(() => SqlPoolResourcePropertiesSchema),
+  ),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  location: Schema.String,
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -5271,15 +5958,7 @@ export type SqlPoolsListByWorkspaceInput =
 export const SqlPoolsListByWorkspaceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
-    ),
+    value: Schema.optional(Schema.Array(Schema.suspend(() => SqlPoolSchema))),
   });
 export type SqlPoolsListByWorkspaceOutput =
   typeof SqlPoolsListByWorkspaceOutput.Type;
@@ -5319,6 +5998,12 @@ export type SqlPoolsPauseInput = typeof SqlPoolsPauseInput.Type;
 
 // Output Schema
 export const SqlPoolsPauseOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  sku: Schema.optional(Schema.suspend(() => SkuSchema)),
+  properties: Schema.optional(
+    Schema.suspend(() => SqlPoolResourcePropertiesSchema),
+  ),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  location: Schema.String,
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -5359,6 +6044,12 @@ export type SqlPoolsResumeInput = typeof SqlPoolsResumeInput.Type;
 
 // Output Schema
 export const SqlPoolsResumeOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  sku: Schema.optional(Schema.suspend(() => SkuSchema)),
+  properties: Schema.optional(
+    Schema.suspend(() => SqlPoolResourcePropertiesSchema),
+  ),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  location: Schema.String,
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -5389,34 +6080,9 @@ export const SqlPoolsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   sqlPoolName: Schema.String.pipe(T.PathParam()),
   tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   location: Schema.optional(Schema.String),
-  sku: Schema.optional(
-    Schema.Struct({
-      tier: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      capacity: Schema.optional(Schema.Number),
-    }),
-  ),
+  sku: Schema.optional(Schema.suspend(() => SkuSchema)),
   properties: Schema.optional(
-    Schema.Struct({
-      maxSizeBytes: Schema.optional(Schema.Number),
-      collation: Schema.optional(Schema.String),
-      sourceDatabaseId: Schema.optional(Schema.String),
-      recoverableDatabaseId: Schema.optional(Schema.String),
-      provisioningState: Schema.optional(Schema.String),
-      status: Schema.optional(Schema.String),
-      restorePointInTime: Schema.optional(Schema.String),
-      createMode: Schema.optional(
-        Schema.Literals([
-          "Default",
-          "PointInTimeRestore",
-          "Recovery",
-          "Restore",
-        ]),
-      ),
-      creationDate: Schema.optional(Schema.String),
-      storageAccountType: Schema.optional(Schema.Literals(["GRS", "LRS"])),
-      sourceDatabaseDeletionDate: Schema.optional(Schema.String),
-    }),
+    Schema.suspend(() => SqlPoolResourcePropertiesSchema),
   ),
 }).pipe(
   T.Http({
@@ -5430,6 +6096,12 @@ export type SqlPoolsUpdateInput = typeof SqlPoolsUpdateInput.Type;
 
 // Output Schema
 export const SqlPoolsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  sku: Schema.optional(Schema.suspend(() => SkuSchema)),
+  properties: Schema.optional(
+    Schema.suspend(() => SqlPoolResourcePropertiesSchema),
+  ),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  location: Schema.String,
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -5476,13 +6148,7 @@ export type SqlPoolTableColumnsListByTableNameInput =
 export const SqlPoolTableColumnsListByTableNameOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => SqlPoolColumnSchema)),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -5575,13 +6241,7 @@ export type SqlPoolTablesListBySchemaInput =
 export const SqlPoolTablesListBySchemaOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => SqlPoolTableSchema)),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -5620,9 +6280,7 @@ export const SqlPoolTransparentDataEncryptionsCreateOrUpdateInput =
     ),
     location: Schema.optional(Schema.String),
     properties: Schema.optional(
-      Schema.Struct({
-        status: Schema.optional(Schema.Literals(["Enabled", "Disabled"])),
-      }),
+      Schema.suspend(() => TransparentDataEncryptionPropertiesSchema),
     ),
   }).pipe(
     T.Http({
@@ -5637,6 +6295,10 @@ export type SqlPoolTransparentDataEncryptionsCreateOrUpdateInput =
 // Output Schema
 export const SqlPoolTransparentDataEncryptionsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    location: Schema.optional(Schema.String),
+    properties: Schema.optional(
+      Schema.suspend(() => TransparentDataEncryptionPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -5685,6 +6347,10 @@ export type SqlPoolTransparentDataEncryptionsGetInput =
 // Output Schema
 export const SqlPoolTransparentDataEncryptionsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    location: Schema.optional(Schema.String),
+    properties: Schema.optional(
+      Schema.suspend(() => TransparentDataEncryptionPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -5731,13 +6397,7 @@ export type SqlPoolTransparentDataEncryptionsListInput =
 export const SqlPoolTransparentDataEncryptionsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => TransparentDataEncryptionSchema)),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -5781,17 +6441,7 @@ export type SqlPoolUsagesListInput = typeof SqlPoolUsagesListInput.Type;
 // Output Schema
 export const SqlPoolUsagesListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        name: Schema.optional(Schema.String),
-        resourceName: Schema.optional(Schema.String),
-        displayName: Schema.optional(Schema.String),
-        currentValue: Schema.optional(Schema.Number),
-        limit: Schema.optional(Schema.Number),
-        unit: Schema.optional(Schema.String),
-        nextResetTime: Schema.optional(Schema.String),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => SqlPoolUsageSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type SqlPoolUsagesListOutput = typeof SqlPoolUsagesListOutput.Type;
@@ -5825,13 +6475,9 @@ export const SqlPoolVulnerabilityAssessmentRuleBaselinesCreateOrUpdateInput =
     ruleId: Schema.String.pipe(T.PathParam()),
     baselineName: Schema.Literals(["master", "default"]).pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        baselineResults: Schema.Array(
-          Schema.Struct({
-            result: Schema.Array(Schema.String),
-          }),
-        ),
-      }),
+      Schema.suspend(
+        () => SqlPoolVulnerabilityAssessmentRuleBaselinePropertiesSchema,
+      ),
     ),
   }).pipe(
     T.Http({
@@ -5846,6 +6492,11 @@ export type SqlPoolVulnerabilityAssessmentRuleBaselinesCreateOrUpdateInput =
 // Output Schema
 export const SqlPoolVulnerabilityAssessmentRuleBaselinesCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(
+        () => SqlPoolVulnerabilityAssessmentRuleBaselinePropertiesSchema,
+      ),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -5943,6 +6594,11 @@ export type SqlPoolVulnerabilityAssessmentRuleBaselinesGetInput =
 // Output Schema
 export const SqlPoolVulnerabilityAssessmentRuleBaselinesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(
+        () => SqlPoolVulnerabilityAssessmentRuleBaselinePropertiesSchema,
+      ),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -5992,6 +6648,11 @@ export type SqlPoolVulnerabilityAssessmentScansExportInput =
 // Output Schema
 export const SqlPoolVulnerabilityAssessmentScansExportOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(
+        () => SqlPoolVulnerabilityAssessmentScanExportPropertiesSchema,
+      ),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -6040,6 +6701,9 @@ export type SqlPoolVulnerabilityAssessmentScansGetInput =
 // Output Schema
 export const SqlPoolVulnerabilityAssessmentScansGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => VulnerabilityAssessmentScanRecordPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -6134,11 +6798,7 @@ export const SqlPoolVulnerabilityAssessmentScansListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
+        Schema.suspend(() => VulnerabilityAssessmentScanRecordSchema),
       ),
     ),
     nextLink: Schema.optional(Schema.String),
@@ -6175,18 +6835,7 @@ export const SqlPoolVulnerabilityAssessmentsCreateOrUpdateInput =
       T.PathParam(),
     ),
     properties: Schema.optional(
-      Schema.Struct({
-        storageContainerPath: Schema.optional(Schema.String),
-        storageContainerSasKey: Schema.optional(Schema.String),
-        storageAccountAccessKey: Schema.optional(Schema.String),
-        recurringScans: Schema.optional(
-          Schema.Struct({
-            isEnabled: Schema.optional(Schema.Boolean),
-            emailSubscriptionAdmins: Schema.optional(Schema.Boolean),
-            emails: Schema.optional(Schema.Array(Schema.String)),
-          }),
-        ),
-      }),
+      Schema.suspend(() => SqlPoolVulnerabilityAssessmentPropertiesSchema),
     ),
   }).pipe(
     T.Http({
@@ -6201,6 +6850,9 @@ export type SqlPoolVulnerabilityAssessmentsCreateOrUpdateInput =
 // Output Schema
 export const SqlPoolVulnerabilityAssessmentsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => SqlPoolVulnerabilityAssessmentPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -6293,6 +6945,9 @@ export type SqlPoolVulnerabilityAssessmentsGetInput =
 // Output Schema
 export const SqlPoolVulnerabilityAssessmentsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => SqlPoolVulnerabilityAssessmentPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -6339,13 +6994,7 @@ export type SqlPoolVulnerabilityAssessmentsListInput =
 export const SqlPoolVulnerabilityAssessmentsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => SqlPoolVulnerabilityAssessmentSchema)),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -6379,14 +7028,7 @@ export const SqlPoolWorkloadClassifierCreateOrUpdateInput =
     workloadGroupName: Schema.String.pipe(T.PathParam()),
     workloadClassifierName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        memberName: Schema.String,
-        label: Schema.optional(Schema.String),
-        context: Schema.optional(Schema.String),
-        startTime: Schema.optional(Schema.String),
-        endTime: Schema.optional(Schema.String),
-        importance: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(() => WorkloadClassifierPropertiesSchema),
     ),
   }).pipe(
     T.Http({
@@ -6402,6 +7044,9 @@ export type SqlPoolWorkloadClassifierCreateOrUpdateInput =
 // Output Schema
 export const SqlPoolWorkloadClassifierCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => WorkloadClassifierPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -6495,6 +7140,9 @@ export type SqlPoolWorkloadClassifierGetInput =
 // Output Schema
 export const SqlPoolWorkloadClassifierGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => WorkloadClassifierPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -6543,13 +7191,7 @@ export type SqlPoolWorkloadClassifierListInput =
 export const SqlPoolWorkloadClassifierListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => WorkloadClassifierSchema)),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -6583,14 +7225,7 @@ export const SqlPoolWorkloadGroupCreateOrUpdateInput =
     sqlPoolName: Schema.String.pipe(T.PathParam()),
     workloadGroupName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        minResourcePercent: Schema.Number,
-        maxResourcePercent: Schema.Number,
-        minResourcePercentPerRequest: Schema.Number,
-        maxResourcePercentPerRequest: Schema.optional(Schema.Number),
-        importance: Schema.optional(Schema.String),
-        queryExecutionTimeout: Schema.optional(Schema.Number),
-      }),
+      Schema.suspend(() => WorkloadGroupPropertiesSchema),
     ),
   }).pipe(
     T.Http({
@@ -6606,6 +7241,9 @@ export type SqlPoolWorkloadGroupCreateOrUpdateInput =
 // Output Schema
 export const SqlPoolWorkloadGroupCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => WorkloadGroupPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -6696,6 +7334,9 @@ export type SqlPoolWorkloadGroupGetInput =
 // Output Schema
 export const SqlPoolWorkloadGroupGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => WorkloadGroupPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -6743,13 +7384,7 @@ export type SqlPoolWorkloadGroupListInput =
 export const SqlPoolWorkloadGroupListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => WorkloadGroupSchema)),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -6780,14 +7415,7 @@ export const WorkspaceAadAdminsCreateOrUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
-    properties: Schema.optional(
-      Schema.Struct({
-        tenantId: Schema.optional(Schema.String),
-        login: Schema.optional(Schema.String),
-        administratorType: Schema.optional(Schema.String),
-        sid: Schema.optional(Schema.String),
-      }),
-    ),
+    properties: Schema.optional(Schema.suspend(() => AadAdminPropertiesSchema)),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -6802,6 +7430,7 @@ export type WorkspaceAadAdminsCreateOrUpdateInput =
 // Output Schema
 export const WorkspaceAadAdminsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(Schema.suspend(() => AadAdminPropertiesSchema)),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -6879,6 +7508,7 @@ export type WorkspaceAadAdminsGetInput = typeof WorkspaceAadAdminsGetInput.Type;
 // Output Schema
 export const WorkspaceAadAdminsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(Schema.suspend(() => AadAdminPropertiesSchema)),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -6941,6 +7571,26 @@ export type WorkspaceManagedIdentitySqlControlSettingsCreateOrUpdateInput =
 // Output Schema
 export const WorkspaceManagedIdentitySqlControlSettingsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.Struct({
+        grantSqlControlToManagedIdentity: Schema.optional(
+          Schema.Struct({
+            desiredState: Schema.optional(
+              Schema.Literals(["Enabled", "Disabled"]),
+            ),
+            actualState: Schema.optional(
+              Schema.Literals([
+                "Enabling",
+                "Enabled",
+                "Disabling",
+                "Disabled",
+                "Unknown",
+              ]),
+            ),
+          }),
+        ),
+      }),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -6982,6 +7632,26 @@ export type WorkspaceManagedIdentitySqlControlSettingsGetInput =
 // Output Schema
 export const WorkspaceManagedIdentitySqlControlSettingsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.Struct({
+        grantSqlControlToManagedIdentity: Schema.optional(
+          Schema.Struct({
+            desiredState: Schema.optional(
+              Schema.Literals(["Enabled", "Disabled"]),
+            ),
+            actualState: Schema.optional(
+              Schema.Literals([
+                "Enabling",
+                "Enabled",
+                "Disabling",
+                "Disabled",
+                "Unknown",
+              ]),
+            ),
+          }),
+        ),
+      }),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -7011,18 +7681,7 @@ export const WorkspaceManagedSqlServerBlobAuditingPoliciesCreateOrUpdateInput =
     workspaceName: Schema.String.pipe(T.PathParam()),
     blobAuditingPolicyName: Schema.Literals(["default"]).pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        state: Schema.Literals(["Enabled", "Disabled"]),
-        storageEndpoint: Schema.optional(Schema.String),
-        storageAccountAccessKey: Schema.optional(Schema.String),
-        retentionDays: Schema.optional(Schema.Number),
-        auditActionsAndGroups: Schema.optional(Schema.Array(Schema.String)),
-        storageAccountSubscriptionId: Schema.optional(Schema.String),
-        isStorageSecondaryKeyInUse: Schema.optional(Schema.Boolean),
-        isAzureMonitorTargetEnabled: Schema.optional(Schema.Boolean),
-        queueDelayMs: Schema.optional(Schema.Number),
-        isDevopsAuditEnabled: Schema.optional(Schema.Boolean),
-      }),
+      Schema.suspend(() => ServerBlobAuditingPolicyPropertiesSchema),
     ),
   }).pipe(
     T.Http({
@@ -7038,6 +7697,9 @@ export type WorkspaceManagedSqlServerBlobAuditingPoliciesCreateOrUpdateInput =
 // Output Schema
 export const WorkspaceManagedSqlServerBlobAuditingPoliciesCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => ServerBlobAuditingPolicyPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -7084,6 +7746,9 @@ export type WorkspaceManagedSqlServerBlobAuditingPoliciesGetInput =
 // Output Schema
 export const WorkspaceManagedSqlServerBlobAuditingPoliciesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => ServerBlobAuditingPolicyPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -7128,13 +7793,7 @@ export type WorkspaceManagedSqlServerBlobAuditingPoliciesListByWorkspaceInput =
 export const WorkspaceManagedSqlServerBlobAuditingPoliciesListByWorkspaceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => ServerBlobAuditingPolicySchema)),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -7179,6 +7838,10 @@ export type WorkspaceManagedSqlServerDedicatedSQLMinimalTlsSettingsGetInput =
 // Output Schema
 export const WorkspaceManagedSqlServerDedicatedSQLMinimalTlsSettingsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    location: Schema.optional(Schema.String),
+    properties: Schema.optional(
+      Schema.suspend(() => DedicatedSQLminimalTlsSettingsPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -7225,13 +7888,7 @@ export type WorkspaceManagedSqlServerDedicatedSQLMinimalTlsSettingsListInput =
 export const WorkspaceManagedSqlServerDedicatedSQLMinimalTlsSettingsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => DedicatedSQLminimalTlsSettingsSchema)),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -7267,9 +7924,7 @@ export const WorkspaceManagedSqlServerDedicatedSQLMinimalTlsSettingsUpdateInput 
     ),
     location: Schema.optional(Schema.String),
     properties: Schema.optional(
-      Schema.Struct({
-        minimalTlsVersion: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(() => DedicatedSQLminimalTlsSettingsPropertiesSchema),
     ),
   }).pipe(
     T.Http({
@@ -7285,6 +7940,10 @@ export type WorkspaceManagedSqlServerDedicatedSQLMinimalTlsSettingsUpdateInput =
 // Output Schema
 export const WorkspaceManagedSqlServerDedicatedSQLMinimalTlsSettingsUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    location: Schema.optional(Schema.String),
+    properties: Schema.optional(
+      Schema.suspend(() => DedicatedSQLminimalTlsSettingsPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -7321,13 +7980,7 @@ export const WorkspaceManagedSqlServerEncryptionProtectorCreateOrUpdateInput =
     kind: Schema.optional(Schema.String),
     location: Schema.optional(Schema.String),
     properties: Schema.optional(
-      Schema.Struct({
-        subregion: Schema.optional(Schema.String),
-        serverKeyName: Schema.optional(Schema.String),
-        serverKeyType: Schema.Literals(["ServiceManaged", "AzureKeyVault"]),
-        uri: Schema.optional(Schema.String),
-        thumbprint: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(() => EncryptionProtectorPropertiesSchema),
     ),
   }).pipe(
     T.Http({
@@ -7343,6 +7996,11 @@ export type WorkspaceManagedSqlServerEncryptionProtectorCreateOrUpdateInput =
 // Output Schema
 export const WorkspaceManagedSqlServerEncryptionProtectorCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    kind: Schema.optional(Schema.String),
+    location: Schema.optional(Schema.String),
+    properties: Schema.optional(
+      Schema.suspend(() => EncryptionProtectorPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -7389,6 +8047,11 @@ export type WorkspaceManagedSqlServerEncryptionProtectorGetInput =
 // Output Schema
 export const WorkspaceManagedSqlServerEncryptionProtectorGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    kind: Schema.optional(Schema.String),
+    location: Schema.optional(Schema.String),
+    properties: Schema.optional(
+      Schema.suspend(() => EncryptionProtectorPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -7433,13 +8096,7 @@ export type WorkspaceManagedSqlServerEncryptionProtectorListInput =
 export const WorkspaceManagedSqlServerEncryptionProtectorListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => EncryptionProtectorSchema)),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -7511,19 +8168,7 @@ export const WorkspaceManagedSqlServerExtendedBlobAuditingPoliciesCreateOrUpdate
     workspaceName: Schema.String.pipe(T.PathParam()),
     blobAuditingPolicyName: Schema.Literals(["default"]).pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        predicateExpression: Schema.optional(Schema.String),
-        state: Schema.Literals(["Enabled", "Disabled"]),
-        storageEndpoint: Schema.optional(Schema.String),
-        storageAccountAccessKey: Schema.optional(Schema.String),
-        retentionDays: Schema.optional(Schema.Number),
-        auditActionsAndGroups: Schema.optional(Schema.Array(Schema.String)),
-        storageAccountSubscriptionId: Schema.optional(Schema.String),
-        isStorageSecondaryKeyInUse: Schema.optional(Schema.Boolean),
-        isAzureMonitorTargetEnabled: Schema.optional(Schema.Boolean),
-        queueDelayMs: Schema.optional(Schema.Number),
-        isDevopsAuditEnabled: Schema.optional(Schema.Boolean),
-      }),
+      Schema.suspend(() => ExtendedServerBlobAuditingPolicyPropertiesSchema),
     ),
   }).pipe(
     T.Http({
@@ -7539,6 +8184,9 @@ export type WorkspaceManagedSqlServerExtendedBlobAuditingPoliciesCreateOrUpdateI
 // Output Schema
 export const WorkspaceManagedSqlServerExtendedBlobAuditingPoliciesCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => ExtendedServerBlobAuditingPolicyPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -7585,6 +8233,9 @@ export type WorkspaceManagedSqlServerExtendedBlobAuditingPoliciesGetInput =
 // Output Schema
 export const WorkspaceManagedSqlServerExtendedBlobAuditingPoliciesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => ExtendedServerBlobAuditingPolicyPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -7631,11 +8282,7 @@ export const WorkspaceManagedSqlServerExtendedBlobAuditingPoliciesListByWorkspac
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
+        Schema.suspend(() => ExtendedServerBlobAuditingPolicySchema),
       ),
     ),
     nextLink: Schema.optional(Schema.String),
@@ -7681,6 +8328,9 @@ export type WorkspaceManagedSqlServerRecoverableSqlPoolsGetInput =
 // Output Schema
 export const WorkspaceManagedSqlServerRecoverableSqlPoolsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => RecoverableSqlPoolPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -7725,13 +8375,7 @@ export type WorkspaceManagedSqlServerRecoverableSqlPoolsListInput =
 export const WorkspaceManagedSqlServerRecoverableSqlPoolsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => RecoverableSqlPoolSchema)),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -7762,16 +8406,7 @@ export const WorkspaceManagedSqlServerSecurityAlertPolicyCreateOrUpdateInput =
     workspaceName: Schema.String.pipe(T.PathParam()),
     securityAlertPolicyName: Schema.Literals(["Default"]).pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        state: Schema.Literals(["New", "Enabled", "Disabled"]),
-        disabledAlerts: Schema.optional(Schema.Array(Schema.String)),
-        emailAddresses: Schema.optional(Schema.Array(Schema.String)),
-        emailAccountAdmins: Schema.optional(Schema.Boolean),
-        storageEndpoint: Schema.optional(Schema.String),
-        storageAccountAccessKey: Schema.optional(Schema.String),
-        retentionDays: Schema.optional(Schema.Number),
-        creationTime: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(() => ServerSecurityAlertPolicyPropertiesSchema),
     ),
   }).pipe(
     T.Http({
@@ -7787,6 +8422,9 @@ export type WorkspaceManagedSqlServerSecurityAlertPolicyCreateOrUpdateInput =
 // Output Schema
 export const WorkspaceManagedSqlServerSecurityAlertPolicyCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => ServerSecurityAlertPolicyPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -7833,6 +8471,9 @@ export type WorkspaceManagedSqlServerSecurityAlertPolicyGetInput =
 // Output Schema
 export const WorkspaceManagedSqlServerSecurityAlertPolicyGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => ServerSecurityAlertPolicyPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -7877,13 +8518,7 @@ export type WorkspaceManagedSqlServerSecurityAlertPolicyListInput =
 export const WorkspaceManagedSqlServerSecurityAlertPolicyListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => ServerSecurityAlertPolicySchema)),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -7925,17 +8560,7 @@ export type WorkspaceManagedSqlServerUsagesListInput =
 // Output Schema
 export const WorkspaceManagedSqlServerUsagesListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        name: Schema.optional(Schema.String),
-        resourceName: Schema.optional(Schema.String),
-        displayName: Schema.optional(Schema.String),
-        currentValue: Schema.optional(Schema.Number),
-        limit: Schema.optional(Schema.Number),
-        unit: Schema.optional(Schema.String),
-        nextResetTime: Schema.optional(Schema.String),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => ServerUsageSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type WorkspaceManagedSqlServerUsagesListOutput =
@@ -7967,18 +8592,7 @@ export const WorkspaceManagedSqlServerVulnerabilityAssessmentsCreateOrUpdateInpu
       T.PathParam(),
     ),
     properties: Schema.optional(
-      Schema.Struct({
-        storageContainerPath: Schema.String,
-        storageContainerSasKey: Schema.optional(Schema.String),
-        storageAccountAccessKey: Schema.optional(Schema.String),
-        recurringScans: Schema.optional(
-          Schema.Struct({
-            isEnabled: Schema.optional(Schema.Boolean),
-            emailSubscriptionAdmins: Schema.optional(Schema.Boolean),
-            emails: Schema.optional(Schema.Array(Schema.String)),
-          }),
-        ),
-      }),
+      Schema.suspend(() => ServerVulnerabilityAssessmentPropertiesSchema),
     ),
   }).pipe(
     T.Http({
@@ -7993,6 +8607,9 @@ export type WorkspaceManagedSqlServerVulnerabilityAssessmentsCreateOrUpdateInput
 // Output Schema
 export const WorkspaceManagedSqlServerVulnerabilityAssessmentsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => ServerVulnerabilityAssessmentPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -8083,6 +8700,9 @@ export type WorkspaceManagedSqlServerVulnerabilityAssessmentsGetInput =
 // Output Schema
 export const WorkspaceManagedSqlServerVulnerabilityAssessmentsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => ServerVulnerabilityAssessmentPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -8127,13 +8747,7 @@ export type WorkspaceManagedSqlServerVulnerabilityAssessmentsListInput =
 export const WorkspaceManagedSqlServerVulnerabilityAssessmentsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => ServerVulnerabilityAssessmentSchema)),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -8163,124 +8777,9 @@ export const WorkspacesCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        defaultDataLakeStorage: Schema.optional(
-          Schema.Struct({
-            accountUrl: Schema.optional(Schema.String),
-            filesystem: Schema.optional(Schema.String),
-            resourceId: Schema.optional(Schema.String),
-            createManagedPrivateEndpoint: Schema.optional(Schema.Boolean),
-          }),
-        ),
-        sqlAdministratorLoginPassword: Schema.optional(SensitiveString),
-        managedResourceGroupName: Schema.optional(Schema.String),
-        provisioningState: Schema.optional(Schema.String),
-        sqlAdministratorLogin: Schema.optional(Schema.String),
-        virtualNetworkProfile: Schema.optional(
-          Schema.Struct({
-            computeSubnetId: Schema.optional(Schema.String),
-          }),
-        ),
-        connectivityEndpoints: Schema.optional(
-          Schema.Record(Schema.String, Schema.String),
-        ),
-        managedVirtualNetwork: Schema.optional(Schema.String),
-        privateEndpointConnections: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              id: Schema.optional(Schema.String),
-              name: Schema.optional(Schema.String),
-              type: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        encryption: Schema.optional(
-          Schema.Struct({
-            doubleEncryptionEnabled: Schema.optional(Schema.Boolean),
-            cmk: Schema.optional(
-              Schema.Struct({
-                status: Schema.optional(Schema.String),
-                key: Schema.optional(
-                  Schema.Struct({
-                    name: Schema.optional(Schema.String),
-                    keyVaultUrl: Schema.optional(Schema.String),
-                  }),
-                ),
-                kekIdentity: Schema.optional(
-                  Schema.Struct({
-                    userAssignedIdentity: Schema.optional(Schema.String),
-                    useSystemAssignedIdentity: Schema.optional(Schema.Unknown),
-                  }),
-                ),
-              }),
-            ),
-          }),
-        ),
-        workspaceUID: Schema.optional(Schema.String),
-        extraProperties: Schema.optional(Schema.Unknown),
-        managedVirtualNetworkSettings: Schema.optional(
-          Schema.Struct({
-            preventDataExfiltration: Schema.optional(Schema.Boolean),
-            linkedAccessCheckOnTargetResource: Schema.optional(Schema.Boolean),
-            allowedAadTenantIdsForLinking: Schema.optional(
-              Schema.Array(Schema.String),
-            ),
-          }),
-        ),
-        workspaceRepositoryConfiguration: Schema.optional(
-          Schema.Struct({
-            type: Schema.optional(Schema.String),
-            hostName: Schema.optional(Schema.String),
-            accountName: Schema.optional(Schema.String),
-            projectName: Schema.optional(Schema.String),
-            repositoryName: Schema.optional(Schema.String),
-            collaborationBranch: Schema.optional(Schema.String),
-            rootFolder: Schema.optional(Schema.String),
-            lastCommitId: Schema.optional(Schema.String),
-            tenantId: Schema.optional(Schema.String),
-          }),
-        ),
-        purviewConfiguration: Schema.optional(
-          Schema.Struct({
-            purviewResourceId: Schema.optional(Schema.String),
-          }),
-        ),
-        adlaResourceId: Schema.optional(Schema.String),
-        publicNetworkAccess: Schema.optional(
-          Schema.Literals(["Enabled", "Disabled"]),
-        ),
-        cspWorkspaceAdminProperties: Schema.optional(
-          Schema.Struct({
-            initialWorkspaceAdminObjectId: Schema.optional(Schema.String),
-          }),
-        ),
-        settings: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-        azureADOnlyAuthentication: Schema.optional(Schema.Boolean),
-        trustedServiceBypassEnabled: Schema.optional(Schema.Boolean),
-      }),
+      Schema.suspend(() => WorkspacePropertiesSchema),
     ),
-    identity: Schema.optional(
-      Schema.Struct({
-        principalId: Schema.optional(Schema.String),
-        tenantId: Schema.optional(Schema.String),
-        type: Schema.optional(
-          Schema.Literals([
-            "None",
-            "SystemAssigned",
-            "SystemAssigned,UserAssigned",
-          ]),
-        ),
-        userAssignedIdentities: Schema.optional(
-          Schema.Record(
-            Schema.String,
-            Schema.Struct({
-              clientId: Schema.optional(Schema.NullOr(Schema.String)),
-              principalId: Schema.optional(Schema.NullOr(Schema.String)),
-            }),
-          ),
-        ),
-      }),
-    ),
+    identity: Schema.optional(Schema.suspend(() => ManagedIdentitySchema)),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     location: Schema.String,
   }).pipe(
@@ -8297,6 +8796,12 @@ export type WorkspacesCreateOrUpdateInput =
 // Output Schema
 export const WorkspacesCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => WorkspacePropertiesSchema),
+    ),
+    identity: Schema.optional(Schema.suspend(() => ManagedIdentitySchema)),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -8337,6 +8842,12 @@ export type WorkspacesDeleteInput = typeof WorkspacesDeleteInput.Type;
 // Output Schema
 export const WorkspacesDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
+    properties: Schema.optional(
+      Schema.suspend(() => WorkspacePropertiesSchema),
+    ),
+    identity: Schema.optional(Schema.suspend(() => ManagedIdentitySchema)),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -8373,6 +8884,10 @@ export type WorkspacesGetInput = typeof WorkspacesGetInput.Type;
 
 // Output Schema
 export const WorkspacesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.optional(Schema.suspend(() => WorkspacePropertiesSchema)),
+  identity: Schema.optional(Schema.suspend(() => ManagedIdentitySchema)),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  location: Schema.String,
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -8407,15 +8922,7 @@ export type WorkspacesListInput = typeof WorkspacesListInput.Type;
 // Output Schema
 export const WorkspacesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   nextLink: Schema.optional(Schema.String),
-  value: Schema.optional(
-    Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-      }),
-    ),
-  ),
+  value: Schema.optional(Schema.Array(Schema.suspend(() => WorkspaceSchema))),
 });
 export type WorkspacesListOutput = typeof WorkspacesListOutput.Type;
 
@@ -8449,15 +8956,7 @@ export type WorkspacesListByResourceGroupInput =
 export const WorkspacesListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
-    ),
+    value: Schema.optional(Schema.Array(Schema.suspend(() => WorkspaceSchema))),
   });
 export type WorkspacesListByResourceGroupOutput =
   typeof WorkspacesListByResourceGroupOutput.Type;
@@ -8481,14 +8980,7 @@ export const WorkspaceSqlAadAdminsCreateOrUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workspaceName: Schema.String.pipe(T.PathParam()),
-    properties: Schema.optional(
-      Schema.Struct({
-        tenantId: Schema.optional(Schema.String),
-        login: Schema.optional(Schema.String),
-        administratorType: Schema.optional(Schema.String),
-        sid: Schema.optional(Schema.String),
-      }),
-    ),
+    properties: Schema.optional(Schema.suspend(() => AadAdminPropertiesSchema)),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -8503,6 +8995,7 @@ export type WorkspaceSqlAadAdminsCreateOrUpdateInput =
 // Output Schema
 export const WorkspaceSqlAadAdminsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(Schema.suspend(() => AadAdminPropertiesSchema)),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -8581,6 +9074,7 @@ export type WorkspaceSqlAadAdminsGetInput =
 // Output Schema
 export const WorkspaceSqlAadAdminsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(Schema.suspend(() => AadAdminPropertiesSchema)),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -8609,85 +9103,9 @@ export const WorkspacesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   workspaceName: Schema.String.pipe(T.PathParam()),
   tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-  identity: Schema.optional(
-    Schema.Struct({
-      principalId: Schema.optional(Schema.String),
-      tenantId: Schema.optional(Schema.String),
-      type: Schema.optional(
-        Schema.Literals([
-          "None",
-          "SystemAssigned",
-          "SystemAssigned,UserAssigned",
-        ]),
-      ),
-      userAssignedIdentities: Schema.optional(
-        Schema.Record(
-          Schema.String,
-          Schema.Struct({
-            clientId: Schema.optional(Schema.NullOr(Schema.String)),
-            principalId: Schema.optional(Schema.NullOr(Schema.String)),
-          }),
-        ),
-      ),
-    }),
-  ),
+  identity: Schema.optional(Schema.suspend(() => ManagedIdentitySchema)),
   properties: Schema.optional(
-    Schema.Struct({
-      sqlAdministratorLoginPassword: Schema.optional(SensitiveString),
-      managedVirtualNetworkSettings: Schema.optional(
-        Schema.Struct({
-          preventDataExfiltration: Schema.optional(Schema.Boolean),
-          linkedAccessCheckOnTargetResource: Schema.optional(Schema.Boolean),
-          allowedAadTenantIdsForLinking: Schema.optional(
-            Schema.Array(Schema.String),
-          ),
-        }),
-      ),
-      workspaceRepositoryConfiguration: Schema.optional(
-        Schema.Struct({
-          type: Schema.optional(Schema.String),
-          hostName: Schema.optional(Schema.String),
-          accountName: Schema.optional(Schema.String),
-          projectName: Schema.optional(Schema.String),
-          repositoryName: Schema.optional(Schema.String),
-          collaborationBranch: Schema.optional(Schema.String),
-          rootFolder: Schema.optional(Schema.String),
-          lastCommitId: Schema.optional(Schema.String),
-          tenantId: Schema.optional(Schema.String),
-        }),
-      ),
-      purviewConfiguration: Schema.optional(
-        Schema.Struct({
-          purviewResourceId: Schema.optional(Schema.String),
-        }),
-      ),
-      provisioningState: Schema.optional(Schema.String),
-      encryption: Schema.optional(
-        Schema.Struct({
-          doubleEncryptionEnabled: Schema.optional(Schema.Boolean),
-          cmk: Schema.optional(
-            Schema.Struct({
-              status: Schema.optional(Schema.String),
-              key: Schema.optional(
-                Schema.Struct({
-                  name: Schema.optional(Schema.String),
-                  keyVaultUrl: Schema.optional(Schema.String),
-                }),
-              ),
-              kekIdentity: Schema.optional(
-                Schema.Struct({
-                  userAssignedIdentity: Schema.optional(Schema.String),
-                  useSystemAssignedIdentity: Schema.optional(Schema.Unknown),
-                }),
-              ),
-            }),
-          ),
-        }),
-      ),
-      publicNetworkAccess: Schema.optional(
-        Schema.Literals(["Enabled", "Disabled"]),
-      ),
-    }),
+    Schema.suspend(() => WorkspacePatchPropertiesSchema),
   ),
 }).pipe(
   T.Http({
@@ -8702,6 +9120,12 @@ export type WorkspacesUpdateInput = typeof WorkspacesUpdateInput.Type;
 // Output Schema
 export const WorkspacesUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
+    properties: Schema.optional(
+      Schema.suspend(() => WorkspacePropertiesSchema),
+    ),
+    identity: Schema.optional(Schema.suspend(() => ManagedIdentitySchema)),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),

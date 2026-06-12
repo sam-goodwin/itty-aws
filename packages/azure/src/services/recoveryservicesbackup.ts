@@ -8,6 +8,608 @@ import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
+// Shared schemas
+const ClientDiscoveryValueForSingleApiSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    display: Schema.optional(
+      Schema.suspend(() => ClientDiscoveryDisplaySchema),
+    ),
+    origin: Schema.optional(Schema.String),
+    properties: Schema.optional(
+      Schema.suspend(() => ClientDiscoveryForPropertiesSchema),
+    ),
+  });
+const ClientDiscoveryDisplaySchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  provider: Schema.optional(Schema.String),
+  resource: Schema.optional(Schema.String),
+  operation: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+});
+const ClientDiscoveryForPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    serviceSpecification: Schema.optional(
+      Schema.suspend(() => ClientDiscoveryForServiceSpecificationSchema),
+    ),
+  });
+const ClientDiscoveryForServiceSpecificationSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    logSpecifications: Schema.optional(
+      Schema.Array(
+        Schema.suspend(() => ClientDiscoveryForLogSpecificationSchema),
+      ),
+    ),
+  });
+const ClientDiscoveryForLogSpecificationSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    displayName: Schema.optional(Schema.String),
+    blobDuration: Schema.optional(Schema.String),
+  });
+const DataSourceTypeSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Invalid",
+  "VM",
+  "FileFolder",
+  "AzureSqlDb",
+  "SQLDB",
+  "Exchange",
+  "Sharepoint",
+  "VMwareVM",
+  "SystemState",
+  "Client",
+  "GenericDataSource",
+  "SQLDataBase",
+  "AzureFileShare",
+  "SAPHanaDatabase",
+  "SAPAseDatabase",
+  "SAPHanaDBInstance",
+]);
+const ValidationStatusSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Invalid",
+  "Succeeded",
+  "Failed",
+]);
+const ProtectionStatusSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Invalid",
+  "NotProtected",
+  "Protecting",
+  "Protected",
+  "ProtectionFailed",
+]);
+const FabricNameSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Invalid",
+  "Azure",
+]);
+const AcquireStorageAccountLockSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Literals(["Acquire", "NotAcquire"]);
+const SupportStatusSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Invalid",
+  "Supported",
+  "DefaultOFF",
+  "DefaultON",
+  "NotSupported",
+]);
+const ProtectionContainerResourceSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+  });
+const systemDataSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  createdBy: Schema.optional(Schema.String),
+  createdByType: Schema.optional(
+    Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+  ),
+  createdAt: Schema.optional(Schema.String),
+  lastModifiedBy: Schema.optional(Schema.String),
+  lastModifiedByType: Schema.optional(
+    Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+  ),
+  lastModifiedAt: Schema.optional(Schema.String),
+});
+const BackupResourceEncryptionConfigExtendedSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    encryptionAtRestType: Schema.optional(
+      Schema.suspend(() => EncryptionAtRestTypeSchema),
+    ),
+    keyUri: Schema.optional(Schema.String),
+    subscriptionId: Schema.optional(Schema.String),
+    lastUpdateStatus: Schema.optional(
+      Schema.suspend(() => LastUpdateStatusSchema),
+    ),
+    infrastructureEncryptionState: Schema.optional(
+      Schema.suspend(() => InfrastructureEncryptionStateSchema),
+    ),
+  });
+const EncryptionAtRestTypeSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Invalid",
+  "MicrosoftManaged",
+  "CustomerManaged",
+]);
+const LastUpdateStatusSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Invalid",
+  "NotEnabled",
+  "PartiallySucceeded",
+  "PartiallyFailed",
+  "Failed",
+  "Succeeded",
+  "Initialized",
+  "FirstInitialization",
+]);
+const InfrastructureEncryptionStateSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+    "Invalid",
+    "Disabled",
+    "Enabled",
+  ]);
+const Azure_Core_azureLocationSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.String;
+const BackupResourceEncryptionConfigSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    encryptionAtRestType: Schema.optional(
+      Schema.suspend(() => EncryptionAtRestTypeSchema),
+    ),
+    keyUri: Schema.optional(Schema.String),
+    subscriptionId: Schema.optional(Schema.String),
+    lastUpdateStatus: Schema.optional(
+      Schema.suspend(() => LastUpdateStatusSchema),
+    ),
+    infrastructureEncryptionState: Schema.optional(
+      Schema.suspend(() => InfrastructureEncryptionStateSchema),
+    ),
+  });
+const BackupEngineBaseResourceSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+  });
+const BackupEngineBaseSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  friendlyName: Schema.optional(Schema.String),
+  backupManagementType: Schema.optional(
+    Schema.suspend(() => BackupManagementTypeSchema),
+  ),
+  registrationStatus: Schema.optional(Schema.String),
+  backupEngineState: Schema.optional(Schema.String),
+  healthStatus: Schema.optional(Schema.String),
+  backupEngineType: Schema.suspend(() => BackupEngineTypeSchema),
+  canReRegister: Schema.optional(Schema.Boolean),
+  backupEngineId: Schema.optional(Schema.String),
+  dpmVersion: Schema.optional(Schema.String),
+  azureBackupAgentVersion: Schema.optional(Schema.String),
+  isAzureBackupAgentUpgradeAvailable: Schema.optional(Schema.Boolean),
+  isDpmUpgradeAvailable: Schema.optional(Schema.Boolean),
+  extendedInfo: Schema.optional(
+    Schema.suspend(() => BackupEngineExtendedInfoSchema),
+  ),
+});
+const BackupManagementTypeSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Invalid",
+  "AzureIaasVM",
+  "MAB",
+  "DPM",
+  "AzureBackupServer",
+  "AzureSql",
+  "AzureStorage",
+  "AzureWorkload",
+  "DefaultBackup",
+]);
+const BackupEngineTypeSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Invalid",
+  "DpmBackupEngine",
+  "AzureBackupServerEngine",
+]);
+const BackupEngineExtendedInfoSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    databaseName: Schema.optional(Schema.String),
+    protectedItemsCount: Schema.optional(Schema.Number),
+    protectedServersCount: Schema.optional(Schema.Number),
+    diskCount: Schema.optional(Schema.Number),
+    usedDiskSpace: Schema.optional(Schema.Number),
+    availableDiskSpace: Schema.optional(Schema.Number),
+    refreshedAt: Schema.optional(Schema.String),
+    azureProtectedInstances: Schema.optional(Schema.Number),
+  });
+const ProtectionIntentSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  protectionIntentItemType: Schema.suspend(
+    () => ProtectionIntentItemTypeSchema,
+  ),
+  backupManagementType: Schema.optional(
+    Schema.suspend(() => BackupManagementTypeSchema),
+  ),
+  sourceResourceId: Schema.optional(Schema.String),
+  itemId: Schema.optional(Schema.String),
+  policyId: Schema.optional(Schema.String),
+  protectionState: Schema.optional(
+    Schema.suspend(() => ProtectionStatusSchema),
+  ),
+});
+const ProtectionIntentItemTypeSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+    "Invalid",
+    "AzureResourceItem",
+    "RecoveryServiceVaultItem",
+    "AzureWorkloadContainerAutoProtectionIntent",
+    "AzureWorkloadAutoProtectionIntent",
+    "AzureWorkloadSQLAutoProtectionIntent",
+  ]);
+const ProtectableContainerResourceSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+  });
+const ProtectionContainerSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  friendlyName: Schema.optional(Schema.String),
+  backupManagementType: Schema.optional(
+    Schema.suspend(() => BackupManagementTypeSchema),
+  ),
+  registrationStatus: Schema.optional(Schema.String),
+  healthStatus: Schema.optional(Schema.String),
+  containerType: Schema.suspend(() => ProtectableContainerTypeSchema),
+  protectableObjectType: Schema.optional(Schema.String),
+});
+const ProtectableContainerTypeSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+    "Invalid",
+    "Unknown",
+    "IaasVMContainer",
+    "IaasVMServiceContainer",
+    "DPMContainer",
+    "AzureBackupServerContainer",
+    "MABContainer",
+    "Cluster",
+    "AzureSqlContainer",
+    "Windows",
+    "VCenter",
+    "VMAppContainer",
+    "SQLAGWorkLoadContainer",
+    "StorageContainer",
+    "GenericContainer",
+    "Microsoft.ClassicCompute/virtualMachines",
+    "Microsoft.Compute/virtualMachines",
+    "AzureWorkloadContainer",
+  ]);
+const WorkloadItemResourceSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+});
+const ProtectedItemSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  protectedItemType: Schema.String,
+  backupManagementType: Schema.optional(
+    Schema.suspend(() => BackupManagementTypeSchema),
+  ),
+  workloadType: Schema.optional(Schema.suspend(() => DataSourceTypeSchema)),
+  containerName: Schema.optional(Schema.String),
+  sourceResourceId: Schema.optional(Schema.String),
+  policyId: Schema.optional(Schema.String),
+  lastRecoveryPoint: Schema.optional(Schema.String),
+  backupSetName: Schema.optional(Schema.String),
+  createMode: Schema.optional(Schema.suspend(() => CreateModeSchema)),
+  deferredDeleteTimeInUTC: Schema.optional(Schema.String),
+  isScheduledForDeferredDelete: Schema.optional(Schema.Boolean),
+  deferredDeleteTimeRemaining: Schema.optional(Schema.String),
+  isDeferredDeleteScheduleUpcoming: Schema.optional(Schema.Boolean),
+  isRehydrate: Schema.optional(Schema.Boolean),
+  resourceGuardOperationRequests: Schema.optional(Schema.Array(Schema.String)),
+  isArchiveEnabled: Schema.optional(Schema.Boolean),
+  policyName: Schema.optional(Schema.String),
+  softDeleteRetentionPeriodInDays: Schema.optional(Schema.Number),
+  vaultId: Schema.optional(Schema.String),
+});
+const CreateModeSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Invalid",
+  "Default",
+  "Recover",
+]);
+const BackupRequestSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  objectType: Schema.String,
+});
+const OperationStatusValuesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals(
+  ["Invalid", "InProgress", "Succeeded", "Failed", "Canceled"],
+);
+const OperationStatusErrorSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  code: Schema.optional(Schema.String),
+  message: Schema.optional(Schema.String),
+});
+const OperationStatusExtendedInfoSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    objectType: Schema.String,
+  });
+const RecoveryPointResourceSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+});
+const RecoveryPointSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  objectType: Schema.String,
+});
+const RecoveryPointTierTypeSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals(
+  ["Invalid", "InstantRP", "HardenedRP", "ArchivedRP"],
+);
+const ILRRequestSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  objectType: Schema.String,
+});
+const RestoreRequestSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  objectType: Schema.String,
+  resourceGuardOperationRequests: Schema.optional(Schema.Array(Schema.String)),
+});
+const JobResourceSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+});
+const JobSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  entityFriendlyName: Schema.optional(Schema.String),
+  backupManagementType: Schema.optional(
+    Schema.suspend(() => BackupManagementTypeSchema),
+  ),
+  operation: Schema.optional(Schema.String),
+  status: Schema.optional(Schema.String),
+  startTime: Schema.optional(Schema.String),
+  endTime: Schema.optional(Schema.String),
+  activityId: Schema.optional(Schema.String),
+  jobType: Schema.String,
+});
+const OperationResultInfoBaseSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    objectType: Schema.String,
+  },
+);
+const HttpStatusCodeSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Continue",
+  "SwitchingProtocols",
+  "OK",
+  "Created",
+  "Accepted",
+  "NonAuthoritativeInformation",
+  "NoContent",
+  "ResetContent",
+  "PartialContent",
+  "MultipleChoices",
+  "Ambiguous",
+  "MovedPermanently",
+  "Moved",
+  "Found",
+  "Redirect",
+  "SeeOther",
+  "RedirectMethod",
+  "NotModified",
+  "UseProxy",
+  "Unused",
+  "TemporaryRedirect",
+  "RedirectKeepVerb",
+  "BadRequest",
+  "Unauthorized",
+  "PaymentRequired",
+  "Forbidden",
+  "NotFound",
+  "MethodNotAllowed",
+  "NotAcceptable",
+  "ProxyAuthenticationRequired",
+  "RequestTimeout",
+  "Conflict",
+  "Gone",
+  "LengthRequired",
+  "PreconditionFailed",
+  "RequestEntityTooLarge",
+  "RequestUriTooLong",
+  "UnsupportedMediaType",
+  "RequestedRangeNotSatisfiable",
+  "ExpectationFailed",
+  "UpgradeRequired",
+  "InternalServerError",
+  "NotImplemented",
+  "BadGateway",
+  "ServiceUnavailable",
+  "GatewayTimeout",
+  "HttpVersionNotSupported",
+]);
+const ProtectionPolicyResourceSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+  });
+const ProtectionPolicySchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  protectedItemsCount: Schema.optional(Schema.Number),
+  backupManagementType: Schema.String,
+  resourceGuardOperationRequests: Schema.optional(Schema.Array(Schema.String)),
+});
+const WorkloadProtectableItemResourceSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+  });
+const ProtectedItemResourceSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+});
+const ProtectionIntentResourceSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+  });
+const ResourceGuardProxyBaseResourceSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+  });
+const ResourceGuardProxyBaseSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  resourceGuardResourceId: Schema.String,
+  resourceGuardOperationDetails: Schema.optional(
+    Schema.Array(Schema.suspend(() => ResourceGuardOperationDetailSchema)),
+  ),
+  lastUpdatedTime: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+});
+const ResourceGuardOperationDetailSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    vaultCriticalOperation: Schema.optional(Schema.String),
+    defaultResourceRequest: Schema.optional(Schema.String),
+  });
+const ValidateOperationRequestSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    objectType: Schema.String,
+  });
+const BackupManagementUsageSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  unit: Schema.optional(Schema.suspend(() => UsagesUnitSchema)),
+  quotaPeriod: Schema.optional(Schema.String),
+  nextResetTime: Schema.optional(Schema.String),
+  currentValue: Schema.optional(Schema.Number),
+  limit: Schema.optional(Schema.Number),
+  name: Schema.optional(Schema.suspend(() => NameInfoSchema)),
+});
+const UsagesUnitSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Count",
+  "Bytes",
+  "Seconds",
+  "Percent",
+  "CountPerSecond",
+  "BytesPerSecond",
+]);
+const NameInfoSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  value: Schema.optional(Schema.String),
+  localizedValue: Schema.optional(Schema.String),
+});
+const ValidateOperationResponseSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    validationResults: Schema.optional(
+      Schema.Array(Schema.suspend(() => ErrorDetailSchema)),
+    ),
+  });
+const ErrorDetailSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  code: Schema.optional(Schema.String),
+  message: Schema.optional(Schema.String),
+  recommendations: Schema.optional(Schema.Array(Schema.String)),
+});
+const BackupResourceVaultConfigSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    storageModelType: Schema.optional(Schema.suspend(() => StorageTypeSchema)),
+    storageType: Schema.optional(Schema.suspend(() => StorageTypeSchema)),
+    storageTypeState: Schema.optional(
+      Schema.suspend(() => StorageTypeStateSchema),
+    ),
+    enhancedSecurityState: Schema.optional(
+      Schema.suspend(() => EnhancedSecurityStateSchema),
+    ),
+    softDeleteFeatureState: Schema.optional(
+      Schema.suspend(() => SoftDeleteFeatureStateSchema),
+    ),
+    softDeleteRetentionPeriodInDays: Schema.optional(Schema.Number),
+    resourceGuardOperationRequests: Schema.optional(
+      Schema.Array(Schema.String),
+    ),
+    isSoftDeleteFeatureStateEditable: Schema.optional(Schema.Boolean),
+  });
+const StorageTypeSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Invalid",
+  "GeoRedundant",
+  "LocallyRedundant",
+  "ZoneRedundant",
+  "ReadAccessGeoZoneRedundant",
+]);
+const StorageTypeStateSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Invalid",
+  "Locked",
+  "Unlocked",
+]);
+const EnhancedSecurityStateSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals(
+  ["Invalid", "Enabled", "Disabled"],
+);
+const SoftDeleteFeatureStateSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+    "Invalid",
+    "Enabled",
+    "Disabled",
+    "AlwaysON",
+  ]);
+const BackupResourceConfigSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  storageModelType: Schema.optional(Schema.suspend(() => StorageTypeSchema)),
+  storageType: Schema.optional(Schema.suspend(() => StorageTypeSchema)),
+  storageTypeState: Schema.optional(
+    Schema.suspend(() => StorageTypeStateSchema),
+  ),
+  crossRegionRestoreFlag: Schema.optional(Schema.Boolean),
+  dedupState: Schema.optional(Schema.suspend(() => DedupStateSchema)),
+  xcoolState: Schema.optional(Schema.suspend(() => XcoolStateSchema)),
+});
+const DedupStateSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Invalid",
+  "Enabled",
+  "Disabled",
+]);
+const XcoolStateSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Invalid",
+  "Enabled",
+  "Disabled",
+]);
+const DataMoveLevelSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Invalid",
+  "Vault",
+  "Container",
+]);
+const PrivateEndpointConnectionSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    provisioningState: Schema.optional(
+      Schema.suspend(() => ProvisioningStateSchema),
+    ),
+    privateEndpoint: Schema.optional(
+      Schema.suspend(() => PrivateEndpointSchema),
+    ),
+    groupIds: Schema.optional(
+      Schema.Array(Schema.suspend(() => VaultSubResourceTypeSchema)),
+    ),
+    privateLinkServiceConnectionState: Schema.optional(
+      Schema.suspend(() => PrivateLinkServiceConnectionStateSchema),
+    ),
+  });
+const ProvisioningStateSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Succeeded",
+  "Deleting",
+  "Failed",
+  "Pending",
+]);
+const PrivateEndpointSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+});
+const VaultSubResourceTypeSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "AzureBackup",
+  "AzureBackup_secondary",
+  "AzureSiteRecovery",
+]);
+const PrivateLinkServiceConnectionStateSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    status: Schema.optional(
+      Schema.suspend(() => PrivateEndpointConnectionStatusSchema),
+    ),
+    description: Schema.optional(Schema.String),
+    actionsRequired: Schema.optional(Schema.String),
+  });
+const PrivateEndpointConnectionStatusSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+    "Pending",
+    "Approved",
+    "Rejected",
+    "Disconnected",
+  ]);
+
 // Input Schema
 export const BackupEnginesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -28,23 +630,16 @@ export type BackupEnginesGetInput = typeof BackupEnginesGetInput.Type;
 // Output Schema
 export const BackupEnginesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
+    properties: Schema.optional(Schema.suspend(() => BackupEngineBaseSchema)),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.optional(
+      Schema.suspend(() => Azure_Core_azureLocationSchema),
+    ),
+    eTag: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   },
 );
 export type BackupEnginesGetOutput = typeof BackupEnginesGetOutput.Type;
@@ -86,6 +681,9 @@ export type BackupEnginesListInput = typeof BackupEnginesListInput.Type;
 // Output Schema
 export const BackupEnginesListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    value: Schema.optional(
+      Schema.Array(Schema.suspend(() => BackupEngineBaseResourceSchema)),
+    ),
     nextLink: Schema.optional(Schema.String),
   });
 export type BackupEnginesListOutput = typeof BackupEnginesListOutput.Type;
@@ -123,6 +721,7 @@ export type BackupJobsListInput = typeof BackupJobsListInput.Type;
 
 // Output Schema
 export const BackupJobsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  value: Schema.optional(Schema.Array(Schema.suspend(() => JobResourceSchema))),
   nextLink: Schema.optional(Schema.String),
 });
 export type BackupJobsListOutput = typeof BackupJobsListOutput.Type;
@@ -206,27 +805,12 @@ export const BackupOperationStatusesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
-    status: Schema.optional(
-      Schema.Literals([
-        "Invalid",
-        "InProgress",
-        "Succeeded",
-        "Failed",
-        "Canceled",
-      ]),
-    ),
+    status: Schema.optional(Schema.suspend(() => OperationStatusValuesSchema)),
     startTime: Schema.optional(Schema.String),
     endTime: Schema.optional(Schema.String),
-    error: Schema.optional(
-      Schema.Struct({
-        code: Schema.optional(Schema.String),
-        message: Schema.optional(Schema.String),
-      }),
-    ),
+    error: Schema.optional(Schema.suspend(() => OperationStatusErrorSchema)),
     properties: Schema.optional(
-      Schema.Struct({
-        objectType: Schema.String,
-      }),
+      Schema.suspend(() => OperationStatusExtendedInfoSchema),
     ),
   });
 export type BackupOperationStatusesGetOutput =
@@ -269,6 +853,9 @@ export type BackupPoliciesListInput = typeof BackupPoliciesListInput.Type;
 // Output Schema
 export const BackupPoliciesListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    value: Schema.optional(
+      Schema.Array(Schema.suspend(() => ProtectionPolicyResourceSchema)),
+    ),
     nextLink: Schema.optional(Schema.String),
   });
 export type BackupPoliciesListOutput = typeof BackupPoliciesListOutput.Type;
@@ -309,6 +896,9 @@ export type BackupProtectableItemsListInput =
 // Output Schema
 export const BackupProtectableItemsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    value: Schema.optional(
+      Schema.Array(Schema.suspend(() => WorkloadProtectableItemResourceSchema)),
+    ),
     nextLink: Schema.optional(Schema.String),
   });
 export type BackupProtectableItemsListOutput =
@@ -353,6 +943,9 @@ export type BackupProtectedItemsListInput =
 // Output Schema
 export const BackupProtectedItemsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    value: Schema.optional(
+      Schema.Array(Schema.suspend(() => ProtectedItemResourceSchema)),
+    ),
     nextLink: Schema.optional(Schema.String),
   });
 export type BackupProtectedItemsListOutput =
@@ -395,6 +988,9 @@ export type BackupProtectionContainersListInput =
 // Output Schema
 export const BackupProtectionContainersListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    value: Schema.optional(
+      Schema.Array(Schema.suspend(() => ProtectionContainerResourceSchema)),
+    ),
     nextLink: Schema.optional(Schema.String),
   });
 export type BackupProtectionContainersListOutput =
@@ -436,6 +1032,9 @@ export type BackupProtectionIntentListInput =
 // Output Schema
 export const BackupProtectionIntentListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    value: Schema.optional(
+      Schema.Array(Schema.suspend(() => ProtectionIntentResourceSchema)),
+    ),
     nextLink: Schema.optional(Schema.String),
   });
 export type BackupProtectionIntentListOutput =
@@ -477,23 +1076,18 @@ export type BackupResourceEncryptionConfigsGetInput =
 // Output Schema
 export const BackupResourceEncryptionConfigsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => BackupResourceEncryptionConfigExtendedSchema),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.optional(
+      Schema.suspend(() => Azure_Core_azureLocationSchema),
+    ),
+    eTag: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type BackupResourceEncryptionConfigsGetOutput =
   typeof BackupResourceEncryptionConfigsGetOutput.Type;
@@ -519,49 +1113,17 @@ export const BackupResourceEncryptionConfigsUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vaultName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        encryptionAtRestType: Schema.optional(
-          Schema.Literals(["Invalid", "MicrosoftManaged", "CustomerManaged"]),
-        ),
-        keyUri: Schema.optional(Schema.String),
-        subscriptionId: Schema.optional(Schema.String),
-        lastUpdateStatus: Schema.optional(
-          Schema.Literals([
-            "Invalid",
-            "NotEnabled",
-            "PartiallySucceeded",
-            "PartiallyFailed",
-            "Failed",
-            "Succeeded",
-            "Initialized",
-            "FirstInitialization",
-          ]),
-        ),
-        infrastructureEncryptionState: Schema.optional(
-          Schema.Literals(["Invalid", "Disabled", "Enabled"]),
-        ),
-      }),
+      Schema.suspend(() => BackupResourceEncryptionConfigSchema),
     ),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    location: Schema.optional(Schema.String),
+    location: Schema.optional(
+      Schema.suspend(() => Azure_Core_azureLocationSchema),
+    ),
     eTag: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -611,23 +1173,18 @@ export type BackupResourceStorageConfigsNonCRRGetInput =
 // Output Schema
 export const BackupResourceStorageConfigsNonCRRGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => BackupResourceConfigSchema),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.optional(
+      Schema.suspend(() => Azure_Core_azureLocationSchema),
+    ),
+    eTag: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type BackupResourceStorageConfigsNonCRRGetOutput =
   typeof BackupResourceStorageConfigsNonCRRGetOutput.Type;
@@ -653,39 +1210,12 @@ export const BackupResourceStorageConfigsNonCRRPatchInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vaultName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        storageModelType: Schema.optional(
-          Schema.Literals([
-            "Invalid",
-            "GeoRedundant",
-            "LocallyRedundant",
-            "ZoneRedundant",
-            "ReadAccessGeoZoneRedundant",
-          ]),
-        ),
-        storageType: Schema.optional(
-          Schema.Literals([
-            "Invalid",
-            "GeoRedundant",
-            "LocallyRedundant",
-            "ZoneRedundant",
-            "ReadAccessGeoZoneRedundant",
-          ]),
-        ),
-        storageTypeState: Schema.optional(
-          Schema.Literals(["Invalid", "Locked", "Unlocked"]),
-        ),
-        crossRegionRestoreFlag: Schema.optional(Schema.Boolean),
-        dedupState: Schema.optional(
-          Schema.Literals(["Invalid", "Enabled", "Disabled"]),
-        ),
-        xcoolState: Schema.optional(
-          Schema.Literals(["Invalid", "Enabled", "Disabled"]),
-        ),
-      }),
+      Schema.suspend(() => BackupResourceConfigSchema),
     ),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    location: Schema.optional(Schema.String),
+    location: Schema.optional(
+      Schema.suspend(() => Azure_Core_azureLocationSchema),
+    ),
     eTag: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
@@ -724,39 +1254,12 @@ export const BackupResourceStorageConfigsNonCRRUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vaultName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        storageModelType: Schema.optional(
-          Schema.Literals([
-            "Invalid",
-            "GeoRedundant",
-            "LocallyRedundant",
-            "ZoneRedundant",
-            "ReadAccessGeoZoneRedundant",
-          ]),
-        ),
-        storageType: Schema.optional(
-          Schema.Literals([
-            "Invalid",
-            "GeoRedundant",
-            "LocallyRedundant",
-            "ZoneRedundant",
-            "ReadAccessGeoZoneRedundant",
-          ]),
-        ),
-        storageTypeState: Schema.optional(
-          Schema.Literals(["Invalid", "Locked", "Unlocked"]),
-        ),
-        crossRegionRestoreFlag: Schema.optional(Schema.Boolean),
-        dedupState: Schema.optional(
-          Schema.Literals(["Invalid", "Enabled", "Disabled"]),
-        ),
-        xcoolState: Schema.optional(
-          Schema.Literals(["Invalid", "Enabled", "Disabled"]),
-        ),
-      }),
+      Schema.suspend(() => BackupResourceConfigSchema),
     ),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    location: Schema.optional(Schema.String),
+    location: Schema.optional(
+      Schema.suspend(() => Azure_Core_azureLocationSchema),
+    ),
     eTag: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
@@ -771,23 +1274,18 @@ export type BackupResourceStorageConfigsNonCRRUpdateInput =
 // Output Schema
 export const BackupResourceStorageConfigsNonCRRUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => BackupResourceConfigSchema),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.optional(
+      Schema.suspend(() => Azure_Core_azureLocationSchema),
+    ),
+    eTag: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type BackupResourceStorageConfigsNonCRRUpdateOutput =
   typeof BackupResourceStorageConfigsNonCRRUpdateOutput.Type;
@@ -825,23 +1323,18 @@ export type BackupResourceVaultConfigsGetInput =
 // Output Schema
 export const BackupResourceVaultConfigsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => BackupResourceVaultConfigSchema),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.optional(
+      Schema.suspend(() => Azure_Core_azureLocationSchema),
+    ),
+    eTag: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type BackupResourceVaultConfigsGetOutput =
   typeof BackupResourceVaultConfigsGetOutput.Type;
@@ -867,43 +1360,12 @@ export const BackupResourceVaultConfigsPutInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vaultName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        storageModelType: Schema.optional(
-          Schema.Literals([
-            "Invalid",
-            "GeoRedundant",
-            "LocallyRedundant",
-            "ZoneRedundant",
-            "ReadAccessGeoZoneRedundant",
-          ]),
-        ),
-        storageType: Schema.optional(
-          Schema.Literals([
-            "Invalid",
-            "GeoRedundant",
-            "LocallyRedundant",
-            "ZoneRedundant",
-            "ReadAccessGeoZoneRedundant",
-          ]),
-        ),
-        storageTypeState: Schema.optional(
-          Schema.Literals(["Invalid", "Locked", "Unlocked"]),
-        ),
-        enhancedSecurityState: Schema.optional(
-          Schema.Literals(["Invalid", "Enabled", "Disabled"]),
-        ),
-        softDeleteFeatureState: Schema.optional(
-          Schema.Literals(["Invalid", "Enabled", "Disabled", "AlwaysON"]),
-        ),
-        softDeleteRetentionPeriodInDays: Schema.optional(Schema.Number),
-        resourceGuardOperationRequests: Schema.optional(
-          Schema.Array(Schema.String),
-        ),
-        isSoftDeleteFeatureStateEditable: Schema.optional(Schema.Boolean),
-      }),
+      Schema.suspend(() => BackupResourceVaultConfigSchema),
     ),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    location: Schema.optional(Schema.String),
+    location: Schema.optional(
+      Schema.suspend(() => Azure_Core_azureLocationSchema),
+    ),
     eTag: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
@@ -918,23 +1380,18 @@ export type BackupResourceVaultConfigsPutInput =
 // Output Schema
 export const BackupResourceVaultConfigsPutOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => BackupResourceVaultConfigSchema),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.optional(
+      Schema.suspend(() => Azure_Core_azureLocationSchema),
+    ),
+    eTag: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type BackupResourceVaultConfigsPutOutput =
   typeof BackupResourceVaultConfigsPutOutput.Type;
@@ -960,43 +1417,12 @@ export const BackupResourceVaultConfigsUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vaultName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        storageModelType: Schema.optional(
-          Schema.Literals([
-            "Invalid",
-            "GeoRedundant",
-            "LocallyRedundant",
-            "ZoneRedundant",
-            "ReadAccessGeoZoneRedundant",
-          ]),
-        ),
-        storageType: Schema.optional(
-          Schema.Literals([
-            "Invalid",
-            "GeoRedundant",
-            "LocallyRedundant",
-            "ZoneRedundant",
-            "ReadAccessGeoZoneRedundant",
-          ]),
-        ),
-        storageTypeState: Schema.optional(
-          Schema.Literals(["Invalid", "Locked", "Unlocked"]),
-        ),
-        enhancedSecurityState: Schema.optional(
-          Schema.Literals(["Invalid", "Enabled", "Disabled"]),
-        ),
-        softDeleteFeatureState: Schema.optional(
-          Schema.Literals(["Invalid", "Enabled", "Disabled", "AlwaysON"]),
-        ),
-        softDeleteRetentionPeriodInDays: Schema.optional(Schema.Number),
-        resourceGuardOperationRequests: Schema.optional(
-          Schema.Array(Schema.String),
-        ),
-        isSoftDeleteFeatureStateEditable: Schema.optional(Schema.Boolean),
-      }),
+      Schema.suspend(() => BackupResourceVaultConfigSchema),
     ),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    location: Schema.optional(Schema.String),
+    location: Schema.optional(
+      Schema.suspend(() => Azure_Core_azureLocationSchema),
+    ),
     eTag: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
@@ -1011,23 +1437,18 @@ export type BackupResourceVaultConfigsUpdateInput =
 // Output Schema
 export const BackupResourceVaultConfigsUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => BackupResourceVaultConfigSchema),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.optional(
+      Schema.suspend(() => Azure_Core_azureLocationSchema),
+    ),
+    eTag: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type BackupResourceVaultConfigsUpdateOutput =
   typeof BackupResourceVaultConfigsUpdateOutput.Type;
@@ -1050,26 +1471,7 @@ export const BackupResourceVaultConfigsUpdate =
 export const BackupStatusGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   azureRegion: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
-  resourceType: Schema.optional(
-    Schema.Literals([
-      "Invalid",
-      "VM",
-      "FileFolder",
-      "AzureSqlDb",
-      "SQLDB",
-      "Exchange",
-      "Sharepoint",
-      "VMwareVM",
-      "SystemState",
-      "Client",
-      "GenericDataSource",
-      "SQLDataBase",
-      "AzureFileShare",
-      "SAPHanaDatabase",
-      "SAPAseDatabase",
-      "SAPHanaDBInstance",
-    ]),
-  ),
+  resourceType: Schema.optional(Schema.suspend(() => DataSourceTypeSchema)),
   resourceId: Schema.optional(Schema.String),
   poLogicalName: Schema.optional(Schema.String),
 }).pipe(
@@ -1084,16 +1486,10 @@ export type BackupStatusGetInput = typeof BackupStatusGetInput.Type;
 // Output Schema
 export const BackupStatusGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   protectionStatus: Schema.optional(
-    Schema.Literals([
-      "Invalid",
-      "NotProtected",
-      "Protecting",
-      "Protected",
-      "ProtectionFailed",
-    ]),
+    Schema.suspend(() => ProtectionStatusSchema),
   ),
   vaultId: Schema.optional(Schema.String),
-  fabricName: Schema.optional(Schema.Literals(["Invalid", "Azure"])),
+  fabricName: Schema.optional(Schema.suspend(() => FabricNameSchema)),
   containerName: Schema.optional(Schema.String),
   protectedItemName: Schema.optional(Schema.String),
   errorCode: Schema.optional(Schema.String),
@@ -1102,7 +1498,7 @@ export const BackupStatusGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   registrationStatus: Schema.optional(Schema.String),
   protectedItemsCount: Schema.optional(Schema.Number),
   acquireStorageAccountLock: Schema.optional(
-    Schema.Literals(["Acquire", "NotAcquire"]),
+    Schema.suspend(() => AcquireStorageAccountLockSchema),
   ),
 });
 export type BackupStatusGetOutput = typeof BackupStatusGetOutput.Type;
@@ -1127,31 +1523,16 @@ export const BackupsTriggerInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   fabricName: Schema.String.pipe(T.PathParam()),
   containerName: Schema.String.pipe(T.PathParam()),
   protectedItemName: Schema.String.pipe(T.PathParam()),
-  location: Schema.optional(Schema.String),
+  location: Schema.optional(
+    Schema.suspend(() => Azure_Core_azureLocationSchema),
+  ),
   tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   eTag: Schema.optional(Schema.String),
-  properties: Schema.optional(
-    Schema.Struct({
-      objectType: Schema.String,
-    }),
-  ),
+  properties: Schema.optional(Schema.suspend(() => BackupRequestSchema)),
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
-  systemData: Schema.optional(
-    Schema.Struct({
-      createdBy: Schema.optional(Schema.String),
-      createdByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      createdAt: Schema.optional(Schema.String),
-      lastModifiedBy: Schema.optional(Schema.String),
-      lastModifiedByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      lastModifiedAt: Schema.optional(Schema.String),
-    }),
-  ),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
 }).pipe(
   T.Http({
     method: "POST",
@@ -1203,6 +1584,9 @@ export type BackupUsageSummariesListInput =
 // Output Schema
 export const BackupUsageSummariesListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    value: Schema.optional(
+      Schema.Array(Schema.suspend(() => BackupManagementUsageSchema)),
+    ),
     nextLink: Schema.optional(Schema.String),
   });
 export type BackupUsageSummariesListOutput =
@@ -1248,6 +1632,9 @@ export type BackupWorkloadItemsListInput =
 // Output Schema
 export const BackupWorkloadItemsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    value: Schema.optional(
+      Schema.Array(Schema.suspend(() => WorkloadItemResourceSchema)),
+    ),
     nextLink: Schema.optional(Schema.String),
   });
 export type BackupWorkloadItemsListOutput =
@@ -1281,7 +1668,7 @@ export const BMSPrepareDataMoveInput =
     vaultName: Schema.String.pipe(T.PathParam()),
     targetResourceId: Schema.String,
     targetRegion: Schema.String,
-    dataMoveLevel: Schema.Literals(["Invalid", "Vault", "Container"]),
+    dataMoveLevel: Schema.suspend(() => DataMoveLevelSchema),
     sourceContainerArmIds: Schema.optional(Schema.Array(Schema.String)),
     ignoreMoved: Schema.optional(Schema.Boolean),
   }).pipe(
@@ -1359,7 +1746,7 @@ export const BMSTriggerDataMoveInput =
     vaultName: Schema.String.pipe(T.PathParam()),
     sourceResourceId: Schema.String,
     sourceRegion: Schema.String,
-    dataMoveLevel: Schema.Literals(["Invalid", "Vault", "Container"]),
+    dataMoveLevel: Schema.suspend(() => DataMoveLevelSchema),
     correlationId: Schema.String,
     sourceContainerArmIds: Schema.optional(Schema.Array(Schema.String)),
     pauseGC: Schema.optional(Schema.Boolean),
@@ -1410,6 +1797,9 @@ export type DeletedProtectionContainersListInput =
 // Output Schema
 export const DeletedProtectionContainersListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    value: Schema.optional(
+      Schema.Array(Schema.suspend(() => ProtectionContainerResourceSchema)),
+    ),
     nextLink: Schema.optional(Schema.String),
   });
 export type DeletedProtectionContainersListOutput =
@@ -1450,57 +1840,10 @@ export type ExportJobsOperationResultsGetInput =
 // Output Schema
 export const ExportJobsOperationResultsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    statusCode: Schema.optional(
-      Schema.Literals([
-        "Continue",
-        "SwitchingProtocols",
-        "OK",
-        "Created",
-        "Accepted",
-        "NonAuthoritativeInformation",
-        "NoContent",
-        "ResetContent",
-        "PartialContent",
-        "MultipleChoices",
-        "Ambiguous",
-        "MovedPermanently",
-        "Moved",
-        "Found",
-        "Redirect",
-        "SeeOther",
-        "RedirectMethod",
-        "NotModified",
-        "UseProxy",
-        "Unused",
-        "TemporaryRedirect",
-        "RedirectKeepVerb",
-        "BadRequest",
-        "Unauthorized",
-        "PaymentRequired",
-        "Forbidden",
-        "NotFound",
-        "MethodNotAllowed",
-        "NotAcceptable",
-        "ProxyAuthenticationRequired",
-        "RequestTimeout",
-        "Conflict",
-        "Gone",
-        "LengthRequired",
-        "PreconditionFailed",
-        "RequestEntityTooLarge",
-        "RequestUriTooLong",
-        "UnsupportedMediaType",
-        "RequestedRangeNotSatisfiable",
-        "ExpectationFailed",
-        "UpgradeRequired",
-        "InternalServerError",
-        "NotImplemented",
-        "BadGateway",
-        "ServiceUnavailable",
-        "GatewayTimeout",
-        "HttpVersionNotSupported",
-      ]),
+    operation: Schema.optional(
+      Schema.suspend(() => OperationResultInfoBaseSchema),
     ),
+    statusCode: Schema.optional(Schema.suspend(() => HttpStatusCodeSchema)),
     headers: Schema.optional(
       Schema.Record(Schema.String, Schema.Array(Schema.String)),
     ),
@@ -1543,15 +1886,7 @@ export type FeatureSupportValidateInput =
 // Output Schema
 export const FeatureSupportValidateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    supportStatus: Schema.optional(
-      Schema.Literals([
-        "Invalid",
-        "Supported",
-        "DefaultOFF",
-        "DefaultON",
-        "NotSupported",
-      ]),
-    ),
+    supportStatus: Schema.optional(Schema.suspend(() => SupportStatusSchema)),
   });
 export type FeatureSupportValidateOutput =
   typeof FeatureSupportValidateOutput.Type;
@@ -1576,18 +1911,8 @@ export const FetchTieringCostPostInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vaultName: Schema.String.pipe(T.PathParam()),
-    sourceTierType: Schema.Literals([
-      "Invalid",
-      "InstantRP",
-      "HardenedRP",
-      "ArchivedRP",
-    ]),
-    targetTierType: Schema.Literals([
-      "Invalid",
-      "InstantRP",
-      "HardenedRP",
-      "ArchivedRP",
-    ]),
+    sourceTierType: Schema.suspend(() => RecoveryPointTierTypeSchema),
+    targetTierType: Schema.suspend(() => RecoveryPointTierTypeSchema),
     objectType: Schema.String,
   }).pipe(
     T.Http({
@@ -1643,27 +1968,12 @@ export const GetOperationStatusOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
-    status: Schema.optional(
-      Schema.Literals([
-        "Invalid",
-        "InProgress",
-        "Succeeded",
-        "Failed",
-        "Canceled",
-      ]),
-    ),
+    status: Schema.optional(Schema.suspend(() => OperationStatusValuesSchema)),
     startTime: Schema.optional(Schema.String),
     endTime: Schema.optional(Schema.String),
-    error: Schema.optional(
-      Schema.Struct({
-        code: Schema.optional(Schema.String),
-        message: Schema.optional(Schema.String),
-      }),
-    ),
+    error: Schema.optional(Schema.suspend(() => OperationStatusErrorSchema)),
     properties: Schema.optional(
-      Schema.Struct({
-        objectType: Schema.String,
-      }),
+      Schema.suspend(() => OperationStatusExtendedInfoSchema),
     ),
   });
 export type GetOperationStatusOutput = typeof GetOperationStatusOutput.Type;
@@ -1731,31 +2041,16 @@ export const ItemLevelRecoveryConnectionsProvisionInput =
     containerName: Schema.String.pipe(T.PathParam()),
     protectedItemName: Schema.String.pipe(T.PathParam()),
     recoveryPointId: Schema.String.pipe(T.PathParam()),
-    location: Schema.optional(Schema.String),
+    location: Schema.optional(
+      Schema.suspend(() => Azure_Core_azureLocationSchema),
+    ),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     eTag: Schema.optional(Schema.String),
-    properties: Schema.optional(
-      Schema.Struct({
-        objectType: Schema.String,
-      }),
-    ),
+    properties: Schema.optional(Schema.suspend(() => ILRRequestSchema)),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   }).pipe(
     T.Http({
       method: "POST",
@@ -1894,23 +2189,16 @@ export type JobDetailsGetInput = typeof JobDetailsGetInput.Type;
 
 // Output Schema
 export const JobDetailsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.optional(Schema.suspend(() => JobSchema)),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  location: Schema.optional(
+    Schema.suspend(() => Azure_Core_azureLocationSchema),
+  ),
+  eTag: Schema.optional(Schema.String),
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
-  systemData: Schema.optional(
-    Schema.Struct({
-      createdBy: Schema.optional(Schema.String),
-      createdByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      createdAt: Schema.optional(Schema.String),
-      lastModifiedBy: Schema.optional(Schema.String),
-      lastModifiedByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      lastModifiedAt: Schema.optional(Schema.String),
-    }),
-  ),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
 });
 export type JobDetailsGetOutput = typeof JobDetailsGetOutput.Type;
 
@@ -2014,10 +2302,10 @@ export const MoveRecoveryPointInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     recoveryPointId: Schema.String.pipe(T.PathParam()),
     objectType: Schema.optional(Schema.String),
     sourceTierType: Schema.optional(
-      Schema.Literals(["Invalid", "InstantRP", "HardenedRP", "ArchivedRP"]),
+      Schema.suspend(() => RecoveryPointTierTypeSchema),
     ),
     targetTierType: Schema.optional(
-      Schema.Literals(["Invalid", "InstantRP", "HardenedRP", "ArchivedRP"]),
+      Schema.suspend(() => RecoveryPointTierTypeSchema),
     ),
   },
 ).pipe(
@@ -2066,37 +2354,7 @@ export type OperationsListInput = typeof OperationsListInput.Type;
 // Output Schema
 export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.optional(
-    Schema.Array(
-      Schema.Struct({
-        name: Schema.optional(Schema.String),
-        display: Schema.optional(
-          Schema.Struct({
-            provider: Schema.optional(Schema.String),
-            resource: Schema.optional(Schema.String),
-            operation: Schema.optional(Schema.String),
-            description: Schema.optional(Schema.String),
-          }),
-        ),
-        origin: Schema.optional(Schema.String),
-        properties: Schema.optional(
-          Schema.Struct({
-            serviceSpecification: Schema.optional(
-              Schema.Struct({
-                logSpecifications: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      name: Schema.optional(Schema.String),
-                      displayName: Schema.optional(Schema.String),
-                      blobDuration: Schema.optional(Schema.String),
-                    }),
-                  ),
-                ),
-              }),
-            ),
-          }),
-        ),
-      }),
-    ),
+    Schema.Array(Schema.suspend(() => ClientDiscoveryValueForSingleApiSchema)),
   ),
   nextLink: Schema.optional(Schema.String),
 });
@@ -2119,9 +2377,7 @@ export const OperationValidateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     id: Schema.String,
-    properties: Schema.Struct({
-      objectType: Schema.String,
-    }),
+    properties: Schema.suspend(() => ValidateOperationRequestSchema),
   },
 ).pipe(
   T.Http({
@@ -2136,17 +2392,7 @@ export type OperationValidateInput = typeof OperationValidateInput.Type;
 export const OperationValidateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     validateOperationResponse: Schema.optional(
-      Schema.Struct({
-        validationResults: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              code: Schema.optional(Schema.String),
-              message: Schema.optional(Schema.String),
-              recommendations: Schema.optional(Schema.Array(Schema.String)),
-            }),
-          ),
-        ),
-      }),
+      Schema.suspend(() => ValidateOperationResponseSchema),
     ),
   });
 export type OperationValidateOutput = typeof OperationValidateOutput.Type;
@@ -2223,23 +2469,18 @@ export type PrivateEndpointConnectionGetInput =
 // Output Schema
 export const PrivateEndpointConnectionGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => PrivateEndpointConnectionSchema),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.optional(
+      Schema.suspend(() => Azure_Core_azureLocationSchema),
+    ),
+    eTag: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type PrivateEndpointConnectionGetOutput =
   typeof PrivateEndpointConnectionGetOutput.Type;
@@ -2267,42 +2508,12 @@ export const PrivateEndpointConnectionPutInput =
     vaultName: Schema.String.pipe(T.PathParam()),
     privateEndpointConnectionName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        provisioningState: Schema.optional(
-          Schema.Literals(["Succeeded", "Deleting", "Failed", "Pending"]),
-        ),
-        privateEndpoint: Schema.optional(
-          Schema.Struct({
-            id: Schema.optional(Schema.String),
-          }),
-        ),
-        groupIds: Schema.optional(
-          Schema.Array(
-            Schema.Literals([
-              "AzureBackup",
-              "AzureBackup_secondary",
-              "AzureSiteRecovery",
-            ]),
-          ),
-        ),
-        privateLinkServiceConnectionState: Schema.optional(
-          Schema.Struct({
-            status: Schema.optional(
-              Schema.Literals([
-                "Pending",
-                "Approved",
-                "Rejected",
-                "Disconnected",
-              ]),
-            ),
-            description: Schema.optional(Schema.String),
-            actionsRequired: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
+      Schema.suspend(() => PrivateEndpointConnectionSchema),
     ),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    location: Schema.optional(Schema.String),
+    location: Schema.optional(
+      Schema.suspend(() => Azure_Core_azureLocationSchema),
+    ),
     eTag: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
@@ -2318,23 +2529,18 @@ export type PrivateEndpointConnectionPutInput =
 // Output Schema
 export const PrivateEndpointConnectionPutOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => PrivateEndpointConnectionSchema),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.optional(
+      Schema.suspend(() => Azure_Core_azureLocationSchema),
+    ),
+    eTag: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type PrivateEndpointConnectionPutOutput =
   typeof PrivateEndpointConnectionPutOutput.Type;
@@ -2377,27 +2583,12 @@ export const PrivateEndpointGetOperationStatusOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
-    status: Schema.optional(
-      Schema.Literals([
-        "Invalid",
-        "InProgress",
-        "Succeeded",
-        "Failed",
-        "Canceled",
-      ]),
-    ),
+    status: Schema.optional(Schema.suspend(() => OperationStatusValuesSchema)),
     startTime: Schema.optional(Schema.String),
     endTime: Schema.optional(Schema.String),
-    error: Schema.optional(
-      Schema.Struct({
-        code: Schema.optional(Schema.String),
-        message: Schema.optional(Schema.String),
-      }),
-    ),
+    error: Schema.optional(Schema.suspend(() => OperationStatusErrorSchema)),
     properties: Schema.optional(
-      Schema.Struct({
-        objectType: Schema.String,
-      }),
+      Schema.suspend(() => OperationStatusExtendedInfoSchema),
     ),
   });
 export type PrivateEndpointGetOperationStatusOutput =
@@ -2440,6 +2631,9 @@ export type ProtectableContainersListInput =
 // Output Schema
 export const ProtectableContainersListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    value: Schema.optional(
+      Schema.Array(Schema.suspend(() => ProtectableContainerResourceSchema)),
+    ),
     nextLink: Schema.optional(Schema.String),
   });
 export type ProtectableContainersListOutput =
@@ -2484,23 +2678,16 @@ export type ProtectedItemOperationResultsGetInput =
 // Output Schema
 export const ProtectedItemOperationResultsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(Schema.suspend(() => ProtectedItemSchema)),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.optional(
+      Schema.suspend(() => Azure_Core_azureLocationSchema),
+    ),
+    eTag: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type ProtectedItemOperationResultsGetOutput =
   typeof ProtectedItemOperationResultsGetOutput.Type;
@@ -2548,27 +2735,12 @@ export const ProtectedItemOperationStatusesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
-    status: Schema.optional(
-      Schema.Literals([
-        "Invalid",
-        "InProgress",
-        "Succeeded",
-        "Failed",
-        "Canceled",
-      ]),
-    ),
+    status: Schema.optional(Schema.suspend(() => OperationStatusValuesSchema)),
     startTime: Schema.optional(Schema.String),
     endTime: Schema.optional(Schema.String),
-    error: Schema.optional(
-      Schema.Struct({
-        code: Schema.optional(Schema.String),
-        message: Schema.optional(Schema.String),
-      }),
-    ),
+    error: Schema.optional(Schema.suspend(() => OperationStatusErrorSchema)),
     properties: Schema.optional(
-      Schema.Struct({
-        objectType: Schema.String,
-      }),
+      Schema.suspend(() => OperationStatusExtendedInfoSchema),
     ),
   });
 export type ProtectedItemOperationStatusesGetOutput =
@@ -2603,66 +2775,11 @@ export const ProtectedItemsCreateOrUpdateInput =
     fabricName: Schema.String.pipe(T.PathParam()),
     containerName: Schema.String.pipe(T.PathParam()),
     protectedItemName: Schema.String.pipe(T.PathParam()),
-    properties: Schema.optional(
-      Schema.Struct({
-        protectedItemType: Schema.String,
-        backupManagementType: Schema.optional(
-          Schema.Literals([
-            "Invalid",
-            "AzureIaasVM",
-            "MAB",
-            "DPM",
-            "AzureBackupServer",
-            "AzureSql",
-            "AzureStorage",
-            "AzureWorkload",
-            "DefaultBackup",
-          ]),
-        ),
-        workloadType: Schema.optional(
-          Schema.Literals([
-            "Invalid",
-            "VM",
-            "FileFolder",
-            "AzureSqlDb",
-            "SQLDB",
-            "Exchange",
-            "Sharepoint",
-            "VMwareVM",
-            "SystemState",
-            "Client",
-            "GenericDataSource",
-            "SQLDataBase",
-            "AzureFileShare",
-            "SAPHanaDatabase",
-            "SAPAseDatabase",
-            "SAPHanaDBInstance",
-          ]),
-        ),
-        containerName: Schema.optional(Schema.String),
-        sourceResourceId: Schema.optional(Schema.String),
-        policyId: Schema.optional(Schema.String),
-        lastRecoveryPoint: Schema.optional(Schema.String),
-        backupSetName: Schema.optional(Schema.String),
-        createMode: Schema.optional(
-          Schema.Literals(["Invalid", "Default", "Recover"]),
-        ),
-        deferredDeleteTimeInUTC: Schema.optional(Schema.String),
-        isScheduledForDeferredDelete: Schema.optional(Schema.Boolean),
-        deferredDeleteTimeRemaining: Schema.optional(Schema.String),
-        isDeferredDeleteScheduleUpcoming: Schema.optional(Schema.Boolean),
-        isRehydrate: Schema.optional(Schema.Boolean),
-        resourceGuardOperationRequests: Schema.optional(
-          Schema.Array(Schema.String),
-        ),
-        isArchiveEnabled: Schema.optional(Schema.Boolean),
-        policyName: Schema.optional(Schema.String),
-        softDeleteRetentionPeriodInDays: Schema.optional(Schema.Number),
-        vaultId: Schema.optional(Schema.String),
-      }),
-    ),
+    properties: Schema.optional(Schema.suspend(() => ProtectedItemSchema)),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    location: Schema.optional(Schema.String),
+    location: Schema.optional(
+      Schema.suspend(() => Azure_Core_azureLocationSchema),
+    ),
     eTag: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
@@ -2678,23 +2795,16 @@ export type ProtectedItemsCreateOrUpdateInput =
 // Output Schema
 export const ProtectedItemsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(Schema.suspend(() => ProtectedItemSchema)),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.optional(
+      Schema.suspend(() => Azure_Core_azureLocationSchema),
+    ),
+    eTag: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type ProtectedItemsCreateOrUpdateOutput =
   typeof ProtectedItemsCreateOrUpdateOutput.Type;
@@ -2782,23 +2892,16 @@ export type ProtectedItemsGetInput = typeof ProtectedItemsGetInput.Type;
 // Output Schema
 export const ProtectedItemsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(Schema.suspend(() => ProtectedItemSchema)),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.optional(
+      Schema.suspend(() => Azure_Core_azureLocationSchema),
+    ),
+    eTag: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type ProtectedItemsGetOutput = typeof ProtectedItemsGetOutput.Type;
 
@@ -2842,23 +2945,18 @@ export type ProtectionContainerOperationResultsGetInput =
 // Output Schema
 export const ProtectionContainerOperationResultsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => ProtectionContainerSchema),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.optional(
+      Schema.suspend(() => Azure_Core_azureLocationSchema),
+    ),
+    eTag: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type ProtectionContainerOperationResultsGetOutput =
   typeof ProtectionContainerOperationResultsGetOutput.Type;
@@ -2941,23 +3039,18 @@ export type ProtectionContainersGetInput =
 // Output Schema
 export const ProtectionContainersGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => ProtectionContainerSchema),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.optional(
+      Schema.suspend(() => Azure_Core_azureLocationSchema),
+    ),
+    eTag: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type ProtectionContainersGetOutput =
   typeof ProtectionContainersGetOutput.Type;
@@ -3073,48 +3166,12 @@ export const ProtectionContainersRegisterInput =
     fabricName: Schema.String.pipe(T.PathParam()),
     containerName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        friendlyName: Schema.optional(Schema.String),
-        backupManagementType: Schema.optional(
-          Schema.Literals([
-            "Invalid",
-            "AzureIaasVM",
-            "MAB",
-            "DPM",
-            "AzureBackupServer",
-            "AzureSql",
-            "AzureStorage",
-            "AzureWorkload",
-            "DefaultBackup",
-          ]),
-        ),
-        registrationStatus: Schema.optional(Schema.String),
-        healthStatus: Schema.optional(Schema.String),
-        containerType: Schema.Literals([
-          "Invalid",
-          "Unknown",
-          "IaasVMContainer",
-          "IaasVMServiceContainer",
-          "DPMContainer",
-          "AzureBackupServerContainer",
-          "MABContainer",
-          "Cluster",
-          "AzureSqlContainer",
-          "Windows",
-          "VCenter",
-          "VMAppContainer",
-          "SQLAGWorkLoadContainer",
-          "StorageContainer",
-          "GenericContainer",
-          "Microsoft.ClassicCompute/virtualMachines",
-          "Microsoft.Compute/virtualMachines",
-          "AzureWorkloadContainer",
-        ]),
-        protectableObjectType: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(() => ProtectionContainerSchema),
     ),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    location: Schema.optional(Schema.String),
+    location: Schema.optional(
+      Schema.suspend(() => Azure_Core_azureLocationSchema),
+    ),
     eTag: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
@@ -3130,23 +3187,18 @@ export type ProtectionContainersRegisterInput =
 // Output Schema
 export const ProtectionContainersRegisterOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => ProtectionContainerSchema),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.optional(
+      Schema.suspend(() => Azure_Core_azureLocationSchema),
+    ),
+    eTag: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type ProtectionContainersRegisterOutput =
   typeof ProtectionContainersRegisterOutput.Type;
@@ -3218,45 +3270,11 @@ export const ProtectionIntentCreateOrUpdateInput =
     vaultName: Schema.String.pipe(T.PathParam()),
     fabricName: Schema.String.pipe(T.PathParam()),
     intentObjectName: Schema.String.pipe(T.PathParam()),
-    properties: Schema.optional(
-      Schema.Struct({
-        protectionIntentItemType: Schema.Literals([
-          "Invalid",
-          "AzureResourceItem",
-          "RecoveryServiceVaultItem",
-          "AzureWorkloadContainerAutoProtectionIntent",
-          "AzureWorkloadAutoProtectionIntent",
-          "AzureWorkloadSQLAutoProtectionIntent",
-        ]),
-        backupManagementType: Schema.optional(
-          Schema.Literals([
-            "Invalid",
-            "AzureIaasVM",
-            "MAB",
-            "DPM",
-            "AzureBackupServer",
-            "AzureSql",
-            "AzureStorage",
-            "AzureWorkload",
-            "DefaultBackup",
-          ]),
-        ),
-        sourceResourceId: Schema.optional(Schema.String),
-        itemId: Schema.optional(Schema.String),
-        policyId: Schema.optional(Schema.String),
-        protectionState: Schema.optional(
-          Schema.Literals([
-            "Invalid",
-            "NotProtected",
-            "Protecting",
-            "Protected",
-            "ProtectionFailed",
-          ]),
-        ),
-      }),
-    ),
+    properties: Schema.optional(Schema.suspend(() => ProtectionIntentSchema)),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    location: Schema.optional(Schema.String),
+    location: Schema.optional(
+      Schema.suspend(() => Azure_Core_azureLocationSchema),
+    ),
     eTag: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
@@ -3271,23 +3289,16 @@ export type ProtectionIntentCreateOrUpdateInput =
 // Output Schema
 export const ProtectionIntentCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(Schema.suspend(() => ProtectionIntentSchema)),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.optional(
+      Schema.suspend(() => Azure_Core_azureLocationSchema),
+    ),
+    eTag: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type ProtectionIntentCreateOrUpdateOutput =
   typeof ProtectionIntentCreateOrUpdateOutput.Type;
@@ -3369,23 +3380,16 @@ export type ProtectionIntentGetInput = typeof ProtectionIntentGetInput.Type;
 // Output Schema
 export const ProtectionIntentGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(Schema.suspend(() => ProtectionIntentSchema)),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.optional(
+      Schema.suspend(() => Azure_Core_azureLocationSchema),
+    ),
+    eTag: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type ProtectionIntentGetOutput = typeof ProtectionIntentGetOutput.Type;
 
@@ -3410,26 +3414,7 @@ export const ProtectionIntentValidateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     azureRegion: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceType: Schema.optional(
-      Schema.Literals([
-        "Invalid",
-        "VM",
-        "FileFolder",
-        "AzureSqlDb",
-        "SQLDB",
-        "Exchange",
-        "Sharepoint",
-        "VMwareVM",
-        "SystemState",
-        "Client",
-        "GenericDataSource",
-        "SQLDataBase",
-        "AzureFileShare",
-        "SAPHanaDatabase",
-        "SAPAseDatabase",
-        "SAPHanaDBInstance",
-      ]),
-    ),
+    resourceType: Schema.optional(Schema.suspend(() => DataSourceTypeSchema)),
     resourceId: Schema.optional(Schema.String),
     vaultId: Schema.optional(Schema.String),
     properties: Schema.optional(Schema.String),
@@ -3446,9 +3431,7 @@ export type ProtectionIntentValidateInput =
 // Output Schema
 export const ProtectionIntentValidateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    status: Schema.optional(
-      Schema.Literals(["Invalid", "Succeeded", "Failed"]),
-    ),
+    status: Schema.optional(Schema.suspend(() => ValidationStatusSchema)),
     errorCode: Schema.optional(Schema.String),
     errorMessage: Schema.optional(Schema.String),
     recommendation: Schema.optional(Schema.String),
@@ -3487,17 +3470,11 @@ export const ProtectionPoliciesCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vaultName: Schema.String.pipe(T.PathParam()),
     policyName: Schema.String.pipe(T.PathParam()),
-    properties: Schema.optional(
-      Schema.Struct({
-        protectedItemsCount: Schema.optional(Schema.Number),
-        backupManagementType: Schema.String,
-        resourceGuardOperationRequests: Schema.optional(
-          Schema.Array(Schema.String),
-        ),
-      }),
-    ),
+    properties: Schema.optional(Schema.suspend(() => ProtectionPolicySchema)),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    location: Schema.optional(Schema.String),
+    location: Schema.optional(
+      Schema.suspend(() => Azure_Core_azureLocationSchema),
+    ),
     eTag: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
@@ -3512,23 +3489,16 @@ export type ProtectionPoliciesCreateOrUpdateInput =
 // Output Schema
 export const ProtectionPoliciesCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(Schema.suspend(() => ProtectionPolicySchema)),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.optional(
+      Schema.suspend(() => Azure_Core_azureLocationSchema),
+    ),
+    eTag: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type ProtectionPoliciesCreateOrUpdateOutput =
   typeof ProtectionPoliciesCreateOrUpdateOutput.Type;
@@ -3609,23 +3579,16 @@ export type ProtectionPoliciesGetInput = typeof ProtectionPoliciesGetInput.Type;
 // Output Schema
 export const ProtectionPoliciesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(Schema.suspend(() => ProtectionPolicySchema)),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.optional(
+      Schema.suspend(() => Azure_Core_azureLocationSchema),
+    ),
+    eTag: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type ProtectionPoliciesGetOutput =
   typeof ProtectionPoliciesGetOutput.Type;
@@ -3668,23 +3631,16 @@ export type ProtectionPolicyOperationResultsGetInput =
 // Output Schema
 export const ProtectionPolicyOperationResultsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(Schema.suspend(() => ProtectionPolicySchema)),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.optional(
+      Schema.suspend(() => Azure_Core_azureLocationSchema),
+    ),
+    eTag: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type ProtectionPolicyOperationResultsGetOutput =
   typeof ProtectionPolicyOperationResultsGetOutput.Type;
@@ -3728,27 +3684,12 @@ export const ProtectionPolicyOperationStatusesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
-    status: Schema.optional(
-      Schema.Literals([
-        "Invalid",
-        "InProgress",
-        "Succeeded",
-        "Failed",
-        "Canceled",
-      ]),
-    ),
+    status: Schema.optional(Schema.suspend(() => OperationStatusValuesSchema)),
     startTime: Schema.optional(Schema.String),
     endTime: Schema.optional(Schema.String),
-    error: Schema.optional(
-      Schema.Struct({
-        code: Schema.optional(Schema.String),
-        message: Schema.optional(Schema.String),
-      }),
-    ),
+    error: Schema.optional(Schema.suspend(() => OperationStatusErrorSchema)),
     properties: Schema.optional(
-      Schema.Struct({
-        objectType: Schema.String,
-      }),
+      Schema.suspend(() => OperationStatusExtendedInfoSchema),
     ),
   });
 export type ProtectionPolicyOperationStatusesGetOutput =
@@ -3795,23 +3736,16 @@ export type RecoveryPointsGetInput = typeof RecoveryPointsGetInput.Type;
 // Output Schema
 export const RecoveryPointsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(Schema.suspend(() => RecoveryPointSchema)),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.optional(
+      Schema.suspend(() => Azure_Core_azureLocationSchema),
+    ),
+    eTag: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type RecoveryPointsGetOutput = typeof RecoveryPointsGetOutput.Type;
 
@@ -3855,6 +3789,9 @@ export type RecoveryPointsListInput = typeof RecoveryPointsListInput.Type;
 // Output Schema
 export const RecoveryPointsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    value: Schema.optional(
+      Schema.Array(Schema.suspend(() => RecoveryPointResourceSchema)),
+    ),
     nextLink: Schema.optional(Schema.String),
   });
 export type RecoveryPointsListOutput = typeof RecoveryPointsListOutput.Type;
@@ -3900,6 +3837,9 @@ export type RecoveryPointsRecommendedForMoveListInput =
 // Output Schema
 export const RecoveryPointsRecommendedForMoveListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    value: Schema.optional(
+      Schema.Array(Schema.suspend(() => RecoveryPointResourceSchema)),
+    ),
     nextLink: Schema.optional(Schema.String),
   });
 export type RecoveryPointsRecommendedForMoveListOutput =
@@ -3941,6 +3881,9 @@ export type ResourceGuardProxiesGetInput =
 // Output Schema
 export const ResourceGuardProxiesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    value: Schema.optional(
+      Schema.Array(Schema.suspend(() => ResourceGuardProxyBaseResourceSchema)),
+    ),
     nextLink: Schema.optional(Schema.String),
   });
 export type ResourceGuardProxiesGetOutput =
@@ -4018,23 +3961,18 @@ export type ResourceGuardProxyGetInput = typeof ResourceGuardProxyGetInput.Type;
 // Output Schema
 export const ResourceGuardProxyGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => ResourceGuardProxyBaseSchema),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.optional(
+      Schema.suspend(() => Azure_Core_azureLocationSchema),
+    ),
+    eTag: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type ResourceGuardProxyGetOutput =
   typeof ResourceGuardProxyGetOutput.Type;
@@ -4062,22 +4000,12 @@ export const ResourceGuardProxyPutInput =
     vaultName: Schema.String.pipe(T.PathParam()),
     resourceGuardProxyName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        resourceGuardResourceId: Schema.String,
-        resourceGuardOperationDetails: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              vaultCriticalOperation: Schema.optional(Schema.String),
-              defaultResourceRequest: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        lastUpdatedTime: Schema.optional(Schema.String),
-        description: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(() => ResourceGuardProxyBaseSchema),
     ),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    location: Schema.optional(Schema.String),
+    location: Schema.optional(
+      Schema.suspend(() => Azure_Core_azureLocationSchema),
+    ),
     eTag: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
@@ -4091,23 +4019,18 @@ export type ResourceGuardProxyPutInput = typeof ResourceGuardProxyPutInput.Type;
 // Output Schema
 export const ResourceGuardProxyPutOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => ResourceGuardProxyBaseSchema),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.optional(
+      Schema.suspend(() => Azure_Core_azureLocationSchema),
+    ),
+    eTag: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type ResourceGuardProxyPutOutput =
   typeof ResourceGuardProxyPutOutput.Type;
@@ -4180,34 +4103,16 @@ export const RestoresTriggerInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   containerName: Schema.String.pipe(T.PathParam()),
   protectedItemName: Schema.String.pipe(T.PathParam()),
   recoveryPointId: Schema.String.pipe(T.PathParam()),
-  location: Schema.optional(Schema.String),
+  location: Schema.optional(
+    Schema.suspend(() => Azure_Core_azureLocationSchema),
+  ),
   tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   eTag: Schema.optional(Schema.String),
-  properties: Schema.optional(
-    Schema.Struct({
-      objectType: Schema.String,
-      resourceGuardOperationRequests: Schema.optional(
-        Schema.Array(Schema.String),
-      ),
-    }),
-  ),
+  properties: Schema.optional(Schema.suspend(() => RestoreRequestSchema)),
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
-  systemData: Schema.optional(
-    Schema.Struct({
-      createdBy: Schema.optional(Schema.String),
-      createdByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      createdAt: Schema.optional(Schema.String),
-      lastModifiedBy: Schema.optional(Schema.String),
-      lastModifiedByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      lastModifiedAt: Schema.optional(Schema.String),
-    }),
-  ),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
 }).pipe(
   T.Http({
     method: "POST",
@@ -4298,27 +4203,12 @@ export const TieringCostOperationStatusGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
-    status: Schema.optional(
-      Schema.Literals([
-        "Invalid",
-        "InProgress",
-        "Succeeded",
-        "Failed",
-        "Canceled",
-      ]),
-    ),
+    status: Schema.optional(Schema.suspend(() => OperationStatusValuesSchema)),
     startTime: Schema.optional(Schema.String),
     endTime: Schema.optional(Schema.String),
-    error: Schema.optional(
-      Schema.Struct({
-        code: Schema.optional(Schema.String),
-        message: Schema.optional(Schema.String),
-      }),
-    ),
+    error: Schema.optional(Schema.suspend(() => OperationStatusErrorSchema)),
     properties: Schema.optional(
-      Schema.Struct({
-        objectType: Schema.String,
-      }),
+      Schema.suspend(() => OperationStatusExtendedInfoSchema),
     ),
   });
 export type TieringCostOperationStatusGetOutput =
@@ -4359,17 +4249,7 @@ export type ValidateOperationResultsGetInput =
 export const ValidateOperationResultsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     validateOperationResponse: Schema.optional(
-      Schema.Struct({
-        validationResults: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              code: Schema.optional(Schema.String),
-              message: Schema.optional(Schema.String),
-              recommendations: Schema.optional(Schema.Array(Schema.String)),
-            }),
-          ),
-        ),
-      }),
+      Schema.suspend(() => ValidateOperationResponseSchema),
     ),
   });
 export type ValidateOperationResultsGetOutput =
@@ -4413,27 +4293,12 @@ export const ValidateOperationStatusesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
-    status: Schema.optional(
-      Schema.Literals([
-        "Invalid",
-        "InProgress",
-        "Succeeded",
-        "Failed",
-        "Canceled",
-      ]),
-    ),
+    status: Schema.optional(Schema.suspend(() => OperationStatusValuesSchema)),
     startTime: Schema.optional(Schema.String),
     endTime: Schema.optional(Schema.String),
-    error: Schema.optional(
-      Schema.Struct({
-        code: Schema.optional(Schema.String),
-        message: Schema.optional(Schema.String),
-      }),
-    ),
+    error: Schema.optional(Schema.suspend(() => OperationStatusErrorSchema)),
     properties: Schema.optional(
-      Schema.Struct({
-        objectType: Schema.String,
-      }),
+      Schema.suspend(() => OperationStatusExtendedInfoSchema),
     ),
   });
 export type ValidateOperationStatusesGetOutput =
@@ -4463,9 +4328,7 @@ export const ValidateOperationTriggerInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     id: Schema.String,
-    properties: Schema.Struct({
-      objectType: Schema.String,
-    }),
+    properties: Schema.suspend(() => ValidateOperationRequestSchema),
   }).pipe(
     T.Http({
       method: "POST",

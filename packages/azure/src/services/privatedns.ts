@@ -8,6 +8,141 @@ import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
+// Shared schemas
+const PrivateZoneSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+});
+const systemDataSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  createdBy: Schema.optional(Schema.String),
+  createdByType: Schema.optional(
+    Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+  ),
+  createdAt: Schema.optional(Schema.String),
+  lastModifiedBy: Schema.optional(Schema.String),
+  lastModifiedByType: Schema.optional(
+    Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+  ),
+  lastModifiedAt: Schema.optional(Schema.String),
+});
+const PrivateZonePropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  maxNumberOfRecordSets: Schema.optional(Schema.Number),
+  numberOfRecordSets: Schema.optional(Schema.Number),
+  maxNumberOfVirtualNetworkLinks: Schema.optional(Schema.Number),
+  numberOfVirtualNetworkLinks: Schema.optional(Schema.Number),
+  maxNumberOfVirtualNetworkLinksWithRegistration: Schema.optional(
+    Schema.Number,
+  ),
+  numberOfVirtualNetworkLinksWithRegistration: Schema.optional(Schema.Number),
+  provisioningState: Schema.optional(
+    Schema.suspend(() => ProvisioningStateSchema),
+  ),
+  internalId: Schema.optional(Schema.String),
+});
+const ProvisioningStateSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Creating",
+  "Updating",
+  "Deleting",
+  "Succeeded",
+  "Failed",
+  "Canceled",
+]);
+const RecordSetSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+});
+const RecordSetPropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  metadata: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  ttl: Schema.optional(Schema.Number),
+  fqdn: Schema.optional(Schema.String),
+  isAutoRegistered: Schema.optional(Schema.Boolean),
+  aRecords: Schema.optional(Schema.Array(Schema.suspend(() => ARecordSchema))),
+  aaaaRecords: Schema.optional(
+    Schema.Array(Schema.suspend(() => AaaaRecordSchema)),
+  ),
+  cnameRecord: Schema.optional(Schema.suspend(() => CnameRecordSchema)),
+  mxRecords: Schema.optional(
+    Schema.Array(Schema.suspend(() => MxRecordSchema)),
+  ),
+  ptrRecords: Schema.optional(
+    Schema.Array(Schema.suspend(() => PtrRecordSchema)),
+  ),
+  soaRecord: Schema.optional(Schema.suspend(() => SoaRecordSchema)),
+  srvRecords: Schema.optional(
+    Schema.Array(Schema.suspend(() => SrvRecordSchema)),
+  ),
+  txtRecords: Schema.optional(
+    Schema.Array(Schema.suspend(() => TxtRecordSchema)),
+  ),
+});
+const ARecordSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  ipv4Address: Schema.optional(Schema.String),
+});
+const AaaaRecordSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  ipv6Address: Schema.optional(Schema.String),
+});
+const CnameRecordSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  cname: Schema.optional(Schema.String),
+});
+const MxRecordSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  preference: Schema.optional(Schema.Number),
+  exchange: Schema.optional(Schema.String),
+});
+const PtrRecordSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  ptrdname: Schema.optional(Schema.String),
+});
+const SoaRecordSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  host: Schema.optional(Schema.String),
+  email: Schema.optional(Schema.String),
+  serialNumber: Schema.optional(Schema.Number),
+  refreshTime: Schema.optional(Schema.Number),
+  retryTime: Schema.optional(Schema.Number),
+  expireTime: Schema.optional(Schema.Number),
+  minimumTtl: Schema.optional(Schema.Number),
+});
+const SrvRecordSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  priority: Schema.optional(Schema.Number),
+  weight: Schema.optional(Schema.Number),
+  port: Schema.optional(Schema.Number),
+  target: Schema.optional(Schema.String),
+});
+const TxtRecordSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  value: Schema.optional(Schema.Array(Schema.String)),
+});
+const VirtualNetworkLinkSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+});
+const VirtualNetworkLinkPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    virtualNetwork: Schema.optional(Schema.suspend(() => SubResourceSchema)),
+    registrationEnabled: Schema.optional(Schema.Boolean),
+    resolutionPolicy: Schema.optional(
+      Schema.suspend(() => ResolutionPolicySchema),
+    ),
+    virtualNetworkLinkState: Schema.optional(
+      Schema.suspend(() => VirtualNetworkLinkStateSchema),
+    ),
+    provisioningState: Schema.optional(
+      Schema.suspend(() => ProvisioningStateSchema),
+    ),
+  });
+const SubResourceSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+});
+const ResolutionPolicySchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Default",
+  "NxDomainRedirect",
+]);
+const VirtualNetworkLinkStateSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Literals(["InProgress", "Completed"]);
+
 // Input Schema
 export const PrivateZonesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -15,29 +150,7 @@ export const PrivateZonesCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     privateZoneName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        maxNumberOfRecordSets: Schema.optional(Schema.Number),
-        numberOfRecordSets: Schema.optional(Schema.Number),
-        maxNumberOfVirtualNetworkLinks: Schema.optional(Schema.Number),
-        numberOfVirtualNetworkLinks: Schema.optional(Schema.Number),
-        maxNumberOfVirtualNetworkLinksWithRegistration: Schema.optional(
-          Schema.Number,
-        ),
-        numberOfVirtualNetworkLinksWithRegistration: Schema.optional(
-          Schema.Number,
-        ),
-        provisioningState: Schema.optional(
-          Schema.Literals([
-            "Creating",
-            "Updating",
-            "Deleting",
-            "Succeeded",
-            "Failed",
-            "Canceled",
-          ]),
-        ),
-        internalId: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(() => PrivateZonePropertiesSchema),
     ),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     location: Schema.optional(Schema.String),
@@ -56,23 +169,16 @@ export type PrivateZonesCreateOrUpdateInput =
 // Output Schema
 export const PrivateZonesCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => PrivateZonePropertiesSchema),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.optional(Schema.String),
+    etag: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type PrivateZonesCreateOrUpdateOutput =
   typeof PrivateZonesCreateOrUpdateOutput.Type;
@@ -144,23 +250,16 @@ export type PrivateZonesGetInput = typeof PrivateZonesGetInput.Type;
 
 // Output Schema
 export const PrivateZonesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.optional(
+    Schema.suspend(() => PrivateZonePropertiesSchema),
+  ),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  location: Schema.optional(Schema.String),
+  etag: Schema.optional(Schema.String),
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
-  systemData: Schema.optional(
-    Schema.Struct({
-      createdBy: Schema.optional(Schema.String),
-      createdByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      createdAt: Schema.optional(Schema.String),
-      lastModifiedBy: Schema.optional(Schema.String),
-      lastModifiedByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      lastModifiedAt: Schema.optional(Schema.String),
-    }),
-  ),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
 });
 export type PrivateZonesGetOutput = typeof PrivateZonesGetOutput.Type;
 
@@ -193,37 +292,7 @@ export type PrivateZonesListInput = typeof PrivateZonesListInput.Type;
 // Output Schema
 export const PrivateZonesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => PrivateZoneSchema)),
     nextLink: Schema.optional(Schema.String),
   },
 );
@@ -260,37 +329,7 @@ export type PrivateZonesListByResourceGroupInput =
 // Output Schema
 export const PrivateZonesListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => PrivateZoneSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type PrivateZonesListByResourceGroupOutput =
@@ -317,29 +356,7 @@ export const PrivateZonesUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     privateZoneName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        maxNumberOfRecordSets: Schema.optional(Schema.Number),
-        numberOfRecordSets: Schema.optional(Schema.Number),
-        maxNumberOfVirtualNetworkLinks: Schema.optional(Schema.Number),
-        numberOfVirtualNetworkLinks: Schema.optional(Schema.Number),
-        maxNumberOfVirtualNetworkLinksWithRegistration: Schema.optional(
-          Schema.Number,
-        ),
-        numberOfVirtualNetworkLinksWithRegistration: Schema.optional(
-          Schema.Number,
-        ),
-        provisioningState: Schema.optional(
-          Schema.Literals([
-            "Creating",
-            "Updating",
-            "Deleting",
-            "Succeeded",
-            "Failed",
-            "Canceled",
-          ]),
-        ),
-        internalId: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(() => PrivateZonePropertiesSchema),
     ),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     location: Schema.optional(Schema.String),
@@ -357,23 +374,16 @@ export type PrivateZonesUpdateInput = typeof PrivateZonesUpdateInput.Type;
 // Output Schema
 export const PrivateZonesUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => PrivateZonePropertiesSchema),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.optional(Schema.String),
+    etag: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type PrivateZonesUpdateOutput = typeof PrivateZonesUpdateOutput.Type;
 
@@ -409,74 +419,7 @@ export const RecordSetsCreateOrUpdateInput =
     ]).pipe(T.PathParam()),
     relativeRecordSetName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        metadata: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        ttl: Schema.optional(Schema.Number),
-        fqdn: Schema.optional(Schema.String),
-        isAutoRegistered: Schema.optional(Schema.Boolean),
-        aRecords: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              ipv4Address: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        aaaaRecords: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              ipv6Address: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        cnameRecord: Schema.optional(
-          Schema.Struct({
-            cname: Schema.optional(Schema.String),
-          }),
-        ),
-        mxRecords: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              preference: Schema.optional(Schema.Number),
-              exchange: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        ptrRecords: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              ptrdname: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        soaRecord: Schema.optional(
-          Schema.Struct({
-            host: Schema.optional(Schema.String),
-            email: Schema.optional(Schema.String),
-            serialNumber: Schema.optional(Schema.Number),
-            refreshTime: Schema.optional(Schema.Number),
-            retryTime: Schema.optional(Schema.Number),
-            expireTime: Schema.optional(Schema.Number),
-            minimumTtl: Schema.optional(Schema.Number),
-          }),
-        ),
-        srvRecords: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              priority: Schema.optional(Schema.Number),
-              weight: Schema.optional(Schema.Number),
-              port: Schema.optional(Schema.Number),
-              target: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        txtRecords: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              value: Schema.optional(Schema.Array(Schema.String)),
-            }),
-          ),
-        ),
-      }),
+      Schema.suspend(() => RecordSetPropertiesSchema),
     ),
     etag: Schema.optional(Schema.String),
   }).pipe(
@@ -492,23 +435,14 @@ export type RecordSetsCreateOrUpdateInput =
 // Output Schema
 export const RecordSetsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => RecordSetPropertiesSchema),
+    ),
+    etag: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type RecordSetsCreateOrUpdateOutput =
   typeof RecordSetsCreateOrUpdateOutput.Type;
@@ -604,23 +538,12 @@ export type RecordSetsGetInput = typeof RecordSetsGetInput.Type;
 
 // Output Schema
 export const RecordSetsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.optional(Schema.suspend(() => RecordSetPropertiesSchema)),
+  etag: Schema.optional(Schema.String),
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
-  systemData: Schema.optional(
-    Schema.Struct({
-      createdBy: Schema.optional(Schema.String),
-      createdByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      createdAt: Schema.optional(Schema.String),
-      lastModifiedBy: Schema.optional(Schema.String),
-      lastModifiedByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      lastModifiedAt: Schema.optional(Schema.String),
-    }),
-  ),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
 });
 export type RecordSetsGetOutput = typeof RecordSetsGetOutput.Type;
 
@@ -657,27 +580,7 @@ export type RecordSetsListInput = typeof RecordSetsListInput.Type;
 
 // Output Schema
 export const RecordSetsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  value: Schema.Array(
-    Schema.Struct({
-      id: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      type: Schema.optional(Schema.String),
-      systemData: Schema.optional(
-        Schema.Struct({
-          createdBy: Schema.optional(Schema.String),
-          createdByType: Schema.optional(
-            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-          ),
-          createdAt: Schema.optional(Schema.String),
-          lastModifiedBy: Schema.optional(Schema.String),
-          lastModifiedByType: Schema.optional(
-            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-          ),
-          lastModifiedAt: Schema.optional(Schema.String),
-        }),
-      ),
-    }),
-  ),
+  value: Schema.Array(Schema.suspend(() => RecordSetSchema)),
   nextLink: Schema.optional(Schema.String),
 });
 export type RecordSetsListOutput = typeof RecordSetsListOutput.Type;
@@ -727,37 +630,7 @@ export type RecordSetsListByTypeInput = typeof RecordSetsListByTypeInput.Type;
 // Output Schema
 export const RecordSetsListByTypeOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => RecordSetSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type RecordSetsListByTypeOutput = typeof RecordSetsListByTypeOutput.Type;
@@ -796,76 +669,7 @@ export const RecordSetsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     "TXT",
   ]).pipe(T.PathParam()),
   relativeRecordSetName: Schema.String.pipe(T.PathParam()),
-  properties: Schema.optional(
-    Schema.Struct({
-      metadata: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      ttl: Schema.optional(Schema.Number),
-      fqdn: Schema.optional(Schema.String),
-      isAutoRegistered: Schema.optional(Schema.Boolean),
-      aRecords: Schema.optional(
-        Schema.Array(
-          Schema.Struct({
-            ipv4Address: Schema.optional(Schema.String),
-          }),
-        ),
-      ),
-      aaaaRecords: Schema.optional(
-        Schema.Array(
-          Schema.Struct({
-            ipv6Address: Schema.optional(Schema.String),
-          }),
-        ),
-      ),
-      cnameRecord: Schema.optional(
-        Schema.Struct({
-          cname: Schema.optional(Schema.String),
-        }),
-      ),
-      mxRecords: Schema.optional(
-        Schema.Array(
-          Schema.Struct({
-            preference: Schema.optional(Schema.Number),
-            exchange: Schema.optional(Schema.String),
-          }),
-        ),
-      ),
-      ptrRecords: Schema.optional(
-        Schema.Array(
-          Schema.Struct({
-            ptrdname: Schema.optional(Schema.String),
-          }),
-        ),
-      ),
-      soaRecord: Schema.optional(
-        Schema.Struct({
-          host: Schema.optional(Schema.String),
-          email: Schema.optional(Schema.String),
-          serialNumber: Schema.optional(Schema.Number),
-          refreshTime: Schema.optional(Schema.Number),
-          retryTime: Schema.optional(Schema.Number),
-          expireTime: Schema.optional(Schema.Number),
-          minimumTtl: Schema.optional(Schema.Number),
-        }),
-      ),
-      srvRecords: Schema.optional(
-        Schema.Array(
-          Schema.Struct({
-            priority: Schema.optional(Schema.Number),
-            weight: Schema.optional(Schema.Number),
-            port: Schema.optional(Schema.Number),
-            target: Schema.optional(Schema.String),
-          }),
-        ),
-      ),
-      txtRecords: Schema.optional(
-        Schema.Array(
-          Schema.Struct({
-            value: Schema.optional(Schema.Array(Schema.String)),
-          }),
-        ),
-      ),
-    }),
-  ),
+  properties: Schema.optional(Schema.suspend(() => RecordSetPropertiesSchema)),
   etag: Schema.optional(Schema.String),
 }).pipe(
   T.Http({
@@ -879,23 +683,14 @@ export type RecordSetsUpdateInput = typeof RecordSetsUpdateInput.Type;
 // Output Schema
 export const RecordSetsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
+    properties: Schema.optional(
+      Schema.suspend(() => RecordSetPropertiesSchema),
+    ),
+    etag: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   },
 );
 export type RecordSetsUpdateOutput = typeof RecordSetsUpdateOutput.Type;
@@ -924,30 +719,7 @@ export const VirtualNetworkLinksCreateOrUpdateInput =
     privateZoneName: Schema.String.pipe(T.PathParam()),
     virtualNetworkLinkName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        virtualNetwork: Schema.optional(
-          Schema.Struct({
-            id: Schema.optional(Schema.String),
-          }),
-        ),
-        registrationEnabled: Schema.optional(Schema.Boolean),
-        resolutionPolicy: Schema.optional(
-          Schema.Literals(["Default", "NxDomainRedirect"]),
-        ),
-        virtualNetworkLinkState: Schema.optional(
-          Schema.Literals(["InProgress", "Completed"]),
-        ),
-        provisioningState: Schema.optional(
-          Schema.Literals([
-            "Creating",
-            "Updating",
-            "Deleting",
-            "Succeeded",
-            "Failed",
-            "Canceled",
-          ]),
-        ),
-      }),
+      Schema.suspend(() => VirtualNetworkLinkPropertiesSchema),
     ),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     location: Schema.optional(Schema.String),
@@ -966,23 +738,16 @@ export type VirtualNetworkLinksCreateOrUpdateInput =
 // Output Schema
 export const VirtualNetworkLinksCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => VirtualNetworkLinkPropertiesSchema),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.optional(Schema.String),
+    etag: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type VirtualNetworkLinksCreateOrUpdateOutput =
   typeof VirtualNetworkLinksCreateOrUpdateOutput.Type;
@@ -1065,23 +830,16 @@ export type VirtualNetworkLinksGetInput =
 // Output Schema
 export const VirtualNetworkLinksGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => VirtualNetworkLinkPropertiesSchema),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.optional(Schema.String),
+    etag: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type VirtualNetworkLinksGetOutput =
   typeof VirtualNetworkLinksGetOutput.Type;
@@ -1122,37 +880,7 @@ export type VirtualNetworkLinksListInput =
 // Output Schema
 export const VirtualNetworkLinksListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => VirtualNetworkLinkSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type VirtualNetworkLinksListOutput =
@@ -1182,30 +910,7 @@ export const VirtualNetworkLinksUpdateInput =
     privateZoneName: Schema.String.pipe(T.PathParam()),
     virtualNetworkLinkName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        virtualNetwork: Schema.optional(
-          Schema.Struct({
-            id: Schema.optional(Schema.String),
-          }),
-        ),
-        registrationEnabled: Schema.optional(Schema.Boolean),
-        resolutionPolicy: Schema.optional(
-          Schema.Literals(["Default", "NxDomainRedirect"]),
-        ),
-        virtualNetworkLinkState: Schema.optional(
-          Schema.Literals(["InProgress", "Completed"]),
-        ),
-        provisioningState: Schema.optional(
-          Schema.Literals([
-            "Creating",
-            "Updating",
-            "Deleting",
-            "Succeeded",
-            "Failed",
-            "Canceled",
-          ]),
-        ),
-      }),
+      Schema.suspend(() => VirtualNetworkLinkPropertiesSchema),
     ),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     location: Schema.optional(Schema.String),
@@ -1224,23 +929,16 @@ export type VirtualNetworkLinksUpdateInput =
 // Output Schema
 export const VirtualNetworkLinksUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => VirtualNetworkLinkPropertiesSchema),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.optional(Schema.String),
+    etag: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type VirtualNetworkLinksUpdateOutput =
   typeof VirtualNetworkLinksUpdateOutput.Type;

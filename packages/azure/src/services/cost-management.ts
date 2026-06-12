@@ -8,112 +8,999 @@ import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
+// Shared schemas
+const AlertSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+});
+const systemDataSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  createdBy: Schema.optional(Schema.String),
+  createdByType: Schema.optional(
+    Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+  ),
+  createdAt: Schema.optional(Schema.String),
+  lastModifiedBy: Schema.optional(Schema.String),
+  lastModifiedByType: Schema.optional(
+    Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+  ),
+  lastModifiedAt: Schema.optional(Schema.String),
+});
+const AlertPropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  definition: Schema.optional(
+    Schema.suspend(() => AlertPropertiesDefinitionSchema),
+  ),
+  description: Schema.optional(Schema.String),
+  source: Schema.optional(Schema.suspend(() => AlertSourceSchema)),
+  details: Schema.optional(Schema.suspend(() => AlertPropertiesDetailsSchema)),
+  costEntityId: Schema.optional(Schema.String),
+  status: Schema.optional(Schema.suspend(() => AlertStatusSchema)),
+  creationTime: Schema.optional(Schema.String),
+  closeTime: Schema.optional(Schema.String),
+  modificationTime: Schema.optional(Schema.String),
+  statusModificationUserName: Schema.optional(Schema.String),
+  statusModificationTime: Schema.optional(Schema.String),
+});
+const AlertPropertiesDefinitionSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    type: Schema.optional(Schema.suspend(() => AlertTypeSchema)),
+    category: Schema.optional(Schema.suspend(() => AlertCategorySchema)),
+    criteria: Schema.optional(Schema.suspend(() => AlertCriteriaSchema)),
+  });
+const AlertTypeSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Budget",
+  "Invoice",
+  "Credit",
+  "Quota",
+  "General",
+  "xCloud",
+  "BudgetForecast",
+]);
+const AlertCategorySchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Cost",
+  "Usage",
+  "Billing",
+  "System",
+]);
+const AlertCriteriaSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "CostThresholdExceeded",
+  "UsageThresholdExceeded",
+  "CreditThresholdApproaching",
+  "CreditThresholdReached",
+  "QuotaThresholdApproaching",
+  "QuotaThresholdReached",
+  "MultiCurrency",
+  "ForecastCostThresholdExceeded",
+  "ForecastUsageThresholdExceeded",
+  "InvoiceDueDateApproaching",
+  "InvoiceDueDateReached",
+  "CrossCloudNewDataAvailable",
+  "CrossCloudCollectionError",
+  "GeneralThresholdError",
+]);
+const AlertSourceSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Preset",
+  "User",
+]);
+const AlertPropertiesDetailsSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  timeGrainType: Schema.optional(
+    Schema.suspend(() => AlertTimeGrainTypeSchema),
+  ),
+  periodStartDate: Schema.optional(Schema.String),
+  triggeredBy: Schema.optional(Schema.String),
+  resourceGroupFilter: Schema.optional(Schema.Array(Schema.Unknown)),
+  resourceFilter: Schema.optional(Schema.Array(Schema.Unknown)),
+  meterFilter: Schema.optional(Schema.Array(Schema.Unknown)),
+  tagFilter: Schema.optional(Schema.Unknown),
+  threshold: Schema.optional(Schema.Number),
+  operator: Schema.optional(Schema.suspend(() => AlertOperatorSchema)),
+  amount: Schema.optional(Schema.Number),
+  unit: Schema.optional(Schema.String),
+  currentSpend: Schema.optional(Schema.Number),
+  contactEmails: Schema.optional(Schema.Array(Schema.String)),
+  contactGroups: Schema.optional(Schema.Array(Schema.String)),
+  contactRoles: Schema.optional(Schema.Array(Schema.String)),
+  overridingAlert: Schema.optional(Schema.String),
+  departmentName: Schema.optional(Schema.String),
+  companyName: Schema.optional(Schema.String),
+  enrollmentNumber: Schema.optional(Schema.String),
+  enrollmentStartDate: Schema.optional(Schema.String),
+  enrollmentEndDate: Schema.optional(Schema.String),
+  invoicingThreshold: Schema.optional(Schema.Number),
+});
+const AlertTimeGrainTypeSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "None",
+  "Monthly",
+  "Quarterly",
+  "Annually",
+  "BillingMonth",
+  "BillingQuarter",
+  "BillingAnnual",
+]);
+const AlertOperatorSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "None",
+  "EqualTo",
+  "GreaterThan",
+  "GreaterThanOrEqualTo",
+  "LessThan",
+  "LessThanOrEqualTo",
+]);
+const AlertStatusSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "None",
+  "Active",
+  "Overridden",
+  "Resolved",
+  "Dismissed",
+]);
+const Azure_Core_eTagSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.String;
+const benefitRecommendationModelSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+  });
+const BudgetSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+});
+const BudgetPropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  category: Schema.suspend(() => CategoryTypeSchema),
+  amount: Schema.optional(Schema.Number),
+  timeGrain: Schema.suspend(() => TimeGrainTypeSchema),
+  timePeriod: Schema.suspend(() => BudgetTimePeriodSchema),
+  filter: Schema.optional(Schema.suspend(() => BudgetFilterSchema)),
+  currentSpend: Schema.optional(Schema.suspend(() => CurrentSpendSchema)),
+  notifications: Schema.optional(
+    Schema.Record(
+      Schema.String,
+      Schema.suspend(() => NotificationSchema),
+    ),
+  ),
+  forecastSpend: Schema.optional(Schema.suspend(() => ForecastSpendSchema)),
+});
+const CategoryTypeSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Cost",
+  "ReservationUtilization",
+]);
+const TimeGrainTypeSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Monthly",
+  "Quarterly",
+  "Annually",
+  "BillingMonth",
+  "BillingQuarter",
+  "BillingAnnual",
+  "Last7Days",
+  "Last30Days",
+]);
+const BudgetTimePeriodSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  startDate: Schema.String,
+  endDate: Schema.optional(Schema.String),
+});
+const BudgetFilterSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  and: Schema.optional(
+    Schema.Array(Schema.suspend(() => BudgetFilterPropertiesSchema)),
+  ),
+  dimensions: Schema.optional(
+    Schema.suspend(() => BudgetComparisonExpressionSchema),
+  ),
+  tags: Schema.optional(Schema.suspend(() => BudgetComparisonExpressionSchema)),
+});
+const BudgetFilterPropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  dimensions: Schema.optional(
+    Schema.suspend(() => BudgetComparisonExpressionSchema),
+  ),
+  tags: Schema.optional(Schema.suspend(() => BudgetComparisonExpressionSchema)),
+});
+const BudgetComparisonExpressionSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String,
+    operator: Schema.suspend(() => BudgetOperatorTypeSchema),
+    values: Schema.Array(Schema.String),
+  });
+const BudgetOperatorTypeSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "In",
+]);
+const CurrentSpendSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  amount: Schema.optional(Schema.Number),
+  unit: Schema.optional(Schema.String),
+});
+const NotificationSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  enabled: Schema.Boolean,
+  operator: Schema.suspend(() => BudgetNotificationOperatorTypeSchema),
+  threshold: Schema.Number,
+  frequency: Schema.optional(Schema.suspend(() => FrequencySchema)),
+  contactEmails: Schema.Array(Schema.String),
+  contactRoles: Schema.optional(Schema.Array(Schema.String)),
+  contactGroups: Schema.optional(Schema.Array(Schema.String)),
+  thresholdType: Schema.optional(Schema.Literals(["Actual", "Forecasted"])),
+  locale: Schema.optional(Schema.suspend(() => CultureCodeSchema)),
+});
+const BudgetNotificationOperatorTypeSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+    "EqualTo",
+    "GreaterThan",
+    "GreaterThanOrEqualTo",
+    "LessThan",
+  ]);
+const FrequencySchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Daily",
+  "Weekly",
+  "Monthly",
+]);
+const CultureCodeSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "en-us",
+  "ja-jp",
+  "zh-cn",
+  "de-de",
+  "es-es",
+  "fr-fr",
+  "it-it",
+  "ko-kr",
+  "pt-br",
+  "ru-ru",
+  "zh-tw",
+  "cs-cz",
+  "pl-pl",
+  "tr-tr",
+  "da-dk",
+  "en-gb",
+  "hu-hu",
+  "nb-no",
+  "nl-nl",
+  "pt-pt",
+  "sv-se",
+]);
+const ForecastSpendSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  amount: Schema.optional(Schema.Number),
+  unit: Schema.optional(Schema.String),
+});
+const CostDetailsStatusTypeSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals(
+  ["Completed", "NoDataFound", "Failed"],
+);
+const ReportManifestSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  manifestVersion: Schema.optional(Schema.String),
+  dataFormat: Schema.optional(
+    Schema.suspend(() => CostDetailsDataFormatSchema),
+  ),
+  byteCount: Schema.optional(Schema.Number),
+  blobCount: Schema.optional(Schema.Number),
+  compressData: Schema.optional(Schema.Boolean),
+  requestContext: Schema.optional(Schema.suspend(() => RequestContextSchema)),
+  blobs: Schema.optional(Schema.Array(Schema.suspend(() => BlobInfoSchema))),
+});
+const CostDetailsDataFormatSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals(
+  ["Csv"],
+);
+const RequestContextSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  requestScope: Schema.optional(Schema.String),
+  requestBody: Schema.optional(
+    Schema.suspend(() => GenerateCostDetailsReportRequestDefinitionSchema),
+  ),
+});
+const GenerateCostDetailsReportRequestDefinitionSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    metric: Schema.optional(Schema.suspend(() => CostDetailsMetricTypeSchema)),
+    timePeriod: Schema.optional(
+      Schema.suspend(() => CostDetailsTimePeriodSchema),
+    ),
+    billingPeriod: Schema.optional(Schema.String),
+    invoiceId: Schema.optional(Schema.String),
+  });
+const CostDetailsMetricTypeSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals(
+  ["ActualCost", "AmortizedCost"],
+);
+const CostDetailsTimePeriodSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  start: Schema.String,
+  end: Schema.String,
+});
+const BlobInfoSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  blobLink: Schema.optional(Schema.String),
+  byteCount: Schema.optional(Schema.Number),
+});
+const ErrorDetailsSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  code: Schema.optional(Schema.String),
+  message: Schema.optional(Schema.String),
+});
+const DimensionSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  location: Schema.optional(Schema.String),
+  sku: Schema.optional(Schema.String),
+  eTag: Schema.optional(Schema.String),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+});
+const ExportSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+});
+const ExportPropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  format: Schema.optional(Schema.suspend(() => FormatTypeSchema)),
+  deliveryInfo: Schema.suspend(() => ExportDeliveryInfoSchema),
+  definition: Schema.suspend(() => ExportDefinitionSchema),
+  runHistory: Schema.optional(
+    Schema.suspend(() => ExportExecutionListResultSchema),
+  ),
+  partitionData: Schema.optional(Schema.Boolean),
+  dataOverwriteBehavior: Schema.optional(
+    Schema.suspend(() => DataOverwriteBehaviorTypeSchema),
+  ),
+  compressionMode: Schema.optional(
+    Schema.suspend(() => CompressionModeTypeSchema),
+  ),
+  exportDescription: Schema.optional(Schema.String),
+  nextRunTimeEstimate: Schema.optional(Schema.String),
+  systemSuspensionContext: Schema.optional(
+    Schema.suspend(() => ExportSuspensionContextSchema),
+  ),
+});
+const FormatTypeSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Csv",
+  "Parquet",
+]);
+const ExportDeliveryInfoSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  destination: Schema.suspend(() => ExportDeliveryDestinationSchema),
+});
+const ExportDeliveryDestinationSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    type: Schema.optional(Schema.suspend(() => DestinationTypeSchema)),
+    resourceId: Schema.optional(Schema.String),
+    container: Schema.String,
+    rootFolderPath: Schema.optional(Schema.String),
+    sasToken: Schema.optional(Schema.String),
+    storageAccount: Schema.optional(Schema.String),
+  });
+const DestinationTypeSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "AzureBlob",
+]);
+const ExportDefinitionSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  type: Schema.suspend(() => ExportTypeSchema),
+  timeframe: Schema.suspend(() => TimeframeTypeSchema),
+  timePeriod: Schema.optional(Schema.suspend(() => ExportTimePeriodSchema)),
+  dataSet: Schema.optional(Schema.suspend(() => ExportDatasetSchema)),
+});
+const ExportTypeSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Usage",
+  "ActualCost",
+  "AmortizedCost",
+  "FocusCost",
+  "PriceSheet",
+  "ReservationTransactions",
+  "ReservationRecommendations",
+  "ReservationDetails",
+]);
+const TimeframeTypeSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "MonthToDate",
+  "BillingMonthToDate",
+  "TheLastMonth",
+  "TheLastBillingMonth",
+  "WeekToDate",
+  "Custom",
+  "TheCurrentMonth",
+]);
+const ExportTimePeriodSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  from: Schema.String,
+  to: Schema.String,
+});
+const ExportDatasetSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  granularity: Schema.optional(Schema.suspend(() => GranularityTypeSchema)),
+  configuration: Schema.optional(
+    Schema.suspend(() => ExportDatasetConfigurationSchema),
+  ),
+});
+const GranularityTypeSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Daily",
+  "Monthly",
+]);
+const ExportDatasetConfigurationSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    columns: Schema.optional(Schema.Array(Schema.String)),
+    dataVersion: Schema.optional(Schema.String),
+    filters: Schema.optional(
+      Schema.Array(Schema.suspend(() => FilterItemsSchema)),
+    ),
+  });
+const FilterItemsSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.suspend(() => FilterItemNamesSchema)),
+  value: Schema.optional(Schema.String),
+});
+const FilterItemNamesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "ReservationScope",
+  "ResourceType",
+  "LookBackPeriod",
+]);
+const ExportExecutionListResultSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    value: Schema.optional(Schema.Array(Schema.suspend(() => ExportRunSchema))),
+  });
+const ExportRunSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  eTag: Schema.optional(Schema.String),
+});
+const DataOverwriteBehaviorTypeSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+    "OverwritePreviousReport",
+    "CreateNewReport",
+  ]);
+const CompressionModeTypeSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "gzip",
+  "snappy",
+  "none",
+]);
+const ExportSuspensionContextSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    suspensionCode: Schema.optional(Schema.String),
+    suspensionReason: Schema.optional(Schema.String),
+    suspensionTime: Schema.optional(Schema.String),
+  },
+);
+const SystemAssignedServiceIdentityTypeSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Literals(["None", "SystemAssigned"]);
+const ForecastTypeSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Usage",
+  "ActualCost",
+  "AmortizedCost",
+]);
+const ForecastTimeframeSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Custom",
+]);
+const ForecastTimePeriodSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  from: Schema.String,
+  to: Schema.String,
+});
+const ForecastDatasetSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  granularity: Schema.optional(Schema.suspend(() => GranularityTypeSchema)),
+  configuration: Schema.optional(
+    Schema.suspend(() => ForecastDatasetConfigurationSchema),
+  ),
+  aggregation: Schema.Record(
+    Schema.String,
+    Schema.suspend(() => ForecastAggregationSchema),
+  ),
+  filter: Schema.optional(Schema.suspend(() => ForecastFilterSchema)),
+});
+const ForecastDatasetConfigurationSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    columns: Schema.optional(Schema.Array(Schema.String)),
+  });
+const ForecastAggregationSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.suspend(() => FunctionNameSchema),
+  function: Schema.suspend(() => FunctionTypeSchema),
+});
+const FunctionNameSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "PreTaxCostUSD",
+  "Cost",
+  "CostUSD",
+  "PreTaxCost",
+]);
+const FunctionTypeSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals(["Sum"]);
+const ForecastFilterSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  and: Schema.optional(Schema.Array(Schema.Unknown)),
+  or: Schema.optional(Schema.Array(Schema.Unknown)),
+  dimensions: Schema.optional(
+    Schema.suspend(() => ForecastComparisonExpressionSchema),
+  ),
+  tags: Schema.optional(
+    Schema.suspend(() => ForecastComparisonExpressionSchema),
+  ),
+});
+const ForecastComparisonExpressionSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String,
+    operator: Schema.suspend(() => ForecastOperatorTypeSchema),
+    values: Schema.Array(Schema.String),
+  });
+const ForecastOperatorTypeSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "In",
+]);
+const ForecastPropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  nextLink: Schema.optional(Schema.String),
+  columns: Schema.optional(
+    Schema.Array(Schema.suspend(() => ForecastColumnSchema)),
+  ),
+  rows: Schema.optional(Schema.Array(Schema.Array(Schema.Unknown))),
+});
+const ForecastColumnSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
+const GenerateDetailedCostReportMetricTypeSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Literals(["ActualCost", "AmortizedCost"]);
+const GenerateDetailedCostReportTimePeriodSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    start: Schema.String,
+    end: Schema.String,
+  });
+const DownloadURLSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  expiryTime: Schema.optional(Schema.String),
+  validTill: Schema.optional(Schema.String),
+  downloadUrl: Schema.optional(Schema.String),
+});
+const StatusSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  status: Schema.optional(
+    Schema.suspend(() => ReportOperationStatusTypeSchema),
+  ),
+});
+const ReportOperationStatusTypeSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+    "InProgress",
+    "Completed",
+    "Failed",
+    "Queued",
+    "NoDataFound",
+    "ReadyToDownload",
+    "TimedOut",
+  ]);
+const QueryTimePeriodSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  from: Schema.String,
+  to: Schema.String,
+});
+const QueryDatasetSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  granularity: Schema.optional(Schema.suspend(() => GranularityTypeSchema)),
+  configuration: Schema.optional(
+    Schema.suspend(() => QueryDatasetConfigurationSchema),
+  ),
+  aggregation: Schema.optional(
+    Schema.Record(
+      Schema.String,
+      Schema.suspend(() => QueryAggregationSchema),
+    ),
+  ),
+  grouping: Schema.optional(
+    Schema.Array(Schema.suspend(() => QueryGroupingSchema)),
+  ),
+  filter: Schema.optional(Schema.suspend(() => QueryFilterSchema)),
+});
+const QueryDatasetConfigurationSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    columns: Schema.optional(Schema.Array(Schema.String)),
+  });
+const QueryAggregationSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.String,
+  function: Schema.suspend(() => FunctionTypeSchema),
+});
+const QueryGroupingSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  type: Schema.suspend(() => QueryColumnTypeSchema),
+  name: Schema.String,
+});
+const QueryColumnTypeSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "TagKey",
+  "Dimension",
+]);
+const QueryFilterSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  and: Schema.optional(Schema.Array(Schema.Unknown)),
+  or: Schema.optional(Schema.Array(Schema.Unknown)),
+  dimensions: Schema.optional(
+    Schema.suspend(() => QueryComparisonExpressionSchema),
+  ),
+  tags: Schema.optional(Schema.suspend(() => QueryComparisonExpressionSchema)),
+});
+const QueryComparisonExpressionSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String,
+    operator: Schema.suspend(() => QueryOperatorTypeSchema),
+    values: Schema.Array(Schema.String),
+  });
+const QueryOperatorTypeSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "In",
+]);
+const QueryPropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  nextLink: Schema.optional(Schema.String),
+  columns: Schema.optional(
+    Schema.Array(Schema.suspend(() => QueryColumnSchema)),
+  ),
+  rows: Schema.optional(Schema.Array(Schema.Array(Schema.Unknown))),
+});
+const QueryColumnSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
+const ScheduledActionSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+});
+const ScheduledActionPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    displayName: Schema.String,
+    fileDestination: Schema.optional(
+      Schema.suspend(() => FileDestinationSchema),
+    ),
+    notification: Schema.suspend(() => NotificationPropertiesSchema),
+    notificationEmail: Schema.optional(Schema.String),
+    schedule: Schema.suspend(() => SchedulePropertiesSchema),
+    scope: Schema.optional(Schema.String),
+    status: Schema.suspend(() => ScheduledActionStatusSchema),
+    viewId: Schema.String,
+  });
+const FileDestinationSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  fileFormats: Schema.optional(
+    Schema.Array(Schema.suspend(() => FileFormatSchema)),
+  ),
+});
+const FileFormatSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals(["Csv"]);
+const NotificationPropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  to: Schema.Array(Schema.String),
+  language: Schema.optional(Schema.String),
+  message: Schema.optional(Schema.String),
+  regionalFormat: Schema.optional(Schema.String),
+  subject: Schema.String,
+});
+const SchedulePropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  frequency: Schema.suspend(() => ScheduleFrequencySchema),
+  hourOfDay: Schema.optional(Schema.Number),
+  daysOfWeek: Schema.optional(
+    Schema.Array(Schema.suspend(() => DaysOfWeekSchema)),
+  ),
+  weeksOfMonth: Schema.optional(
+    Schema.Array(Schema.suspend(() => WeeksOfMonthSchema)),
+  ),
+  dayOfMonth: Schema.optional(Schema.Number),
+  startDate: Schema.String,
+  endDate: Schema.String,
+});
+const ScheduleFrequencySchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Daily",
+  "Weekly",
+  "Monthly",
+]);
+const DaysOfWeekSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Monday",
+  "Tuesday",
+  "Wednesday",
+  "Thursday",
+  "Friday",
+  "Saturday",
+  "Sunday",
+]);
+const WeeksOfMonthSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "First",
+  "Second",
+  "Third",
+  "Fourth",
+  "Last",
+]);
+const ScheduledActionStatusSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals(
+  ["Enabled", "Expired", "Disabled"],
+);
+const ScheduledActionKindSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Email",
+  "InsightAlert",
+]);
+const SettingSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+});
+const SettingsKindSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "taginheritance",
+]);
+const ViewSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+});
+const ViewPropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  displayName: Schema.optional(Schema.String),
+  scope: Schema.optional(Schema.String),
+  createdOn: Schema.optional(Schema.String),
+  modifiedOn: Schema.optional(Schema.String),
+  dateRange: Schema.optional(Schema.String),
+  currency: Schema.optional(Schema.String),
+  query: Schema.optional(Schema.suspend(() => ReportConfigDefinitionSchema)),
+  chart: Schema.optional(Schema.suspend(() => ChartTypeSchema)),
+  accumulated: Schema.optional(Schema.suspend(() => AccumulatedTypeSchema)),
+  metric: Schema.optional(Schema.suspend(() => MetricTypeSchema)),
+  kpis: Schema.optional(
+    Schema.Array(Schema.suspend(() => KpiPropertiesSchema)),
+  ),
+  pivots: Schema.optional(
+    Schema.Array(Schema.suspend(() => PivotPropertiesSchema)),
+  ),
+});
+const ReportConfigDefinitionSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  type: Schema.suspend(() => ReportTypeSchema),
+  timeframe: Schema.suspend(() => ReportTimeframeTypeSchema),
+  timePeriod: Schema.optional(
+    Schema.suspend(() => ReportConfigTimePeriodSchema),
+  ),
+  dataSet: Schema.optional(Schema.suspend(() => ReportConfigDatasetSchema)),
+  includeMonetaryCommitment: Schema.optional(Schema.Boolean),
+});
+const ReportTypeSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals(["Usage"]);
+const ReportTimeframeTypeSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "WeekToDate",
+  "MonthToDate",
+  "YearToDate",
+  "Custom",
+]);
+const ReportConfigTimePeriodSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  from: Schema.String,
+  to: Schema.String,
+});
+const ReportConfigDatasetSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  granularity: Schema.optional(
+    Schema.suspend(() => ReportGranularityTypeSchema),
+  ),
+  configuration: Schema.optional(
+    Schema.suspend(() => ReportConfigDatasetConfigurationSchema),
+  ),
+  aggregation: Schema.optional(
+    Schema.Record(
+      Schema.String,
+      Schema.suspend(() => ReportConfigAggregationSchema),
+    ),
+  ),
+  grouping: Schema.optional(
+    Schema.Array(Schema.suspend(() => ReportConfigGroupingSchema)),
+  ),
+  sorting: Schema.optional(
+    Schema.Array(Schema.suspend(() => ReportConfigSortingSchema)),
+  ),
+  filter: Schema.optional(Schema.suspend(() => ReportConfigFilterSchema)),
+});
+const ReportGranularityTypeSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals(
+  ["Daily", "Monthly"],
+);
+const ReportConfigDatasetConfigurationSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    columns: Schema.optional(Schema.Array(Schema.String)),
+  });
+const ReportConfigAggregationSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    name: Schema.String,
+    function: Schema.suspend(() => FunctionTypeSchema),
+  },
+);
+const ReportConfigGroupingSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  type: Schema.suspend(() => QueryColumnTypeSchema),
+  name: Schema.String,
+});
+const ReportConfigSortingSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  direction: Schema.optional(
+    Schema.suspend(() => ReportConfigSortingTypeSchema),
+  ),
+  name: Schema.String,
+});
+const ReportConfigSortingTypeSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Literals(["Ascending", "Descending"]);
+const ReportConfigFilterSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  and: Schema.optional(Schema.Array(Schema.Unknown)),
+  or: Schema.optional(Schema.Array(Schema.Unknown)),
+  dimensions: Schema.optional(
+    Schema.suspend(() => ReportConfigComparisonExpressionSchema),
+  ),
+  tags: Schema.optional(
+    Schema.suspend(() => ReportConfigComparisonExpressionSchema),
+  ),
+});
+const ReportConfigComparisonExpressionSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String,
+    operator: Schema.suspend(() => OperatorTypeSchema),
+    values: Schema.Array(Schema.String),
+  });
+const OperatorTypeSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "In",
+  "Contains",
+]);
+const ChartTypeSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Area",
+  "Line",
+  "StackedColumn",
+  "GroupedColumn",
+  "Table",
+]);
+const AccumulatedTypeSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "true",
+  "false",
+]);
+const MetricTypeSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "ActualCost",
+  "AmortizedCost",
+  "AHUB",
+]);
+const KpiPropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  type: Schema.optional(Schema.suspend(() => KpiTypeTypeSchema)),
+  id: Schema.optional(Schema.String),
+  enabled: Schema.optional(Schema.Boolean),
+});
+const KpiTypeTypeSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Forecast",
+  "Budget",
+]);
+const PivotPropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  type: Schema.optional(Schema.suspend(() => PivotTypeTypeSchema)),
+  name: Schema.optional(Schema.String),
+});
+const PivotTypeTypeSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Dimension",
+  "TagKey",
+]);
+const CostManagementOperationSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    name: Schema.optional(Schema.String),
+    isDataAction: Schema.optional(Schema.Boolean),
+    display: Schema.optional(
+      Schema.Struct({
+        provider: Schema.optional(Schema.String),
+        resource: Schema.optional(Schema.String),
+        operation: Schema.optional(Schema.String),
+        description: Schema.optional(Schema.String),
+      }),
+    ),
+    origin: Schema.optional(Schema.Literals(["user", "system", "user,system"])),
+    actionType: Schema.optional(Schema.Literals(["Internal"])),
+  },
+);
+const OperationStatusTypeSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Running",
+  "Completed",
+  "Failed",
+]);
+const ReportURLSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  reportUrl: Schema.optional(
+    Schema.suspend(() => ReservationReportSchemaSchema),
+  ),
+  validUntil: Schema.optional(Schema.String),
+});
+const ReservationReportSchemaSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+    "InstanceFlexibilityGroup",
+    "InstanceFlexibilityRatio",
+    "InstanceId",
+    "Kind",
+    "ReservationId",
+    "ReservationOrderId",
+    "ReservedHours",
+    "SkuName",
+    "TotalReservedQuantity",
+    "UsageDate",
+    "UsedHours",
+  ]);
+const BenefitUtilizationSummarySchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+  });
+const GrainSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Hourly",
+  "Daily",
+  "Monthly",
+]);
+const BenefitKindSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "IncludedQuantity",
+  "Reservation",
+  "SavingsPlan",
+]);
+const BenefitUtilizationSummariesRequestSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    billingAccountId: Schema.optional(Schema.String),
+    billingProfileId: Schema.optional(Schema.String),
+    benefitOrderId: Schema.optional(Schema.String),
+    benefitId: Schema.optional(Schema.String),
+    grain: Schema.suspend(() => GrainSchema),
+    startDate: Schema.String,
+    endDate: Schema.String,
+    kind: Schema.optional(Schema.suspend(() => BenefitKindSchema)),
+  });
+const AsyncOperationStatusPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    reportUrl: Schema.optional(
+      Schema.suspend(() => BenefitUtilizationSummaryReportSchemaSchema),
+    ),
+    secondaryReportUrl: Schema.optional(
+      Schema.suspend(() => BenefitUtilizationSummaryReportSchemaSchema),
+    ),
+    validUntil: Schema.optional(Schema.String),
+  });
+const BenefitUtilizationSummaryReportSchemaSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+    "Kind",
+    "AvgUtilizationPercentage",
+    "BenefitOrderId",
+    "BenefitId",
+    "BenefitType",
+    "MaxUtilizationPercentage",
+    "MinUtilizationPercentage",
+    "UsageDate",
+    "UtilizedPercentage",
+  ]);
+const MCAPriceSheetPropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    billingAccountID: Schema.optional(Schema.String),
+    billingAccountName: Schema.optional(Schema.String),
+    billingProfileId: Schema.optional(Schema.String),
+    billingProfileName: Schema.optional(Schema.String),
+    productOrderName: Schema.optional(Schema.String),
+    serviceFamily: Schema.optional(Schema.Number),
+    product: Schema.optional(Schema.String),
+    productId: Schema.optional(Schema.String),
+    skuId: Schema.optional(Schema.String),
+    unitOfMeasure: Schema.optional(Schema.String),
+    meterId: Schema.optional(Schema.String),
+    meterName: Schema.optional(Schema.String),
+    meterType: Schema.optional(Schema.String),
+    meterCategory: Schema.optional(Schema.String),
+    meterSubCategory: Schema.optional(Schema.String),
+    meterRegion: Schema.optional(Schema.String),
+    tierMinimumUnits: Schema.optional(Schema.String),
+    effectiveStartDate: Schema.optional(Schema.String),
+    effectiveEndDate: Schema.optional(Schema.String),
+    unitPrice: Schema.optional(Schema.String),
+    basePrice: Schema.optional(Schema.String),
+    marketPrice: Schema.optional(Schema.String),
+    currency: Schema.optional(Schema.String),
+    billingCurrency: Schema.optional(Schema.String),
+    term: Schema.optional(Schema.String),
+    priceType: Schema.optional(Schema.String),
+  },
+);
+const CostAllocationRuleDefinitionSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+  });
+const CostAllocationRulePropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    description: Schema.optional(Schema.String),
+    details: Schema.suspend(() => CostAllocationRuleDetailsSchema),
+    status: Schema.suspend(() => RuleStatusSchema),
+    createdDate: Schema.optional(Schema.String),
+    updatedDate: Schema.optional(Schema.String),
+  });
+const CostAllocationRuleDetailsSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    sourceResources: Schema.optional(
+      Schema.Array(Schema.suspend(() => SourceCostAllocationResourceSchema)),
+    ),
+    targetResources: Schema.optional(
+      Schema.Array(Schema.suspend(() => TargetCostAllocationResourceSchema)),
+    ),
+  });
+const SourceCostAllocationResourceSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resourceType: Schema.suspend(() => CostAllocationResourceTypeSchema),
+    name: Schema.String,
+  });
+const CostAllocationResourceTypeSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Literals(["Dimension", "Tag"]);
+const TargetCostAllocationResourceSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resourceType: Schema.suspend(() => CostAllocationResourceTypeSchema),
+    name: Schema.String,
+  });
+const RuleStatusSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "NotActive",
+  "Active",
+  "Processing",
+]);
+const ReasonSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Invalid",
+  "AlreadyExists",
+  "Valid",
+]);
+
 // Input Schema
 export const AlertsDismissInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   scope: Schema.String.pipe(T.PathParam()),
   alertId: Schema.String.pipe(T.PathParam()),
-  properties: Schema.optional(
-    Schema.Struct({
-      definition: Schema.optional(
-        Schema.Struct({
-          type: Schema.optional(
-            Schema.Literals([
-              "Budget",
-              "Invoice",
-              "Credit",
-              "Quota",
-              "General",
-              "xCloud",
-              "BudgetForecast",
-            ]),
-          ),
-          category: Schema.optional(
-            Schema.Literals(["Cost", "Usage", "Billing", "System"]),
-          ),
-          criteria: Schema.optional(
-            Schema.Literals([
-              "CostThresholdExceeded",
-              "UsageThresholdExceeded",
-              "CreditThresholdApproaching",
-              "CreditThresholdReached",
-              "QuotaThresholdApproaching",
-              "QuotaThresholdReached",
-              "MultiCurrency",
-              "ForecastCostThresholdExceeded",
-              "ForecastUsageThresholdExceeded",
-              "InvoiceDueDateApproaching",
-              "InvoiceDueDateReached",
-              "CrossCloudNewDataAvailable",
-              "CrossCloudCollectionError",
-              "GeneralThresholdError",
-            ]),
-          ),
-        }),
-      ),
-      description: Schema.optional(Schema.String),
-      source: Schema.optional(Schema.Literals(["Preset", "User"])),
-      details: Schema.optional(
-        Schema.Struct({
-          timeGrainType: Schema.optional(
-            Schema.Literals([
-              "None",
-              "Monthly",
-              "Quarterly",
-              "Annually",
-              "BillingMonth",
-              "BillingQuarter",
-              "BillingAnnual",
-            ]),
-          ),
-          periodStartDate: Schema.optional(Schema.String),
-          triggeredBy: Schema.optional(Schema.String),
-          resourceGroupFilter: Schema.optional(Schema.Array(Schema.Unknown)),
-          resourceFilter: Schema.optional(Schema.Array(Schema.Unknown)),
-          meterFilter: Schema.optional(Schema.Array(Schema.Unknown)),
-          tagFilter: Schema.optional(Schema.Unknown),
-          threshold: Schema.optional(Schema.Number),
-          operator: Schema.optional(
-            Schema.Literals([
-              "None",
-              "EqualTo",
-              "GreaterThan",
-              "GreaterThanOrEqualTo",
-              "LessThan",
-              "LessThanOrEqualTo",
-            ]),
-          ),
-          amount: Schema.optional(Schema.Number),
-          unit: Schema.optional(Schema.String),
-          currentSpend: Schema.optional(Schema.Number),
-          contactEmails: Schema.optional(Schema.Array(Schema.String)),
-          contactGroups: Schema.optional(Schema.Array(Schema.String)),
-          contactRoles: Schema.optional(Schema.Array(Schema.String)),
-          overridingAlert: Schema.optional(Schema.String),
-          departmentName: Schema.optional(Schema.String),
-          companyName: Schema.optional(Schema.String),
-          enrollmentNumber: Schema.optional(Schema.String),
-          enrollmentStartDate: Schema.optional(Schema.String),
-          enrollmentEndDate: Schema.optional(Schema.String),
-          invoicingThreshold: Schema.optional(Schema.Number),
-        }),
-      ),
-      costEntityId: Schema.optional(Schema.String),
-      status: Schema.optional(
-        Schema.Literals([
-          "None",
-          "Active",
-          "Overridden",
-          "Resolved",
-          "Dismissed",
-        ]),
-      ),
-      creationTime: Schema.optional(Schema.String),
-      closeTime: Schema.optional(Schema.String),
-      modificationTime: Schema.optional(Schema.String),
-      statusModificationUserName: Schema.optional(Schema.String),
-      statusModificationTime: Schema.optional(Schema.String),
-    }),
-  ),
+  properties: Schema.optional(Schema.suspend(() => AlertPropertiesSchema)),
 }).pipe(
   T.Http({
     method: "PATCH",
@@ -125,23 +1012,12 @@ export type AlertsDismissInput = typeof AlertsDismissInput.Type;
 
 // Output Schema
 export const AlertsDismissOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.optional(Schema.suspend(() => AlertPropertiesSchema)),
+  eTag: Schema.optional(Schema.suspend(() => Azure_Core_eTagSchema)),
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
-  systemData: Schema.optional(
-    Schema.Struct({
-      createdBy: Schema.optional(Schema.String),
-      createdByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      createdAt: Schema.optional(Schema.String),
-      lastModifiedBy: Schema.optional(Schema.String),
-      lastModifiedByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      lastModifiedAt: Schema.optional(Schema.String),
-    }),
-  ),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
 });
 export type AlertsDismissOutput = typeof AlertsDismissOutput.Type;
 
@@ -172,23 +1048,12 @@ export type AlertsGetInput = typeof AlertsGetInput.Type;
 
 // Output Schema
 export const AlertsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.optional(Schema.suspend(() => AlertPropertiesSchema)),
+  eTag: Schema.optional(Schema.suspend(() => Azure_Core_eTagSchema)),
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
-  systemData: Schema.optional(
-    Schema.Struct({
-      createdBy: Schema.optional(Schema.String),
-      createdByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      createdAt: Schema.optional(Schema.String),
-      lastModifiedBy: Schema.optional(Schema.String),
-      lastModifiedByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      lastModifiedAt: Schema.optional(Schema.String),
-    }),
-  ),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
 });
 export type AlertsGetOutput = typeof AlertsGetOutput.Type;
 
@@ -218,39 +1083,7 @@ export type AlertsListInput = typeof AlertsListInput.Type;
 
 // Output Schema
 export const AlertsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  value: Schema.optional(
-    Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
-  ),
+  value: Schema.optional(Schema.Array(Schema.suspend(() => AlertSchema))),
   nextLink: Schema.optional(Schema.String),
 });
 export type AlertsListOutput = typeof AlertsListOutput.Type;
@@ -286,39 +1119,7 @@ export type AlertsListExternalInput = typeof AlertsListExternalInput.Type;
 // Output Schema
 export const AlertsListExternalOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.String),
-              createdByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              createdAt: Schema.optional(Schema.String),
-              lastModifiedBy: Schema.optional(Schema.String),
-              lastModifiedByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              lastModifiedAt: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
-    ),
+    value: Schema.optional(Schema.Array(Schema.suspend(() => AlertSchema))),
     nextLink: Schema.optional(Schema.String),
   });
 export type AlertsListExternalOutput = typeof AlertsListExternalOutput.Type;
@@ -356,37 +1157,7 @@ export type BenefitRecommendationsListInput =
 export const BenefitRecommendationsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.String),
-              createdByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              createdAt: Schema.optional(Schema.String),
-              lastModifiedBy: Schema.optional(Schema.String),
-              lastModifiedByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              lastModifiedAt: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => benefitRecommendationModelSchema)),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -431,37 +1202,7 @@ export type BenefitUtilizationSummariesListByBillingAccountIdInput =
 export const BenefitUtilizationSummariesListByBillingAccountIdOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.String),
-              createdByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              createdAt: Schema.optional(Schema.String),
-              lastModifiedBy: Schema.optional(Schema.String),
-              lastModifiedByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              lastModifiedAt: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => BenefitUtilizationSummarySchema)),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -505,37 +1246,7 @@ export type BenefitUtilizationSummariesListByBillingProfileIdInput =
 export const BenefitUtilizationSummariesListByBillingProfileIdOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.String),
-              createdByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              createdAt: Schema.optional(Schema.String),
-              lastModifiedBy: Schema.optional(Schema.String),
-              lastModifiedByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              lastModifiedAt: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => BenefitUtilizationSummarySchema)),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -580,37 +1291,7 @@ export type BenefitUtilizationSummariesListBySavingsPlanIdInput =
 export const BenefitUtilizationSummariesListBySavingsPlanIdOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.String),
-              createdByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              createdAt: Schema.optional(Schema.String),
-              lastModifiedBy: Schema.optional(Schema.String),
-              lastModifiedByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              lastModifiedAt: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => BenefitUtilizationSummarySchema)),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -654,37 +1335,7 @@ export type BenefitUtilizationSummariesListBySavingsPlanOrderInput =
 export const BenefitUtilizationSummariesListBySavingsPlanOrderOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.String),
-              createdByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              createdAt: Schema.optional(Schema.String),
-              lastModifiedBy: Schema.optional(Schema.String),
-              lastModifiedByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              lastModifiedAt: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => BenefitUtilizationSummarySchema)),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -710,126 +1361,8 @@ export const BudgetsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     scope: Schema.String.pipe(T.PathParam()),
     budgetName: Schema.String.pipe(T.PathParam()),
-    properties: Schema.optional(
-      Schema.Struct({
-        category: Schema.Literals(["Cost", "ReservationUtilization"]),
-        amount: Schema.optional(Schema.Number),
-        timeGrain: Schema.Literals([
-          "Monthly",
-          "Quarterly",
-          "Annually",
-          "BillingMonth",
-          "BillingQuarter",
-          "BillingAnnual",
-          "Last7Days",
-          "Last30Days",
-        ]),
-        timePeriod: Schema.Struct({
-          startDate: Schema.String,
-          endDate: Schema.optional(Schema.String),
-        }),
-        filter: Schema.optional(
-          Schema.Struct({
-            and: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  dimensions: Schema.optional(
-                    Schema.Struct({
-                      name: Schema.String,
-                      operator: Schema.Literals(["In"]),
-                      values: Schema.Array(Schema.String),
-                    }),
-                  ),
-                  tags: Schema.optional(
-                    Schema.Struct({
-                      name: Schema.String,
-                      operator: Schema.Literals(["In"]),
-                      values: Schema.Array(Schema.String),
-                    }),
-                  ),
-                }),
-              ),
-            ),
-            dimensions: Schema.optional(
-              Schema.Struct({
-                name: Schema.String,
-                operator: Schema.Literals(["In"]),
-                values: Schema.Array(Schema.String),
-              }),
-            ),
-            tags: Schema.optional(
-              Schema.Struct({
-                name: Schema.String,
-                operator: Schema.Literals(["In"]),
-                values: Schema.Array(Schema.String),
-              }),
-            ),
-          }),
-        ),
-        currentSpend: Schema.optional(
-          Schema.Struct({
-            amount: Schema.optional(Schema.Number),
-            unit: Schema.optional(Schema.String),
-          }),
-        ),
-        notifications: Schema.optional(
-          Schema.Record(
-            Schema.String,
-            Schema.Struct({
-              enabled: Schema.Boolean,
-              operator: Schema.Literals([
-                "EqualTo",
-                "GreaterThan",
-                "GreaterThanOrEqualTo",
-                "LessThan",
-              ]),
-              threshold: Schema.Number,
-              frequency: Schema.optional(
-                Schema.Literals(["Daily", "Weekly", "Monthly"]),
-              ),
-              contactEmails: Schema.Array(Schema.String),
-              contactRoles: Schema.optional(Schema.Array(Schema.String)),
-              contactGroups: Schema.optional(Schema.Array(Schema.String)),
-              thresholdType: Schema.optional(
-                Schema.Literals(["Actual", "Forecasted"]),
-              ),
-              locale: Schema.optional(
-                Schema.Literals([
-                  "en-us",
-                  "ja-jp",
-                  "zh-cn",
-                  "de-de",
-                  "es-es",
-                  "fr-fr",
-                  "it-it",
-                  "ko-kr",
-                  "pt-br",
-                  "ru-ru",
-                  "zh-tw",
-                  "cs-cz",
-                  "pl-pl",
-                  "tr-tr",
-                  "da-dk",
-                  "en-gb",
-                  "hu-hu",
-                  "nb-no",
-                  "nl-nl",
-                  "pt-pt",
-                  "sv-se",
-                ]),
-              ),
-            }),
-          ),
-        ),
-        forecastSpend: Schema.optional(
-          Schema.Struct({
-            amount: Schema.optional(Schema.Number),
-            unit: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
-    eTag: Schema.optional(Schema.String),
+    properties: Schema.optional(Schema.suspend(() => BudgetPropertiesSchema)),
+    eTag: Schema.optional(Schema.suspend(() => Azure_Core_eTagSchema)),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -842,23 +1375,12 @@ export type BudgetsCreateOrUpdateInput = typeof BudgetsCreateOrUpdateInput.Type;
 // Output Schema
 export const BudgetsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(Schema.suspend(() => BudgetPropertiesSchema)),
+    eTag: Schema.optional(Schema.suspend(() => Azure_Core_eTagSchema)),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type BudgetsCreateOrUpdateOutput =
   typeof BudgetsCreateOrUpdateOutput.Type;
@@ -921,23 +1443,12 @@ export type BudgetsGetInput = typeof BudgetsGetInput.Type;
 
 // Output Schema
 export const BudgetsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.optional(Schema.suspend(() => BudgetPropertiesSchema)),
+  eTag: Schema.optional(Schema.suspend(() => Azure_Core_eTagSchema)),
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
-  systemData: Schema.optional(
-    Schema.Struct({
-      createdBy: Schema.optional(Schema.String),
-      createdByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      createdAt: Schema.optional(Schema.String),
-      lastModifiedBy: Schema.optional(Schema.String),
-      lastModifiedByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      lastModifiedAt: Schema.optional(Schema.String),
-    }),
-  ),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
 });
 export type BudgetsGetOutput = typeof BudgetsGetOutput.Type;
 
@@ -968,39 +1479,7 @@ export type BudgetsListInput = typeof BudgetsListInput.Type;
 
 // Output Schema
 export const BudgetsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  value: Schema.optional(
-    Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
-  ),
+  value: Schema.optional(Schema.Array(Schema.suspend(() => BudgetSchema))),
   nextLink: Schema.optional(Schema.String),
 });
 export type BudgetsListOutput = typeof BudgetsListOutput.Type;
@@ -1037,9 +1516,7 @@ export type CostAllocationRulesCheckNameAvailabilityInput =
 export const CostAllocationRulesCheckNameAvailabilityOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nameAvailable: Schema.optional(Schema.Boolean),
-    reason: Schema.optional(
-      Schema.Literals(["Invalid", "AlreadyExists", "Valid"]),
-    ),
+    reason: Schema.optional(Schema.suspend(() => ReasonSchema)),
     message: Schema.optional(Schema.String),
   });
 export type CostAllocationRulesCheckNameAvailabilityOutput =
@@ -1063,30 +1540,7 @@ export const CostAllocationRulesCreateOrUpdateInput =
     billingAccountId: Schema.String.pipe(T.PathParam()),
     ruleName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        description: Schema.optional(Schema.String),
-        details: Schema.Struct({
-          sourceResources: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                resourceType: Schema.Literals(["Dimension", "Tag"]),
-                name: Schema.String,
-              }),
-            ),
-          ),
-          targetResources: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                resourceType: Schema.Literals(["Dimension", "Tag"]),
-                name: Schema.String,
-              }),
-            ),
-          ),
-        }),
-        status: Schema.Literals(["NotActive", "Active", "Processing"]),
-        createdDate: Schema.optional(Schema.String),
-        updatedDate: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(() => CostAllocationRulePropertiesSchema),
     ),
   }).pipe(
     T.Http({
@@ -1101,23 +1555,13 @@ export type CostAllocationRulesCreateOrUpdateInput =
 // Output Schema
 export const CostAllocationRulesCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => CostAllocationRulePropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type CostAllocationRulesCreateOrUpdateOutput =
   typeof CostAllocationRulesCreateOrUpdateOutput.Type;
@@ -1188,23 +1632,13 @@ export type CostAllocationRulesGetInput =
 // Output Schema
 export const CostAllocationRulesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => CostAllocationRulePropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type CostAllocationRulesGetOutput =
   typeof CostAllocationRulesGetOutput.Type;
@@ -1241,37 +1675,7 @@ export type CostAllocationRulesListInput =
 export const CostAllocationRulesListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.String),
-              createdByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              createdAt: Schema.optional(Schema.String),
-              lastModifiedBy: Schema.optional(Schema.String),
-              lastModifiedByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              lastModifiedAt: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => CostAllocationRuleDefinitionSchema)),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -1316,19 +1720,7 @@ export type DimensionsByExternalCloudProviderTypeInput =
 // Output Schema
 export const DimensionsByExternalCloudProviderTypeOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          location: Schema.optional(Schema.String),
-          sku: Schema.optional(Schema.String),
-          eTag: Schema.optional(Schema.String),
-          tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        }),
-      ),
-    ),
+    value: Schema.optional(Schema.Array(Schema.suspend(() => DimensionSchema))),
     nextLink: Schema.optional(Schema.String),
   });
 export type DimensionsByExternalCloudProviderTypeOutput =
@@ -1369,19 +1761,7 @@ export type DimensionsListInput = typeof DimensionsListInput.Type;
 
 // Output Schema
 export const DimensionsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  value: Schema.optional(
-    Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        location: Schema.optional(Schema.String),
-        sku: Schema.optional(Schema.String),
-        eTag: Schema.optional(Schema.String),
-        tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      }),
-    ),
-  ),
+  value: Schema.optional(Schema.Array(Schema.suspend(() => DimensionSchema))),
   nextLink: Schema.optional(Schema.String),
 });
 export type DimensionsListOutput = typeof DimensionsListOutput.Type;
@@ -1406,114 +1786,16 @@ export const ExportsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     scope: Schema.String.pipe(T.PathParam()),
     exportName: Schema.String.pipe(T.PathParam()),
-    properties: Schema.optional(
-      Schema.Struct({
-        format: Schema.optional(Schema.Literals(["Csv", "Parquet"])),
-        deliveryInfo: Schema.Struct({
-          destination: Schema.Struct({
-            type: Schema.optional(Schema.Literals(["AzureBlob"])),
-            resourceId: Schema.optional(Schema.String),
-            container: Schema.String,
-            rootFolderPath: Schema.optional(Schema.String),
-            sasToken: Schema.optional(Schema.String),
-            storageAccount: Schema.optional(Schema.String),
-          }),
-        }),
-        definition: Schema.Struct({
-          type: Schema.Literals([
-            "Usage",
-            "ActualCost",
-            "AmortizedCost",
-            "FocusCost",
-            "PriceSheet",
-            "ReservationTransactions",
-            "ReservationRecommendations",
-            "ReservationDetails",
-          ]),
-          timeframe: Schema.Literals([
-            "MonthToDate",
-            "BillingMonthToDate",
-            "TheLastMonth",
-            "TheLastBillingMonth",
-            "WeekToDate",
-            "Custom",
-            "TheCurrentMonth",
-          ]),
-          timePeriod: Schema.optional(
-            Schema.Struct({
-              from: Schema.String,
-              to: Schema.String,
-            }),
-          ),
-          dataSet: Schema.optional(
-            Schema.Struct({
-              granularity: Schema.optional(
-                Schema.Literals(["Daily", "Monthly"]),
-              ),
-              configuration: Schema.optional(
-                Schema.Struct({
-                  columns: Schema.optional(Schema.Array(Schema.String)),
-                  dataVersion: Schema.optional(Schema.String),
-                  filters: Schema.optional(
-                    Schema.Array(
-                      Schema.Struct({
-                        name: Schema.optional(
-                          Schema.Literals([
-                            "ReservationScope",
-                            "ResourceType",
-                            "LookBackPeriod",
-                          ]),
-                        ),
-                        value: Schema.optional(Schema.String),
-                      }),
-                    ),
-                  ),
-                }),
-              ),
-            }),
-          ),
-        }),
-        runHistory: Schema.optional(
-          Schema.Struct({
-            value: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  id: Schema.optional(Schema.String),
-                  name: Schema.optional(Schema.String),
-                  type: Schema.optional(Schema.String),
-                  eTag: Schema.optional(Schema.String),
-                }),
-              ),
-            ),
-          }),
-        ),
-        partitionData: Schema.optional(Schema.Boolean),
-        dataOverwriteBehavior: Schema.optional(
-          Schema.Literals(["OverwritePreviousReport", "CreateNewReport"]),
-        ),
-        compressionMode: Schema.optional(
-          Schema.Literals(["gzip", "snappy", "none"]),
-        ),
-        exportDescription: Schema.optional(Schema.String),
-        nextRunTimeEstimate: Schema.optional(Schema.String),
-        systemSuspensionContext: Schema.optional(
-          Schema.Struct({
-            suspensionCode: Schema.optional(Schema.String),
-            suspensionReason: Schema.optional(Schema.String),
-            suspensionTime: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    properties: Schema.optional(Schema.suspend(() => ExportPropertiesSchema)),
     identity: Schema.optional(
       Schema.Struct({
         principalId: Schema.optional(Schema.String),
         tenantId: Schema.optional(Schema.String),
-        type: Schema.Literals(["None", "SystemAssigned"]),
+        type: Schema.suspend(() => SystemAssignedServiceIdentityTypeSchema),
       }),
     ),
     location: Schema.optional(Schema.String),
-    eTag: Schema.optional(Schema.String),
+    eTag: Schema.optional(Schema.suspend(() => Azure_Core_eTagSchema)),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -1526,23 +1808,20 @@ export type ExportsCreateOrUpdateInput = typeof ExportsCreateOrUpdateInput.Type;
 // Output Schema
 export const ExportsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(Schema.suspend(() => ExportPropertiesSchema)),
+    identity: Schema.optional(
+      Schema.Struct({
+        principalId: Schema.optional(Schema.String),
+        tenantId: Schema.optional(Schema.String),
+        type: Schema.suspend(() => SystemAssignedServiceIdentityTypeSchema),
+      }),
+    ),
+    location: Schema.optional(Schema.String),
+    eTag: Schema.optional(Schema.suspend(() => Azure_Core_eTagSchema)),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type ExportsCreateOrUpdateOutput =
   typeof ExportsCreateOrUpdateOutput.Type;
@@ -1594,12 +1873,7 @@ export const ExportsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const ExportsExecuteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   scope: Schema.String.pipe(T.PathParam()),
   exportName: Schema.String.pipe(T.PathParam()),
-  timePeriod: Schema.optional(
-    Schema.Struct({
-      from: Schema.String,
-      to: Schema.String,
-    }),
-  ),
+  timePeriod: Schema.optional(Schema.suspend(() => ExportTimePeriodSchema)),
 }).pipe(
   T.Http({
     method: "POST",
@@ -1641,23 +1915,20 @@ export type ExportsGetInput = typeof ExportsGetInput.Type;
 
 // Output Schema
 export const ExportsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.optional(Schema.suspend(() => ExportPropertiesSchema)),
+  identity: Schema.optional(
+    Schema.Struct({
+      principalId: Schema.optional(Schema.String),
+      tenantId: Schema.optional(Schema.String),
+      type: Schema.suspend(() => SystemAssignedServiceIdentityTypeSchema),
+    }),
+  ),
+  location: Schema.optional(Schema.String),
+  eTag: Schema.optional(Schema.suspend(() => Azure_Core_eTagSchema)),
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
-  systemData: Schema.optional(
-    Schema.Struct({
-      createdBy: Schema.optional(Schema.String),
-      createdByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      createdAt: Schema.optional(Schema.String),
-      lastModifiedBy: Schema.optional(Schema.String),
-      lastModifiedByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      lastModifiedAt: Schema.optional(Schema.String),
-    }),
-  ),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
 });
 export type ExportsGetOutput = typeof ExportsGetOutput.Type;
 
@@ -1692,16 +1963,7 @@ export type ExportsGetExecutionHistoryInput =
 // Output Schema
 export const ExportsGetExecutionHistoryOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          eTag: Schema.optional(Schema.String),
-        }),
-      ),
-    ),
+    value: Schema.optional(Schema.Array(Schema.suspend(() => ExportRunSchema))),
   });
 export type ExportsGetExecutionHistoryOutput =
   typeof ExportsGetExecutionHistoryOutput.Type;
@@ -1735,39 +1997,7 @@ export type ExportsListInput = typeof ExportsListInput.Type;
 
 // Output Schema
 export const ExportsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  value: Schema.optional(
-    Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
-  ),
+  value: Schema.optional(Schema.Array(Schema.suspend(() => ExportSchema))),
 });
 export type ExportsListOutput = typeof ExportsListOutput.Type;
 
@@ -1792,54 +2022,10 @@ export const ForecastExternalCloudProviderUsageInput =
     ]).pipe(T.PathParam()),
     externalCloudProviderId: Schema.String.pipe(T.PathParam()),
     $filter: Schema.optional(Schema.String),
-    type: Schema.Literals(["Usage", "ActualCost", "AmortizedCost"]),
-    timeframe: Schema.Literals(["Custom"]),
-    timePeriod: Schema.optional(
-      Schema.Struct({
-        from: Schema.String,
-        to: Schema.String,
-      }),
-    ),
-    dataset: Schema.Struct({
-      granularity: Schema.optional(Schema.Literals(["Daily", "Monthly"])),
-      configuration: Schema.optional(
-        Schema.Struct({
-          columns: Schema.optional(Schema.Array(Schema.String)),
-        }),
-      ),
-      aggregation: Schema.Record(
-        Schema.String,
-        Schema.Struct({
-          name: Schema.Literals([
-            "PreTaxCostUSD",
-            "Cost",
-            "CostUSD",
-            "PreTaxCost",
-          ]),
-          function: Schema.Literals(["Sum"]),
-        }),
-      ),
-      filter: Schema.optional(
-        Schema.Struct({
-          and: Schema.optional(Schema.Array(Schema.Unknown)),
-          or: Schema.optional(Schema.Array(Schema.Unknown)),
-          dimensions: Schema.optional(
-            Schema.Struct({
-              name: Schema.String,
-              operator: Schema.Literals(["In"]),
-              values: Schema.Array(Schema.String),
-            }),
-          ),
-          tags: Schema.optional(
-            Schema.Struct({
-              name: Schema.String,
-              operator: Schema.Literals(["In"]),
-              values: Schema.Array(Schema.String),
-            }),
-          ),
-        }),
-      ),
-    }),
+    type: Schema.suspend(() => ForecastTypeSchema),
+    timeframe: Schema.suspend(() => ForecastTimeframeSchema),
+    timePeriod: Schema.optional(Schema.suspend(() => ForecastTimePeriodSchema)),
+    dataset: Schema.suspend(() => ForecastDatasetSchema),
     includeActualCost: Schema.optional(Schema.Boolean),
     includeFreshPartialCost: Schema.optional(Schema.Boolean),
   }).pipe(
@@ -1855,6 +2041,7 @@ export type ForecastExternalCloudProviderUsageInput =
 // Output Schema
 export const ForecastExternalCloudProviderUsageOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(Schema.suspend(() => ForecastPropertiesSchema)),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1884,54 +2071,10 @@ export const ForecastExternalCloudProviderUsage =
 export const ForecastUsageInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   scope: Schema.String.pipe(T.PathParam()),
   $filter: Schema.optional(Schema.String),
-  type: Schema.Literals(["Usage", "ActualCost", "AmortizedCost"]),
-  timeframe: Schema.Literals(["Custom"]),
-  timePeriod: Schema.optional(
-    Schema.Struct({
-      from: Schema.String,
-      to: Schema.String,
-    }),
-  ),
-  dataset: Schema.Struct({
-    granularity: Schema.optional(Schema.Literals(["Daily", "Monthly"])),
-    configuration: Schema.optional(
-      Schema.Struct({
-        columns: Schema.optional(Schema.Array(Schema.String)),
-      }),
-    ),
-    aggregation: Schema.Record(
-      Schema.String,
-      Schema.Struct({
-        name: Schema.Literals([
-          "PreTaxCostUSD",
-          "Cost",
-          "CostUSD",
-          "PreTaxCost",
-        ]),
-        function: Schema.Literals(["Sum"]),
-      }),
-    ),
-    filter: Schema.optional(
-      Schema.Struct({
-        and: Schema.optional(Schema.Array(Schema.Unknown)),
-        or: Schema.optional(Schema.Array(Schema.Unknown)),
-        dimensions: Schema.optional(
-          Schema.Struct({
-            name: Schema.String,
-            operator: Schema.Literals(["In"]),
-            values: Schema.Array(Schema.String),
-          }),
-        ),
-        tags: Schema.optional(
-          Schema.Struct({
-            name: Schema.String,
-            operator: Schema.Literals(["In"]),
-            values: Schema.Array(Schema.String),
-          }),
-        ),
-      }),
-    ),
-  }),
+  type: Schema.suspend(() => ForecastTypeSchema),
+  timeframe: Schema.suspend(() => ForecastTimeframeSchema),
+  timePeriod: Schema.optional(Schema.suspend(() => ForecastTimePeriodSchema)),
+  dataset: Schema.suspend(() => ForecastDatasetSchema),
   includeActualCost: Schema.optional(Schema.Boolean),
   includeFreshPartialCost: Schema.optional(Schema.Boolean),
 }).pipe(
@@ -1945,6 +2088,7 @@ export type ForecastUsageInput = typeof ForecastUsageInput.Type;
 
 // Output Schema
 export const ForecastUsageOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.optional(Schema.suspend(() => ForecastPropertiesSchema)),
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -1974,12 +2118,10 @@ export const GenerateBenefitUtilizationSummariesReportGenerateByBillingAccountIn
     billingProfileId: Schema.optional(Schema.String),
     benefitOrderId: Schema.optional(Schema.String),
     benefitId: Schema.optional(Schema.String),
-    grain: Schema.Literals(["Hourly", "Daily", "Monthly"]),
+    grain: Schema.suspend(() => GrainSchema),
     startDate: Schema.String,
     endDate: Schema.String,
-    kind: Schema.optional(
-      Schema.Literals(["IncludedQuantity", "Reservation", "SavingsPlan"]),
-    ),
+    kind: Schema.optional(Schema.suspend(() => BenefitKindSchema)),
   }).pipe(
     T.Http({
       method: "POST",
@@ -1995,52 +2137,11 @@ export type GenerateBenefitUtilizationSummariesReportGenerateByBillingAccountInp
 export const GenerateBenefitUtilizationSummariesReportGenerateByBillingAccountOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     input: Schema.optional(
-      Schema.Struct({
-        billingAccountId: Schema.optional(Schema.String),
-        billingProfileId: Schema.optional(Schema.String),
-        benefitOrderId: Schema.optional(Schema.String),
-        benefitId: Schema.optional(Schema.String),
-        grain: Schema.Literals(["Hourly", "Daily", "Monthly"]),
-        startDate: Schema.String,
-        endDate: Schema.String,
-        kind: Schema.optional(
-          Schema.Literals(["IncludedQuantity", "Reservation", "SavingsPlan"]),
-        ),
-      }),
+      Schema.suspend(() => BenefitUtilizationSummariesRequestSchema),
     ),
-    status: Schema.optional(
-      Schema.Literals(["Running", "Completed", "Failed"]),
-    ),
+    status: Schema.optional(Schema.suspend(() => OperationStatusTypeSchema)),
     properties: Schema.optional(
-      Schema.Struct({
-        reportUrl: Schema.optional(
-          Schema.Literals([
-            "Kind",
-            "AvgUtilizationPercentage",
-            "BenefitOrderId",
-            "BenefitId",
-            "BenefitType",
-            "MaxUtilizationPercentage",
-            "MinUtilizationPercentage",
-            "UsageDate",
-            "UtilizedPercentage",
-          ]),
-        ),
-        secondaryReportUrl: Schema.optional(
-          Schema.Literals([
-            "Kind",
-            "AvgUtilizationPercentage",
-            "BenefitOrderId",
-            "BenefitId",
-            "BenefitType",
-            "MaxUtilizationPercentage",
-            "MinUtilizationPercentage",
-            "UsageDate",
-            "UtilizedPercentage",
-          ]),
-        ),
-        validUntil: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(() => AsyncOperationStatusPropertiesSchema),
     ),
   });
 export type GenerateBenefitUtilizationSummariesReportGenerateByBillingAccountOutput =
@@ -2067,12 +2168,10 @@ export const GenerateBenefitUtilizationSummariesReportGenerateByBillingProfileIn
     billingProfileId: Schema.String.pipe(T.PathParam()),
     benefitOrderId: Schema.optional(Schema.String),
     benefitId: Schema.optional(Schema.String),
-    grain: Schema.Literals(["Hourly", "Daily", "Monthly"]),
+    grain: Schema.suspend(() => GrainSchema),
     startDate: Schema.String,
     endDate: Schema.String,
-    kind: Schema.optional(
-      Schema.Literals(["IncludedQuantity", "Reservation", "SavingsPlan"]),
-    ),
+    kind: Schema.optional(Schema.suspend(() => BenefitKindSchema)),
   }).pipe(
     T.Http({
       method: "POST",
@@ -2088,52 +2187,11 @@ export type GenerateBenefitUtilizationSummariesReportGenerateByBillingProfileInp
 export const GenerateBenefitUtilizationSummariesReportGenerateByBillingProfileOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     input: Schema.optional(
-      Schema.Struct({
-        billingAccountId: Schema.optional(Schema.String),
-        billingProfileId: Schema.optional(Schema.String),
-        benefitOrderId: Schema.optional(Schema.String),
-        benefitId: Schema.optional(Schema.String),
-        grain: Schema.Literals(["Hourly", "Daily", "Monthly"]),
-        startDate: Schema.String,
-        endDate: Schema.String,
-        kind: Schema.optional(
-          Schema.Literals(["IncludedQuantity", "Reservation", "SavingsPlan"]),
-        ),
-      }),
+      Schema.suspend(() => BenefitUtilizationSummariesRequestSchema),
     ),
-    status: Schema.optional(
-      Schema.Literals(["Running", "Completed", "Failed"]),
-    ),
+    status: Schema.optional(Schema.suspend(() => OperationStatusTypeSchema)),
     properties: Schema.optional(
-      Schema.Struct({
-        reportUrl: Schema.optional(
-          Schema.Literals([
-            "Kind",
-            "AvgUtilizationPercentage",
-            "BenefitOrderId",
-            "BenefitId",
-            "BenefitType",
-            "MaxUtilizationPercentage",
-            "MinUtilizationPercentage",
-            "UsageDate",
-            "UtilizedPercentage",
-          ]),
-        ),
-        secondaryReportUrl: Schema.optional(
-          Schema.Literals([
-            "Kind",
-            "AvgUtilizationPercentage",
-            "BenefitOrderId",
-            "BenefitId",
-            "BenefitType",
-            "MaxUtilizationPercentage",
-            "MinUtilizationPercentage",
-            "UsageDate",
-            "UtilizedPercentage",
-          ]),
-        ),
-        validUntil: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(() => AsyncOperationStatusPropertiesSchema),
     ),
   });
 export type GenerateBenefitUtilizationSummariesReportGenerateByBillingProfileOutput =
@@ -2163,12 +2221,10 @@ export const GenerateBenefitUtilizationSummariesReportGenerateByReservationIdInp
     billingProfileId: Schema.optional(Schema.String),
     benefitOrderId: Schema.optional(Schema.String),
     benefitId: Schema.optional(Schema.String),
-    grain: Schema.Literals(["Hourly", "Daily", "Monthly"]),
+    grain: Schema.suspend(() => GrainSchema),
     startDate: Schema.String,
     endDate: Schema.String,
-    kind: Schema.optional(
-      Schema.Literals(["IncludedQuantity", "Reservation", "SavingsPlan"]),
-    ),
+    kind: Schema.optional(Schema.suspend(() => BenefitKindSchema)),
   }).pipe(
     T.Http({
       method: "POST",
@@ -2184,52 +2240,11 @@ export type GenerateBenefitUtilizationSummariesReportGenerateByReservationIdInpu
 export const GenerateBenefitUtilizationSummariesReportGenerateByReservationIdOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     input: Schema.optional(
-      Schema.Struct({
-        billingAccountId: Schema.optional(Schema.String),
-        billingProfileId: Schema.optional(Schema.String),
-        benefitOrderId: Schema.optional(Schema.String),
-        benefitId: Schema.optional(Schema.String),
-        grain: Schema.Literals(["Hourly", "Daily", "Monthly"]),
-        startDate: Schema.String,
-        endDate: Schema.String,
-        kind: Schema.optional(
-          Schema.Literals(["IncludedQuantity", "Reservation", "SavingsPlan"]),
-        ),
-      }),
+      Schema.suspend(() => BenefitUtilizationSummariesRequestSchema),
     ),
-    status: Schema.optional(
-      Schema.Literals(["Running", "Completed", "Failed"]),
-    ),
+    status: Schema.optional(Schema.suspend(() => OperationStatusTypeSchema)),
     properties: Schema.optional(
-      Schema.Struct({
-        reportUrl: Schema.optional(
-          Schema.Literals([
-            "Kind",
-            "AvgUtilizationPercentage",
-            "BenefitOrderId",
-            "BenefitId",
-            "BenefitType",
-            "MaxUtilizationPercentage",
-            "MinUtilizationPercentage",
-            "UsageDate",
-            "UtilizedPercentage",
-          ]),
-        ),
-        secondaryReportUrl: Schema.optional(
-          Schema.Literals([
-            "Kind",
-            "AvgUtilizationPercentage",
-            "BenefitOrderId",
-            "BenefitId",
-            "BenefitType",
-            "MaxUtilizationPercentage",
-            "MinUtilizationPercentage",
-            "UsageDate",
-            "UtilizedPercentage",
-          ]),
-        ),
-        validUntil: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(() => AsyncOperationStatusPropertiesSchema),
     ),
   });
 export type GenerateBenefitUtilizationSummariesReportGenerateByReservationIdOutput =
@@ -2258,12 +2273,10 @@ export const GenerateBenefitUtilizationSummariesReportGenerateByReservationOrder
     billingProfileId: Schema.optional(Schema.String),
     benefitOrderId: Schema.optional(Schema.String),
     benefitId: Schema.optional(Schema.String),
-    grain: Schema.Literals(["Hourly", "Daily", "Monthly"]),
+    grain: Schema.suspend(() => GrainSchema),
     startDate: Schema.String,
     endDate: Schema.String,
-    kind: Schema.optional(
-      Schema.Literals(["IncludedQuantity", "Reservation", "SavingsPlan"]),
-    ),
+    kind: Schema.optional(Schema.suspend(() => BenefitKindSchema)),
   }).pipe(
     T.Http({
       method: "POST",
@@ -2279,52 +2292,11 @@ export type GenerateBenefitUtilizationSummariesReportGenerateByReservationOrderI
 export const GenerateBenefitUtilizationSummariesReportGenerateByReservationOrderIdOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     input: Schema.optional(
-      Schema.Struct({
-        billingAccountId: Schema.optional(Schema.String),
-        billingProfileId: Schema.optional(Schema.String),
-        benefitOrderId: Schema.optional(Schema.String),
-        benefitId: Schema.optional(Schema.String),
-        grain: Schema.Literals(["Hourly", "Daily", "Monthly"]),
-        startDate: Schema.String,
-        endDate: Schema.String,
-        kind: Schema.optional(
-          Schema.Literals(["IncludedQuantity", "Reservation", "SavingsPlan"]),
-        ),
-      }),
+      Schema.suspend(() => BenefitUtilizationSummariesRequestSchema),
     ),
-    status: Schema.optional(
-      Schema.Literals(["Running", "Completed", "Failed"]),
-    ),
+    status: Schema.optional(Schema.suspend(() => OperationStatusTypeSchema)),
     properties: Schema.optional(
-      Schema.Struct({
-        reportUrl: Schema.optional(
-          Schema.Literals([
-            "Kind",
-            "AvgUtilizationPercentage",
-            "BenefitOrderId",
-            "BenefitId",
-            "BenefitType",
-            "MaxUtilizationPercentage",
-            "MinUtilizationPercentage",
-            "UsageDate",
-            "UtilizedPercentage",
-          ]),
-        ),
-        secondaryReportUrl: Schema.optional(
-          Schema.Literals([
-            "Kind",
-            "AvgUtilizationPercentage",
-            "BenefitOrderId",
-            "BenefitId",
-            "BenefitType",
-            "MaxUtilizationPercentage",
-            "MinUtilizationPercentage",
-            "UsageDate",
-            "UtilizedPercentage",
-          ]),
-        ),
-        validUntil: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(() => AsyncOperationStatusPropertiesSchema),
     ),
   });
 export type GenerateBenefitUtilizationSummariesReportGenerateByReservationOrderIdOutput =
@@ -2353,12 +2325,10 @@ export const GenerateBenefitUtilizationSummariesReportGenerateBySavingsPlanIdInp
     billingProfileId: Schema.optional(Schema.String),
     benefitOrderId: Schema.optional(Schema.String),
     benefitId: Schema.optional(Schema.String),
-    grain: Schema.Literals(["Hourly", "Daily", "Monthly"]),
+    grain: Schema.suspend(() => GrainSchema),
     startDate: Schema.String,
     endDate: Schema.String,
-    kind: Schema.optional(
-      Schema.Literals(["IncludedQuantity", "Reservation", "SavingsPlan"]),
-    ),
+    kind: Schema.optional(Schema.suspend(() => BenefitKindSchema)),
   }).pipe(
     T.Http({
       method: "POST",
@@ -2374,52 +2344,11 @@ export type GenerateBenefitUtilizationSummariesReportGenerateBySavingsPlanIdInpu
 export const GenerateBenefitUtilizationSummariesReportGenerateBySavingsPlanIdOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     input: Schema.optional(
-      Schema.Struct({
-        billingAccountId: Schema.optional(Schema.String),
-        billingProfileId: Schema.optional(Schema.String),
-        benefitOrderId: Schema.optional(Schema.String),
-        benefitId: Schema.optional(Schema.String),
-        grain: Schema.Literals(["Hourly", "Daily", "Monthly"]),
-        startDate: Schema.String,
-        endDate: Schema.String,
-        kind: Schema.optional(
-          Schema.Literals(["IncludedQuantity", "Reservation", "SavingsPlan"]),
-        ),
-      }),
+      Schema.suspend(() => BenefitUtilizationSummariesRequestSchema),
     ),
-    status: Schema.optional(
-      Schema.Literals(["Running", "Completed", "Failed"]),
-    ),
+    status: Schema.optional(Schema.suspend(() => OperationStatusTypeSchema)),
     properties: Schema.optional(
-      Schema.Struct({
-        reportUrl: Schema.optional(
-          Schema.Literals([
-            "Kind",
-            "AvgUtilizationPercentage",
-            "BenefitOrderId",
-            "BenefitId",
-            "BenefitType",
-            "MaxUtilizationPercentage",
-            "MinUtilizationPercentage",
-            "UsageDate",
-            "UtilizedPercentage",
-          ]),
-        ),
-        secondaryReportUrl: Schema.optional(
-          Schema.Literals([
-            "Kind",
-            "AvgUtilizationPercentage",
-            "BenefitOrderId",
-            "BenefitId",
-            "BenefitType",
-            "MaxUtilizationPercentage",
-            "MinUtilizationPercentage",
-            "UsageDate",
-            "UtilizedPercentage",
-          ]),
-        ),
-        validUntil: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(() => AsyncOperationStatusPropertiesSchema),
     ),
   });
 export type GenerateBenefitUtilizationSummariesReportGenerateBySavingsPlanIdOutput =
@@ -2448,12 +2377,10 @@ export const GenerateBenefitUtilizationSummariesReportGenerateBySavingsPlanOrder
     billingProfileId: Schema.optional(Schema.String),
     benefitOrderId: Schema.optional(Schema.String),
     benefitId: Schema.optional(Schema.String),
-    grain: Schema.Literals(["Hourly", "Daily", "Monthly"]),
+    grain: Schema.suspend(() => GrainSchema),
     startDate: Schema.String,
     endDate: Schema.String,
-    kind: Schema.optional(
-      Schema.Literals(["IncludedQuantity", "Reservation", "SavingsPlan"]),
-    ),
+    kind: Schema.optional(Schema.suspend(() => BenefitKindSchema)),
   }).pipe(
     T.Http({
       method: "POST",
@@ -2469,52 +2396,11 @@ export type GenerateBenefitUtilizationSummariesReportGenerateBySavingsPlanOrderI
 export const GenerateBenefitUtilizationSummariesReportGenerateBySavingsPlanOrderIdOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     input: Schema.optional(
-      Schema.Struct({
-        billingAccountId: Schema.optional(Schema.String),
-        billingProfileId: Schema.optional(Schema.String),
-        benefitOrderId: Schema.optional(Schema.String),
-        benefitId: Schema.optional(Schema.String),
-        grain: Schema.Literals(["Hourly", "Daily", "Monthly"]),
-        startDate: Schema.String,
-        endDate: Schema.String,
-        kind: Schema.optional(
-          Schema.Literals(["IncludedQuantity", "Reservation", "SavingsPlan"]),
-        ),
-      }),
+      Schema.suspend(() => BenefitUtilizationSummariesRequestSchema),
     ),
-    status: Schema.optional(
-      Schema.Literals(["Running", "Completed", "Failed"]),
-    ),
+    status: Schema.optional(Schema.suspend(() => OperationStatusTypeSchema)),
     properties: Schema.optional(
-      Schema.Struct({
-        reportUrl: Schema.optional(
-          Schema.Literals([
-            "Kind",
-            "AvgUtilizationPercentage",
-            "BenefitOrderId",
-            "BenefitId",
-            "BenefitType",
-            "MaxUtilizationPercentage",
-            "MinUtilizationPercentage",
-            "UsageDate",
-            "UtilizedPercentage",
-          ]),
-        ),
-        secondaryReportUrl: Schema.optional(
-          Schema.Literals([
-            "Kind",
-            "AvgUtilizationPercentage",
-            "BenefitOrderId",
-            "BenefitId",
-            "BenefitType",
-            "MaxUtilizationPercentage",
-            "MinUtilizationPercentage",
-            "UsageDate",
-            "UtilizedPercentage",
-          ]),
-        ),
-        validUntil: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(() => AsyncOperationStatusPropertiesSchema),
     ),
   });
 export type GenerateBenefitUtilizationSummariesReportGenerateBySavingsPlanOrderIdOutput =
@@ -2538,12 +2424,9 @@ export const GenerateBenefitUtilizationSummariesReportGenerateBySavingsPlanOrder
 export const GenerateCostDetailsReportCreateOperationInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     scope: Schema.String.pipe(T.PathParam()),
-    metric: Schema.optional(Schema.Literals(["ActualCost", "AmortizedCost"])),
+    metric: Schema.optional(Schema.suspend(() => CostDetailsMetricTypeSchema)),
     timePeriod: Schema.optional(
-      Schema.Struct({
-        start: Schema.String,
-        end: Schema.String,
-      }),
+      Schema.suspend(() => CostDetailsTimePeriodSchema),
     ),
     billingPeriod: Schema.optional(Schema.String),
     invoiceId: Schema.optional(Schema.String),
@@ -2564,53 +2447,10 @@ export const GenerateCostDetailsReportCreateOperationOutput =
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    status: Schema.optional(
-      Schema.Literals(["Completed", "NoDataFound", "Failed"]),
-    ),
-    manifest: Schema.optional(
-      Schema.Struct({
-        manifestVersion: Schema.optional(Schema.String),
-        dataFormat: Schema.optional(Schema.Literals(["Csv"])),
-        byteCount: Schema.optional(Schema.Number),
-        blobCount: Schema.optional(Schema.Number),
-        compressData: Schema.optional(Schema.Boolean),
-        requestContext: Schema.optional(
-          Schema.Struct({
-            requestScope: Schema.optional(Schema.String),
-            requestBody: Schema.optional(
-              Schema.Struct({
-                metric: Schema.optional(
-                  Schema.Literals(["ActualCost", "AmortizedCost"]),
-                ),
-                timePeriod: Schema.optional(
-                  Schema.Struct({
-                    start: Schema.String,
-                    end: Schema.String,
-                  }),
-                ),
-                billingPeriod: Schema.optional(Schema.String),
-                invoiceId: Schema.optional(Schema.String),
-              }),
-            ),
-          }),
-        ),
-        blobs: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              blobLink: Schema.optional(Schema.String),
-              byteCount: Schema.optional(Schema.Number),
-            }),
-          ),
-        ),
-      }),
-    ),
+    status: Schema.optional(Schema.suspend(() => CostDetailsStatusTypeSchema)),
+    manifest: Schema.optional(Schema.suspend(() => ReportManifestSchema)),
     validTill: Schema.optional(Schema.String),
-    error: Schema.optional(
-      Schema.Struct({
-        code: Schema.optional(Schema.String),
-        message: Schema.optional(Schema.String),
-      }),
-    ),
+    error: Schema.optional(Schema.suspend(() => ErrorDetailsSchema)),
   });
 export type GenerateCostDetailsReportCreateOperationOutput =
   typeof GenerateCostDetailsReportCreateOperationOutput.Type;
@@ -2649,53 +2489,10 @@ export const GenerateCostDetailsReportGetOperationResultsOutput =
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    status: Schema.optional(
-      Schema.Literals(["Completed", "NoDataFound", "Failed"]),
-    ),
-    manifest: Schema.optional(
-      Schema.Struct({
-        manifestVersion: Schema.optional(Schema.String),
-        dataFormat: Schema.optional(Schema.Literals(["Csv"])),
-        byteCount: Schema.optional(Schema.Number),
-        blobCount: Schema.optional(Schema.Number),
-        compressData: Schema.optional(Schema.Boolean),
-        requestContext: Schema.optional(
-          Schema.Struct({
-            requestScope: Schema.optional(Schema.String),
-            requestBody: Schema.optional(
-              Schema.Struct({
-                metric: Schema.optional(
-                  Schema.Literals(["ActualCost", "AmortizedCost"]),
-                ),
-                timePeriod: Schema.optional(
-                  Schema.Struct({
-                    start: Schema.String,
-                    end: Schema.String,
-                  }),
-                ),
-                billingPeriod: Schema.optional(Schema.String),
-                invoiceId: Schema.optional(Schema.String),
-              }),
-            ),
-          }),
-        ),
-        blobs: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              blobLink: Schema.optional(Schema.String),
-              byteCount: Schema.optional(Schema.Number),
-            }),
-          ),
-        ),
-      }),
-    ),
+    status: Schema.optional(Schema.suspend(() => CostDetailsStatusTypeSchema)),
+    manifest: Schema.optional(Schema.suspend(() => ReportManifestSchema)),
     validTill: Schema.optional(Schema.String),
-    error: Schema.optional(
-      Schema.Struct({
-        code: Schema.optional(Schema.String),
-        message: Schema.optional(Schema.String),
-      }),
-    ),
+    error: Schema.optional(Schema.suspend(() => ErrorDetailsSchema)),
   });
 export type GenerateCostDetailsReportGetOperationResultsOutput =
   typeof GenerateCostDetailsReportGetOperationResultsOutput.Type;
@@ -2717,12 +2514,11 @@ export const GenerateCostDetailsReportGetOperationResults =
 export const GenerateDetailedCostReportCreateOperationInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     scope: Schema.String.pipe(T.PathParam()),
-    metric: Schema.optional(Schema.Literals(["ActualCost", "AmortizedCost"])),
+    metric: Schema.optional(
+      Schema.suspend(() => GenerateDetailedCostReportMetricTypeSchema),
+    ),
     timePeriod: Schema.optional(
-      Schema.Struct({
-        start: Schema.String,
-        end: Schema.String,
-      }),
+      Schema.suspend(() => GenerateDetailedCostReportTimePeriodSchema),
     ),
     billingPeriod: Schema.optional(Schema.String),
     invoiceId: Schema.optional(Schema.String),
@@ -2741,23 +2537,11 @@ export type GenerateDetailedCostReportCreateOperationInput =
 // Output Schema
 export const GenerateDetailedCostReportCreateOperationOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(Schema.suspend(() => DownloadURLSchema)),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type GenerateDetailedCostReportCreateOperationOutput =
   typeof GenerateDetailedCostReportCreateOperationOutput.Type;
@@ -2793,23 +2577,11 @@ export type GenerateDetailedCostReportOperationResultsGetInput =
 // Output Schema
 export const GenerateDetailedCostReportOperationResultsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(Schema.suspend(() => DownloadURLSchema)),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type GenerateDetailedCostReportOperationResultsGetOutput =
   typeof GenerateDetailedCostReportOperationResultsGetOutput.Type;
@@ -2845,23 +2617,15 @@ export type GenerateDetailedCostReportOperationStatusGetInput =
 // Output Schema
 export const GenerateDetailedCostReportOperationStatusGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(Schema.suspend(() => DownloadURLSchema)),
+    status: Schema.optional(Schema.suspend(() => StatusSchema)),
+    startTime: Schema.optional(Schema.String),
+    endTime: Schema.optional(Schema.String),
+    error: Schema.optional(Schema.suspend(() => ErrorDetailsSchema)),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type GenerateDetailedCostReportOperationStatusGetOutput =
   typeof GenerateDetailedCostReportOperationStatusGetOutput.Type;
@@ -2899,29 +2663,8 @@ export type GenerateReservationDetailsReportByBillingAccountIdInput =
 // Output Schema
 export const GenerateReservationDetailsReportByBillingAccountIdOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    status: Schema.optional(
-      Schema.Literals(["Running", "Completed", "Failed"]),
-    ),
-    properties: Schema.optional(
-      Schema.Struct({
-        reportUrl: Schema.optional(
-          Schema.Literals([
-            "InstanceFlexibilityGroup",
-            "InstanceFlexibilityRatio",
-            "InstanceId",
-            "Kind",
-            "ReservationId",
-            "ReservationOrderId",
-            "ReservedHours",
-            "SkuName",
-            "TotalReservedQuantity",
-            "UsageDate",
-            "UsedHours",
-          ]),
-        ),
-        validUntil: Schema.optional(Schema.String),
-      }),
-    ),
+    status: Schema.optional(Schema.suspend(() => OperationStatusTypeSchema)),
+    properties: Schema.optional(Schema.suspend(() => ReportURLSchema)),
   });
 export type GenerateReservationDetailsReportByBillingAccountIdOutput =
   typeof GenerateReservationDetailsReportByBillingAccountIdOutput.Type;
@@ -2961,29 +2704,8 @@ export type GenerateReservationDetailsReportByBillingProfileIdInput =
 // Output Schema
 export const GenerateReservationDetailsReportByBillingProfileIdOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    status: Schema.optional(
-      Schema.Literals(["Running", "Completed", "Failed"]),
-    ),
-    properties: Schema.optional(
-      Schema.Struct({
-        reportUrl: Schema.optional(
-          Schema.Literals([
-            "InstanceFlexibilityGroup",
-            "InstanceFlexibilityRatio",
-            "InstanceId",
-            "Kind",
-            "ReservationId",
-            "ReservationOrderId",
-            "ReservedHours",
-            "SkuName",
-            "TotalReservedQuantity",
-            "UsageDate",
-            "UsedHours",
-          ]),
-        ),
-        validUntil: Schema.optional(Schema.String),
-      }),
-    ),
+    status: Schema.optional(Schema.suspend(() => OperationStatusTypeSchema)),
+    properties: Schema.optional(Schema.suspend(() => ReportURLSchema)),
   });
 export type GenerateReservationDetailsReportByBillingProfileIdOutput =
   typeof GenerateReservationDetailsReportByBillingProfileIdOutput.Type;
@@ -3018,24 +2740,7 @@ export type OperationsListInput = typeof OperationsListInput.Type;
 // Output Schema
 export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.optional(
-    Schema.Array(
-      Schema.Struct({
-        name: Schema.optional(Schema.String),
-        isDataAction: Schema.optional(Schema.Boolean),
-        display: Schema.optional(
-          Schema.Struct({
-            provider: Schema.optional(Schema.String),
-            resource: Schema.optional(Schema.String),
-            operation: Schema.optional(Schema.String),
-            description: Schema.optional(Schema.String),
-          }),
-        ),
-        origin: Schema.optional(
-          Schema.Literals(["user", "system", "user,system"]),
-        ),
-        actionType: Schema.optional(Schema.Literals(["Internal"])),
-      }),
-    ),
+    Schema.Array(Schema.suspend(() => CostManagementOperationSchema)),
   ),
   nextLink: Schema.optional(Schema.String),
 });
@@ -3070,29 +2775,8 @@ export type PriceSheetDownloadByBillingAccountInput =
 // Output Schema
 export const PriceSheetDownloadByBillingAccountOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    status: Schema.optional(
-      Schema.Literals(["Running", "Completed", "Failed"]),
-    ),
-    properties: Schema.optional(
-      Schema.Struct({
-        reportUrl: Schema.optional(
-          Schema.Literals([
-            "InstanceFlexibilityGroup",
-            "InstanceFlexibilityRatio",
-            "InstanceId",
-            "Kind",
-            "ReservationId",
-            "ReservationOrderId",
-            "ReservedHours",
-            "SkuName",
-            "TotalReservedQuantity",
-            "UsageDate",
-            "UsedHours",
-          ]),
-        ),
-        validUntil: Schema.optional(Schema.String),
-      }),
-    ),
+    status: Schema.optional(Schema.suspend(() => OperationStatusTypeSchema)),
+    properties: Schema.optional(Schema.suspend(() => ReportURLSchema)),
   });
 export type PriceSheetDownloadByBillingAccountOutput =
   typeof PriceSheetDownloadByBillingAccountOutput.Type;
@@ -3139,34 +2823,7 @@ export const PriceSheetDownloadByBillingProfileOutput =
     expiryTime: Schema.optional(Schema.String),
     downloadUrl: Schema.optional(Schema.String),
     downloadFileProperties: Schema.optional(
-      Schema.Struct({
-        billingAccountID: Schema.optional(Schema.String),
-        billingAccountName: Schema.optional(Schema.String),
-        billingProfileId: Schema.optional(Schema.String),
-        billingProfileName: Schema.optional(Schema.String),
-        productOrderName: Schema.optional(Schema.String),
-        serviceFamily: Schema.optional(Schema.Number),
-        product: Schema.optional(Schema.String),
-        productId: Schema.optional(Schema.String),
-        skuId: Schema.optional(Schema.String),
-        unitOfMeasure: Schema.optional(Schema.String),
-        meterId: Schema.optional(Schema.String),
-        meterName: Schema.optional(Schema.String),
-        meterType: Schema.optional(Schema.String),
-        meterCategory: Schema.optional(Schema.String),
-        meterSubCategory: Schema.optional(Schema.String),
-        meterRegion: Schema.optional(Schema.String),
-        tierMinimumUnits: Schema.optional(Schema.String),
-        effectiveStartDate: Schema.optional(Schema.String),
-        effectiveEndDate: Schema.optional(Schema.String),
-        unitPrice: Schema.optional(Schema.String),
-        basePrice: Schema.optional(Schema.String),
-        marketPrice: Schema.optional(Schema.String),
-        currency: Schema.optional(Schema.String),
-        billingCurrency: Schema.optional(Schema.String),
-        term: Schema.optional(Schema.String),
-        priceType: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(() => MCAPriceSheetPropertiesSchema),
     ),
   });
 export type PriceSheetDownloadByBillingProfileOutput =
@@ -3232,76 +2889,10 @@ export const PriceSheetDownloadByInvoice = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const QueryUsageInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   scope: Schema.String.pipe(T.PathParam()),
-  type: Schema.Literals([
-    "Usage",
-    "ActualCost",
-    "AmortizedCost",
-    "FocusCost",
-    "PriceSheet",
-    "ReservationTransactions",
-    "ReservationRecommendations",
-    "ReservationDetails",
-  ]),
-  timeframe: Schema.Literals([
-    "MonthToDate",
-    "BillingMonthToDate",
-    "TheLastMonth",
-    "TheLastBillingMonth",
-    "WeekToDate",
-    "Custom",
-    "TheCurrentMonth",
-  ]),
-  timePeriod: Schema.optional(
-    Schema.Struct({
-      from: Schema.String,
-      to: Schema.String,
-    }),
-  ),
-  dataset: Schema.Struct({
-    granularity: Schema.optional(Schema.Literals(["Daily", "Monthly"])),
-    configuration: Schema.optional(
-      Schema.Struct({
-        columns: Schema.optional(Schema.Array(Schema.String)),
-      }),
-    ),
-    aggregation: Schema.optional(
-      Schema.Record(
-        Schema.String,
-        Schema.Struct({
-          name: Schema.String,
-          function: Schema.Literals(["Sum"]),
-        }),
-      ),
-    ),
-    grouping: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          type: Schema.Literals(["TagKey", "Dimension"]),
-          name: Schema.String,
-        }),
-      ),
-    ),
-    filter: Schema.optional(
-      Schema.Struct({
-        and: Schema.optional(Schema.Array(Schema.Unknown)),
-        or: Schema.optional(Schema.Array(Schema.Unknown)),
-        dimensions: Schema.optional(
-          Schema.Struct({
-            name: Schema.String,
-            operator: Schema.Literals(["In"]),
-            values: Schema.Array(Schema.String),
-          }),
-        ),
-        tags: Schema.optional(
-          Schema.Struct({
-            name: Schema.String,
-            operator: Schema.Literals(["In"]),
-            values: Schema.Array(Schema.String),
-          }),
-        ),
-      }),
-    ),
-  }),
+  type: Schema.suspend(() => ExportTypeSchema),
+  timeframe: Schema.suspend(() => TimeframeTypeSchema),
+  timePeriod: Schema.optional(Schema.suspend(() => QueryTimePeriodSchema)),
+  dataset: Schema.suspend(() => QueryDatasetSchema),
 }).pipe(
   T.Http({
     method: "POST",
@@ -3313,6 +2904,7 @@ export type QueryUsageInput = typeof QueryUsageInput.Type;
 
 // Output Schema
 export const QueryUsageOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.optional(Schema.suspend(() => QueryPropertiesSchema)),
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -3342,76 +2934,10 @@ export const QueryUsageByExternalCloudProviderTypeInput =
       "externalBillingAccounts",
     ]).pipe(T.PathParam()),
     externalCloudProviderId: Schema.String.pipe(T.PathParam()),
-    type: Schema.Literals([
-      "Usage",
-      "ActualCost",
-      "AmortizedCost",
-      "FocusCost",
-      "PriceSheet",
-      "ReservationTransactions",
-      "ReservationRecommendations",
-      "ReservationDetails",
-    ]),
-    timeframe: Schema.Literals([
-      "MonthToDate",
-      "BillingMonthToDate",
-      "TheLastMonth",
-      "TheLastBillingMonth",
-      "WeekToDate",
-      "Custom",
-      "TheCurrentMonth",
-    ]),
-    timePeriod: Schema.optional(
-      Schema.Struct({
-        from: Schema.String,
-        to: Schema.String,
-      }),
-    ),
-    dataset: Schema.Struct({
-      granularity: Schema.optional(Schema.Literals(["Daily", "Monthly"])),
-      configuration: Schema.optional(
-        Schema.Struct({
-          columns: Schema.optional(Schema.Array(Schema.String)),
-        }),
-      ),
-      aggregation: Schema.optional(
-        Schema.Record(
-          Schema.String,
-          Schema.Struct({
-            name: Schema.String,
-            function: Schema.Literals(["Sum"]),
-          }),
-        ),
-      ),
-      grouping: Schema.optional(
-        Schema.Array(
-          Schema.Struct({
-            type: Schema.Literals(["TagKey", "Dimension"]),
-            name: Schema.String,
-          }),
-        ),
-      ),
-      filter: Schema.optional(
-        Schema.Struct({
-          and: Schema.optional(Schema.Array(Schema.Unknown)),
-          or: Schema.optional(Schema.Array(Schema.Unknown)),
-          dimensions: Schema.optional(
-            Schema.Struct({
-              name: Schema.String,
-              operator: Schema.Literals(["In"]),
-              values: Schema.Array(Schema.String),
-            }),
-          ),
-          tags: Schema.optional(
-            Schema.Struct({
-              name: Schema.String,
-              operator: Schema.Literals(["In"]),
-              values: Schema.Array(Schema.String),
-            }),
-          ),
-        }),
-      ),
-    }),
+    type: Schema.suspend(() => ExportTypeSchema),
+    timeframe: Schema.suspend(() => TimeframeTypeSchema),
+    timePeriod: Schema.optional(Schema.suspend(() => QueryTimePeriodSchema)),
+    dataset: Schema.suspend(() => QueryDatasetSchema),
   }).pipe(
     T.Http({
       method: "POST",
@@ -3425,6 +2951,7 @@ export type QueryUsageByExternalCloudProviderTypeInput =
 // Output Schema
 export const QueryUsageByExternalCloudProviderTypeOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(Schema.suspend(() => QueryPropertiesSchema)),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -3532,55 +3059,10 @@ export const ScheduledActionsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        displayName: Schema.String,
-        fileDestination: Schema.optional(
-          Schema.Struct({
-            fileFormats: Schema.optional(
-              Schema.Array(Schema.Literals(["Csv"])),
-            ),
-          }),
-        ),
-        notification: Schema.Struct({
-          to: Schema.Array(Schema.String),
-          language: Schema.optional(Schema.String),
-          message: Schema.optional(Schema.String),
-          regionalFormat: Schema.optional(Schema.String),
-          subject: Schema.String,
-        }),
-        notificationEmail: Schema.optional(Schema.String),
-        schedule: Schema.Struct({
-          frequency: Schema.Literals(["Daily", "Weekly", "Monthly"]),
-          hourOfDay: Schema.optional(Schema.Number),
-          daysOfWeek: Schema.optional(
-            Schema.Array(
-              Schema.Literals([
-                "Monday",
-                "Tuesday",
-                "Wednesday",
-                "Thursday",
-                "Friday",
-                "Saturday",
-                "Sunday",
-              ]),
-            ),
-          ),
-          weeksOfMonth: Schema.optional(
-            Schema.Array(
-              Schema.Literals(["First", "Second", "Third", "Fourth", "Last"]),
-            ),
-          ),
-          dayOfMonth: Schema.optional(Schema.Number),
-          startDate: Schema.String,
-          endDate: Schema.String,
-        }),
-        scope: Schema.optional(Schema.String),
-        status: Schema.Literals(["Enabled", "Expired", "Disabled"]),
-        viewId: Schema.String,
-      }),
+      Schema.suspend(() => ScheduledActionPropertiesSchema),
     ),
-    eTag: Schema.optional(Schema.String),
-    kind: Schema.optional(Schema.Literals(["Email", "InsightAlert"])),
+    eTag: Schema.optional(Schema.suspend(() => Azure_Core_eTagSchema)),
+    kind: Schema.optional(Schema.suspend(() => ScheduledActionKindSchema)),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -3594,23 +3076,15 @@ export type ScheduledActionsCreateOrUpdateInput =
 // Output Schema
 export const ScheduledActionsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => ScheduledActionPropertiesSchema),
+    ),
+    eTag: Schema.optional(Schema.suspend(() => Azure_Core_eTagSchema)),
+    kind: Schema.optional(Schema.suspend(() => ScheduledActionKindSchema)),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type ScheduledActionsCreateOrUpdateOutput =
   typeof ScheduledActionsCreateOrUpdateOutput.Type;
@@ -3634,55 +3108,10 @@ export const ScheduledActionsCreateOrUpdateByScopeInput =
     scope: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        displayName: Schema.String,
-        fileDestination: Schema.optional(
-          Schema.Struct({
-            fileFormats: Schema.optional(
-              Schema.Array(Schema.Literals(["Csv"])),
-            ),
-          }),
-        ),
-        notification: Schema.Struct({
-          to: Schema.Array(Schema.String),
-          language: Schema.optional(Schema.String),
-          message: Schema.optional(Schema.String),
-          regionalFormat: Schema.optional(Schema.String),
-          subject: Schema.String,
-        }),
-        notificationEmail: Schema.optional(Schema.String),
-        schedule: Schema.Struct({
-          frequency: Schema.Literals(["Daily", "Weekly", "Monthly"]),
-          hourOfDay: Schema.optional(Schema.Number),
-          daysOfWeek: Schema.optional(
-            Schema.Array(
-              Schema.Literals([
-                "Monday",
-                "Tuesday",
-                "Wednesday",
-                "Thursday",
-                "Friday",
-                "Saturday",
-                "Sunday",
-              ]),
-            ),
-          ),
-          weeksOfMonth: Schema.optional(
-            Schema.Array(
-              Schema.Literals(["First", "Second", "Third", "Fourth", "Last"]),
-            ),
-          ),
-          dayOfMonth: Schema.optional(Schema.Number),
-          startDate: Schema.String,
-          endDate: Schema.String,
-        }),
-        scope: Schema.optional(Schema.String),
-        status: Schema.Literals(["Enabled", "Expired", "Disabled"]),
-        viewId: Schema.String,
-      }),
+      Schema.suspend(() => ScheduledActionPropertiesSchema),
     ),
-    eTag: Schema.optional(Schema.String),
-    kind: Schema.optional(Schema.Literals(["Email", "InsightAlert"])),
+    eTag: Schema.optional(Schema.suspend(() => Azure_Core_eTagSchema)),
+    kind: Schema.optional(Schema.suspend(() => ScheduledActionKindSchema)),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -3696,23 +3125,15 @@ export type ScheduledActionsCreateOrUpdateByScopeInput =
 // Output Schema
 export const ScheduledActionsCreateOrUpdateByScopeOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => ScheduledActionPropertiesSchema),
+    ),
+    eTag: Schema.optional(Schema.suspend(() => Azure_Core_eTagSchema)),
+    kind: Schema.optional(Schema.suspend(() => ScheduledActionKindSchema)),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type ScheduledActionsCreateOrUpdateByScopeOutput =
   typeof ScheduledActionsCreateOrUpdateByScopeOutput.Type;
@@ -3814,23 +3235,15 @@ export type ScheduledActionsGetInput = typeof ScheduledActionsGetInput.Type;
 // Output Schema
 export const ScheduledActionsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => ScheduledActionPropertiesSchema),
+    ),
+    eTag: Schema.optional(Schema.suspend(() => Azure_Core_eTagSchema)),
+    kind: Schema.optional(Schema.suspend(() => ScheduledActionKindSchema)),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type ScheduledActionsGetOutput = typeof ScheduledActionsGetOutput.Type;
 
@@ -3863,23 +3276,15 @@ export type ScheduledActionsGetByScopeInput =
 // Output Schema
 export const ScheduledActionsGetByScopeOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => ScheduledActionPropertiesSchema),
+    ),
+    eTag: Schema.optional(Schema.suspend(() => Azure_Core_eTagSchema)),
+    kind: Schema.optional(Schema.suspend(() => ScheduledActionKindSchema)),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type ScheduledActionsGetByScopeOutput =
   typeof ScheduledActionsGetByScopeOutput.Type;
@@ -3915,37 +3320,7 @@ export type ScheduledActionsListInput = typeof ScheduledActionsListInput.Type;
 export const ScheduledActionsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.String),
-              createdByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              createdAt: Schema.optional(Schema.String),
-              lastModifiedBy: Schema.optional(Schema.String),
-              lastModifiedByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              lastModifiedAt: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => ScheduledActionSchema)),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -3983,37 +3358,7 @@ export type ScheduledActionsListByScopeInput =
 export const ScheduledActionsListByScopeOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.String),
-              createdByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              createdAt: Schema.optional(Schema.String),
-              lastModifiedBy: Schema.optional(Schema.String),
-              lastModifiedByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              lastModifiedAt: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => ScheduledActionSchema)),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -4103,7 +3448,7 @@ export const SettingsCreateOrUpdateByScopeInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     scope: Schema.String.pipe(T.PathParam()),
     type: Schema.Literals(["taginheritance"]).pipe(T.PathParam()),
-    kind: Schema.Literals(["taginheritance"]),
+    kind: Schema.suspend(() => SettingsKindSchema),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -4117,23 +3462,11 @@ export type SettingsCreateOrUpdateByScopeInput =
 // Output Schema
 export const SettingsCreateOrUpdateByScopeOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    kind: Schema.suspend(() => SettingsKindSchema),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type SettingsCreateOrUpdateByScopeOutput =
   typeof SettingsCreateOrUpdateByScopeOutput.Type;
@@ -4202,23 +3535,11 @@ export type SettingsGetByScopeInput = typeof SettingsGetByScopeInput.Type;
 // Output Schema
 export const SettingsGetByScopeOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    kind: Schema.suspend(() => SettingsKindSchema),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type SettingsGetByScopeOutput = typeof SettingsGetByScopeOutput.Type;
 
@@ -4248,39 +3569,7 @@ export type SettingsListInput = typeof SettingsListInput.Type;
 
 // Output Schema
 export const SettingsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  value: Schema.optional(
-    Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
-  ),
+  value: Schema.optional(Schema.Array(Schema.suspend(() => SettingSchema))),
 });
 export type SettingsListOutput = typeof SettingsListOutput.Type;
 
@@ -4299,124 +3588,8 @@ export const SettingsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const ViewsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     viewName: Schema.String.pipe(T.PathParam()),
-    properties: Schema.optional(
-      Schema.Struct({
-        displayName: Schema.optional(Schema.String),
-        scope: Schema.optional(Schema.String),
-        createdOn: Schema.optional(Schema.String),
-        modifiedOn: Schema.optional(Schema.String),
-        dateRange: Schema.optional(Schema.String),
-        currency: Schema.optional(Schema.String),
-        query: Schema.optional(
-          Schema.Struct({
-            type: Schema.Literals(["Usage"]),
-            timeframe: Schema.Literals([
-              "WeekToDate",
-              "MonthToDate",
-              "YearToDate",
-              "Custom",
-            ]),
-            timePeriod: Schema.optional(
-              Schema.Struct({
-                from: Schema.String,
-                to: Schema.String,
-              }),
-            ),
-            dataSet: Schema.optional(
-              Schema.Struct({
-                granularity: Schema.optional(
-                  Schema.Literals(["Daily", "Monthly"]),
-                ),
-                configuration: Schema.optional(
-                  Schema.Struct({
-                    columns: Schema.optional(Schema.Array(Schema.String)),
-                  }),
-                ),
-                aggregation: Schema.optional(
-                  Schema.Record(
-                    Schema.String,
-                    Schema.Struct({
-                      name: Schema.String,
-                      function: Schema.Literals(["Sum"]),
-                    }),
-                  ),
-                ),
-                grouping: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      type: Schema.Literals(["TagKey", "Dimension"]),
-                      name: Schema.String,
-                    }),
-                  ),
-                ),
-                sorting: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      direction: Schema.optional(
-                        Schema.Literals(["Ascending", "Descending"]),
-                      ),
-                      name: Schema.String,
-                    }),
-                  ),
-                ),
-                filter: Schema.optional(
-                  Schema.Struct({
-                    and: Schema.optional(Schema.Array(Schema.Unknown)),
-                    or: Schema.optional(Schema.Array(Schema.Unknown)),
-                    dimensions: Schema.optional(
-                      Schema.Struct({
-                        name: Schema.String,
-                        operator: Schema.Literals(["In", "Contains"]),
-                        values: Schema.Array(Schema.String),
-                      }),
-                    ),
-                    tags: Schema.optional(
-                      Schema.Struct({
-                        name: Schema.String,
-                        operator: Schema.Literals(["In", "Contains"]),
-                        values: Schema.Array(Schema.String),
-                      }),
-                    ),
-                  }),
-                ),
-              }),
-            ),
-            includeMonetaryCommitment: Schema.optional(Schema.Boolean),
-          }),
-        ),
-        chart: Schema.optional(
-          Schema.Literals([
-            "Area",
-            "Line",
-            "StackedColumn",
-            "GroupedColumn",
-            "Table",
-          ]),
-        ),
-        accumulated: Schema.optional(Schema.Literals(["true", "false"])),
-        metric: Schema.optional(
-          Schema.Literals(["ActualCost", "AmortizedCost", "AHUB"]),
-        ),
-        kpis: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              type: Schema.optional(Schema.Literals(["Forecast", "Budget"])),
-              id: Schema.optional(Schema.String),
-              enabled: Schema.optional(Schema.Boolean),
-            }),
-          ),
-        ),
-        pivots: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              type: Schema.optional(Schema.Literals(["Dimension", "TagKey"])),
-              name: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-      }),
-    ),
-    eTag: Schema.optional(Schema.String),
+    properties: Schema.optional(Schema.suspend(() => ViewPropertiesSchema)),
+    eTag: Schema.optional(Schema.suspend(() => Azure_Core_eTagSchema)),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -4429,23 +3602,12 @@ export type ViewsCreateOrUpdateInput = typeof ViewsCreateOrUpdateInput.Type;
 // Output Schema
 export const ViewsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(Schema.suspend(() => ViewPropertiesSchema)),
+    eTag: Schema.optional(Schema.suspend(() => Azure_Core_eTagSchema)),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type ViewsCreateOrUpdateOutput = typeof ViewsCreateOrUpdateOutput.Type;
 
@@ -4465,124 +3627,8 @@ export const ViewsCreateOrUpdateByScopeInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     scope: Schema.String.pipe(T.PathParam()),
     viewName: Schema.String.pipe(T.PathParam()),
-    properties: Schema.optional(
-      Schema.Struct({
-        displayName: Schema.optional(Schema.String),
-        scope: Schema.optional(Schema.String),
-        createdOn: Schema.optional(Schema.String),
-        modifiedOn: Schema.optional(Schema.String),
-        dateRange: Schema.optional(Schema.String),
-        currency: Schema.optional(Schema.String),
-        query: Schema.optional(
-          Schema.Struct({
-            type: Schema.Literals(["Usage"]),
-            timeframe: Schema.Literals([
-              "WeekToDate",
-              "MonthToDate",
-              "YearToDate",
-              "Custom",
-            ]),
-            timePeriod: Schema.optional(
-              Schema.Struct({
-                from: Schema.String,
-                to: Schema.String,
-              }),
-            ),
-            dataSet: Schema.optional(
-              Schema.Struct({
-                granularity: Schema.optional(
-                  Schema.Literals(["Daily", "Monthly"]),
-                ),
-                configuration: Schema.optional(
-                  Schema.Struct({
-                    columns: Schema.optional(Schema.Array(Schema.String)),
-                  }),
-                ),
-                aggregation: Schema.optional(
-                  Schema.Record(
-                    Schema.String,
-                    Schema.Struct({
-                      name: Schema.String,
-                      function: Schema.Literals(["Sum"]),
-                    }),
-                  ),
-                ),
-                grouping: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      type: Schema.Literals(["TagKey", "Dimension"]),
-                      name: Schema.String,
-                    }),
-                  ),
-                ),
-                sorting: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      direction: Schema.optional(
-                        Schema.Literals(["Ascending", "Descending"]),
-                      ),
-                      name: Schema.String,
-                    }),
-                  ),
-                ),
-                filter: Schema.optional(
-                  Schema.Struct({
-                    and: Schema.optional(Schema.Array(Schema.Unknown)),
-                    or: Schema.optional(Schema.Array(Schema.Unknown)),
-                    dimensions: Schema.optional(
-                      Schema.Struct({
-                        name: Schema.String,
-                        operator: Schema.Literals(["In", "Contains"]),
-                        values: Schema.Array(Schema.String),
-                      }),
-                    ),
-                    tags: Schema.optional(
-                      Schema.Struct({
-                        name: Schema.String,
-                        operator: Schema.Literals(["In", "Contains"]),
-                        values: Schema.Array(Schema.String),
-                      }),
-                    ),
-                  }),
-                ),
-              }),
-            ),
-            includeMonetaryCommitment: Schema.optional(Schema.Boolean),
-          }),
-        ),
-        chart: Schema.optional(
-          Schema.Literals([
-            "Area",
-            "Line",
-            "StackedColumn",
-            "GroupedColumn",
-            "Table",
-          ]),
-        ),
-        accumulated: Schema.optional(Schema.Literals(["true", "false"])),
-        metric: Schema.optional(
-          Schema.Literals(["ActualCost", "AmortizedCost", "AHUB"]),
-        ),
-        kpis: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              type: Schema.optional(Schema.Literals(["Forecast", "Budget"])),
-              id: Schema.optional(Schema.String),
-              enabled: Schema.optional(Schema.Boolean),
-            }),
-          ),
-        ),
-        pivots: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              type: Schema.optional(Schema.Literals(["Dimension", "TagKey"])),
-              name: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-      }),
-    ),
-    eTag: Schema.optional(Schema.String),
+    properties: Schema.optional(Schema.suspend(() => ViewPropertiesSchema)),
+    eTag: Schema.optional(Schema.suspend(() => Azure_Core_eTagSchema)),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -4596,23 +3642,12 @@ export type ViewsCreateOrUpdateByScopeInput =
 // Output Schema
 export const ViewsCreateOrUpdateByScopeOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(Schema.suspend(() => ViewPropertiesSchema)),
+    eTag: Schema.optional(Schema.suspend(() => Azure_Core_eTagSchema)),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type ViewsCreateOrUpdateByScopeOutput =
   typeof ViewsCreateOrUpdateByScopeOutput.Type;
@@ -4702,23 +3737,12 @@ export type ViewsGetInput = typeof ViewsGetInput.Type;
 
 // Output Schema
 export const ViewsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.optional(Schema.suspend(() => ViewPropertiesSchema)),
+  eTag: Schema.optional(Schema.suspend(() => Azure_Core_eTagSchema)),
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
-  systemData: Schema.optional(
-    Schema.Struct({
-      createdBy: Schema.optional(Schema.String),
-      createdByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      createdAt: Schema.optional(Schema.String),
-      lastModifiedBy: Schema.optional(Schema.String),
-      lastModifiedByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      lastModifiedAt: Schema.optional(Schema.String),
-    }),
-  ),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
 });
 export type ViewsGetOutput = typeof ViewsGetOutput.Type;
 
@@ -4748,23 +3772,12 @@ export type ViewsGetByScopeInput = typeof ViewsGetByScopeInput.Type;
 
 // Output Schema
 export const ViewsGetByScopeOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.optional(Schema.suspend(() => ViewPropertiesSchema)),
+  eTag: Schema.optional(Schema.suspend(() => Azure_Core_eTagSchema)),
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
-  systemData: Schema.optional(
-    Schema.Struct({
-      createdBy: Schema.optional(Schema.String),
-      createdByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      createdAt: Schema.optional(Schema.String),
-      lastModifiedBy: Schema.optional(Schema.String),
-      lastModifiedByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      lastModifiedAt: Schema.optional(Schema.String),
-    }),
-  ),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
 });
 export type ViewsGetByScopeOutput = typeof ViewsGetByScopeOutput.Type;
 
@@ -4794,39 +3807,7 @@ export type ViewsListInput = typeof ViewsListInput.Type;
 
 // Output Schema
 export const ViewsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  value: Schema.optional(
-    Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
-  ),
+  value: Schema.optional(Schema.Array(Schema.suspend(() => ViewSchema))),
   nextLink: Schema.optional(Schema.String),
 });
 export type ViewsListOutput = typeof ViewsListOutput.Type;
@@ -4856,39 +3837,7 @@ export type ViewsListByScopeInput = typeof ViewsListByScopeInput.Type;
 // Output Schema
 export const ViewsListByScopeOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.String),
-              createdByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              createdAt: Schema.optional(Schema.String),
-              lastModifiedBy: Schema.optional(Schema.String),
-              lastModifiedByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              lastModifiedAt: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
-    ),
+    value: Schema.optional(Schema.Array(Schema.suspend(() => ViewSchema))),
     nextLink: Schema.optional(Schema.String),
   },
 );

@@ -8,6 +8,250 @@ import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
+// Shared schemas
+const ImageTemplateSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+});
+const systemDataSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  createdBy: Schema.optional(Schema.String),
+  createdByType: Schema.optional(
+    Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+  ),
+  createdAt: Schema.optional(Schema.String),
+  lastModifiedBy: Schema.optional(Schema.String),
+  lastModifiedByType: Schema.optional(
+    Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+  ),
+  lastModifiedAt: Schema.optional(Schema.String),
+});
+const ImageTemplatePropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    source: Schema.suspend(() => ImageTemplateSourceSchema),
+    customize: Schema.optional(
+      Schema.Array(Schema.suspend(() => ImageTemplateCustomizerSchema)),
+    ),
+    optimize: Schema.optional(
+      Schema.Struct({
+        vmBoot: Schema.optional(
+          Schema.Struct({
+            state: Schema.optional(Schema.Literals(["Enabled", "Disabled"])),
+          }),
+        ),
+        workload: Schema.optional(
+          Schema.Struct({
+            state: Schema.optional(Schema.Literals(["Enabled", "Disabled"])),
+            scriptUri: Schema.optional(Schema.String),
+            sha256Checksum: Schema.optional(Schema.String),
+          }),
+        ),
+      }),
+    ),
+    validate: Schema.optional(
+      Schema.Struct({
+        continueDistributeOnFailure: Schema.optional(Schema.Boolean),
+        sourceValidationOnly: Schema.optional(Schema.Boolean),
+        inVMValidations: Schema.optional(
+          Schema.Array(Schema.suspend(() => ImageTemplateInVMValidatorSchema)),
+        ),
+      }),
+    ),
+    distribute: Schema.Array(
+      Schema.suspend(() => ImageTemplateDistributorSchema),
+    ),
+    errorHandling: Schema.optional(
+      Schema.Struct({
+        onCustomizerError: Schema.optional(
+          Schema.suspend(() => OnBuildErrorSchema),
+        ),
+        onValidationError: Schema.optional(
+          Schema.suspend(() => OnBuildErrorSchema),
+        ),
+      }),
+    ),
+    provisioningState: Schema.optional(
+      Schema.suspend(() => ProvisioningStateSchema),
+    ),
+    provisioningError: Schema.optional(
+      Schema.suspend(() => ProvisioningErrorSchema),
+    ),
+    lastRunStatus: Schema.optional(
+      Schema.suspend(() => ImageTemplateLastRunStatusSchema),
+    ),
+    buildTimeoutInMinutes: Schema.optional(Schema.Number),
+    vmProfile: Schema.optional(
+      Schema.suspend(() => ImageTemplateVmProfileSchema),
+    ),
+    additionalDataDisks: Schema.optional(
+      Schema.Array(Schema.suspend(() => DataDiskSchema)),
+    ),
+    stagingResourceGroup: Schema.optional(Schema.String),
+    exactStagingResourceGroup: Schema.optional(Schema.String),
+    autoRun: Schema.optional(Schema.suspend(() => ImageTemplateAutoRunSchema)),
+    managedResourceTags: Schema.optional(
+      Schema.Record(Schema.String, Schema.String),
+    ),
+  },
+);
+const ImageTemplateSourceSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  type: Schema.String,
+});
+const ImageTemplateCustomizerSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    type: Schema.String,
+    name: Schema.optional(Schema.String),
+  },
+);
+const ImageTemplateInVMValidatorSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    type: Schema.String,
+    name: Schema.optional(Schema.String),
+  });
+const ImageTemplateDistributorSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    type: Schema.String,
+    runOutputName: Schema.String,
+    artifactTags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  });
+const OnBuildErrorSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "cleanup",
+  "abort",
+]);
+const ProvisioningStateSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Creating",
+  "Updating",
+  "Succeeded",
+  "Failed",
+  "Deleting",
+  "Canceled",
+]);
+const ProvisioningErrorSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  provisioningErrorCode: Schema.optional(
+    Schema.Literals([
+      "BadSourceType",
+      "BadPIRSource",
+      "BadManagedImageSource",
+      "BadSharedImageVersionSource",
+      "BadCustomizerType",
+      "UnsupportedCustomizerType",
+      "NoCustomizerScript",
+      "BadValidatorType",
+      "UnsupportedValidatorType",
+      "NoValidatorScript",
+      "BadDistributeType",
+      "BadSharedImageDistribute",
+      "BadStagingResourceGroup",
+      "ServerError",
+      "Other",
+    ]),
+  ),
+  message: Schema.optional(Schema.String),
+});
+const ImageTemplateLastRunStatusSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    startTime: Schema.optional(Schema.String),
+    endTime: Schema.optional(Schema.String),
+    runState: Schema.optional(
+      Schema.Literals([
+        "Running",
+        "Canceling",
+        "Succeeded",
+        "PartiallySucceeded",
+        "Failed",
+        "Canceled",
+      ]),
+    ),
+    runSubState: Schema.optional(
+      Schema.Literals([
+        "Queued",
+        "Building",
+        "Customizing",
+        "Optimizing",
+        "Validating",
+        "Distributing",
+      ]),
+    ),
+    message: Schema.optional(Schema.String),
+  });
+const ImageTemplateVmProfileSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  vmSize: Schema.optional(Schema.String),
+  osDiskSizeGB: Schema.optional(Schema.Number),
+  userAssignedIdentities: Schema.optional(Schema.Array(Schema.String)),
+  vnetConfig: Schema.optional(Schema.suspend(() => VirtualNetworkConfigSchema)),
+});
+const VirtualNetworkConfigSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subnetId: Schema.optional(Schema.String),
+  containerInstanceSubnetId: Schema.optional(Schema.String),
+  proxyVmSize: Schema.optional(Schema.String),
+});
+const DataDiskSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  sizeGB: Schema.optional(Schema.Number),
+});
+const ImageTemplateAutoRunSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  state: Schema.optional(Schema.Literals(["Enabled", "Disabled"])),
+});
+const ImageTemplateIdentitySchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  type: Schema.optional(Schema.Literals(["UserAssigned", "None"])),
+  userAssignedIdentities: Schema.optional(
+    Schema.suspend(() => UserAssignedIdentitiesSchema),
+  ),
+});
+const UserAssignedIdentitiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Record(
+  Schema.String,
+  Schema.suspend(() => UserAssignedIdentitySchema),
+);
+const UserAssignedIdentitySchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  principalId: Schema.optional(Schema.String),
+  clientId: Schema.optional(Schema.String),
+});
+const RunOutputSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+});
+const RunOutputPropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  artifactId: Schema.optional(Schema.String),
+  artifactUri: Schema.optional(Schema.String),
+  provisioningState: Schema.optional(
+    Schema.suspend(() => ProvisioningStateSchema),
+  ),
+});
+const TriggerSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+});
+const TriggerPropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  kind: Schema.String,
+  status: Schema.optional(Schema.suspend(() => TriggerStatusSchema)),
+  provisioningState: Schema.optional(
+    Schema.suspend(() => ProvisioningStateSchema),
+  ),
+});
+const TriggerStatusSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  code: Schema.optional(Schema.String),
+  message: Schema.optional(Schema.String),
+  time: Schema.optional(Schema.String),
+});
+const OperationSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  display: Schema.optional(
+    Schema.Struct({
+      provider: Schema.optional(Schema.String),
+      operation: Schema.optional(Schema.String),
+      resource: Schema.optional(Schema.String),
+      description: Schema.optional(Schema.String),
+    }),
+  ),
+  origin: Schema.optional(Schema.String),
+  properties: Schema.optional(Schema.Unknown),
+  isDataAction: Schema.optional(Schema.Boolean),
+});
+
 // Input Schema
 export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {},
@@ -22,24 +266,7 @@ export type OperationsListInput = typeof OperationsListInput.Type;
 
 // Output Schema
 export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  value: Schema.optional(
-    Schema.Array(
-      Schema.Struct({
-        name: Schema.optional(Schema.String),
-        display: Schema.optional(
-          Schema.Struct({
-            provider: Schema.optional(Schema.String),
-            operation: Schema.optional(Schema.String),
-            resource: Schema.optional(Schema.String),
-            description: Schema.optional(Schema.String),
-          }),
-        ),
-        origin: Schema.optional(Schema.String),
-        properties: Schema.optional(Schema.Unknown),
-        isDataAction: Schema.optional(Schema.Boolean),
-      }),
-    ),
-  ),
+  value: Schema.optional(Schema.Array(Schema.suspend(() => OperationSchema))),
   nextLink: Schema.optional(Schema.String),
 });
 export type OperationsListOutput = typeof OperationsListOutput.Type;
@@ -59,28 +286,7 @@ export const TriggersCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    properties: Schema.optional(
-      Schema.Struct({
-        kind: Schema.String,
-        status: Schema.optional(
-          Schema.Struct({
-            code: Schema.optional(Schema.String),
-            message: Schema.optional(Schema.String),
-            time: Schema.optional(Schema.String),
-          }),
-        ),
-        provisioningState: Schema.optional(
-          Schema.Literals([
-            "Creating",
-            "Updating",
-            "Succeeded",
-            "Failed",
-            "Deleting",
-            "Canceled",
-          ]),
-        ),
-      }),
-    ),
+    properties: Schema.optional(Schema.suspend(() => TriggerPropertiesSchema)),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -95,23 +301,11 @@ export type TriggersCreateOrUpdateInput =
 // Output Schema
 export const TriggersCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(Schema.suspend(() => TriggerPropertiesSchema)),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type TriggersCreateOrUpdateOutput =
   typeof TriggersCreateOrUpdateOutput.Type;
@@ -175,23 +369,11 @@ export type TriggersGetInput = typeof TriggersGetInput.Type;
 
 // Output Schema
 export const TriggersGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.optional(Schema.suspend(() => TriggerPropertiesSchema)),
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
-  systemData: Schema.optional(
-    Schema.Struct({
-      createdBy: Schema.optional(Schema.String),
-      createdByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      createdAt: Schema.optional(Schema.String),
-      lastModifiedBy: Schema.optional(Schema.String),
-      lastModifiedByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      lastModifiedAt: Schema.optional(Schema.String),
-    }),
-  ),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
 });
 export type TriggersGetOutput = typeof TriggersGetOutput.Type;
 
@@ -225,37 +407,7 @@ export type TriggersListByImageTemplateInput =
 // Output Schema
 export const TriggersListByImageTemplateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => TriggerSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type TriggersListByImageTemplateOutput =
@@ -316,180 +468,9 @@ export const VirtualMachineImageTemplatesCreateOrUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        source: Schema.Struct({
-          type: Schema.String,
-        }),
-        customize: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              type: Schema.String,
-              name: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        optimize: Schema.optional(
-          Schema.Struct({
-            vmBoot: Schema.optional(
-              Schema.Struct({
-                state: Schema.optional(
-                  Schema.Literals(["Enabled", "Disabled"]),
-                ),
-              }),
-            ),
-            workload: Schema.optional(
-              Schema.Struct({
-                state: Schema.optional(
-                  Schema.Literals(["Enabled", "Disabled"]),
-                ),
-                scriptUri: Schema.optional(Schema.String),
-                sha256Checksum: Schema.optional(Schema.String),
-              }),
-            ),
-          }),
-        ),
-        validate: Schema.optional(
-          Schema.Struct({
-            continueDistributeOnFailure: Schema.optional(Schema.Boolean),
-            sourceValidationOnly: Schema.optional(Schema.Boolean),
-            inVMValidations: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  type: Schema.String,
-                  name: Schema.optional(Schema.String),
-                }),
-              ),
-            ),
-          }),
-        ),
-        distribute: Schema.Array(
-          Schema.Struct({
-            type: Schema.String,
-            runOutputName: Schema.String,
-            artifactTags: Schema.optional(
-              Schema.Record(Schema.String, Schema.String),
-            ),
-          }),
-        ),
-        errorHandling: Schema.optional(
-          Schema.Struct({
-            onCustomizerError: Schema.optional(
-              Schema.Literals(["cleanup", "abort"]),
-            ),
-            onValidationError: Schema.optional(
-              Schema.Literals(["cleanup", "abort"]),
-            ),
-          }),
-        ),
-        provisioningState: Schema.optional(
-          Schema.Literals([
-            "Creating",
-            "Updating",
-            "Succeeded",
-            "Failed",
-            "Deleting",
-            "Canceled",
-          ]),
-        ),
-        provisioningError: Schema.optional(
-          Schema.Struct({
-            provisioningErrorCode: Schema.optional(
-              Schema.Literals([
-                "BadSourceType",
-                "BadPIRSource",
-                "BadManagedImageSource",
-                "BadSharedImageVersionSource",
-                "BadCustomizerType",
-                "UnsupportedCustomizerType",
-                "NoCustomizerScript",
-                "BadValidatorType",
-                "UnsupportedValidatorType",
-                "NoValidatorScript",
-                "BadDistributeType",
-                "BadSharedImageDistribute",
-                "BadStagingResourceGroup",
-                "ServerError",
-                "Other",
-              ]),
-            ),
-            message: Schema.optional(Schema.String),
-          }),
-        ),
-        lastRunStatus: Schema.optional(
-          Schema.Struct({
-            startTime: Schema.optional(Schema.String),
-            endTime: Schema.optional(Schema.String),
-            runState: Schema.optional(
-              Schema.Literals([
-                "Running",
-                "Canceling",
-                "Succeeded",
-                "PartiallySucceeded",
-                "Failed",
-                "Canceled",
-              ]),
-            ),
-            runSubState: Schema.optional(
-              Schema.Literals([
-                "Queued",
-                "Building",
-                "Customizing",
-                "Optimizing",
-                "Validating",
-                "Distributing",
-              ]),
-            ),
-            message: Schema.optional(Schema.String),
-          }),
-        ),
-        buildTimeoutInMinutes: Schema.optional(Schema.Number),
-        vmProfile: Schema.optional(
-          Schema.Struct({
-            vmSize: Schema.optional(Schema.String),
-            osDiskSizeGB: Schema.optional(Schema.Number),
-            userAssignedIdentities: Schema.optional(
-              Schema.Array(Schema.String),
-            ),
-            vnetConfig: Schema.optional(
-              Schema.Struct({
-                subnetId: Schema.optional(Schema.String),
-                containerInstanceSubnetId: Schema.optional(Schema.String),
-                proxyVmSize: Schema.optional(Schema.String),
-              }),
-            ),
-          }),
-        ),
-        additionalDataDisks: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              sizeGB: Schema.optional(Schema.Number),
-            }),
-          ),
-        ),
-        stagingResourceGroup: Schema.optional(Schema.String),
-        exactStagingResourceGroup: Schema.optional(Schema.String),
-        autoRun: Schema.optional(
-          Schema.Struct({
-            state: Schema.optional(Schema.Literals(["Enabled", "Disabled"])),
-          }),
-        ),
-        managedResourceTags: Schema.optional(
-          Schema.Record(Schema.String, Schema.String),
-        ),
-      }),
+      Schema.suspend(() => ImageTemplatePropertiesSchema),
     ),
-    identity: Schema.Struct({
-      type: Schema.optional(Schema.Literals(["UserAssigned", "None"])),
-      userAssignedIdentities: Schema.optional(
-        Schema.Record(
-          Schema.String,
-          Schema.Struct({
-            principalId: Schema.optional(Schema.String),
-            clientId: Schema.optional(Schema.String),
-          }),
-        ),
-      ),
-    }),
+    identity: Schema.suspend(() => ImageTemplateIdentitySchema),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     location: Schema.String,
   }).pipe(
@@ -506,23 +487,16 @@ export type VirtualMachineImageTemplatesCreateOrUpdateInput =
 // Output Schema
 export const VirtualMachineImageTemplatesCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => ImageTemplatePropertiesSchema),
+    ),
+    identity: Schema.suspend(() => ImageTemplateIdentitySchema),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type VirtualMachineImageTemplatesCreateOrUpdateOutput =
   typeof VirtualMachineImageTemplatesCreateOrUpdateOutput.Type;
@@ -593,23 +567,16 @@ export type VirtualMachineImageTemplatesGetInput =
 // Output Schema
 export const VirtualMachineImageTemplatesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => ImageTemplatePropertiesSchema),
+    ),
+    identity: Schema.suspend(() => ImageTemplateIdentitySchema),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type VirtualMachineImageTemplatesGetOutput =
   typeof VirtualMachineImageTemplatesGetOutput.Type;
@@ -645,23 +612,13 @@ export type VirtualMachineImageTemplatesGetRunOutputInput =
 // Output Schema
 export const VirtualMachineImageTemplatesGetRunOutputOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => RunOutputPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type VirtualMachineImageTemplatesGetRunOutputOutput =
   typeof VirtualMachineImageTemplatesGetRunOutputOutput.Type;
@@ -697,37 +654,7 @@ export type VirtualMachineImageTemplatesListInput =
 export const VirtualMachineImageTemplatesListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.String),
-              createdByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              createdAt: Schema.optional(Schema.String),
-              lastModifiedBy: Schema.optional(Schema.String),
-              lastModifiedByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              lastModifiedAt: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => ImageTemplateSchema)),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -765,37 +692,7 @@ export type VirtualMachineImageTemplatesListByResourceGroupInput =
 export const VirtualMachineImageTemplatesListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.String),
-              createdByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              createdAt: Schema.optional(Schema.String),
-              lastModifiedBy: Schema.optional(Schema.String),
-              lastModifiedByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              lastModifiedAt: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => ImageTemplateSchema)),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -833,39 +730,7 @@ export type VirtualMachineImageTemplatesListRunOutputsInput =
 // Output Schema
 export const VirtualMachineImageTemplatesListRunOutputsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.String),
-              createdByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              createdAt: Schema.optional(Schema.String),
-              lastModifiedBy: Schema.optional(Schema.String),
-              lastModifiedByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              lastModifiedAt: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
-    ),
+    value: Schema.optional(Schema.Array(Schema.suspend(() => RunOutputSchema))),
     nextLink: Schema.optional(Schema.String),
   });
 export type VirtualMachineImageTemplatesListRunOutputsOutput =
@@ -925,48 +790,16 @@ export const VirtualMachineImageTemplatesUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     identity: Schema.optional(
-      Schema.Struct({
-        type: Schema.optional(Schema.Literals(["UserAssigned", "None"])),
-        userAssignedIdentities: Schema.optional(
-          Schema.Record(
-            Schema.String,
-            Schema.Struct({
-              principalId: Schema.optional(Schema.String),
-              clientId: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-      }),
+      Schema.suspend(() => ImageTemplateIdentitySchema),
     ),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     properties: Schema.optional(
       Schema.Struct({
         distribute: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              type: Schema.String,
-              runOutputName: Schema.String,
-              artifactTags: Schema.optional(
-                Schema.Record(Schema.String, Schema.String),
-              ),
-            }),
-          ),
+          Schema.Array(Schema.suspend(() => ImageTemplateDistributorSchema)),
         ),
         vmProfile: Schema.optional(
-          Schema.Struct({
-            vmSize: Schema.optional(Schema.String),
-            osDiskSizeGB: Schema.optional(Schema.Number),
-            userAssignedIdentities: Schema.optional(
-              Schema.Array(Schema.String),
-            ),
-            vnetConfig: Schema.optional(
-              Schema.Struct({
-                subnetId: Schema.optional(Schema.String),
-                containerInstanceSubnetId: Schema.optional(Schema.String),
-                proxyVmSize: Schema.optional(Schema.String),
-              }),
-            ),
-          }),
+          Schema.suspend(() => ImageTemplateVmProfileSchema),
         ),
       }),
     ),
@@ -984,23 +817,16 @@ export type VirtualMachineImageTemplatesUpdateInput =
 // Output Schema
 export const VirtualMachineImageTemplatesUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => ImageTemplatePropertiesSchema),
+    ),
+    identity: Schema.suspend(() => ImageTemplateIdentitySchema),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type VirtualMachineImageTemplatesUpdateOutput =
   typeof VirtualMachineImageTemplatesUpdateOutput.Type;

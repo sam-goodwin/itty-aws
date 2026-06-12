@@ -8,32 +8,523 @@ import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
+// Shared schemas
+const StatusItemSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  statusName: Schema.optional(Schema.String),
+  statusValue: Schema.optional(Schema.String),
+});
+const StorageInfoSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.optional(Schema.String),
+  resourceGroup: Schema.optional(Schema.String),
+  accountName: Schema.optional(Schema.String),
+  location: Schema.optional(Schema.String),
+});
+const OperationSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  isDataAction: Schema.optional(Schema.Boolean),
+  display: Schema.optional(
+    Schema.Struct({
+      provider: Schema.optional(Schema.String),
+      resource: Schema.optional(Schema.String),
+      operation: Schema.optional(Schema.String),
+      description: Schema.optional(Schema.String),
+    }),
+  ),
+  origin: Schema.optional(Schema.Literals(["user", "system", "user,system"])),
+  actionType: Schema.optional(Schema.Literals(["Internal"])),
+});
+const ReportResourceSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+});
+const systemDataSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  createdBy: Schema.optional(Schema.String),
+  createdByType: Schema.optional(
+    Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+  ),
+  createdAt: Schema.optional(Schema.String),
+  lastModifiedBy: Schema.optional(Schema.String),
+  lastModifiedByType: Schema.optional(
+    Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+  ),
+  lastModifiedAt: Schema.optional(Schema.String),
+});
+const ReportPropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  triggerTime: Schema.String,
+  timeZone: Schema.String,
+  resources: Schema.Array(Schema.suspend(() => ResourceMetadataSchema)),
+  status: Schema.optional(Schema.suspend(() => ReportStatusSchema)),
+  errors: Schema.optional(Schema.Array(Schema.String)),
+  tenantId: Schema.optional(Schema.String),
+  offerGuid: Schema.optional(Schema.String),
+  nextTriggerTime: Schema.optional(Schema.String),
+  lastTriggerTime: Schema.optional(Schema.String),
+  subscriptions: Schema.optional(Schema.Array(Schema.String)),
+  complianceStatus: Schema.optional(
+    Schema.suspend(() => ReportComplianceStatusSchema),
+  ),
+  storageInfo: Schema.optional(Schema.suspend(() => StorageInfoSchema)),
+  certRecords: Schema.optional(
+    Schema.Array(Schema.suspend(() => CertSyncRecordSchema)),
+  ),
+  provisioningState: Schema.optional(
+    Schema.suspend(() => ProvisioningStateSchema),
+  ),
+});
+const ResourceMetadataSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  resourceId: Schema.String,
+  resourceType: Schema.optional(Schema.String),
+  resourceKind: Schema.optional(Schema.String),
+  resourceOrigin: Schema.optional(Schema.suspend(() => ResourceOriginSchema)),
+  accountId: Schema.optional(Schema.String),
+});
+const ResourceOriginSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Azure",
+  "AWS",
+  "GCP",
+]);
+const ReportStatusSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Active",
+  "Failed",
+  "Reviewing",
+  "Disabled",
+]);
+const ReportComplianceStatusSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  m365: Schema.optional(Schema.suspend(() => OverviewStatusSchema)),
+});
+const OverviewStatusSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  passedCount: Schema.optional(Schema.Number),
+  failedCount: Schema.optional(Schema.Number),
+  manualCount: Schema.optional(Schema.Number),
+  notApplicableCount: Schema.optional(Schema.Number),
+  pendingCount: Schema.optional(Schema.Number),
+});
+const CertSyncRecordSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  offerGuid: Schema.optional(Schema.String),
+  certificationStatus: Schema.optional(Schema.String),
+  ingestionStatus: Schema.optional(Schema.String),
+  controls: Schema.optional(
+    Schema.Array(Schema.suspend(() => ControlSyncRecordSchema)),
+  ),
+});
+const ControlSyncRecordSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  controlId: Schema.optional(Schema.String),
+  controlStatus: Schema.optional(Schema.String),
+});
+const ProvisioningStateSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Succeeded",
+  "Failed",
+  "Canceled",
+  "Creating",
+  "Deleting",
+  "Fixing",
+  "Verifying",
+  "Updating",
+]);
+const ReportPatchPropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  triggerTime: Schema.optional(Schema.String),
+  timeZone: Schema.optional(Schema.String),
+  resources: Schema.optional(
+    Schema.Array(Schema.suspend(() => ResourceMetadataSchema)),
+  ),
+  status: Schema.optional(Schema.suspend(() => ReportStatusSchema)),
+  errors: Schema.optional(Schema.Array(Schema.String)),
+  tenantId: Schema.optional(Schema.String),
+  offerGuid: Schema.optional(Schema.String),
+  nextTriggerTime: Schema.optional(Schema.String),
+  lastTriggerTime: Schema.optional(Schema.String),
+  subscriptions: Schema.optional(Schema.Array(Schema.String)),
+  complianceStatus: Schema.optional(
+    Schema.suspend(() => ReportComplianceStatusSchema),
+  ),
+  storageInfo: Schema.optional(Schema.suspend(() => StorageInfoSchema)),
+  certRecords: Schema.optional(
+    Schema.Array(Schema.suspend(() => CertSyncRecordSchema)),
+  ),
+  provisioningState: Schema.optional(
+    Schema.suspend(() => ProvisioningStateSchema),
+  ),
+});
+const EvidenceResourceSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+});
+const EvidencePropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  evidenceType: Schema.optional(Schema.suspend(() => EvidenceTypeSchema)),
+  filePath: Schema.String,
+  extraData: Schema.optional(Schema.String),
+  controlId: Schema.optional(Schema.String),
+  responsibilityId: Schema.optional(Schema.String),
+  provisioningState: Schema.optional(
+    Schema.suspend(() => ProvisioningStateSchema),
+  ),
+});
+const EvidenceTypeSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "File",
+  "AutoCollectedEvidence",
+  "Data",
+]);
+const EvidenceFileDownloadResponseEvidenceFileSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    url: Schema.optional(Schema.String),
+  });
+const ResultSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Succeeded",
+  "Failed",
+]);
+const ScopingQuestionSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  questionId: Schema.String,
+  superiorQuestionId: Schema.optional(Schema.String),
+  inputType: Schema.suspend(() => InputTypeSchema),
+  optionIds: Schema.Array(Schema.String),
+  rules: Schema.Array(Schema.suspend(() => RuleSchema)),
+  showSubQuestionsValue: Schema.optional(Schema.String),
+});
+const InputTypeSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "None",
+  "Text",
+  "Email",
+  "MultilineText",
+  "Url",
+  "Number",
+  "Boolean",
+  "Telephone",
+  "YesNoNa",
+  "Date",
+  "YearPicker",
+  "SingleSelection",
+  "SingleSelectDropdown",
+  "MultiSelectCheckbox",
+  "MultiSelectDropdown",
+  "MultiSelectDropdownCustom",
+  "Group",
+  "Upload",
+]);
+const RuleSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Required",
+  "CharLength",
+  "Url",
+  "Urls",
+  "Domains",
+  "USPrivacyShield",
+  "PublicSOX",
+  "CreditCardPCI",
+  "AzureApplication",
+  "ValidGuid",
+  "PublisherVerification",
+  "DynamicDropdown",
+  "PreventNonEnglishChar",
+  "ValidEmail",
+]);
+const ScopingConfigurationResourceSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+  });
+const ScopingConfigurationPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    answers: Schema.optional(
+      Schema.Array(Schema.suspend(() => ScopingAnswerSchema)),
+    ),
+    provisioningState: Schema.optional(
+      Schema.suspend(() => ProvisioningStateSchema),
+    ),
+  });
+const ScopingAnswerSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  questionId: Schema.String,
+  answers: Schema.Array(Schema.String),
+});
+const SnapshotResourceSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+});
+const SnapshotPropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  snapshotName: Schema.optional(Schema.String),
+  createdAt: Schema.optional(Schema.String),
+  provisioningState: Schema.optional(
+    Schema.suspend(() => ProvisioningStateSchema),
+  ),
+  reportProperties: Schema.optional(
+    Schema.suspend(() => ReportPropertiesSchema),
+  ),
+  reportSystemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+  complianceResults: Schema.optional(
+    Schema.Array(Schema.suspend(() => ComplianceResultSchema)),
+  ),
+});
+const ComplianceResultSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  complianceName: Schema.optional(Schema.String),
+  categories: Schema.optional(
+    Schema.Array(Schema.suspend(() => CategorySchema)),
+  ),
+});
+const CategorySchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  categoryName: Schema.optional(Schema.String),
+  categoryStatus: Schema.optional(Schema.suspend(() => CategoryStatusSchema)),
+  controlFamilies: Schema.optional(
+    Schema.Array(Schema.suspend(() => ControlFamilySchema)),
+  ),
+});
+const CategoryStatusSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Passed",
+  "Failed",
+  "NotApplicable",
+  "PendingApproval",
+]);
+const ControlFamilySchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  controlFamilyName: Schema.optional(Schema.String),
+  controlFamilyStatus: Schema.optional(
+    Schema.suspend(() => ControlFamilyStatusSchema),
+  ),
+  controls: Schema.optional(Schema.Array(Schema.suspend(() => ControlSchema))),
+});
+const ControlFamilyStatusSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Passed",
+  "Failed",
+  "NotApplicable",
+  "PendingApproval",
+]);
+const ControlSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  controlId: Schema.optional(Schema.String),
+  controlName: Schema.optional(Schema.String),
+  controlFullName: Schema.optional(Schema.String),
+  controlDescription: Schema.optional(Schema.String),
+  controlDescriptionHyperLink: Schema.optional(Schema.String),
+  controlStatus: Schema.optional(Schema.suspend(() => ControlStatusSchema)),
+  responsibilities: Schema.optional(
+    Schema.Array(Schema.suspend(() => ResponsibilitySchema)),
+  ),
+});
+const ControlStatusSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Passed",
+  "Failed",
+  "NotApplicable",
+  "PendingApproval",
+]);
+const ResponsibilitySchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  responsibilityId: Schema.optional(Schema.String),
+  responsibilityTitle: Schema.optional(Schema.String),
+  responsibilityDescription: Schema.optional(Schema.String),
+  responsibilityType: Schema.optional(
+    Schema.suspend(() => ResponsibilityTypeSchema),
+  ),
+  responsibilitySeverity: Schema.optional(
+    Schema.suspend(() => ResponsibilitySeveritySchema),
+  ),
+  responsibilityStatus: Schema.optional(
+    Schema.suspend(() => ResponsibilityStatusSchema),
+  ),
+  responsibilityEnvironment: Schema.optional(
+    Schema.suspend(() => ResponsibilityEnvironmentSchema),
+  ),
+  failedResourceCount: Schema.optional(Schema.Number),
+  totalResourceCount: Schema.optional(Schema.Number),
+  resourceList: Schema.optional(
+    Schema.Array(Schema.suspend(() => ResponsibilityResourceSchema)),
+  ),
+  recommendationList: Schema.optional(
+    Schema.Array(Schema.suspend(() => RecommendationSchema)),
+  ),
+  guidance: Schema.optional(Schema.String),
+  justification: Schema.optional(Schema.String),
+  evidenceFiles: Schema.optional(Schema.Array(Schema.String)),
+});
+const ResponsibilityTypeSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Automated",
+  "ScopedManual",
+  "Manual",
+]);
+const ResponsibilitySeveritySchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Literals(["High", "Medium", "Low"]);
+const ResponsibilityStatusSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Passed",
+  "Failed",
+  "NotApplicable",
+  "PendingApproval",
+]);
+const ResponsibilityEnvironmentSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+    "Azure",
+    "AWS",
+    "GCP",
+    "General",
+  ]);
+const ResponsibilityResourceSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  resourceId: Schema.optional(Schema.String),
+  accountId: Schema.optional(Schema.String),
+  resourceType: Schema.optional(Schema.String),
+  resourceOrigin: Schema.optional(Schema.suspend(() => ResourceOriginSchema)),
+  resourceStatus: Schema.optional(Schema.suspend(() => ResourceStatusSchema)),
+  resourceStatusChangeDate: Schema.optional(Schema.String),
+  recommendationIds: Schema.optional(Schema.Array(Schema.String)),
+});
+const ResourceStatusSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Healthy",
+  "Unhealthy",
+]);
+const RecommendationSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  recommendationId: Schema.optional(Schema.String),
+  recommendationShortName: Schema.optional(Schema.String),
+  recommendationSolutions: Schema.optional(
+    Schema.Array(Schema.suspend(() => RecommendationSolutionSchema)),
+  ),
+});
+const RecommendationSolutionSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  recommendationSolutionIndex: Schema.optional(Schema.String),
+  recommendationSolutionContent: Schema.optional(Schema.String),
+  isRecommendSolution: Schema.optional(
+    Schema.suspend(() => IsRecommendSolutionSchema),
+  ),
+});
+const IsRecommendSolutionSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "true",
+  "false",
+]);
+const DownloadTypeSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "ComplianceReport",
+  "CompliancePdfReport",
+  "ComplianceDetailedPdfReport",
+  "ResourceList",
+]);
+const ResourceItemSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.optional(Schema.String),
+  resourceGroup: Schema.optional(Schema.String),
+  resourceType: Schema.optional(Schema.String),
+  resourceId: Schema.optional(Schema.String),
+});
+const ComplianceReportItemSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  categoryName: Schema.optional(Schema.String),
+  controlFamilyName: Schema.optional(Schema.String),
+  controlId: Schema.optional(Schema.String),
+  controlName: Schema.optional(Schema.String),
+  controlStatus: Schema.optional(Schema.suspend(() => ControlStatusSchema)),
+  responsibilityTitle: Schema.optional(Schema.String),
+  responsibilityDescription: Schema.optional(Schema.String),
+  resourceId: Schema.optional(Schema.String),
+  resourceType: Schema.optional(Schema.String),
+  resourceOrigin: Schema.optional(Schema.suspend(() => ResourceOriginSchema)),
+  resourceStatus: Schema.optional(Schema.suspend(() => ResourceStatusSchema)),
+  resourceStatusChangeDate: Schema.optional(Schema.String),
+});
+const DownloadResponseCompliancePdfReportSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    sasUri: Schema.optional(Schema.String),
+  });
+const DownloadResponseComplianceDetailedPdfReportSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    sasUri: Schema.optional(Schema.String),
+  });
+const WebhookResourceSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+});
+const WebhookPropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  webhookId: Schema.optional(Schema.String),
+  status: Schema.optional(Schema.suspend(() => WebhookStatusSchema)),
+  tenantId: Schema.optional(Schema.String),
+  sendAllEvents: Schema.optional(Schema.suspend(() => SendAllEventsSchema)),
+  events: Schema.optional(
+    Schema.Array(Schema.suspend(() => NotificationEventSchema)),
+  ),
+  payloadUrl: Schema.optional(Schema.String),
+  contentType: Schema.optional(Schema.suspend(() => ContentTypeSchema)),
+  webhookKey: Schema.optional(Schema.String),
+  updateWebhookKey: Schema.optional(
+    Schema.suspend(() => UpdateWebhookKeySchema),
+  ),
+  webhookKeyEnabled: Schema.optional(
+    Schema.suspend(() => WebhookKeyEnabledSchema),
+  ),
+  enableSslVerification: Schema.optional(
+    Schema.suspend(() => EnableSslVerificationSchema),
+  ),
+  deliveryStatus: Schema.optional(Schema.suspend(() => DeliveryStatusSchema)),
+  provisioningState: Schema.optional(
+    Schema.suspend(() => ProvisioningStateSchema),
+  ),
+});
+const WebhookStatusSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Enabled",
+  "Disabled",
+]);
+const SendAllEventsSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "true",
+  "false",
+]);
+const NotificationEventSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "generate_snapshot_success",
+  "generate_snapshot_failed",
+  "assessment_failure",
+  "report_configuration_changes",
+  "report_deletion",
+]);
+const ContentTypeSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "application/json",
+]);
+const UpdateWebhookKeySchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "true",
+  "false",
+]);
+const WebhookKeyEnabledSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "true",
+  "false",
+]);
+const EnableSslVerificationSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals(
+  ["true", "false"],
+);
+const DeliveryStatusSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Succeeded",
+  "Failed",
+  "NotStarted",
+]);
+const TriggerEvaluationPropertySchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    triggerTime: Schema.optional(Schema.String),
+    evaluationEndTime: Schema.optional(Schema.String),
+    resourceIds: Schema.optional(Schema.Array(Schema.String)),
+    quickAssessments: Schema.optional(
+      Schema.Array(Schema.suspend(() => QuickAssessmentSchema)),
+    ),
+  });
+const QuickAssessmentSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  resourceId: Schema.optional(Schema.String),
+  responsibilityId: Schema.optional(Schema.String),
+  timestamp: Schema.optional(Schema.String),
+  resourceStatus: Schema.optional(Schema.suspend(() => ResourceStatusSchema)),
+  displayName: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+  remediationLink: Schema.optional(Schema.String),
+});
+
 // Input Schema
 export const EvidenceCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     reportName: Schema.String.pipe(T.PathParam()),
     evidenceName: Schema.String.pipe(T.PathParam()),
-    properties: Schema.Struct({
-      evidenceType: Schema.optional(
-        Schema.Literals(["File", "AutoCollectedEvidence", "Data"]),
-      ),
-      filePath: Schema.String,
-      extraData: Schema.optional(Schema.String),
-      controlId: Schema.optional(Schema.String),
-      responsibilityId: Schema.optional(Schema.String),
-      provisioningState: Schema.optional(
-        Schema.Literals([
-          "Succeeded",
-          "Failed",
-          "Canceled",
-          "Creating",
-          "Deleting",
-          "Fixing",
-          "Verifying",
-          "Updating",
-        ]),
-      ),
-    }),
+    properties: Schema.suspend(() => EvidencePropertiesSchema),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -47,23 +538,11 @@ export type EvidenceCreateOrUpdateInput =
 // Output Schema
 export const EvidenceCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.suspend(() => EvidencePropertiesSchema),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type EvidenceCreateOrUpdateOutput =
   typeof EvidenceCreateOrUpdateOutput.Type;
@@ -130,9 +609,7 @@ export type EvidenceDownloadInput = typeof EvidenceDownloadInput.Type;
 export const EvidenceDownloadOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     evidenceFile: Schema.optional(
-      Schema.Struct({
-        url: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(() => EvidenceFileDownloadResponseEvidenceFileSchema),
     ),
   },
 );
@@ -165,23 +642,11 @@ export type EvidenceGetInput = typeof EvidenceGetInput.Type;
 
 // Output Schema
 export const EvidenceGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.suspend(() => EvidencePropertiesSchema),
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
-  systemData: Schema.optional(
-    Schema.Struct({
-      createdBy: Schema.optional(Schema.String),
-      createdByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      createdAt: Schema.optional(Schema.String),
-      lastModifiedBy: Schema.optional(Schema.String),
-      lastModifiedByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      lastModifiedAt: Schema.optional(Schema.String),
-    }),
-  ),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
 });
 export type EvidenceGetOutput = typeof EvidenceGetOutput.Type;
 
@@ -213,37 +678,7 @@ export type EvidenceListByReportInput = typeof EvidenceListByReportInput.Type;
 // Output Schema
 export const EvidenceListByReportOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => EvidenceResourceSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type EvidenceListByReportOutput = typeof EvidenceListByReportOutput.Type;
@@ -275,26 +710,7 @@ export type OperationsListInput = typeof OperationsListInput.Type;
 
 // Output Schema
 export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  value: Schema.optional(
-    Schema.Array(
-      Schema.Struct({
-        name: Schema.optional(Schema.String),
-        isDataAction: Schema.optional(Schema.Boolean),
-        display: Schema.optional(
-          Schema.Struct({
-            provider: Schema.optional(Schema.String),
-            resource: Schema.optional(Schema.String),
-            operation: Schema.optional(Schema.String),
-            description: Schema.optional(Schema.String),
-          }),
-        ),
-        origin: Schema.optional(
-          Schema.Literals(["user", "system", "user,system"]),
-        ),
-        actionType: Schema.optional(Schema.Literals(["Internal"])),
-      }),
-    ),
-  ),
+  value: Schema.optional(Schema.Array(Schema.suspend(() => OperationSchema))),
   nextLink: Schema.optional(Schema.String),
 });
 export type OperationsListOutput = typeof OperationsListOutput.Type;
@@ -398,12 +814,7 @@ export type ProviderActionsGetOverviewStatusInput =
 export const ProviderActionsGetOverviewStatusOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     statusList: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          statusName: Schema.optional(Schema.String),
-          statusValue: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => StatusItemSchema)),
     ),
   });
 export type ProviderActionsGetOverviewStatusOutput =
@@ -438,14 +849,7 @@ export type ProviderActionsListInUseStorageAccountsInput =
 export const ProviderActionsListInUseStorageAccountsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     storageAccountList: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          subscriptionId: Schema.optional(Schema.String),
-          resourceGroup: Schema.optional(Schema.String),
-          accountName: Schema.optional(Schema.String),
-          location: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => StorageInfoSchema)),
     ),
   });
 export type ProviderActionsListInUseStorageAccountsOutput =
@@ -516,26 +920,7 @@ export type ProviderActionsTriggerEvaluationInput =
 export const ProviderActionsTriggerEvaluationOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     properties: Schema.optional(
-      Schema.Struct({
-        triggerTime: Schema.optional(Schema.String),
-        evaluationEndTime: Schema.optional(Schema.String),
-        resourceIds: Schema.optional(Schema.Array(Schema.String)),
-        quickAssessments: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              resourceId: Schema.optional(Schema.String),
-              responsibilityId: Schema.optional(Schema.String),
-              timestamp: Schema.optional(Schema.String),
-              resourceStatus: Schema.optional(
-                Schema.Literals(["Healthy", "Unhealthy"]),
-              ),
-              displayName: Schema.optional(Schema.String),
-              description: Schema.optional(Schema.String),
-              remediationLink: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-      }),
+      Schema.suspend(() => TriggerEvaluationPropertySchema),
     ),
   });
 export type ProviderActionsTriggerEvaluationOutput =
@@ -556,80 +941,7 @@ export const ProviderActionsTriggerEvaluation =
 export const ReportCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     reportName: Schema.String.pipe(T.PathParam()),
-    properties: Schema.Struct({
-      triggerTime: Schema.String,
-      timeZone: Schema.String,
-      resources: Schema.Array(
-        Schema.Struct({
-          resourceId: Schema.String,
-          resourceType: Schema.optional(Schema.String),
-          resourceKind: Schema.optional(Schema.String),
-          resourceOrigin: Schema.optional(
-            Schema.Literals(["Azure", "AWS", "GCP"]),
-          ),
-          accountId: Schema.optional(Schema.String),
-        }),
-      ),
-      status: Schema.optional(
-        Schema.Literals(["Active", "Failed", "Reviewing", "Disabled"]),
-      ),
-      errors: Schema.optional(Schema.Array(Schema.String)),
-      tenantId: Schema.optional(Schema.String),
-      offerGuid: Schema.optional(Schema.String),
-      nextTriggerTime: Schema.optional(Schema.String),
-      lastTriggerTime: Schema.optional(Schema.String),
-      subscriptions: Schema.optional(Schema.Array(Schema.String)),
-      complianceStatus: Schema.optional(
-        Schema.Struct({
-          m365: Schema.optional(
-            Schema.Struct({
-              passedCount: Schema.optional(Schema.Number),
-              failedCount: Schema.optional(Schema.Number),
-              manualCount: Schema.optional(Schema.Number),
-              notApplicableCount: Schema.optional(Schema.Number),
-              pendingCount: Schema.optional(Schema.Number),
-            }),
-          ),
-        }),
-      ),
-      storageInfo: Schema.optional(
-        Schema.Struct({
-          subscriptionId: Schema.optional(Schema.String),
-          resourceGroup: Schema.optional(Schema.String),
-          accountName: Schema.optional(Schema.String),
-          location: Schema.optional(Schema.String),
-        }),
-      ),
-      certRecords: Schema.optional(
-        Schema.Array(
-          Schema.Struct({
-            offerGuid: Schema.optional(Schema.String),
-            certificationStatus: Schema.optional(Schema.String),
-            ingestionStatus: Schema.optional(Schema.String),
-            controls: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  controlId: Schema.optional(Schema.String),
-                  controlStatus: Schema.optional(Schema.String),
-                }),
-              ),
-            ),
-          }),
-        ),
-      ),
-      provisioningState: Schema.optional(
-        Schema.Literals([
-          "Succeeded",
-          "Failed",
-          "Canceled",
-          "Creating",
-          "Deleting",
-          "Fixing",
-          "Verifying",
-          "Updating",
-        ]),
-      ),
-    }),
+    properties: Schema.suspend(() => ReportPropertiesSchema),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -643,23 +955,11 @@ export type ReportCreateOrUpdateInput = typeof ReportCreateOrUpdateInput.Type;
 // Output Schema
 export const ReportCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.suspend(() => ReportPropertiesSchema),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type ReportCreateOrUpdateOutput = typeof ReportCreateOrUpdateOutput.Type;
 
@@ -719,7 +1019,7 @@ export type ReportFixInput = typeof ReportFixInput.Type;
 
 // Output Schema
 export const ReportFixOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  result: Schema.optional(Schema.Literals(["Succeeded", "Failed"])),
+  result: Schema.optional(Schema.suspend(() => ResultSchema)),
   reason: Schema.optional(Schema.String),
 });
 export type ReportFixOutput = typeof ReportFixOutput.Type;
@@ -749,23 +1049,11 @@ export type ReportGetInput = typeof ReportGetInput.Type;
 
 // Output Schema
 export const ReportGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.suspend(() => ReportPropertiesSchema),
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
-  systemData: Schema.optional(
-    Schema.Struct({
-      createdBy: Schema.optional(Schema.String),
-      createdByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      createdAt: Schema.optional(Schema.String),
-      lastModifiedBy: Schema.optional(Schema.String),
-      lastModifiedByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      lastModifiedAt: Schema.optional(Schema.String),
-    }),
-  ),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
 });
 export type ReportGetOutput = typeof ReportGetOutput.Type;
 
@@ -798,52 +1086,7 @@ export type ReportGetScopingQuestionsInput =
 export const ReportGetScopingQuestionsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     questions: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          questionId: Schema.String,
-          superiorQuestionId: Schema.optional(Schema.String),
-          inputType: Schema.Literals([
-            "None",
-            "Text",
-            "Email",
-            "MultilineText",
-            "Url",
-            "Number",
-            "Boolean",
-            "Telephone",
-            "YesNoNa",
-            "Date",
-            "YearPicker",
-            "SingleSelection",
-            "SingleSelectDropdown",
-            "MultiSelectCheckbox",
-            "MultiSelectDropdown",
-            "MultiSelectDropdownCustom",
-            "Group",
-            "Upload",
-          ]),
-          optionIds: Schema.Array(Schema.String),
-          rules: Schema.Array(
-            Schema.Literals([
-              "Required",
-              "CharLength",
-              "Url",
-              "Urls",
-              "Domains",
-              "USPrivacyShield",
-              "PublicSOX",
-              "CreditCardPCI",
-              "AzureApplication",
-              "ValidGuid",
-              "PublisherVerification",
-              "DynamicDropdown",
-              "PreventNonEnglishChar",
-              "ValidEmail",
-            ]),
-          ),
-          showSubQuestionsValue: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => ScopingQuestionSchema)),
     ),
   });
 export type ReportGetScopingQuestionsOutput =
@@ -876,27 +1119,7 @@ export type ReportListInput = typeof ReportListInput.Type;
 
 // Output Schema
 export const ReportListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  value: Schema.Array(
-    Schema.Struct({
-      id: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      type: Schema.optional(Schema.String),
-      systemData: Schema.optional(
-        Schema.Struct({
-          createdBy: Schema.optional(Schema.String),
-          createdByType: Schema.optional(
-            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-          ),
-          createdAt: Schema.optional(Schema.String),
-          lastModifiedBy: Schema.optional(Schema.String),
-          lastModifiedByType: Schema.optional(
-            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-          ),
-          lastModifiedAt: Schema.optional(Schema.String),
-        }),
-      ),
-    }),
-  ),
+  value: Schema.Array(Schema.suspend(() => ReportResourceSchema)),
   nextLink: Schema.optional(Schema.String),
 });
 export type ReportListOutput = typeof ReportListOutput.Type;
@@ -955,19 +1178,7 @@ export const ReportNestedResourceCheckNameAvailability =
 export const ReportSyncCertRecordInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     reportName: Schema.String.pipe(T.PathParam()),
-    certRecord: Schema.Struct({
-      offerGuid: Schema.optional(Schema.String),
-      certificationStatus: Schema.optional(Schema.String),
-      ingestionStatus: Schema.optional(Schema.String),
-      controls: Schema.optional(
-        Schema.Array(
-          Schema.Struct({
-            controlId: Schema.optional(Schema.String),
-            controlStatus: Schema.optional(Schema.String),
-          }),
-        ),
-      ),
-    }),
+    certRecord: Schema.suspend(() => CertSyncRecordSchema),
   }).pipe(
     T.Http({
       method: "POST",
@@ -981,21 +1192,7 @@ export type ReportSyncCertRecordInput = typeof ReportSyncCertRecordInput.Type;
 // Output Schema
 export const ReportSyncCertRecordOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    certRecord: Schema.optional(
-      Schema.Struct({
-        offerGuid: Schema.optional(Schema.String),
-        certificationStatus: Schema.optional(Schema.String),
-        ingestionStatus: Schema.optional(Schema.String),
-        controls: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              controlId: Schema.optional(Schema.String),
-              controlStatus: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-      }),
-    ),
+    certRecord: Schema.optional(Schema.suspend(() => CertSyncRecordSchema)),
   });
 export type ReportSyncCertRecordOutput = typeof ReportSyncCertRecordOutput.Type;
 
@@ -1016,82 +1213,7 @@ export const ReportSyncCertRecord = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const ReportUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   reportName: Schema.String.pipe(T.PathParam()),
   properties: Schema.optional(
-    Schema.Struct({
-      triggerTime: Schema.optional(Schema.String),
-      timeZone: Schema.optional(Schema.String),
-      resources: Schema.optional(
-        Schema.Array(
-          Schema.Struct({
-            resourceId: Schema.String,
-            resourceType: Schema.optional(Schema.String),
-            resourceKind: Schema.optional(Schema.String),
-            resourceOrigin: Schema.optional(
-              Schema.Literals(["Azure", "AWS", "GCP"]),
-            ),
-            accountId: Schema.optional(Schema.String),
-          }),
-        ),
-      ),
-      status: Schema.optional(
-        Schema.Literals(["Active", "Failed", "Reviewing", "Disabled"]),
-      ),
-      errors: Schema.optional(Schema.Array(Schema.String)),
-      tenantId: Schema.optional(Schema.String),
-      offerGuid: Schema.optional(Schema.String),
-      nextTriggerTime: Schema.optional(Schema.String),
-      lastTriggerTime: Schema.optional(Schema.String),
-      subscriptions: Schema.optional(Schema.Array(Schema.String)),
-      complianceStatus: Schema.optional(
-        Schema.Struct({
-          m365: Schema.optional(
-            Schema.Struct({
-              passedCount: Schema.optional(Schema.Number),
-              failedCount: Schema.optional(Schema.Number),
-              manualCount: Schema.optional(Schema.Number),
-              notApplicableCount: Schema.optional(Schema.Number),
-              pendingCount: Schema.optional(Schema.Number),
-            }),
-          ),
-        }),
-      ),
-      storageInfo: Schema.optional(
-        Schema.Struct({
-          subscriptionId: Schema.optional(Schema.String),
-          resourceGroup: Schema.optional(Schema.String),
-          accountName: Schema.optional(Schema.String),
-          location: Schema.optional(Schema.String),
-        }),
-      ),
-      certRecords: Schema.optional(
-        Schema.Array(
-          Schema.Struct({
-            offerGuid: Schema.optional(Schema.String),
-            certificationStatus: Schema.optional(Schema.String),
-            ingestionStatus: Schema.optional(Schema.String),
-            controls: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  controlId: Schema.optional(Schema.String),
-                  controlStatus: Schema.optional(Schema.String),
-                }),
-              ),
-            ),
-          }),
-        ),
-      ),
-      provisioningState: Schema.optional(
-        Schema.Literals([
-          "Succeeded",
-          "Failed",
-          "Canceled",
-          "Creating",
-          "Deleting",
-          "Fixing",
-          "Verifying",
-          "Updating",
-        ]),
-      ),
-    }),
+    Schema.suspend(() => ReportPatchPropertiesSchema),
   ),
 }).pipe(
   T.Http({
@@ -1105,23 +1227,11 @@ export type ReportUpdateInput = typeof ReportUpdateInput.Type;
 
 // Output Schema
 export const ReportUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.suspend(() => ReportPropertiesSchema),
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
-  systemData: Schema.optional(
-    Schema.Struct({
-      createdBy: Schema.optional(Schema.String),
-      createdByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      createdAt: Schema.optional(Schema.String),
-      lastModifiedBy: Schema.optional(Schema.String),
-      lastModifiedByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      lastModifiedAt: Schema.optional(Schema.String),
-    }),
-  ),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
 });
 export type ReportUpdateOutput = typeof ReportUpdateOutput.Type;
 
@@ -1151,7 +1261,7 @@ export type ReportVerifyInput = typeof ReportVerifyInput.Type;
 
 // Output Schema
 export const ReportVerifyOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  result: Schema.optional(Schema.Literals(["Succeeded", "Failed"])),
+  result: Schema.optional(Schema.suspend(() => ResultSchema)),
   reason: Schema.optional(Schema.String),
 });
 export type ReportVerifyOutput = typeof ReportVerifyOutput.Type;
@@ -1172,28 +1282,7 @@ export const ScopingConfigurationCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     reportName: Schema.String.pipe(T.PathParam()),
     scopingConfigurationName: Schema.String.pipe(T.PathParam()),
-    properties: Schema.Struct({
-      answers: Schema.optional(
-        Schema.Array(
-          Schema.Struct({
-            questionId: Schema.String,
-            answers: Schema.Array(Schema.String),
-          }),
-        ),
-      ),
-      provisioningState: Schema.optional(
-        Schema.Literals([
-          "Succeeded",
-          "Failed",
-          "Canceled",
-          "Creating",
-          "Deleting",
-          "Fixing",
-          "Verifying",
-          "Updating",
-        ]),
-      ),
-    }),
+    properties: Schema.suspend(() => ScopingConfigurationPropertiesSchema),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -1207,23 +1296,11 @@ export type ScopingConfigurationCreateOrUpdateInput =
 // Output Schema
 export const ScopingConfigurationCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.suspend(() => ScopingConfigurationPropertiesSchema),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type ScopingConfigurationCreateOrUpdateOutput =
   typeof ScopingConfigurationCreateOrUpdateOutput.Type;
@@ -1294,23 +1371,11 @@ export type ScopingConfigurationGetInput =
 // Output Schema
 export const ScopingConfigurationGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.suspend(() => ScopingConfigurationPropertiesSchema),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type ScopingConfigurationGetOutput =
   typeof ScopingConfigurationGetOutput.Type;
@@ -1347,35 +1412,7 @@ export type ScopingConfigurationListInput =
 export const ScopingConfigurationListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
+      Schema.suspend(() => ScopingConfigurationResourceSchema),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -1400,12 +1437,7 @@ export const SnapshotDownloadInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   reportName: Schema.String.pipe(T.PathParam()),
   snapshotName: Schema.String.pipe(T.PathParam()),
   reportCreatorTenantId: Schema.optional(Schema.String),
-  downloadType: Schema.Literals([
-    "ComplianceReport",
-    "CompliancePdfReport",
-    "ComplianceDetailedPdfReport",
-    "ResourceList",
-  ]),
+  downloadType: Schema.suspend(() => DownloadTypeSchema),
   offerGuid: Schema.optional(Schema.String),
 }).pipe(
   T.Http({
@@ -1421,53 +1453,16 @@ export type SnapshotDownloadInput = typeof SnapshotDownloadInput.Type;
 export const SnapshotDownloadOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     resourceList: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          subscriptionId: Schema.optional(Schema.String),
-          resourceGroup: Schema.optional(Schema.String),
-          resourceType: Schema.optional(Schema.String),
-          resourceId: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => ResourceItemSchema)),
     ),
     complianceReport: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          categoryName: Schema.optional(Schema.String),
-          controlFamilyName: Schema.optional(Schema.String),
-          controlId: Schema.optional(Schema.String),
-          controlName: Schema.optional(Schema.String),
-          controlStatus: Schema.optional(
-            Schema.Literals([
-              "Passed",
-              "Failed",
-              "NotApplicable",
-              "PendingApproval",
-            ]),
-          ),
-          responsibilityTitle: Schema.optional(Schema.String),
-          responsibilityDescription: Schema.optional(Schema.String),
-          resourceId: Schema.optional(Schema.String),
-          resourceType: Schema.optional(Schema.String),
-          resourceOrigin: Schema.optional(
-            Schema.Literals(["Azure", "AWS", "GCP"]),
-          ),
-          resourceStatus: Schema.optional(
-            Schema.Literals(["Healthy", "Unhealthy"]),
-          ),
-          resourceStatusChangeDate: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => ComplianceReportItemSchema)),
     ),
     compliancePdfReport: Schema.optional(
-      Schema.Struct({
-        sasUri: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(() => DownloadResponseCompliancePdfReportSchema),
     ),
     complianceDetailedPdfReport: Schema.optional(
-      Schema.Struct({
-        sasUri: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(() => DownloadResponseComplianceDetailedPdfReportSchema),
     ),
   },
 );
@@ -1500,23 +1495,11 @@ export type SnapshotGetInput = typeof SnapshotGetInput.Type;
 
 // Output Schema
 export const SnapshotGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.optional(Schema.suspend(() => SnapshotPropertiesSchema)),
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
-  systemData: Schema.optional(
-    Schema.Struct({
-      createdBy: Schema.optional(Schema.String),
-      createdByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      createdAt: Schema.optional(Schema.String),
-      lastModifiedBy: Schema.optional(Schema.String),
-      lastModifiedByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      lastModifiedAt: Schema.optional(Schema.String),
-    }),
-  ),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
 });
 export type SnapshotGetOutput = typeof SnapshotGetOutput.Type;
 
@@ -1546,27 +1529,7 @@ export type SnapshotListInput = typeof SnapshotListInput.Type;
 
 // Output Schema
 export const SnapshotListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  value: Schema.Array(
-    Schema.Struct({
-      id: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      type: Schema.optional(Schema.String),
-      systemData: Schema.optional(
-        Schema.Struct({
-          createdBy: Schema.optional(Schema.String),
-          createdByType: Schema.optional(
-            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-          ),
-          createdAt: Schema.optional(Schema.String),
-          lastModifiedBy: Schema.optional(Schema.String),
-          lastModifiedByType: Schema.optional(
-            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-          ),
-          lastModifiedAt: Schema.optional(Schema.String),
-        }),
-      ),
-    }),
-  ),
+  value: Schema.Array(Schema.suspend(() => SnapshotResourceSchema)),
   nextLink: Schema.optional(Schema.String),
 });
 export type SnapshotListOutput = typeof SnapshotListOutput.Type;
@@ -1587,46 +1550,7 @@ export const WebhookCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     reportName: Schema.String.pipe(T.PathParam()),
     webhookName: Schema.String.pipe(T.PathParam()),
-    properties: Schema.Struct({
-      webhookId: Schema.optional(Schema.String),
-      status: Schema.optional(Schema.Literals(["Enabled", "Disabled"])),
-      tenantId: Schema.optional(Schema.String),
-      sendAllEvents: Schema.optional(Schema.Literals(["true", "false"])),
-      events: Schema.optional(
-        Schema.Array(
-          Schema.Literals([
-            "generate_snapshot_success",
-            "generate_snapshot_failed",
-            "assessment_failure",
-            "report_configuration_changes",
-            "report_deletion",
-          ]),
-        ),
-      ),
-      payloadUrl: Schema.optional(Schema.String),
-      contentType: Schema.optional(Schema.Literals(["application/json"])),
-      webhookKey: Schema.optional(Schema.String),
-      updateWebhookKey: Schema.optional(Schema.Literals(["true", "false"])),
-      webhookKeyEnabled: Schema.optional(Schema.Literals(["true", "false"])),
-      enableSslVerification: Schema.optional(
-        Schema.Literals(["true", "false"]),
-      ),
-      deliveryStatus: Schema.optional(
-        Schema.Literals(["Succeeded", "Failed", "NotStarted"]),
-      ),
-      provisioningState: Schema.optional(
-        Schema.Literals([
-          "Succeeded",
-          "Failed",
-          "Canceled",
-          "Creating",
-          "Deleting",
-          "Fixing",
-          "Verifying",
-          "Updating",
-        ]),
-      ),
-    }),
+    properties: Schema.suspend(() => WebhookPropertiesSchema),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -1639,23 +1563,11 @@ export type WebhookCreateOrUpdateInput = typeof WebhookCreateOrUpdateInput.Type;
 // Output Schema
 export const WebhookCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.suspend(() => WebhookPropertiesSchema),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type WebhookCreateOrUpdateOutput =
   typeof WebhookCreateOrUpdateOutput.Type;
@@ -1718,23 +1630,11 @@ export type WebhookGetInput = typeof WebhookGetInput.Type;
 
 // Output Schema
 export const WebhookGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.suspend(() => WebhookPropertiesSchema),
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
-  systemData: Schema.optional(
-    Schema.Struct({
-      createdBy: Schema.optional(Schema.String),
-      createdByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      createdAt: Schema.optional(Schema.String),
-      lastModifiedBy: Schema.optional(Schema.String),
-      lastModifiedByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      lastModifiedAt: Schema.optional(Schema.String),
-    }),
-  ),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
 });
 export type WebhookGetOutput = typeof WebhookGetOutput.Type;
 
@@ -1764,27 +1664,7 @@ export type WebhookListInput = typeof WebhookListInput.Type;
 
 // Output Schema
 export const WebhookListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  value: Schema.Array(
-    Schema.Struct({
-      id: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      type: Schema.optional(Schema.String),
-      systemData: Schema.optional(
-        Schema.Struct({
-          createdBy: Schema.optional(Schema.String),
-          createdByType: Schema.optional(
-            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-          ),
-          createdAt: Schema.optional(Schema.String),
-          lastModifiedBy: Schema.optional(Schema.String),
-          lastModifiedByType: Schema.optional(
-            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-          ),
-          lastModifiedAt: Schema.optional(Schema.String),
-        }),
-      ),
-    }),
-  ),
+  value: Schema.Array(Schema.suspend(() => WebhookResourceSchema)),
   nextLink: Schema.optional(Schema.String),
 });
 export type WebhookListOutput = typeof WebhookListOutput.Type;
@@ -1804,48 +1684,7 @@ export const WebhookList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const WebhookUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   reportName: Schema.String.pipe(T.PathParam()),
   webhookName: Schema.String.pipe(T.PathParam()),
-  properties: Schema.optional(
-    Schema.Struct({
-      webhookId: Schema.optional(Schema.String),
-      status: Schema.optional(Schema.Literals(["Enabled", "Disabled"])),
-      tenantId: Schema.optional(Schema.String),
-      sendAllEvents: Schema.optional(Schema.Literals(["true", "false"])),
-      events: Schema.optional(
-        Schema.Array(
-          Schema.Literals([
-            "generate_snapshot_success",
-            "generate_snapshot_failed",
-            "assessment_failure",
-            "report_configuration_changes",
-            "report_deletion",
-          ]),
-        ),
-      ),
-      payloadUrl: Schema.optional(Schema.String),
-      contentType: Schema.optional(Schema.Literals(["application/json"])),
-      webhookKey: Schema.optional(Schema.String),
-      updateWebhookKey: Schema.optional(Schema.Literals(["true", "false"])),
-      webhookKeyEnabled: Schema.optional(Schema.Literals(["true", "false"])),
-      enableSslVerification: Schema.optional(
-        Schema.Literals(["true", "false"]),
-      ),
-      deliveryStatus: Schema.optional(
-        Schema.Literals(["Succeeded", "Failed", "NotStarted"]),
-      ),
-      provisioningState: Schema.optional(
-        Schema.Literals([
-          "Succeeded",
-          "Failed",
-          "Canceled",
-          "Creating",
-          "Deleting",
-          "Fixing",
-          "Verifying",
-          "Updating",
-        ]),
-      ),
-    }),
-  ),
+  properties: Schema.optional(Schema.suspend(() => WebhookPropertiesSchema)),
 }).pipe(
   T.Http({
     method: "PATCH",
@@ -1857,23 +1696,11 @@ export type WebhookUpdateInput = typeof WebhookUpdateInput.Type;
 
 // Output Schema
 export const WebhookUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.suspend(() => WebhookPropertiesSchema),
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
-  systemData: Schema.optional(
-    Schema.Struct({
-      createdBy: Schema.optional(Schema.String),
-      createdByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      createdAt: Schema.optional(Schema.String),
-      lastModifiedBy: Schema.optional(Schema.String),
-      lastModifiedByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      lastModifiedAt: Schema.optional(Schema.String),
-    }),
-  ),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
 });
 export type WebhookUpdateOutput = typeof WebhookUpdateOutput.Type;
 

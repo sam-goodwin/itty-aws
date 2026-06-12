@@ -7,7 +7,2316 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
-import { SensitiveOutputString, SensitiveString } from "../sensitive.ts";
+import { SensitiveOutputString } from "../sensitive.ts";
+
+// Shared schemas
+const AuthorizationProviderContractSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
+const AuthorizationProviderContractPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    displayName: Schema.optional(Schema.String),
+    identityProvider: Schema.optional(Schema.String),
+    oauth2: Schema.optional(
+      Schema.suspend(() => AuthorizationProviderOAuth2SettingsSchema),
+    ),
+  });
+const AuthorizationProviderOAuth2SettingsSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    redirectUrl: Schema.optional(Schema.String),
+    grantTypes: Schema.optional(
+      Schema.suspend(() => AuthorizationProviderOAuth2GrantTypesSchema),
+    ),
+  });
+const AuthorizationProviderOAuth2GrantTypesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    authorizationCode: Schema.optional(
+      Schema.Record(Schema.String, Schema.String),
+    ),
+    clientCredentials: Schema.optional(
+      Schema.Record(Schema.String, Schema.String),
+    ),
+  });
+const AuthorizationContractSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
+const AuthorizationContractPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    authorizationType: Schema.optional(Schema.Literals(["OAuth2"])),
+    oauth2grantType: Schema.optional(
+      Schema.Literals(["AuthorizationCode", "ClientCredentials"]),
+    ),
+    parameters: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    error: Schema.optional(Schema.suspend(() => AuthorizationErrorSchema)),
+    status: Schema.optional(Schema.String),
+  });
+const AuthorizationErrorSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  code: Schema.optional(Schema.String),
+  message: Schema.optional(Schema.String),
+});
+const AuthorizationAccessPolicyContractSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
+const AuthorizationAccessPolicyContractPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    appIds: Schema.optional(Schema.Array(Schema.String)),
+    tenantId: Schema.optional(Schema.String),
+    objectId: Schema.optional(Schema.String),
+  });
+const ApiManagementSkuSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  resourceType: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  tier: Schema.optional(Schema.String),
+  size: Schema.optional(Schema.String),
+  family: Schema.optional(Schema.String),
+  kind: Schema.optional(Schema.String),
+  capacity: Schema.optional(
+    Schema.suspend(() => ApiManagementSkuCapacitySchema),
+  ),
+  locations: Schema.optional(Schema.Array(Schema.String)),
+  locationInfo: Schema.optional(
+    Schema.Array(Schema.suspend(() => ApiManagementSkuLocationInfoSchema)),
+  ),
+  apiVersions: Schema.optional(Schema.Array(Schema.String)),
+  costs: Schema.optional(
+    Schema.Array(Schema.suspend(() => ApiManagementSkuCostsSchema)),
+  ),
+  capabilities: Schema.optional(
+    Schema.Array(Schema.suspend(() => ApiManagementSkuCapabilitiesSchema)),
+  ),
+  restrictions: Schema.optional(
+    Schema.Array(Schema.suspend(() => ApiManagementSkuRestrictionsSchema)),
+  ),
+});
+const ApiManagementSkuCapacitySchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    minimum: Schema.optional(Schema.Number),
+    maximum: Schema.optional(Schema.Number),
+    default: Schema.optional(Schema.Number),
+    scaleType: Schema.optional(
+      Schema.Literals(["Automatic", "Manual", "None"]),
+    ),
+  });
+const ApiManagementSkuLocationInfoSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    location: Schema.optional(Schema.String),
+    zones: Schema.optional(Schema.Array(Schema.String)),
+    zoneDetails: Schema.optional(
+      Schema.Array(Schema.suspend(() => ApiManagementSkuZoneDetailsSchema)),
+    ),
+  });
+const ApiManagementSkuZoneDetailsSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.Array(Schema.String)),
+    capabilities: Schema.optional(
+      Schema.Array(Schema.suspend(() => ApiManagementSkuCapabilitiesSchema)),
+    ),
+  });
+const ApiManagementSkuCapabilitiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    value: Schema.optional(Schema.String),
+  });
+const ApiManagementSkuCostsSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  meterID: Schema.optional(Schema.String),
+  quantity: Schema.optional(Schema.Number),
+  extendedUnit: Schema.optional(Schema.String),
+});
+const ApiManagementSkuRestrictionsSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    type: Schema.optional(Schema.Literals(["Location", "Zone"])),
+    values: Schema.optional(Schema.Array(Schema.String)),
+    restrictionInfo: Schema.optional(
+      Schema.suspend(() => ApiManagementSkuRestrictionInfoSchema),
+    ),
+    reasonCode: Schema.optional(
+      Schema.Literals(["QuotaId", "NotAvailableForSubscription"]),
+    ),
+  });
+const ApiManagementSkuRestrictionInfoSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    locations: Schema.optional(Schema.Array(Schema.String)),
+    zones: Schema.optional(Schema.Array(Schema.String)),
+  });
+const ApiManagementGatewayConfigConnectionResourceSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
+const GatewayConfigConnectionBasePropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    provisioningState: Schema.optional(Schema.String),
+    sourceId: Schema.optional(Schema.String),
+    defaultHostname: Schema.optional(Schema.String),
+    hostnames: Schema.optional(Schema.Array(Schema.String)),
+  });
+const ReportRecordContractSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  timestamp: Schema.optional(Schema.String),
+  interval: Schema.optional(Schema.String),
+  country: Schema.optional(Schema.String),
+  region: Schema.optional(Schema.String),
+  zip: Schema.optional(Schema.String),
+  userId: Schema.optional(Schema.String),
+  productId: Schema.optional(Schema.String),
+  apiId: Schema.optional(Schema.String),
+  operationId: Schema.optional(Schema.String),
+  apiRegion: Schema.optional(Schema.String),
+  subscriptionId: Schema.optional(Schema.String),
+  callCountSuccess: Schema.optional(Schema.Number),
+  callCountBlocked: Schema.optional(Schema.Number),
+  callCountFailed: Schema.optional(Schema.Number),
+  callCountOther: Schema.optional(Schema.Number),
+  callCountTotal: Schema.optional(Schema.Number),
+  bandwidth: Schema.optional(Schema.Number),
+  cacheHitCount: Schema.optional(Schema.Number),
+  cacheMissCount: Schema.optional(Schema.Number),
+  apiTimeAvg: Schema.optional(Schema.Number),
+  apiTimeMin: Schema.optional(Schema.Number),
+  apiTimeMax: Schema.optional(Schema.Number),
+  serviceTimeAvg: Schema.optional(Schema.Number),
+  serviceTimeMin: Schema.optional(Schema.Number),
+  serviceTimeMax: Schema.optional(Schema.Number),
+});
+const RequestReportRecordContractSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    apiId: Schema.optional(Schema.String),
+    operationId: Schema.optional(Schema.String),
+    productId: Schema.optional(Schema.String),
+    userId: Schema.optional(Schema.String),
+    method: Schema.optional(Schema.String),
+    url: Schema.optional(Schema.String),
+    ipAddress: Schema.optional(Schema.String),
+    backendResponseCode: Schema.optional(Schema.String),
+    responseCode: Schema.optional(Schema.Number),
+    responseSize: Schema.optional(Schema.Number),
+    timestamp: Schema.optional(Schema.String),
+    cache: Schema.optional(Schema.String),
+    apiTime: Schema.optional(Schema.Number),
+    serviceTime: Schema.optional(Schema.Number),
+    apiRegion: Schema.optional(Schema.String),
+    subscriptionId: Schema.optional(Schema.String),
+    requestId: Schema.optional(Schema.String),
+    requestSize: Schema.optional(Schema.Number),
+  });
+const TagResourceContractSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  tag: Schema.suspend(() => TagTagResourceContractPropertiesSchema),
+  api: Schema.optional(
+    Schema.suspend(() => ApiTagResourceContractPropertiesSchema),
+  ),
+  operation: Schema.optional(
+    Schema.suspend(() => OperationTagResourceContractPropertiesSchema),
+  ),
+  product: Schema.optional(
+    Schema.suspend(() => ProductTagResourceContractPropertiesSchema),
+  ),
+});
+const TagTagResourceContractPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+  });
+const ApiTagResourceContractPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    description: Schema.optional(Schema.String),
+    authenticationSettings: Schema.optional(
+      Schema.suspend(() => AuthenticationSettingsContractSchema),
+    ),
+    subscriptionKeyParameterNames: Schema.optional(
+      Schema.suspend(() => SubscriptionKeyParameterNamesContractSchema),
+    ),
+    type: Schema.optional(
+      Schema.Literals([
+        "http",
+        "soap",
+        "websocket",
+        "graphql",
+        "odata",
+        "grpc",
+      ]),
+    ),
+    apiRevision: Schema.optional(Schema.String),
+    apiVersion: Schema.optional(Schema.String),
+    isCurrent: Schema.optional(Schema.Boolean),
+    isOnline: Schema.optional(Schema.Boolean),
+    apiRevisionDescription: Schema.optional(Schema.String),
+    apiVersionDescription: Schema.optional(Schema.String),
+    apiVersionSetId: Schema.optional(Schema.String),
+    subscriptionRequired: Schema.optional(Schema.Boolean),
+    termsOfServiceUrl: Schema.optional(Schema.String),
+    contact: Schema.optional(Schema.suspend(() => ApiContactInformationSchema)),
+    license: Schema.optional(Schema.suspend(() => ApiLicenseInformationSchema)),
+  });
+const AuthenticationSettingsContractSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    oAuth2: Schema.optional(
+      Schema.suspend(() => OAuth2AuthenticationSettingsContractSchema),
+    ),
+    openid: Schema.optional(
+      Schema.suspend(() => OpenIdAuthenticationSettingsContractSchema),
+    ),
+    oAuth2AuthenticationSettings: Schema.optional(
+      Schema.Array(
+        Schema.suspend(() => OAuth2AuthenticationSettingsContractSchema),
+      ),
+    ),
+    openidAuthenticationSettings: Schema.optional(
+      Schema.Array(
+        Schema.suspend(() => OpenIdAuthenticationSettingsContractSchema),
+      ),
+    ),
+  });
+const OAuth2AuthenticationSettingsContractSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    authorizationServerId: Schema.optional(Schema.String),
+    scope: Schema.optional(Schema.String),
+  });
+const OpenIdAuthenticationSettingsContractSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    openidProviderId: Schema.optional(Schema.String),
+    bearerTokenSendingMethods: Schema.optional(
+      Schema.Array(
+        Schema.suspend(() => BearerTokenSendingMethodsContractSchema),
+      ),
+    ),
+  });
+const BearerTokenSendingMethodsContractSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Literals(["authorizationHeader", "query"]);
+const SubscriptionKeyParameterNamesContractSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    header: Schema.optional(Schema.String),
+    query: Schema.optional(Schema.String),
+  });
+const ApiContactInformationSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  url: Schema.optional(Schema.String),
+  email: Schema.optional(Schema.String),
+});
+const ApiLicenseInformationSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  url: Schema.optional(Schema.String),
+});
+const OperationTagResourceContractPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    apiName: Schema.optional(Schema.String),
+    apiRevision: Schema.optional(Schema.String),
+    apiVersion: Schema.optional(Schema.String),
+    description: Schema.optional(Schema.String),
+    method: Schema.optional(Schema.String),
+    urlTemplate: Schema.optional(Schema.String),
+  });
+const ProductTagResourceContractPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    description: Schema.optional(Schema.String),
+    terms: Schema.optional(Schema.String),
+    subscriptionRequired: Schema.optional(Schema.Boolean),
+    approvalRequired: Schema.optional(Schema.Boolean),
+    subscriptionsLimit: Schema.optional(Schema.Number),
+    state: Schema.optional(Schema.Literals(["notPublished", "published"])),
+  });
+const PrivateEndpointConnectionSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
+const PrivateEndpointConnectionPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    privateEndpoint: Schema.optional(
+      Schema.suspend(() => PrivateEndpointSchema),
+    ),
+    privateLinkServiceConnectionState: Schema.suspend(
+      () => PrivateLinkServiceConnectionStateSchema,
+    ),
+    provisioningState: Schema.optional(
+      Schema.suspend(() => PrivateEndpointConnectionProvisioningStateSchema),
+    ),
+  });
+const PrivateEndpointSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+});
+const PrivateLinkServiceConnectionStateSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    status: Schema.optional(
+      Schema.suspend(() => PrivateEndpointServiceConnectionStatusSchema),
+    ),
+    description: Schema.optional(Schema.String),
+    actionsRequired: Schema.optional(Schema.String),
+  });
+const PrivateEndpointServiceConnectionStatusSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+    "Pending",
+    "Approved",
+    "Rejected",
+  ]);
+const PrivateEndpointConnectionProvisioningStateSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+    "Succeeded",
+    "Creating",
+    "Deleting",
+    "Failed",
+  ]);
+const PrivateLinkResourceSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
+const PrivateLinkResourcePropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    groupId: Schema.optional(Schema.String),
+    requiredMembers: Schema.optional(Schema.Array(Schema.String)),
+    requiredZoneNames: Schema.optional(Schema.Array(Schema.String)),
+  });
+const LoggerContractSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
+const LoggerContractPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    loggerType: Schema.Literals([
+      "azureEventHub",
+      "applicationInsights",
+      "azureMonitor",
+    ]),
+    description: Schema.optional(Schema.String),
+    credentials: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    isBuffered: Schema.optional(Schema.Boolean),
+    resourceId: Schema.optional(Schema.String),
+  });
+const LoggerUpdateParametersSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  loggerType: Schema.optional(
+    Schema.Literals(["azureEventHub", "applicationInsights", "azureMonitor"]),
+  ),
+  description: Schema.optional(Schema.String),
+  credentials: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  isBuffered: Schema.optional(Schema.Boolean),
+});
+const NamedValueContractSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
+const NamedValueContractPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    tags: Schema.optional(Schema.Array(Schema.String)),
+    secret: Schema.optional(Schema.Boolean),
+  });
+const NamedValueCreateContractPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    tags: Schema.optional(Schema.Array(Schema.String)),
+    secret: Schema.optional(Schema.Boolean),
+  });
+const NamedValueUpdateParameterPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    tags: Schema.optional(Schema.Array(Schema.String)),
+    secret: Schema.optional(Schema.Boolean),
+  });
+const OperationSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  display: Schema.optional(
+    Schema.Struct({
+      provider: Schema.optional(Schema.String),
+      operation: Schema.optional(Schema.String),
+      resource: Schema.optional(Schema.String),
+      description: Schema.optional(Schema.String),
+    }),
+  ),
+  origin: Schema.optional(Schema.String),
+  properties: Schema.optional(Schema.Unknown),
+});
+const ResourceSkuResultSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  resourceType: Schema.optional(Schema.String),
+  sku: Schema.optional(Schema.suspend(() => ResourceSkuSchema)),
+  capacity: Schema.optional(Schema.suspend(() => ResourceSkuCapacitySchema)),
+});
+const ResourceSkuSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(
+    Schema.Literals([
+      "Developer",
+      "Standard",
+      "Premium",
+      "Basic",
+      "Consumption",
+      "Isolated",
+      "BasicV2",
+      "StandardV2",
+    ]),
+  ),
+});
+const ResourceSkuCapacitySchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  minimum: Schema.optional(Schema.Number),
+  maximum: Schema.optional(Schema.Number),
+  default: Schema.optional(Schema.Number),
+  scaleType: Schema.optional(Schema.Literals(["automatic", "manual", "none"])),
+});
+const ApiManagementServicePropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    notificationSenderEmail: Schema.optional(Schema.String),
+    provisioningState: Schema.optional(Schema.String),
+    targetProvisioningState: Schema.optional(Schema.String),
+    createdAtUtc: Schema.optional(Schema.String),
+    gatewayUrl: Schema.optional(Schema.String),
+    gatewayRegionalUrl: Schema.optional(Schema.String),
+    portalUrl: Schema.optional(Schema.String),
+    managementApiUrl: Schema.optional(Schema.String),
+    scmUrl: Schema.optional(Schema.String),
+    developerPortalUrl: Schema.optional(Schema.String),
+    hostnameConfigurations: Schema.optional(
+      Schema.Array(Schema.suspend(() => HostnameConfigurationSchema)),
+    ),
+    publicIPAddresses: Schema.optional(Schema.Array(Schema.String)),
+    privateIPAddresses: Schema.optional(Schema.Array(Schema.String)),
+    publicIpAddressId: Schema.optional(Schema.String),
+    publicNetworkAccess: Schema.optional(
+      Schema.Literals(["Enabled", "Disabled"]),
+    ),
+    configurationApi: Schema.optional(
+      Schema.suspend(() => ConfigurationApiSchema),
+    ),
+    virtualNetworkConfiguration: Schema.optional(
+      Schema.suspend(() => VirtualNetworkConfigurationSchema),
+    ),
+    additionalLocations: Schema.optional(
+      Schema.Array(Schema.suspend(() => AdditionalLocationSchema)),
+    ),
+    customProperties: Schema.optional(
+      Schema.Record(Schema.String, Schema.String),
+    ),
+    certificates: Schema.optional(
+      Schema.Array(Schema.suspend(() => CertificateConfigurationSchema)),
+    ),
+    enableClientCertificate: Schema.optional(Schema.Boolean),
+    natGatewayState: Schema.optional(Schema.Literals(["Enabled", "Disabled"])),
+    outboundPublicIPAddresses: Schema.optional(Schema.Array(Schema.String)),
+    disableGateway: Schema.optional(Schema.Boolean),
+    virtualNetworkType: Schema.optional(
+      Schema.Literals(["None", "External", "Internal"]),
+    ),
+    apiVersionConstraint: Schema.optional(
+      Schema.suspend(() => ApiVersionConstraintSchema),
+    ),
+    restore: Schema.optional(Schema.Boolean),
+    privateEndpointConnections: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
+          properties: Schema.optional(
+            Schema.suspend(
+              () => PrivateEndpointConnectionWrapperPropertiesSchema,
+            ),
+          ),
+        }),
+      ),
+    ),
+    platformVersion: Schema.optional(
+      Schema.Literals(["undetermined", "stv1", "stv2", "mtv1", "stv2.1"]),
+    ),
+    legacyPortalStatus: Schema.optional(
+      Schema.Literals(["Enabled", "Disabled"]),
+    ),
+    developerPortalStatus: Schema.optional(
+      Schema.Literals(["Enabled", "Disabled"]),
+    ),
+  });
+const HostnameConfigurationSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  type: Schema.Literals([
+    "Proxy",
+    "Portal",
+    "Management",
+    "Scm",
+    "DeveloperPortal",
+    "ConfigurationApi",
+  ]),
+  hostName: Schema.String,
+  keyVaultId: Schema.optional(Schema.String),
+  identityClientId: Schema.optional(Schema.String),
+  encodedCertificate: Schema.optional(Schema.String),
+  certificatePassword: Schema.optional(SensitiveOutputString),
+  defaultSslBinding: Schema.optional(Schema.Boolean),
+  negotiateClientCertificate: Schema.optional(Schema.Boolean),
+  certificate: Schema.optional(
+    Schema.suspend(() => CertificateInformationSchema),
+  ),
+  certificateSource: Schema.optional(
+    Schema.Literals(["Managed", "KeyVault", "Custom", "BuiltIn"]),
+  ),
+  certificateStatus: Schema.optional(
+    Schema.Literals(["Completed", "Failed", "InProgress"]),
+  ),
+});
+const CertificateInformationSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  expiry: Schema.String,
+  thumbprint: Schema.String,
+  subject: Schema.String,
+});
+const ConfigurationApiSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  legacyApi: Schema.optional(Schema.Literals(["Enabled", "Disabled"])),
+});
+const VirtualNetworkConfigurationSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    vnetid: Schema.optional(Schema.String),
+    subnetname: Schema.optional(Schema.String),
+    subnetResourceId: Schema.optional(Schema.String),
+  });
+const AdditionalLocationSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  location: Schema.String,
+  sku: Schema.suspend(() => ApiManagementServiceSkuPropertiesSchema),
+  zones: Schema.optional(Schema.Array(Schema.String)),
+  publicIPAddresses: Schema.optional(Schema.Array(Schema.String)),
+  privateIPAddresses: Schema.optional(Schema.Array(Schema.String)),
+  publicIpAddressId: Schema.optional(Schema.String),
+  virtualNetworkConfiguration: Schema.optional(
+    Schema.suspend(() => VirtualNetworkConfigurationSchema),
+  ),
+  gatewayRegionalUrl: Schema.optional(Schema.String),
+  natGatewayState: Schema.optional(Schema.Literals(["Enabled", "Disabled"])),
+  outboundPublicIPAddresses: Schema.optional(Schema.Array(Schema.String)),
+  disableGateway: Schema.optional(Schema.Boolean),
+  platformVersion: Schema.optional(
+    Schema.Literals(["undetermined", "stv1", "stv2", "mtv1", "stv2.1"]),
+  ),
+});
+const ApiManagementServiceSkuPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.Literals([
+      "Developer",
+      "Standard",
+      "Premium",
+      "Basic",
+      "Consumption",
+      "Isolated",
+      "BasicV2",
+      "StandardV2",
+    ]),
+    capacity: Schema.Number,
+  });
+const CertificateConfigurationSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    encodedCertificate: Schema.optional(Schema.String),
+    certificatePassword: Schema.optional(SensitiveOutputString),
+    storeName: Schema.Literals(["CertificateAuthority", "Root"]),
+    certificate: Schema.optional(
+      Schema.suspend(() => CertificateInformationSchema),
+    ),
+  });
+const ApiVersionConstraintSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  minApiVersion: Schema.optional(Schema.String),
+});
+const PrivateEndpointConnectionWrapperPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    privateEndpoint: Schema.optional(Schema.suspend(() => ArmIdWrapperSchema)),
+    privateLinkServiceConnectionState: Schema.Struct({
+      status: Schema.optional(
+        Schema.suspend(() => PrivateEndpointServiceConnectionStatusSchema),
+      ),
+      description: Schema.optional(Schema.String),
+      actionsRequired: Schema.optional(Schema.String),
+    }),
+    provisioningState: Schema.optional(Schema.String),
+    groupIds: Schema.optional(Schema.Array(Schema.String)),
+  });
+const ArmIdWrapperSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+});
+const ApiManagementServiceIdentitySchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    type: Schema.Literals([
+      "SystemAssigned",
+      "UserAssigned",
+      "SystemAssigned, UserAssigned",
+      "None",
+    ]),
+    principalId: Schema.optional(Schema.String),
+    tenantId: Schema.optional(Schema.String),
+    userAssignedIdentities: Schema.optional(
+      Schema.Record(
+        Schema.String,
+        Schema.suspend(() => UserIdentityPropertiesSchema),
+      ),
+    ),
+  });
+const UserIdentityPropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  principalId: Schema.optional(Schema.String),
+  clientId: Schema.optional(Schema.String),
+});
+const ApiManagementServiceUpdatePropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    notificationSenderEmail: Schema.optional(Schema.String),
+    provisioningState: Schema.optional(Schema.String),
+    targetProvisioningState: Schema.optional(Schema.String),
+    createdAtUtc: Schema.optional(Schema.String),
+    gatewayUrl: Schema.optional(Schema.String),
+    gatewayRegionalUrl: Schema.optional(Schema.String),
+    portalUrl: Schema.optional(Schema.String),
+    managementApiUrl: Schema.optional(Schema.String),
+    scmUrl: Schema.optional(Schema.String),
+    developerPortalUrl: Schema.optional(Schema.String),
+    hostnameConfigurations: Schema.optional(
+      Schema.Array(Schema.suspend(() => HostnameConfigurationSchema)),
+    ),
+    publicIPAddresses: Schema.optional(Schema.Array(Schema.String)),
+    privateIPAddresses: Schema.optional(Schema.Array(Schema.String)),
+    publicIpAddressId: Schema.optional(Schema.String),
+    publicNetworkAccess: Schema.optional(
+      Schema.Literals(["Enabled", "Disabled"]),
+    ),
+    configurationApi: Schema.optional(
+      Schema.suspend(() => ConfigurationApiSchema),
+    ),
+    virtualNetworkConfiguration: Schema.optional(
+      Schema.suspend(() => VirtualNetworkConfigurationSchema),
+    ),
+    additionalLocations: Schema.optional(
+      Schema.Array(Schema.suspend(() => AdditionalLocationSchema)),
+    ),
+    customProperties: Schema.optional(
+      Schema.Record(Schema.String, Schema.String),
+    ),
+    certificates: Schema.optional(
+      Schema.Array(Schema.suspend(() => CertificateConfigurationSchema)),
+    ),
+    enableClientCertificate: Schema.optional(Schema.Boolean),
+    natGatewayState: Schema.optional(Schema.Literals(["Enabled", "Disabled"])),
+    outboundPublicIPAddresses: Schema.optional(Schema.Array(Schema.String)),
+    disableGateway: Schema.optional(Schema.Boolean),
+    virtualNetworkType: Schema.optional(
+      Schema.Literals(["None", "External", "Internal"]),
+    ),
+    apiVersionConstraint: Schema.optional(
+      Schema.suspend(() => ApiVersionConstraintSchema),
+    ),
+    restore: Schema.optional(Schema.Boolean),
+    privateEndpointConnections: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
+          properties: Schema.optional(
+            Schema.suspend(
+              () => PrivateEndpointConnectionWrapperPropertiesSchema,
+            ),
+          ),
+        }),
+      ),
+    ),
+    platformVersion: Schema.optional(
+      Schema.Literals(["undetermined", "stv1", "stv2", "mtv1", "stv2.1"]),
+    ),
+    legacyPortalStatus: Schema.optional(
+      Schema.Literals(["Enabled", "Disabled"]),
+    ),
+    developerPortalStatus: Schema.optional(
+      Schema.Literals(["Enabled", "Disabled"]),
+    ),
+  });
+const ApiManagementServiceResourceSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  });
+const ContentTypeContractSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
+const ContentTypeContractPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    description: Schema.optional(Schema.String),
+    schema: Schema.optional(Schema.Unknown),
+    version: Schema.optional(Schema.String),
+  });
+const ContentItemContractSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
+const ContentItemContractPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+const ProductContractSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
+const ProductContractPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    description: Schema.optional(Schema.String),
+    terms: Schema.optional(Schema.String),
+    subscriptionRequired: Schema.optional(Schema.Boolean),
+    approvalRequired: Schema.optional(Schema.Boolean),
+    subscriptionsLimit: Schema.optional(Schema.Number),
+    state: Schema.optional(Schema.Literals(["notPublished", "published"])),
+  });
+const ProductUpdatePropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    description: Schema.optional(Schema.String),
+    terms: Schema.optional(Schema.String),
+    subscriptionRequired: Schema.optional(Schema.Boolean),
+    approvalRequired: Schema.optional(Schema.Boolean),
+    subscriptionsLimit: Schema.optional(Schema.Number),
+    state: Schema.optional(Schema.Literals(["notPublished", "published"])),
+  },
+);
+const ApiContractSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
+const ApiContractPropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  description: Schema.optional(Schema.String),
+  authenticationSettings: Schema.optional(
+    Schema.suspend(() => AuthenticationSettingsContractSchema),
+  ),
+  subscriptionKeyParameterNames: Schema.optional(
+    Schema.suspend(() => SubscriptionKeyParameterNamesContractSchema),
+  ),
+  type: Schema.optional(
+    Schema.Literals(["http", "soap", "websocket", "graphql", "odata", "grpc"]),
+  ),
+  apiRevision: Schema.optional(Schema.String),
+  apiVersion: Schema.optional(Schema.String),
+  isCurrent: Schema.optional(Schema.Boolean),
+  isOnline: Schema.optional(Schema.Boolean),
+  apiRevisionDescription: Schema.optional(Schema.String),
+  apiVersionDescription: Schema.optional(Schema.String),
+  apiVersionSetId: Schema.optional(Schema.String),
+  subscriptionRequired: Schema.optional(Schema.Boolean),
+  termsOfServiceUrl: Schema.optional(Schema.String),
+  contact: Schema.optional(Schema.suspend(() => ApiContactInformationSchema)),
+  license: Schema.optional(Schema.suspend(() => ApiLicenseInformationSchema)),
+});
+const GroupContractSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
+const GroupContractPropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    displayName: Schema.String,
+    description: Schema.optional(Schema.String),
+    builtIn: Schema.optional(Schema.Boolean),
+    type: Schema.optional(Schema.Literals(["custom", "system", "external"])),
+    externalId: Schema.optional(Schema.String),
+  },
+);
+const SubscriptionContractSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
+const PolicyContractSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
+const PolicyContractPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    value: Schema.String,
+    format: Schema.optional(
+      Schema.Literals(["xml", "xml-link", "rawxml", "rawxml-link"]),
+    ),
+  });
+const TagContractSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
+const TagContractPropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  displayName: Schema.String,
+});
+const WikiContractPropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  documents: Schema.optional(
+    Schema.Array(Schema.suspend(() => WikiDocumentationContractSchema)),
+  ),
+});
+const WikiDocumentationContractSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    documentationId: Schema.optional(Schema.String),
+  });
+const WikiContractSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
+const ProductApiLinkContractSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
+const ProductApiLinkContractPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    apiId: Schema.String,
+  });
+const ProductGroupLinkContractSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
+const ProductGroupLinkContractPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    groupId: Schema.String,
+  });
+const AllPoliciesContractSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
+const OpenidConnectProviderContractSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
+const OpenidConnectProviderContractPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    displayName: Schema.String,
+    description: Schema.optional(Schema.String),
+    metadataEndpoint: Schema.String,
+    clientId: Schema.String,
+    clientSecret: Schema.optional(SensitiveOutputString),
+    useInTestConsole: Schema.optional(Schema.Boolean),
+    useInApiDocumentation: Schema.optional(Schema.Boolean),
+  });
+const OpenidConnectProviderUpdateContractPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    displayName: Schema.optional(Schema.String),
+    description: Schema.optional(Schema.String),
+    metadataEndpoint: Schema.optional(Schema.String),
+    clientId: Schema.optional(Schema.String),
+    clientSecret: Schema.optional(SensitiveOutputString),
+    useInTestConsole: Schema.optional(Schema.Boolean),
+    useInApiDocumentation: Schema.optional(Schema.Boolean),
+  });
+const ApiManagementWorkspaceLinksResourceSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
+const ApiManagementWorkspaceLinksPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    workspaceId: Schema.optional(Schema.String),
+    gateways: Schema.optional(
+      Schema.Array(Schema.suspend(() => WorkspaceLinksGatewaySchema)),
+    ),
+  });
+const WorkspaceLinksGatewaySchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+});
+const AccessInformationContractSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
+const AccessInformationContractPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    principalId: Schema.optional(Schema.String),
+    enabled: Schema.optional(Schema.Boolean),
+  });
+const AccessInformationCreateParameterPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    principalId: Schema.optional(Schema.String),
+    primaryKey: Schema.optional(Schema.String),
+    secondaryKey: Schema.optional(Schema.String),
+    enabled: Schema.optional(Schema.Boolean),
+  });
+const AccessInformationUpdateParameterPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    enabled: Schema.optional(Schema.Boolean),
+  });
+const DeployConfigurationParameterPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    branch: Schema.String,
+    force: Schema.optional(Schema.Boolean),
+  });
+const OperationResultContractPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    status: Schema.optional(
+      Schema.Literals(["Started", "InProgress", "Succeeded", "Failed"]),
+    ),
+    started: Schema.optional(Schema.String),
+    updated: Schema.optional(Schema.String),
+    resultInfo: Schema.optional(Schema.String),
+    error: Schema.optional(
+      Schema.Struct({
+        code: Schema.optional(Schema.String),
+        message: Schema.optional(Schema.String),
+        details: Schema.optional(
+          Schema.Array(Schema.suspend(() => ErrorFieldContractSchema)),
+        ),
+      }),
+    ),
+    actionLog: Schema.optional(
+      Schema.Array(Schema.suspend(() => OperationResultLogItemContractSchema)),
+    ),
+  });
+const ErrorFieldContractSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  code: Schema.optional(Schema.String),
+  message: Schema.optional(Schema.String),
+  target: Schema.optional(Schema.String),
+});
+const OperationResultLogItemContractSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    objectType: Schema.optional(Schema.String),
+    action: Schema.optional(Schema.String),
+    objectKey: Schema.optional(Schema.String),
+  });
+const SaveConfigurationParameterPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    branch: Schema.String,
+    force: Schema.optional(Schema.Boolean),
+  });
+const TenantConfigurationSyncStateContractPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    branch: Schema.optional(Schema.String),
+    commitId: Schema.optional(Schema.String),
+    isExport: Schema.optional(Schema.Boolean),
+    isSynced: Schema.optional(Schema.Boolean),
+    isGitEnabled: Schema.optional(Schema.Boolean),
+    syncDate: Schema.optional(Schema.String),
+    configurationChangeDate: Schema.optional(Schema.String),
+    lastOperationId: Schema.optional(Schema.String),
+  });
+const EmailTemplateContractSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
+const EmailTemplateContractPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subject: Schema.String,
+    body: Schema.String,
+    title: Schema.optional(Schema.String),
+    description: Schema.optional(Schema.String),
+    isDefault: Schema.optional(Schema.Boolean),
+    parameters: Schema.optional(
+      Schema.Array(
+        Schema.suspend(() => EmailTemplateParametersContractPropertiesSchema),
+      ),
+    ),
+  });
+const EmailTemplateParametersContractPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    title: Schema.optional(Schema.String),
+    description: Schema.optional(Schema.String),
+  });
+const EmailTemplateUpdateParameterPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subject: Schema.optional(Schema.String),
+    title: Schema.optional(Schema.String),
+    description: Schema.optional(Schema.String),
+    body: Schema.optional(Schema.String),
+    parameters: Schema.optional(
+      Schema.Array(
+        Schema.suspend(() => EmailTemplateParametersContractPropertiesSchema),
+      ),
+    ),
+  });
+const ApiCreateOrUpdatePropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    description: Schema.optional(Schema.String),
+    authenticationSettings: Schema.optional(
+      Schema.suspend(() => AuthenticationSettingsContractSchema),
+    ),
+    subscriptionKeyParameterNames: Schema.optional(
+      Schema.suspend(() => SubscriptionKeyParameterNamesContractSchema),
+    ),
+    type: Schema.optional(
+      Schema.Literals([
+        "http",
+        "soap",
+        "websocket",
+        "graphql",
+        "odata",
+        "grpc",
+      ]),
+    ),
+    apiRevision: Schema.optional(Schema.String),
+    apiVersion: Schema.optional(Schema.String),
+    isCurrent: Schema.optional(Schema.Boolean),
+    isOnline: Schema.optional(Schema.Boolean),
+    apiRevisionDescription: Schema.optional(Schema.String),
+    apiVersionDescription: Schema.optional(Schema.String),
+    apiVersionSetId: Schema.optional(Schema.String),
+    subscriptionRequired: Schema.optional(Schema.Boolean),
+    termsOfServiceUrl: Schema.optional(Schema.String),
+    contact: Schema.optional(Schema.suspend(() => ApiContactInformationSchema)),
+    license: Schema.optional(Schema.suspend(() => ApiLicenseInformationSchema)),
+  });
+const ApiContractUpdatePropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    description: Schema.optional(Schema.String),
+    authenticationSettings: Schema.optional(
+      Schema.suspend(() => AuthenticationSettingsContractSchema),
+    ),
+    subscriptionKeyParameterNames: Schema.optional(
+      Schema.suspend(() => SubscriptionKeyParameterNamesContractSchema),
+    ),
+    type: Schema.optional(
+      Schema.Literals([
+        "http",
+        "soap",
+        "websocket",
+        "graphql",
+        "odata",
+        "grpc",
+      ]),
+    ),
+    apiRevision: Schema.optional(Schema.String),
+    apiVersion: Schema.optional(Schema.String),
+    isCurrent: Schema.optional(Schema.Boolean),
+    isOnline: Schema.optional(Schema.Boolean),
+    apiRevisionDescription: Schema.optional(Schema.String),
+    apiVersionDescription: Schema.optional(Schema.String),
+    apiVersionSetId: Schema.optional(Schema.String),
+    subscriptionRequired: Schema.optional(Schema.Boolean),
+    termsOfServiceUrl: Schema.optional(Schema.String),
+    contact: Schema.optional(Schema.suspend(() => ApiContactInformationSchema)),
+    license: Schema.optional(Schema.suspend(() => ApiLicenseInformationSchema)),
+  });
+const ApiRevisionContractSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  apiId: Schema.optional(Schema.String),
+  apiRevision: Schema.optional(Schema.String),
+  createdDateTime: Schema.optional(Schema.String),
+  updatedDateTime: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+  privateUrl: Schema.optional(Schema.String),
+  isOnline: Schema.optional(Schema.Boolean),
+  isCurrent: Schema.optional(Schema.Boolean),
+});
+const ApiReleaseContractSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
+const ApiReleaseContractPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    apiId: Schema.optional(Schema.String),
+    createdDateTime: Schema.optional(Schema.String),
+    updatedDateTime: Schema.optional(Schema.String),
+    notes: Schema.optional(Schema.String),
+  });
+const OperationContractSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
+const OperationContractPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    templateParameters: Schema.optional(
+      Schema.Array(Schema.suspend(() => ParameterContractSchema)),
+    ),
+    description: Schema.optional(Schema.String),
+    request: Schema.optional(Schema.suspend(() => RequestContractSchema)),
+    responses: Schema.optional(
+      Schema.Array(Schema.suspend(() => ResponseContractSchema)),
+    ),
+    policies: Schema.optional(Schema.String),
+  });
+const ParameterContractSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.String,
+  description: Schema.optional(Schema.String),
+  type: Schema.String,
+  defaultValue: Schema.optional(Schema.String),
+  required: Schema.optional(Schema.Boolean),
+  values: Schema.optional(Schema.Array(Schema.String)),
+  schemaId: Schema.optional(Schema.String),
+  typeName: Schema.optional(Schema.String),
+  examples: Schema.optional(
+    Schema.suspend(() => ParameterExamplesContractSchema),
+  ),
+});
+const ParameterExamplesContractSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Record(
+    Schema.String,
+    Schema.suspend(() => ParameterExampleContractSchema),
+  );
+const ParameterExampleContractSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    summary: Schema.optional(Schema.String),
+    description: Schema.optional(Schema.String),
+    value: Schema.optional(Schema.Unknown),
+    externalValue: Schema.optional(Schema.String),
+  });
+const RequestContractSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  description: Schema.optional(Schema.String),
+  queryParameters: Schema.optional(
+    Schema.Array(Schema.suspend(() => ParameterContractSchema)),
+  ),
+  headers: Schema.optional(
+    Schema.Array(Schema.suspend(() => ParameterContractSchema)),
+  ),
+  representations: Schema.optional(
+    Schema.Array(Schema.suspend(() => RepresentationContractSchema)),
+  ),
+});
+const RepresentationContractSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  contentType: Schema.String,
+  schemaId: Schema.optional(Schema.String),
+  typeName: Schema.optional(Schema.String),
+  formParameters: Schema.optional(
+    Schema.Array(Schema.suspend(() => ParameterContractSchema)),
+  ),
+  examples: Schema.optional(
+    Schema.suspend(() => ParameterExamplesContractSchema),
+  ),
+});
+const ResponseContractSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  statusCode: Schema.Number,
+  description: Schema.optional(Schema.String),
+  representations: Schema.optional(
+    Schema.Array(Schema.suspend(() => RepresentationContractSchema)),
+  ),
+  headers: Schema.optional(
+    Schema.Array(Schema.suspend(() => ParameterContractSchema)),
+  ),
+});
+const OperationUpdateContractPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    templateParameters: Schema.optional(
+      Schema.Array(Schema.suspend(() => ParameterContractSchema)),
+    ),
+    description: Schema.optional(Schema.String),
+    request: Schema.optional(Schema.suspend(() => RequestContractSchema)),
+    responses: Schema.optional(
+      Schema.Array(Schema.suspend(() => ResponseContractSchema)),
+    ),
+    policies: Schema.optional(Schema.String),
+  });
+const ResolverContractSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
+const ResolverEntityBaseContractSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    displayName: Schema.optional(Schema.String),
+    path: Schema.optional(Schema.String),
+    description: Schema.optional(Schema.String),
+  });
+const ResolverUpdateContractPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    displayName: Schema.optional(Schema.String),
+    path: Schema.optional(Schema.String),
+    description: Schema.optional(Schema.String),
+  });
+const SchemaContractSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
+const SchemaContractPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    contentType: Schema.String,
+    document: Schema.suspend(() => SchemaDocumentPropertiesSchema),
+    provisioningState: Schema.optional(Schema.String),
+  });
+const SchemaDocumentPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    value: Schema.optional(Schema.String),
+    definitions: Schema.optional(Schema.Unknown),
+    components: Schema.optional(Schema.Unknown),
+  });
+const DiagnosticContractSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
+const DiagnosticContractPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    alwaysLog: Schema.optional(Schema.Literals(["allErrors"])),
+    loggerId: Schema.String,
+    sampling: Schema.optional(Schema.suspend(() => SamplingSettingsSchema)),
+    frontend: Schema.optional(
+      Schema.suspend(() => PipelineDiagnosticSettingsSchema),
+    ),
+    backend: Schema.optional(
+      Schema.suspend(() => PipelineDiagnosticSettingsSchema),
+    ),
+    logClientIp: Schema.optional(Schema.Boolean),
+    httpCorrelationProtocol: Schema.optional(
+      Schema.Literals(["None", "Legacy", "W3C"]),
+    ),
+    verbosity: Schema.optional(
+      Schema.Literals(["verbose", "information", "error"]),
+    ),
+    operationNameFormat: Schema.optional(Schema.Literals(["Name", "Url"])),
+    metrics: Schema.optional(Schema.Boolean),
+  });
+const SamplingSettingsSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  samplingType: Schema.optional(Schema.Literals(["fixed"])),
+  percentage: Schema.optional(Schema.Number),
+});
+const PipelineDiagnosticSettingsSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    request: Schema.optional(Schema.suspend(() => HttpMessageDiagnosticSchema)),
+    response: Schema.optional(
+      Schema.suspend(() => HttpMessageDiagnosticSchema),
+    ),
+  });
+const HttpMessageDiagnosticSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  headers: Schema.optional(Schema.Array(Schema.String)),
+  body: Schema.optional(Schema.suspend(() => BodyDiagnosticSettingsSchema)),
+  dataMasking: Schema.optional(Schema.suspend(() => DataMaskingSchema)),
+});
+const BodyDiagnosticSettingsSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  bytes: Schema.optional(Schema.Number),
+});
+const DataMaskingSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  queryParams: Schema.optional(
+    Schema.Array(Schema.suspend(() => DataMaskingEntitySchema)),
+  ),
+  headers: Schema.optional(
+    Schema.Array(Schema.suspend(() => DataMaskingEntitySchema)),
+  ),
+});
+const DataMaskingEntitySchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  value: Schema.optional(Schema.String),
+  mode: Schema.optional(Schema.Literals(["Mask", "Hide"])),
+});
+const IssueContractSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
+const IssueContractPropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    createdDate: Schema.optional(Schema.String),
+    state: Schema.optional(
+      Schema.Literals(["proposed", "open", "removed", "resolved", "closed"]),
+    ),
+    apiId: Schema.optional(Schema.String),
+  },
+);
+const IssueUpdateContractPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    createdDate: Schema.optional(Schema.String),
+    state: Schema.optional(
+      Schema.Literals(["proposed", "open", "removed", "resolved", "closed"]),
+    ),
+    apiId: Schema.optional(Schema.String),
+  });
+const IssueCommentContractSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
+const IssueCommentContractPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    text: Schema.String,
+    createdDate: Schema.optional(Schema.String),
+    userId: Schema.String,
+  });
+const IssueAttachmentContractSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  },
+);
+const IssueAttachmentContractPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    title: Schema.String,
+    contentFormat: Schema.String,
+    content: Schema.String,
+  });
+const TagDescriptionContractSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
+const TagDescriptionContractPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    description: Schema.optional(Schema.String),
+    externalDocsUrl: Schema.optional(Schema.String),
+    externalDocsDescription: Schema.optional(Schema.String),
+  });
+const TagDescriptionBasePropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    description: Schema.optional(Schema.String),
+    externalDocsUrl: Schema.optional(Schema.String),
+    externalDocsDescription: Schema.optional(Schema.String),
+  });
+const AuthorizationServerContractSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
+const AuthorizationServerContractPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    description: Schema.optional(Schema.String),
+    authorizationMethods: Schema.optional(
+      Schema.Array(
+        Schema.Literals([
+          "HEAD",
+          "OPTIONS",
+          "TRACE",
+          "GET",
+          "POST",
+          "PUT",
+          "PATCH",
+          "DELETE",
+        ]),
+      ),
+    ),
+    clientAuthenticationMethod: Schema.optional(
+      Schema.Array(Schema.Literals(["Basic", "Body"])),
+    ),
+    tokenBodyParameters: Schema.optional(
+      Schema.Array(Schema.suspend(() => TokenBodyParameterContractSchema)),
+    ),
+    tokenEndpoint: Schema.optional(Schema.String),
+    supportState: Schema.optional(Schema.Boolean),
+    defaultScope: Schema.optional(Schema.String),
+    bearerTokenSendingMethods: Schema.optional(
+      Schema.Array(Schema.Literals(["authorizationHeader", "query"])),
+    ),
+    resourceOwnerUsername: Schema.optional(Schema.String),
+    resourceOwnerPassword: Schema.optional(SensitiveOutputString),
+  });
+const TokenBodyParameterContractSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String,
+    value: Schema.String,
+  });
+const AuthorizationServerUpdateContractPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    description: Schema.optional(Schema.String),
+    authorizationMethods: Schema.optional(
+      Schema.Array(
+        Schema.Literals([
+          "HEAD",
+          "OPTIONS",
+          "TRACE",
+          "GET",
+          "POST",
+          "PUT",
+          "PATCH",
+          "DELETE",
+        ]),
+      ),
+    ),
+    clientAuthenticationMethod: Schema.optional(
+      Schema.Array(Schema.Literals(["Basic", "Body"])),
+    ),
+    tokenBodyParameters: Schema.optional(
+      Schema.Array(Schema.suspend(() => TokenBodyParameterContractSchema)),
+    ),
+    tokenEndpoint: Schema.optional(Schema.String),
+    supportState: Schema.optional(Schema.Boolean),
+    defaultScope: Schema.optional(Schema.String),
+    bearerTokenSendingMethods: Schema.optional(
+      Schema.Array(Schema.Literals(["authorizationHeader", "query"])),
+    ),
+    resourceOwnerUsername: Schema.optional(Schema.String),
+    resourceOwnerPassword: Schema.optional(SensitiveOutputString),
+  });
+const NotificationContractSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
+const NotificationContractPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    title: Schema.String,
+    description: Schema.optional(Schema.String),
+    recipients: Schema.optional(
+      Schema.suspend(() => RecipientsContractPropertiesSchema),
+    ),
+  });
+const RecipientsContractPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    emails: Schema.optional(Schema.Array(Schema.String)),
+    users: Schema.optional(Schema.Array(Schema.String)),
+  });
+const RecipientUserContractSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
+const RecipientUsersContractPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    userId: Schema.optional(Schema.String),
+  });
+const RecipientEmailContractSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
+const RecipientEmailContractPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    email: Schema.optional(Schema.String),
+  });
+const TagApiLinkContractSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
+const TagApiLinkContractPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    apiId: Schema.String,
+  });
+const TagOperationLinkContractSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
+const TagOperationLinkContractPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    operationId: Schema.String,
+  });
+const TagProductLinkContractSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
+const TagProductLinkContractPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    productId: Schema.String,
+  });
+const OperationStatusResultSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  resourceId: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  status: Schema.String,
+  percentComplete: Schema.optional(Schema.Number),
+  startTime: Schema.optional(Schema.String),
+  endTime: Schema.optional(Schema.String),
+  operations: Schema.optional(Schema.Array(Schema.Unknown)),
+  error: Schema.optional(Schema.suspend(() => ErrorDetailSchema)),
+});
+const ErrorDetailSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  code: Schema.optional(Schema.String),
+  message: Schema.optional(Schema.String),
+  target: Schema.optional(Schema.String),
+  details: Schema.optional(Schema.Array(Schema.Unknown)),
+  additionalInfo: Schema.optional(
+    Schema.Array(Schema.suspend(() => ErrorAdditionalInfoSchema)),
+  ),
+});
+const ErrorAdditionalInfoSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  type: Schema.optional(Schema.String),
+  info: Schema.optional(Schema.Unknown),
+});
+const WorkspaceContractSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
+const WorkspaceContractPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    displayName: Schema.String,
+    description: Schema.optional(Schema.String),
+  });
+const GlobalSchemaContractSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
+const GlobalSchemaContractPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    schemaType: Schema.Literals(["xml", "json"]),
+    description: Schema.optional(Schema.String),
+    value: Schema.optional(Schema.Unknown),
+    document: Schema.optional(
+      Schema.suspend(() => GlobalSchemaDocumentPropertiesSchema),
+    ),
+    provisioningState: Schema.optional(Schema.String),
+  });
+const GlobalSchemaDocumentPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown;
+const PolicyFragmentContractSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
+const PolicyFragmentContractPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    value: Schema.String,
+    description: Schema.optional(Schema.String),
+    format: Schema.optional(Schema.Literals(["xml", "rawxml"])),
+    provisioningState: Schema.optional(Schema.String),
+  });
+const GroupCreateParametersPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    displayName: Schema.String,
+    description: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.Literals(["custom", "system", "external"])),
+    externalId: Schema.optional(Schema.String),
+  });
+const GroupUpdateParametersPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    displayName: Schema.optional(Schema.String),
+    description: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.Literals(["custom", "system", "external"])),
+    externalId: Schema.optional(Schema.String),
+  });
+const UserContractSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
+const UserContractPropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  state: Schema.optional(
+    Schema.Literals(["active", "blocked", "pending", "deleted"]),
+  ),
+  note: Schema.optional(Schema.String),
+  identities: Schema.optional(
+    Schema.Array(Schema.suspend(() => UserIdentityContractSchema)),
+  ),
+});
+const UserIdentityContractSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  provider: Schema.optional(Schema.String),
+  id: Schema.optional(Schema.String),
+});
+const SubscriptionContractPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    ownerId: Schema.optional(Schema.String),
+    scope: Schema.String,
+    displayName: Schema.optional(Schema.String),
+    state: Schema.Literals([
+      "suspended",
+      "active",
+      "expired",
+      "submitted",
+      "rejected",
+      "cancelled",
+    ]),
+    createdDate: Schema.optional(Schema.String),
+    startDate: Schema.optional(Schema.String),
+    expirationDate: Schema.optional(Schema.String),
+    endDate: Schema.optional(Schema.String),
+    notificationDate: Schema.optional(Schema.String),
+    primaryKey: Schema.optional(Schema.String),
+    secondaryKey: Schema.optional(Schema.String),
+    stateComment: Schema.optional(Schema.String),
+    allowTracing: Schema.optional(Schema.Boolean),
+  });
+const SubscriptionCreateParameterPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    ownerId: Schema.optional(Schema.String),
+    scope: Schema.String,
+    displayName: Schema.String,
+    primaryKey: Schema.optional(Schema.String),
+    secondaryKey: Schema.optional(Schema.String),
+    state: Schema.optional(
+      Schema.Literals([
+        "suspended",
+        "active",
+        "expired",
+        "submitted",
+        "rejected",
+        "cancelled",
+      ]),
+    ),
+    allowTracing: Schema.optional(Schema.Boolean),
+  });
+const SubscriptionUpdateParameterPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    ownerId: Schema.optional(Schema.String),
+    scope: Schema.optional(Schema.String),
+    expirationDate: Schema.optional(Schema.String),
+    displayName: Schema.optional(Schema.String),
+    primaryKey: Schema.optional(Schema.String),
+    secondaryKey: Schema.optional(Schema.String),
+    state: Schema.optional(
+      Schema.Literals([
+        "suspended",
+        "active",
+        "expired",
+        "submitted",
+        "rejected",
+        "cancelled",
+      ]),
+    ),
+    stateComment: Schema.optional(Schema.String),
+    allowTracing: Schema.optional(Schema.Boolean),
+  });
+const ApiVersionSetContractSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
+const ApiVersionSetContractPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    description: Schema.optional(Schema.String),
+    versionQueryName: Schema.optional(Schema.String),
+    versionHeaderName: Schema.optional(Schema.String),
+  });
+const ApiVersionSetUpdateParametersPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    description: Schema.optional(Schema.String),
+    versionQueryName: Schema.optional(Schema.String),
+    versionHeaderName: Schema.optional(Schema.String),
+  });
+const QuotaCounterContractSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  counterKey: Schema.String,
+  periodKey: Schema.String,
+  periodStartTime: Schema.String,
+  periodEndTime: Schema.String,
+  value: Schema.optional(
+    Schema.suspend(() => QuotaCounterValueContractPropertiesSchema),
+  ),
+});
+const QuotaCounterValueContractPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    callsCount: Schema.optional(Schema.Number),
+    kbTransferred: Schema.optional(Schema.Number),
+  });
+const BackendContractSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
+const BackendContractPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    title: Schema.optional(Schema.String),
+    description: Schema.optional(Schema.String),
+    resourceId: Schema.optional(Schema.String),
+    properties: Schema.optional(Schema.suspend(() => BackendPropertiesSchema)),
+    credentials: Schema.optional(
+      Schema.suspend(() => BackendCredentialsContractSchema),
+    ),
+    proxy: Schema.optional(Schema.suspend(() => BackendProxyContractSchema)),
+    tls: Schema.optional(Schema.suspend(() => BackendTlsPropertiesSchema)),
+    circuitBreaker: Schema.optional(
+      Schema.suspend(() => BackendCircuitBreakerSchema),
+    ),
+    pool: Schema.optional(
+      Schema.Struct({
+        services: Schema.optional(
+          Schema.Array(Schema.suspend(() => BackendPoolItemSchema)),
+        ),
+      }),
+    ),
+    type: Schema.optional(Schema.Literals(["Single", "Pool"])),
+  });
+const BackendPropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  serviceFabricCluster: Schema.optional(
+    Schema.suspend(() => BackendServiceFabricClusterPropertiesSchema),
+  ),
+});
+const BackendServiceFabricClusterPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    clientCertificateId: Schema.optional(Schema.String),
+    clientCertificatethumbprint: Schema.optional(Schema.String),
+    maxPartitionResolutionRetries: Schema.optional(Schema.Number),
+    managementEndpoints: Schema.Array(Schema.String),
+    serverCertificateThumbprints: Schema.optional(Schema.Array(Schema.String)),
+    serverX509Names: Schema.optional(
+      Schema.Array(Schema.suspend(() => X509CertificateNameSchema)),
+    ),
+  });
+const X509CertificateNameSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  issuerCertificateThumbprint: Schema.optional(Schema.String),
+});
+const BackendCredentialsContractSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    certificateIds: Schema.optional(Schema.Array(Schema.String)),
+    certificate: Schema.optional(Schema.Array(Schema.String)),
+    query: Schema.optional(
+      Schema.Record(Schema.String, Schema.Array(Schema.String)),
+    ),
+    header: Schema.optional(
+      Schema.Record(Schema.String, Schema.Array(Schema.String)),
+    ),
+    authorization: Schema.optional(
+      Schema.suspend(() => BackendAuthorizationHeaderCredentialsSchema),
+    ),
+  });
+const BackendAuthorizationHeaderCredentialsSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    scheme: Schema.String,
+    parameter: Schema.String,
+  });
+const BackendProxyContractSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  url: Schema.String,
+  username: Schema.optional(Schema.String),
+  password: Schema.optional(SensitiveOutputString),
+});
+const BackendTlsPropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  validateCertificateChain: Schema.optional(Schema.Boolean),
+  validateCertificateName: Schema.optional(Schema.Boolean),
+});
+const BackendCircuitBreakerSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  rules: Schema.optional(
+    Schema.Array(Schema.suspend(() => CircuitBreakerRuleSchema)),
+  ),
+});
+const CircuitBreakerRuleSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  failureCondition: Schema.optional(
+    Schema.suspend(() => CircuitBreakerFailureConditionSchema),
+  ),
+  tripDuration: Schema.optional(Schema.String),
+  acceptRetryAfter: Schema.optional(Schema.Boolean),
+});
+const CircuitBreakerFailureConditionSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    count: Schema.optional(Schema.Number),
+    percentage: Schema.optional(Schema.Number),
+    interval: Schema.optional(Schema.String),
+    statusCodeRanges: Schema.optional(
+      Schema.Array(Schema.suspend(() => FailureStatusCodeRangeSchema)),
+    ),
+    errorReasons: Schema.optional(Schema.Array(Schema.String)),
+  });
+const FailureStatusCodeRangeSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  min: Schema.optional(Schema.Number),
+  max: Schema.optional(Schema.Number),
+});
+const BackendPoolItemSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.String,
+  weight: Schema.optional(Schema.Number),
+  priority: Schema.optional(Schema.Number),
+});
+const BackendUpdateParameterPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    title: Schema.optional(Schema.String),
+    description: Schema.optional(Schema.String),
+    resourceId: Schema.optional(Schema.String),
+    properties: Schema.optional(Schema.suspend(() => BackendPropertiesSchema)),
+    credentials: Schema.optional(
+      Schema.suspend(() => BackendCredentialsContractSchema),
+    ),
+    proxy: Schema.optional(Schema.suspend(() => BackendProxyContractSchema)),
+    tls: Schema.optional(Schema.suspend(() => BackendTlsPropertiesSchema)),
+    circuitBreaker: Schema.optional(
+      Schema.suspend(() => BackendCircuitBreakerSchema),
+    ),
+    pool: Schema.optional(
+      Schema.Struct({
+        services: Schema.optional(
+          Schema.Array(Schema.suspend(() => BackendPoolItemSchema)),
+        ),
+      }),
+    ),
+    type: Schema.optional(Schema.Literals(["Single", "Pool"])),
+  });
+const DiagnosticContractUpdatePropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    alwaysLog: Schema.optional(Schema.Literals(["allErrors"])),
+    loggerId: Schema.optional(Schema.String),
+    sampling: Schema.optional(Schema.suspend(() => SamplingSettingsSchema)),
+    frontend: Schema.optional(
+      Schema.suspend(() => PipelineDiagnosticSettingsSchema),
+    ),
+    backend: Schema.optional(
+      Schema.suspend(() => PipelineDiagnosticSettingsSchema),
+    ),
+    logClientIp: Schema.optional(Schema.Boolean),
+    httpCorrelationProtocol: Schema.optional(
+      Schema.Literals(["None", "Legacy", "W3C"]),
+    ),
+    verbosity: Schema.optional(
+      Schema.Literals(["verbose", "information", "error"]),
+    ),
+    operationNameFormat: Schema.optional(Schema.Literals(["Name", "Url"])),
+    metrics: Schema.optional(Schema.Boolean),
+  });
+const ApiManagementGatewayPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    provisioningState: Schema.optional(Schema.String),
+    targetProvisioningState: Schema.optional(Schema.String),
+    createdAtUtc: Schema.optional(Schema.String),
+    frontend: Schema.optional(
+      Schema.suspend(() => FrontendConfigurationSchema),
+    ),
+    backend: Schema.optional(Schema.suspend(() => BackendConfigurationSchema)),
+    configurationApi: Schema.optional(
+      Schema.suspend(() => GatewayConfigurationApiSchema),
+    ),
+    virtualNetworkType: Schema.optional(
+      Schema.Literals(["None", "External", "Internal"]),
+    ),
+  });
+const FrontendConfigurationSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  defaultHostname: Schema.optional(Schema.String),
+});
+const BackendConfigurationSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subnet: Schema.optional(
+    Schema.suspend(() => BackendSubnetConfigurationSchema),
+  ),
+});
+const BackendSubnetConfigurationSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+  });
+const GatewayConfigurationApiSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    hostname: Schema.optional(Schema.String),
+  },
+);
+const ApiManagementGatewaySkuPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.Literals([
+      "Standard",
+      "WorkspaceGatewayStandard",
+      "WorkspaceGatewayPremium",
+    ]),
+    capacity: Schema.optional(Schema.Number),
+  });
+const ApiManagementGatewayUpdatePropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    provisioningState: Schema.optional(Schema.String),
+    targetProvisioningState: Schema.optional(Schema.String),
+    createdAtUtc: Schema.optional(Schema.String),
+    frontend: Schema.optional(
+      Schema.suspend(() => FrontendConfigurationSchema),
+    ),
+    backend: Schema.optional(Schema.suspend(() => BackendConfigurationSchema)),
+    configurationApi: Schema.optional(
+      Schema.suspend(() => GatewayConfigurationApiSchema),
+    ),
+    virtualNetworkType: Schema.optional(
+      Schema.Literals(["None", "External", "Internal"]),
+    ),
+  });
+const ApiManagementGatewaySkuPropertiesForPatchSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(
+      Schema.Literals([
+        "Standard",
+        "WorkspaceGatewayStandard",
+        "WorkspaceGatewayPremium",
+      ]),
+    ),
+    capacity: Schema.optional(Schema.Number),
+  });
+const ApiManagementGatewayResourceSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  });
+const GatewayResourceSkuResultSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resourceType: Schema.optional(Schema.String),
+    sku: Schema.optional(Schema.suspend(() => GatewaySkuSchema)),
+    capacity: Schema.optional(Schema.suspend(() => GatewaySkuCapacitySchema)),
+  });
+const GatewaySkuSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(
+    Schema.Literals([
+      "Standard",
+      "WorkspaceGatewayStandard",
+      "WorkspaceGatewayPremium",
+    ]),
+  ),
+});
+const GatewaySkuCapacitySchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  minimum: Schema.optional(Schema.Number),
+  maximum: Schema.optional(Schema.Number),
+  default: Schema.optional(Schema.Number),
+  scaleType: Schema.optional(Schema.Literals(["Automatic", "Manual", "None"])),
+});
+const HTTPHeaderSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.String,
+  value: Schema.String,
+});
+const ConnectivityHopSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  type: Schema.optional(Schema.String),
+  id: Schema.optional(Schema.String),
+  address: Schema.optional(Schema.String),
+  resourceId: Schema.optional(Schema.String),
+  nextHopIds: Schema.optional(Schema.Array(Schema.String)),
+  issues: Schema.optional(
+    Schema.Array(Schema.suspend(() => ConnectivityIssueSchema)),
+  ),
+});
+const ConnectivityIssueSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  origin: Schema.optional(Schema.Literals(["Local", "Inbound", "Outbound"])),
+  severity: Schema.optional(Schema.Literals(["Error", "Warning"])),
+  type: Schema.optional(
+    Schema.Literals([
+      "Unknown",
+      "AgentStopped",
+      "GuestFirewall",
+      "DnsResolution",
+      "SocketBind",
+      "NetworkSecurityRule",
+      "UserDefinedRoute",
+      "PortThrottled",
+      "Platform",
+    ]),
+  ),
+  context: Schema.optional(
+    Schema.Array(Schema.suspend(() => IssueContextSchema)),
+  ),
+});
+const IssueContextSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Record(
+  Schema.String,
+  Schema.String,
+);
+const PortalRevisionContractSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
+const PortalRevisionContractPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    description: Schema.optional(Schema.String),
+    statusDetails: Schema.optional(Schema.String),
+    status: Schema.optional(
+      Schema.Literals(["pending", "publishing", "completed", "failed"]),
+    ),
+    isCurrent: Schema.optional(Schema.Boolean),
+    createdDateTime: Schema.optional(Schema.String),
+    updatedDateTime: Schema.optional(Schema.String),
+    provisioningState: Schema.optional(Schema.String),
+  });
+const CertificateContractSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
+const CertificateContractPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subject: Schema.String,
+    thumbprint: Schema.String,
+    expirationDate: Schema.String,
+    keyVault: Schema.optional(
+      Schema.suspend(() => KeyVaultContractPropertiesSchema),
+    ),
+  });
+const KeyVaultContractPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    secretIdentifier: Schema.optional(Schema.String),
+    identityClientId: Schema.optional(Schema.String),
+  });
+const CertificateCreateOrUpdatePropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    data: Schema.optional(Schema.String),
+    password: Schema.optional(SensitiveOutputString),
+    keyVault: Schema.optional(
+      Schema.suspend(() => KeyVaultContractCreatePropertiesSchema),
+    ),
+  });
+const KeyVaultContractCreatePropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    secretIdentifier: Schema.optional(Schema.String),
+    identityClientId: Schema.optional(Schema.String),
+  });
+const OutboundEnvironmentEndpointSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    category: Schema.optional(Schema.String),
+    endpoints: Schema.optional(
+      Schema.Array(Schema.suspend(() => EndpointDependencySchema)),
+    ),
+  });
+const EndpointDependencySchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  domainName: Schema.optional(Schema.String),
+  endpointDetails: Schema.optional(
+    Schema.Array(Schema.suspend(() => EndpointDetailSchema)),
+  ),
+});
+const EndpointDetailSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  port: Schema.optional(Schema.Number),
+  region: Schema.optional(Schema.String),
+});
+const IdentityProviderContractSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
+const IdentityProviderContractPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    type: Schema.optional(
+      Schema.Literals([
+        "facebook",
+        "google",
+        "microsoft",
+        "twitter",
+        "aad",
+        "aadB2C",
+      ]),
+    ),
+    signinTenant: Schema.optional(Schema.String),
+    allowedTenants: Schema.optional(Schema.Array(Schema.String)),
+    authority: Schema.optional(Schema.String),
+    signupPolicyName: Schema.optional(Schema.String),
+    signinPolicyName: Schema.optional(Schema.String),
+    profileEditingPolicyName: Schema.optional(Schema.String),
+    passwordResetPolicyName: Schema.optional(SensitiveOutputString),
+    clientLibrary: Schema.optional(Schema.String),
+  });
+const IdentityProviderCreateContractPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    type: Schema.optional(
+      Schema.Literals([
+        "facebook",
+        "google",
+        "microsoft",
+        "twitter",
+        "aad",
+        "aadB2C",
+      ]),
+    ),
+    signinTenant: Schema.optional(Schema.String),
+    allowedTenants: Schema.optional(Schema.Array(Schema.String)),
+    authority: Schema.optional(Schema.String),
+    signupPolicyName: Schema.optional(Schema.String),
+    signinPolicyName: Schema.optional(Schema.String),
+    profileEditingPolicyName: Schema.optional(Schema.String),
+    passwordResetPolicyName: Schema.optional(SensitiveOutputString),
+    clientLibrary: Schema.optional(Schema.String),
+  });
+const IdentityProviderUpdatePropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    type: Schema.optional(
+      Schema.Literals([
+        "facebook",
+        "google",
+        "microsoft",
+        "twitter",
+        "aad",
+        "aadB2C",
+      ]),
+    ),
+    signinTenant: Schema.optional(Schema.String),
+    allowedTenants: Schema.optional(Schema.Array(Schema.String)),
+    authority: Schema.optional(Schema.String),
+    signupPolicyName: Schema.optional(Schema.String),
+    signinPolicyName: Schema.optional(Schema.String),
+    profileEditingPolicyName: Schema.optional(Schema.String),
+    passwordResetPolicyName: Schema.optional(SensitiveOutputString),
+    clientLibrary: Schema.optional(Schema.String),
+  });
+const RegionContractSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  isMasterRegion: Schema.optional(Schema.Boolean),
+  isDeleted: Schema.optional(Schema.Boolean),
+});
+const CacheContractSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
+const CacheContractPropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    description: Schema.optional(Schema.String),
+    connectionString: SensitiveOutputString,
+    useFromLocation: Schema.String,
+    resourceId: Schema.optional(Schema.String),
+  },
+);
+const CacheUpdatePropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  description: Schema.optional(Schema.String),
+  connectionString: Schema.optional(SensitiveOutputString),
+  useFromLocation: Schema.optional(Schema.String),
+  resourceId: Schema.optional(Schema.String),
+});
+const PolicyDescriptionContractSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
+const PolicyRestrictionContractSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
+const PolicyRestrictionContractPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    scope: Schema.optional(Schema.String),
+    requireBase: Schema.optional(Schema.Literals(["true", "false"])),
+  });
+const GatewayContractSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
+const GatewayContractPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    locationData: Schema.optional(
+      Schema.suspend(() => ResourceLocationDataContractSchema),
+    ),
+    description: Schema.optional(Schema.String),
+  });
+const ResourceLocationDataContractSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String,
+    city: Schema.optional(Schema.String),
+    district: Schema.optional(Schema.String),
+    countryOrRegion: Schema.optional(Schema.String),
+  });
+const GatewayHostnameConfigurationContractSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
+const GatewayHostnameConfigurationContractPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    hostname: Schema.optional(Schema.String),
+    certificateId: Schema.optional(Schema.String),
+    negotiateClientCertificate: Schema.optional(Schema.Boolean),
+    tls10Enabled: Schema.optional(Schema.Boolean),
+    tls11Enabled: Schema.optional(Schema.Boolean),
+    http2Enabled: Schema.optional(Schema.Boolean),
+  });
+const GatewayCertificateAuthorityContractSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
+const GatewayCertificateAuthorityContractPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    isTrusted: Schema.optional(Schema.Boolean),
+  });
+const DeletedServiceContractSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
+const DeletedServiceContractPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    serviceId: Schema.optional(Schema.String),
+    scheduledPurgeDate: Schema.optional(Schema.String),
+    deletionDate: Schema.optional(Schema.String),
+  });
+const BackendReconnectPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    after: Schema.optional(Schema.String),
+  });
+const UserCreateParameterPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    state: Schema.optional(
+      Schema.Literals(["active", "blocked", "pending", "deleted"]),
+    ),
+    note: Schema.optional(Schema.String),
+    identities: Schema.optional(
+      Schema.Array(Schema.suspend(() => UserIdentityContractSchema)),
+    ),
+  });
+const UserUpdateParametersPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    state: Schema.optional(
+      Schema.Literals(["active", "blocked", "pending", "deleted"]),
+    ),
+    note: Schema.optional(Schema.String),
+    identities: Schema.optional(
+      Schema.Array(Schema.suspend(() => UserIdentityContractSchema)),
+    ),
+  });
+const UserTokenParameterPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    keyType: Schema.Literals(["primary", "secondary"]),
+    expiry: Schema.String,
+  });
+const NetworkStatusContractByLocationSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    location: Schema.optional(Schema.String),
+    networkStatus: Schema.optional(
+      Schema.suspend(() => NetworkStatusContractSchema),
+    ),
+  });
+const NetworkStatusContractSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  dnsServers: Schema.Array(Schema.String),
+  connectivityStatus: Schema.Array(
+    Schema.suspend(() => ConnectivityStatusContractSchema),
+  ),
+});
+const ConnectivityStatusContractSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String,
+    status: Schema.Literals(["initializing", "success", "failure"]),
+    error: Schema.optional(Schema.String),
+    lastUpdated: Schema.String,
+    lastStatusChange: Schema.String,
+    resourceType: Schema.String,
+    isOptional: Schema.Boolean,
+  });
+const DocumentationContractSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
+const DocumentationContractPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    title: Schema.optional(Schema.String),
+    content: Schema.optional(Schema.String),
+  });
+const PortalConfigContractSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
+const PortalConfigPropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  enableBasicAuth: Schema.optional(Schema.Boolean),
+  signin: Schema.optional(
+    Schema.Struct({
+      require: Schema.optional(Schema.Boolean),
+    }),
+  ),
+  signup: Schema.optional(
+    Schema.Struct({
+      termsOfService: Schema.optional(
+        Schema.suspend(() => PortalConfigTermsOfServicePropertiesSchema),
+      ),
+    }),
+  ),
+  delegation: Schema.optional(
+    Schema.suspend(() => PortalConfigDelegationPropertiesSchema),
+  ),
+  cors: Schema.optional(Schema.suspend(() => PortalConfigCorsPropertiesSchema)),
+  csp: Schema.optional(Schema.suspend(() => PortalConfigCspPropertiesSchema)),
+});
+const PortalConfigTermsOfServicePropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    text: Schema.optional(Schema.String),
+    requireConsent: Schema.optional(Schema.Boolean),
+  });
+const PortalConfigDelegationPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    delegateRegistration: Schema.optional(Schema.Boolean),
+    delegateSubscription: Schema.optional(Schema.Boolean),
+    delegationUrl: Schema.optional(Schema.String),
+    validationKey: Schema.optional(Schema.String),
+  });
+const PortalConfigCorsPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    allowedOrigins: Schema.optional(Schema.Array(Schema.String)),
+  });
+const PortalConfigCspPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    mode: Schema.optional(
+      Schema.Literals(["enabled", "disabled", "reportOnly"]),
+    ),
+    reportUri: Schema.optional(Schema.Array(Schema.String)),
+    allowedSources: Schema.optional(Schema.Array(Schema.String)),
+  });
 
 // Input Schema
 export const AllPoliciesListByServiceInput =
@@ -29,13 +2338,7 @@ export type AllPoliciesListByServiceInput =
 export const AllPoliciesListByServiceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => AllPoliciesContractSchema)),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -65,87 +2368,7 @@ export const ApiCreateOrUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     apiId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        description: Schema.optional(Schema.String),
-        authenticationSettings: Schema.optional(
-          Schema.Struct({
-            oAuth2: Schema.optional(
-              Schema.Struct({
-                authorizationServerId: Schema.optional(Schema.String),
-                scope: Schema.optional(Schema.String),
-              }),
-            ),
-            openid: Schema.optional(
-              Schema.Struct({
-                openidProviderId: Schema.optional(Schema.String),
-                bearerTokenSendingMethods: Schema.optional(
-                  Schema.Array(
-                    Schema.Literals(["authorizationHeader", "query"]),
-                  ),
-                ),
-              }),
-            ),
-            oAuth2AuthenticationSettings: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  authorizationServerId: Schema.optional(Schema.String),
-                  scope: Schema.optional(Schema.String),
-                }),
-              ),
-            ),
-            openidAuthenticationSettings: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  openidProviderId: Schema.optional(Schema.String),
-                  bearerTokenSendingMethods: Schema.optional(
-                    Schema.Array(
-                      Schema.Literals(["authorizationHeader", "query"]),
-                    ),
-                  ),
-                }),
-              ),
-            ),
-          }),
-        ),
-        subscriptionKeyParameterNames: Schema.optional(
-          Schema.Struct({
-            header: Schema.optional(Schema.String),
-            query: Schema.optional(Schema.String),
-          }),
-        ),
-        type: Schema.optional(
-          Schema.Literals([
-            "http",
-            "soap",
-            "websocket",
-            "graphql",
-            "odata",
-            "grpc",
-          ]),
-        ),
-        apiRevision: Schema.optional(Schema.String),
-        apiVersion: Schema.optional(Schema.String),
-        isCurrent: Schema.optional(Schema.Boolean),
-        isOnline: Schema.optional(Schema.Boolean),
-        apiRevisionDescription: Schema.optional(Schema.String),
-        apiVersionDescription: Schema.optional(Schema.String),
-        apiVersionSetId: Schema.optional(Schema.String),
-        subscriptionRequired: Schema.optional(Schema.Boolean),
-        termsOfServiceUrl: Schema.optional(Schema.String),
-        contact: Schema.optional(
-          Schema.Struct({
-            name: Schema.optional(Schema.String),
-            url: Schema.optional(Schema.String),
-            email: Schema.optional(Schema.String),
-          }),
-        ),
-        license: Schema.optional(
-          Schema.Struct({
-            name: Schema.optional(Schema.String),
-            url: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
+      Schema.suspend(() => ApiCreateOrUpdatePropertiesSchema),
     ),
   },
 ).pipe(
@@ -161,6 +2384,9 @@ export type ApiCreateOrUpdateInput = typeof ApiCreateOrUpdateInput.Type;
 // Output Schema
 export const ApiCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => ApiContractPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -229,169 +2455,7 @@ export const ApiDiagnosticCreateOrUpdateInput =
     diagnosticId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        alwaysLog: Schema.optional(Schema.Literals(["allErrors"])),
-        loggerId: Schema.String,
-        sampling: Schema.optional(
-          Schema.Struct({
-            samplingType: Schema.optional(Schema.Literals(["fixed"])),
-            percentage: Schema.optional(Schema.Number),
-          }),
-        ),
-        frontend: Schema.optional(
-          Schema.Struct({
-            request: Schema.optional(
-              Schema.Struct({
-                headers: Schema.optional(Schema.Array(Schema.String)),
-                body: Schema.optional(
-                  Schema.Struct({
-                    bytes: Schema.optional(Schema.Number),
-                  }),
-                ),
-                dataMasking: Schema.optional(
-                  Schema.Struct({
-                    queryParams: Schema.optional(
-                      Schema.Array(
-                        Schema.Struct({
-                          value: Schema.optional(Schema.String),
-                          mode: Schema.optional(
-                            Schema.Literals(["Mask", "Hide"]),
-                          ),
-                        }),
-                      ),
-                    ),
-                    headers: Schema.optional(
-                      Schema.Array(
-                        Schema.Struct({
-                          value: Schema.optional(Schema.String),
-                          mode: Schema.optional(
-                            Schema.Literals(["Mask", "Hide"]),
-                          ),
-                        }),
-                      ),
-                    ),
-                  }),
-                ),
-              }),
-            ),
-            response: Schema.optional(
-              Schema.Struct({
-                headers: Schema.optional(Schema.Array(Schema.String)),
-                body: Schema.optional(
-                  Schema.Struct({
-                    bytes: Schema.optional(Schema.Number),
-                  }),
-                ),
-                dataMasking: Schema.optional(
-                  Schema.Struct({
-                    queryParams: Schema.optional(
-                      Schema.Array(
-                        Schema.Struct({
-                          value: Schema.optional(Schema.String),
-                          mode: Schema.optional(
-                            Schema.Literals(["Mask", "Hide"]),
-                          ),
-                        }),
-                      ),
-                    ),
-                    headers: Schema.optional(
-                      Schema.Array(
-                        Schema.Struct({
-                          value: Schema.optional(Schema.String),
-                          mode: Schema.optional(
-                            Schema.Literals(["Mask", "Hide"]),
-                          ),
-                        }),
-                      ),
-                    ),
-                  }),
-                ),
-              }),
-            ),
-          }),
-        ),
-        backend: Schema.optional(
-          Schema.Struct({
-            request: Schema.optional(
-              Schema.Struct({
-                headers: Schema.optional(Schema.Array(Schema.String)),
-                body: Schema.optional(
-                  Schema.Struct({
-                    bytes: Schema.optional(Schema.Number),
-                  }),
-                ),
-                dataMasking: Schema.optional(
-                  Schema.Struct({
-                    queryParams: Schema.optional(
-                      Schema.Array(
-                        Schema.Struct({
-                          value: Schema.optional(Schema.String),
-                          mode: Schema.optional(
-                            Schema.Literals(["Mask", "Hide"]),
-                          ),
-                        }),
-                      ),
-                    ),
-                    headers: Schema.optional(
-                      Schema.Array(
-                        Schema.Struct({
-                          value: Schema.optional(Schema.String),
-                          mode: Schema.optional(
-                            Schema.Literals(["Mask", "Hide"]),
-                          ),
-                        }),
-                      ),
-                    ),
-                  }),
-                ),
-              }),
-            ),
-            response: Schema.optional(
-              Schema.Struct({
-                headers: Schema.optional(Schema.Array(Schema.String)),
-                body: Schema.optional(
-                  Schema.Struct({
-                    bytes: Schema.optional(Schema.Number),
-                  }),
-                ),
-                dataMasking: Schema.optional(
-                  Schema.Struct({
-                    queryParams: Schema.optional(
-                      Schema.Array(
-                        Schema.Struct({
-                          value: Schema.optional(Schema.String),
-                          mode: Schema.optional(
-                            Schema.Literals(["Mask", "Hide"]),
-                          ),
-                        }),
-                      ),
-                    ),
-                    headers: Schema.optional(
-                      Schema.Array(
-                        Schema.Struct({
-                          value: Schema.optional(Schema.String),
-                          mode: Schema.optional(
-                            Schema.Literals(["Mask", "Hide"]),
-                          ),
-                        }),
-                      ),
-                    ),
-                  }),
-                ),
-              }),
-            ),
-          }),
-        ),
-        logClientIp: Schema.optional(Schema.Boolean),
-        httpCorrelationProtocol: Schema.optional(
-          Schema.Literals(["None", "Legacy", "W3C"]),
-        ),
-        verbosity: Schema.optional(
-          Schema.Literals(["verbose", "information", "error"]),
-        ),
-        operationNameFormat: Schema.optional(Schema.Literals(["Name", "Url"])),
-        metrics: Schema.optional(Schema.Boolean),
-      }),
+      Schema.suspend(() => DiagnosticContractPropertiesSchema),
     ),
   }).pipe(
     T.Http({
@@ -406,6 +2470,9 @@ export type ApiDiagnosticCreateOrUpdateInput =
 // Output Schema
 export const ApiDiagnosticCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => DiagnosticContractPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -489,6 +2556,9 @@ export type ApiDiagnosticGetInput = typeof ApiDiagnosticGetInput.Type;
 // Output Schema
 export const ApiDiagnosticGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
+    properties: Schema.optional(
+      Schema.suspend(() => DiagnosticContractPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -535,13 +2605,7 @@ export type ApiDiagnosticListByServiceInput =
 export const ApiDiagnosticListByServiceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => DiagnosticContractSchema)),
     ),
     count: Schema.optional(Schema.Number),
     nextLink: Schema.optional(Schema.String),
@@ -577,169 +2641,7 @@ export const ApiDiagnosticUpdateInput =
     diagnosticId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        alwaysLog: Schema.optional(Schema.Literals(["allErrors"])),
-        loggerId: Schema.String,
-        sampling: Schema.optional(
-          Schema.Struct({
-            samplingType: Schema.optional(Schema.Literals(["fixed"])),
-            percentage: Schema.optional(Schema.Number),
-          }),
-        ),
-        frontend: Schema.optional(
-          Schema.Struct({
-            request: Schema.optional(
-              Schema.Struct({
-                headers: Schema.optional(Schema.Array(Schema.String)),
-                body: Schema.optional(
-                  Schema.Struct({
-                    bytes: Schema.optional(Schema.Number),
-                  }),
-                ),
-                dataMasking: Schema.optional(
-                  Schema.Struct({
-                    queryParams: Schema.optional(
-                      Schema.Array(
-                        Schema.Struct({
-                          value: Schema.optional(Schema.String),
-                          mode: Schema.optional(
-                            Schema.Literals(["Mask", "Hide"]),
-                          ),
-                        }),
-                      ),
-                    ),
-                    headers: Schema.optional(
-                      Schema.Array(
-                        Schema.Struct({
-                          value: Schema.optional(Schema.String),
-                          mode: Schema.optional(
-                            Schema.Literals(["Mask", "Hide"]),
-                          ),
-                        }),
-                      ),
-                    ),
-                  }),
-                ),
-              }),
-            ),
-            response: Schema.optional(
-              Schema.Struct({
-                headers: Schema.optional(Schema.Array(Schema.String)),
-                body: Schema.optional(
-                  Schema.Struct({
-                    bytes: Schema.optional(Schema.Number),
-                  }),
-                ),
-                dataMasking: Schema.optional(
-                  Schema.Struct({
-                    queryParams: Schema.optional(
-                      Schema.Array(
-                        Schema.Struct({
-                          value: Schema.optional(Schema.String),
-                          mode: Schema.optional(
-                            Schema.Literals(["Mask", "Hide"]),
-                          ),
-                        }),
-                      ),
-                    ),
-                    headers: Schema.optional(
-                      Schema.Array(
-                        Schema.Struct({
-                          value: Schema.optional(Schema.String),
-                          mode: Schema.optional(
-                            Schema.Literals(["Mask", "Hide"]),
-                          ),
-                        }),
-                      ),
-                    ),
-                  }),
-                ),
-              }),
-            ),
-          }),
-        ),
-        backend: Schema.optional(
-          Schema.Struct({
-            request: Schema.optional(
-              Schema.Struct({
-                headers: Schema.optional(Schema.Array(Schema.String)),
-                body: Schema.optional(
-                  Schema.Struct({
-                    bytes: Schema.optional(Schema.Number),
-                  }),
-                ),
-                dataMasking: Schema.optional(
-                  Schema.Struct({
-                    queryParams: Schema.optional(
-                      Schema.Array(
-                        Schema.Struct({
-                          value: Schema.optional(Schema.String),
-                          mode: Schema.optional(
-                            Schema.Literals(["Mask", "Hide"]),
-                          ),
-                        }),
-                      ),
-                    ),
-                    headers: Schema.optional(
-                      Schema.Array(
-                        Schema.Struct({
-                          value: Schema.optional(Schema.String),
-                          mode: Schema.optional(
-                            Schema.Literals(["Mask", "Hide"]),
-                          ),
-                        }),
-                      ),
-                    ),
-                  }),
-                ),
-              }),
-            ),
-            response: Schema.optional(
-              Schema.Struct({
-                headers: Schema.optional(Schema.Array(Schema.String)),
-                body: Schema.optional(
-                  Schema.Struct({
-                    bytes: Schema.optional(Schema.Number),
-                  }),
-                ),
-                dataMasking: Schema.optional(
-                  Schema.Struct({
-                    queryParams: Schema.optional(
-                      Schema.Array(
-                        Schema.Struct({
-                          value: Schema.optional(Schema.String),
-                          mode: Schema.optional(
-                            Schema.Literals(["Mask", "Hide"]),
-                          ),
-                        }),
-                      ),
-                    ),
-                    headers: Schema.optional(
-                      Schema.Array(
-                        Schema.Struct({
-                          value: Schema.optional(Schema.String),
-                          mode: Schema.optional(
-                            Schema.Literals(["Mask", "Hide"]),
-                          ),
-                        }),
-                      ),
-                    ),
-                  }),
-                ),
-              }),
-            ),
-          }),
-        ),
-        logClientIp: Schema.optional(Schema.Boolean),
-        httpCorrelationProtocol: Schema.optional(
-          Schema.Literals(["None", "Legacy", "W3C"]),
-        ),
-        verbosity: Schema.optional(
-          Schema.Literals(["verbose", "information", "error"]),
-        ),
-        operationNameFormat: Schema.optional(Schema.Literals(["Name", "Url"])),
-        metrics: Schema.optional(Schema.Boolean),
-      }),
+      Schema.suspend(() => DiagnosticContractPropertiesSchema),
     ),
   }).pipe(
     T.Http({
@@ -753,6 +2655,9 @@ export type ApiDiagnosticUpdateInput = typeof ApiDiagnosticUpdateInput.Type;
 // Output Schema
 export const ApiDiagnosticUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => DiagnosticContractPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -783,12 +2688,9 @@ export const ApiGatewayConfigConnectionCreateOrUpdateInput =
     gatewayName: Schema.String.pipe(T.PathParam()),
     configConnectionName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    properties: Schema.Struct({
-      provisioningState: Schema.optional(Schema.String),
-      sourceId: Schema.optional(Schema.String),
-      defaultHostname: Schema.optional(Schema.String),
-      hostnames: Schema.optional(Schema.Array(Schema.String)),
-    }),
+    properties: Schema.suspend(
+      () => GatewayConfigConnectionBasePropertiesSchema,
+    ),
     etag: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
@@ -804,6 +2706,10 @@ export type ApiGatewayConfigConnectionCreateOrUpdateInput =
 // Output Schema
 export const ApiGatewayConfigConnectionCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.suspend(
+      () => GatewayConfigConnectionBasePropertiesSchema,
+    ),
+    etag: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -886,6 +2792,10 @@ export type ApiGatewayConfigConnectionGetInput =
 // Output Schema
 export const ApiGatewayConfigConnectionGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.suspend(
+      () => GatewayConfigConnectionBasePropertiesSchema,
+    ),
+    etag: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -928,11 +2838,7 @@ export type ApiGatewayConfigConnectionListByGatewayInput =
 export const ApiGatewayConfigConnectionListByGatewayOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(() => ApiManagementGatewayConfigConnectionResourceSchema),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -959,41 +2865,8 @@ export const ApiGatewayCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     gatewayName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    properties: Schema.Struct({
-      provisioningState: Schema.optional(Schema.String),
-      targetProvisioningState: Schema.optional(Schema.String),
-      createdAtUtc: Schema.optional(Schema.String),
-      frontend: Schema.optional(
-        Schema.Struct({
-          defaultHostname: Schema.optional(Schema.String),
-        }),
-      ),
-      backend: Schema.optional(
-        Schema.Struct({
-          subnet: Schema.optional(
-            Schema.Struct({
-              id: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
-      configurationApi: Schema.optional(
-        Schema.Struct({
-          hostname: Schema.optional(Schema.String),
-        }),
-      ),
-      virtualNetworkType: Schema.optional(
-        Schema.Literals(["None", "External", "Internal"]),
-      ),
-    }),
-    sku: Schema.Struct({
-      name: Schema.Literals([
-        "Standard",
-        "WorkspaceGatewayStandard",
-        "WorkspaceGatewayPremium",
-      ]),
-      capacity: Schema.optional(Schema.Number),
-    }),
+    properties: Schema.suspend(() => ApiManagementGatewayPropertiesSchema),
+    sku: Schema.suspend(() => ApiManagementGatewaySkuPropertiesSchema),
     systemData: Schema.optional(
       Schema.Struct({
         createdBy: Schema.optional(Schema.String),
@@ -1028,6 +2901,24 @@ export type ApiGatewayCreateOrUpdateInput =
 // Output Schema
 export const ApiGatewayCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.suspend(() => ApiManagementGatewayPropertiesSchema),
+    sku: Schema.suspend(() => ApiManagementGatewaySkuPropertiesSchema),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+    location: Schema.String,
+    etag: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1099,6 +2990,24 @@ export type ApiGatewayGetInput = typeof ApiGatewayGetInput.Type;
 
 // Output Schema
 export const ApiGatewayGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.suspend(() => ApiManagementGatewayPropertiesSchema),
+  sku: Schema.suspend(() => ApiManagementGatewaySkuPropertiesSchema),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+  location: Schema.String,
+  etag: Schema.optional(Schema.String),
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -1133,14 +3042,7 @@ export type ApiGatewayListInput = typeof ApiGatewayListInput.Type;
 
 // Output Schema
 export const ApiGatewayListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  value: Schema.Array(
-    Schema.Struct({
-      id: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      type: Schema.optional(Schema.String),
-      tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    }),
-  ),
+  value: Schema.Array(Schema.suspend(() => ApiManagementGatewayResourceSchema)),
   nextLink: Schema.optional(Schema.String),
 });
 export type ApiGatewayListOutput = typeof ApiGatewayListOutput.Type;
@@ -1175,12 +3077,7 @@ export type ApiGatewayListByResourceGroupInput =
 export const ApiGatewayListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      }),
+      Schema.suspend(() => ApiManagementGatewayResourceSchema),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -1206,45 +3103,10 @@ export const ApiGatewayUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   gatewayName: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
   properties: Schema.optional(
-    Schema.Struct({
-      provisioningState: Schema.optional(Schema.String),
-      targetProvisioningState: Schema.optional(Schema.String),
-      createdAtUtc: Schema.optional(Schema.String),
-      frontend: Schema.optional(
-        Schema.Struct({
-          defaultHostname: Schema.optional(Schema.String),
-        }),
-      ),
-      backend: Schema.optional(
-        Schema.Struct({
-          subnet: Schema.optional(
-            Schema.Struct({
-              id: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
-      configurationApi: Schema.optional(
-        Schema.Struct({
-          hostname: Schema.optional(Schema.String),
-        }),
-      ),
-      virtualNetworkType: Schema.optional(
-        Schema.Literals(["None", "External", "Internal"]),
-      ),
-    }),
+    Schema.suspend(() => ApiManagementGatewayUpdatePropertiesSchema),
   ),
   sku: Schema.optional(
-    Schema.Struct({
-      name: Schema.optional(
-        Schema.Literals([
-          "Standard",
-          "WorkspaceGatewayStandard",
-          "WorkspaceGatewayPremium",
-        ]),
-      ),
-      capacity: Schema.optional(Schema.Number),
-    }),
+    Schema.suspend(() => ApiManagementGatewaySkuPropertiesForPatchSchema),
   ),
   etag: Schema.optional(Schema.String),
   id: Schema.optional(Schema.String),
@@ -1264,6 +3126,24 @@ export type ApiGatewayUpdateInput = typeof ApiGatewayUpdateInput.Type;
 // Output Schema
 export const ApiGatewayUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
+    properties: Schema.suspend(() => ApiManagementGatewayPropertiesSchema),
+    sku: Schema.suspend(() => ApiManagementGatewaySkuPropertiesSchema),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+    location: Schema.String,
+    etag: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1302,6 +3182,9 @@ export type ApiGetInput = typeof ApiGetInput.Type;
 
 // Output Schema
 export const ApiGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.optional(
+    Schema.suspend(() => ApiContractPropertiesSchema),
+  ),
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -1332,11 +3215,7 @@ export const ApiIssueAttachmentCreateOrUpdateInput =
     attachmentId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        title: Schema.String,
-        contentFormat: Schema.String,
-        content: Schema.String,
-      }),
+      Schema.suspend(() => IssueAttachmentContractPropertiesSchema),
     ),
   }).pipe(
     T.Http({
@@ -1351,6 +3230,9 @@ export type ApiIssueAttachmentCreateOrUpdateInput =
 // Output Schema
 export const ApiIssueAttachmentCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => IssueAttachmentContractPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1442,6 +3324,9 @@ export type ApiIssueAttachmentGetInput = typeof ApiIssueAttachmentGetInput.Type;
 // Output Schema
 export const ApiIssueAttachmentGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => IssueAttachmentContractPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1492,13 +3377,7 @@ export type ApiIssueAttachmentListByServiceInput =
 export const ApiIssueAttachmentListByServiceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => IssueAttachmentContractSchema)),
     ),
     count: Schema.optional(Schema.Number),
     nextLink: Schema.optional(Schema.String),
@@ -1535,11 +3414,7 @@ export const ApiIssueCommentCreateOrUpdateInput =
     commentId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        text: Schema.String,
-        createdDate: Schema.optional(Schema.String),
-        userId: Schema.String,
-      }),
+      Schema.suspend(() => IssueCommentContractPropertiesSchema),
     ),
   }).pipe(
     T.Http({
@@ -1554,6 +3429,9 @@ export type ApiIssueCommentCreateOrUpdateInput =
 // Output Schema
 export const ApiIssueCommentCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => IssueCommentContractPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1644,6 +3522,9 @@ export type ApiIssueCommentGetInput = typeof ApiIssueCommentGetInput.Type;
 // Output Schema
 export const ApiIssueCommentGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => IssueCommentContractPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1691,13 +3572,7 @@ export type ApiIssueCommentListByServiceInput =
 export const ApiIssueCommentListByServiceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => IssueCommentContractSchema)),
     ),
     count: Schema.optional(Schema.Number),
     nextLink: Schema.optional(Schema.String),
@@ -1733,19 +3608,7 @@ export const ApiIssueCreateOrUpdateInput =
     issueId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        createdDate: Schema.optional(Schema.String),
-        state: Schema.optional(
-          Schema.Literals([
-            "proposed",
-            "open",
-            "removed",
-            "resolved",
-            "closed",
-          ]),
-        ),
-        apiId: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(() => IssueContractPropertiesSchema),
     ),
   }).pipe(
     T.Http({
@@ -1760,6 +3623,9 @@ export type ApiIssueCreateOrUpdateInput =
 // Output Schema
 export const ApiIssueCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => IssueContractPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1841,6 +3707,9 @@ export type ApiIssueGetInput = typeof ApiIssueGetInput.Type;
 
 // Output Schema
 export const ApiIssueGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.optional(
+    Schema.suspend(() => IssueContractPropertiesSchema),
+  ),
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -1887,13 +3756,7 @@ export type ApiIssueListByServiceInput = typeof ApiIssueListByServiceInput.Type;
 export const ApiIssueListByServiceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => IssueContractSchema)),
     ),
     count: Schema.optional(Schema.Number),
     nextLink: Schema.optional(Schema.String),
@@ -1929,13 +3792,7 @@ export const ApiIssueUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   issueId: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
   properties: Schema.optional(
-    Schema.Struct({
-      createdDate: Schema.optional(Schema.String),
-      state: Schema.optional(
-        Schema.Literals(["proposed", "open", "removed", "resolved", "closed"]),
-      ),
-      apiId: Schema.optional(Schema.String),
-    }),
+    Schema.suspend(() => IssueUpdateContractPropertiesSchema),
   ),
 }).pipe(
   T.Http({
@@ -1948,6 +3805,9 @@ export type ApiIssueUpdateInput = typeof ApiIssueUpdateInput.Type;
 
 // Output Schema
 export const ApiIssueUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.optional(
+    Schema.suspend(() => IssueContractPropertiesSchema),
+  ),
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -1994,13 +3854,7 @@ export type ApiListByServiceInput = typeof ApiListByServiceInput.Type;
 export const ApiListByServiceOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => ApiContractSchema)),
     ),
     count: Schema.optional(Schema.Number),
     nextLink: Schema.optional(Schema.String),
@@ -2047,121 +3901,7 @@ export type ApiListByTagsInput = typeof ApiListByTagsInput.Type;
 // Output Schema
 export const ApiListByTagsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.optional(
-    Schema.Array(
-      Schema.Struct({
-        tag: Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-        }),
-        api: Schema.optional(
-          Schema.Struct({
-            description: Schema.optional(Schema.String),
-            authenticationSettings: Schema.optional(
-              Schema.Struct({
-                oAuth2: Schema.optional(
-                  Schema.Struct({
-                    authorizationServerId: Schema.optional(Schema.String),
-                    scope: Schema.optional(Schema.String),
-                  }),
-                ),
-                openid: Schema.optional(
-                  Schema.Struct({
-                    openidProviderId: Schema.optional(Schema.String),
-                    bearerTokenSendingMethods: Schema.optional(
-                      Schema.Array(
-                        Schema.Literals(["authorizationHeader", "query"]),
-                      ),
-                    ),
-                  }),
-                ),
-                oAuth2AuthenticationSettings: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      authorizationServerId: Schema.optional(Schema.String),
-                      scope: Schema.optional(Schema.String),
-                    }),
-                  ),
-                ),
-                openidAuthenticationSettings: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      openidProviderId: Schema.optional(Schema.String),
-                      bearerTokenSendingMethods: Schema.optional(
-                        Schema.Array(
-                          Schema.Literals(["authorizationHeader", "query"]),
-                        ),
-                      ),
-                    }),
-                  ),
-                ),
-              }),
-            ),
-            subscriptionKeyParameterNames: Schema.optional(
-              Schema.Struct({
-                header: Schema.optional(Schema.String),
-                query: Schema.optional(Schema.String),
-              }),
-            ),
-            type: Schema.optional(
-              Schema.Literals([
-                "http",
-                "soap",
-                "websocket",
-                "graphql",
-                "odata",
-                "grpc",
-              ]),
-            ),
-            apiRevision: Schema.optional(Schema.String),
-            apiVersion: Schema.optional(Schema.String),
-            isCurrent: Schema.optional(Schema.Boolean),
-            isOnline: Schema.optional(Schema.Boolean),
-            apiRevisionDescription: Schema.optional(Schema.String),
-            apiVersionDescription: Schema.optional(Schema.String),
-            apiVersionSetId: Schema.optional(Schema.String),
-            subscriptionRequired: Schema.optional(Schema.Boolean),
-            termsOfServiceUrl: Schema.optional(Schema.String),
-            contact: Schema.optional(
-              Schema.Struct({
-                name: Schema.optional(Schema.String),
-                url: Schema.optional(Schema.String),
-                email: Schema.optional(Schema.String),
-              }),
-            ),
-            license: Schema.optional(
-              Schema.Struct({
-                name: Schema.optional(Schema.String),
-                url: Schema.optional(Schema.String),
-              }),
-            ),
-          }),
-        ),
-        operation: Schema.optional(
-          Schema.Struct({
-            id: Schema.optional(Schema.String),
-            name: Schema.optional(Schema.String),
-            apiName: Schema.optional(Schema.String),
-            apiRevision: Schema.optional(Schema.String),
-            apiVersion: Schema.optional(Schema.String),
-            description: Schema.optional(Schema.String),
-            method: Schema.optional(Schema.String),
-            urlTemplate: Schema.optional(Schema.String),
-          }),
-        ),
-        product: Schema.optional(
-          Schema.Struct({
-            description: Schema.optional(Schema.String),
-            terms: Schema.optional(Schema.String),
-            subscriptionRequired: Schema.optional(Schema.Boolean),
-            approvalRequired: Schema.optional(Schema.Boolean),
-            subscriptionsLimit: Schema.optional(Schema.Number),
-            state: Schema.optional(
-              Schema.Literals(["notPublished", "published"]),
-            ),
-          }),
-        ),
-      }),
-    ),
+    Schema.Array(Schema.suspend(() => TagResourceContractSchema)),
   ),
   count: Schema.optional(Schema.Number),
   nextLink: Schema.optional(Schema.String),
@@ -2204,32 +3944,7 @@ export type ApiManagementGatewaySkusListAvailableSkusInput =
 // Output Schema
 export const ApiManagementGatewaySkusListAvailableSkusOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        resourceType: Schema.optional(Schema.String),
-        sku: Schema.optional(
-          Schema.Struct({
-            name: Schema.optional(
-              Schema.Literals([
-                "Standard",
-                "WorkspaceGatewayStandard",
-                "WorkspaceGatewayPremium",
-              ]),
-            ),
-          }),
-        ),
-        capacity: Schema.optional(
-          Schema.Struct({
-            minimum: Schema.optional(Schema.Number),
-            maximum: Schema.optional(Schema.Number),
-            default: Schema.optional(Schema.Number),
-            scaleType: Schema.optional(
-              Schema.Literals(["Automatic", "Manual", "None"]),
-            ),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => GatewayResourceSkuResultSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type ApiManagementGatewaySkusListAvailableSkusOutput =
@@ -2266,23 +3981,7 @@ export type ApiManagementOperationsListInput =
 // Output Schema
 export const ApiManagementOperationsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          name: Schema.optional(Schema.String),
-          display: Schema.optional(
-            Schema.Struct({
-              provider: Schema.optional(Schema.String),
-              operation: Schema.optional(Schema.String),
-              resource: Schema.optional(Schema.String),
-              description: Schema.optional(Schema.String),
-            }),
-          ),
-          origin: Schema.optional(Schema.String),
-          properties: Schema.optional(Schema.Unknown),
-        }),
-      ),
-    ),
+    value: Schema.optional(Schema.Array(Schema.suspend(() => OperationSchema))),
     nextLink: Schema.optional(Schema.String),
   });
 export type ApiManagementOperationsListOutput =
@@ -2321,6 +4020,28 @@ export type ApiManagementServiceApplyNetworkConfigurationUpdatesInput =
 // Output Schema
 export const ApiManagementServiceApplyNetworkConfigurationUpdatesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.suspend(() => ApiManagementServicePropertiesSchema),
+    sku: Schema.suspend(() => ApiManagementServiceSkuPropertiesSchema),
+    identity: Schema.optional(
+      Schema.suspend(() => ApiManagementServiceIdentitySchema),
+    ),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+    location: Schema.String,
+    etag: Schema.optional(Schema.String),
+    zones: Schema.optional(Schema.Array(Schema.String)),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2375,6 +4096,28 @@ export type ApiManagementServiceBackupInput =
 // Output Schema
 export const ApiManagementServiceBackupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.suspend(() => ApiManagementServicePropertiesSchema),
+    sku: Schema.suspend(() => ApiManagementServiceSkuPropertiesSchema),
+    identity: Schema.optional(
+      Schema.suspend(() => ApiManagementServiceIdentitySchema),
+    ),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+    location: Schema.String,
+    etag: Schema.optional(Schema.String),
+    zones: Schema.optional(Schema.Array(Schema.String)),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2443,221 +4186,10 @@ export const ApiManagementServiceCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    properties: Schema.Struct({
-      notificationSenderEmail: Schema.optional(Schema.String),
-      provisioningState: Schema.optional(Schema.String),
-      targetProvisioningState: Schema.optional(Schema.String),
-      createdAtUtc: Schema.optional(Schema.String),
-      gatewayUrl: Schema.optional(Schema.String),
-      gatewayRegionalUrl: Schema.optional(Schema.String),
-      portalUrl: Schema.optional(Schema.String),
-      managementApiUrl: Schema.optional(Schema.String),
-      scmUrl: Schema.optional(Schema.String),
-      developerPortalUrl: Schema.optional(Schema.String),
-      hostnameConfigurations: Schema.optional(
-        Schema.Array(
-          Schema.Struct({
-            type: Schema.Literals([
-              "Proxy",
-              "Portal",
-              "Management",
-              "Scm",
-              "DeveloperPortal",
-              "ConfigurationApi",
-            ]),
-            hostName: Schema.String,
-            keyVaultId: Schema.optional(Schema.String),
-            identityClientId: Schema.optional(Schema.String),
-            encodedCertificate: Schema.optional(Schema.String),
-            certificatePassword: Schema.optional(SensitiveString),
-            defaultSslBinding: Schema.optional(Schema.Boolean),
-            negotiateClientCertificate: Schema.optional(Schema.Boolean),
-            certificate: Schema.optional(
-              Schema.Struct({
-                expiry: Schema.String,
-                thumbprint: Schema.String,
-                subject: Schema.String,
-              }),
-            ),
-            certificateSource: Schema.optional(
-              Schema.Literals(["Managed", "KeyVault", "Custom", "BuiltIn"]),
-            ),
-            certificateStatus: Schema.optional(
-              Schema.Literals(["Completed", "Failed", "InProgress"]),
-            ),
-          }),
-        ),
-      ),
-      publicIPAddresses: Schema.optional(Schema.Array(Schema.String)),
-      privateIPAddresses: Schema.optional(Schema.Array(Schema.String)),
-      publicIpAddressId: Schema.optional(Schema.String),
-      publicNetworkAccess: Schema.optional(
-        Schema.Literals(["Enabled", "Disabled"]),
-      ),
-      configurationApi: Schema.optional(
-        Schema.Struct({
-          legacyApi: Schema.optional(Schema.Literals(["Enabled", "Disabled"])),
-        }),
-      ),
-      virtualNetworkConfiguration: Schema.optional(
-        Schema.Struct({
-          vnetid: Schema.optional(Schema.String),
-          subnetname: Schema.optional(Schema.String),
-          subnetResourceId: Schema.optional(Schema.String),
-        }),
-      ),
-      additionalLocations: Schema.optional(
-        Schema.Array(
-          Schema.Struct({
-            location: Schema.String,
-            sku: Schema.Struct({
-              name: Schema.Literals([
-                "Developer",
-                "Standard",
-                "Premium",
-                "Basic",
-                "Consumption",
-                "Isolated",
-                "BasicV2",
-                "StandardV2",
-              ]),
-              capacity: Schema.Number,
-            }),
-            zones: Schema.optional(Schema.Array(Schema.String)),
-            publicIPAddresses: Schema.optional(Schema.Array(Schema.String)),
-            privateIPAddresses: Schema.optional(Schema.Array(Schema.String)),
-            publicIpAddressId: Schema.optional(Schema.String),
-            virtualNetworkConfiguration: Schema.optional(
-              Schema.Struct({
-                vnetid: Schema.optional(Schema.String),
-                subnetname: Schema.optional(Schema.String),
-                subnetResourceId: Schema.optional(Schema.String),
-              }),
-            ),
-            gatewayRegionalUrl: Schema.optional(Schema.String),
-            natGatewayState: Schema.optional(
-              Schema.Literals(["Enabled", "Disabled"]),
-            ),
-            outboundPublicIPAddresses: Schema.optional(
-              Schema.Array(Schema.String),
-            ),
-            disableGateway: Schema.optional(Schema.Boolean),
-            platformVersion: Schema.optional(
-              Schema.Literals([
-                "undetermined",
-                "stv1",
-                "stv2",
-                "mtv1",
-                "stv2.1",
-              ]),
-            ),
-          }),
-        ),
-      ),
-      customProperties: Schema.optional(
-        Schema.Record(Schema.String, Schema.String),
-      ),
-      certificates: Schema.optional(
-        Schema.Array(
-          Schema.Struct({
-            encodedCertificate: Schema.optional(Schema.String),
-            certificatePassword: Schema.optional(SensitiveString),
-            storeName: Schema.Literals(["CertificateAuthority", "Root"]),
-            certificate: Schema.optional(
-              Schema.Struct({
-                expiry: Schema.String,
-                thumbprint: Schema.String,
-                subject: Schema.String,
-              }),
-            ),
-          }),
-        ),
-      ),
-      enableClientCertificate: Schema.optional(Schema.Boolean),
-      natGatewayState: Schema.optional(
-        Schema.Literals(["Enabled", "Disabled"]),
-      ),
-      outboundPublicIPAddresses: Schema.optional(Schema.Array(Schema.String)),
-      disableGateway: Schema.optional(Schema.Boolean),
-      virtualNetworkType: Schema.optional(
-        Schema.Literals(["None", "External", "Internal"]),
-      ),
-      apiVersionConstraint: Schema.optional(
-        Schema.Struct({
-          minApiVersion: Schema.optional(Schema.String),
-        }),
-      ),
-      restore: Schema.optional(Schema.Boolean),
-      privateEndpointConnections: Schema.optional(
-        Schema.Array(
-          Schema.Struct({
-            id: Schema.optional(Schema.String),
-            name: Schema.optional(Schema.String),
-            type: Schema.optional(Schema.String),
-            properties: Schema.optional(
-              Schema.Struct({
-                privateEndpoint: Schema.optional(
-                  Schema.Struct({
-                    id: Schema.optional(Schema.String),
-                  }),
-                ),
-                privateLinkServiceConnectionState: Schema.Struct({
-                  status: Schema.optional(
-                    Schema.Literals(["Pending", "Approved", "Rejected"]),
-                  ),
-                  description: Schema.optional(Schema.String),
-                  actionsRequired: Schema.optional(Schema.String),
-                }),
-                provisioningState: Schema.optional(Schema.String),
-                groupIds: Schema.optional(Schema.Array(Schema.String)),
-              }),
-            ),
-          }),
-        ),
-      ),
-      platformVersion: Schema.optional(
-        Schema.Literals(["undetermined", "stv1", "stv2", "mtv1", "stv2.1"]),
-      ),
-      legacyPortalStatus: Schema.optional(
-        Schema.Literals(["Enabled", "Disabled"]),
-      ),
-      developerPortalStatus: Schema.optional(
-        Schema.Literals(["Enabled", "Disabled"]),
-      ),
-    }),
-    sku: Schema.Struct({
-      name: Schema.Literals([
-        "Developer",
-        "Standard",
-        "Premium",
-        "Basic",
-        "Consumption",
-        "Isolated",
-        "BasicV2",
-        "StandardV2",
-      ]),
-      capacity: Schema.Number,
-    }),
+    properties: Schema.suspend(() => ApiManagementServicePropertiesSchema),
+    sku: Schema.suspend(() => ApiManagementServiceSkuPropertiesSchema),
     identity: Schema.optional(
-      Schema.Struct({
-        type: Schema.Literals([
-          "SystemAssigned",
-          "UserAssigned",
-          "SystemAssigned, UserAssigned",
-          "None",
-        ]),
-        principalId: Schema.optional(Schema.String),
-        tenantId: Schema.optional(Schema.String),
-        userAssignedIdentities: Schema.optional(
-          Schema.Record(
-            Schema.String,
-            Schema.Struct({
-              principalId: Schema.optional(Schema.String),
-              clientId: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-      }),
+      Schema.suspend(() => ApiManagementServiceIdentitySchema),
     ),
     systemData: Schema.optional(
       Schema.Struct({
@@ -2694,6 +4226,28 @@ export type ApiManagementServiceCreateOrUpdateInput =
 // Output Schema
 export const ApiManagementServiceCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.suspend(() => ApiManagementServicePropertiesSchema),
+    sku: Schema.suspend(() => ApiManagementServiceSkuPropertiesSchema),
+    identity: Schema.optional(
+      Schema.suspend(() => ApiManagementServiceIdentitySchema),
+    ),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+    location: Schema.String,
+    etag: Schema.optional(Schema.String),
+    zones: Schema.optional(Schema.Array(Schema.String)),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2773,6 +4327,28 @@ export type ApiManagementServiceGetInput =
 // Output Schema
 export const ApiManagementServiceGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.suspend(() => ApiManagementServicePropertiesSchema),
+    sku: Schema.suspend(() => ApiManagementServiceSkuPropertiesSchema),
+    identity: Schema.optional(
+      Schema.suspend(() => ApiManagementServiceIdentitySchema),
+    ),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+    location: Schema.String,
+    etag: Schema.optional(Schema.String),
+    zones: Schema.optional(Schema.Array(Schema.String)),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2886,12 +4462,7 @@ export type ApiManagementServiceListInput =
 export const ApiManagementServiceListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      }),
+      Schema.suspend(() => ApiManagementServiceResourceSchema),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -2930,12 +4501,7 @@ export type ApiManagementServiceListByResourceGroupInput =
 export const ApiManagementServiceListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      }),
+      Schema.suspend(() => ApiManagementServiceResourceSchema),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -2976,6 +4542,28 @@ export type ApiManagementServiceMigrateToStv2Input =
 // Output Schema
 export const ApiManagementServiceMigrateToStv2Output =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.suspend(() => ApiManagementServicePropertiesSchema),
+    sku: Schema.suspend(() => ApiManagementServiceSkuPropertiesSchema),
+    identity: Schema.optional(
+      Schema.suspend(() => ApiManagementServiceIdentitySchema),
+    ),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+    location: Schema.String,
+    etag: Schema.optional(Schema.String),
+    zones: Schema.optional(Schema.Array(Schema.String)),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -3030,6 +4618,28 @@ export type ApiManagementServiceRestoreInput =
 // Output Schema
 export const ApiManagementServiceRestoreOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.suspend(() => ApiManagementServicePropertiesSchema),
+    sku: Schema.suspend(() => ApiManagementServiceSkuPropertiesSchema),
+    identity: Schema.optional(
+      Schema.suspend(() => ApiManagementServiceIdentitySchema),
+    ),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+    location: Schema.String,
+    etag: Schema.optional(Schema.String),
+    zones: Schema.optional(Schema.Array(Schema.String)),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -3072,37 +4682,7 @@ export type ApiManagementServiceSkusListAvailableServiceSkusInput =
 // Output Schema
 export const ApiManagementServiceSkusListAvailableServiceSkusOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        resourceType: Schema.optional(Schema.String),
-        sku: Schema.optional(
-          Schema.Struct({
-            name: Schema.optional(
-              Schema.Literals([
-                "Developer",
-                "Standard",
-                "Premium",
-                "Basic",
-                "Consumption",
-                "Isolated",
-                "BasicV2",
-                "StandardV2",
-              ]),
-            ),
-          }),
-        ),
-        capacity: Schema.optional(
-          Schema.Struct({
-            minimum: Schema.optional(Schema.Number),
-            maximum: Schema.optional(Schema.Number),
-            default: Schema.optional(Schema.Number),
-            scaleType: Schema.optional(
-              Schema.Literals(["automatic", "manual", "none"]),
-            ),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => ResourceSkuResultSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type ApiManagementServiceSkusListAvailableServiceSkusOutput =
@@ -3131,226 +4711,13 @@ export const ApiManagementServiceUpdateInput =
     serviceName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        notificationSenderEmail: Schema.optional(Schema.String),
-        provisioningState: Schema.optional(Schema.String),
-        targetProvisioningState: Schema.optional(Schema.String),
-        createdAtUtc: Schema.optional(Schema.String),
-        gatewayUrl: Schema.optional(Schema.String),
-        gatewayRegionalUrl: Schema.optional(Schema.String),
-        portalUrl: Schema.optional(Schema.String),
-        managementApiUrl: Schema.optional(Schema.String),
-        scmUrl: Schema.optional(Schema.String),
-        developerPortalUrl: Schema.optional(Schema.String),
-        hostnameConfigurations: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              type: Schema.Literals([
-                "Proxy",
-                "Portal",
-                "Management",
-                "Scm",
-                "DeveloperPortal",
-                "ConfigurationApi",
-              ]),
-              hostName: Schema.String,
-              keyVaultId: Schema.optional(Schema.String),
-              identityClientId: Schema.optional(Schema.String),
-              encodedCertificate: Schema.optional(Schema.String),
-              certificatePassword: Schema.optional(SensitiveString),
-              defaultSslBinding: Schema.optional(Schema.Boolean),
-              negotiateClientCertificate: Schema.optional(Schema.Boolean),
-              certificate: Schema.optional(
-                Schema.Struct({
-                  expiry: Schema.String,
-                  thumbprint: Schema.String,
-                  subject: Schema.String,
-                }),
-              ),
-              certificateSource: Schema.optional(
-                Schema.Literals(["Managed", "KeyVault", "Custom", "BuiltIn"]),
-              ),
-              certificateStatus: Schema.optional(
-                Schema.Literals(["Completed", "Failed", "InProgress"]),
-              ),
-            }),
-          ),
-        ),
-        publicIPAddresses: Schema.optional(Schema.Array(Schema.String)),
-        privateIPAddresses: Schema.optional(Schema.Array(Schema.String)),
-        publicIpAddressId: Schema.optional(Schema.String),
-        publicNetworkAccess: Schema.optional(
-          Schema.Literals(["Enabled", "Disabled"]),
-        ),
-        configurationApi: Schema.optional(
-          Schema.Struct({
-            legacyApi: Schema.optional(
-              Schema.Literals(["Enabled", "Disabled"]),
-            ),
-          }),
-        ),
-        virtualNetworkConfiguration: Schema.optional(
-          Schema.Struct({
-            vnetid: Schema.optional(Schema.String),
-            subnetname: Schema.optional(Schema.String),
-            subnetResourceId: Schema.optional(Schema.String),
-          }),
-        ),
-        additionalLocations: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              location: Schema.String,
-              sku: Schema.Struct({
-                name: Schema.Literals([
-                  "Developer",
-                  "Standard",
-                  "Premium",
-                  "Basic",
-                  "Consumption",
-                  "Isolated",
-                  "BasicV2",
-                  "StandardV2",
-                ]),
-                capacity: Schema.Number,
-              }),
-              zones: Schema.optional(Schema.Array(Schema.String)),
-              publicIPAddresses: Schema.optional(Schema.Array(Schema.String)),
-              privateIPAddresses: Schema.optional(Schema.Array(Schema.String)),
-              publicIpAddressId: Schema.optional(Schema.String),
-              virtualNetworkConfiguration: Schema.optional(
-                Schema.Struct({
-                  vnetid: Schema.optional(Schema.String),
-                  subnetname: Schema.optional(Schema.String),
-                  subnetResourceId: Schema.optional(Schema.String),
-                }),
-              ),
-              gatewayRegionalUrl: Schema.optional(Schema.String),
-              natGatewayState: Schema.optional(
-                Schema.Literals(["Enabled", "Disabled"]),
-              ),
-              outboundPublicIPAddresses: Schema.optional(
-                Schema.Array(Schema.String),
-              ),
-              disableGateway: Schema.optional(Schema.Boolean),
-              platformVersion: Schema.optional(
-                Schema.Literals([
-                  "undetermined",
-                  "stv1",
-                  "stv2",
-                  "mtv1",
-                  "stv2.1",
-                ]),
-              ),
-            }),
-          ),
-        ),
-        customProperties: Schema.optional(
-          Schema.Record(Schema.String, Schema.String),
-        ),
-        certificates: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              encodedCertificate: Schema.optional(Schema.String),
-              certificatePassword: Schema.optional(SensitiveString),
-              storeName: Schema.Literals(["CertificateAuthority", "Root"]),
-              certificate: Schema.optional(
-                Schema.Struct({
-                  expiry: Schema.String,
-                  thumbprint: Schema.String,
-                  subject: Schema.String,
-                }),
-              ),
-            }),
-          ),
-        ),
-        enableClientCertificate: Schema.optional(Schema.Boolean),
-        natGatewayState: Schema.optional(
-          Schema.Literals(["Enabled", "Disabled"]),
-        ),
-        outboundPublicIPAddresses: Schema.optional(Schema.Array(Schema.String)),
-        disableGateway: Schema.optional(Schema.Boolean),
-        virtualNetworkType: Schema.optional(
-          Schema.Literals(["None", "External", "Internal"]),
-        ),
-        apiVersionConstraint: Schema.optional(
-          Schema.Struct({
-            minApiVersion: Schema.optional(Schema.String),
-          }),
-        ),
-        restore: Schema.optional(Schema.Boolean),
-        privateEndpointConnections: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              id: Schema.optional(Schema.String),
-              name: Schema.optional(Schema.String),
-              type: Schema.optional(Schema.String),
-              properties: Schema.optional(
-                Schema.Struct({
-                  privateEndpoint: Schema.optional(
-                    Schema.Struct({
-                      id: Schema.optional(Schema.String),
-                    }),
-                  ),
-                  privateLinkServiceConnectionState: Schema.Struct({
-                    status: Schema.optional(
-                      Schema.Literals(["Pending", "Approved", "Rejected"]),
-                    ),
-                    description: Schema.optional(Schema.String),
-                    actionsRequired: Schema.optional(Schema.String),
-                  }),
-                  provisioningState: Schema.optional(Schema.String),
-                  groupIds: Schema.optional(Schema.Array(Schema.String)),
-                }),
-              ),
-            }),
-          ),
-        ),
-        platformVersion: Schema.optional(
-          Schema.Literals(["undetermined", "stv1", "stv2", "mtv1", "stv2.1"]),
-        ),
-        legacyPortalStatus: Schema.optional(
-          Schema.Literals(["Enabled", "Disabled"]),
-        ),
-        developerPortalStatus: Schema.optional(
-          Schema.Literals(["Enabled", "Disabled"]),
-        ),
-      }),
+      Schema.suspend(() => ApiManagementServiceUpdatePropertiesSchema),
     ),
     sku: Schema.optional(
-      Schema.Struct({
-        name: Schema.Literals([
-          "Developer",
-          "Standard",
-          "Premium",
-          "Basic",
-          "Consumption",
-          "Isolated",
-          "BasicV2",
-          "StandardV2",
-        ]),
-        capacity: Schema.Number,
-      }),
+      Schema.suspend(() => ApiManagementServiceSkuPropertiesSchema),
     ),
     identity: Schema.optional(
-      Schema.Struct({
-        type: Schema.Literals([
-          "SystemAssigned",
-          "UserAssigned",
-          "SystemAssigned, UserAssigned",
-          "None",
-        ]),
-        principalId: Schema.optional(Schema.String),
-        tenantId: Schema.optional(Schema.String),
-        userAssignedIdentities: Schema.optional(
-          Schema.Record(
-            Schema.String,
-            Schema.Struct({
-              principalId: Schema.optional(Schema.String),
-              clientId: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-      }),
+      Schema.suspend(() => ApiManagementServiceIdentitySchema),
     ),
     etag: Schema.optional(Schema.String),
     zones: Schema.optional(Schema.Array(Schema.String)),
@@ -3372,6 +4739,28 @@ export type ApiManagementServiceUpdateInput =
 // Output Schema
 export const ApiManagementServiceUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.suspend(() => ApiManagementServicePropertiesSchema),
+    sku: Schema.suspend(() => ApiManagementServiceSkuPropertiesSchema),
+    identity: Schema.optional(
+      Schema.suspend(() => ApiManagementServiceIdentitySchema),
+    ),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+    location: Schema.String,
+    etag: Schema.optional(Schema.String),
+    zones: Schema.optional(Schema.Array(Schema.String)),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -3411,85 +4800,7 @@ export type ApiManagementSkusListInput = typeof ApiManagementSkusListInput.Type;
 // Output Schema
 export const ApiManagementSkusListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        resourceType: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        tier: Schema.optional(Schema.String),
-        size: Schema.optional(Schema.String),
-        family: Schema.optional(Schema.String),
-        kind: Schema.optional(Schema.String),
-        capacity: Schema.optional(
-          Schema.Struct({
-            minimum: Schema.optional(Schema.Number),
-            maximum: Schema.optional(Schema.Number),
-            default: Schema.optional(Schema.Number),
-            scaleType: Schema.optional(
-              Schema.Literals(["Automatic", "Manual", "None"]),
-            ),
-          }),
-        ),
-        locations: Schema.optional(Schema.Array(Schema.String)),
-        locationInfo: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              location: Schema.optional(Schema.String),
-              zones: Schema.optional(Schema.Array(Schema.String)),
-              zoneDetails: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    name: Schema.optional(Schema.Array(Schema.String)),
-                    capabilities: Schema.optional(
-                      Schema.Array(
-                        Schema.Struct({
-                          name: Schema.optional(Schema.String),
-                          value: Schema.optional(Schema.String),
-                        }),
-                      ),
-                    ),
-                  }),
-                ),
-              ),
-            }),
-          ),
-        ),
-        apiVersions: Schema.optional(Schema.Array(Schema.String)),
-        costs: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              meterID: Schema.optional(Schema.String),
-              quantity: Schema.optional(Schema.Number),
-              extendedUnit: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        capabilities: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              name: Schema.optional(Schema.String),
-              value: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        restrictions: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              type: Schema.optional(Schema.Literals(["Location", "Zone"])),
-              values: Schema.optional(Schema.Array(Schema.String)),
-              restrictionInfo: Schema.optional(
-                Schema.Struct({
-                  locations: Schema.optional(Schema.Array(Schema.String)),
-                  zones: Schema.optional(Schema.Array(Schema.String)),
-                }),
-              ),
-              reasonCode: Schema.optional(
-                Schema.Literals(["QuotaId", "NotAvailableForSubscription"]),
-              ),
-            }),
-          ),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => ApiManagementSkuSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type ApiManagementSkusListOutput =
@@ -3528,6 +4839,10 @@ export type ApiManagementWorkspaceLinkGetInput =
 // Output Schema
 export const ApiManagementWorkspaceLinkGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.suspend(
+      () => ApiManagementWorkspaceLinksPropertiesSchema,
+    ),
+    etag: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -3570,11 +4885,7 @@ export type ApiManagementWorkspaceLinksListByServiceInput =
 export const ApiManagementWorkspaceLinksListByServiceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(() => ApiManagementWorkspaceLinksResourceSchema),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -3604,213 +4915,7 @@ export const ApiOperationCreateOrUpdateInput =
     operationId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        templateParameters: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              name: Schema.String,
-              description: Schema.optional(Schema.String),
-              type: Schema.String,
-              defaultValue: Schema.optional(Schema.String),
-              required: Schema.optional(Schema.Boolean),
-              values: Schema.optional(Schema.Array(Schema.String)),
-              schemaId: Schema.optional(Schema.String),
-              typeName: Schema.optional(Schema.String),
-              examples: Schema.optional(
-                Schema.Record(
-                  Schema.String,
-                  Schema.Struct({
-                    summary: Schema.optional(Schema.String),
-                    description: Schema.optional(Schema.String),
-                    value: Schema.optional(Schema.Unknown),
-                    externalValue: Schema.optional(Schema.String),
-                  }),
-                ),
-              ),
-            }),
-          ),
-        ),
-        description: Schema.optional(Schema.String),
-        request: Schema.optional(
-          Schema.Struct({
-            description: Schema.optional(Schema.String),
-            queryParameters: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  name: Schema.String,
-                  description: Schema.optional(Schema.String),
-                  type: Schema.String,
-                  defaultValue: Schema.optional(Schema.String),
-                  required: Schema.optional(Schema.Boolean),
-                  values: Schema.optional(Schema.Array(Schema.String)),
-                  schemaId: Schema.optional(Schema.String),
-                  typeName: Schema.optional(Schema.String),
-                  examples: Schema.optional(
-                    Schema.Record(
-                      Schema.String,
-                      Schema.Struct({
-                        summary: Schema.optional(Schema.String),
-                        description: Schema.optional(Schema.String),
-                        value: Schema.optional(Schema.Unknown),
-                        externalValue: Schema.optional(Schema.String),
-                      }),
-                    ),
-                  ),
-                }),
-              ),
-            ),
-            headers: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  name: Schema.String,
-                  description: Schema.optional(Schema.String),
-                  type: Schema.String,
-                  defaultValue: Schema.optional(Schema.String),
-                  required: Schema.optional(Schema.Boolean),
-                  values: Schema.optional(Schema.Array(Schema.String)),
-                  schemaId: Schema.optional(Schema.String),
-                  typeName: Schema.optional(Schema.String),
-                  examples: Schema.optional(
-                    Schema.Record(
-                      Schema.String,
-                      Schema.Struct({
-                        summary: Schema.optional(Schema.String),
-                        description: Schema.optional(Schema.String),
-                        value: Schema.optional(Schema.Unknown),
-                        externalValue: Schema.optional(Schema.String),
-                      }),
-                    ),
-                  ),
-                }),
-              ),
-            ),
-            representations: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  contentType: Schema.String,
-                  schemaId: Schema.optional(Schema.String),
-                  typeName: Schema.optional(Schema.String),
-                  formParameters: Schema.optional(
-                    Schema.Array(
-                      Schema.Struct({
-                        name: Schema.String,
-                        description: Schema.optional(Schema.String),
-                        type: Schema.String,
-                        defaultValue: Schema.optional(Schema.String),
-                        required: Schema.optional(Schema.Boolean),
-                        values: Schema.optional(Schema.Array(Schema.String)),
-                        schemaId: Schema.optional(Schema.String),
-                        typeName: Schema.optional(Schema.String),
-                        examples: Schema.optional(
-                          Schema.Record(
-                            Schema.String,
-                            Schema.Struct({
-                              summary: Schema.optional(Schema.String),
-                              description: Schema.optional(Schema.String),
-                              value: Schema.optional(Schema.Unknown),
-                              externalValue: Schema.optional(Schema.String),
-                            }),
-                          ),
-                        ),
-                      }),
-                    ),
-                  ),
-                  examples: Schema.optional(
-                    Schema.Record(
-                      Schema.String,
-                      Schema.Struct({
-                        summary: Schema.optional(Schema.String),
-                        description: Schema.optional(Schema.String),
-                        value: Schema.optional(Schema.Unknown),
-                        externalValue: Schema.optional(Schema.String),
-                      }),
-                    ),
-                  ),
-                }),
-              ),
-            ),
-          }),
-        ),
-        responses: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              statusCode: Schema.Number,
-              description: Schema.optional(Schema.String),
-              representations: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    contentType: Schema.String,
-                    schemaId: Schema.optional(Schema.String),
-                    typeName: Schema.optional(Schema.String),
-                    formParameters: Schema.optional(
-                      Schema.Array(
-                        Schema.Struct({
-                          name: Schema.String,
-                          description: Schema.optional(Schema.String),
-                          type: Schema.String,
-                          defaultValue: Schema.optional(Schema.String),
-                          required: Schema.optional(Schema.Boolean),
-                          values: Schema.optional(Schema.Array(Schema.String)),
-                          schemaId: Schema.optional(Schema.String),
-                          typeName: Schema.optional(Schema.String),
-                          examples: Schema.optional(
-                            Schema.Record(
-                              Schema.String,
-                              Schema.Struct({
-                                summary: Schema.optional(Schema.String),
-                                description: Schema.optional(Schema.String),
-                                value: Schema.optional(Schema.Unknown),
-                                externalValue: Schema.optional(Schema.String),
-                              }),
-                            ),
-                          ),
-                        }),
-                      ),
-                    ),
-                    examples: Schema.optional(
-                      Schema.Record(
-                        Schema.String,
-                        Schema.Struct({
-                          summary: Schema.optional(Schema.String),
-                          description: Schema.optional(Schema.String),
-                          value: Schema.optional(Schema.Unknown),
-                          externalValue: Schema.optional(Schema.String),
-                        }),
-                      ),
-                    ),
-                  }),
-                ),
-              ),
-              headers: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    name: Schema.String,
-                    description: Schema.optional(Schema.String),
-                    type: Schema.String,
-                    defaultValue: Schema.optional(Schema.String),
-                    required: Schema.optional(Schema.Boolean),
-                    values: Schema.optional(Schema.Array(Schema.String)),
-                    schemaId: Schema.optional(Schema.String),
-                    typeName: Schema.optional(Schema.String),
-                    examples: Schema.optional(
-                      Schema.Record(
-                        Schema.String,
-                        Schema.Struct({
-                          summary: Schema.optional(Schema.String),
-                          description: Schema.optional(Schema.String),
-                          value: Schema.optional(Schema.Unknown),
-                          externalValue: Schema.optional(Schema.String),
-                        }),
-                      ),
-                    ),
-                  }),
-                ),
-              ),
-            }),
-          ),
-        ),
-        policies: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(() => OperationContractPropertiesSchema),
     ),
   }).pipe(
     T.Http({
@@ -3825,6 +4930,9 @@ export type ApiOperationCreateOrUpdateInput =
 // Output Schema
 export const ApiOperationCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => OperationContractPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -3906,6 +5014,9 @@ export type ApiOperationGetInput = typeof ApiOperationGetInput.Type;
 
 // Output Schema
 export const ApiOperationGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.optional(
+    Schema.suspend(() => OperationContractPropertiesSchema),
+  ),
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -3951,13 +5062,7 @@ export type ApiOperationListByApiInput = typeof ApiOperationListByApiInput.Type;
 export const ApiOperationListByApiOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => OperationContractSchema)),
     ),
     count: Schema.optional(Schema.Number),
     nextLink: Schema.optional(Schema.String),
@@ -3995,12 +5100,7 @@ export const ApiOperationPolicyCreateOrUpdateInput =
     policyId: Schema.Literals(["policy"]).pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        value: Schema.String,
-        format: Schema.optional(
-          Schema.Literals(["xml", "xml-link", "rawxml", "rawxml-link"]),
-        ),
-      }),
+      Schema.suspend(() => PolicyContractPropertiesSchema),
     ),
   }).pipe(
     T.Http({
@@ -4015,6 +5115,9 @@ export type ApiOperationPolicyCreateOrUpdateInput =
 // Output Schema
 export const ApiOperationPolicyCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => PolicyContractPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -4107,6 +5210,9 @@ export type ApiOperationPolicyGetInput = typeof ApiOperationPolicyGetInput.Type;
 // Output Schema
 export const ApiOperationPolicyGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => PolicyContractPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -4155,13 +5261,7 @@ export type ApiOperationPolicyListByOperationInput =
 export const ApiOperationPolicyListByOperationOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => PolicyContractSchema)),
     ),
     count: Schema.optional(Schema.Number),
     nextLink: Schema.optional(Schema.String),
@@ -4194,213 +5294,7 @@ export const ApiOperationUpdateInput =
     operationId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        templateParameters: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              name: Schema.String,
-              description: Schema.optional(Schema.String),
-              type: Schema.String,
-              defaultValue: Schema.optional(Schema.String),
-              required: Schema.optional(Schema.Boolean),
-              values: Schema.optional(Schema.Array(Schema.String)),
-              schemaId: Schema.optional(Schema.String),
-              typeName: Schema.optional(Schema.String),
-              examples: Schema.optional(
-                Schema.Record(
-                  Schema.String,
-                  Schema.Struct({
-                    summary: Schema.optional(Schema.String),
-                    description: Schema.optional(Schema.String),
-                    value: Schema.optional(Schema.Unknown),
-                    externalValue: Schema.optional(Schema.String),
-                  }),
-                ),
-              ),
-            }),
-          ),
-        ),
-        description: Schema.optional(Schema.String),
-        request: Schema.optional(
-          Schema.Struct({
-            description: Schema.optional(Schema.String),
-            queryParameters: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  name: Schema.String,
-                  description: Schema.optional(Schema.String),
-                  type: Schema.String,
-                  defaultValue: Schema.optional(Schema.String),
-                  required: Schema.optional(Schema.Boolean),
-                  values: Schema.optional(Schema.Array(Schema.String)),
-                  schemaId: Schema.optional(Schema.String),
-                  typeName: Schema.optional(Schema.String),
-                  examples: Schema.optional(
-                    Schema.Record(
-                      Schema.String,
-                      Schema.Struct({
-                        summary: Schema.optional(Schema.String),
-                        description: Schema.optional(Schema.String),
-                        value: Schema.optional(Schema.Unknown),
-                        externalValue: Schema.optional(Schema.String),
-                      }),
-                    ),
-                  ),
-                }),
-              ),
-            ),
-            headers: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  name: Schema.String,
-                  description: Schema.optional(Schema.String),
-                  type: Schema.String,
-                  defaultValue: Schema.optional(Schema.String),
-                  required: Schema.optional(Schema.Boolean),
-                  values: Schema.optional(Schema.Array(Schema.String)),
-                  schemaId: Schema.optional(Schema.String),
-                  typeName: Schema.optional(Schema.String),
-                  examples: Schema.optional(
-                    Schema.Record(
-                      Schema.String,
-                      Schema.Struct({
-                        summary: Schema.optional(Schema.String),
-                        description: Schema.optional(Schema.String),
-                        value: Schema.optional(Schema.Unknown),
-                        externalValue: Schema.optional(Schema.String),
-                      }),
-                    ),
-                  ),
-                }),
-              ),
-            ),
-            representations: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  contentType: Schema.String,
-                  schemaId: Schema.optional(Schema.String),
-                  typeName: Schema.optional(Schema.String),
-                  formParameters: Schema.optional(
-                    Schema.Array(
-                      Schema.Struct({
-                        name: Schema.String,
-                        description: Schema.optional(Schema.String),
-                        type: Schema.String,
-                        defaultValue: Schema.optional(Schema.String),
-                        required: Schema.optional(Schema.Boolean),
-                        values: Schema.optional(Schema.Array(Schema.String)),
-                        schemaId: Schema.optional(Schema.String),
-                        typeName: Schema.optional(Schema.String),
-                        examples: Schema.optional(
-                          Schema.Record(
-                            Schema.String,
-                            Schema.Struct({
-                              summary: Schema.optional(Schema.String),
-                              description: Schema.optional(Schema.String),
-                              value: Schema.optional(Schema.Unknown),
-                              externalValue: Schema.optional(Schema.String),
-                            }),
-                          ),
-                        ),
-                      }),
-                    ),
-                  ),
-                  examples: Schema.optional(
-                    Schema.Record(
-                      Schema.String,
-                      Schema.Struct({
-                        summary: Schema.optional(Schema.String),
-                        description: Schema.optional(Schema.String),
-                        value: Schema.optional(Schema.Unknown),
-                        externalValue: Schema.optional(Schema.String),
-                      }),
-                    ),
-                  ),
-                }),
-              ),
-            ),
-          }),
-        ),
-        responses: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              statusCode: Schema.Number,
-              description: Schema.optional(Schema.String),
-              representations: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    contentType: Schema.String,
-                    schemaId: Schema.optional(Schema.String),
-                    typeName: Schema.optional(Schema.String),
-                    formParameters: Schema.optional(
-                      Schema.Array(
-                        Schema.Struct({
-                          name: Schema.String,
-                          description: Schema.optional(Schema.String),
-                          type: Schema.String,
-                          defaultValue: Schema.optional(Schema.String),
-                          required: Schema.optional(Schema.Boolean),
-                          values: Schema.optional(Schema.Array(Schema.String)),
-                          schemaId: Schema.optional(Schema.String),
-                          typeName: Schema.optional(Schema.String),
-                          examples: Schema.optional(
-                            Schema.Record(
-                              Schema.String,
-                              Schema.Struct({
-                                summary: Schema.optional(Schema.String),
-                                description: Schema.optional(Schema.String),
-                                value: Schema.optional(Schema.Unknown),
-                                externalValue: Schema.optional(Schema.String),
-                              }),
-                            ),
-                          ),
-                        }),
-                      ),
-                    ),
-                    examples: Schema.optional(
-                      Schema.Record(
-                        Schema.String,
-                        Schema.Struct({
-                          summary: Schema.optional(Schema.String),
-                          description: Schema.optional(Schema.String),
-                          value: Schema.optional(Schema.Unknown),
-                          externalValue: Schema.optional(Schema.String),
-                        }),
-                      ),
-                    ),
-                  }),
-                ),
-              ),
-              headers: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    name: Schema.String,
-                    description: Schema.optional(Schema.String),
-                    type: Schema.String,
-                    defaultValue: Schema.optional(Schema.String),
-                    required: Schema.optional(Schema.Boolean),
-                    values: Schema.optional(Schema.Array(Schema.String)),
-                    schemaId: Schema.optional(Schema.String),
-                    typeName: Schema.optional(Schema.String),
-                    examples: Schema.optional(
-                      Schema.Record(
-                        Schema.String,
-                        Schema.Struct({
-                          summary: Schema.optional(Schema.String),
-                          description: Schema.optional(Schema.String),
-                          value: Schema.optional(Schema.Unknown),
-                          externalValue: Schema.optional(Schema.String),
-                        }),
-                      ),
-                    ),
-                  }),
-                ),
-              ),
-            }),
-          ),
-        ),
-        policies: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(() => OperationUpdateContractPropertiesSchema),
     ),
   }).pipe(
     T.Http({
@@ -4414,6 +5308,9 @@ export type ApiOperationUpdateInput = typeof ApiOperationUpdateInput.Type;
 // Output Schema
 export const ApiOperationUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => OperationContractPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -4446,12 +5343,7 @@ export const ApiPolicyCreateOrUpdateInput =
     policyId: Schema.Literals(["policy"]).pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        value: Schema.String,
-        format: Schema.optional(
-          Schema.Literals(["xml", "xml-link", "rawxml", "rawxml-link"]),
-        ),
-      }),
+      Schema.suspend(() => PolicyContractPropertiesSchema),
     ),
   }).pipe(
     T.Http({
@@ -4466,6 +5358,9 @@ export type ApiPolicyCreateOrUpdateInput =
 // Output Schema
 export const ApiPolicyCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => PolicyContractPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -4547,6 +5442,9 @@ export type ApiPolicyGetInput = typeof ApiPolicyGetInput.Type;
 
 // Output Schema
 export const ApiPolicyGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.optional(
+    Schema.suspend(() => PolicyContractPropertiesSchema),
+  ),
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -4589,13 +5487,7 @@ export type ApiPolicyListByApiInput = typeof ApiPolicyListByApiInput.Type;
 export const ApiPolicyListByApiOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => PolicyContractSchema)),
     ),
     count: Schema.optional(Schema.Number),
     nextLink: Schema.optional(Schema.String),
@@ -4639,13 +5531,7 @@ export type ApiProductListByApisInput = typeof ApiProductListByApisInput.Type;
 export const ApiProductListByApisOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => ProductContractSchema)),
     ),
     count: Schema.optional(Schema.Number),
     nextLink: Schema.optional(Schema.String),
@@ -4680,12 +5566,7 @@ export const ApiReleaseCreateOrUpdateInput =
     releaseId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        apiId: Schema.optional(Schema.String),
-        createdDateTime: Schema.optional(Schema.String),
-        updatedDateTime: Schema.optional(Schema.String),
-        notes: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(() => ApiReleaseContractPropertiesSchema),
     ),
   }).pipe(
     T.Http({
@@ -4700,6 +5581,9 @@ export type ApiReleaseCreateOrUpdateInput =
 // Output Schema
 export const ApiReleaseCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => ApiReleaseContractPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -4780,6 +5664,9 @@ export type ApiReleaseGetInput = typeof ApiReleaseGetInput.Type;
 
 // Output Schema
 export const ApiReleaseGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.optional(
+    Schema.suspend(() => ApiReleaseContractPropertiesSchema),
+  ),
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -4825,13 +5712,7 @@ export type ApiReleaseListByServiceInput =
 export const ApiReleaseListByServiceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => ApiReleaseContractSchema)),
     ),
     count: Schema.optional(Schema.Number),
     nextLink: Schema.optional(Schema.String),
@@ -4866,12 +5747,7 @@ export const ApiReleaseUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   releaseId: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
   properties: Schema.optional(
-    Schema.Struct({
-      apiId: Schema.optional(Schema.String),
-      createdDateTime: Schema.optional(Schema.String),
-      updatedDateTime: Schema.optional(Schema.String),
-      notes: Schema.optional(Schema.String),
-    }),
+    Schema.suspend(() => ApiReleaseContractPropertiesSchema),
   ),
 }).pipe(
   T.Http({
@@ -4885,6 +5761,9 @@ export type ApiReleaseUpdateInput = typeof ApiReleaseUpdateInput.Type;
 // Output Schema
 export const ApiReleaseUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
+    properties: Schema.optional(
+      Schema.suspend(() => ApiReleaseContractPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -4933,18 +5812,7 @@ export type ApiRevisionListByServiceInput =
 export const ApiRevisionListByServiceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          apiId: Schema.optional(Schema.String),
-          apiRevision: Schema.optional(Schema.String),
-          createdDateTime: Schema.optional(Schema.String),
-          updatedDateTime: Schema.optional(Schema.String),
-          description: Schema.optional(Schema.String),
-          privateUrl: Schema.optional(Schema.String),
-          isOnline: Schema.optional(Schema.Boolean),
-          isCurrent: Schema.optional(Schema.Boolean),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => ApiRevisionContractSchema)),
     ),
     count: Schema.optional(Schema.Number),
     nextLink: Schema.optional(Schema.String),
@@ -4980,15 +5848,7 @@ export const ApiSchemaCreateOrUpdateInput =
     schemaId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        contentType: Schema.String,
-        document: Schema.Struct({
-          value: Schema.optional(Schema.String),
-          definitions: Schema.optional(Schema.Unknown),
-          components: Schema.optional(Schema.Unknown),
-        }),
-        provisioningState: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(() => SchemaContractPropertiesSchema),
     ),
   }).pipe(
     T.Http({
@@ -5004,6 +5864,9 @@ export type ApiSchemaCreateOrUpdateInput =
 // Output Schema
 export const ApiSchemaCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => SchemaContractPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -5086,6 +5949,9 @@ export type ApiSchemaGetInput = typeof ApiSchemaGetInput.Type;
 
 // Output Schema
 export const ApiSchemaGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.optional(
+    Schema.suspend(() => SchemaContractPropertiesSchema),
+  ),
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -5130,13 +5996,7 @@ export type ApiSchemaListByApiInput = typeof ApiSchemaListByApiInput.Type;
 export const ApiSchemaListByApiOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => SchemaContractSchema)),
     ),
     count: Schema.optional(Schema.Number),
     nextLink: Schema.optional(Schema.String),
@@ -5169,11 +6029,7 @@ export const ApiTagDescriptionCreateOrUpdateInput =
     tagDescriptionId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        description: Schema.optional(Schema.String),
-        externalDocsUrl: Schema.optional(Schema.String),
-        externalDocsDescription: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(() => TagDescriptionBasePropertiesSchema),
     ),
   }).pipe(
     T.Http({
@@ -5188,6 +6044,9 @@ export type ApiTagDescriptionCreateOrUpdateInput =
 // Output Schema
 export const ApiTagDescriptionCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => TagDescriptionContractPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -5275,6 +6134,9 @@ export type ApiTagDescriptionGetInput = typeof ApiTagDescriptionGetInput.Type;
 // Output Schema
 export const ApiTagDescriptionGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => TagDescriptionContractPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -5322,13 +6184,7 @@ export type ApiTagDescriptionListByServiceInput =
 export const ApiTagDescriptionListByServiceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => TagDescriptionContractSchema)),
     ),
     count: Schema.optional(Schema.Number),
     nextLink: Schema.optional(Schema.String),
@@ -5361,85 +6217,7 @@ export const ApiUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   apiId: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
   properties: Schema.optional(
-    Schema.Struct({
-      description: Schema.optional(Schema.String),
-      authenticationSettings: Schema.optional(
-        Schema.Struct({
-          oAuth2: Schema.optional(
-            Schema.Struct({
-              authorizationServerId: Schema.optional(Schema.String),
-              scope: Schema.optional(Schema.String),
-            }),
-          ),
-          openid: Schema.optional(
-            Schema.Struct({
-              openidProviderId: Schema.optional(Schema.String),
-              bearerTokenSendingMethods: Schema.optional(
-                Schema.Array(Schema.Literals(["authorizationHeader", "query"])),
-              ),
-            }),
-          ),
-          oAuth2AuthenticationSettings: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                authorizationServerId: Schema.optional(Schema.String),
-                scope: Schema.optional(Schema.String),
-              }),
-            ),
-          ),
-          openidAuthenticationSettings: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                openidProviderId: Schema.optional(Schema.String),
-                bearerTokenSendingMethods: Schema.optional(
-                  Schema.Array(
-                    Schema.Literals(["authorizationHeader", "query"]),
-                  ),
-                ),
-              }),
-            ),
-          ),
-        }),
-      ),
-      subscriptionKeyParameterNames: Schema.optional(
-        Schema.Struct({
-          header: Schema.optional(Schema.String),
-          query: Schema.optional(Schema.String),
-        }),
-      ),
-      type: Schema.optional(
-        Schema.Literals([
-          "http",
-          "soap",
-          "websocket",
-          "graphql",
-          "odata",
-          "grpc",
-        ]),
-      ),
-      apiRevision: Schema.optional(Schema.String),
-      apiVersion: Schema.optional(Schema.String),
-      isCurrent: Schema.optional(Schema.Boolean),
-      isOnline: Schema.optional(Schema.Boolean),
-      apiRevisionDescription: Schema.optional(Schema.String),
-      apiVersionDescription: Schema.optional(Schema.String),
-      apiVersionSetId: Schema.optional(Schema.String),
-      subscriptionRequired: Schema.optional(Schema.Boolean),
-      termsOfServiceUrl: Schema.optional(Schema.String),
-      contact: Schema.optional(
-        Schema.Struct({
-          name: Schema.optional(Schema.String),
-          url: Schema.optional(Schema.String),
-          email: Schema.optional(Schema.String),
-        }),
-      ),
-      license: Schema.optional(
-        Schema.Struct({
-          name: Schema.optional(Schema.String),
-          url: Schema.optional(Schema.String),
-        }),
-      ),
-    }),
+    Schema.suspend(() => ApiContractUpdatePropertiesSchema),
   ),
 }).pipe(
   T.Http({
@@ -5452,6 +6230,9 @@ export type ApiUpdateInput = typeof ApiUpdateInput.Type;
 
 // Output Schema
 export const ApiUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.optional(
+    Schema.suspend(() => ApiContractPropertiesSchema),
+  ),
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -5482,11 +6263,7 @@ export const ApiVersionSetCreateOrUpdateInput =
     versionSetId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        description: Schema.optional(Schema.String),
-        versionQueryName: Schema.optional(Schema.String),
-        versionHeaderName: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(() => ApiVersionSetContractPropertiesSchema),
     ),
   }).pipe(
     T.Http({
@@ -5501,6 +6278,9 @@ export type ApiVersionSetCreateOrUpdateInput =
 // Output Schema
 export const ApiVersionSetCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => ApiVersionSetContractPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -5580,6 +6360,9 @@ export type ApiVersionSetGetInput = typeof ApiVersionSetGetInput.Type;
 // Output Schema
 export const ApiVersionSetGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
+    properties: Schema.optional(
+      Schema.suspend(() => ApiVersionSetContractPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -5624,13 +6407,7 @@ export type ApiVersionSetListByServiceInput =
 export const ApiVersionSetListByServiceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => ApiVersionSetContractSchema)),
     ),
     count: Schema.optional(Schema.Number),
     nextLink: Schema.optional(Schema.String),
@@ -5664,11 +6441,7 @@ export const ApiVersionSetUpdateInput =
     versionSetId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        description: Schema.optional(Schema.String),
-        versionQueryName: Schema.optional(Schema.String),
-        versionHeaderName: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(() => ApiVersionSetUpdateParametersPropertiesSchema),
     ),
   }).pipe(
     T.Http({
@@ -5682,6 +6455,9 @@ export type ApiVersionSetUpdateInput = typeof ApiVersionSetUpdateInput.Type;
 // Output Schema
 export const ApiVersionSetUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => ApiVersionSetContractPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -5712,15 +6488,7 @@ export const ApiWikiCreateOrUpdateInput =
     apiId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        documents: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              documentationId: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-      }),
+      Schema.suspend(() => WikiContractPropertiesSchema),
     ),
   }).pipe(
     T.Http({
@@ -5734,6 +6502,9 @@ export type ApiWikiCreateOrUpdateInput = typeof ApiWikiCreateOrUpdateInput.Type;
 // Output Schema
 export const ApiWikiCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => WikiContractPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -5810,6 +6581,9 @@ export type ApiWikiGetInput = typeof ApiWikiGetInput.Type;
 
 // Output Schema
 export const ApiWikiGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.optional(
+    Schema.suspend(() => WikiContractPropertiesSchema),
+  ),
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -5851,13 +6625,7 @@ export type ApiWikisListInput = typeof ApiWikisListInput.Type;
 // Output Schema
 export const ApiWikisListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.optional(
-    Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-      }),
-    ),
+    Schema.Array(Schema.suspend(() => WikiContractSchema)),
   ),
   nextLink: Schema.optional(Schema.String),
 });
@@ -5887,15 +6655,7 @@ export const ApiWikiUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   apiId: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
   properties: Schema.optional(
-    Schema.Struct({
-      documents: Schema.optional(
-        Schema.Array(
-          Schema.Struct({
-            documentationId: Schema.optional(Schema.String),
-          }),
-        ),
-      ),
-    }),
+    Schema.suspend(() => WikiContractPropertiesSchema),
   ),
 }).pipe(
   T.Http({
@@ -5908,6 +6668,9 @@ export type ApiWikiUpdateInput = typeof ApiWikiUpdateInput.Type;
 
 // Output Schema
 export const ApiWikiUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.optional(
+    Schema.suspend(() => WikiContractPropertiesSchema),
+  ),
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -5940,11 +6703,7 @@ export const AuthorizationAccessPolicyCreateOrUpdateInput =
     authorizationAccessPolicyId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        appIds: Schema.optional(Schema.Array(Schema.String)),
-        tenantId: Schema.optional(Schema.String),
-        objectId: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(() => AuthorizationAccessPolicyContractPropertiesSchema),
     ),
   }).pipe(
     T.Http({
@@ -5959,6 +6718,9 @@ export type AuthorizationAccessPolicyCreateOrUpdateInput =
 // Output Schema
 export const AuthorizationAccessPolicyCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => AuthorizationAccessPolicyContractPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -6050,6 +6812,9 @@ export type AuthorizationAccessPolicyGetInput =
 // Output Schema
 export const AuthorizationAccessPolicyGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => AuthorizationAccessPolicyContractPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -6100,11 +6865,7 @@ export const AuthorizationAccessPolicyListByAuthorizationOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
+        Schema.suspend(() => AuthorizationAccessPolicyContractSchema),
       ),
     ),
     count: Schema.optional(Schema.Number),
@@ -6183,22 +6944,7 @@ export const AuthorizationCreateOrUpdateInput =
     authorizationId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        authorizationType: Schema.optional(Schema.Literals(["OAuth2"])),
-        oauth2grantType: Schema.optional(
-          Schema.Literals(["AuthorizationCode", "ClientCredentials"]),
-        ),
-        parameters: Schema.optional(
-          Schema.Record(Schema.String, Schema.String),
-        ),
-        error: Schema.optional(
-          Schema.Struct({
-            code: Schema.optional(Schema.String),
-            message: Schema.optional(Schema.String),
-          }),
-        ),
-        status: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(() => AuthorizationContractPropertiesSchema),
     ),
   }).pipe(
     T.Http({
@@ -6213,6 +6959,9 @@ export type AuthorizationCreateOrUpdateInput =
 // Output Schema
 export const AuthorizationCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => AuthorizationContractPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -6296,6 +7045,9 @@ export type AuthorizationGetInput = typeof AuthorizationGetInput.Type;
 // Output Schema
 export const AuthorizationGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
+    properties: Schema.optional(
+      Schema.suspend(() => AuthorizationContractPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -6342,13 +7094,7 @@ export type AuthorizationListByAuthorizationProviderInput =
 export const AuthorizationListByAuthorizationProviderOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => AuthorizationContractSchema)),
     ),
     count: Schema.optional(Schema.Number),
     nextLink: Schema.optional(Schema.String),
@@ -6427,25 +7173,7 @@ export const AuthorizationProviderCreateOrUpdateInput =
     authorizationProviderId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        displayName: Schema.optional(Schema.String),
-        identityProvider: Schema.optional(Schema.String),
-        oauth2: Schema.optional(
-          Schema.Struct({
-            redirectUrl: Schema.optional(Schema.String),
-            grantTypes: Schema.optional(
-              Schema.Struct({
-                authorizationCode: Schema.optional(
-                  Schema.Record(Schema.String, Schema.String),
-                ),
-                clientCredentials: Schema.optional(
-                  Schema.Record(Schema.String, Schema.String),
-                ),
-              }),
-            ),
-          }),
-        ),
-      }),
+      Schema.suspend(() => AuthorizationProviderContractPropertiesSchema),
     ),
   }).pipe(
     T.Http({
@@ -6460,6 +7188,9 @@ export type AuthorizationProviderCreateOrUpdateInput =
 // Output Schema
 export const AuthorizationProviderCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => AuthorizationProviderContractPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -6544,6 +7275,9 @@ export type AuthorizationProviderGetInput =
 // Output Schema
 export const AuthorizationProviderGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => AuthorizationProviderContractPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -6590,13 +7324,7 @@ export type AuthorizationProviderListByServiceInput =
 export const AuthorizationProviderListByServiceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => AuthorizationProviderContractSchema)),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -6628,42 +7356,7 @@ export const AuthorizationServerCreateOrUpdateInput =
     authsid: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        description: Schema.optional(Schema.String),
-        authorizationMethods: Schema.optional(
-          Schema.Array(
-            Schema.Literals([
-              "HEAD",
-              "OPTIONS",
-              "TRACE",
-              "GET",
-              "POST",
-              "PUT",
-              "PATCH",
-              "DELETE",
-            ]),
-          ),
-        ),
-        clientAuthenticationMethod: Schema.optional(
-          Schema.Array(Schema.Literals(["Basic", "Body"])),
-        ),
-        tokenBodyParameters: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              name: Schema.String,
-              value: Schema.String,
-            }),
-          ),
-        ),
-        tokenEndpoint: Schema.optional(Schema.String),
-        supportState: Schema.optional(Schema.Boolean),
-        defaultScope: Schema.optional(Schema.String),
-        bearerTokenSendingMethods: Schema.optional(
-          Schema.Array(Schema.Literals(["authorizationHeader", "query"])),
-        ),
-        resourceOwnerUsername: Schema.optional(Schema.String),
-        resourceOwnerPassword: Schema.optional(SensitiveString),
-      }),
+      Schema.suspend(() => AuthorizationServerContractPropertiesSchema),
     ),
   }).pipe(
     T.Http({
@@ -6678,6 +7371,9 @@ export type AuthorizationServerCreateOrUpdateInput =
 // Output Schema
 export const AuthorizationServerCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => AuthorizationServerContractPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -6762,6 +7458,9 @@ export type AuthorizationServerGetInput =
 // Output Schema
 export const AuthorizationServerGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => AuthorizationServerContractPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -6808,13 +7507,7 @@ export type AuthorizationServerListByServiceInput =
 export const AuthorizationServerListByServiceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => AuthorizationServerContractSchema)),
     ),
     count: Schema.optional(Schema.Number),
     nextLink: Schema.optional(Schema.String),
@@ -6889,42 +7582,7 @@ export const AuthorizationServerUpdateInput =
     authsid: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        description: Schema.optional(Schema.String),
-        authorizationMethods: Schema.optional(
-          Schema.Array(
-            Schema.Literals([
-              "HEAD",
-              "OPTIONS",
-              "TRACE",
-              "GET",
-              "POST",
-              "PUT",
-              "PATCH",
-              "DELETE",
-            ]),
-          ),
-        ),
-        clientAuthenticationMethod: Schema.optional(
-          Schema.Array(Schema.Literals(["Basic", "Body"])),
-        ),
-        tokenBodyParameters: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              name: Schema.String,
-              value: Schema.String,
-            }),
-          ),
-        ),
-        tokenEndpoint: Schema.optional(Schema.String),
-        supportState: Schema.optional(Schema.Boolean),
-        defaultScope: Schema.optional(Schema.String),
-        bearerTokenSendingMethods: Schema.optional(
-          Schema.Array(Schema.Literals(["authorizationHeader", "query"])),
-        ),
-        resourceOwnerUsername: Schema.optional(Schema.String),
-        resourceOwnerPassword: Schema.optional(SensitiveString),
-      }),
+      Schema.suspend(() => AuthorizationServerUpdateContractPropertiesSchema),
     ),
   }).pipe(
     T.Http({
@@ -6939,6 +7597,9 @@ export type AuthorizationServerUpdateInput =
 // Output Schema
 export const AuthorizationServerUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => AuthorizationServerContractPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -6972,112 +7633,7 @@ export const BackendCreateOrUpdateInput =
     backendId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        title: Schema.optional(Schema.String),
-        description: Schema.optional(Schema.String),
-        resourceId: Schema.optional(Schema.String),
-        properties: Schema.optional(
-          Schema.Struct({
-            serviceFabricCluster: Schema.optional(
-              Schema.Struct({
-                clientCertificateId: Schema.optional(Schema.String),
-                clientCertificatethumbprint: Schema.optional(Schema.String),
-                maxPartitionResolutionRetries: Schema.optional(Schema.Number),
-                managementEndpoints: Schema.Array(Schema.String),
-                serverCertificateThumbprints: Schema.optional(
-                  Schema.Array(Schema.String),
-                ),
-                serverX509Names: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      name: Schema.optional(Schema.String),
-                      issuerCertificateThumbprint: Schema.optional(
-                        Schema.String,
-                      ),
-                    }),
-                  ),
-                ),
-              }),
-            ),
-          }),
-        ),
-        credentials: Schema.optional(
-          Schema.Struct({
-            certificateIds: Schema.optional(Schema.Array(Schema.String)),
-            certificate: Schema.optional(Schema.Array(Schema.String)),
-            query: Schema.optional(
-              Schema.Record(Schema.String, Schema.Array(Schema.String)),
-            ),
-            header: Schema.optional(
-              Schema.Record(Schema.String, Schema.Array(Schema.String)),
-            ),
-            authorization: Schema.optional(
-              Schema.Struct({
-                scheme: Schema.String,
-                parameter: Schema.String,
-              }),
-            ),
-          }),
-        ),
-        proxy: Schema.optional(
-          Schema.Struct({
-            url: Schema.String,
-            username: Schema.optional(Schema.String),
-            password: Schema.optional(SensitiveString),
-          }),
-        ),
-        tls: Schema.optional(
-          Schema.Struct({
-            validateCertificateChain: Schema.optional(Schema.Boolean),
-            validateCertificateName: Schema.optional(Schema.Boolean),
-          }),
-        ),
-        circuitBreaker: Schema.optional(
-          Schema.Struct({
-            rules: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  name: Schema.optional(Schema.String),
-                  failureCondition: Schema.optional(
-                    Schema.Struct({
-                      count: Schema.optional(Schema.Number),
-                      percentage: Schema.optional(Schema.Number),
-                      interval: Schema.optional(Schema.String),
-                      statusCodeRanges: Schema.optional(
-                        Schema.Array(
-                          Schema.Struct({
-                            min: Schema.optional(Schema.Number),
-                            max: Schema.optional(Schema.Number),
-                          }),
-                        ),
-                      ),
-                      errorReasons: Schema.optional(
-                        Schema.Array(Schema.String),
-                      ),
-                    }),
-                  ),
-                  tripDuration: Schema.optional(Schema.String),
-                  acceptRetryAfter: Schema.optional(Schema.Boolean),
-                }),
-              ),
-            ),
-          }),
-        ),
-        pool: Schema.optional(
-          Schema.Struct({
-            services: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  id: Schema.String,
-                  weight: Schema.optional(Schema.Number),
-                  priority: Schema.optional(Schema.Number),
-                }),
-              ),
-            ),
-          }),
-        ),
-        type: Schema.optional(Schema.Literals(["Single", "Pool"])),
-      }),
+      Schema.suspend(() => BackendContractPropertiesSchema),
     ),
   }).pipe(
     T.Http({
@@ -7091,6 +7647,9 @@ export type BackendCreateOrUpdateInput = typeof BackendCreateOrUpdateInput.Type;
 // Output Schema
 export const BackendCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => BackendContractPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -7167,6 +7726,9 @@ export type BackendGetInput = typeof BackendGetInput.Type;
 
 // Output Schema
 export const BackendGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.optional(
+    Schema.suspend(() => BackendContractPropertiesSchema),
+  ),
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -7209,13 +7771,7 @@ export type BackendListByServiceInput = typeof BackendListByServiceInput.Type;
 export const BackendListByServiceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => BackendContractSchema)),
     ),
     count: Schema.optional(Schema.Number),
     nextLink: Schema.optional(Schema.String),
@@ -7247,9 +7803,7 @@ export const BackendReconnectInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   backendId: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
   properties: Schema.optional(
-    Schema.Struct({
-      after: Schema.optional(Schema.String),
-    }),
+    Schema.suspend(() => BackendReconnectPropertiesSchema),
   ),
 }).pipe(
   T.Http({
@@ -7286,108 +7840,7 @@ export const BackendUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   backendId: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
   properties: Schema.optional(
-    Schema.Struct({
-      title: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      resourceId: Schema.optional(Schema.String),
-      properties: Schema.optional(
-        Schema.Struct({
-          serviceFabricCluster: Schema.optional(
-            Schema.Struct({
-              clientCertificateId: Schema.optional(Schema.String),
-              clientCertificatethumbprint: Schema.optional(Schema.String),
-              maxPartitionResolutionRetries: Schema.optional(Schema.Number),
-              managementEndpoints: Schema.Array(Schema.String),
-              serverCertificateThumbprints: Schema.optional(
-                Schema.Array(Schema.String),
-              ),
-              serverX509Names: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    name: Schema.optional(Schema.String),
-                    issuerCertificateThumbprint: Schema.optional(Schema.String),
-                  }),
-                ),
-              ),
-            }),
-          ),
-        }),
-      ),
-      credentials: Schema.optional(
-        Schema.Struct({
-          certificateIds: Schema.optional(Schema.Array(Schema.String)),
-          certificate: Schema.optional(Schema.Array(Schema.String)),
-          query: Schema.optional(
-            Schema.Record(Schema.String, Schema.Array(Schema.String)),
-          ),
-          header: Schema.optional(
-            Schema.Record(Schema.String, Schema.Array(Schema.String)),
-          ),
-          authorization: Schema.optional(
-            Schema.Struct({
-              scheme: Schema.String,
-              parameter: Schema.String,
-            }),
-          ),
-        }),
-      ),
-      proxy: Schema.optional(
-        Schema.Struct({
-          url: Schema.String,
-          username: Schema.optional(Schema.String),
-          password: Schema.optional(SensitiveString),
-        }),
-      ),
-      tls: Schema.optional(
-        Schema.Struct({
-          validateCertificateChain: Schema.optional(Schema.Boolean),
-          validateCertificateName: Schema.optional(Schema.Boolean),
-        }),
-      ),
-      circuitBreaker: Schema.optional(
-        Schema.Struct({
-          rules: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                name: Schema.optional(Schema.String),
-                failureCondition: Schema.optional(
-                  Schema.Struct({
-                    count: Schema.optional(Schema.Number),
-                    percentage: Schema.optional(Schema.Number),
-                    interval: Schema.optional(Schema.String),
-                    statusCodeRanges: Schema.optional(
-                      Schema.Array(
-                        Schema.Struct({
-                          min: Schema.optional(Schema.Number),
-                          max: Schema.optional(Schema.Number),
-                        }),
-                      ),
-                    ),
-                    errorReasons: Schema.optional(Schema.Array(Schema.String)),
-                  }),
-                ),
-                tripDuration: Schema.optional(Schema.String),
-                acceptRetryAfter: Schema.optional(Schema.Boolean),
-              }),
-            ),
-          ),
-        }),
-      ),
-      pool: Schema.optional(
-        Schema.Struct({
-          services: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                id: Schema.String,
-                weight: Schema.optional(Schema.Number),
-                priority: Schema.optional(Schema.Number),
-              }),
-            ),
-          ),
-        }),
-      ),
-      type: Schema.optional(Schema.Literals(["Single", "Pool"])),
-    }),
+    Schema.suspend(() => BackendUpdateParameterPropertiesSchema),
   ),
 }).pipe(
   T.Http({
@@ -7400,6 +7853,9 @@ export type BackendUpdateInput = typeof BackendUpdateInput.Type;
 
 // Output Schema
 export const BackendUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.optional(
+    Schema.suspend(() => BackendContractPropertiesSchema),
+  ),
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -7430,12 +7886,7 @@ export const CacheCreateOrUpdateInput =
     cacheId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        description: Schema.optional(Schema.String),
-        connectionString: SensitiveString,
-        useFromLocation: Schema.String,
-        resourceId: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(() => CacheContractPropertiesSchema),
     ),
   }).pipe(
     T.Http({
@@ -7449,6 +7900,9 @@ export type CacheCreateOrUpdateInput = typeof CacheCreateOrUpdateInput.Type;
 // Output Schema
 export const CacheCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => CacheContractPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -7522,6 +7976,9 @@ export type CacheGetInput = typeof CacheGetInput.Type;
 
 // Output Schema
 export const CacheGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.optional(
+    Schema.suspend(() => CacheContractPropertiesSchema),
+  ),
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -7563,13 +8020,7 @@ export type CacheListByServiceInput = typeof CacheListByServiceInput.Type;
 export const CacheListByServiceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => CacheContractSchema)),
     ),
     count: Schema.optional(Schema.Number),
     nextLink: Schema.optional(Schema.String),
@@ -7598,12 +8049,7 @@ export const CacheUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   cacheId: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
   properties: Schema.optional(
-    Schema.Struct({
-      description: Schema.optional(Schema.String),
-      connectionString: Schema.optional(SensitiveString),
-      useFromLocation: Schema.optional(Schema.String),
-      resourceId: Schema.optional(Schema.String),
-    }),
+    Schema.suspend(() => CacheUpdatePropertiesSchema),
   ),
 }).pipe(
   T.Http({
@@ -7616,6 +8062,9 @@ export type CacheUpdateInput = typeof CacheUpdateInput.Type;
 
 // Output Schema
 export const CacheUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.optional(
+    Schema.suspend(() => CacheContractPropertiesSchema),
+  ),
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -7646,16 +8095,7 @@ export const CertificateCreateOrUpdateInput =
     certificateId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        data: Schema.optional(Schema.String),
-        password: Schema.optional(SensitiveString),
-        keyVault: Schema.optional(
-          Schema.Struct({
-            secretIdentifier: Schema.optional(Schema.String),
-            identityClientId: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
+      Schema.suspend(() => CertificateCreateOrUpdatePropertiesSchema),
     ),
   }).pipe(
     T.Http({
@@ -7670,6 +8110,9 @@ export type CertificateCreateOrUpdateInput =
 // Output Schema
 export const CertificateCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => CertificateContractPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -7748,6 +8191,9 @@ export type CertificateGetInput = typeof CertificateGetInput.Type;
 
 // Output Schema
 export const CertificateGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.optional(
+    Schema.suspend(() => CertificateContractPropertiesSchema),
+  ),
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -7792,13 +8238,7 @@ export type CertificateListByServiceInput =
 export const CertificateListByServiceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => CertificateContractSchema)),
     ),
     count: Schema.optional(Schema.Number),
     nextLink: Schema.optional(Schema.String),
@@ -7845,6 +8285,9 @@ export type CertificateRefreshSecretInput =
 // Output Schema
 export const CertificateRefreshSecretOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => CertificateContractPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -7876,7 +8319,9 @@ export const ContentItemCreateOrUpdateInput =
     contentTypeId: Schema.String.pipe(T.PathParam()),
     contentItemId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    properties: Schema.optional(Schema.Struct({})),
+    properties: Schema.optional(
+      Schema.suspend(() => ContentItemContractPropertiesSchema),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -7890,6 +8335,9 @@ export type ContentItemCreateOrUpdateInput =
 // Output Schema
 export const ContentItemCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => ContentItemContractPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -7972,6 +8420,9 @@ export type ContentItemGetInput = typeof ContentItemGetInput.Type;
 
 // Output Schema
 export const ContentItemGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.optional(
+    Schema.suspend(() => ContentItemContractPropertiesSchema),
+  ),
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -8014,13 +8465,7 @@ export type ContentItemListByServiceInput =
 export const ContentItemListByServiceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => ContentItemContractSchema)),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -8051,13 +8496,7 @@ export const ContentTypeCreateOrUpdateInput =
     contentTypeId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        description: Schema.optional(Schema.String),
-        schema: Schema.optional(Schema.Unknown),
-        version: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(() => ContentTypeContractPropertiesSchema),
     ),
   }).pipe(
     T.Http({
@@ -8072,6 +8511,9 @@ export type ContentTypeCreateOrUpdateInput =
 // Output Schema
 export const ContentTypeCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => ContentTypeContractPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -8150,6 +8592,9 @@ export type ContentTypeGetInput = typeof ContentTypeGetInput.Type;
 
 // Output Schema
 export const ContentTypeGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.optional(
+    Schema.suspend(() => ContentTypeContractPropertiesSchema),
+  ),
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -8190,13 +8635,7 @@ export type ContentTypeListByServiceInput =
 export const ContentTypeListByServiceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => ContentTypeContractSchema)),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -8237,6 +8676,10 @@ export type DeletedServicesGetByNameInput =
 // Output Schema
 export const DeletedServicesGetByNameOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => DeletedServiceContractPropertiesSchema),
+    ),
+    location: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -8277,13 +8720,7 @@ export type DeletedServicesListBySubscriptionInput =
 export const DeletedServicesListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => DeletedServiceContractSchema)),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -8346,169 +8783,7 @@ export const DiagnosticCreateOrUpdateInput =
     diagnosticId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        alwaysLog: Schema.optional(Schema.Literals(["allErrors"])),
-        loggerId: Schema.String,
-        sampling: Schema.optional(
-          Schema.Struct({
-            samplingType: Schema.optional(Schema.Literals(["fixed"])),
-            percentage: Schema.optional(Schema.Number),
-          }),
-        ),
-        frontend: Schema.optional(
-          Schema.Struct({
-            request: Schema.optional(
-              Schema.Struct({
-                headers: Schema.optional(Schema.Array(Schema.String)),
-                body: Schema.optional(
-                  Schema.Struct({
-                    bytes: Schema.optional(Schema.Number),
-                  }),
-                ),
-                dataMasking: Schema.optional(
-                  Schema.Struct({
-                    queryParams: Schema.optional(
-                      Schema.Array(
-                        Schema.Struct({
-                          value: Schema.optional(Schema.String),
-                          mode: Schema.optional(
-                            Schema.Literals(["Mask", "Hide"]),
-                          ),
-                        }),
-                      ),
-                    ),
-                    headers: Schema.optional(
-                      Schema.Array(
-                        Schema.Struct({
-                          value: Schema.optional(Schema.String),
-                          mode: Schema.optional(
-                            Schema.Literals(["Mask", "Hide"]),
-                          ),
-                        }),
-                      ),
-                    ),
-                  }),
-                ),
-              }),
-            ),
-            response: Schema.optional(
-              Schema.Struct({
-                headers: Schema.optional(Schema.Array(Schema.String)),
-                body: Schema.optional(
-                  Schema.Struct({
-                    bytes: Schema.optional(Schema.Number),
-                  }),
-                ),
-                dataMasking: Schema.optional(
-                  Schema.Struct({
-                    queryParams: Schema.optional(
-                      Schema.Array(
-                        Schema.Struct({
-                          value: Schema.optional(Schema.String),
-                          mode: Schema.optional(
-                            Schema.Literals(["Mask", "Hide"]),
-                          ),
-                        }),
-                      ),
-                    ),
-                    headers: Schema.optional(
-                      Schema.Array(
-                        Schema.Struct({
-                          value: Schema.optional(Schema.String),
-                          mode: Schema.optional(
-                            Schema.Literals(["Mask", "Hide"]),
-                          ),
-                        }),
-                      ),
-                    ),
-                  }),
-                ),
-              }),
-            ),
-          }),
-        ),
-        backend: Schema.optional(
-          Schema.Struct({
-            request: Schema.optional(
-              Schema.Struct({
-                headers: Schema.optional(Schema.Array(Schema.String)),
-                body: Schema.optional(
-                  Schema.Struct({
-                    bytes: Schema.optional(Schema.Number),
-                  }),
-                ),
-                dataMasking: Schema.optional(
-                  Schema.Struct({
-                    queryParams: Schema.optional(
-                      Schema.Array(
-                        Schema.Struct({
-                          value: Schema.optional(Schema.String),
-                          mode: Schema.optional(
-                            Schema.Literals(["Mask", "Hide"]),
-                          ),
-                        }),
-                      ),
-                    ),
-                    headers: Schema.optional(
-                      Schema.Array(
-                        Schema.Struct({
-                          value: Schema.optional(Schema.String),
-                          mode: Schema.optional(
-                            Schema.Literals(["Mask", "Hide"]),
-                          ),
-                        }),
-                      ),
-                    ),
-                  }),
-                ),
-              }),
-            ),
-            response: Schema.optional(
-              Schema.Struct({
-                headers: Schema.optional(Schema.Array(Schema.String)),
-                body: Schema.optional(
-                  Schema.Struct({
-                    bytes: Schema.optional(Schema.Number),
-                  }),
-                ),
-                dataMasking: Schema.optional(
-                  Schema.Struct({
-                    queryParams: Schema.optional(
-                      Schema.Array(
-                        Schema.Struct({
-                          value: Schema.optional(Schema.String),
-                          mode: Schema.optional(
-                            Schema.Literals(["Mask", "Hide"]),
-                          ),
-                        }),
-                      ),
-                    ),
-                    headers: Schema.optional(
-                      Schema.Array(
-                        Schema.Struct({
-                          value: Schema.optional(Schema.String),
-                          mode: Schema.optional(
-                            Schema.Literals(["Mask", "Hide"]),
-                          ),
-                        }),
-                      ),
-                    ),
-                  }),
-                ),
-              }),
-            ),
-          }),
-        ),
-        logClientIp: Schema.optional(Schema.Boolean),
-        httpCorrelationProtocol: Schema.optional(
-          Schema.Literals(["None", "Legacy", "W3C"]),
-        ),
-        verbosity: Schema.optional(
-          Schema.Literals(["verbose", "information", "error"]),
-        ),
-        operationNameFormat: Schema.optional(Schema.Literals(["Name", "Url"])),
-        metrics: Schema.optional(Schema.Boolean),
-      }),
+      Schema.suspend(() => DiagnosticContractPropertiesSchema),
     ),
   }).pipe(
     T.Http({
@@ -8523,6 +8798,9 @@ export type DiagnosticCreateOrUpdateInput =
 // Output Schema
 export const DiagnosticCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => DiagnosticContractPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -8599,6 +8877,9 @@ export type DiagnosticGetInput = typeof DiagnosticGetInput.Type;
 
 // Output Schema
 export const DiagnosticGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.optional(
+    Schema.suspend(() => DiagnosticContractPropertiesSchema),
+  ),
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -8642,13 +8923,7 @@ export type DiagnosticListByServiceInput =
 export const DiagnosticListByServiceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => DiagnosticContractSchema)),
     ),
     count: Schema.optional(Schema.Number),
     nextLink: Schema.optional(Schema.String),
@@ -8681,169 +8956,7 @@ export const DiagnosticUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   diagnosticId: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
   properties: Schema.optional(
-    Schema.Struct({
-      alwaysLog: Schema.optional(Schema.Literals(["allErrors"])),
-      loggerId: Schema.String,
-      sampling: Schema.optional(
-        Schema.Struct({
-          samplingType: Schema.optional(Schema.Literals(["fixed"])),
-          percentage: Schema.optional(Schema.Number),
-        }),
-      ),
-      frontend: Schema.optional(
-        Schema.Struct({
-          request: Schema.optional(
-            Schema.Struct({
-              headers: Schema.optional(Schema.Array(Schema.String)),
-              body: Schema.optional(
-                Schema.Struct({
-                  bytes: Schema.optional(Schema.Number),
-                }),
-              ),
-              dataMasking: Schema.optional(
-                Schema.Struct({
-                  queryParams: Schema.optional(
-                    Schema.Array(
-                      Schema.Struct({
-                        value: Schema.optional(Schema.String),
-                        mode: Schema.optional(
-                          Schema.Literals(["Mask", "Hide"]),
-                        ),
-                      }),
-                    ),
-                  ),
-                  headers: Schema.optional(
-                    Schema.Array(
-                      Schema.Struct({
-                        value: Schema.optional(Schema.String),
-                        mode: Schema.optional(
-                          Schema.Literals(["Mask", "Hide"]),
-                        ),
-                      }),
-                    ),
-                  ),
-                }),
-              ),
-            }),
-          ),
-          response: Schema.optional(
-            Schema.Struct({
-              headers: Schema.optional(Schema.Array(Schema.String)),
-              body: Schema.optional(
-                Schema.Struct({
-                  bytes: Schema.optional(Schema.Number),
-                }),
-              ),
-              dataMasking: Schema.optional(
-                Schema.Struct({
-                  queryParams: Schema.optional(
-                    Schema.Array(
-                      Schema.Struct({
-                        value: Schema.optional(Schema.String),
-                        mode: Schema.optional(
-                          Schema.Literals(["Mask", "Hide"]),
-                        ),
-                      }),
-                    ),
-                  ),
-                  headers: Schema.optional(
-                    Schema.Array(
-                      Schema.Struct({
-                        value: Schema.optional(Schema.String),
-                        mode: Schema.optional(
-                          Schema.Literals(["Mask", "Hide"]),
-                        ),
-                      }),
-                    ),
-                  ),
-                }),
-              ),
-            }),
-          ),
-        }),
-      ),
-      backend: Schema.optional(
-        Schema.Struct({
-          request: Schema.optional(
-            Schema.Struct({
-              headers: Schema.optional(Schema.Array(Schema.String)),
-              body: Schema.optional(
-                Schema.Struct({
-                  bytes: Schema.optional(Schema.Number),
-                }),
-              ),
-              dataMasking: Schema.optional(
-                Schema.Struct({
-                  queryParams: Schema.optional(
-                    Schema.Array(
-                      Schema.Struct({
-                        value: Schema.optional(Schema.String),
-                        mode: Schema.optional(
-                          Schema.Literals(["Mask", "Hide"]),
-                        ),
-                      }),
-                    ),
-                  ),
-                  headers: Schema.optional(
-                    Schema.Array(
-                      Schema.Struct({
-                        value: Schema.optional(Schema.String),
-                        mode: Schema.optional(
-                          Schema.Literals(["Mask", "Hide"]),
-                        ),
-                      }),
-                    ),
-                  ),
-                }),
-              ),
-            }),
-          ),
-          response: Schema.optional(
-            Schema.Struct({
-              headers: Schema.optional(Schema.Array(Schema.String)),
-              body: Schema.optional(
-                Schema.Struct({
-                  bytes: Schema.optional(Schema.Number),
-                }),
-              ),
-              dataMasking: Schema.optional(
-                Schema.Struct({
-                  queryParams: Schema.optional(
-                    Schema.Array(
-                      Schema.Struct({
-                        value: Schema.optional(Schema.String),
-                        mode: Schema.optional(
-                          Schema.Literals(["Mask", "Hide"]),
-                        ),
-                      }),
-                    ),
-                  ),
-                  headers: Schema.optional(
-                    Schema.Array(
-                      Schema.Struct({
-                        value: Schema.optional(Schema.String),
-                        mode: Schema.optional(
-                          Schema.Literals(["Mask", "Hide"]),
-                        ),
-                      }),
-                    ),
-                  ),
-                }),
-              ),
-            }),
-          ),
-        }),
-      ),
-      logClientIp: Schema.optional(Schema.Boolean),
-      httpCorrelationProtocol: Schema.optional(
-        Schema.Literals(["None", "Legacy", "W3C"]),
-      ),
-      verbosity: Schema.optional(
-        Schema.Literals(["verbose", "information", "error"]),
-      ),
-      operationNameFormat: Schema.optional(Schema.Literals(["Name", "Url"])),
-      metrics: Schema.optional(Schema.Boolean),
-    }),
+    Schema.suspend(() => DiagnosticContractPropertiesSchema),
   ),
 }).pipe(
   T.Http({
@@ -8857,6 +8970,9 @@ export type DiagnosticUpdateInput = typeof DiagnosticUpdateInput.Type;
 // Output Schema
 export const DiagnosticUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
+    properties: Schema.optional(
+      Schema.suspend(() => DiagnosticContractPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -8888,10 +9004,7 @@ export const DocumentationCreateOrUpdateInput =
     documentationId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        title: Schema.optional(Schema.String),
-        content: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(() => DocumentationContractPropertiesSchema),
     ),
   }).pipe(
     T.Http({
@@ -8906,6 +9019,9 @@ export type DocumentationCreateOrUpdateInput =
 // Output Schema
 export const DocumentationCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => DocumentationContractPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -8985,6 +9101,9 @@ export type DocumentationGetInput = typeof DocumentationGetInput.Type;
 // Output Schema
 export const DocumentationGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
+    properties: Schema.optional(
+      Schema.suspend(() => DocumentationContractPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -9029,13 +9148,7 @@ export type DocumentationListByServiceInput =
 export const DocumentationListByServiceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => DocumentationContractSchema)),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -9068,10 +9181,7 @@ export const DocumentationUpdateInput =
     documentationId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        title: Schema.optional(Schema.String),
-        content: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(() => DocumentationContractPropertiesSchema),
     ),
   }).pipe(
     T.Http({
@@ -9085,6 +9195,9 @@ export type DocumentationUpdateInput = typeof DocumentationUpdateInput.Type;
 // Output Schema
 export const DocumentationUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => DocumentationContractPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -9130,21 +9243,7 @@ export const EmailTemplateCreateOrUpdateInput =
     ]).pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        subject: Schema.optional(Schema.String),
-        title: Schema.optional(Schema.String),
-        description: Schema.optional(Schema.String),
-        body: Schema.optional(Schema.String),
-        parameters: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              name: Schema.optional(Schema.String),
-              title: Schema.optional(Schema.String),
-              description: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-      }),
+      Schema.suspend(() => EmailTemplateUpdateParameterPropertiesSchema),
     ),
   }).pipe(
     T.Http({
@@ -9159,6 +9258,9 @@ export type EmailTemplateCreateOrUpdateInput =
 // Output Schema
 export const EmailTemplateCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => EmailTemplateContractPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -9268,6 +9370,9 @@ export type EmailTemplateGetInput = typeof EmailTemplateGetInput.Type;
 // Output Schema
 export const EmailTemplateGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
+    properties: Schema.optional(
+      Schema.suspend(() => EmailTemplateContractPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -9312,13 +9417,7 @@ export type EmailTemplateListByServiceInput =
 export const EmailTemplateListByServiceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => EmailTemplateContractSchema)),
     ),
     count: Schema.optional(Schema.Number),
     nextLink: Schema.optional(Schema.String),
@@ -9367,21 +9466,7 @@ export const EmailTemplateUpdateInput =
     ]).pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        subject: Schema.optional(Schema.String),
-        title: Schema.optional(Schema.String),
-        description: Schema.optional(Schema.String),
-        body: Schema.optional(Schema.String),
-        parameters: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              name: Schema.optional(Schema.String),
-              title: Schema.optional(Schema.String),
-              description: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-      }),
+      Schema.suspend(() => EmailTemplateUpdateParameterPropertiesSchema),
     ),
   }).pipe(
     T.Http({
@@ -9395,6 +9480,9 @@ export type EmailTemplateUpdateInput = typeof EmailTemplateUpdateInput.Type;
 // Output Schema
 export const EmailTemplateUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => EmailTemplateContractPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -9443,6 +9531,9 @@ export type GatewayApiCreateOrUpdateInput =
 // Output Schema
 export const GatewayApiCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => ApiContractPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -9527,13 +9618,7 @@ export type GatewayApiListByServiceInput =
 export const GatewayApiListByServiceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => ApiContractSchema)),
     ),
     count: Schema.optional(Schema.Number),
     nextLink: Schema.optional(Schema.String),
@@ -9569,9 +9654,7 @@ export const GatewayCertificateAuthorityCreateOrUpdateInput =
     certificateId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        isTrusted: Schema.optional(Schema.Boolean),
-      }),
+      Schema.suspend(() => GatewayCertificateAuthorityContractPropertiesSchema),
     ),
   }).pipe(
     T.Http({
@@ -9586,6 +9669,9 @@ export type GatewayCertificateAuthorityCreateOrUpdateInput =
 // Output Schema
 export const GatewayCertificateAuthorityCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => GatewayCertificateAuthorityContractPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -9673,6 +9759,9 @@ export type GatewayCertificateAuthorityGetInput =
 // Output Schema
 export const GatewayCertificateAuthorityGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => GatewayCertificateAuthorityContractPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -9721,11 +9810,7 @@ export const GatewayCertificateAuthorityListByServiceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
+        Schema.suspend(() => GatewayCertificateAuthorityContractSchema),
       ),
     ),
     nextLink: Schema.optional(Schema.String),
@@ -9759,17 +9844,7 @@ export const GatewayCreateOrUpdateInput =
     gatewayId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        locationData: Schema.optional(
-          Schema.Struct({
-            name: Schema.String,
-            city: Schema.optional(Schema.String),
-            district: Schema.optional(Schema.String),
-            countryOrRegion: Schema.optional(Schema.String),
-          }),
-        ),
-        description: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(() => GatewayContractPropertiesSchema),
     ),
   }).pipe(
     T.Http({
@@ -9783,6 +9858,9 @@ export type GatewayCreateOrUpdateInput = typeof GatewayCreateOrUpdateInput.Type;
 // Output Schema
 export const GatewayCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => GatewayContractPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -9903,6 +9981,9 @@ export type GatewayGetInput = typeof GatewayGetInput.Type;
 
 // Output Schema
 export const GatewayGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.optional(
+    Schema.suspend(() => GatewayContractPropertiesSchema),
+  ),
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -9932,14 +10013,9 @@ export const GatewayHostnameConfigurationCreateOrUpdateInput =
     hcId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        hostname: Schema.optional(Schema.String),
-        certificateId: Schema.optional(Schema.String),
-        negotiateClientCertificate: Schema.optional(Schema.Boolean),
-        tls10Enabled: Schema.optional(Schema.Boolean),
-        tls11Enabled: Schema.optional(Schema.Boolean),
-        http2Enabled: Schema.optional(Schema.Boolean),
-      }),
+      Schema.suspend(
+        () => GatewayHostnameConfigurationContractPropertiesSchema,
+      ),
     ),
   }).pipe(
     T.Http({
@@ -9954,6 +10030,11 @@ export type GatewayHostnameConfigurationCreateOrUpdateInput =
 // Output Schema
 export const GatewayHostnameConfigurationCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(
+        () => GatewayHostnameConfigurationContractPropertiesSchema,
+      ),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -10041,6 +10122,11 @@ export type GatewayHostnameConfigurationGetInput =
 // Output Schema
 export const GatewayHostnameConfigurationGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(
+        () => GatewayHostnameConfigurationContractPropertiesSchema,
+      ),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -10089,11 +10175,7 @@ export const GatewayHostnameConfigurationListByServiceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
+        Schema.suspend(() => GatewayHostnameConfigurationContractSchema),
       ),
     ),
     nextLink: Schema.optional(Schema.String),
@@ -10179,13 +10261,7 @@ export type GatewayListByServiceInput = typeof GatewayListByServiceInput.Type;
 export const GatewayListByServiceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => GatewayContractSchema)),
     ),
     count: Schema.optional(Schema.Number),
     nextLink: Schema.optional(Schema.String),
@@ -10376,17 +10452,7 @@ export const GatewayUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   gatewayId: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
   properties: Schema.optional(
-    Schema.Struct({
-      locationData: Schema.optional(
-        Schema.Struct({
-          name: Schema.String,
-          city: Schema.optional(Schema.String),
-          district: Schema.optional(Schema.String),
-          countryOrRegion: Schema.optional(Schema.String),
-        }),
-      ),
-      description: Schema.optional(Schema.String),
-    }),
+    Schema.suspend(() => GatewayContractPropertiesSchema),
   ),
 }).pipe(
   T.Http({
@@ -10399,6 +10465,9 @@ export type GatewayUpdateInput = typeof GatewayUpdateInput.Type;
 
 // Output Schema
 export const GatewayUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.optional(
+    Schema.suspend(() => GatewayContractPropertiesSchema),
+  ),
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -10429,13 +10498,7 @@ export const GlobalSchemaCreateOrUpdateInput =
     schemaId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        schemaType: Schema.Literals(["xml", "json"]),
-        description: Schema.optional(Schema.String),
-        value: Schema.optional(Schema.Unknown),
-        document: Schema.optional(Schema.Unknown),
-        provisioningState: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(() => GlobalSchemaContractPropertiesSchema),
     ),
   }).pipe(
     T.Http({
@@ -10451,6 +10514,9 @@ export type GlobalSchemaCreateOrUpdateInput =
 // Output Schema
 export const GlobalSchemaCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => GlobalSchemaContractPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -10528,6 +10594,9 @@ export type GlobalSchemaGetInput = typeof GlobalSchemaGetInput.Type;
 
 // Output Schema
 export const GlobalSchemaGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.optional(
+    Schema.suspend(() => GlobalSchemaContractPropertiesSchema),
+  ),
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -10571,13 +10640,7 @@ export type GlobalSchemaListByServiceInput =
 export const GlobalSchemaListByServiceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => GlobalSchemaContractSchema)),
     ),
     count: Schema.optional(Schema.Number),
     nextLink: Schema.optional(Schema.String),
@@ -10612,11 +10675,7 @@ export const GraphQLApiResolverCreateOrUpdateInput =
     resolverId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        displayName: Schema.optional(Schema.String),
-        path: Schema.optional(Schema.String),
-        description: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(() => ResolverEntityBaseContractSchema),
     ),
   }).pipe(
     T.Http({
@@ -10631,6 +10690,9 @@ export type GraphQLApiResolverCreateOrUpdateInput =
 // Output Schema
 export const GraphQLApiResolverCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => ResolverEntityBaseContractSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -10718,6 +10780,9 @@ export type GraphQLApiResolverGetInput = typeof GraphQLApiResolverGetInput.Type;
 // Output Schema
 export const GraphQLApiResolverGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => ResolverEntityBaseContractSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -10766,13 +10831,7 @@ export type GraphQLApiResolverListByApiInput =
 export const GraphQLApiResolverListByApiOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => ResolverContractSchema)),
     ),
     count: Schema.optional(Schema.Number),
     nextLink: Schema.optional(Schema.String),
@@ -10809,12 +10868,7 @@ export const GraphQLApiResolverPolicyCreateOrUpdateInput =
     policyId: Schema.Literals(["policy"]).pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        value: Schema.String,
-        format: Schema.optional(
-          Schema.Literals(["xml", "xml-link", "rawxml", "rawxml-link"]),
-        ),
-      }),
+      Schema.suspend(() => PolicyContractPropertiesSchema),
     ),
   }).pipe(
     T.Http({
@@ -10829,6 +10883,9 @@ export type GraphQLApiResolverPolicyCreateOrUpdateInput =
 // Output Schema
 export const GraphQLApiResolverPolicyCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => PolicyContractPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -10921,6 +10978,9 @@ export type GraphQLApiResolverPolicyGetInput =
 // Output Schema
 export const GraphQLApiResolverPolicyGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => PolicyContractPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -10969,13 +11029,7 @@ export type GraphQLApiResolverPolicyListByResolverInput =
 export const GraphQLApiResolverPolicyListByResolverOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => PolicyContractSchema)),
     ),
     count: Schema.optional(Schema.Number),
     nextLink: Schema.optional(Schema.String),
@@ -11008,11 +11062,7 @@ export const GraphQLApiResolverUpdateInput =
     resolverId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        displayName: Schema.optional(Schema.String),
-        path: Schema.optional(Schema.String),
-        description: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(() => ResolverUpdateContractPropertiesSchema),
     ),
   }).pipe(
     T.Http({
@@ -11027,6 +11077,9 @@ export type GraphQLApiResolverUpdateInput =
 // Output Schema
 export const GraphQLApiResolverUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => ResolverEntityBaseContractSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -11061,14 +11114,7 @@ export const GroupCreateOrUpdateInput =
     groupId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        displayName: Schema.String,
-        description: Schema.optional(Schema.String),
-        type: Schema.optional(
-          Schema.Literals(["custom", "system", "external"]),
-        ),
-        externalId: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(() => GroupCreateParametersPropertiesSchema),
     ),
   }).pipe(
     T.Http({
@@ -11082,6 +11128,9 @@ export type GroupCreateOrUpdateInput = typeof GroupCreateOrUpdateInput.Type;
 // Output Schema
 export const GroupCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => GroupContractPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -11155,6 +11204,9 @@ export type GroupGetInput = typeof GroupGetInput.Type;
 
 // Output Schema
 export const GroupGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.optional(
+    Schema.suspend(() => GroupContractPropertiesSchema),
+  ),
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -11197,13 +11249,7 @@ export type GroupListByServiceInput = typeof GroupListByServiceInput.Type;
 export const GroupListByServiceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => GroupContractSchema)),
     ),
     count: Schema.optional(Schema.Number),
     nextLink: Schema.optional(Schema.String),
@@ -11233,12 +11279,7 @@ export const GroupUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   groupId: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
   properties: Schema.optional(
-    Schema.Struct({
-      displayName: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      type: Schema.optional(Schema.Literals(["custom", "system", "external"])),
-      externalId: Schema.optional(Schema.String),
-    }),
+    Schema.suspend(() => GroupUpdateParametersPropertiesSchema),
   ),
 }).pipe(
   T.Http({
@@ -11251,6 +11292,9 @@ export type GroupUpdateInput = typeof GroupUpdateInput.Type;
 
 // Output Schema
 export const GroupUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.optional(
+    Schema.suspend(() => GroupContractPropertiesSchema),
+  ),
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -11291,6 +11335,9 @@ export type GroupUserCreateInput = typeof GroupUserCreateInput.Type;
 
 // Output Schema
 export const GroupUserCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.optional(
+    Schema.suspend(() => UserContractPropertiesSchema),
+  ),
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -11368,13 +11415,7 @@ export type GroupUserListInput = typeof GroupUserListInput.Type;
 // Output Schema
 export const GroupUserListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.optional(
-    Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-      }),
-    ),
+    Schema.Array(Schema.suspend(() => UserContractSchema)),
   ),
   count: Schema.optional(Schema.Number),
   nextLink: Schema.optional(Schema.String),
@@ -11413,26 +11454,7 @@ export const IdentityProviderCreateOrUpdateInput =
     ]).pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        type: Schema.optional(
-          Schema.Literals([
-            "facebook",
-            "google",
-            "microsoft",
-            "twitter",
-            "aad",
-            "aadB2C",
-          ]),
-        ),
-        signinTenant: Schema.optional(Schema.String),
-        allowedTenants: Schema.optional(Schema.Array(Schema.String)),
-        authority: Schema.optional(Schema.String),
-        signupPolicyName: Schema.optional(Schema.String),
-        signinPolicyName: Schema.optional(Schema.String),
-        profileEditingPolicyName: Schema.optional(Schema.String),
-        passwordResetPolicyName: Schema.optional(SensitiveString),
-        clientLibrary: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(() => IdentityProviderCreateContractPropertiesSchema),
     ),
   }).pipe(
     T.Http({
@@ -11447,6 +11469,9 @@ export type IdentityProviderCreateOrUpdateInput =
 // Output Schema
 export const IdentityProviderCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => IdentityProviderContractPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -11544,6 +11569,9 @@ export type IdentityProviderGetInput = typeof IdentityProviderGetInput.Type;
 // Output Schema
 export const IdentityProviderGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => IdentityProviderContractPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -11584,13 +11612,7 @@ export type IdentityProviderListByServiceInput =
 export const IdentityProviderListByServiceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => IdentityProviderContractSchema)),
     ),
     count: Schema.optional(Schema.Number),
     nextLink: Schema.optional(Schema.String),
@@ -11675,26 +11697,7 @@ export const IdentityProviderUpdateInput =
     ]).pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        type: Schema.optional(
-          Schema.Literals([
-            "facebook",
-            "google",
-            "microsoft",
-            "twitter",
-            "aad",
-            "aadB2C",
-          ]),
-        ),
-        signinTenant: Schema.optional(Schema.String),
-        allowedTenants: Schema.optional(Schema.Array(Schema.String)),
-        authority: Schema.optional(Schema.String),
-        signupPolicyName: Schema.optional(Schema.String),
-        signinPolicyName: Schema.optional(Schema.String),
-        profileEditingPolicyName: Schema.optional(Schema.String),
-        passwordResetPolicyName: Schema.optional(SensitiveString),
-        clientLibrary: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(() => IdentityProviderUpdatePropertiesSchema),
     ),
   }).pipe(
     T.Http({
@@ -11709,6 +11712,9 @@ export type IdentityProviderUpdateInput =
 // Output Schema
 export const IdentityProviderUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => IdentityProviderContractPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -11751,6 +11757,9 @@ export type IssueGetInput = typeof IssueGetInput.Type;
 
 // Output Schema
 export const IssueGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.optional(
+    Schema.suspend(() => IssueContractPropertiesSchema),
+  ),
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -11793,13 +11802,7 @@ export type IssueListByServiceInput = typeof IssueListByServiceInput.Type;
 export const IssueListByServiceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => IssueContractSchema)),
     ),
     count: Schema.optional(Schema.Number),
     nextLink: Schema.optional(Schema.String),
@@ -11830,19 +11833,7 @@ export const LoggerCreateOrUpdateInput =
     loggerId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        loggerType: Schema.Literals([
-          "azureEventHub",
-          "applicationInsights",
-          "azureMonitor",
-        ]),
-        description: Schema.optional(Schema.String),
-        credentials: Schema.optional(
-          Schema.Record(Schema.String, Schema.String),
-        ),
-        isBuffered: Schema.optional(Schema.Boolean),
-        resourceId: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(() => LoggerContractPropertiesSchema),
     ),
   }).pipe(
     T.Http({
@@ -11856,6 +11847,9 @@ export type LoggerCreateOrUpdateInput = typeof LoggerCreateOrUpdateInput.Type;
 // Output Schema
 export const LoggerCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => LoggerContractPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -11931,6 +11925,9 @@ export type LoggerGetInput = typeof LoggerGetInput.Type;
 
 // Output Schema
 export const LoggerGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.optional(
+    Schema.suspend(() => LoggerContractPropertiesSchema),
+  ),
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -11973,13 +11970,7 @@ export type LoggerListByServiceInput = typeof LoggerListByServiceInput.Type;
 export const LoggerListByServiceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => LoggerContractSchema)),
     ),
     count: Schema.optional(Schema.Number),
     nextLink: Schema.optional(Schema.String),
@@ -12009,18 +12000,7 @@ export const LoggerUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   loggerId: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
   properties: Schema.optional(
-    Schema.Struct({
-      loggerType: Schema.optional(
-        Schema.Literals([
-          "azureEventHub",
-          "applicationInsights",
-          "azureMonitor",
-        ]),
-      ),
-      description: Schema.optional(Schema.String),
-      credentials: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      isBuffered: Schema.optional(Schema.Boolean),
-    }),
+    Schema.suspend(() => LoggerUpdateParametersSchema),
   ),
 }).pipe(
   T.Http({
@@ -12033,6 +12013,9 @@ export type LoggerUpdateInput = typeof LoggerUpdateInput.Type;
 
 // Output Schema
 export const LoggerUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.optional(
+    Schema.suspend(() => LoggerContractPropertiesSchema),
+  ),
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -12063,10 +12046,7 @@ export const NamedValueCreateOrUpdateInput =
     namedValueId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        tags: Schema.optional(Schema.Array(Schema.String)),
-        secret: Schema.optional(Schema.Boolean),
-      }),
+      Schema.suspend(() => NamedValueCreateContractPropertiesSchema),
     ),
   }).pipe(
     T.Http({
@@ -12082,6 +12062,9 @@ export type NamedValueCreateOrUpdateInput =
 // Output Schema
 export const NamedValueCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => NamedValueContractPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -12158,6 +12141,9 @@ export type NamedValueGetInput = typeof NamedValueGetInput.Type;
 
 // Output Schema
 export const NamedValueGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.optional(
+    Schema.suspend(() => NamedValueContractPropertiesSchema),
+  ),
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -12202,13 +12188,7 @@ export type NamedValueListByServiceInput =
 export const NamedValueListByServiceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => NamedValueContractSchema)),
     ),
     count: Schema.optional(Schema.Number),
     nextLink: Schema.optional(Schema.String),
@@ -12293,6 +12273,9 @@ export type NamedValueRefreshSecretInput =
 // Output Schema
 export const NamedValueRefreshSecretOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => NamedValueContractPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -12323,10 +12306,7 @@ export const NamedValueUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   namedValueId: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
   properties: Schema.optional(
-    Schema.Struct({
-      tags: Schema.optional(Schema.Array(Schema.String)),
-      secret: Schema.optional(Schema.Boolean),
-    }),
+    Schema.suspend(() => NamedValueUpdateParameterPropertiesSchema),
   ),
 }).pipe(
   T.Http({
@@ -12341,6 +12321,9 @@ export type NamedValueUpdateInput = typeof NamedValueUpdateInput.Type;
 // Output Schema
 export const NamedValueUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
+    properties: Schema.optional(
+      Schema.suspend(() => NamedValueContractPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -12386,15 +12369,7 @@ export const NetworkStatusListByLocationOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dnsServers: Schema.Array(Schema.String),
     connectivityStatus: Schema.Array(
-      Schema.Struct({
-        name: Schema.String,
-        status: Schema.Literals(["initializing", "success", "failure"]),
-        error: Schema.optional(Schema.String),
-        lastUpdated: Schema.String,
-        lastStatusChange: Schema.String,
-        resourceType: Schema.String,
-        isOptional: Schema.Boolean,
-      }),
+      Schema.suspend(() => ConnectivityStatusContractSchema),
     ),
   });
 export type NetworkStatusListByLocationOutput =
@@ -12435,25 +12410,7 @@ export type NetworkStatusListByServiceInput =
 // Output Schema
 export const NetworkStatusListByServiceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
-    Schema.Struct({
-      location: Schema.optional(Schema.String),
-      networkStatus: Schema.optional(
-        Schema.Struct({
-          dnsServers: Schema.Array(Schema.String),
-          connectivityStatus: Schema.Array(
-            Schema.Struct({
-              name: Schema.String,
-              status: Schema.Literals(["initializing", "success", "failure"]),
-              error: Schema.optional(Schema.String),
-              lastUpdated: Schema.String,
-              lastStatusChange: Schema.String,
-              resourceType: Schema.String,
-              isOptional: Schema.Boolean,
-            }),
-          ),
-        }),
-      ),
-    }),
+    Schema.suspend(() => NetworkStatusContractByLocationSchema),
   );
 export type NetworkStatusListByServiceOutput =
   typeof NetworkStatusListByServiceOutput.Type;
@@ -12501,6 +12458,9 @@ export type NotificationCreateOrUpdateInput =
 // Output Schema
 export const NotificationCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => NotificationContractPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -12550,6 +12510,9 @@ export type NotificationGetInput = typeof NotificationGetInput.Type;
 
 // Output Schema
 export const NotificationGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.optional(
+    Schema.suspend(() => NotificationContractPropertiesSchema),
+  ),
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -12592,13 +12555,7 @@ export type NotificationListByServiceInput =
 export const NotificationListByServiceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => NotificationContractSchema)),
     ),
     count: Schema.optional(Schema.Number),
     nextLink: Schema.optional(Schema.String),
@@ -12652,6 +12609,9 @@ export type NotificationRecipientEmailCreateOrUpdateInput =
 // Output Schema
 export const NotificationRecipientEmailCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => RecipientEmailContractPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -12752,13 +12712,7 @@ export type NotificationRecipientEmailListByNotificationInput =
 export const NotificationRecipientEmailListByNotificationOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => RecipientEmailContractSchema)),
     ),
     count: Schema.optional(Schema.Number),
     nextLink: Schema.optional(Schema.String),
@@ -12810,6 +12764,9 @@ export type NotificationRecipientUserCreateOrUpdateInput =
 // Output Schema
 export const NotificationRecipientUserCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => RecipientUsersContractPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -12910,13 +12867,7 @@ export type NotificationRecipientUserListByNotificationInput =
 export const NotificationRecipientUserListByNotificationOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => RecipientUserContractSchema)),
     ),
     count: Schema.optional(Schema.Number),
     nextLink: Schema.optional(Schema.String),
@@ -12947,15 +12898,7 @@ export const OpenIdConnectProviderCreateOrUpdateInput =
     opid: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        displayName: Schema.String,
-        description: Schema.optional(Schema.String),
-        metadataEndpoint: Schema.String,
-        clientId: Schema.String,
-        clientSecret: Schema.optional(SensitiveString),
-        useInTestConsole: Schema.optional(Schema.Boolean),
-        useInApiDocumentation: Schema.optional(Schema.Boolean),
-      }),
+      Schema.suspend(() => OpenidConnectProviderContractPropertiesSchema),
     ),
   }).pipe(
     T.Http({
@@ -12970,6 +12913,9 @@ export type OpenIdConnectProviderCreateOrUpdateInput =
 // Output Schema
 export const OpenIdConnectProviderCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => OpenidConnectProviderContractPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -13054,6 +13000,9 @@ export type OpenIdConnectProviderGetInput =
 // Output Schema
 export const OpenIdConnectProviderGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => OpenidConnectProviderContractPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -13100,13 +13049,7 @@ export type OpenIdConnectProviderListByServiceInput =
 export const OpenIdConnectProviderListByServiceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => OpenidConnectProviderContractSchema)),
     ),
     count: Schema.optional(Schema.Number),
     nextLink: Schema.optional(Schema.String),
@@ -13179,15 +13122,7 @@ export const OpenIdConnectProviderUpdateInput =
     opid: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        displayName: Schema.optional(Schema.String),
-        description: Schema.optional(Schema.String),
-        metadataEndpoint: Schema.optional(Schema.String),
-        clientId: Schema.optional(Schema.String),
-        clientSecret: Schema.optional(SensitiveString),
-        useInTestConsole: Schema.optional(Schema.Boolean),
-        useInApiDocumentation: Schema.optional(Schema.Boolean),
-      }),
+      Schema.suspend(() => OpenidConnectProviderUpdateContractPropertiesSchema),
     ),
   }).pipe(
     T.Http({
@@ -13202,6 +13137,9 @@ export type OpenIdConnectProviderUpdateInput =
 // Output Schema
 export const OpenIdConnectProviderUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => OpenidConnectProviderContractPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -13251,121 +13189,7 @@ export type OperationListByTagsInput = typeof OperationListByTagsInput.Type;
 export const OperationListByTagsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          tag: Schema.Struct({
-            id: Schema.optional(Schema.String),
-            name: Schema.optional(Schema.String),
-          }),
-          api: Schema.optional(
-            Schema.Struct({
-              description: Schema.optional(Schema.String),
-              authenticationSettings: Schema.optional(
-                Schema.Struct({
-                  oAuth2: Schema.optional(
-                    Schema.Struct({
-                      authorizationServerId: Schema.optional(Schema.String),
-                      scope: Schema.optional(Schema.String),
-                    }),
-                  ),
-                  openid: Schema.optional(
-                    Schema.Struct({
-                      openidProviderId: Schema.optional(Schema.String),
-                      bearerTokenSendingMethods: Schema.optional(
-                        Schema.Array(
-                          Schema.Literals(["authorizationHeader", "query"]),
-                        ),
-                      ),
-                    }),
-                  ),
-                  oAuth2AuthenticationSettings: Schema.optional(
-                    Schema.Array(
-                      Schema.Struct({
-                        authorizationServerId: Schema.optional(Schema.String),
-                        scope: Schema.optional(Schema.String),
-                      }),
-                    ),
-                  ),
-                  openidAuthenticationSettings: Schema.optional(
-                    Schema.Array(
-                      Schema.Struct({
-                        openidProviderId: Schema.optional(Schema.String),
-                        bearerTokenSendingMethods: Schema.optional(
-                          Schema.Array(
-                            Schema.Literals(["authorizationHeader", "query"]),
-                          ),
-                        ),
-                      }),
-                    ),
-                  ),
-                }),
-              ),
-              subscriptionKeyParameterNames: Schema.optional(
-                Schema.Struct({
-                  header: Schema.optional(Schema.String),
-                  query: Schema.optional(Schema.String),
-                }),
-              ),
-              type: Schema.optional(
-                Schema.Literals([
-                  "http",
-                  "soap",
-                  "websocket",
-                  "graphql",
-                  "odata",
-                  "grpc",
-                ]),
-              ),
-              apiRevision: Schema.optional(Schema.String),
-              apiVersion: Schema.optional(Schema.String),
-              isCurrent: Schema.optional(Schema.Boolean),
-              isOnline: Schema.optional(Schema.Boolean),
-              apiRevisionDescription: Schema.optional(Schema.String),
-              apiVersionDescription: Schema.optional(Schema.String),
-              apiVersionSetId: Schema.optional(Schema.String),
-              subscriptionRequired: Schema.optional(Schema.Boolean),
-              termsOfServiceUrl: Schema.optional(Schema.String),
-              contact: Schema.optional(
-                Schema.Struct({
-                  name: Schema.optional(Schema.String),
-                  url: Schema.optional(Schema.String),
-                  email: Schema.optional(Schema.String),
-                }),
-              ),
-              license: Schema.optional(
-                Schema.Struct({
-                  name: Schema.optional(Schema.String),
-                  url: Schema.optional(Schema.String),
-                }),
-              ),
-            }),
-          ),
-          operation: Schema.optional(
-            Schema.Struct({
-              id: Schema.optional(Schema.String),
-              name: Schema.optional(Schema.String),
-              apiName: Schema.optional(Schema.String),
-              apiRevision: Schema.optional(Schema.String),
-              apiVersion: Schema.optional(Schema.String),
-              description: Schema.optional(Schema.String),
-              method: Schema.optional(Schema.String),
-              urlTemplate: Schema.optional(Schema.String),
-            }),
-          ),
-          product: Schema.optional(
-            Schema.Struct({
-              description: Schema.optional(Schema.String),
-              terms: Schema.optional(Schema.String),
-              subscriptionRequired: Schema.optional(Schema.Boolean),
-              approvalRequired: Schema.optional(Schema.Boolean),
-              subscriptionsLimit: Schema.optional(Schema.Number),
-              state: Schema.optional(
-                Schema.Literals(["notPublished", "published"]),
-              ),
-            }),
-          ),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => TagResourceContractSchema)),
     ),
     count: Schema.optional(Schema.Number),
     nextLink: Schema.optional(Schema.String),
@@ -13451,51 +13275,9 @@ export const OperationStatusGetOutput =
     startTime: Schema.optional(Schema.String),
     endTime: Schema.optional(Schema.String),
     operations: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          resourceId: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          status: Schema.String,
-          percentComplete: Schema.optional(Schema.Number),
-          startTime: Schema.optional(Schema.String),
-          endTime: Schema.optional(Schema.String),
-          operations: Schema.optional(Schema.Array(Schema.Unknown)),
-          error: Schema.optional(
-            Schema.Struct({
-              code: Schema.optional(Schema.String),
-              message: Schema.optional(Schema.String),
-              target: Schema.optional(Schema.String),
-              details: Schema.optional(Schema.Array(Schema.Unknown)),
-              additionalInfo: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    type: Schema.optional(Schema.String),
-                    info: Schema.optional(Schema.Unknown),
-                  }),
-                ),
-              ),
-            }),
-          ),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => OperationStatusResultSchema)),
     ),
-    error: Schema.optional(
-      Schema.Struct({
-        code: Schema.optional(Schema.String),
-        message: Schema.optional(Schema.String),
-        target: Schema.optional(Schema.String),
-        details: Schema.optional(Schema.Array(Schema.Unknown)),
-        additionalInfo: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              type: Schema.optional(Schema.String),
-              info: Schema.optional(Schema.Unknown),
-            }),
-          ),
-        ),
-      }),
-    ),
+    error: Schema.optional(Schema.suspend(() => ErrorDetailSchema)),
   });
 export type OperationStatusGetOutput = typeof OperationStatusGetOutput.Type;
 
@@ -13532,24 +13314,7 @@ export type OutboundNetworkDependenciesEndpointsListByServiceInput =
 export const OutboundNetworkDependenciesEndpointsListByServiceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
-      Schema.Struct({
-        category: Schema.optional(Schema.String),
-        endpoints: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              domainName: Schema.optional(Schema.String),
-              endpointDetails: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    port: Schema.optional(Schema.Number),
-                    region: Schema.optional(Schema.String),
-                  }),
-                ),
-              ),
-            }),
-          ),
-        ),
-      }),
+      Schema.suspend(() => OutboundEnvironmentEndpointSchema),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -13593,12 +13358,7 @@ export const PerformConnectivityCheckAsyncInput =
             method: Schema.optional(Schema.Literals(["GET", "POST"])),
             validStatusCodes: Schema.optional(Schema.Array(Schema.Number)),
             headers: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  name: Schema.String,
-                  value: Schema.String,
-                }),
-              ),
+              Schema.Array(Schema.suspend(() => HTTPHeaderSchema)),
             ),
           }),
         ),
@@ -13619,43 +13379,7 @@ export type PerformConnectivityCheckAsyncInput =
 export const PerformConnectivityCheckAsyncOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     hops: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          type: Schema.optional(Schema.String),
-          id: Schema.optional(Schema.String),
-          address: Schema.optional(Schema.String),
-          resourceId: Schema.optional(Schema.String),
-          nextHopIds: Schema.optional(Schema.Array(Schema.String)),
-          issues: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                origin: Schema.optional(
-                  Schema.Literals(["Local", "Inbound", "Outbound"]),
-                ),
-                severity: Schema.optional(
-                  Schema.Literals(["Error", "Warning"]),
-                ),
-                type: Schema.optional(
-                  Schema.Literals([
-                    "Unknown",
-                    "AgentStopped",
-                    "GuestFirewall",
-                    "DnsResolution",
-                    "SocketBind",
-                    "NetworkSecurityRule",
-                    "UserDefinedRoute",
-                    "PortThrottled",
-                    "Platform",
-                  ]),
-                ),
-                context: Schema.optional(
-                  Schema.Array(Schema.Record(Schema.String, Schema.String)),
-                ),
-              }),
-            ),
-          ),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => ConnectivityHopSchema)),
     ),
     connectionStatus: Schema.optional(
       Schema.Literals(["Unknown", "Connected", "Disconnected", "Degraded"]),
@@ -13696,12 +13420,7 @@ export const PolicyCreateOrUpdateInput =
     policyId: Schema.Literals(["policy"]).pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        value: Schema.String,
-        format: Schema.optional(
-          Schema.Literals(["xml", "xml-link", "rawxml", "rawxml-link"]),
-        ),
-      }),
+      Schema.suspend(() => PolicyContractPropertiesSchema),
     ),
   }).pipe(
     T.Http({
@@ -13715,6 +13434,9 @@ export type PolicyCreateOrUpdateInput = typeof PolicyCreateOrUpdateInput.Type;
 // Output Schema
 export const PolicyCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => PolicyContractPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -13796,13 +13518,7 @@ export type PolicyDescriptionListByServiceInput =
 export const PolicyDescriptionListByServiceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => PolicyDescriptionContractSchema)),
     ),
     count: Schema.optional(Schema.Number),
   });
@@ -13832,12 +13548,7 @@ export const PolicyFragmentCreateOrUpdateInput =
     id: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        value: Schema.String,
-        description: Schema.optional(Schema.String),
-        format: Schema.optional(Schema.Literals(["xml", "rawxml"])),
-        provisioningState: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(() => PolicyFragmentContractPropertiesSchema),
     ),
   }).pipe(
     T.Http({
@@ -13853,6 +13564,9 @@ export type PolicyFragmentCreateOrUpdateInput =
 // Output Schema
 export const PolicyFragmentCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => PolicyFragmentContractPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -13936,6 +13650,9 @@ export type PolicyFragmentGetInput = typeof PolicyFragmentGetInput.Type;
 // Output Schema
 export const PolicyFragmentGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => PolicyFragmentContractPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -13981,13 +13698,7 @@ export type PolicyFragmentListByServiceInput =
 export const PolicyFragmentListByServiceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => PolicyFragmentContractSchema)),
     ),
     count: Schema.optional(Schema.Number),
     nextLink: Schema.optional(Schema.String),
@@ -14086,6 +13797,9 @@ export type PolicyGetInput = typeof PolicyGetInput.Type;
 
 // Output Schema
 export const PolicyGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.optional(
+    Schema.suspend(() => PolicyContractPropertiesSchema),
+  ),
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -14126,13 +13840,7 @@ export type PolicyListByServiceInput = typeof PolicyListByServiceInput.Type;
 export const PolicyListByServiceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => PolicyContractSchema)),
     ),
     count: Schema.optional(Schema.Number),
     nextLink: Schema.optional(Schema.String),
@@ -14160,10 +13868,7 @@ export const PolicyRestrictionCreateOrUpdateInput =
     serviceName: Schema.String.pipe(T.PathParam()),
     policyRestrictionId: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        scope: Schema.optional(Schema.String),
-        requireBase: Schema.optional(Schema.Literals(["true", "false"])),
-      }),
+      Schema.suspend(() => PolicyRestrictionContractPropertiesSchema),
     ),
   }).pipe(
     T.Http({
@@ -14178,6 +13883,9 @@ export type PolicyRestrictionCreateOrUpdateInput =
 // Output Schema
 export const PolicyRestrictionCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => PolicyRestrictionContractPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -14261,6 +13969,9 @@ export type PolicyRestrictionGetInput = typeof PolicyRestrictionGetInput.Type;
 // Output Schema
 export const PolicyRestrictionGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => PolicyRestrictionContractPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -14303,13 +14014,7 @@ export type PolicyRestrictionListByServiceInput =
 export const PolicyRestrictionListByServiceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => PolicyRestrictionContractSchema)),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -14338,10 +14043,7 @@ export const PolicyRestrictionUpdateInput =
     serviceName: Schema.String.pipe(T.PathParam()),
     policyRestrictionId: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        scope: Schema.optional(Schema.String),
-        requireBase: Schema.optional(Schema.Literals(["true", "false"])),
-      }),
+      Schema.suspend(() => PolicyRestrictionContractPropertiesSchema),
     ),
   }).pipe(
     T.Http({
@@ -14356,6 +14058,9 @@ export type PolicyRestrictionUpdateInput =
 // Output Schema
 export const PolicyRestrictionUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => PolicyRestrictionContractPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -14401,6 +14106,9 @@ export type PolicyRestrictionValidationsByServiceInput =
 // Output Schema
 export const PolicyRestrictionValidationsByServiceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => OperationResultContractPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -14430,46 +14138,7 @@ export const PortalConfigCreateOrUpdateInput =
     serviceName: Schema.String.pipe(T.PathParam()),
     portalConfigId: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        enableBasicAuth: Schema.optional(Schema.Boolean),
-        signin: Schema.optional(
-          Schema.Struct({
-            require: Schema.optional(Schema.Boolean),
-          }),
-        ),
-        signup: Schema.optional(
-          Schema.Struct({
-            termsOfService: Schema.optional(
-              Schema.Struct({
-                text: Schema.optional(Schema.String),
-                requireConsent: Schema.optional(Schema.Boolean),
-              }),
-            ),
-          }),
-        ),
-        delegation: Schema.optional(
-          Schema.Struct({
-            delegateRegistration: Schema.optional(Schema.Boolean),
-            delegateSubscription: Schema.optional(Schema.Boolean),
-            delegationUrl: Schema.optional(Schema.String),
-            validationKey: Schema.optional(Schema.String),
-          }),
-        ),
-        cors: Schema.optional(
-          Schema.Struct({
-            allowedOrigins: Schema.optional(Schema.Array(Schema.String)),
-          }),
-        ),
-        csp: Schema.optional(
-          Schema.Struct({
-            mode: Schema.optional(
-              Schema.Literals(["enabled", "disabled", "reportOnly"]),
-            ),
-            reportUri: Schema.optional(Schema.Array(Schema.String)),
-            allowedSources: Schema.optional(Schema.Array(Schema.String)),
-          }),
-        ),
-      }),
+      Schema.suspend(() => PortalConfigPropertiesSchema),
     ),
   }).pipe(
     T.Http({
@@ -14484,6 +14153,9 @@ export type PortalConfigCreateOrUpdateInput =
 // Output Schema
 export const PortalConfigCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => PortalConfigPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -14526,6 +14198,9 @@ export type PortalConfigGetInput = typeof PortalConfigGetInput.Type;
 
 // Output Schema
 export const PortalConfigGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.optional(
+    Schema.suspend(() => PortalConfigPropertiesSchema),
+  ),
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -14566,13 +14241,7 @@ export type PortalConfigListByServiceInput =
 export const PortalConfigListByServiceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => PortalConfigContractSchema)),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -14602,46 +14271,7 @@ export const PortalConfigUpdateInput =
     serviceName: Schema.String.pipe(T.PathParam()),
     portalConfigId: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        enableBasicAuth: Schema.optional(Schema.Boolean),
-        signin: Schema.optional(
-          Schema.Struct({
-            require: Schema.optional(Schema.Boolean),
-          }),
-        ),
-        signup: Schema.optional(
-          Schema.Struct({
-            termsOfService: Schema.optional(
-              Schema.Struct({
-                text: Schema.optional(Schema.String),
-                requireConsent: Schema.optional(Schema.Boolean),
-              }),
-            ),
-          }),
-        ),
-        delegation: Schema.optional(
-          Schema.Struct({
-            delegateRegistration: Schema.optional(Schema.Boolean),
-            delegateSubscription: Schema.optional(Schema.Boolean),
-            delegationUrl: Schema.optional(Schema.String),
-            validationKey: Schema.optional(Schema.String),
-          }),
-        ),
-        cors: Schema.optional(
-          Schema.Struct({
-            allowedOrigins: Schema.optional(Schema.Array(Schema.String)),
-          }),
-        ),
-        csp: Schema.optional(
-          Schema.Struct({
-            mode: Schema.optional(
-              Schema.Literals(["enabled", "disabled", "reportOnly"]),
-            ),
-            reportUri: Schema.optional(Schema.Array(Schema.String)),
-            allowedSources: Schema.optional(Schema.Array(Schema.String)),
-          }),
-        ),
-      }),
+      Schema.suspend(() => PortalConfigPropertiesSchema),
     ),
   }).pipe(
     T.Http({
@@ -14655,6 +14285,9 @@ export type PortalConfigUpdateInput = typeof PortalConfigUpdateInput.Type;
 // Output Schema
 export const PortalConfigUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => PortalConfigPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -14685,17 +14318,7 @@ export const PortalRevisionCreateOrUpdateInput =
     portalRevisionId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        description: Schema.optional(Schema.String),
-        statusDetails: Schema.optional(Schema.String),
-        status: Schema.optional(
-          Schema.Literals(["pending", "publishing", "completed", "failed"]),
-        ),
-        isCurrent: Schema.optional(Schema.Boolean),
-        createdDateTime: Schema.optional(Schema.String),
-        updatedDateTime: Schema.optional(Schema.String),
-        provisioningState: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(() => PortalRevisionContractPropertiesSchema),
     ),
   }).pipe(
     T.Http({
@@ -14711,6 +14334,9 @@ export type PortalRevisionCreateOrUpdateInput =
 // Output Schema
 export const PortalRevisionCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => PortalRevisionContractPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -14754,6 +14380,9 @@ export type PortalRevisionGetInput = typeof PortalRevisionGetInput.Type;
 // Output Schema
 export const PortalRevisionGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => PortalRevisionContractPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -14797,13 +14426,7 @@ export type PortalRevisionListByServiceInput =
 export const PortalRevisionListByServiceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => PortalRevisionContractSchema)),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -14842,17 +14465,7 @@ export const PortalRevisionUpdateInput =
     portalRevisionId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        description: Schema.optional(Schema.String),
-        statusDetails: Schema.optional(Schema.String),
-        status: Schema.optional(
-          Schema.Literals(["pending", "publishing", "completed", "failed"]),
-        ),
-        isCurrent: Schema.optional(Schema.Boolean),
-        createdDateTime: Schema.optional(Schema.String),
-        updatedDateTime: Schema.optional(Schema.String),
-        provisioningState: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(() => PortalRevisionContractPropertiesSchema),
     ),
   }).pipe(
     T.Http({
@@ -14867,6 +14480,9 @@ export type PortalRevisionUpdateInput = typeof PortalRevisionUpdateInput.Type;
 // Output Schema
 export const PortalRevisionUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => PortalRevisionContractPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -14904,7 +14520,9 @@ export const PrivateEndpointConnectionCreateOrUpdateInput =
         privateLinkServiceConnectionState: Schema.optional(
           Schema.Struct({
             status: Schema.optional(
-              Schema.Literals(["Pending", "Approved", "Rejected"]),
+              Schema.suspend(
+                () => PrivateEndpointServiceConnectionStatusSchema,
+              ),
             ),
             description: Schema.optional(Schema.String),
             actionsRequired: Schema.optional(Schema.String),
@@ -14926,6 +14544,9 @@ export type PrivateEndpointConnectionCreateOrUpdateInput =
 // Output Schema
 export const PrivateEndpointConnectionCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => PrivateEndpointConnectionPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -15009,6 +14630,9 @@ export type PrivateEndpointConnectionGetByNameInput =
 // Output Schema
 export const PrivateEndpointConnectionGetByNameOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => PrivateEndpointConnectionPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -15051,6 +14675,9 @@ export type PrivateEndpointConnectionGetPrivateLinkResourceInput =
 // Output Schema
 export const PrivateEndpointConnectionGetPrivateLinkResourceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => PrivateLinkResourcePropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -15093,13 +14720,7 @@ export type PrivateEndpointConnectionListByServiceInput =
 export const PrivateEndpointConnectionListByServiceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => PrivateEndpointConnectionSchema)),
     ),
   });
 export type PrivateEndpointConnectionListByServiceOutput =
@@ -15139,13 +14760,7 @@ export type PrivateEndpointConnectionListPrivateLinkResourcesInput =
 export const PrivateEndpointConnectionListPrivateLinkResourcesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => PrivateLinkResourceSchema)),
     ),
   });
 export type PrivateEndpointConnectionListPrivateLinkResourcesOutput =
@@ -15186,6 +14801,9 @@ export type ProductApiCreateOrUpdateInput =
 // Output Schema
 export const ProductApiCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => ApiContractPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -15254,9 +14872,7 @@ export const ProductApiLinkCreateOrUpdateInput =
     apiLinkId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        apiId: Schema.String,
-      }),
+      Schema.suspend(() => ProductApiLinkContractPropertiesSchema),
     ),
   }).pipe(
     T.Http({
@@ -15271,6 +14887,9 @@ export type ProductApiLinkCreateOrUpdateInput =
 // Output Schema
 export const ProductApiLinkCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => ProductApiLinkContractPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -15355,6 +14974,9 @@ export type ProductApiLinkGetInput = typeof ProductApiLinkGetInput.Type;
 // Output Schema
 export const ProductApiLinkGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => ProductApiLinkContractPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -15400,13 +15022,7 @@ export type ProductApiLinkListByProductInput =
 export const ProductApiLinkListByProductOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => ProductApiLinkContractSchema)),
     ),
     count: Schema.optional(Schema.Number),
     nextLink: Schema.optional(Schema.String),
@@ -15457,13 +15073,7 @@ export type ProductApiListByProductInput =
 export const ProductApiListByProductOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => ApiContractSchema)),
     ),
     count: Schema.optional(Schema.Number),
     nextLink: Schema.optional(Schema.String),
@@ -15498,14 +15108,7 @@ export const ProductCreateOrUpdateInput =
     productId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        description: Schema.optional(Schema.String),
-        terms: Schema.optional(Schema.String),
-        subscriptionRequired: Schema.optional(Schema.Boolean),
-        approvalRequired: Schema.optional(Schema.Boolean),
-        subscriptionsLimit: Schema.optional(Schema.Number),
-        state: Schema.optional(Schema.Literals(["notPublished", "published"])),
-      }),
+      Schema.suspend(() => ProductContractPropertiesSchema),
     ),
   }).pipe(
     T.Http({
@@ -15519,6 +15122,9 @@ export type ProductCreateOrUpdateInput = typeof ProductCreateOrUpdateInput.Type;
 // Output Schema
 export const ProductCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => ProductContractPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -15597,6 +15203,9 @@ export type ProductGetInput = typeof ProductGetInput.Type;
 
 // Output Schema
 export const ProductGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.optional(
+    Schema.suspend(() => ProductContractPropertiesSchema),
+  ),
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -15638,6 +15247,9 @@ export type ProductGroupCreateOrUpdateInput =
 // Output Schema
 export const ProductGroupCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => GroupContractPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -15707,9 +15319,7 @@ export const ProductGroupLinkCreateOrUpdateInput =
     groupLinkId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        groupId: Schema.String,
-      }),
+      Schema.suspend(() => ProductGroupLinkContractPropertiesSchema),
     ),
   }).pipe(
     T.Http({
@@ -15724,6 +15334,9 @@ export type ProductGroupLinkCreateOrUpdateInput =
 // Output Schema
 export const ProductGroupLinkCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => ProductGroupLinkContractPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -15809,6 +15422,9 @@ export type ProductGroupLinkGetInput = typeof ProductGroupLinkGetInput.Type;
 // Output Schema
 export const ProductGroupLinkGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => ProductGroupLinkContractPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -15854,13 +15470,7 @@ export type ProductGroupLinkListByProductInput =
 export const ProductGroupLinkListByProductOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => ProductGroupLinkContractSchema)),
     ),
     count: Schema.optional(Schema.Number),
     nextLink: Schema.optional(Schema.String),
@@ -15910,13 +15520,7 @@ export type ProductGroupListByProductInput =
 export const ProductGroupListByProductOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => GroupContractSchema)),
     ),
     count: Schema.optional(Schema.Number),
     nextLink: Schema.optional(Schema.String),
@@ -15967,13 +15571,7 @@ export type ProductListByServiceInput = typeof ProductListByServiceInput.Type;
 export const ProductListByServiceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => ProductContractSchema)),
     ),
     count: Schema.optional(Schema.Number),
     nextLink: Schema.optional(Schema.String),
@@ -16024,121 +15622,7 @@ export type ProductListByTagsInput = typeof ProductListByTagsInput.Type;
 export const ProductListByTagsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          tag: Schema.Struct({
-            id: Schema.optional(Schema.String),
-            name: Schema.optional(Schema.String),
-          }),
-          api: Schema.optional(
-            Schema.Struct({
-              description: Schema.optional(Schema.String),
-              authenticationSettings: Schema.optional(
-                Schema.Struct({
-                  oAuth2: Schema.optional(
-                    Schema.Struct({
-                      authorizationServerId: Schema.optional(Schema.String),
-                      scope: Schema.optional(Schema.String),
-                    }),
-                  ),
-                  openid: Schema.optional(
-                    Schema.Struct({
-                      openidProviderId: Schema.optional(Schema.String),
-                      bearerTokenSendingMethods: Schema.optional(
-                        Schema.Array(
-                          Schema.Literals(["authorizationHeader", "query"]),
-                        ),
-                      ),
-                    }),
-                  ),
-                  oAuth2AuthenticationSettings: Schema.optional(
-                    Schema.Array(
-                      Schema.Struct({
-                        authorizationServerId: Schema.optional(Schema.String),
-                        scope: Schema.optional(Schema.String),
-                      }),
-                    ),
-                  ),
-                  openidAuthenticationSettings: Schema.optional(
-                    Schema.Array(
-                      Schema.Struct({
-                        openidProviderId: Schema.optional(Schema.String),
-                        bearerTokenSendingMethods: Schema.optional(
-                          Schema.Array(
-                            Schema.Literals(["authorizationHeader", "query"]),
-                          ),
-                        ),
-                      }),
-                    ),
-                  ),
-                }),
-              ),
-              subscriptionKeyParameterNames: Schema.optional(
-                Schema.Struct({
-                  header: Schema.optional(Schema.String),
-                  query: Schema.optional(Schema.String),
-                }),
-              ),
-              type: Schema.optional(
-                Schema.Literals([
-                  "http",
-                  "soap",
-                  "websocket",
-                  "graphql",
-                  "odata",
-                  "grpc",
-                ]),
-              ),
-              apiRevision: Schema.optional(Schema.String),
-              apiVersion: Schema.optional(Schema.String),
-              isCurrent: Schema.optional(Schema.Boolean),
-              isOnline: Schema.optional(Schema.Boolean),
-              apiRevisionDescription: Schema.optional(Schema.String),
-              apiVersionDescription: Schema.optional(Schema.String),
-              apiVersionSetId: Schema.optional(Schema.String),
-              subscriptionRequired: Schema.optional(Schema.Boolean),
-              termsOfServiceUrl: Schema.optional(Schema.String),
-              contact: Schema.optional(
-                Schema.Struct({
-                  name: Schema.optional(Schema.String),
-                  url: Schema.optional(Schema.String),
-                  email: Schema.optional(Schema.String),
-                }),
-              ),
-              license: Schema.optional(
-                Schema.Struct({
-                  name: Schema.optional(Schema.String),
-                  url: Schema.optional(Schema.String),
-                }),
-              ),
-            }),
-          ),
-          operation: Schema.optional(
-            Schema.Struct({
-              id: Schema.optional(Schema.String),
-              name: Schema.optional(Schema.String),
-              apiName: Schema.optional(Schema.String),
-              apiRevision: Schema.optional(Schema.String),
-              apiVersion: Schema.optional(Schema.String),
-              description: Schema.optional(Schema.String),
-              method: Schema.optional(Schema.String),
-              urlTemplate: Schema.optional(Schema.String),
-            }),
-          ),
-          product: Schema.optional(
-            Schema.Struct({
-              description: Schema.optional(Schema.String),
-              terms: Schema.optional(Schema.String),
-              subscriptionRequired: Schema.optional(Schema.Boolean),
-              approvalRequired: Schema.optional(Schema.Boolean),
-              subscriptionsLimit: Schema.optional(Schema.Number),
-              state: Schema.optional(
-                Schema.Literals(["notPublished", "published"]),
-              ),
-            }),
-          ),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => TagResourceContractSchema)),
     ),
     count: Schema.optional(Schema.Number),
     nextLink: Schema.optional(Schema.String),
@@ -16171,12 +15655,7 @@ export const ProductPolicyCreateOrUpdateInput =
     policyId: Schema.Literals(["policy"]).pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        value: Schema.String,
-        format: Schema.optional(
-          Schema.Literals(["xml", "xml-link", "rawxml", "rawxml-link"]),
-        ),
-      }),
+      Schema.suspend(() => PolicyContractPropertiesSchema),
     ),
   }).pipe(
     T.Http({
@@ -16191,6 +15670,9 @@ export type ProductPolicyCreateOrUpdateInput =
 // Output Schema
 export const ProductPolicyCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => PolicyContractPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -16275,6 +15757,9 @@ export type ProductPolicyGetInput = typeof ProductPolicyGetInput.Type;
 // Output Schema
 export const ProductPolicyGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
+    properties: Schema.optional(
+      Schema.suspend(() => PolicyContractPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -16319,13 +15804,7 @@ export type ProductPolicyListByProductInput =
 export const ProductPolicyListByProductOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => PolicyContractSchema)),
     ),
     count: Schema.optional(Schema.Number),
     nextLink: Schema.optional(Schema.String),
@@ -16373,13 +15852,7 @@ export type ProductSubscriptionsListInput =
 export const ProductSubscriptionsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => SubscriptionContractSchema)),
     ),
     count: Schema.optional(Schema.Number),
     nextLink: Schema.optional(Schema.String),
@@ -16413,14 +15886,7 @@ export const ProductUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   productId: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
   properties: Schema.optional(
-    Schema.Struct({
-      description: Schema.optional(Schema.String),
-      terms: Schema.optional(Schema.String),
-      subscriptionRequired: Schema.optional(Schema.Boolean),
-      approvalRequired: Schema.optional(Schema.Boolean),
-      subscriptionsLimit: Schema.optional(Schema.Number),
-      state: Schema.optional(Schema.Literals(["notPublished", "published"])),
-    }),
+    Schema.suspend(() => ProductUpdatePropertiesSchema),
   ),
 }).pipe(
   T.Http({
@@ -16433,6 +15899,9 @@ export type ProductUpdateInput = typeof ProductUpdateInput.Type;
 
 // Output Schema
 export const ProductUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.optional(
+    Schema.suspend(() => ProductContractPropertiesSchema),
+  ),
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -16463,15 +15932,7 @@ export const ProductWikiCreateOrUpdateInput =
     productId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        documents: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              documentationId: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-      }),
+      Schema.suspend(() => WikiContractPropertiesSchema),
     ),
   }).pipe(
     T.Http({
@@ -16486,6 +15947,9 @@ export type ProductWikiCreateOrUpdateInput =
 // Output Schema
 export const ProductWikiCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => WikiContractPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -16564,6 +16028,9 @@ export type ProductWikiGetInput = typeof ProductWikiGetInput.Type;
 
 // Output Schema
 export const ProductWikiGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.optional(
+    Schema.suspend(() => WikiContractPropertiesSchema),
+  ),
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -16606,13 +16073,7 @@ export type ProductWikisListInput = typeof ProductWikisListInput.Type;
 export const ProductWikisListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => WikiContractSchema)),
     ),
     nextLink: Schema.optional(Schema.String),
   },
@@ -16644,15 +16105,7 @@ export const ProductWikiUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     productId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        documents: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              documentationId: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-      }),
+      Schema.suspend(() => WikiContractPropertiesSchema),
     ),
   },
 ).pipe(
@@ -16667,6 +16120,9 @@ export type ProductWikiUpdateInput = typeof ProductWikiUpdateInput.Type;
 // Output Schema
 export const ProductWikiUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => WikiContractPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -16710,20 +16166,7 @@ export type QuotaByCounterKeysListByServiceInput =
 export const QuotaByCounterKeysListByServiceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          counterKey: Schema.String,
-          periodKey: Schema.String,
-          periodStartTime: Schema.String,
-          periodEndTime: Schema.String,
-          value: Schema.optional(
-            Schema.Struct({
-              callsCount: Schema.optional(Schema.Number),
-              kbTransferred: Schema.optional(Schema.Number),
-            }),
-          ),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => QuotaCounterContractSchema)),
     ),
     count: Schema.optional(Schema.Number),
     nextLink: Schema.optional(Schema.String),
@@ -16754,10 +16197,7 @@ export const QuotaByCounterKeysUpdateInput =
     quotaCounterKey: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        callsCount: Schema.optional(Schema.Number),
-        kbTransferred: Schema.optional(Schema.Number),
-      }),
+      Schema.suspend(() => QuotaCounterValueContractPropertiesSchema),
     ),
   }).pipe(
     T.Http({
@@ -16773,20 +16213,7 @@ export type QuotaByCounterKeysUpdateInput =
 export const QuotaByCounterKeysUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          counterKey: Schema.String,
-          periodKey: Schema.String,
-          periodStartTime: Schema.String,
-          periodEndTime: Schema.String,
-          value: Schema.optional(
-            Schema.Struct({
-              callsCount: Schema.optional(Schema.Number),
-              kbTransferred: Schema.optional(Schema.Number),
-            }),
-          ),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => QuotaCounterContractSchema)),
     ),
     count: Schema.optional(Schema.Number),
     nextLink: Schema.optional(Schema.String),
@@ -16836,10 +16263,7 @@ export const QuotaByPeriodKeysGetOutput =
     periodStartTime: Schema.String,
     periodEndTime: Schema.String,
     value: Schema.optional(
-      Schema.Struct({
-        callsCount: Schema.optional(Schema.Number),
-        kbTransferred: Schema.optional(Schema.Number),
-      }),
+      Schema.suspend(() => QuotaCounterValueContractPropertiesSchema),
     ),
   });
 export type QuotaByPeriodKeysGetOutput = typeof QuotaByPeriodKeysGetOutput.Type;
@@ -16870,10 +16294,7 @@ export const QuotaByPeriodKeysUpdateInput =
     quotaPeriodKey: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        callsCount: Schema.optional(Schema.Number),
-        kbTransferred: Schema.optional(Schema.Number),
-      }),
+      Schema.suspend(() => QuotaCounterValueContractPropertiesSchema),
     ),
   }).pipe(
     T.Http({
@@ -16893,10 +16314,7 @@ export const QuotaByPeriodKeysUpdateOutput =
     periodStartTime: Schema.String,
     periodEndTime: Schema.String,
     value: Schema.optional(
-      Schema.Struct({
-        callsCount: Schema.optional(Schema.Number),
-        kbTransferred: Schema.optional(Schema.Number),
-      }),
+      Schema.suspend(() => QuotaCounterValueContractPropertiesSchema),
     ),
   });
 export type QuotaByPeriodKeysUpdateOutput =
@@ -16939,13 +16357,7 @@ export type RegionListByServiceInput = typeof RegionListByServiceInput.Type;
 export const RegionListByServiceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          name: Schema.optional(Schema.String),
-          isMasterRegion: Schema.optional(Schema.Boolean),
-          isDeleted: Schema.optional(Schema.Boolean),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => RegionContractSchema)),
     ),
     count: Schema.optional(Schema.Number),
     nextLink: Schema.optional(Schema.String),
@@ -16987,36 +16399,7 @@ export type ReportsListByApiInput = typeof ReportsListByApiInput.Type;
 export const ReportsListByApiOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          name: Schema.optional(Schema.String),
-          timestamp: Schema.optional(Schema.String),
-          interval: Schema.optional(Schema.String),
-          country: Schema.optional(Schema.String),
-          region: Schema.optional(Schema.String),
-          zip: Schema.optional(Schema.String),
-          userId: Schema.optional(Schema.String),
-          productId: Schema.optional(Schema.String),
-          apiId: Schema.optional(Schema.String),
-          operationId: Schema.optional(Schema.String),
-          apiRegion: Schema.optional(Schema.String),
-          subscriptionId: Schema.optional(Schema.String),
-          callCountSuccess: Schema.optional(Schema.Number),
-          callCountBlocked: Schema.optional(Schema.Number),
-          callCountFailed: Schema.optional(Schema.Number),
-          callCountOther: Schema.optional(Schema.Number),
-          callCountTotal: Schema.optional(Schema.Number),
-          bandwidth: Schema.optional(Schema.Number),
-          cacheHitCount: Schema.optional(Schema.Number),
-          cacheMissCount: Schema.optional(Schema.Number),
-          apiTimeAvg: Schema.optional(Schema.Number),
-          apiTimeMin: Schema.optional(Schema.Number),
-          apiTimeMax: Schema.optional(Schema.Number),
-          serviceTimeAvg: Schema.optional(Schema.Number),
-          serviceTimeMin: Schema.optional(Schema.Number),
-          serviceTimeMax: Schema.optional(Schema.Number),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => ReportRecordContractSchema)),
     ),
     count: Schema.optional(Schema.Number),
     nextLink: Schema.optional(Schema.String),
@@ -17062,36 +16445,7 @@ export type ReportsListByGeoInput = typeof ReportsListByGeoInput.Type;
 export const ReportsListByGeoOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          name: Schema.optional(Schema.String),
-          timestamp: Schema.optional(Schema.String),
-          interval: Schema.optional(Schema.String),
-          country: Schema.optional(Schema.String),
-          region: Schema.optional(Schema.String),
-          zip: Schema.optional(Schema.String),
-          userId: Schema.optional(Schema.String),
-          productId: Schema.optional(Schema.String),
-          apiId: Schema.optional(Schema.String),
-          operationId: Schema.optional(Schema.String),
-          apiRegion: Schema.optional(Schema.String),
-          subscriptionId: Schema.optional(Schema.String),
-          callCountSuccess: Schema.optional(Schema.Number),
-          callCountBlocked: Schema.optional(Schema.Number),
-          callCountFailed: Schema.optional(Schema.Number),
-          callCountOther: Schema.optional(Schema.Number),
-          callCountTotal: Schema.optional(Schema.Number),
-          bandwidth: Schema.optional(Schema.Number),
-          cacheHitCount: Schema.optional(Schema.Number),
-          cacheMissCount: Schema.optional(Schema.Number),
-          apiTimeAvg: Schema.optional(Schema.Number),
-          apiTimeMin: Schema.optional(Schema.Number),
-          apiTimeMax: Schema.optional(Schema.Number),
-          serviceTimeAvg: Schema.optional(Schema.Number),
-          serviceTimeMin: Schema.optional(Schema.Number),
-          serviceTimeMax: Schema.optional(Schema.Number),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => ReportRecordContractSchema)),
     ),
     count: Schema.optional(Schema.Number),
     nextLink: Schema.optional(Schema.String),
@@ -17139,36 +16493,7 @@ export type ReportsListByOperationInput =
 export const ReportsListByOperationOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          name: Schema.optional(Schema.String),
-          timestamp: Schema.optional(Schema.String),
-          interval: Schema.optional(Schema.String),
-          country: Schema.optional(Schema.String),
-          region: Schema.optional(Schema.String),
-          zip: Schema.optional(Schema.String),
-          userId: Schema.optional(Schema.String),
-          productId: Schema.optional(Schema.String),
-          apiId: Schema.optional(Schema.String),
-          operationId: Schema.optional(Schema.String),
-          apiRegion: Schema.optional(Schema.String),
-          subscriptionId: Schema.optional(Schema.String),
-          callCountSuccess: Schema.optional(Schema.Number),
-          callCountBlocked: Schema.optional(Schema.Number),
-          callCountFailed: Schema.optional(Schema.Number),
-          callCountOther: Schema.optional(Schema.Number),
-          callCountTotal: Schema.optional(Schema.Number),
-          bandwidth: Schema.optional(Schema.Number),
-          cacheHitCount: Schema.optional(Schema.Number),
-          cacheMissCount: Schema.optional(Schema.Number),
-          apiTimeAvg: Schema.optional(Schema.Number),
-          apiTimeMin: Schema.optional(Schema.Number),
-          apiTimeMax: Schema.optional(Schema.Number),
-          serviceTimeAvg: Schema.optional(Schema.Number),
-          serviceTimeMin: Schema.optional(Schema.Number),
-          serviceTimeMax: Schema.optional(Schema.Number),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => ReportRecordContractSchema)),
     ),
     count: Schema.optional(Schema.Number),
     nextLink: Schema.optional(Schema.String),
@@ -17218,36 +16543,7 @@ export type ReportsListByProductInput = typeof ReportsListByProductInput.Type;
 export const ReportsListByProductOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          name: Schema.optional(Schema.String),
-          timestamp: Schema.optional(Schema.String),
-          interval: Schema.optional(Schema.String),
-          country: Schema.optional(Schema.String),
-          region: Schema.optional(Schema.String),
-          zip: Schema.optional(Schema.String),
-          userId: Schema.optional(Schema.String),
-          productId: Schema.optional(Schema.String),
-          apiId: Schema.optional(Schema.String),
-          operationId: Schema.optional(Schema.String),
-          apiRegion: Schema.optional(Schema.String),
-          subscriptionId: Schema.optional(Schema.String),
-          callCountSuccess: Schema.optional(Schema.Number),
-          callCountBlocked: Schema.optional(Schema.Number),
-          callCountFailed: Schema.optional(Schema.Number),
-          callCountOther: Schema.optional(Schema.Number),
-          callCountTotal: Schema.optional(Schema.Number),
-          bandwidth: Schema.optional(Schema.Number),
-          cacheHitCount: Schema.optional(Schema.Number),
-          cacheMissCount: Schema.optional(Schema.Number),
-          apiTimeAvg: Schema.optional(Schema.Number),
-          apiTimeMin: Schema.optional(Schema.Number),
-          apiTimeMax: Schema.optional(Schema.Number),
-          serviceTimeAvg: Schema.optional(Schema.Number),
-          serviceTimeMin: Schema.optional(Schema.Number),
-          serviceTimeMax: Schema.optional(Schema.Number),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => ReportRecordContractSchema)),
     ),
     count: Schema.optional(Schema.Number),
     nextLink: Schema.optional(Schema.String),
@@ -17295,28 +16591,7 @@ export type ReportsListByRequestInput = typeof ReportsListByRequestInput.Type;
 export const ReportsListByRequestOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          apiId: Schema.optional(Schema.String),
-          operationId: Schema.optional(Schema.String),
-          productId: Schema.optional(Schema.String),
-          userId: Schema.optional(Schema.String),
-          method: Schema.optional(Schema.String),
-          url: Schema.optional(Schema.String),
-          ipAddress: Schema.optional(Schema.String),
-          backendResponseCode: Schema.optional(Schema.String),
-          responseCode: Schema.optional(Schema.Number),
-          responseSize: Schema.optional(Schema.Number),
-          timestamp: Schema.optional(Schema.String),
-          cache: Schema.optional(Schema.String),
-          apiTime: Schema.optional(Schema.Number),
-          serviceTime: Schema.optional(Schema.Number),
-          apiRegion: Schema.optional(Schema.String),
-          subscriptionId: Schema.optional(Schema.String),
-          requestId: Schema.optional(Schema.String),
-          requestSize: Schema.optional(Schema.Number),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => RequestReportRecordContractSchema)),
     ),
     count: Schema.optional(Schema.Number),
   });
@@ -17364,36 +16639,7 @@ export type ReportsListBySubscriptionInput =
 export const ReportsListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          name: Schema.optional(Schema.String),
-          timestamp: Schema.optional(Schema.String),
-          interval: Schema.optional(Schema.String),
-          country: Schema.optional(Schema.String),
-          region: Schema.optional(Schema.String),
-          zip: Schema.optional(Schema.String),
-          userId: Schema.optional(Schema.String),
-          productId: Schema.optional(Schema.String),
-          apiId: Schema.optional(Schema.String),
-          operationId: Schema.optional(Schema.String),
-          apiRegion: Schema.optional(Schema.String),
-          subscriptionId: Schema.optional(Schema.String),
-          callCountSuccess: Schema.optional(Schema.Number),
-          callCountBlocked: Schema.optional(Schema.Number),
-          callCountFailed: Schema.optional(Schema.Number),
-          callCountOther: Schema.optional(Schema.Number),
-          callCountTotal: Schema.optional(Schema.Number),
-          bandwidth: Schema.optional(Schema.Number),
-          cacheHitCount: Schema.optional(Schema.Number),
-          cacheMissCount: Schema.optional(Schema.Number),
-          apiTimeAvg: Schema.optional(Schema.Number),
-          apiTimeMin: Schema.optional(Schema.Number),
-          apiTimeMax: Schema.optional(Schema.Number),
-          serviceTimeAvg: Schema.optional(Schema.Number),
-          serviceTimeMin: Schema.optional(Schema.Number),
-          serviceTimeMax: Schema.optional(Schema.Number),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => ReportRecordContractSchema)),
     ),
     count: Schema.optional(Schema.Number),
     nextLink: Schema.optional(Schema.String),
@@ -17445,36 +16691,7 @@ export type ReportsListByTimeInput = typeof ReportsListByTimeInput.Type;
 export const ReportsListByTimeOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          name: Schema.optional(Schema.String),
-          timestamp: Schema.optional(Schema.String),
-          interval: Schema.optional(Schema.String),
-          country: Schema.optional(Schema.String),
-          region: Schema.optional(Schema.String),
-          zip: Schema.optional(Schema.String),
-          userId: Schema.optional(Schema.String),
-          productId: Schema.optional(Schema.String),
-          apiId: Schema.optional(Schema.String),
-          operationId: Schema.optional(Schema.String),
-          apiRegion: Schema.optional(Schema.String),
-          subscriptionId: Schema.optional(Schema.String),
-          callCountSuccess: Schema.optional(Schema.Number),
-          callCountBlocked: Schema.optional(Schema.Number),
-          callCountFailed: Schema.optional(Schema.Number),
-          callCountOther: Schema.optional(Schema.Number),
-          callCountTotal: Schema.optional(Schema.Number),
-          bandwidth: Schema.optional(Schema.Number),
-          cacheHitCount: Schema.optional(Schema.Number),
-          cacheMissCount: Schema.optional(Schema.Number),
-          apiTimeAvg: Schema.optional(Schema.Number),
-          apiTimeMin: Schema.optional(Schema.Number),
-          apiTimeMax: Schema.optional(Schema.Number),
-          serviceTimeAvg: Schema.optional(Schema.Number),
-          serviceTimeMin: Schema.optional(Schema.Number),
-          serviceTimeMax: Schema.optional(Schema.Number),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => ReportRecordContractSchema)),
     ),
     count: Schema.optional(Schema.Number),
     nextLink: Schema.optional(Schema.String),
@@ -17523,36 +16740,7 @@ export type ReportsListByUserInput = typeof ReportsListByUserInput.Type;
 export const ReportsListByUserOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          name: Schema.optional(Schema.String),
-          timestamp: Schema.optional(Schema.String),
-          interval: Schema.optional(Schema.String),
-          country: Schema.optional(Schema.String),
-          region: Schema.optional(Schema.String),
-          zip: Schema.optional(Schema.String),
-          userId: Schema.optional(Schema.String),
-          productId: Schema.optional(Schema.String),
-          apiId: Schema.optional(Schema.String),
-          operationId: Schema.optional(Schema.String),
-          apiRegion: Schema.optional(Schema.String),
-          subscriptionId: Schema.optional(Schema.String),
-          callCountSuccess: Schema.optional(Schema.Number),
-          callCountBlocked: Schema.optional(Schema.Number),
-          callCountFailed: Schema.optional(Schema.Number),
-          callCountOther: Schema.optional(Schema.Number),
-          callCountTotal: Schema.optional(Schema.Number),
-          bandwidth: Schema.optional(Schema.Number),
-          cacheHitCount: Schema.optional(Schema.Number),
-          cacheMissCount: Schema.optional(Schema.Number),
-          apiTimeAvg: Schema.optional(Schema.Number),
-          apiTimeMin: Schema.optional(Schema.Number),
-          apiTimeMax: Schema.optional(Schema.Number),
-          serviceTimeAvg: Schema.optional(Schema.Number),
-          serviceTimeMin: Schema.optional(Schema.Number),
-          serviceTimeMax: Schema.optional(Schema.Number),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => ReportRecordContractSchema)),
     ),
     count: Schema.optional(Schema.Number),
     nextLink: Schema.optional(Schema.String),
@@ -17586,24 +16774,7 @@ export const SubscriptionCreateOrUpdateInput =
     notify: Schema.optional(Schema.Boolean),
     appType: Schema.optional(Schema.Literals(["portal", "developerPortal"])),
     properties: Schema.optional(
-      Schema.Struct({
-        ownerId: Schema.optional(Schema.String),
-        scope: Schema.String,
-        displayName: Schema.String,
-        primaryKey: Schema.optional(Schema.String),
-        secondaryKey: Schema.optional(Schema.String),
-        state: Schema.optional(
-          Schema.Literals([
-            "suspended",
-            "active",
-            "expired",
-            "submitted",
-            "rejected",
-            "cancelled",
-          ]),
-        ),
-        allowTracing: Schema.optional(Schema.Boolean),
-      }),
+      Schema.suspend(() => SubscriptionCreateParameterPropertiesSchema),
     ),
   }).pipe(
     T.Http({
@@ -17618,6 +16789,9 @@ export type SubscriptionCreateOrUpdateInput =
 // Output Schema
 export const SubscriptionCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => SubscriptionContractPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -17699,6 +16873,9 @@ export type SubscriptionGetInput = typeof SubscriptionGetInput.Type;
 
 // Output Schema
 export const SubscriptionGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.optional(
+    Schema.suspend(() => SubscriptionContractPropertiesSchema),
+  ),
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -17740,13 +16917,7 @@ export type SubscriptionListInput = typeof SubscriptionListInput.Type;
 export const SubscriptionListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => SubscriptionContractSchema)),
     ),
     count: Schema.optional(Schema.Number),
     nextLink: Schema.optional(Schema.String),
@@ -17898,26 +17069,7 @@ export const SubscriptionUpdateInput =
     notify: Schema.optional(Schema.Boolean),
     appType: Schema.optional(Schema.Literals(["portal", "developerPortal"])),
     properties: Schema.optional(
-      Schema.Struct({
-        ownerId: Schema.optional(Schema.String),
-        scope: Schema.optional(Schema.String),
-        expirationDate: Schema.optional(Schema.String),
-        displayName: Schema.optional(Schema.String),
-        primaryKey: Schema.optional(Schema.String),
-        secondaryKey: Schema.optional(Schema.String),
-        state: Schema.optional(
-          Schema.Literals([
-            "suspended",
-            "active",
-            "expired",
-            "submitted",
-            "rejected",
-            "cancelled",
-          ]),
-        ),
-        stateComment: Schema.optional(Schema.String),
-        allowTracing: Schema.optional(Schema.Boolean),
-      }),
+      Schema.suspend(() => SubscriptionUpdateParameterPropertiesSchema),
     ),
   }).pipe(
     T.Http({
@@ -17931,6 +17083,9 @@ export type SubscriptionUpdateInput = typeof SubscriptionUpdateInput.Type;
 // Output Schema
 export const SubscriptionUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => SubscriptionContractPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -17966,9 +17121,7 @@ export const TagApiLinkCreateOrUpdateInput =
     apiLinkId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        apiId: Schema.String,
-      }),
+      Schema.suspend(() => TagApiLinkContractPropertiesSchema),
     ),
   }).pipe(
     T.Http({
@@ -17983,6 +17136,9 @@ export type TagApiLinkCreateOrUpdateInput =
 // Output Schema
 export const TagApiLinkCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => TagApiLinkContractPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -18061,6 +17217,9 @@ export type TagApiLinkGetInput = typeof TagApiLinkGetInput.Type;
 
 // Output Schema
 export const TagApiLinkGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.optional(
+    Schema.suspend(() => TagApiLinkContractPropertiesSchema),
+  ),
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -18106,13 +17265,7 @@ export type TagApiLinkListByProductInput =
 export const TagApiLinkListByProductOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => TagApiLinkContractSchema)),
     ),
     count: Schema.optional(Schema.Number),
     nextLink: Schema.optional(Schema.String),
@@ -18157,6 +17310,9 @@ export type TagAssignToApiInput = typeof TagAssignToApiInput.Type;
 
 // Output Schema
 export const TagAssignToApiOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.optional(
+    Schema.suspend(() => TagContractPropertiesSchema),
+  ),
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -18199,6 +17355,9 @@ export type TagAssignToOperationInput = typeof TagAssignToOperationInput.Type;
 // Output Schema
 export const TagAssignToOperationOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => TagContractPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -18243,6 +17402,9 @@ export type TagAssignToProductInput = typeof TagAssignToProductInput.Type;
 // Output Schema
 export const TagAssignToProductOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => TagContractPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -18272,9 +17434,7 @@ export const TagCreateOrUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     tagId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        displayName: Schema.String,
-      }),
+      Schema.suspend(() => TagContractPropertiesSchema),
     ),
   },
 ).pipe(
@@ -18289,6 +17449,9 @@ export type TagCreateOrUpdateInput = typeof TagCreateOrUpdateInput.Type;
 // Output Schema
 export const TagCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => TagContractPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -18479,6 +17642,9 @@ export type TagGetInput = typeof TagGetInput.Type;
 
 // Output Schema
 export const TagGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.optional(
+    Schema.suspend(() => TagContractPropertiesSchema),
+  ),
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -18517,6 +17683,9 @@ export type TagGetByApiInput = typeof TagGetByApiInput.Type;
 
 // Output Schema
 export const TagGetByApiOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.optional(
+    Schema.suspend(() => TagContractPropertiesSchema),
+  ),
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -18560,6 +17729,9 @@ export type TagGetByOperationInput = typeof TagGetByOperationInput.Type;
 // Output Schema
 export const TagGetByOperationOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => TagContractPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -18600,6 +17772,9 @@ export type TagGetByProductInput = typeof TagGetByProductInput.Type;
 
 // Output Schema
 export const TagGetByProductOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.optional(
+    Schema.suspend(() => TagContractPropertiesSchema),
+  ),
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -18641,15 +17816,7 @@ export type TagListByApiInput = typeof TagListByApiInput.Type;
 
 // Output Schema
 export const TagListByApiOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  value: Schema.optional(
-    Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-      }),
-    ),
-  ),
+  value: Schema.optional(Schema.Array(Schema.suspend(() => TagContractSchema))),
   count: Schema.optional(Schema.Number),
   nextLink: Schema.optional(Schema.String),
 });
@@ -18696,13 +17863,7 @@ export type TagListByOperationInput = typeof TagListByOperationInput.Type;
 export const TagListByOperationOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => TagContractSchema)),
     ),
     count: Schema.optional(Schema.Number),
     nextLink: Schema.optional(Schema.String),
@@ -18749,13 +17910,7 @@ export type TagListByProductInput = typeof TagListByProductInput.Type;
 export const TagListByProductOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => TagContractSchema)),
     ),
     count: Schema.optional(Schema.Number),
     nextLink: Schema.optional(Schema.String),
@@ -18802,13 +17957,7 @@ export type TagListByServiceInput = typeof TagListByServiceInput.Type;
 export const TagListByServiceOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => TagContractSchema)),
     ),
     count: Schema.optional(Schema.Number),
     nextLink: Schema.optional(Schema.String),
@@ -18842,9 +17991,7 @@ export const TagOperationLinkCreateOrUpdateInput =
     operationLinkId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        operationId: Schema.String,
-      }),
+      Schema.suspend(() => TagOperationLinkContractPropertiesSchema),
     ),
   }).pipe(
     T.Http({
@@ -18859,6 +18006,9 @@ export type TagOperationLinkCreateOrUpdateInput =
 // Output Schema
 export const TagOperationLinkCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => TagOperationLinkContractPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -18944,6 +18094,9 @@ export type TagOperationLinkGetInput = typeof TagOperationLinkGetInput.Type;
 // Output Schema
 export const TagOperationLinkGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => TagOperationLinkContractPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -18989,13 +18142,7 @@ export type TagOperationLinkListByProductInput =
 export const TagOperationLinkListByProductOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => TagOperationLinkContractSchema)),
     ),
     count: Schema.optional(Schema.Number),
     nextLink: Schema.optional(Schema.String),
@@ -19030,9 +18177,7 @@ export const TagProductLinkCreateOrUpdateInput =
     productLinkId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        productId: Schema.String,
-      }),
+      Schema.suspend(() => TagProductLinkContractPropertiesSchema),
     ),
   }).pipe(
     T.Http({
@@ -19047,6 +18192,9 @@ export type TagProductLinkCreateOrUpdateInput =
 // Output Schema
 export const TagProductLinkCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => TagProductLinkContractPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -19131,6 +18279,9 @@ export type TagProductLinkGetInput = typeof TagProductLinkGetInput.Type;
 // Output Schema
 export const TagProductLinkGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => TagProductLinkContractPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -19176,13 +18327,7 @@ export type TagProductLinkListByProductInput =
 export const TagProductLinkListByProductOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => TagProductLinkContractSchema)),
     ),
     count: Schema.optional(Schema.Number),
     nextLink: Schema.optional(Schema.String),
@@ -19232,121 +18377,7 @@ export type TagResourceListByServiceInput =
 export const TagResourceListByServiceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          tag: Schema.Struct({
-            id: Schema.optional(Schema.String),
-            name: Schema.optional(Schema.String),
-          }),
-          api: Schema.optional(
-            Schema.Struct({
-              description: Schema.optional(Schema.String),
-              authenticationSettings: Schema.optional(
-                Schema.Struct({
-                  oAuth2: Schema.optional(
-                    Schema.Struct({
-                      authorizationServerId: Schema.optional(Schema.String),
-                      scope: Schema.optional(Schema.String),
-                    }),
-                  ),
-                  openid: Schema.optional(
-                    Schema.Struct({
-                      openidProviderId: Schema.optional(Schema.String),
-                      bearerTokenSendingMethods: Schema.optional(
-                        Schema.Array(
-                          Schema.Literals(["authorizationHeader", "query"]),
-                        ),
-                      ),
-                    }),
-                  ),
-                  oAuth2AuthenticationSettings: Schema.optional(
-                    Schema.Array(
-                      Schema.Struct({
-                        authorizationServerId: Schema.optional(Schema.String),
-                        scope: Schema.optional(Schema.String),
-                      }),
-                    ),
-                  ),
-                  openidAuthenticationSettings: Schema.optional(
-                    Schema.Array(
-                      Schema.Struct({
-                        openidProviderId: Schema.optional(Schema.String),
-                        bearerTokenSendingMethods: Schema.optional(
-                          Schema.Array(
-                            Schema.Literals(["authorizationHeader", "query"]),
-                          ),
-                        ),
-                      }),
-                    ),
-                  ),
-                }),
-              ),
-              subscriptionKeyParameterNames: Schema.optional(
-                Schema.Struct({
-                  header: Schema.optional(Schema.String),
-                  query: Schema.optional(Schema.String),
-                }),
-              ),
-              type: Schema.optional(
-                Schema.Literals([
-                  "http",
-                  "soap",
-                  "websocket",
-                  "graphql",
-                  "odata",
-                  "grpc",
-                ]),
-              ),
-              apiRevision: Schema.optional(Schema.String),
-              apiVersion: Schema.optional(Schema.String),
-              isCurrent: Schema.optional(Schema.Boolean),
-              isOnline: Schema.optional(Schema.Boolean),
-              apiRevisionDescription: Schema.optional(Schema.String),
-              apiVersionDescription: Schema.optional(Schema.String),
-              apiVersionSetId: Schema.optional(Schema.String),
-              subscriptionRequired: Schema.optional(Schema.Boolean),
-              termsOfServiceUrl: Schema.optional(Schema.String),
-              contact: Schema.optional(
-                Schema.Struct({
-                  name: Schema.optional(Schema.String),
-                  url: Schema.optional(Schema.String),
-                  email: Schema.optional(Schema.String),
-                }),
-              ),
-              license: Schema.optional(
-                Schema.Struct({
-                  name: Schema.optional(Schema.String),
-                  url: Schema.optional(Schema.String),
-                }),
-              ),
-            }),
-          ),
-          operation: Schema.optional(
-            Schema.Struct({
-              id: Schema.optional(Schema.String),
-              name: Schema.optional(Schema.String),
-              apiName: Schema.optional(Schema.String),
-              apiRevision: Schema.optional(Schema.String),
-              apiVersion: Schema.optional(Schema.String),
-              description: Schema.optional(Schema.String),
-              method: Schema.optional(Schema.String),
-              urlTemplate: Schema.optional(Schema.String),
-            }),
-          ),
-          product: Schema.optional(
-            Schema.Struct({
-              description: Schema.optional(Schema.String),
-              terms: Schema.optional(Schema.String),
-              subscriptionRequired: Schema.optional(Schema.Boolean),
-              approvalRequired: Schema.optional(Schema.Boolean),
-              subscriptionsLimit: Schema.optional(Schema.Number),
-              state: Schema.optional(
-                Schema.Literals(["notPublished", "published"]),
-              ),
-            }),
-          ),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => TagResourceContractSchema)),
     ),
     count: Schema.optional(Schema.Number),
     nextLink: Schema.optional(Schema.String),
@@ -19379,9 +18410,7 @@ export const TagUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   tagId: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
   properties: Schema.optional(
-    Schema.Struct({
-      displayName: Schema.String,
-    }),
+    Schema.suspend(() => TagContractPropertiesSchema),
   ),
 }).pipe(
   T.Http({
@@ -19394,6 +18423,9 @@ export type TagUpdateInput = typeof TagUpdateInput.Type;
 
 // Output Schema
 export const TagUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.optional(
+    Schema.suspend(() => TagContractPropertiesSchema),
+  ),
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -19424,12 +18456,7 @@ export const TenantAccessCreateInput =
     accessName: Schema.Literals(["access", "gitAccess"]).pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        principalId: Schema.optional(Schema.String),
-        primaryKey: Schema.optional(Schema.String),
-        secondaryKey: Schema.optional(Schema.String),
-        enabled: Schema.optional(Schema.Boolean),
-      }),
+      Schema.suspend(() => AccessInformationCreateParameterPropertiesSchema),
     ),
   }).pipe(
     T.Http({
@@ -19443,6 +18470,9 @@ export type TenantAccessCreateInput = typeof TenantAccessCreateInput.Type;
 // Output Schema
 export const TenantAccessCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => AccessInformationContractPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -19482,6 +18512,9 @@ export type TenantAccessGetInput = typeof TenantAccessGetInput.Type;
 
 // Output Schema
 export const TenantAccessGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.optional(
+    Schema.suspend(() => AccessInformationContractPropertiesSchema),
+  ),
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -19599,13 +18632,7 @@ export type TenantAccessListByServiceInput =
 export const TenantAccessListByServiceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => AccessInformationContractSchema)),
     ),
     count: Schema.optional(Schema.Number),
     nextLink: Schema.optional(Schema.String),
@@ -19758,9 +18785,7 @@ export const TenantAccessUpdateInput =
     accessName: Schema.Literals(["access", "gitAccess"]).pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        enabled: Schema.optional(Schema.Boolean),
-      }),
+      Schema.suspend(() => AccessInformationUpdateParameterPropertiesSchema),
     ),
   }).pipe(
     T.Http({
@@ -19774,6 +18799,9 @@ export type TenantAccessUpdateInput = typeof TenantAccessUpdateInput.Type;
 // Output Schema
 export const TenantAccessUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => AccessInformationContractPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -19804,10 +18832,7 @@ export const TenantConfigurationDeployInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     configurationName: Schema.Literals(["configuration"]).pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        branch: Schema.String,
-        force: Schema.optional(Schema.Boolean),
-      }),
+      Schema.suspend(() => DeployConfigurationParameterPropertiesSchema),
     ),
   }).pipe(
     T.Http({
@@ -19823,6 +18848,9 @@ export type TenantConfigurationDeployInput =
 // Output Schema
 export const TenantConfigurationDeployOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => OperationResultContractPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -19867,6 +18895,11 @@ export type TenantConfigurationGetSyncStateInput =
 // Output Schema
 export const TenantConfigurationGetSyncStateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(
+        () => TenantConfigurationSyncStateContractPropertiesSchema,
+      ),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -19897,10 +18930,7 @@ export const TenantConfigurationSaveInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     configurationName: Schema.Literals(["configuration"]).pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        branch: Schema.String,
-        force: Schema.optional(Schema.Boolean),
-      }),
+      Schema.suspend(() => SaveConfigurationParameterPropertiesSchema),
     ),
   }).pipe(
     T.Http({
@@ -19916,6 +18946,9 @@ export type TenantConfigurationSaveInput =
 // Output Schema
 export const TenantConfigurationSaveOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => OperationResultContractPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -19948,10 +18981,7 @@ export const TenantConfigurationValidateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     configurationName: Schema.Literals(["configuration"]).pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        branch: Schema.String,
-        force: Schema.optional(Schema.Boolean),
-      }),
+      Schema.suspend(() => DeployConfigurationParameterPropertiesSchema),
     ),
   }).pipe(
     T.Http({
@@ -19967,6 +18997,9 @@ export type TenantConfigurationValidateInput =
 // Output Schema
 export const TenantConfigurationValidateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => OperationResultContractPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -20040,20 +19073,7 @@ export const UserCreateOrUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     notify: Schema.optional(Schema.Boolean),
     properties: Schema.optional(
-      Schema.Struct({
-        state: Schema.optional(
-          Schema.Literals(["active", "blocked", "pending", "deleted"]),
-        ),
-        note: Schema.optional(Schema.String),
-        identities: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              provider: Schema.optional(Schema.String),
-              id: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-      }),
+      Schema.suspend(() => UserCreateParameterPropertiesSchema),
     ),
   }).pipe(
     T.Http({
@@ -20067,6 +19087,9 @@ export type UserCreateOrUpdateInput = typeof UserCreateOrUpdateInput.Type;
 // Output Schema
 export const UserCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => UserContractPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -20185,6 +19208,9 @@ export type UserGetInput = typeof UserGetInput.Type;
 
 // Output Schema
 export const UserGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.optional(
+    Schema.suspend(() => UserContractPropertiesSchema),
+  ),
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -20213,10 +19239,7 @@ export const UserGetSharedAccessTokenInput =
     userId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        keyType: Schema.Literals(["primary", "secondary"]),
-        expiry: Schema.String,
-      }),
+      Schema.suspend(() => UserTokenParameterPropertiesSchema),
     ),
   }).pipe(
     T.Http({
@@ -20274,13 +19297,7 @@ export type UserGroupListInput = typeof UserGroupListInput.Type;
 // Output Schema
 export const UserGroupListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.optional(
-    Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-      }),
-    ),
+    Schema.Array(Schema.suspend(() => GroupContractSchema)),
   ),
   count: Schema.optional(Schema.Number),
   nextLink: Schema.optional(Schema.String),
@@ -20324,12 +19341,7 @@ export type UserIdentitiesListInput = typeof UserIdentitiesListInput.Type;
 export const UserIdentitiesListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          provider: Schema.optional(Schema.String),
-          id: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => UserIdentityContractSchema)),
     ),
     count: Schema.optional(Schema.Number),
     nextLink: Schema.optional(Schema.String),
@@ -20374,13 +19386,7 @@ export type UserListByServiceInput = typeof UserListByServiceInput.Type;
 export const UserListByServiceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => UserContractSchema)),
     ),
     count: Schema.optional(Schema.Number),
     nextLink: Schema.optional(Schema.String),
@@ -20424,6 +19430,9 @@ export type UserSubscriptionGetInput = typeof UserSubscriptionGetInput.Type;
 // Output Schema
 export const UserSubscriptionGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => SubscriptionContractPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -20468,13 +19477,7 @@ export type UserSubscriptionListInput = typeof UserSubscriptionListInput.Type;
 export const UserSubscriptionListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => SubscriptionContractSchema)),
     ),
     count: Schema.optional(Schema.Number),
     nextLink: Schema.optional(Schema.String),
@@ -20507,20 +19510,7 @@ export const UserUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   userId: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
   properties: Schema.optional(
-    Schema.Struct({
-      state: Schema.optional(
-        Schema.Literals(["active", "blocked", "pending", "deleted"]),
-      ),
-      note: Schema.optional(Schema.String),
-      identities: Schema.optional(
-        Schema.Array(
-          Schema.Struct({
-            provider: Schema.optional(Schema.String),
-            id: Schema.optional(Schema.String),
-          }),
-        ),
-      ),
-    }),
+    Schema.suspend(() => UserUpdateParametersPropertiesSchema),
   ),
 }).pipe(
   T.Http({
@@ -20533,6 +19523,9 @@ export type UserUpdateInput = typeof UserUpdateInput.Type;
 
 // Output Schema
 export const UserUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.optional(
+    Schema.suspend(() => UserContractPropertiesSchema),
+  ),
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -20564,87 +19557,7 @@ export const WorkspaceApiCreateOrUpdateInput =
     apiId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        description: Schema.optional(Schema.String),
-        authenticationSettings: Schema.optional(
-          Schema.Struct({
-            oAuth2: Schema.optional(
-              Schema.Struct({
-                authorizationServerId: Schema.optional(Schema.String),
-                scope: Schema.optional(Schema.String),
-              }),
-            ),
-            openid: Schema.optional(
-              Schema.Struct({
-                openidProviderId: Schema.optional(Schema.String),
-                bearerTokenSendingMethods: Schema.optional(
-                  Schema.Array(
-                    Schema.Literals(["authorizationHeader", "query"]),
-                  ),
-                ),
-              }),
-            ),
-            oAuth2AuthenticationSettings: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  authorizationServerId: Schema.optional(Schema.String),
-                  scope: Schema.optional(Schema.String),
-                }),
-              ),
-            ),
-            openidAuthenticationSettings: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  openidProviderId: Schema.optional(Schema.String),
-                  bearerTokenSendingMethods: Schema.optional(
-                    Schema.Array(
-                      Schema.Literals(["authorizationHeader", "query"]),
-                    ),
-                  ),
-                }),
-              ),
-            ),
-          }),
-        ),
-        subscriptionKeyParameterNames: Schema.optional(
-          Schema.Struct({
-            header: Schema.optional(Schema.String),
-            query: Schema.optional(Schema.String),
-          }),
-        ),
-        type: Schema.optional(
-          Schema.Literals([
-            "http",
-            "soap",
-            "websocket",
-            "graphql",
-            "odata",
-            "grpc",
-          ]),
-        ),
-        apiRevision: Schema.optional(Schema.String),
-        apiVersion: Schema.optional(Schema.String),
-        isCurrent: Schema.optional(Schema.Boolean),
-        isOnline: Schema.optional(Schema.Boolean),
-        apiRevisionDescription: Schema.optional(Schema.String),
-        apiVersionDescription: Schema.optional(Schema.String),
-        apiVersionSetId: Schema.optional(Schema.String),
-        subscriptionRequired: Schema.optional(Schema.Boolean),
-        termsOfServiceUrl: Schema.optional(Schema.String),
-        contact: Schema.optional(
-          Schema.Struct({
-            name: Schema.optional(Schema.String),
-            url: Schema.optional(Schema.String),
-            email: Schema.optional(Schema.String),
-          }),
-        ),
-        license: Schema.optional(
-          Schema.Struct({
-            name: Schema.optional(Schema.String),
-            url: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
+      Schema.suspend(() => ApiCreateOrUpdatePropertiesSchema),
     ),
   }).pipe(
     T.Http({
@@ -20660,6 +19573,9 @@ export type WorkspaceApiCreateOrUpdateInput =
 // Output Schema
 export const WorkspaceApiCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => ApiContractPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -20735,169 +19651,7 @@ export const WorkspaceApiDiagnosticCreateOrUpdateInput =
     diagnosticId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        alwaysLog: Schema.optional(Schema.Literals(["allErrors"])),
-        loggerId: Schema.String,
-        sampling: Schema.optional(
-          Schema.Struct({
-            samplingType: Schema.optional(Schema.Literals(["fixed"])),
-            percentage: Schema.optional(Schema.Number),
-          }),
-        ),
-        frontend: Schema.optional(
-          Schema.Struct({
-            request: Schema.optional(
-              Schema.Struct({
-                headers: Schema.optional(Schema.Array(Schema.String)),
-                body: Schema.optional(
-                  Schema.Struct({
-                    bytes: Schema.optional(Schema.Number),
-                  }),
-                ),
-                dataMasking: Schema.optional(
-                  Schema.Struct({
-                    queryParams: Schema.optional(
-                      Schema.Array(
-                        Schema.Struct({
-                          value: Schema.optional(Schema.String),
-                          mode: Schema.optional(
-                            Schema.Literals(["Mask", "Hide"]),
-                          ),
-                        }),
-                      ),
-                    ),
-                    headers: Schema.optional(
-                      Schema.Array(
-                        Schema.Struct({
-                          value: Schema.optional(Schema.String),
-                          mode: Schema.optional(
-                            Schema.Literals(["Mask", "Hide"]),
-                          ),
-                        }),
-                      ),
-                    ),
-                  }),
-                ),
-              }),
-            ),
-            response: Schema.optional(
-              Schema.Struct({
-                headers: Schema.optional(Schema.Array(Schema.String)),
-                body: Schema.optional(
-                  Schema.Struct({
-                    bytes: Schema.optional(Schema.Number),
-                  }),
-                ),
-                dataMasking: Schema.optional(
-                  Schema.Struct({
-                    queryParams: Schema.optional(
-                      Schema.Array(
-                        Schema.Struct({
-                          value: Schema.optional(Schema.String),
-                          mode: Schema.optional(
-                            Schema.Literals(["Mask", "Hide"]),
-                          ),
-                        }),
-                      ),
-                    ),
-                    headers: Schema.optional(
-                      Schema.Array(
-                        Schema.Struct({
-                          value: Schema.optional(Schema.String),
-                          mode: Schema.optional(
-                            Schema.Literals(["Mask", "Hide"]),
-                          ),
-                        }),
-                      ),
-                    ),
-                  }),
-                ),
-              }),
-            ),
-          }),
-        ),
-        backend: Schema.optional(
-          Schema.Struct({
-            request: Schema.optional(
-              Schema.Struct({
-                headers: Schema.optional(Schema.Array(Schema.String)),
-                body: Schema.optional(
-                  Schema.Struct({
-                    bytes: Schema.optional(Schema.Number),
-                  }),
-                ),
-                dataMasking: Schema.optional(
-                  Schema.Struct({
-                    queryParams: Schema.optional(
-                      Schema.Array(
-                        Schema.Struct({
-                          value: Schema.optional(Schema.String),
-                          mode: Schema.optional(
-                            Schema.Literals(["Mask", "Hide"]),
-                          ),
-                        }),
-                      ),
-                    ),
-                    headers: Schema.optional(
-                      Schema.Array(
-                        Schema.Struct({
-                          value: Schema.optional(Schema.String),
-                          mode: Schema.optional(
-                            Schema.Literals(["Mask", "Hide"]),
-                          ),
-                        }),
-                      ),
-                    ),
-                  }),
-                ),
-              }),
-            ),
-            response: Schema.optional(
-              Schema.Struct({
-                headers: Schema.optional(Schema.Array(Schema.String)),
-                body: Schema.optional(
-                  Schema.Struct({
-                    bytes: Schema.optional(Schema.Number),
-                  }),
-                ),
-                dataMasking: Schema.optional(
-                  Schema.Struct({
-                    queryParams: Schema.optional(
-                      Schema.Array(
-                        Schema.Struct({
-                          value: Schema.optional(Schema.String),
-                          mode: Schema.optional(
-                            Schema.Literals(["Mask", "Hide"]),
-                          ),
-                        }),
-                      ),
-                    ),
-                    headers: Schema.optional(
-                      Schema.Array(
-                        Schema.Struct({
-                          value: Schema.optional(Schema.String),
-                          mode: Schema.optional(
-                            Schema.Literals(["Mask", "Hide"]),
-                          ),
-                        }),
-                      ),
-                    ),
-                  }),
-                ),
-              }),
-            ),
-          }),
-        ),
-        logClientIp: Schema.optional(Schema.Boolean),
-        httpCorrelationProtocol: Schema.optional(
-          Schema.Literals(["None", "Legacy", "W3C"]),
-        ),
-        verbosity: Schema.optional(
-          Schema.Literals(["verbose", "information", "error"]),
-        ),
-        operationNameFormat: Schema.optional(Schema.Literals(["Name", "Url"])),
-        metrics: Schema.optional(Schema.Boolean),
-      }),
+      Schema.suspend(() => DiagnosticContractPropertiesSchema),
     ),
   }).pipe(
     T.Http({
@@ -20912,6 +19666,9 @@ export type WorkspaceApiDiagnosticCreateOrUpdateInput =
 // Output Schema
 export const WorkspaceApiDiagnosticCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => DiagnosticContractPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -21003,6 +19760,9 @@ export type WorkspaceApiDiagnosticGetInput =
 // Output Schema
 export const WorkspaceApiDiagnosticGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => DiagnosticContractPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -21053,13 +19813,7 @@ export type WorkspaceApiDiagnosticListByWorkspaceInput =
 export const WorkspaceApiDiagnosticListByWorkspaceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => DiagnosticContractSchema)),
     ),
     count: Schema.optional(Schema.Number),
     nextLink: Schema.optional(Schema.String),
@@ -21096,169 +19850,7 @@ export const WorkspaceApiDiagnosticUpdateInput =
     diagnosticId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        alwaysLog: Schema.optional(Schema.Literals(["allErrors"])),
-        loggerId: Schema.optional(Schema.String),
-        sampling: Schema.optional(
-          Schema.Struct({
-            samplingType: Schema.optional(Schema.Literals(["fixed"])),
-            percentage: Schema.optional(Schema.Number),
-          }),
-        ),
-        frontend: Schema.optional(
-          Schema.Struct({
-            request: Schema.optional(
-              Schema.Struct({
-                headers: Schema.optional(Schema.Array(Schema.String)),
-                body: Schema.optional(
-                  Schema.Struct({
-                    bytes: Schema.optional(Schema.Number),
-                  }),
-                ),
-                dataMasking: Schema.optional(
-                  Schema.Struct({
-                    queryParams: Schema.optional(
-                      Schema.Array(
-                        Schema.Struct({
-                          value: Schema.optional(Schema.String),
-                          mode: Schema.optional(
-                            Schema.Literals(["Mask", "Hide"]),
-                          ),
-                        }),
-                      ),
-                    ),
-                    headers: Schema.optional(
-                      Schema.Array(
-                        Schema.Struct({
-                          value: Schema.optional(Schema.String),
-                          mode: Schema.optional(
-                            Schema.Literals(["Mask", "Hide"]),
-                          ),
-                        }),
-                      ),
-                    ),
-                  }),
-                ),
-              }),
-            ),
-            response: Schema.optional(
-              Schema.Struct({
-                headers: Schema.optional(Schema.Array(Schema.String)),
-                body: Schema.optional(
-                  Schema.Struct({
-                    bytes: Schema.optional(Schema.Number),
-                  }),
-                ),
-                dataMasking: Schema.optional(
-                  Schema.Struct({
-                    queryParams: Schema.optional(
-                      Schema.Array(
-                        Schema.Struct({
-                          value: Schema.optional(Schema.String),
-                          mode: Schema.optional(
-                            Schema.Literals(["Mask", "Hide"]),
-                          ),
-                        }),
-                      ),
-                    ),
-                    headers: Schema.optional(
-                      Schema.Array(
-                        Schema.Struct({
-                          value: Schema.optional(Schema.String),
-                          mode: Schema.optional(
-                            Schema.Literals(["Mask", "Hide"]),
-                          ),
-                        }),
-                      ),
-                    ),
-                  }),
-                ),
-              }),
-            ),
-          }),
-        ),
-        backend: Schema.optional(
-          Schema.Struct({
-            request: Schema.optional(
-              Schema.Struct({
-                headers: Schema.optional(Schema.Array(Schema.String)),
-                body: Schema.optional(
-                  Schema.Struct({
-                    bytes: Schema.optional(Schema.Number),
-                  }),
-                ),
-                dataMasking: Schema.optional(
-                  Schema.Struct({
-                    queryParams: Schema.optional(
-                      Schema.Array(
-                        Schema.Struct({
-                          value: Schema.optional(Schema.String),
-                          mode: Schema.optional(
-                            Schema.Literals(["Mask", "Hide"]),
-                          ),
-                        }),
-                      ),
-                    ),
-                    headers: Schema.optional(
-                      Schema.Array(
-                        Schema.Struct({
-                          value: Schema.optional(Schema.String),
-                          mode: Schema.optional(
-                            Schema.Literals(["Mask", "Hide"]),
-                          ),
-                        }),
-                      ),
-                    ),
-                  }),
-                ),
-              }),
-            ),
-            response: Schema.optional(
-              Schema.Struct({
-                headers: Schema.optional(Schema.Array(Schema.String)),
-                body: Schema.optional(
-                  Schema.Struct({
-                    bytes: Schema.optional(Schema.Number),
-                  }),
-                ),
-                dataMasking: Schema.optional(
-                  Schema.Struct({
-                    queryParams: Schema.optional(
-                      Schema.Array(
-                        Schema.Struct({
-                          value: Schema.optional(Schema.String),
-                          mode: Schema.optional(
-                            Schema.Literals(["Mask", "Hide"]),
-                          ),
-                        }),
-                      ),
-                    ),
-                    headers: Schema.optional(
-                      Schema.Array(
-                        Schema.Struct({
-                          value: Schema.optional(Schema.String),
-                          mode: Schema.optional(
-                            Schema.Literals(["Mask", "Hide"]),
-                          ),
-                        }),
-                      ),
-                    ),
-                  }),
-                ),
-              }),
-            ),
-          }),
-        ),
-        logClientIp: Schema.optional(Schema.Boolean),
-        httpCorrelationProtocol: Schema.optional(
-          Schema.Literals(["None", "Legacy", "W3C"]),
-        ),
-        verbosity: Schema.optional(
-          Schema.Literals(["verbose", "information", "error"]),
-        ),
-        operationNameFormat: Schema.optional(Schema.Literals(["Name", "Url"])),
-        metrics: Schema.optional(Schema.Boolean),
-      }),
+      Schema.suspend(() => DiagnosticContractUpdatePropertiesSchema),
     ),
   }).pipe(
     T.Http({
@@ -21273,6 +19865,9 @@ export type WorkspaceApiDiagnosticUpdateInput =
 // Output Schema
 export const WorkspaceApiDiagnosticUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => DiagnosticContractPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -21317,6 +19912,9 @@ export type WorkspaceApiGetInput = typeof WorkspaceApiGetInput.Type;
 
 // Output Schema
 export const WorkspaceApiGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.optional(
+    Schema.suspend(() => ApiContractPropertiesSchema),
+  ),
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -21364,13 +19962,7 @@ export type WorkspaceApiListByServiceInput =
 export const WorkspaceApiListByServiceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => ApiContractSchema)),
     ),
     count: Schema.optional(Schema.Number),
     nextLink: Schema.optional(Schema.String),
@@ -21409,213 +20001,7 @@ export const WorkspaceApiOperationCreateOrUpdateInput =
     operationId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        templateParameters: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              name: Schema.String,
-              description: Schema.optional(Schema.String),
-              type: Schema.String,
-              defaultValue: Schema.optional(Schema.String),
-              required: Schema.optional(Schema.Boolean),
-              values: Schema.optional(Schema.Array(Schema.String)),
-              schemaId: Schema.optional(Schema.String),
-              typeName: Schema.optional(Schema.String),
-              examples: Schema.optional(
-                Schema.Record(
-                  Schema.String,
-                  Schema.Struct({
-                    summary: Schema.optional(Schema.String),
-                    description: Schema.optional(Schema.String),
-                    value: Schema.optional(Schema.Unknown),
-                    externalValue: Schema.optional(Schema.String),
-                  }),
-                ),
-              ),
-            }),
-          ),
-        ),
-        description: Schema.optional(Schema.String),
-        request: Schema.optional(
-          Schema.Struct({
-            description: Schema.optional(Schema.String),
-            queryParameters: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  name: Schema.String,
-                  description: Schema.optional(Schema.String),
-                  type: Schema.String,
-                  defaultValue: Schema.optional(Schema.String),
-                  required: Schema.optional(Schema.Boolean),
-                  values: Schema.optional(Schema.Array(Schema.String)),
-                  schemaId: Schema.optional(Schema.String),
-                  typeName: Schema.optional(Schema.String),
-                  examples: Schema.optional(
-                    Schema.Record(
-                      Schema.String,
-                      Schema.Struct({
-                        summary: Schema.optional(Schema.String),
-                        description: Schema.optional(Schema.String),
-                        value: Schema.optional(Schema.Unknown),
-                        externalValue: Schema.optional(Schema.String),
-                      }),
-                    ),
-                  ),
-                }),
-              ),
-            ),
-            headers: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  name: Schema.String,
-                  description: Schema.optional(Schema.String),
-                  type: Schema.String,
-                  defaultValue: Schema.optional(Schema.String),
-                  required: Schema.optional(Schema.Boolean),
-                  values: Schema.optional(Schema.Array(Schema.String)),
-                  schemaId: Schema.optional(Schema.String),
-                  typeName: Schema.optional(Schema.String),
-                  examples: Schema.optional(
-                    Schema.Record(
-                      Schema.String,
-                      Schema.Struct({
-                        summary: Schema.optional(Schema.String),
-                        description: Schema.optional(Schema.String),
-                        value: Schema.optional(Schema.Unknown),
-                        externalValue: Schema.optional(Schema.String),
-                      }),
-                    ),
-                  ),
-                }),
-              ),
-            ),
-            representations: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  contentType: Schema.String,
-                  schemaId: Schema.optional(Schema.String),
-                  typeName: Schema.optional(Schema.String),
-                  formParameters: Schema.optional(
-                    Schema.Array(
-                      Schema.Struct({
-                        name: Schema.String,
-                        description: Schema.optional(Schema.String),
-                        type: Schema.String,
-                        defaultValue: Schema.optional(Schema.String),
-                        required: Schema.optional(Schema.Boolean),
-                        values: Schema.optional(Schema.Array(Schema.String)),
-                        schemaId: Schema.optional(Schema.String),
-                        typeName: Schema.optional(Schema.String),
-                        examples: Schema.optional(
-                          Schema.Record(
-                            Schema.String,
-                            Schema.Struct({
-                              summary: Schema.optional(Schema.String),
-                              description: Schema.optional(Schema.String),
-                              value: Schema.optional(Schema.Unknown),
-                              externalValue: Schema.optional(Schema.String),
-                            }),
-                          ),
-                        ),
-                      }),
-                    ),
-                  ),
-                  examples: Schema.optional(
-                    Schema.Record(
-                      Schema.String,
-                      Schema.Struct({
-                        summary: Schema.optional(Schema.String),
-                        description: Schema.optional(Schema.String),
-                        value: Schema.optional(Schema.Unknown),
-                        externalValue: Schema.optional(Schema.String),
-                      }),
-                    ),
-                  ),
-                }),
-              ),
-            ),
-          }),
-        ),
-        responses: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              statusCode: Schema.Number,
-              description: Schema.optional(Schema.String),
-              representations: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    contentType: Schema.String,
-                    schemaId: Schema.optional(Schema.String),
-                    typeName: Schema.optional(Schema.String),
-                    formParameters: Schema.optional(
-                      Schema.Array(
-                        Schema.Struct({
-                          name: Schema.String,
-                          description: Schema.optional(Schema.String),
-                          type: Schema.String,
-                          defaultValue: Schema.optional(Schema.String),
-                          required: Schema.optional(Schema.Boolean),
-                          values: Schema.optional(Schema.Array(Schema.String)),
-                          schemaId: Schema.optional(Schema.String),
-                          typeName: Schema.optional(Schema.String),
-                          examples: Schema.optional(
-                            Schema.Record(
-                              Schema.String,
-                              Schema.Struct({
-                                summary: Schema.optional(Schema.String),
-                                description: Schema.optional(Schema.String),
-                                value: Schema.optional(Schema.Unknown),
-                                externalValue: Schema.optional(Schema.String),
-                              }),
-                            ),
-                          ),
-                        }),
-                      ),
-                    ),
-                    examples: Schema.optional(
-                      Schema.Record(
-                        Schema.String,
-                        Schema.Struct({
-                          summary: Schema.optional(Schema.String),
-                          description: Schema.optional(Schema.String),
-                          value: Schema.optional(Schema.Unknown),
-                          externalValue: Schema.optional(Schema.String),
-                        }),
-                      ),
-                    ),
-                  }),
-                ),
-              ),
-              headers: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    name: Schema.String,
-                    description: Schema.optional(Schema.String),
-                    type: Schema.String,
-                    defaultValue: Schema.optional(Schema.String),
-                    required: Schema.optional(Schema.Boolean),
-                    values: Schema.optional(Schema.Array(Schema.String)),
-                    schemaId: Schema.optional(Schema.String),
-                    typeName: Schema.optional(Schema.String),
-                    examples: Schema.optional(
-                      Schema.Record(
-                        Schema.String,
-                        Schema.Struct({
-                          summary: Schema.optional(Schema.String),
-                          description: Schema.optional(Schema.String),
-                          value: Schema.optional(Schema.Unknown),
-                          externalValue: Schema.optional(Schema.String),
-                        }),
-                      ),
-                    ),
-                  }),
-                ),
-              ),
-            }),
-          ),
-        ),
-        policies: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(() => OperationContractPropertiesSchema),
     ),
   }).pipe(
     T.Http({
@@ -21630,6 +20016,9 @@ export type WorkspaceApiOperationCreateOrUpdateInput =
 // Output Schema
 export const WorkspaceApiOperationCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => OperationContractPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -21722,6 +20111,9 @@ export type WorkspaceApiOperationGetInput =
 // Output Schema
 export const WorkspaceApiOperationGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => OperationContractPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -21773,13 +20165,7 @@ export type WorkspaceApiOperationListByApiInput =
 export const WorkspaceApiOperationListByApiOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => OperationContractSchema)),
     ),
     count: Schema.optional(Schema.Number),
     nextLink: Schema.optional(Schema.String),
@@ -21818,12 +20204,7 @@ export const WorkspaceApiOperationPolicyCreateOrUpdateInput =
     policyId: Schema.Literals(["policy"]).pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        value: Schema.String,
-        format: Schema.optional(
-          Schema.Literals(["xml", "xml-link", "rawxml", "rawxml-link"]),
-        ),
-      }),
+      Schema.suspend(() => PolicyContractPropertiesSchema),
     ),
   }).pipe(
     T.Http({
@@ -21838,6 +20219,9 @@ export type WorkspaceApiOperationPolicyCreateOrUpdateInput =
 // Output Schema
 export const WorkspaceApiOperationPolicyCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => PolicyContractPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -21934,6 +20318,9 @@ export type WorkspaceApiOperationPolicyGetInput =
 // Output Schema
 export const WorkspaceApiOperationPolicyGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => PolicyContractPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -21983,13 +20370,7 @@ export type WorkspaceApiOperationPolicyListByOperationInput =
 export const WorkspaceApiOperationPolicyListByOperationOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => PolicyContractSchema)),
     ),
     count: Schema.optional(Schema.Number),
     nextLink: Schema.optional(Schema.String),
@@ -22024,213 +20405,7 @@ export const WorkspaceApiOperationUpdateInput =
     operationId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        templateParameters: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              name: Schema.String,
-              description: Schema.optional(Schema.String),
-              type: Schema.String,
-              defaultValue: Schema.optional(Schema.String),
-              required: Schema.optional(Schema.Boolean),
-              values: Schema.optional(Schema.Array(Schema.String)),
-              schemaId: Schema.optional(Schema.String),
-              typeName: Schema.optional(Schema.String),
-              examples: Schema.optional(
-                Schema.Record(
-                  Schema.String,
-                  Schema.Struct({
-                    summary: Schema.optional(Schema.String),
-                    description: Schema.optional(Schema.String),
-                    value: Schema.optional(Schema.Unknown),
-                    externalValue: Schema.optional(Schema.String),
-                  }),
-                ),
-              ),
-            }),
-          ),
-        ),
-        description: Schema.optional(Schema.String),
-        request: Schema.optional(
-          Schema.Struct({
-            description: Schema.optional(Schema.String),
-            queryParameters: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  name: Schema.String,
-                  description: Schema.optional(Schema.String),
-                  type: Schema.String,
-                  defaultValue: Schema.optional(Schema.String),
-                  required: Schema.optional(Schema.Boolean),
-                  values: Schema.optional(Schema.Array(Schema.String)),
-                  schemaId: Schema.optional(Schema.String),
-                  typeName: Schema.optional(Schema.String),
-                  examples: Schema.optional(
-                    Schema.Record(
-                      Schema.String,
-                      Schema.Struct({
-                        summary: Schema.optional(Schema.String),
-                        description: Schema.optional(Schema.String),
-                        value: Schema.optional(Schema.Unknown),
-                        externalValue: Schema.optional(Schema.String),
-                      }),
-                    ),
-                  ),
-                }),
-              ),
-            ),
-            headers: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  name: Schema.String,
-                  description: Schema.optional(Schema.String),
-                  type: Schema.String,
-                  defaultValue: Schema.optional(Schema.String),
-                  required: Schema.optional(Schema.Boolean),
-                  values: Schema.optional(Schema.Array(Schema.String)),
-                  schemaId: Schema.optional(Schema.String),
-                  typeName: Schema.optional(Schema.String),
-                  examples: Schema.optional(
-                    Schema.Record(
-                      Schema.String,
-                      Schema.Struct({
-                        summary: Schema.optional(Schema.String),
-                        description: Schema.optional(Schema.String),
-                        value: Schema.optional(Schema.Unknown),
-                        externalValue: Schema.optional(Schema.String),
-                      }),
-                    ),
-                  ),
-                }),
-              ),
-            ),
-            representations: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  contentType: Schema.String,
-                  schemaId: Schema.optional(Schema.String),
-                  typeName: Schema.optional(Schema.String),
-                  formParameters: Schema.optional(
-                    Schema.Array(
-                      Schema.Struct({
-                        name: Schema.String,
-                        description: Schema.optional(Schema.String),
-                        type: Schema.String,
-                        defaultValue: Schema.optional(Schema.String),
-                        required: Schema.optional(Schema.Boolean),
-                        values: Schema.optional(Schema.Array(Schema.String)),
-                        schemaId: Schema.optional(Schema.String),
-                        typeName: Schema.optional(Schema.String),
-                        examples: Schema.optional(
-                          Schema.Record(
-                            Schema.String,
-                            Schema.Struct({
-                              summary: Schema.optional(Schema.String),
-                              description: Schema.optional(Schema.String),
-                              value: Schema.optional(Schema.Unknown),
-                              externalValue: Schema.optional(Schema.String),
-                            }),
-                          ),
-                        ),
-                      }),
-                    ),
-                  ),
-                  examples: Schema.optional(
-                    Schema.Record(
-                      Schema.String,
-                      Schema.Struct({
-                        summary: Schema.optional(Schema.String),
-                        description: Schema.optional(Schema.String),
-                        value: Schema.optional(Schema.Unknown),
-                        externalValue: Schema.optional(Schema.String),
-                      }),
-                    ),
-                  ),
-                }),
-              ),
-            ),
-          }),
-        ),
-        responses: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              statusCode: Schema.Number,
-              description: Schema.optional(Schema.String),
-              representations: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    contentType: Schema.String,
-                    schemaId: Schema.optional(Schema.String),
-                    typeName: Schema.optional(Schema.String),
-                    formParameters: Schema.optional(
-                      Schema.Array(
-                        Schema.Struct({
-                          name: Schema.String,
-                          description: Schema.optional(Schema.String),
-                          type: Schema.String,
-                          defaultValue: Schema.optional(Schema.String),
-                          required: Schema.optional(Schema.Boolean),
-                          values: Schema.optional(Schema.Array(Schema.String)),
-                          schemaId: Schema.optional(Schema.String),
-                          typeName: Schema.optional(Schema.String),
-                          examples: Schema.optional(
-                            Schema.Record(
-                              Schema.String,
-                              Schema.Struct({
-                                summary: Schema.optional(Schema.String),
-                                description: Schema.optional(Schema.String),
-                                value: Schema.optional(Schema.Unknown),
-                                externalValue: Schema.optional(Schema.String),
-                              }),
-                            ),
-                          ),
-                        }),
-                      ),
-                    ),
-                    examples: Schema.optional(
-                      Schema.Record(
-                        Schema.String,
-                        Schema.Struct({
-                          summary: Schema.optional(Schema.String),
-                          description: Schema.optional(Schema.String),
-                          value: Schema.optional(Schema.Unknown),
-                          externalValue: Schema.optional(Schema.String),
-                        }),
-                      ),
-                    ),
-                  }),
-                ),
-              ),
-              headers: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    name: Schema.String,
-                    description: Schema.optional(Schema.String),
-                    type: Schema.String,
-                    defaultValue: Schema.optional(Schema.String),
-                    required: Schema.optional(Schema.Boolean),
-                    values: Schema.optional(Schema.Array(Schema.String)),
-                    schemaId: Schema.optional(Schema.String),
-                    typeName: Schema.optional(Schema.String),
-                    examples: Schema.optional(
-                      Schema.Record(
-                        Schema.String,
-                        Schema.Struct({
-                          summary: Schema.optional(Schema.String),
-                          description: Schema.optional(Schema.String),
-                          value: Schema.optional(Schema.Unknown),
-                          externalValue: Schema.optional(Schema.String),
-                        }),
-                      ),
-                    ),
-                  }),
-                ),
-              ),
-            }),
-          ),
-        ),
-        policies: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(() => OperationUpdateContractPropertiesSchema),
     ),
   }).pipe(
     T.Http({
@@ -22245,6 +20420,9 @@ export type WorkspaceApiOperationUpdateInput =
 // Output Schema
 export const WorkspaceApiOperationUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => OperationContractPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -22282,12 +20460,7 @@ export const WorkspaceApiPolicyCreateOrUpdateInput =
     policyId: Schema.Literals(["policy"]).pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        value: Schema.String,
-        format: Schema.optional(
-          Schema.Literals(["xml", "xml-link", "rawxml", "rawxml-link"]),
-        ),
-      }),
+      Schema.suspend(() => PolicyContractPropertiesSchema),
     ),
   }).pipe(
     T.Http({
@@ -22302,6 +20475,9 @@ export type WorkspaceApiPolicyCreateOrUpdateInput =
 // Output Schema
 export const WorkspaceApiPolicyCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => PolicyContractPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -22394,6 +20570,9 @@ export type WorkspaceApiPolicyGetInput = typeof WorkspaceApiPolicyGetInput.Type;
 // Output Schema
 export const WorkspaceApiPolicyGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => PolicyContractPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -22442,13 +20621,7 @@ export type WorkspaceApiPolicyListByApiInput =
 export const WorkspaceApiPolicyListByApiOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => PolicyContractSchema)),
     ),
     count: Schema.optional(Schema.Number),
     nextLink: Schema.optional(Schema.String),
@@ -22483,12 +20656,7 @@ export const WorkspaceApiReleaseCreateOrUpdateInput =
     releaseId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        apiId: Schema.optional(Schema.String),
-        createdDateTime: Schema.optional(Schema.String),
-        updatedDateTime: Schema.optional(Schema.String),
-        notes: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(() => ApiReleaseContractPropertiesSchema),
     ),
   }).pipe(
     T.Http({
@@ -22503,6 +20671,9 @@ export type WorkspaceApiReleaseCreateOrUpdateInput =
 // Output Schema
 export const WorkspaceApiReleaseCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => ApiReleaseContractPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -22595,6 +20766,9 @@ export type WorkspaceApiReleaseGetInput =
 // Output Schema
 export const WorkspaceApiReleaseGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => ApiReleaseContractPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -22645,13 +20819,7 @@ export type WorkspaceApiReleaseListByServiceInput =
 export const WorkspaceApiReleaseListByServiceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => ApiReleaseContractSchema)),
     ),
     count: Schema.optional(Schema.Number),
     nextLink: Schema.optional(Schema.String),
@@ -22688,12 +20856,7 @@ export const WorkspaceApiReleaseUpdateInput =
     releaseId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        apiId: Schema.optional(Schema.String),
-        createdDateTime: Schema.optional(Schema.String),
-        updatedDateTime: Schema.optional(Schema.String),
-        notes: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(() => ApiReleaseContractPropertiesSchema),
     ),
   }).pipe(
     T.Http({
@@ -22708,6 +20871,9 @@ export type WorkspaceApiReleaseUpdateInput =
 // Output Schema
 export const WorkspaceApiReleaseUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => ApiReleaseContractPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -22760,18 +20926,7 @@ export type WorkspaceApiRevisionListByServiceInput =
 export const WorkspaceApiRevisionListByServiceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          apiId: Schema.optional(Schema.String),
-          apiRevision: Schema.optional(Schema.String),
-          createdDateTime: Schema.optional(Schema.String),
-          updatedDateTime: Schema.optional(Schema.String),
-          description: Schema.optional(Schema.String),
-          privateUrl: Schema.optional(Schema.String),
-          isOnline: Schema.optional(Schema.Boolean),
-          isCurrent: Schema.optional(Schema.Boolean),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => ApiRevisionContractSchema)),
     ),
     count: Schema.optional(Schema.Number),
     nextLink: Schema.optional(Schema.String),
@@ -22808,15 +20963,7 @@ export const WorkspaceApiSchemaCreateOrUpdateInput =
     schemaId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        contentType: Schema.String,
-        document: Schema.Struct({
-          value: Schema.optional(Schema.String),
-          definitions: Schema.optional(Schema.Unknown),
-          components: Schema.optional(Schema.Unknown),
-        }),
-        provisioningState: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(() => SchemaContractPropertiesSchema),
     ),
   }).pipe(
     T.Http({
@@ -22832,6 +20979,9 @@ export type WorkspaceApiSchemaCreateOrUpdateInput =
 // Output Schema
 export const WorkspaceApiSchemaCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => SchemaContractPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -22925,6 +21075,9 @@ export type WorkspaceApiSchemaGetInput = typeof WorkspaceApiSchemaGetInput.Type;
 // Output Schema
 export const WorkspaceApiSchemaGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => SchemaContractPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -22975,13 +21128,7 @@ export type WorkspaceApiSchemaListByApiInput =
 export const WorkspaceApiSchemaListByApiOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => SchemaContractSchema)),
     ),
     count: Schema.optional(Schema.Number),
     nextLink: Schema.optional(Schema.String),
@@ -23018,87 +21165,7 @@ export const WorkspaceApiUpdateInput =
     apiId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        description: Schema.optional(Schema.String),
-        authenticationSettings: Schema.optional(
-          Schema.Struct({
-            oAuth2: Schema.optional(
-              Schema.Struct({
-                authorizationServerId: Schema.optional(Schema.String),
-                scope: Schema.optional(Schema.String),
-              }),
-            ),
-            openid: Schema.optional(
-              Schema.Struct({
-                openidProviderId: Schema.optional(Schema.String),
-                bearerTokenSendingMethods: Schema.optional(
-                  Schema.Array(
-                    Schema.Literals(["authorizationHeader", "query"]),
-                  ),
-                ),
-              }),
-            ),
-            oAuth2AuthenticationSettings: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  authorizationServerId: Schema.optional(Schema.String),
-                  scope: Schema.optional(Schema.String),
-                }),
-              ),
-            ),
-            openidAuthenticationSettings: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  openidProviderId: Schema.optional(Schema.String),
-                  bearerTokenSendingMethods: Schema.optional(
-                    Schema.Array(
-                      Schema.Literals(["authorizationHeader", "query"]),
-                    ),
-                  ),
-                }),
-              ),
-            ),
-          }),
-        ),
-        subscriptionKeyParameterNames: Schema.optional(
-          Schema.Struct({
-            header: Schema.optional(Schema.String),
-            query: Schema.optional(Schema.String),
-          }),
-        ),
-        type: Schema.optional(
-          Schema.Literals([
-            "http",
-            "soap",
-            "websocket",
-            "graphql",
-            "odata",
-            "grpc",
-          ]),
-        ),
-        apiRevision: Schema.optional(Schema.String),
-        apiVersion: Schema.optional(Schema.String),
-        isCurrent: Schema.optional(Schema.Boolean),
-        isOnline: Schema.optional(Schema.Boolean),
-        apiRevisionDescription: Schema.optional(Schema.String),
-        apiVersionDescription: Schema.optional(Schema.String),
-        apiVersionSetId: Schema.optional(Schema.String),
-        subscriptionRequired: Schema.optional(Schema.Boolean),
-        termsOfServiceUrl: Schema.optional(Schema.String),
-        contact: Schema.optional(
-          Schema.Struct({
-            name: Schema.optional(Schema.String),
-            url: Schema.optional(Schema.String),
-            email: Schema.optional(Schema.String),
-          }),
-        ),
-        license: Schema.optional(
-          Schema.Struct({
-            name: Schema.optional(Schema.String),
-            url: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
+      Schema.suspend(() => ApiContractUpdatePropertiesSchema),
     ),
   }).pipe(
     T.Http({
@@ -23112,6 +21179,9 @@ export type WorkspaceApiUpdateInput = typeof WorkspaceApiUpdateInput.Type;
 // Output Schema
 export const WorkspaceApiUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => ApiContractPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -23144,11 +21214,7 @@ export const WorkspaceApiVersionSetCreateOrUpdateInput =
     versionSetId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        description: Schema.optional(Schema.String),
-        versionQueryName: Schema.optional(Schema.String),
-        versionHeaderName: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(() => ApiVersionSetContractPropertiesSchema),
     ),
   }).pipe(
     T.Http({
@@ -23163,6 +21229,9 @@ export type WorkspaceApiVersionSetCreateOrUpdateInput =
 // Output Schema
 export const WorkspaceApiVersionSetCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => ApiVersionSetContractPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -23250,6 +21319,9 @@ export type WorkspaceApiVersionSetGetInput =
 // Output Schema
 export const WorkspaceApiVersionSetGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => ApiVersionSetContractPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -23298,13 +21370,7 @@ export type WorkspaceApiVersionSetListByServiceInput =
 export const WorkspaceApiVersionSetListByServiceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => ApiVersionSetContractSchema)),
     ),
     count: Schema.optional(Schema.Number),
     nextLink: Schema.optional(Schema.String),
@@ -23339,11 +21405,7 @@ export const WorkspaceApiVersionSetUpdateInput =
     versionSetId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        description: Schema.optional(Schema.String),
-        versionQueryName: Schema.optional(Schema.String),
-        versionHeaderName: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(() => ApiVersionSetUpdateParametersPropertiesSchema),
     ),
   }).pipe(
     T.Http({
@@ -23358,6 +21420,9 @@ export type WorkspaceApiVersionSetUpdateInput =
 // Output Schema
 export const WorkspaceApiVersionSetUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => ApiVersionSetContractPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -23392,112 +21457,7 @@ export const WorkspaceBackendCreateOrUpdateInput =
     backendId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        title: Schema.optional(Schema.String),
-        description: Schema.optional(Schema.String),
-        resourceId: Schema.optional(Schema.String),
-        properties: Schema.optional(
-          Schema.Struct({
-            serviceFabricCluster: Schema.optional(
-              Schema.Struct({
-                clientCertificateId: Schema.optional(Schema.String),
-                clientCertificatethumbprint: Schema.optional(Schema.String),
-                maxPartitionResolutionRetries: Schema.optional(Schema.Number),
-                managementEndpoints: Schema.Array(Schema.String),
-                serverCertificateThumbprints: Schema.optional(
-                  Schema.Array(Schema.String),
-                ),
-                serverX509Names: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      name: Schema.optional(Schema.String),
-                      issuerCertificateThumbprint: Schema.optional(
-                        Schema.String,
-                      ),
-                    }),
-                  ),
-                ),
-              }),
-            ),
-          }),
-        ),
-        credentials: Schema.optional(
-          Schema.Struct({
-            certificateIds: Schema.optional(Schema.Array(Schema.String)),
-            certificate: Schema.optional(Schema.Array(Schema.String)),
-            query: Schema.optional(
-              Schema.Record(Schema.String, Schema.Array(Schema.String)),
-            ),
-            header: Schema.optional(
-              Schema.Record(Schema.String, Schema.Array(Schema.String)),
-            ),
-            authorization: Schema.optional(
-              Schema.Struct({
-                scheme: Schema.String,
-                parameter: Schema.String,
-              }),
-            ),
-          }),
-        ),
-        proxy: Schema.optional(
-          Schema.Struct({
-            url: Schema.String,
-            username: Schema.optional(Schema.String),
-            password: Schema.optional(SensitiveString),
-          }),
-        ),
-        tls: Schema.optional(
-          Schema.Struct({
-            validateCertificateChain: Schema.optional(Schema.Boolean),
-            validateCertificateName: Schema.optional(Schema.Boolean),
-          }),
-        ),
-        circuitBreaker: Schema.optional(
-          Schema.Struct({
-            rules: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  name: Schema.optional(Schema.String),
-                  failureCondition: Schema.optional(
-                    Schema.Struct({
-                      count: Schema.optional(Schema.Number),
-                      percentage: Schema.optional(Schema.Number),
-                      interval: Schema.optional(Schema.String),
-                      statusCodeRanges: Schema.optional(
-                        Schema.Array(
-                          Schema.Struct({
-                            min: Schema.optional(Schema.Number),
-                            max: Schema.optional(Schema.Number),
-                          }),
-                        ),
-                      ),
-                      errorReasons: Schema.optional(
-                        Schema.Array(Schema.String),
-                      ),
-                    }),
-                  ),
-                  tripDuration: Schema.optional(Schema.String),
-                  acceptRetryAfter: Schema.optional(Schema.Boolean),
-                }),
-              ),
-            ),
-          }),
-        ),
-        pool: Schema.optional(
-          Schema.Struct({
-            services: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  id: Schema.String,
-                  weight: Schema.optional(Schema.Number),
-                  priority: Schema.optional(Schema.Number),
-                }),
-              ),
-            ),
-          }),
-        ),
-        type: Schema.optional(Schema.Literals(["Single", "Pool"])),
-      }),
+      Schema.suspend(() => BackendContractPropertiesSchema),
     ),
   }).pipe(
     T.Http({
@@ -23512,6 +21472,9 @@ export type WorkspaceBackendCreateOrUpdateInput =
 // Output Schema
 export const WorkspaceBackendCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => BackendContractPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -23599,6 +21562,9 @@ export type WorkspaceBackendGetInput = typeof WorkspaceBackendGetInput.Type;
 // Output Schema
 export const WorkspaceBackendGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => BackendContractPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -23644,13 +21610,7 @@ export type WorkspaceBackendListByWorkspaceInput =
 export const WorkspaceBackendListByWorkspaceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => BackendContractSchema)),
     ),
     count: Schema.optional(Schema.Number),
     nextLink: Schema.optional(Schema.String),
@@ -23685,112 +21645,7 @@ export const WorkspaceBackendUpdateInput =
     backendId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        title: Schema.optional(Schema.String),
-        description: Schema.optional(Schema.String),
-        resourceId: Schema.optional(Schema.String),
-        properties: Schema.optional(
-          Schema.Struct({
-            serviceFabricCluster: Schema.optional(
-              Schema.Struct({
-                clientCertificateId: Schema.optional(Schema.String),
-                clientCertificatethumbprint: Schema.optional(Schema.String),
-                maxPartitionResolutionRetries: Schema.optional(Schema.Number),
-                managementEndpoints: Schema.Array(Schema.String),
-                serverCertificateThumbprints: Schema.optional(
-                  Schema.Array(Schema.String),
-                ),
-                serverX509Names: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      name: Schema.optional(Schema.String),
-                      issuerCertificateThumbprint: Schema.optional(
-                        Schema.String,
-                      ),
-                    }),
-                  ),
-                ),
-              }),
-            ),
-          }),
-        ),
-        credentials: Schema.optional(
-          Schema.Struct({
-            certificateIds: Schema.optional(Schema.Array(Schema.String)),
-            certificate: Schema.optional(Schema.Array(Schema.String)),
-            query: Schema.optional(
-              Schema.Record(Schema.String, Schema.Array(Schema.String)),
-            ),
-            header: Schema.optional(
-              Schema.Record(Schema.String, Schema.Array(Schema.String)),
-            ),
-            authorization: Schema.optional(
-              Schema.Struct({
-                scheme: Schema.String,
-                parameter: Schema.String,
-              }),
-            ),
-          }),
-        ),
-        proxy: Schema.optional(
-          Schema.Struct({
-            url: Schema.String,
-            username: Schema.optional(Schema.String),
-            password: Schema.optional(SensitiveString),
-          }),
-        ),
-        tls: Schema.optional(
-          Schema.Struct({
-            validateCertificateChain: Schema.optional(Schema.Boolean),
-            validateCertificateName: Schema.optional(Schema.Boolean),
-          }),
-        ),
-        circuitBreaker: Schema.optional(
-          Schema.Struct({
-            rules: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  name: Schema.optional(Schema.String),
-                  failureCondition: Schema.optional(
-                    Schema.Struct({
-                      count: Schema.optional(Schema.Number),
-                      percentage: Schema.optional(Schema.Number),
-                      interval: Schema.optional(Schema.String),
-                      statusCodeRanges: Schema.optional(
-                        Schema.Array(
-                          Schema.Struct({
-                            min: Schema.optional(Schema.Number),
-                            max: Schema.optional(Schema.Number),
-                          }),
-                        ),
-                      ),
-                      errorReasons: Schema.optional(
-                        Schema.Array(Schema.String),
-                      ),
-                    }),
-                  ),
-                  tripDuration: Schema.optional(Schema.String),
-                  acceptRetryAfter: Schema.optional(Schema.Boolean),
-                }),
-              ),
-            ),
-          }),
-        ),
-        pool: Schema.optional(
-          Schema.Struct({
-            services: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  id: Schema.String,
-                  weight: Schema.optional(Schema.Number),
-                  priority: Schema.optional(Schema.Number),
-                }),
-              ),
-            ),
-          }),
-        ),
-        type: Schema.optional(Schema.Literals(["Single", "Pool"])),
-      }),
+      Schema.suspend(() => BackendUpdateParameterPropertiesSchema),
     ),
   }).pipe(
     T.Http({
@@ -23805,6 +21660,9 @@ export type WorkspaceBackendUpdateInput =
 // Output Schema
 export const WorkspaceBackendUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => BackendContractPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -23840,16 +21698,7 @@ export const WorkspaceCertificateCreateOrUpdateInput =
     certificateId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        data: Schema.optional(Schema.String),
-        password: Schema.optional(SensitiveString),
-        keyVault: Schema.optional(
-          Schema.Struct({
-            secretIdentifier: Schema.optional(Schema.String),
-            identityClientId: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
+      Schema.suspend(() => CertificateCreateOrUpdatePropertiesSchema),
     ),
   }).pipe(
     T.Http({
@@ -23864,6 +21713,9 @@ export type WorkspaceCertificateCreateOrUpdateInput =
 // Output Schema
 export const WorkspaceCertificateCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => CertificateContractPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -23952,6 +21804,9 @@ export type WorkspaceCertificateGetInput =
 // Output Schema
 export const WorkspaceCertificateGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => CertificateContractPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -24001,13 +21856,7 @@ export type WorkspaceCertificateListByWorkspaceInput =
 export const WorkspaceCertificateListByWorkspaceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => CertificateContractSchema)),
     ),
     count: Schema.optional(Schema.Number),
     nextLink: Schema.optional(Schema.String),
@@ -24055,6 +21904,9 @@ export type WorkspaceCertificateRefreshSecretInput =
 // Output Schema
 export const WorkspaceCertificateRefreshSecretOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => CertificateContractPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -24086,10 +21938,7 @@ export const WorkspaceCreateOrUpdateInput =
     workspaceId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        displayName: Schema.String,
-        description: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(() => WorkspaceContractPropertiesSchema),
     ),
   }).pipe(
     T.Http({
@@ -24104,6 +21953,9 @@ export type WorkspaceCreateOrUpdateInput =
 // Output Schema
 export const WorkspaceCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => WorkspaceContractPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -24172,169 +22024,7 @@ export const WorkspaceDiagnosticCreateOrUpdateInput =
     diagnosticId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        alwaysLog: Schema.optional(Schema.Literals(["allErrors"])),
-        loggerId: Schema.String,
-        sampling: Schema.optional(
-          Schema.Struct({
-            samplingType: Schema.optional(Schema.Literals(["fixed"])),
-            percentage: Schema.optional(Schema.Number),
-          }),
-        ),
-        frontend: Schema.optional(
-          Schema.Struct({
-            request: Schema.optional(
-              Schema.Struct({
-                headers: Schema.optional(Schema.Array(Schema.String)),
-                body: Schema.optional(
-                  Schema.Struct({
-                    bytes: Schema.optional(Schema.Number),
-                  }),
-                ),
-                dataMasking: Schema.optional(
-                  Schema.Struct({
-                    queryParams: Schema.optional(
-                      Schema.Array(
-                        Schema.Struct({
-                          value: Schema.optional(Schema.String),
-                          mode: Schema.optional(
-                            Schema.Literals(["Mask", "Hide"]),
-                          ),
-                        }),
-                      ),
-                    ),
-                    headers: Schema.optional(
-                      Schema.Array(
-                        Schema.Struct({
-                          value: Schema.optional(Schema.String),
-                          mode: Schema.optional(
-                            Schema.Literals(["Mask", "Hide"]),
-                          ),
-                        }),
-                      ),
-                    ),
-                  }),
-                ),
-              }),
-            ),
-            response: Schema.optional(
-              Schema.Struct({
-                headers: Schema.optional(Schema.Array(Schema.String)),
-                body: Schema.optional(
-                  Schema.Struct({
-                    bytes: Schema.optional(Schema.Number),
-                  }),
-                ),
-                dataMasking: Schema.optional(
-                  Schema.Struct({
-                    queryParams: Schema.optional(
-                      Schema.Array(
-                        Schema.Struct({
-                          value: Schema.optional(Schema.String),
-                          mode: Schema.optional(
-                            Schema.Literals(["Mask", "Hide"]),
-                          ),
-                        }),
-                      ),
-                    ),
-                    headers: Schema.optional(
-                      Schema.Array(
-                        Schema.Struct({
-                          value: Schema.optional(Schema.String),
-                          mode: Schema.optional(
-                            Schema.Literals(["Mask", "Hide"]),
-                          ),
-                        }),
-                      ),
-                    ),
-                  }),
-                ),
-              }),
-            ),
-          }),
-        ),
-        backend: Schema.optional(
-          Schema.Struct({
-            request: Schema.optional(
-              Schema.Struct({
-                headers: Schema.optional(Schema.Array(Schema.String)),
-                body: Schema.optional(
-                  Schema.Struct({
-                    bytes: Schema.optional(Schema.Number),
-                  }),
-                ),
-                dataMasking: Schema.optional(
-                  Schema.Struct({
-                    queryParams: Schema.optional(
-                      Schema.Array(
-                        Schema.Struct({
-                          value: Schema.optional(Schema.String),
-                          mode: Schema.optional(
-                            Schema.Literals(["Mask", "Hide"]),
-                          ),
-                        }),
-                      ),
-                    ),
-                    headers: Schema.optional(
-                      Schema.Array(
-                        Schema.Struct({
-                          value: Schema.optional(Schema.String),
-                          mode: Schema.optional(
-                            Schema.Literals(["Mask", "Hide"]),
-                          ),
-                        }),
-                      ),
-                    ),
-                  }),
-                ),
-              }),
-            ),
-            response: Schema.optional(
-              Schema.Struct({
-                headers: Schema.optional(Schema.Array(Schema.String)),
-                body: Schema.optional(
-                  Schema.Struct({
-                    bytes: Schema.optional(Schema.Number),
-                  }),
-                ),
-                dataMasking: Schema.optional(
-                  Schema.Struct({
-                    queryParams: Schema.optional(
-                      Schema.Array(
-                        Schema.Struct({
-                          value: Schema.optional(Schema.String),
-                          mode: Schema.optional(
-                            Schema.Literals(["Mask", "Hide"]),
-                          ),
-                        }),
-                      ),
-                    ),
-                    headers: Schema.optional(
-                      Schema.Array(
-                        Schema.Struct({
-                          value: Schema.optional(Schema.String),
-                          mode: Schema.optional(
-                            Schema.Literals(["Mask", "Hide"]),
-                          ),
-                        }),
-                      ),
-                    ),
-                  }),
-                ),
-              }),
-            ),
-          }),
-        ),
-        logClientIp: Schema.optional(Schema.Boolean),
-        httpCorrelationProtocol: Schema.optional(
-          Schema.Literals(["None", "Legacy", "W3C"]),
-        ),
-        verbosity: Schema.optional(
-          Schema.Literals(["verbose", "information", "error"]),
-        ),
-        operationNameFormat: Schema.optional(Schema.Literals(["Name", "Url"])),
-        metrics: Schema.optional(Schema.Boolean),
-      }),
+      Schema.suspend(() => DiagnosticContractPropertiesSchema),
     ),
   }).pipe(
     T.Http({
@@ -24349,6 +22039,9 @@ export type WorkspaceDiagnosticCreateOrUpdateInput =
 // Output Schema
 export const WorkspaceDiagnosticCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => DiagnosticContractPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -24437,6 +22130,9 @@ export type WorkspaceDiagnosticGetInput =
 // Output Schema
 export const WorkspaceDiagnosticGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => DiagnosticContractPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -24485,13 +22181,7 @@ export type WorkspaceDiagnosticListByWorkspaceInput =
 export const WorkspaceDiagnosticListByWorkspaceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => DiagnosticContractSchema)),
     ),
     count: Schema.optional(Schema.Number),
     nextLink: Schema.optional(Schema.String),
@@ -24526,169 +22216,7 @@ export const WorkspaceDiagnosticUpdateInput =
     diagnosticId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        alwaysLog: Schema.optional(Schema.Literals(["allErrors"])),
-        loggerId: Schema.optional(Schema.String),
-        sampling: Schema.optional(
-          Schema.Struct({
-            samplingType: Schema.optional(Schema.Literals(["fixed"])),
-            percentage: Schema.optional(Schema.Number),
-          }),
-        ),
-        frontend: Schema.optional(
-          Schema.Struct({
-            request: Schema.optional(
-              Schema.Struct({
-                headers: Schema.optional(Schema.Array(Schema.String)),
-                body: Schema.optional(
-                  Schema.Struct({
-                    bytes: Schema.optional(Schema.Number),
-                  }),
-                ),
-                dataMasking: Schema.optional(
-                  Schema.Struct({
-                    queryParams: Schema.optional(
-                      Schema.Array(
-                        Schema.Struct({
-                          value: Schema.optional(Schema.String),
-                          mode: Schema.optional(
-                            Schema.Literals(["Mask", "Hide"]),
-                          ),
-                        }),
-                      ),
-                    ),
-                    headers: Schema.optional(
-                      Schema.Array(
-                        Schema.Struct({
-                          value: Schema.optional(Schema.String),
-                          mode: Schema.optional(
-                            Schema.Literals(["Mask", "Hide"]),
-                          ),
-                        }),
-                      ),
-                    ),
-                  }),
-                ),
-              }),
-            ),
-            response: Schema.optional(
-              Schema.Struct({
-                headers: Schema.optional(Schema.Array(Schema.String)),
-                body: Schema.optional(
-                  Schema.Struct({
-                    bytes: Schema.optional(Schema.Number),
-                  }),
-                ),
-                dataMasking: Schema.optional(
-                  Schema.Struct({
-                    queryParams: Schema.optional(
-                      Schema.Array(
-                        Schema.Struct({
-                          value: Schema.optional(Schema.String),
-                          mode: Schema.optional(
-                            Schema.Literals(["Mask", "Hide"]),
-                          ),
-                        }),
-                      ),
-                    ),
-                    headers: Schema.optional(
-                      Schema.Array(
-                        Schema.Struct({
-                          value: Schema.optional(Schema.String),
-                          mode: Schema.optional(
-                            Schema.Literals(["Mask", "Hide"]),
-                          ),
-                        }),
-                      ),
-                    ),
-                  }),
-                ),
-              }),
-            ),
-          }),
-        ),
-        backend: Schema.optional(
-          Schema.Struct({
-            request: Schema.optional(
-              Schema.Struct({
-                headers: Schema.optional(Schema.Array(Schema.String)),
-                body: Schema.optional(
-                  Schema.Struct({
-                    bytes: Schema.optional(Schema.Number),
-                  }),
-                ),
-                dataMasking: Schema.optional(
-                  Schema.Struct({
-                    queryParams: Schema.optional(
-                      Schema.Array(
-                        Schema.Struct({
-                          value: Schema.optional(Schema.String),
-                          mode: Schema.optional(
-                            Schema.Literals(["Mask", "Hide"]),
-                          ),
-                        }),
-                      ),
-                    ),
-                    headers: Schema.optional(
-                      Schema.Array(
-                        Schema.Struct({
-                          value: Schema.optional(Schema.String),
-                          mode: Schema.optional(
-                            Schema.Literals(["Mask", "Hide"]),
-                          ),
-                        }),
-                      ),
-                    ),
-                  }),
-                ),
-              }),
-            ),
-            response: Schema.optional(
-              Schema.Struct({
-                headers: Schema.optional(Schema.Array(Schema.String)),
-                body: Schema.optional(
-                  Schema.Struct({
-                    bytes: Schema.optional(Schema.Number),
-                  }),
-                ),
-                dataMasking: Schema.optional(
-                  Schema.Struct({
-                    queryParams: Schema.optional(
-                      Schema.Array(
-                        Schema.Struct({
-                          value: Schema.optional(Schema.String),
-                          mode: Schema.optional(
-                            Schema.Literals(["Mask", "Hide"]),
-                          ),
-                        }),
-                      ),
-                    ),
-                    headers: Schema.optional(
-                      Schema.Array(
-                        Schema.Struct({
-                          value: Schema.optional(Schema.String),
-                          mode: Schema.optional(
-                            Schema.Literals(["Mask", "Hide"]),
-                          ),
-                        }),
-                      ),
-                    ),
-                  }),
-                ),
-              }),
-            ),
-          }),
-        ),
-        logClientIp: Schema.optional(Schema.Boolean),
-        httpCorrelationProtocol: Schema.optional(
-          Schema.Literals(["None", "Legacy", "W3C"]),
-        ),
-        verbosity: Schema.optional(
-          Schema.Literals(["verbose", "information", "error"]),
-        ),
-        operationNameFormat: Schema.optional(Schema.Literals(["Name", "Url"])),
-        metrics: Schema.optional(Schema.Boolean),
-      }),
+      Schema.suspend(() => DiagnosticContractUpdatePropertiesSchema),
     ),
   }).pipe(
     T.Http({
@@ -24703,6 +22231,9 @@ export type WorkspaceDiagnosticUpdateInput =
 // Output Schema
 export const WorkspaceDiagnosticUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => DiagnosticContractPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -24746,6 +22277,9 @@ export type WorkspaceGetInput = typeof WorkspaceGetInput.Type;
 
 // Output Schema
 export const WorkspaceGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.optional(
+    Schema.suspend(() => WorkspaceContractPropertiesSchema),
+  ),
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -24775,13 +22309,7 @@ export const WorkspaceGlobalSchemaCreateOrUpdateInput =
     schemaId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        schemaType: Schema.Literals(["xml", "json"]),
-        description: Schema.optional(Schema.String),
-        value: Schema.optional(Schema.Unknown),
-        document: Schema.optional(Schema.Unknown),
-        provisioningState: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(() => GlobalSchemaContractPropertiesSchema),
     ),
   }).pipe(
     T.Http({
@@ -24797,6 +22325,9 @@ export type WorkspaceGlobalSchemaCreateOrUpdateInput =
 // Output Schema
 export const WorkspaceGlobalSchemaCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => GlobalSchemaContractPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -24885,6 +22416,9 @@ export type WorkspaceGlobalSchemaGetInput =
 // Output Schema
 export const WorkspaceGlobalSchemaGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => GlobalSchemaContractPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -24933,13 +22467,7 @@ export type WorkspaceGlobalSchemaListByServiceInput =
 export const WorkspaceGlobalSchemaListByServiceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => GlobalSchemaContractSchema)),
     ),
     count: Schema.optional(Schema.Number),
     nextLink: Schema.optional(Schema.String),
@@ -24974,14 +22502,7 @@ export const WorkspaceGroupCreateOrUpdateInput =
     groupId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        displayName: Schema.String,
-        description: Schema.optional(Schema.String),
-        type: Schema.optional(
-          Schema.Literals(["custom", "system", "external"]),
-        ),
-        externalId: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(() => GroupCreateParametersPropertiesSchema),
     ),
   }).pipe(
     T.Http({
@@ -24996,6 +22517,9 @@ export type WorkspaceGroupCreateOrUpdateInput =
 // Output Schema
 export const WorkspaceGroupCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => GroupContractPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -25082,6 +22606,9 @@ export type WorkspaceGroupGetInput = typeof WorkspaceGroupGetInput.Type;
 // Output Schema
 export const WorkspaceGroupGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => GroupContractPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -25127,13 +22654,7 @@ export type WorkspaceGroupListByServiceInput =
 export const WorkspaceGroupListByServiceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => GroupContractSchema)),
     ),
     count: Schema.optional(Schema.Number),
     nextLink: Schema.optional(Schema.String),
@@ -25169,14 +22690,7 @@ export const WorkspaceGroupUpdateInput =
     groupId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        displayName: Schema.optional(Schema.String),
-        description: Schema.optional(Schema.String),
-        type: Schema.optional(
-          Schema.Literals(["custom", "system", "external"]),
-        ),
-        externalId: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(() => GroupUpdateParametersPropertiesSchema),
     ),
   }).pipe(
     T.Http({
@@ -25190,6 +22704,9 @@ export type WorkspaceGroupUpdateInput = typeof WorkspaceGroupUpdateInput.Type;
 // Output Schema
 export const WorkspaceGroupUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => GroupContractPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -25237,6 +22754,9 @@ export type WorkspaceGroupUserCreateInput =
 // Output Schema
 export const WorkspaceGroupUserCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => UserContractPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -25330,13 +22850,7 @@ export type WorkspaceGroupUserListInput =
 export const WorkspaceGroupUserListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => UserContractSchema)),
     ),
     count: Schema.optional(Schema.Number),
     nextLink: Schema.optional(Schema.String),
@@ -25387,13 +22901,7 @@ export type WorkspaceListByServiceInput =
 export const WorkspaceListByServiceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => WorkspaceContractSchema)),
     ),
     count: Schema.optional(Schema.Number),
     nextLink: Schema.optional(Schema.String),
@@ -25428,19 +22936,7 @@ export const WorkspaceLoggerCreateOrUpdateInput =
     loggerId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        loggerType: Schema.Literals([
-          "azureEventHub",
-          "applicationInsights",
-          "azureMonitor",
-        ]),
-        description: Schema.optional(Schema.String),
-        credentials: Schema.optional(
-          Schema.Record(Schema.String, Schema.String),
-        ),
-        isBuffered: Schema.optional(Schema.Boolean),
-        resourceId: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(() => LoggerContractPropertiesSchema),
     ),
   }).pipe(
     T.Http({
@@ -25455,6 +22951,9 @@ export type WorkspaceLoggerCreateOrUpdateInput =
 // Output Schema
 export const WorkspaceLoggerCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => LoggerContractPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -25541,6 +23040,9 @@ export type WorkspaceLoggerGetInput = typeof WorkspaceLoggerGetInput.Type;
 // Output Schema
 export const WorkspaceLoggerGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => LoggerContractPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -25586,13 +23088,7 @@ export type WorkspaceLoggerListByWorkspaceInput =
 export const WorkspaceLoggerListByWorkspaceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => LoggerContractSchema)),
     ),
     count: Schema.optional(Schema.Number),
     nextLink: Schema.optional(Schema.String),
@@ -25627,20 +23123,7 @@ export const WorkspaceLoggerUpdateInput =
     loggerId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        loggerType: Schema.optional(
-          Schema.Literals([
-            "azureEventHub",
-            "applicationInsights",
-            "azureMonitor",
-          ]),
-        ),
-        description: Schema.optional(Schema.String),
-        credentials: Schema.optional(
-          Schema.Record(Schema.String, Schema.String),
-        ),
-        isBuffered: Schema.optional(Schema.Boolean),
-      }),
+      Schema.suspend(() => LoggerUpdateParametersSchema),
     ),
   }).pipe(
     T.Http({
@@ -25654,6 +23137,9 @@ export type WorkspaceLoggerUpdateInput = typeof WorkspaceLoggerUpdateInput.Type;
 // Output Schema
 export const WorkspaceLoggerUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => LoggerContractPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -25689,10 +23175,7 @@ export const WorkspaceNamedValueCreateOrUpdateInput =
     namedValueId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        tags: Schema.optional(Schema.Array(Schema.String)),
-        secret: Schema.optional(Schema.Boolean),
-      }),
+      Schema.suspend(() => NamedValueCreateContractPropertiesSchema),
     ),
   }).pipe(
     T.Http({
@@ -25708,6 +23191,9 @@ export type WorkspaceNamedValueCreateOrUpdateInput =
 // Output Schema
 export const WorkspaceNamedValueCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => NamedValueContractPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -25796,6 +23282,9 @@ export type WorkspaceNamedValueGetInput =
 // Output Schema
 export const WorkspaceNamedValueGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => NamedValueContractPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -25847,13 +23336,7 @@ export type WorkspaceNamedValueListByServiceInput =
 export const WorkspaceNamedValueListByServiceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => NamedValueContractSchema)),
     ),
     count: Schema.optional(Schema.Number),
     nextLink: Schema.optional(Schema.String),
@@ -25944,6 +23427,9 @@ export type WorkspaceNamedValueRefreshSecretInput =
 // Output Schema
 export const WorkspaceNamedValueRefreshSecretOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => NamedValueContractPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -25976,10 +23462,7 @@ export const WorkspaceNamedValueUpdateInput =
     namedValueId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        tags: Schema.optional(Schema.Array(Schema.String)),
-        secret: Schema.optional(Schema.Boolean),
-      }),
+      Schema.suspend(() => NamedValueUpdateParameterPropertiesSchema),
     ),
   }).pipe(
     T.Http({
@@ -25995,6 +23478,9 @@ export type WorkspaceNamedValueUpdateInput =
 // Output Schema
 export const WorkspaceNamedValueUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => NamedValueContractPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -26050,6 +23536,9 @@ export type WorkspaceNotificationCreateOrUpdateInput =
 // Output Schema
 export const WorkspaceNotificationCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => NotificationContractPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -26103,6 +23592,9 @@ export type WorkspaceNotificationGetInput =
 // Output Schema
 export const WorkspaceNotificationGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => NotificationContractPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -26150,13 +23642,7 @@ export type WorkspaceNotificationListByServiceInput =
 export const WorkspaceNotificationListByServiceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => NotificationContractSchema)),
     ),
     count: Schema.optional(Schema.Number),
     nextLink: Schema.optional(Schema.String),
@@ -26211,6 +23697,9 @@ export type WorkspaceNotificationRecipientEmailCreateOrUpdateInput =
 // Output Schema
 export const WorkspaceNotificationRecipientEmailCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => RecipientEmailContractPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -26315,13 +23804,7 @@ export type WorkspaceNotificationRecipientEmailListByNotificationInput =
 export const WorkspaceNotificationRecipientEmailListByNotificationOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => RecipientEmailContractSchema)),
     ),
     count: Schema.optional(Schema.Number),
     nextLink: Schema.optional(Schema.String),
@@ -26375,6 +23858,9 @@ export type WorkspaceNotificationRecipientUserCreateOrUpdateInput =
 // Output Schema
 export const WorkspaceNotificationRecipientUserCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => RecipientUsersContractPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -26479,13 +23965,7 @@ export type WorkspaceNotificationRecipientUserListByNotificationInput =
 export const WorkspaceNotificationRecipientUserListByNotificationOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => RecipientUserContractSchema)),
     ),
     count: Schema.optional(Schema.Number),
     nextLink: Schema.optional(Schema.String),
@@ -26518,12 +23998,7 @@ export const WorkspacePolicyCreateOrUpdateInput =
     policyId: Schema.Literals(["policy"]).pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        value: Schema.String,
-        format: Schema.optional(
-          Schema.Literals(["xml", "xml-link", "rawxml", "rawxml-link"]),
-        ),
-      }),
+      Schema.suspend(() => PolicyContractPropertiesSchema),
     ),
   }).pipe(
     T.Http({
@@ -26538,6 +24013,9 @@ export type WorkspacePolicyCreateOrUpdateInput =
 // Output Schema
 export const WorkspacePolicyCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => PolicyContractPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -26613,12 +24091,7 @@ export const WorkspacePolicyFragmentCreateOrUpdateInput =
     id: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        value: Schema.String,
-        description: Schema.optional(Schema.String),
-        format: Schema.optional(Schema.Literals(["xml", "rawxml"])),
-        provisioningState: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(() => PolicyFragmentContractPropertiesSchema),
     ),
   }).pipe(
     T.Http({
@@ -26634,6 +24107,9 @@ export type WorkspacePolicyFragmentCreateOrUpdateInput =
 // Output Schema
 export const WorkspacePolicyFragmentCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => PolicyFragmentContractPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -26722,6 +24198,9 @@ export type WorkspacePolicyFragmentGetInput =
 // Output Schema
 export const WorkspacePolicyFragmentGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => PolicyFragmentContractPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -26772,13 +24251,7 @@ export type WorkspacePolicyFragmentListByServiceInput =
 export const WorkspacePolicyFragmentListByServiceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => PolicyFragmentContractSchema)),
     ),
     count: Schema.optional(Schema.Number),
     nextLink: Schema.optional(Schema.String),
@@ -26882,6 +24355,9 @@ export type WorkspacePolicyGetInput = typeof WorkspacePolicyGetInput.Type;
 // Output Schema
 export const WorkspacePolicyGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => PolicyContractPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -26925,13 +24401,7 @@ export type WorkspacePolicyListByApiInput =
 export const WorkspacePolicyListByApiOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => PolicyContractSchema)),
     ),
     count: Schema.optional(Schema.Number),
     nextLink: Schema.optional(Schema.String),
@@ -26965,9 +24435,7 @@ export const WorkspaceProductApiLinkCreateOrUpdateInput =
     apiLinkId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        apiId: Schema.String,
-      }),
+      Schema.suspend(() => ProductApiLinkContractPropertiesSchema),
     ),
   }).pipe(
     T.Http({
@@ -26982,6 +24450,9 @@ export type WorkspaceProductApiLinkCreateOrUpdateInput =
 // Output Schema
 export const WorkspaceProductApiLinkCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => ProductApiLinkContractPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -27071,6 +24542,9 @@ export type WorkspaceProductApiLinkGetInput =
 // Output Schema
 export const WorkspaceProductApiLinkGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => ProductApiLinkContractPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -27121,13 +24595,7 @@ export type WorkspaceProductApiLinkListByProductInput =
 export const WorkspaceProductApiLinkListByProductOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => ProductApiLinkContractSchema)),
     ),
     count: Schema.optional(Schema.Number),
     nextLink: Schema.optional(Schema.String),
@@ -27163,14 +24631,7 @@ export const WorkspaceProductCreateOrUpdateInput =
     productId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        description: Schema.optional(Schema.String),
-        terms: Schema.optional(Schema.String),
-        subscriptionRequired: Schema.optional(Schema.Boolean),
-        approvalRequired: Schema.optional(Schema.Boolean),
-        subscriptionsLimit: Schema.optional(Schema.Number),
-        state: Schema.optional(Schema.Literals(["notPublished", "published"])),
-      }),
+      Schema.suspend(() => ProductContractPropertiesSchema),
     ),
   }).pipe(
     T.Http({
@@ -27185,6 +24646,9 @@ export type WorkspaceProductCreateOrUpdateInput =
 // Output Schema
 export const WorkspaceProductCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => ProductContractPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -27274,6 +24738,9 @@ export type WorkspaceProductGetInput = typeof WorkspaceProductGetInput.Type;
 // Output Schema
 export const WorkspaceProductGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => ProductContractPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -27305,9 +24772,7 @@ export const WorkspaceProductGroupLinkCreateOrUpdateInput =
     groupLinkId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        groupId: Schema.String,
-      }),
+      Schema.suspend(() => ProductGroupLinkContractPropertiesSchema),
     ),
   }).pipe(
     T.Http({
@@ -27322,6 +24787,9 @@ export type WorkspaceProductGroupLinkCreateOrUpdateInput =
 // Output Schema
 export const WorkspaceProductGroupLinkCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => ProductGroupLinkContractPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -27411,6 +24879,9 @@ export type WorkspaceProductGroupLinkGetInput =
 // Output Schema
 export const WorkspaceProductGroupLinkGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => ProductGroupLinkContractPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -27460,13 +24931,7 @@ export type WorkspaceProductGroupLinkListByProductInput =
 export const WorkspaceProductGroupLinkListByProductOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => ProductGroupLinkContractSchema)),
     ),
     count: Schema.optional(Schema.Number),
     nextLink: Schema.optional(Schema.String),
@@ -27519,13 +24984,7 @@ export type WorkspaceProductListByServiceInput =
 export const WorkspaceProductListByServiceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => ProductContractSchema)),
     ),
     count: Schema.optional(Schema.Number),
     nextLink: Schema.optional(Schema.String),
@@ -27563,12 +25022,7 @@ export const WorkspaceProductPolicyCreateOrUpdateInput =
     policyId: Schema.Literals(["policy"]).pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        value: Schema.String,
-        format: Schema.optional(
-          Schema.Literals(["xml", "xml-link", "rawxml", "rawxml-link"]),
-        ),
-      }),
+      Schema.suspend(() => PolicyContractPropertiesSchema),
     ),
   }).pipe(
     T.Http({
@@ -27583,6 +25037,9 @@ export type WorkspaceProductPolicyCreateOrUpdateInput =
 // Output Schema
 export const WorkspaceProductPolicyCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => PolicyContractPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -27675,6 +25132,9 @@ export type WorkspaceProductPolicyGetInput =
 // Output Schema
 export const WorkspaceProductPolicyGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => PolicyContractPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -27723,13 +25183,7 @@ export type WorkspaceProductPolicyListByProductInput =
 export const WorkspaceProductPolicyListByProductOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => PolicyContractSchema)),
     ),
     count: Schema.optional(Schema.Number),
     nextLink: Schema.optional(Schema.String),
@@ -27762,14 +25216,7 @@ export const WorkspaceProductUpdateInput =
     productId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        description: Schema.optional(Schema.String),
-        terms: Schema.optional(Schema.String),
-        subscriptionRequired: Schema.optional(Schema.Boolean),
-        approvalRequired: Schema.optional(Schema.Boolean),
-        subscriptionsLimit: Schema.optional(Schema.Number),
-        state: Schema.optional(Schema.Literals(["notPublished", "published"])),
-      }),
+      Schema.suspend(() => ProductUpdatePropertiesSchema),
     ),
   }).pipe(
     T.Http({
@@ -27784,6 +25231,9 @@ export type WorkspaceProductUpdateInput =
 // Output Schema
 export const WorkspaceProductUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => ProductContractPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -27821,24 +25271,7 @@ export const WorkspaceSubscriptionCreateOrUpdateInput =
     notify: Schema.optional(Schema.Boolean),
     appType: Schema.optional(Schema.Literals(["portal", "developerPortal"])),
     properties: Schema.optional(
-      Schema.Struct({
-        ownerId: Schema.optional(Schema.String),
-        scope: Schema.String,
-        displayName: Schema.String,
-        primaryKey: Schema.optional(Schema.String),
-        secondaryKey: Schema.optional(Schema.String),
-        state: Schema.optional(
-          Schema.Literals([
-            "suspended",
-            "active",
-            "expired",
-            "submitted",
-            "rejected",
-            "cancelled",
-          ]),
-        ),
-        allowTracing: Schema.optional(Schema.Boolean),
-      }),
+      Schema.suspend(() => SubscriptionCreateParameterPropertiesSchema),
     ),
   }).pipe(
     T.Http({
@@ -27853,6 +25286,9 @@ export type WorkspaceSubscriptionCreateOrUpdateInput =
 // Output Schema
 export const WorkspaceSubscriptionCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => SubscriptionContractPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -27945,6 +25381,9 @@ export type WorkspaceSubscriptionGetInput =
 // Output Schema
 export const WorkspaceSubscriptionGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => SubscriptionContractPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -27993,13 +25432,7 @@ export type WorkspaceSubscriptionListInput =
 export const WorkspaceSubscriptionListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => SubscriptionContractSchema)),
     ),
     count: Schema.optional(Schema.Number),
     nextLink: Schema.optional(Schema.String),
@@ -28160,26 +25593,7 @@ export const WorkspaceSubscriptionUpdateInput =
     notify: Schema.optional(Schema.Boolean),
     appType: Schema.optional(Schema.Literals(["portal", "developerPortal"])),
     properties: Schema.optional(
-      Schema.Struct({
-        ownerId: Schema.optional(Schema.String),
-        scope: Schema.optional(Schema.String),
-        expirationDate: Schema.optional(Schema.String),
-        displayName: Schema.optional(Schema.String),
-        primaryKey: Schema.optional(Schema.String),
-        secondaryKey: Schema.optional(Schema.String),
-        state: Schema.optional(
-          Schema.Literals([
-            "suspended",
-            "active",
-            "expired",
-            "submitted",
-            "rejected",
-            "cancelled",
-          ]),
-        ),
-        stateComment: Schema.optional(Schema.String),
-        allowTracing: Schema.optional(Schema.Boolean),
-      }),
+      Schema.suspend(() => SubscriptionUpdateParameterPropertiesSchema),
     ),
   }).pipe(
     T.Http({
@@ -28194,6 +25608,9 @@ export type WorkspaceSubscriptionUpdateInput =
 // Output Schema
 export const WorkspaceSubscriptionUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => SubscriptionContractPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -28234,9 +25651,7 @@ export const WorkspaceTagApiLinkCreateOrUpdateInput =
     apiLinkId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        apiId: Schema.String,
-      }),
+      Schema.suspend(() => TagApiLinkContractPropertiesSchema),
     ),
   }).pipe(
     T.Http({
@@ -28251,6 +25666,9 @@ export type WorkspaceTagApiLinkCreateOrUpdateInput =
 // Output Schema
 export const WorkspaceTagApiLinkCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => TagApiLinkContractPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -28341,6 +25759,9 @@ export type WorkspaceTagApiLinkGetInput =
 // Output Schema
 export const WorkspaceTagApiLinkGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => TagApiLinkContractPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -28391,13 +25812,7 @@ export type WorkspaceTagApiLinkListByProductInput =
 export const WorkspaceTagApiLinkListByProductOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => TagApiLinkContractSchema)),
     ),
     count: Schema.optional(Schema.Number),
     nextLink: Schema.optional(Schema.String),
@@ -28433,9 +25848,7 @@ export const WorkspaceTagCreateOrUpdateInput =
     tagId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        displayName: Schema.String,
-      }),
+      Schema.suspend(() => TagContractPropertiesSchema),
     ),
   }).pipe(
     T.Http({
@@ -28450,6 +25863,9 @@ export type WorkspaceTagCreateOrUpdateInput =
 // Output Schema
 export const WorkspaceTagCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => TagContractPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -28531,6 +25947,9 @@ export type WorkspaceTagGetInput = typeof WorkspaceTagGetInput.Type;
 
 // Output Schema
 export const WorkspaceTagGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.optional(
+    Schema.suspend(() => TagContractPropertiesSchema),
+  ),
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -28577,13 +25996,7 @@ export type WorkspaceTagListByServiceInput =
 export const WorkspaceTagListByServiceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => TagContractSchema)),
     ),
     count: Schema.optional(Schema.Number),
     nextLink: Schema.optional(Schema.String),
@@ -28621,9 +26034,7 @@ export const WorkspaceTagOperationLinkCreateOrUpdateInput =
     operationLinkId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        operationId: Schema.String,
-      }),
+      Schema.suspend(() => TagOperationLinkContractPropertiesSchema),
     ),
   }).pipe(
     T.Http({
@@ -28638,6 +26049,9 @@ export type WorkspaceTagOperationLinkCreateOrUpdateInput =
 // Output Schema
 export const WorkspaceTagOperationLinkCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => TagOperationLinkContractPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -28727,6 +26141,9 @@ export type WorkspaceTagOperationLinkGetInput =
 // Output Schema
 export const WorkspaceTagOperationLinkGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => TagOperationLinkContractPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -28776,13 +26193,7 @@ export type WorkspaceTagOperationLinkListByProductInput =
 export const WorkspaceTagOperationLinkListByProductOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => TagOperationLinkContractSchema)),
     ),
     count: Schema.optional(Schema.Number),
     nextLink: Schema.optional(Schema.String),
@@ -28819,9 +26230,7 @@ export const WorkspaceTagProductLinkCreateOrUpdateInput =
     productLinkId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        productId: Schema.String,
-      }),
+      Schema.suspend(() => TagProductLinkContractPropertiesSchema),
     ),
   }).pipe(
     T.Http({
@@ -28836,6 +26245,9 @@ export type WorkspaceTagProductLinkCreateOrUpdateInput =
 // Output Schema
 export const WorkspaceTagProductLinkCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => TagProductLinkContractPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -28925,6 +26337,9 @@ export type WorkspaceTagProductLinkGetInput =
 // Output Schema
 export const WorkspaceTagProductLinkGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => TagProductLinkContractPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -28975,13 +26390,7 @@ export type WorkspaceTagProductLinkListByProductInput =
 export const WorkspaceTagProductLinkListByProductOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => TagProductLinkContractSchema)),
     ),
     count: Schema.optional(Schema.Number),
     nextLink: Schema.optional(Schema.String),
@@ -29017,9 +26426,7 @@ export const WorkspaceTagUpdateInput =
     tagId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        displayName: Schema.String,
-      }),
+      Schema.suspend(() => TagContractPropertiesSchema),
     ),
   }).pipe(
     T.Http({
@@ -29033,6 +26440,9 @@ export type WorkspaceTagUpdateInput = typeof WorkspaceTagUpdateInput.Type;
 // Output Schema
 export const WorkspaceTagUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => TagContractPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -29063,10 +26473,7 @@ export const WorkspaceUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   workspaceId: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
   properties: Schema.optional(
-    Schema.Struct({
-      displayName: Schema.String,
-      description: Schema.optional(Schema.String),
-    }),
+    Schema.suspend(() => WorkspaceContractPropertiesSchema),
   ),
 }).pipe(
   T.Http({
@@ -29079,6 +26486,9 @@ export type WorkspaceUpdateInput = typeof WorkspaceUpdateInput.Type;
 
 // Output Schema
 export const WorkspaceUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.optional(
+    Schema.suspend(() => WorkspaceContractPropertiesSchema),
+  ),
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),

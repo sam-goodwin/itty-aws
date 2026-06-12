@@ -9,11 +9,458 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 import { SensitiveOutputString } from "../sensitive.ts";
 
+// Shared schemas
+const DirectionSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Send",
+  "Receive",
+]);
+const SchemaSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  connectionId: Schema.optional(Schema.String),
+  status: Schema.optional(Schema.suspend(() => SchemaStatusSchema)),
+  name: Schema.optional(Schema.String),
+  content: Schema.optional(Schema.String),
+  direction: Schema.optional(Schema.suspend(() => DirectionSchema)),
+  schemaUri: Schema.optional(Schema.String),
+  schemaType: Schema.optional(Schema.suspend(() => SchemaTypeSchema)),
+});
+const SchemaStatusSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "New",
+  "Approved",
+]);
+const SchemaTypeSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Xsd",
+  "Zip",
+]);
+const OperationSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  isDataAction: Schema.optional(Schema.Boolean),
+  display: Schema.optional(
+    Schema.Struct({
+      provider: Schema.optional(Schema.String),
+      resource: Schema.optional(Schema.String),
+      operation: Schema.optional(Schema.String),
+      description: Schema.optional(Schema.String),
+    }),
+  ),
+  origin: Schema.optional(Schema.Literals(["user", "system", "user,system"])),
+  actionType: Schema.optional(Schema.Literals(["Internal"])),
+});
+const ValidateSchemaStatusSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Succeeded",
+  "Failed",
+]);
+const ConnectionSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+});
+const systemDataSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  createdBy: Schema.optional(Schema.String),
+  createdByType: Schema.optional(
+    Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+  ),
+  createdAt: Schema.optional(Schema.String),
+  lastModifiedBy: Schema.optional(Schema.String),
+  lastModifiedByType: Schema.optional(
+    Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+  ),
+  lastModifiedAt: Schema.optional(Schema.String),
+});
+const PipelineSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+});
+const ConnectionPropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  pipeline: Schema.String,
+  direction: Schema.optional(Schema.suspend(() => DirectionSchema)),
+  justification: Schema.optional(Schema.String),
+  status: Schema.optional(Schema.suspend(() => ConnectionStatusSchema)),
+  forceDisabledStatus: Schema.optional(
+    Schema.Array(Schema.suspend(() => ForceDisabledStatusSchema)),
+  ),
+  statusReason: Schema.optional(Schema.String),
+  linkStatus: Schema.optional(Schema.suspend(() => LinkStatusSchema)),
+  linkedConnectionId: Schema.optional(Schema.String),
+  flowTypes: Schema.optional(
+    Schema.Array(Schema.suspend(() => FlowTypeSchema)),
+  ),
+  requirementId: Schema.optional(Schema.String),
+  remoteSubscriptionId: Schema.optional(Schema.String),
+  approver: Schema.optional(Schema.String),
+  pin: Schema.optional(Schema.String),
+  dateSubmitted: Schema.optional(Schema.String),
+  primaryContact: Schema.optional(Schema.String),
+  secondaryContacts: Schema.optional(Schema.Array(Schema.String)),
+  provisioningState: Schema.optional(
+    Schema.suspend(() => ProvisioningStateSchema),
+  ),
+  policies: Schema.optional(Schema.Array(Schema.String)),
+  schemas: Schema.optional(Schema.Array(Schema.suspend(() => SchemaSchema))),
+  schemaUris: Schema.optional(Schema.Array(Schema.String)),
+});
+const ConnectionStatusSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "InReview",
+  "Approved",
+  "Rejected",
+  "Accepted",
+]);
+const ForceDisabledStatusSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "ConnectionForceDisabled",
+  "FlowTypeForceDisabled",
+]);
+const LinkStatusSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Linked",
+  "Unlinked",
+]);
+const FlowTypeSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Unknown",
+  "Complex",
+  "DevSecOps",
+  "Messaging",
+  "Mission",
+  "MicrosoftInternal",
+  "BasicFiles",
+  "Data",
+  "Standard",
+  "StreamingVideo",
+  "Opaque",
+  "MissionOpaqueXML",
+  "DiskImages",
+  "API",
+]);
+const ProvisioningStateSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Succeeded",
+  "Failed",
+  "Canceled",
+  "Accepted",
+]);
+const ManagedServiceIdentityTypeSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+    "None",
+    "SystemAssigned",
+    "UserAssigned",
+    "SystemAssigned,UserAssigned",
+  ]);
+const UserAssignedIdentitiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Record(
+  Schema.String,
+  Schema.suspend(() => UserAssignedIdentitySchema),
+);
+const UserAssignedIdentitySchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  principalId: Schema.optional(Schema.String),
+  clientId: Schema.optional(Schema.String),
+});
+const FlowSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+});
+const FlowPropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  connection: Schema.optional(Schema.suspend(() => SelectedResourceSchema)),
+  flowId: Schema.optional(Schema.String),
+  keyVaultUri: Schema.optional(Schema.String),
+  linkStatus: Schema.optional(Schema.suspend(() => LinkStatusSchema)),
+  linkedFlowId: Schema.optional(Schema.String),
+  status: Schema.optional(Schema.suspend(() => FlowStatusSchema)),
+  forceDisabledStatus: Schema.optional(
+    Schema.Array(Schema.suspend(() => ForceDisabledStatusSchema)),
+  ),
+  storageAccountName: Schema.optional(Schema.String),
+  storageAccountId: Schema.optional(Schema.String),
+  storageContainerName: Schema.optional(Schema.String),
+  storageTableName: Schema.optional(Schema.String),
+  serviceBusQueueId: Schema.optional(Schema.String),
+  flowType: Schema.optional(Schema.suspend(() => FlowTypeSchema)),
+  dataType: Schema.optional(Schema.suspend(() => DataTypeSchema)),
+  provisioningState: Schema.optional(
+    Schema.suspend(() => ProvisioningStateSchema),
+  ),
+  policies: Schema.optional(Schema.Array(Schema.String)),
+  schema: Schema.optional(Schema.suspend(() => SchemaSchema)),
+  messagingOptions: Schema.optional(
+    Schema.suspend(() => MessagingOptionsSchema),
+  ),
+  apiFlowOptions: Schema.optional(Schema.suspend(() => ApiFlowOptionsSchema)),
+  customerManagedKeyVaultUri: Schema.optional(Schema.String),
+  streamId: Schema.optional(Schema.String),
+  streamProtocol: Schema.optional(Schema.suspend(() => StreamProtocolSchema)),
+  streamLatency: Schema.optional(Schema.Number),
+  passphrase: Schema.optional(Schema.String),
+  sourceAddresses: Schema.optional(
+    Schema.suspend(() => StreamSourceAddressesSchema),
+  ),
+  destinationEndpoints: Schema.optional(Schema.Array(Schema.String)),
+  destinationEndpointPorts: Schema.optional(Schema.Array(Schema.Number)),
+  eventHubId: Schema.optional(Schema.String),
+  consumerGroup: Schema.optional(Schema.String),
+});
+const SelectedResourceSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  id: Schema.String,
+  location: Schema.optional(Schema.String),
+  subscriptionName: Schema.optional(Schema.String),
+});
+const FlowStatusSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Enabled",
+  "Disabled",
+]);
+const DataTypeSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Blob",
+  "Table",
+]);
+const MessagingOptionsSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  billingTier: Schema.optional(Schema.suspend(() => FlowBillingTierSchema)),
+});
+const FlowBillingTierSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "BlobTransport",
+  "Standard",
+  "Premium",
+]);
+const ApiFlowOptionsSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  remoteEndpoint: Schema.optional(Schema.String),
+  cname: Schema.optional(Schema.String),
+  apiMode: Schema.optional(Schema.suspend(() => ApiModeSchema)),
+  identityTranslation: Schema.optional(
+    Schema.suspend(() => IdentityTranslationSchema),
+  ),
+  senderClientId: Schema.optional(Schema.String),
+  remoteCallingModeClientId: Schema.optional(Schema.String),
+  audienceOverride: Schema.optional(Schema.String),
+});
+const ApiModeSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "SDK",
+  "Endpoint",
+]);
+const IdentityTranslationSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "UserIdentity",
+  "ServiceIdentity",
+]);
+const StreamProtocolSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "UDP",
+  "SRT",
+  "RTP",
+]);
+const StreamSourceAddressesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  sourceAddresses: Schema.optional(Schema.Array(Schema.String)),
+});
+const PendingConnectionSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.optional(Schema.String),
+  pipeline: Schema.String,
+  direction: Schema.optional(Schema.suspend(() => DirectionSchema)),
+  justification: Schema.optional(Schema.String),
+  status: Schema.optional(Schema.suspend(() => ConnectionStatusSchema)),
+  forceDisabledStatus: Schema.optional(
+    Schema.Array(Schema.suspend(() => ForceDisabledStatusSchema)),
+  ),
+  statusReason: Schema.optional(Schema.String),
+  linkStatus: Schema.optional(Schema.suspend(() => LinkStatusSchema)),
+  linkedConnectionId: Schema.optional(Schema.String),
+  flowTypes: Schema.optional(
+    Schema.Array(Schema.suspend(() => FlowTypeSchema)),
+  ),
+  requirementId: Schema.optional(Schema.String),
+  remoteSubscriptionId: Schema.optional(Schema.String),
+  approver: Schema.optional(Schema.String),
+  pin: Schema.optional(Schema.String),
+  dateSubmitted: Schema.optional(Schema.String),
+  primaryContact: Schema.optional(Schema.String),
+  secondaryContacts: Schema.optional(Schema.Array(Schema.String)),
+  provisioningState: Schema.optional(
+    Schema.suspend(() => ProvisioningStateSchema),
+  ),
+  policies: Schema.optional(Schema.Array(Schema.String)),
+  schemas: Schema.optional(Schema.Array(Schema.suspend(() => SchemaSchema))),
+  schemaUris: Schema.optional(Schema.Array(Schema.String)),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  location: Schema.String,
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.suspend(() => Azure_Core_armResourceTypeSchema)),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
+const Azure_Core_armResourceTypeSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.String;
+const PendingFlowSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.optional(Schema.String),
+  connectionId: Schema.optional(Schema.String),
+  connection: Schema.optional(Schema.suspend(() => SelectedResourceSchema)),
+  flowId: Schema.optional(Schema.String),
+  keyVaultUri: Schema.optional(Schema.String),
+  linkStatus: Schema.optional(Schema.suspend(() => LinkStatusSchema)),
+  linkedFlowId: Schema.optional(Schema.String),
+  status: Schema.optional(Schema.suspend(() => FlowStatusSchema)),
+  forceDisabledStatus: Schema.optional(
+    Schema.Array(Schema.suspend(() => ForceDisabledStatusSchema)),
+  ),
+  storageAccountName: Schema.optional(Schema.String),
+  storageAccountId: Schema.optional(Schema.String),
+  storageContainerName: Schema.optional(Schema.String),
+  storageTableName: Schema.optional(Schema.String),
+  serviceBusQueueId: Schema.optional(Schema.String),
+  flowType: Schema.optional(Schema.suspend(() => FlowTypeSchema)),
+  dataType: Schema.optional(Schema.suspend(() => DataTypeSchema)),
+  provisioningState: Schema.optional(
+    Schema.suspend(() => ProvisioningStateSchema),
+  ),
+  policies: Schema.optional(Schema.Array(Schema.String)),
+  schema: Schema.optional(Schema.suspend(() => SchemaSchema)),
+  messagingOptions: Schema.optional(
+    Schema.suspend(() => MessagingOptionsSchema),
+  ),
+  apiFlowOptions: Schema.optional(Schema.suspend(() => ApiFlowOptionsSchema)),
+  customerManagedKeyVaultUri: Schema.optional(Schema.String),
+  streamId: Schema.optional(Schema.String),
+  streamProtocol: Schema.optional(Schema.suspend(() => StreamProtocolSchema)),
+  streamLatency: Schema.optional(Schema.Number),
+  passphrase: Schema.optional(Schema.String),
+  sourceAddresses: Schema.optional(
+    Schema.suspend(() => StreamSourceAddressesSchema),
+  ),
+  destinationEndpoints: Schema.optional(Schema.Array(Schema.String)),
+  destinationEndpointPorts: Schema.optional(Schema.Array(Schema.Number)),
+  eventHubId: Schema.optional(Schema.String),
+  consumerGroup: Schema.optional(Schema.String),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  location: Schema.String,
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.suspend(() => Azure_Core_armResourceTypeSchema)),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
+const PipelinePropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  remoteCloud: Schema.String,
+  displayName: Schema.optional(Schema.String),
+  connections: Schema.optional(
+    Schema.Array(Schema.suspend(() => ReadPipelineConnectionSchema)),
+  ),
+  subscribers: Schema.optional(
+    Schema.Array(Schema.suspend(() => SubscriberSchema)),
+  ),
+  provisioningState: Schema.optional(
+    Schema.suspend(() => ProvisioningStateSchema),
+  ),
+  policies: Schema.optional(Schema.Array(Schema.String)),
+  flowTypes: Schema.optional(
+    Schema.Array(Schema.suspend(() => FlowTypeSchema)),
+  ),
+  disabledFlowTypes: Schema.optional(
+    Schema.Array(Schema.suspend(() => FlowTypeSchema)),
+  ),
+  quarantineDownloadStorageAccount: Schema.optional(Schema.String),
+  quarantineDownloadStorageContainer: Schema.optional(Schema.String),
+  status: Schema.optional(Schema.suspend(() => PipelineStatusSchema)),
+});
+const ReadPipelineConnectionSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.String,
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  location: Schema.optional(Schema.String),
+  etag: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+  properties: Schema.optional(
+    Schema.suspend(() => PipelineConnectionPropertiesSchema),
+  ),
+});
+const PipelineConnectionPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    internalMetadata: Schema.optional(
+      Schema.suspend(() => InternalMetadataPropertiesSchema),
+    ),
+  });
+const InternalMetadataPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    operationStatus: Schema.optional(
+      Schema.suspend(() => OperationStatusPropertiesSchema),
+    ),
+    statusSetBy: Schema.optional(Schema.String),
+  });
+const OperationStatusPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    status: Schema.optional(Schema.suspend(() => OperationStatusEnumSchema)),
+    id: Schema.optional(Schema.String),
+    message: Schema.optional(Schema.String),
+  });
+const OperationStatusEnumSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Failed",
+  "Succeeded",
+]);
+const SubscriberSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  email: Schema.optional(Schema.String),
+  notifications: Schema.optional(Schema.Number),
+});
+const PipelineStatusSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Enabled",
+  "Disabled",
+]);
+const PipelinesPatchPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    flowTypes: Schema.optional(
+      Schema.Array(Schema.suspend(() => FlowTypeSchema)),
+    ),
+  });
+const ActionTypeSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "AllowUpdates",
+  "ForceDisable",
+]);
+const TargetTypeSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Pipeline",
+  "Connection",
+  "FlowType",
+]);
+const ListFlowsByPipelineConnectionSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    flows: Schema.optional(Schema.Array(Schema.suspend(() => FlowSchema))),
+  });
+
 // Input Schema
 export const AzureDataTransferListApprovedSchemasInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     pipeline: Schema.optional(Schema.String),
-    direction: Schema.optional(Schema.Literals(["Send", "Receive"])),
+    direction: Schema.optional(Schema.suspend(() => DirectionSchema)),
   }).pipe(
     T.Http({
       method: "POST",
@@ -27,20 +474,7 @@ export type AzureDataTransferListApprovedSchemasInput =
 // Output Schema
 export const AzureDataTransferListApprovedSchemasOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          connectionId: Schema.optional(Schema.String),
-          status: Schema.optional(Schema.Literals(["New", "Approved"])),
-          name: Schema.optional(Schema.String),
-          content: Schema.optional(Schema.String),
-          direction: Schema.optional(Schema.Literals(["Send", "Receive"])),
-          schemaUri: Schema.optional(Schema.String),
-          schemaType: Schema.optional(Schema.Literals(["Xsd", "Zip"])),
-        }),
-      ),
-    ),
+    value: Schema.optional(Schema.Array(Schema.suspend(() => SchemaSchema))),
   });
 export type AzureDataTransferListApprovedSchemasOutput =
   typeof AzureDataTransferListApprovedSchemasOutput.Type;
@@ -61,12 +495,12 @@ export const AzureDataTransferValidateSchemaInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     connectionId: Schema.optional(Schema.String),
-    status: Schema.optional(Schema.Literals(["New", "Approved"])),
+    status: Schema.optional(Schema.suspend(() => SchemaStatusSchema)),
     name: Schema.optional(Schema.String),
     content: Schema.optional(Schema.String),
-    direction: Schema.optional(Schema.Literals(["Send", "Receive"])),
+    direction: Schema.optional(Schema.suspend(() => DirectionSchema)),
     schemaUri: Schema.optional(Schema.String),
-    schemaType: Schema.optional(Schema.Literals(["Xsd", "Zip"])),
+    schemaType: Schema.optional(Schema.suspend(() => SchemaTypeSchema)),
   }).pipe(
     T.Http({
       method: "POST",
@@ -80,7 +514,7 @@ export type AzureDataTransferValidateSchemaInput =
 // Output Schema
 export const AzureDataTransferValidateSchemaOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    status: Schema.optional(Schema.Literals(["Succeeded", "Failed"])),
+    status: Schema.optional(Schema.suspend(() => ValidateSchemaStatusSchema)),
     message: Schema.optional(Schema.String),
   });
 export type AzureDataTransferValidateSchemaOutput =
@@ -104,90 +538,15 @@ export const ConnectionsCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     connectionName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        pipeline: Schema.String,
-        direction: Schema.optional(Schema.Literals(["Send", "Receive"])),
-        justification: Schema.optional(Schema.String),
-        status: Schema.optional(
-          Schema.Literals(["InReview", "Approved", "Rejected", "Accepted"]),
-        ),
-        forceDisabledStatus: Schema.optional(
-          Schema.Array(
-            Schema.Literals([
-              "ConnectionForceDisabled",
-              "FlowTypeForceDisabled",
-            ]),
-          ),
-        ),
-        statusReason: Schema.optional(Schema.String),
-        linkStatus: Schema.optional(Schema.Literals(["Linked", "Unlinked"])),
-        linkedConnectionId: Schema.optional(Schema.String),
-        flowTypes: Schema.optional(
-          Schema.Array(
-            Schema.Literals([
-              "Unknown",
-              "Complex",
-              "DevSecOps",
-              "Messaging",
-              "Mission",
-              "MicrosoftInternal",
-              "BasicFiles",
-              "Data",
-              "Standard",
-              "StreamingVideo",
-              "Opaque",
-              "MissionOpaqueXML",
-              "DiskImages",
-              "API",
-            ]),
-          ),
-        ),
-        requirementId: Schema.optional(Schema.String),
-        remoteSubscriptionId: Schema.optional(Schema.String),
-        approver: Schema.optional(Schema.String),
-        pin: Schema.optional(Schema.String),
-        dateSubmitted: Schema.optional(Schema.String),
-        primaryContact: Schema.optional(Schema.String),
-        secondaryContacts: Schema.optional(Schema.Array(Schema.String)),
-        provisioningState: Schema.optional(
-          Schema.Literals(["Succeeded", "Failed", "Canceled", "Accepted"]),
-        ),
-        policies: Schema.optional(Schema.Array(Schema.String)),
-        schemas: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              id: Schema.optional(Schema.String),
-              connectionId: Schema.optional(Schema.String),
-              status: Schema.optional(Schema.Literals(["New", "Approved"])),
-              name: Schema.optional(Schema.String),
-              content: Schema.optional(Schema.String),
-              direction: Schema.optional(Schema.Literals(["Send", "Receive"])),
-              schemaUri: Schema.optional(Schema.String),
-              schemaType: Schema.optional(Schema.Literals(["Xsd", "Zip"])),
-            }),
-          ),
-        ),
-        schemaUris: Schema.optional(Schema.Array(Schema.String)),
-      }),
+      Schema.suspend(() => ConnectionPropertiesSchema),
     ),
     identity: Schema.optional(
       Schema.Struct({
         principalId: Schema.optional(Schema.String),
         tenantId: Schema.optional(Schema.String),
-        type: Schema.Literals([
-          "None",
-          "SystemAssigned",
-          "UserAssigned",
-          "SystemAssigned,UserAssigned",
-        ]),
+        type: Schema.suspend(() => ManagedServiceIdentityTypeSchema),
         userAssignedIdentities: Schema.optional(
-          Schema.Record(
-            Schema.String,
-            Schema.Struct({
-              principalId: Schema.optional(Schema.String),
-              clientId: Schema.optional(Schema.String),
-            }),
-          ),
+          Schema.suspend(() => UserAssignedIdentitiesSchema),
         ),
       }),
     ),
@@ -207,23 +566,25 @@ export type ConnectionsCreateOrUpdateInput =
 // Output Schema
 export const ConnectionsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => ConnectionPropertiesSchema),
+    ),
+    identity: Schema.optional(
+      Schema.Struct({
+        principalId: Schema.optional(Schema.String),
+        tenantId: Schema.optional(Schema.String),
+        type: Schema.suspend(() => ManagedServiceIdentityTypeSchema),
+        userAssignedIdentities: Schema.optional(
+          Schema.suspend(() => UserAssignedIdentitiesSchema),
+        ),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type ConnectionsCreateOrUpdateOutput =
   typeof ConnectionsCreateOrUpdateOutput.Type;
@@ -293,23 +654,23 @@ export type ConnectionsGetInput = typeof ConnectionsGetInput.Type;
 
 // Output Schema
 export const ConnectionsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.optional(Schema.suspend(() => ConnectionPropertiesSchema)),
+  identity: Schema.optional(
+    Schema.Struct({
+      principalId: Schema.optional(Schema.String),
+      tenantId: Schema.optional(Schema.String),
+      type: Schema.suspend(() => ManagedServiceIdentityTypeSchema),
+      userAssignedIdentities: Schema.optional(
+        Schema.suspend(() => UserAssignedIdentitiesSchema),
+      ),
+    }),
+  ),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  location: Schema.String,
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
-  systemData: Schema.optional(
-    Schema.Struct({
-      createdBy: Schema.optional(Schema.String),
-      createdByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      createdAt: Schema.optional(Schema.String),
-      lastModifiedBy: Schema.optional(Schema.String),
-      lastModifiedByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      lastModifiedAt: Schema.optional(Schema.String),
-    }),
-  ),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
 });
 export type ConnectionsGetOutput = typeof ConnectionsGetOutput.Type;
 
@@ -345,23 +706,23 @@ export type ConnectionsLinkInput = typeof ConnectionsLinkInput.Type;
 
 // Output Schema
 export const ConnectionsLinkOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.optional(Schema.suspend(() => ConnectionPropertiesSchema)),
+  identity: Schema.optional(
+    Schema.Struct({
+      principalId: Schema.optional(Schema.String),
+      tenantId: Schema.optional(Schema.String),
+      type: Schema.suspend(() => ManagedServiceIdentityTypeSchema),
+      userAssignedIdentities: Schema.optional(
+        Schema.suspend(() => UserAssignedIdentitiesSchema),
+      ),
+    }),
+  ),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  location: Schema.String,
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
-  systemData: Schema.optional(
-    Schema.Struct({
-      createdBy: Schema.optional(Schema.String),
-      createdByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      createdAt: Schema.optional(Schema.String),
-      lastModifiedBy: Schema.optional(Schema.String),
-      lastModifiedByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      lastModifiedAt: Schema.optional(Schema.String),
-    }),
-  ),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
 });
 export type ConnectionsLinkOutput = typeof ConnectionsLinkOutput.Type;
 
@@ -396,37 +757,7 @@ export type ConnectionsListByResourceGroupInput =
 // Output Schema
 export const ConnectionsListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => ConnectionSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type ConnectionsListByResourceGroupOutput =
@@ -462,37 +793,7 @@ export type ConnectionsListBySubscriptionInput =
 // Output Schema
 export const ConnectionsListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => ConnectionSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type ConnectionsListBySubscriptionOutput =
@@ -520,20 +821,9 @@ export const ConnectionsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
       Schema.Struct({
         principalId: Schema.optional(Schema.String),
         tenantId: Schema.optional(Schema.String),
-        type: Schema.Literals([
-          "None",
-          "SystemAssigned",
-          "UserAssigned",
-          "SystemAssigned,UserAssigned",
-        ]),
+        type: Schema.suspend(() => ManagedServiceIdentityTypeSchema),
         userAssignedIdentities: Schema.optional(
-          Schema.Record(
-            Schema.String,
-            Schema.Struct({
-              principalId: Schema.optional(Schema.String),
-              clientId: Schema.optional(Schema.String),
-            }),
-          ),
+          Schema.suspend(() => UserAssignedIdentitiesSchema),
         ),
       }),
     ),
@@ -552,23 +842,25 @@ export type ConnectionsUpdateInput = typeof ConnectionsUpdateInput.Type;
 // Output Schema
 export const ConnectionsUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => ConnectionPropertiesSchema),
+    ),
+    identity: Schema.optional(
+      Schema.Struct({
+        principalId: Schema.optional(Schema.String),
+        tenantId: Schema.optional(Schema.String),
+        type: Schema.suspend(() => ManagedServiceIdentityTypeSchema),
+        userAssignedIdentities: Schema.optional(
+          Schema.suspend(() => UserAssignedIdentitiesSchema),
+        ),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type ConnectionsUpdateOutput = typeof ConnectionsUpdateOutput.Type;
 
@@ -592,105 +884,7 @@ export const FlowsCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     connectionName: Schema.String.pipe(T.PathParam()),
     flowName: Schema.String.pipe(T.PathParam()),
-    properties: Schema.optional(
-      Schema.Struct({
-        connection: Schema.optional(
-          Schema.Struct({
-            name: Schema.optional(Schema.String),
-            id: Schema.String,
-            location: Schema.optional(Schema.String),
-            subscriptionName: Schema.optional(Schema.String),
-          }),
-        ),
-        flowId: Schema.optional(Schema.String),
-        keyVaultUri: Schema.optional(Schema.String),
-        linkStatus: Schema.optional(Schema.Literals(["Linked", "Unlinked"])),
-        linkedFlowId: Schema.optional(Schema.String),
-        status: Schema.optional(Schema.Literals(["Enabled", "Disabled"])),
-        forceDisabledStatus: Schema.optional(
-          Schema.Array(
-            Schema.Literals([
-              "ConnectionForceDisabled",
-              "FlowTypeForceDisabled",
-            ]),
-          ),
-        ),
-        storageAccountName: Schema.optional(Schema.String),
-        storageAccountId: Schema.optional(Schema.String),
-        storageContainerName: Schema.optional(Schema.String),
-        storageTableName: Schema.optional(Schema.String),
-        serviceBusQueueId: Schema.optional(Schema.String),
-        flowType: Schema.optional(
-          Schema.Literals([
-            "Unknown",
-            "Complex",
-            "DevSecOps",
-            "Messaging",
-            "Mission",
-            "MicrosoftInternal",
-            "BasicFiles",
-            "Data",
-            "Standard",
-            "StreamingVideo",
-            "Opaque",
-            "MissionOpaqueXML",
-            "DiskImages",
-            "API",
-          ]),
-        ),
-        dataType: Schema.optional(Schema.Literals(["Blob", "Table"])),
-        provisioningState: Schema.optional(
-          Schema.Literals(["Succeeded", "Failed", "Canceled", "Accepted"]),
-        ),
-        policies: Schema.optional(Schema.Array(Schema.String)),
-        schema: Schema.optional(
-          Schema.Struct({
-            id: Schema.optional(Schema.String),
-            connectionId: Schema.optional(Schema.String),
-            status: Schema.optional(Schema.Literals(["New", "Approved"])),
-            name: Schema.optional(Schema.String),
-            content: Schema.optional(Schema.String),
-            direction: Schema.optional(Schema.Literals(["Send", "Receive"])),
-            schemaUri: Schema.optional(Schema.String),
-            schemaType: Schema.optional(Schema.Literals(["Xsd", "Zip"])),
-          }),
-        ),
-        messagingOptions: Schema.optional(
-          Schema.Struct({
-            billingTier: Schema.optional(
-              Schema.Literals(["BlobTransport", "Standard", "Premium"]),
-            ),
-          }),
-        ),
-        apiFlowOptions: Schema.optional(
-          Schema.Struct({
-            remoteEndpoint: Schema.optional(Schema.String),
-            cname: Schema.optional(Schema.String),
-            apiMode: Schema.optional(Schema.Literals(["SDK", "Endpoint"])),
-            identityTranslation: Schema.optional(
-              Schema.Literals(["UserIdentity", "ServiceIdentity"]),
-            ),
-            senderClientId: Schema.optional(Schema.String),
-            remoteCallingModeClientId: Schema.optional(Schema.String),
-            audienceOverride: Schema.optional(Schema.String),
-          }),
-        ),
-        customerManagedKeyVaultUri: Schema.optional(Schema.String),
-        streamId: Schema.optional(Schema.String),
-        streamProtocol: Schema.optional(Schema.Literals(["UDP", "SRT", "RTP"])),
-        streamLatency: Schema.optional(Schema.Number),
-        passphrase: Schema.optional(Schema.String),
-        sourceAddresses: Schema.optional(
-          Schema.Struct({
-            sourceAddresses: Schema.optional(Schema.Array(Schema.String)),
-          }),
-        ),
-        destinationEndpoints: Schema.optional(Schema.Array(Schema.String)),
-        destinationEndpointPorts: Schema.optional(Schema.Array(Schema.Number)),
-        eventHubId: Schema.optional(Schema.String),
-        consumerGroup: Schema.optional(Schema.String),
-      }),
-    ),
+    properties: Schema.optional(Schema.suspend(() => FlowPropertiesSchema)),
     plan: Schema.optional(
       Schema.Struct({
         name: Schema.String,
@@ -704,20 +898,9 @@ export const FlowsCreateOrUpdateInput =
       Schema.Struct({
         principalId: Schema.optional(Schema.String),
         tenantId: Schema.optional(Schema.String),
-        type: Schema.Literals([
-          "None",
-          "SystemAssigned",
-          "UserAssigned",
-          "SystemAssigned,UserAssigned",
-        ]),
+        type: Schema.suspend(() => ManagedServiceIdentityTypeSchema),
         userAssignedIdentities: Schema.optional(
-          Schema.Record(
-            Schema.String,
-            Schema.Struct({
-              principalId: Schema.optional(Schema.String),
-              clientId: Schema.optional(Schema.String),
-            }),
-          ),
+          Schema.suspend(() => UserAssignedIdentitiesSchema),
         ),
       }),
     ),
@@ -736,23 +919,32 @@ export type FlowsCreateOrUpdateInput = typeof FlowsCreateOrUpdateInput.Type;
 // Output Schema
 export const FlowsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(Schema.suspend(() => FlowPropertiesSchema)),
+    plan: Schema.optional(
+      Schema.Struct({
+        name: Schema.String,
+        publisher: Schema.String,
+        product: Schema.String,
+        promotionCode: Schema.optional(Schema.String),
+        version: Schema.optional(Schema.String),
+      }),
+    ),
+    identity: Schema.optional(
+      Schema.Struct({
+        principalId: Schema.optional(Schema.String),
+        tenantId: Schema.optional(Schema.String),
+        type: Schema.suspend(() => ManagedServiceIdentityTypeSchema),
+        userAssignedIdentities: Schema.optional(
+          Schema.suspend(() => UserAssignedIdentitiesSchema),
+        ),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type FlowsCreateOrUpdateOutput = typeof FlowsCreateOrUpdateOutput.Type;
 
@@ -822,23 +1014,32 @@ export type FlowsDisableInput = typeof FlowsDisableInput.Type;
 
 // Output Schema
 export const FlowsDisableOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.optional(Schema.suspend(() => FlowPropertiesSchema)),
+  plan: Schema.optional(
+    Schema.Struct({
+      name: Schema.String,
+      publisher: Schema.String,
+      product: Schema.String,
+      promotionCode: Schema.optional(Schema.String),
+      version: Schema.optional(Schema.String),
+    }),
+  ),
+  identity: Schema.optional(
+    Schema.Struct({
+      principalId: Schema.optional(Schema.String),
+      tenantId: Schema.optional(Schema.String),
+      type: Schema.suspend(() => ManagedServiceIdentityTypeSchema),
+      userAssignedIdentities: Schema.optional(
+        Schema.suspend(() => UserAssignedIdentitiesSchema),
+      ),
+    }),
+  ),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  location: Schema.String,
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
-  systemData: Schema.optional(
-    Schema.Struct({
-      createdBy: Schema.optional(Schema.String),
-      createdByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      createdAt: Schema.optional(Schema.String),
-      lastModifiedBy: Schema.optional(Schema.String),
-      lastModifiedByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      lastModifiedAt: Schema.optional(Schema.String),
-    }),
-  ),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
 });
 export type FlowsDisableOutput = typeof FlowsDisableOutput.Type;
 
@@ -874,23 +1075,32 @@ export type FlowsEnableInput = typeof FlowsEnableInput.Type;
 
 // Output Schema
 export const FlowsEnableOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.optional(Schema.suspend(() => FlowPropertiesSchema)),
+  plan: Schema.optional(
+    Schema.Struct({
+      name: Schema.String,
+      publisher: Schema.String,
+      product: Schema.String,
+      promotionCode: Schema.optional(Schema.String),
+      version: Schema.optional(Schema.String),
+    }),
+  ),
+  identity: Schema.optional(
+    Schema.Struct({
+      principalId: Schema.optional(Schema.String),
+      tenantId: Schema.optional(Schema.String),
+      type: Schema.suspend(() => ManagedServiceIdentityTypeSchema),
+      userAssignedIdentities: Schema.optional(
+        Schema.suspend(() => UserAssignedIdentitiesSchema),
+      ),
+    }),
+  ),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  location: Schema.String,
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
-  systemData: Schema.optional(
-    Schema.Struct({
-      createdBy: Schema.optional(Schema.String),
-      createdByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      createdAt: Schema.optional(Schema.String),
-      lastModifiedBy: Schema.optional(Schema.String),
-      lastModifiedByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      lastModifiedAt: Schema.optional(Schema.String),
-    }),
-  ),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
 });
 export type FlowsEnableOutput = typeof FlowsEnableOutput.Type;
 
@@ -929,23 +1139,32 @@ export type FlowsGeneratePassphraseInput =
 // Output Schema
 export const FlowsGeneratePassphraseOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(Schema.suspend(() => FlowPropertiesSchema)),
+    plan: Schema.optional(
+      Schema.Struct({
+        name: Schema.String,
+        publisher: Schema.String,
+        product: Schema.String,
+        promotionCode: Schema.optional(Schema.String),
+        version: Schema.optional(Schema.String),
+      }),
+    ),
+    identity: Schema.optional(
+      Schema.Struct({
+        principalId: Schema.optional(Schema.String),
+        tenantId: Schema.optional(Schema.String),
+        type: Schema.suspend(() => ManagedServiceIdentityTypeSchema),
+        userAssignedIdentities: Schema.optional(
+          Schema.suspend(() => UserAssignedIdentitiesSchema),
+        ),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type FlowsGeneratePassphraseOutput =
   typeof FlowsGeneratePassphraseOutput.Type;
@@ -983,23 +1202,32 @@ export type FlowsGetInput = typeof FlowsGetInput.Type;
 
 // Output Schema
 export const FlowsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.optional(Schema.suspend(() => FlowPropertiesSchema)),
+  plan: Schema.optional(
+    Schema.Struct({
+      name: Schema.String,
+      publisher: Schema.String,
+      product: Schema.String,
+      promotionCode: Schema.optional(Schema.String),
+      version: Schema.optional(Schema.String),
+    }),
+  ),
+  identity: Schema.optional(
+    Schema.Struct({
+      principalId: Schema.optional(Schema.String),
+      tenantId: Schema.optional(Schema.String),
+      type: Schema.suspend(() => ManagedServiceIdentityTypeSchema),
+      userAssignedIdentities: Schema.optional(
+        Schema.suspend(() => UserAssignedIdentitiesSchema),
+      ),
+    }),
+  ),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  location: Schema.String,
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
-  systemData: Schema.optional(
-    Schema.Struct({
-      createdBy: Schema.optional(Schema.String),
-      createdByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      createdAt: Schema.optional(Schema.String),
-      lastModifiedBy: Schema.optional(Schema.String),
-      lastModifiedByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      lastModifiedAt: Schema.optional(Schema.String),
-    }),
-  ),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
 });
 export type FlowsGetOutput = typeof FlowsGetOutput.Type;
 
@@ -1198,23 +1426,32 @@ export type FlowsLinkInput = typeof FlowsLinkInput.Type;
 
 // Output Schema
 export const FlowsLinkOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.optional(Schema.suspend(() => FlowPropertiesSchema)),
+  plan: Schema.optional(
+    Schema.Struct({
+      name: Schema.String,
+      publisher: Schema.String,
+      product: Schema.String,
+      promotionCode: Schema.optional(Schema.String),
+      version: Schema.optional(Schema.String),
+    }),
+  ),
+  identity: Schema.optional(
+    Schema.Struct({
+      principalId: Schema.optional(Schema.String),
+      tenantId: Schema.optional(Schema.String),
+      type: Schema.suspend(() => ManagedServiceIdentityTypeSchema),
+      userAssignedIdentities: Schema.optional(
+        Schema.suspend(() => UserAssignedIdentitiesSchema),
+      ),
+    }),
+  ),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  location: Schema.String,
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
-  systemData: Schema.optional(
-    Schema.Struct({
-      createdBy: Schema.optional(Schema.String),
-      createdByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      createdAt: Schema.optional(Schema.String),
-      lastModifiedBy: Schema.optional(Schema.String),
-      lastModifiedByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      lastModifiedAt: Schema.optional(Schema.String),
-    }),
-  ),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
 });
 export type FlowsLinkOutput = typeof FlowsLinkOutput.Type;
 
@@ -1250,37 +1487,7 @@ export type FlowsListByConnectionInput = typeof FlowsListByConnectionInput.Type;
 // Output Schema
 export const FlowsListByConnectionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => FlowSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type FlowsListByConnectionOutput =
@@ -1323,23 +1530,32 @@ export type FlowsSetDestinationEndpointPortsInput =
 // Output Schema
 export const FlowsSetDestinationEndpointPortsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(Schema.suspend(() => FlowPropertiesSchema)),
+    plan: Schema.optional(
+      Schema.Struct({
+        name: Schema.String,
+        publisher: Schema.String,
+        product: Schema.String,
+        promotionCode: Schema.optional(Schema.String),
+        version: Schema.optional(Schema.String),
+      }),
+    ),
+    identity: Schema.optional(
+      Schema.Struct({
+        principalId: Schema.optional(Schema.String),
+        tenantId: Schema.optional(Schema.String),
+        type: Schema.suspend(() => ManagedServiceIdentityTypeSchema),
+        userAssignedIdentities: Schema.optional(
+          Schema.suspend(() => UserAssignedIdentitiesSchema),
+        ),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type FlowsSetDestinationEndpointPortsOutput =
   typeof FlowsSetDestinationEndpointPortsOutput.Type;
@@ -1381,23 +1597,32 @@ export type FlowsSetDestinationEndpointsInput =
 // Output Schema
 export const FlowsSetDestinationEndpointsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(Schema.suspend(() => FlowPropertiesSchema)),
+    plan: Schema.optional(
+      Schema.Struct({
+        name: Schema.String,
+        publisher: Schema.String,
+        product: Schema.String,
+        promotionCode: Schema.optional(Schema.String),
+        version: Schema.optional(Schema.String),
+      }),
+    ),
+    identity: Schema.optional(
+      Schema.Struct({
+        principalId: Schema.optional(Schema.String),
+        tenantId: Schema.optional(Schema.String),
+        type: Schema.suspend(() => ManagedServiceIdentityTypeSchema),
+        userAssignedIdentities: Schema.optional(
+          Schema.suspend(() => UserAssignedIdentitiesSchema),
+        ),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type FlowsSetDestinationEndpointsOutput =
   typeof FlowsSetDestinationEndpointsOutput.Type;
@@ -1438,23 +1663,32 @@ export type FlowsSetPassphraseInput = typeof FlowsSetPassphraseInput.Type;
 // Output Schema
 export const FlowsSetPassphraseOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(Schema.suspend(() => FlowPropertiesSchema)),
+    plan: Schema.optional(
+      Schema.Struct({
+        name: Schema.String,
+        publisher: Schema.String,
+        product: Schema.String,
+        promotionCode: Schema.optional(Schema.String),
+        version: Schema.optional(Schema.String),
+      }),
+    ),
+    identity: Schema.optional(
+      Schema.Struct({
+        principalId: Schema.optional(Schema.String),
+        tenantId: Schema.optional(Schema.String),
+        type: Schema.suspend(() => ManagedServiceIdentityTypeSchema),
+        userAssignedIdentities: Schema.optional(
+          Schema.suspend(() => UserAssignedIdentitiesSchema),
+        ),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type FlowsSetPassphraseOutput = typeof FlowsSetPassphraseOutput.Type;
 
@@ -1494,23 +1728,32 @@ export type FlowsSetSourceAddressesInput =
 // Output Schema
 export const FlowsSetSourceAddressesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(Schema.suspend(() => FlowPropertiesSchema)),
+    plan: Schema.optional(
+      Schema.Struct({
+        name: Schema.String,
+        publisher: Schema.String,
+        product: Schema.String,
+        promotionCode: Schema.optional(Schema.String),
+        version: Schema.optional(Schema.String),
+      }),
+    ),
+    identity: Schema.optional(
+      Schema.Struct({
+        principalId: Schema.optional(Schema.String),
+        tenantId: Schema.optional(Schema.String),
+        type: Schema.suspend(() => ManagedServiceIdentityTypeSchema),
+        userAssignedIdentities: Schema.optional(
+          Schema.suspend(() => UserAssignedIdentitiesSchema),
+        ),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type FlowsSetSourceAddressesOutput =
   typeof FlowsSetSourceAddressesOutput.Type;
@@ -1541,20 +1784,9 @@ export const FlowsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     Schema.Struct({
       principalId: Schema.optional(Schema.String),
       tenantId: Schema.optional(Schema.String),
-      type: Schema.Literals([
-        "None",
-        "SystemAssigned",
-        "UserAssigned",
-        "SystemAssigned,UserAssigned",
-      ]),
+      type: Schema.suspend(() => ManagedServiceIdentityTypeSchema),
       userAssignedIdentities: Schema.optional(
-        Schema.Record(
-          Schema.String,
-          Schema.Struct({
-            principalId: Schema.optional(Schema.String),
-            clientId: Schema.optional(Schema.String),
-          }),
-        ),
+        Schema.suspend(() => UserAssignedIdentitiesSchema),
       ),
     }),
   ),
@@ -1571,23 +1803,32 @@ export type FlowsUpdateInput = typeof FlowsUpdateInput.Type;
 
 // Output Schema
 export const FlowsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.optional(Schema.suspend(() => FlowPropertiesSchema)),
+  plan: Schema.optional(
+    Schema.Struct({
+      name: Schema.String,
+      publisher: Schema.String,
+      product: Schema.String,
+      promotionCode: Schema.optional(Schema.String),
+      version: Schema.optional(Schema.String),
+    }),
+  ),
+  identity: Schema.optional(
+    Schema.Struct({
+      principalId: Schema.optional(Schema.String),
+      tenantId: Schema.optional(Schema.String),
+      type: Schema.suspend(() => ManagedServiceIdentityTypeSchema),
+      userAssignedIdentities: Schema.optional(
+        Schema.suspend(() => UserAssignedIdentitiesSchema),
+      ),
+    }),
+  ),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  location: Schema.String,
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
-  systemData: Schema.optional(
-    Schema.Struct({
-      createdBy: Schema.optional(Schema.String),
-      createdByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      createdAt: Schema.optional(Schema.String),
-      lastModifiedBy: Schema.optional(Schema.String),
-      lastModifiedByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      lastModifiedAt: Schema.optional(Schema.String),
-    }),
-  ),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
 });
 export type FlowsUpdateOutput = typeof FlowsUpdateOutput.Type;
 
@@ -1626,44 +1867,7 @@ export type ListFlowsByPipelineListInput =
 export const ListFlowsByPipelineListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          flows: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                id: Schema.optional(Schema.String),
-                name: Schema.optional(Schema.String),
-                type: Schema.optional(Schema.String),
-                systemData: Schema.optional(
-                  Schema.Struct({
-                    createdBy: Schema.optional(Schema.String),
-                    createdByType: Schema.optional(
-                      Schema.Literals([
-                        "User",
-                        "Application",
-                        "ManagedIdentity",
-                        "Key",
-                      ]),
-                    ),
-                    createdAt: Schema.optional(Schema.String),
-                    lastModifiedBy: Schema.optional(Schema.String),
-                    lastModifiedByType: Schema.optional(
-                      Schema.Literals([
-                        "User",
-                        "Application",
-                        "ManagedIdentity",
-                        "Key",
-                      ]),
-                    ),
-                    lastModifiedAt: Schema.optional(Schema.String),
-                  }),
-                ),
-              }),
-            ),
-          ),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => ListFlowsByPipelineConnectionSchema)),
     ),
   });
 export type ListFlowsByPipelineListOutput =
@@ -1703,103 +1907,7 @@ export type ListPendingConnectionsListInput =
 // Output Schema
 export const ListPendingConnectionsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        subscriptionId: Schema.optional(Schema.String),
-        pipeline: Schema.String,
-        direction: Schema.optional(Schema.Literals(["Send", "Receive"])),
-        justification: Schema.optional(Schema.String),
-        status: Schema.optional(
-          Schema.Literals(["InReview", "Approved", "Rejected", "Accepted"]),
-        ),
-        forceDisabledStatus: Schema.optional(
-          Schema.Array(
-            Schema.Literals([
-              "ConnectionForceDisabled",
-              "FlowTypeForceDisabled",
-            ]),
-          ),
-        ),
-        statusReason: Schema.optional(Schema.String),
-        linkStatus: Schema.optional(Schema.Literals(["Linked", "Unlinked"])),
-        linkedConnectionId: Schema.optional(Schema.String),
-        flowTypes: Schema.optional(
-          Schema.Array(
-            Schema.Literals([
-              "Unknown",
-              "Complex",
-              "DevSecOps",
-              "Messaging",
-              "Mission",
-              "MicrosoftInternal",
-              "BasicFiles",
-              "Data",
-              "Standard",
-              "StreamingVideo",
-              "Opaque",
-              "MissionOpaqueXML",
-              "DiskImages",
-              "API",
-            ]),
-          ),
-        ),
-        requirementId: Schema.optional(Schema.String),
-        remoteSubscriptionId: Schema.optional(Schema.String),
-        approver: Schema.optional(Schema.String),
-        pin: Schema.optional(Schema.String),
-        dateSubmitted: Schema.optional(Schema.String),
-        primaryContact: Schema.optional(Schema.String),
-        secondaryContacts: Schema.optional(Schema.Array(Schema.String)),
-        provisioningState: Schema.optional(
-          Schema.Literals(["Succeeded", "Failed", "Canceled", "Accepted"]),
-        ),
-        policies: Schema.optional(Schema.Array(Schema.String)),
-        schemas: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              id: Schema.optional(Schema.String),
-              connectionId: Schema.optional(Schema.String),
-              status: Schema.optional(Schema.Literals(["New", "Approved"])),
-              name: Schema.optional(Schema.String),
-              content: Schema.optional(Schema.String),
-              direction: Schema.optional(Schema.Literals(["Send", "Receive"])),
-              schemaUri: Schema.optional(Schema.String),
-              schemaType: Schema.optional(Schema.Literals(["Xsd", "Zip"])),
-            }),
-          ),
-        ),
-        schemaUris: Schema.optional(Schema.Array(Schema.String)),
-        tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        location: Schema.String,
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => PendingConnectionSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type ListPendingConnectionsListOutput =
@@ -1838,136 +1946,7 @@ export type ListPendingFlowsListInput = typeof ListPendingFlowsListInput.Type;
 // Output Schema
 export const ListPendingFlowsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        subscriptionId: Schema.optional(Schema.String),
-        connectionId: Schema.optional(Schema.String),
-        connection: Schema.optional(
-          Schema.Struct({
-            name: Schema.optional(Schema.String),
-            id: Schema.String,
-            location: Schema.optional(Schema.String),
-            subscriptionName: Schema.optional(Schema.String),
-          }),
-        ),
-        flowId: Schema.optional(Schema.String),
-        keyVaultUri: Schema.optional(Schema.String),
-        linkStatus: Schema.optional(Schema.Literals(["Linked", "Unlinked"])),
-        linkedFlowId: Schema.optional(Schema.String),
-        status: Schema.optional(Schema.Literals(["Enabled", "Disabled"])),
-        forceDisabledStatus: Schema.optional(
-          Schema.Array(
-            Schema.Literals([
-              "ConnectionForceDisabled",
-              "FlowTypeForceDisabled",
-            ]),
-          ),
-        ),
-        storageAccountName: Schema.optional(Schema.String),
-        storageAccountId: Schema.optional(Schema.String),
-        storageContainerName: Schema.optional(Schema.String),
-        storageTableName: Schema.optional(Schema.String),
-        serviceBusQueueId: Schema.optional(Schema.String),
-        flowType: Schema.optional(
-          Schema.Literals([
-            "Unknown",
-            "Complex",
-            "DevSecOps",
-            "Messaging",
-            "Mission",
-            "MicrosoftInternal",
-            "BasicFiles",
-            "Data",
-            "Standard",
-            "StreamingVideo",
-            "Opaque",
-            "MissionOpaqueXML",
-            "DiskImages",
-            "API",
-          ]),
-        ),
-        dataType: Schema.optional(Schema.Literals(["Blob", "Table"])),
-        provisioningState: Schema.optional(
-          Schema.Literals(["Succeeded", "Failed", "Canceled", "Accepted"]),
-        ),
-        policies: Schema.optional(Schema.Array(Schema.String)),
-        schema: Schema.optional(
-          Schema.Struct({
-            id: Schema.optional(Schema.String),
-            connectionId: Schema.optional(Schema.String),
-            status: Schema.optional(Schema.Literals(["New", "Approved"])),
-            name: Schema.optional(Schema.String),
-            content: Schema.optional(Schema.String),
-            direction: Schema.optional(Schema.Literals(["Send", "Receive"])),
-            schemaUri: Schema.optional(Schema.String),
-            schemaType: Schema.optional(Schema.Literals(["Xsd", "Zip"])),
-          }),
-        ),
-        messagingOptions: Schema.optional(
-          Schema.Struct({
-            billingTier: Schema.optional(
-              Schema.Literals(["BlobTransport", "Standard", "Premium"]),
-            ),
-          }),
-        ),
-        apiFlowOptions: Schema.optional(
-          Schema.Struct({
-            remoteEndpoint: Schema.optional(Schema.String),
-            cname: Schema.optional(Schema.String),
-            apiMode: Schema.optional(Schema.Literals(["SDK", "Endpoint"])),
-            identityTranslation: Schema.optional(
-              Schema.Literals(["UserIdentity", "ServiceIdentity"]),
-            ),
-            senderClientId: Schema.optional(Schema.String),
-            remoteCallingModeClientId: Schema.optional(Schema.String),
-            audienceOverride: Schema.optional(Schema.String),
-          }),
-        ),
-        customerManagedKeyVaultUri: Schema.optional(Schema.String),
-        streamId: Schema.optional(Schema.String),
-        streamProtocol: Schema.optional(Schema.Literals(["UDP", "SRT", "RTP"])),
-        streamLatency: Schema.optional(Schema.Number),
-        passphrase: Schema.optional(Schema.String),
-        sourceAddresses: Schema.optional(
-          Schema.Struct({
-            sourceAddresses: Schema.optional(Schema.Array(Schema.String)),
-          }),
-        ),
-        destinationEndpoints: Schema.optional(Schema.Array(Schema.String)),
-        destinationEndpointPorts: Schema.optional(Schema.Array(Schema.Number)),
-        eventHubId: Schema.optional(Schema.String),
-        consumerGroup: Schema.optional(Schema.String),
-        tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        location: Schema.String,
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => PendingFlowSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type ListPendingFlowsListOutput = typeof ListPendingFlowsListOutput.Type;
@@ -1994,12 +1973,12 @@ export const ListSchemasListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   pipelineName: Schema.String.pipe(T.PathParam()),
   id: Schema.optional(Schema.String),
   connectionId: Schema.optional(Schema.String),
-  status: Schema.optional(Schema.Literals(["New", "Approved"])),
+  status: Schema.optional(Schema.suspend(() => SchemaStatusSchema)),
   name: Schema.optional(Schema.String),
   content: Schema.optional(Schema.String),
-  direction: Schema.optional(Schema.Literals(["Send", "Receive"])),
+  direction: Schema.optional(Schema.suspend(() => DirectionSchema)),
   schemaUri: Schema.optional(Schema.String),
-  schemaType: Schema.optional(Schema.Literals(["Xsd", "Zip"])),
+  schemaType: Schema.optional(Schema.suspend(() => SchemaTypeSchema)),
 }).pipe(
   T.Http({
     method: "POST",
@@ -2011,20 +1990,7 @@ export type ListSchemasListInput = typeof ListSchemasListInput.Type;
 
 // Output Schema
 export const ListSchemasListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  value: Schema.optional(
-    Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        connectionId: Schema.optional(Schema.String),
-        status: Schema.optional(Schema.Literals(["New", "Approved"])),
-        name: Schema.optional(Schema.String),
-        content: Schema.optional(Schema.String),
-        direction: Schema.optional(Schema.Literals(["Send", "Receive"])),
-        schemaUri: Schema.optional(Schema.String),
-        schemaType: Schema.optional(Schema.Literals(["Xsd", "Zip"])),
-      }),
-    ),
-  ),
+  value: Schema.optional(Schema.Array(Schema.suspend(() => SchemaSchema))),
 });
 export type ListSchemasListOutput = typeof ListSchemasListOutput.Type;
 
@@ -2055,26 +2021,7 @@ export type OperationsListInput = typeof OperationsListInput.Type;
 
 // Output Schema
 export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  value: Schema.optional(
-    Schema.Array(
-      Schema.Struct({
-        name: Schema.optional(Schema.String),
-        isDataAction: Schema.optional(Schema.Boolean),
-        display: Schema.optional(
-          Schema.Struct({
-            provider: Schema.optional(Schema.String),
-            resource: Schema.optional(Schema.String),
-            operation: Schema.optional(Schema.String),
-            description: Schema.optional(Schema.String),
-          }),
-        ),
-        origin: Schema.optional(
-          Schema.Literals(["user", "system", "user,system"]),
-        ),
-        actionType: Schema.optional(Schema.Literals(["Internal"])),
-      }),
-    ),
-  ),
+  value: Schema.optional(Schema.Array(Schema.suspend(() => OperationSchema))),
   nextLink: Schema.optional(Schema.String),
 });
 export type OperationsListOutput = typeof OperationsListOutput.Type;
@@ -2111,23 +2058,25 @@ export type PipelinesApproveConnectionInput =
 // Output Schema
 export const PipelinesApproveConnectionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => ConnectionPropertiesSchema),
+    ),
+    identity: Schema.optional(
+      Schema.Struct({
+        principalId: Schema.optional(Schema.String),
+        tenantId: Schema.optional(Schema.String),
+        type: Schema.suspend(() => ManagedServiceIdentityTypeSchema),
+        userAssignedIdentities: Schema.optional(
+          Schema.suspend(() => UserAssignedIdentitiesSchema),
+        ),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type PipelinesApproveConnectionOutput =
   typeof PipelinesApproveConnectionOutput.Type;
@@ -2153,138 +2102,14 @@ export const PipelinesCreateOrUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     pipelineName: Schema.String.pipe(T.PathParam()),
-    properties: Schema.optional(
-      Schema.Struct({
-        remoteCloud: Schema.String,
-        displayName: Schema.optional(Schema.String),
-        connections: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              id: Schema.String,
-              name: Schema.optional(Schema.String),
-              type: Schema.optional(Schema.String),
-              location: Schema.optional(Schema.String),
-              etag: Schema.optional(Schema.String),
-              systemData: Schema.optional(
-                Schema.Struct({
-                  createdBy: Schema.optional(Schema.String),
-                  createdByType: Schema.optional(
-                    Schema.Literals([
-                      "User",
-                      "Application",
-                      "ManagedIdentity",
-                      "Key",
-                    ]),
-                  ),
-                  createdAt: Schema.optional(Schema.String),
-                  lastModifiedBy: Schema.optional(Schema.String),
-                  lastModifiedByType: Schema.optional(
-                    Schema.Literals([
-                      "User",
-                      "Application",
-                      "ManagedIdentity",
-                      "Key",
-                    ]),
-                  ),
-                  lastModifiedAt: Schema.optional(Schema.String),
-                }),
-              ),
-              properties: Schema.optional(
-                Schema.Struct({
-                  internalMetadata: Schema.optional(
-                    Schema.Struct({
-                      operationStatus: Schema.optional(
-                        Schema.Struct({
-                          status: Schema.optional(
-                            Schema.Literals(["Failed", "Succeeded"]),
-                          ),
-                          id: Schema.optional(Schema.String),
-                          message: Schema.optional(Schema.String),
-                        }),
-                      ),
-                      statusSetBy: Schema.optional(Schema.String),
-                    }),
-                  ),
-                }),
-              ),
-            }),
-          ),
-        ),
-        subscribers: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              email: Schema.optional(Schema.String),
-              notifications: Schema.optional(Schema.Number),
-            }),
-          ),
-        ),
-        provisioningState: Schema.optional(
-          Schema.Literals(["Succeeded", "Failed", "Canceled", "Accepted"]),
-        ),
-        policies: Schema.optional(Schema.Array(Schema.String)),
-        flowTypes: Schema.optional(
-          Schema.Array(
-            Schema.Literals([
-              "Unknown",
-              "Complex",
-              "DevSecOps",
-              "Messaging",
-              "Mission",
-              "MicrosoftInternal",
-              "BasicFiles",
-              "Data",
-              "Standard",
-              "StreamingVideo",
-              "Opaque",
-              "MissionOpaqueXML",
-              "DiskImages",
-              "API",
-            ]),
-          ),
-        ),
-        disabledFlowTypes: Schema.optional(
-          Schema.Array(
-            Schema.Literals([
-              "Unknown",
-              "Complex",
-              "DevSecOps",
-              "Messaging",
-              "Mission",
-              "MicrosoftInternal",
-              "BasicFiles",
-              "Data",
-              "Standard",
-              "StreamingVideo",
-              "Opaque",
-              "MissionOpaqueXML",
-              "DiskImages",
-              "API",
-            ]),
-          ),
-        ),
-        quarantineDownloadStorageAccount: Schema.optional(Schema.String),
-        quarantineDownloadStorageContainer: Schema.optional(Schema.String),
-        status: Schema.optional(Schema.Literals(["Enabled", "Disabled"])),
-      }),
-    ),
+    properties: Schema.optional(Schema.suspend(() => PipelinePropertiesSchema)),
     identity: Schema.optional(
       Schema.Struct({
         principalId: Schema.optional(Schema.String),
         tenantId: Schema.optional(Schema.String),
-        type: Schema.Literals([
-          "None",
-          "SystemAssigned",
-          "UserAssigned",
-          "SystemAssigned,UserAssigned",
-        ]),
+        type: Schema.suspend(() => ManagedServiceIdentityTypeSchema),
         userAssignedIdentities: Schema.optional(
-          Schema.Record(
-            Schema.String,
-            Schema.Struct({
-              principalId: Schema.optional(Schema.String),
-              clientId: Schema.optional(Schema.String),
-            }),
-          ),
+          Schema.suspend(() => UserAssignedIdentitiesSchema),
         ),
       }),
     ),
@@ -2304,23 +2129,23 @@ export type PipelinesCreateOrUpdateInput =
 // Output Schema
 export const PipelinesCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(Schema.suspend(() => PipelinePropertiesSchema)),
+    identity: Schema.optional(
+      Schema.Struct({
+        principalId: Schema.optional(Schema.String),
+        tenantId: Schema.optional(Schema.String),
+        type: Schema.suspend(() => ManagedServiceIdentityTypeSchema),
+        userAssignedIdentities: Schema.optional(
+          Schema.suspend(() => UserAssignedIdentitiesSchema),
+        ),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type PipelinesCreateOrUpdateOutput =
   typeof PipelinesCreateOrUpdateOutput.Type;
@@ -2378,8 +2203,8 @@ export const PipelinesExecuteActionInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     pipelineName: Schema.String.pipe(T.PathParam()),
-    actionType: Schema.Literals(["AllowUpdates", "ForceDisable"]),
-    targetType: Schema.Literals(["Pipeline", "Connection", "FlowType"]),
+    actionType: Schema.suspend(() => ActionTypeSchema),
+    targetType: Schema.suspend(() => TargetTypeSchema),
     targets: Schema.Array(Schema.String),
     justification: Schema.optional(Schema.String),
   }).pipe(
@@ -2396,23 +2221,23 @@ export type PipelinesExecuteActionInput =
 // Output Schema
 export const PipelinesExecuteActionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(Schema.suspend(() => PipelinePropertiesSchema)),
+    identity: Schema.optional(
+      Schema.Struct({
+        principalId: Schema.optional(Schema.String),
+        tenantId: Schema.optional(Schema.String),
+        type: Schema.suspend(() => ManagedServiceIdentityTypeSchema),
+        userAssignedIdentities: Schema.optional(
+          Schema.suspend(() => UserAssignedIdentitiesSchema),
+        ),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type PipelinesExecuteActionOutput =
   typeof PipelinesExecuteActionOutput.Type;
@@ -2448,23 +2273,23 @@ export type PipelinesGetInput = typeof PipelinesGetInput.Type;
 
 // Output Schema
 export const PipelinesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.optional(Schema.suspend(() => PipelinePropertiesSchema)),
+  identity: Schema.optional(
+    Schema.Struct({
+      principalId: Schema.optional(Schema.String),
+      tenantId: Schema.optional(Schema.String),
+      type: Schema.suspend(() => ManagedServiceIdentityTypeSchema),
+      userAssignedIdentities: Schema.optional(
+        Schema.suspend(() => UserAssignedIdentitiesSchema),
+      ),
+    }),
+  ),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  location: Schema.String,
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
-  systemData: Schema.optional(
-    Schema.Struct({
-      createdBy: Schema.optional(Schema.String),
-      createdByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      createdAt: Schema.optional(Schema.String),
-      lastModifiedBy: Schema.optional(Schema.String),
-      lastModifiedByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      lastModifiedAt: Schema.optional(Schema.String),
-    }),
-  ),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
 });
 export type PipelinesGetOutput = typeof PipelinesGetOutput.Type;
 
@@ -2499,37 +2324,7 @@ export type PipelinesListByResourceGroupInput =
 // Output Schema
 export const PipelinesListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => PipelineSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type PipelinesListByResourceGroupOutput =
@@ -2565,37 +2360,7 @@ export type PipelinesListBySubscriptionInput =
 // Output Schema
 export const PipelinesListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => PipelineSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type PipelinesListBySubscriptionOutput =
@@ -2636,23 +2401,25 @@ export type PipelinesRejectConnectionInput =
 // Output Schema
 export const PipelinesRejectConnectionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => ConnectionPropertiesSchema),
+    ),
+    identity: Schema.optional(
+      Schema.Struct({
+        principalId: Schema.optional(Schema.String),
+        tenantId: Schema.optional(Schema.String),
+        type: Schema.suspend(() => ManagedServiceIdentityTypeSchema),
+        userAssignedIdentities: Schema.optional(
+          Schema.suspend(() => UserAssignedIdentitiesSchema),
+        ),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type PipelinesRejectConnectionOutput =
   typeof PipelinesRejectConnectionOutput.Type;
@@ -2678,48 +2445,16 @@ export const PipelinesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   pipelineName: Schema.String.pipe(T.PathParam()),
   properties: Schema.optional(
-    Schema.Struct({
-      flowTypes: Schema.optional(
-        Schema.Array(
-          Schema.Literals([
-            "Unknown",
-            "Complex",
-            "DevSecOps",
-            "Messaging",
-            "Mission",
-            "MicrosoftInternal",
-            "BasicFiles",
-            "Data",
-            "Standard",
-            "StreamingVideo",
-            "Opaque",
-            "MissionOpaqueXML",
-            "DiskImages",
-            "API",
-          ]),
-        ),
-      ),
-    }),
+    Schema.suspend(() => PipelinesPatchPropertiesSchema),
   ),
   tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   identity: Schema.optional(
     Schema.Struct({
       principalId: Schema.optional(Schema.String),
       tenantId: Schema.optional(Schema.String),
-      type: Schema.Literals([
-        "None",
-        "SystemAssigned",
-        "UserAssigned",
-        "SystemAssigned,UserAssigned",
-      ]),
+      type: Schema.suspend(() => ManagedServiceIdentityTypeSchema),
       userAssignedIdentities: Schema.optional(
-        Schema.Record(
-          Schema.String,
-          Schema.Struct({
-            principalId: Schema.optional(Schema.String),
-            clientId: Schema.optional(Schema.String),
-          }),
-        ),
+        Schema.suspend(() => UserAssignedIdentitiesSchema),
       ),
     }),
   ),
@@ -2735,23 +2470,23 @@ export type PipelinesUpdateInput = typeof PipelinesUpdateInput.Type;
 
 // Output Schema
 export const PipelinesUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.optional(Schema.suspend(() => PipelinePropertiesSchema)),
+  identity: Schema.optional(
+    Schema.Struct({
+      principalId: Schema.optional(Schema.String),
+      tenantId: Schema.optional(Schema.String),
+      type: Schema.suspend(() => ManagedServiceIdentityTypeSchema),
+      userAssignedIdentities: Schema.optional(
+        Schema.suspend(() => UserAssignedIdentitiesSchema),
+      ),
+    }),
+  ),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  location: Schema.String,
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
-  systemData: Schema.optional(
-    Schema.Struct({
-      createdBy: Schema.optional(Schema.String),
-      createdByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      createdAt: Schema.optional(Schema.String),
-      lastModifiedBy: Schema.optional(Schema.String),
-      lastModifiedByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      lastModifiedAt: Schema.optional(Schema.String),
-    }),
-  ),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
 });
 export type PipelinesUpdateOutput = typeof PipelinesUpdateOutput.Type;
 

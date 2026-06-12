@@ -1,4 +1,8 @@
 import * as Schema from "effect/Schema";
+import {
+  ConsumptionHistoryPerProjectV2Schema,
+  PaginationSchema,
+} from "./_schemas.ts";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
@@ -22,37 +26,9 @@ export type GetConsumptionHistoryPerProjectV2Input =
 export const GetConsumptionHistoryPerProjectV2Output =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     projects: Schema.Array(
-      Schema.Struct({
-        project_id: Schema.String,
-        periods: Schema.Array(
-          Schema.Struct({
-            period_id: Schema.String,
-            period_plan: Schema.String,
-            period_start: Schema.String,
-            period_end: Schema.optional(Schema.String),
-            consumption: Schema.Array(
-              Schema.Struct({
-                timeframe_start: Schema.optional(Schema.String),
-                timeframe_end: Schema.optional(Schema.String),
-                metrics: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      metric_name: Schema.String,
-                      value: Schema.Number,
-                    }),
-                  ),
-                ),
-              }),
-            ),
-          }),
-        ),
-      }),
+      Schema.suspend(() => ConsumptionHistoryPerProjectV2Schema),
     ),
-    pagination: Schema.optional(
-      Schema.Struct({
-        cursor: Schema.String,
-      }),
-    ),
+    pagination: Schema.optional(Schema.suspend(() => PaginationSchema)),
   });
 export type GetConsumptionHistoryPerProjectV2Output =
   typeof GetConsumptionHistoryPerProjectV2Output.Type;
@@ -108,7 +84,6 @@ Possible values:
 - `public_network_transfer_bytes`
 - `private_network_transfer_bytes`
 - `extra_branches_month`
-- `snapshot_storage_bytes_month`
 
 A list of metrics can be specified as an array of parameter values or as a comma-separated list in a single parameter value.
 - As an array of parameter values: `metrics=compute_unit_seconds&metrics=extra_branches_month`

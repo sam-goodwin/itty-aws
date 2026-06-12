@@ -8,6 +8,116 @@ import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
+// Shared schemas
+const OperationSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  isDataAction: Schema.optional(Schema.Boolean),
+  display: Schema.optional(Schema.suspend(() => OperationDisplaySchema)),
+  origin: Schema.optional(Schema.String),
+});
+const OperationDisplaySchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  provider: Schema.optional(Schema.String),
+  resource: Schema.optional(Schema.String),
+  operation: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+});
+const AzureTrafficCollectorSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+});
+const systemDataSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  createdBy: Schema.optional(Schema.String),
+  createdByType: Schema.optional(
+    Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+  ),
+  createdAt: Schema.optional(Schema.String),
+  lastModifiedBy: Schema.optional(Schema.String),
+  lastModifiedByType: Schema.optional(
+    Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+  ),
+  lastModifiedAt: Schema.optional(Schema.String),
+});
+const AzureTrafficCollectorPropertiesFormatSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    collectorPolicies: Schema.optional(
+      Schema.Array(Schema.suspend(() => ResourceReferenceSchema)),
+    ),
+    virtualHub: Schema.optional(Schema.suspend(() => ResourceReferenceSchema)),
+    provisioningState: Schema.optional(
+      Schema.suspend(() => ProvisioningStateSchema),
+    ),
+  });
+const ResourceReferenceSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+});
+const ProvisioningStateSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Succeeded",
+  "Updating",
+  "Deleting",
+  "Failed",
+]);
+const CollectorPolicySchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+});
+const CollectorPolicyPropertiesFormatSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    ingestionPolicy: Schema.optional(
+      Schema.suspend(() => IngestionPolicyPropertiesFormatSchema),
+    ),
+    emissionPolicies: Schema.optional(
+      Schema.Array(
+        Schema.suspend(() => EmissionPoliciesPropertiesFormatSchema),
+      ),
+    ),
+    provisioningState: Schema.optional(
+      Schema.suspend(() => ProvisioningStateSchema),
+    ),
+  });
+const IngestionPolicyPropertiesFormatSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    ingestionType: Schema.optional(Schema.suspend(() => IngestionTypeSchema)),
+    ingestionSources: Schema.optional(
+      Schema.Array(
+        Schema.suspend(() => IngestionSourcesPropertiesFormatSchema),
+      ),
+    ),
+  });
+const IngestionTypeSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "IPFIX",
+]);
+const IngestionSourcesPropertiesFormatSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    sourceType: Schema.optional(Schema.suspend(() => SourceTypeSchema)),
+    resourceId: Schema.optional(Schema.String),
+  });
+const SourceTypeSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Resource",
+]);
+const EmissionPoliciesPropertiesFormatSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    emissionType: Schema.optional(Schema.suspend(() => EmissionTypeSchema)),
+    emissionDestinations: Schema.optional(
+      Schema.Array(Schema.suspend(() => EmissionPolicyDestinationSchema)),
+    ),
+  });
+const EmissionTypeSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "IPFIX",
+]);
+const EmissionPolicyDestinationSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    destinationType: Schema.optional(
+      Schema.suspend(() => DestinationTypeSchema),
+    ),
+  });
+const DestinationTypeSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "AzureMonitor",
+]);
+
 // Input Schema
 export const AzureTrafficCollectorsByResourceGroupListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -26,37 +136,7 @@ export type AzureTrafficCollectorsByResourceGroupListInput =
 // Output Schema
 export const AzureTrafficCollectorsByResourceGroupListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => AzureTrafficCollectorSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type AzureTrafficCollectorsByResourceGroupListOutput =
@@ -92,37 +172,7 @@ export type AzureTrafficCollectorsBySubscriptionListInput =
 // Output Schema
 export const AzureTrafficCollectorsBySubscriptionListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => AzureTrafficCollectorSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type AzureTrafficCollectorsBySubscriptionListOutput =
@@ -147,23 +197,7 @@ export const AzureTrafficCollectorsCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     azureTrafficCollectorName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        collectorPolicies: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              id: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        virtualHub: Schema.optional(
-          Schema.Struct({
-            id: Schema.optional(Schema.String),
-          }),
-        ),
-        provisioningState: Schema.optional(
-          Schema.Literals(["Succeeded", "Updating", "Deleting", "Failed"]),
-        ),
-      }),
+      Schema.suspend(() => AzureTrafficCollectorPropertiesFormatSchema),
     ),
     location: Schema.String,
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
@@ -182,23 +216,16 @@ export type AzureTrafficCollectorsCreateOrUpdateInput =
 // Output Schema
 export const AzureTrafficCollectorsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => AzureTrafficCollectorPropertiesFormatSchema),
+    ),
+    location: Schema.String,
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    etag: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type AzureTrafficCollectorsCreateOrUpdateOutput =
   typeof AzureTrafficCollectorsCreateOrUpdateOutput.Type;
@@ -273,23 +300,16 @@ export type AzureTrafficCollectorsGetInput =
 // Output Schema
 export const AzureTrafficCollectorsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => AzureTrafficCollectorPropertiesFormatSchema),
+    ),
+    location: Schema.String,
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    etag: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type AzureTrafficCollectorsGetOutput =
   typeof AzureTrafficCollectorsGetOutput.Type;
@@ -329,23 +349,16 @@ export type AzureTrafficCollectorsUpdateTagsInput =
 // Output Schema
 export const AzureTrafficCollectorsUpdateTagsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => AzureTrafficCollectorPropertiesFormatSchema),
+    ),
+    location: Schema.String,
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    etag: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type AzureTrafficCollectorsUpdateTagsOutput =
   typeof AzureTrafficCollectorsUpdateTagsOutput.Type;
@@ -372,40 +385,7 @@ export const CollectorPoliciesCreateOrUpdateInput =
     azureTrafficCollectorName: Schema.String.pipe(T.PathParam()),
     collectorPolicyName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        ingestionPolicy: Schema.optional(
-          Schema.Struct({
-            ingestionType: Schema.optional(Schema.Literals(["IPFIX"])),
-            ingestionSources: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  sourceType: Schema.optional(Schema.Literals(["Resource"])),
-                  resourceId: Schema.optional(Schema.String),
-                }),
-              ),
-            ),
-          }),
-        ),
-        emissionPolicies: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              emissionType: Schema.optional(Schema.Literals(["IPFIX"])),
-              emissionDestinations: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    destinationType: Schema.optional(
-                      Schema.Literals(["AzureMonitor"]),
-                    ),
-                  }),
-                ),
-              ),
-            }),
-          ),
-        ),
-        provisioningState: Schema.optional(
-          Schema.Literals(["Succeeded", "Updating", "Deleting", "Failed"]),
-        ),
-      }),
+      Schema.suspend(() => CollectorPolicyPropertiesFormatSchema),
     ),
     location: Schema.String,
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
@@ -424,23 +404,16 @@ export type CollectorPoliciesCreateOrUpdateInput =
 // Output Schema
 export const CollectorPoliciesCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => CollectorPolicyPropertiesFormatSchema),
+    ),
+    location: Schema.String,
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    etag: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type CollectorPoliciesCreateOrUpdateOutput =
   typeof CollectorPoliciesCreateOrUpdateOutput.Type;
@@ -519,23 +492,16 @@ export type CollectorPoliciesGetInput = typeof CollectorPoliciesGetInput.Type;
 // Output Schema
 export const CollectorPoliciesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => CollectorPolicyPropertiesFormatSchema),
+    ),
+    location: Schema.String,
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    etag: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type CollectorPoliciesGetOutput = typeof CollectorPoliciesGetOutput.Type;
 
@@ -573,37 +539,7 @@ export type CollectorPoliciesListInput = typeof CollectorPoliciesListInput.Type;
 // Output Schema
 export const CollectorPoliciesListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => CollectorPolicySchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type CollectorPoliciesListOutput =
@@ -645,23 +581,16 @@ export type CollectorPoliciesUpdateTagsInput =
 // Output Schema
 export const CollectorPoliciesUpdateTagsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => CollectorPolicyPropertiesFormatSchema),
+    ),
+    location: Schema.String,
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    etag: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type CollectorPoliciesUpdateTagsOutput =
   typeof CollectorPoliciesUpdateTagsOutput.Type;
@@ -697,21 +626,7 @@ export type NetworkFunctionListOperationsInput =
 // Output Schema
 export const NetworkFunctionListOperationsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        name: Schema.optional(Schema.String),
-        isDataAction: Schema.optional(Schema.Boolean),
-        display: Schema.optional(
-          Schema.Struct({
-            provider: Schema.optional(Schema.String),
-            resource: Schema.optional(Schema.String),
-            operation: Schema.optional(Schema.String),
-            description: Schema.optional(Schema.String),
-          }),
-        ),
-        origin: Schema.optional(Schema.String),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => OperationSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type NetworkFunctionListOperationsOutput =

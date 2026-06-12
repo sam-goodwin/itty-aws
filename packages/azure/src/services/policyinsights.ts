@@ -8,31 +8,444 @@ import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
+// Shared schemas
+const PolicyMetadataPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    metadataId: Schema.optional(Schema.String),
+    category: Schema.optional(Schema.String),
+    title: Schema.optional(Schema.String),
+    owner: Schema.optional(Schema.String),
+    additionalContentUrl: Schema.optional(Schema.String),
+    metadata: Schema.optional(Schema.Unknown),
+  });
+const SlimPolicyMetadataSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.optional(
+    Schema.suspend(() => PolicyMetadataSlimPropertiesSchema),
+  ),
+  id: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+});
+const PolicyMetadataSlimPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    metadataId: Schema.optional(Schema.String),
+    category: Schema.optional(Schema.String),
+    title: Schema.optional(Schema.String),
+    owner: Schema.optional(Schema.String),
+    additionalContentUrl: Schema.optional(Schema.String),
+    metadata: Schema.optional(Schema.Unknown),
+  });
+const PolicyEventSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  "@odata.id": Schema.optional(Schema.String),
+  "@odata.context": Schema.optional(Schema.String),
+  timestamp: Schema.optional(Schema.String),
+  resourceId: Schema.optional(Schema.String),
+  policyAssignmentId: Schema.optional(Schema.String),
+  policyDefinitionId: Schema.optional(Schema.String),
+  effectiveParameters: Schema.optional(Schema.String),
+  isCompliant: Schema.optional(Schema.Boolean),
+  subscriptionId: Schema.optional(Schema.String),
+  resourceType: Schema.optional(Schema.String),
+  resourceLocation: Schema.optional(Schema.String),
+  resourceGroup: Schema.optional(Schema.String),
+  resourceTags: Schema.optional(Schema.String),
+  policyAssignmentName: Schema.optional(Schema.String),
+  policyAssignmentOwner: Schema.optional(Schema.String),
+  policyAssignmentParameters: Schema.optional(Schema.String),
+  policyAssignmentScope: Schema.optional(Schema.String),
+  policyDefinitionName: Schema.optional(Schema.String),
+  policyDefinitionAction: Schema.optional(Schema.String),
+  policyDefinitionCategory: Schema.optional(Schema.String),
+  policySetDefinitionId: Schema.optional(Schema.String),
+  policySetDefinitionName: Schema.optional(Schema.String),
+  policySetDefinitionOwner: Schema.optional(Schema.String),
+  policySetDefinitionCategory: Schema.optional(Schema.String),
+  policySetDefinitionParameters: Schema.optional(Schema.String),
+  managementGroupIds: Schema.optional(Schema.String),
+  policyDefinitionReferenceId: Schema.optional(Schema.String),
+  complianceState: Schema.optional(Schema.String),
+  tenantId: Schema.optional(Schema.String),
+  principalOid: Schema.optional(Schema.String),
+  components: Schema.optional(
+    Schema.Array(Schema.suspend(() => ComponentEventDetailsSchema)),
+  ),
+});
+const ComponentEventDetailsSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  timestamp: Schema.optional(Schema.String),
+  tenantId: Schema.optional(Schema.String),
+  principalOid: Schema.optional(Schema.String),
+  policyDefinitionAction: Schema.optional(Schema.String),
+});
+const AttestationSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
+const AttestationPropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  policyAssignmentId: Schema.String,
+  policyDefinitionReferenceId: Schema.optional(Schema.String),
+  complianceState: Schema.optional(
+    Schema.Literals(["Compliant", "NonCompliant", "Unknown"]),
+  ),
+  expiresOn: Schema.optional(Schema.String),
+  owner: Schema.optional(Schema.String),
+  comments: Schema.optional(Schema.String),
+  evidence: Schema.optional(
+    Schema.Array(Schema.suspend(() => AttestationEvidenceSchema)),
+  ),
+  provisioningState: Schema.optional(Schema.String),
+  lastComplianceStateChangeAt: Schema.optional(Schema.String),
+  assessmentDate: Schema.optional(Schema.String),
+  metadata: Schema.optional(Schema.Unknown),
+});
+const AttestationEvidenceSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  description: Schema.optional(Schema.String),
+  sourceUri: Schema.optional(Schema.String),
+});
+const RemediationDeploymentSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  remediatedResourceId: Schema.optional(Schema.String),
+  deploymentId: Schema.optional(Schema.String),
+  status: Schema.optional(Schema.String),
+  resourceLocation: Schema.optional(Schema.String),
+  error: Schema.optional(Schema.suspend(() => ErrorDefinitionSchema)),
+  createdOn: Schema.optional(Schema.String),
+  lastUpdatedOn: Schema.optional(Schema.String),
+});
+const ErrorDefinitionSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  code: Schema.optional(Schema.String),
+  message: Schema.optional(Schema.String),
+  target: Schema.optional(Schema.String),
+  details: Schema.optional(Schema.Array(Schema.Unknown)),
+  additionalInfo: Schema.optional(
+    Schema.Array(Schema.suspend(() => TypedErrorInfoSchema)),
+  ),
+});
+const TypedErrorInfoSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  type: Schema.optional(Schema.String),
+  info: Schema.optional(Schema.Unknown),
+});
+const RemediationPropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  policyAssignmentId: Schema.optional(Schema.String),
+  policyDefinitionReferenceId: Schema.optional(Schema.String),
+  resourceDiscoveryMode: Schema.optional(
+    Schema.Literals(["ExistingNonCompliant", "ReEvaluateCompliance"]),
+  ),
+  provisioningState: Schema.optional(Schema.String),
+  createdOn: Schema.optional(Schema.String),
+  lastUpdatedOn: Schema.optional(Schema.String),
+  filters: Schema.optional(Schema.suspend(() => RemediationFiltersSchema)),
+  deploymentStatus: Schema.optional(
+    Schema.suspend(() => RemediationDeploymentSummarySchema),
+  ),
+  statusMessage: Schema.optional(Schema.String),
+  correlationId: Schema.optional(Schema.String),
+  resourceCount: Schema.optional(Schema.Number),
+  parallelDeployments: Schema.optional(Schema.Number),
+  failureThreshold: Schema.optional(
+    Schema.Struct({
+      percentage: Schema.optional(Schema.Number),
+    }),
+  ),
+});
+const RemediationFiltersSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  locations: Schema.optional(Schema.Array(Schema.String)),
+  resourceIds: Schema.optional(Schema.Array(Schema.String)),
+});
+const RemediationDeploymentSummarySchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    totalDeployments: Schema.optional(Schema.Number),
+    successfulDeployments: Schema.optional(Schema.Number),
+    failedDeployments: Schema.optional(Schema.Number),
+  });
+const RemediationSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.optional(
+    Schema.suspend(() => RemediationPropertiesSchema),
+  ),
+  id: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
+const CheckRestrictionsResourceDetailsSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resourceContent: Schema.Unknown,
+    apiVersion: Schema.optional(Schema.String),
+    scope: Schema.optional(Schema.String),
+  });
+const PendingFieldSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  field: Schema.String,
+  values: Schema.optional(Schema.Array(Schema.String)),
+});
+const FieldRestrictionsSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  field: Schema.optional(Schema.String),
+  restrictions: Schema.optional(
+    Schema.Array(Schema.suspend(() => FieldRestrictionSchema)),
+  ),
+});
+const FieldRestrictionSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  result: Schema.optional(
+    Schema.Literals(["Required", "Removed", "Deny", "Audit"]),
+  ),
+  defaultValue: Schema.optional(Schema.String),
+  values: Schema.optional(Schema.Array(Schema.String)),
+  policy: Schema.optional(Schema.suspend(() => PolicyReferenceSchema)),
+  policyEffect: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+});
+const PolicyReferenceSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  policyDefinitionId: Schema.optional(Schema.String),
+  policySetDefinitionId: Schema.optional(Schema.String),
+  policyDefinitionReferenceId: Schema.optional(Schema.String),
+  policyAssignmentId: Schema.optional(Schema.String),
+});
+const PolicyEvaluationResultSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  policyInfo: Schema.optional(Schema.suspend(() => PolicyReferenceSchema)),
+  evaluationResult: Schema.optional(Schema.String),
+  evaluationDetails: Schema.optional(
+    Schema.suspend(() => CheckRestrictionEvaluationDetailsSchema),
+  ),
+  effectDetails: Schema.optional(
+    Schema.suspend(() => PolicyEffectDetailsSchema),
+  ),
+});
+const CheckRestrictionEvaluationDetailsSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    evaluatedExpressions: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          result: Schema.optional(Schema.String),
+          expression: Schema.optional(Schema.String),
+          expressionKind: Schema.optional(Schema.String),
+          path: Schema.optional(Schema.String),
+          expressionValue: Schema.optional(Schema.Unknown),
+          targetValue: Schema.optional(Schema.Unknown),
+          operator: Schema.optional(Schema.String),
+        }),
+      ),
+    ),
+    ifNotExistsDetails: Schema.optional(
+      Schema.Struct({
+        resourceId: Schema.optional(Schema.String),
+        totalResources: Schema.optional(Schema.Number),
+      }),
+    ),
+    reason: Schema.optional(Schema.String),
+  });
+const PolicyEffectDetailsSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  policyEffect: Schema.optional(Schema.String),
+});
+const ComponentPolicyStateSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  "@odata.id": Schema.optional(Schema.String),
+  "@odata.context": Schema.optional(Schema.String),
+  timestamp: Schema.optional(Schema.String),
+  componentId: Schema.optional(Schema.String),
+  componentType: Schema.optional(Schema.String),
+  componentName: Schema.optional(Schema.String),
+  resourceId: Schema.optional(Schema.String),
+  policyAssignmentId: Schema.optional(Schema.String),
+  policyDefinitionId: Schema.optional(Schema.String),
+  subscriptionId: Schema.optional(Schema.String),
+  resourceType: Schema.optional(Schema.String),
+  resourceLocation: Schema.optional(Schema.String),
+  resourceGroup: Schema.optional(Schema.String),
+  policyAssignmentName: Schema.optional(Schema.String),
+  policyAssignmentOwner: Schema.optional(Schema.String),
+  policyAssignmentParameters: Schema.optional(Schema.String),
+  policyAssignmentScope: Schema.optional(Schema.String),
+  policyDefinitionName: Schema.optional(Schema.String),
+  policyDefinitionAction: Schema.optional(Schema.String),
+  policyDefinitionCategory: Schema.optional(Schema.String),
+  policySetDefinitionId: Schema.optional(Schema.String),
+  policySetDefinitionName: Schema.optional(Schema.String),
+  policySetDefinitionOwner: Schema.optional(Schema.String),
+  policySetDefinitionCategory: Schema.optional(Schema.String),
+  policySetDefinitionParameters: Schema.optional(Schema.String),
+  policyDefinitionReferenceId: Schema.optional(Schema.String),
+  complianceState: Schema.optional(Schema.String),
+  policyEvaluationDetails: Schema.optional(
+    Schema.suspend(() => ComponentPolicyEvaluationDetailsSchema),
+  ),
+  policyDefinitionGroupNames: Schema.optional(Schema.Array(Schema.String)),
+  policyDefinitionVersion: Schema.optional(Schema.String),
+  policySetDefinitionVersion: Schema.optional(Schema.String),
+  policyAssignmentVersion: Schema.optional(Schema.String),
+});
+const ComponentPolicyEvaluationDetailsSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    evaluatedExpressions: Schema.optional(
+      Schema.Array(
+        Schema.suspend(() => ComponentExpressionEvaluationDetailsSchema),
+      ),
+    ),
+    reason: Schema.optional(Schema.String),
+  });
+const ComponentExpressionEvaluationDetailsSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    result: Schema.optional(Schema.String),
+    expression: Schema.optional(Schema.String),
+    expressionKind: Schema.optional(Schema.String),
+    path: Schema.optional(Schema.String),
+    expressionValue: Schema.optional(Schema.Unknown),
+    targetValue: Schema.optional(Schema.Unknown),
+    operator: Schema.optional(Schema.String),
+  });
+const PolicyStateSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  "@odata.id": Schema.optional(Schema.String),
+  "@odata.context": Schema.optional(Schema.String),
+  timestamp: Schema.optional(Schema.String),
+  resourceId: Schema.optional(Schema.String),
+  policyAssignmentId: Schema.optional(Schema.String),
+  policyDefinitionId: Schema.optional(Schema.String),
+  effectiveParameters: Schema.optional(Schema.String),
+  isCompliant: Schema.optional(Schema.Boolean),
+  subscriptionId: Schema.optional(Schema.String),
+  resourceType: Schema.optional(Schema.String),
+  resourceLocation: Schema.optional(Schema.String),
+  resourceGroup: Schema.optional(Schema.String),
+  resourceTags: Schema.optional(Schema.String),
+  policyAssignmentName: Schema.optional(Schema.String),
+  policyAssignmentOwner: Schema.optional(Schema.String),
+  policyAssignmentParameters: Schema.optional(Schema.String),
+  policyAssignmentScope: Schema.optional(Schema.String),
+  policyDefinitionName: Schema.optional(Schema.String),
+  policyDefinitionAction: Schema.optional(Schema.String),
+  policyDefinitionCategory: Schema.optional(Schema.String),
+  policySetDefinitionId: Schema.optional(Schema.String),
+  policySetDefinitionName: Schema.optional(Schema.String),
+  policySetDefinitionOwner: Schema.optional(Schema.String),
+  policySetDefinitionCategory: Schema.optional(Schema.String),
+  policySetDefinitionParameters: Schema.optional(Schema.String),
+  managementGroupIds: Schema.optional(Schema.String),
+  policyDefinitionReferenceId: Schema.optional(Schema.String),
+  complianceState: Schema.optional(Schema.String),
+  policyEvaluationDetails: Schema.optional(
+    Schema.suspend(() => PolicyEvaluationDetailsSchema),
+  ),
+  policyDefinitionGroupNames: Schema.optional(Schema.Array(Schema.String)),
+  components: Schema.optional(
+    Schema.Array(Schema.suspend(() => ComponentStateDetailsSchema)),
+  ),
+  policyDefinitionVersion: Schema.optional(Schema.String),
+  policySetDefinitionVersion: Schema.optional(Schema.String),
+  policyAssignmentVersion: Schema.optional(Schema.String),
+});
+const PolicyEvaluationDetailsSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    evaluatedExpressions: Schema.optional(
+      Schema.Array(Schema.suspend(() => ExpressionEvaluationDetailsSchema)),
+    ),
+    ifNotExistsDetails: Schema.optional(
+      Schema.suspend(() => IfNotExistsEvaluationDetailsSchema),
+    ),
+  },
+);
+const ExpressionEvaluationDetailsSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    result: Schema.optional(Schema.String),
+    expression: Schema.optional(Schema.String),
+    expressionKind: Schema.optional(Schema.String),
+    path: Schema.optional(Schema.String),
+    expressionValue: Schema.optional(Schema.Unknown),
+    targetValue: Schema.optional(Schema.Unknown),
+    operator: Schema.optional(Schema.String),
+  });
+const IfNotExistsEvaluationDetailsSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resourceId: Schema.optional(Schema.String),
+    totalResources: Schema.optional(Schema.Number),
+  });
+const ComponentStateDetailsSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  timestamp: Schema.optional(Schema.String),
+  complianceState: Schema.optional(Schema.String),
+});
+const SummarySchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  "@odata.id": Schema.optional(Schema.String),
+  "@odata.context": Schema.optional(Schema.String),
+  results: Schema.optional(Schema.suspend(() => SummaryResultsSchema)),
+  policyAssignments: Schema.optional(
+    Schema.Array(Schema.suspend(() => PolicyAssignmentSummarySchema)),
+  ),
+});
+const SummaryResultsSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  queryResultsUri: Schema.optional(Schema.String),
+  nonCompliantResources: Schema.optional(Schema.Number),
+  nonCompliantPolicies: Schema.optional(Schema.Number),
+  resourceDetails: Schema.optional(
+    Schema.Array(Schema.suspend(() => ComplianceDetailSchema)),
+  ),
+  policyDetails: Schema.optional(
+    Schema.Array(Schema.suspend(() => ComplianceDetailSchema)),
+  ),
+  policyGroupDetails: Schema.optional(
+    Schema.Array(Schema.suspend(() => ComplianceDetailSchema)),
+  ),
+});
+const ComplianceDetailSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  complianceState: Schema.optional(Schema.String),
+  count: Schema.optional(Schema.Number),
+});
+const PolicyAssignmentSummarySchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    policyAssignmentId: Schema.optional(Schema.String),
+    policySetDefinitionId: Schema.optional(Schema.String),
+    results: Schema.optional(Schema.suspend(() => SummaryResultsSchema)),
+    policyDefinitions: Schema.optional(
+      Schema.Array(Schema.suspend(() => PolicyDefinitionSummarySchema)),
+    ),
+    policyGroups: Schema.optional(
+      Schema.Array(Schema.suspend(() => PolicyGroupSummarySchema)),
+    ),
+  },
+);
+const PolicyDefinitionSummarySchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    policyDefinitionId: Schema.optional(Schema.String),
+    policyDefinitionReferenceId: Schema.optional(Schema.String),
+    policyDefinitionGroupNames: Schema.optional(Schema.Array(Schema.String)),
+    effect: Schema.optional(Schema.String),
+    results: Schema.optional(Schema.suspend(() => SummaryResultsSchema)),
+  },
+);
+const PolicyGroupSummarySchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  policyGroupName: Schema.optional(Schema.String),
+  results: Schema.optional(Schema.suspend(() => SummaryResultsSchema)),
+});
+const OperationSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  isDataAction: Schema.optional(Schema.Boolean),
+  display: Schema.optional(
+    Schema.Struct({
+      provider: Schema.optional(Schema.String),
+      resource: Schema.optional(Schema.String),
+      operation: Schema.optional(Schema.String),
+      description: Schema.optional(Schema.String),
+    }),
+  ),
+});
+
 // Input Schema
 export const AttestationsCreateOrUpdateAtResourceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    properties: Schema.Struct({
-      policyAssignmentId: Schema.String,
-      policyDefinitionReferenceId: Schema.optional(Schema.String),
-      complianceState: Schema.optional(
-        Schema.Literals(["Compliant", "NonCompliant", "Unknown"]),
-      ),
-      expiresOn: Schema.optional(Schema.String),
-      owner: Schema.optional(Schema.String),
-      comments: Schema.optional(Schema.String),
-      evidence: Schema.optional(
-        Schema.Array(
-          Schema.Struct({
-            description: Schema.optional(Schema.String),
-            sourceUri: Schema.optional(Schema.String),
-          }),
-        ),
-      ),
-      provisioningState: Schema.optional(Schema.String),
-      lastComplianceStateChangeAt: Schema.optional(Schema.String),
-      assessmentDate: Schema.optional(Schema.String),
-      metadata: Schema.optional(Schema.Unknown),
-    }),
+    properties: Schema.suspend(() => AttestationPropertiesSchema),
     systemData: Schema.optional(
       Schema.Struct({
         createdBy: Schema.optional(Schema.String),
@@ -64,6 +477,21 @@ export type AttestationsCreateOrUpdateAtResourceInput =
 // Output Schema
 export const AttestationsCreateOrUpdateAtResourceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.suspend(() => AttestationPropertiesSchema),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -87,28 +515,7 @@ export const AttestationsCreateOrUpdateAtResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    properties: Schema.Struct({
-      policyAssignmentId: Schema.String,
-      policyDefinitionReferenceId: Schema.optional(Schema.String),
-      complianceState: Schema.optional(
-        Schema.Literals(["Compliant", "NonCompliant", "Unknown"]),
-      ),
-      expiresOn: Schema.optional(Schema.String),
-      owner: Schema.optional(Schema.String),
-      comments: Schema.optional(Schema.String),
-      evidence: Schema.optional(
-        Schema.Array(
-          Schema.Struct({
-            description: Schema.optional(Schema.String),
-            sourceUri: Schema.optional(Schema.String),
-          }),
-        ),
-      ),
-      provisioningState: Schema.optional(Schema.String),
-      lastComplianceStateChangeAt: Schema.optional(Schema.String),
-      assessmentDate: Schema.optional(Schema.String),
-      metadata: Schema.optional(Schema.Unknown),
-    }),
+    properties: Schema.suspend(() => AttestationPropertiesSchema),
     systemData: Schema.optional(
       Schema.Struct({
         createdBy: Schema.optional(Schema.String),
@@ -140,6 +547,21 @@ export type AttestationsCreateOrUpdateAtResourceGroupInput =
 // Output Schema
 export const AttestationsCreateOrUpdateAtResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.suspend(() => AttestationPropertiesSchema),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -164,28 +586,7 @@ export const AttestationsCreateOrUpdateAtResourceGroup =
 export const AttestationsCreateOrUpdateAtSubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    properties: Schema.Struct({
-      policyAssignmentId: Schema.String,
-      policyDefinitionReferenceId: Schema.optional(Schema.String),
-      complianceState: Schema.optional(
-        Schema.Literals(["Compliant", "NonCompliant", "Unknown"]),
-      ),
-      expiresOn: Schema.optional(Schema.String),
-      owner: Schema.optional(Schema.String),
-      comments: Schema.optional(Schema.String),
-      evidence: Schema.optional(
-        Schema.Array(
-          Schema.Struct({
-            description: Schema.optional(Schema.String),
-            sourceUri: Schema.optional(Schema.String),
-          }),
-        ),
-      ),
-      provisioningState: Schema.optional(Schema.String),
-      lastComplianceStateChangeAt: Schema.optional(Schema.String),
-      assessmentDate: Schema.optional(Schema.String),
-      metadata: Schema.optional(Schema.Unknown),
-    }),
+    properties: Schema.suspend(() => AttestationPropertiesSchema),
     systemData: Schema.optional(
       Schema.Struct({
         createdBy: Schema.optional(Schema.String),
@@ -217,6 +618,21 @@ export type AttestationsCreateOrUpdateAtSubscriptionInput =
 // Output Schema
 export const AttestationsCreateOrUpdateAtSubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.suspend(() => AttestationPropertiesSchema),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -346,6 +762,21 @@ export type AttestationsGetAtResourceInput =
 // Output Schema
 export const AttestationsGetAtResourceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.suspend(() => AttestationPropertiesSchema),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -383,6 +814,21 @@ export type AttestationsGetAtResourceGroupInput =
 // Output Schema
 export const AttestationsGetAtResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.suspend(() => AttestationPropertiesSchema),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -420,6 +866,21 @@ export type AttestationsGetAtSubscriptionInput =
 // Output Schema
 export const AttestationsGetAtSubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.suspend(() => AttestationPropertiesSchema),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -455,13 +916,7 @@ export type AttestationsListForResourceInput =
 export const AttestationsListForResourceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => AttestationSchema)),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -499,13 +954,7 @@ export type AttestationsListForResourceGroupInput =
 export const AttestationsListForResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => AttestationSchema)),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -543,13 +992,7 @@ export type AttestationsListForSubscriptionInput =
 export const AttestationsListForSubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => AttestationSchema)),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -586,61 +1029,7 @@ export const ComponentPolicyStatesListQueryResultsForPolicyDefinitionOutput =
     "@odata.context": Schema.optional(Schema.String),
     "@odata.count": Schema.optional(Schema.Number),
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          "@odata.id": Schema.optional(Schema.String),
-          "@odata.context": Schema.optional(Schema.String),
-          timestamp: Schema.optional(Schema.String),
-          componentId: Schema.optional(Schema.String),
-          componentType: Schema.optional(Schema.String),
-          componentName: Schema.optional(Schema.String),
-          resourceId: Schema.optional(Schema.String),
-          policyAssignmentId: Schema.optional(Schema.String),
-          policyDefinitionId: Schema.optional(Schema.String),
-          subscriptionId: Schema.optional(Schema.String),
-          resourceType: Schema.optional(Schema.String),
-          resourceLocation: Schema.optional(Schema.String),
-          resourceGroup: Schema.optional(Schema.String),
-          policyAssignmentName: Schema.optional(Schema.String),
-          policyAssignmentOwner: Schema.optional(Schema.String),
-          policyAssignmentParameters: Schema.optional(Schema.String),
-          policyAssignmentScope: Schema.optional(Schema.String),
-          policyDefinitionName: Schema.optional(Schema.String),
-          policyDefinitionAction: Schema.optional(Schema.String),
-          policyDefinitionCategory: Schema.optional(Schema.String),
-          policySetDefinitionId: Schema.optional(Schema.String),
-          policySetDefinitionName: Schema.optional(Schema.String),
-          policySetDefinitionOwner: Schema.optional(Schema.String),
-          policySetDefinitionCategory: Schema.optional(Schema.String),
-          policySetDefinitionParameters: Schema.optional(Schema.String),
-          policyDefinitionReferenceId: Schema.optional(Schema.String),
-          complianceState: Schema.optional(Schema.String),
-          policyEvaluationDetails: Schema.optional(
-            Schema.Struct({
-              evaluatedExpressions: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    result: Schema.optional(Schema.String),
-                    expression: Schema.optional(Schema.String),
-                    expressionKind: Schema.optional(Schema.String),
-                    path: Schema.optional(Schema.String),
-                    expressionValue: Schema.optional(Schema.Unknown),
-                    targetValue: Schema.optional(Schema.Unknown),
-                    operator: Schema.optional(Schema.String),
-                  }),
-                ),
-              ),
-              reason: Schema.optional(Schema.String),
-            }),
-          ),
-          policyDefinitionGroupNames: Schema.optional(
-            Schema.Array(Schema.String),
-          ),
-          policyDefinitionVersion: Schema.optional(Schema.String),
-          policySetDefinitionVersion: Schema.optional(Schema.String),
-          policyAssignmentVersion: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => ComponentPolicyStateSchema)),
     ),
   });
 export type ComponentPolicyStatesListQueryResultsForPolicyDefinitionOutput =
@@ -674,61 +1063,7 @@ export const ComponentPolicyStatesListQueryResultsForResourceOutput =
     "@odata.context": Schema.optional(Schema.String),
     "@odata.count": Schema.optional(Schema.Number),
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          "@odata.id": Schema.optional(Schema.String),
-          "@odata.context": Schema.optional(Schema.String),
-          timestamp: Schema.optional(Schema.String),
-          componentId: Schema.optional(Schema.String),
-          componentType: Schema.optional(Schema.String),
-          componentName: Schema.optional(Schema.String),
-          resourceId: Schema.optional(Schema.String),
-          policyAssignmentId: Schema.optional(Schema.String),
-          policyDefinitionId: Schema.optional(Schema.String),
-          subscriptionId: Schema.optional(Schema.String),
-          resourceType: Schema.optional(Schema.String),
-          resourceLocation: Schema.optional(Schema.String),
-          resourceGroup: Schema.optional(Schema.String),
-          policyAssignmentName: Schema.optional(Schema.String),
-          policyAssignmentOwner: Schema.optional(Schema.String),
-          policyAssignmentParameters: Schema.optional(Schema.String),
-          policyAssignmentScope: Schema.optional(Schema.String),
-          policyDefinitionName: Schema.optional(Schema.String),
-          policyDefinitionAction: Schema.optional(Schema.String),
-          policyDefinitionCategory: Schema.optional(Schema.String),
-          policySetDefinitionId: Schema.optional(Schema.String),
-          policySetDefinitionName: Schema.optional(Schema.String),
-          policySetDefinitionOwner: Schema.optional(Schema.String),
-          policySetDefinitionCategory: Schema.optional(Schema.String),
-          policySetDefinitionParameters: Schema.optional(Schema.String),
-          policyDefinitionReferenceId: Schema.optional(Schema.String),
-          complianceState: Schema.optional(Schema.String),
-          policyEvaluationDetails: Schema.optional(
-            Schema.Struct({
-              evaluatedExpressions: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    result: Schema.optional(Schema.String),
-                    expression: Schema.optional(Schema.String),
-                    expressionKind: Schema.optional(Schema.String),
-                    path: Schema.optional(Schema.String),
-                    expressionValue: Schema.optional(Schema.Unknown),
-                    targetValue: Schema.optional(Schema.Unknown),
-                    operator: Schema.optional(Schema.String),
-                  }),
-                ),
-              ),
-              reason: Schema.optional(Schema.String),
-            }),
-          ),
-          policyDefinitionGroupNames: Schema.optional(
-            Schema.Array(Schema.String),
-          ),
-          policyDefinitionVersion: Schema.optional(Schema.String),
-          policySetDefinitionVersion: Schema.optional(Schema.String),
-          policyAssignmentVersion: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => ComponentPolicyStateSchema)),
     ),
   });
 export type ComponentPolicyStatesListQueryResultsForResourceOutput =
@@ -761,61 +1096,7 @@ export const ComponentPolicyStatesListQueryResultsForResourceGroupOutput =
     "@odata.context": Schema.optional(Schema.String),
     "@odata.count": Schema.optional(Schema.Number),
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          "@odata.id": Schema.optional(Schema.String),
-          "@odata.context": Schema.optional(Schema.String),
-          timestamp: Schema.optional(Schema.String),
-          componentId: Schema.optional(Schema.String),
-          componentType: Schema.optional(Schema.String),
-          componentName: Schema.optional(Schema.String),
-          resourceId: Schema.optional(Schema.String),
-          policyAssignmentId: Schema.optional(Schema.String),
-          policyDefinitionId: Schema.optional(Schema.String),
-          subscriptionId: Schema.optional(Schema.String),
-          resourceType: Schema.optional(Schema.String),
-          resourceLocation: Schema.optional(Schema.String),
-          resourceGroup: Schema.optional(Schema.String),
-          policyAssignmentName: Schema.optional(Schema.String),
-          policyAssignmentOwner: Schema.optional(Schema.String),
-          policyAssignmentParameters: Schema.optional(Schema.String),
-          policyAssignmentScope: Schema.optional(Schema.String),
-          policyDefinitionName: Schema.optional(Schema.String),
-          policyDefinitionAction: Schema.optional(Schema.String),
-          policyDefinitionCategory: Schema.optional(Schema.String),
-          policySetDefinitionId: Schema.optional(Schema.String),
-          policySetDefinitionName: Schema.optional(Schema.String),
-          policySetDefinitionOwner: Schema.optional(Schema.String),
-          policySetDefinitionCategory: Schema.optional(Schema.String),
-          policySetDefinitionParameters: Schema.optional(Schema.String),
-          policyDefinitionReferenceId: Schema.optional(Schema.String),
-          complianceState: Schema.optional(Schema.String),
-          policyEvaluationDetails: Schema.optional(
-            Schema.Struct({
-              evaluatedExpressions: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    result: Schema.optional(Schema.String),
-                    expression: Schema.optional(Schema.String),
-                    expressionKind: Schema.optional(Schema.String),
-                    path: Schema.optional(Schema.String),
-                    expressionValue: Schema.optional(Schema.Unknown),
-                    targetValue: Schema.optional(Schema.Unknown),
-                    operator: Schema.optional(Schema.String),
-                  }),
-                ),
-              ),
-              reason: Schema.optional(Schema.String),
-            }),
-          ),
-          policyDefinitionGroupNames: Schema.optional(
-            Schema.Array(Schema.String),
-          ),
-          policyDefinitionVersion: Schema.optional(Schema.String),
-          policySetDefinitionVersion: Schema.optional(Schema.String),
-          policyAssignmentVersion: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => ComponentPolicyStateSchema)),
     ),
   });
 export type ComponentPolicyStatesListQueryResultsForResourceGroupOutput =
@@ -848,61 +1129,7 @@ export const ComponentPolicyStatesListQueryResultsForResourceGroupLevelPolicyAss
     "@odata.context": Schema.optional(Schema.String),
     "@odata.count": Schema.optional(Schema.Number),
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          "@odata.id": Schema.optional(Schema.String),
-          "@odata.context": Schema.optional(Schema.String),
-          timestamp: Schema.optional(Schema.String),
-          componentId: Schema.optional(Schema.String),
-          componentType: Schema.optional(Schema.String),
-          componentName: Schema.optional(Schema.String),
-          resourceId: Schema.optional(Schema.String),
-          policyAssignmentId: Schema.optional(Schema.String),
-          policyDefinitionId: Schema.optional(Schema.String),
-          subscriptionId: Schema.optional(Schema.String),
-          resourceType: Schema.optional(Schema.String),
-          resourceLocation: Schema.optional(Schema.String),
-          resourceGroup: Schema.optional(Schema.String),
-          policyAssignmentName: Schema.optional(Schema.String),
-          policyAssignmentOwner: Schema.optional(Schema.String),
-          policyAssignmentParameters: Schema.optional(Schema.String),
-          policyAssignmentScope: Schema.optional(Schema.String),
-          policyDefinitionName: Schema.optional(Schema.String),
-          policyDefinitionAction: Schema.optional(Schema.String),
-          policyDefinitionCategory: Schema.optional(Schema.String),
-          policySetDefinitionId: Schema.optional(Schema.String),
-          policySetDefinitionName: Schema.optional(Schema.String),
-          policySetDefinitionOwner: Schema.optional(Schema.String),
-          policySetDefinitionCategory: Schema.optional(Schema.String),
-          policySetDefinitionParameters: Schema.optional(Schema.String),
-          policyDefinitionReferenceId: Schema.optional(Schema.String),
-          complianceState: Schema.optional(Schema.String),
-          policyEvaluationDetails: Schema.optional(
-            Schema.Struct({
-              evaluatedExpressions: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    result: Schema.optional(Schema.String),
-                    expression: Schema.optional(Schema.String),
-                    expressionKind: Schema.optional(Schema.String),
-                    path: Schema.optional(Schema.String),
-                    expressionValue: Schema.optional(Schema.Unknown),
-                    targetValue: Schema.optional(Schema.Unknown),
-                    operator: Schema.optional(Schema.String),
-                  }),
-                ),
-              ),
-              reason: Schema.optional(Schema.String),
-            }),
-          ),
-          policyDefinitionGroupNames: Schema.optional(
-            Schema.Array(Schema.String),
-          ),
-          policyDefinitionVersion: Schema.optional(Schema.String),
-          policySetDefinitionVersion: Schema.optional(Schema.String),
-          policyAssignmentVersion: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => ComponentPolicyStateSchema)),
     ),
   });
 export type ComponentPolicyStatesListQueryResultsForResourceGroupLevelPolicyAssignmentOutput =
@@ -937,61 +1164,7 @@ export const ComponentPolicyStatesListQueryResultsForSubscriptionOutput =
     "@odata.context": Schema.optional(Schema.String),
     "@odata.count": Schema.optional(Schema.Number),
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          "@odata.id": Schema.optional(Schema.String),
-          "@odata.context": Schema.optional(Schema.String),
-          timestamp: Schema.optional(Schema.String),
-          componentId: Schema.optional(Schema.String),
-          componentType: Schema.optional(Schema.String),
-          componentName: Schema.optional(Schema.String),
-          resourceId: Schema.optional(Schema.String),
-          policyAssignmentId: Schema.optional(Schema.String),
-          policyDefinitionId: Schema.optional(Schema.String),
-          subscriptionId: Schema.optional(Schema.String),
-          resourceType: Schema.optional(Schema.String),
-          resourceLocation: Schema.optional(Schema.String),
-          resourceGroup: Schema.optional(Schema.String),
-          policyAssignmentName: Schema.optional(Schema.String),
-          policyAssignmentOwner: Schema.optional(Schema.String),
-          policyAssignmentParameters: Schema.optional(Schema.String),
-          policyAssignmentScope: Schema.optional(Schema.String),
-          policyDefinitionName: Schema.optional(Schema.String),
-          policyDefinitionAction: Schema.optional(Schema.String),
-          policyDefinitionCategory: Schema.optional(Schema.String),
-          policySetDefinitionId: Schema.optional(Schema.String),
-          policySetDefinitionName: Schema.optional(Schema.String),
-          policySetDefinitionOwner: Schema.optional(Schema.String),
-          policySetDefinitionCategory: Schema.optional(Schema.String),
-          policySetDefinitionParameters: Schema.optional(Schema.String),
-          policyDefinitionReferenceId: Schema.optional(Schema.String),
-          complianceState: Schema.optional(Schema.String),
-          policyEvaluationDetails: Schema.optional(
-            Schema.Struct({
-              evaluatedExpressions: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    result: Schema.optional(Schema.String),
-                    expression: Schema.optional(Schema.String),
-                    expressionKind: Schema.optional(Schema.String),
-                    path: Schema.optional(Schema.String),
-                    expressionValue: Schema.optional(Schema.Unknown),
-                    targetValue: Schema.optional(Schema.Unknown),
-                    operator: Schema.optional(Schema.String),
-                  }),
-                ),
-              ),
-              reason: Schema.optional(Schema.String),
-            }),
-          ),
-          policyDefinitionGroupNames: Schema.optional(
-            Schema.Array(Schema.String),
-          ),
-          policyDefinitionVersion: Schema.optional(Schema.String),
-          policySetDefinitionVersion: Schema.optional(Schema.String),
-          policyAssignmentVersion: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => ComponentPolicyStateSchema)),
     ),
   });
 export type ComponentPolicyStatesListQueryResultsForSubscriptionOutput =
@@ -1024,61 +1197,7 @@ export const ComponentPolicyStatesListQueryResultsForSubscriptionLevelPolicyAssi
     "@odata.context": Schema.optional(Schema.String),
     "@odata.count": Schema.optional(Schema.Number),
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          "@odata.id": Schema.optional(Schema.String),
-          "@odata.context": Schema.optional(Schema.String),
-          timestamp: Schema.optional(Schema.String),
-          componentId: Schema.optional(Schema.String),
-          componentType: Schema.optional(Schema.String),
-          componentName: Schema.optional(Schema.String),
-          resourceId: Schema.optional(Schema.String),
-          policyAssignmentId: Schema.optional(Schema.String),
-          policyDefinitionId: Schema.optional(Schema.String),
-          subscriptionId: Schema.optional(Schema.String),
-          resourceType: Schema.optional(Schema.String),
-          resourceLocation: Schema.optional(Schema.String),
-          resourceGroup: Schema.optional(Schema.String),
-          policyAssignmentName: Schema.optional(Schema.String),
-          policyAssignmentOwner: Schema.optional(Schema.String),
-          policyAssignmentParameters: Schema.optional(Schema.String),
-          policyAssignmentScope: Schema.optional(Schema.String),
-          policyDefinitionName: Schema.optional(Schema.String),
-          policyDefinitionAction: Schema.optional(Schema.String),
-          policyDefinitionCategory: Schema.optional(Schema.String),
-          policySetDefinitionId: Schema.optional(Schema.String),
-          policySetDefinitionName: Schema.optional(Schema.String),
-          policySetDefinitionOwner: Schema.optional(Schema.String),
-          policySetDefinitionCategory: Schema.optional(Schema.String),
-          policySetDefinitionParameters: Schema.optional(Schema.String),
-          policyDefinitionReferenceId: Schema.optional(Schema.String),
-          complianceState: Schema.optional(Schema.String),
-          policyEvaluationDetails: Schema.optional(
-            Schema.Struct({
-              evaluatedExpressions: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    result: Schema.optional(Schema.String),
-                    expression: Schema.optional(Schema.String),
-                    expressionKind: Schema.optional(Schema.String),
-                    path: Schema.optional(Schema.String),
-                    expressionValue: Schema.optional(Schema.Unknown),
-                    targetValue: Schema.optional(Schema.Unknown),
-                    operator: Schema.optional(Schema.String),
-                  }),
-                ),
-              ),
-              reason: Schema.optional(Schema.String),
-            }),
-          ),
-          policyDefinitionGroupNames: Schema.optional(
-            Schema.Array(Schema.String),
-          ),
-          policyDefinitionVersion: Schema.optional(Schema.String),
-          policySetDefinitionVersion: Schema.optional(Schema.String),
-          policyAssignmentVersion: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => ComponentPolicyStateSchema)),
     ),
   });
 export type ComponentPolicyStatesListQueryResultsForSubscriptionLevelPolicyAssignmentOutput =
@@ -1110,22 +1229,7 @@ export type OperationsListInput = typeof OperationsListInput.Type;
 // Output Schema
 export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   "@odata.count": Schema.optional(Schema.Number),
-  value: Schema.optional(
-    Schema.Array(
-      Schema.Struct({
-        name: Schema.optional(Schema.String),
-        isDataAction: Schema.optional(Schema.Boolean),
-        display: Schema.optional(
-          Schema.Struct({
-            provider: Schema.optional(Schema.String),
-            resource: Schema.optional(Schema.String),
-            operation: Schema.optional(Schema.String),
-            description: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
-  ),
+  value: Schema.optional(Schema.Array(Schema.suspend(() => OperationSchema))),
 });
 export type OperationsListOutput = typeof OperationsListOutput.Type;
 
@@ -1156,53 +1260,7 @@ export const PolicyEventsListQueryResultsForManagementGroupOutput =
     "@odata.count": Schema.optional(Schema.Number),
     "@odata.nextLink": Schema.optional(Schema.String),
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          "@odata.id": Schema.optional(Schema.String),
-          "@odata.context": Schema.optional(Schema.String),
-          timestamp: Schema.optional(Schema.String),
-          resourceId: Schema.optional(Schema.String),
-          policyAssignmentId: Schema.optional(Schema.String),
-          policyDefinitionId: Schema.optional(Schema.String),
-          effectiveParameters: Schema.optional(Schema.String),
-          isCompliant: Schema.optional(Schema.Boolean),
-          subscriptionId: Schema.optional(Schema.String),
-          resourceType: Schema.optional(Schema.String),
-          resourceLocation: Schema.optional(Schema.String),
-          resourceGroup: Schema.optional(Schema.String),
-          resourceTags: Schema.optional(Schema.String),
-          policyAssignmentName: Schema.optional(Schema.String),
-          policyAssignmentOwner: Schema.optional(Schema.String),
-          policyAssignmentParameters: Schema.optional(Schema.String),
-          policyAssignmentScope: Schema.optional(Schema.String),
-          policyDefinitionName: Schema.optional(Schema.String),
-          policyDefinitionAction: Schema.optional(Schema.String),
-          policyDefinitionCategory: Schema.optional(Schema.String),
-          policySetDefinitionId: Schema.optional(Schema.String),
-          policySetDefinitionName: Schema.optional(Schema.String),
-          policySetDefinitionOwner: Schema.optional(Schema.String),
-          policySetDefinitionCategory: Schema.optional(Schema.String),
-          policySetDefinitionParameters: Schema.optional(Schema.String),
-          managementGroupIds: Schema.optional(Schema.String),
-          policyDefinitionReferenceId: Schema.optional(Schema.String),
-          complianceState: Schema.optional(Schema.String),
-          tenantId: Schema.optional(Schema.String),
-          principalOid: Schema.optional(Schema.String),
-          components: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                id: Schema.optional(Schema.String),
-                type: Schema.optional(Schema.String),
-                name: Schema.optional(Schema.String),
-                timestamp: Schema.optional(Schema.String),
-                tenantId: Schema.optional(Schema.String),
-                principalOid: Schema.optional(Schema.String),
-                policyDefinitionAction: Schema.optional(Schema.String),
-              }),
-            ),
-          ),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => PolicyEventSchema)),
     ),
   });
 export type PolicyEventsListQueryResultsForManagementGroupOutput =
@@ -1236,53 +1294,7 @@ export const PolicyEventsListQueryResultsForPolicyDefinitionOutput =
     "@odata.count": Schema.optional(Schema.Number),
     "@odata.nextLink": Schema.optional(Schema.String),
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          "@odata.id": Schema.optional(Schema.String),
-          "@odata.context": Schema.optional(Schema.String),
-          timestamp: Schema.optional(Schema.String),
-          resourceId: Schema.optional(Schema.String),
-          policyAssignmentId: Schema.optional(Schema.String),
-          policyDefinitionId: Schema.optional(Schema.String),
-          effectiveParameters: Schema.optional(Schema.String),
-          isCompliant: Schema.optional(Schema.Boolean),
-          subscriptionId: Schema.optional(Schema.String),
-          resourceType: Schema.optional(Schema.String),
-          resourceLocation: Schema.optional(Schema.String),
-          resourceGroup: Schema.optional(Schema.String),
-          resourceTags: Schema.optional(Schema.String),
-          policyAssignmentName: Schema.optional(Schema.String),
-          policyAssignmentOwner: Schema.optional(Schema.String),
-          policyAssignmentParameters: Schema.optional(Schema.String),
-          policyAssignmentScope: Schema.optional(Schema.String),
-          policyDefinitionName: Schema.optional(Schema.String),
-          policyDefinitionAction: Schema.optional(Schema.String),
-          policyDefinitionCategory: Schema.optional(Schema.String),
-          policySetDefinitionId: Schema.optional(Schema.String),
-          policySetDefinitionName: Schema.optional(Schema.String),
-          policySetDefinitionOwner: Schema.optional(Schema.String),
-          policySetDefinitionCategory: Schema.optional(Schema.String),
-          policySetDefinitionParameters: Schema.optional(Schema.String),
-          managementGroupIds: Schema.optional(Schema.String),
-          policyDefinitionReferenceId: Schema.optional(Schema.String),
-          complianceState: Schema.optional(Schema.String),
-          tenantId: Schema.optional(Schema.String),
-          principalOid: Schema.optional(Schema.String),
-          components: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                id: Schema.optional(Schema.String),
-                type: Schema.optional(Schema.String),
-                name: Schema.optional(Schema.String),
-                timestamp: Schema.optional(Schema.String),
-                tenantId: Schema.optional(Schema.String),
-                principalOid: Schema.optional(Schema.String),
-                policyDefinitionAction: Schema.optional(Schema.String),
-              }),
-            ),
-          ),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => PolicyEventSchema)),
     ),
   });
 export type PolicyEventsListQueryResultsForPolicyDefinitionOutput =
@@ -1316,53 +1328,7 @@ export const PolicyEventsListQueryResultsForPolicySetDefinitionOutput =
     "@odata.count": Schema.optional(Schema.Number),
     "@odata.nextLink": Schema.optional(Schema.String),
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          "@odata.id": Schema.optional(Schema.String),
-          "@odata.context": Schema.optional(Schema.String),
-          timestamp: Schema.optional(Schema.String),
-          resourceId: Schema.optional(Schema.String),
-          policyAssignmentId: Schema.optional(Schema.String),
-          policyDefinitionId: Schema.optional(Schema.String),
-          effectiveParameters: Schema.optional(Schema.String),
-          isCompliant: Schema.optional(Schema.Boolean),
-          subscriptionId: Schema.optional(Schema.String),
-          resourceType: Schema.optional(Schema.String),
-          resourceLocation: Schema.optional(Schema.String),
-          resourceGroup: Schema.optional(Schema.String),
-          resourceTags: Schema.optional(Schema.String),
-          policyAssignmentName: Schema.optional(Schema.String),
-          policyAssignmentOwner: Schema.optional(Schema.String),
-          policyAssignmentParameters: Schema.optional(Schema.String),
-          policyAssignmentScope: Schema.optional(Schema.String),
-          policyDefinitionName: Schema.optional(Schema.String),
-          policyDefinitionAction: Schema.optional(Schema.String),
-          policyDefinitionCategory: Schema.optional(Schema.String),
-          policySetDefinitionId: Schema.optional(Schema.String),
-          policySetDefinitionName: Schema.optional(Schema.String),
-          policySetDefinitionOwner: Schema.optional(Schema.String),
-          policySetDefinitionCategory: Schema.optional(Schema.String),
-          policySetDefinitionParameters: Schema.optional(Schema.String),
-          managementGroupIds: Schema.optional(Schema.String),
-          policyDefinitionReferenceId: Schema.optional(Schema.String),
-          complianceState: Schema.optional(Schema.String),
-          tenantId: Schema.optional(Schema.String),
-          principalOid: Schema.optional(Schema.String),
-          components: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                id: Schema.optional(Schema.String),
-                type: Schema.optional(Schema.String),
-                name: Schema.optional(Schema.String),
-                timestamp: Schema.optional(Schema.String),
-                tenantId: Schema.optional(Schema.String),
-                principalOid: Schema.optional(Schema.String),
-                policyDefinitionAction: Schema.optional(Schema.String),
-              }),
-            ),
-          ),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => PolicyEventSchema)),
     ),
   });
 export type PolicyEventsListQueryResultsForPolicySetDefinitionOutput =
@@ -1396,53 +1362,7 @@ export const PolicyEventsListQueryResultsForResourceOutput =
     "@odata.count": Schema.optional(Schema.Number),
     "@odata.nextLink": Schema.optional(Schema.String),
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          "@odata.id": Schema.optional(Schema.String),
-          "@odata.context": Schema.optional(Schema.String),
-          timestamp: Schema.optional(Schema.String),
-          resourceId: Schema.optional(Schema.String),
-          policyAssignmentId: Schema.optional(Schema.String),
-          policyDefinitionId: Schema.optional(Schema.String),
-          effectiveParameters: Schema.optional(Schema.String),
-          isCompliant: Schema.optional(Schema.Boolean),
-          subscriptionId: Schema.optional(Schema.String),
-          resourceType: Schema.optional(Schema.String),
-          resourceLocation: Schema.optional(Schema.String),
-          resourceGroup: Schema.optional(Schema.String),
-          resourceTags: Schema.optional(Schema.String),
-          policyAssignmentName: Schema.optional(Schema.String),
-          policyAssignmentOwner: Schema.optional(Schema.String),
-          policyAssignmentParameters: Schema.optional(Schema.String),
-          policyAssignmentScope: Schema.optional(Schema.String),
-          policyDefinitionName: Schema.optional(Schema.String),
-          policyDefinitionAction: Schema.optional(Schema.String),
-          policyDefinitionCategory: Schema.optional(Schema.String),
-          policySetDefinitionId: Schema.optional(Schema.String),
-          policySetDefinitionName: Schema.optional(Schema.String),
-          policySetDefinitionOwner: Schema.optional(Schema.String),
-          policySetDefinitionCategory: Schema.optional(Schema.String),
-          policySetDefinitionParameters: Schema.optional(Schema.String),
-          managementGroupIds: Schema.optional(Schema.String),
-          policyDefinitionReferenceId: Schema.optional(Schema.String),
-          complianceState: Schema.optional(Schema.String),
-          tenantId: Schema.optional(Schema.String),
-          principalOid: Schema.optional(Schema.String),
-          components: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                id: Schema.optional(Schema.String),
-                type: Schema.optional(Schema.String),
-                name: Schema.optional(Schema.String),
-                timestamp: Schema.optional(Schema.String),
-                tenantId: Schema.optional(Schema.String),
-                principalOid: Schema.optional(Schema.String),
-                policyDefinitionAction: Schema.optional(Schema.String),
-              }),
-            ),
-          ),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => PolicyEventSchema)),
     ),
   });
 export type PolicyEventsListQueryResultsForResourceOutput =
@@ -1476,53 +1396,7 @@ export const PolicyEventsListQueryResultsForResourceGroupOutput =
     "@odata.count": Schema.optional(Schema.Number),
     "@odata.nextLink": Schema.optional(Schema.String),
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          "@odata.id": Schema.optional(Schema.String),
-          "@odata.context": Schema.optional(Schema.String),
-          timestamp: Schema.optional(Schema.String),
-          resourceId: Schema.optional(Schema.String),
-          policyAssignmentId: Schema.optional(Schema.String),
-          policyDefinitionId: Schema.optional(Schema.String),
-          effectiveParameters: Schema.optional(Schema.String),
-          isCompliant: Schema.optional(Schema.Boolean),
-          subscriptionId: Schema.optional(Schema.String),
-          resourceType: Schema.optional(Schema.String),
-          resourceLocation: Schema.optional(Schema.String),
-          resourceGroup: Schema.optional(Schema.String),
-          resourceTags: Schema.optional(Schema.String),
-          policyAssignmentName: Schema.optional(Schema.String),
-          policyAssignmentOwner: Schema.optional(Schema.String),
-          policyAssignmentParameters: Schema.optional(Schema.String),
-          policyAssignmentScope: Schema.optional(Schema.String),
-          policyDefinitionName: Schema.optional(Schema.String),
-          policyDefinitionAction: Schema.optional(Schema.String),
-          policyDefinitionCategory: Schema.optional(Schema.String),
-          policySetDefinitionId: Schema.optional(Schema.String),
-          policySetDefinitionName: Schema.optional(Schema.String),
-          policySetDefinitionOwner: Schema.optional(Schema.String),
-          policySetDefinitionCategory: Schema.optional(Schema.String),
-          policySetDefinitionParameters: Schema.optional(Schema.String),
-          managementGroupIds: Schema.optional(Schema.String),
-          policyDefinitionReferenceId: Schema.optional(Schema.String),
-          complianceState: Schema.optional(Schema.String),
-          tenantId: Schema.optional(Schema.String),
-          principalOid: Schema.optional(Schema.String),
-          components: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                id: Schema.optional(Schema.String),
-                type: Schema.optional(Schema.String),
-                name: Schema.optional(Schema.String),
-                timestamp: Schema.optional(Schema.String),
-                tenantId: Schema.optional(Schema.String),
-                principalOid: Schema.optional(Schema.String),
-                policyDefinitionAction: Schema.optional(Schema.String),
-              }),
-            ),
-          ),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => PolicyEventSchema)),
     ),
   });
 export type PolicyEventsListQueryResultsForResourceGroupOutput =
@@ -1556,53 +1430,7 @@ export const PolicyEventsListQueryResultsForResourceGroupLevelPolicyAssignmentOu
     "@odata.count": Schema.optional(Schema.Number),
     "@odata.nextLink": Schema.optional(Schema.String),
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          "@odata.id": Schema.optional(Schema.String),
-          "@odata.context": Schema.optional(Schema.String),
-          timestamp: Schema.optional(Schema.String),
-          resourceId: Schema.optional(Schema.String),
-          policyAssignmentId: Schema.optional(Schema.String),
-          policyDefinitionId: Schema.optional(Schema.String),
-          effectiveParameters: Schema.optional(Schema.String),
-          isCompliant: Schema.optional(Schema.Boolean),
-          subscriptionId: Schema.optional(Schema.String),
-          resourceType: Schema.optional(Schema.String),
-          resourceLocation: Schema.optional(Schema.String),
-          resourceGroup: Schema.optional(Schema.String),
-          resourceTags: Schema.optional(Schema.String),
-          policyAssignmentName: Schema.optional(Schema.String),
-          policyAssignmentOwner: Schema.optional(Schema.String),
-          policyAssignmentParameters: Schema.optional(Schema.String),
-          policyAssignmentScope: Schema.optional(Schema.String),
-          policyDefinitionName: Schema.optional(Schema.String),
-          policyDefinitionAction: Schema.optional(Schema.String),
-          policyDefinitionCategory: Schema.optional(Schema.String),
-          policySetDefinitionId: Schema.optional(Schema.String),
-          policySetDefinitionName: Schema.optional(Schema.String),
-          policySetDefinitionOwner: Schema.optional(Schema.String),
-          policySetDefinitionCategory: Schema.optional(Schema.String),
-          policySetDefinitionParameters: Schema.optional(Schema.String),
-          managementGroupIds: Schema.optional(Schema.String),
-          policyDefinitionReferenceId: Schema.optional(Schema.String),
-          complianceState: Schema.optional(Schema.String),
-          tenantId: Schema.optional(Schema.String),
-          principalOid: Schema.optional(Schema.String),
-          components: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                id: Schema.optional(Schema.String),
-                type: Schema.optional(Schema.String),
-                name: Schema.optional(Schema.String),
-                timestamp: Schema.optional(Schema.String),
-                tenantId: Schema.optional(Schema.String),
-                principalOid: Schema.optional(Schema.String),
-                policyDefinitionAction: Schema.optional(Schema.String),
-              }),
-            ),
-          ),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => PolicyEventSchema)),
     ),
   });
 export type PolicyEventsListQueryResultsForResourceGroupLevelPolicyAssignmentOutput =
@@ -1638,53 +1466,7 @@ export const PolicyEventsListQueryResultsForSubscriptionOutput =
     "@odata.count": Schema.optional(Schema.Number),
     "@odata.nextLink": Schema.optional(Schema.String),
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          "@odata.id": Schema.optional(Schema.String),
-          "@odata.context": Schema.optional(Schema.String),
-          timestamp: Schema.optional(Schema.String),
-          resourceId: Schema.optional(Schema.String),
-          policyAssignmentId: Schema.optional(Schema.String),
-          policyDefinitionId: Schema.optional(Schema.String),
-          effectiveParameters: Schema.optional(Schema.String),
-          isCompliant: Schema.optional(Schema.Boolean),
-          subscriptionId: Schema.optional(Schema.String),
-          resourceType: Schema.optional(Schema.String),
-          resourceLocation: Schema.optional(Schema.String),
-          resourceGroup: Schema.optional(Schema.String),
-          resourceTags: Schema.optional(Schema.String),
-          policyAssignmentName: Schema.optional(Schema.String),
-          policyAssignmentOwner: Schema.optional(Schema.String),
-          policyAssignmentParameters: Schema.optional(Schema.String),
-          policyAssignmentScope: Schema.optional(Schema.String),
-          policyDefinitionName: Schema.optional(Schema.String),
-          policyDefinitionAction: Schema.optional(Schema.String),
-          policyDefinitionCategory: Schema.optional(Schema.String),
-          policySetDefinitionId: Schema.optional(Schema.String),
-          policySetDefinitionName: Schema.optional(Schema.String),
-          policySetDefinitionOwner: Schema.optional(Schema.String),
-          policySetDefinitionCategory: Schema.optional(Schema.String),
-          policySetDefinitionParameters: Schema.optional(Schema.String),
-          managementGroupIds: Schema.optional(Schema.String),
-          policyDefinitionReferenceId: Schema.optional(Schema.String),
-          complianceState: Schema.optional(Schema.String),
-          tenantId: Schema.optional(Schema.String),
-          principalOid: Schema.optional(Schema.String),
-          components: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                id: Schema.optional(Schema.String),
-                type: Schema.optional(Schema.String),
-                name: Schema.optional(Schema.String),
-                timestamp: Schema.optional(Schema.String),
-                tenantId: Schema.optional(Schema.String),
-                principalOid: Schema.optional(Schema.String),
-                policyDefinitionAction: Schema.optional(Schema.String),
-              }),
-            ),
-          ),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => PolicyEventSchema)),
     ),
   });
 export type PolicyEventsListQueryResultsForSubscriptionOutput =
@@ -1718,53 +1500,7 @@ export const PolicyEventsListQueryResultsForSubscriptionLevelPolicyAssignmentOut
     "@odata.count": Schema.optional(Schema.Number),
     "@odata.nextLink": Schema.optional(Schema.String),
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          "@odata.id": Schema.optional(Schema.String),
-          "@odata.context": Schema.optional(Schema.String),
-          timestamp: Schema.optional(Schema.String),
-          resourceId: Schema.optional(Schema.String),
-          policyAssignmentId: Schema.optional(Schema.String),
-          policyDefinitionId: Schema.optional(Schema.String),
-          effectiveParameters: Schema.optional(Schema.String),
-          isCompliant: Schema.optional(Schema.Boolean),
-          subscriptionId: Schema.optional(Schema.String),
-          resourceType: Schema.optional(Schema.String),
-          resourceLocation: Schema.optional(Schema.String),
-          resourceGroup: Schema.optional(Schema.String),
-          resourceTags: Schema.optional(Schema.String),
-          policyAssignmentName: Schema.optional(Schema.String),
-          policyAssignmentOwner: Schema.optional(Schema.String),
-          policyAssignmentParameters: Schema.optional(Schema.String),
-          policyAssignmentScope: Schema.optional(Schema.String),
-          policyDefinitionName: Schema.optional(Schema.String),
-          policyDefinitionAction: Schema.optional(Schema.String),
-          policyDefinitionCategory: Schema.optional(Schema.String),
-          policySetDefinitionId: Schema.optional(Schema.String),
-          policySetDefinitionName: Schema.optional(Schema.String),
-          policySetDefinitionOwner: Schema.optional(Schema.String),
-          policySetDefinitionCategory: Schema.optional(Schema.String),
-          policySetDefinitionParameters: Schema.optional(Schema.String),
-          managementGroupIds: Schema.optional(Schema.String),
-          policyDefinitionReferenceId: Schema.optional(Schema.String),
-          complianceState: Schema.optional(Schema.String),
-          tenantId: Schema.optional(Schema.String),
-          principalOid: Schema.optional(Schema.String),
-          components: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                id: Schema.optional(Schema.String),
-                type: Schema.optional(Schema.String),
-                name: Schema.optional(Schema.String),
-                timestamp: Schema.optional(Schema.String),
-                tenantId: Schema.optional(Schema.String),
-                principalOid: Schema.optional(Schema.String),
-                policyDefinitionAction: Schema.optional(Schema.String),
-              }),
-            ),
-          ),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => PolicyEventSchema)),
     ),
   });
 export type PolicyEventsListQueryResultsForSubscriptionLevelPolicyAssignmentOutput =
@@ -1797,14 +1533,7 @@ export type PolicyMetadataGetResourceInput =
 export const PolicyMetadataGetResourceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     properties: Schema.optional(
-      Schema.Struct({
-        metadataId: Schema.optional(Schema.String),
-        category: Schema.optional(Schema.String),
-        title: Schema.optional(Schema.String),
-        owner: Schema.optional(Schema.String),
-        additionalContentUrl: Schema.optional(Schema.String),
-        metadata: Schema.optional(Schema.Unknown),
-      }),
+      Schema.suspend(() => PolicyMetadataPropertiesSchema),
     ),
     id: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1838,23 +1567,7 @@ export type PolicyMetadataListInput = typeof PolicyMetadataListInput.Type;
 export const PolicyMetadataListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          properties: Schema.optional(
-            Schema.Struct({
-              metadataId: Schema.optional(Schema.String),
-              category: Schema.optional(Schema.String),
-              title: Schema.optional(Schema.String),
-              owner: Schema.optional(Schema.String),
-              additionalContentUrl: Schema.optional(Schema.String),
-              metadata: Schema.optional(Schema.Unknown),
-            }),
-          ),
-          id: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => SlimPolicyMetadataSchema)),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -1872,19 +1585,10 @@ export const PolicyMetadataList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const PolicyRestrictionsCheckAtManagementGroupScopeInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceDetails: Schema.optional(
-      Schema.Struct({
-        resourceContent: Schema.Unknown,
-        apiVersion: Schema.optional(Schema.String),
-        scope: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(() => CheckRestrictionsResourceDetailsSchema),
     ),
     pendingFields: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          field: Schema.String,
-          values: Schema.optional(Schema.Array(Schema.String)),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => PendingFieldSchema)),
     ),
   }).pipe(
     T.Http({
@@ -1900,78 +1604,12 @@ export type PolicyRestrictionsCheckAtManagementGroupScopeInput =
 export const PolicyRestrictionsCheckAtManagementGroupScopeOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     fieldRestrictions: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          field: Schema.optional(Schema.String),
-          restrictions: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                result: Schema.optional(
-                  Schema.Literals(["Required", "Removed", "Deny", "Audit"]),
-                ),
-                defaultValue: Schema.optional(Schema.String),
-                values: Schema.optional(Schema.Array(Schema.String)),
-                policy: Schema.optional(
-                  Schema.Struct({
-                    policyDefinitionId: Schema.optional(Schema.String),
-                    policySetDefinitionId: Schema.optional(Schema.String),
-                    policyDefinitionReferenceId: Schema.optional(Schema.String),
-                    policyAssignmentId: Schema.optional(Schema.String),
-                  }),
-                ),
-                policyEffect: Schema.optional(Schema.String),
-                reason: Schema.optional(Schema.String),
-              }),
-            ),
-          ),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => FieldRestrictionsSchema)),
     ),
     contentEvaluationResult: Schema.optional(
       Schema.Struct({
         policyEvaluations: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              policyInfo: Schema.optional(
-                Schema.Struct({
-                  policyDefinitionId: Schema.optional(Schema.String),
-                  policySetDefinitionId: Schema.optional(Schema.String),
-                  policyDefinitionReferenceId: Schema.optional(Schema.String),
-                  policyAssignmentId: Schema.optional(Schema.String),
-                }),
-              ),
-              evaluationResult: Schema.optional(Schema.String),
-              evaluationDetails: Schema.optional(
-                Schema.Struct({
-                  evaluatedExpressions: Schema.optional(
-                    Schema.Array(
-                      Schema.Struct({
-                        result: Schema.optional(Schema.String),
-                        expression: Schema.optional(Schema.String),
-                        expressionKind: Schema.optional(Schema.String),
-                        path: Schema.optional(Schema.String),
-                        expressionValue: Schema.optional(Schema.Unknown),
-                        targetValue: Schema.optional(Schema.Unknown),
-                        operator: Schema.optional(Schema.String),
-                      }),
-                    ),
-                  ),
-                  ifNotExistsDetails: Schema.optional(
-                    Schema.Struct({
-                      resourceId: Schema.optional(Schema.String),
-                      totalResources: Schema.optional(Schema.Number),
-                    }),
-                  ),
-                  reason: Schema.optional(Schema.String),
-                }),
-              ),
-              effectDetails: Schema.optional(
-                Schema.Struct({
-                  policyEffect: Schema.optional(Schema.String),
-                }),
-              ),
-            }),
-          ),
+          Schema.Array(Schema.suspend(() => PolicyEvaluationResultSchema)),
         ),
       }),
     ),
@@ -1995,18 +1633,11 @@ export const PolicyRestrictionsCheckAtResourceGroupScopeInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    resourceDetails: Schema.Struct({
-      resourceContent: Schema.Unknown,
-      apiVersion: Schema.optional(Schema.String),
-      scope: Schema.optional(Schema.String),
-    }),
+    resourceDetails: Schema.suspend(
+      () => CheckRestrictionsResourceDetailsSchema,
+    ),
     pendingFields: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          field: Schema.String,
-          values: Schema.optional(Schema.Array(Schema.String)),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => PendingFieldSchema)),
     ),
     includeAuditEffect: Schema.optional(Schema.Boolean),
   }).pipe(
@@ -2023,78 +1654,12 @@ export type PolicyRestrictionsCheckAtResourceGroupScopeInput =
 export const PolicyRestrictionsCheckAtResourceGroupScopeOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     fieldRestrictions: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          field: Schema.optional(Schema.String),
-          restrictions: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                result: Schema.optional(
-                  Schema.Literals(["Required", "Removed", "Deny", "Audit"]),
-                ),
-                defaultValue: Schema.optional(Schema.String),
-                values: Schema.optional(Schema.Array(Schema.String)),
-                policy: Schema.optional(
-                  Schema.Struct({
-                    policyDefinitionId: Schema.optional(Schema.String),
-                    policySetDefinitionId: Schema.optional(Schema.String),
-                    policyDefinitionReferenceId: Schema.optional(Schema.String),
-                    policyAssignmentId: Schema.optional(Schema.String),
-                  }),
-                ),
-                policyEffect: Schema.optional(Schema.String),
-                reason: Schema.optional(Schema.String),
-              }),
-            ),
-          ),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => FieldRestrictionsSchema)),
     ),
     contentEvaluationResult: Schema.optional(
       Schema.Struct({
         policyEvaluations: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              policyInfo: Schema.optional(
-                Schema.Struct({
-                  policyDefinitionId: Schema.optional(Schema.String),
-                  policySetDefinitionId: Schema.optional(Schema.String),
-                  policyDefinitionReferenceId: Schema.optional(Schema.String),
-                  policyAssignmentId: Schema.optional(Schema.String),
-                }),
-              ),
-              evaluationResult: Schema.optional(Schema.String),
-              evaluationDetails: Schema.optional(
-                Schema.Struct({
-                  evaluatedExpressions: Schema.optional(
-                    Schema.Array(
-                      Schema.Struct({
-                        result: Schema.optional(Schema.String),
-                        expression: Schema.optional(Schema.String),
-                        expressionKind: Schema.optional(Schema.String),
-                        path: Schema.optional(Schema.String),
-                        expressionValue: Schema.optional(Schema.Unknown),
-                        targetValue: Schema.optional(Schema.Unknown),
-                        operator: Schema.optional(Schema.String),
-                      }),
-                    ),
-                  ),
-                  ifNotExistsDetails: Schema.optional(
-                    Schema.Struct({
-                      resourceId: Schema.optional(Schema.String),
-                      totalResources: Schema.optional(Schema.Number),
-                    }),
-                  ),
-                  reason: Schema.optional(Schema.String),
-                }),
-              ),
-              effectDetails: Schema.optional(
-                Schema.Struct({
-                  policyEffect: Schema.optional(Schema.String),
-                }),
-              ),
-            }),
-          ),
+          Schema.Array(Schema.suspend(() => PolicyEvaluationResultSchema)),
         ),
       }),
     ),
@@ -2119,18 +1684,11 @@ export const PolicyRestrictionsCheckAtResourceGroupScope =
 export const PolicyRestrictionsCheckAtSubscriptionScopeInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceDetails: Schema.Struct({
-      resourceContent: Schema.Unknown,
-      apiVersion: Schema.optional(Schema.String),
-      scope: Schema.optional(Schema.String),
-    }),
+    resourceDetails: Schema.suspend(
+      () => CheckRestrictionsResourceDetailsSchema,
+    ),
     pendingFields: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          field: Schema.String,
-          values: Schema.optional(Schema.Array(Schema.String)),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => PendingFieldSchema)),
     ),
     includeAuditEffect: Schema.optional(Schema.Boolean),
   }).pipe(
@@ -2147,78 +1705,12 @@ export type PolicyRestrictionsCheckAtSubscriptionScopeInput =
 export const PolicyRestrictionsCheckAtSubscriptionScopeOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     fieldRestrictions: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          field: Schema.optional(Schema.String),
-          restrictions: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                result: Schema.optional(
-                  Schema.Literals(["Required", "Removed", "Deny", "Audit"]),
-                ),
-                defaultValue: Schema.optional(Schema.String),
-                values: Schema.optional(Schema.Array(Schema.String)),
-                policy: Schema.optional(
-                  Schema.Struct({
-                    policyDefinitionId: Schema.optional(Schema.String),
-                    policySetDefinitionId: Schema.optional(Schema.String),
-                    policyDefinitionReferenceId: Schema.optional(Schema.String),
-                    policyAssignmentId: Schema.optional(Schema.String),
-                  }),
-                ),
-                policyEffect: Schema.optional(Schema.String),
-                reason: Schema.optional(Schema.String),
-              }),
-            ),
-          ),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => FieldRestrictionsSchema)),
     ),
     contentEvaluationResult: Schema.optional(
       Schema.Struct({
         policyEvaluations: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              policyInfo: Schema.optional(
-                Schema.Struct({
-                  policyDefinitionId: Schema.optional(Schema.String),
-                  policySetDefinitionId: Schema.optional(Schema.String),
-                  policyDefinitionReferenceId: Schema.optional(Schema.String),
-                  policyAssignmentId: Schema.optional(Schema.String),
-                }),
-              ),
-              evaluationResult: Schema.optional(Schema.String),
-              evaluationDetails: Schema.optional(
-                Schema.Struct({
-                  evaluatedExpressions: Schema.optional(
-                    Schema.Array(
-                      Schema.Struct({
-                        result: Schema.optional(Schema.String),
-                        expression: Schema.optional(Schema.String),
-                        expressionKind: Schema.optional(Schema.String),
-                        path: Schema.optional(Schema.String),
-                        expressionValue: Schema.optional(Schema.Unknown),
-                        targetValue: Schema.optional(Schema.Unknown),
-                        operator: Schema.optional(Schema.String),
-                      }),
-                    ),
-                  ),
-                  ifNotExistsDetails: Schema.optional(
-                    Schema.Struct({
-                      resourceId: Schema.optional(Schema.String),
-                      totalResources: Schema.optional(Schema.Number),
-                    }),
-                  ),
-                  reason: Schema.optional(Schema.String),
-                }),
-              ),
-              effectDetails: Schema.optional(
-                Schema.Struct({
-                  policyEffect: Schema.optional(Schema.String),
-                }),
-              ),
-            }),
-          ),
+          Schema.Array(Schema.suspend(() => PolicyEvaluationResultSchema)),
         ),
       }),
     ),
@@ -2257,78 +1749,7 @@ export const PolicyStatesListQueryResultsForManagementGroupOutput =
     "@odata.count": Schema.optional(Schema.Number),
     "@odata.nextLink": Schema.optional(Schema.String),
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          "@odata.id": Schema.optional(Schema.String),
-          "@odata.context": Schema.optional(Schema.String),
-          timestamp: Schema.optional(Schema.String),
-          resourceId: Schema.optional(Schema.String),
-          policyAssignmentId: Schema.optional(Schema.String),
-          policyDefinitionId: Schema.optional(Schema.String),
-          effectiveParameters: Schema.optional(Schema.String),
-          isCompliant: Schema.optional(Schema.Boolean),
-          subscriptionId: Schema.optional(Schema.String),
-          resourceType: Schema.optional(Schema.String),
-          resourceLocation: Schema.optional(Schema.String),
-          resourceGroup: Schema.optional(Schema.String),
-          resourceTags: Schema.optional(Schema.String),
-          policyAssignmentName: Schema.optional(Schema.String),
-          policyAssignmentOwner: Schema.optional(Schema.String),
-          policyAssignmentParameters: Schema.optional(Schema.String),
-          policyAssignmentScope: Schema.optional(Schema.String),
-          policyDefinitionName: Schema.optional(Schema.String),
-          policyDefinitionAction: Schema.optional(Schema.String),
-          policyDefinitionCategory: Schema.optional(Schema.String),
-          policySetDefinitionId: Schema.optional(Schema.String),
-          policySetDefinitionName: Schema.optional(Schema.String),
-          policySetDefinitionOwner: Schema.optional(Schema.String),
-          policySetDefinitionCategory: Schema.optional(Schema.String),
-          policySetDefinitionParameters: Schema.optional(Schema.String),
-          managementGroupIds: Schema.optional(Schema.String),
-          policyDefinitionReferenceId: Schema.optional(Schema.String),
-          complianceState: Schema.optional(Schema.String),
-          policyEvaluationDetails: Schema.optional(
-            Schema.Struct({
-              evaluatedExpressions: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    result: Schema.optional(Schema.String),
-                    expression: Schema.optional(Schema.String),
-                    expressionKind: Schema.optional(Schema.String),
-                    path: Schema.optional(Schema.String),
-                    expressionValue: Schema.optional(Schema.Unknown),
-                    targetValue: Schema.optional(Schema.Unknown),
-                    operator: Schema.optional(Schema.String),
-                  }),
-                ),
-              ),
-              ifNotExistsDetails: Schema.optional(
-                Schema.Struct({
-                  resourceId: Schema.optional(Schema.String),
-                  totalResources: Schema.optional(Schema.Number),
-                }),
-              ),
-            }),
-          ),
-          policyDefinitionGroupNames: Schema.optional(
-            Schema.Array(Schema.String),
-          ),
-          components: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                id: Schema.optional(Schema.String),
-                type: Schema.optional(Schema.String),
-                name: Schema.optional(Schema.String),
-                timestamp: Schema.optional(Schema.String),
-                complianceState: Schema.optional(Schema.String),
-              }),
-            ),
-          ),
-          policyDefinitionVersion: Schema.optional(Schema.String),
-          policySetDefinitionVersion: Schema.optional(Schema.String),
-          policyAssignmentVersion: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => PolicyStateSchema)),
     ),
   });
 export type PolicyStatesListQueryResultsForManagementGroupOutput =
@@ -2362,78 +1783,7 @@ export const PolicyStatesListQueryResultsForPolicyDefinitionOutput =
     "@odata.count": Schema.optional(Schema.Number),
     "@odata.nextLink": Schema.optional(Schema.String),
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          "@odata.id": Schema.optional(Schema.String),
-          "@odata.context": Schema.optional(Schema.String),
-          timestamp: Schema.optional(Schema.String),
-          resourceId: Schema.optional(Schema.String),
-          policyAssignmentId: Schema.optional(Schema.String),
-          policyDefinitionId: Schema.optional(Schema.String),
-          effectiveParameters: Schema.optional(Schema.String),
-          isCompliant: Schema.optional(Schema.Boolean),
-          subscriptionId: Schema.optional(Schema.String),
-          resourceType: Schema.optional(Schema.String),
-          resourceLocation: Schema.optional(Schema.String),
-          resourceGroup: Schema.optional(Schema.String),
-          resourceTags: Schema.optional(Schema.String),
-          policyAssignmentName: Schema.optional(Schema.String),
-          policyAssignmentOwner: Schema.optional(Schema.String),
-          policyAssignmentParameters: Schema.optional(Schema.String),
-          policyAssignmentScope: Schema.optional(Schema.String),
-          policyDefinitionName: Schema.optional(Schema.String),
-          policyDefinitionAction: Schema.optional(Schema.String),
-          policyDefinitionCategory: Schema.optional(Schema.String),
-          policySetDefinitionId: Schema.optional(Schema.String),
-          policySetDefinitionName: Schema.optional(Schema.String),
-          policySetDefinitionOwner: Schema.optional(Schema.String),
-          policySetDefinitionCategory: Schema.optional(Schema.String),
-          policySetDefinitionParameters: Schema.optional(Schema.String),
-          managementGroupIds: Schema.optional(Schema.String),
-          policyDefinitionReferenceId: Schema.optional(Schema.String),
-          complianceState: Schema.optional(Schema.String),
-          policyEvaluationDetails: Schema.optional(
-            Schema.Struct({
-              evaluatedExpressions: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    result: Schema.optional(Schema.String),
-                    expression: Schema.optional(Schema.String),
-                    expressionKind: Schema.optional(Schema.String),
-                    path: Schema.optional(Schema.String),
-                    expressionValue: Schema.optional(Schema.Unknown),
-                    targetValue: Schema.optional(Schema.Unknown),
-                    operator: Schema.optional(Schema.String),
-                  }),
-                ),
-              ),
-              ifNotExistsDetails: Schema.optional(
-                Schema.Struct({
-                  resourceId: Schema.optional(Schema.String),
-                  totalResources: Schema.optional(Schema.Number),
-                }),
-              ),
-            }),
-          ),
-          policyDefinitionGroupNames: Schema.optional(
-            Schema.Array(Schema.String),
-          ),
-          components: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                id: Schema.optional(Schema.String),
-                type: Schema.optional(Schema.String),
-                name: Schema.optional(Schema.String),
-                timestamp: Schema.optional(Schema.String),
-                complianceState: Schema.optional(Schema.String),
-              }),
-            ),
-          ),
-          policyDefinitionVersion: Schema.optional(Schema.String),
-          policySetDefinitionVersion: Schema.optional(Schema.String),
-          policyAssignmentVersion: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => PolicyStateSchema)),
     ),
   });
 export type PolicyStatesListQueryResultsForPolicyDefinitionOutput =
@@ -2467,78 +1817,7 @@ export const PolicyStatesListQueryResultsForPolicySetDefinitionOutput =
     "@odata.count": Schema.optional(Schema.Number),
     "@odata.nextLink": Schema.optional(Schema.String),
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          "@odata.id": Schema.optional(Schema.String),
-          "@odata.context": Schema.optional(Schema.String),
-          timestamp: Schema.optional(Schema.String),
-          resourceId: Schema.optional(Schema.String),
-          policyAssignmentId: Schema.optional(Schema.String),
-          policyDefinitionId: Schema.optional(Schema.String),
-          effectiveParameters: Schema.optional(Schema.String),
-          isCompliant: Schema.optional(Schema.Boolean),
-          subscriptionId: Schema.optional(Schema.String),
-          resourceType: Schema.optional(Schema.String),
-          resourceLocation: Schema.optional(Schema.String),
-          resourceGroup: Schema.optional(Schema.String),
-          resourceTags: Schema.optional(Schema.String),
-          policyAssignmentName: Schema.optional(Schema.String),
-          policyAssignmentOwner: Schema.optional(Schema.String),
-          policyAssignmentParameters: Schema.optional(Schema.String),
-          policyAssignmentScope: Schema.optional(Schema.String),
-          policyDefinitionName: Schema.optional(Schema.String),
-          policyDefinitionAction: Schema.optional(Schema.String),
-          policyDefinitionCategory: Schema.optional(Schema.String),
-          policySetDefinitionId: Schema.optional(Schema.String),
-          policySetDefinitionName: Schema.optional(Schema.String),
-          policySetDefinitionOwner: Schema.optional(Schema.String),
-          policySetDefinitionCategory: Schema.optional(Schema.String),
-          policySetDefinitionParameters: Schema.optional(Schema.String),
-          managementGroupIds: Schema.optional(Schema.String),
-          policyDefinitionReferenceId: Schema.optional(Schema.String),
-          complianceState: Schema.optional(Schema.String),
-          policyEvaluationDetails: Schema.optional(
-            Schema.Struct({
-              evaluatedExpressions: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    result: Schema.optional(Schema.String),
-                    expression: Schema.optional(Schema.String),
-                    expressionKind: Schema.optional(Schema.String),
-                    path: Schema.optional(Schema.String),
-                    expressionValue: Schema.optional(Schema.Unknown),
-                    targetValue: Schema.optional(Schema.Unknown),
-                    operator: Schema.optional(Schema.String),
-                  }),
-                ),
-              ),
-              ifNotExistsDetails: Schema.optional(
-                Schema.Struct({
-                  resourceId: Schema.optional(Schema.String),
-                  totalResources: Schema.optional(Schema.Number),
-                }),
-              ),
-            }),
-          ),
-          policyDefinitionGroupNames: Schema.optional(
-            Schema.Array(Schema.String),
-          ),
-          components: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                id: Schema.optional(Schema.String),
-                type: Schema.optional(Schema.String),
-                name: Schema.optional(Schema.String),
-                timestamp: Schema.optional(Schema.String),
-                complianceState: Schema.optional(Schema.String),
-              }),
-            ),
-          ),
-          policyDefinitionVersion: Schema.optional(Schema.String),
-          policySetDefinitionVersion: Schema.optional(Schema.String),
-          policyAssignmentVersion: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => PolicyStateSchema)),
     ),
   });
 export type PolicyStatesListQueryResultsForPolicySetDefinitionOutput =
@@ -2572,78 +1851,7 @@ export const PolicyStatesListQueryResultsForResourceOutput =
     "@odata.count": Schema.optional(Schema.Number),
     "@odata.nextLink": Schema.optional(Schema.String),
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          "@odata.id": Schema.optional(Schema.String),
-          "@odata.context": Schema.optional(Schema.String),
-          timestamp: Schema.optional(Schema.String),
-          resourceId: Schema.optional(Schema.String),
-          policyAssignmentId: Schema.optional(Schema.String),
-          policyDefinitionId: Schema.optional(Schema.String),
-          effectiveParameters: Schema.optional(Schema.String),
-          isCompliant: Schema.optional(Schema.Boolean),
-          subscriptionId: Schema.optional(Schema.String),
-          resourceType: Schema.optional(Schema.String),
-          resourceLocation: Schema.optional(Schema.String),
-          resourceGroup: Schema.optional(Schema.String),
-          resourceTags: Schema.optional(Schema.String),
-          policyAssignmentName: Schema.optional(Schema.String),
-          policyAssignmentOwner: Schema.optional(Schema.String),
-          policyAssignmentParameters: Schema.optional(Schema.String),
-          policyAssignmentScope: Schema.optional(Schema.String),
-          policyDefinitionName: Schema.optional(Schema.String),
-          policyDefinitionAction: Schema.optional(Schema.String),
-          policyDefinitionCategory: Schema.optional(Schema.String),
-          policySetDefinitionId: Schema.optional(Schema.String),
-          policySetDefinitionName: Schema.optional(Schema.String),
-          policySetDefinitionOwner: Schema.optional(Schema.String),
-          policySetDefinitionCategory: Schema.optional(Schema.String),
-          policySetDefinitionParameters: Schema.optional(Schema.String),
-          managementGroupIds: Schema.optional(Schema.String),
-          policyDefinitionReferenceId: Schema.optional(Schema.String),
-          complianceState: Schema.optional(Schema.String),
-          policyEvaluationDetails: Schema.optional(
-            Schema.Struct({
-              evaluatedExpressions: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    result: Schema.optional(Schema.String),
-                    expression: Schema.optional(Schema.String),
-                    expressionKind: Schema.optional(Schema.String),
-                    path: Schema.optional(Schema.String),
-                    expressionValue: Schema.optional(Schema.Unknown),
-                    targetValue: Schema.optional(Schema.Unknown),
-                    operator: Schema.optional(Schema.String),
-                  }),
-                ),
-              ),
-              ifNotExistsDetails: Schema.optional(
-                Schema.Struct({
-                  resourceId: Schema.optional(Schema.String),
-                  totalResources: Schema.optional(Schema.Number),
-                }),
-              ),
-            }),
-          ),
-          policyDefinitionGroupNames: Schema.optional(
-            Schema.Array(Schema.String),
-          ),
-          components: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                id: Schema.optional(Schema.String),
-                type: Schema.optional(Schema.String),
-                name: Schema.optional(Schema.String),
-                timestamp: Schema.optional(Schema.String),
-                complianceState: Schema.optional(Schema.String),
-              }),
-            ),
-          ),
-          policyDefinitionVersion: Schema.optional(Schema.String),
-          policySetDefinitionVersion: Schema.optional(Schema.String),
-          policyAssignmentVersion: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => PolicyStateSchema)),
     ),
   });
 export type PolicyStatesListQueryResultsForResourceOutput =
@@ -2677,78 +1885,7 @@ export const PolicyStatesListQueryResultsForResourceGroupOutput =
     "@odata.count": Schema.optional(Schema.Number),
     "@odata.nextLink": Schema.optional(Schema.String),
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          "@odata.id": Schema.optional(Schema.String),
-          "@odata.context": Schema.optional(Schema.String),
-          timestamp: Schema.optional(Schema.String),
-          resourceId: Schema.optional(Schema.String),
-          policyAssignmentId: Schema.optional(Schema.String),
-          policyDefinitionId: Schema.optional(Schema.String),
-          effectiveParameters: Schema.optional(Schema.String),
-          isCompliant: Schema.optional(Schema.Boolean),
-          subscriptionId: Schema.optional(Schema.String),
-          resourceType: Schema.optional(Schema.String),
-          resourceLocation: Schema.optional(Schema.String),
-          resourceGroup: Schema.optional(Schema.String),
-          resourceTags: Schema.optional(Schema.String),
-          policyAssignmentName: Schema.optional(Schema.String),
-          policyAssignmentOwner: Schema.optional(Schema.String),
-          policyAssignmentParameters: Schema.optional(Schema.String),
-          policyAssignmentScope: Schema.optional(Schema.String),
-          policyDefinitionName: Schema.optional(Schema.String),
-          policyDefinitionAction: Schema.optional(Schema.String),
-          policyDefinitionCategory: Schema.optional(Schema.String),
-          policySetDefinitionId: Schema.optional(Schema.String),
-          policySetDefinitionName: Schema.optional(Schema.String),
-          policySetDefinitionOwner: Schema.optional(Schema.String),
-          policySetDefinitionCategory: Schema.optional(Schema.String),
-          policySetDefinitionParameters: Schema.optional(Schema.String),
-          managementGroupIds: Schema.optional(Schema.String),
-          policyDefinitionReferenceId: Schema.optional(Schema.String),
-          complianceState: Schema.optional(Schema.String),
-          policyEvaluationDetails: Schema.optional(
-            Schema.Struct({
-              evaluatedExpressions: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    result: Schema.optional(Schema.String),
-                    expression: Schema.optional(Schema.String),
-                    expressionKind: Schema.optional(Schema.String),
-                    path: Schema.optional(Schema.String),
-                    expressionValue: Schema.optional(Schema.Unknown),
-                    targetValue: Schema.optional(Schema.Unknown),
-                    operator: Schema.optional(Schema.String),
-                  }),
-                ),
-              ),
-              ifNotExistsDetails: Schema.optional(
-                Schema.Struct({
-                  resourceId: Schema.optional(Schema.String),
-                  totalResources: Schema.optional(Schema.Number),
-                }),
-              ),
-            }),
-          ),
-          policyDefinitionGroupNames: Schema.optional(
-            Schema.Array(Schema.String),
-          ),
-          components: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                id: Schema.optional(Schema.String),
-                type: Schema.optional(Schema.String),
-                name: Schema.optional(Schema.String),
-                timestamp: Schema.optional(Schema.String),
-                complianceState: Schema.optional(Schema.String),
-              }),
-            ),
-          ),
-          policyDefinitionVersion: Schema.optional(Schema.String),
-          policySetDefinitionVersion: Schema.optional(Schema.String),
-          policyAssignmentVersion: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => PolicyStateSchema)),
     ),
   });
 export type PolicyStatesListQueryResultsForResourceGroupOutput =
@@ -2782,78 +1919,7 @@ export const PolicyStatesListQueryResultsForResourceGroupLevelPolicyAssignmentOu
     "@odata.count": Schema.optional(Schema.Number),
     "@odata.nextLink": Schema.optional(Schema.String),
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          "@odata.id": Schema.optional(Schema.String),
-          "@odata.context": Schema.optional(Schema.String),
-          timestamp: Schema.optional(Schema.String),
-          resourceId: Schema.optional(Schema.String),
-          policyAssignmentId: Schema.optional(Schema.String),
-          policyDefinitionId: Schema.optional(Schema.String),
-          effectiveParameters: Schema.optional(Schema.String),
-          isCompliant: Schema.optional(Schema.Boolean),
-          subscriptionId: Schema.optional(Schema.String),
-          resourceType: Schema.optional(Schema.String),
-          resourceLocation: Schema.optional(Schema.String),
-          resourceGroup: Schema.optional(Schema.String),
-          resourceTags: Schema.optional(Schema.String),
-          policyAssignmentName: Schema.optional(Schema.String),
-          policyAssignmentOwner: Schema.optional(Schema.String),
-          policyAssignmentParameters: Schema.optional(Schema.String),
-          policyAssignmentScope: Schema.optional(Schema.String),
-          policyDefinitionName: Schema.optional(Schema.String),
-          policyDefinitionAction: Schema.optional(Schema.String),
-          policyDefinitionCategory: Schema.optional(Schema.String),
-          policySetDefinitionId: Schema.optional(Schema.String),
-          policySetDefinitionName: Schema.optional(Schema.String),
-          policySetDefinitionOwner: Schema.optional(Schema.String),
-          policySetDefinitionCategory: Schema.optional(Schema.String),
-          policySetDefinitionParameters: Schema.optional(Schema.String),
-          managementGroupIds: Schema.optional(Schema.String),
-          policyDefinitionReferenceId: Schema.optional(Schema.String),
-          complianceState: Schema.optional(Schema.String),
-          policyEvaluationDetails: Schema.optional(
-            Schema.Struct({
-              evaluatedExpressions: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    result: Schema.optional(Schema.String),
-                    expression: Schema.optional(Schema.String),
-                    expressionKind: Schema.optional(Schema.String),
-                    path: Schema.optional(Schema.String),
-                    expressionValue: Schema.optional(Schema.Unknown),
-                    targetValue: Schema.optional(Schema.Unknown),
-                    operator: Schema.optional(Schema.String),
-                  }),
-                ),
-              ),
-              ifNotExistsDetails: Schema.optional(
-                Schema.Struct({
-                  resourceId: Schema.optional(Schema.String),
-                  totalResources: Schema.optional(Schema.Number),
-                }),
-              ),
-            }),
-          ),
-          policyDefinitionGroupNames: Schema.optional(
-            Schema.Array(Schema.String),
-          ),
-          components: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                id: Schema.optional(Schema.String),
-                type: Schema.optional(Schema.String),
-                name: Schema.optional(Schema.String),
-                timestamp: Schema.optional(Schema.String),
-                complianceState: Schema.optional(Schema.String),
-              }),
-            ),
-          ),
-          policyDefinitionVersion: Schema.optional(Schema.String),
-          policySetDefinitionVersion: Schema.optional(Schema.String),
-          policyAssignmentVersion: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => PolicyStateSchema)),
     ),
   });
 export type PolicyStatesListQueryResultsForResourceGroupLevelPolicyAssignmentOutput =
@@ -2889,78 +1955,7 @@ export const PolicyStatesListQueryResultsForSubscriptionOutput =
     "@odata.count": Schema.optional(Schema.Number),
     "@odata.nextLink": Schema.optional(Schema.String),
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          "@odata.id": Schema.optional(Schema.String),
-          "@odata.context": Schema.optional(Schema.String),
-          timestamp: Schema.optional(Schema.String),
-          resourceId: Schema.optional(Schema.String),
-          policyAssignmentId: Schema.optional(Schema.String),
-          policyDefinitionId: Schema.optional(Schema.String),
-          effectiveParameters: Schema.optional(Schema.String),
-          isCompliant: Schema.optional(Schema.Boolean),
-          subscriptionId: Schema.optional(Schema.String),
-          resourceType: Schema.optional(Schema.String),
-          resourceLocation: Schema.optional(Schema.String),
-          resourceGroup: Schema.optional(Schema.String),
-          resourceTags: Schema.optional(Schema.String),
-          policyAssignmentName: Schema.optional(Schema.String),
-          policyAssignmentOwner: Schema.optional(Schema.String),
-          policyAssignmentParameters: Schema.optional(Schema.String),
-          policyAssignmentScope: Schema.optional(Schema.String),
-          policyDefinitionName: Schema.optional(Schema.String),
-          policyDefinitionAction: Schema.optional(Schema.String),
-          policyDefinitionCategory: Schema.optional(Schema.String),
-          policySetDefinitionId: Schema.optional(Schema.String),
-          policySetDefinitionName: Schema.optional(Schema.String),
-          policySetDefinitionOwner: Schema.optional(Schema.String),
-          policySetDefinitionCategory: Schema.optional(Schema.String),
-          policySetDefinitionParameters: Schema.optional(Schema.String),
-          managementGroupIds: Schema.optional(Schema.String),
-          policyDefinitionReferenceId: Schema.optional(Schema.String),
-          complianceState: Schema.optional(Schema.String),
-          policyEvaluationDetails: Schema.optional(
-            Schema.Struct({
-              evaluatedExpressions: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    result: Schema.optional(Schema.String),
-                    expression: Schema.optional(Schema.String),
-                    expressionKind: Schema.optional(Schema.String),
-                    path: Schema.optional(Schema.String),
-                    expressionValue: Schema.optional(Schema.Unknown),
-                    targetValue: Schema.optional(Schema.Unknown),
-                    operator: Schema.optional(Schema.String),
-                  }),
-                ),
-              ),
-              ifNotExistsDetails: Schema.optional(
-                Schema.Struct({
-                  resourceId: Schema.optional(Schema.String),
-                  totalResources: Schema.optional(Schema.Number),
-                }),
-              ),
-            }),
-          ),
-          policyDefinitionGroupNames: Schema.optional(
-            Schema.Array(Schema.String),
-          ),
-          components: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                id: Schema.optional(Schema.String),
-                type: Schema.optional(Schema.String),
-                name: Schema.optional(Schema.String),
-                timestamp: Schema.optional(Schema.String),
-                complianceState: Schema.optional(Schema.String),
-              }),
-            ),
-          ),
-          policyDefinitionVersion: Schema.optional(Schema.String),
-          policySetDefinitionVersion: Schema.optional(Schema.String),
-          policyAssignmentVersion: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => PolicyStateSchema)),
     ),
   });
 export type PolicyStatesListQueryResultsForSubscriptionOutput =
@@ -2994,78 +1989,7 @@ export const PolicyStatesListQueryResultsForSubscriptionLevelPolicyAssignmentOut
     "@odata.count": Schema.optional(Schema.Number),
     "@odata.nextLink": Schema.optional(Schema.String),
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          "@odata.id": Schema.optional(Schema.String),
-          "@odata.context": Schema.optional(Schema.String),
-          timestamp: Schema.optional(Schema.String),
-          resourceId: Schema.optional(Schema.String),
-          policyAssignmentId: Schema.optional(Schema.String),
-          policyDefinitionId: Schema.optional(Schema.String),
-          effectiveParameters: Schema.optional(Schema.String),
-          isCompliant: Schema.optional(Schema.Boolean),
-          subscriptionId: Schema.optional(Schema.String),
-          resourceType: Schema.optional(Schema.String),
-          resourceLocation: Schema.optional(Schema.String),
-          resourceGroup: Schema.optional(Schema.String),
-          resourceTags: Schema.optional(Schema.String),
-          policyAssignmentName: Schema.optional(Schema.String),
-          policyAssignmentOwner: Schema.optional(Schema.String),
-          policyAssignmentParameters: Schema.optional(Schema.String),
-          policyAssignmentScope: Schema.optional(Schema.String),
-          policyDefinitionName: Schema.optional(Schema.String),
-          policyDefinitionAction: Schema.optional(Schema.String),
-          policyDefinitionCategory: Schema.optional(Schema.String),
-          policySetDefinitionId: Schema.optional(Schema.String),
-          policySetDefinitionName: Schema.optional(Schema.String),
-          policySetDefinitionOwner: Schema.optional(Schema.String),
-          policySetDefinitionCategory: Schema.optional(Schema.String),
-          policySetDefinitionParameters: Schema.optional(Schema.String),
-          managementGroupIds: Schema.optional(Schema.String),
-          policyDefinitionReferenceId: Schema.optional(Schema.String),
-          complianceState: Schema.optional(Schema.String),
-          policyEvaluationDetails: Schema.optional(
-            Schema.Struct({
-              evaluatedExpressions: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    result: Schema.optional(Schema.String),
-                    expression: Schema.optional(Schema.String),
-                    expressionKind: Schema.optional(Schema.String),
-                    path: Schema.optional(Schema.String),
-                    expressionValue: Schema.optional(Schema.Unknown),
-                    targetValue: Schema.optional(Schema.Unknown),
-                    operator: Schema.optional(Schema.String),
-                  }),
-                ),
-              ),
-              ifNotExistsDetails: Schema.optional(
-                Schema.Struct({
-                  resourceId: Schema.optional(Schema.String),
-                  totalResources: Schema.optional(Schema.Number),
-                }),
-              ),
-            }),
-          ),
-          policyDefinitionGroupNames: Schema.optional(
-            Schema.Array(Schema.String),
-          ),
-          components: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                id: Schema.optional(Schema.String),
-                type: Schema.optional(Schema.String),
-                name: Schema.optional(Schema.String),
-                timestamp: Schema.optional(Schema.String),
-                complianceState: Schema.optional(Schema.String),
-              }),
-            ),
-          ),
-          policyDefinitionVersion: Schema.optional(Schema.String),
-          policySetDefinitionVersion: Schema.optional(Schema.String),
-          policyAssignmentVersion: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => PolicyStateSchema)),
     ),
   });
 export type PolicyStatesListQueryResultsForSubscriptionLevelPolicyAssignmentOutput =
@@ -3099,167 +2023,7 @@ export const PolicyStatesSummarizeForManagementGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     "@odata.context": Schema.optional(Schema.String),
     "@odata.count": Schema.optional(Schema.Number),
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          "@odata.id": Schema.optional(Schema.String),
-          "@odata.context": Schema.optional(Schema.String),
-          results: Schema.optional(
-            Schema.Struct({
-              queryResultsUri: Schema.optional(Schema.String),
-              nonCompliantResources: Schema.optional(Schema.Number),
-              nonCompliantPolicies: Schema.optional(Schema.Number),
-              resourceDetails: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    complianceState: Schema.optional(Schema.String),
-                    count: Schema.optional(Schema.Number),
-                  }),
-                ),
-              ),
-              policyDetails: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    complianceState: Schema.optional(Schema.String),
-                    count: Schema.optional(Schema.Number),
-                  }),
-                ),
-              ),
-              policyGroupDetails: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    complianceState: Schema.optional(Schema.String),
-                    count: Schema.optional(Schema.Number),
-                  }),
-                ),
-              ),
-            }),
-          ),
-          policyAssignments: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                policyAssignmentId: Schema.optional(Schema.String),
-                policySetDefinitionId: Schema.optional(Schema.String),
-                results: Schema.optional(
-                  Schema.Struct({
-                    queryResultsUri: Schema.optional(Schema.String),
-                    nonCompliantResources: Schema.optional(Schema.Number),
-                    nonCompliantPolicies: Schema.optional(Schema.Number),
-                    resourceDetails: Schema.optional(
-                      Schema.Array(
-                        Schema.Struct({
-                          complianceState: Schema.optional(Schema.String),
-                          count: Schema.optional(Schema.Number),
-                        }),
-                      ),
-                    ),
-                    policyDetails: Schema.optional(
-                      Schema.Array(
-                        Schema.Struct({
-                          complianceState: Schema.optional(Schema.String),
-                          count: Schema.optional(Schema.Number),
-                        }),
-                      ),
-                    ),
-                    policyGroupDetails: Schema.optional(
-                      Schema.Array(
-                        Schema.Struct({
-                          complianceState: Schema.optional(Schema.String),
-                          count: Schema.optional(Schema.Number),
-                        }),
-                      ),
-                    ),
-                  }),
-                ),
-                policyDefinitions: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      policyDefinitionId: Schema.optional(Schema.String),
-                      policyDefinitionReferenceId: Schema.optional(
-                        Schema.String,
-                      ),
-                      policyDefinitionGroupNames: Schema.optional(
-                        Schema.Array(Schema.String),
-                      ),
-                      effect: Schema.optional(Schema.String),
-                      results: Schema.optional(
-                        Schema.Struct({
-                          queryResultsUri: Schema.optional(Schema.String),
-                          nonCompliantResources: Schema.optional(Schema.Number),
-                          nonCompliantPolicies: Schema.optional(Schema.Number),
-                          resourceDetails: Schema.optional(
-                            Schema.Array(
-                              Schema.Struct({
-                                complianceState: Schema.optional(Schema.String),
-                                count: Schema.optional(Schema.Number),
-                              }),
-                            ),
-                          ),
-                          policyDetails: Schema.optional(
-                            Schema.Array(
-                              Schema.Struct({
-                                complianceState: Schema.optional(Schema.String),
-                                count: Schema.optional(Schema.Number),
-                              }),
-                            ),
-                          ),
-                          policyGroupDetails: Schema.optional(
-                            Schema.Array(
-                              Schema.Struct({
-                                complianceState: Schema.optional(Schema.String),
-                                count: Schema.optional(Schema.Number),
-                              }),
-                            ),
-                          ),
-                        }),
-                      ),
-                    }),
-                  ),
-                ),
-                policyGroups: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      policyGroupName: Schema.optional(Schema.String),
-                      results: Schema.optional(
-                        Schema.Struct({
-                          queryResultsUri: Schema.optional(Schema.String),
-                          nonCompliantResources: Schema.optional(Schema.Number),
-                          nonCompliantPolicies: Schema.optional(Schema.Number),
-                          resourceDetails: Schema.optional(
-                            Schema.Array(
-                              Schema.Struct({
-                                complianceState: Schema.optional(Schema.String),
-                                count: Schema.optional(Schema.Number),
-                              }),
-                            ),
-                          ),
-                          policyDetails: Schema.optional(
-                            Schema.Array(
-                              Schema.Struct({
-                                complianceState: Schema.optional(Schema.String),
-                                count: Schema.optional(Schema.Number),
-                              }),
-                            ),
-                          ),
-                          policyGroupDetails: Schema.optional(
-                            Schema.Array(
-                              Schema.Struct({
-                                complianceState: Schema.optional(Schema.String),
-                                count: Schema.optional(Schema.Number),
-                              }),
-                            ),
-                          ),
-                        }),
-                      ),
-                    }),
-                  ),
-                ),
-              }),
-            ),
-          ),
-        }),
-      ),
-    ),
+    value: Schema.optional(Schema.Array(Schema.suspend(() => SummarySchema))),
   });
 export type PolicyStatesSummarizeForManagementGroupOutput =
   typeof PolicyStatesSummarizeForManagementGroupOutput.Type;
@@ -3290,167 +2054,7 @@ export const PolicyStatesSummarizeForPolicyDefinitionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     "@odata.context": Schema.optional(Schema.String),
     "@odata.count": Schema.optional(Schema.Number),
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          "@odata.id": Schema.optional(Schema.String),
-          "@odata.context": Schema.optional(Schema.String),
-          results: Schema.optional(
-            Schema.Struct({
-              queryResultsUri: Schema.optional(Schema.String),
-              nonCompliantResources: Schema.optional(Schema.Number),
-              nonCompliantPolicies: Schema.optional(Schema.Number),
-              resourceDetails: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    complianceState: Schema.optional(Schema.String),
-                    count: Schema.optional(Schema.Number),
-                  }),
-                ),
-              ),
-              policyDetails: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    complianceState: Schema.optional(Schema.String),
-                    count: Schema.optional(Schema.Number),
-                  }),
-                ),
-              ),
-              policyGroupDetails: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    complianceState: Schema.optional(Schema.String),
-                    count: Schema.optional(Schema.Number),
-                  }),
-                ),
-              ),
-            }),
-          ),
-          policyAssignments: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                policyAssignmentId: Schema.optional(Schema.String),
-                policySetDefinitionId: Schema.optional(Schema.String),
-                results: Schema.optional(
-                  Schema.Struct({
-                    queryResultsUri: Schema.optional(Schema.String),
-                    nonCompliantResources: Schema.optional(Schema.Number),
-                    nonCompliantPolicies: Schema.optional(Schema.Number),
-                    resourceDetails: Schema.optional(
-                      Schema.Array(
-                        Schema.Struct({
-                          complianceState: Schema.optional(Schema.String),
-                          count: Schema.optional(Schema.Number),
-                        }),
-                      ),
-                    ),
-                    policyDetails: Schema.optional(
-                      Schema.Array(
-                        Schema.Struct({
-                          complianceState: Schema.optional(Schema.String),
-                          count: Schema.optional(Schema.Number),
-                        }),
-                      ),
-                    ),
-                    policyGroupDetails: Schema.optional(
-                      Schema.Array(
-                        Schema.Struct({
-                          complianceState: Schema.optional(Schema.String),
-                          count: Schema.optional(Schema.Number),
-                        }),
-                      ),
-                    ),
-                  }),
-                ),
-                policyDefinitions: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      policyDefinitionId: Schema.optional(Schema.String),
-                      policyDefinitionReferenceId: Schema.optional(
-                        Schema.String,
-                      ),
-                      policyDefinitionGroupNames: Schema.optional(
-                        Schema.Array(Schema.String),
-                      ),
-                      effect: Schema.optional(Schema.String),
-                      results: Schema.optional(
-                        Schema.Struct({
-                          queryResultsUri: Schema.optional(Schema.String),
-                          nonCompliantResources: Schema.optional(Schema.Number),
-                          nonCompliantPolicies: Schema.optional(Schema.Number),
-                          resourceDetails: Schema.optional(
-                            Schema.Array(
-                              Schema.Struct({
-                                complianceState: Schema.optional(Schema.String),
-                                count: Schema.optional(Schema.Number),
-                              }),
-                            ),
-                          ),
-                          policyDetails: Schema.optional(
-                            Schema.Array(
-                              Schema.Struct({
-                                complianceState: Schema.optional(Schema.String),
-                                count: Schema.optional(Schema.Number),
-                              }),
-                            ),
-                          ),
-                          policyGroupDetails: Schema.optional(
-                            Schema.Array(
-                              Schema.Struct({
-                                complianceState: Schema.optional(Schema.String),
-                                count: Schema.optional(Schema.Number),
-                              }),
-                            ),
-                          ),
-                        }),
-                      ),
-                    }),
-                  ),
-                ),
-                policyGroups: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      policyGroupName: Schema.optional(Schema.String),
-                      results: Schema.optional(
-                        Schema.Struct({
-                          queryResultsUri: Schema.optional(Schema.String),
-                          nonCompliantResources: Schema.optional(Schema.Number),
-                          nonCompliantPolicies: Schema.optional(Schema.Number),
-                          resourceDetails: Schema.optional(
-                            Schema.Array(
-                              Schema.Struct({
-                                complianceState: Schema.optional(Schema.String),
-                                count: Schema.optional(Schema.Number),
-                              }),
-                            ),
-                          ),
-                          policyDetails: Schema.optional(
-                            Schema.Array(
-                              Schema.Struct({
-                                complianceState: Schema.optional(Schema.String),
-                                count: Schema.optional(Schema.Number),
-                              }),
-                            ),
-                          ),
-                          policyGroupDetails: Schema.optional(
-                            Schema.Array(
-                              Schema.Struct({
-                                complianceState: Schema.optional(Schema.String),
-                                count: Schema.optional(Schema.Number),
-                              }),
-                            ),
-                          ),
-                        }),
-                      ),
-                    }),
-                  ),
-                ),
-              }),
-            ),
-          ),
-        }),
-      ),
-    ),
+    value: Schema.optional(Schema.Array(Schema.suspend(() => SummarySchema))),
   });
 export type PolicyStatesSummarizeForPolicyDefinitionOutput =
   typeof PolicyStatesSummarizeForPolicyDefinitionOutput.Type;
@@ -3481,167 +2085,7 @@ export const PolicyStatesSummarizeForPolicySetDefinitionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     "@odata.context": Schema.optional(Schema.String),
     "@odata.count": Schema.optional(Schema.Number),
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          "@odata.id": Schema.optional(Schema.String),
-          "@odata.context": Schema.optional(Schema.String),
-          results: Schema.optional(
-            Schema.Struct({
-              queryResultsUri: Schema.optional(Schema.String),
-              nonCompliantResources: Schema.optional(Schema.Number),
-              nonCompliantPolicies: Schema.optional(Schema.Number),
-              resourceDetails: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    complianceState: Schema.optional(Schema.String),
-                    count: Schema.optional(Schema.Number),
-                  }),
-                ),
-              ),
-              policyDetails: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    complianceState: Schema.optional(Schema.String),
-                    count: Schema.optional(Schema.Number),
-                  }),
-                ),
-              ),
-              policyGroupDetails: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    complianceState: Schema.optional(Schema.String),
-                    count: Schema.optional(Schema.Number),
-                  }),
-                ),
-              ),
-            }),
-          ),
-          policyAssignments: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                policyAssignmentId: Schema.optional(Schema.String),
-                policySetDefinitionId: Schema.optional(Schema.String),
-                results: Schema.optional(
-                  Schema.Struct({
-                    queryResultsUri: Schema.optional(Schema.String),
-                    nonCompliantResources: Schema.optional(Schema.Number),
-                    nonCompliantPolicies: Schema.optional(Schema.Number),
-                    resourceDetails: Schema.optional(
-                      Schema.Array(
-                        Schema.Struct({
-                          complianceState: Schema.optional(Schema.String),
-                          count: Schema.optional(Schema.Number),
-                        }),
-                      ),
-                    ),
-                    policyDetails: Schema.optional(
-                      Schema.Array(
-                        Schema.Struct({
-                          complianceState: Schema.optional(Schema.String),
-                          count: Schema.optional(Schema.Number),
-                        }),
-                      ),
-                    ),
-                    policyGroupDetails: Schema.optional(
-                      Schema.Array(
-                        Schema.Struct({
-                          complianceState: Schema.optional(Schema.String),
-                          count: Schema.optional(Schema.Number),
-                        }),
-                      ),
-                    ),
-                  }),
-                ),
-                policyDefinitions: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      policyDefinitionId: Schema.optional(Schema.String),
-                      policyDefinitionReferenceId: Schema.optional(
-                        Schema.String,
-                      ),
-                      policyDefinitionGroupNames: Schema.optional(
-                        Schema.Array(Schema.String),
-                      ),
-                      effect: Schema.optional(Schema.String),
-                      results: Schema.optional(
-                        Schema.Struct({
-                          queryResultsUri: Schema.optional(Schema.String),
-                          nonCompliantResources: Schema.optional(Schema.Number),
-                          nonCompliantPolicies: Schema.optional(Schema.Number),
-                          resourceDetails: Schema.optional(
-                            Schema.Array(
-                              Schema.Struct({
-                                complianceState: Schema.optional(Schema.String),
-                                count: Schema.optional(Schema.Number),
-                              }),
-                            ),
-                          ),
-                          policyDetails: Schema.optional(
-                            Schema.Array(
-                              Schema.Struct({
-                                complianceState: Schema.optional(Schema.String),
-                                count: Schema.optional(Schema.Number),
-                              }),
-                            ),
-                          ),
-                          policyGroupDetails: Schema.optional(
-                            Schema.Array(
-                              Schema.Struct({
-                                complianceState: Schema.optional(Schema.String),
-                                count: Schema.optional(Schema.Number),
-                              }),
-                            ),
-                          ),
-                        }),
-                      ),
-                    }),
-                  ),
-                ),
-                policyGroups: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      policyGroupName: Schema.optional(Schema.String),
-                      results: Schema.optional(
-                        Schema.Struct({
-                          queryResultsUri: Schema.optional(Schema.String),
-                          nonCompliantResources: Schema.optional(Schema.Number),
-                          nonCompliantPolicies: Schema.optional(Schema.Number),
-                          resourceDetails: Schema.optional(
-                            Schema.Array(
-                              Schema.Struct({
-                                complianceState: Schema.optional(Schema.String),
-                                count: Schema.optional(Schema.Number),
-                              }),
-                            ),
-                          ),
-                          policyDetails: Schema.optional(
-                            Schema.Array(
-                              Schema.Struct({
-                                complianceState: Schema.optional(Schema.String),
-                                count: Schema.optional(Schema.Number),
-                              }),
-                            ),
-                          ),
-                          policyGroupDetails: Schema.optional(
-                            Schema.Array(
-                              Schema.Struct({
-                                complianceState: Schema.optional(Schema.String),
-                                count: Schema.optional(Schema.Number),
-                              }),
-                            ),
-                          ),
-                        }),
-                      ),
-                    }),
-                  ),
-                ),
-              }),
-            ),
-          ),
-        }),
-      ),
-    ),
+    value: Schema.optional(Schema.Array(Schema.suspend(() => SummarySchema))),
   });
 export type PolicyStatesSummarizeForPolicySetDefinitionOutput =
   typeof PolicyStatesSummarizeForPolicySetDefinitionOutput.Type;
@@ -3672,167 +2116,7 @@ export const PolicyStatesSummarizeForResourceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     "@odata.context": Schema.optional(Schema.String),
     "@odata.count": Schema.optional(Schema.Number),
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          "@odata.id": Schema.optional(Schema.String),
-          "@odata.context": Schema.optional(Schema.String),
-          results: Schema.optional(
-            Schema.Struct({
-              queryResultsUri: Schema.optional(Schema.String),
-              nonCompliantResources: Schema.optional(Schema.Number),
-              nonCompliantPolicies: Schema.optional(Schema.Number),
-              resourceDetails: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    complianceState: Schema.optional(Schema.String),
-                    count: Schema.optional(Schema.Number),
-                  }),
-                ),
-              ),
-              policyDetails: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    complianceState: Schema.optional(Schema.String),
-                    count: Schema.optional(Schema.Number),
-                  }),
-                ),
-              ),
-              policyGroupDetails: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    complianceState: Schema.optional(Schema.String),
-                    count: Schema.optional(Schema.Number),
-                  }),
-                ),
-              ),
-            }),
-          ),
-          policyAssignments: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                policyAssignmentId: Schema.optional(Schema.String),
-                policySetDefinitionId: Schema.optional(Schema.String),
-                results: Schema.optional(
-                  Schema.Struct({
-                    queryResultsUri: Schema.optional(Schema.String),
-                    nonCompliantResources: Schema.optional(Schema.Number),
-                    nonCompliantPolicies: Schema.optional(Schema.Number),
-                    resourceDetails: Schema.optional(
-                      Schema.Array(
-                        Schema.Struct({
-                          complianceState: Schema.optional(Schema.String),
-                          count: Schema.optional(Schema.Number),
-                        }),
-                      ),
-                    ),
-                    policyDetails: Schema.optional(
-                      Schema.Array(
-                        Schema.Struct({
-                          complianceState: Schema.optional(Schema.String),
-                          count: Schema.optional(Schema.Number),
-                        }),
-                      ),
-                    ),
-                    policyGroupDetails: Schema.optional(
-                      Schema.Array(
-                        Schema.Struct({
-                          complianceState: Schema.optional(Schema.String),
-                          count: Schema.optional(Schema.Number),
-                        }),
-                      ),
-                    ),
-                  }),
-                ),
-                policyDefinitions: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      policyDefinitionId: Schema.optional(Schema.String),
-                      policyDefinitionReferenceId: Schema.optional(
-                        Schema.String,
-                      ),
-                      policyDefinitionGroupNames: Schema.optional(
-                        Schema.Array(Schema.String),
-                      ),
-                      effect: Schema.optional(Schema.String),
-                      results: Schema.optional(
-                        Schema.Struct({
-                          queryResultsUri: Schema.optional(Schema.String),
-                          nonCompliantResources: Schema.optional(Schema.Number),
-                          nonCompliantPolicies: Schema.optional(Schema.Number),
-                          resourceDetails: Schema.optional(
-                            Schema.Array(
-                              Schema.Struct({
-                                complianceState: Schema.optional(Schema.String),
-                                count: Schema.optional(Schema.Number),
-                              }),
-                            ),
-                          ),
-                          policyDetails: Schema.optional(
-                            Schema.Array(
-                              Schema.Struct({
-                                complianceState: Schema.optional(Schema.String),
-                                count: Schema.optional(Schema.Number),
-                              }),
-                            ),
-                          ),
-                          policyGroupDetails: Schema.optional(
-                            Schema.Array(
-                              Schema.Struct({
-                                complianceState: Schema.optional(Schema.String),
-                                count: Schema.optional(Schema.Number),
-                              }),
-                            ),
-                          ),
-                        }),
-                      ),
-                    }),
-                  ),
-                ),
-                policyGroups: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      policyGroupName: Schema.optional(Schema.String),
-                      results: Schema.optional(
-                        Schema.Struct({
-                          queryResultsUri: Schema.optional(Schema.String),
-                          nonCompliantResources: Schema.optional(Schema.Number),
-                          nonCompliantPolicies: Schema.optional(Schema.Number),
-                          resourceDetails: Schema.optional(
-                            Schema.Array(
-                              Schema.Struct({
-                                complianceState: Schema.optional(Schema.String),
-                                count: Schema.optional(Schema.Number),
-                              }),
-                            ),
-                          ),
-                          policyDetails: Schema.optional(
-                            Schema.Array(
-                              Schema.Struct({
-                                complianceState: Schema.optional(Schema.String),
-                                count: Schema.optional(Schema.Number),
-                              }),
-                            ),
-                          ),
-                          policyGroupDetails: Schema.optional(
-                            Schema.Array(
-                              Schema.Struct({
-                                complianceState: Schema.optional(Schema.String),
-                                count: Schema.optional(Schema.Number),
-                              }),
-                            ),
-                          ),
-                        }),
-                      ),
-                    }),
-                  ),
-                ),
-              }),
-            ),
-          ),
-        }),
-      ),
-    ),
+    value: Schema.optional(Schema.Array(Schema.suspend(() => SummarySchema))),
   });
 export type PolicyStatesSummarizeForResourceOutput =
   typeof PolicyStatesSummarizeForResourceOutput.Type;
@@ -3863,167 +2147,7 @@ export const PolicyStatesSummarizeForResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     "@odata.context": Schema.optional(Schema.String),
     "@odata.count": Schema.optional(Schema.Number),
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          "@odata.id": Schema.optional(Schema.String),
-          "@odata.context": Schema.optional(Schema.String),
-          results: Schema.optional(
-            Schema.Struct({
-              queryResultsUri: Schema.optional(Schema.String),
-              nonCompliantResources: Schema.optional(Schema.Number),
-              nonCompliantPolicies: Schema.optional(Schema.Number),
-              resourceDetails: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    complianceState: Schema.optional(Schema.String),
-                    count: Schema.optional(Schema.Number),
-                  }),
-                ),
-              ),
-              policyDetails: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    complianceState: Schema.optional(Schema.String),
-                    count: Schema.optional(Schema.Number),
-                  }),
-                ),
-              ),
-              policyGroupDetails: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    complianceState: Schema.optional(Schema.String),
-                    count: Schema.optional(Schema.Number),
-                  }),
-                ),
-              ),
-            }),
-          ),
-          policyAssignments: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                policyAssignmentId: Schema.optional(Schema.String),
-                policySetDefinitionId: Schema.optional(Schema.String),
-                results: Schema.optional(
-                  Schema.Struct({
-                    queryResultsUri: Schema.optional(Schema.String),
-                    nonCompliantResources: Schema.optional(Schema.Number),
-                    nonCompliantPolicies: Schema.optional(Schema.Number),
-                    resourceDetails: Schema.optional(
-                      Schema.Array(
-                        Schema.Struct({
-                          complianceState: Schema.optional(Schema.String),
-                          count: Schema.optional(Schema.Number),
-                        }),
-                      ),
-                    ),
-                    policyDetails: Schema.optional(
-                      Schema.Array(
-                        Schema.Struct({
-                          complianceState: Schema.optional(Schema.String),
-                          count: Schema.optional(Schema.Number),
-                        }),
-                      ),
-                    ),
-                    policyGroupDetails: Schema.optional(
-                      Schema.Array(
-                        Schema.Struct({
-                          complianceState: Schema.optional(Schema.String),
-                          count: Schema.optional(Schema.Number),
-                        }),
-                      ),
-                    ),
-                  }),
-                ),
-                policyDefinitions: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      policyDefinitionId: Schema.optional(Schema.String),
-                      policyDefinitionReferenceId: Schema.optional(
-                        Schema.String,
-                      ),
-                      policyDefinitionGroupNames: Schema.optional(
-                        Schema.Array(Schema.String),
-                      ),
-                      effect: Schema.optional(Schema.String),
-                      results: Schema.optional(
-                        Schema.Struct({
-                          queryResultsUri: Schema.optional(Schema.String),
-                          nonCompliantResources: Schema.optional(Schema.Number),
-                          nonCompliantPolicies: Schema.optional(Schema.Number),
-                          resourceDetails: Schema.optional(
-                            Schema.Array(
-                              Schema.Struct({
-                                complianceState: Schema.optional(Schema.String),
-                                count: Schema.optional(Schema.Number),
-                              }),
-                            ),
-                          ),
-                          policyDetails: Schema.optional(
-                            Schema.Array(
-                              Schema.Struct({
-                                complianceState: Schema.optional(Schema.String),
-                                count: Schema.optional(Schema.Number),
-                              }),
-                            ),
-                          ),
-                          policyGroupDetails: Schema.optional(
-                            Schema.Array(
-                              Schema.Struct({
-                                complianceState: Schema.optional(Schema.String),
-                                count: Schema.optional(Schema.Number),
-                              }),
-                            ),
-                          ),
-                        }),
-                      ),
-                    }),
-                  ),
-                ),
-                policyGroups: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      policyGroupName: Schema.optional(Schema.String),
-                      results: Schema.optional(
-                        Schema.Struct({
-                          queryResultsUri: Schema.optional(Schema.String),
-                          nonCompliantResources: Schema.optional(Schema.Number),
-                          nonCompliantPolicies: Schema.optional(Schema.Number),
-                          resourceDetails: Schema.optional(
-                            Schema.Array(
-                              Schema.Struct({
-                                complianceState: Schema.optional(Schema.String),
-                                count: Schema.optional(Schema.Number),
-                              }),
-                            ),
-                          ),
-                          policyDetails: Schema.optional(
-                            Schema.Array(
-                              Schema.Struct({
-                                complianceState: Schema.optional(Schema.String),
-                                count: Schema.optional(Schema.Number),
-                              }),
-                            ),
-                          ),
-                          policyGroupDetails: Schema.optional(
-                            Schema.Array(
-                              Schema.Struct({
-                                complianceState: Schema.optional(Schema.String),
-                                count: Schema.optional(Schema.Number),
-                              }),
-                            ),
-                          ),
-                        }),
-                      ),
-                    }),
-                  ),
-                ),
-              }),
-            ),
-          ),
-        }),
-      ),
-    ),
+    value: Schema.optional(Schema.Array(Schema.suspend(() => SummarySchema))),
   });
 export type PolicyStatesSummarizeForResourceGroupOutput =
   typeof PolicyStatesSummarizeForResourceGroupOutput.Type;
@@ -4054,167 +2178,7 @@ export const PolicyStatesSummarizeForResourceGroupLevelPolicyAssignmentOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     "@odata.context": Schema.optional(Schema.String),
     "@odata.count": Schema.optional(Schema.Number),
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          "@odata.id": Schema.optional(Schema.String),
-          "@odata.context": Schema.optional(Schema.String),
-          results: Schema.optional(
-            Schema.Struct({
-              queryResultsUri: Schema.optional(Schema.String),
-              nonCompliantResources: Schema.optional(Schema.Number),
-              nonCompliantPolicies: Schema.optional(Schema.Number),
-              resourceDetails: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    complianceState: Schema.optional(Schema.String),
-                    count: Schema.optional(Schema.Number),
-                  }),
-                ),
-              ),
-              policyDetails: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    complianceState: Schema.optional(Schema.String),
-                    count: Schema.optional(Schema.Number),
-                  }),
-                ),
-              ),
-              policyGroupDetails: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    complianceState: Schema.optional(Schema.String),
-                    count: Schema.optional(Schema.Number),
-                  }),
-                ),
-              ),
-            }),
-          ),
-          policyAssignments: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                policyAssignmentId: Schema.optional(Schema.String),
-                policySetDefinitionId: Schema.optional(Schema.String),
-                results: Schema.optional(
-                  Schema.Struct({
-                    queryResultsUri: Schema.optional(Schema.String),
-                    nonCompliantResources: Schema.optional(Schema.Number),
-                    nonCompliantPolicies: Schema.optional(Schema.Number),
-                    resourceDetails: Schema.optional(
-                      Schema.Array(
-                        Schema.Struct({
-                          complianceState: Schema.optional(Schema.String),
-                          count: Schema.optional(Schema.Number),
-                        }),
-                      ),
-                    ),
-                    policyDetails: Schema.optional(
-                      Schema.Array(
-                        Schema.Struct({
-                          complianceState: Schema.optional(Schema.String),
-                          count: Schema.optional(Schema.Number),
-                        }),
-                      ),
-                    ),
-                    policyGroupDetails: Schema.optional(
-                      Schema.Array(
-                        Schema.Struct({
-                          complianceState: Schema.optional(Schema.String),
-                          count: Schema.optional(Schema.Number),
-                        }),
-                      ),
-                    ),
-                  }),
-                ),
-                policyDefinitions: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      policyDefinitionId: Schema.optional(Schema.String),
-                      policyDefinitionReferenceId: Schema.optional(
-                        Schema.String,
-                      ),
-                      policyDefinitionGroupNames: Schema.optional(
-                        Schema.Array(Schema.String),
-                      ),
-                      effect: Schema.optional(Schema.String),
-                      results: Schema.optional(
-                        Schema.Struct({
-                          queryResultsUri: Schema.optional(Schema.String),
-                          nonCompliantResources: Schema.optional(Schema.Number),
-                          nonCompliantPolicies: Schema.optional(Schema.Number),
-                          resourceDetails: Schema.optional(
-                            Schema.Array(
-                              Schema.Struct({
-                                complianceState: Schema.optional(Schema.String),
-                                count: Schema.optional(Schema.Number),
-                              }),
-                            ),
-                          ),
-                          policyDetails: Schema.optional(
-                            Schema.Array(
-                              Schema.Struct({
-                                complianceState: Schema.optional(Schema.String),
-                                count: Schema.optional(Schema.Number),
-                              }),
-                            ),
-                          ),
-                          policyGroupDetails: Schema.optional(
-                            Schema.Array(
-                              Schema.Struct({
-                                complianceState: Schema.optional(Schema.String),
-                                count: Schema.optional(Schema.Number),
-                              }),
-                            ),
-                          ),
-                        }),
-                      ),
-                    }),
-                  ),
-                ),
-                policyGroups: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      policyGroupName: Schema.optional(Schema.String),
-                      results: Schema.optional(
-                        Schema.Struct({
-                          queryResultsUri: Schema.optional(Schema.String),
-                          nonCompliantResources: Schema.optional(Schema.Number),
-                          nonCompliantPolicies: Schema.optional(Schema.Number),
-                          resourceDetails: Schema.optional(
-                            Schema.Array(
-                              Schema.Struct({
-                                complianceState: Schema.optional(Schema.String),
-                                count: Schema.optional(Schema.Number),
-                              }),
-                            ),
-                          ),
-                          policyDetails: Schema.optional(
-                            Schema.Array(
-                              Schema.Struct({
-                                complianceState: Schema.optional(Schema.String),
-                                count: Schema.optional(Schema.Number),
-                              }),
-                            ),
-                          ),
-                          policyGroupDetails: Schema.optional(
-                            Schema.Array(
-                              Schema.Struct({
-                                complianceState: Schema.optional(Schema.String),
-                                count: Schema.optional(Schema.Number),
-                              }),
-                            ),
-                          ),
-                        }),
-                      ),
-                    }),
-                  ),
-                ),
-              }),
-            ),
-          ),
-        }),
-      ),
-    ),
+    value: Schema.optional(Schema.Array(Schema.suspend(() => SummarySchema))),
   });
 export type PolicyStatesSummarizeForResourceGroupLevelPolicyAssignmentOutput =
   typeof PolicyStatesSummarizeForResourceGroupLevelPolicyAssignmentOutput.Type;
@@ -4247,167 +2211,7 @@ export const PolicyStatesSummarizeForSubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     "@odata.context": Schema.optional(Schema.String),
     "@odata.count": Schema.optional(Schema.Number),
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          "@odata.id": Schema.optional(Schema.String),
-          "@odata.context": Schema.optional(Schema.String),
-          results: Schema.optional(
-            Schema.Struct({
-              queryResultsUri: Schema.optional(Schema.String),
-              nonCompliantResources: Schema.optional(Schema.Number),
-              nonCompliantPolicies: Schema.optional(Schema.Number),
-              resourceDetails: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    complianceState: Schema.optional(Schema.String),
-                    count: Schema.optional(Schema.Number),
-                  }),
-                ),
-              ),
-              policyDetails: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    complianceState: Schema.optional(Schema.String),
-                    count: Schema.optional(Schema.Number),
-                  }),
-                ),
-              ),
-              policyGroupDetails: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    complianceState: Schema.optional(Schema.String),
-                    count: Schema.optional(Schema.Number),
-                  }),
-                ),
-              ),
-            }),
-          ),
-          policyAssignments: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                policyAssignmentId: Schema.optional(Schema.String),
-                policySetDefinitionId: Schema.optional(Schema.String),
-                results: Schema.optional(
-                  Schema.Struct({
-                    queryResultsUri: Schema.optional(Schema.String),
-                    nonCompliantResources: Schema.optional(Schema.Number),
-                    nonCompliantPolicies: Schema.optional(Schema.Number),
-                    resourceDetails: Schema.optional(
-                      Schema.Array(
-                        Schema.Struct({
-                          complianceState: Schema.optional(Schema.String),
-                          count: Schema.optional(Schema.Number),
-                        }),
-                      ),
-                    ),
-                    policyDetails: Schema.optional(
-                      Schema.Array(
-                        Schema.Struct({
-                          complianceState: Schema.optional(Schema.String),
-                          count: Schema.optional(Schema.Number),
-                        }),
-                      ),
-                    ),
-                    policyGroupDetails: Schema.optional(
-                      Schema.Array(
-                        Schema.Struct({
-                          complianceState: Schema.optional(Schema.String),
-                          count: Schema.optional(Schema.Number),
-                        }),
-                      ),
-                    ),
-                  }),
-                ),
-                policyDefinitions: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      policyDefinitionId: Schema.optional(Schema.String),
-                      policyDefinitionReferenceId: Schema.optional(
-                        Schema.String,
-                      ),
-                      policyDefinitionGroupNames: Schema.optional(
-                        Schema.Array(Schema.String),
-                      ),
-                      effect: Schema.optional(Schema.String),
-                      results: Schema.optional(
-                        Schema.Struct({
-                          queryResultsUri: Schema.optional(Schema.String),
-                          nonCompliantResources: Schema.optional(Schema.Number),
-                          nonCompliantPolicies: Schema.optional(Schema.Number),
-                          resourceDetails: Schema.optional(
-                            Schema.Array(
-                              Schema.Struct({
-                                complianceState: Schema.optional(Schema.String),
-                                count: Schema.optional(Schema.Number),
-                              }),
-                            ),
-                          ),
-                          policyDetails: Schema.optional(
-                            Schema.Array(
-                              Schema.Struct({
-                                complianceState: Schema.optional(Schema.String),
-                                count: Schema.optional(Schema.Number),
-                              }),
-                            ),
-                          ),
-                          policyGroupDetails: Schema.optional(
-                            Schema.Array(
-                              Schema.Struct({
-                                complianceState: Schema.optional(Schema.String),
-                                count: Schema.optional(Schema.Number),
-                              }),
-                            ),
-                          ),
-                        }),
-                      ),
-                    }),
-                  ),
-                ),
-                policyGroups: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      policyGroupName: Schema.optional(Schema.String),
-                      results: Schema.optional(
-                        Schema.Struct({
-                          queryResultsUri: Schema.optional(Schema.String),
-                          nonCompliantResources: Schema.optional(Schema.Number),
-                          nonCompliantPolicies: Schema.optional(Schema.Number),
-                          resourceDetails: Schema.optional(
-                            Schema.Array(
-                              Schema.Struct({
-                                complianceState: Schema.optional(Schema.String),
-                                count: Schema.optional(Schema.Number),
-                              }),
-                            ),
-                          ),
-                          policyDetails: Schema.optional(
-                            Schema.Array(
-                              Schema.Struct({
-                                complianceState: Schema.optional(Schema.String),
-                                count: Schema.optional(Schema.Number),
-                              }),
-                            ),
-                          ),
-                          policyGroupDetails: Schema.optional(
-                            Schema.Array(
-                              Schema.Struct({
-                                complianceState: Schema.optional(Schema.String),
-                                count: Schema.optional(Schema.Number),
-                              }),
-                            ),
-                          ),
-                        }),
-                      ),
-                    }),
-                  ),
-                ),
-              }),
-            ),
-          ),
-        }),
-      ),
-    ),
+    value: Schema.optional(Schema.Array(Schema.suspend(() => SummarySchema))),
   });
 export type PolicyStatesSummarizeForSubscriptionOutput =
   typeof PolicyStatesSummarizeForSubscriptionOutput.Type;
@@ -4438,167 +2242,7 @@ export const PolicyStatesSummarizeForSubscriptionLevelPolicyAssignmentOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     "@odata.context": Schema.optional(Schema.String),
     "@odata.count": Schema.optional(Schema.Number),
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          "@odata.id": Schema.optional(Schema.String),
-          "@odata.context": Schema.optional(Schema.String),
-          results: Schema.optional(
-            Schema.Struct({
-              queryResultsUri: Schema.optional(Schema.String),
-              nonCompliantResources: Schema.optional(Schema.Number),
-              nonCompliantPolicies: Schema.optional(Schema.Number),
-              resourceDetails: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    complianceState: Schema.optional(Schema.String),
-                    count: Schema.optional(Schema.Number),
-                  }),
-                ),
-              ),
-              policyDetails: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    complianceState: Schema.optional(Schema.String),
-                    count: Schema.optional(Schema.Number),
-                  }),
-                ),
-              ),
-              policyGroupDetails: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    complianceState: Schema.optional(Schema.String),
-                    count: Schema.optional(Schema.Number),
-                  }),
-                ),
-              ),
-            }),
-          ),
-          policyAssignments: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                policyAssignmentId: Schema.optional(Schema.String),
-                policySetDefinitionId: Schema.optional(Schema.String),
-                results: Schema.optional(
-                  Schema.Struct({
-                    queryResultsUri: Schema.optional(Schema.String),
-                    nonCompliantResources: Schema.optional(Schema.Number),
-                    nonCompliantPolicies: Schema.optional(Schema.Number),
-                    resourceDetails: Schema.optional(
-                      Schema.Array(
-                        Schema.Struct({
-                          complianceState: Schema.optional(Schema.String),
-                          count: Schema.optional(Schema.Number),
-                        }),
-                      ),
-                    ),
-                    policyDetails: Schema.optional(
-                      Schema.Array(
-                        Schema.Struct({
-                          complianceState: Schema.optional(Schema.String),
-                          count: Schema.optional(Schema.Number),
-                        }),
-                      ),
-                    ),
-                    policyGroupDetails: Schema.optional(
-                      Schema.Array(
-                        Schema.Struct({
-                          complianceState: Schema.optional(Schema.String),
-                          count: Schema.optional(Schema.Number),
-                        }),
-                      ),
-                    ),
-                  }),
-                ),
-                policyDefinitions: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      policyDefinitionId: Schema.optional(Schema.String),
-                      policyDefinitionReferenceId: Schema.optional(
-                        Schema.String,
-                      ),
-                      policyDefinitionGroupNames: Schema.optional(
-                        Schema.Array(Schema.String),
-                      ),
-                      effect: Schema.optional(Schema.String),
-                      results: Schema.optional(
-                        Schema.Struct({
-                          queryResultsUri: Schema.optional(Schema.String),
-                          nonCompliantResources: Schema.optional(Schema.Number),
-                          nonCompliantPolicies: Schema.optional(Schema.Number),
-                          resourceDetails: Schema.optional(
-                            Schema.Array(
-                              Schema.Struct({
-                                complianceState: Schema.optional(Schema.String),
-                                count: Schema.optional(Schema.Number),
-                              }),
-                            ),
-                          ),
-                          policyDetails: Schema.optional(
-                            Schema.Array(
-                              Schema.Struct({
-                                complianceState: Schema.optional(Schema.String),
-                                count: Schema.optional(Schema.Number),
-                              }),
-                            ),
-                          ),
-                          policyGroupDetails: Schema.optional(
-                            Schema.Array(
-                              Schema.Struct({
-                                complianceState: Schema.optional(Schema.String),
-                                count: Schema.optional(Schema.Number),
-                              }),
-                            ),
-                          ),
-                        }),
-                      ),
-                    }),
-                  ),
-                ),
-                policyGroups: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      policyGroupName: Schema.optional(Schema.String),
-                      results: Schema.optional(
-                        Schema.Struct({
-                          queryResultsUri: Schema.optional(Schema.String),
-                          nonCompliantResources: Schema.optional(Schema.Number),
-                          nonCompliantPolicies: Schema.optional(Schema.Number),
-                          resourceDetails: Schema.optional(
-                            Schema.Array(
-                              Schema.Struct({
-                                complianceState: Schema.optional(Schema.String),
-                                count: Schema.optional(Schema.Number),
-                              }),
-                            ),
-                          ),
-                          policyDetails: Schema.optional(
-                            Schema.Array(
-                              Schema.Struct({
-                                complianceState: Schema.optional(Schema.String),
-                                count: Schema.optional(Schema.Number),
-                              }),
-                            ),
-                          ),
-                          policyGroupDetails: Schema.optional(
-                            Schema.Array(
-                              Schema.Struct({
-                                complianceState: Schema.optional(Schema.String),
-                                count: Schema.optional(Schema.Number),
-                              }),
-                            ),
-                          ),
-                        }),
-                      ),
-                    }),
-                  ),
-                ),
-              }),
-            ),
-          ),
-        }),
-      ),
-    ),
+    value: Schema.optional(Schema.Array(Schema.suspend(() => SummarySchema))),
   });
 export type PolicyStatesSummarizeForSubscriptionLevelPolicyAssignmentOutput =
   typeof PolicyStatesSummarizeForSubscriptionLevelPolicyAssignmentOutput.Type;
@@ -4685,38 +2329,7 @@ export type RemediationsCancelAtManagementGroupInput =
 export const RemediationsCancelAtManagementGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     properties: Schema.optional(
-      Schema.Struct({
-        policyAssignmentId: Schema.optional(Schema.String),
-        policyDefinitionReferenceId: Schema.optional(Schema.String),
-        resourceDiscoveryMode: Schema.optional(
-          Schema.Literals(["ExistingNonCompliant", "ReEvaluateCompliance"]),
-        ),
-        provisioningState: Schema.optional(Schema.String),
-        createdOn: Schema.optional(Schema.String),
-        lastUpdatedOn: Schema.optional(Schema.String),
-        filters: Schema.optional(
-          Schema.Struct({
-            locations: Schema.optional(Schema.Array(Schema.String)),
-            resourceIds: Schema.optional(Schema.Array(Schema.String)),
-          }),
-        ),
-        deploymentStatus: Schema.optional(
-          Schema.Struct({
-            totalDeployments: Schema.optional(Schema.Number),
-            successfulDeployments: Schema.optional(Schema.Number),
-            failedDeployments: Schema.optional(Schema.Number),
-          }),
-        ),
-        statusMessage: Schema.optional(Schema.String),
-        correlationId: Schema.optional(Schema.String),
-        resourceCount: Schema.optional(Schema.Number),
-        parallelDeployments: Schema.optional(Schema.Number),
-        failureThreshold: Schema.optional(
-          Schema.Struct({
-            percentage: Schema.optional(Schema.Number),
-          }),
-        ),
-      }),
+      Schema.suspend(() => RemediationPropertiesSchema),
     ),
     id: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -4764,38 +2377,7 @@ export type RemediationsCancelAtResourceInput =
 export const RemediationsCancelAtResourceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     properties: Schema.optional(
-      Schema.Struct({
-        policyAssignmentId: Schema.optional(Schema.String),
-        policyDefinitionReferenceId: Schema.optional(Schema.String),
-        resourceDiscoveryMode: Schema.optional(
-          Schema.Literals(["ExistingNonCompliant", "ReEvaluateCompliance"]),
-        ),
-        provisioningState: Schema.optional(Schema.String),
-        createdOn: Schema.optional(Schema.String),
-        lastUpdatedOn: Schema.optional(Schema.String),
-        filters: Schema.optional(
-          Schema.Struct({
-            locations: Schema.optional(Schema.Array(Schema.String)),
-            resourceIds: Schema.optional(Schema.Array(Schema.String)),
-          }),
-        ),
-        deploymentStatus: Schema.optional(
-          Schema.Struct({
-            totalDeployments: Schema.optional(Schema.Number),
-            successfulDeployments: Schema.optional(Schema.Number),
-            failedDeployments: Schema.optional(Schema.Number),
-          }),
-        ),
-        statusMessage: Schema.optional(Schema.String),
-        correlationId: Schema.optional(Schema.String),
-        resourceCount: Schema.optional(Schema.Number),
-        parallelDeployments: Schema.optional(Schema.Number),
-        failureThreshold: Schema.optional(
-          Schema.Struct({
-            percentage: Schema.optional(Schema.Number),
-          }),
-        ),
-      }),
+      Schema.suspend(() => RemediationPropertiesSchema),
     ),
     id: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -4843,38 +2425,7 @@ export type RemediationsCancelAtResourceGroupInput =
 export const RemediationsCancelAtResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     properties: Schema.optional(
-      Schema.Struct({
-        policyAssignmentId: Schema.optional(Schema.String),
-        policyDefinitionReferenceId: Schema.optional(Schema.String),
-        resourceDiscoveryMode: Schema.optional(
-          Schema.Literals(["ExistingNonCompliant", "ReEvaluateCompliance"]),
-        ),
-        provisioningState: Schema.optional(Schema.String),
-        createdOn: Schema.optional(Schema.String),
-        lastUpdatedOn: Schema.optional(Schema.String),
-        filters: Schema.optional(
-          Schema.Struct({
-            locations: Schema.optional(Schema.Array(Schema.String)),
-            resourceIds: Schema.optional(Schema.Array(Schema.String)),
-          }),
-        ),
-        deploymentStatus: Schema.optional(
-          Schema.Struct({
-            totalDeployments: Schema.optional(Schema.Number),
-            successfulDeployments: Schema.optional(Schema.Number),
-            failedDeployments: Schema.optional(Schema.Number),
-          }),
-        ),
-        statusMessage: Schema.optional(Schema.String),
-        correlationId: Schema.optional(Schema.String),
-        resourceCount: Schema.optional(Schema.Number),
-        parallelDeployments: Schema.optional(Schema.Number),
-        failureThreshold: Schema.optional(
-          Schema.Struct({
-            percentage: Schema.optional(Schema.Number),
-          }),
-        ),
-      }),
+      Schema.suspend(() => RemediationPropertiesSchema),
     ),
     id: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -4922,38 +2473,7 @@ export type RemediationsCancelAtSubscriptionInput =
 export const RemediationsCancelAtSubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     properties: Schema.optional(
-      Schema.Struct({
-        policyAssignmentId: Schema.optional(Schema.String),
-        policyDefinitionReferenceId: Schema.optional(Schema.String),
-        resourceDiscoveryMode: Schema.optional(
-          Schema.Literals(["ExistingNonCompliant", "ReEvaluateCompliance"]),
-        ),
-        provisioningState: Schema.optional(Schema.String),
-        createdOn: Schema.optional(Schema.String),
-        lastUpdatedOn: Schema.optional(Schema.String),
-        filters: Schema.optional(
-          Schema.Struct({
-            locations: Schema.optional(Schema.Array(Schema.String)),
-            resourceIds: Schema.optional(Schema.Array(Schema.String)),
-          }),
-        ),
-        deploymentStatus: Schema.optional(
-          Schema.Struct({
-            totalDeployments: Schema.optional(Schema.Number),
-            successfulDeployments: Schema.optional(Schema.Number),
-            failedDeployments: Schema.optional(Schema.Number),
-          }),
-        ),
-        statusMessage: Schema.optional(Schema.String),
-        correlationId: Schema.optional(Schema.String),
-        resourceCount: Schema.optional(Schema.Number),
-        parallelDeployments: Schema.optional(Schema.Number),
-        failureThreshold: Schema.optional(
-          Schema.Struct({
-            percentage: Schema.optional(Schema.Number),
-          }),
-        ),
-      }),
+      Schema.suspend(() => RemediationPropertiesSchema),
     ),
     id: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -4989,38 +2509,7 @@ export const RemediationsCancelAtSubscription =
 export const RemediationsCreateOrUpdateAtManagementGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     properties: Schema.optional(
-      Schema.Struct({
-        policyAssignmentId: Schema.optional(Schema.String),
-        policyDefinitionReferenceId: Schema.optional(Schema.String),
-        resourceDiscoveryMode: Schema.optional(
-          Schema.Literals(["ExistingNonCompliant", "ReEvaluateCompliance"]),
-        ),
-        provisioningState: Schema.optional(Schema.String),
-        createdOn: Schema.optional(Schema.String),
-        lastUpdatedOn: Schema.optional(Schema.String),
-        filters: Schema.optional(
-          Schema.Struct({
-            locations: Schema.optional(Schema.Array(Schema.String)),
-            resourceIds: Schema.optional(Schema.Array(Schema.String)),
-          }),
-        ),
-        deploymentStatus: Schema.optional(
-          Schema.Struct({
-            totalDeployments: Schema.optional(Schema.Number),
-            successfulDeployments: Schema.optional(Schema.Number),
-            failedDeployments: Schema.optional(Schema.Number),
-          }),
-        ),
-        statusMessage: Schema.optional(Schema.String),
-        correlationId: Schema.optional(Schema.String),
-        resourceCount: Schema.optional(Schema.Number),
-        parallelDeployments: Schema.optional(Schema.Number),
-        failureThreshold: Schema.optional(
-          Schema.Struct({
-            percentage: Schema.optional(Schema.Number),
-          }),
-        ),
-      }),
+      Schema.suspend(() => RemediationPropertiesSchema),
     ),
     id: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -5053,38 +2542,7 @@ export type RemediationsCreateOrUpdateAtManagementGroupInput =
 export const RemediationsCreateOrUpdateAtManagementGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     properties: Schema.optional(
-      Schema.Struct({
-        policyAssignmentId: Schema.optional(Schema.String),
-        policyDefinitionReferenceId: Schema.optional(Schema.String),
-        resourceDiscoveryMode: Schema.optional(
-          Schema.Literals(["ExistingNonCompliant", "ReEvaluateCompliance"]),
-        ),
-        provisioningState: Schema.optional(Schema.String),
-        createdOn: Schema.optional(Schema.String),
-        lastUpdatedOn: Schema.optional(Schema.String),
-        filters: Schema.optional(
-          Schema.Struct({
-            locations: Schema.optional(Schema.Array(Schema.String)),
-            resourceIds: Schema.optional(Schema.Array(Schema.String)),
-          }),
-        ),
-        deploymentStatus: Schema.optional(
-          Schema.Struct({
-            totalDeployments: Schema.optional(Schema.Number),
-            successfulDeployments: Schema.optional(Schema.Number),
-            failedDeployments: Schema.optional(Schema.Number),
-          }),
-        ),
-        statusMessage: Schema.optional(Schema.String),
-        correlationId: Schema.optional(Schema.String),
-        resourceCount: Schema.optional(Schema.Number),
-        parallelDeployments: Schema.optional(Schema.Number),
-        failureThreshold: Schema.optional(
-          Schema.Struct({
-            percentage: Schema.optional(Schema.Number),
-          }),
-        ),
-      }),
+      Schema.suspend(() => RemediationPropertiesSchema),
     ),
     id: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -5120,38 +2578,7 @@ export const RemediationsCreateOrUpdateAtManagementGroup =
 export const RemediationsCreateOrUpdateAtResourceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     properties: Schema.optional(
-      Schema.Struct({
-        policyAssignmentId: Schema.optional(Schema.String),
-        policyDefinitionReferenceId: Schema.optional(Schema.String),
-        resourceDiscoveryMode: Schema.optional(
-          Schema.Literals(["ExistingNonCompliant", "ReEvaluateCompliance"]),
-        ),
-        provisioningState: Schema.optional(Schema.String),
-        createdOn: Schema.optional(Schema.String),
-        lastUpdatedOn: Schema.optional(Schema.String),
-        filters: Schema.optional(
-          Schema.Struct({
-            locations: Schema.optional(Schema.Array(Schema.String)),
-            resourceIds: Schema.optional(Schema.Array(Schema.String)),
-          }),
-        ),
-        deploymentStatus: Schema.optional(
-          Schema.Struct({
-            totalDeployments: Schema.optional(Schema.Number),
-            successfulDeployments: Schema.optional(Schema.Number),
-            failedDeployments: Schema.optional(Schema.Number),
-          }),
-        ),
-        statusMessage: Schema.optional(Schema.String),
-        correlationId: Schema.optional(Schema.String),
-        resourceCount: Schema.optional(Schema.Number),
-        parallelDeployments: Schema.optional(Schema.Number),
-        failureThreshold: Schema.optional(
-          Schema.Struct({
-            percentage: Schema.optional(Schema.Number),
-          }),
-        ),
-      }),
+      Schema.suspend(() => RemediationPropertiesSchema),
     ),
     id: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -5184,38 +2611,7 @@ export type RemediationsCreateOrUpdateAtResourceInput =
 export const RemediationsCreateOrUpdateAtResourceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     properties: Schema.optional(
-      Schema.Struct({
-        policyAssignmentId: Schema.optional(Schema.String),
-        policyDefinitionReferenceId: Schema.optional(Schema.String),
-        resourceDiscoveryMode: Schema.optional(
-          Schema.Literals(["ExistingNonCompliant", "ReEvaluateCompliance"]),
-        ),
-        provisioningState: Schema.optional(Schema.String),
-        createdOn: Schema.optional(Schema.String),
-        lastUpdatedOn: Schema.optional(Schema.String),
-        filters: Schema.optional(
-          Schema.Struct({
-            locations: Schema.optional(Schema.Array(Schema.String)),
-            resourceIds: Schema.optional(Schema.Array(Schema.String)),
-          }),
-        ),
-        deploymentStatus: Schema.optional(
-          Schema.Struct({
-            totalDeployments: Schema.optional(Schema.Number),
-            successfulDeployments: Schema.optional(Schema.Number),
-            failedDeployments: Schema.optional(Schema.Number),
-          }),
-        ),
-        statusMessage: Schema.optional(Schema.String),
-        correlationId: Schema.optional(Schema.String),
-        resourceCount: Schema.optional(Schema.Number),
-        parallelDeployments: Schema.optional(Schema.Number),
-        failureThreshold: Schema.optional(
-          Schema.Struct({
-            percentage: Schema.optional(Schema.Number),
-          }),
-        ),
-      }),
+      Schema.suspend(() => RemediationPropertiesSchema),
     ),
     id: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -5251,38 +2647,7 @@ export const RemediationsCreateOrUpdateAtResource =
 export const RemediationsCreateOrUpdateAtResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     properties: Schema.optional(
-      Schema.Struct({
-        policyAssignmentId: Schema.optional(Schema.String),
-        policyDefinitionReferenceId: Schema.optional(Schema.String),
-        resourceDiscoveryMode: Schema.optional(
-          Schema.Literals(["ExistingNonCompliant", "ReEvaluateCompliance"]),
-        ),
-        provisioningState: Schema.optional(Schema.String),
-        createdOn: Schema.optional(Schema.String),
-        lastUpdatedOn: Schema.optional(Schema.String),
-        filters: Schema.optional(
-          Schema.Struct({
-            locations: Schema.optional(Schema.Array(Schema.String)),
-            resourceIds: Schema.optional(Schema.Array(Schema.String)),
-          }),
-        ),
-        deploymentStatus: Schema.optional(
-          Schema.Struct({
-            totalDeployments: Schema.optional(Schema.Number),
-            successfulDeployments: Schema.optional(Schema.Number),
-            failedDeployments: Schema.optional(Schema.Number),
-          }),
-        ),
-        statusMessage: Schema.optional(Schema.String),
-        correlationId: Schema.optional(Schema.String),
-        resourceCount: Schema.optional(Schema.Number),
-        parallelDeployments: Schema.optional(Schema.Number),
-        failureThreshold: Schema.optional(
-          Schema.Struct({
-            percentage: Schema.optional(Schema.Number),
-          }),
-        ),
-      }),
+      Schema.suspend(() => RemediationPropertiesSchema),
     ),
     id: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -5315,38 +2680,7 @@ export type RemediationsCreateOrUpdateAtResourceGroupInput =
 export const RemediationsCreateOrUpdateAtResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     properties: Schema.optional(
-      Schema.Struct({
-        policyAssignmentId: Schema.optional(Schema.String),
-        policyDefinitionReferenceId: Schema.optional(Schema.String),
-        resourceDiscoveryMode: Schema.optional(
-          Schema.Literals(["ExistingNonCompliant", "ReEvaluateCompliance"]),
-        ),
-        provisioningState: Schema.optional(Schema.String),
-        createdOn: Schema.optional(Schema.String),
-        lastUpdatedOn: Schema.optional(Schema.String),
-        filters: Schema.optional(
-          Schema.Struct({
-            locations: Schema.optional(Schema.Array(Schema.String)),
-            resourceIds: Schema.optional(Schema.Array(Schema.String)),
-          }),
-        ),
-        deploymentStatus: Schema.optional(
-          Schema.Struct({
-            totalDeployments: Schema.optional(Schema.Number),
-            successfulDeployments: Schema.optional(Schema.Number),
-            failedDeployments: Schema.optional(Schema.Number),
-          }),
-        ),
-        statusMessage: Schema.optional(Schema.String),
-        correlationId: Schema.optional(Schema.String),
-        resourceCount: Schema.optional(Schema.Number),
-        parallelDeployments: Schema.optional(Schema.Number),
-        failureThreshold: Schema.optional(
-          Schema.Struct({
-            percentage: Schema.optional(Schema.Number),
-          }),
-        ),
-      }),
+      Schema.suspend(() => RemediationPropertiesSchema),
     ),
     id: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -5382,38 +2716,7 @@ export const RemediationsCreateOrUpdateAtResourceGroup =
 export const RemediationsCreateOrUpdateAtSubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     properties: Schema.optional(
-      Schema.Struct({
-        policyAssignmentId: Schema.optional(Schema.String),
-        policyDefinitionReferenceId: Schema.optional(Schema.String),
-        resourceDiscoveryMode: Schema.optional(
-          Schema.Literals(["ExistingNonCompliant", "ReEvaluateCompliance"]),
-        ),
-        provisioningState: Schema.optional(Schema.String),
-        createdOn: Schema.optional(Schema.String),
-        lastUpdatedOn: Schema.optional(Schema.String),
-        filters: Schema.optional(
-          Schema.Struct({
-            locations: Schema.optional(Schema.Array(Schema.String)),
-            resourceIds: Schema.optional(Schema.Array(Schema.String)),
-          }),
-        ),
-        deploymentStatus: Schema.optional(
-          Schema.Struct({
-            totalDeployments: Schema.optional(Schema.Number),
-            successfulDeployments: Schema.optional(Schema.Number),
-            failedDeployments: Schema.optional(Schema.Number),
-          }),
-        ),
-        statusMessage: Schema.optional(Schema.String),
-        correlationId: Schema.optional(Schema.String),
-        resourceCount: Schema.optional(Schema.Number),
-        parallelDeployments: Schema.optional(Schema.Number),
-        failureThreshold: Schema.optional(
-          Schema.Struct({
-            percentage: Schema.optional(Schema.Number),
-          }),
-        ),
-      }),
+      Schema.suspend(() => RemediationPropertiesSchema),
     ),
     id: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -5446,38 +2749,7 @@ export type RemediationsCreateOrUpdateAtSubscriptionInput =
 export const RemediationsCreateOrUpdateAtSubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     properties: Schema.optional(
-      Schema.Struct({
-        policyAssignmentId: Schema.optional(Schema.String),
-        policyDefinitionReferenceId: Schema.optional(Schema.String),
-        resourceDiscoveryMode: Schema.optional(
-          Schema.Literals(["ExistingNonCompliant", "ReEvaluateCompliance"]),
-        ),
-        provisioningState: Schema.optional(Schema.String),
-        createdOn: Schema.optional(Schema.String),
-        lastUpdatedOn: Schema.optional(Schema.String),
-        filters: Schema.optional(
-          Schema.Struct({
-            locations: Schema.optional(Schema.Array(Schema.String)),
-            resourceIds: Schema.optional(Schema.Array(Schema.String)),
-          }),
-        ),
-        deploymentStatus: Schema.optional(
-          Schema.Struct({
-            totalDeployments: Schema.optional(Schema.Number),
-            successfulDeployments: Schema.optional(Schema.Number),
-            failedDeployments: Schema.optional(Schema.Number),
-          }),
-        ),
-        statusMessage: Schema.optional(Schema.String),
-        correlationId: Schema.optional(Schema.String),
-        resourceCount: Schema.optional(Schema.Number),
-        parallelDeployments: Schema.optional(Schema.Number),
-        failureThreshold: Schema.optional(
-          Schema.Struct({
-            percentage: Schema.optional(Schema.Number),
-          }),
-        ),
-      }),
+      Schema.suspend(() => RemediationPropertiesSchema),
     ),
     id: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -5525,38 +2797,7 @@ export type RemediationsDeleteAtManagementGroupInput =
 export const RemediationsDeleteAtManagementGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     properties: Schema.optional(
-      Schema.Struct({
-        policyAssignmentId: Schema.optional(Schema.String),
-        policyDefinitionReferenceId: Schema.optional(Schema.String),
-        resourceDiscoveryMode: Schema.optional(
-          Schema.Literals(["ExistingNonCompliant", "ReEvaluateCompliance"]),
-        ),
-        provisioningState: Schema.optional(Schema.String),
-        createdOn: Schema.optional(Schema.String),
-        lastUpdatedOn: Schema.optional(Schema.String),
-        filters: Schema.optional(
-          Schema.Struct({
-            locations: Schema.optional(Schema.Array(Schema.String)),
-            resourceIds: Schema.optional(Schema.Array(Schema.String)),
-          }),
-        ),
-        deploymentStatus: Schema.optional(
-          Schema.Struct({
-            totalDeployments: Schema.optional(Schema.Number),
-            successfulDeployments: Schema.optional(Schema.Number),
-            failedDeployments: Schema.optional(Schema.Number),
-          }),
-        ),
-        statusMessage: Schema.optional(Schema.String),
-        correlationId: Schema.optional(Schema.String),
-        resourceCount: Schema.optional(Schema.Number),
-        parallelDeployments: Schema.optional(Schema.Number),
-        failureThreshold: Schema.optional(
-          Schema.Struct({
-            percentage: Schema.optional(Schema.Number),
-          }),
-        ),
-      }),
+      Schema.suspend(() => RemediationPropertiesSchema),
     ),
     id: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -5604,38 +2845,7 @@ export type RemediationsDeleteAtResourceInput =
 export const RemediationsDeleteAtResourceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     properties: Schema.optional(
-      Schema.Struct({
-        policyAssignmentId: Schema.optional(Schema.String),
-        policyDefinitionReferenceId: Schema.optional(Schema.String),
-        resourceDiscoveryMode: Schema.optional(
-          Schema.Literals(["ExistingNonCompliant", "ReEvaluateCompliance"]),
-        ),
-        provisioningState: Schema.optional(Schema.String),
-        createdOn: Schema.optional(Schema.String),
-        lastUpdatedOn: Schema.optional(Schema.String),
-        filters: Schema.optional(
-          Schema.Struct({
-            locations: Schema.optional(Schema.Array(Schema.String)),
-            resourceIds: Schema.optional(Schema.Array(Schema.String)),
-          }),
-        ),
-        deploymentStatus: Schema.optional(
-          Schema.Struct({
-            totalDeployments: Schema.optional(Schema.Number),
-            successfulDeployments: Schema.optional(Schema.Number),
-            failedDeployments: Schema.optional(Schema.Number),
-          }),
-        ),
-        statusMessage: Schema.optional(Schema.String),
-        correlationId: Schema.optional(Schema.String),
-        resourceCount: Schema.optional(Schema.Number),
-        parallelDeployments: Schema.optional(Schema.Number),
-        failureThreshold: Schema.optional(
-          Schema.Struct({
-            percentage: Schema.optional(Schema.Number),
-          }),
-        ),
-      }),
+      Schema.suspend(() => RemediationPropertiesSchema),
     ),
     id: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -5683,38 +2893,7 @@ export type RemediationsDeleteAtResourceGroupInput =
 export const RemediationsDeleteAtResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     properties: Schema.optional(
-      Schema.Struct({
-        policyAssignmentId: Schema.optional(Schema.String),
-        policyDefinitionReferenceId: Schema.optional(Schema.String),
-        resourceDiscoveryMode: Schema.optional(
-          Schema.Literals(["ExistingNonCompliant", "ReEvaluateCompliance"]),
-        ),
-        provisioningState: Schema.optional(Schema.String),
-        createdOn: Schema.optional(Schema.String),
-        lastUpdatedOn: Schema.optional(Schema.String),
-        filters: Schema.optional(
-          Schema.Struct({
-            locations: Schema.optional(Schema.Array(Schema.String)),
-            resourceIds: Schema.optional(Schema.Array(Schema.String)),
-          }),
-        ),
-        deploymentStatus: Schema.optional(
-          Schema.Struct({
-            totalDeployments: Schema.optional(Schema.Number),
-            successfulDeployments: Schema.optional(Schema.Number),
-            failedDeployments: Schema.optional(Schema.Number),
-          }),
-        ),
-        statusMessage: Schema.optional(Schema.String),
-        correlationId: Schema.optional(Schema.String),
-        resourceCount: Schema.optional(Schema.Number),
-        parallelDeployments: Schema.optional(Schema.Number),
-        failureThreshold: Schema.optional(
-          Schema.Struct({
-            percentage: Schema.optional(Schema.Number),
-          }),
-        ),
-      }),
+      Schema.suspend(() => RemediationPropertiesSchema),
     ),
     id: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -5762,38 +2941,7 @@ export type RemediationsDeleteAtSubscriptionInput =
 export const RemediationsDeleteAtSubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     properties: Schema.optional(
-      Schema.Struct({
-        policyAssignmentId: Schema.optional(Schema.String),
-        policyDefinitionReferenceId: Schema.optional(Schema.String),
-        resourceDiscoveryMode: Schema.optional(
-          Schema.Literals(["ExistingNonCompliant", "ReEvaluateCompliance"]),
-        ),
-        provisioningState: Schema.optional(Schema.String),
-        createdOn: Schema.optional(Schema.String),
-        lastUpdatedOn: Schema.optional(Schema.String),
-        filters: Schema.optional(
-          Schema.Struct({
-            locations: Schema.optional(Schema.Array(Schema.String)),
-            resourceIds: Schema.optional(Schema.Array(Schema.String)),
-          }),
-        ),
-        deploymentStatus: Schema.optional(
-          Schema.Struct({
-            totalDeployments: Schema.optional(Schema.Number),
-            successfulDeployments: Schema.optional(Schema.Number),
-            failedDeployments: Schema.optional(Schema.Number),
-          }),
-        ),
-        statusMessage: Schema.optional(Schema.String),
-        correlationId: Schema.optional(Schema.String),
-        resourceCount: Schema.optional(Schema.Number),
-        parallelDeployments: Schema.optional(Schema.Number),
-        failureThreshold: Schema.optional(
-          Schema.Struct({
-            percentage: Schema.optional(Schema.Number),
-          }),
-        ),
-      }),
+      Schema.suspend(() => RemediationPropertiesSchema),
     ),
     id: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -5841,38 +2989,7 @@ export type RemediationsGetAtManagementGroupInput =
 export const RemediationsGetAtManagementGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     properties: Schema.optional(
-      Schema.Struct({
-        policyAssignmentId: Schema.optional(Schema.String),
-        policyDefinitionReferenceId: Schema.optional(Schema.String),
-        resourceDiscoveryMode: Schema.optional(
-          Schema.Literals(["ExistingNonCompliant", "ReEvaluateCompliance"]),
-        ),
-        provisioningState: Schema.optional(Schema.String),
-        createdOn: Schema.optional(Schema.String),
-        lastUpdatedOn: Schema.optional(Schema.String),
-        filters: Schema.optional(
-          Schema.Struct({
-            locations: Schema.optional(Schema.Array(Schema.String)),
-            resourceIds: Schema.optional(Schema.Array(Schema.String)),
-          }),
-        ),
-        deploymentStatus: Schema.optional(
-          Schema.Struct({
-            totalDeployments: Schema.optional(Schema.Number),
-            successfulDeployments: Schema.optional(Schema.Number),
-            failedDeployments: Schema.optional(Schema.Number),
-          }),
-        ),
-        statusMessage: Schema.optional(Schema.String),
-        correlationId: Schema.optional(Schema.String),
-        resourceCount: Schema.optional(Schema.Number),
-        parallelDeployments: Schema.optional(Schema.Number),
-        failureThreshold: Schema.optional(
-          Schema.Struct({
-            percentage: Schema.optional(Schema.Number),
-          }),
-        ),
-      }),
+      Schema.suspend(() => RemediationPropertiesSchema),
     ),
     id: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -5920,38 +3037,7 @@ export type RemediationsGetAtResourceInput =
 export const RemediationsGetAtResourceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     properties: Schema.optional(
-      Schema.Struct({
-        policyAssignmentId: Schema.optional(Schema.String),
-        policyDefinitionReferenceId: Schema.optional(Schema.String),
-        resourceDiscoveryMode: Schema.optional(
-          Schema.Literals(["ExistingNonCompliant", "ReEvaluateCompliance"]),
-        ),
-        provisioningState: Schema.optional(Schema.String),
-        createdOn: Schema.optional(Schema.String),
-        lastUpdatedOn: Schema.optional(Schema.String),
-        filters: Schema.optional(
-          Schema.Struct({
-            locations: Schema.optional(Schema.Array(Schema.String)),
-            resourceIds: Schema.optional(Schema.Array(Schema.String)),
-          }),
-        ),
-        deploymentStatus: Schema.optional(
-          Schema.Struct({
-            totalDeployments: Schema.optional(Schema.Number),
-            successfulDeployments: Schema.optional(Schema.Number),
-            failedDeployments: Schema.optional(Schema.Number),
-          }),
-        ),
-        statusMessage: Schema.optional(Schema.String),
-        correlationId: Schema.optional(Schema.String),
-        resourceCount: Schema.optional(Schema.Number),
-        parallelDeployments: Schema.optional(Schema.Number),
-        failureThreshold: Schema.optional(
-          Schema.Struct({
-            percentage: Schema.optional(Schema.Number),
-          }),
-        ),
-      }),
+      Schema.suspend(() => RemediationPropertiesSchema),
     ),
     id: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -6000,38 +3086,7 @@ export type RemediationsGetAtResourceGroupInput =
 export const RemediationsGetAtResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     properties: Schema.optional(
-      Schema.Struct({
-        policyAssignmentId: Schema.optional(Schema.String),
-        policyDefinitionReferenceId: Schema.optional(Schema.String),
-        resourceDiscoveryMode: Schema.optional(
-          Schema.Literals(["ExistingNonCompliant", "ReEvaluateCompliance"]),
-        ),
-        provisioningState: Schema.optional(Schema.String),
-        createdOn: Schema.optional(Schema.String),
-        lastUpdatedOn: Schema.optional(Schema.String),
-        filters: Schema.optional(
-          Schema.Struct({
-            locations: Schema.optional(Schema.Array(Schema.String)),
-            resourceIds: Schema.optional(Schema.Array(Schema.String)),
-          }),
-        ),
-        deploymentStatus: Schema.optional(
-          Schema.Struct({
-            totalDeployments: Schema.optional(Schema.Number),
-            successfulDeployments: Schema.optional(Schema.Number),
-            failedDeployments: Schema.optional(Schema.Number),
-          }),
-        ),
-        statusMessage: Schema.optional(Schema.String),
-        correlationId: Schema.optional(Schema.String),
-        resourceCount: Schema.optional(Schema.Number),
-        parallelDeployments: Schema.optional(Schema.Number),
-        failureThreshold: Schema.optional(
-          Schema.Struct({
-            percentage: Schema.optional(Schema.Number),
-          }),
-        ),
-      }),
+      Schema.suspend(() => RemediationPropertiesSchema),
     ),
     id: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -6079,38 +3134,7 @@ export type RemediationsGetAtSubscriptionInput =
 export const RemediationsGetAtSubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     properties: Schema.optional(
-      Schema.Struct({
-        policyAssignmentId: Schema.optional(Schema.String),
-        policyDefinitionReferenceId: Schema.optional(Schema.String),
-        resourceDiscoveryMode: Schema.optional(
-          Schema.Literals(["ExistingNonCompliant", "ReEvaluateCompliance"]),
-        ),
-        provisioningState: Schema.optional(Schema.String),
-        createdOn: Schema.optional(Schema.String),
-        lastUpdatedOn: Schema.optional(Schema.String),
-        filters: Schema.optional(
-          Schema.Struct({
-            locations: Schema.optional(Schema.Array(Schema.String)),
-            resourceIds: Schema.optional(Schema.Array(Schema.String)),
-          }),
-        ),
-        deploymentStatus: Schema.optional(
-          Schema.Struct({
-            totalDeployments: Schema.optional(Schema.Number),
-            successfulDeployments: Schema.optional(Schema.Number),
-            failedDeployments: Schema.optional(Schema.Number),
-          }),
-        ),
-        statusMessage: Schema.optional(Schema.String),
-        correlationId: Schema.optional(Schema.String),
-        resourceCount: Schema.optional(Schema.Number),
-        parallelDeployments: Schema.optional(Schema.Number),
-        failureThreshold: Schema.optional(
-          Schema.Struct({
-            percentage: Schema.optional(Schema.Number),
-          }),
-        ),
-      }),
+      Schema.suspend(() => RemediationPropertiesSchema),
     ),
     id: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -6158,32 +3182,7 @@ export type RemediationsListDeploymentsAtManagementGroupInput =
 export const RemediationsListDeploymentsAtManagementGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          remediatedResourceId: Schema.optional(Schema.String),
-          deploymentId: Schema.optional(Schema.String),
-          status: Schema.optional(Schema.String),
-          resourceLocation: Schema.optional(Schema.String),
-          error: Schema.optional(
-            Schema.Struct({
-              code: Schema.optional(Schema.String),
-              message: Schema.optional(Schema.String),
-              target: Schema.optional(Schema.String),
-              details: Schema.optional(Schema.Array(Schema.Unknown)),
-              additionalInfo: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    type: Schema.optional(Schema.String),
-                    info: Schema.optional(Schema.Unknown),
-                  }),
-                ),
-              ),
-            }),
-          ),
-          createdOn: Schema.optional(Schema.String),
-          lastUpdatedOn: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => RemediationDeploymentSchema)),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -6215,32 +3214,7 @@ export type RemediationsListDeploymentsAtResourceInput =
 export const RemediationsListDeploymentsAtResourceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          remediatedResourceId: Schema.optional(Schema.String),
-          deploymentId: Schema.optional(Schema.String),
-          status: Schema.optional(Schema.String),
-          resourceLocation: Schema.optional(Schema.String),
-          error: Schema.optional(
-            Schema.Struct({
-              code: Schema.optional(Schema.String),
-              message: Schema.optional(Schema.String),
-              target: Schema.optional(Schema.String),
-              details: Schema.optional(Schema.Array(Schema.Unknown)),
-              additionalInfo: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    type: Schema.optional(Schema.String),
-                    info: Schema.optional(Schema.Unknown),
-                  }),
-                ),
-              ),
-            }),
-          ),
-          createdOn: Schema.optional(Schema.String),
-          lastUpdatedOn: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => RemediationDeploymentSchema)),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -6272,32 +3246,7 @@ export type RemediationsListDeploymentsAtResourceGroupInput =
 export const RemediationsListDeploymentsAtResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          remediatedResourceId: Schema.optional(Schema.String),
-          deploymentId: Schema.optional(Schema.String),
-          status: Schema.optional(Schema.String),
-          resourceLocation: Schema.optional(Schema.String),
-          error: Schema.optional(
-            Schema.Struct({
-              code: Schema.optional(Schema.String),
-              message: Schema.optional(Schema.String),
-              target: Schema.optional(Schema.String),
-              details: Schema.optional(Schema.Array(Schema.Unknown)),
-              additionalInfo: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    type: Schema.optional(Schema.String),
-                    info: Schema.optional(Schema.Unknown),
-                  }),
-                ),
-              ),
-            }),
-          ),
-          createdOn: Schema.optional(Schema.String),
-          lastUpdatedOn: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => RemediationDeploymentSchema)),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -6329,32 +3278,7 @@ export type RemediationsListDeploymentsAtSubscriptionInput =
 export const RemediationsListDeploymentsAtSubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          remediatedResourceId: Schema.optional(Schema.String),
-          deploymentId: Schema.optional(Schema.String),
-          status: Schema.optional(Schema.String),
-          resourceLocation: Schema.optional(Schema.String),
-          error: Schema.optional(
-            Schema.Struct({
-              code: Schema.optional(Schema.String),
-              message: Schema.optional(Schema.String),
-              target: Schema.optional(Schema.String),
-              details: Schema.optional(Schema.Array(Schema.Unknown)),
-              additionalInfo: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    type: Schema.optional(Schema.String),
-                    info: Schema.optional(Schema.Unknown),
-                  }),
-                ),
-              ),
-            }),
-          ),
-          createdOn: Schema.optional(Schema.String),
-          lastUpdatedOn: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => RemediationDeploymentSchema)),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -6386,74 +3310,7 @@ export type RemediationsListForManagementGroupInput =
 export const RemediationsListForManagementGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          properties: Schema.optional(
-            Schema.Struct({
-              policyAssignmentId: Schema.optional(Schema.String),
-              policyDefinitionReferenceId: Schema.optional(Schema.String),
-              resourceDiscoveryMode: Schema.optional(
-                Schema.Literals([
-                  "ExistingNonCompliant",
-                  "ReEvaluateCompliance",
-                ]),
-              ),
-              provisioningState: Schema.optional(Schema.String),
-              createdOn: Schema.optional(Schema.String),
-              lastUpdatedOn: Schema.optional(Schema.String),
-              filters: Schema.optional(
-                Schema.Struct({
-                  locations: Schema.optional(Schema.Array(Schema.String)),
-                  resourceIds: Schema.optional(Schema.Array(Schema.String)),
-                }),
-              ),
-              deploymentStatus: Schema.optional(
-                Schema.Struct({
-                  totalDeployments: Schema.optional(Schema.Number),
-                  successfulDeployments: Schema.optional(Schema.Number),
-                  failedDeployments: Schema.optional(Schema.Number),
-                }),
-              ),
-              statusMessage: Schema.optional(Schema.String),
-              correlationId: Schema.optional(Schema.String),
-              resourceCount: Schema.optional(Schema.Number),
-              parallelDeployments: Schema.optional(Schema.Number),
-              failureThreshold: Schema.optional(
-                Schema.Struct({
-                  percentage: Schema.optional(Schema.Number),
-                }),
-              ),
-            }),
-          ),
-          id: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.String),
-              createdByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              createdAt: Schema.optional(Schema.String),
-              lastModifiedBy: Schema.optional(Schema.String),
-              lastModifiedByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              lastModifiedAt: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => RemediationSchema)),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -6485,74 +3342,7 @@ export type RemediationsListForResourceInput =
 export const RemediationsListForResourceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          properties: Schema.optional(
-            Schema.Struct({
-              policyAssignmentId: Schema.optional(Schema.String),
-              policyDefinitionReferenceId: Schema.optional(Schema.String),
-              resourceDiscoveryMode: Schema.optional(
-                Schema.Literals([
-                  "ExistingNonCompliant",
-                  "ReEvaluateCompliance",
-                ]),
-              ),
-              provisioningState: Schema.optional(Schema.String),
-              createdOn: Schema.optional(Schema.String),
-              lastUpdatedOn: Schema.optional(Schema.String),
-              filters: Schema.optional(
-                Schema.Struct({
-                  locations: Schema.optional(Schema.Array(Schema.String)),
-                  resourceIds: Schema.optional(Schema.Array(Schema.String)),
-                }),
-              ),
-              deploymentStatus: Schema.optional(
-                Schema.Struct({
-                  totalDeployments: Schema.optional(Schema.Number),
-                  successfulDeployments: Schema.optional(Schema.Number),
-                  failedDeployments: Schema.optional(Schema.Number),
-                }),
-              ),
-              statusMessage: Schema.optional(Schema.String),
-              correlationId: Schema.optional(Schema.String),
-              resourceCount: Schema.optional(Schema.Number),
-              parallelDeployments: Schema.optional(Schema.Number),
-              failureThreshold: Schema.optional(
-                Schema.Struct({
-                  percentage: Schema.optional(Schema.Number),
-                }),
-              ),
-            }),
-          ),
-          id: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.String),
-              createdByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              createdAt: Schema.optional(Schema.String),
-              lastModifiedBy: Schema.optional(Schema.String),
-              lastModifiedByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              lastModifiedAt: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => RemediationSchema)),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -6585,74 +3375,7 @@ export type RemediationsListForResourceGroupInput =
 export const RemediationsListForResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          properties: Schema.optional(
-            Schema.Struct({
-              policyAssignmentId: Schema.optional(Schema.String),
-              policyDefinitionReferenceId: Schema.optional(Schema.String),
-              resourceDiscoveryMode: Schema.optional(
-                Schema.Literals([
-                  "ExistingNonCompliant",
-                  "ReEvaluateCompliance",
-                ]),
-              ),
-              provisioningState: Schema.optional(Schema.String),
-              createdOn: Schema.optional(Schema.String),
-              lastUpdatedOn: Schema.optional(Schema.String),
-              filters: Schema.optional(
-                Schema.Struct({
-                  locations: Schema.optional(Schema.Array(Schema.String)),
-                  resourceIds: Schema.optional(Schema.Array(Schema.String)),
-                }),
-              ),
-              deploymentStatus: Schema.optional(
-                Schema.Struct({
-                  totalDeployments: Schema.optional(Schema.Number),
-                  successfulDeployments: Schema.optional(Schema.Number),
-                  failedDeployments: Schema.optional(Schema.Number),
-                }),
-              ),
-              statusMessage: Schema.optional(Schema.String),
-              correlationId: Schema.optional(Schema.String),
-              resourceCount: Schema.optional(Schema.Number),
-              parallelDeployments: Schema.optional(Schema.Number),
-              failureThreshold: Schema.optional(
-                Schema.Struct({
-                  percentage: Schema.optional(Schema.Number),
-                }),
-              ),
-            }),
-          ),
-          id: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.String),
-              createdByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              createdAt: Schema.optional(Schema.String),
-              lastModifiedBy: Schema.optional(Schema.String),
-              lastModifiedByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              lastModifiedAt: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => RemediationSchema)),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -6684,74 +3407,7 @@ export type RemediationsListForSubscriptionInput =
 export const RemediationsListForSubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          properties: Schema.optional(
-            Schema.Struct({
-              policyAssignmentId: Schema.optional(Schema.String),
-              policyDefinitionReferenceId: Schema.optional(Schema.String),
-              resourceDiscoveryMode: Schema.optional(
-                Schema.Literals([
-                  "ExistingNonCompliant",
-                  "ReEvaluateCompliance",
-                ]),
-              ),
-              provisioningState: Schema.optional(Schema.String),
-              createdOn: Schema.optional(Schema.String),
-              lastUpdatedOn: Schema.optional(Schema.String),
-              filters: Schema.optional(
-                Schema.Struct({
-                  locations: Schema.optional(Schema.Array(Schema.String)),
-                  resourceIds: Schema.optional(Schema.Array(Schema.String)),
-                }),
-              ),
-              deploymentStatus: Schema.optional(
-                Schema.Struct({
-                  totalDeployments: Schema.optional(Schema.Number),
-                  successfulDeployments: Schema.optional(Schema.Number),
-                  failedDeployments: Schema.optional(Schema.Number),
-                }),
-              ),
-              statusMessage: Schema.optional(Schema.String),
-              correlationId: Schema.optional(Schema.String),
-              resourceCount: Schema.optional(Schema.Number),
-              parallelDeployments: Schema.optional(Schema.Number),
-              failureThreshold: Schema.optional(
-                Schema.Struct({
-                  percentage: Schema.optional(Schema.Number),
-                }),
-              ),
-            }),
-          ),
-          id: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.String),
-              createdByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              createdAt: Schema.optional(Schema.String),
-              lastModifiedBy: Schema.optional(Schema.String),
-              lastModifiedByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              lastModifiedAt: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => RemediationSchema)),
     ),
     nextLink: Schema.optional(Schema.String),
   });

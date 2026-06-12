@@ -8,6 +8,607 @@ import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
+// Shared schemas
+const EnvironmentTypeSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "NonProd",
+  "Prod",
+]);
+const SAPProductTypeSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "ECC",
+  "S4HANA",
+  "Other",
+]);
+const DeploymentTypeSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "SingleServer",
+  "ThreeTier",
+]);
+const SAPDatabaseTypeSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "HANA",
+  "DB2",
+]);
+const DatabaseScaleMethodSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "ScaleUp",
+]);
+const HighAvailabilityTypeSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "AvailabilitySet",
+  "AvailabilityZone",
+]);
+const SAPSupportedSkuSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  vmSku: Schema.optional(Schema.String),
+  isAppServerCertified: Schema.optional(Schema.Boolean),
+  isDatabaseCertified: Schema.optional(Schema.Boolean),
+});
+const SAPDiskConfigurationSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  recommendedConfiguration: Schema.optional(
+    Schema.suspend(() => DiskVolumeConfigurationSchema),
+  ),
+  supportedConfigurations: Schema.optional(
+    Schema.Array(Schema.suspend(() => DiskDetailsSchema)),
+  ),
+});
+const DiskVolumeConfigurationSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    count: Schema.optional(Schema.Number),
+    sizeGB: Schema.optional(Schema.Number),
+    sku: Schema.optional(Schema.suspend(() => DiskSkuSchema)),
+  },
+);
+const DiskSkuSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.suspend(() => DiskSkuNameSchema)),
+});
+const DiskSkuNameSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Standard_LRS",
+  "Premium_LRS",
+  "StandardSSD_LRS",
+  "UltraSSD_LRS",
+  "Premium_ZRS",
+  "StandardSSD_ZRS",
+  "PremiumV2_LRS",
+]);
+const DiskDetailsSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  sku: Schema.optional(Schema.suspend(() => DiskSkuSchema)),
+  sizeGB: Schema.optional(Schema.Number),
+  minimumSupportedDiskCount: Schema.optional(Schema.Number),
+  maximumSupportedDiskCount: Schema.optional(Schema.Number),
+  iopsReadWrite: Schema.optional(Schema.Number),
+  mbpsReadWrite: Schema.optional(Schema.Number),
+  diskTier: Schema.optional(Schema.String),
+});
+const SAPAvailabilityZonePairSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    zoneA: Schema.optional(Schema.Number),
+    zoneB: Schema.optional(Schema.Number),
+  },
+);
+const ManagedServiceIdentityTypeSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Literals(["None", "UserAssigned"]);
+const UserAssignedIdentitySchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  principalId: Schema.optional(Schema.String),
+  clientId: Schema.optional(Schema.String),
+});
+const SAPVirtualInstancePropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    environment: Schema.suspend(() => EnvironmentTypeSchema),
+    sapProduct: Schema.suspend(() => SAPProductTypeSchema),
+    configuration: Schema.suspend(() => SAPConfigurationSchema),
+    managedResourceGroupConfiguration: Schema.optional(
+      Schema.suspend(() => ManagedRGConfigurationSchema),
+    ),
+    status: Schema.optional(
+      Schema.suspend(() => SAPVirtualInstanceStatusSchema),
+    ),
+    health: Schema.optional(Schema.suspend(() => HealthStateSchema)),
+    state: Schema.optional(Schema.suspend(() => SAPVirtualInstanceStateSchema)),
+    provisioningState: Schema.optional(
+      Schema.suspend(() => ProvisioningStateSchema),
+    ),
+    errors: Schema.optional(
+      Schema.suspend(() => SAPVirtualInstanceErrorSchema),
+    ),
+  });
+const SAPConfigurationSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  configurationType: Schema.suspend(() => ConfigurationTypeSchema),
+});
+const ConfigurationTypeSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Deployment",
+  "Discovery",
+  "DeploymentWithOSConfig",
+]);
+const ManagedRGConfigurationSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+});
+const SAPVirtualInstanceStatusSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+    "Starting",
+    "Running",
+    "Stopping",
+    "Offline",
+    "PartiallyRunning",
+    "Unavailable",
+    "SoftShutdown",
+  ]);
+const HealthStateSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Unknown",
+  "Healthy",
+  "Unhealthy",
+  "Degraded",
+]);
+const SAPVirtualInstanceStateSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+    "InfrastructureDeploymentPending",
+    "InfrastructureDeploymentInProgress",
+    "InfrastructureDeploymentFailed",
+    "SoftwareInstallationPending",
+    "SoftwareInstallationInProgress",
+    "SoftwareInstallationFailed",
+    "SoftwareDetectionInProgress",
+    "SoftwareDetectionFailed",
+    "DiscoveryPending",
+    "DiscoveryInProgress",
+    "DiscoveryFailed",
+    "RegistrationComplete",
+  ]);
+const ProvisioningStateSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Succeeded",
+  "Updating",
+  "Creating",
+  "Failed",
+  "Deleting",
+]);
+const SAPVirtualInstanceErrorSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    properties: Schema.optional(Schema.suspend(() => ErrorDefinitionSchema)),
+  },
+);
+const ErrorDefinitionSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  code: Schema.optional(Schema.String),
+  message: Schema.optional(Schema.String),
+  details: Schema.optional(Schema.Array(Schema.Unknown)),
+});
+const systemDataSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  createdBy: Schema.optional(Schema.String),
+  createdByType: Schema.optional(
+    Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+  ),
+  createdAt: Schema.optional(Schema.String),
+  lastModifiedBy: Schema.optional(Schema.String),
+  lastModifiedByType: Schema.optional(
+    Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+  ),
+  lastModifiedAt: Schema.optional(Schema.String),
+});
+const OperationStatusResultSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  status: Schema.String,
+  percentComplete: Schema.optional(Schema.Number),
+  startTime: Schema.optional(Schema.String),
+  endTime: Schema.optional(Schema.String),
+  operations: Schema.optional(Schema.Array(Schema.Unknown)),
+  error: Schema.optional(Schema.suspend(() => ErrorDetailSchema)),
+});
+const ErrorDetailSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  code: Schema.optional(Schema.String),
+  message: Schema.optional(Schema.String),
+  target: Schema.optional(Schema.String),
+  details: Schema.optional(Schema.Array(Schema.Unknown)),
+  additionalInfo: Schema.optional(
+    Schema.Array(Schema.suspend(() => ErrorAdditionalInfoSchema)),
+  ),
+});
+const ErrorAdditionalInfoSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  type: Schema.optional(Schema.String),
+  info: Schema.optional(Schema.Unknown),
+});
+const SAPVirtualInstanceSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+});
+const SAPCentralServerPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    instanceNo: Schema.optional(Schema.String),
+    subnet: Schema.optional(Schema.String),
+    messageServerProperties: Schema.optional(
+      Schema.suspend(() => MessageServerPropertiesSchema),
+    ),
+    enqueueServerProperties: Schema.optional(
+      Schema.suspend(() => EnqueueServerPropertiesSchema),
+    ),
+    gatewayServerProperties: Schema.optional(
+      Schema.suspend(() => GatewayServerPropertiesSchema),
+    ),
+    enqueueReplicationServerProperties: Schema.optional(
+      Schema.suspend(() => EnqueueReplicationServerPropertiesSchema),
+    ),
+    kernelVersion: Schema.optional(Schema.NullOr(Schema.String)),
+    kernelPatch: Schema.optional(Schema.NullOr(Schema.String)),
+    loadBalancerDetails: Schema.optional(
+      Schema.suspend(() => LoadBalancerDetailsSchema),
+    ),
+    vmDetails: Schema.optional(
+      Schema.Array(Schema.suspend(() => CentralServerVmDetailsSchema)),
+    ),
+    status: Schema.optional(
+      Schema.suspend(() => SAPVirtualInstanceStatusSchema),
+    ),
+    health: Schema.optional(Schema.suspend(() => HealthStateSchema)),
+    provisioningState: Schema.optional(
+      Schema.suspend(() => ProvisioningStateSchema),
+    ),
+    errors: Schema.optional(
+      Schema.suspend(() => SAPVirtualInstanceErrorSchema),
+    ),
+  });
+const MessageServerPropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    msPort: Schema.optional(Schema.NullOr(Schema.Number)),
+    internalMsPort: Schema.optional(Schema.NullOr(Schema.Number)),
+    httpPort: Schema.optional(Schema.NullOr(Schema.Number)),
+    httpsPort: Schema.optional(Schema.NullOr(Schema.Number)),
+    hostname: Schema.optional(Schema.String),
+    ipAddress: Schema.optional(Schema.String),
+    health: Schema.optional(Schema.suspend(() => HealthStateSchema)),
+  },
+);
+const EnqueueServerPropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    hostname: Schema.optional(Schema.String),
+    ipAddress: Schema.optional(Schema.String),
+    port: Schema.optional(Schema.NullOr(Schema.Number)),
+    health: Schema.optional(Schema.suspend(() => HealthStateSchema)),
+  },
+);
+const GatewayServerPropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    port: Schema.optional(Schema.NullOr(Schema.Number)),
+    health: Schema.optional(Schema.suspend(() => HealthStateSchema)),
+  },
+);
+const EnqueueReplicationServerPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    ersVersion: Schema.optional(
+      Schema.suspend(() => EnqueueReplicationServerTypeSchema),
+    ),
+    instanceNo: Schema.optional(Schema.String),
+    hostname: Schema.optional(Schema.String),
+    kernelVersion: Schema.optional(Schema.String),
+    kernelPatch: Schema.optional(Schema.String),
+    ipAddress: Schema.optional(Schema.String),
+    health: Schema.optional(Schema.suspend(() => HealthStateSchema)),
+  });
+const EnqueueReplicationServerTypeSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+    "EnqueueReplicator1",
+    "EnqueueReplicator2",
+  ]);
+const LoadBalancerDetailsSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+});
+const CentralServerVmDetailsSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  type: Schema.optional(
+    Schema.suspend(() => CentralServerVirtualMachineTypeSchema),
+  ),
+  virtualMachineId: Schema.optional(Schema.String),
+  storageDetails: Schema.optional(
+    Schema.Array(Schema.suspend(() => StorageInformationSchema)),
+  ),
+});
+const CentralServerVirtualMachineTypeSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+    "Primary",
+    "Secondary",
+    "Unknown",
+    "ASCS",
+    "ERSInactive",
+    "ERS",
+    "Standby",
+  ]);
+const StorageInformationSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+});
+const SAPCentralServerInstanceSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+  });
+const SAPDatabasePropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subnet: Schema.optional(Schema.String),
+  databaseSid: Schema.optional(Schema.String),
+  databaseType: Schema.optional(Schema.String),
+  ipAddress: Schema.optional(Schema.String),
+  loadBalancerDetails: Schema.optional(
+    Schema.suspend(() => LoadBalancerDetailsSchema),
+  ),
+  vmDetails: Schema.optional(
+    Schema.Array(Schema.suspend(() => DatabaseVmDetailsSchema)),
+  ),
+  status: Schema.optional(Schema.suspend(() => SAPVirtualInstanceStatusSchema)),
+  provisioningState: Schema.optional(
+    Schema.suspend(() => ProvisioningStateSchema),
+  ),
+  errors: Schema.optional(Schema.suspend(() => SAPVirtualInstanceErrorSchema)),
+});
+const DatabaseVmDetailsSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  virtualMachineId: Schema.optional(Schema.String),
+  status: Schema.optional(Schema.suspend(() => SAPVirtualInstanceStatusSchema)),
+  storageDetails: Schema.optional(
+    Schema.Array(Schema.suspend(() => StorageInformationSchema)),
+  ),
+});
+const SAPDatabaseInstanceSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+});
+const SAPApplicationServerPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    instanceNo: Schema.optional(Schema.String),
+    subnet: Schema.optional(Schema.String),
+    hostname: Schema.optional(Schema.String),
+    kernelVersion: Schema.optional(Schema.String),
+    kernelPatch: Schema.optional(Schema.String),
+    ipAddress: Schema.optional(Schema.String),
+    gatewayPort: Schema.optional(Schema.NullOr(Schema.Number)),
+    icmHttpPort: Schema.optional(Schema.NullOr(Schema.Number)),
+    icmHttpsPort: Schema.optional(Schema.NullOr(Schema.Number)),
+    loadBalancerDetails: Schema.optional(
+      Schema.suspend(() => LoadBalancerDetailsSchema),
+    ),
+    vmDetails: Schema.optional(
+      Schema.Array(Schema.suspend(() => ApplicationServerVmDetailsSchema)),
+    ),
+    status: Schema.optional(
+      Schema.suspend(() => SAPVirtualInstanceStatusSchema),
+    ),
+    health: Schema.optional(Schema.suspend(() => HealthStateSchema)),
+    provisioningState: Schema.optional(
+      Schema.suspend(() => ProvisioningStateSchema),
+    ),
+    errors: Schema.optional(
+      Schema.suspend(() => SAPVirtualInstanceErrorSchema),
+    ),
+  });
+const ApplicationServerVmDetailsSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    type: Schema.optional(
+      Schema.suspend(() => ApplicationServerVirtualMachineTypeSchema),
+    ),
+    virtualMachineId: Schema.optional(Schema.String),
+    storageDetails: Schema.optional(
+      Schema.Array(Schema.suspend(() => StorageInformationSchema)),
+    ),
+  });
+const ApplicationServerVirtualMachineTypeSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Literals(["Active", "Standby", "Unknown"]);
+const SAPApplicationServerInstanceSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+  });
+const MonitorSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+});
+const MonitorPropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  provisioningState: Schema.optional(
+    Schema.Literals([
+      "Accepted",
+      "Creating",
+      "Updating",
+      "Failed",
+      "Succeeded",
+      "Deleting",
+      "Migrating",
+    ]),
+  ),
+  errors: Schema.optional(
+    Schema.Struct({
+      code: Schema.optional(Schema.String),
+      message: Schema.optional(Schema.String),
+      target: Schema.optional(Schema.String),
+      details: Schema.optional(Schema.Array(Schema.suspend(() => ErrorSchema))),
+      innerError: Schema.optional(
+        Schema.Struct({
+          innerError: Schema.optional(Schema.suspend(() => ErrorSchema)),
+        }),
+      ),
+    }),
+  ),
+  appLocation: Schema.optional(Schema.String),
+  routingPreference: Schema.optional(Schema.Literals(["Default", "RouteAll"])),
+  zoneRedundancyPreference: Schema.optional(Schema.String),
+  managedResourceGroupConfiguration: Schema.optional(
+    Schema.suspend(() => ManagedRGConfigurationSchema),
+  ),
+  logAnalyticsWorkspaceArmId: Schema.optional(Schema.String),
+  monitorSubnet: Schema.optional(Schema.String),
+  msiArmId: Schema.optional(Schema.String),
+  storageAccountArmId: Schema.optional(Schema.String),
+});
+const ErrorSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  code: Schema.optional(Schema.String),
+  message: Schema.optional(Schema.String),
+  target: Schema.optional(Schema.String),
+  details: Schema.optional(Schema.Array(Schema.Unknown)),
+  innerError: Schema.optional(
+    Schema.Struct({
+      innerError: Schema.optional(Schema.Unknown),
+    }),
+  ),
+});
+const ProviderInstanceSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+});
+const ProviderInstancePropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    provisioningState: Schema.optional(
+      Schema.Literals([
+        "Accepted",
+        "Creating",
+        "Updating",
+        "Failed",
+        "Succeeded",
+        "Deleting",
+        "Migrating",
+      ]),
+    ),
+    errors: Schema.optional(
+      Schema.Struct({
+        code: Schema.optional(Schema.String),
+        message: Schema.optional(Schema.String),
+        target: Schema.optional(Schema.String),
+        details: Schema.optional(
+          Schema.Array(Schema.suspend(() => ErrorSchema)),
+        ),
+        innerError: Schema.optional(
+          Schema.Struct({
+            innerError: Schema.optional(Schema.suspend(() => ErrorSchema)),
+          }),
+        ),
+      }),
+    ),
+    providerSettings: Schema.optional(
+      Schema.suspend(() => ProviderSpecificPropertiesSchema),
+    ),
+  });
+const ProviderSpecificPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    providerType: Schema.String,
+  });
+const SapLandscapeMonitorPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    provisioningState: Schema.optional(
+      Schema.Literals([
+        "Accepted",
+        "Created",
+        "Failed",
+        "Succeeded",
+        "Canceled",
+      ]),
+    ),
+    grouping: Schema.optional(
+      Schema.Struct({
+        landscape: Schema.optional(
+          Schema.Array(
+            Schema.suspend(() => SapLandscapeMonitorSidMappingSchema),
+          ),
+        ),
+        sapApplication: Schema.optional(
+          Schema.Array(
+            Schema.suspend(() => SapLandscapeMonitorSidMappingSchema),
+          ),
+        ),
+      }),
+    ),
+    topMetricsThresholds: Schema.optional(
+      Schema.Array(
+        Schema.suspend(() => SapLandscapeMonitorMetricThresholdsSchema),
+      ),
+    ),
+  });
+const SapLandscapeMonitorSidMappingSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    topSid: Schema.optional(Schema.Array(Schema.String)),
+  });
+const SapLandscapeMonitorMetricThresholdsSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    green: Schema.optional(Schema.Number),
+    yellow: Schema.optional(Schema.Number),
+    red: Schema.optional(Schema.Number),
+  });
+const SapLandscapeMonitorSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+});
+const OperationSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  isDataAction: Schema.optional(Schema.Boolean),
+  display: Schema.optional(
+    Schema.Struct({
+      provider: Schema.optional(Schema.String),
+      resource: Schema.optional(Schema.String),
+      operation: Schema.optional(Schema.String),
+      description: Schema.optional(Schema.String),
+    }),
+  ),
+  origin: Schema.optional(Schema.Literals(["user", "system", "user,system"])),
+  actionType: Schema.optional(Schema.Literals(["Internal"])),
+});
+const SAPEnvironmentTypeSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "NonProd",
+  "Prod",
+]);
+const SAPDeploymentTypeSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "SingleServer",
+  "ThreeTier",
+]);
+const SAPHighAvailabilityTypeSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+    "AvailabilitySet",
+    "AvailabilityZone",
+  ]);
+const SAPDatabaseScaleMethodSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Literals(["ScaleUp"]);
+const ManagedResourcesNetworkAccessTypeSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Literals(["Public", "Private"]);
+const SAPConfigurationTypeSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Deployment",
+  "Discovery",
+  "DeploymentWithOSConfig",
+]);
+const SAPHealthStateSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Unknown",
+  "Healthy",
+  "Unhealthy",
+  "Degraded",
+]);
+const SapVirtualInstanceProvisioningStateSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+    "Succeeded",
+    "Updating",
+    "Creating",
+    "Failed",
+    "Deleting",
+    "Canceled",
+  ]);
+const SAPVirtualInstanceIdentitySchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    type: Schema.suspend(() => SAPVirtualInstanceIdentityTypeSchema),
+    userAssignedIdentities: Schema.optional(
+      Schema.Record(
+        Schema.String,
+        Schema.Struct({
+          principalId: Schema.optional(Schema.String),
+          clientId: Schema.optional(Schema.String),
+        }),
+      ),
+    ),
+  });
+const SAPVirtualInstanceIdentityTypeSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Literals(["None", "UserAssigned"]);
+const UpdateSAPVirtualInstancePropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    managedResourcesNetworkAccessType: Schema.optional(
+      Schema.suspend(() => ManagedResourcesNetworkAccessTypeSchema),
+    ),
+  });
+
 // Input Schema
 export const MonitorsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -24,23 +625,26 @@ export type MonitorsCreateInput = typeof MonitorsCreateInput.Type;
 
 // Output Schema
 export const MonitorsCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  identity: Schema.optional(
+    Schema.Struct({
+      type: Schema.suspend(() => ManagedServiceIdentityTypeSchema),
+      userAssignedIdentities: Schema.optional(
+        Schema.NullOr(
+          Schema.Record(
+            Schema.String,
+            Schema.suspend(() => UserAssignedIdentitySchema),
+          ),
+        ),
+      ),
+    }),
+  ),
+  properties: Schema.optional(Schema.suspend(() => MonitorPropertiesSchema)),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  location: Schema.String,
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
-  systemData: Schema.optional(
-    Schema.Struct({
-      createdBy: Schema.optional(Schema.String),
-      createdByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      createdAt: Schema.optional(Schema.String),
-      lastModifiedBy: Schema.optional(Schema.String),
-      lastModifiedByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      lastModifiedAt: Schema.optional(Schema.String),
-    }),
-  ),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
 });
 export type MonitorsCreateOutput = typeof MonitorsCreateOutput.Type;
 
@@ -81,50 +685,9 @@ export const MonitorsDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   startTime: Schema.optional(Schema.String),
   endTime: Schema.optional(Schema.String),
   operations: Schema.optional(
-    Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        status: Schema.String,
-        percentComplete: Schema.optional(Schema.Number),
-        startTime: Schema.optional(Schema.String),
-        endTime: Schema.optional(Schema.String),
-        operations: Schema.optional(Schema.Array(Schema.Unknown)),
-        error: Schema.optional(
-          Schema.Struct({
-            code: Schema.optional(Schema.String),
-            message: Schema.optional(Schema.String),
-            target: Schema.optional(Schema.String),
-            details: Schema.optional(Schema.Array(Schema.Unknown)),
-            additionalInfo: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  type: Schema.optional(Schema.String),
-                  info: Schema.optional(Schema.Unknown),
-                }),
-              ),
-            ),
-          }),
-        ),
-      }),
-    ),
+    Schema.Array(Schema.suspend(() => OperationStatusResultSchema)),
   ),
-  error: Schema.optional(
-    Schema.Struct({
-      code: Schema.optional(Schema.String),
-      message: Schema.optional(Schema.String),
-      target: Schema.optional(Schema.String),
-      details: Schema.optional(Schema.Array(Schema.Unknown)),
-      additionalInfo: Schema.optional(
-        Schema.Array(
-          Schema.Struct({
-            type: Schema.optional(Schema.String),
-            info: Schema.optional(Schema.Unknown),
-          }),
-        ),
-      ),
-    }),
-  ),
+  error: Schema.optional(Schema.suspend(() => ErrorDetailSchema)),
 });
 export type MonitorsDeleteOutput = typeof MonitorsDeleteOutput.Type;
 
@@ -157,23 +720,26 @@ export type MonitorsGetInput = typeof MonitorsGetInput.Type;
 
 // Output Schema
 export const MonitorsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  identity: Schema.optional(
+    Schema.Struct({
+      type: Schema.suspend(() => ManagedServiceIdentityTypeSchema),
+      userAssignedIdentities: Schema.optional(
+        Schema.NullOr(
+          Schema.Record(
+            Schema.String,
+            Schema.suspend(() => UserAssignedIdentitySchema),
+          ),
+        ),
+      ),
+    }),
+  ),
+  properties: Schema.optional(Schema.suspend(() => MonitorPropertiesSchema)),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  location: Schema.String,
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
-  systemData: Schema.optional(
-    Schema.Struct({
-      createdBy: Schema.optional(Schema.String),
-      createdByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      createdAt: Schema.optional(Schema.String),
-      lastModifiedBy: Schema.optional(Schema.String),
-      lastModifiedByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      lastModifiedAt: Schema.optional(Schema.String),
-    }),
-  ),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
 });
 export type MonitorsGetOutput = typeof MonitorsGetOutput.Type;
 
@@ -205,39 +771,7 @@ export type MonitorsListInput = typeof MonitorsListInput.Type;
 
 // Output Schema
 export const MonitorsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  value: Schema.optional(
-    Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
-  ),
+  value: Schema.optional(Schema.Array(Schema.suspend(() => MonitorSchema))),
   nextLink: Schema.optional(Schema.String),
 });
 export type MonitorsListOutput = typeof MonitorsListOutput.Type;
@@ -273,39 +807,7 @@ export type MonitorsListByResourceGroupInput =
 // Output Schema
 export const MonitorsListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.String),
-              createdByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              createdAt: Schema.optional(Schema.String),
-              lastModifiedBy: Schema.optional(Schema.String),
-              lastModifiedByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              lastModifiedAt: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
-    ),
+    value: Schema.optional(Schema.Array(Schema.suspend(() => MonitorSchema))),
     nextLink: Schema.optional(Schema.String),
   });
 export type MonitorsListByResourceGroupOutput =
@@ -334,15 +836,12 @@ export const MonitorsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   identity: Schema.optional(
     Schema.Struct({
-      type: Schema.Literals(["None", "UserAssigned"]),
+      type: Schema.suspend(() => ManagedServiceIdentityTypeSchema),
       userAssignedIdentities: Schema.optional(
         Schema.NullOr(
           Schema.Record(
             Schema.String,
-            Schema.Struct({
-              principalId: Schema.optional(Schema.String),
-              clientId: Schema.optional(Schema.String),
-            }),
+            Schema.suspend(() => UserAssignedIdentitySchema),
           ),
         ),
       ),
@@ -359,23 +858,26 @@ export type MonitorsUpdateInput = typeof MonitorsUpdateInput.Type;
 
 // Output Schema
 export const MonitorsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  identity: Schema.optional(
+    Schema.Struct({
+      type: Schema.suspend(() => ManagedServiceIdentityTypeSchema),
+      userAssignedIdentities: Schema.optional(
+        Schema.NullOr(
+          Schema.Record(
+            Schema.String,
+            Schema.suspend(() => UserAssignedIdentitySchema),
+          ),
+        ),
+      ),
+    }),
+  ),
+  properties: Schema.optional(Schema.suspend(() => MonitorPropertiesSchema)),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  location: Schema.String,
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
-  systemData: Schema.optional(
-    Schema.Struct({
-      createdBy: Schema.optional(Schema.String),
-      createdByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      createdAt: Schema.optional(Schema.String),
-      lastModifiedBy: Schema.optional(Schema.String),
-      lastModifiedByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      lastModifiedAt: Schema.optional(Schema.String),
-    }),
-  ),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
 });
 export type MonitorsUpdateOutput = typeof MonitorsUpdateOutput.Type;
 
@@ -407,26 +909,7 @@ export type OperationsListInput = typeof OperationsListInput.Type;
 
 // Output Schema
 export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  value: Schema.optional(
-    Schema.Array(
-      Schema.Struct({
-        name: Schema.optional(Schema.String),
-        isDataAction: Schema.optional(Schema.Boolean),
-        display: Schema.optional(
-          Schema.Struct({
-            provider: Schema.optional(Schema.String),
-            resource: Schema.optional(Schema.String),
-            operation: Schema.optional(Schema.String),
-            description: Schema.optional(Schema.String),
-          }),
-        ),
-        origin: Schema.optional(
-          Schema.Literals(["user", "system", "user,system"]),
-        ),
-        actionType: Schema.optional(Schema.Literals(["Internal"])),
-      }),
-    ),
-  ),
+  value: Schema.optional(Schema.Array(Schema.suspend(() => OperationSchema))),
   nextLink: Schema.optional(Schema.String),
 });
 export type OperationsListOutput = typeof OperationsListOutput.Type;
@@ -460,23 +943,26 @@ export type ProviderInstancesCreateInput =
 // Output Schema
 export const ProviderInstancesCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    identity: Schema.optional(
+      Schema.Struct({
+        type: Schema.suspend(() => ManagedServiceIdentityTypeSchema),
+        userAssignedIdentities: Schema.optional(
+          Schema.NullOr(
+            Schema.Record(
+              Schema.String,
+              Schema.suspend(() => UserAssignedIdentitySchema),
+            ),
+          ),
+        ),
+      }),
+    ),
+    properties: Schema.optional(
+      Schema.suspend(() => ProviderInstancePropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type ProviderInstancesCreateOutput =
   typeof ProviderInstancesCreateOutput.Type;
@@ -523,50 +1009,9 @@ export const ProviderInstancesDeleteOutput =
     startTime: Schema.optional(Schema.String),
     endTime: Schema.optional(Schema.String),
     operations: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          status: Schema.String,
-          percentComplete: Schema.optional(Schema.Number),
-          startTime: Schema.optional(Schema.String),
-          endTime: Schema.optional(Schema.String),
-          operations: Schema.optional(Schema.Array(Schema.Unknown)),
-          error: Schema.optional(
-            Schema.Struct({
-              code: Schema.optional(Schema.String),
-              message: Schema.optional(Schema.String),
-              target: Schema.optional(Schema.String),
-              details: Schema.optional(Schema.Array(Schema.Unknown)),
-              additionalInfo: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    type: Schema.optional(Schema.String),
-                    info: Schema.optional(Schema.Unknown),
-                  }),
-                ),
-              ),
-            }),
-          ),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => OperationStatusResultSchema)),
     ),
-    error: Schema.optional(
-      Schema.Struct({
-        code: Schema.optional(Schema.String),
-        message: Schema.optional(Schema.String),
-        target: Schema.optional(Schema.String),
-        details: Schema.optional(Schema.Array(Schema.Unknown)),
-        additionalInfo: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              type: Schema.optional(Schema.String),
-              info: Schema.optional(Schema.Unknown),
-            }),
-          ),
-        ),
-      }),
-    ),
+    error: Schema.optional(Schema.suspend(() => ErrorDetailSchema)),
   });
 export type ProviderInstancesDeleteOutput =
   typeof ProviderInstancesDeleteOutput.Type;
@@ -604,23 +1049,26 @@ export type ProviderInstancesGetInput = typeof ProviderInstancesGetInput.Type;
 // Output Schema
 export const ProviderInstancesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    identity: Schema.optional(
+      Schema.Struct({
+        type: Schema.suspend(() => ManagedServiceIdentityTypeSchema),
+        userAssignedIdentities: Schema.optional(
+          Schema.NullOr(
+            Schema.Record(
+              Schema.String,
+              Schema.suspend(() => UserAssignedIdentitySchema),
+            ),
+          ),
+        ),
+      }),
+    ),
+    properties: Schema.optional(
+      Schema.suspend(() => ProviderInstancePropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type ProviderInstancesGetOutput = typeof ProviderInstancesGetOutput.Type;
 
@@ -658,37 +1106,7 @@ export type ProviderInstancesListInput = typeof ProviderInstancesListInput.Type;
 export const ProviderInstancesListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.String),
-              createdByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              createdAt: Schema.optional(Schema.String),
-              lastModifiedBy: Schema.optional(Schema.String),
-              lastModifiedByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              lastModifiedAt: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => ProviderInstanceSchema)),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -717,73 +1135,7 @@ export const SAPApplicationServerInstancesCreateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        instanceNo: Schema.optional(Schema.String),
-        subnet: Schema.optional(Schema.String),
-        hostname: Schema.optional(Schema.String),
-        kernelVersion: Schema.optional(Schema.String),
-        kernelPatch: Schema.optional(Schema.String),
-        ipAddress: Schema.optional(Schema.String),
-        gatewayPort: Schema.optional(Schema.NullOr(Schema.Number)),
-        icmHttpPort: Schema.optional(Schema.NullOr(Schema.Number)),
-        icmHttpsPort: Schema.optional(Schema.NullOr(Schema.Number)),
-        loadBalancerDetails: Schema.optional(
-          Schema.Struct({
-            id: Schema.optional(Schema.String),
-          }),
-        ),
-        vmDetails: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              type: Schema.optional(
-                Schema.Literals(["Active", "Standby", "Unknown"]),
-              ),
-              virtualMachineId: Schema.optional(Schema.String),
-              storageDetails: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    id: Schema.optional(Schema.String),
-                  }),
-                ),
-              ),
-            }),
-          ),
-        ),
-        status: Schema.optional(
-          Schema.Literals([
-            "Starting",
-            "Running",
-            "Stopping",
-            "Offline",
-            "PartiallyRunning",
-            "Unavailable",
-            "SoftShutdown",
-          ]),
-        ),
-        health: Schema.optional(
-          Schema.Literals(["Unknown", "Healthy", "Unhealthy", "Degraded"]),
-        ),
-        provisioningState: Schema.optional(
-          Schema.Literals([
-            "Succeeded",
-            "Updating",
-            "Creating",
-            "Failed",
-            "Deleting",
-          ]),
-        ),
-        errors: Schema.optional(
-          Schema.Struct({
-            properties: Schema.optional(
-              Schema.Struct({
-                code: Schema.optional(Schema.String),
-                message: Schema.optional(Schema.String),
-                details: Schema.optional(Schema.Array(Schema.Unknown)),
-              }),
-            ),
-          }),
-        ),
-      }),
+      Schema.suspend(() => SAPApplicationServerPropertiesSchema),
     ),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     location: Schema.String,
@@ -801,23 +1153,15 @@ export type SAPApplicationServerInstancesCreateInput =
 // Output Schema
 export const SAPApplicationServerInstancesCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => SAPApplicationServerPropertiesSchema),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type SAPApplicationServerInstancesCreateOutput =
   typeof SAPApplicationServerInstancesCreateOutput.Type;
@@ -861,50 +1205,9 @@ export const SAPApplicationServerInstancesDeleteOutput =
     startTime: Schema.optional(Schema.String),
     endTime: Schema.optional(Schema.String),
     operations: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          status: Schema.String,
-          percentComplete: Schema.optional(Schema.Number),
-          startTime: Schema.optional(Schema.String),
-          endTime: Schema.optional(Schema.String),
-          operations: Schema.optional(Schema.Array(Schema.Unknown)),
-          error: Schema.optional(
-            Schema.Struct({
-              code: Schema.optional(Schema.String),
-              message: Schema.optional(Schema.String),
-              target: Schema.optional(Schema.String),
-              details: Schema.optional(Schema.Array(Schema.Unknown)),
-              additionalInfo: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    type: Schema.optional(Schema.String),
-                    info: Schema.optional(Schema.Unknown),
-                  }),
-                ),
-              ),
-            }),
-          ),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => OperationStatusResultSchema)),
     ),
-    error: Schema.optional(
-      Schema.Struct({
-        code: Schema.optional(Schema.String),
-        message: Schema.optional(Schema.String),
-        target: Schema.optional(Schema.String),
-        details: Schema.optional(Schema.Array(Schema.Unknown)),
-        additionalInfo: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              type: Schema.optional(Schema.String),
-              info: Schema.optional(Schema.Unknown),
-            }),
-          ),
-        ),
-      }),
-    ),
+    error: Schema.optional(Schema.suspend(() => ErrorDetailSchema)),
   });
 export type SAPApplicationServerInstancesDeleteOutput =
   typeof SAPApplicationServerInstancesDeleteOutput.Type;
@@ -940,23 +1243,15 @@ export type SAPApplicationServerInstancesGetInput =
 // Output Schema
 export const SAPApplicationServerInstancesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => SAPApplicationServerPropertiesSchema),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type SAPApplicationServerInstancesGetOutput =
   typeof SAPApplicationServerInstancesGetOutput.Type;
@@ -993,37 +1288,7 @@ export type SAPApplicationServerInstancesListInput =
 export const SAPApplicationServerInstancesListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.String),
-              createdByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              createdAt: Schema.optional(Schema.String),
-              lastModifiedBy: Schema.optional(Schema.String),
-              lastModifiedByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              lastModifiedAt: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => SAPApplicationServerInstanceSchema)),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -1073,51 +1338,9 @@ export const SapApplicationServerInstancesStartOutput =
     startTime: Schema.optional(Schema.String),
     endTime: Schema.optional(Schema.String),
     operations: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          resourceId: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          status: Schema.String,
-          percentComplete: Schema.optional(Schema.Number),
-          startTime: Schema.optional(Schema.String),
-          endTime: Schema.optional(Schema.String),
-          operations: Schema.optional(Schema.Array(Schema.Unknown)),
-          error: Schema.optional(
-            Schema.Struct({
-              code: Schema.optional(Schema.String),
-              message: Schema.optional(Schema.String),
-              target: Schema.optional(Schema.String),
-              details: Schema.optional(Schema.Array(Schema.Unknown)),
-              additionalInfo: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    type: Schema.optional(Schema.String),
-                    info: Schema.optional(Schema.Unknown),
-                  }),
-                ),
-              ),
-            }),
-          ),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => OperationStatusResultSchema)),
     ),
-    error: Schema.optional(
-      Schema.Struct({
-        code: Schema.optional(Schema.String),
-        message: Schema.optional(Schema.String),
-        target: Schema.optional(Schema.String),
-        details: Schema.optional(Schema.Array(Schema.Unknown)),
-        additionalInfo: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              type: Schema.optional(Schema.String),
-              info: Schema.optional(Schema.Unknown),
-            }),
-          ),
-        ),
-      }),
-    ),
+    error: Schema.optional(Schema.suspend(() => ErrorDetailSchema)),
   });
 export type SapApplicationServerInstancesStartOutput =
   typeof SapApplicationServerInstancesStartOutput.Type;
@@ -1163,50 +1386,9 @@ export const SAPApplicationServerInstancesStartInstanceOutput =
     startTime: Schema.optional(Schema.String),
     endTime: Schema.optional(Schema.String),
     operations: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          status: Schema.String,
-          percentComplete: Schema.optional(Schema.Number),
-          startTime: Schema.optional(Schema.String),
-          endTime: Schema.optional(Schema.String),
-          operations: Schema.optional(Schema.Array(Schema.Unknown)),
-          error: Schema.optional(
-            Schema.Struct({
-              code: Schema.optional(Schema.String),
-              message: Schema.optional(Schema.String),
-              target: Schema.optional(Schema.String),
-              details: Schema.optional(Schema.Array(Schema.Unknown)),
-              additionalInfo: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    type: Schema.optional(Schema.String),
-                    info: Schema.optional(Schema.Unknown),
-                  }),
-                ),
-              ),
-            }),
-          ),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => OperationStatusResultSchema)),
     ),
-    error: Schema.optional(
-      Schema.Struct({
-        code: Schema.optional(Schema.String),
-        message: Schema.optional(Schema.String),
-        target: Schema.optional(Schema.String),
-        details: Schema.optional(Schema.Array(Schema.Unknown)),
-        additionalInfo: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              type: Schema.optional(Schema.String),
-              info: Schema.optional(Schema.Unknown),
-            }),
-          ),
-        ),
-      }),
-    ),
+    error: Schema.optional(Schema.suspend(() => ErrorDetailSchema)),
   });
 export type SAPApplicationServerInstancesStartInstanceOutput =
   typeof SAPApplicationServerInstancesStartInstanceOutput.Type;
@@ -1255,51 +1437,9 @@ export const SapApplicationServerInstancesStopOutput =
     startTime: Schema.optional(Schema.String),
     endTime: Schema.optional(Schema.String),
     operations: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          resourceId: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          status: Schema.String,
-          percentComplete: Schema.optional(Schema.Number),
-          startTime: Schema.optional(Schema.String),
-          endTime: Schema.optional(Schema.String),
-          operations: Schema.optional(Schema.Array(Schema.Unknown)),
-          error: Schema.optional(
-            Schema.Struct({
-              code: Schema.optional(Schema.String),
-              message: Schema.optional(Schema.String),
-              target: Schema.optional(Schema.String),
-              details: Schema.optional(Schema.Array(Schema.Unknown)),
-              additionalInfo: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    type: Schema.optional(Schema.String),
-                    info: Schema.optional(Schema.Unknown),
-                  }),
-                ),
-              ),
-            }),
-          ),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => OperationStatusResultSchema)),
     ),
-    error: Schema.optional(
-      Schema.Struct({
-        code: Schema.optional(Schema.String),
-        message: Schema.optional(Schema.String),
-        target: Schema.optional(Schema.String),
-        details: Schema.optional(Schema.Array(Schema.Unknown)),
-        additionalInfo: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              type: Schema.optional(Schema.String),
-              info: Schema.optional(Schema.Unknown),
-            }),
-          ),
-        ),
-      }),
-    ),
+    error: Schema.optional(Schema.suspend(() => ErrorDetailSchema)),
   });
 export type SapApplicationServerInstancesStopOutput =
   typeof SapApplicationServerInstancesStopOutput.Type;
@@ -1346,50 +1486,9 @@ export const SAPApplicationServerInstancesStopInstanceOutput =
     startTime: Schema.optional(Schema.String),
     endTime: Schema.optional(Schema.String),
     operations: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          status: Schema.String,
-          percentComplete: Schema.optional(Schema.Number),
-          startTime: Schema.optional(Schema.String),
-          endTime: Schema.optional(Schema.String),
-          operations: Schema.optional(Schema.Array(Schema.Unknown)),
-          error: Schema.optional(
-            Schema.Struct({
-              code: Schema.optional(Schema.String),
-              message: Schema.optional(Schema.String),
-              target: Schema.optional(Schema.String),
-              details: Schema.optional(Schema.Array(Schema.Unknown)),
-              additionalInfo: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    type: Schema.optional(Schema.String),
-                    info: Schema.optional(Schema.Unknown),
-                  }),
-                ),
-              ),
-            }),
-          ),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => OperationStatusResultSchema)),
     ),
-    error: Schema.optional(
-      Schema.Struct({
-        code: Schema.optional(Schema.String),
-        message: Schema.optional(Schema.String),
-        target: Schema.optional(Schema.String),
-        details: Schema.optional(Schema.Array(Schema.Unknown)),
-        additionalInfo: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              type: Schema.optional(Schema.String),
-              info: Schema.optional(Schema.Unknown),
-            }),
-          ),
-        ),
-      }),
-    ),
+    error: Schema.optional(Schema.suspend(() => ErrorDetailSchema)),
   });
 export type SAPApplicationServerInstancesStopInstanceOutput =
   typeof SAPApplicationServerInstancesStopInstanceOutput.Type;
@@ -1427,23 +1526,15 @@ export type SAPApplicationServerInstancesUpdateInput =
 // Output Schema
 export const SAPApplicationServerInstancesUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => SAPApplicationServerPropertiesSchema),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type SAPApplicationServerInstancesUpdateOutput =
   typeof SAPApplicationServerInstancesUpdateOutput.Type;
@@ -1467,8 +1558,8 @@ export const SAPAvailabilityZoneDetailsInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
     appLocation: Schema.String,
-    sapProduct: Schema.Literals(["ECC", "S4HANA", "Other"]),
-    databaseType: Schema.Literals(["HANA", "DB2"]),
+    sapProduct: Schema.suspend(() => SAPProductTypeSchema),
+    databaseType: Schema.suspend(() => SAPDatabaseTypeSchema),
   }).pipe(
     T.Http({
       method: "POST",
@@ -1483,12 +1574,7 @@ export type SAPAvailabilityZoneDetailsInput =
 export const SAPAvailabilityZoneDetailsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     availabilityZonePairs: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          zoneA: Schema.optional(Schema.Number),
-          zoneB: Schema.optional(Schema.Number),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => SAPAvailabilityZonePairSchema)),
     ),
   });
 export type SAPAvailabilityZoneDetailsOutput =
@@ -1514,122 +1600,7 @@ export const SAPCentralInstancesCreateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        instanceNo: Schema.optional(Schema.String),
-        subnet: Schema.optional(Schema.String),
-        messageServerProperties: Schema.optional(
-          Schema.Struct({
-            msPort: Schema.optional(Schema.NullOr(Schema.Number)),
-            internalMsPort: Schema.optional(Schema.NullOr(Schema.Number)),
-            httpPort: Schema.optional(Schema.NullOr(Schema.Number)),
-            httpsPort: Schema.optional(Schema.NullOr(Schema.Number)),
-            hostname: Schema.optional(Schema.String),
-            ipAddress: Schema.optional(Schema.String),
-            health: Schema.optional(
-              Schema.Literals(["Unknown", "Healthy", "Unhealthy", "Degraded"]),
-            ),
-          }),
-        ),
-        enqueueServerProperties: Schema.optional(
-          Schema.Struct({
-            hostname: Schema.optional(Schema.String),
-            ipAddress: Schema.optional(Schema.String),
-            port: Schema.optional(Schema.NullOr(Schema.Number)),
-            health: Schema.optional(
-              Schema.Literals(["Unknown", "Healthy", "Unhealthy", "Degraded"]),
-            ),
-          }),
-        ),
-        gatewayServerProperties: Schema.optional(
-          Schema.Struct({
-            port: Schema.optional(Schema.NullOr(Schema.Number)),
-            health: Schema.optional(
-              Schema.Literals(["Unknown", "Healthy", "Unhealthy", "Degraded"]),
-            ),
-          }),
-        ),
-        enqueueReplicationServerProperties: Schema.optional(
-          Schema.Struct({
-            ersVersion: Schema.optional(
-              Schema.Literals(["EnqueueReplicator1", "EnqueueReplicator2"]),
-            ),
-            instanceNo: Schema.optional(Schema.String),
-            hostname: Schema.optional(Schema.String),
-            kernelVersion: Schema.optional(Schema.String),
-            kernelPatch: Schema.optional(Schema.String),
-            ipAddress: Schema.optional(Schema.String),
-            health: Schema.optional(
-              Schema.Literals(["Unknown", "Healthy", "Unhealthy", "Degraded"]),
-            ),
-          }),
-        ),
-        kernelVersion: Schema.optional(Schema.NullOr(Schema.String)),
-        kernelPatch: Schema.optional(Schema.NullOr(Schema.String)),
-        loadBalancerDetails: Schema.optional(
-          Schema.Struct({
-            id: Schema.optional(Schema.String),
-          }),
-        ),
-        vmDetails: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              type: Schema.optional(
-                Schema.Literals([
-                  "Primary",
-                  "Secondary",
-                  "Unknown",
-                  "ASCS",
-                  "ERSInactive",
-                  "ERS",
-                  "Standby",
-                ]),
-              ),
-              virtualMachineId: Schema.optional(Schema.String),
-              storageDetails: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    id: Schema.optional(Schema.String),
-                  }),
-                ),
-              ),
-            }),
-          ),
-        ),
-        status: Schema.optional(
-          Schema.Literals([
-            "Starting",
-            "Running",
-            "Stopping",
-            "Offline",
-            "PartiallyRunning",
-            "Unavailable",
-            "SoftShutdown",
-          ]),
-        ),
-        health: Schema.optional(
-          Schema.Literals(["Unknown", "Healthy", "Unhealthy", "Degraded"]),
-        ),
-        provisioningState: Schema.optional(
-          Schema.Literals([
-            "Succeeded",
-            "Updating",
-            "Creating",
-            "Failed",
-            "Deleting",
-          ]),
-        ),
-        errors: Schema.optional(
-          Schema.Struct({
-            properties: Schema.optional(
-              Schema.Struct({
-                code: Schema.optional(Schema.String),
-                message: Schema.optional(Schema.String),
-                details: Schema.optional(Schema.Array(Schema.Unknown)),
-              }),
-            ),
-          }),
-        ),
-      }),
+      Schema.suspend(() => SAPCentralServerPropertiesSchema),
     ),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     location: Schema.String,
@@ -1647,23 +1618,15 @@ export type SAPCentralInstancesCreateInput =
 // Output Schema
 export const SAPCentralInstancesCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => SAPCentralServerPropertiesSchema),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type SAPCentralInstancesCreateOutput =
   typeof SAPCentralInstancesCreateOutput.Type;
@@ -1708,50 +1671,9 @@ export const SAPCentralInstancesDeleteOutput =
     startTime: Schema.optional(Schema.String),
     endTime: Schema.optional(Schema.String),
     operations: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          status: Schema.String,
-          percentComplete: Schema.optional(Schema.Number),
-          startTime: Schema.optional(Schema.String),
-          endTime: Schema.optional(Schema.String),
-          operations: Schema.optional(Schema.Array(Schema.Unknown)),
-          error: Schema.optional(
-            Schema.Struct({
-              code: Schema.optional(Schema.String),
-              message: Schema.optional(Schema.String),
-              target: Schema.optional(Schema.String),
-              details: Schema.optional(Schema.Array(Schema.Unknown)),
-              additionalInfo: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    type: Schema.optional(Schema.String),
-                    info: Schema.optional(Schema.Unknown),
-                  }),
-                ),
-              ),
-            }),
-          ),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => OperationStatusResultSchema)),
     ),
-    error: Schema.optional(
-      Schema.Struct({
-        code: Schema.optional(Schema.String),
-        message: Schema.optional(Schema.String),
-        target: Schema.optional(Schema.String),
-        details: Schema.optional(Schema.Array(Schema.Unknown)),
-        additionalInfo: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              type: Schema.optional(Schema.String),
-              info: Schema.optional(Schema.Unknown),
-            }),
-          ),
-        ),
-      }),
-    ),
+    error: Schema.optional(Schema.suspend(() => ErrorDetailSchema)),
   });
 export type SAPCentralInstancesDeleteOutput =
   typeof SAPCentralInstancesDeleteOutput.Type;
@@ -1788,23 +1710,15 @@ export type SAPCentralInstancesGetInput =
 // Output Schema
 export const SAPCentralInstancesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => SAPCentralServerPropertiesSchema),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type SAPCentralInstancesGetOutput =
   typeof SAPCentralInstancesGetOutput.Type;
@@ -1842,37 +1756,7 @@ export type SAPCentralInstancesListInput =
 export const SAPCentralInstancesListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.String),
-              createdByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              createdAt: Schema.optional(Schema.String),
-              lastModifiedBy: Schema.optional(Schema.String),
-              lastModifiedByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              lastModifiedAt: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => SAPCentralServerInstanceSchema)),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -1919,50 +1803,9 @@ export const SAPCentralInstancesStartInstanceOutput =
     startTime: Schema.optional(Schema.String),
     endTime: Schema.optional(Schema.String),
     operations: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          status: Schema.String,
-          percentComplete: Schema.optional(Schema.Number),
-          startTime: Schema.optional(Schema.String),
-          endTime: Schema.optional(Schema.String),
-          operations: Schema.optional(Schema.Array(Schema.Unknown)),
-          error: Schema.optional(
-            Schema.Struct({
-              code: Schema.optional(Schema.String),
-              message: Schema.optional(Schema.String),
-              target: Schema.optional(Schema.String),
-              details: Schema.optional(Schema.Array(Schema.Unknown)),
-              additionalInfo: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    type: Schema.optional(Schema.String),
-                    info: Schema.optional(Schema.Unknown),
-                  }),
-                ),
-              ),
-            }),
-          ),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => OperationStatusResultSchema)),
     ),
-    error: Schema.optional(
-      Schema.Struct({
-        code: Schema.optional(Schema.String),
-        message: Schema.optional(Schema.String),
-        target: Schema.optional(Schema.String),
-        details: Schema.optional(Schema.Array(Schema.Unknown)),
-        additionalInfo: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              type: Schema.optional(Schema.String),
-              info: Schema.optional(Schema.Unknown),
-            }),
-          ),
-        ),
-      }),
-    ),
+    error: Schema.optional(Schema.suspend(() => ErrorDetailSchema)),
   });
 export type SAPCentralInstancesStartInstanceOutput =
   typeof SAPCentralInstancesStartInstanceOutput.Type;
@@ -2007,50 +1850,9 @@ export const SAPCentralInstancesStopInstanceOutput =
     startTime: Schema.optional(Schema.String),
     endTime: Schema.optional(Schema.String),
     operations: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          status: Schema.String,
-          percentComplete: Schema.optional(Schema.Number),
-          startTime: Schema.optional(Schema.String),
-          endTime: Schema.optional(Schema.String),
-          operations: Schema.optional(Schema.Array(Schema.Unknown)),
-          error: Schema.optional(
-            Schema.Struct({
-              code: Schema.optional(Schema.String),
-              message: Schema.optional(Schema.String),
-              target: Schema.optional(Schema.String),
-              details: Schema.optional(Schema.Array(Schema.Unknown)),
-              additionalInfo: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    type: Schema.optional(Schema.String),
-                    info: Schema.optional(Schema.Unknown),
-                  }),
-                ),
-              ),
-            }),
-          ),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => OperationStatusResultSchema)),
     ),
-    error: Schema.optional(
-      Schema.Struct({
-        code: Schema.optional(Schema.String),
-        message: Schema.optional(Schema.String),
-        target: Schema.optional(Schema.String),
-        details: Schema.optional(Schema.Array(Schema.Unknown)),
-        additionalInfo: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              type: Schema.optional(Schema.String),
-              info: Schema.optional(Schema.Unknown),
-            }),
-          ),
-        ),
-      }),
-    ),
+    error: Schema.optional(Schema.suspend(() => ErrorDetailSchema)),
   });
 export type SAPCentralInstancesStopInstanceOutput =
   typeof SAPCentralInstancesStopInstanceOutput.Type;
@@ -2088,23 +1890,15 @@ export type SAPCentralInstancesUpdateInput =
 // Output Schema
 export const SAPCentralInstancesUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => SAPCentralServerPropertiesSchema),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type SAPCentralInstancesUpdateOutput =
   typeof SAPCentralInstancesUpdateOutput.Type;
@@ -2131,123 +1925,7 @@ export const SapCentralServerInstancesCreateInput =
     sapVirtualInstanceName: Schema.String.pipe(T.PathParam()),
     centralInstanceName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        instanceNo: Schema.optional(Schema.String),
-        subnet: Schema.optional(Schema.String),
-        messageServerProperties: Schema.optional(
-          Schema.Struct({
-            msPort: Schema.optional(Schema.Number),
-            internalMsPort: Schema.optional(Schema.Number),
-            httpPort: Schema.optional(Schema.Number),
-            httpsPort: Schema.optional(Schema.Number),
-            hostname: Schema.optional(Schema.String),
-            ipAddress: Schema.optional(Schema.String),
-            health: Schema.optional(
-              Schema.Literals(["Unknown", "Healthy", "Unhealthy", "Degraded"]),
-            ),
-          }),
-        ),
-        enqueueServerProperties: Schema.optional(
-          Schema.Struct({
-            hostname: Schema.optional(Schema.String),
-            ipAddress: Schema.optional(Schema.String),
-            port: Schema.optional(Schema.Number),
-            health: Schema.optional(
-              Schema.Literals(["Unknown", "Healthy", "Unhealthy", "Degraded"]),
-            ),
-          }),
-        ),
-        gatewayServerProperties: Schema.optional(
-          Schema.Struct({
-            port: Schema.optional(Schema.Number),
-            health: Schema.optional(
-              Schema.Literals(["Unknown", "Healthy", "Unhealthy", "Degraded"]),
-            ),
-          }),
-        ),
-        enqueueReplicationServerProperties: Schema.optional(
-          Schema.Struct({
-            ersVersion: Schema.optional(
-              Schema.Literals(["EnqueueReplicator1", "EnqueueReplicator2"]),
-            ),
-            instanceNo: Schema.optional(Schema.String),
-            hostname: Schema.optional(Schema.String),
-            kernelVersion: Schema.optional(Schema.String),
-            kernelPatch: Schema.optional(Schema.String),
-            ipAddress: Schema.optional(Schema.String),
-            health: Schema.optional(
-              Schema.Literals(["Unknown", "Healthy", "Unhealthy", "Degraded"]),
-            ),
-          }),
-        ),
-        kernelVersion: Schema.optional(Schema.String),
-        kernelPatch: Schema.optional(Schema.String),
-        loadBalancerDetails: Schema.optional(
-          Schema.Struct({
-            id: Schema.optional(Schema.String),
-          }),
-        ),
-        vmDetails: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              type: Schema.optional(
-                Schema.Literals([
-                  "Primary",
-                  "Secondary",
-                  "Unknown",
-                  "ASCS",
-                  "ERSInactive",
-                  "ERS",
-                  "Standby",
-                ]),
-              ),
-              virtualMachineId: Schema.optional(Schema.String),
-              storageDetails: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    id: Schema.optional(Schema.String),
-                  }),
-                ),
-              ),
-            }),
-          ),
-        ),
-        status: Schema.optional(
-          Schema.Literals([
-            "Starting",
-            "Running",
-            "Stopping",
-            "Offline",
-            "PartiallyRunning",
-            "Unavailable",
-            "SoftShutdown",
-          ]),
-        ),
-        health: Schema.optional(
-          Schema.Literals(["Unknown", "Healthy", "Unhealthy", "Degraded"]),
-        ),
-        provisioningState: Schema.optional(
-          Schema.Literals([
-            "Succeeded",
-            "Updating",
-            "Creating",
-            "Failed",
-            "Deleting",
-            "Canceled",
-          ]),
-        ),
-        errors: Schema.optional(
-          Schema.Struct({
-            properties: Schema.optional(
-              Schema.Struct({
-                code: Schema.optional(Schema.String),
-                message: Schema.optional(Schema.String),
-                details: Schema.optional(Schema.Array(Schema.Unknown)),
-              }),
-            ),
-          }),
-        ),
-      }),
+      Schema.suspend(() => SAPCentralServerPropertiesSchema),
     ),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     location: Schema.String,
@@ -2265,23 +1943,15 @@ export type SapCentralServerInstancesCreateInput =
 // Output Schema
 export const SapCentralServerInstancesCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => SAPCentralServerPropertiesSchema),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type SapCentralServerInstancesCreateOutput =
   typeof SapCentralServerInstancesCreateOutput.Type;
@@ -2360,23 +2030,15 @@ export type SapCentralServerInstancesGetInput =
 // Output Schema
 export const SapCentralServerInstancesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => SAPCentralServerPropertiesSchema),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type SapCentralServerInstancesGetOutput =
   typeof SapCentralServerInstancesGetOutput.Type;
@@ -2415,37 +2077,7 @@ export type SapCentralServerInstancesListInput =
 // Output Schema
 export const SapCentralServerInstancesListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => SAPCentralServerInstanceSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type SapCentralServerInstancesListOutput =
@@ -2495,51 +2127,9 @@ export const SapCentralServerInstancesStartOutput =
     startTime: Schema.optional(Schema.String),
     endTime: Schema.optional(Schema.String),
     operations: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          resourceId: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          status: Schema.String,
-          percentComplete: Schema.optional(Schema.Number),
-          startTime: Schema.optional(Schema.String),
-          endTime: Schema.optional(Schema.String),
-          operations: Schema.optional(Schema.Array(Schema.Unknown)),
-          error: Schema.optional(
-            Schema.Struct({
-              code: Schema.optional(Schema.String),
-              message: Schema.optional(Schema.String),
-              target: Schema.optional(Schema.String),
-              details: Schema.optional(Schema.Array(Schema.Unknown)),
-              additionalInfo: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    type: Schema.optional(Schema.String),
-                    info: Schema.optional(Schema.Unknown),
-                  }),
-                ),
-              ),
-            }),
-          ),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => OperationStatusResultSchema)),
     ),
-    error: Schema.optional(
-      Schema.Struct({
-        code: Schema.optional(Schema.String),
-        message: Schema.optional(Schema.String),
-        target: Schema.optional(Schema.String),
-        details: Schema.optional(Schema.Array(Schema.Unknown)),
-        additionalInfo: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              type: Schema.optional(Schema.String),
-              info: Schema.optional(Schema.Unknown),
-            }),
-          ),
-        ),
-      }),
-    ),
+    error: Schema.optional(Schema.suspend(() => ErrorDetailSchema)),
   });
 export type SapCentralServerInstancesStartOutput =
   typeof SapCentralServerInstancesStartOutput.Type;
@@ -2590,51 +2180,9 @@ export const SapCentralServerInstancesStopOutput =
     startTime: Schema.optional(Schema.String),
     endTime: Schema.optional(Schema.String),
     operations: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          resourceId: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          status: Schema.String,
-          percentComplete: Schema.optional(Schema.Number),
-          startTime: Schema.optional(Schema.String),
-          endTime: Schema.optional(Schema.String),
-          operations: Schema.optional(Schema.Array(Schema.Unknown)),
-          error: Schema.optional(
-            Schema.Struct({
-              code: Schema.optional(Schema.String),
-              message: Schema.optional(Schema.String),
-              target: Schema.optional(Schema.String),
-              details: Schema.optional(Schema.Array(Schema.Unknown)),
-              additionalInfo: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    type: Schema.optional(Schema.String),
-                    info: Schema.optional(Schema.Unknown),
-                  }),
-                ),
-              ),
-            }),
-          ),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => OperationStatusResultSchema)),
     ),
-    error: Schema.optional(
-      Schema.Struct({
-        code: Schema.optional(Schema.String),
-        message: Schema.optional(Schema.String),
-        target: Schema.optional(Schema.String),
-        details: Schema.optional(Schema.Array(Schema.Unknown)),
-        additionalInfo: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              type: Schema.optional(Schema.String),
-              info: Schema.optional(Schema.Unknown),
-            }),
-          ),
-        ),
-      }),
-    ),
+    error: Schema.optional(Schema.suspend(() => ErrorDetailSchema)),
   });
 export type SapCentralServerInstancesStopOutput =
   typeof SapCentralServerInstancesStopOutput.Type;
@@ -2675,23 +2223,15 @@ export type SapCentralServerInstancesUpdateInput =
 // Output Schema
 export const SapCentralServerInstancesUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => SAPCentralServerPropertiesSchema),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type SapCentralServerInstancesUpdateOutput =
   typeof SapCentralServerInstancesUpdateOutput.Type;
@@ -2717,73 +2257,7 @@ export const SAPDatabaseInstancesCreateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        subnet: Schema.optional(Schema.String),
-        databaseSid: Schema.optional(Schema.String),
-        databaseType: Schema.optional(Schema.String),
-        ipAddress: Schema.optional(Schema.String),
-        loadBalancerDetails: Schema.optional(
-          Schema.Struct({
-            id: Schema.optional(Schema.String),
-          }),
-        ),
-        vmDetails: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              virtualMachineId: Schema.optional(Schema.String),
-              status: Schema.optional(
-                Schema.Literals([
-                  "Starting",
-                  "Running",
-                  "Stopping",
-                  "Offline",
-                  "PartiallyRunning",
-                  "Unavailable",
-                  "SoftShutdown",
-                ]),
-              ),
-              storageDetails: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    id: Schema.optional(Schema.String),
-                  }),
-                ),
-              ),
-            }),
-          ),
-        ),
-        status: Schema.optional(
-          Schema.Literals([
-            "Starting",
-            "Running",
-            "Stopping",
-            "Offline",
-            "PartiallyRunning",
-            "Unavailable",
-            "SoftShutdown",
-          ]),
-        ),
-        provisioningState: Schema.optional(
-          Schema.Literals([
-            "Succeeded",
-            "Updating",
-            "Creating",
-            "Failed",
-            "Deleting",
-          ]),
-        ),
-        errors: Schema.optional(
-          Schema.Struct({
-            properties: Schema.optional(
-              Schema.Struct({
-                code: Schema.optional(Schema.String),
-                message: Schema.optional(Schema.String),
-                details: Schema.optional(Schema.Array(Schema.Unknown)),
-              }),
-            ),
-          }),
-        ),
-      }),
+      Schema.suspend(() => SAPDatabasePropertiesSchema),
     ),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     location: Schema.String,
@@ -2801,23 +2275,15 @@ export type SAPDatabaseInstancesCreateInput =
 // Output Schema
 export const SAPDatabaseInstancesCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => SAPDatabasePropertiesSchema),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type SAPDatabaseInstancesCreateOutput =
   typeof SAPDatabaseInstancesCreateOutput.Type;
@@ -2862,50 +2328,9 @@ export const SAPDatabaseInstancesDeleteOutput =
     startTime: Schema.optional(Schema.String),
     endTime: Schema.optional(Schema.String),
     operations: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          status: Schema.String,
-          percentComplete: Schema.optional(Schema.Number),
-          startTime: Schema.optional(Schema.String),
-          endTime: Schema.optional(Schema.String),
-          operations: Schema.optional(Schema.Array(Schema.Unknown)),
-          error: Schema.optional(
-            Schema.Struct({
-              code: Schema.optional(Schema.String),
-              message: Schema.optional(Schema.String),
-              target: Schema.optional(Schema.String),
-              details: Schema.optional(Schema.Array(Schema.Unknown)),
-              additionalInfo: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    type: Schema.optional(Schema.String),
-                    info: Schema.optional(Schema.Unknown),
-                  }),
-                ),
-              ),
-            }),
-          ),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => OperationStatusResultSchema)),
     ),
-    error: Schema.optional(
-      Schema.Struct({
-        code: Schema.optional(Schema.String),
-        message: Schema.optional(Schema.String),
-        target: Schema.optional(Schema.String),
-        details: Schema.optional(Schema.Array(Schema.Unknown)),
-        additionalInfo: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              type: Schema.optional(Schema.String),
-              info: Schema.optional(Schema.Unknown),
-            }),
-          ),
-        ),
-      }),
-    ),
+    error: Schema.optional(Schema.suspend(() => ErrorDetailSchema)),
   });
 export type SAPDatabaseInstancesDeleteOutput =
   typeof SAPDatabaseInstancesDeleteOutput.Type;
@@ -2942,23 +2367,15 @@ export type SAPDatabaseInstancesGetInput =
 // Output Schema
 export const SAPDatabaseInstancesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => SAPDatabasePropertiesSchema),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type SAPDatabaseInstancesGetOutput =
   typeof SAPDatabaseInstancesGetOutput.Type;
@@ -2996,37 +2413,7 @@ export type SAPDatabaseInstancesListInput =
 export const SAPDatabaseInstancesListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.String),
-              createdByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              createdAt: Schema.optional(Schema.String),
-              lastModifiedBy: Schema.optional(Schema.String),
-              lastModifiedByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              lastModifiedAt: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => SAPDatabaseInstanceSchema)),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -3077,51 +2464,9 @@ export const SapDatabaseInstancesStartOutput =
     startTime: Schema.optional(Schema.String),
     endTime: Schema.optional(Schema.String),
     operations: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          resourceId: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          status: Schema.String,
-          percentComplete: Schema.optional(Schema.Number),
-          startTime: Schema.optional(Schema.String),
-          endTime: Schema.optional(Schema.String),
-          operations: Schema.optional(Schema.Array(Schema.Unknown)),
-          error: Schema.optional(
-            Schema.Struct({
-              code: Schema.optional(Schema.String),
-              message: Schema.optional(Schema.String),
-              target: Schema.optional(Schema.String),
-              details: Schema.optional(Schema.Array(Schema.Unknown)),
-              additionalInfo: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    type: Schema.optional(Schema.String),
-                    info: Schema.optional(Schema.Unknown),
-                  }),
-                ),
-              ),
-            }),
-          ),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => OperationStatusResultSchema)),
     ),
-    error: Schema.optional(
-      Schema.Struct({
-        code: Schema.optional(Schema.String),
-        message: Schema.optional(Schema.String),
-        target: Schema.optional(Schema.String),
-        details: Schema.optional(Schema.Array(Schema.Unknown)),
-        additionalInfo: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              type: Schema.optional(Schema.String),
-              info: Schema.optional(Schema.Unknown),
-            }),
-          ),
-        ),
-      }),
-    ),
+    error: Schema.optional(Schema.suspend(() => ErrorDetailSchema)),
   });
 export type SapDatabaseInstancesStartOutput =
   typeof SapDatabaseInstancesStartOutput.Type;
@@ -3168,50 +2513,9 @@ export const SAPDatabaseInstancesStartInstanceOutput =
     startTime: Schema.optional(Schema.String),
     endTime: Schema.optional(Schema.String),
     operations: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          status: Schema.String,
-          percentComplete: Schema.optional(Schema.Number),
-          startTime: Schema.optional(Schema.String),
-          endTime: Schema.optional(Schema.String),
-          operations: Schema.optional(Schema.Array(Schema.Unknown)),
-          error: Schema.optional(
-            Schema.Struct({
-              code: Schema.optional(Schema.String),
-              message: Schema.optional(Schema.String),
-              target: Schema.optional(Schema.String),
-              details: Schema.optional(Schema.Array(Schema.Unknown)),
-              additionalInfo: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    type: Schema.optional(Schema.String),
-                    info: Schema.optional(Schema.Unknown),
-                  }),
-                ),
-              ),
-            }),
-          ),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => OperationStatusResultSchema)),
     ),
-    error: Schema.optional(
-      Schema.Struct({
-        code: Schema.optional(Schema.String),
-        message: Schema.optional(Schema.String),
-        target: Schema.optional(Schema.String),
-        details: Schema.optional(Schema.Array(Schema.Unknown)),
-        additionalInfo: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              type: Schema.optional(Schema.String),
-              info: Schema.optional(Schema.Unknown),
-            }),
-          ),
-        ),
-      }),
-    ),
+    error: Schema.optional(Schema.suspend(() => ErrorDetailSchema)),
   });
 export type SAPDatabaseInstancesStartInstanceOutput =
   typeof SAPDatabaseInstancesStartInstanceOutput.Type;
@@ -3260,51 +2564,9 @@ export const SapDatabaseInstancesStopOutput =
     startTime: Schema.optional(Schema.String),
     endTime: Schema.optional(Schema.String),
     operations: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          resourceId: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          status: Schema.String,
-          percentComplete: Schema.optional(Schema.Number),
-          startTime: Schema.optional(Schema.String),
-          endTime: Schema.optional(Schema.String),
-          operations: Schema.optional(Schema.Array(Schema.Unknown)),
-          error: Schema.optional(
-            Schema.Struct({
-              code: Schema.optional(Schema.String),
-              message: Schema.optional(Schema.String),
-              target: Schema.optional(Schema.String),
-              details: Schema.optional(Schema.Array(Schema.Unknown)),
-              additionalInfo: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    type: Schema.optional(Schema.String),
-                    info: Schema.optional(Schema.Unknown),
-                  }),
-                ),
-              ),
-            }),
-          ),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => OperationStatusResultSchema)),
     ),
-    error: Schema.optional(
-      Schema.Struct({
-        code: Schema.optional(Schema.String),
-        message: Schema.optional(Schema.String),
-        target: Schema.optional(Schema.String),
-        details: Schema.optional(Schema.Array(Schema.Unknown)),
-        additionalInfo: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              type: Schema.optional(Schema.String),
-              info: Schema.optional(Schema.Unknown),
-            }),
-          ),
-        ),
-      }),
-    ),
+    error: Schema.optional(Schema.suspend(() => ErrorDetailSchema)),
   });
 export type SapDatabaseInstancesStopOutput =
   typeof SapDatabaseInstancesStopOutput.Type;
@@ -3352,50 +2614,9 @@ export const SAPDatabaseInstancesStopInstanceOutput =
     startTime: Schema.optional(Schema.String),
     endTime: Schema.optional(Schema.String),
     operations: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          status: Schema.String,
-          percentComplete: Schema.optional(Schema.Number),
-          startTime: Schema.optional(Schema.String),
-          endTime: Schema.optional(Schema.String),
-          operations: Schema.optional(Schema.Array(Schema.Unknown)),
-          error: Schema.optional(
-            Schema.Struct({
-              code: Schema.optional(Schema.String),
-              message: Schema.optional(Schema.String),
-              target: Schema.optional(Schema.String),
-              details: Schema.optional(Schema.Array(Schema.Unknown)),
-              additionalInfo: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    type: Schema.optional(Schema.String),
-                    info: Schema.optional(Schema.Unknown),
-                  }),
-                ),
-              ),
-            }),
-          ),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => OperationStatusResultSchema)),
     ),
-    error: Schema.optional(
-      Schema.Struct({
-        code: Schema.optional(Schema.String),
-        message: Schema.optional(Schema.String),
-        target: Schema.optional(Schema.String),
-        details: Schema.optional(Schema.Array(Schema.Unknown)),
-        additionalInfo: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              type: Schema.optional(Schema.String),
-              info: Schema.optional(Schema.Unknown),
-            }),
-          ),
-        ),
-      }),
-    ),
+    error: Schema.optional(Schema.suspend(() => ErrorDetailSchema)),
   });
 export type SAPDatabaseInstancesStopInstanceOutput =
   typeof SAPDatabaseInstancesStopInstanceOutput.Type;
@@ -3433,23 +2654,15 @@ export type SAPDatabaseInstancesUpdateInput =
 // Output Schema
 export const SAPDatabaseInstancesUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => SAPDatabasePropertiesSchema),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type SAPDatabaseInstancesUpdateOutput =
   typeof SAPDatabaseInstancesUpdateOutput.Type;
@@ -3474,10 +2687,10 @@ export const SAPDiskConfigurationsInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
     appLocation: Schema.String,
-    environment: Schema.Literals(["NonProd", "Prod"]),
-    sapProduct: Schema.Literals(["ECC", "S4HANA", "Other"]),
-    databaseType: Schema.Literals(["HANA", "DB2"]),
-    deploymentType: Schema.Literals(["SingleServer", "ThreeTier"]),
+    environment: Schema.suspend(() => EnvironmentTypeSchema),
+    sapProduct: Schema.suspend(() => SAPProductTypeSchema),
+    databaseType: Schema.suspend(() => SAPDatabaseTypeSchema),
+    deploymentType: Schema.suspend(() => DeploymentTypeSchema),
     dbVmSku: Schema.String,
   }).pipe(
     T.Http({
@@ -3494,56 +2707,7 @@ export const SAPDiskConfigurationsOutput =
     volumeConfigurations: Schema.optional(
       Schema.Record(
         Schema.String,
-        Schema.Struct({
-          recommendedConfiguration: Schema.optional(
-            Schema.Struct({
-              count: Schema.optional(Schema.Number),
-              sizeGB: Schema.optional(Schema.Number),
-              sku: Schema.optional(
-                Schema.Struct({
-                  name: Schema.optional(
-                    Schema.Literals([
-                      "Standard_LRS",
-                      "Premium_LRS",
-                      "StandardSSD_LRS",
-                      "UltraSSD_LRS",
-                      "Premium_ZRS",
-                      "StandardSSD_ZRS",
-                      "PremiumV2_LRS",
-                    ]),
-                  ),
-                }),
-              ),
-            }),
-          ),
-          supportedConfigurations: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                sku: Schema.optional(
-                  Schema.Struct({
-                    name: Schema.optional(
-                      Schema.Literals([
-                        "Standard_LRS",
-                        "Premium_LRS",
-                        "StandardSSD_LRS",
-                        "UltraSSD_LRS",
-                        "Premium_ZRS",
-                        "StandardSSD_ZRS",
-                        "PremiumV2_LRS",
-                      ]),
-                    ),
-                  }),
-                ),
-                sizeGB: Schema.optional(Schema.Number),
-                minimumSupportedDiskCount: Schema.optional(Schema.Number),
-                maximumSupportedDiskCount: Schema.optional(Schema.Number),
-                iopsReadWrite: Schema.optional(Schema.Number),
-                mbpsReadWrite: Schema.optional(Schema.Number),
-                diskTier: Schema.optional(Schema.String),
-              }),
-            ),
-          ),
-        }),
+        Schema.suspend(() => SAPDiskConfigurationSchema),
       ),
     ),
   });
@@ -3582,23 +2746,13 @@ export type SapLandscapeMonitorCreateInput =
 // Output Schema
 export const SapLandscapeMonitorCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => SapLandscapeMonitorPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type SapLandscapeMonitorCreateOutput =
   typeof SapLandscapeMonitorCreateOutput.Type;
@@ -3674,23 +2828,13 @@ export type SapLandscapeMonitorGetInput =
 // Output Schema
 export const SapLandscapeMonitorGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => SapLandscapeMonitorPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type SapLandscapeMonitorGetOutput =
   typeof SapLandscapeMonitorGetOutput.Type;
@@ -3730,37 +2874,7 @@ export type SapLandscapeMonitorListInput =
 export const SapLandscapeMonitorListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.String),
-              createdByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              createdAt: Schema.optional(Schema.String),
-              lastModifiedBy: Schema.optional(Schema.String),
-              lastModifiedByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              lastModifiedAt: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => SapLandscapeMonitorSchema)),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -3801,23 +2915,13 @@ export type SapLandscapeMonitorUpdateInput =
 // Output Schema
 export const SapLandscapeMonitorUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => SapLandscapeMonitorPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type SapLandscapeMonitorUpdateOutput =
   typeof SapLandscapeMonitorUpdateOutput.Type;
@@ -3844,15 +2948,17 @@ export const SAPSizingRecommendationsInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
     appLocation: Schema.String,
-    environment: Schema.Literals(["NonProd", "Prod"]),
-    sapProduct: Schema.Literals(["ECC", "S4HANA", "Other"]),
-    deploymentType: Schema.Literals(["SingleServer", "ThreeTier"]),
+    environment: Schema.suspend(() => EnvironmentTypeSchema),
+    sapProduct: Schema.suspend(() => SAPProductTypeSchema),
+    deploymentType: Schema.suspend(() => DeploymentTypeSchema),
     saps: Schema.Number,
     dbMemory: Schema.Number,
-    databaseType: Schema.Literals(["HANA", "DB2"]),
-    dbScaleMethod: Schema.optional(Schema.Literals(["ScaleUp"])),
+    databaseType: Schema.suspend(() => SAPDatabaseTypeSchema),
+    dbScaleMethod: Schema.optional(
+      Schema.suspend(() => DatabaseScaleMethodSchema),
+    ),
     highAvailabilityType: Schema.optional(
-      Schema.Literals(["AvailabilitySet", "AvailabilityZone"]),
+      Schema.suspend(() => HighAvailabilityTypeSchema),
     ),
   }).pipe(
     T.Http({
@@ -3867,7 +2973,7 @@ export type SAPSizingRecommendationsInput =
 // Output Schema
 export const SAPSizingRecommendationsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    deploymentType: Schema.Literals(["SingleServer", "ThreeTier"]),
+    deploymentType: Schema.suspend(() => DeploymentTypeSchema),
   });
 export type SAPSizingRecommendationsOutput =
   typeof SAPSizingRecommendationsOutput.Type;
@@ -3891,12 +2997,12 @@ export const SAPSupportedSkuInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   location: Schema.String.pipe(T.PathParam()),
   appLocation: Schema.String,
-  environment: Schema.Literals(["NonProd", "Prod"]),
-  sapProduct: Schema.Literals(["ECC", "S4HANA", "Other"]),
-  deploymentType: Schema.Literals(["SingleServer", "ThreeTier"]),
-  databaseType: Schema.Literals(["HANA", "DB2"]),
+  environment: Schema.suspend(() => EnvironmentTypeSchema),
+  sapProduct: Schema.suspend(() => SAPProductTypeSchema),
+  deploymentType: Schema.suspend(() => DeploymentTypeSchema),
+  databaseType: Schema.suspend(() => SAPDatabaseTypeSchema),
   highAvailabilityType: Schema.optional(
-    Schema.Literals(["AvailabilitySet", "AvailabilityZone"]),
+    Schema.suspend(() => HighAvailabilityTypeSchema),
   ),
 }).pipe(
   T.Http({
@@ -3910,13 +3016,7 @@ export type SAPSupportedSkuInput = typeof SAPSupportedSkuInput.Type;
 // Output Schema
 export const SAPSupportedSkuOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   supportedSkus: Schema.optional(
-    Schema.Array(
-      Schema.Struct({
-        vmSku: Schema.optional(Schema.String),
-        isAppServerCertified: Schema.optional(Schema.Boolean),
-        isDatabaseCertified: Schema.optional(Schema.Boolean),
-      }),
-    ),
+    Schema.Array(Schema.suspend(() => SAPSupportedSkuSchema)),
   ),
 });
 export type SAPSupportedSkuOutput = typeof SAPSupportedSkuOutput.Type;
@@ -3940,86 +3040,18 @@ export const SAPVirtualInstancesCreateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     identity: Schema.optional(
       Schema.Struct({
-        type: Schema.Literals(["None", "UserAssigned"]),
+        type: Schema.suspend(() => ManagedServiceIdentityTypeSchema),
         userAssignedIdentities: Schema.optional(
           Schema.NullOr(
             Schema.Record(
               Schema.String,
-              Schema.Struct({
-                principalId: Schema.optional(Schema.String),
-                clientId: Schema.optional(Schema.String),
-              }),
+              Schema.suspend(() => UserAssignedIdentitySchema),
             ),
           ),
         ),
       }),
     ),
-    properties: Schema.Struct({
-      environment: Schema.Literals(["NonProd", "Prod"]),
-      sapProduct: Schema.Literals(["ECC", "S4HANA", "Other"]),
-      configuration: Schema.Struct({
-        configurationType: Schema.Literals([
-          "Deployment",
-          "Discovery",
-          "DeploymentWithOSConfig",
-        ]),
-      }),
-      managedResourceGroupConfiguration: Schema.optional(
-        Schema.Struct({
-          name: Schema.optional(Schema.String),
-        }),
-      ),
-      status: Schema.optional(
-        Schema.Literals([
-          "Starting",
-          "Running",
-          "Stopping",
-          "Offline",
-          "PartiallyRunning",
-          "Unavailable",
-          "SoftShutdown",
-        ]),
-      ),
-      health: Schema.optional(
-        Schema.Literals(["Unknown", "Healthy", "Unhealthy", "Degraded"]),
-      ),
-      state: Schema.optional(
-        Schema.Literals([
-          "InfrastructureDeploymentPending",
-          "InfrastructureDeploymentInProgress",
-          "InfrastructureDeploymentFailed",
-          "SoftwareInstallationPending",
-          "SoftwareInstallationInProgress",
-          "SoftwareInstallationFailed",
-          "SoftwareDetectionInProgress",
-          "SoftwareDetectionFailed",
-          "DiscoveryPending",
-          "DiscoveryInProgress",
-          "DiscoveryFailed",
-          "RegistrationComplete",
-        ]),
-      ),
-      provisioningState: Schema.optional(
-        Schema.Literals([
-          "Succeeded",
-          "Updating",
-          "Creating",
-          "Failed",
-          "Deleting",
-        ]),
-      ),
-      errors: Schema.optional(
-        Schema.Struct({
-          properties: Schema.optional(
-            Schema.Struct({
-              code: Schema.optional(Schema.String),
-              message: Schema.optional(Schema.String),
-              details: Schema.optional(Schema.Array(Schema.Unknown)),
-            }),
-          ),
-        }),
-      ),
-    }),
+    properties: Schema.suspend(() => SAPVirtualInstancePropertiesSchema),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     location: Schema.String,
   }).pipe(
@@ -4036,23 +3068,26 @@ export type SAPVirtualInstancesCreateInput =
 // Output Schema
 export const SAPVirtualInstancesCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    identity: Schema.optional(
+      Schema.Struct({
+        type: Schema.suspend(() => ManagedServiceIdentityTypeSchema),
+        userAssignedIdentities: Schema.optional(
+          Schema.NullOr(
+            Schema.Record(
+              Schema.String,
+              Schema.suspend(() => UserAssignedIdentitySchema),
+            ),
+          ),
+        ),
+      }),
+    ),
+    properties: Schema.suspend(() => SAPVirtualInstancePropertiesSchema),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type SAPVirtualInstancesCreateOutput =
   typeof SAPVirtualInstancesCreateOutput.Type;
@@ -4097,50 +3132,9 @@ export const SAPVirtualInstancesDeleteOutput =
     startTime: Schema.optional(Schema.String),
     endTime: Schema.optional(Schema.String),
     operations: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          status: Schema.String,
-          percentComplete: Schema.optional(Schema.Number),
-          startTime: Schema.optional(Schema.String),
-          endTime: Schema.optional(Schema.String),
-          operations: Schema.optional(Schema.Array(Schema.Unknown)),
-          error: Schema.optional(
-            Schema.Struct({
-              code: Schema.optional(Schema.String),
-              message: Schema.optional(Schema.String),
-              target: Schema.optional(Schema.String),
-              details: Schema.optional(Schema.Array(Schema.Unknown)),
-              additionalInfo: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    type: Schema.optional(Schema.String),
-                    info: Schema.optional(Schema.Unknown),
-                  }),
-                ),
-              ),
-            }),
-          ),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => OperationStatusResultSchema)),
     ),
-    error: Schema.optional(
-      Schema.Struct({
-        code: Schema.optional(Schema.String),
-        message: Schema.optional(Schema.String),
-        target: Schema.optional(Schema.String),
-        details: Schema.optional(Schema.Array(Schema.Unknown)),
-        additionalInfo: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              type: Schema.optional(Schema.String),
-              info: Schema.optional(Schema.Unknown),
-            }),
-          ),
-        ),
-      }),
-    ),
+    error: Schema.optional(Schema.suspend(() => ErrorDetailSchema)),
   });
 export type SAPVirtualInstancesDeleteOutput =
   typeof SAPVirtualInstancesDeleteOutput.Type;
@@ -4177,23 +3171,26 @@ export type SAPVirtualInstancesGetInput =
 // Output Schema
 export const SAPVirtualInstancesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    identity: Schema.optional(
+      Schema.Struct({
+        type: Schema.suspend(() => ManagedServiceIdentityTypeSchema),
+        userAssignedIdentities: Schema.optional(
+          Schema.NullOr(
+            Schema.Record(
+              Schema.String,
+              Schema.suspend(() => UserAssignedIdentitySchema),
+            ),
+          ),
+        ),
+      }),
+    ),
+    properties: Schema.suspend(() => SAPVirtualInstancePropertiesSchema),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type SAPVirtualInstancesGetOutput =
   typeof SAPVirtualInstancesGetOutput.Type;
@@ -4218,8 +3215,8 @@ export const SapVirtualInstancesInvokeAvailabilityZoneDetailsInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
     appLocation: Schema.String,
-    sapProduct: Schema.Literals(["ECC", "S4HANA", "Other"]),
-    databaseType: Schema.Literals(["HANA", "DB2"]),
+    sapProduct: Schema.suspend(() => SAPProductTypeSchema),
+    databaseType: Schema.suspend(() => SAPDatabaseTypeSchema),
   }).pipe(
     T.Http({
       method: "POST",
@@ -4234,12 +3231,7 @@ export type SapVirtualInstancesInvokeAvailabilityZoneDetailsInput =
 export const SapVirtualInstancesInvokeAvailabilityZoneDetailsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     availabilityZonePairs: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          zoneA: Schema.optional(Schema.Number),
-          zoneB: Schema.optional(Schema.Number),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => SAPAvailabilityZonePairSchema)),
     ),
   });
 export type SapVirtualInstancesInvokeAvailabilityZoneDetailsOutput =
@@ -4264,10 +3256,10 @@ export const SapVirtualInstancesInvokeDiskConfigurationsInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
     appLocation: Schema.String,
-    environment: Schema.Literals(["NonProd", "Prod"]),
-    sapProduct: Schema.Literals(["ECC", "S4HANA", "Other"]),
-    databaseType: Schema.Literals(["HANA", "DB2"]),
-    deploymentType: Schema.Literals(["SingleServer", "ThreeTier"]),
+    environment: Schema.suspend(() => SAPEnvironmentTypeSchema),
+    sapProduct: Schema.suspend(() => SAPProductTypeSchema),
+    databaseType: Schema.suspend(() => SAPDatabaseTypeSchema),
+    deploymentType: Schema.suspend(() => SAPDeploymentTypeSchema),
     dbVmSku: Schema.String,
   }).pipe(
     T.Http({
@@ -4285,56 +3277,7 @@ export const SapVirtualInstancesInvokeDiskConfigurationsOutput =
     volumeConfigurations: Schema.optional(
       Schema.Record(
         Schema.String,
-        Schema.Struct({
-          recommendedConfiguration: Schema.optional(
-            Schema.Struct({
-              count: Schema.optional(Schema.Number),
-              sizeGB: Schema.optional(Schema.Number),
-              sku: Schema.optional(
-                Schema.Struct({
-                  name: Schema.optional(
-                    Schema.Literals([
-                      "Standard_LRS",
-                      "Premium_LRS",
-                      "StandardSSD_LRS",
-                      "UltraSSD_LRS",
-                      "Premium_ZRS",
-                      "StandardSSD_ZRS",
-                      "PremiumV2_LRS",
-                    ]),
-                  ),
-                }),
-              ),
-            }),
-          ),
-          supportedConfigurations: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                sku: Schema.optional(
-                  Schema.Struct({
-                    name: Schema.optional(
-                      Schema.Literals([
-                        "Standard_LRS",
-                        "Premium_LRS",
-                        "StandardSSD_LRS",
-                        "UltraSSD_LRS",
-                        "Premium_ZRS",
-                        "StandardSSD_ZRS",
-                        "PremiumV2_LRS",
-                      ]),
-                    ),
-                  }),
-                ),
-                sizeGB: Schema.optional(Schema.Number),
-                minimumSupportedDiskCount: Schema.optional(Schema.Number),
-                maximumSupportedDiskCount: Schema.optional(Schema.Number),
-                iopsReadWrite: Schema.optional(Schema.Number),
-                mbpsReadWrite: Schema.optional(Schema.Number),
-                diskTier: Schema.optional(Schema.String),
-              }),
-            ),
-          ),
-        }),
+        Schema.suspend(() => SAPDiskConfigurationSchema),
       ),
     ),
   });
@@ -4360,12 +3303,12 @@ export const SapVirtualInstancesInvokeSapSupportedSkuInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
     appLocation: Schema.String,
-    environment: Schema.Literals(["NonProd", "Prod"]),
-    sapProduct: Schema.Literals(["ECC", "S4HANA", "Other"]),
-    deploymentType: Schema.Literals(["SingleServer", "ThreeTier"]),
-    databaseType: Schema.Literals(["HANA", "DB2"]),
+    environment: Schema.suspend(() => SAPEnvironmentTypeSchema),
+    sapProduct: Schema.suspend(() => SAPProductTypeSchema),
+    deploymentType: Schema.suspend(() => SAPDeploymentTypeSchema),
+    databaseType: Schema.suspend(() => SAPDatabaseTypeSchema),
     highAvailabilityType: Schema.optional(
-      Schema.Literals(["AvailabilitySet", "AvailabilityZone"]),
+      Schema.suspend(() => SAPHighAvailabilityTypeSchema),
     ),
   }).pipe(
     T.Http({
@@ -4381,13 +3324,7 @@ export type SapVirtualInstancesInvokeSapSupportedSkuInput =
 export const SapVirtualInstancesInvokeSapSupportedSkuOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     supportedSkus: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          vmSku: Schema.optional(Schema.String),
-          isAppServerCertified: Schema.optional(Schema.Boolean),
-          isDatabaseCertified: Schema.optional(Schema.Boolean),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => SAPSupportedSkuSchema)),
     ),
   });
 export type SapVirtualInstancesInvokeSapSupportedSkuOutput =
@@ -4412,15 +3349,17 @@ export const SapVirtualInstancesInvokeSizingRecommendationsInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
     appLocation: Schema.String,
-    environment: Schema.Literals(["NonProd", "Prod"]),
-    sapProduct: Schema.Literals(["ECC", "S4HANA", "Other"]),
-    deploymentType: Schema.Literals(["SingleServer", "ThreeTier"]),
+    environment: Schema.suspend(() => SAPEnvironmentTypeSchema),
+    sapProduct: Schema.suspend(() => SAPProductTypeSchema),
+    deploymentType: Schema.suspend(() => SAPDeploymentTypeSchema),
     saps: Schema.Number,
     dbMemory: Schema.Number,
-    databaseType: Schema.Literals(["HANA", "DB2"]),
-    dbScaleMethod: Schema.optional(Schema.Literals(["ScaleUp"])),
+    databaseType: Schema.suspend(() => SAPDatabaseTypeSchema),
+    dbScaleMethod: Schema.optional(
+      Schema.suspend(() => SAPDatabaseScaleMethodSchema),
+    ),
     highAvailabilityType: Schema.optional(
-      Schema.Literals(["AvailabilitySet", "AvailabilityZone"]),
+      Schema.suspend(() => SAPHighAvailabilityTypeSchema),
     ),
   }).pipe(
     T.Http({
@@ -4435,7 +3374,7 @@ export type SapVirtualInstancesInvokeSizingRecommendationsInput =
 // Output Schema
 export const SapVirtualInstancesInvokeSizingRecommendationsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    deploymentType: Schema.Literals(["SingleServer", "ThreeTier"]),
+    deploymentType: Schema.suspend(() => SAPDeploymentTypeSchema),
   });
 export type SapVirtualInstancesInvokeSizingRecommendationsOutput =
   typeof SapVirtualInstancesInvokeSizingRecommendationsOutput.Type;
@@ -4472,37 +3411,7 @@ export type SAPVirtualInstancesListByResourceGroupInput =
 export const SAPVirtualInstancesListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.String),
-              createdByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              createdAt: Schema.optional(Schema.String),
-              lastModifiedBy: Schema.optional(Schema.String),
-              lastModifiedByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              lastModifiedAt: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => SAPVirtualInstanceSchema)),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -4540,37 +3449,7 @@ export type SAPVirtualInstancesListBySubscriptionInput =
 export const SAPVirtualInstancesListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.String),
-              createdByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              createdAt: Schema.optional(Schema.String),
-              lastModifiedBy: Schema.optional(Schema.String),
-              lastModifiedByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              lastModifiedAt: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => SAPVirtualInstanceSchema)),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -4615,50 +3494,9 @@ export const SAPVirtualInstancesStartOutput =
     startTime: Schema.optional(Schema.String),
     endTime: Schema.optional(Schema.String),
     operations: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          status: Schema.String,
-          percentComplete: Schema.optional(Schema.Number),
-          startTime: Schema.optional(Schema.String),
-          endTime: Schema.optional(Schema.String),
-          operations: Schema.optional(Schema.Array(Schema.Unknown)),
-          error: Schema.optional(
-            Schema.Struct({
-              code: Schema.optional(Schema.String),
-              message: Schema.optional(Schema.String),
-              target: Schema.optional(Schema.String),
-              details: Schema.optional(Schema.Array(Schema.Unknown)),
-              additionalInfo: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    type: Schema.optional(Schema.String),
-                    info: Schema.optional(Schema.Unknown),
-                  }),
-                ),
-              ),
-            }),
-          ),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => OperationStatusResultSchema)),
     ),
-    error: Schema.optional(
-      Schema.Struct({
-        code: Schema.optional(Schema.String),
-        message: Schema.optional(Schema.String),
-        target: Schema.optional(Schema.String),
-        details: Schema.optional(Schema.Array(Schema.Unknown)),
-        additionalInfo: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              type: Schema.optional(Schema.String),
-              info: Schema.optional(Schema.Unknown),
-            }),
-          ),
-        ),
-      }),
-    ),
+    error: Schema.optional(Schema.suspend(() => ErrorDetailSchema)),
   });
 export type SAPVirtualInstancesStartOutput =
   typeof SAPVirtualInstancesStartOutput.Type;
@@ -4704,50 +3542,9 @@ export const SAPVirtualInstancesStopOutput =
     startTime: Schema.optional(Schema.String),
     endTime: Schema.optional(Schema.String),
     operations: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          status: Schema.String,
-          percentComplete: Schema.optional(Schema.Number),
-          startTime: Schema.optional(Schema.String),
-          endTime: Schema.optional(Schema.String),
-          operations: Schema.optional(Schema.Array(Schema.Unknown)),
-          error: Schema.optional(
-            Schema.Struct({
-              code: Schema.optional(Schema.String),
-              message: Schema.optional(Schema.String),
-              target: Schema.optional(Schema.String),
-              details: Schema.optional(Schema.Array(Schema.Unknown)),
-              additionalInfo: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    type: Schema.optional(Schema.String),
-                    info: Schema.optional(Schema.Unknown),
-                  }),
-                ),
-              ),
-            }),
-          ),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => OperationStatusResultSchema)),
     ),
-    error: Schema.optional(
-      Schema.Struct({
-        code: Schema.optional(Schema.String),
-        message: Schema.optional(Schema.String),
-        target: Schema.optional(Schema.String),
-        details: Schema.optional(Schema.Array(Schema.Unknown)),
-        additionalInfo: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              type: Schema.optional(Schema.String),
-              info: Schema.optional(Schema.Unknown),
-            }),
-          ),
-        ),
-      }),
-    ),
+    error: Schema.optional(Schema.suspend(() => ErrorDetailSchema)),
   });
 export type SAPVirtualInstancesStopOutput =
   typeof SAPVirtualInstancesStopOutput.Type;
@@ -4774,15 +3571,12 @@ export const SAPVirtualInstancesUpdateInput =
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     identity: Schema.optional(
       Schema.Struct({
-        type: Schema.Literals(["None", "UserAssigned"]),
+        type: Schema.suspend(() => ManagedServiceIdentityTypeSchema),
         userAssignedIdentities: Schema.optional(
           Schema.NullOr(
             Schema.Record(
               Schema.String,
-              Schema.Struct({
-                principalId: Schema.optional(Schema.String),
-                clientId: Schema.optional(Schema.String),
-              }),
+              Schema.suspend(() => UserAssignedIdentitySchema),
             ),
           ),
         ),
@@ -4801,23 +3595,26 @@ export type SAPVirtualInstancesUpdateInput =
 // Output Schema
 export const SAPVirtualInstancesUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    identity: Schema.optional(
+      Schema.Struct({
+        type: Schema.suspend(() => ManagedServiceIdentityTypeSchema),
+        userAssignedIdentities: Schema.optional(
+          Schema.NullOr(
+            Schema.Record(
+              Schema.String,
+              Schema.suspend(() => UserAssignedIdentitySchema),
+            ),
+          ),
+        ),
+      }),
+    ),
+    properties: Schema.suspend(() => SAPVirtualInstancePropertiesSchema),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type SAPVirtualInstancesUpdateOutput =
   typeof SAPVirtualInstancesUpdateOutput.Type;

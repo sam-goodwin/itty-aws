@@ -8,20 +8,97 @@ import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
+// Shared schemas
+const DelegatedSubnetPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resourceGuid: Schema.optional(Schema.String),
+    provisioningState: Schema.optional(
+      Schema.Literals(["Deleting", "Succeeded", "Failed", "Provisioning"]),
+    ),
+    subnetDetails: Schema.optional(Schema.suspend(() => subnetDetailsSchema)),
+    controllerDetails: Schema.optional(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+      }),
+    ),
+  });
+const subnetDetailsSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+});
+const DelegatedSubnetSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  location: Schema.optional(Schema.String),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+});
+const DelegatedControllerPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resourceGuid: Schema.optional(Schema.String),
+    provisioningState: Schema.optional(
+      Schema.Literals(["Deleting", "Succeeded", "Failed", "Provisioning"]),
+    ),
+    dncAppId: Schema.optional(Schema.String),
+    dncTenantId: Schema.optional(Schema.String),
+    dncEndpoint: Schema.optional(Schema.String),
+  });
+const DelegatedControllerSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  location: Schema.optional(Schema.String),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+});
+const OrchestratorResourcePropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resourceGuid: Schema.optional(Schema.String),
+    provisioningState: Schema.optional(
+      Schema.Literals(["Deleting", "Succeeded", "Failed", "Provisioning"]),
+    ),
+    orchestratorAppId: Schema.optional(Schema.String),
+    orchestratorTenantId: Schema.optional(Schema.String),
+    clusterRootCA: Schema.optional(Schema.String),
+    apiServerEndpoint: Schema.optional(Schema.String),
+    privateLinkResourceId: Schema.optional(Schema.String),
+    controllerDetails: Schema.Struct({
+      id: Schema.optional(Schema.String),
+    }),
+  });
+const OrchestratorIdentitySchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  principalId: Schema.optional(Schema.String),
+  tenantId: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.Literals(["SystemAssigned", "None"])),
+});
+const OrchestratorSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  location: Schema.optional(Schema.String),
+  kind: Schema.Literals(["Kubernetes"]),
+  identity: Schema.optional(Schema.suspend(() => OrchestratorIdentitySchema)),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+});
+const OperationSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  isDataAction: Schema.optional(Schema.Boolean),
+  display: Schema.optional(
+    Schema.Struct({
+      provider: Schema.optional(Schema.String),
+      resource: Schema.optional(Schema.String),
+      operation: Schema.optional(Schema.String),
+      description: Schema.optional(Schema.String),
+    }),
+  ),
+  origin: Schema.optional(Schema.Literals(["user", "system", "user,system"])),
+  actionType: Schema.optional(Schema.Literals(["Internal"])),
+});
+
 // Input Schema
 export const ControllerCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
   properties: Schema.optional(
-    Schema.Struct({
-      resourceGuid: Schema.optional(Schema.String),
-      provisioningState: Schema.optional(
-        Schema.Literals(["Deleting", "Succeeded", "Failed", "Provisioning"]),
-      ),
-      dncAppId: Schema.optional(Schema.String),
-      dncTenantId: Schema.optional(Schema.String),
-      dncEndpoint: Schema.optional(Schema.String),
-    }),
+    Schema.suspend(() => DelegatedControllerPropertiesSchema),
   ),
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -41,6 +118,9 @@ export type ControllerCreateInput = typeof ControllerCreateInput.Type;
 // Output Schema
 export const ControllerCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
+    properties: Schema.optional(
+      Schema.suspend(() => DelegatedControllerPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -109,6 +189,9 @@ export type ControllerGetDetailsInput = typeof ControllerGetDetailsInput.Type;
 // Output Schema
 export const ControllerGetDetailsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => DelegatedControllerPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -147,6 +230,9 @@ export type ControllerPatchInput = typeof ControllerPatchInput.Type;
 
 // Output Schema
 export const ControllerPatchOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.optional(
+    Schema.suspend(() => DelegatedControllerPropertiesSchema),
+  ),
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -185,15 +271,7 @@ export type DelegatedNetworkListByResourceGroupInput =
 // Output Schema
 export const DelegatedNetworkListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        location: Schema.optional(Schema.String),
-        tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => DelegatedControllerSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type DelegatedNetworkListByResourceGroupOutput =
@@ -229,15 +307,7 @@ export type DelegatedNetworkListBySubscriptionInput =
 // Output Schema
 export const DelegatedNetworkListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        location: Schema.optional(Schema.String),
-        tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => DelegatedControllerSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type DelegatedNetworkListBySubscriptionOutput =
@@ -308,6 +378,9 @@ export type DelegatedSubnetServiceGetDetailsInput =
 // Output Schema
 export const DelegatedSubnetServiceGetDetailsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => DelegatedSubnetPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -348,15 +421,7 @@ export type DelegatedSubnetServiceListByResourceGroupInput =
 // Output Schema
 export const DelegatedSubnetServiceListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        location: Schema.optional(Schema.String),
-        tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => DelegatedSubnetSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type DelegatedSubnetServiceListByResourceGroupOutput =
@@ -392,15 +457,7 @@ export type DelegatedSubnetServiceListBySubscriptionInput =
 // Output Schema
 export const DelegatedSubnetServiceListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        location: Schema.optional(Schema.String),
-        tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => DelegatedSubnetSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type DelegatedSubnetServiceListBySubscriptionOutput =
@@ -438,6 +495,9 @@ export type DelegatedSubnetServicePatchDetailsInput =
 // Output Schema
 export const DelegatedSubnetServicePatchDetailsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => DelegatedSubnetPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -466,22 +526,7 @@ export const DelegatedSubnetServicePutDetailsInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        resourceGuid: Schema.optional(Schema.String),
-        provisioningState: Schema.optional(
-          Schema.Literals(["Deleting", "Succeeded", "Failed", "Provisioning"]),
-        ),
-        subnetDetails: Schema.optional(
-          Schema.Struct({
-            id: Schema.optional(Schema.String),
-          }),
-        ),
-        controllerDetails: Schema.optional(
-          Schema.Struct({
-            id: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
+      Schema.suspend(() => DelegatedSubnetPropertiesSchema),
     ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -502,6 +547,9 @@ export type DelegatedSubnetServicePutDetailsInput =
 // Output Schema
 export const DelegatedSubnetServicePutDetailsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => DelegatedSubnetPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -538,26 +586,7 @@ export type OperationsListInput = typeof OperationsListInput.Type;
 
 // Output Schema
 export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  value: Schema.optional(
-    Schema.Array(
-      Schema.Struct({
-        name: Schema.optional(Schema.String),
-        isDataAction: Schema.optional(Schema.Boolean),
-        display: Schema.optional(
-          Schema.Struct({
-            provider: Schema.optional(Schema.String),
-            resource: Schema.optional(Schema.String),
-            operation: Schema.optional(Schema.String),
-            description: Schema.optional(Schema.String),
-          }),
-        ),
-        origin: Schema.optional(
-          Schema.Literals(["user", "system", "user,system"]),
-        ),
-        actionType: Schema.optional(Schema.Literals(["Internal"])),
-      }),
-    ),
-  ),
+  value: Schema.optional(Schema.Array(Schema.suspend(() => OperationSchema))),
   nextLink: Schema.optional(Schema.String),
 });
 export type OperationsListOutput = typeof OperationsListOutput.Type;
@@ -578,33 +607,14 @@ export const OrchestratorInstanceServiceCreateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        resourceGuid: Schema.optional(Schema.String),
-        provisioningState: Schema.optional(
-          Schema.Literals(["Deleting", "Succeeded", "Failed", "Provisioning"]),
-        ),
-        orchestratorAppId: Schema.optional(Schema.String),
-        orchestratorTenantId: Schema.optional(Schema.String),
-        clusterRootCA: Schema.optional(Schema.String),
-        apiServerEndpoint: Schema.optional(Schema.String),
-        privateLinkResourceId: Schema.optional(Schema.String),
-        controllerDetails: Schema.Struct({
-          id: Schema.optional(Schema.String),
-        }),
-      }),
+      Schema.suspend(() => OrchestratorResourcePropertiesSchema),
     ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
     location: Schema.optional(Schema.String),
     kind: Schema.Literals(["Kubernetes"]),
-    identity: Schema.optional(
-      Schema.Struct({
-        principalId: Schema.optional(Schema.String),
-        tenantId: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.Literals(["SystemAssigned", "None"])),
-      }),
-    ),
+    identity: Schema.optional(Schema.suspend(() => OrchestratorIdentitySchema)),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
@@ -620,18 +630,15 @@ export type OrchestratorInstanceServiceCreateInput =
 // Output Schema
 export const OrchestratorInstanceServiceCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => OrchestratorResourcePropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
     location: Schema.optional(Schema.String),
     kind: Schema.Literals(["Kubernetes"]),
-    identity: Schema.optional(
-      Schema.Struct({
-        principalId: Schema.optional(Schema.String),
-        tenantId: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.Literals(["SystemAssigned", "None"])),
-      }),
-    ),
+    identity: Schema.optional(Schema.suspend(() => OrchestratorIdentitySchema)),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   });
 export type OrchestratorInstanceServiceCreateOutput =
@@ -703,18 +710,15 @@ export type OrchestratorInstanceServiceGetDetailsInput =
 // Output Schema
 export const OrchestratorInstanceServiceGetDetailsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => OrchestratorResourcePropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
     location: Schema.optional(Schema.String),
     kind: Schema.Literals(["Kubernetes"]),
-    identity: Schema.optional(
-      Schema.Struct({
-        principalId: Schema.optional(Schema.String),
-        tenantId: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.Literals(["SystemAssigned", "None"])),
-      }),
-    ),
+    identity: Schema.optional(Schema.suspend(() => OrchestratorIdentitySchema)),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   });
 export type OrchestratorInstanceServiceGetDetailsOutput =
@@ -751,23 +755,7 @@ export type OrchestratorInstanceServiceListByResourceGroupInput =
 // Output Schema
 export const OrchestratorInstanceServiceListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        location: Schema.optional(Schema.String),
-        kind: Schema.Literals(["Kubernetes"]),
-        identity: Schema.optional(
-          Schema.Struct({
-            principalId: Schema.optional(Schema.String),
-            tenantId: Schema.optional(Schema.String),
-            type: Schema.optional(Schema.Literals(["SystemAssigned", "None"])),
-          }),
-        ),
-        tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => OrchestratorSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type OrchestratorInstanceServiceListByResourceGroupOutput =
@@ -803,23 +791,7 @@ export type OrchestratorInstanceServiceListBySubscriptionInput =
 // Output Schema
 export const OrchestratorInstanceServiceListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        location: Schema.optional(Schema.String),
-        kind: Schema.Literals(["Kubernetes"]),
-        identity: Schema.optional(
-          Schema.Struct({
-            principalId: Schema.optional(Schema.String),
-            tenantId: Schema.optional(Schema.String),
-            type: Schema.optional(Schema.Literals(["SystemAssigned", "None"])),
-          }),
-        ),
-        tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => OrchestratorSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type OrchestratorInstanceServiceListBySubscriptionOutput =
@@ -856,18 +828,15 @@ export type OrchestratorInstanceServicePatchInput =
 // Output Schema
 export const OrchestratorInstanceServicePatchOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => OrchestratorResourcePropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
     location: Schema.optional(Schema.String),
     kind: Schema.Literals(["Kubernetes"]),
-    identity: Schema.optional(
-      Schema.Struct({
-        principalId: Schema.optional(Schema.String),
-        tenantId: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.Literals(["SystemAssigned", "None"])),
-      }),
-    ),
+    identity: Schema.optional(Schema.suspend(() => OrchestratorIdentitySchema)),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   });
 export type OrchestratorInstanceServicePatchOutput =

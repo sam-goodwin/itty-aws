@@ -8,6 +8,403 @@ import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
+// Shared schemas
+const ScheduledQueryRuleResourceSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    identity: Schema.optional(Schema.suspend(() => IdentitySchema)),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
+    kind: Schema.optional(
+      Schema.Literals(["LogAlert", "SimpleLogAlert", "LogToMetric"]),
+    ),
+    etag: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+    properties: Schema.suspend(() => ScheduledQueryRulePropertiesSchema),
+  });
+const IdentitySchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  principalId: Schema.optional(Schema.String),
+  tenantId: Schema.optional(Schema.String),
+  type: Schema.Literals(["SystemAssigned", "UserAssigned", "None"]),
+  userAssignedIdentities: Schema.optional(
+    Schema.Record(
+      Schema.String,
+      Schema.suspend(() => UserIdentityPropertiesSchema),
+    ),
+  ),
+});
+const UserIdentityPropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  principalId: Schema.optional(Schema.String),
+  clientId: Schema.optional(Schema.String),
+});
+const ScheduledQueryRulePropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    createdWithApiVersion: Schema.optional(Schema.String),
+    isLegacyLogAnalyticsRule: Schema.optional(Schema.Boolean),
+    description: Schema.optional(Schema.String),
+    displayName: Schema.optional(Schema.String),
+    severity: Schema.optional(Schema.Literals([0, 1, 2, 3, 4])),
+    enabled: Schema.optional(Schema.Boolean),
+    scopes: Schema.optional(Schema.Array(Schema.String)),
+    evaluationFrequency: Schema.optional(Schema.String),
+    windowSize: Schema.optional(Schema.String),
+    overrideQueryTimeRange: Schema.optional(Schema.String),
+    targetResourceTypes: Schema.optional(Schema.Array(Schema.String)),
+    criteria: Schema.optional(
+      Schema.suspend(() => ScheduledQueryRuleCriteriaSchema),
+    ),
+    muteActionsDuration: Schema.optional(Schema.String),
+    actions: Schema.optional(Schema.suspend(() => ActionsSchema)),
+    isWorkspaceAlertsStorageConfigured: Schema.optional(Schema.Boolean),
+    checkWorkspaceAlertsStorageConfigured: Schema.optional(Schema.Boolean),
+    skipQueryValidation: Schema.optional(Schema.Boolean),
+    autoMitigate: Schema.optional(Schema.Boolean),
+    resolveConfiguration: Schema.optional(
+      Schema.suspend(() => RuleResolveConfigurationSchema),
+    ),
+  });
+const ScheduledQueryRuleCriteriaSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    allOf: Schema.optional(Schema.Array(Schema.suspend(() => ConditionSchema))),
+  });
+const ConditionSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  criterionType: Schema.optional(
+    Schema.Literals(["StaticThresholdCriterion", "DynamicThresholdCriterion"]),
+  ),
+  query: Schema.optional(Schema.String),
+  timeAggregation: Schema.optional(
+    Schema.Literals(["Count", "Average", "Minimum", "Maximum", "Total"]),
+  ),
+  metricMeasureColumn: Schema.optional(Schema.String),
+  resourceIdColumn: Schema.optional(Schema.String),
+  dimensions: Schema.optional(
+    Schema.Array(Schema.suspend(() => DimensionSchema)),
+  ),
+  operator: Schema.optional(
+    Schema.Literals([
+      "Equals",
+      "GreaterThan",
+      "GreaterThanOrEqual",
+      "LessThan",
+      "LessThanOrEqual",
+      "GreaterOrLessThan",
+    ]),
+  ),
+  threshold: Schema.optional(Schema.Number),
+  alertSensitivity: Schema.optional(Schema.String),
+  ignoreDataBefore: Schema.optional(Schema.String),
+  failingPeriods: Schema.optional(
+    Schema.Struct({
+      numberOfEvaluationPeriods: Schema.optional(Schema.Number),
+      minFailingPeriodsToAlert: Schema.optional(Schema.Number),
+    }),
+  ),
+  metricName: Schema.optional(Schema.String),
+  minRecurrenceCount: Schema.optional(Schema.Number),
+});
+const DimensionSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.String,
+  operator: Schema.Literals(["Include", "Exclude"]),
+  values: Schema.Array(Schema.String),
+});
+const ActionsSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  actionGroups: Schema.optional(Schema.Array(Schema.String)),
+  customProperties: Schema.optional(
+    Schema.Record(Schema.String, Schema.String),
+  ),
+  actionProperties: Schema.optional(
+    Schema.Record(Schema.String, Schema.String),
+  ),
+});
+const RuleResolveConfigurationSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    autoResolved: Schema.optional(Schema.Boolean),
+    timeToResolve: Schema.optional(Schema.String),
+  });
+const OperationSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  isDataAction: Schema.optional(Schema.Boolean),
+  display: Schema.optional(
+    Schema.Struct({
+      provider: Schema.optional(Schema.String),
+      resource: Schema.optional(Schema.String),
+      operation: Schema.optional(Schema.String),
+      description: Schema.optional(Schema.String),
+    }),
+  ),
+  origin: Schema.optional(Schema.Literals(["user", "system", "user,system"])),
+  actionType: Schema.optional(Schema.Literals(["Internal"])),
+});
+const PipelineGroupSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+});
+const systemDataSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  createdBy: Schema.optional(Schema.String),
+  createdByType: Schema.optional(
+    Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+  ),
+  createdAt: Schema.optional(Schema.String),
+  lastModifiedBy: Schema.optional(Schema.String),
+  lastModifiedByType: Schema.optional(
+    Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+  ),
+  lastModifiedAt: Schema.optional(Schema.String),
+});
+const PipelineGroupPropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    replicas: Schema.optional(Schema.Number),
+    receivers: Schema.Array(Schema.suspend(() => ReceiverSchema)),
+    processors: Schema.Array(Schema.suspend(() => ProcessorSchema)),
+    exporters: Schema.Array(Schema.suspend(() => ExporterSchema)),
+    service: Schema.suspend(() => ServiceSchema),
+    executionPlacement: Schema.optional(
+      Schema.suspend(() => ExecutionPlacementSchema),
+    ),
+    tlsConfigurations: Schema.optional(
+      Schema.Array(Schema.suspend(() => TlsConfigurationSchema)),
+    ),
+    provisioningState: Schema.optional(
+      Schema.suspend(() => ProvisioningStateSchema),
+    ),
+  },
+);
+const ReceiverSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  type: Schema.suspend(() => ReceiverTypeSchema),
+  name: Schema.String,
+  tlsConfiguration: Schema.optional(Schema.String),
+  syslog: Schema.optional(Schema.suspend(() => SyslogReceiverSchema)),
+  otlp: Schema.optional(Schema.suspend(() => OtlpReceiverSchema)),
+});
+const ReceiverTypeSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Syslog",
+  "OTLP",
+]);
+const SyslogReceiverSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  endpoint: Schema.String,
+  allowedFormats: Schema.optional(
+    Schema.Array(Schema.suspend(() => AllowedFormatsSchema)),
+  ),
+  transportProtocol: Schema.optional(Schema.Literals(["tcp", "udp"])),
+  allowSkipPriHeader: Schema.optional(Schema.Boolean),
+});
+const AllowedFormatsSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "all",
+  "syslogRfc3164",
+  "syslogRfc5424",
+  "cefRfc3164",
+  "cefRfc5424",
+  "rawCef",
+]);
+const OtlpReceiverSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  endpoint: Schema.String,
+});
+const ProcessorSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  type: Schema.suspend(() => ProcessorTypeSchema),
+  name: Schema.String,
+  batch: Schema.optional(Schema.suspend(() => BatchProcessorSchema)),
+  transformLanguage: Schema.optional(
+    Schema.suspend(() => TransformLanguageProcessorSchema),
+  ),
+});
+const ProcessorTypeSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Batch",
+  "TransformLanguage",
+  "MicrosoftSyslog",
+  "MicrosoftCommonSecurityLog",
+]);
+const BatchProcessorSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  batchSize: Schema.optional(Schema.Number),
+  timeout: Schema.optional(Schema.Number),
+});
+const TransformLanguageProcessorSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    transformStatement: Schema.String,
+  });
+const ExporterSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  type: Schema.suspend(() => ExporterTypeSchema),
+  name: Schema.String,
+  azureMonitorWorkspaceLogs: Schema.optional(
+    Schema.suspend(() => AzureMonitorWorkspaceLogsExporterSchema),
+  ),
+});
+const ExporterTypeSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "AzureMonitorWorkspaceLogs",
+]);
+const AzureMonitorWorkspaceLogsExporterSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    api: Schema.suspend(() => AzureMonitorWorkspaceLogsApiConfigSchema),
+    persistence: Schema.optional(
+      Schema.suspend(() => ExporterPersistenceConfigurationSchema),
+    ),
+  });
+const AzureMonitorWorkspaceLogsApiConfigSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    dataCollectionEndpointUrl: Schema.String,
+    stream: Schema.String,
+    dataCollectionRule: Schema.String,
+    schema: Schema.suspend(() => SchemaMapSchema),
+  });
+const SchemaMapSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  recordMap: Schema.Array(Schema.suspend(() => RecordMapSchema)),
+  resourceMap: Schema.optional(
+    Schema.Array(Schema.suspend(() => ResourceMapSchema)),
+  ),
+  scopeMap: Schema.optional(Schema.Array(Schema.suspend(() => ScopeMapSchema))),
+});
+const RecordMapSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  from: Schema.String,
+  to: Schema.String,
+});
+const ResourceMapSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  from: Schema.String,
+  to: Schema.String,
+});
+const ScopeMapSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  from: Schema.String,
+  to: Schema.String,
+});
+const ExporterPersistenceConfigurationSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    maxStorageUsage: Schema.optional(Schema.Number),
+    retentionPeriod: Schema.optional(Schema.Number),
+  });
+const ServiceSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  pipelines: Schema.Array(Schema.suspend(() => PipelineSchema)),
+  persistence: Schema.optional(
+    Schema.suspend(() => PersistenceConfigurationsSchema),
+  ),
+});
+const PipelineSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.String,
+  type: Schema.suspend(() => PipelineTypeSchema),
+  receivers: Schema.Array(Schema.String),
+  processors: Schema.optional(Schema.Array(Schema.String)),
+  exporters: Schema.Array(Schema.String),
+});
+const PipelineTypeSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Logs",
+]);
+const PersistenceConfigurationsSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    persistentVolumeName: Schema.String,
+  });
+const ExecutionPlacementSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  constraints: Schema.optional(
+    Schema.Array(Schema.suspend(() => PlacementConstraintSchema)),
+  ),
+  distribution: Schema.optional(Schema.suspend(() => DistributionPolicySchema)),
+});
+const PlacementConstraintSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  capability: Schema.String,
+  operator: Schema.suspend(() => CapabilityOperatorSchema),
+  values: Schema.optional(Schema.Array(Schema.String)),
+});
+const CapabilityOperatorSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "In",
+  "NotIn",
+  "Exists",
+  "DoesNotExist",
+]);
+const DistributionPolicySchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  maxInstancesPerHost: Schema.optional(Schema.Number),
+});
+const TlsConfigurationSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.String,
+  mode: Schema.optional(
+    Schema.Literals(["disabled", "serverOnly", "mutualTls"]),
+  ),
+  tlsCertificate: Schema.optional(
+    Schema.suspend(() => CertificateWithKeySchema),
+  ),
+  clientCa: Schema.optional(Schema.suspend(() => CertificateSourceSchema)),
+});
+const CertificateWithKeySchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  certificate: Schema.suspend(() => CertificateSourceSchema),
+  privateKey: Schema.suspend(() => PrivateKeySourceSchema),
+});
+const CertificateSourceSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  type: Schema.suspend(() => CertificateSourceTypeSchema),
+  location: Schema.String,
+  subLocation: Schema.String,
+});
+const CertificateSourceTypeSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals(
+  ["kubernetesSecret", "kubernetesConfigMap"],
+);
+const PrivateKeySourceSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  type: Schema.suspend(() => PrivateKeySourceTypeSchema),
+  location: Schema.String,
+  subLocation: Schema.String,
+});
+const PrivateKeySourceTypeSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "kubernetesSecret",
+]);
+const ProvisioningStateSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Succeeded",
+  "Failed",
+  "Canceled",
+  "Creating",
+  "Deleting",
+]);
+const Azure_ResourceManager_CommonTypes_ExtendedLocationSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String,
+    type: Schema.suspend(
+      () => Azure_ResourceManager_CommonTypes_ExtendedLocationTypeSchema,
+    ),
+  });
+const Azure_ResourceManager_CommonTypes_ExtendedLocationTypeSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Literals(["EdgeZone", "CustomLocation"]);
+const PipelineGroupPropertiesUpdateSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    replicas: Schema.optional(Schema.Number),
+    receivers: Schema.optional(
+      Schema.Array(Schema.suspend(() => ReceiverSchema)),
+    ),
+    processors: Schema.optional(
+      Schema.Array(Schema.suspend(() => ProcessorSchema)),
+    ),
+    exporters: Schema.optional(
+      Schema.Array(Schema.suspend(() => ExporterSchema)),
+    ),
+    service: Schema.optional(Schema.suspend(() => ServiceUpdateSchema)),
+    executionPlacement: Schema.optional(
+      Schema.suspend(() => ExecutionPlacementSchema),
+    ),
+    tlsConfigurations: Schema.optional(
+      Schema.Array(Schema.suspend(() => TlsConfigurationSchema)),
+    ),
+  });
+const ServiceUpdateSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  pipelines: Schema.optional(
+    Schema.Array(Schema.suspend(() => PipelineSchema)),
+  ),
+  persistence: Schema.optional(
+    Schema.suspend(() => PersistenceConfigurationsUpdateSchema),
+  ),
+});
+const PersistenceConfigurationsUpdateSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    persistentVolumeName: Schema.optional(Schema.String),
+  });
+
 // Input Schema
 export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {},
@@ -22,26 +419,7 @@ export type OperationsListInput = typeof OperationsListInput.Type;
 
 // Output Schema
 export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  value: Schema.optional(
-    Schema.Array(
-      Schema.Struct({
-        name: Schema.optional(Schema.String),
-        isDataAction: Schema.optional(Schema.Boolean),
-        display: Schema.optional(
-          Schema.Struct({
-            provider: Schema.optional(Schema.String),
-            resource: Schema.optional(Schema.String),
-            operation: Schema.optional(Schema.String),
-            description: Schema.optional(Schema.String),
-          }),
-        ),
-        origin: Schema.optional(
-          Schema.Literals(["user", "system", "user,system"]),
-        ),
-        actionType: Schema.optional(Schema.Literals(["Internal"])),
-      }),
-    ),
-  ),
+  value: Schema.optional(Schema.Array(Schema.suspend(() => OperationSchema))),
   nextLink: Schema.optional(Schema.String),
 });
 export type OperationsListOutput = typeof OperationsListOutput.Type;
@@ -63,200 +441,12 @@ export const PipelineGroupsCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     pipelineGroupName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        replicas: Schema.optional(Schema.Number),
-        receivers: Schema.Array(
-          Schema.Struct({
-            type: Schema.Literals(["Syslog", "OTLP"]),
-            name: Schema.String,
-            tlsConfiguration: Schema.optional(Schema.String),
-            syslog: Schema.optional(
-              Schema.Struct({
-                endpoint: Schema.String,
-                allowedFormats: Schema.optional(
-                  Schema.Array(
-                    Schema.Literals([
-                      "all",
-                      "syslogRfc3164",
-                      "syslogRfc5424",
-                      "cefRfc3164",
-                      "cefRfc5424",
-                      "rawCef",
-                    ]),
-                  ),
-                ),
-                transportProtocol: Schema.optional(
-                  Schema.Literals(["tcp", "udp"]),
-                ),
-                allowSkipPriHeader: Schema.optional(Schema.Boolean),
-              }),
-            ),
-            otlp: Schema.optional(
-              Schema.Struct({
-                endpoint: Schema.String,
-              }),
-            ),
-          }),
-        ),
-        processors: Schema.Array(
-          Schema.Struct({
-            type: Schema.Literals([
-              "Batch",
-              "TransformLanguage",
-              "MicrosoftSyslog",
-              "MicrosoftCommonSecurityLog",
-            ]),
-            name: Schema.String,
-            batch: Schema.optional(
-              Schema.Struct({
-                batchSize: Schema.optional(Schema.Number),
-                timeout: Schema.optional(Schema.Number),
-              }),
-            ),
-            transformLanguage: Schema.optional(
-              Schema.Struct({
-                transformStatement: Schema.String,
-              }),
-            ),
-          }),
-        ),
-        exporters: Schema.Array(
-          Schema.Struct({
-            type: Schema.Literals(["AzureMonitorWorkspaceLogs"]),
-            name: Schema.String,
-            azureMonitorWorkspaceLogs: Schema.optional(
-              Schema.Struct({
-                api: Schema.Struct({
-                  dataCollectionEndpointUrl: Schema.String,
-                  stream: Schema.String,
-                  dataCollectionRule: Schema.String,
-                  schema: Schema.Struct({
-                    recordMap: Schema.Array(
-                      Schema.Struct({
-                        from: Schema.String,
-                        to: Schema.String,
-                      }),
-                    ),
-                    resourceMap: Schema.optional(
-                      Schema.Array(
-                        Schema.Struct({
-                          from: Schema.String,
-                          to: Schema.String,
-                        }),
-                      ),
-                    ),
-                    scopeMap: Schema.optional(
-                      Schema.Array(
-                        Schema.Struct({
-                          from: Schema.String,
-                          to: Schema.String,
-                        }),
-                      ),
-                    ),
-                  }),
-                }),
-                persistence: Schema.optional(
-                  Schema.Struct({
-                    maxStorageUsage: Schema.optional(Schema.Number),
-                    retentionPeriod: Schema.optional(Schema.Number),
-                  }),
-                ),
-              }),
-            ),
-          }),
-        ),
-        service: Schema.Struct({
-          pipelines: Schema.Array(
-            Schema.Struct({
-              name: Schema.String,
-              type: Schema.Literals(["Logs"]),
-              receivers: Schema.Array(Schema.String),
-              processors: Schema.optional(Schema.Array(Schema.String)),
-              exporters: Schema.Array(Schema.String),
-            }),
-          ),
-          persistence: Schema.optional(
-            Schema.Struct({
-              persistentVolumeName: Schema.String,
-            }),
-          ),
-        }),
-        executionPlacement: Schema.optional(
-          Schema.Struct({
-            constraints: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  capability: Schema.String,
-                  operator: Schema.Literals([
-                    "In",
-                    "NotIn",
-                    "Exists",
-                    "DoesNotExist",
-                  ]),
-                  values: Schema.optional(Schema.Array(Schema.String)),
-                }),
-              ),
-            ),
-            distribution: Schema.optional(
-              Schema.Struct({
-                maxInstancesPerHost: Schema.optional(Schema.Number),
-              }),
-            ),
-          }),
-        ),
-        tlsConfigurations: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              name: Schema.String,
-              mode: Schema.optional(
-                Schema.Literals(["disabled", "serverOnly", "mutualTls"]),
-              ),
-              tlsCertificate: Schema.optional(
-                Schema.Struct({
-                  certificate: Schema.Struct({
-                    type: Schema.Literals([
-                      "kubernetesSecret",
-                      "kubernetesConfigMap",
-                    ]),
-                    location: Schema.String,
-                    subLocation: Schema.String,
-                  }),
-                  privateKey: Schema.Struct({
-                    type: Schema.Literals(["kubernetesSecret"]),
-                    location: Schema.String,
-                    subLocation: Schema.String,
-                  }),
-                }),
-              ),
-              clientCa: Schema.optional(
-                Schema.Struct({
-                  type: Schema.Literals([
-                    "kubernetesSecret",
-                    "kubernetesConfigMap",
-                  ]),
-                  location: Schema.String,
-                  subLocation: Schema.String,
-                }),
-              ),
-            }),
-          ),
-        ),
-        provisioningState: Schema.optional(
-          Schema.Literals([
-            "Succeeded",
-            "Failed",
-            "Canceled",
-            "Creating",
-            "Deleting",
-          ]),
-        ),
-      }),
+      Schema.suspend(() => PipelineGroupPropertiesSchema),
     ),
     extendedLocation: Schema.optional(
-      Schema.Struct({
-        name: Schema.String,
-        type: Schema.Literals(["EdgeZone", "CustomLocation"]),
-      }),
+      Schema.suspend(
+        () => Azure_ResourceManager_CommonTypes_ExtendedLocationSchema,
+      ),
     ),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     location: Schema.String,
@@ -274,23 +464,20 @@ export type PipelineGroupsCreateOrUpdateInput =
 // Output Schema
 export const PipelineGroupsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => PipelineGroupPropertiesSchema),
+    ),
+    extendedLocation: Schema.optional(
+      Schema.suspend(
+        () => Azure_ResourceManager_CommonTypes_ExtendedLocationSchema,
+      ),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type PipelineGroupsCreateOrUpdateOutput =
   typeof PipelineGroupsCreateOrUpdateOutput.Type;
@@ -364,23 +551,20 @@ export type PipelineGroupsGetInput = typeof PipelineGroupsGetInput.Type;
 // Output Schema
 export const PipelineGroupsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => PipelineGroupPropertiesSchema),
+    ),
+    extendedLocation: Schema.optional(
+      Schema.suspend(
+        () => Azure_ResourceManager_CommonTypes_ExtendedLocationSchema,
+      ),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type PipelineGroupsGetOutput = typeof PipelineGroupsGetOutput.Type;
 
@@ -415,37 +599,7 @@ export type PipelineGroupsListByResourceGroupInput =
 // Output Schema
 export const PipelineGroupsListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => PipelineGroupSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type PipelineGroupsListByResourceGroupOutput =
@@ -481,37 +635,7 @@ export type PipelineGroupsListBySubscriptionInput =
 // Output Schema
 export const PipelineGroupsListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => PipelineGroupSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type PipelineGroupsListBySubscriptionOutput =
@@ -536,195 +660,7 @@ export const PipelineGroupsUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     pipelineGroupName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        replicas: Schema.optional(Schema.Number),
-        receivers: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              type: Schema.Literals(["Syslog", "OTLP"]),
-              name: Schema.String,
-              tlsConfiguration: Schema.optional(Schema.String),
-              syslog: Schema.optional(
-                Schema.Struct({
-                  endpoint: Schema.String,
-                  allowedFormats: Schema.optional(
-                    Schema.Array(
-                      Schema.Literals([
-                        "all",
-                        "syslogRfc3164",
-                        "syslogRfc5424",
-                        "cefRfc3164",
-                        "cefRfc5424",
-                        "rawCef",
-                      ]),
-                    ),
-                  ),
-                  transportProtocol: Schema.optional(
-                    Schema.Literals(["tcp", "udp"]),
-                  ),
-                  allowSkipPriHeader: Schema.optional(Schema.Boolean),
-                }),
-              ),
-              otlp: Schema.optional(
-                Schema.Struct({
-                  endpoint: Schema.String,
-                }),
-              ),
-            }),
-          ),
-        ),
-        processors: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              type: Schema.Literals([
-                "Batch",
-                "TransformLanguage",
-                "MicrosoftSyslog",
-                "MicrosoftCommonSecurityLog",
-              ]),
-              name: Schema.String,
-              batch: Schema.optional(
-                Schema.Struct({
-                  batchSize: Schema.optional(Schema.Number),
-                  timeout: Schema.optional(Schema.Number),
-                }),
-              ),
-              transformLanguage: Schema.optional(
-                Schema.Struct({
-                  transformStatement: Schema.String,
-                }),
-              ),
-            }),
-          ),
-        ),
-        exporters: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              type: Schema.Literals(["AzureMonitorWorkspaceLogs"]),
-              name: Schema.String,
-              azureMonitorWorkspaceLogs: Schema.optional(
-                Schema.Struct({
-                  api: Schema.Struct({
-                    dataCollectionEndpointUrl: Schema.String,
-                    stream: Schema.String,
-                    dataCollectionRule: Schema.String,
-                    schema: Schema.Struct({
-                      recordMap: Schema.Array(
-                        Schema.Struct({
-                          from: Schema.String,
-                          to: Schema.String,
-                        }),
-                      ),
-                      resourceMap: Schema.optional(
-                        Schema.Array(
-                          Schema.Struct({
-                            from: Schema.String,
-                            to: Schema.String,
-                          }),
-                        ),
-                      ),
-                      scopeMap: Schema.optional(
-                        Schema.Array(
-                          Schema.Struct({
-                            from: Schema.String,
-                            to: Schema.String,
-                          }),
-                        ),
-                      ),
-                    }),
-                  }),
-                  persistence: Schema.optional(
-                    Schema.Struct({
-                      maxStorageUsage: Schema.optional(Schema.Number),
-                      retentionPeriod: Schema.optional(Schema.Number),
-                    }),
-                  ),
-                }),
-              ),
-            }),
-          ),
-        ),
-        service: Schema.optional(
-          Schema.Struct({
-            pipelines: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  name: Schema.String,
-                  type: Schema.Literals(["Logs"]),
-                  receivers: Schema.Array(Schema.String),
-                  processors: Schema.optional(Schema.Array(Schema.String)),
-                  exporters: Schema.Array(Schema.String),
-                }),
-              ),
-            ),
-            persistence: Schema.optional(
-              Schema.Struct({
-                persistentVolumeName: Schema.optional(Schema.String),
-              }),
-            ),
-          }),
-        ),
-        executionPlacement: Schema.optional(
-          Schema.Struct({
-            constraints: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  capability: Schema.String,
-                  operator: Schema.Literals([
-                    "In",
-                    "NotIn",
-                    "Exists",
-                    "DoesNotExist",
-                  ]),
-                  values: Schema.optional(Schema.Array(Schema.String)),
-                }),
-              ),
-            ),
-            distribution: Schema.optional(
-              Schema.Struct({
-                maxInstancesPerHost: Schema.optional(Schema.Number),
-              }),
-            ),
-          }),
-        ),
-        tlsConfigurations: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              name: Schema.String,
-              mode: Schema.optional(
-                Schema.Literals(["disabled", "serverOnly", "mutualTls"]),
-              ),
-              tlsCertificate: Schema.optional(
-                Schema.Struct({
-                  certificate: Schema.Struct({
-                    type: Schema.Literals([
-                      "kubernetesSecret",
-                      "kubernetesConfigMap",
-                    ]),
-                    location: Schema.String,
-                    subLocation: Schema.String,
-                  }),
-                  privateKey: Schema.Struct({
-                    type: Schema.Literals(["kubernetesSecret"]),
-                    location: Schema.String,
-                    subLocation: Schema.String,
-                  }),
-                }),
-              ),
-              clientCa: Schema.optional(
-                Schema.Struct({
-                  type: Schema.Literals([
-                    "kubernetesSecret",
-                    "kubernetesConfigMap",
-                  ]),
-                  location: Schema.String,
-                  subLocation: Schema.String,
-                }),
-              ),
-            }),
-          ),
-        ),
-      }),
+      Schema.suspend(() => PipelineGroupPropertiesUpdateSchema),
     ),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
@@ -740,23 +676,20 @@ export type PipelineGroupsUpdateInput = typeof PipelineGroupsUpdateInput.Type;
 // Output Schema
 export const PipelineGroupsUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => PipelineGroupPropertiesSchema),
+    ),
+    extendedLocation: Schema.optional(
+      Schema.suspend(
+        () => Azure_ResourceManager_CommonTypes_ExtendedLocationSchema,
+      ),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type PipelineGroupsUpdateOutput = typeof PipelineGroupsUpdateOutput.Type;
 
@@ -783,22 +716,7 @@ export const ScheduledQueryRulesCreateOrUpdateInput =
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    identity: Schema.optional(
-      Schema.Struct({
-        principalId: Schema.optional(Schema.String),
-        tenantId: Schema.optional(Schema.String),
-        type: Schema.Literals(["SystemAssigned", "UserAssigned", "None"]),
-        userAssignedIdentities: Schema.optional(
-          Schema.Record(
-            Schema.String,
-            Schema.Struct({
-              principalId: Schema.optional(Schema.String),
-              clientId: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-      }),
-    ),
+    identity: Schema.optional(Schema.suspend(() => IdentitySchema)),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     location: Schema.String,
     kind: Schema.optional(
@@ -819,99 +737,7 @@ export const ScheduledQueryRulesCreateOrUpdateInput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-    properties: Schema.Struct({
-      createdWithApiVersion: Schema.optional(Schema.String),
-      isLegacyLogAnalyticsRule: Schema.optional(Schema.Boolean),
-      description: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      severity: Schema.optional(Schema.Literals([0, 1, 2, 3, 4])),
-      enabled: Schema.optional(Schema.Boolean),
-      scopes: Schema.optional(Schema.Array(Schema.String)),
-      evaluationFrequency: Schema.optional(Schema.String),
-      windowSize: Schema.optional(Schema.String),
-      overrideQueryTimeRange: Schema.optional(Schema.String),
-      targetResourceTypes: Schema.optional(Schema.Array(Schema.String)),
-      criteria: Schema.optional(
-        Schema.Struct({
-          allOf: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                criterionType: Schema.optional(
-                  Schema.Literals([
-                    "StaticThresholdCriterion",
-                    "DynamicThresholdCriterion",
-                  ]),
-                ),
-                query: Schema.optional(Schema.String),
-                timeAggregation: Schema.optional(
-                  Schema.Literals([
-                    "Count",
-                    "Average",
-                    "Minimum",
-                    "Maximum",
-                    "Total",
-                  ]),
-                ),
-                metricMeasureColumn: Schema.optional(Schema.String),
-                resourceIdColumn: Schema.optional(Schema.String),
-                dimensions: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      name: Schema.String,
-                      operator: Schema.Literals(["Include", "Exclude"]),
-                      values: Schema.Array(Schema.String),
-                    }),
-                  ),
-                ),
-                operator: Schema.optional(
-                  Schema.Literals([
-                    "Equals",
-                    "GreaterThan",
-                    "GreaterThanOrEqual",
-                    "LessThan",
-                    "LessThanOrEqual",
-                    "GreaterOrLessThan",
-                  ]),
-                ),
-                threshold: Schema.optional(Schema.Number),
-                alertSensitivity: Schema.optional(Schema.String),
-                ignoreDataBefore: Schema.optional(Schema.String),
-                failingPeriods: Schema.optional(
-                  Schema.Struct({
-                    numberOfEvaluationPeriods: Schema.optional(Schema.Number),
-                    minFailingPeriodsToAlert: Schema.optional(Schema.Number),
-                  }),
-                ),
-                metricName: Schema.optional(Schema.String),
-                minRecurrenceCount: Schema.optional(Schema.Number),
-              }),
-            ),
-          ),
-        }),
-      ),
-      muteActionsDuration: Schema.optional(Schema.String),
-      actions: Schema.optional(
-        Schema.Struct({
-          actionGroups: Schema.optional(Schema.Array(Schema.String)),
-          customProperties: Schema.optional(
-            Schema.Record(Schema.String, Schema.String),
-          ),
-          actionProperties: Schema.optional(
-            Schema.Record(Schema.String, Schema.String),
-          ),
-        }),
-      ),
-      isWorkspaceAlertsStorageConfigured: Schema.optional(Schema.Boolean),
-      checkWorkspaceAlertsStorageConfigured: Schema.optional(Schema.Boolean),
-      skipQueryValidation: Schema.optional(Schema.Boolean),
-      autoMitigate: Schema.optional(Schema.Boolean),
-      resolveConfiguration: Schema.optional(
-        Schema.Struct({
-          autoResolved: Schema.optional(Schema.Boolean),
-          timeToResolve: Schema.optional(Schema.String),
-        }),
-      ),
-    }),
+    properties: Schema.suspend(() => ScheduledQueryRulePropertiesSchema),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -928,22 +754,7 @@ export const ScheduledQueryRulesCreateOrUpdateOutput =
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    identity: Schema.optional(
-      Schema.Struct({
-        principalId: Schema.optional(Schema.String),
-        tenantId: Schema.optional(Schema.String),
-        type: Schema.Literals(["SystemAssigned", "UserAssigned", "None"]),
-        userAssignedIdentities: Schema.optional(
-          Schema.Record(
-            Schema.String,
-            Schema.Struct({
-              principalId: Schema.optional(Schema.String),
-              clientId: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-      }),
-    ),
+    identity: Schema.optional(Schema.suspend(() => IdentitySchema)),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     location: Schema.String,
     kind: Schema.optional(
@@ -964,99 +775,7 @@ export const ScheduledQueryRulesCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-    properties: Schema.Struct({
-      createdWithApiVersion: Schema.optional(Schema.String),
-      isLegacyLogAnalyticsRule: Schema.optional(Schema.Boolean),
-      description: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      severity: Schema.optional(Schema.Literals([0, 1, 2, 3, 4])),
-      enabled: Schema.optional(Schema.Boolean),
-      scopes: Schema.optional(Schema.Array(Schema.String)),
-      evaluationFrequency: Schema.optional(Schema.String),
-      windowSize: Schema.optional(Schema.String),
-      overrideQueryTimeRange: Schema.optional(Schema.String),
-      targetResourceTypes: Schema.optional(Schema.Array(Schema.String)),
-      criteria: Schema.optional(
-        Schema.Struct({
-          allOf: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                criterionType: Schema.optional(
-                  Schema.Literals([
-                    "StaticThresholdCriterion",
-                    "DynamicThresholdCriterion",
-                  ]),
-                ),
-                query: Schema.optional(Schema.String),
-                timeAggregation: Schema.optional(
-                  Schema.Literals([
-                    "Count",
-                    "Average",
-                    "Minimum",
-                    "Maximum",
-                    "Total",
-                  ]),
-                ),
-                metricMeasureColumn: Schema.optional(Schema.String),
-                resourceIdColumn: Schema.optional(Schema.String),
-                dimensions: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      name: Schema.String,
-                      operator: Schema.Literals(["Include", "Exclude"]),
-                      values: Schema.Array(Schema.String),
-                    }),
-                  ),
-                ),
-                operator: Schema.optional(
-                  Schema.Literals([
-                    "Equals",
-                    "GreaterThan",
-                    "GreaterThanOrEqual",
-                    "LessThan",
-                    "LessThanOrEqual",
-                    "GreaterOrLessThan",
-                  ]),
-                ),
-                threshold: Schema.optional(Schema.Number),
-                alertSensitivity: Schema.optional(Schema.String),
-                ignoreDataBefore: Schema.optional(Schema.String),
-                failingPeriods: Schema.optional(
-                  Schema.Struct({
-                    numberOfEvaluationPeriods: Schema.optional(Schema.Number),
-                    minFailingPeriodsToAlert: Schema.optional(Schema.Number),
-                  }),
-                ),
-                metricName: Schema.optional(Schema.String),
-                minRecurrenceCount: Schema.optional(Schema.Number),
-              }),
-            ),
-          ),
-        }),
-      ),
-      muteActionsDuration: Schema.optional(Schema.String),
-      actions: Schema.optional(
-        Schema.Struct({
-          actionGroups: Schema.optional(Schema.Array(Schema.String)),
-          customProperties: Schema.optional(
-            Schema.Record(Schema.String, Schema.String),
-          ),
-          actionProperties: Schema.optional(
-            Schema.Record(Schema.String, Schema.String),
-          ),
-        }),
-      ),
-      isWorkspaceAlertsStorageConfigured: Schema.optional(Schema.Boolean),
-      checkWorkspaceAlertsStorageConfigured: Schema.optional(Schema.Boolean),
-      skipQueryValidation: Schema.optional(Schema.Boolean),
-      autoMitigate: Schema.optional(Schema.Boolean),
-      resolveConfiguration: Schema.optional(
-        Schema.Struct({
-          autoResolved: Schema.optional(Schema.Boolean),
-          timeToResolve: Schema.optional(Schema.String),
-        }),
-      ),
-    }),
+    properties: Schema.suspend(() => ScheduledQueryRulePropertiesSchema),
   });
 export type ScheduledQueryRulesCreateOrUpdateOutput =
   typeof ScheduledQueryRulesCreateOrUpdateOutput.Type;
@@ -1130,22 +849,7 @@ export const ScheduledQueryRulesGetOutput =
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    identity: Schema.optional(
-      Schema.Struct({
-        principalId: Schema.optional(Schema.String),
-        tenantId: Schema.optional(Schema.String),
-        type: Schema.Literals(["SystemAssigned", "UserAssigned", "None"]),
-        userAssignedIdentities: Schema.optional(
-          Schema.Record(
-            Schema.String,
-            Schema.Struct({
-              principalId: Schema.optional(Schema.String),
-              clientId: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-      }),
-    ),
+    identity: Schema.optional(Schema.suspend(() => IdentitySchema)),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     location: Schema.String,
     kind: Schema.optional(
@@ -1166,99 +870,7 @@ export const ScheduledQueryRulesGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-    properties: Schema.Struct({
-      createdWithApiVersion: Schema.optional(Schema.String),
-      isLegacyLogAnalyticsRule: Schema.optional(Schema.Boolean),
-      description: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      severity: Schema.optional(Schema.Literals([0, 1, 2, 3, 4])),
-      enabled: Schema.optional(Schema.Boolean),
-      scopes: Schema.optional(Schema.Array(Schema.String)),
-      evaluationFrequency: Schema.optional(Schema.String),
-      windowSize: Schema.optional(Schema.String),
-      overrideQueryTimeRange: Schema.optional(Schema.String),
-      targetResourceTypes: Schema.optional(Schema.Array(Schema.String)),
-      criteria: Schema.optional(
-        Schema.Struct({
-          allOf: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                criterionType: Schema.optional(
-                  Schema.Literals([
-                    "StaticThresholdCriterion",
-                    "DynamicThresholdCriterion",
-                  ]),
-                ),
-                query: Schema.optional(Schema.String),
-                timeAggregation: Schema.optional(
-                  Schema.Literals([
-                    "Count",
-                    "Average",
-                    "Minimum",
-                    "Maximum",
-                    "Total",
-                  ]),
-                ),
-                metricMeasureColumn: Schema.optional(Schema.String),
-                resourceIdColumn: Schema.optional(Schema.String),
-                dimensions: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      name: Schema.String,
-                      operator: Schema.Literals(["Include", "Exclude"]),
-                      values: Schema.Array(Schema.String),
-                    }),
-                  ),
-                ),
-                operator: Schema.optional(
-                  Schema.Literals([
-                    "Equals",
-                    "GreaterThan",
-                    "GreaterThanOrEqual",
-                    "LessThan",
-                    "LessThanOrEqual",
-                    "GreaterOrLessThan",
-                  ]),
-                ),
-                threshold: Schema.optional(Schema.Number),
-                alertSensitivity: Schema.optional(Schema.String),
-                ignoreDataBefore: Schema.optional(Schema.String),
-                failingPeriods: Schema.optional(
-                  Schema.Struct({
-                    numberOfEvaluationPeriods: Schema.optional(Schema.Number),
-                    minFailingPeriodsToAlert: Schema.optional(Schema.Number),
-                  }),
-                ),
-                metricName: Schema.optional(Schema.String),
-                minRecurrenceCount: Schema.optional(Schema.Number),
-              }),
-            ),
-          ),
-        }),
-      ),
-      muteActionsDuration: Schema.optional(Schema.String),
-      actions: Schema.optional(
-        Schema.Struct({
-          actionGroups: Schema.optional(Schema.Array(Schema.String)),
-          customProperties: Schema.optional(
-            Schema.Record(Schema.String, Schema.String),
-          ),
-          actionProperties: Schema.optional(
-            Schema.Record(Schema.String, Schema.String),
-          ),
-        }),
-      ),
-      isWorkspaceAlertsStorageConfigured: Schema.optional(Schema.Boolean),
-      checkWorkspaceAlertsStorageConfigured: Schema.optional(Schema.Boolean),
-      skipQueryValidation: Schema.optional(Schema.Boolean),
-      autoMitigate: Schema.optional(Schema.Boolean),
-      resolveConfiguration: Schema.optional(
-        Schema.Struct({
-          autoResolved: Schema.optional(Schema.Boolean),
-          timeToResolve: Schema.optional(Schema.String),
-        }),
-      ),
-    }),
+    properties: Schema.suspend(() => ScheduledQueryRulePropertiesSchema),
   });
 export type ScheduledQueryRulesGetOutput =
   typeof ScheduledQueryRulesGetOutput.Type;
@@ -1296,158 +908,7 @@ export type ScheduledQueryRulesListByResourceGroupInput =
 export const ScheduledQueryRulesListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          identity: Schema.optional(
-            Schema.Struct({
-              principalId: Schema.optional(Schema.String),
-              tenantId: Schema.optional(Schema.String),
-              type: Schema.Literals(["SystemAssigned", "UserAssigned", "None"]),
-              userAssignedIdentities: Schema.optional(
-                Schema.Record(
-                  Schema.String,
-                  Schema.Struct({
-                    principalId: Schema.optional(Schema.String),
-                    clientId: Schema.optional(Schema.String),
-                  }),
-                ),
-              ),
-            }),
-          ),
-          tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-          location: Schema.String,
-          kind: Schema.optional(
-            Schema.Literals(["LogAlert", "SimpleLogAlert", "LogToMetric"]),
-          ),
-          etag: Schema.optional(Schema.String),
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.String),
-              createdByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              createdAt: Schema.optional(Schema.String),
-              lastModifiedBy: Schema.optional(Schema.String),
-              lastModifiedByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              lastModifiedAt: Schema.optional(Schema.String),
-            }),
-          ),
-          properties: Schema.Struct({
-            createdWithApiVersion: Schema.optional(Schema.String),
-            isLegacyLogAnalyticsRule: Schema.optional(Schema.Boolean),
-            description: Schema.optional(Schema.String),
-            displayName: Schema.optional(Schema.String),
-            severity: Schema.optional(Schema.Literals([0, 1, 2, 3, 4])),
-            enabled: Schema.optional(Schema.Boolean),
-            scopes: Schema.optional(Schema.Array(Schema.String)),
-            evaluationFrequency: Schema.optional(Schema.String),
-            windowSize: Schema.optional(Schema.String),
-            overrideQueryTimeRange: Schema.optional(Schema.String),
-            targetResourceTypes: Schema.optional(Schema.Array(Schema.String)),
-            criteria: Schema.optional(
-              Schema.Struct({
-                allOf: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      criterionType: Schema.optional(
-                        Schema.Literals([
-                          "StaticThresholdCriterion",
-                          "DynamicThresholdCriterion",
-                        ]),
-                      ),
-                      query: Schema.optional(Schema.String),
-                      timeAggregation: Schema.optional(
-                        Schema.Literals([
-                          "Count",
-                          "Average",
-                          "Minimum",
-                          "Maximum",
-                          "Total",
-                        ]),
-                      ),
-                      metricMeasureColumn: Schema.optional(Schema.String),
-                      resourceIdColumn: Schema.optional(Schema.String),
-                      dimensions: Schema.optional(
-                        Schema.Array(
-                          Schema.Struct({
-                            name: Schema.String,
-                            operator: Schema.Literals(["Include", "Exclude"]),
-                            values: Schema.Array(Schema.String),
-                          }),
-                        ),
-                      ),
-                      operator: Schema.optional(
-                        Schema.Literals([
-                          "Equals",
-                          "GreaterThan",
-                          "GreaterThanOrEqual",
-                          "LessThan",
-                          "LessThanOrEqual",
-                          "GreaterOrLessThan",
-                        ]),
-                      ),
-                      threshold: Schema.optional(Schema.Number),
-                      alertSensitivity: Schema.optional(Schema.String),
-                      ignoreDataBefore: Schema.optional(Schema.String),
-                      failingPeriods: Schema.optional(
-                        Schema.Struct({
-                          numberOfEvaluationPeriods: Schema.optional(
-                            Schema.Number,
-                          ),
-                          minFailingPeriodsToAlert: Schema.optional(
-                            Schema.Number,
-                          ),
-                        }),
-                      ),
-                      metricName: Schema.optional(Schema.String),
-                      minRecurrenceCount: Schema.optional(Schema.Number),
-                    }),
-                  ),
-                ),
-              }),
-            ),
-            muteActionsDuration: Schema.optional(Schema.String),
-            actions: Schema.optional(
-              Schema.Struct({
-                actionGroups: Schema.optional(Schema.Array(Schema.String)),
-                customProperties: Schema.optional(
-                  Schema.Record(Schema.String, Schema.String),
-                ),
-                actionProperties: Schema.optional(
-                  Schema.Record(Schema.String, Schema.String),
-                ),
-              }),
-            ),
-            isWorkspaceAlertsStorageConfigured: Schema.optional(Schema.Boolean),
-            checkWorkspaceAlertsStorageConfigured: Schema.optional(
-              Schema.Boolean,
-            ),
-            skipQueryValidation: Schema.optional(Schema.Boolean),
-            autoMitigate: Schema.optional(Schema.Boolean),
-            resolveConfiguration: Schema.optional(
-              Schema.Struct({
-                autoResolved: Schema.optional(Schema.Boolean),
-                timeToResolve: Schema.optional(Schema.String),
-              }),
-            ),
-          }),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => ScheduledQueryRuleResourceSchema)),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -1485,158 +946,7 @@ export type ScheduledQueryRulesListBySubscriptionInput =
 export const ScheduledQueryRulesListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          identity: Schema.optional(
-            Schema.Struct({
-              principalId: Schema.optional(Schema.String),
-              tenantId: Schema.optional(Schema.String),
-              type: Schema.Literals(["SystemAssigned", "UserAssigned", "None"]),
-              userAssignedIdentities: Schema.optional(
-                Schema.Record(
-                  Schema.String,
-                  Schema.Struct({
-                    principalId: Schema.optional(Schema.String),
-                    clientId: Schema.optional(Schema.String),
-                  }),
-                ),
-              ),
-            }),
-          ),
-          tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-          location: Schema.String,
-          kind: Schema.optional(
-            Schema.Literals(["LogAlert", "SimpleLogAlert", "LogToMetric"]),
-          ),
-          etag: Schema.optional(Schema.String),
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.String),
-              createdByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              createdAt: Schema.optional(Schema.String),
-              lastModifiedBy: Schema.optional(Schema.String),
-              lastModifiedByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              lastModifiedAt: Schema.optional(Schema.String),
-            }),
-          ),
-          properties: Schema.Struct({
-            createdWithApiVersion: Schema.optional(Schema.String),
-            isLegacyLogAnalyticsRule: Schema.optional(Schema.Boolean),
-            description: Schema.optional(Schema.String),
-            displayName: Schema.optional(Schema.String),
-            severity: Schema.optional(Schema.Literals([0, 1, 2, 3, 4])),
-            enabled: Schema.optional(Schema.Boolean),
-            scopes: Schema.optional(Schema.Array(Schema.String)),
-            evaluationFrequency: Schema.optional(Schema.String),
-            windowSize: Schema.optional(Schema.String),
-            overrideQueryTimeRange: Schema.optional(Schema.String),
-            targetResourceTypes: Schema.optional(Schema.Array(Schema.String)),
-            criteria: Schema.optional(
-              Schema.Struct({
-                allOf: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      criterionType: Schema.optional(
-                        Schema.Literals([
-                          "StaticThresholdCriterion",
-                          "DynamicThresholdCriterion",
-                        ]),
-                      ),
-                      query: Schema.optional(Schema.String),
-                      timeAggregation: Schema.optional(
-                        Schema.Literals([
-                          "Count",
-                          "Average",
-                          "Minimum",
-                          "Maximum",
-                          "Total",
-                        ]),
-                      ),
-                      metricMeasureColumn: Schema.optional(Schema.String),
-                      resourceIdColumn: Schema.optional(Schema.String),
-                      dimensions: Schema.optional(
-                        Schema.Array(
-                          Schema.Struct({
-                            name: Schema.String,
-                            operator: Schema.Literals(["Include", "Exclude"]),
-                            values: Schema.Array(Schema.String),
-                          }),
-                        ),
-                      ),
-                      operator: Schema.optional(
-                        Schema.Literals([
-                          "Equals",
-                          "GreaterThan",
-                          "GreaterThanOrEqual",
-                          "LessThan",
-                          "LessThanOrEqual",
-                          "GreaterOrLessThan",
-                        ]),
-                      ),
-                      threshold: Schema.optional(Schema.Number),
-                      alertSensitivity: Schema.optional(Schema.String),
-                      ignoreDataBefore: Schema.optional(Schema.String),
-                      failingPeriods: Schema.optional(
-                        Schema.Struct({
-                          numberOfEvaluationPeriods: Schema.optional(
-                            Schema.Number,
-                          ),
-                          minFailingPeriodsToAlert: Schema.optional(
-                            Schema.Number,
-                          ),
-                        }),
-                      ),
-                      metricName: Schema.optional(Schema.String),
-                      minRecurrenceCount: Schema.optional(Schema.Number),
-                    }),
-                  ),
-                ),
-              }),
-            ),
-            muteActionsDuration: Schema.optional(Schema.String),
-            actions: Schema.optional(
-              Schema.Struct({
-                actionGroups: Schema.optional(Schema.Array(Schema.String)),
-                customProperties: Schema.optional(
-                  Schema.Record(Schema.String, Schema.String),
-                ),
-                actionProperties: Schema.optional(
-                  Schema.Record(Schema.String, Schema.String),
-                ),
-              }),
-            ),
-            isWorkspaceAlertsStorageConfigured: Schema.optional(Schema.Boolean),
-            checkWorkspaceAlertsStorageConfigured: Schema.optional(
-              Schema.Boolean,
-            ),
-            skipQueryValidation: Schema.optional(Schema.Boolean),
-            autoMitigate: Schema.optional(Schema.Boolean),
-            resolveConfiguration: Schema.optional(
-              Schema.Struct({
-                autoResolved: Schema.optional(Schema.Boolean),
-                timeToResolve: Schema.optional(Schema.String),
-              }),
-            ),
-          }),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => ScheduledQueryRuleResourceSchema)),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -1660,117 +970,10 @@ export const ScheduledQueryRulesUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    identity: Schema.optional(
-      Schema.Struct({
-        principalId: Schema.optional(Schema.String),
-        tenantId: Schema.optional(Schema.String),
-        type: Schema.Literals(["SystemAssigned", "UserAssigned", "None"]),
-        userAssignedIdentities: Schema.optional(
-          Schema.Record(
-            Schema.String,
-            Schema.Struct({
-              principalId: Schema.optional(Schema.String),
-              clientId: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-      }),
-    ),
+    identity: Schema.optional(Schema.suspend(() => IdentitySchema)),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     properties: Schema.optional(
-      Schema.Struct({
-        createdWithApiVersion: Schema.optional(Schema.String),
-        isLegacyLogAnalyticsRule: Schema.optional(Schema.Boolean),
-        description: Schema.optional(Schema.String),
-        displayName: Schema.optional(Schema.String),
-        severity: Schema.optional(Schema.Literals([0, 1, 2, 3, 4])),
-        enabled: Schema.optional(Schema.Boolean),
-        scopes: Schema.optional(Schema.Array(Schema.String)),
-        evaluationFrequency: Schema.optional(Schema.String),
-        windowSize: Schema.optional(Schema.String),
-        overrideQueryTimeRange: Schema.optional(Schema.String),
-        targetResourceTypes: Schema.optional(Schema.Array(Schema.String)),
-        criteria: Schema.optional(
-          Schema.Struct({
-            allOf: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  criterionType: Schema.optional(
-                    Schema.Literals([
-                      "StaticThresholdCriterion",
-                      "DynamicThresholdCriterion",
-                    ]),
-                  ),
-                  query: Schema.optional(Schema.String),
-                  timeAggregation: Schema.optional(
-                    Schema.Literals([
-                      "Count",
-                      "Average",
-                      "Minimum",
-                      "Maximum",
-                      "Total",
-                    ]),
-                  ),
-                  metricMeasureColumn: Schema.optional(Schema.String),
-                  resourceIdColumn: Schema.optional(Schema.String),
-                  dimensions: Schema.optional(
-                    Schema.Array(
-                      Schema.Struct({
-                        name: Schema.String,
-                        operator: Schema.Literals(["Include", "Exclude"]),
-                        values: Schema.Array(Schema.String),
-                      }),
-                    ),
-                  ),
-                  operator: Schema.optional(
-                    Schema.Literals([
-                      "Equals",
-                      "GreaterThan",
-                      "GreaterThanOrEqual",
-                      "LessThan",
-                      "LessThanOrEqual",
-                      "GreaterOrLessThan",
-                    ]),
-                  ),
-                  threshold: Schema.optional(Schema.Number),
-                  alertSensitivity: Schema.optional(Schema.String),
-                  ignoreDataBefore: Schema.optional(Schema.String),
-                  failingPeriods: Schema.optional(
-                    Schema.Struct({
-                      numberOfEvaluationPeriods: Schema.optional(Schema.Number),
-                      minFailingPeriodsToAlert: Schema.optional(Schema.Number),
-                    }),
-                  ),
-                  metricName: Schema.optional(Schema.String),
-                  minRecurrenceCount: Schema.optional(Schema.Number),
-                }),
-              ),
-            ),
-          }),
-        ),
-        muteActionsDuration: Schema.optional(Schema.String),
-        actions: Schema.optional(
-          Schema.Struct({
-            actionGroups: Schema.optional(Schema.Array(Schema.String)),
-            customProperties: Schema.optional(
-              Schema.Record(Schema.String, Schema.String),
-            ),
-            actionProperties: Schema.optional(
-              Schema.Record(Schema.String, Schema.String),
-            ),
-          }),
-        ),
-        isWorkspaceAlertsStorageConfigured: Schema.optional(Schema.Boolean),
-        checkWorkspaceAlertsStorageConfigured: Schema.optional(Schema.Boolean),
-        skipQueryValidation: Schema.optional(Schema.Boolean),
-        autoMitigate: Schema.optional(Schema.Boolean),
-        resolveConfiguration: Schema.optional(
-          Schema.Struct({
-            autoResolved: Schema.optional(Schema.Boolean),
-            timeToResolve: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
+      Schema.suspend(() => ScheduledQueryRulePropertiesSchema),
     ),
   }).pipe(
     T.Http({
@@ -1788,22 +991,7 @@ export const ScheduledQueryRulesUpdateOutput =
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    identity: Schema.optional(
-      Schema.Struct({
-        principalId: Schema.optional(Schema.String),
-        tenantId: Schema.optional(Schema.String),
-        type: Schema.Literals(["SystemAssigned", "UserAssigned", "None"]),
-        userAssignedIdentities: Schema.optional(
-          Schema.Record(
-            Schema.String,
-            Schema.Struct({
-              principalId: Schema.optional(Schema.String),
-              clientId: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-      }),
-    ),
+    identity: Schema.optional(Schema.suspend(() => IdentitySchema)),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     location: Schema.String,
     kind: Schema.optional(
@@ -1824,99 +1012,7 @@ export const ScheduledQueryRulesUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-    properties: Schema.Struct({
-      createdWithApiVersion: Schema.optional(Schema.String),
-      isLegacyLogAnalyticsRule: Schema.optional(Schema.Boolean),
-      description: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      severity: Schema.optional(Schema.Literals([0, 1, 2, 3, 4])),
-      enabled: Schema.optional(Schema.Boolean),
-      scopes: Schema.optional(Schema.Array(Schema.String)),
-      evaluationFrequency: Schema.optional(Schema.String),
-      windowSize: Schema.optional(Schema.String),
-      overrideQueryTimeRange: Schema.optional(Schema.String),
-      targetResourceTypes: Schema.optional(Schema.Array(Schema.String)),
-      criteria: Schema.optional(
-        Schema.Struct({
-          allOf: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                criterionType: Schema.optional(
-                  Schema.Literals([
-                    "StaticThresholdCriterion",
-                    "DynamicThresholdCriterion",
-                  ]),
-                ),
-                query: Schema.optional(Schema.String),
-                timeAggregation: Schema.optional(
-                  Schema.Literals([
-                    "Count",
-                    "Average",
-                    "Minimum",
-                    "Maximum",
-                    "Total",
-                  ]),
-                ),
-                metricMeasureColumn: Schema.optional(Schema.String),
-                resourceIdColumn: Schema.optional(Schema.String),
-                dimensions: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      name: Schema.String,
-                      operator: Schema.Literals(["Include", "Exclude"]),
-                      values: Schema.Array(Schema.String),
-                    }),
-                  ),
-                ),
-                operator: Schema.optional(
-                  Schema.Literals([
-                    "Equals",
-                    "GreaterThan",
-                    "GreaterThanOrEqual",
-                    "LessThan",
-                    "LessThanOrEqual",
-                    "GreaterOrLessThan",
-                  ]),
-                ),
-                threshold: Schema.optional(Schema.Number),
-                alertSensitivity: Schema.optional(Schema.String),
-                ignoreDataBefore: Schema.optional(Schema.String),
-                failingPeriods: Schema.optional(
-                  Schema.Struct({
-                    numberOfEvaluationPeriods: Schema.optional(Schema.Number),
-                    minFailingPeriodsToAlert: Schema.optional(Schema.Number),
-                  }),
-                ),
-                metricName: Schema.optional(Schema.String),
-                minRecurrenceCount: Schema.optional(Schema.Number),
-              }),
-            ),
-          ),
-        }),
-      ),
-      muteActionsDuration: Schema.optional(Schema.String),
-      actions: Schema.optional(
-        Schema.Struct({
-          actionGroups: Schema.optional(Schema.Array(Schema.String)),
-          customProperties: Schema.optional(
-            Schema.Record(Schema.String, Schema.String),
-          ),
-          actionProperties: Schema.optional(
-            Schema.Record(Schema.String, Schema.String),
-          ),
-        }),
-      ),
-      isWorkspaceAlertsStorageConfigured: Schema.optional(Schema.Boolean),
-      checkWorkspaceAlertsStorageConfigured: Schema.optional(Schema.Boolean),
-      skipQueryValidation: Schema.optional(Schema.Boolean),
-      autoMitigate: Schema.optional(Schema.Boolean),
-      resolveConfiguration: Schema.optional(
-        Schema.Struct({
-          autoResolved: Schema.optional(Schema.Boolean),
-          timeToResolve: Schema.optional(Schema.String),
-        }),
-      ),
-    }),
+    properties: Schema.suspend(() => ScheduledQueryRulePropertiesSchema),
   });
 export type ScheduledQueryRulesUpdateOutput =
   typeof ScheduledQueryRulesUpdateOutput.Type;

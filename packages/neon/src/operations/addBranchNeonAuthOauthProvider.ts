@@ -1,14 +1,18 @@
 import * as Schema from "effect/Schema";
+import {
+  NeonAuthOauthProviderIdSchema,
+  NeonAuthOauthProviderTypeSchema,
+} from "./_schemas.ts";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
-import { SensitiveString } from "../sensitive.ts";
+import { SensitiveString, SensitiveOutputString } from "../sensitive.ts";
 
 // Input Schema
 export const AddBranchNeonAuthOauthProviderInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
     branch_id: Schema.String.pipe(T.PathParam()),
-    id: Schema.Literals(["google", "github", "microsoft", "vercel"]),
+    id: Schema.suspend(() => NeonAuthOauthProviderIdSchema),
     client_id: Schema.optional(Schema.String),
     client_secret: Schema.optional(SensitiveString),
     microsoft_tenant_id: Schema.optional(Schema.String),
@@ -24,10 +28,10 @@ export type AddBranchNeonAuthOauthProviderInput =
 // Output Schema
 export const AddBranchNeonAuthOauthProviderOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.Literals(["google", "github", "microsoft", "vercel"]),
-    type: Schema.Literals(["standard", "shared"]),
+    id: Schema.suspend(() => NeonAuthOauthProviderIdSchema),
+    type: Schema.suspend(() => NeonAuthOauthProviderTypeSchema),
     client_id: Schema.optional(Schema.String),
-    client_secret: Schema.optional(SensitiveString),
+    client_secret: Schema.optional(SensitiveOutputString),
   });
 export type AddBranchNeonAuthOauthProviderOutput =
   typeof AddBranchNeonAuthOauthProviderOutput.Type;

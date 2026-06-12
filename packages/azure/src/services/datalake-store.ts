@@ -8,6 +8,278 @@ import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
+// Shared schemas
+const DataLakeStoreAccountBasicSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    location: Schema.optional(Schema.String),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  });
+const EncryptionIdentitySchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  type: Schema.Literals(["SystemAssigned"]),
+  principalId: Schema.optional(Schema.String),
+  tenantId: Schema.optional(Schema.String),
+});
+const DataLakeStoreAccountPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    accountId: Schema.optional(Schema.String),
+    provisioningState: Schema.optional(
+      Schema.Literals([
+        "Failed",
+        "Creating",
+        "Running",
+        "Succeeded",
+        "Patching",
+        "Suspending",
+        "Resuming",
+        "Deleting",
+        "Deleted",
+        "Undeleting",
+        "Canceled",
+      ]),
+    ),
+    state: Schema.optional(Schema.Literals(["Active", "Suspended"])),
+    creationTime: Schema.optional(Schema.String),
+    lastModifiedTime: Schema.optional(Schema.String),
+    endpoint: Schema.optional(Schema.String),
+  });
+const CreateDataLakeStoreAccountPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    defaultGroup: Schema.optional(Schema.String),
+    encryptionConfig: Schema.optional(
+      Schema.suspend(() => EncryptionConfigSchema),
+    ),
+    encryptionState: Schema.optional(Schema.Literals(["Enabled", "Disabled"])),
+    firewallRules: Schema.optional(
+      Schema.Array(
+        Schema.suspend(() => CreateFirewallRuleWithAccountParametersSchema),
+      ),
+    ),
+    virtualNetworkRules: Schema.optional(
+      Schema.Array(
+        Schema.suspend(
+          () => CreateVirtualNetworkRuleWithAccountParametersSchema,
+        ),
+      ),
+    ),
+    firewallState: Schema.optional(Schema.Literals(["Enabled", "Disabled"])),
+    firewallAllowAzureIps: Schema.optional(
+      Schema.Literals(["Enabled", "Disabled"]),
+    ),
+    trustedIdProviders: Schema.optional(
+      Schema.Array(
+        Schema.suspend(
+          () => CreateTrustedIdProviderWithAccountParametersSchema,
+        ),
+      ),
+    ),
+    trustedIdProviderState: Schema.optional(
+      Schema.Literals(["Enabled", "Disabled"]),
+    ),
+    newTier: Schema.optional(
+      Schema.Literals([
+        "Consumption",
+        "Commitment_1TB",
+        "Commitment_10TB",
+        "Commitment_100TB",
+        "Commitment_500TB",
+        "Commitment_1PB",
+        "Commitment_5PB",
+      ]),
+    ),
+  });
+const EncryptionConfigSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  type: Schema.Literals(["UserManaged", "ServiceManaged"]),
+  keyVaultMetaInfo: Schema.optional(
+    Schema.suspend(() => KeyVaultMetaInfoSchema),
+  ),
+});
+const KeyVaultMetaInfoSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  keyVaultResourceId: Schema.String,
+  encryptionKeyName: Schema.String,
+  encryptionKeyVersion: Schema.String,
+});
+const CreateFirewallRuleWithAccountParametersSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String,
+    properties: Schema.suspend(
+      () => CreateOrUpdateFirewallRulePropertiesSchema,
+    ),
+  });
+const CreateOrUpdateFirewallRulePropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    startIpAddress: Schema.String,
+    endIpAddress: Schema.String,
+  });
+const CreateVirtualNetworkRuleWithAccountParametersSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String,
+    properties: Schema.suspend(
+      () => CreateOrUpdateVirtualNetworkRulePropertiesSchema,
+    ),
+  });
+const CreateOrUpdateVirtualNetworkRulePropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subnetId: Schema.String,
+  });
+const CreateTrustedIdProviderWithAccountParametersSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String,
+    properties: Schema.suspend(
+      () => CreateOrUpdateTrustedIdProviderPropertiesSchema,
+    ),
+  });
+const CreateOrUpdateTrustedIdProviderPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    idProvider: Schema.String,
+  });
+const UpdateDataLakeStoreAccountPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    defaultGroup: Schema.optional(Schema.String),
+    encryptionConfig: Schema.optional(
+      Schema.suspend(() => UpdateEncryptionConfigSchema),
+    ),
+    firewallRules: Schema.optional(
+      Schema.Array(
+        Schema.suspend(() => UpdateFirewallRuleWithAccountParametersSchema),
+      ),
+    ),
+    virtualNetworkRules: Schema.optional(
+      Schema.Array(
+        Schema.suspend(
+          () => UpdateVirtualNetworkRuleWithAccountParametersSchema,
+        ),
+      ),
+    ),
+    firewallState: Schema.optional(Schema.Literals(["Enabled", "Disabled"])),
+    firewallAllowAzureIps: Schema.optional(
+      Schema.Literals(["Enabled", "Disabled"]),
+    ),
+    trustedIdProviders: Schema.optional(
+      Schema.Array(
+        Schema.suspend(
+          () => UpdateTrustedIdProviderWithAccountParametersSchema,
+        ),
+      ),
+    ),
+    trustedIdProviderState: Schema.optional(
+      Schema.Literals(["Enabled", "Disabled"]),
+    ),
+    newTier: Schema.optional(
+      Schema.Literals([
+        "Consumption",
+        "Commitment_1TB",
+        "Commitment_10TB",
+        "Commitment_100TB",
+        "Commitment_500TB",
+        "Commitment_1PB",
+        "Commitment_5PB",
+      ]),
+    ),
+  });
+const UpdateEncryptionConfigSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  keyVaultMetaInfo: Schema.optional(
+    Schema.suspend(() => UpdateKeyVaultMetaInfoSchema),
+  ),
+});
+const UpdateKeyVaultMetaInfoSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  encryptionKeyVersion: Schema.optional(Schema.String),
+});
+const UpdateFirewallRuleWithAccountParametersSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String,
+    properties: Schema.optional(
+      Schema.suspend(() => UpdateFirewallRulePropertiesSchema),
+    ),
+  });
+const UpdateFirewallRulePropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    startIpAddress: Schema.optional(Schema.String),
+    endIpAddress: Schema.optional(Schema.String),
+  });
+const UpdateVirtualNetworkRuleWithAccountParametersSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String,
+    properties: Schema.optional(
+      Schema.suspend(() => UpdateVirtualNetworkRulePropertiesSchema),
+    ),
+  });
+const UpdateVirtualNetworkRulePropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subnetId: Schema.optional(Schema.String),
+  });
+const UpdateTrustedIdProviderWithAccountParametersSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String,
+    properties: Schema.optional(
+      Schema.suspend(() => UpdateTrustedIdProviderPropertiesSchema),
+    ),
+  });
+const UpdateTrustedIdProviderPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    idProvider: Schema.optional(Schema.String),
+  });
+const FirewallRuleSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
+const FirewallRulePropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  startIpAddress: Schema.optional(Schema.String),
+  endIpAddress: Schema.optional(Schema.String),
+});
+const VirtualNetworkRuleSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
+const VirtualNetworkRulePropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subnetId: Schema.optional(Schema.String),
+  });
+const TrustedIdProviderSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
+const TrustedIdProviderPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    idProvider: Schema.optional(Schema.String),
+  });
+const OperationSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  display: Schema.optional(Schema.suspend(() => OperationDisplaySchema)),
+  origin: Schema.optional(Schema.Literals(["user", "system", "user,system"])),
+});
+const OperationDisplaySchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  provider: Schema.optional(Schema.String),
+  resource: Schema.optional(Schema.String),
+  operation: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+});
+const UsageSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  unit: Schema.optional(
+    Schema.Literals([
+      "Count",
+      "Bytes",
+      "Seconds",
+      "Percent",
+      "CountsPerSecond",
+      "BytesPerSecond",
+    ]),
+  ),
+  id: Schema.optional(Schema.String),
+  currentValue: Schema.optional(Schema.Number),
+  limit: Schema.optional(Schema.Number),
+  name: Schema.optional(Schema.suspend(() => UsageNameSchema)),
+});
+const UsageNameSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  value: Schema.optional(Schema.String),
+  localizedValue: Schema.optional(Schema.String),
+});
+
 // Input Schema
 export const AccountsCheckNameAvailabilityInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -49,81 +321,9 @@ export const AccountsCheckNameAvailability =
 export const AccountsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   location: Schema.String,
   tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-  identity: Schema.optional(
-    Schema.Struct({
-      type: Schema.Literals(["SystemAssigned"]),
-      principalId: Schema.optional(Schema.String),
-      tenantId: Schema.optional(Schema.String),
-    }),
-  ),
+  identity: Schema.optional(Schema.suspend(() => EncryptionIdentitySchema)),
   properties: Schema.optional(
-    Schema.Struct({
-      defaultGroup: Schema.optional(Schema.String),
-      encryptionConfig: Schema.optional(
-        Schema.Struct({
-          type: Schema.Literals(["UserManaged", "ServiceManaged"]),
-          keyVaultMetaInfo: Schema.optional(
-            Schema.Struct({
-              keyVaultResourceId: Schema.String,
-              encryptionKeyName: Schema.String,
-              encryptionKeyVersion: Schema.String,
-            }),
-          ),
-        }),
-      ),
-      encryptionState: Schema.optional(
-        Schema.Literals(["Enabled", "Disabled"]),
-      ),
-      firewallRules: Schema.optional(
-        Schema.Array(
-          Schema.Struct({
-            name: Schema.String,
-            properties: Schema.Struct({
-              startIpAddress: Schema.String,
-              endIpAddress: Schema.String,
-            }),
-          }),
-        ),
-      ),
-      virtualNetworkRules: Schema.optional(
-        Schema.Array(
-          Schema.Struct({
-            name: Schema.String,
-            properties: Schema.Struct({
-              subnetId: Schema.String,
-            }),
-          }),
-        ),
-      ),
-      firewallState: Schema.optional(Schema.Literals(["Enabled", "Disabled"])),
-      firewallAllowAzureIps: Schema.optional(
-        Schema.Literals(["Enabled", "Disabled"]),
-      ),
-      trustedIdProviders: Schema.optional(
-        Schema.Array(
-          Schema.Struct({
-            name: Schema.String,
-            properties: Schema.Struct({
-              idProvider: Schema.String,
-            }),
-          }),
-        ),
-      ),
-      trustedIdProviderState: Schema.optional(
-        Schema.Literals(["Enabled", "Disabled"]),
-      ),
-      newTier: Schema.optional(
-        Schema.Literals([
-          "Consumption",
-          "Commitment_1TB",
-          "Commitment_10TB",
-          "Commitment_100TB",
-          "Commitment_500TB",
-          "Commitment_1PB",
-          "Commitment_5PB",
-        ]),
-      ),
-    }),
+    Schema.suspend(() => CreateDataLakeStoreAccountPropertiesSchema),
   ),
 }).pipe(
   T.Http({
@@ -137,6 +337,10 @@ export type AccountsCreateInput = typeof AccountsCreateInput.Type;
 
 // Output Schema
 export const AccountsCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  identity: Schema.optional(Schema.suspend(() => EncryptionIdentitySchema)),
+  properties: Schema.optional(
+    Schema.suspend(() => DataLakeStoreAccountPropertiesSchema),
+  ),
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -220,6 +424,10 @@ export type AccountsGetInput = typeof AccountsGetInput.Type;
 
 // Output Schema
 export const AccountsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  identity: Schema.optional(Schema.suspend(() => EncryptionIdentitySchema)),
+  properties: Schema.optional(
+    Schema.suspend(() => DataLakeStoreAccountPropertiesSchema),
+  ),
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -256,15 +464,7 @@ export type AccountsListInput = typeof AccountsListInput.Type;
 // Output Schema
 export const AccountsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.optional(
-    Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        location: Schema.optional(Schema.String),
-        tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      }),
-    ),
+    Schema.Array(Schema.suspend(() => DataLakeStoreAccountBasicSchema)),
   ),
   nextLink: Schema.optional(Schema.String),
 });
@@ -308,15 +508,7 @@ export type AccountsListByResourceGroupInput =
 export const AccountsListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          location: Schema.optional(Schema.String),
-          tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => DataLakeStoreAccountBasicSchema)),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -344,73 +536,7 @@ export const AccountsListByResourceGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const AccountsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   properties: Schema.optional(
-    Schema.Struct({
-      defaultGroup: Schema.optional(Schema.String),
-      encryptionConfig: Schema.optional(
-        Schema.Struct({
-          keyVaultMetaInfo: Schema.optional(
-            Schema.Struct({
-              encryptionKeyVersion: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
-      firewallRules: Schema.optional(
-        Schema.Array(
-          Schema.Struct({
-            name: Schema.String,
-            properties: Schema.optional(
-              Schema.Struct({
-                startIpAddress: Schema.optional(Schema.String),
-                endIpAddress: Schema.optional(Schema.String),
-              }),
-            ),
-          }),
-        ),
-      ),
-      virtualNetworkRules: Schema.optional(
-        Schema.Array(
-          Schema.Struct({
-            name: Schema.String,
-            properties: Schema.optional(
-              Schema.Struct({
-                subnetId: Schema.optional(Schema.String),
-              }),
-            ),
-          }),
-        ),
-      ),
-      firewallState: Schema.optional(Schema.Literals(["Enabled", "Disabled"])),
-      firewallAllowAzureIps: Schema.optional(
-        Schema.Literals(["Enabled", "Disabled"]),
-      ),
-      trustedIdProviders: Schema.optional(
-        Schema.Array(
-          Schema.Struct({
-            name: Schema.String,
-            properties: Schema.optional(
-              Schema.Struct({
-                idProvider: Schema.optional(Schema.String),
-              }),
-            ),
-          }),
-        ),
-      ),
-      trustedIdProviderState: Schema.optional(
-        Schema.Literals(["Enabled", "Disabled"]),
-      ),
-      newTier: Schema.optional(
-        Schema.Literals([
-          "Consumption",
-          "Commitment_1TB",
-          "Commitment_10TB",
-          "Commitment_100TB",
-          "Commitment_500TB",
-          "Commitment_1PB",
-          "Commitment_5PB",
-        ]),
-      ),
-    }),
+    Schema.suspend(() => UpdateDataLakeStoreAccountPropertiesSchema),
   ),
 }).pipe(
   T.Http({
@@ -424,6 +550,10 @@ export type AccountsUpdateInput = typeof AccountsUpdateInput.Type;
 
 // Output Schema
 export const AccountsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  identity: Schema.optional(Schema.suspend(() => EncryptionIdentitySchema)),
+  properties: Schema.optional(
+    Schema.suspend(() => DataLakeStoreAccountPropertiesSchema),
+  ),
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -444,10 +574,9 @@ export const AccountsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const FirewallRulesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     firewallRuleName: Schema.String.pipe(T.PathParam()),
-    properties: Schema.Struct({
-      startIpAddress: Schema.String,
-      endIpAddress: Schema.String,
-    }),
+    properties: Schema.suspend(
+      () => CreateOrUpdateFirewallRulePropertiesSchema,
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -461,6 +590,9 @@ export type FirewallRulesCreateOrUpdateInput =
 // Output Schema
 export const FirewallRulesCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => FirewallRulePropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -523,6 +655,9 @@ export type FirewallRulesGetInput = typeof FirewallRulesGetInput.Type;
 // Output Schema
 export const FirewallRulesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
+    properties: Schema.optional(
+      Schema.suspend(() => FirewallRulePropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -556,13 +691,7 @@ export type FirewallRulesListByAccountInput =
 export const FirewallRulesListByAccountOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => FirewallRuleSchema)),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -584,10 +713,7 @@ export const FirewallRulesUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     firewallRuleName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        startIpAddress: Schema.optional(Schema.String),
-        endIpAddress: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(() => UpdateFirewallRulePropertiesSchema),
     ),
   }).pipe(
     T.Http({
@@ -601,6 +727,9 @@ export type FirewallRulesUpdateInput = typeof FirewallRulesUpdateInput.Type;
 // Output Schema
 export const FirewallRulesUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => FirewallRulePropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -680,31 +809,7 @@ export type LocationsGetUsageInput = typeof LocationsGetUsageInput.Type;
 // Output Schema
 export const LocationsGetUsageOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          unit: Schema.optional(
-            Schema.Literals([
-              "Count",
-              "Bytes",
-              "Seconds",
-              "Percent",
-              "CountsPerSecond",
-              "BytesPerSecond",
-            ]),
-          ),
-          id: Schema.optional(Schema.String),
-          currentValue: Schema.optional(Schema.Number),
-          limit: Schema.optional(Schema.Number),
-          name: Schema.optional(
-            Schema.Struct({
-              value: Schema.optional(Schema.String),
-              localizedValue: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
-    ),
+    value: Schema.optional(Schema.Array(Schema.suspend(() => UsageSchema))),
   });
 export type LocationsGetUsageOutput = typeof LocationsGetUsageOutput.Type;
 
@@ -732,24 +837,7 @@ export type OperationsListInput = typeof OperationsListInput.Type;
 
 // Output Schema
 export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  value: Schema.optional(
-    Schema.Array(
-      Schema.Struct({
-        name: Schema.optional(Schema.String),
-        display: Schema.optional(
-          Schema.Struct({
-            provider: Schema.optional(Schema.String),
-            resource: Schema.optional(Schema.String),
-            operation: Schema.optional(Schema.String),
-            description: Schema.optional(Schema.String),
-          }),
-        ),
-        origin: Schema.optional(
-          Schema.Literals(["user", "system", "user,system"]),
-        ),
-      }),
-    ),
-  ),
+  value: Schema.optional(Schema.Array(Schema.suspend(() => OperationSchema))),
   nextLink: Schema.optional(Schema.String),
 });
 export type OperationsListOutput = typeof OperationsListOutput.Type;
@@ -766,9 +854,9 @@ export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const TrustedIdProvidersCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     trustedIdProviderName: Schema.String.pipe(T.PathParam()),
-    properties: Schema.Struct({
-      idProvider: Schema.String,
-    }),
+    properties: Schema.suspend(
+      () => CreateOrUpdateTrustedIdProviderPropertiesSchema,
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -782,6 +870,9 @@ export type TrustedIdProvidersCreateOrUpdateInput =
 // Output Schema
 export const TrustedIdProvidersCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => TrustedIdProviderPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -848,6 +939,9 @@ export type TrustedIdProvidersGetInput = typeof TrustedIdProvidersGetInput.Type;
 // Output Schema
 export const TrustedIdProvidersGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => TrustedIdProviderPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -883,13 +977,7 @@ export type TrustedIdProvidersListByAccountInput =
 export const TrustedIdProvidersListByAccountOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => TrustedIdProviderSchema)),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -910,9 +998,7 @@ export const TrustedIdProvidersUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     trustedIdProviderName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        idProvider: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(() => UpdateTrustedIdProviderPropertiesSchema),
     ),
   }).pipe(
     T.Http({
@@ -927,6 +1013,9 @@ export type TrustedIdProvidersUpdateInput =
 // Output Schema
 export const TrustedIdProvidersUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => TrustedIdProviderPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -950,9 +1039,9 @@ export const TrustedIdProvidersUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const VirtualNetworkRulesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     virtualNetworkRuleName: Schema.String.pipe(T.PathParam()),
-    properties: Schema.Struct({
-      subnetId: Schema.String,
-    }),
+    properties: Schema.suspend(
+      () => CreateOrUpdateVirtualNetworkRulePropertiesSchema,
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -966,6 +1055,9 @@ export type VirtualNetworkRulesCreateOrUpdateInput =
 // Output Schema
 export const VirtualNetworkRulesCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => VirtualNetworkRulePropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1033,6 +1125,9 @@ export type VirtualNetworkRulesGetInput =
 // Output Schema
 export const VirtualNetworkRulesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => VirtualNetworkRulePropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1068,13 +1163,7 @@ export type VirtualNetworkRulesListByAccountInput =
 export const VirtualNetworkRulesListByAccountOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => VirtualNetworkRuleSchema)),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -1095,9 +1184,7 @@ export const VirtualNetworkRulesUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     virtualNetworkRuleName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        subnetId: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(() => UpdateVirtualNetworkRulePropertiesSchema),
     ),
   }).pipe(
     T.Http({
@@ -1112,6 +1199,9 @@ export type VirtualNetworkRulesUpdateInput =
 // Output Schema
 export const VirtualNetworkRulesUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => VirtualNetworkRulePropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),

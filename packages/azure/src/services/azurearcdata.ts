@@ -7,59 +7,1558 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
-import { SensitiveString } from "../sensitive.ts";
+import { SensitiveOutputString } from "../sensitive.ts";
+
+// Shared schemas
+const SqlServerEsuLicenseSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+});
+const systemDataSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  createdBy: Schema.optional(Schema.String),
+  createdByType: Schema.optional(
+    Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+  ),
+  createdAt: Schema.optional(Schema.String),
+  lastModifiedBy: Schema.optional(Schema.String),
+  lastModifiedByType: Schema.optional(
+    Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+  ),
+  lastModifiedAt: Schema.optional(Schema.String),
+});
+const SqlServerEsuLicensePropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    billingPlan: Schema.Literals(["PAYG"]),
+    version: Schema.Literals(["SQL Server 2012", "SQL Server 2014"]),
+    uniqueId: Schema.optional(Schema.String),
+    physicalCores: Schema.Number,
+    activationState: Schema.Literals(["Inactive", "Active", "Terminated"]),
+    scopeType: Schema.Literals(["Tenant", "Subscription", "ResourceGroup"]),
+    activatedAt: Schema.optional(Schema.String),
+    terminatedAt: Schema.optional(Schema.String),
+    tenantId: Schema.optional(Schema.String),
+  });
+const SqlServerEsuLicenseUpdatePropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    billingPlan: Schema.optional(Schema.Literals(["PAYG"])),
+    version: Schema.optional(
+      Schema.Literals(["SQL Server 2012", "SQL Server 2014"]),
+    ),
+    uniqueId: Schema.optional(Schema.String),
+    physicalCores: Schema.optional(Schema.Number),
+    activationState: Schema.optional(
+      Schema.Literals(["Inactive", "Active", "Terminated"]),
+    ),
+    scopeType: Schema.optional(
+      Schema.Literals(["Tenant", "Subscription", "ResourceGroup"]),
+    ),
+    activatedAt: Schema.optional(Schema.String),
+    terminatedAt: Schema.optional(Schema.String),
+    tenantId: Schema.optional(Schema.String),
+  });
+const SqlServerAvailabilityGroupResourcePropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    availabilityGroupId: Schema.optional(Schema.String),
+    serverName: Schema.optional(Schema.String),
+    instanceName: Schema.optional(Schema.String),
+    vmId: Schema.optional(Schema.String),
+    collectionTimestamp: Schema.optional(Schema.String),
+    info: Schema.optional(Schema.suspend(() => AvailabilityGroupInfoSchema)),
+    replicas: Schema.optional(
+      Schema.Struct({
+        value: Schema.optional(
+          Schema.Array(
+            Schema.suspend(
+              () => SqlAvailabilityGroupReplicaResourcePropertiesSchema,
+            ),
+          ),
+        ),
+        nextLink: Schema.optional(Schema.String),
+      }),
+    ),
+    databases: Schema.optional(
+      Schema.Struct({
+        value: Schema.optional(
+          Schema.Array(
+            Schema.suspend(
+              () => SqlAvailabilityGroupDatabaseReplicaResourcePropertiesSchema,
+            ),
+          ),
+        ),
+        nextLink: Schema.optional(Schema.String),
+      }),
+    ),
+    provisioningState: Schema.optional(Schema.String),
+  });
+const AvailabilityGroupInfoSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  failureConditionLevel: Schema.optional(Schema.Number),
+  healthCheckTimeout: Schema.optional(Schema.Number),
+  automatedBackupPreferenceDescription: Schema.optional(Schema.String),
+  version: Schema.optional(Schema.Number),
+  basicFeatures: Schema.optional(Schema.Boolean),
+  dtcSupport: Schema.optional(Schema.Boolean),
+  dbFailover: Schema.optional(Schema.Boolean),
+  isDistributed: Schema.optional(Schema.Boolean),
+  clusterTypeDescription: Schema.optional(Schema.String),
+  requiredSynchronizedSecondariesToCommit: Schema.optional(Schema.Number),
+  isContained: Schema.optional(Schema.Boolean),
+  primaryReplica: Schema.optional(Schema.String),
+  primaryRecoveryHealthDescription: Schema.optional(Schema.String),
+  secondaryRecoveryHealthDescription: Schema.optional(Schema.String),
+  synchronizationHealthDescription: Schema.optional(Schema.String),
+  replicationPartnerType: Schema.optional(
+    Schema.Literals([
+      "SQLServer",
+      "AzureSQLVM",
+      "AzureSQLManagedInstance",
+      "Unknown",
+    ]),
+  ),
+  listener: Schema.optional(
+    Schema.suspend(() => SqlAvailabilityGroupStaticIPListenerPropertiesSchema),
+  ),
+});
+const SqlAvailabilityGroupStaticIPListenerPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    dnsName: Schema.optional(Schema.String),
+    ipV4AddressesAndMasks: Schema.optional(
+      Schema.suspend(
+        () => SqlAvailabilityGroupIpV4AddressesAndMasksPropertiesSchema,
+      ),
+    ),
+    ipV6Addresses: Schema.optional(Schema.Array(Schema.String)),
+    port: Schema.optional(Schema.Number),
+  });
+const SqlAvailabilityGroupIpV4AddressesAndMasksPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
+    Schema.Struct({
+      ipAddress: Schema.optional(Schema.String),
+      mask: Schema.optional(Schema.String),
+    }),
+  );
+const SqlAvailabilityGroupReplicaResourcePropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    replicaId: Schema.optional(Schema.String),
+    replicaName: Schema.optional(Schema.String),
+    replicaResourceId: Schema.optional(Schema.String),
+    configure: Schema.optional(
+      Schema.suspend(() => AvailabilityGroupConfigureSchema),
+    ),
+    state: Schema.optional(Schema.suspend(() => AvailabilityGroupStateSchema)),
+  });
+const AvailabilityGroupConfigureSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    endpointName: Schema.optional(Schema.String),
+    endpointUrl: Schema.optional(Schema.String),
+    endpointAuthenticationMode: Schema.optional(
+      Schema.Literals([
+        "Windows_NTLM",
+        "Windows_Kerberos",
+        "Windows_Negotiate",
+        "Certificate",
+        "Windows_NTLM_Certificate",
+        "Windows_Kerberos_Certificate",
+        "Windows_Negotiate_Certificate",
+        "Certificate_Windows_NTLM",
+        "Certificate_Windows_Kerberos",
+        "Certificate_Windows_Negotiate",
+      ]),
+    ),
+    certificateName: Schema.optional(Schema.String),
+    endpointConnectLogin: Schema.optional(Schema.String),
+    availabilityMode: Schema.optional(
+      Schema.Literals(["SYNCHRONOUS_COMMIT", "ASYNCHRONOUS_COMMIT"]),
+    ),
+    availabilityModeDescription: Schema.optional(Schema.String),
+    failoverMode: Schema.optional(
+      Schema.Literals(["AUTOMATIC", "MANUAL", "EXTERNAL", "NONE"]),
+    ),
+    failoverModeDescription: Schema.optional(Schema.String),
+    sessionTimeout: Schema.optional(Schema.Number),
+    primaryAllowConnections: Schema.optional(
+      Schema.Literals(["ALL", "READ_WRITE"]),
+    ),
+    primaryRoleAllowConnectionsDescription: Schema.optional(Schema.String),
+    secondaryAllowConnections: Schema.optional(
+      Schema.Literals(["NO", "ALL", "READ_ONLY"]),
+    ),
+    secondaryRoleAllowConnectionsDescription: Schema.optional(Schema.String),
+    replicaCreateDate: Schema.optional(Schema.String),
+    replicaModifyDate: Schema.optional(Schema.String),
+    backupPriority: Schema.optional(Schema.Number),
+    readOnlyRoutingUrl: Schema.optional(Schema.String),
+    readWriteRoutingUrl: Schema.optional(Schema.String),
+    seedingMode: Schema.optional(Schema.Literals(["AUTOMATIC", "MANUAL"])),
+    seedingModeDescription: Schema.optional(Schema.String),
+  });
+const AvailabilityGroupStateSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  availabilityGroupReplicaRole: Schema.optional(Schema.String),
+  operationalStateDescription: Schema.optional(Schema.String),
+  recoveryHealthDescription: Schema.optional(Schema.String),
+  synchronizationHealthDescription: Schema.optional(Schema.String),
+  connectedStateDescription: Schema.optional(Schema.String),
+  lastConnectErrorDescription: Schema.optional(Schema.String),
+  lastConnectErrorTimestamp: Schema.optional(Schema.String),
+});
+const SqlAvailabilityGroupDatabaseReplicaResourcePropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    databaseName: Schema.optional(Schema.String),
+    replicaName: Schema.optional(Schema.String),
+    isLocal: Schema.optional(Schema.Boolean),
+    isPrimaryReplica: Schema.optional(Schema.Boolean),
+    synchronizationStateDescription: Schema.optional(Schema.String),
+    isCommitParticipant: Schema.optional(Schema.Boolean),
+    synchronizationHealthDescription: Schema.optional(Schema.String),
+    databaseStateDescription: Schema.optional(Schema.String),
+    isSuspended: Schema.optional(Schema.Boolean),
+    suspendReasonDescription: Schema.optional(Schema.String),
+  });
+const SqlServerAvailabilityGroupResourceSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+  });
+const AvailabilityGroupCreateUpdateReplicaConfigurationSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    serverInstance: Schema.optional(Schema.String),
+    endpointName: Schema.optional(Schema.String),
+    endpointUrl: Schema.optional(Schema.String),
+    endpointAuthenticationMode: Schema.optional(
+      Schema.Literals([
+        "Windows_NTLM",
+        "Windows_Kerberos",
+        "Windows_Negotiate",
+        "Certificate",
+        "Windows_NTLM_Certificate",
+        "Windows_Kerberos_Certificate",
+        "Windows_Negotiate_Certificate",
+        "Certificate_Windows_NTLM",
+        "Certificate_Windows_Kerberos",
+        "Certificate_Windows_Negotiate",
+      ]),
+    ),
+    certificateName: Schema.optional(Schema.String),
+    endpointConnectLogin: Schema.optional(Schema.String),
+    availabilityMode: Schema.optional(
+      Schema.Literals(["SYNCHRONOUS_COMMIT", "ASYNCHRONOUS_COMMIT"]),
+    ),
+    failoverMode: Schema.optional(
+      Schema.Literals(["AUTOMATIC", "MANUAL", "EXTERNAL", "NONE"]),
+    ),
+    seedingMode: Schema.optional(Schema.Literals(["AUTOMATIC", "MANUAL"])),
+    backupPriority: Schema.optional(Schema.Number),
+    secondaryRoleAllowConnections: Schema.optional(
+      Schema.Literals(["NO", "ALL", "READ_ONLY"]),
+    ),
+    secondaryRoleReadOnlyRoutingUrl: Schema.optional(Schema.String),
+    primaryRoleAllowConnections: Schema.optional(
+      Schema.Literals(["ALL", "READ_WRITE"]),
+    ),
+    primaryRoleReadOnlyRoutingList: Schema.optional(
+      Schema.Array(Schema.String),
+    ),
+    sessionTimeout: Schema.optional(Schema.Number),
+  });
+const DistributedAvailabilityGroupCreateUpdateAvailabilityGroupConfigurationSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    availabilityGroup: Schema.optional(Schema.String),
+    listenerUrl: Schema.optional(Schema.String),
+    availabilityMode: Schema.optional(
+      Schema.Literals(["SYNCHRONOUS_COMMIT", "ASYNCHRONOUS_COMMIT"]),
+    ),
+    failoverMode: Schema.optional(
+      Schema.Literals(["AUTOMATIC", "MANUAL", "EXTERNAL", "NONE"]),
+    ),
+    seedingMode: Schema.optional(Schema.Literals(["AUTOMATIC", "MANUAL"])),
+    certificateConfiguration: Schema.optional(
+      Schema.suspend(
+        () =>
+          DistributedAvailabilityGroupCreateUpdateAvailabilityGroupCertificateConfigurationSchema,
+      ),
+    ),
+  });
+const DistributedAvailabilityGroupCreateUpdateAvailabilityGroupCertificateConfigurationSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    certificateName: Schema.optional(Schema.String),
+  });
+const AvailabilityGroupCreateUpdateConfigurationSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    availabilityGroupName: Schema.optional(Schema.String),
+    replicas: Schema.optional(
+      Schema.Array(
+        Schema.suspend(
+          () => AvailabilityGroupCreateUpdateReplicaConfigurationSchema,
+        ),
+      ),
+    ),
+    databases: Schema.optional(Schema.Array(Schema.String)),
+    automatedBackupPreference: Schema.optional(
+      Schema.Literals(["PRIMARY", "SECONDARY_ONLY", "SECONDARY", "NONE"]),
+    ),
+    failureConditionLevel: Schema.optional(Schema.Literals([1, 2, 3, 4, 5])),
+    healthCheckTimeout: Schema.optional(Schema.Number),
+    dbFailover: Schema.optional(Schema.Literals(["ON", "OFF"])),
+    dtcSupport: Schema.optional(Schema.Literals(["PER_DB", "NONE"])),
+    requiredSynchronizedSecondariesToCommit: Schema.optional(Schema.Number),
+    clusterType: Schema.optional(Schema.Literals(["WSFC", "NONE"])),
+    listener: Schema.optional(
+      Schema.suspend(
+        () => SqlAvailabilityGroupStaticIPListenerPropertiesSchema,
+      ),
+    ),
+  });
+const DistributedAvailabilityGroupCreateUpdateConfigurationSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    availabilityGroupName: Schema.optional(Schema.String),
+    primaryAvailabilityGroup: Schema.optional(
+      Schema.suspend(
+        () =>
+          DistributedAvailabilityGroupCreateUpdateAvailabilityGroupConfigurationSchema,
+      ),
+    ),
+    secondaryAvailabilityGroup: Schema.optional(
+      Schema.suspend(
+        () =>
+          DistributedAvailabilityGroupCreateUpdateAvailabilityGroupConfigurationSchema,
+      ),
+    ),
+  });
+const MiLinkCreateUpdateConfigurationSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    instanceAvailabilityGroupName: Schema.optional(Schema.String),
+  });
+const OperationSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.String,
+  display: Schema.suspend(() => OperationDisplaySchema),
+  origin: Schema.optional(Schema.Literals(["user", "system"])),
+  isDataAction: Schema.Boolean,
+  properties: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+});
+const OperationDisplaySchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  provider: Schema.String,
+  resource: Schema.String,
+  operation: Schema.String,
+  description: Schema.String,
+});
+const SqlManagedInstanceSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+});
+const SqlManagedInstancePropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    dataControllerId: Schema.optional(Schema.String),
+    admin: Schema.optional(Schema.String),
+    startTime: Schema.optional(Schema.String),
+    endTime: Schema.optional(Schema.String),
+    k8sRaw: Schema.optional(
+      Schema.suspend(() => SqlManagedInstanceK8sRawSchema),
+    ),
+    basicLoginInformation: Schema.optional(
+      Schema.Struct({
+        username: Schema.optional(Schema.String),
+        password: Schema.optional(SensitiveOutputString),
+      }),
+    ),
+    lastUploadedDate: Schema.optional(Schema.String),
+    provisioningState: Schema.optional(Schema.String),
+    activeDirectoryInformation: Schema.optional(
+      Schema.suspend(() => ActiveDirectoryInformationSchema),
+    ),
+    licenseType: Schema.optional(
+      Schema.Literals(["BasePrice", "LicenseIncluded", "DisasterRecovery"]),
+    ),
+    clusterId: Schema.optional(Schema.String),
+    extensionId: Schema.optional(Schema.String),
+  });
+const SqlManagedInstanceK8sRawSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    spec: Schema.optional(
+      Schema.suspend(() => SqlManagedInstanceK8sSpecSchema),
+    ),
+  });
+const SqlManagedInstanceK8sSpecSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    scheduling: Schema.optional(Schema.suspend(() => K8sSchedulingSchema)),
+    replicas: Schema.optional(Schema.Number),
+    security: Schema.optional(Schema.suspend(() => K8sSecuritySchema)),
+    settings: Schema.optional(Schema.suspend(() => K8sSettingsSchema)),
+  });
+const K8sSchedulingSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  default: Schema.optional(Schema.suspend(() => K8sSchedulingOptionsSchema)),
+});
+const K8sSchedulingOptionsSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  resources: Schema.optional(
+    Schema.suspend(() => K8sResourceRequirementsSchema),
+  ),
+});
+const K8sResourceRequirementsSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    requests: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    limits: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  },
+);
+const K8sSecuritySchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  adminLoginSecret: Schema.optional(Schema.String),
+  serviceCertificateSecret: Schema.optional(Schema.String),
+  activeDirectory: Schema.optional(
+    Schema.suspend(() => K8sActiveDirectorySchema),
+  ),
+  transparentDataEncryption: Schema.optional(
+    Schema.suspend(() => k8stransparentDataEncryptionSchema),
+  ),
+});
+const K8sActiveDirectorySchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  connector: Schema.optional(
+    Schema.Struct({
+      name: Schema.optional(Schema.String),
+      namespace: Schema.optional(Schema.String),
+    }),
+  ),
+  accountName: Schema.optional(Schema.String),
+  keytabSecret: Schema.optional(Schema.String),
+  encryptionTypes: Schema.optional(Schema.Array(Schema.String)),
+});
+const k8stransparentDataEncryptionSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    mode: Schema.optional(Schema.String),
+    protectorSecret: Schema.optional(Schema.String),
+  });
+const K8sSettingsSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  network: Schema.optional(Schema.suspend(() => K8sNetworkSettingsSchema)),
+});
+const K8sNetworkSettingsSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  forceencryption: Schema.optional(Schema.Number),
+  tlsciphers: Schema.optional(Schema.String),
+  tlsprotocols: Schema.optional(Schema.String),
+});
+const ActiveDirectoryInformationSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    keytabInformation: Schema.optional(
+      Schema.suspend(() => KeytabInformationSchema),
+    ),
+  });
+const KeytabInformationSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  keytab: Schema.optional(Schema.String),
+});
+const ExtendedLocationTypeSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "CustomLocation",
+]);
+const SqlManagedInstanceSkuSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.Literals(["vCore"]),
+  tier: Schema.optional(
+    Schema.Literals(["GeneralPurpose", "BusinessCritical"]),
+  ),
+  dev: Schema.optional(Schema.Boolean),
+  size: Schema.optional(Schema.String),
+  family: Schema.optional(Schema.String),
+  capacity: Schema.optional(Schema.Number),
+});
+const FailoverGroupResourceSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+});
+const FailoverGroupPropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    provisioningState: Schema.optional(
+      Schema.Literals(["Succeeded", "Failed", "Canceled", "Accepted"]),
+    ),
+    partnerManagedInstanceId: Schema.String,
+    spec: Schema.suspend(() => FailoverGroupSpecSchema),
+    status: Schema.optional(Schema.Unknown),
+  },
+);
+const FailoverGroupSpecSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  sharedName: Schema.optional(Schema.String),
+  sourceMI: Schema.optional(Schema.String),
+  partnerMI: Schema.optional(Schema.String),
+  partnerMirroringURL: Schema.optional(Schema.String),
+  partnerMirroringCert: Schema.optional(Schema.String),
+  partnerSyncMode: Schema.optional(Schema.Literals(["async", "sync"])),
+  role: Schema.Literals([
+    "primary",
+    "secondary",
+    "force-primary-allow-data-loss",
+    "force-secondary",
+  ]),
+});
+const SqlServerInstanceSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+});
+const SqlServerInstancePropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    version: Schema.optional(
+      Schema.Literals([
+        "Unknown",
+        "SQL Server 2012",
+        "SQL Server 2014",
+        "SQL Server 2016",
+        "SQL Server 2017",
+        "SQL Server 2019",
+        "SQL Server 2022",
+        "SQL Server 2025",
+      ]),
+    ),
+    edition: Schema.optional(
+      Schema.Literals([
+        "Evaluation",
+        "Enterprise",
+        "Standard",
+        "Web",
+        "Developer",
+        "Express",
+        "Business Intelligence",
+        "Standard Developer",
+      ]),
+    ),
+    containerResourceId: Schema.optional(Schema.String),
+    vmId: Schema.optional(Schema.String),
+    createTime: Schema.optional(Schema.String),
+    vCore: Schema.optional(Schema.String),
+    cores: Schema.optional(Schema.String),
+    status: Schema.optional(
+      Schema.Literals(["Connected", "Disconnected", "Registered", "Unknown"]),
+    ),
+    patchLevel: Schema.optional(Schema.String),
+    collation: Schema.optional(Schema.String),
+    dbMasterKeyExists: Schema.optional(Schema.Boolean),
+    isHadrEnabled: Schema.optional(Schema.Boolean),
+    traceFlags: Schema.optional(Schema.Array(Schema.Number)),
+    currentVersion: Schema.optional(Schema.String),
+    instanceName: Schema.optional(Schema.String),
+    tcpDynamicPorts: Schema.optional(Schema.String),
+    tcpStaticPorts: Schema.optional(Schema.String),
+    productId: Schema.optional(Schema.String),
+    licenseType: Schema.optional(
+      Schema.Literals([
+        "Undefined",
+        "Free",
+        "HADR",
+        "ServerCAL",
+        "LicenseOnly",
+        "PAYG",
+        "Paid",
+        "FabricCapacity",
+      ]),
+    ),
+    azureDefenderStatusLastUpdated: Schema.optional(Schema.String),
+    azureDefenderStatus: Schema.optional(
+      Schema.Literals(["Protected", "Unprotected", "Unknown"]),
+    ),
+    provisioningState: Schema.optional(Schema.String),
+    lastInventoryUploadTime: Schema.optional(Schema.String),
+    lastUsageUploadTime: Schema.optional(Schema.String),
+    hostType: Schema.optional(
+      Schema.Literals([
+        "Azure Virtual Machine",
+        "Azure VMWare Virtual Machine",
+        "Azure Kubernetes Service",
+        "AWS VMWare Virtual Machine",
+        "AWS Kubernetes Service",
+        "GCP VMWare Virtual Machine",
+        "GCP Kubernetes Service",
+        "Container",
+        "Virtual Machine",
+        "Physical Server",
+        "AWS Virtual Machine",
+        "GCP Virtual Machine",
+        "Other",
+      ]),
+    ),
+    alwaysOnRole: Schema.optional(
+      Schema.Literals([
+        "None",
+        "FailoverClusterInstance",
+        "FailoverClusterNode",
+        "AvailabilityGroupReplica",
+      ]),
+    ),
+    databaseMirroringEndpoint: Schema.optional(
+      Schema.suspend(() => DBMEndpointSchema),
+    ),
+    failoverCluster: Schema.optional(
+      Schema.suspend(() => FailoverClusterSchema),
+    ),
+    backupPolicy: Schema.optional(Schema.suspend(() => BackupPolicySchema)),
+    upgradeLockedUntil: Schema.optional(Schema.String),
+    monitoring: Schema.optional(Schema.suspend(() => MonitoringSchema)),
+    migration: Schema.optional(Schema.suspend(() => MigrationSchema)),
+    bestPracticesAssessment: Schema.optional(
+      Schema.suspend(() => BestPracticesAssessmentSchema),
+    ),
+    clientConnection: Schema.optional(
+      Schema.suspend(() => ClientConnectionSchema),
+    ),
+    serviceType: Schema.optional(Schema.suspend(() => ServiceTypeSchema)),
+    maxServerMemoryMB: Schema.optional(Schema.Number),
+    isMicrosoftPkiCertTrustConfigured: Schema.optional(Schema.Boolean),
+    isDigiCertPkiCertTrustConfigured: Schema.optional(Schema.Boolean),
+    authentication: Schema.optional(Schema.suspend(() => AuthenticationSchema)),
+  });
+const DBMEndpointSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  endpointName: Schema.optional(Schema.String),
+  role: Schema.optional(Schema.Literals(["NONE", "PARTNER", "WITNESS", "ALL"])),
+  isEncryptionEnabled: Schema.optional(Schema.Boolean),
+  encryptionAlgorithm: Schema.optional(
+    Schema.Literals([
+      "NONE",
+      "RC4",
+      "AES",
+      "NONE, RC4",
+      "NONE, AES",
+      "RC4, AES",
+      "AES, RC4",
+      "NONE, RC4, AES",
+      "NONE, AES, RC4",
+    ]),
+  ),
+  connectionAuth: Schema.optional(
+    Schema.Literals([
+      "Windows_NTLM",
+      "Windows_Kerberos",
+      "Windows_Negotiate",
+      "Certificate",
+      "Windows_NTLM_Certificate",
+      "Windows_Kerberos_Certificate",
+      "Windows_Negotiate_Certificate",
+      "Certificate_Windows_NTLM",
+      "Certificate_Windows_Kerberos",
+      "Certificate_Windows_Negotiate",
+    ]),
+  ),
+  port: Schema.optional(Schema.Number),
+  isDynamicPort: Schema.optional(Schema.Boolean),
+  ipAddress: Schema.optional(Schema.String),
+  certificateName: Schema.optional(Schema.String),
+  certificateExpiryDate: Schema.optional(Schema.String),
+});
+const FailoverClusterSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  networkName: Schema.optional(Schema.String),
+  sqlInstanceIds: Schema.optional(Schema.Array(Schema.String)),
+  hostNames: Schema.optional(Schema.Array(Schema.String)),
+  hostIPAddresses: Schema.optional(
+    Schema.Array(Schema.suspend(() => hostIPAddressInformationSchema)),
+  ),
+});
+const hostIPAddressInformationSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    ipAddress: Schema.optional(Schema.String),
+    subnetMask: Schema.optional(Schema.String),
+  });
+const BackupPolicySchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  retentionPeriodDays: Schema.optional(Schema.Number),
+  fullBackupDays: Schema.optional(Schema.Number),
+  differentialBackupHours: Schema.optional(Schema.Literals([12, 24])),
+  transactionLogBackupMinutes: Schema.optional(Schema.Number),
+});
+const MonitoringSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  enabled: Schema.optional(Schema.Boolean),
+});
+const MigrationSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  assessment: Schema.optional(Schema.suspend(() => MigrationAssessmentSchema)),
+});
+const MigrationAssessmentSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  enabled: Schema.optional(Schema.Boolean),
+  assessmentUploadTime: Schema.optional(Schema.String),
+  version: Schema.optional(Schema.String),
+  settings: Schema.optional(
+    Schema.suspend(() => MigrationAssessmentSettingsSchema),
+  ),
+  serverAssessments: Schema.optional(
+    Schema.suspend(() => ServerAssessmentsSchema),
+  ),
+  skuRecommendationResults: Schema.optional(
+    Schema.suspend(() => SkuRecommendationResultsSchema),
+  ),
+  impactedObjectsSummary: Schema.optional(
+    Schema.Struct({
+      azureSqlDatabase: Schema.optional(
+        Schema.Array(Schema.suspend(() => ImpactedObjectsInfoSchema)),
+      ),
+      azureSqlManagedInstance: Schema.optional(
+        Schema.Array(Schema.suspend(() => ImpactedObjectsInfoSchema)),
+      ),
+    }),
+  ),
+});
+const MigrationAssessmentSettingsSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    targetLocation: Schema.optional(Schema.String),
+    percentile: Schema.optional(Schema.Number),
+    lookbackPeriodInDays: Schema.optional(Schema.Number),
+    strategy: Schema.optional(Schema.String),
+    currency: Schema.optional(Schema.String),
+    discountPercentage: Schema.optional(Schema.Number),
+    costOptions: Schema.optional(
+      Schema.suspend(() => CostOptionSelectedValuesSchema),
+    ),
+  });
+const CostOptionSelectedValuesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    computeAndStorageCostOption: Schema.optional(Schema.String),
+    sqlLicenseCostOption: Schema.optional(Schema.String),
+    windowsLicenseCostOption: Schema.optional(Schema.String),
+  });
+const ServerAssessmentsSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
+  Schema.Struct({
+    appliesToMigrationTargetPlatform: Schema.optional(Schema.String),
+    featureId: Schema.optional(Schema.String),
+    impactedObjects: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          impactDetail: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          objectType: Schema.optional(Schema.String),
+        }),
+      ),
+    ),
+    issueCategory: Schema.optional(Schema.String),
+    moreInformation: Schema.optional(Schema.String),
+  }),
+);
+const SkuRecommendationResultsSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    azureSqlDatabase: Schema.optional(
+      Schema.suspend(() => SkuRecommendationResultsAzureSqlDatabaseSchema),
+    ),
+    azureSqlManagedInstance: Schema.optional(
+      Schema.suspend(
+        () => SkuRecommendationResultsAzureSqlManagedInstanceSchema,
+      ),
+    ),
+    azureSqlVirtualMachine: Schema.optional(
+      Schema.suspend(
+        () => SkuRecommendationResultsAzureSqlVirtualMachineSchema,
+      ),
+    ),
+  });
+const SkuRecommendationResultsAzureSqlDatabaseSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    recommendationStatus: Schema.optional(
+      Schema.Literals(["NotReady", "Ready", "ReadyWithConditions", "Unknown"]),
+    ),
+    numberOfServerBlockerIssues: Schema.optional(
+      Schema.suspend(
+        () => SkuRecommendationResultsNumberOfServerBlockerIssuesSchema,
+      ),
+    ),
+    monthlyCost: Schema.optional(
+      Schema.Struct({
+        computeCost: Schema.optional(Schema.Number),
+        storageCost: Schema.optional(Schema.Number),
+        iopsCost: Schema.optional(Schema.Number),
+        sqlLicenseCost: Schema.optional(Schema.Number),
+        windowsLicenseCost: Schema.optional(Schema.Number),
+        totalCost: Schema.optional(Schema.Number),
+      }),
+    ),
+    monthlyCostOptions: Schema.optional(
+      Schema.Array(
+        Schema.suspend(
+          () => SkuRecommendationResultsMonthlyCostOptionItemSchema,
+        ),
+      ),
+    ),
+    targetSku: Schema.optional(
+      Schema.Struct({
+        category: Schema.optional(
+          Schema.Struct({
+            computeTier: Schema.optional(Schema.String),
+            hardwareType: Schema.optional(Schema.String),
+            sqlPurchasingModel: Schema.optional(Schema.String),
+            sqlServiceTier: Schema.optional(Schema.String),
+            zoneRedundancyAvailable: Schema.optional(Schema.Boolean),
+          }),
+        ),
+        computeSize: Schema.optional(Schema.Number),
+        storageMaxSizeInMb: Schema.optional(Schema.Number),
+        predictedDataSizeInMb: Schema.optional(Schema.Number),
+        predictedLogSizeInMb: Schema.optional(Schema.Number),
+        maxStorageIops: Schema.optional(Schema.Number),
+        maxThroughputMBps: Schema.optional(Schema.Number),
+      }),
+    ),
+  });
+const SkuRecommendationResultsNumberOfServerBlockerIssuesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Number;
+const SkuRecommendationResultsMonthlyCostOptionItemSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    keyName: Schema.optional(Schema.String),
+    keyValue: Schema.optional(Schema.suspend(() => CostTypeValuesSchema)),
+  });
+const CostTypeValuesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  computeCost: Schema.optional(Schema.Number),
+  storageCost: Schema.optional(Schema.Number),
+  iopsCost: Schema.optional(Schema.Number),
+});
+const SkuRecommendationResultsAzureSqlManagedInstanceSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    recommendationStatus: Schema.optional(
+      Schema.Literals(["NotReady", "Ready", "ReadyWithConditions", "Unknown"]),
+    ),
+    numberOfServerBlockerIssues: Schema.optional(
+      Schema.suspend(
+        () => SkuRecommendationResultsNumberOfServerBlockerIssuesSchema,
+      ),
+    ),
+    monthlyCost: Schema.optional(
+      Schema.Struct({
+        computeCost: Schema.optional(Schema.Number),
+        storageCost: Schema.optional(Schema.Number),
+        iopsCost: Schema.optional(Schema.Number),
+        sqlLicenseCost: Schema.optional(Schema.Number),
+        windowsLicenseCost: Schema.optional(Schema.Number),
+        totalCost: Schema.optional(Schema.Number),
+      }),
+    ),
+    monthlyCostOptions: Schema.optional(
+      Schema.Array(
+        Schema.suspend(
+          () => SkuRecommendationResultsMonthlyCostOptionItemSchema,
+        ),
+      ),
+    ),
+    targetSku: Schema.optional(
+      Schema.Struct({
+        category: Schema.optional(
+          Schema.Struct({
+            computeTier: Schema.optional(Schema.String),
+            hardwareType: Schema.optional(Schema.String),
+            sqlPurchasingModel: Schema.optional(Schema.String),
+            sqlServiceTier: Schema.optional(Schema.String),
+            zoneRedundancyAvailable: Schema.optional(Schema.Boolean),
+          }),
+        ),
+        computeSize: Schema.optional(Schema.Number),
+        storageMaxSizeInMb: Schema.optional(Schema.Number),
+        predictedDataSizeInMb: Schema.optional(Schema.Number),
+        predictedLogSizeInMb: Schema.optional(Schema.Number),
+        maxStorageIops: Schema.optional(Schema.Number),
+        maxThroughputMBps: Schema.optional(Schema.Number),
+      }),
+    ),
+  });
+const SkuRecommendationResultsAzureSqlVirtualMachineSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    recommendationStatus: Schema.optional(
+      Schema.Literals(["NotReady", "Ready", "ReadyWithConditions", "Unknown"]),
+    ),
+    numberOfServerBlockerIssues: Schema.optional(
+      Schema.suspend(
+        () => SkuRecommendationResultsNumberOfServerBlockerIssuesSchema,
+      ),
+    ),
+    monthlyCost: Schema.optional(
+      Schema.Struct({
+        computeCost: Schema.optional(Schema.Number),
+        storageCost: Schema.optional(Schema.Number),
+        iopsCost: Schema.optional(Schema.Number),
+        sqlLicenseCost: Schema.optional(Schema.Number),
+        windowsLicenseCost: Schema.optional(Schema.Number),
+        totalCost: Schema.optional(Schema.Number),
+      }),
+    ),
+    monthlyCostOptions: Schema.optional(
+      Schema.Array(
+        Schema.suspend(
+          () => SkuRecommendationResultsMonthlyCostOptionItemSchema,
+        ),
+      ),
+    ),
+    targetSku: Schema.optional(
+      Schema.Struct({
+        category: Schema.optional(
+          Schema.Struct({
+            availableVmSkus: Schema.optional(Schema.Array(Schema.String)),
+            virtualMachineFamily: Schema.optional(Schema.String),
+          }),
+        ),
+        computeSize: Schema.optional(Schema.Number),
+        predictedDataSizeInMb: Schema.optional(Schema.Number),
+        predictedLogSizeInMb: Schema.optional(Schema.Number),
+        virtualMachineSize: Schema.optional(
+          Schema.Struct({
+            virtualMachineFamily: Schema.optional(Schema.String),
+            sizeName: Schema.optional(Schema.String),
+            computeSize: Schema.optional(Schema.Number),
+            azureSkuName: Schema.optional(Schema.String),
+            vCPUsAvailable: Schema.optional(Schema.Number),
+            maxNetworkInterfaces: Schema.optional(Schema.Number),
+          }),
+        ),
+        dataDiskSizes: Schema.optional(
+          Schema.Array(Schema.suspend(() => DiskSizesSchema)),
+        ),
+        logDiskSizes: Schema.optional(
+          Schema.Array(Schema.suspend(() => DiskSizesSchema)),
+        ),
+        tempDbDiskSizes: Schema.optional(
+          Schema.Array(Schema.suspend(() => DiskSizesSchema)),
+        ),
+      }),
+    ),
+  });
+const DiskSizesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  diskType: Schema.optional(Schema.String),
+  redundancy: Schema.optional(Schema.String),
+  size: Schema.optional(Schema.String),
+  caching: Schema.optional(Schema.String),
+  maxSizeInGib: Schema.optional(Schema.Number),
+  maxThroughputInMbps: Schema.optional(Schema.Number),
+  maxIops: Schema.optional(Schema.Number),
+});
+const ImpactedObjectsInfoSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  featureId: Schema.optional(Schema.String),
+  numberImpacted: Schema.optional(Schema.Number),
+  issueCategory: Schema.optional(Schema.String),
+});
+const BestPracticesAssessmentSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    enabled: Schema.optional(Schema.Boolean),
+    schedule: Schema.optional(Schema.suspend(() => ScheduleSchema)),
+  },
+);
+const ScheduleSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  enabled: Schema.optional(Schema.Boolean),
+  cronTrigger: Schema.optional(Schema.suspend(() => CronTriggerSchema)),
+});
+const CronTriggerSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  startTime: Schema.optional(Schema.String),
+  timeZone: Schema.optional(Schema.String),
+  expression: Schema.optional(Schema.String),
+});
+const ClientConnectionSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  enabled: Schema.optional(Schema.Boolean),
+});
+const ServiceTypeSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Engine",
+  "SSRS",
+  "SSAS",
+  "SSIS",
+  "PBIRS",
+]);
+const AuthenticationSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  mode: Schema.optional(Schema.Literals(["Mixed", "Windows", "Undefined"])),
+  sqlServerEntraIdentity: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        identityType: Schema.optional(
+          Schema.Literals([
+            "SystemAssignedManagedIdentity",
+            "UserAssignedManagedIdentity",
+          ]),
+        ),
+        clientId: Schema.optional(Schema.String),
+      }),
+    ),
+  ),
+});
+const SqlServerInstanceUpdatePropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    version: Schema.optional(
+      Schema.Literals([
+        "Unknown",
+        "SQL Server 2012",
+        "SQL Server 2014",
+        "SQL Server 2016",
+        "SQL Server 2017",
+        "SQL Server 2019",
+        "SQL Server 2022",
+        "SQL Server 2025",
+      ]),
+    ),
+    edition: Schema.optional(
+      Schema.Literals([
+        "Evaluation",
+        "Enterprise",
+        "Standard",
+        "Web",
+        "Developer",
+        "Express",
+        "Business Intelligence",
+        "Standard Developer",
+      ]),
+    ),
+    containerResourceId: Schema.optional(Schema.String),
+    vmId: Schema.optional(Schema.String),
+    createTime: Schema.optional(Schema.String),
+    vCore: Schema.optional(Schema.String),
+    cores: Schema.optional(Schema.String),
+    status: Schema.optional(
+      Schema.Literals(["Connected", "Disconnected", "Registered", "Unknown"]),
+    ),
+    patchLevel: Schema.optional(Schema.String),
+    collation: Schema.optional(Schema.String),
+    dbMasterKeyExists: Schema.optional(Schema.Boolean),
+    isHadrEnabled: Schema.optional(Schema.Boolean),
+    traceFlags: Schema.optional(Schema.Array(Schema.Number)),
+    currentVersion: Schema.optional(Schema.String),
+    instanceName: Schema.optional(Schema.String),
+    tcpDynamicPorts: Schema.optional(Schema.String),
+    tcpStaticPorts: Schema.optional(Schema.String),
+    productId: Schema.optional(Schema.String),
+    licenseType: Schema.optional(
+      Schema.Literals([
+        "Undefined",
+        "Free",
+        "HADR",
+        "ServerCAL",
+        "LicenseOnly",
+        "PAYG",
+        "Paid",
+        "FabricCapacity",
+      ]),
+    ),
+    azureDefenderStatusLastUpdated: Schema.optional(Schema.String),
+    azureDefenderStatus: Schema.optional(
+      Schema.Literals(["Protected", "Unprotected", "Unknown"]),
+    ),
+    provisioningState: Schema.optional(Schema.String),
+    lastInventoryUploadTime: Schema.optional(Schema.String),
+    lastUsageUploadTime: Schema.optional(Schema.String),
+    hostType: Schema.optional(
+      Schema.Literals([
+        "Azure Virtual Machine",
+        "Azure VMWare Virtual Machine",
+        "Azure Kubernetes Service",
+        "AWS VMWare Virtual Machine",
+        "AWS Kubernetes Service",
+        "GCP VMWare Virtual Machine",
+        "GCP Kubernetes Service",
+        "Container",
+        "Virtual Machine",
+        "Physical Server",
+        "AWS Virtual Machine",
+        "GCP Virtual Machine",
+        "Other",
+      ]),
+    ),
+    alwaysOnRole: Schema.optional(
+      Schema.Literals([
+        "None",
+        "FailoverClusterInstance",
+        "FailoverClusterNode",
+        "AvailabilityGroupReplica",
+      ]),
+    ),
+    failoverCluster: Schema.optional(
+      Schema.suspend(() => FailoverClusterSchema),
+    ),
+    backupPolicy: Schema.optional(Schema.suspend(() => BackupPolicySchema)),
+    upgradeLockedUntil: Schema.optional(Schema.String),
+    monitoring: Schema.optional(Schema.suspend(() => MonitoringSchema)),
+    migration: Schema.optional(Schema.suspend(() => MigrationSchema)),
+    bestPracticesAssessment: Schema.optional(
+      Schema.suspend(() => BestPracticesAssessmentSchema),
+    ),
+    clientConnection: Schema.optional(
+      Schema.suspend(() => ClientConnectionSchema),
+    ),
+    serviceType: Schema.optional(Schema.suspend(() => ServiceTypeSchema)),
+    authentication: Schema.optional(Schema.suspend(() => AuthenticationSchema)),
+    databaseMirroringEndpoint: Schema.optional(
+      Schema.suspend(() => DBMEndpointSchema),
+    ),
+    isMicrosoftPkiCertTrustConfigured: Schema.optional(Schema.Boolean),
+    isDigiCertPkiCertTrustConfigured: Schema.optional(Schema.Boolean),
+    maxServerMemoryMB: Schema.optional(Schema.Number),
+  });
+const SqlServerInstanceTelemetryColumnSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(
+      Schema.Literals([
+        "bool",
+        "datetime",
+        "int",
+        "long",
+        "double",
+        "string",
+        "guid",
+        "timespan",
+      ]),
+    ),
+  });
+const SqlServerInstanceTelemetryRowSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Array(Schema.String);
+const SqlServerInstanceBpaColumnSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(
+      Schema.Literals([
+        "bool",
+        "datetime",
+        "int",
+        "long",
+        "double",
+        "string",
+        "guid",
+        "timespan",
+      ]),
+    ),
+  });
+const SqlServerInstanceBpaRowSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
+  Schema.String,
+);
+const BackgroundJobSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  state: Schema.optional(
+    Schema.Literals([
+      "Enabled",
+      "Disabled",
+      "Deleted",
+      "Completed",
+      "Faulted",
+      "Suspended",
+    ]),
+  ),
+  executionState: Schema.optional(Schema.Literals(["Waiting", "Running"])),
+  startTime: Schema.optional(Schema.String),
+  endTime: Schema.optional(Schema.String),
+  lastExecutionStatus: Schema.optional(
+    Schema.Literals([
+      "Succeeded",
+      "Completed",
+      "Failed",
+      "Faulted",
+      "Postponed",
+      "Rescheduled",
+    ]),
+  ),
+  lastExecutionTime: Schema.optional(Schema.String),
+});
+const SequencerActionSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  actionId: Schema.optional(Schema.String),
+  state: Schema.optional(
+    Schema.Literals([
+      "NotStarted",
+      "WaitingPredecessors",
+      "ExecutingAction",
+      "CreatingSuccessors",
+      "Completed",
+    ]),
+  ),
+  result: Schema.optional(
+    Schema.Literals([
+      "NotCompleted",
+      "Succeeded",
+      "Failed",
+      "TimedOut",
+      "Skipped",
+    ]),
+  ),
+});
+const SqlServerInstanceJobStatusSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    instanceName: Schema.optional(Schema.String),
+    jobStatus: Schema.optional(
+      Schema.Literals(["NotStarted", "InProgress", "Succeeded", "Failed"]),
+    ),
+    jobException: Schema.optional(Schema.String),
+    backgroundJob: Schema.optional(Schema.suspend(() => BackgroundJobSchema)),
+    sequencerActions: Schema.optional(
+      Schema.Array(Schema.suspend(() => SequencerActionSchema)),
+    ),
+  });
+const MiLinkAssessmentCategorySchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+    "SqlInstance",
+    "SqlInstanceDatabase",
+    "ManagedInstance",
+    "ManagedInstanceDatabase",
+    "ManagedInstanceCrossValidation",
+    "Certificates",
+    "BoxToMiNetworkConnectivity",
+    "MiToBoxNetworkConnectivity",
+    "SqlInstanceAg",
+    "DagCrossValidation",
+  ]);
+const SqlServerInstanceManagedInstanceLinkAssessmentSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    category: Schema.optional(
+      Schema.suspend(() => MiLinkAssessmentCategorySchema),
+    ),
+    status: Schema.optional(Schema.Literals(["Success", "Warning", "Failure"])),
+    information: Schema.optional(Schema.String),
+    additionalInformation: Schema.optional(Schema.String),
+    failingDbs: Schema.optional(Schema.Array(Schema.String)),
+  });
+const SqlServerLicenseSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+});
+const SqlServerLicensePropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    billingPlan: Schema.Literals(["PAYG", "Paid"]),
+    physicalCores: Schema.Number,
+    licenseCategory: Schema.Literals(["Core"]),
+    activationState: Schema.Literals(["Activated", "Deactivated"]),
+    scopeType: Schema.Literals(["Tenant", "Subscription", "ResourceGroup"]),
+    lastActivatedAt: Schema.optional(Schema.String),
+    lastDeactivatedAt: Schema.optional(Schema.String),
+    tenantId: Schema.optional(Schema.String),
+  });
+const SqlServerLicenseUpdatePropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    billingPlan: Schema.optional(Schema.Literals(["PAYG", "Paid"])),
+    physicalCores: Schema.optional(Schema.Number),
+    licenseCategory: Schema.optional(Schema.Literals(["Core"])),
+    activationState: Schema.optional(
+      Schema.Literals(["Activated", "Deactivated"]),
+    ),
+    scopeType: Schema.optional(
+      Schema.Literals(["Tenant", "Subscription", "ResourceGroup"]),
+    ),
+    lastActivatedAt: Schema.optional(Schema.String),
+    lastDeactivatedAt: Schema.optional(Schema.String),
+    tenantId: Schema.optional(Schema.String),
+  });
+const DataControllerResourceSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+});
+const DataControllerPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    infrastructure: Schema.optional(
+      Schema.Literals([
+        "azure",
+        "gcp",
+        "aws",
+        "alibaba",
+        "onpremises",
+        "other",
+      ]),
+    ),
+    onPremiseProperty: Schema.optional(
+      Schema.suspend(() => OnPremisePropertySchema),
+    ),
+    k8sRaw: Schema.optional(Schema.Unknown),
+    uploadWatermark: Schema.optional(
+      Schema.suspend(() => UploadWatermarkSchema),
+    ),
+    lastUploadedDate: Schema.optional(Schema.String),
+    basicLoginInformation: Schema.optional(
+      Schema.Struct({
+        username: Schema.optional(Schema.String),
+        password: Schema.optional(SensitiveOutputString),
+      }),
+    ),
+    metricsDashboardCredential: Schema.optional(
+      Schema.Struct({
+        username: Schema.optional(Schema.String),
+        password: Schema.optional(SensitiveOutputString),
+      }),
+    ),
+    logsDashboardCredential: Schema.optional(
+      Schema.Struct({
+        username: Schema.optional(Schema.String),
+        password: Schema.optional(SensitiveOutputString),
+      }),
+    ),
+    logAnalyticsWorkspaceConfig: Schema.optional(
+      Schema.suspend(() => LogAnalyticsWorkspaceConfigSchema),
+    ),
+    uploadServicePrincipal: Schema.optional(
+      Schema.suspend(() => UploadServicePrincipalSchema),
+    ),
+    provisioningState: Schema.optional(Schema.String),
+    clusterId: Schema.optional(Schema.String),
+    extensionId: Schema.optional(Schema.String),
+  });
+const OnPremisePropertySchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.String,
+  publicSigningKey: Schema.String,
+  signingCertificateThumbprint: Schema.optional(Schema.String),
+});
+const UploadWatermarkSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  metrics: Schema.optional(Schema.String),
+  logs: Schema.optional(Schema.String),
+  usages: Schema.optional(Schema.String),
+});
+const LogAnalyticsWorkspaceConfigSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    workspaceId: Schema.optional(Schema.String),
+    primaryKey: Schema.optional(Schema.String),
+  });
+const UploadServicePrincipalSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  clientId: Schema.optional(Schema.String),
+  tenantId: Schema.optional(Schema.String),
+  authority: Schema.optional(Schema.String),
+  clientSecret: Schema.optional(SensitiveOutputString),
+});
+const ActiveDirectoryConnectorResourceSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+  });
+const ActiveDirectoryConnectorPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    domainServiceAccountLoginInformation: Schema.optional(
+      Schema.Struct({
+        username: Schema.optional(Schema.String),
+        password: Schema.optional(SensitiveOutputString),
+      }),
+    ),
+    provisioningState: Schema.optional(Schema.String),
+    spec: Schema.suspend(() => ActiveDirectoryConnectorSpecSchema),
+    status: Schema.optional(
+      Schema.suspend(() => ActiveDirectoryConnectorStatusSchema),
+    ),
+  });
+const ActiveDirectoryConnectorSpecSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    activeDirectory: Schema.suspend(
+      () => ActiveDirectoryConnectorDomainDetailsSchema,
+    ),
+    dns: Schema.suspend(() => ActiveDirectoryConnectorDNSDetailsSchema),
+  });
+const ActiveDirectoryConnectorDomainDetailsSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    realm: Schema.String,
+    netbiosDomainName: Schema.optional(Schema.String),
+    serviceAccountProvisioning: Schema.optional(
+      Schema.Literals(["automatic", "manual"]),
+    ),
+    ouDistinguishedName: Schema.optional(Schema.String),
+    domainControllers: Schema.optional(
+      Schema.suspend(() => ActiveDirectoryDomainControllersSchema),
+    ),
+  });
+const ActiveDirectoryDomainControllersSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    primaryDomainController: Schema.optional(
+      Schema.suspend(() => ActiveDirectoryDomainControllerSchema),
+    ),
+    secondaryDomainControllers: Schema.optional(
+      Schema.suspend(() => ActiveDirectorySecondaryDomainControllersSchema),
+    ),
+  });
+const ActiveDirectoryDomainControllerSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    hostname: Schema.String,
+  });
+const ActiveDirectorySecondaryDomainControllersSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
+    Schema.suspend(() => ActiveDirectoryDomainControllerSchema),
+  );
+const ActiveDirectoryConnectorDNSDetailsSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    domainName: Schema.optional(Schema.String),
+    nameserverIPAddresses: Schema.Array(Schema.String),
+    replicas: Schema.optional(Schema.Number),
+    preferK8sDnsForPtrLookups: Schema.optional(Schema.Boolean),
+  });
+const ActiveDirectoryConnectorStatusSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    lastUpdateTime: Schema.optional(Schema.String),
+    observedGeneration: Schema.optional(Schema.Number),
+    state: Schema.optional(Schema.String),
+  });
+const PostgresInstanceSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+});
+const PostgresInstancePropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    dataControllerId: Schema.optional(Schema.String),
+    admin: Schema.optional(Schema.String),
+    basicLoginInformation: Schema.optional(
+      Schema.Struct({
+        username: Schema.optional(Schema.String),
+        password: Schema.optional(SensitiveOutputString),
+      }),
+    ),
+    k8sRaw: Schema.optional(Schema.Unknown),
+    lastUploadedDate: Schema.optional(Schema.String),
+    provisioningState: Schema.optional(Schema.String),
+  });
+const PostgresInstanceSkuSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.String,
+  dev: Schema.optional(Schema.Boolean),
+  size: Schema.optional(Schema.String),
+  family: Schema.optional(Schema.String),
+  capacity: Schema.optional(Schema.Number),
+});
+const SqlServerDatabaseResourcePropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    collationName: Schema.optional(Schema.String),
+    databaseCreationDate: Schema.optional(Schema.String),
+    compatibilityLevel: Schema.optional(Schema.Number),
+    sizeMB: Schema.optional(Schema.Number),
+    logFileSizeMB: Schema.optional(Schema.Number),
+    dataFileSizeMB: Schema.optional(Schema.Number),
+    spaceAvailableMB: Schema.optional(Schema.Number),
+    state: Schema.optional(
+      Schema.Literals([
+        "Online",
+        "Restoring",
+        "Recovering",
+        "RecoveryPending",
+        "Suspect",
+        "Emergency",
+        "Offline",
+        "Copying",
+        "OfflineSecondary",
+      ]),
+    ),
+    isReadOnly: Schema.optional(Schema.Boolean),
+    recoveryMode: Schema.optional(
+      Schema.Literals(["Full", "Bulk-logged", "Simple"]),
+    ),
+    databaseOptions: Schema.optional(
+      Schema.Struct({
+        isAutoCloseOn: Schema.optional(Schema.Boolean),
+        isAutoShrinkOn: Schema.optional(Schema.Boolean),
+        isAutoCreateStatsOn: Schema.optional(Schema.Boolean),
+        isAutoUpdateStatsOn: Schema.optional(Schema.Boolean),
+        isRemoteDataArchiveEnabled: Schema.optional(Schema.Boolean),
+        isMemoryOptimizationEnabled: Schema.optional(Schema.Boolean),
+        isEncrypted: Schema.optional(Schema.Boolean),
+        isTrustworthyOn: Schema.optional(Schema.Boolean),
+        isHekatonFilesOn: Schema.optional(Schema.Boolean),
+        numberOfHekatonFiles: Schema.optional(Schema.Number),
+      }),
+    ),
+    backupInformation: Schema.optional(
+      Schema.Struct({
+        lastFullBackup: Schema.optional(Schema.String),
+        lastLogBackup: Schema.optional(Schema.String),
+      }),
+    ),
+    backupPolicy: Schema.optional(Schema.suspend(() => BackupPolicySchema)),
+    earliestRestoreDate: Schema.optional(Schema.String),
+    createMode: Schema.optional(
+      Schema.Literals(["Default", "PointInTimeRestore"]),
+    ),
+    sourceDatabaseId: Schema.optional(Schema.String),
+    vmId: Schema.optional(Schema.String),
+    restorePointInTime: Schema.optional(Schema.String),
+    provisioningState: Schema.optional(Schema.String),
+    lastDatabaseUploadTime: Schema.optional(Schema.String),
+    migration: Schema.optional(Schema.suspend(() => DataBaseMigrationSchema)),
+  });
+const DataBaseMigrationSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  assessment: Schema.optional(
+    Schema.suspend(() => DataBaseMigrationAssessmentSchema),
+  ),
+});
+const DataBaseMigrationAssessmentSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    assessmentUploadTime: Schema.optional(Schema.String),
+    databaseAssessments: Schema.optional(
+      Schema.suspend(() => DatabaseAssessmentsSchema),
+    ),
+    targetReadiness: Schema.optional(
+      Schema.suspend(() => TargetReadinessSchema),
+    ),
+  });
+const DatabaseAssessmentsSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
+  Schema.Struct({
+    appliesToMigrationTargetPlatform: Schema.optional(Schema.String),
+    featureId: Schema.optional(Schema.String),
+    issueCategory: Schema.optional(Schema.String),
+    moreInformation: Schema.optional(Schema.String),
+  }),
+);
+const TargetReadinessSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  azureSqlDatabase: Schema.optional(
+    Schema.suspend(() => SkuRecommendationSummarySchema),
+  ),
+  azureSqlManagedInstance: Schema.optional(
+    Schema.suspend(() => SkuRecommendationSummarySchema),
+  ),
+  azureSqlVirtualMachine: Schema.optional(
+    Schema.suspend(() => SkuRecommendationSummarySchema),
+  ),
+});
+const SkuRecommendationSummarySchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    numOfBlockerIssues: Schema.optional(
+      Schema.suspend(() => SkuRecommendationResultsNumberOfBlockerIssuesSchema),
+    ),
+    recommendationStatus: Schema.optional(
+      Schema.Literals(["NotReady", "Ready", "ReadyWithConditions", "Unknown"]),
+    ),
+    impactedObjectsSummary: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          featureId: Schema.optional(Schema.String),
+          numberImpacted: Schema.optional(Schema.Number),
+          issueCategory: Schema.optional(Schema.String),
+        }),
+      ),
+    ),
+    monthlyCost: Schema.optional(
+      Schema.Struct({
+        computeCost: Schema.optional(Schema.Number),
+        storageCost: Schema.optional(Schema.Number),
+        iopsCost: Schema.optional(Schema.Number),
+        sqlLicenseCost: Schema.optional(Schema.Number),
+        windowsLicenseCost: Schema.optional(Schema.Number),
+        totalCost: Schema.optional(Schema.Number),
+      }),
+    ),
+    monthlyCostOptions: Schema.optional(
+      Schema.Array(
+        Schema.suspend(
+          () => SkuRecommendationResultsMonthlyCostOptionItemSchema,
+        ),
+      ),
+    ),
+    targetSku: Schema.optional(
+      Schema.Struct({
+        category: Schema.optional(
+          Schema.Struct({
+            computeTier: Schema.optional(Schema.String),
+            hardwareType: Schema.optional(Schema.String),
+            sqlPurchasingModel: Schema.optional(Schema.String),
+            sqlServiceTier: Schema.optional(Schema.String),
+            zoneRedundancyAvailable: Schema.optional(Schema.Boolean),
+          }),
+        ),
+        computeSize: Schema.optional(Schema.Number),
+        storageMaxSizeInMb: Schema.optional(Schema.Number),
+        predictedDataSizeInMb: Schema.optional(Schema.Number),
+        predictedLogSizeInMb: Schema.optional(Schema.Number),
+        maxStorageIops: Schema.optional(Schema.Number),
+        maxThroughputMBps: Schema.optional(Schema.Number),
+      }),
+    ),
+  });
+const SkuRecommendationResultsNumberOfBlockerIssuesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Number;
+const SqlServerDatabaseResourceSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+  });
 
 // Input Schema
 export const ActiveDirectoryConnectorsCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    properties: Schema.Struct({
-      domainServiceAccountLoginInformation: Schema.optional(
-        Schema.Struct({
-          username: Schema.optional(Schema.String),
-          password: Schema.optional(SensitiveString),
-        }),
-      ),
-      provisioningState: Schema.optional(Schema.String),
-      spec: Schema.Struct({
-        activeDirectory: Schema.Struct({
-          realm: Schema.String,
-          netbiosDomainName: Schema.optional(Schema.String),
-          serviceAccountProvisioning: Schema.optional(
-            Schema.Literals(["automatic", "manual"]),
-          ),
-          ouDistinguishedName: Schema.optional(Schema.String),
-          domainControllers: Schema.optional(
-            Schema.Struct({
-              primaryDomainController: Schema.optional(
-                Schema.Struct({
-                  hostname: Schema.String,
-                }),
-              ),
-              secondaryDomainControllers: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    hostname: Schema.String,
-                  }),
-                ),
-              ),
-            }),
-          ),
-        }),
-        dns: Schema.Struct({
-          domainName: Schema.optional(Schema.String),
-          nameserverIPAddresses: Schema.Array(Schema.String),
-          replicas: Schema.optional(Schema.Number),
-          preferK8sDnsForPtrLookups: Schema.optional(Schema.Boolean),
-        }),
-      }),
-      status: Schema.optional(
-        Schema.Struct({
-          lastUpdateTime: Schema.optional(Schema.String),
-          observedGeneration: Schema.optional(Schema.Number),
-          state: Schema.optional(Schema.String),
-        }),
-      ),
-    }),
+    properties: Schema.suspend(() => ActiveDirectoryConnectorPropertiesSchema),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -74,23 +1573,11 @@ export type ActiveDirectoryConnectorsCreateInput =
 // Output Schema
 export const ActiveDirectoryConnectorsCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.suspend(() => ActiveDirectoryConnectorPropertiesSchema),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type ActiveDirectoryConnectorsCreateOutput =
   typeof ActiveDirectoryConnectorsCreateOutput.Type;
@@ -148,23 +1635,11 @@ export type ActiveDirectoryConnectorsGetInput =
 // Output Schema
 export const ActiveDirectoryConnectorsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.suspend(() => ActiveDirectoryConnectorPropertiesSchema),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type ActiveDirectoryConnectorsGetOutput =
   typeof ActiveDirectoryConnectorsGetOutput.Type;
@@ -195,35 +1670,7 @@ export const ActiveDirectoryConnectorsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.String),
-              createdByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              createdAt: Schema.optional(Schema.String),
-              lastModifiedBy: Schema.optional(Schema.String),
-              lastModifiedByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              lastModifiedAt: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
+        Schema.suspend(() => ActiveDirectoryConnectorResourceSchema),
       ),
     ),
     nextLink: Schema.optional(Schema.String),
@@ -283,23 +1730,19 @@ export type DataControllersGetDataControllerInput =
 // Output Schema
 export const DataControllersGetDataControllerOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    extendedLocation: Schema.optional(
+      Schema.Struct({
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.suspend(() => ExtendedLocationTypeSchema)),
+      }),
+    ),
+    properties: Schema.suspend(() => DataControllerPropertiesSchema),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type DataControllersGetDataControllerOutput =
   typeof DataControllersGetDataControllerOutput.Type;
@@ -329,37 +1772,7 @@ export type DataControllersListInGroupInput =
 export const DataControllersListInGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.String),
-              createdByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              createdAt: Schema.optional(Schema.String),
-              lastModifiedBy: Schema.optional(Schema.String),
-              lastModifiedByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              lastModifiedAt: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => DataControllerResourceSchema)),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -392,37 +1805,7 @@ export type DataControllersListInSubscriptionInput =
 export const DataControllersListInSubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.String),
-              createdByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              createdAt: Schema.optional(Schema.String),
-              lastModifiedBy: Schema.optional(Schema.String),
-              lastModifiedByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              lastModifiedAt: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => DataControllerResourceSchema)),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -443,69 +1826,7 @@ export const DataControllersPatchDataControllerInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     properties: Schema.optional(
-      Schema.Struct({
-        infrastructure: Schema.optional(
-          Schema.Literals([
-            "azure",
-            "gcp",
-            "aws",
-            "alibaba",
-            "onpremises",
-            "other",
-          ]),
-        ),
-        onPremiseProperty: Schema.optional(
-          Schema.Struct({
-            id: Schema.String,
-            publicSigningKey: Schema.String,
-            signingCertificateThumbprint: Schema.optional(Schema.String),
-          }),
-        ),
-        k8sRaw: Schema.optional(Schema.Unknown),
-        uploadWatermark: Schema.optional(
-          Schema.Struct({
-            metrics: Schema.optional(Schema.String),
-            logs: Schema.optional(Schema.String),
-            usages: Schema.optional(Schema.String),
-          }),
-        ),
-        lastUploadedDate: Schema.optional(Schema.String),
-        basicLoginInformation: Schema.optional(
-          Schema.Struct({
-            username: Schema.optional(Schema.String),
-            password: Schema.optional(SensitiveString),
-          }),
-        ),
-        metricsDashboardCredential: Schema.optional(
-          Schema.Struct({
-            username: Schema.optional(Schema.String),
-            password: Schema.optional(SensitiveString),
-          }),
-        ),
-        logsDashboardCredential: Schema.optional(
-          Schema.Struct({
-            username: Schema.optional(Schema.String),
-            password: Schema.optional(SensitiveString),
-          }),
-        ),
-        logAnalyticsWorkspaceConfig: Schema.optional(
-          Schema.Struct({
-            workspaceId: Schema.optional(Schema.String),
-            primaryKey: Schema.optional(Schema.String),
-          }),
-        ),
-        uploadServicePrincipal: Schema.optional(
-          Schema.Struct({
-            clientId: Schema.optional(Schema.String),
-            tenantId: Schema.optional(Schema.String),
-            authority: Schema.optional(Schema.String),
-            clientSecret: Schema.optional(SensitiveString),
-          }),
-        ),
-        provisioningState: Schema.optional(Schema.String),
-        clusterId: Schema.optional(Schema.String),
-        extensionId: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(() => DataControllerPropertiesSchema),
     ),
   }).pipe(
     T.Http({
@@ -521,23 +1842,19 @@ export type DataControllersPatchDataControllerInput =
 // Output Schema
 export const DataControllersPatchDataControllerOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    extendedLocation: Schema.optional(
+      Schema.Struct({
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.suspend(() => ExtendedLocationTypeSchema)),
+      }),
+    ),
+    properties: Schema.suspend(() => DataControllerPropertiesSchema),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type DataControllersPatchDataControllerOutput =
   typeof DataControllersPatchDataControllerOutput.Type;
@@ -559,72 +1876,10 @@ export const DataControllersPutDataControllerInput =
     extendedLocation: Schema.optional(
       Schema.Struct({
         name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.Literals(["CustomLocation"])),
+        type: Schema.optional(Schema.suspend(() => ExtendedLocationTypeSchema)),
       }),
     ),
-    properties: Schema.Struct({
-      infrastructure: Schema.optional(
-        Schema.Literals([
-          "azure",
-          "gcp",
-          "aws",
-          "alibaba",
-          "onpremises",
-          "other",
-        ]),
-      ),
-      onPremiseProperty: Schema.optional(
-        Schema.Struct({
-          id: Schema.String,
-          publicSigningKey: Schema.String,
-          signingCertificateThumbprint: Schema.optional(Schema.String),
-        }),
-      ),
-      k8sRaw: Schema.optional(Schema.Unknown),
-      uploadWatermark: Schema.optional(
-        Schema.Struct({
-          metrics: Schema.optional(Schema.String),
-          logs: Schema.optional(Schema.String),
-          usages: Schema.optional(Schema.String),
-        }),
-      ),
-      lastUploadedDate: Schema.optional(Schema.String),
-      basicLoginInformation: Schema.optional(
-        Schema.Struct({
-          username: Schema.optional(Schema.String),
-          password: Schema.optional(SensitiveString),
-        }),
-      ),
-      metricsDashboardCredential: Schema.optional(
-        Schema.Struct({
-          username: Schema.optional(Schema.String),
-          password: Schema.optional(SensitiveString),
-        }),
-      ),
-      logsDashboardCredential: Schema.optional(
-        Schema.Struct({
-          username: Schema.optional(Schema.String),
-          password: Schema.optional(SensitiveString),
-        }),
-      ),
-      logAnalyticsWorkspaceConfig: Schema.optional(
-        Schema.Struct({
-          workspaceId: Schema.optional(Schema.String),
-          primaryKey: Schema.optional(Schema.String),
-        }),
-      ),
-      uploadServicePrincipal: Schema.optional(
-        Schema.Struct({
-          clientId: Schema.optional(Schema.String),
-          tenantId: Schema.optional(Schema.String),
-          authority: Schema.optional(Schema.String),
-          clientSecret: Schema.optional(SensitiveString),
-        }),
-      ),
-      provisioningState: Schema.optional(Schema.String),
-      clusterId: Schema.optional(Schema.String),
-      extensionId: Schema.optional(Schema.String),
-    }),
+    properties: Schema.suspend(() => DataControllerPropertiesSchema),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     location: Schema.String,
   }).pipe(
@@ -641,23 +1896,19 @@ export type DataControllersPutDataControllerInput =
 // Output Schema
 export const DataControllersPutDataControllerOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    extendedLocation: Schema.optional(
+      Schema.Struct({
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.suspend(() => ExtendedLocationTypeSchema)),
+      }),
+    ),
+    properties: Schema.suspend(() => DataControllerPropertiesSchema),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type DataControllersPutDataControllerOutput =
   typeof DataControllersPutDataControllerOutput.Type;
@@ -676,27 +1927,7 @@ export const DataControllersPutDataController =
 // Input Schema
 export const FailoverGroupsCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    properties: Schema.Struct({
-      provisioningState: Schema.optional(
-        Schema.Literals(["Succeeded", "Failed", "Canceled", "Accepted"]),
-      ),
-      partnerManagedInstanceId: Schema.String,
-      spec: Schema.Struct({
-        sharedName: Schema.optional(Schema.String),
-        sourceMI: Schema.optional(Schema.String),
-        partnerMI: Schema.optional(Schema.String),
-        partnerMirroringURL: Schema.optional(Schema.String),
-        partnerMirroringCert: Schema.optional(Schema.String),
-        partnerSyncMode: Schema.optional(Schema.Literals(["async", "sync"])),
-        role: Schema.Literals([
-          "primary",
-          "secondary",
-          "force-primary-allow-data-loss",
-          "force-secondary",
-        ]),
-      }),
-      status: Schema.optional(Schema.Unknown),
-    }),
+    properties: Schema.suspend(() => FailoverGroupPropertiesSchema),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -710,23 +1941,11 @@ export type FailoverGroupsCreateInput = typeof FailoverGroupsCreateInput.Type;
 // Output Schema
 export const FailoverGroupsCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.suspend(() => FailoverGroupPropertiesSchema),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type FailoverGroupsCreateOutput = typeof FailoverGroupsCreateOutput.Type;
 
@@ -783,23 +2002,11 @@ export type FailoverGroupsGetInput = typeof FailoverGroupsGetInput.Type;
 // Output Schema
 export const FailoverGroupsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.suspend(() => FailoverGroupPropertiesSchema),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type FailoverGroupsGetOutput = typeof FailoverGroupsGetOutput.Type;
 
@@ -826,37 +2033,7 @@ export type FailoverGroupsListInput = typeof FailoverGroupsListInput.Type;
 export const FailoverGroupsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.String),
-              createdByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              createdAt: Schema.optional(Schema.String),
-              lastModifiedBy: Schema.optional(Schema.String),
-              lastModifiedByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              lastModifiedAt: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => FailoverGroupResourceSchema)),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -884,24 +2061,7 @@ export type OperationsListInput = typeof OperationsListInput.Type;
 
 // Output Schema
 export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  value: Schema.optional(
-    Schema.Array(
-      Schema.Struct({
-        name: Schema.String,
-        display: Schema.Struct({
-          provider: Schema.String,
-          resource: Schema.String,
-          operation: Schema.String,
-          description: Schema.String,
-        }),
-        origin: Schema.optional(Schema.Literals(["user", "system"])),
-        isDataAction: Schema.Boolean,
-        properties: Schema.optional(
-          Schema.Record(Schema.String, Schema.Unknown),
-        ),
-      }),
-    ),
-  ),
+  value: Schema.optional(Schema.Array(Schema.suspend(() => OperationSchema))),
   nextLink: Schema.optional(Schema.String),
 });
 export type OperationsListOutput = typeof OperationsListOutput.Type;
@@ -920,31 +2080,11 @@ export const PostgresInstancesCreateInput =
     extendedLocation: Schema.optional(
       Schema.Struct({
         name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.Literals(["CustomLocation"])),
+        type: Schema.optional(Schema.suspend(() => ExtendedLocationTypeSchema)),
       }),
     ),
-    properties: Schema.Struct({
-      dataControllerId: Schema.optional(Schema.String),
-      admin: Schema.optional(Schema.String),
-      basicLoginInformation: Schema.optional(
-        Schema.Struct({
-          username: Schema.optional(Schema.String),
-          password: Schema.optional(SensitiveString),
-        }),
-      ),
-      k8sRaw: Schema.optional(Schema.Unknown),
-      lastUploadedDate: Schema.optional(Schema.String),
-      provisioningState: Schema.optional(Schema.String),
-    }),
-    sku: Schema.optional(
-      Schema.Struct({
-        name: Schema.String,
-        dev: Schema.optional(Schema.Boolean),
-        size: Schema.optional(Schema.String),
-        family: Schema.optional(Schema.String),
-        capacity: Schema.optional(Schema.Number),
-      }),
-    ),
+    properties: Schema.suspend(() => PostgresInstancePropertiesSchema),
+    sku: Schema.optional(Schema.suspend(() => PostgresInstanceSkuSchema)),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     location: Schema.String,
   }).pipe(
@@ -961,23 +2101,20 @@ export type PostgresInstancesCreateInput =
 // Output Schema
 export const PostgresInstancesCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    extendedLocation: Schema.optional(
+      Schema.Struct({
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.suspend(() => ExtendedLocationTypeSchema)),
+      }),
+    ),
+    properties: Schema.suspend(() => PostgresInstancePropertiesSchema),
+    sku: Schema.optional(Schema.suspend(() => PostgresInstanceSkuSchema)),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type PostgresInstancesCreateOutput =
   typeof PostgresInstancesCreateOutput.Type;
@@ -1038,23 +2175,20 @@ export type PostgresInstancesGetInput = typeof PostgresInstancesGetInput.Type;
 // Output Schema
 export const PostgresInstancesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    extendedLocation: Schema.optional(
+      Schema.Struct({
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.suspend(() => ExtendedLocationTypeSchema)),
+      }),
+    ),
+    properties: Schema.suspend(() => PostgresInstancePropertiesSchema),
+    sku: Schema.optional(Schema.suspend(() => PostgresInstanceSkuSchema)),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type PostgresInstancesGetOutput = typeof PostgresInstancesGetOutput.Type;
 
@@ -1083,37 +2217,7 @@ export type PostgresInstancesListInput = typeof PostgresInstancesListInput.Type;
 export const PostgresInstancesListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.String),
-              createdByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              createdAt: Schema.optional(Schema.String),
-              lastModifiedBy: Schema.optional(Schema.String),
-              lastModifiedByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              lastModifiedAt: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => PostgresInstanceSchema)),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -1146,37 +2250,7 @@ export type PostgresInstancesListByResourceGroupInput =
 export const PostgresInstancesListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.String),
-              createdByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              createdAt: Schema.optional(Schema.String),
-              lastModifiedBy: Schema.optional(Schema.String),
-              lastModifiedByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              lastModifiedAt: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => PostgresInstanceSchema)),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -1199,19 +2273,7 @@ export const PostgresInstancesUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     properties: Schema.optional(
-      Schema.Struct({
-        dataControllerId: Schema.optional(Schema.String),
-        admin: Schema.optional(Schema.String),
-        basicLoginInformation: Schema.optional(
-          Schema.Struct({
-            username: Schema.optional(Schema.String),
-            password: Schema.optional(SensitiveString),
-          }),
-        ),
-        k8sRaw: Schema.optional(Schema.Unknown),
-        lastUploadedDate: Schema.optional(Schema.String),
-        provisioningState: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(() => PostgresInstancePropertiesSchema),
     ),
   }).pipe(
     T.Http({
@@ -1226,23 +2288,20 @@ export type PostgresInstancesUpdateInput =
 // Output Schema
 export const PostgresInstancesUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    extendedLocation: Schema.optional(
+      Schema.Struct({
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.suspend(() => ExtendedLocationTypeSchema)),
+      }),
+    ),
+    properties: Schema.suspend(() => PostgresInstancePropertiesSchema),
+    sku: Schema.optional(Schema.suspend(() => PostgresInstanceSkuSchema)),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type PostgresInstancesUpdateOutput =
   typeof PostgresInstancesUpdateOutput.Type;
@@ -1261,117 +2320,14 @@ export const PostgresInstancesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const SqlManagedInstancesCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    properties: Schema.Struct({
-      dataControllerId: Schema.optional(Schema.String),
-      admin: Schema.optional(Schema.String),
-      startTime: Schema.optional(Schema.String),
-      endTime: Schema.optional(Schema.String),
-      k8sRaw: Schema.optional(
-        Schema.Struct({
-          spec: Schema.optional(
-            Schema.Struct({
-              scheduling: Schema.optional(
-                Schema.Struct({
-                  default: Schema.optional(
-                    Schema.Struct({
-                      resources: Schema.optional(
-                        Schema.Struct({
-                          requests: Schema.optional(
-                            Schema.Record(Schema.String, Schema.String),
-                          ),
-                          limits: Schema.optional(
-                            Schema.Record(Schema.String, Schema.String),
-                          ),
-                        }),
-                      ),
-                    }),
-                  ),
-                }),
-              ),
-              replicas: Schema.optional(Schema.Number),
-              security: Schema.optional(
-                Schema.Struct({
-                  adminLoginSecret: Schema.optional(Schema.String),
-                  serviceCertificateSecret: Schema.optional(Schema.String),
-                  activeDirectory: Schema.optional(
-                    Schema.Struct({
-                      connector: Schema.optional(
-                        Schema.Struct({
-                          name: Schema.optional(Schema.String),
-                          namespace: Schema.optional(Schema.String),
-                        }),
-                      ),
-                      accountName: Schema.optional(Schema.String),
-                      keytabSecret: Schema.optional(Schema.String),
-                      encryptionTypes: Schema.optional(
-                        Schema.Array(Schema.String),
-                      ),
-                    }),
-                  ),
-                  transparentDataEncryption: Schema.optional(
-                    Schema.Struct({
-                      mode: Schema.optional(Schema.String),
-                      protectorSecret: Schema.optional(Schema.String),
-                    }),
-                  ),
-                }),
-              ),
-              settings: Schema.optional(
-                Schema.Struct({
-                  network: Schema.optional(
-                    Schema.Struct({
-                      forceencryption: Schema.optional(Schema.Number),
-                      tlsciphers: Schema.optional(Schema.String),
-                      tlsprotocols: Schema.optional(Schema.String),
-                    }),
-                  ),
-                }),
-              ),
-            }),
-          ),
-        }),
-      ),
-      basicLoginInformation: Schema.optional(
-        Schema.Struct({
-          username: Schema.optional(Schema.String),
-          password: Schema.optional(SensitiveString),
-        }),
-      ),
-      lastUploadedDate: Schema.optional(Schema.String),
-      provisioningState: Schema.optional(Schema.String),
-      activeDirectoryInformation: Schema.optional(
-        Schema.Struct({
-          keytabInformation: Schema.optional(
-            Schema.Struct({
-              keytab: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
-      licenseType: Schema.optional(
-        Schema.Literals(["BasePrice", "LicenseIncluded", "DisasterRecovery"]),
-      ),
-      clusterId: Schema.optional(Schema.String),
-      extensionId: Schema.optional(Schema.String),
-    }),
+    properties: Schema.suspend(() => SqlManagedInstancePropertiesSchema),
     extendedLocation: Schema.optional(
       Schema.Struct({
         name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.Literals(["CustomLocation"])),
+        type: Schema.optional(Schema.suspend(() => ExtendedLocationTypeSchema)),
       }),
     ),
-    sku: Schema.optional(
-      Schema.Struct({
-        name: Schema.Literals(["vCore"]),
-        tier: Schema.optional(
-          Schema.Literals(["GeneralPurpose", "BusinessCritical"]),
-        ),
-        dev: Schema.optional(Schema.Boolean),
-        size: Schema.optional(Schema.String),
-        family: Schema.optional(Schema.String),
-        capacity: Schema.optional(Schema.Number),
-      }),
-    ),
+    sku: Schema.optional(Schema.suspend(() => SqlManagedInstanceSkuSchema)),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     location: Schema.String,
   }).pipe(
@@ -1388,23 +2344,20 @@ export type SqlManagedInstancesCreateInput =
 // Output Schema
 export const SqlManagedInstancesCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.suspend(() => SqlManagedInstancePropertiesSchema),
+    extendedLocation: Schema.optional(
+      Schema.Struct({
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.suspend(() => ExtendedLocationTypeSchema)),
+      }),
+    ),
+    sku: Schema.optional(Schema.suspend(() => SqlManagedInstanceSkuSchema)),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type SqlManagedInstancesCreateOutput =
   typeof SqlManagedInstancesCreateOutput.Type;
@@ -1466,23 +2419,20 @@ export type SqlManagedInstancesGetInput =
 // Output Schema
 export const SqlManagedInstancesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.suspend(() => SqlManagedInstancePropertiesSchema),
+    extendedLocation: Schema.optional(
+      Schema.Struct({
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.suspend(() => ExtendedLocationTypeSchema)),
+      }),
+    ),
+    sku: Schema.optional(Schema.suspend(() => SqlManagedInstanceSkuSchema)),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type SqlManagedInstancesGetOutput =
   typeof SqlManagedInstancesGetOutput.Type;
@@ -1513,37 +2463,7 @@ export type SqlManagedInstancesListInput =
 export const SqlManagedInstancesListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.String),
-              createdByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              createdAt: Schema.optional(Schema.String),
-              lastModifiedBy: Schema.optional(Schema.String),
-              lastModifiedByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              lastModifiedAt: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => SqlManagedInstanceSchema)),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -1576,37 +2496,7 @@ export type SqlManagedInstancesListByResourceGroupInput =
 export const SqlManagedInstancesListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.String),
-              createdByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              createdAt: Schema.optional(Schema.String),
-              lastModifiedBy: Schema.optional(Schema.String),
-              lastModifiedByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              lastModifiedAt: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => SqlManagedInstanceSchema)),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -1641,23 +2531,20 @@ export type SqlManagedInstancesUpdateInput =
 // Output Schema
 export const SqlManagedInstancesUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.suspend(() => SqlManagedInstancePropertiesSchema),
+    extendedLocation: Schema.optional(
+      Schema.Struct({
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.suspend(() => ExtendedLocationTypeSchema)),
+      }),
+    ),
+    sku: Schema.optional(Schema.suspend(() => SqlManagedInstanceSkuSchema)),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type SqlManagedInstancesUpdateOutput =
   typeof SqlManagedInstancesUpdateOutput.Type;
@@ -1691,23 +2578,15 @@ export type SqlServerAvailabilityGroupsAddDatabasesInput =
 // Output Schema
 export const SqlServerAvailabilityGroupsAddDatabasesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.suspend(
+      () => SqlServerAvailabilityGroupResourcePropertiesSchema,
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type SqlServerAvailabilityGroupsAddDatabasesOutput =
   typeof SqlServerAvailabilityGroupsAddDatabasesOutput.Type;
@@ -1728,170 +2607,9 @@ export const SqlServerAvailabilityGroupsAddDatabases =
 export const SqlServerAvailabilityGroupsCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    properties: Schema.Struct({
-      availabilityGroupId: Schema.optional(Schema.String),
-      serverName: Schema.optional(Schema.String),
-      instanceName: Schema.optional(Schema.String),
-      vmId: Schema.optional(Schema.String),
-      collectionTimestamp: Schema.optional(Schema.String),
-      info: Schema.optional(
-        Schema.Struct({
-          failureConditionLevel: Schema.optional(Schema.Number),
-          healthCheckTimeout: Schema.optional(Schema.Number),
-          automatedBackupPreferenceDescription: Schema.optional(Schema.String),
-          version: Schema.optional(Schema.Number),
-          basicFeatures: Schema.optional(Schema.Boolean),
-          dtcSupport: Schema.optional(Schema.Boolean),
-          dbFailover: Schema.optional(Schema.Boolean),
-          isDistributed: Schema.optional(Schema.Boolean),
-          clusterTypeDescription: Schema.optional(Schema.String),
-          requiredSynchronizedSecondariesToCommit: Schema.optional(
-            Schema.Number,
-          ),
-          isContained: Schema.optional(Schema.Boolean),
-          primaryReplica: Schema.optional(Schema.String),
-          primaryRecoveryHealthDescription: Schema.optional(Schema.String),
-          secondaryRecoveryHealthDescription: Schema.optional(Schema.String),
-          synchronizationHealthDescription: Schema.optional(Schema.String),
-          replicationPartnerType: Schema.optional(
-            Schema.Literals([
-              "SQLServer",
-              "AzureSQLVM",
-              "AzureSQLManagedInstance",
-              "Unknown",
-            ]),
-          ),
-          listener: Schema.optional(
-            Schema.Struct({
-              dnsName: Schema.optional(Schema.String),
-              ipV4AddressesAndMasks: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    ipAddress: Schema.optional(Schema.String),
-                    mask: Schema.optional(Schema.String),
-                  }),
-                ),
-              ),
-              ipV6Addresses: Schema.optional(Schema.Array(Schema.String)),
-              port: Schema.optional(Schema.Number),
-            }),
-          ),
-        }),
-      ),
-      replicas: Schema.optional(
-        Schema.Struct({
-          value: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                replicaId: Schema.optional(Schema.String),
-                replicaName: Schema.optional(Schema.String),
-                replicaResourceId: Schema.optional(Schema.String),
-                configure: Schema.optional(
-                  Schema.Struct({
-                    endpointName: Schema.optional(Schema.String),
-                    endpointUrl: Schema.optional(Schema.String),
-                    endpointAuthenticationMode: Schema.optional(
-                      Schema.Literals([
-                        "Windows_NTLM",
-                        "Windows_Kerberos",
-                        "Windows_Negotiate",
-                        "Certificate",
-                        "Windows_NTLM_Certificate",
-                        "Windows_Kerberos_Certificate",
-                        "Windows_Negotiate_Certificate",
-                        "Certificate_Windows_NTLM",
-                        "Certificate_Windows_Kerberos",
-                        "Certificate_Windows_Negotiate",
-                      ]),
-                    ),
-                    certificateName: Schema.optional(Schema.String),
-                    endpointConnectLogin: Schema.optional(Schema.String),
-                    availabilityMode: Schema.optional(
-                      Schema.Literals([
-                        "SYNCHRONOUS_COMMIT",
-                        "ASYNCHRONOUS_COMMIT",
-                      ]),
-                    ),
-                    availabilityModeDescription: Schema.optional(Schema.String),
-                    failoverMode: Schema.optional(
-                      Schema.Literals([
-                        "AUTOMATIC",
-                        "MANUAL",
-                        "EXTERNAL",
-                        "NONE",
-                      ]),
-                    ),
-                    failoverModeDescription: Schema.optional(Schema.String),
-                    sessionTimeout: Schema.optional(Schema.Number),
-                    primaryAllowConnections: Schema.optional(
-                      Schema.Literals(["ALL", "READ_WRITE"]),
-                    ),
-                    primaryRoleAllowConnectionsDescription: Schema.optional(
-                      Schema.String,
-                    ),
-                    secondaryAllowConnections: Schema.optional(
-                      Schema.Literals(["NO", "ALL", "READ_ONLY"]),
-                    ),
-                    secondaryRoleAllowConnectionsDescription: Schema.optional(
-                      Schema.String,
-                    ),
-                    replicaCreateDate: Schema.optional(Schema.String),
-                    replicaModifyDate: Schema.optional(Schema.String),
-                    backupPriority: Schema.optional(Schema.Number),
-                    readOnlyRoutingUrl: Schema.optional(Schema.String),
-                    readWriteRoutingUrl: Schema.optional(Schema.String),
-                    seedingMode: Schema.optional(
-                      Schema.Literals(["AUTOMATIC", "MANUAL"]),
-                    ),
-                    seedingModeDescription: Schema.optional(Schema.String),
-                  }),
-                ),
-                state: Schema.optional(
-                  Schema.Struct({
-                    availabilityGroupReplicaRole: Schema.optional(
-                      Schema.String,
-                    ),
-                    operationalStateDescription: Schema.optional(Schema.String),
-                    recoveryHealthDescription: Schema.optional(Schema.String),
-                    synchronizationHealthDescription: Schema.optional(
-                      Schema.String,
-                    ),
-                    connectedStateDescription: Schema.optional(Schema.String),
-                    lastConnectErrorDescription: Schema.optional(Schema.String),
-                    lastConnectErrorTimestamp: Schema.optional(Schema.String),
-                  }),
-                ),
-              }),
-            ),
-          ),
-          nextLink: Schema.optional(Schema.String),
-        }),
-      ),
-      databases: Schema.optional(
-        Schema.Struct({
-          value: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                databaseName: Schema.optional(Schema.String),
-                replicaName: Schema.optional(Schema.String),
-                isLocal: Schema.optional(Schema.Boolean),
-                isPrimaryReplica: Schema.optional(Schema.Boolean),
-                synchronizationStateDescription: Schema.optional(Schema.String),
-                isCommitParticipant: Schema.optional(Schema.Boolean),
-                synchronizationHealthDescription: Schema.optional(
-                  Schema.String,
-                ),
-                databaseStateDescription: Schema.optional(Schema.String),
-                isSuspended: Schema.optional(Schema.Boolean),
-                suspendReasonDescription: Schema.optional(Schema.String),
-              }),
-            ),
-          ),
-          nextLink: Schema.optional(Schema.String),
-        }),
-      ),
-      provisioningState: Schema.optional(Schema.String),
-    }),
+    properties: Schema.suspend(
+      () => SqlServerAvailabilityGroupResourcePropertiesSchema,
+    ),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     location: Schema.String,
   }).pipe(
@@ -1907,23 +2625,15 @@ export type SqlServerAvailabilityGroupsCreateInput =
 // Output Schema
 export const SqlServerAvailabilityGroupsCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.suspend(
+      () => SqlServerAvailabilityGroupResourcePropertiesSchema,
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type SqlServerAvailabilityGroupsCreateOutput =
   typeof SqlServerAvailabilityGroupsCreateOutput.Type;
@@ -1947,48 +2657,9 @@ export const SqlServerAvailabilityGroupsCreateAvailabilityGroupInput =
     availabilityGroupName: Schema.optional(Schema.String),
     replicas: Schema.optional(
       Schema.Array(
-        Schema.Struct({
-          serverInstance: Schema.optional(Schema.String),
-          endpointName: Schema.optional(Schema.String),
-          endpointUrl: Schema.optional(Schema.String),
-          endpointAuthenticationMode: Schema.optional(
-            Schema.Literals([
-              "Windows_NTLM",
-              "Windows_Kerberos",
-              "Windows_Negotiate",
-              "Certificate",
-              "Windows_NTLM_Certificate",
-              "Windows_Kerberos_Certificate",
-              "Windows_Negotiate_Certificate",
-              "Certificate_Windows_NTLM",
-              "Certificate_Windows_Kerberos",
-              "Certificate_Windows_Negotiate",
-            ]),
-          ),
-          certificateName: Schema.optional(Schema.String),
-          endpointConnectLogin: Schema.optional(Schema.String),
-          availabilityMode: Schema.optional(
-            Schema.Literals(["SYNCHRONOUS_COMMIT", "ASYNCHRONOUS_COMMIT"]),
-          ),
-          failoverMode: Schema.optional(
-            Schema.Literals(["AUTOMATIC", "MANUAL", "EXTERNAL", "NONE"]),
-          ),
-          seedingMode: Schema.optional(
-            Schema.Literals(["AUTOMATIC", "MANUAL"]),
-          ),
-          backupPriority: Schema.optional(Schema.Number),
-          secondaryRoleAllowConnections: Schema.optional(
-            Schema.Literals(["NO", "ALL", "READ_ONLY"]),
-          ),
-          secondaryRoleReadOnlyRoutingUrl: Schema.optional(Schema.String),
-          primaryRoleAllowConnections: Schema.optional(
-            Schema.Literals(["ALL", "READ_WRITE"]),
-          ),
-          primaryRoleReadOnlyRoutingList: Schema.optional(
-            Schema.Array(Schema.String),
-          ),
-          sessionTimeout: Schema.optional(Schema.Number),
-        }),
+        Schema.suspend(
+          () => AvailabilityGroupCreateUpdateReplicaConfigurationSchema,
+        ),
       ),
     ),
     databases: Schema.optional(Schema.Array(Schema.String)),
@@ -2002,19 +2673,9 @@ export const SqlServerAvailabilityGroupsCreateAvailabilityGroupInput =
     requiredSynchronizedSecondariesToCommit: Schema.optional(Schema.Number),
     clusterType: Schema.optional(Schema.Literals(["WSFC", "NONE"])),
     listener: Schema.optional(
-      Schema.Struct({
-        dnsName: Schema.optional(Schema.String),
-        ipV4AddressesAndMasks: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              ipAddress: Schema.optional(Schema.String),
-              mask: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        ipV6Addresses: Schema.optional(Schema.Array(Schema.String)),
-        port: Schema.optional(Schema.Number),
-      }),
+      Schema.suspend(
+        () => SqlAvailabilityGroupStaticIPListenerPropertiesSchema,
+      ),
     ),
   }).pipe(
     T.Http({
@@ -2030,23 +2691,15 @@ export type SqlServerAvailabilityGroupsCreateAvailabilityGroupInput =
 // Output Schema
 export const SqlServerAvailabilityGroupsCreateAvailabilityGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.suspend(
+      () => SqlServerAvailabilityGroupResourcePropertiesSchema,
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type SqlServerAvailabilityGroupsCreateAvailabilityGroupOutput =
   typeof SqlServerAvailabilityGroupsCreateAvailabilityGroupOutput.Type;
@@ -2069,40 +2722,16 @@ export const SqlServerAvailabilityGroupsCreateDistributedAvailabilityGroupInput 
     subscriptionId: Schema.String.pipe(T.PathParam()),
     availabilityGroupName: Schema.optional(Schema.String),
     primaryAvailabilityGroup: Schema.optional(
-      Schema.Struct({
-        availabilityGroup: Schema.optional(Schema.String),
-        listenerUrl: Schema.optional(Schema.String),
-        availabilityMode: Schema.optional(
-          Schema.Literals(["SYNCHRONOUS_COMMIT", "ASYNCHRONOUS_COMMIT"]),
-        ),
-        failoverMode: Schema.optional(
-          Schema.Literals(["AUTOMATIC", "MANUAL", "EXTERNAL", "NONE"]),
-        ),
-        seedingMode: Schema.optional(Schema.Literals(["AUTOMATIC", "MANUAL"])),
-        certificateConfiguration: Schema.optional(
-          Schema.Struct({
-            certificateName: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
+      Schema.suspend(
+        () =>
+          DistributedAvailabilityGroupCreateUpdateAvailabilityGroupConfigurationSchema,
+      ),
     ),
     secondaryAvailabilityGroup: Schema.optional(
-      Schema.Struct({
-        availabilityGroup: Schema.optional(Schema.String),
-        listenerUrl: Schema.optional(Schema.String),
-        availabilityMode: Schema.optional(
-          Schema.Literals(["SYNCHRONOUS_COMMIT", "ASYNCHRONOUS_COMMIT"]),
-        ),
-        failoverMode: Schema.optional(
-          Schema.Literals(["AUTOMATIC", "MANUAL", "EXTERNAL", "NONE"]),
-        ),
-        seedingMode: Schema.optional(Schema.Literals(["AUTOMATIC", "MANUAL"])),
-        certificateConfiguration: Schema.optional(
-          Schema.Struct({
-            certificateName: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
+      Schema.suspend(
+        () =>
+          DistributedAvailabilityGroupCreateUpdateAvailabilityGroupConfigurationSchema,
+      ),
     ),
   }).pipe(
     T.Http({
@@ -2118,23 +2747,15 @@ export type SqlServerAvailabilityGroupsCreateDistributedAvailabilityGroupInput =
 // Output Schema
 export const SqlServerAvailabilityGroupsCreateDistributedAvailabilityGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.suspend(
+      () => SqlServerAvailabilityGroupResourcePropertiesSchema,
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type SqlServerAvailabilityGroupsCreateDistributedAvailabilityGroupOutput =
   typeof SqlServerAvailabilityGroupsCreateDistributedAvailabilityGroupOutput.Type;
@@ -2159,132 +2780,15 @@ export const SqlServerAvailabilityGroupsCreateManagedInstanceLinkInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     availabilityGroup: Schema.optional(
-      Schema.Struct({
-        availabilityGroupName: Schema.optional(Schema.String),
-        replicas: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              serverInstance: Schema.optional(Schema.String),
-              endpointName: Schema.optional(Schema.String),
-              endpointUrl: Schema.optional(Schema.String),
-              endpointAuthenticationMode: Schema.optional(
-                Schema.Literals([
-                  "Windows_NTLM",
-                  "Windows_Kerberos",
-                  "Windows_Negotiate",
-                  "Certificate",
-                  "Windows_NTLM_Certificate",
-                  "Windows_Kerberos_Certificate",
-                  "Windows_Negotiate_Certificate",
-                  "Certificate_Windows_NTLM",
-                  "Certificate_Windows_Kerberos",
-                  "Certificate_Windows_Negotiate",
-                ]),
-              ),
-              certificateName: Schema.optional(Schema.String),
-              endpointConnectLogin: Schema.optional(Schema.String),
-              availabilityMode: Schema.optional(
-                Schema.Literals(["SYNCHRONOUS_COMMIT", "ASYNCHRONOUS_COMMIT"]),
-              ),
-              failoverMode: Schema.optional(
-                Schema.Literals(["AUTOMATIC", "MANUAL", "EXTERNAL", "NONE"]),
-              ),
-              seedingMode: Schema.optional(
-                Schema.Literals(["AUTOMATIC", "MANUAL"]),
-              ),
-              backupPriority: Schema.optional(Schema.Number),
-              secondaryRoleAllowConnections: Schema.optional(
-                Schema.Literals(["NO", "ALL", "READ_ONLY"]),
-              ),
-              secondaryRoleReadOnlyRoutingUrl: Schema.optional(Schema.String),
-              primaryRoleAllowConnections: Schema.optional(
-                Schema.Literals(["ALL", "READ_WRITE"]),
-              ),
-              primaryRoleReadOnlyRoutingList: Schema.optional(
-                Schema.Array(Schema.String),
-              ),
-              sessionTimeout: Schema.optional(Schema.Number),
-            }),
-          ),
-        ),
-        databases: Schema.optional(Schema.Array(Schema.String)),
-        automatedBackupPreference: Schema.optional(
-          Schema.Literals(["PRIMARY", "SECONDARY_ONLY", "SECONDARY", "NONE"]),
-        ),
-        failureConditionLevel: Schema.optional(
-          Schema.Literals([1, 2, 3, 4, 5]),
-        ),
-        healthCheckTimeout: Schema.optional(Schema.Number),
-        dbFailover: Schema.optional(Schema.Literals(["ON", "OFF"])),
-        dtcSupport: Schema.optional(Schema.Literals(["PER_DB", "NONE"])),
-        requiredSynchronizedSecondariesToCommit: Schema.optional(Schema.Number),
-        clusterType: Schema.optional(Schema.Literals(["WSFC", "NONE"])),
-        listener: Schema.optional(
-          Schema.Struct({
-            dnsName: Schema.optional(Schema.String),
-            ipV4AddressesAndMasks: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  ipAddress: Schema.optional(Schema.String),
-                  mask: Schema.optional(Schema.String),
-                }),
-              ),
-            ),
-            ipV6Addresses: Schema.optional(Schema.Array(Schema.String)),
-            port: Schema.optional(Schema.Number),
-          }),
-        ),
-      }),
+      Schema.suspend(() => AvailabilityGroupCreateUpdateConfigurationSchema),
     ),
     distributedAvailabilityGroup: Schema.optional(
-      Schema.Struct({
-        availabilityGroupName: Schema.optional(Schema.String),
-        primaryAvailabilityGroup: Schema.optional(
-          Schema.Struct({
-            availabilityGroup: Schema.optional(Schema.String),
-            listenerUrl: Schema.optional(Schema.String),
-            availabilityMode: Schema.optional(
-              Schema.Literals(["SYNCHRONOUS_COMMIT", "ASYNCHRONOUS_COMMIT"]),
-            ),
-            failoverMode: Schema.optional(
-              Schema.Literals(["AUTOMATIC", "MANUAL", "EXTERNAL", "NONE"]),
-            ),
-            seedingMode: Schema.optional(
-              Schema.Literals(["AUTOMATIC", "MANUAL"]),
-            ),
-            certificateConfiguration: Schema.optional(
-              Schema.Struct({
-                certificateName: Schema.optional(Schema.String),
-              }),
-            ),
-          }),
-        ),
-        secondaryAvailabilityGroup: Schema.optional(
-          Schema.Struct({
-            availabilityGroup: Schema.optional(Schema.String),
-            listenerUrl: Schema.optional(Schema.String),
-            availabilityMode: Schema.optional(
-              Schema.Literals(["SYNCHRONOUS_COMMIT", "ASYNCHRONOUS_COMMIT"]),
-            ),
-            failoverMode: Schema.optional(
-              Schema.Literals(["AUTOMATIC", "MANUAL", "EXTERNAL", "NONE"]),
-            ),
-            seedingMode: Schema.optional(
-              Schema.Literals(["AUTOMATIC", "MANUAL"]),
-            ),
-            certificateConfiguration: Schema.optional(
-              Schema.Struct({
-                certificateName: Schema.optional(Schema.String),
-              }),
-            ),
-          }),
-        ),
-      }),
+      Schema.suspend(
+        () => DistributedAvailabilityGroupCreateUpdateConfigurationSchema,
+      ),
     ),
     miLinkConfiguration: Schema.optional(
-      Schema.Struct({
-        instanceAvailabilityGroupName: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(() => MiLinkCreateUpdateConfigurationSchema),
     ),
   }).pipe(
     T.Http({
@@ -2300,23 +2804,15 @@ export type SqlServerAvailabilityGroupsCreateManagedInstanceLinkInput =
 // Output Schema
 export const SqlServerAvailabilityGroupsCreateManagedInstanceLinkOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.suspend(
+      () => SqlServerAvailabilityGroupResourcePropertiesSchema,
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type SqlServerAvailabilityGroupsCreateManagedInstanceLinkOutput =
   typeof SqlServerAvailabilityGroupsCreateManagedInstanceLinkOutput.Type;
@@ -2419,23 +2915,15 @@ export type SqlServerAvailabilityGroupsDetailViewInput =
 // Output Schema
 export const SqlServerAvailabilityGroupsDetailViewOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.suspend(
+      () => SqlServerAvailabilityGroupResourcePropertiesSchema,
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type SqlServerAvailabilityGroupsDetailViewOutput =
   typeof SqlServerAvailabilityGroupsDetailViewOutput.Type;
@@ -2469,23 +2957,15 @@ export type SqlServerAvailabilityGroupsFailoverInput =
 // Output Schema
 export const SqlServerAvailabilityGroupsFailoverOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.suspend(
+      () => SqlServerAvailabilityGroupResourcePropertiesSchema,
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type SqlServerAvailabilityGroupsFailoverOutput =
   typeof SqlServerAvailabilityGroupsFailoverOutput.Type;
@@ -2523,23 +3003,15 @@ export type SqlServerAvailabilityGroupsFailoverMiLinkInput =
 // Output Schema
 export const SqlServerAvailabilityGroupsFailoverMiLinkOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.suspend(
+      () => SqlServerAvailabilityGroupResourcePropertiesSchema,
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type SqlServerAvailabilityGroupsFailoverMiLinkOutput =
   typeof SqlServerAvailabilityGroupsFailoverMiLinkOutput.Type;
@@ -2574,23 +3046,15 @@ export type SqlServerAvailabilityGroupsForceFailoverAllowDataLossInput =
 // Output Schema
 export const SqlServerAvailabilityGroupsForceFailoverAllowDataLossOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.suspend(
+      () => SqlServerAvailabilityGroupResourcePropertiesSchema,
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type SqlServerAvailabilityGroupsForceFailoverAllowDataLossOutput =
   typeof SqlServerAvailabilityGroupsForceFailoverAllowDataLossOutput.Type;
@@ -2624,23 +3088,15 @@ export type SqlServerAvailabilityGroupsGetInput =
 // Output Schema
 export const SqlServerAvailabilityGroupsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.suspend(
+      () => SqlServerAvailabilityGroupResourcePropertiesSchema,
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type SqlServerAvailabilityGroupsGetOutput =
   typeof SqlServerAvailabilityGroupsGetOutput.Type;
@@ -2676,35 +3132,7 @@ export const SqlServerAvailabilityGroupsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.String),
-              createdByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              createdAt: Schema.optional(Schema.String),
-              lastModifiedBy: Schema.optional(Schema.String),
-              lastModifiedByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              lastModifiedAt: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
+        Schema.suspend(() => SqlServerAvailabilityGroupResourceSchema),
       ),
     ),
     nextLink: Schema.optional(Schema.String),
@@ -2742,23 +3170,15 @@ export type SqlServerAvailabilityGroupsRemoveDatabasesInput =
 // Output Schema
 export const SqlServerAvailabilityGroupsRemoveDatabasesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.suspend(
+      () => SqlServerAvailabilityGroupResourcePropertiesSchema,
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type SqlServerAvailabilityGroupsRemoveDatabasesOutput =
   typeof SqlServerAvailabilityGroupsRemoveDatabasesOutput.Type;
@@ -2781,180 +3201,7 @@ export const SqlServerAvailabilityGroupsUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     properties: Schema.optional(
-      Schema.Struct({
-        availabilityGroupId: Schema.optional(Schema.String),
-        serverName: Schema.optional(Schema.String),
-        instanceName: Schema.optional(Schema.String),
-        vmId: Schema.optional(Schema.String),
-        collectionTimestamp: Schema.optional(Schema.String),
-        info: Schema.optional(
-          Schema.Struct({
-            failureConditionLevel: Schema.optional(Schema.Number),
-            healthCheckTimeout: Schema.optional(Schema.Number),
-            automatedBackupPreferenceDescription: Schema.optional(
-              Schema.String,
-            ),
-            version: Schema.optional(Schema.Number),
-            basicFeatures: Schema.optional(Schema.Boolean),
-            dtcSupport: Schema.optional(Schema.Boolean),
-            dbFailover: Schema.optional(Schema.Boolean),
-            isDistributed: Schema.optional(Schema.Boolean),
-            clusterTypeDescription: Schema.optional(Schema.String),
-            requiredSynchronizedSecondariesToCommit: Schema.optional(
-              Schema.Number,
-            ),
-            isContained: Schema.optional(Schema.Boolean),
-            primaryReplica: Schema.optional(Schema.String),
-            primaryRecoveryHealthDescription: Schema.optional(Schema.String),
-            secondaryRecoveryHealthDescription: Schema.optional(Schema.String),
-            synchronizationHealthDescription: Schema.optional(Schema.String),
-            replicationPartnerType: Schema.optional(
-              Schema.Literals([
-                "SQLServer",
-                "AzureSQLVM",
-                "AzureSQLManagedInstance",
-                "Unknown",
-              ]),
-            ),
-            listener: Schema.optional(
-              Schema.Struct({
-                dnsName: Schema.optional(Schema.String),
-                ipV4AddressesAndMasks: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      ipAddress: Schema.optional(Schema.String),
-                      mask: Schema.optional(Schema.String),
-                    }),
-                  ),
-                ),
-                ipV6Addresses: Schema.optional(Schema.Array(Schema.String)),
-                port: Schema.optional(Schema.Number),
-              }),
-            ),
-          }),
-        ),
-        replicas: Schema.optional(
-          Schema.Struct({
-            value: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  replicaId: Schema.optional(Schema.String),
-                  replicaName: Schema.optional(Schema.String),
-                  replicaResourceId: Schema.optional(Schema.String),
-                  configure: Schema.optional(
-                    Schema.Struct({
-                      endpointName: Schema.optional(Schema.String),
-                      endpointUrl: Schema.optional(Schema.String),
-                      endpointAuthenticationMode: Schema.optional(
-                        Schema.Literals([
-                          "Windows_NTLM",
-                          "Windows_Kerberos",
-                          "Windows_Negotiate",
-                          "Certificate",
-                          "Windows_NTLM_Certificate",
-                          "Windows_Kerberos_Certificate",
-                          "Windows_Negotiate_Certificate",
-                          "Certificate_Windows_NTLM",
-                          "Certificate_Windows_Kerberos",
-                          "Certificate_Windows_Negotiate",
-                        ]),
-                      ),
-                      certificateName: Schema.optional(Schema.String),
-                      endpointConnectLogin: Schema.optional(Schema.String),
-                      availabilityMode: Schema.optional(
-                        Schema.Literals([
-                          "SYNCHRONOUS_COMMIT",
-                          "ASYNCHRONOUS_COMMIT",
-                        ]),
-                      ),
-                      availabilityModeDescription: Schema.optional(
-                        Schema.String,
-                      ),
-                      failoverMode: Schema.optional(
-                        Schema.Literals([
-                          "AUTOMATIC",
-                          "MANUAL",
-                          "EXTERNAL",
-                          "NONE",
-                        ]),
-                      ),
-                      failoverModeDescription: Schema.optional(Schema.String),
-                      sessionTimeout: Schema.optional(Schema.Number),
-                      primaryAllowConnections: Schema.optional(
-                        Schema.Literals(["ALL", "READ_WRITE"]),
-                      ),
-                      primaryRoleAllowConnectionsDescription: Schema.optional(
-                        Schema.String,
-                      ),
-                      secondaryAllowConnections: Schema.optional(
-                        Schema.Literals(["NO", "ALL", "READ_ONLY"]),
-                      ),
-                      secondaryRoleAllowConnectionsDescription: Schema.optional(
-                        Schema.String,
-                      ),
-                      replicaCreateDate: Schema.optional(Schema.String),
-                      replicaModifyDate: Schema.optional(Schema.String),
-                      backupPriority: Schema.optional(Schema.Number),
-                      readOnlyRoutingUrl: Schema.optional(Schema.String),
-                      readWriteRoutingUrl: Schema.optional(Schema.String),
-                      seedingMode: Schema.optional(
-                        Schema.Literals(["AUTOMATIC", "MANUAL"]),
-                      ),
-                      seedingModeDescription: Schema.optional(Schema.String),
-                    }),
-                  ),
-                  state: Schema.optional(
-                    Schema.Struct({
-                      availabilityGroupReplicaRole: Schema.optional(
-                        Schema.String,
-                      ),
-                      operationalStateDescription: Schema.optional(
-                        Schema.String,
-                      ),
-                      recoveryHealthDescription: Schema.optional(Schema.String),
-                      synchronizationHealthDescription: Schema.optional(
-                        Schema.String,
-                      ),
-                      connectedStateDescription: Schema.optional(Schema.String),
-                      lastConnectErrorDescription: Schema.optional(
-                        Schema.String,
-                      ),
-                      lastConnectErrorTimestamp: Schema.optional(Schema.String),
-                    }),
-                  ),
-                }),
-              ),
-            ),
-            nextLink: Schema.optional(Schema.String),
-          }),
-        ),
-        databases: Schema.optional(
-          Schema.Struct({
-            value: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  databaseName: Schema.optional(Schema.String),
-                  replicaName: Schema.optional(Schema.String),
-                  isLocal: Schema.optional(Schema.Boolean),
-                  isPrimaryReplica: Schema.optional(Schema.Boolean),
-                  synchronizationStateDescription: Schema.optional(
-                    Schema.String,
-                  ),
-                  isCommitParticipant: Schema.optional(Schema.Boolean),
-                  synchronizationHealthDescription: Schema.optional(
-                    Schema.String,
-                  ),
-                  databaseStateDescription: Schema.optional(Schema.String),
-                  isSuspended: Schema.optional(Schema.Boolean),
-                  suspendReasonDescription: Schema.optional(Schema.String),
-                }),
-              ),
-            ),
-            nextLink: Schema.optional(Schema.String),
-          }),
-        ),
-        provisioningState: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(() => SqlServerAvailabilityGroupResourcePropertiesSchema),
     ),
   }).pipe(
     T.Http({
@@ -2970,23 +3217,15 @@ export type SqlServerAvailabilityGroupsUpdateInput =
 // Output Schema
 export const SqlServerAvailabilityGroupsUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.suspend(
+      () => SqlServerAvailabilityGroupResourcePropertiesSchema,
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type SqlServerAvailabilityGroupsUpdateOutput =
   typeof SqlServerAvailabilityGroupsUpdateOutput.Type;
@@ -3006,301 +3245,7 @@ export const SqlServerAvailabilityGroupsUpdate =
 // Input Schema
 export const SqlServerDatabasesCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    properties: Schema.Struct({
-      collationName: Schema.optional(Schema.String),
-      databaseCreationDate: Schema.optional(Schema.String),
-      compatibilityLevel: Schema.optional(Schema.Number),
-      sizeMB: Schema.optional(Schema.Number),
-      logFileSizeMB: Schema.optional(Schema.Number),
-      dataFileSizeMB: Schema.optional(Schema.Number),
-      spaceAvailableMB: Schema.optional(Schema.Number),
-      state: Schema.optional(
-        Schema.Literals([
-          "Online",
-          "Restoring",
-          "Recovering",
-          "RecoveryPending",
-          "Suspect",
-          "Emergency",
-          "Offline",
-          "Copying",
-          "OfflineSecondary",
-        ]),
-      ),
-      isReadOnly: Schema.optional(Schema.Boolean),
-      recoveryMode: Schema.optional(
-        Schema.Literals(["Full", "Bulk-logged", "Simple"]),
-      ),
-      databaseOptions: Schema.optional(
-        Schema.Struct({
-          isAutoCloseOn: Schema.optional(Schema.Boolean),
-          isAutoShrinkOn: Schema.optional(Schema.Boolean),
-          isAutoCreateStatsOn: Schema.optional(Schema.Boolean),
-          isAutoUpdateStatsOn: Schema.optional(Schema.Boolean),
-          isRemoteDataArchiveEnabled: Schema.optional(Schema.Boolean),
-          isMemoryOptimizationEnabled: Schema.optional(Schema.Boolean),
-          isEncrypted: Schema.optional(Schema.Boolean),
-          isTrustworthyOn: Schema.optional(Schema.Boolean),
-          isHekatonFilesOn: Schema.optional(Schema.Boolean),
-          numberOfHekatonFiles: Schema.optional(Schema.Number),
-        }),
-      ),
-      backupInformation: Schema.optional(
-        Schema.Struct({
-          lastFullBackup: Schema.optional(Schema.String),
-          lastLogBackup: Schema.optional(Schema.String),
-        }),
-      ),
-      backupPolicy: Schema.optional(
-        Schema.Struct({
-          retentionPeriodDays: Schema.optional(Schema.Number),
-          fullBackupDays: Schema.optional(Schema.Number),
-          differentialBackupHours: Schema.optional(Schema.Literals([12, 24])),
-          transactionLogBackupMinutes: Schema.optional(Schema.Number),
-        }),
-      ),
-      earliestRestoreDate: Schema.optional(Schema.String),
-      createMode: Schema.optional(
-        Schema.Literals(["Default", "PointInTimeRestore"]),
-      ),
-      sourceDatabaseId: Schema.optional(Schema.String),
-      vmId: Schema.optional(Schema.String),
-      restorePointInTime: Schema.optional(Schema.String),
-      provisioningState: Schema.optional(Schema.String),
-      lastDatabaseUploadTime: Schema.optional(Schema.String),
-      migration: Schema.optional(
-        Schema.Struct({
-          assessment: Schema.optional(
-            Schema.Struct({
-              assessmentUploadTime: Schema.optional(Schema.String),
-              databaseAssessments: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    appliesToMigrationTargetPlatform: Schema.optional(
-                      Schema.String,
-                    ),
-                    featureId: Schema.optional(Schema.String),
-                    issueCategory: Schema.optional(Schema.String),
-                    moreInformation: Schema.optional(Schema.String),
-                  }),
-                ),
-              ),
-              targetReadiness: Schema.optional(
-                Schema.Struct({
-                  azureSqlDatabase: Schema.optional(
-                    Schema.Struct({
-                      numOfBlockerIssues: Schema.optional(Schema.Number),
-                      recommendationStatus: Schema.optional(
-                        Schema.Literals([
-                          "NotReady",
-                          "Ready",
-                          "ReadyWithConditions",
-                          "Unknown",
-                        ]),
-                      ),
-                      impactedObjectsSummary: Schema.optional(
-                        Schema.Array(
-                          Schema.Struct({
-                            featureId: Schema.optional(Schema.String),
-                            numberImpacted: Schema.optional(Schema.Number),
-                            issueCategory: Schema.optional(Schema.String),
-                          }),
-                        ),
-                      ),
-                      monthlyCost: Schema.optional(
-                        Schema.Struct({
-                          computeCost: Schema.optional(Schema.Number),
-                          storageCost: Schema.optional(Schema.Number),
-                          iopsCost: Schema.optional(Schema.Number),
-                          sqlLicenseCost: Schema.optional(Schema.Number),
-                          windowsLicenseCost: Schema.optional(Schema.Number),
-                          totalCost: Schema.optional(Schema.Number),
-                        }),
-                      ),
-                      monthlyCostOptions: Schema.optional(
-                        Schema.Array(
-                          Schema.Struct({
-                            keyName: Schema.optional(Schema.String),
-                            keyValue: Schema.optional(
-                              Schema.Struct({
-                                computeCost: Schema.optional(Schema.Number),
-                                storageCost: Schema.optional(Schema.Number),
-                                iopsCost: Schema.optional(Schema.Number),
-                              }),
-                            ),
-                          }),
-                        ),
-                      ),
-                      targetSku: Schema.optional(
-                        Schema.Struct({
-                          category: Schema.optional(
-                            Schema.Struct({
-                              computeTier: Schema.optional(Schema.String),
-                              hardwareType: Schema.optional(Schema.String),
-                              sqlPurchasingModel: Schema.optional(
-                                Schema.String,
-                              ),
-                              sqlServiceTier: Schema.optional(Schema.String),
-                              zoneRedundancyAvailable: Schema.optional(
-                                Schema.Boolean,
-                              ),
-                            }),
-                          ),
-                          computeSize: Schema.optional(Schema.Number),
-                          storageMaxSizeInMb: Schema.optional(Schema.Number),
-                          predictedDataSizeInMb: Schema.optional(Schema.Number),
-                          predictedLogSizeInMb: Schema.optional(Schema.Number),
-                          maxStorageIops: Schema.optional(Schema.Number),
-                          maxThroughputMBps: Schema.optional(Schema.Number),
-                        }),
-                      ),
-                    }),
-                  ),
-                  azureSqlManagedInstance: Schema.optional(
-                    Schema.Struct({
-                      numOfBlockerIssues: Schema.optional(Schema.Number),
-                      recommendationStatus: Schema.optional(
-                        Schema.Literals([
-                          "NotReady",
-                          "Ready",
-                          "ReadyWithConditions",
-                          "Unknown",
-                        ]),
-                      ),
-                      impactedObjectsSummary: Schema.optional(
-                        Schema.Array(
-                          Schema.Struct({
-                            featureId: Schema.optional(Schema.String),
-                            numberImpacted: Schema.optional(Schema.Number),
-                            issueCategory: Schema.optional(Schema.String),
-                          }),
-                        ),
-                      ),
-                      monthlyCost: Schema.optional(
-                        Schema.Struct({
-                          computeCost: Schema.optional(Schema.Number),
-                          storageCost: Schema.optional(Schema.Number),
-                          iopsCost: Schema.optional(Schema.Number),
-                          sqlLicenseCost: Schema.optional(Schema.Number),
-                          windowsLicenseCost: Schema.optional(Schema.Number),
-                          totalCost: Schema.optional(Schema.Number),
-                        }),
-                      ),
-                      monthlyCostOptions: Schema.optional(
-                        Schema.Array(
-                          Schema.Struct({
-                            keyName: Schema.optional(Schema.String),
-                            keyValue: Schema.optional(
-                              Schema.Struct({
-                                computeCost: Schema.optional(Schema.Number),
-                                storageCost: Schema.optional(Schema.Number),
-                                iopsCost: Schema.optional(Schema.Number),
-                              }),
-                            ),
-                          }),
-                        ),
-                      ),
-                      targetSku: Schema.optional(
-                        Schema.Struct({
-                          category: Schema.optional(
-                            Schema.Struct({
-                              computeTier: Schema.optional(Schema.String),
-                              hardwareType: Schema.optional(Schema.String),
-                              sqlPurchasingModel: Schema.optional(
-                                Schema.String,
-                              ),
-                              sqlServiceTier: Schema.optional(Schema.String),
-                              zoneRedundancyAvailable: Schema.optional(
-                                Schema.Boolean,
-                              ),
-                            }),
-                          ),
-                          computeSize: Schema.optional(Schema.Number),
-                          storageMaxSizeInMb: Schema.optional(Schema.Number),
-                          predictedDataSizeInMb: Schema.optional(Schema.Number),
-                          predictedLogSizeInMb: Schema.optional(Schema.Number),
-                          maxStorageIops: Schema.optional(Schema.Number),
-                          maxThroughputMBps: Schema.optional(Schema.Number),
-                        }),
-                      ),
-                    }),
-                  ),
-                  azureSqlVirtualMachine: Schema.optional(
-                    Schema.Struct({
-                      numOfBlockerIssues: Schema.optional(Schema.Number),
-                      recommendationStatus: Schema.optional(
-                        Schema.Literals([
-                          "NotReady",
-                          "Ready",
-                          "ReadyWithConditions",
-                          "Unknown",
-                        ]),
-                      ),
-                      impactedObjectsSummary: Schema.optional(
-                        Schema.Array(
-                          Schema.Struct({
-                            featureId: Schema.optional(Schema.String),
-                            numberImpacted: Schema.optional(Schema.Number),
-                            issueCategory: Schema.optional(Schema.String),
-                          }),
-                        ),
-                      ),
-                      monthlyCost: Schema.optional(
-                        Schema.Struct({
-                          computeCost: Schema.optional(Schema.Number),
-                          storageCost: Schema.optional(Schema.Number),
-                          iopsCost: Schema.optional(Schema.Number),
-                          sqlLicenseCost: Schema.optional(Schema.Number),
-                          windowsLicenseCost: Schema.optional(Schema.Number),
-                          totalCost: Schema.optional(Schema.Number),
-                        }),
-                      ),
-                      monthlyCostOptions: Schema.optional(
-                        Schema.Array(
-                          Schema.Struct({
-                            keyName: Schema.optional(Schema.String),
-                            keyValue: Schema.optional(
-                              Schema.Struct({
-                                computeCost: Schema.optional(Schema.Number),
-                                storageCost: Schema.optional(Schema.Number),
-                                iopsCost: Schema.optional(Schema.Number),
-                              }),
-                            ),
-                          }),
-                        ),
-                      ),
-                      targetSku: Schema.optional(
-                        Schema.Struct({
-                          category: Schema.optional(
-                            Schema.Struct({
-                              computeTier: Schema.optional(Schema.String),
-                              hardwareType: Schema.optional(Schema.String),
-                              sqlPurchasingModel: Schema.optional(
-                                Schema.String,
-                              ),
-                              sqlServiceTier: Schema.optional(Schema.String),
-                              zoneRedundancyAvailable: Schema.optional(
-                                Schema.Boolean,
-                              ),
-                            }),
-                          ),
-                          computeSize: Schema.optional(Schema.Number),
-                          storageMaxSizeInMb: Schema.optional(Schema.Number),
-                          predictedDataSizeInMb: Schema.optional(Schema.Number),
-                          predictedLogSizeInMb: Schema.optional(Schema.Number),
-                          maxStorageIops: Schema.optional(Schema.Number),
-                          maxThroughputMBps: Schema.optional(Schema.Number),
-                        }),
-                      ),
-                    }),
-                  ),
-                }),
-              ),
-            }),
-          ),
-        }),
-      ),
-    }),
+    properties: Schema.suspend(() => SqlServerDatabaseResourcePropertiesSchema),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     location: Schema.String,
   }).pipe(
@@ -3316,23 +3261,13 @@ export type SqlServerDatabasesCreateInput =
 // Output Schema
 export const SqlServerDatabasesCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.suspend(() => SqlServerDatabaseResourcePropertiesSchema),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type SqlServerDatabasesCreateOutput =
   typeof SqlServerDatabasesCreateOutput.Type;
@@ -3390,23 +3325,13 @@ export type SqlServerDatabasesGetInput = typeof SqlServerDatabasesGetInput.Type;
 // Output Schema
 export const SqlServerDatabasesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.suspend(() => SqlServerDatabaseResourcePropertiesSchema),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type SqlServerDatabasesGetOutput =
   typeof SqlServerDatabasesGetOutput.Type;
@@ -3437,37 +3362,7 @@ export type SqlServerDatabasesListInput =
 export const SqlServerDatabasesListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.String),
-              createdByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              createdAt: Schema.optional(Schema.String),
-              lastModifiedBy: Schema.optional(Schema.String),
-              lastModifiedByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              lastModifiedAt: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => SqlServerDatabaseResourceSchema)),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -3489,313 +3384,7 @@ export const SqlServerDatabasesUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     properties: Schema.optional(
-      Schema.Struct({
-        collationName: Schema.optional(Schema.String),
-        databaseCreationDate: Schema.optional(Schema.String),
-        compatibilityLevel: Schema.optional(Schema.Number),
-        sizeMB: Schema.optional(Schema.Number),
-        logFileSizeMB: Schema.optional(Schema.Number),
-        dataFileSizeMB: Schema.optional(Schema.Number),
-        spaceAvailableMB: Schema.optional(Schema.Number),
-        state: Schema.optional(
-          Schema.Literals([
-            "Online",
-            "Restoring",
-            "Recovering",
-            "RecoveryPending",
-            "Suspect",
-            "Emergency",
-            "Offline",
-            "Copying",
-            "OfflineSecondary",
-          ]),
-        ),
-        isReadOnly: Schema.optional(Schema.Boolean),
-        recoveryMode: Schema.optional(
-          Schema.Literals(["Full", "Bulk-logged", "Simple"]),
-        ),
-        databaseOptions: Schema.optional(
-          Schema.Struct({
-            isAutoCloseOn: Schema.optional(Schema.Boolean),
-            isAutoShrinkOn: Schema.optional(Schema.Boolean),
-            isAutoCreateStatsOn: Schema.optional(Schema.Boolean),
-            isAutoUpdateStatsOn: Schema.optional(Schema.Boolean),
-            isRemoteDataArchiveEnabled: Schema.optional(Schema.Boolean),
-            isMemoryOptimizationEnabled: Schema.optional(Schema.Boolean),
-            isEncrypted: Schema.optional(Schema.Boolean),
-            isTrustworthyOn: Schema.optional(Schema.Boolean),
-            isHekatonFilesOn: Schema.optional(Schema.Boolean),
-            numberOfHekatonFiles: Schema.optional(Schema.Number),
-          }),
-        ),
-        backupInformation: Schema.optional(
-          Schema.Struct({
-            lastFullBackup: Schema.optional(Schema.String),
-            lastLogBackup: Schema.optional(Schema.String),
-          }),
-        ),
-        backupPolicy: Schema.optional(
-          Schema.Struct({
-            retentionPeriodDays: Schema.optional(Schema.Number),
-            fullBackupDays: Schema.optional(Schema.Number),
-            differentialBackupHours: Schema.optional(Schema.Literals([12, 24])),
-            transactionLogBackupMinutes: Schema.optional(Schema.Number),
-          }),
-        ),
-        earliestRestoreDate: Schema.optional(Schema.String),
-        createMode: Schema.optional(
-          Schema.Literals(["Default", "PointInTimeRestore"]),
-        ),
-        sourceDatabaseId: Schema.optional(Schema.String),
-        vmId: Schema.optional(Schema.String),
-        restorePointInTime: Schema.optional(Schema.String),
-        provisioningState: Schema.optional(Schema.String),
-        lastDatabaseUploadTime: Schema.optional(Schema.String),
-        migration: Schema.optional(
-          Schema.Struct({
-            assessment: Schema.optional(
-              Schema.Struct({
-                assessmentUploadTime: Schema.optional(Schema.String),
-                databaseAssessments: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      appliesToMigrationTargetPlatform: Schema.optional(
-                        Schema.String,
-                      ),
-                      featureId: Schema.optional(Schema.String),
-                      issueCategory: Schema.optional(Schema.String),
-                      moreInformation: Schema.optional(Schema.String),
-                    }),
-                  ),
-                ),
-                targetReadiness: Schema.optional(
-                  Schema.Struct({
-                    azureSqlDatabase: Schema.optional(
-                      Schema.Struct({
-                        numOfBlockerIssues: Schema.optional(Schema.Number),
-                        recommendationStatus: Schema.optional(
-                          Schema.Literals([
-                            "NotReady",
-                            "Ready",
-                            "ReadyWithConditions",
-                            "Unknown",
-                          ]),
-                        ),
-                        impactedObjectsSummary: Schema.optional(
-                          Schema.Array(
-                            Schema.Struct({
-                              featureId: Schema.optional(Schema.String),
-                              numberImpacted: Schema.optional(Schema.Number),
-                              issueCategory: Schema.optional(Schema.String),
-                            }),
-                          ),
-                        ),
-                        monthlyCost: Schema.optional(
-                          Schema.Struct({
-                            computeCost: Schema.optional(Schema.Number),
-                            storageCost: Schema.optional(Schema.Number),
-                            iopsCost: Schema.optional(Schema.Number),
-                            sqlLicenseCost: Schema.optional(Schema.Number),
-                            windowsLicenseCost: Schema.optional(Schema.Number),
-                            totalCost: Schema.optional(Schema.Number),
-                          }),
-                        ),
-                        monthlyCostOptions: Schema.optional(
-                          Schema.Array(
-                            Schema.Struct({
-                              keyName: Schema.optional(Schema.String),
-                              keyValue: Schema.optional(
-                                Schema.Struct({
-                                  computeCost: Schema.optional(Schema.Number),
-                                  storageCost: Schema.optional(Schema.Number),
-                                  iopsCost: Schema.optional(Schema.Number),
-                                }),
-                              ),
-                            }),
-                          ),
-                        ),
-                        targetSku: Schema.optional(
-                          Schema.Struct({
-                            category: Schema.optional(
-                              Schema.Struct({
-                                computeTier: Schema.optional(Schema.String),
-                                hardwareType: Schema.optional(Schema.String),
-                                sqlPurchasingModel: Schema.optional(
-                                  Schema.String,
-                                ),
-                                sqlServiceTier: Schema.optional(Schema.String),
-                                zoneRedundancyAvailable: Schema.optional(
-                                  Schema.Boolean,
-                                ),
-                              }),
-                            ),
-                            computeSize: Schema.optional(Schema.Number),
-                            storageMaxSizeInMb: Schema.optional(Schema.Number),
-                            predictedDataSizeInMb: Schema.optional(
-                              Schema.Number,
-                            ),
-                            predictedLogSizeInMb: Schema.optional(
-                              Schema.Number,
-                            ),
-                            maxStorageIops: Schema.optional(Schema.Number),
-                            maxThroughputMBps: Schema.optional(Schema.Number),
-                          }),
-                        ),
-                      }),
-                    ),
-                    azureSqlManagedInstance: Schema.optional(
-                      Schema.Struct({
-                        numOfBlockerIssues: Schema.optional(Schema.Number),
-                        recommendationStatus: Schema.optional(
-                          Schema.Literals([
-                            "NotReady",
-                            "Ready",
-                            "ReadyWithConditions",
-                            "Unknown",
-                          ]),
-                        ),
-                        impactedObjectsSummary: Schema.optional(
-                          Schema.Array(
-                            Schema.Struct({
-                              featureId: Schema.optional(Schema.String),
-                              numberImpacted: Schema.optional(Schema.Number),
-                              issueCategory: Schema.optional(Schema.String),
-                            }),
-                          ),
-                        ),
-                        monthlyCost: Schema.optional(
-                          Schema.Struct({
-                            computeCost: Schema.optional(Schema.Number),
-                            storageCost: Schema.optional(Schema.Number),
-                            iopsCost: Schema.optional(Schema.Number),
-                            sqlLicenseCost: Schema.optional(Schema.Number),
-                            windowsLicenseCost: Schema.optional(Schema.Number),
-                            totalCost: Schema.optional(Schema.Number),
-                          }),
-                        ),
-                        monthlyCostOptions: Schema.optional(
-                          Schema.Array(
-                            Schema.Struct({
-                              keyName: Schema.optional(Schema.String),
-                              keyValue: Schema.optional(
-                                Schema.Struct({
-                                  computeCost: Schema.optional(Schema.Number),
-                                  storageCost: Schema.optional(Schema.Number),
-                                  iopsCost: Schema.optional(Schema.Number),
-                                }),
-                              ),
-                            }),
-                          ),
-                        ),
-                        targetSku: Schema.optional(
-                          Schema.Struct({
-                            category: Schema.optional(
-                              Schema.Struct({
-                                computeTier: Schema.optional(Schema.String),
-                                hardwareType: Schema.optional(Schema.String),
-                                sqlPurchasingModel: Schema.optional(
-                                  Schema.String,
-                                ),
-                                sqlServiceTier: Schema.optional(Schema.String),
-                                zoneRedundancyAvailable: Schema.optional(
-                                  Schema.Boolean,
-                                ),
-                              }),
-                            ),
-                            computeSize: Schema.optional(Schema.Number),
-                            storageMaxSizeInMb: Schema.optional(Schema.Number),
-                            predictedDataSizeInMb: Schema.optional(
-                              Schema.Number,
-                            ),
-                            predictedLogSizeInMb: Schema.optional(
-                              Schema.Number,
-                            ),
-                            maxStorageIops: Schema.optional(Schema.Number),
-                            maxThroughputMBps: Schema.optional(Schema.Number),
-                          }),
-                        ),
-                      }),
-                    ),
-                    azureSqlVirtualMachine: Schema.optional(
-                      Schema.Struct({
-                        numOfBlockerIssues: Schema.optional(Schema.Number),
-                        recommendationStatus: Schema.optional(
-                          Schema.Literals([
-                            "NotReady",
-                            "Ready",
-                            "ReadyWithConditions",
-                            "Unknown",
-                          ]),
-                        ),
-                        impactedObjectsSummary: Schema.optional(
-                          Schema.Array(
-                            Schema.Struct({
-                              featureId: Schema.optional(Schema.String),
-                              numberImpacted: Schema.optional(Schema.Number),
-                              issueCategory: Schema.optional(Schema.String),
-                            }),
-                          ),
-                        ),
-                        monthlyCost: Schema.optional(
-                          Schema.Struct({
-                            computeCost: Schema.optional(Schema.Number),
-                            storageCost: Schema.optional(Schema.Number),
-                            iopsCost: Schema.optional(Schema.Number),
-                            sqlLicenseCost: Schema.optional(Schema.Number),
-                            windowsLicenseCost: Schema.optional(Schema.Number),
-                            totalCost: Schema.optional(Schema.Number),
-                          }),
-                        ),
-                        monthlyCostOptions: Schema.optional(
-                          Schema.Array(
-                            Schema.Struct({
-                              keyName: Schema.optional(Schema.String),
-                              keyValue: Schema.optional(
-                                Schema.Struct({
-                                  computeCost: Schema.optional(Schema.Number),
-                                  storageCost: Schema.optional(Schema.Number),
-                                  iopsCost: Schema.optional(Schema.Number),
-                                }),
-                              ),
-                            }),
-                          ),
-                        ),
-                        targetSku: Schema.optional(
-                          Schema.Struct({
-                            category: Schema.optional(
-                              Schema.Struct({
-                                computeTier: Schema.optional(Schema.String),
-                                hardwareType: Schema.optional(Schema.String),
-                                sqlPurchasingModel: Schema.optional(
-                                  Schema.String,
-                                ),
-                                sqlServiceTier: Schema.optional(Schema.String),
-                                zoneRedundancyAvailable: Schema.optional(
-                                  Schema.Boolean,
-                                ),
-                              }),
-                            ),
-                            computeSize: Schema.optional(Schema.Number),
-                            storageMaxSizeInMb: Schema.optional(Schema.Number),
-                            predictedDataSizeInMb: Schema.optional(
-                              Schema.Number,
-                            ),
-                            predictedLogSizeInMb: Schema.optional(
-                              Schema.Number,
-                            ),
-                            maxStorageIops: Schema.optional(Schema.Number),
-                            maxThroughputMBps: Schema.optional(Schema.Number),
-                          }),
-                        ),
-                      }),
-                    ),
-                  }),
-                ),
-              }),
-            ),
-          }),
-        ),
-      }),
+      Schema.suspend(() => SqlServerDatabaseResourcePropertiesSchema),
     ),
   }).pipe(
     T.Http({
@@ -3811,23 +3400,13 @@ export type SqlServerDatabasesUpdateInput =
 // Output Schema
 export const SqlServerDatabasesUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.suspend(() => SqlServerDatabaseResourcePropertiesSchema),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type SqlServerDatabasesUpdateOutput =
   typeof SqlServerDatabasesUpdateOutput.Type;
@@ -3847,17 +3426,7 @@ export const SqlServerEsuLicensesCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    properties: Schema.Struct({
-      billingPlan: Schema.Literals(["PAYG"]),
-      version: Schema.Literals(["SQL Server 2012", "SQL Server 2014"]),
-      uniqueId: Schema.optional(Schema.String),
-      physicalCores: Schema.Number,
-      activationState: Schema.Literals(["Inactive", "Active", "Terminated"]),
-      scopeType: Schema.Literals(["Tenant", "Subscription", "ResourceGroup"]),
-      activatedAt: Schema.optional(Schema.String),
-      terminatedAt: Schema.optional(Schema.String),
-      tenantId: Schema.optional(Schema.String),
-    }),
+    properties: Schema.suspend(() => SqlServerEsuLicensePropertiesSchema),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     location: Schema.String,
   }).pipe(
@@ -3873,23 +3442,13 @@ export type SqlServerEsuLicensesCreateInput =
 // Output Schema
 export const SqlServerEsuLicensesCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.suspend(() => SqlServerEsuLicensePropertiesSchema),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type SqlServerEsuLicensesCreateOutput =
   typeof SqlServerEsuLicensesCreateOutput.Type;
@@ -3961,23 +3520,13 @@ export type SqlServerEsuLicensesGetInput =
 // Output Schema
 export const SqlServerEsuLicensesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.suspend(() => SqlServerEsuLicensePropertiesSchema),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type SqlServerEsuLicensesGetOutput =
   typeof SqlServerEsuLicensesGetOutput.Type;
@@ -4014,37 +3563,7 @@ export type SqlServerEsuLicensesListInput =
 export const SqlServerEsuLicensesListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.String),
-              createdByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              createdAt: Schema.optional(Schema.String),
-              lastModifiedBy: Schema.optional(Schema.String),
-              lastModifiedByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              lastModifiedAt: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => SqlServerEsuLicenseSchema)),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -4083,37 +3602,7 @@ export type SqlServerEsuLicensesListByResourceGroupInput =
 export const SqlServerEsuLicensesListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.String),
-              createdByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              createdAt: Schema.optional(Schema.String),
-              lastModifiedBy: Schema.optional(Schema.String),
-              lastModifiedByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              lastModifiedAt: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => SqlServerEsuLicenseSchema)),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -4142,23 +3631,7 @@ export const SqlServerEsuLicensesUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     properties: Schema.optional(
-      Schema.Struct({
-        billingPlan: Schema.optional(Schema.Literals(["PAYG"])),
-        version: Schema.optional(
-          Schema.Literals(["SQL Server 2012", "SQL Server 2014"]),
-        ),
-        uniqueId: Schema.optional(Schema.String),
-        physicalCores: Schema.optional(Schema.Number),
-        activationState: Schema.optional(
-          Schema.Literals(["Inactive", "Active", "Terminated"]),
-        ),
-        scopeType: Schema.optional(
-          Schema.Literals(["Tenant", "Subscription", "ResourceGroup"]),
-        ),
-        activatedAt: Schema.optional(Schema.String),
-        terminatedAt: Schema.optional(Schema.String),
-        tenantId: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(() => SqlServerEsuLicenseUpdatePropertiesSchema),
     ),
   }).pipe(
     T.Http({
@@ -4173,23 +3646,13 @@ export type SqlServerEsuLicensesUpdateInput =
 // Output Schema
 export const SqlServerEsuLicensesUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.suspend(() => SqlServerEsuLicensePropertiesSchema),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type SqlServerEsuLicensesUpdateOutput =
   typeof SqlServerEsuLicensesUpdateOutput.Type;
@@ -4212,548 +3675,7 @@ export const SqlServerEsuLicensesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const SqlServerInstancesCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     properties: Schema.optional(
-      Schema.Struct({
-        version: Schema.optional(
-          Schema.Literals([
-            "Unknown",
-            "SQL Server 2012",
-            "SQL Server 2014",
-            "SQL Server 2016",
-            "SQL Server 2017",
-            "SQL Server 2019",
-            "SQL Server 2022",
-            "SQL Server 2025",
-          ]),
-        ),
-        edition: Schema.optional(
-          Schema.Literals([
-            "Evaluation",
-            "Enterprise",
-            "Standard",
-            "Web",
-            "Developer",
-            "Express",
-            "Business Intelligence",
-            "Standard Developer",
-          ]),
-        ),
-        containerResourceId: Schema.optional(Schema.String),
-        vmId: Schema.optional(Schema.String),
-        createTime: Schema.optional(Schema.String),
-        vCore: Schema.optional(Schema.String),
-        cores: Schema.optional(Schema.String),
-        status: Schema.optional(
-          Schema.Literals([
-            "Connected",
-            "Disconnected",
-            "Registered",
-            "Unknown",
-          ]),
-        ),
-        patchLevel: Schema.optional(Schema.String),
-        collation: Schema.optional(Schema.String),
-        dbMasterKeyExists: Schema.optional(Schema.Boolean),
-        isHadrEnabled: Schema.optional(Schema.Boolean),
-        traceFlags: Schema.optional(Schema.Array(Schema.Number)),
-        currentVersion: Schema.optional(Schema.String),
-        instanceName: Schema.optional(Schema.String),
-        tcpDynamicPorts: Schema.optional(Schema.String),
-        tcpStaticPorts: Schema.optional(Schema.String),
-        productId: Schema.optional(Schema.String),
-        licenseType: Schema.optional(
-          Schema.Literals([
-            "Undefined",
-            "Free",
-            "HADR",
-            "ServerCAL",
-            "LicenseOnly",
-            "PAYG",
-            "Paid",
-            "FabricCapacity",
-          ]),
-        ),
-        azureDefenderStatusLastUpdated: Schema.optional(Schema.String),
-        azureDefenderStatus: Schema.optional(
-          Schema.Literals(["Protected", "Unprotected", "Unknown"]),
-        ),
-        provisioningState: Schema.optional(Schema.String),
-        lastInventoryUploadTime: Schema.optional(Schema.String),
-        lastUsageUploadTime: Schema.optional(Schema.String),
-        hostType: Schema.optional(
-          Schema.Literals([
-            "Azure Virtual Machine",
-            "Azure VMWare Virtual Machine",
-            "Azure Kubernetes Service",
-            "AWS VMWare Virtual Machine",
-            "AWS Kubernetes Service",
-            "GCP VMWare Virtual Machine",
-            "GCP Kubernetes Service",
-            "Container",
-            "Virtual Machine",
-            "Physical Server",
-            "AWS Virtual Machine",
-            "GCP Virtual Machine",
-            "Other",
-          ]),
-        ),
-        alwaysOnRole: Schema.optional(
-          Schema.Literals([
-            "None",
-            "FailoverClusterInstance",
-            "FailoverClusterNode",
-            "AvailabilityGroupReplica",
-          ]),
-        ),
-        databaseMirroringEndpoint: Schema.optional(
-          Schema.Struct({
-            endpointName: Schema.optional(Schema.String),
-            role: Schema.optional(
-              Schema.Literals(["NONE", "PARTNER", "WITNESS", "ALL"]),
-            ),
-            isEncryptionEnabled: Schema.optional(Schema.Boolean),
-            encryptionAlgorithm: Schema.optional(
-              Schema.Literals([
-                "NONE",
-                "RC4",
-                "AES",
-                "NONE, RC4",
-                "NONE, AES",
-                "RC4, AES",
-                "AES, RC4",
-                "NONE, RC4, AES",
-                "NONE, AES, RC4",
-              ]),
-            ),
-            connectionAuth: Schema.optional(
-              Schema.Literals([
-                "Windows_NTLM",
-                "Windows_Kerberos",
-                "Windows_Negotiate",
-                "Certificate",
-                "Windows_NTLM_Certificate",
-                "Windows_Kerberos_Certificate",
-                "Windows_Negotiate_Certificate",
-                "Certificate_Windows_NTLM",
-                "Certificate_Windows_Kerberos",
-                "Certificate_Windows_Negotiate",
-              ]),
-            ),
-            port: Schema.optional(Schema.Number),
-            isDynamicPort: Schema.optional(Schema.Boolean),
-            ipAddress: Schema.optional(Schema.String),
-            certificateName: Schema.optional(Schema.String),
-            certificateExpiryDate: Schema.optional(Schema.String),
-          }),
-        ),
-        failoverCluster: Schema.optional(
-          Schema.Struct({
-            id: Schema.optional(Schema.String),
-            networkName: Schema.optional(Schema.String),
-            sqlInstanceIds: Schema.optional(Schema.Array(Schema.String)),
-            hostNames: Schema.optional(Schema.Array(Schema.String)),
-            hostIPAddresses: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  ipAddress: Schema.optional(Schema.String),
-                  subnetMask: Schema.optional(Schema.String),
-                }),
-              ),
-            ),
-          }),
-        ),
-        backupPolicy: Schema.optional(
-          Schema.Struct({
-            retentionPeriodDays: Schema.optional(Schema.Number),
-            fullBackupDays: Schema.optional(Schema.Number),
-            differentialBackupHours: Schema.optional(Schema.Literals([12, 24])),
-            transactionLogBackupMinutes: Schema.optional(Schema.Number),
-          }),
-        ),
-        upgradeLockedUntil: Schema.optional(Schema.String),
-        monitoring: Schema.optional(
-          Schema.Struct({
-            enabled: Schema.optional(Schema.Boolean),
-          }),
-        ),
-        migration: Schema.optional(
-          Schema.Struct({
-            assessment: Schema.optional(
-              Schema.Struct({
-                enabled: Schema.optional(Schema.Boolean),
-                assessmentUploadTime: Schema.optional(Schema.String),
-                version: Schema.optional(Schema.String),
-                settings: Schema.optional(
-                  Schema.Struct({
-                    targetLocation: Schema.optional(Schema.String),
-                    percentile: Schema.optional(Schema.Number),
-                    lookbackPeriodInDays: Schema.optional(Schema.Number),
-                    strategy: Schema.optional(Schema.String),
-                    currency: Schema.optional(Schema.String),
-                    discountPercentage: Schema.optional(Schema.Number),
-                    costOptions: Schema.optional(
-                      Schema.Struct({
-                        computeAndStorageCostOption: Schema.optional(
-                          Schema.String,
-                        ),
-                        sqlLicenseCostOption: Schema.optional(Schema.String),
-                        windowsLicenseCostOption: Schema.optional(
-                          Schema.String,
-                        ),
-                      }),
-                    ),
-                  }),
-                ),
-                serverAssessments: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      appliesToMigrationTargetPlatform: Schema.optional(
-                        Schema.String,
-                      ),
-                      featureId: Schema.optional(Schema.String),
-                      impactedObjects: Schema.optional(
-                        Schema.Array(
-                          Schema.Struct({
-                            impactDetail: Schema.optional(Schema.String),
-                            name: Schema.optional(Schema.String),
-                            objectType: Schema.optional(Schema.String),
-                          }),
-                        ),
-                      ),
-                      issueCategory: Schema.optional(Schema.String),
-                      moreInformation: Schema.optional(Schema.String),
-                    }),
-                  ),
-                ),
-                skuRecommendationResults: Schema.optional(
-                  Schema.Struct({
-                    azureSqlDatabase: Schema.optional(
-                      Schema.Struct({
-                        recommendationStatus: Schema.optional(
-                          Schema.Literals([
-                            "NotReady",
-                            "Ready",
-                            "ReadyWithConditions",
-                            "Unknown",
-                          ]),
-                        ),
-                        numberOfServerBlockerIssues: Schema.optional(
-                          Schema.Number,
-                        ),
-                        monthlyCost: Schema.optional(
-                          Schema.Struct({
-                            computeCost: Schema.optional(Schema.Number),
-                            storageCost: Schema.optional(Schema.Number),
-                            iopsCost: Schema.optional(Schema.Number),
-                            sqlLicenseCost: Schema.optional(Schema.Number),
-                            windowsLicenseCost: Schema.optional(Schema.Number),
-                            totalCost: Schema.optional(Schema.Number),
-                          }),
-                        ),
-                        monthlyCostOptions: Schema.optional(
-                          Schema.Array(
-                            Schema.Struct({
-                              keyName: Schema.optional(Schema.String),
-                              keyValue: Schema.optional(
-                                Schema.Struct({
-                                  computeCost: Schema.optional(Schema.Number),
-                                  storageCost: Schema.optional(Schema.Number),
-                                  iopsCost: Schema.optional(Schema.Number),
-                                }),
-                              ),
-                            }),
-                          ),
-                        ),
-                        targetSku: Schema.optional(
-                          Schema.Struct({
-                            category: Schema.optional(
-                              Schema.Struct({
-                                computeTier: Schema.optional(Schema.String),
-                                hardwareType: Schema.optional(Schema.String),
-                                sqlPurchasingModel: Schema.optional(
-                                  Schema.String,
-                                ),
-                                sqlServiceTier: Schema.optional(Schema.String),
-                                zoneRedundancyAvailable: Schema.optional(
-                                  Schema.Boolean,
-                                ),
-                              }),
-                            ),
-                            computeSize: Schema.optional(Schema.Number),
-                            storageMaxSizeInMb: Schema.optional(Schema.Number),
-                            predictedDataSizeInMb: Schema.optional(
-                              Schema.Number,
-                            ),
-                            predictedLogSizeInMb: Schema.optional(
-                              Schema.Number,
-                            ),
-                            maxStorageIops: Schema.optional(Schema.Number),
-                            maxThroughputMBps: Schema.optional(Schema.Number),
-                          }),
-                        ),
-                      }),
-                    ),
-                    azureSqlManagedInstance: Schema.optional(
-                      Schema.Struct({
-                        recommendationStatus: Schema.optional(
-                          Schema.Literals([
-                            "NotReady",
-                            "Ready",
-                            "ReadyWithConditions",
-                            "Unknown",
-                          ]),
-                        ),
-                        numberOfServerBlockerIssues: Schema.optional(
-                          Schema.Number,
-                        ),
-                        monthlyCost: Schema.optional(
-                          Schema.Struct({
-                            computeCost: Schema.optional(Schema.Number),
-                            storageCost: Schema.optional(Schema.Number),
-                            iopsCost: Schema.optional(Schema.Number),
-                            sqlLicenseCost: Schema.optional(Schema.Number),
-                            windowsLicenseCost: Schema.optional(Schema.Number),
-                            totalCost: Schema.optional(Schema.Number),
-                          }),
-                        ),
-                        monthlyCostOptions: Schema.optional(
-                          Schema.Array(
-                            Schema.Struct({
-                              keyName: Schema.optional(Schema.String),
-                              keyValue: Schema.optional(
-                                Schema.Struct({
-                                  computeCost: Schema.optional(Schema.Number),
-                                  storageCost: Schema.optional(Schema.Number),
-                                  iopsCost: Schema.optional(Schema.Number),
-                                }),
-                              ),
-                            }),
-                          ),
-                        ),
-                        targetSku: Schema.optional(
-                          Schema.Struct({
-                            category: Schema.optional(
-                              Schema.Struct({
-                                computeTier: Schema.optional(Schema.String),
-                                hardwareType: Schema.optional(Schema.String),
-                                sqlPurchasingModel: Schema.optional(
-                                  Schema.String,
-                                ),
-                                sqlServiceTier: Schema.optional(Schema.String),
-                                zoneRedundancyAvailable: Schema.optional(
-                                  Schema.Boolean,
-                                ),
-                              }),
-                            ),
-                            computeSize: Schema.optional(Schema.Number),
-                            storageMaxSizeInMb: Schema.optional(Schema.Number),
-                            predictedDataSizeInMb: Schema.optional(
-                              Schema.Number,
-                            ),
-                            predictedLogSizeInMb: Schema.optional(
-                              Schema.Number,
-                            ),
-                            maxStorageIops: Schema.optional(Schema.Number),
-                            maxThroughputMBps: Schema.optional(Schema.Number),
-                          }),
-                        ),
-                      }),
-                    ),
-                    azureSqlVirtualMachine: Schema.optional(
-                      Schema.Struct({
-                        recommendationStatus: Schema.optional(
-                          Schema.Literals([
-                            "NotReady",
-                            "Ready",
-                            "ReadyWithConditions",
-                            "Unknown",
-                          ]),
-                        ),
-                        numberOfServerBlockerIssues: Schema.optional(
-                          Schema.Number,
-                        ),
-                        monthlyCost: Schema.optional(
-                          Schema.Struct({
-                            computeCost: Schema.optional(Schema.Number),
-                            storageCost: Schema.optional(Schema.Number),
-                            iopsCost: Schema.optional(Schema.Number),
-                            sqlLicenseCost: Schema.optional(Schema.Number),
-                            windowsLicenseCost: Schema.optional(Schema.Number),
-                            totalCost: Schema.optional(Schema.Number),
-                          }),
-                        ),
-                        monthlyCostOptions: Schema.optional(
-                          Schema.Array(
-                            Schema.Struct({
-                              keyName: Schema.optional(Schema.String),
-                              keyValue: Schema.optional(
-                                Schema.Struct({
-                                  computeCost: Schema.optional(Schema.Number),
-                                  storageCost: Schema.optional(Schema.Number),
-                                  iopsCost: Schema.optional(Schema.Number),
-                                }),
-                              ),
-                            }),
-                          ),
-                        ),
-                        targetSku: Schema.optional(
-                          Schema.Struct({
-                            category: Schema.optional(
-                              Schema.Struct({
-                                availableVmSkus: Schema.optional(
-                                  Schema.Array(Schema.String),
-                                ),
-                                virtualMachineFamily: Schema.optional(
-                                  Schema.String,
-                                ),
-                              }),
-                            ),
-                            computeSize: Schema.optional(Schema.Number),
-                            predictedDataSizeInMb: Schema.optional(
-                              Schema.Number,
-                            ),
-                            predictedLogSizeInMb: Schema.optional(
-                              Schema.Number,
-                            ),
-                            virtualMachineSize: Schema.optional(
-                              Schema.Struct({
-                                virtualMachineFamily: Schema.optional(
-                                  Schema.String,
-                                ),
-                                sizeName: Schema.optional(Schema.String),
-                                computeSize: Schema.optional(Schema.Number),
-                                azureSkuName: Schema.optional(Schema.String),
-                                vCPUsAvailable: Schema.optional(Schema.Number),
-                                maxNetworkInterfaces: Schema.optional(
-                                  Schema.Number,
-                                ),
-                              }),
-                            ),
-                            dataDiskSizes: Schema.optional(
-                              Schema.Array(
-                                Schema.Struct({
-                                  diskType: Schema.optional(Schema.String),
-                                  redundancy: Schema.optional(Schema.String),
-                                  size: Schema.optional(Schema.String),
-                                  caching: Schema.optional(Schema.String),
-                                  maxSizeInGib: Schema.optional(Schema.Number),
-                                  maxThroughputInMbps: Schema.optional(
-                                    Schema.Number,
-                                  ),
-                                  maxIops: Schema.optional(Schema.Number),
-                                }),
-                              ),
-                            ),
-                            logDiskSizes: Schema.optional(
-                              Schema.Array(
-                                Schema.Struct({
-                                  diskType: Schema.optional(Schema.String),
-                                  redundancy: Schema.optional(Schema.String),
-                                  size: Schema.optional(Schema.String),
-                                  caching: Schema.optional(Schema.String),
-                                  maxSizeInGib: Schema.optional(Schema.Number),
-                                  maxThroughputInMbps: Schema.optional(
-                                    Schema.Number,
-                                  ),
-                                  maxIops: Schema.optional(Schema.Number),
-                                }),
-                              ),
-                            ),
-                            tempDbDiskSizes: Schema.optional(
-                              Schema.Array(
-                                Schema.Struct({
-                                  diskType: Schema.optional(Schema.String),
-                                  redundancy: Schema.optional(Schema.String),
-                                  size: Schema.optional(Schema.String),
-                                  caching: Schema.optional(Schema.String),
-                                  maxSizeInGib: Schema.optional(Schema.Number),
-                                  maxThroughputInMbps: Schema.optional(
-                                    Schema.Number,
-                                  ),
-                                  maxIops: Schema.optional(Schema.Number),
-                                }),
-                              ),
-                            ),
-                          }),
-                        ),
-                      }),
-                    ),
-                  }),
-                ),
-                impactedObjectsSummary: Schema.optional(
-                  Schema.Struct({
-                    azureSqlDatabase: Schema.optional(
-                      Schema.Array(
-                        Schema.Struct({
-                          featureId: Schema.optional(Schema.String),
-                          numberImpacted: Schema.optional(Schema.Number),
-                          issueCategory: Schema.optional(Schema.String),
-                        }),
-                      ),
-                    ),
-                    azureSqlManagedInstance: Schema.optional(
-                      Schema.Array(
-                        Schema.Struct({
-                          featureId: Schema.optional(Schema.String),
-                          numberImpacted: Schema.optional(Schema.Number),
-                          issueCategory: Schema.optional(Schema.String),
-                        }),
-                      ),
-                    ),
-                  }),
-                ),
-              }),
-            ),
-          }),
-        ),
-        bestPracticesAssessment: Schema.optional(
-          Schema.Struct({
-            enabled: Schema.optional(Schema.Boolean),
-            schedule: Schema.optional(
-              Schema.Struct({
-                enabled: Schema.optional(Schema.Boolean),
-                cronTrigger: Schema.optional(
-                  Schema.Struct({
-                    startTime: Schema.optional(Schema.String),
-                    timeZone: Schema.optional(Schema.String),
-                    expression: Schema.optional(Schema.String),
-                  }),
-                ),
-              }),
-            ),
-          }),
-        ),
-        clientConnection: Schema.optional(
-          Schema.Struct({
-            enabled: Schema.optional(Schema.Boolean),
-          }),
-        ),
-        serviceType: Schema.optional(
-          Schema.Literals(["Engine", "SSRS", "SSAS", "SSIS", "PBIRS"]),
-        ),
-        maxServerMemoryMB: Schema.optional(Schema.Number),
-        isMicrosoftPkiCertTrustConfigured: Schema.optional(Schema.Boolean),
-        isDigiCertPkiCertTrustConfigured: Schema.optional(Schema.Boolean),
-        authentication: Schema.optional(
-          Schema.Struct({
-            mode: Schema.optional(
-              Schema.Literals(["Mixed", "Windows", "Undefined"]),
-            ),
-            sqlServerEntraIdentity: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  identityType: Schema.optional(
-                    Schema.Literals([
-                      "SystemAssignedManagedIdentity",
-                      "UserAssignedManagedIdentity",
-                    ]),
-                  ),
-                  clientId: Schema.optional(Schema.String),
-                }),
-              ),
-            ),
-          }),
-        ),
-      }),
+      Schema.suspend(() => SqlServerInstancePropertiesSchema),
     ),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     location: Schema.String,
@@ -4771,23 +3693,15 @@ export type SqlServerInstancesCreateInput =
 // Output Schema
 export const SqlServerInstancesCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => SqlServerInstancePropertiesSchema),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type SqlServerInstancesCreateOutput =
   typeof SqlServerInstancesCreateOutput.Type;
@@ -4846,23 +3760,15 @@ export type SqlServerInstancesGetInput = typeof SqlServerInstancesGetInput.Type;
 // Output Schema
 export const SqlServerInstancesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => SqlServerInstancePropertiesSchema),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type SqlServerInstancesGetOutput =
   typeof SqlServerInstancesGetOutput.Type;
@@ -4896,35 +3802,7 @@ export const SqlServerInstancesGetAllAvailabilityGroupsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.String),
-              createdByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              createdAt: Schema.optional(Schema.String),
-              lastModifiedBy: Schema.optional(Schema.String),
-              lastModifiedByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              lastModifiedAt: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
+        Schema.suspend(() => SqlServerAvailabilityGroupResourceSchema),
       ),
     ),
     nextLink: Schema.optional(Schema.String),
@@ -4967,23 +3845,9 @@ export type SqlServerInstancesGetBestPracticesAssessmentInput =
 export const SqlServerInstancesGetBestPracticesAssessmentOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     columns: Schema.Array(
-      Schema.Struct({
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(
-          Schema.Literals([
-            "bool",
-            "datetime",
-            "int",
-            "long",
-            "double",
-            "string",
-            "guid",
-            "timespan",
-          ]),
-        ),
-      }),
+      Schema.suspend(() => SqlServerInstanceBpaColumnSchema),
     ),
-    rows: Schema.Array(Schema.Array(Schema.String)),
+    rows: Schema.Array(Schema.suspend(() => SqlServerInstanceBpaRowSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type SqlServerInstancesGetBestPracticesAssessmentOutput =
@@ -5020,76 +3884,7 @@ export type SqlServerInstancesGetJobsStatusInput =
 export const SqlServerInstancesGetJobsStatusOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     jobsStatus: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          instanceName: Schema.optional(Schema.String),
-          jobStatus: Schema.optional(
-            Schema.Literals([
-              "NotStarted",
-              "InProgress",
-              "Succeeded",
-              "Failed",
-            ]),
-          ),
-          jobException: Schema.optional(Schema.String),
-          backgroundJob: Schema.optional(
-            Schema.Struct({
-              state: Schema.optional(
-                Schema.Literals([
-                  "Enabled",
-                  "Disabled",
-                  "Deleted",
-                  "Completed",
-                  "Faulted",
-                  "Suspended",
-                ]),
-              ),
-              executionState: Schema.optional(
-                Schema.Literals(["Waiting", "Running"]),
-              ),
-              startTime: Schema.optional(Schema.String),
-              endTime: Schema.optional(Schema.String),
-              lastExecutionStatus: Schema.optional(
-                Schema.Literals([
-                  "Succeeded",
-                  "Completed",
-                  "Failed",
-                  "Faulted",
-                  "Postponed",
-                  "Rescheduled",
-                ]),
-              ),
-              lastExecutionTime: Schema.optional(Schema.String),
-            }),
-          ),
-          sequencerActions: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                actionId: Schema.optional(Schema.String),
-                state: Schema.optional(
-                  Schema.Literals([
-                    "NotStarted",
-                    "WaitingPredecessors",
-                    "ExecutingAction",
-                    "CreatingSuccessors",
-                    "Completed",
-                  ]),
-                ),
-                result: Schema.optional(
-                  Schema.Literals([
-                    "NotCompleted",
-                    "Succeeded",
-                    "Failed",
-                    "TimedOut",
-                    "Skipped",
-                  ]),
-                ),
-              }),
-            ),
-          ),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => SqlServerInstanceJobStatusSchema)),
     ),
   });
 export type SqlServerInstancesGetJobsStatusOutput =
@@ -5132,23 +3927,11 @@ export type SqlServerInstancesGetTelemetryInput =
 export const SqlServerInstancesGetTelemetryOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     columns: Schema.Array(
-      Schema.Struct({
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(
-          Schema.Literals([
-            "bool",
-            "datetime",
-            "int",
-            "long",
-            "double",
-            "string",
-            "guid",
-            "timespan",
-          ]),
-        ),
-      }),
+      Schema.suspend(() => SqlServerInstanceTelemetryColumnSchema),
     ),
-    rows: Schema.Array(Schema.Array(Schema.String)),
+    rows: Schema.Array(
+      Schema.suspend(() => SqlServerInstanceTelemetryRowSchema),
+    ),
     nextLink: Schema.optional(Schema.String),
   });
 export type SqlServerInstancesGetTelemetryOutput =
@@ -5185,37 +3968,7 @@ export type SqlServerInstancesListInput =
 export const SqlServerInstancesListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.String),
-              createdByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              createdAt: Schema.optional(Schema.String),
-              lastModifiedBy: Schema.optional(Schema.String),
-              lastModifiedByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              lastModifiedAt: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => SqlServerInstanceSchema)),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -5248,37 +4001,7 @@ export type SqlServerInstancesListByResourceGroupInput =
 export const SqlServerInstancesListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.String),
-              createdByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              createdAt: Schema.optional(Schema.String),
-              lastModifiedBy: Schema.optional(Schema.String),
-              lastModifiedByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              lastModifiedAt: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => SqlServerInstanceSchema)),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -5311,23 +4034,15 @@ export type SqlServerInstancesPostUpgradeInput =
 // Output Schema
 export const SqlServerInstancesPostUpgradeOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => SqlServerInstancePropertiesSchema),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type SqlServerInstancesPostUpgradeOutput =
   typeof SqlServerInstancesPostUpgradeOutput.Type;
@@ -5358,23 +4073,15 @@ export type SqlServerInstancesPreUpgradeInput =
 // Output Schema
 export const SqlServerInstancesPreUpgradeOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => SqlServerInstancePropertiesSchema),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type SqlServerInstancesPreUpgradeOutput =
   typeof SqlServerInstancesPreUpgradeOutput.Type;
@@ -5411,60 +4118,9 @@ export const SqlServerInstancesRunBestPracticesAssessmentOutput =
       Schema.Literals(["NotStarted", "InProgress", "Succeeded", "Failed"]),
     ),
     jobException: Schema.optional(Schema.String),
-    backgroundJob: Schema.optional(
-      Schema.Struct({
-        state: Schema.optional(
-          Schema.Literals([
-            "Enabled",
-            "Disabled",
-            "Deleted",
-            "Completed",
-            "Faulted",
-            "Suspended",
-          ]),
-        ),
-        executionState: Schema.optional(
-          Schema.Literals(["Waiting", "Running"]),
-        ),
-        startTime: Schema.optional(Schema.String),
-        endTime: Schema.optional(Schema.String),
-        lastExecutionStatus: Schema.optional(
-          Schema.Literals([
-            "Succeeded",
-            "Completed",
-            "Failed",
-            "Faulted",
-            "Postponed",
-            "Rescheduled",
-          ]),
-        ),
-        lastExecutionTime: Schema.optional(Schema.String),
-      }),
-    ),
+    backgroundJob: Schema.optional(Schema.suspend(() => BackgroundJobSchema)),
     sequencerActions: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          actionId: Schema.optional(Schema.String),
-          state: Schema.optional(
-            Schema.Literals([
-              "NotStarted",
-              "WaitingPredecessors",
-              "ExecutingAction",
-              "CreatingSuccessors",
-              "Completed",
-            ]),
-          ),
-          result: Schema.optional(
-            Schema.Literals([
-              "NotCompleted",
-              "Succeeded",
-              "Failed",
-              "TimedOut",
-              "Skipped",
-            ]),
-          ),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => SequencerActionSchema)),
     ),
   });
 export type SqlServerInstancesRunBestPracticesAssessmentOutput =
@@ -5492,20 +4148,7 @@ export const SqlServerInstancesRunManagedInstanceLinkAssessmentInput =
     availabilityGroupName: Schema.String,
     distributedAvailabilityGroupName: Schema.String,
     assessmentCategories: Schema.optional(
-      Schema.Array(
-        Schema.Literals([
-          "SqlInstance",
-          "SqlInstanceDatabase",
-          "ManagedInstance",
-          "ManagedInstanceDatabase",
-          "ManagedInstanceCrossValidation",
-          "Certificates",
-          "BoxToMiNetworkConnectivity",
-          "MiToBoxNetworkConnectivity",
-          "SqlInstanceAg",
-          "DagCrossValidation",
-        ]),
-      ),
+      Schema.Array(Schema.suspend(() => MiLinkAssessmentCategorySchema)),
     ),
     sqlServerIpAddress: Schema.optional(Schema.String),
   }).pipe(
@@ -5524,29 +4167,9 @@ export const SqlServerInstancesRunManagedInstanceLinkAssessmentOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     assessments: Schema.optional(
       Schema.Array(
-        Schema.Struct({
-          name: Schema.optional(Schema.String),
-          category: Schema.optional(
-            Schema.Literals([
-              "SqlInstance",
-              "SqlInstanceDatabase",
-              "ManagedInstance",
-              "ManagedInstanceDatabase",
-              "ManagedInstanceCrossValidation",
-              "Certificates",
-              "BoxToMiNetworkConnectivity",
-              "MiToBoxNetworkConnectivity",
-              "SqlInstanceAg",
-              "DagCrossValidation",
-            ]),
-          ),
-          status: Schema.optional(
-            Schema.Literals(["Success", "Warning", "Failure"]),
-          ),
-          information: Schema.optional(Schema.String),
-          additionalInformation: Schema.optional(Schema.String),
-          failingDbs: Schema.optional(Schema.Array(Schema.String)),
-        }),
+        Schema.suspend(
+          () => SqlServerInstanceManagedInstanceLinkAssessmentSchema,
+        ),
       ),
     ),
   });
@@ -5594,60 +4217,9 @@ export const SqlServerInstancesRunMigrationAssessmentOutput =
       Schema.Literals(["NotStarted", "InProgress", "Succeeded", "Failed"]),
     ),
     jobException: Schema.optional(Schema.String),
-    backgroundJob: Schema.optional(
-      Schema.Struct({
-        state: Schema.optional(
-          Schema.Literals([
-            "Enabled",
-            "Disabled",
-            "Deleted",
-            "Completed",
-            "Faulted",
-            "Suspended",
-          ]),
-        ),
-        executionState: Schema.optional(
-          Schema.Literals(["Waiting", "Running"]),
-        ),
-        startTime: Schema.optional(Schema.String),
-        endTime: Schema.optional(Schema.String),
-        lastExecutionStatus: Schema.optional(
-          Schema.Literals([
-            "Succeeded",
-            "Completed",
-            "Failed",
-            "Faulted",
-            "Postponed",
-            "Rescheduled",
-          ]),
-        ),
-        lastExecutionTime: Schema.optional(Schema.String),
-      }),
-    ),
+    backgroundJob: Schema.optional(Schema.suspend(() => BackgroundJobSchema)),
     sequencerActions: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          actionId: Schema.optional(Schema.String),
-          state: Schema.optional(
-            Schema.Literals([
-              "NotStarted",
-              "WaitingPredecessors",
-              "ExecutingAction",
-              "CreatingSuccessors",
-              "Completed",
-            ]),
-          ),
-          result: Schema.optional(
-            Schema.Literals([
-              "NotCompleted",
-              "Succeeded",
-              "Failed",
-              "TimedOut",
-              "Skipped",
-            ]),
-          ),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => SequencerActionSchema)),
     ),
   });
 export type SqlServerInstancesRunMigrationAssessmentOutput =
@@ -5667,548 +4239,7 @@ export const SqlServerInstancesUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     properties: Schema.optional(
-      Schema.Struct({
-        version: Schema.optional(
-          Schema.Literals([
-            "Unknown",
-            "SQL Server 2012",
-            "SQL Server 2014",
-            "SQL Server 2016",
-            "SQL Server 2017",
-            "SQL Server 2019",
-            "SQL Server 2022",
-            "SQL Server 2025",
-          ]),
-        ),
-        edition: Schema.optional(
-          Schema.Literals([
-            "Evaluation",
-            "Enterprise",
-            "Standard",
-            "Web",
-            "Developer",
-            "Express",
-            "Business Intelligence",
-            "Standard Developer",
-          ]),
-        ),
-        containerResourceId: Schema.optional(Schema.String),
-        vmId: Schema.optional(Schema.String),
-        createTime: Schema.optional(Schema.String),
-        vCore: Schema.optional(Schema.String),
-        cores: Schema.optional(Schema.String),
-        status: Schema.optional(
-          Schema.Literals([
-            "Connected",
-            "Disconnected",
-            "Registered",
-            "Unknown",
-          ]),
-        ),
-        patchLevel: Schema.optional(Schema.String),
-        collation: Schema.optional(Schema.String),
-        dbMasterKeyExists: Schema.optional(Schema.Boolean),
-        isHadrEnabled: Schema.optional(Schema.Boolean),
-        traceFlags: Schema.optional(Schema.Array(Schema.Number)),
-        currentVersion: Schema.optional(Schema.String),
-        instanceName: Schema.optional(Schema.String),
-        tcpDynamicPorts: Schema.optional(Schema.String),
-        tcpStaticPorts: Schema.optional(Schema.String),
-        productId: Schema.optional(Schema.String),
-        licenseType: Schema.optional(
-          Schema.Literals([
-            "Undefined",
-            "Free",
-            "HADR",
-            "ServerCAL",
-            "LicenseOnly",
-            "PAYG",
-            "Paid",
-            "FabricCapacity",
-          ]),
-        ),
-        azureDefenderStatusLastUpdated: Schema.optional(Schema.String),
-        azureDefenderStatus: Schema.optional(
-          Schema.Literals(["Protected", "Unprotected", "Unknown"]),
-        ),
-        provisioningState: Schema.optional(Schema.String),
-        lastInventoryUploadTime: Schema.optional(Schema.String),
-        lastUsageUploadTime: Schema.optional(Schema.String),
-        hostType: Schema.optional(
-          Schema.Literals([
-            "Azure Virtual Machine",
-            "Azure VMWare Virtual Machine",
-            "Azure Kubernetes Service",
-            "AWS VMWare Virtual Machine",
-            "AWS Kubernetes Service",
-            "GCP VMWare Virtual Machine",
-            "GCP Kubernetes Service",
-            "Container",
-            "Virtual Machine",
-            "Physical Server",
-            "AWS Virtual Machine",
-            "GCP Virtual Machine",
-            "Other",
-          ]),
-        ),
-        alwaysOnRole: Schema.optional(
-          Schema.Literals([
-            "None",
-            "FailoverClusterInstance",
-            "FailoverClusterNode",
-            "AvailabilityGroupReplica",
-          ]),
-        ),
-        failoverCluster: Schema.optional(
-          Schema.Struct({
-            id: Schema.optional(Schema.String),
-            networkName: Schema.optional(Schema.String),
-            sqlInstanceIds: Schema.optional(Schema.Array(Schema.String)),
-            hostNames: Schema.optional(Schema.Array(Schema.String)),
-            hostIPAddresses: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  ipAddress: Schema.optional(Schema.String),
-                  subnetMask: Schema.optional(Schema.String),
-                }),
-              ),
-            ),
-          }),
-        ),
-        backupPolicy: Schema.optional(
-          Schema.Struct({
-            retentionPeriodDays: Schema.optional(Schema.Number),
-            fullBackupDays: Schema.optional(Schema.Number),
-            differentialBackupHours: Schema.optional(Schema.Literals([12, 24])),
-            transactionLogBackupMinutes: Schema.optional(Schema.Number),
-          }),
-        ),
-        upgradeLockedUntil: Schema.optional(Schema.String),
-        monitoring: Schema.optional(
-          Schema.Struct({
-            enabled: Schema.optional(Schema.Boolean),
-          }),
-        ),
-        migration: Schema.optional(
-          Schema.Struct({
-            assessment: Schema.optional(
-              Schema.Struct({
-                enabled: Schema.optional(Schema.Boolean),
-                assessmentUploadTime: Schema.optional(Schema.String),
-                version: Schema.optional(Schema.String),
-                settings: Schema.optional(
-                  Schema.Struct({
-                    targetLocation: Schema.optional(Schema.String),
-                    percentile: Schema.optional(Schema.Number),
-                    lookbackPeriodInDays: Schema.optional(Schema.Number),
-                    strategy: Schema.optional(Schema.String),
-                    currency: Schema.optional(Schema.String),
-                    discountPercentage: Schema.optional(Schema.Number),
-                    costOptions: Schema.optional(
-                      Schema.Struct({
-                        computeAndStorageCostOption: Schema.optional(
-                          Schema.String,
-                        ),
-                        sqlLicenseCostOption: Schema.optional(Schema.String),
-                        windowsLicenseCostOption: Schema.optional(
-                          Schema.String,
-                        ),
-                      }),
-                    ),
-                  }),
-                ),
-                serverAssessments: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      appliesToMigrationTargetPlatform: Schema.optional(
-                        Schema.String,
-                      ),
-                      featureId: Schema.optional(Schema.String),
-                      impactedObjects: Schema.optional(
-                        Schema.Array(
-                          Schema.Struct({
-                            impactDetail: Schema.optional(Schema.String),
-                            name: Schema.optional(Schema.String),
-                            objectType: Schema.optional(Schema.String),
-                          }),
-                        ),
-                      ),
-                      issueCategory: Schema.optional(Schema.String),
-                      moreInformation: Schema.optional(Schema.String),
-                    }),
-                  ),
-                ),
-                skuRecommendationResults: Schema.optional(
-                  Schema.Struct({
-                    azureSqlDatabase: Schema.optional(
-                      Schema.Struct({
-                        recommendationStatus: Schema.optional(
-                          Schema.Literals([
-                            "NotReady",
-                            "Ready",
-                            "ReadyWithConditions",
-                            "Unknown",
-                          ]),
-                        ),
-                        numberOfServerBlockerIssues: Schema.optional(
-                          Schema.Number,
-                        ),
-                        monthlyCost: Schema.optional(
-                          Schema.Struct({
-                            computeCost: Schema.optional(Schema.Number),
-                            storageCost: Schema.optional(Schema.Number),
-                            iopsCost: Schema.optional(Schema.Number),
-                            sqlLicenseCost: Schema.optional(Schema.Number),
-                            windowsLicenseCost: Schema.optional(Schema.Number),
-                            totalCost: Schema.optional(Schema.Number),
-                          }),
-                        ),
-                        monthlyCostOptions: Schema.optional(
-                          Schema.Array(
-                            Schema.Struct({
-                              keyName: Schema.optional(Schema.String),
-                              keyValue: Schema.optional(
-                                Schema.Struct({
-                                  computeCost: Schema.optional(Schema.Number),
-                                  storageCost: Schema.optional(Schema.Number),
-                                  iopsCost: Schema.optional(Schema.Number),
-                                }),
-                              ),
-                            }),
-                          ),
-                        ),
-                        targetSku: Schema.optional(
-                          Schema.Struct({
-                            category: Schema.optional(
-                              Schema.Struct({
-                                computeTier: Schema.optional(Schema.String),
-                                hardwareType: Schema.optional(Schema.String),
-                                sqlPurchasingModel: Schema.optional(
-                                  Schema.String,
-                                ),
-                                sqlServiceTier: Schema.optional(Schema.String),
-                                zoneRedundancyAvailable: Schema.optional(
-                                  Schema.Boolean,
-                                ),
-                              }),
-                            ),
-                            computeSize: Schema.optional(Schema.Number),
-                            storageMaxSizeInMb: Schema.optional(Schema.Number),
-                            predictedDataSizeInMb: Schema.optional(
-                              Schema.Number,
-                            ),
-                            predictedLogSizeInMb: Schema.optional(
-                              Schema.Number,
-                            ),
-                            maxStorageIops: Schema.optional(Schema.Number),
-                            maxThroughputMBps: Schema.optional(Schema.Number),
-                          }),
-                        ),
-                      }),
-                    ),
-                    azureSqlManagedInstance: Schema.optional(
-                      Schema.Struct({
-                        recommendationStatus: Schema.optional(
-                          Schema.Literals([
-                            "NotReady",
-                            "Ready",
-                            "ReadyWithConditions",
-                            "Unknown",
-                          ]),
-                        ),
-                        numberOfServerBlockerIssues: Schema.optional(
-                          Schema.Number,
-                        ),
-                        monthlyCost: Schema.optional(
-                          Schema.Struct({
-                            computeCost: Schema.optional(Schema.Number),
-                            storageCost: Schema.optional(Schema.Number),
-                            iopsCost: Schema.optional(Schema.Number),
-                            sqlLicenseCost: Schema.optional(Schema.Number),
-                            windowsLicenseCost: Schema.optional(Schema.Number),
-                            totalCost: Schema.optional(Schema.Number),
-                          }),
-                        ),
-                        monthlyCostOptions: Schema.optional(
-                          Schema.Array(
-                            Schema.Struct({
-                              keyName: Schema.optional(Schema.String),
-                              keyValue: Schema.optional(
-                                Schema.Struct({
-                                  computeCost: Schema.optional(Schema.Number),
-                                  storageCost: Schema.optional(Schema.Number),
-                                  iopsCost: Schema.optional(Schema.Number),
-                                }),
-                              ),
-                            }),
-                          ),
-                        ),
-                        targetSku: Schema.optional(
-                          Schema.Struct({
-                            category: Schema.optional(
-                              Schema.Struct({
-                                computeTier: Schema.optional(Schema.String),
-                                hardwareType: Schema.optional(Schema.String),
-                                sqlPurchasingModel: Schema.optional(
-                                  Schema.String,
-                                ),
-                                sqlServiceTier: Schema.optional(Schema.String),
-                                zoneRedundancyAvailable: Schema.optional(
-                                  Schema.Boolean,
-                                ),
-                              }),
-                            ),
-                            computeSize: Schema.optional(Schema.Number),
-                            storageMaxSizeInMb: Schema.optional(Schema.Number),
-                            predictedDataSizeInMb: Schema.optional(
-                              Schema.Number,
-                            ),
-                            predictedLogSizeInMb: Schema.optional(
-                              Schema.Number,
-                            ),
-                            maxStorageIops: Schema.optional(Schema.Number),
-                            maxThroughputMBps: Schema.optional(Schema.Number),
-                          }),
-                        ),
-                      }),
-                    ),
-                    azureSqlVirtualMachine: Schema.optional(
-                      Schema.Struct({
-                        recommendationStatus: Schema.optional(
-                          Schema.Literals([
-                            "NotReady",
-                            "Ready",
-                            "ReadyWithConditions",
-                            "Unknown",
-                          ]),
-                        ),
-                        numberOfServerBlockerIssues: Schema.optional(
-                          Schema.Number,
-                        ),
-                        monthlyCost: Schema.optional(
-                          Schema.Struct({
-                            computeCost: Schema.optional(Schema.Number),
-                            storageCost: Schema.optional(Schema.Number),
-                            iopsCost: Schema.optional(Schema.Number),
-                            sqlLicenseCost: Schema.optional(Schema.Number),
-                            windowsLicenseCost: Schema.optional(Schema.Number),
-                            totalCost: Schema.optional(Schema.Number),
-                          }),
-                        ),
-                        monthlyCostOptions: Schema.optional(
-                          Schema.Array(
-                            Schema.Struct({
-                              keyName: Schema.optional(Schema.String),
-                              keyValue: Schema.optional(
-                                Schema.Struct({
-                                  computeCost: Schema.optional(Schema.Number),
-                                  storageCost: Schema.optional(Schema.Number),
-                                  iopsCost: Schema.optional(Schema.Number),
-                                }),
-                              ),
-                            }),
-                          ),
-                        ),
-                        targetSku: Schema.optional(
-                          Schema.Struct({
-                            category: Schema.optional(
-                              Schema.Struct({
-                                availableVmSkus: Schema.optional(
-                                  Schema.Array(Schema.String),
-                                ),
-                                virtualMachineFamily: Schema.optional(
-                                  Schema.String,
-                                ),
-                              }),
-                            ),
-                            computeSize: Schema.optional(Schema.Number),
-                            predictedDataSizeInMb: Schema.optional(
-                              Schema.Number,
-                            ),
-                            predictedLogSizeInMb: Schema.optional(
-                              Schema.Number,
-                            ),
-                            virtualMachineSize: Schema.optional(
-                              Schema.Struct({
-                                virtualMachineFamily: Schema.optional(
-                                  Schema.String,
-                                ),
-                                sizeName: Schema.optional(Schema.String),
-                                computeSize: Schema.optional(Schema.Number),
-                                azureSkuName: Schema.optional(Schema.String),
-                                vCPUsAvailable: Schema.optional(Schema.Number),
-                                maxNetworkInterfaces: Schema.optional(
-                                  Schema.Number,
-                                ),
-                              }),
-                            ),
-                            dataDiskSizes: Schema.optional(
-                              Schema.Array(
-                                Schema.Struct({
-                                  diskType: Schema.optional(Schema.String),
-                                  redundancy: Schema.optional(Schema.String),
-                                  size: Schema.optional(Schema.String),
-                                  caching: Schema.optional(Schema.String),
-                                  maxSizeInGib: Schema.optional(Schema.Number),
-                                  maxThroughputInMbps: Schema.optional(
-                                    Schema.Number,
-                                  ),
-                                  maxIops: Schema.optional(Schema.Number),
-                                }),
-                              ),
-                            ),
-                            logDiskSizes: Schema.optional(
-                              Schema.Array(
-                                Schema.Struct({
-                                  diskType: Schema.optional(Schema.String),
-                                  redundancy: Schema.optional(Schema.String),
-                                  size: Schema.optional(Schema.String),
-                                  caching: Schema.optional(Schema.String),
-                                  maxSizeInGib: Schema.optional(Schema.Number),
-                                  maxThroughputInMbps: Schema.optional(
-                                    Schema.Number,
-                                  ),
-                                  maxIops: Schema.optional(Schema.Number),
-                                }),
-                              ),
-                            ),
-                            tempDbDiskSizes: Schema.optional(
-                              Schema.Array(
-                                Schema.Struct({
-                                  diskType: Schema.optional(Schema.String),
-                                  redundancy: Schema.optional(Schema.String),
-                                  size: Schema.optional(Schema.String),
-                                  caching: Schema.optional(Schema.String),
-                                  maxSizeInGib: Schema.optional(Schema.Number),
-                                  maxThroughputInMbps: Schema.optional(
-                                    Schema.Number,
-                                  ),
-                                  maxIops: Schema.optional(Schema.Number),
-                                }),
-                              ),
-                            ),
-                          }),
-                        ),
-                      }),
-                    ),
-                  }),
-                ),
-                impactedObjectsSummary: Schema.optional(
-                  Schema.Struct({
-                    azureSqlDatabase: Schema.optional(
-                      Schema.Array(
-                        Schema.Struct({
-                          featureId: Schema.optional(Schema.String),
-                          numberImpacted: Schema.optional(Schema.Number),
-                          issueCategory: Schema.optional(Schema.String),
-                        }),
-                      ),
-                    ),
-                    azureSqlManagedInstance: Schema.optional(
-                      Schema.Array(
-                        Schema.Struct({
-                          featureId: Schema.optional(Schema.String),
-                          numberImpacted: Schema.optional(Schema.Number),
-                          issueCategory: Schema.optional(Schema.String),
-                        }),
-                      ),
-                    ),
-                  }),
-                ),
-              }),
-            ),
-          }),
-        ),
-        bestPracticesAssessment: Schema.optional(
-          Schema.Struct({
-            enabled: Schema.optional(Schema.Boolean),
-            schedule: Schema.optional(
-              Schema.Struct({
-                enabled: Schema.optional(Schema.Boolean),
-                cronTrigger: Schema.optional(
-                  Schema.Struct({
-                    startTime: Schema.optional(Schema.String),
-                    timeZone: Schema.optional(Schema.String),
-                    expression: Schema.optional(Schema.String),
-                  }),
-                ),
-              }),
-            ),
-          }),
-        ),
-        clientConnection: Schema.optional(
-          Schema.Struct({
-            enabled: Schema.optional(Schema.Boolean),
-          }),
-        ),
-        serviceType: Schema.optional(
-          Schema.Literals(["Engine", "SSRS", "SSAS", "SSIS", "PBIRS"]),
-        ),
-        authentication: Schema.optional(
-          Schema.Struct({
-            mode: Schema.optional(
-              Schema.Literals(["Mixed", "Windows", "Undefined"]),
-            ),
-            sqlServerEntraIdentity: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  identityType: Schema.optional(
-                    Schema.Literals([
-                      "SystemAssignedManagedIdentity",
-                      "UserAssignedManagedIdentity",
-                    ]),
-                  ),
-                  clientId: Schema.optional(Schema.String),
-                }),
-              ),
-            ),
-          }),
-        ),
-        databaseMirroringEndpoint: Schema.optional(
-          Schema.Struct({
-            endpointName: Schema.optional(Schema.String),
-            role: Schema.optional(
-              Schema.Literals(["NONE", "PARTNER", "WITNESS", "ALL"]),
-            ),
-            isEncryptionEnabled: Schema.optional(Schema.Boolean),
-            encryptionAlgorithm: Schema.optional(
-              Schema.Literals([
-                "NONE",
-                "RC4",
-                "AES",
-                "NONE, RC4",
-                "NONE, AES",
-                "RC4, AES",
-                "AES, RC4",
-                "NONE, RC4, AES",
-                "NONE, AES, RC4",
-              ]),
-            ),
-            connectionAuth: Schema.optional(
-              Schema.Literals([
-                "Windows_NTLM",
-                "Windows_Kerberos",
-                "Windows_Negotiate",
-                "Certificate",
-                "Windows_NTLM_Certificate",
-                "Windows_Kerberos_Certificate",
-                "Windows_Negotiate_Certificate",
-                "Certificate_Windows_NTLM",
-                "Certificate_Windows_Kerberos",
-                "Certificate_Windows_Negotiate",
-              ]),
-            ),
-            port: Schema.optional(Schema.Number),
-            isDynamicPort: Schema.optional(Schema.Boolean),
-            ipAddress: Schema.optional(Schema.String),
-            certificateName: Schema.optional(Schema.String),
-            certificateExpiryDate: Schema.optional(Schema.String),
-          }),
-        ),
-        isMicrosoftPkiCertTrustConfigured: Schema.optional(Schema.Boolean),
-        isDigiCertPkiCertTrustConfigured: Schema.optional(Schema.Boolean),
-        maxServerMemoryMB: Schema.optional(Schema.Number),
-      }),
+      Schema.suspend(() => SqlServerInstanceUpdatePropertiesSchema),
     ),
   }).pipe(
     T.Http({
@@ -6224,23 +4255,15 @@ export type SqlServerInstancesUpdateInput =
 // Output Schema
 export const SqlServerInstancesUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => SqlServerInstancePropertiesSchema),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type SqlServerInstancesUpdateOutput =
   typeof SqlServerInstancesUpdateOutput.Type;
@@ -6260,16 +4283,7 @@ export const SqlServerInstancesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const SqlServerLicensesCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    properties: Schema.Struct({
-      billingPlan: Schema.Literals(["PAYG", "Paid"]),
-      physicalCores: Schema.Number,
-      licenseCategory: Schema.Literals(["Core"]),
-      activationState: Schema.Literals(["Activated", "Deactivated"]),
-      scopeType: Schema.Literals(["Tenant", "Subscription", "ResourceGroup"]),
-      lastActivatedAt: Schema.optional(Schema.String),
-      lastDeactivatedAt: Schema.optional(Schema.String),
-      tenantId: Schema.optional(Schema.String),
-    }),
+    properties: Schema.suspend(() => SqlServerLicensePropertiesSchema),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     location: Schema.String,
   }).pipe(
@@ -6285,23 +4299,13 @@ export type SqlServerLicensesCreateInput =
 // Output Schema
 export const SqlServerLicensesCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.suspend(() => SqlServerLicensePropertiesSchema),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type SqlServerLicensesCreateOutput =
   typeof SqlServerLicensesCreateOutput.Type;
@@ -6359,23 +4363,13 @@ export type SqlServerLicensesGetInput = typeof SqlServerLicensesGetInput.Type;
 // Output Schema
 export const SqlServerLicensesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.suspend(() => SqlServerLicensePropertiesSchema),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type SqlServerLicensesGetOutput = typeof SqlServerLicensesGetOutput.Type;
 
@@ -6404,37 +4398,7 @@ export type SqlServerLicensesListInput = typeof SqlServerLicensesListInput.Type;
 export const SqlServerLicensesListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.String),
-              createdByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              createdAt: Schema.optional(Schema.String),
-              lastModifiedBy: Schema.optional(Schema.String),
-              lastModifiedByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              lastModifiedAt: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => SqlServerLicenseSchema)),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -6467,37 +4431,7 @@ export type SqlServerLicensesListByResourceGroupInput =
 export const SqlServerLicensesListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.String),
-              createdByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              createdAt: Schema.optional(Schema.String),
-              lastModifiedBy: Schema.optional(Schema.String),
-              lastModifiedByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              lastModifiedAt: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => SqlServerLicenseSchema)),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -6520,20 +4454,7 @@ export const SqlServerLicensesUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     properties: Schema.optional(
-      Schema.Struct({
-        billingPlan: Schema.optional(Schema.Literals(["PAYG", "Paid"])),
-        physicalCores: Schema.optional(Schema.Number),
-        licenseCategory: Schema.optional(Schema.Literals(["Core"])),
-        activationState: Schema.optional(
-          Schema.Literals(["Activated", "Deactivated"]),
-        ),
-        scopeType: Schema.optional(
-          Schema.Literals(["Tenant", "Subscription", "ResourceGroup"]),
-        ),
-        lastActivatedAt: Schema.optional(Schema.String),
-        lastDeactivatedAt: Schema.optional(Schema.String),
-        tenantId: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(() => SqlServerLicenseUpdatePropertiesSchema),
     ),
   }).pipe(
     T.Http({
@@ -6548,23 +4469,13 @@ export type SqlServerLicensesUpdateInput =
 // Output Schema
 export const SqlServerLicensesUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.suspend(() => SqlServerLicensePropertiesSchema),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type SqlServerLicensesUpdateOutput =
   typeof SqlServerLicensesUpdateOutput.Type;

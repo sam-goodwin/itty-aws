@@ -367,6 +367,93 @@ interface SchemaGenerationContext {
   usesSensitiveOutputNullableString: boolean;
 }
 
+/**
+ * Named-schema registry. When active, every `$ref` to a definition becomes a
+ * single named const (emitted once into a shared `_schemas.ts`) referenced via
+ * `Schema.suspend(() => Name)`, instead of being inlined at every use site.
+ *
+ * This is what keeps `tsgo` tractable for services that concatenate many
+ * operations into one file (e.g. Azure): the deep resource schema is
+ * type-checked once, not re-expanded per operation. Cyclic back-edges degrade
+ * to `Schema.Unknown` (same as the inline `seenRefs` guard), which also breaks
+ * the type-level recursion so `suspend` needs no hand-written annotation.
+ */
+interface DefRegistry {
+  consts: Map<string, string>; // ref -> rendered schema expression
+  names: Map<string, string>; // ref -> const name
+  generating: Set<string>; // refs whose body is mid-render (cycle detection)
+  usedNames: Set<string>; // const names taken (collision avoidance)
+  ctx: SchemaGenerationContext; // sensitive-helper usage across all defs
+}
+let activeRegistry: DefRegistry | null = null;
+
+/**
+ * Derive a unique, valid const name for a `$ref` target. Suffixed with `Schema`
+ * so a definition can never collide with an operation export (`<Op>`,
+ * `<Op>Input`, `<Op>Output`) when concatenated into one service file.
+ */
+function defConstName(ref: string, reg: DefRegistry): string {
+  const seg = ref.split("/").pop() ?? "Def";
+  let base = `${seg.replace(/[^a-zA-Z0-9_$]/g, "_")}Schema`;
+  if (!/^[a-zA-Z_$]/.test(base)) base = `_${base}`;
+  let name = base;
+  let i = 2;
+  while (reg.usedNames.has(name)) name = `${base}${i++}`;
+  reg.usedNames.add(name);
+  return name;
+}
+
+/** Register a definition `$ref` and return the expression that references it. */
+function registerDef(ref: string, spec: any): string {
+  const reg = activeRegistry!;
+  if (reg.generating.has(ref)) return "Schema.Unknown"; // cyclic back-edge
+  if (!reg.names.has(ref)) {
+    reg.names.set(ref, defConstName(ref, reg));
+    reg.generating.add(ref);
+    const prev = activeRegistry;
+    // Render the def body with the registry active so nested `$ref`s also
+    // become references; pass a fresh `seenRefs` since cycles are handled here.
+    reg.consts.set(
+      ref,
+      openApiTypeToEffectSchema(resolveRef(spec, ref), spec, "", new Set(), reg.ctx),
+    );
+    activeRegistry = prev;
+    reg.generating.delete(ref);
+  }
+  return `Schema.suspend(() => ${reg.names.get(ref)})`;
+}
+
+/**
+ * Flatten a schema's `allOf` inheritance chain into a plain object schema: the
+ * schema's own `properties` merged with every `allOf` entry's properties (each
+ * entry resolved and itself flattened, so fields several levels deep — e.g.
+ * ARM's `StorageAccount → TrackedResource → Resource` — all surface). Only walks
+ * `allOf` links (never property `$ref`s), so it doesn't deep-inline. Used for
+ * top-level response schemas so inherited + sibling properties aren't dropped.
+ */
+function flattenAllOfChain(
+  schema: SchemaObject,
+  spec: any,
+  seenRefs: Set<string> = new Set(),
+): SchemaObject {
+  if (!schema.allOf || schema.allOf.length === 0) return schema;
+  const properties: Record<string, SchemaObject> = { ...(schema.properties ?? {}) };
+  const required: string[] = [...(schema.required ?? [])];
+  for (const sub of schema.allOf) {
+    let resolved = sub;
+    let nextSeen = seenRefs;
+    if (sub.$ref) {
+      if (seenRefs.has(sub.$ref)) continue;
+      nextSeen = new Set([...seenRefs, sub.$ref]);
+      resolved = resolveRef(spec, sub.$ref);
+    }
+    const flat = flattenAllOfChain(resolved, spec, nextSeen);
+    Object.assign(properties, flat.properties);
+    required.push(...(flat.required ?? []));
+  }
+  return { type: "object", properties, required: [...new Set(required)] };
+}
+
 function openApiTypeToEffectSchema(
   prop: SchemaObject,
   spec: any,
@@ -376,6 +463,9 @@ function openApiTypeToEffectSchema(
 ): string {
   // Handle $ref
   if (prop.$ref) {
+    if (activeRegistry) {
+      return registerDef(prop.$ref, spec);
+    }
     if (seenRefs.has(prop.$ref)) {
       return "Schema.Unknown"; // Prevent infinite recursion
     }
@@ -1144,8 +1234,11 @@ export type ${outputSchemaName} = typeof ${outputSchemaName}.Type;`,
     };
   }
 
+  // Flatten the top-level response schema's `allOf` chain so inherited + sibling
+  // properties surface (nested values become named-schema references, so it
+  // stays bounded).
   const schemaCode = openApiTypeToEffectSchema(
-    responseSchema,
+    flattenAllOfChain(responseSchema, spec),
     spec,
     "",
     new Set(),
@@ -1289,6 +1382,22 @@ export function generateFromOpenAPI(config: GeneratorConfig): void {
 
   const includeOperationErrors =
     config.includeOperationErrors ?? version === "2.0";
+
+  // Activate the named-schema registry so every definition `$ref` is emitted
+  // once into a shared `_schemas.ts` and referenced, rather than inlined per op.
+  activeRegistry = {
+    consts: new Map(),
+    names: new Map(),
+    generating: new Set(),
+    usedNames: new Set(),
+    ctx: {
+      direction: "output",
+      usesSensitiveString: false,
+      usesSensitiveNullableString: false,
+      usesSensitiveOutputString: false,
+      usesSensitiveOutputNullableString: false,
+    },
+  };
 
   // Collect all operations
   const operations: GeneratedOperation[] = [];
@@ -1549,6 +1658,44 @@ export function generateFromOpenAPI(config: GeneratorConfig): void {
           console.error(`❌ ${operation.operationId}:`, error);
         }
       }
+    }
+  }
+
+  // Emit the shared `_schemas.ts` of named definition consts, and import the
+  // ones each operation references. Each definition is then type-checked once.
+  const reg = activeRegistry;
+  activeRegistry = null;
+  if (reg && reg.consts.size > 0) {
+    const sensitiveImportPath =
+      config.sensitiveImport ?? `${config.importPrefix}/sensitive`;
+    const sens: string[] = [];
+    if (reg.ctx.usesSensitiveString) sens.push("SensitiveString");
+    if (reg.ctx.usesSensitiveNullableString) sens.push("SensitiveNullableString");
+    if (reg.ctx.usesSensitiveOutputString) sens.push("SensitiveOutputString");
+    if (reg.ctx.usesSensitiveOutputNullableString)
+      sens.push("SensitiveOutputNullableString");
+
+    let schemas = `import * as Schema from "effect/Schema";\n`;
+    if (sens.length > 0) {
+      schemas += `import { ${sens.join(", ")} } from "${sensitiveImportPath}.ts";\n`;
+    }
+    schemas += "\n";
+    for (const [ref, name] of reg.names) {
+      schemas += `export const ${name} = /*@__PURE__*/ /*#__PURE__*/ ${reg.consts.get(ref)};\n`;
+    }
+    fs.writeFileSync(path.join(outputDir, "_schemas.ts"), schemas);
+
+    for (const op of operations) {
+      const used = new Set<string>();
+      for (const m of op.code.matchAll(/Schema\.suspend\(\(\) => (\w+)\)/g)) {
+        used.add(m[1]);
+      }
+      if (used.size === 0) continue;
+      const importLine = `import { ${[...used].sort().join(", ")} } from "./_schemas.ts";\n`;
+      op.code = op.code.replace(
+        `import * as Schema from "effect/Schema";\n`,
+        `import * as Schema from "effect/Schema";\n${importLine}`,
+      );
     }
   }
 

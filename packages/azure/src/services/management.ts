@@ -8,6 +8,230 @@ import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
+// Shared schemas
+const ReasonSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Invalid",
+  "AlreadyExists",
+]);
+const EntityInfoSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.NullOr(Schema.String)),
+  type: Schema.optional(Schema.NullOr(Schema.String)),
+  name: Schema.optional(Schema.String),
+  properties: Schema.optional(Schema.suspend(() => EntityInfoPropertiesSchema)),
+});
+const EntityInfoPropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  tenantId: Schema.optional(Schema.NullOr(Schema.String)),
+  displayName: Schema.optional(Schema.NullOr(Schema.String)),
+  parent: Schema.optional(Schema.suspend(() => EntityParentGroupInfoSchema)),
+  permissions: Schema.optional(Schema.suspend(() => PermissionsSchema)),
+  inheritedPermissions: Schema.optional(
+    Schema.suspend(() => PermissionsSchema),
+  ),
+  numberOfDescendants: Schema.optional(Schema.NullOr(Schema.Number)),
+  numberOfChildren: Schema.optional(Schema.NullOr(Schema.Number)),
+  numberOfChildGroups: Schema.optional(Schema.NullOr(Schema.Number)),
+  parentDisplayNameChain: Schema.optional(
+    Schema.NullOr(Schema.Array(Schema.String)),
+  ),
+  parentNameChain: Schema.optional(Schema.NullOr(Schema.Array(Schema.String))),
+});
+const EntityParentGroupInfoSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+});
+const PermissionsSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "noaccess",
+  "view",
+  "edit",
+  "delete",
+]);
+const ManagementGroupInfoSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  properties: Schema.optional(
+    Schema.suspend(() => ManagementGroupInfoPropertiesSchema),
+  ),
+});
+const ManagementGroupInfoPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    tenantId: Schema.optional(Schema.String),
+    displayName: Schema.optional(Schema.String),
+  });
+const ManagementGroupPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    tenantId: Schema.optional(Schema.String),
+    displayName: Schema.optional(Schema.String),
+    details: Schema.optional(
+      Schema.suspend(() => ManagementGroupDetailsSchema),
+    ),
+    children: Schema.optional(
+      Schema.NullOr(
+        Schema.Array(Schema.suspend(() => ManagementGroupChildInfoSchema)),
+      ),
+    ),
+  });
+const ManagementGroupDetailsSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  version: Schema.optional(Schema.Number),
+  updatedTime: Schema.optional(Schema.String),
+  updatedBy: Schema.optional(Schema.String),
+  parent: Schema.optional(Schema.suspend(() => ParentGroupInfoSchema)),
+  path: Schema.optional(
+    Schema.Array(Schema.suspend(() => ManagementGroupPathElementSchema)),
+  ),
+  managementGroupAncestors: Schema.optional(
+    Schema.NullOr(Schema.Array(Schema.String)),
+  ),
+  managementGroupAncestorsChain: Schema.optional(
+    Schema.Array(Schema.suspend(() => ManagementGroupPathElementSchema)),
+  ),
+});
+const ParentGroupInfoSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  displayName: Schema.optional(Schema.String),
+});
+const ManagementGroupPathElementSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    displayName: Schema.optional(Schema.String),
+  });
+const ManagementGroupChildInfoSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    type: Schema.optional(Schema.suspend(() => ManagementGroupChildTypeSchema)),
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    displayName: Schema.optional(Schema.String),
+    children: Schema.optional(Schema.Array(Schema.Unknown)),
+  });
+const ManagementGroupChildTypeSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+    "Microsoft.Management/managementGroups",
+    "/subscriptions",
+  ]);
+const systemDataSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  createdBy: Schema.optional(Schema.String),
+  createdByType: Schema.optional(
+    Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+  ),
+  createdAt: Schema.optional(Schema.String),
+  lastModifiedBy: Schema.optional(Schema.String),
+  lastModifiedByType: Schema.optional(
+    Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+  ),
+  lastModifiedAt: Schema.optional(Schema.String),
+});
+const CreateManagementGroupPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    tenantId: Schema.optional(Schema.String),
+    displayName: Schema.optional(Schema.NullOr(Schema.String)),
+    details: Schema.optional(
+      Schema.suspend(() => CreateManagementGroupDetailsSchema),
+    ),
+    children: Schema.optional(
+      Schema.NullOr(
+        Schema.Array(
+          Schema.suspend(() => CreateManagementGroupChildInfoSchema),
+        ),
+      ),
+    ),
+  });
+const CreateManagementGroupDetailsSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    version: Schema.optional(Schema.Number),
+    updatedTime: Schema.optional(Schema.String),
+    updatedBy: Schema.optional(Schema.String),
+    parent: Schema.optional(Schema.suspend(() => CreateParentGroupInfoSchema)),
+  });
+const CreateParentGroupInfoSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  displayName: Schema.optional(Schema.String),
+});
+const CreateManagementGroupChildInfoSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    type: Schema.optional(Schema.suspend(() => ManagementGroupChildTypeSchema)),
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    displayName: Schema.optional(Schema.String),
+    children: Schema.optional(Schema.Array(Schema.Unknown)),
+  });
+const DescendantInfoSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.NullOr(Schema.String)),
+  type: Schema.optional(Schema.NullOr(Schema.String)),
+  name: Schema.optional(Schema.String),
+  properties: Schema.optional(
+    Schema.suspend(() => DescendantInfoPropertiesSchema),
+  ),
+});
+const DescendantInfoPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    displayName: Schema.optional(Schema.NullOr(Schema.String)),
+    parent: Schema.optional(
+      Schema.suspend(() => DescendantParentGroupInfoSchema),
+    ),
+  });
+const DescendantParentGroupInfoSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+  });
+const HierarchySettingsInfoSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  properties: Schema.optional(
+    Schema.suspend(() => HierarchySettingsPropertiesSchema),
+  ),
+});
+const HierarchySettingsPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    tenantId: Schema.optional(Schema.String),
+    requireAuthorizationForGroupCreation: Schema.optional(Schema.Boolean),
+    defaultManagementGroup: Schema.optional(Schema.String),
+  });
+const CreateOrUpdateSettingsPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    requireAuthorizationForGroupCreation: Schema.optional(Schema.Boolean),
+    defaultManagementGroup: Schema.optional(Schema.String),
+  });
+const SubscriptionUnderManagementGroupSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+  });
+const SubscriptionUnderManagementGroupPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    tenant: Schema.optional(Schema.String),
+    displayName: Schema.optional(Schema.String),
+    parent: Schema.optional(
+      Schema.suspend(() => DescendantParentGroupInfoSchema),
+    ),
+    state: Schema.optional(Schema.String),
+  });
+const OperationSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  isDataAction: Schema.optional(Schema.Boolean),
+  display: Schema.optional(
+    Schema.Struct({
+      provider: Schema.optional(Schema.String),
+      resource: Schema.optional(Schema.String),
+      operation: Schema.optional(Schema.String),
+      description: Schema.optional(Schema.String),
+    }),
+  ),
+  origin: Schema.optional(Schema.Literals(["user", "system", "user,system"])),
+  actionType: Schema.optional(Schema.Literals(["Internal"])),
+});
+const StatusSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "NotStarted",
+  "NotStartedButGroupsExist",
+  "Started",
+  "Failed",
+  "Cancelled",
+  "Completed",
+]);
+
 // Input Schema
 export const CheckNameAvailabilityInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -28,7 +252,7 @@ export type CheckNameAvailabilityInput = typeof CheckNameAvailabilityInput.Type;
 export const CheckNameAvailabilityOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nameAvailable: Schema.optional(Schema.Boolean),
-    reason: Schema.optional(Schema.Literals(["Invalid", "AlreadyExists"])),
+    reason: Schema.optional(Schema.suspend(() => ReasonSchema)),
     message: Schema.optional(Schema.String),
   });
 export type CheckNameAvailabilityOutput =
@@ -82,39 +306,7 @@ export type EntitiesListInput = typeof EntitiesListInput.Type;
 
 // Output Schema
 export const EntitiesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  value: Schema.Array(
-    Schema.Struct({
-      id: Schema.optional(Schema.NullOr(Schema.String)),
-      type: Schema.optional(Schema.NullOr(Schema.String)),
-      name: Schema.optional(Schema.String),
-      properties: Schema.optional(
-        Schema.Struct({
-          tenantId: Schema.optional(Schema.NullOr(Schema.String)),
-          displayName: Schema.optional(Schema.NullOr(Schema.String)),
-          parent: Schema.optional(
-            Schema.Struct({
-              id: Schema.optional(Schema.String),
-            }),
-          ),
-          permissions: Schema.optional(
-            Schema.Literals(["noaccess", "view", "edit", "delete"]),
-          ),
-          inheritedPermissions: Schema.optional(
-            Schema.Literals(["noaccess", "view", "edit", "delete"]),
-          ),
-          numberOfDescendants: Schema.optional(Schema.NullOr(Schema.Number)),
-          numberOfChildren: Schema.optional(Schema.NullOr(Schema.Number)),
-          numberOfChildGroups: Schema.optional(Schema.NullOr(Schema.Number)),
-          parentDisplayNameChain: Schema.optional(
-            Schema.NullOr(Schema.Array(Schema.String)),
-          ),
-          parentNameChain: Schema.optional(
-            Schema.NullOr(Schema.Array(Schema.String)),
-          ),
-        }),
-      ),
-    }),
-  ),
+  value: Schema.Array(Schema.suspend(() => EntityInfoSchema)),
   nextLink: Schema.optional(Schema.String),
   count: Schema.optional(Schema.Number),
 });
@@ -150,10 +342,7 @@ export const HierarchySettingsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        requireAuthorizationForGroupCreation: Schema.optional(Schema.Boolean),
-        defaultManagementGroup: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(() => CreateOrUpdateSettingsPropertiesSchema),
     ),
   }).pipe(
     T.Http({
@@ -168,23 +357,13 @@ export type HierarchySettingsCreateOrUpdateInput =
 // Output Schema
 export const HierarchySettingsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => HierarchySettingsPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type HierarchySettingsCreateOrUpdateOutput =
   typeof HierarchySettingsCreateOrUpdateOutput.Type;
@@ -250,23 +429,13 @@ export type HierarchySettingsGetInput = typeof HierarchySettingsGetInput.Type;
 // Output Schema
 export const HierarchySettingsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => HierarchySettingsPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type HierarchySettingsGetOutput = typeof HierarchySettingsGetOutput.Type;
 
@@ -300,22 +469,7 @@ export type HierarchySettingsListInput = typeof HierarchySettingsListInput.Type;
 export const HierarchySettingsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          properties: Schema.optional(
-            Schema.Struct({
-              tenantId: Schema.optional(Schema.String),
-              requireAuthorizationForGroupCreation: Schema.optional(
-                Schema.Boolean,
-              ),
-              defaultManagementGroup: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => HierarchySettingsInfoSchema)),
     ),
     "@nextLink": Schema.optional(Schema.String),
   });
@@ -340,10 +494,7 @@ export const HierarchySettingsUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        requireAuthorizationForGroupCreation: Schema.optional(Schema.Boolean),
-        defaultManagementGroup: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(() => CreateOrUpdateSettingsPropertiesSchema),
     ),
   }).pipe(
     T.Http({
@@ -358,23 +509,13 @@ export type HierarchySettingsUpdateInput =
 // Output Schema
 export const HierarchySettingsUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => HierarchySettingsPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type HierarchySettingsUpdateOutput =
   typeof HierarchySettingsUpdateOutput.Type;
@@ -400,42 +541,7 @@ export const ManagementGroupsCreateOrUpdateInput =
     type: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     properties: Schema.optional(
-      Schema.Struct({
-        tenantId: Schema.optional(Schema.String),
-        displayName: Schema.optional(Schema.NullOr(Schema.String)),
-        details: Schema.optional(
-          Schema.Struct({
-            version: Schema.optional(Schema.Number),
-            updatedTime: Schema.optional(Schema.String),
-            updatedBy: Schema.optional(Schema.String),
-            parent: Schema.optional(
-              Schema.Struct({
-                id: Schema.optional(Schema.String),
-                name: Schema.optional(Schema.String),
-                displayName: Schema.optional(Schema.String),
-              }),
-            ),
-          }),
-        ),
-        children: Schema.optional(
-          Schema.NullOr(
-            Schema.Array(
-              Schema.Struct({
-                type: Schema.optional(
-                  Schema.Literals([
-                    "Microsoft.Management/managementGroups",
-                    "/subscriptions",
-                  ]),
-                ),
-                id: Schema.optional(Schema.String),
-                name: Schema.optional(Schema.String),
-                displayName: Schema.optional(Schema.String),
-                children: Schema.optional(Schema.Array(Schema.Unknown)),
-              }),
-            ),
-          ),
-        ),
-      }),
+      Schema.suspend(() => CreateManagementGroupPropertiesSchema),
     ),
   }).pipe(
     T.Http({
@@ -451,23 +557,13 @@ export type ManagementGroupsCreateOrUpdateInput =
 // Output Schema
 export const ManagementGroupsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => ManagementGroupPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type ManagementGroupsCreateOrUpdateOutput =
   typeof ManagementGroupsCreateOrUpdateOutput.Type;
@@ -543,23 +639,13 @@ export type ManagementGroupsGetInput = typeof ManagementGroupsGetInput.Type;
 // Output Schema
 export const ManagementGroupsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => ManagementGroupPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type ManagementGroupsGetOutput = typeof ManagementGroupsGetOutput.Type;
 
@@ -597,23 +683,7 @@ export type ManagementGroupsGetDescendantsInput =
 // Output Schema
 export const ManagementGroupsGetDescendantsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.NullOr(Schema.String)),
-        type: Schema.optional(Schema.NullOr(Schema.String)),
-        name: Schema.optional(Schema.String),
-        properties: Schema.optional(
-          Schema.Struct({
-            displayName: Schema.optional(Schema.NullOr(Schema.String)),
-            parent: Schema.optional(
-              Schema.Struct({
-                id: Schema.optional(Schema.String),
-              }),
-            ),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => DescendantInfoSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type ManagementGroupsGetDescendantsOutput =
@@ -651,19 +721,7 @@ export type ManagementGroupsListInput = typeof ManagementGroupsListInput.Type;
 export const ManagementGroupsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          properties: Schema.optional(
-            Schema.Struct({
-              tenantId: Schema.optional(Schema.String),
-              displayName: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => ManagementGroupInfoSchema)),
     ),
     "@nextLink": Schema.optional(Schema.String),
   });
@@ -702,23 +760,13 @@ export type ManagementGroupSubscriptionsCreateInput =
 // Output Schema
 export const ManagementGroupSubscriptionsCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => SubscriptionUnderManagementGroupPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type ManagementGroupSubscriptionsCreateOutput =
   typeof ManagementGroupSubscriptionsCreateOutput.Type;
@@ -790,23 +838,13 @@ export type ManagementGroupSubscriptionsGetSubscriptionInput =
 // Output Schema
 export const ManagementGroupSubscriptionsGetSubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => SubscriptionUnderManagementGroupPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type ManagementGroupSubscriptionsGetSubscriptionOutput =
   typeof ManagementGroupSubscriptionsGetSubscriptionOutput.Type;
@@ -844,35 +882,7 @@ export type ManagementGroupSubscriptionsGetSubscriptionsUnderManagementGroupInpu
 export const ManagementGroupSubscriptionsGetSubscriptionsUnderManagementGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
+      Schema.suspend(() => SubscriptionUnderManagementGroupSchema),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -914,23 +924,13 @@ export type ManagementGroupsUpdateInput =
 // Output Schema
 export const ManagementGroupsUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => ManagementGroupPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type ManagementGroupsUpdateOutput =
   typeof ManagementGroupsUpdateOutput.Type;
@@ -963,26 +963,7 @@ export type OperationsListInput = typeof OperationsListInput.Type;
 
 // Output Schema
 export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  value: Schema.optional(
-    Schema.Array(
-      Schema.Struct({
-        name: Schema.optional(Schema.String),
-        isDataAction: Schema.optional(Schema.Boolean),
-        display: Schema.optional(
-          Schema.Struct({
-            provider: Schema.optional(Schema.String),
-            resource: Schema.optional(Schema.String),
-            operation: Schema.optional(Schema.String),
-            description: Schema.optional(Schema.String),
-          }),
-        ),
-        origin: Schema.optional(
-          Schema.Literals(["user", "system", "user,system"]),
-        ),
-        actionType: Schema.optional(Schema.Literals(["Internal"])),
-      }),
-    ),
-  ),
+  value: Schema.optional(Schema.Array(Schema.suspend(() => OperationSchema))),
   nextLink: Schema.optional(Schema.String),
 });
 export type OperationsListOutput = typeof OperationsListOutput.Type;
@@ -1012,16 +993,7 @@ export type StartTenantBackfillInput = typeof StartTenantBackfillInput.Type;
 export const StartTenantBackfillOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     tenantId: Schema.optional(Schema.String),
-    status: Schema.optional(
-      Schema.Literals([
-        "NotStarted",
-        "NotStartedButGroupsExist",
-        "Started",
-        "Failed",
-        "Cancelled",
-        "Completed",
-      ]),
-    ),
+    status: Schema.optional(Schema.suspend(() => StatusSchema)),
   });
 export type StartTenantBackfillOutput = typeof StartTenantBackfillOutput.Type;
 
@@ -1050,16 +1022,7 @@ export type TenantBackfillStatusInput = typeof TenantBackfillStatusInput.Type;
 export const TenantBackfillStatusOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     tenantId: Schema.optional(Schema.String),
-    status: Schema.optional(
-      Schema.Literals([
-        "NotStarted",
-        "NotStartedButGroupsExist",
-        "Started",
-        "Failed",
-        "Cancelled",
-        "Completed",
-      ]),
-    ),
+    status: Schema.optional(Schema.suspend(() => StatusSchema)),
   });
 export type TenantBackfillStatusOutput = typeof TenantBackfillStatusOutput.Type;
 

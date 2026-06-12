@@ -30,7 +30,6 @@ export const GetNeonAuthWebhookConfigOutput =
           "send.magic_link",
           "organization.invitation.created",
           "organization.invitation.accepted",
-          "phone_number.verified",
         ]),
       ),
     ),

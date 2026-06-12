@@ -8,6 +8,138 @@ import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
+// Shared schemas
+const AnalysisServicesServerPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    asAdministrators: Schema.optional(
+      Schema.suspend(() => ServerAdministratorsSchema),
+    ),
+    backupBlobContainerUri: Schema.optional(Schema.String),
+    gatewayDetails: Schema.optional(Schema.suspend(() => GatewayDetailsSchema)),
+    ipV4FirewallSettings: Schema.optional(
+      Schema.suspend(() => IPv4FirewallSettingsSchema),
+    ),
+    querypoolConnectionMode: Schema.optional(
+      Schema.Literals(["All", "ReadOnly"]),
+    ),
+    managedMode: Schema.optional(Schema.Literals([0, 1])),
+    serverMonitorMode: Schema.optional(Schema.Literals([0, 1])),
+  });
+const ServerAdministratorsSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  members: Schema.optional(Schema.Array(Schema.String)),
+});
+const GatewayDetailsSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  gatewayResourceId: Schema.optional(Schema.String),
+  gatewayObjectId: Schema.optional(Schema.String),
+  dmtsClusterUri: Schema.optional(Schema.String),
+});
+const IPv4FirewallSettingsSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  firewallRules: Schema.optional(
+    Schema.Array(Schema.suspend(() => IPv4FirewallRuleSchema)),
+  ),
+  enablePowerBIService: Schema.optional(Schema.Boolean),
+});
+const IPv4FirewallRuleSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  firewallRuleName: Schema.optional(Schema.String),
+  rangeStart: Schema.optional(Schema.String),
+  rangeEnd: Schema.optional(Schema.String),
+});
+const ResourceSkuSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.String,
+  tier: Schema.optional(Schema.Literals(["Development", "Basic", "Standard"])),
+  capacity: Schema.optional(Schema.Number),
+});
+const AnalysisServicesServerMutablePropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    asAdministrators: Schema.optional(
+      Schema.suspend(() => ServerAdministratorsSchema),
+    ),
+    backupBlobContainerUri: Schema.optional(Schema.String),
+    gatewayDetails: Schema.optional(Schema.suspend(() => GatewayDetailsSchema)),
+    ipV4FirewallSettings: Schema.optional(
+      Schema.suspend(() => IPv4FirewallSettingsSchema),
+    ),
+    querypoolConnectionMode: Schema.optional(
+      Schema.Literals(["All", "ReadOnly"]),
+    ),
+    managedMode: Schema.optional(Schema.Literals([0, 1])),
+    serverMonitorMode: Schema.optional(Schema.Literals([0, 1])),
+  });
+const AnalysisServicesServerSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  location: Schema.String,
+  sku: Schema.suspend(() => ResourceSkuSchema),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+});
+const SkuDetailsForExistingResourceSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    sku: Schema.optional(Schema.suspend(() => ResourceSkuSchema)),
+    resourceType: Schema.optional(Schema.String),
+  });
+const ErrorDetailSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  code: Schema.optional(Schema.String),
+  message: Schema.optional(Schema.String),
+  target: Schema.optional(Schema.String),
+  subCode: Schema.optional(Schema.Number),
+  httpStatusCode: Schema.optional(Schema.Number),
+  timeStamp: Schema.optional(Schema.String),
+  details: Schema.optional(Schema.Array(Schema.Unknown)),
+  additionalInfo: Schema.optional(
+    Schema.Array(Schema.suspend(() => ErrorAdditionalInfoSchema)),
+  ),
+});
+const ErrorAdditionalInfoSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  type: Schema.optional(Schema.String),
+  info: Schema.optional(Schema.Unknown),
+});
+const OperationSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  display: Schema.optional(
+    Schema.Struct({
+      provider: Schema.optional(Schema.String),
+      resource: Schema.optional(Schema.String),
+      operation: Schema.optional(Schema.String),
+      description: Schema.optional(Schema.String),
+    }),
+  ),
+  origin: Schema.optional(Schema.String),
+  properties: Schema.optional(
+    Schema.Struct({
+      serviceSpecification: Schema.optional(
+        Schema.Struct({
+          metricSpecifications: Schema.optional(
+            Schema.Array(Schema.suspend(() => MetricSpecificationsSchema)),
+          ),
+          logSpecifications: Schema.optional(
+            Schema.Array(Schema.suspend(() => LogSpecificationsSchema)),
+          ),
+        }),
+      ),
+    }),
+  ),
+});
+const MetricSpecificationsSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  displayName: Schema.optional(Schema.String),
+  displayDescription: Schema.optional(Schema.String),
+  unit: Schema.optional(Schema.String),
+  aggregationType: Schema.optional(Schema.String),
+  dimensions: Schema.optional(
+    Schema.Array(Schema.suspend(() => MetricDimensionsSchema)),
+  ),
+});
+const MetricDimensionsSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  displayName: Schema.optional(Schema.String),
+});
+const LogSpecificationsSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  displayName: Schema.optional(Schema.String),
+  blobDuration: Schema.optional(Schema.String),
+});
+
 // Input Schema
 export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {},
@@ -22,58 +154,7 @@ export type OperationsListInput = typeof OperationsListInput.Type;
 
 // Output Schema
 export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  value: Schema.optional(
-    Schema.Array(
-      Schema.Struct({
-        name: Schema.optional(Schema.String),
-        display: Schema.optional(
-          Schema.Struct({
-            provider: Schema.optional(Schema.String),
-            resource: Schema.optional(Schema.String),
-            operation: Schema.optional(Schema.String),
-            description: Schema.optional(Schema.String),
-          }),
-        ),
-        origin: Schema.optional(Schema.String),
-        properties: Schema.optional(
-          Schema.Struct({
-            serviceSpecification: Schema.optional(
-              Schema.Struct({
-                metricSpecifications: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      name: Schema.optional(Schema.String),
-                      displayName: Schema.optional(Schema.String),
-                      displayDescription: Schema.optional(Schema.String),
-                      unit: Schema.optional(Schema.String),
-                      aggregationType: Schema.optional(Schema.String),
-                      dimensions: Schema.optional(
-                        Schema.Array(
-                          Schema.Struct({
-                            name: Schema.optional(Schema.String),
-                            displayName: Schema.optional(Schema.String),
-                          }),
-                        ),
-                      ),
-                    }),
-                  ),
-                ),
-                logSpecifications: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      name: Schema.optional(Schema.String),
-                      displayName: Schema.optional(Schema.String),
-                      blobDuration: Schema.optional(Schema.String),
-                    }),
-                  ),
-                ),
-              }),
-            ),
-          }),
-        ),
-      }),
-    ),
-  ),
+  value: Schema.optional(Schema.Array(Schema.suspend(() => OperationSchema))),
   nextLink: Schema.optional(Schema.String),
 });
 export type OperationsListOutput = typeof OperationsListOutput.Type;
@@ -127,52 +208,13 @@ export const ServersCheckNameAvailability =
 export const ServersCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   serverName: Schema.String.pipe(T.PathParam()),
   properties: Schema.optional(
-    Schema.Struct({
-      asAdministrators: Schema.optional(
-        Schema.Struct({
-          members: Schema.optional(Schema.Array(Schema.String)),
-        }),
-      ),
-      backupBlobContainerUri: Schema.optional(Schema.String),
-      gatewayDetails: Schema.optional(
-        Schema.Struct({
-          gatewayResourceId: Schema.optional(Schema.String),
-          gatewayObjectId: Schema.optional(Schema.String),
-          dmtsClusterUri: Schema.optional(Schema.String),
-        }),
-      ),
-      ipV4FirewallSettings: Schema.optional(
-        Schema.Struct({
-          firewallRules: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                firewallRuleName: Schema.optional(Schema.String),
-                rangeStart: Schema.optional(Schema.String),
-                rangeEnd: Schema.optional(Schema.String),
-              }),
-            ),
-          ),
-          enablePowerBIService: Schema.optional(Schema.Boolean),
-        }),
-      ),
-      querypoolConnectionMode: Schema.optional(
-        Schema.Literals(["All", "ReadOnly"]),
-      ),
-      managedMode: Schema.optional(Schema.Literals([0, 1])),
-      serverMonitorMode: Schema.optional(Schema.Literals([0, 1])),
-    }),
+    Schema.suspend(() => AnalysisServicesServerPropertiesSchema),
   ),
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
   location: Schema.String,
-  sku: Schema.Struct({
-    name: Schema.String,
-    tier: Schema.optional(
-      Schema.Literals(["Development", "Basic", "Standard"]),
-    ),
-    capacity: Schema.optional(Schema.Number),
-  }),
+  sku: Schema.suspend(() => ResourceSkuSchema),
   tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
 }).pipe(
   T.Http({
@@ -186,17 +228,14 @@ export type ServersCreateInput = typeof ServersCreateInput.Type;
 
 // Output Schema
 export const ServersCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.optional(
+    Schema.suspend(() => AnalysisServicesServerPropertiesSchema),
+  ),
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
   location: Schema.String,
-  sku: Schema.Struct({
-    name: Schema.String,
-    tier: Schema.optional(
-      Schema.Literals(["Development", "Basic", "Standard"]),
-    ),
-    capacity: Schema.optional(Schema.Number),
-  }),
+  sku: Schema.suspend(() => ResourceSkuSchema),
   tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
 });
 export type ServersCreateOutput = typeof ServersCreateOutput.Type;
@@ -287,17 +326,14 @@ export type ServersGetDetailsInput = typeof ServersGetDetailsInput.Type;
 // Output Schema
 export const ServersGetDetailsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => AnalysisServicesServerPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
     location: Schema.String,
-    sku: Schema.Struct({
-      name: Schema.String,
-      tier: Schema.optional(
-        Schema.Literals(["Development", "Basic", "Standard"]),
-      ),
-      capacity: Schema.optional(Schema.Number),
-    }),
+    sku: Schema.suspend(() => ResourceSkuSchema),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   });
 export type ServersGetDetailsOutput = typeof ServersGetDetailsOutput.Type;
@@ -326,22 +362,7 @@ export type ServersListInput = typeof ServersListInput.Type;
 
 // Output Schema
 export const ServersListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  value: Schema.Array(
-    Schema.Struct({
-      id: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      type: Schema.optional(Schema.String),
-      location: Schema.String,
-      sku: Schema.Struct({
-        name: Schema.String,
-        tier: Schema.optional(
-          Schema.Literals(["Development", "Basic", "Standard"]),
-        ),
-        capacity: Schema.optional(Schema.Number),
-      }),
-      tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    }),
-  ),
+  value: Schema.Array(Schema.suspend(() => AnalysisServicesServerSchema)),
 });
 export type ServersListOutput = typeof ServersListOutput.Type;
 
@@ -368,22 +389,7 @@ export type ServersListByResourceGroupInput =
 // Output Schema
 export const ServersListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        location: Schema.String,
-        sku: Schema.Struct({
-          name: Schema.String,
-          tier: Schema.optional(
-            Schema.Literals(["Development", "Basic", "Standard"]),
-          ),
-          capacity: Schema.optional(Schema.Number),
-        }),
-        tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => AnalysisServicesServerSchema)),
   });
 export type ServersListByResourceGroupOutput =
   typeof ServersListByResourceGroupOutput.Type;
@@ -489,25 +495,7 @@ export const ServersListOperationStatusesOutput =
     startTime: Schema.optional(Schema.String),
     endTime: Schema.optional(Schema.String),
     status: Schema.optional(Schema.String),
-    error: Schema.optional(
-      Schema.Struct({
-        code: Schema.optional(Schema.String),
-        message: Schema.optional(Schema.String),
-        target: Schema.optional(Schema.String),
-        subCode: Schema.optional(Schema.Number),
-        httpStatusCode: Schema.optional(Schema.Number),
-        timeStamp: Schema.optional(Schema.String),
-        details: Schema.optional(Schema.Array(Schema.Unknown)),
-        additionalInfo: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              type: Schema.optional(Schema.String),
-              info: Schema.optional(Schema.Unknown),
-            }),
-          ),
-        ),
-      }),
-    ),
+    error: Schema.optional(Schema.suspend(() => ErrorDetailSchema)),
   });
 export type ServersListOperationStatusesOutput =
   typeof ServersListOperationStatusesOutput.Type;
@@ -542,20 +530,7 @@ export type ServersListSkusForExistingInput =
 export const ServersListSkusForExistingOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          sku: Schema.optional(
-            Schema.Struct({
-              name: Schema.String,
-              tier: Schema.optional(
-                Schema.Literals(["Development", "Basic", "Standard"]),
-              ),
-              capacity: Schema.optional(Schema.Number),
-            }),
-          ),
-          resourceType: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => SkuDetailsForExistingResourceSchema)),
     ),
   });
 export type ServersListSkusForExistingOutput =
@@ -588,15 +563,7 @@ export type ServersListSkusForNewInput = typeof ServersListSkusForNewInput.Type;
 export const ServersListSkusForNewOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          name: Schema.String,
-          tier: Schema.optional(
-            Schema.Literals(["Development", "Basic", "Standard"]),
-          ),
-          capacity: Schema.optional(Schema.Number),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => ResourceSkuSchema)),
     ),
   });
 export type ServersListSkusForNewOutput =
@@ -669,51 +636,10 @@ export const ServersSuspend = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const ServersUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   serverName: Schema.String.pipe(T.PathParam()),
-  sku: Schema.optional(
-    Schema.Struct({
-      name: Schema.String,
-      tier: Schema.optional(
-        Schema.Literals(["Development", "Basic", "Standard"]),
-      ),
-      capacity: Schema.optional(Schema.Number),
-    }),
-  ),
+  sku: Schema.optional(Schema.suspend(() => ResourceSkuSchema)),
   tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   properties: Schema.optional(
-    Schema.Struct({
-      asAdministrators: Schema.optional(
-        Schema.Struct({
-          members: Schema.optional(Schema.Array(Schema.String)),
-        }),
-      ),
-      backupBlobContainerUri: Schema.optional(Schema.String),
-      gatewayDetails: Schema.optional(
-        Schema.Struct({
-          gatewayResourceId: Schema.optional(Schema.String),
-          gatewayObjectId: Schema.optional(Schema.String),
-          dmtsClusterUri: Schema.optional(Schema.String),
-        }),
-      ),
-      ipV4FirewallSettings: Schema.optional(
-        Schema.Struct({
-          firewallRules: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                firewallRuleName: Schema.optional(Schema.String),
-                rangeStart: Schema.optional(Schema.String),
-                rangeEnd: Schema.optional(Schema.String),
-              }),
-            ),
-          ),
-          enablePowerBIService: Schema.optional(Schema.Boolean),
-        }),
-      ),
-      querypoolConnectionMode: Schema.optional(
-        Schema.Literals(["All", "ReadOnly"]),
-      ),
-      managedMode: Schema.optional(Schema.Literals([0, 1])),
-      serverMonitorMode: Schema.optional(Schema.Literals([0, 1])),
-    }),
+    Schema.suspend(() => AnalysisServicesServerMutablePropertiesSchema),
   ),
 }).pipe(
   T.Http({
@@ -727,17 +653,14 @@ export type ServersUpdateInput = typeof ServersUpdateInput.Type;
 
 // Output Schema
 export const ServersUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.optional(
+    Schema.suspend(() => AnalysisServicesServerPropertiesSchema),
+  ),
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
   location: Schema.String,
-  sku: Schema.Struct({
-    name: Schema.String,
-    tier: Schema.optional(
-      Schema.Literals(["Development", "Basic", "Standard"]),
-    ),
-    capacity: Schema.optional(Schema.Number),
-  }),
+  sku: Schema.suspend(() => ResourceSkuSchema),
   tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
 });
 export type ServersUpdateOutput = typeof ServersUpdateOutput.Type;

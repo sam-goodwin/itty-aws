@@ -8,27 +8,126 @@ import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
-// Input Schema
-export const GeneratePreviewArtifactsInput =
+// Shared schemas
+const OperationSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  isDataAction: Schema.optional(Schema.Boolean),
+  display: Schema.optional(
+    Schema.Struct({
+      provider: Schema.optional(Schema.String),
+      resource: Schema.optional(Schema.String),
+      operation: Schema.optional(Schema.String),
+      description: Schema.optional(Schema.String),
+    }),
+  ),
+  origin: Schema.optional(Schema.Literals(["user", "system", "user,system"])),
+  actionType: Schema.optional(Schema.Literals(["Internal"])),
+});
+const GitHubOAuthPropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  username: Schema.optional(Schema.String),
+});
+const systemDataSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  createdBy: Schema.optional(Schema.String),
+  createdByType: Schema.optional(
+    Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+  ),
+  createdAt: Schema.optional(Schema.String),
+  lastModifiedBy: Schema.optional(Schema.String),
+  lastModifiedByType: Schema.optional(
+    Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+  ),
+  lastModifiedAt: Schema.optional(Schema.String),
+});
+const GitHubOAuthResponseSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+});
+const WorkflowSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+});
+const WorkflowPropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  githubWorkflowProfile: Schema.optional(
+    Schema.suspend(() => GitHubWorkflowProfileSchema),
+  ),
+  artifactGenerationProperties: Schema.optional(
+    Schema.suspend(() => ArtifactGenerationPropertiesSchema),
+  ),
+});
+const GitHubWorkflowProfileSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  repositoryOwner: Schema.optional(Schema.String),
+  repositoryName: Schema.optional(Schema.String),
+  branchName: Schema.optional(Schema.String),
+  dockerfile: Schema.optional(Schema.String),
+  dockerBuildContext: Schema.optional(Schema.String),
+  deploymentProperties: Schema.optional(
+    Schema.suspend(() => DeploymentPropertiesSchema),
+  ),
+  namespace: Schema.optional(Schema.String),
+  acr: Schema.optional(Schema.suspend(() => ACRSchema)),
+  oidcCredentials: Schema.optional(
+    Schema.Struct({
+      azureClientId: Schema.optional(Schema.String),
+      azureTenantId: Schema.optional(Schema.String),
+    }),
+  ),
+  aksResourceId: Schema.optional(Schema.String),
+  prURL: Schema.optional(Schema.String),
+  pullNumber: Schema.optional(Schema.Number),
+  prStatus: Schema.optional(Schema.suspend(() => PullRequestStatusSchema)),
+  lastWorkflowRun: Schema.optional(Schema.suspend(() => WorkflowRunSchema)),
+  authStatus: Schema.optional(Schema.suspend(() => AuthorizationStatusSchema)),
+});
+const DeploymentPropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  manifestType: Schema.optional(Schema.suspend(() => ManifestTypeSchema)),
+  kubeManifestLocations: Schema.optional(Schema.Array(Schema.String)),
+  helmChartPath: Schema.optional(Schema.String),
+  helmValues: Schema.optional(Schema.String),
+  overrides: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+});
+const ManifestTypeSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "helm",
+  "kube",
+  "kustomize",
+]);
+const ACRSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  acrSubscriptionId: Schema.optional(Schema.String),
+  acrResourceGroup: Schema.optional(Schema.String),
+  acrRegistryName: Schema.optional(Schema.String),
+  acrRepositoryName: Schema.optional(Schema.String),
+});
+const PullRequestStatusSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "unknown",
+  "submitted",
+  "merged",
+  "removed",
+]);
+const WorkflowRunSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  succeeded: Schema.optional(Schema.Boolean),
+  workflowRunURL: Schema.optional(Schema.String),
+  lastRunAt: Schema.optional(Schema.String),
+  workflowRunStatus: Schema.optional(
+    Schema.suspend(() => WorkflowRunStatusSchema),
+  ),
+});
+const WorkflowRunStatusSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "queued",
+  "inprogress",
+  "completed",
+]);
+const AuthorizationStatusSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Authorized",
+  "NotFound",
+  "Error",
+]);
+const ArtifactGenerationPropertiesSchema =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    location: Schema.String.pipe(T.PathParam()),
     generationLanguage: Schema.optional(
-      Schema.Literals([
-        "clojure",
-        "csharp",
-        "erlang",
-        "go",
-        "gomodule",
-        "gradle",
-        "java",
-        "javascript",
-        "php",
-        "python",
-        "ruby",
-        "rust",
-        "swift",
-      ]),
+      Schema.suspend(() => GenerationLanguageSchema),
     ),
     languageVersion: Schema.optional(Schema.String),
     builderVersion: Schema.optional(Schema.String),
@@ -37,12 +136,63 @@ export const GeneratePreviewArtifactsInput =
     dockerfileOutputDirectory: Schema.optional(Schema.String),
     manifestOutputDirectory: Schema.optional(Schema.String),
     dockerfileGenerationMode: Schema.optional(
-      Schema.Literals(["enabled", "disabled"]),
+      Schema.suspend(() => DockerfileGenerationModeSchema),
     ),
     manifestGenerationMode: Schema.optional(
-      Schema.Literals(["enabled", "disabled"]),
+      Schema.suspend(() => ManifestGenerationModeSchema),
     ),
-    manifestType: Schema.optional(Schema.Literals(["helm", "kube"])),
+    manifestType: Schema.optional(
+      Schema.suspend(() => GenerationManifestTypeSchema),
+    ),
+    imageName: Schema.optional(Schema.String),
+    namespace: Schema.optional(Schema.String),
+    imageTag: Schema.optional(Schema.String),
+  });
+const GenerationLanguageSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "clojure",
+  "csharp",
+  "erlang",
+  "go",
+  "gomodule",
+  "gradle",
+  "java",
+  "javascript",
+  "php",
+  "python",
+  "ruby",
+  "rust",
+  "swift",
+]);
+const DockerfileGenerationModeSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Literals(["enabled", "disabled"]);
+const ManifestGenerationModeSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Literals(["enabled", "disabled"]);
+const GenerationManifestTypeSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Literals(["helm", "kube"]);
+
+// Input Schema
+export const GeneratePreviewArtifactsInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    location: Schema.String.pipe(T.PathParam()),
+    generationLanguage: Schema.optional(
+      Schema.suspend(() => GenerationLanguageSchema),
+    ),
+    languageVersion: Schema.optional(Schema.String),
+    builderVersion: Schema.optional(Schema.String),
+    port: Schema.optional(Schema.String),
+    appName: Schema.optional(Schema.String),
+    dockerfileOutputDirectory: Schema.optional(Schema.String),
+    manifestOutputDirectory: Schema.optional(Schema.String),
+    dockerfileGenerationMode: Schema.optional(
+      Schema.suspend(() => DockerfileGenerationModeSchema),
+    ),
+    manifestGenerationMode: Schema.optional(
+      Schema.suspend(() => ManifestGenerationModeSchema),
+    ),
+    manifestType: Schema.optional(
+      Schema.suspend(() => GenerationManifestTypeSchema),
+    ),
     imageName: Schema.optional(Schema.String),
     namespace: Schema.optional(Schema.String),
     imageTag: Schema.optional(Schema.String),
@@ -126,23 +276,13 @@ export type GitHubOAuthCallbackInput = typeof GitHubOAuthCallbackInput.Type;
 // Output Schema
 export const GitHubOAuthCallbackOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => GitHubOAuthPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type GitHubOAuthCallbackOutput = typeof GitHubOAuthCallbackOutput.Type;
 
@@ -174,37 +314,7 @@ export type ListGitHubOAuthInput = typeof ListGitHubOAuthInput.Type;
 // Output Schema
 export const ListGitHubOAuthOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.optional(
-    Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    Schema.Array(Schema.suspend(() => GitHubOAuthResponseSchema)),
   ),
 });
 export type ListGitHubOAuthOutput = typeof ListGitHubOAuthOutput.Type;
@@ -235,26 +345,7 @@ export type OperationsListInput = typeof OperationsListInput.Type;
 
 // Output Schema
 export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  value: Schema.optional(
-    Schema.Array(
-      Schema.Struct({
-        name: Schema.optional(Schema.String),
-        isDataAction: Schema.optional(Schema.Boolean),
-        display: Schema.optional(
-          Schema.Struct({
-            provider: Schema.optional(Schema.String),
-            resource: Schema.optional(Schema.String),
-            operation: Schema.optional(Schema.String),
-            description: Schema.optional(Schema.String),
-          }),
-        ),
-        origin: Schema.optional(
-          Schema.Literals(["user", "system", "user,system"]),
-        ),
-        actionType: Schema.optional(Schema.Literals(["Internal"])),
-      }),
-    ),
-  ),
+  value: Schema.optional(Schema.Array(Schema.suspend(() => OperationSchema))),
   nextLink: Schema.optional(Schema.String),
 });
 export type OperationsListOutput = typeof OperationsListOutput.Type;
@@ -276,105 +367,7 @@ export const WorkflowCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    properties: Schema.optional(
-      Schema.Struct({
-        githubWorkflowProfile: Schema.optional(
-          Schema.Struct({
-            repositoryOwner: Schema.optional(Schema.String),
-            repositoryName: Schema.optional(Schema.String),
-            branchName: Schema.optional(Schema.String),
-            dockerfile: Schema.optional(Schema.String),
-            dockerBuildContext: Schema.optional(Schema.String),
-            deploymentProperties: Schema.optional(
-              Schema.Struct({
-                manifestType: Schema.optional(
-                  Schema.Literals(["helm", "kube", "kustomize"]),
-                ),
-                kubeManifestLocations: Schema.optional(
-                  Schema.Array(Schema.String),
-                ),
-                helmChartPath: Schema.optional(Schema.String),
-                helmValues: Schema.optional(Schema.String),
-                overrides: Schema.optional(
-                  Schema.Record(Schema.String, Schema.String),
-                ),
-              }),
-            ),
-            namespace: Schema.optional(Schema.String),
-            acr: Schema.optional(
-              Schema.Struct({
-                acrSubscriptionId: Schema.optional(Schema.String),
-                acrResourceGroup: Schema.optional(Schema.String),
-                acrRegistryName: Schema.optional(Schema.String),
-                acrRepositoryName: Schema.optional(Schema.String),
-              }),
-            ),
-            oidcCredentials: Schema.optional(
-              Schema.Struct({
-                azureClientId: Schema.optional(Schema.String),
-                azureTenantId: Schema.optional(Schema.String),
-              }),
-            ),
-            aksResourceId: Schema.optional(Schema.String),
-            prURL: Schema.optional(Schema.String),
-            pullNumber: Schema.optional(Schema.Number),
-            prStatus: Schema.optional(
-              Schema.Literals(["unknown", "submitted", "merged", "removed"]),
-            ),
-            lastWorkflowRun: Schema.optional(
-              Schema.Struct({
-                succeeded: Schema.optional(Schema.Boolean),
-                workflowRunURL: Schema.optional(Schema.String),
-                lastRunAt: Schema.optional(Schema.String),
-                workflowRunStatus: Schema.optional(
-                  Schema.Literals(["queued", "inprogress", "completed"]),
-                ),
-              }),
-            ),
-            authStatus: Schema.optional(
-              Schema.Literals(["Authorized", "NotFound", "Error"]),
-            ),
-          }),
-        ),
-        artifactGenerationProperties: Schema.optional(
-          Schema.Struct({
-            generationLanguage: Schema.optional(
-              Schema.Literals([
-                "clojure",
-                "csharp",
-                "erlang",
-                "go",
-                "gomodule",
-                "gradle",
-                "java",
-                "javascript",
-                "php",
-                "python",
-                "ruby",
-                "rust",
-                "swift",
-              ]),
-            ),
-            languageVersion: Schema.optional(Schema.String),
-            builderVersion: Schema.optional(Schema.String),
-            port: Schema.optional(Schema.String),
-            appName: Schema.optional(Schema.String),
-            dockerfileOutputDirectory: Schema.optional(Schema.String),
-            manifestOutputDirectory: Schema.optional(Schema.String),
-            dockerfileGenerationMode: Schema.optional(
-              Schema.Literals(["enabled", "disabled"]),
-            ),
-            manifestGenerationMode: Schema.optional(
-              Schema.Literals(["enabled", "disabled"]),
-            ),
-            manifestType: Schema.optional(Schema.Literals(["helm", "kube"])),
-            imageName: Schema.optional(Schema.String),
-            namespace: Schema.optional(Schema.String),
-            imageTag: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    properties: Schema.optional(Schema.suspend(() => WorkflowPropertiesSchema)),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     location: Schema.String,
   }).pipe(
@@ -390,23 +383,13 @@ export type WorkflowCreateOrUpdateInput =
 // Output Schema
 export const WorkflowCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(Schema.suspend(() => WorkflowPropertiesSchema)),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type WorkflowCreateOrUpdateOutput =
   typeof WorkflowCreateOrUpdateOutput.Type;
@@ -471,23 +454,13 @@ export type WorkflowGetInput = typeof WorkflowGetInput.Type;
 
 // Output Schema
 export const WorkflowGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.optional(Schema.suspend(() => WorkflowPropertiesSchema)),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  location: Schema.String,
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
-  systemData: Schema.optional(
-    Schema.Struct({
-      createdBy: Schema.optional(Schema.String),
-      createdByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      createdAt: Schema.optional(Schema.String),
-      lastModifiedBy: Schema.optional(Schema.String),
-      lastModifiedByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      lastModifiedAt: Schema.optional(Schema.String),
-    }),
-  ),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
 });
 export type WorkflowGetOutput = typeof WorkflowGetOutput.Type;
 
@@ -517,39 +490,7 @@ export type WorkflowListInput = typeof WorkflowListInput.Type;
 
 // Output Schema
 export const WorkflowListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  value: Schema.optional(
-    Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
-  ),
+  value: Schema.optional(Schema.Array(Schema.suspend(() => WorkflowSchema))),
   nextLink: Schema.optional(Schema.String),
 });
 export type WorkflowListOutput = typeof WorkflowListOutput.Type;
@@ -583,39 +524,7 @@ export type WorkflowListByResourceGroupInput =
 // Output Schema
 export const WorkflowListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.String),
-              createdByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              createdAt: Schema.optional(Schema.String),
-              lastModifiedBy: Schema.optional(Schema.String),
-              lastModifiedByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              lastModifiedAt: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
-    ),
+    value: Schema.optional(Schema.Array(Schema.suspend(() => WorkflowSchema))),
     nextLink: Schema.optional(Schema.String),
   });
 export type WorkflowListByResourceGroupOutput =
@@ -653,23 +562,13 @@ export type WorkflowUpdateTagsInput = typeof WorkflowUpdateTagsInput.Type;
 // Output Schema
 export const WorkflowUpdateTagsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(Schema.suspend(() => WorkflowPropertiesSchema)),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type WorkflowUpdateTagsOutput = typeof WorkflowUpdateTagsOutput.Type;
 

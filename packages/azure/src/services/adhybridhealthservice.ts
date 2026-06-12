@@ -8,6 +8,396 @@ import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
+// Shared schemas
+const ServicePropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  activeAlerts: Schema.optional(Schema.Number),
+  additionalInformation: Schema.optional(Schema.String),
+  createdDate: Schema.optional(Schema.String),
+  customNotificationEmails: Schema.optional(Schema.Array(Schema.String)),
+  disabled: Schema.optional(Schema.Boolean),
+  displayName: Schema.optional(Schema.String),
+  health: Schema.optional(Schema.String),
+  lastDisabled: Schema.optional(Schema.String),
+  lastUpdated: Schema.optional(Schema.String),
+  monitoringConfigurationsComputed: Schema.optional(Schema.Unknown),
+  monitoringConfigurationsCustomized: Schema.optional(Schema.Unknown),
+  notificationEmailEnabled: Schema.optional(Schema.Boolean),
+  notificationEmailEnabledForGlobalAdmins: Schema.optional(Schema.Boolean),
+  notificationEmailsEnabledForGlobalAdmins: Schema.optional(Schema.Boolean),
+  notificationEmails: Schema.optional(Schema.Array(Schema.String)),
+  originalDisabledState: Schema.optional(Schema.Boolean),
+  resolvedAlerts: Schema.optional(Schema.Number),
+  serviceId: Schema.optional(Schema.String),
+  serviceName: Schema.optional(Schema.String),
+  signature: Schema.optional(Schema.String),
+  simpleProperties: Schema.optional(Schema.Unknown),
+  tenantId: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
+const AlertSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  alertId: Schema.optional(Schema.String),
+  level: Schema.optional(Schema.Literals(["Warning", "Error", "PreWarning"])),
+  state: Schema.optional(
+    Schema.Literals([
+      "Active",
+      "ResolvedByPositiveResult",
+      "ResolvedManually",
+      "ResolvedByTimer",
+      "ResolvedByStateChange",
+    ]),
+  ),
+  shortName: Schema.optional(Schema.String),
+  displayName: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+  remediation: Schema.optional(Schema.String),
+  relatedLinks: Schema.optional(
+    Schema.Array(Schema.suspend(() => HelpLinkSchema)),
+  ),
+  scope: Schema.optional(Schema.String),
+  additionalInformation: Schema.optional(
+    Schema.Array(Schema.suspend(() => AdditionalInformationSchema)),
+  ),
+  createdDate: Schema.optional(Schema.String),
+  resolvedDate: Schema.optional(Schema.String),
+  lastUpdated: Schema.optional(Schema.String),
+  monitorRoleType: Schema.optional(Schema.String),
+  activeAlertProperties: Schema.optional(
+    Schema.Array(Schema.suspend(() => ItemSchema)),
+  ),
+  resolvedAlertProperties: Schema.optional(
+    Schema.Array(Schema.suspend(() => ItemSchema)),
+  ),
+  tenantId: Schema.optional(Schema.String),
+  serviceId: Schema.optional(Schema.String),
+  serviceMemberId: Schema.optional(Schema.String),
+});
+const HelpLinkSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  title: Schema.optional(Schema.String),
+  url: Schema.optional(Schema.String),
+});
+const AdditionalInformationSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  titleName: Schema.optional(Schema.String),
+  titleValue: Schema.optional(Schema.String),
+  properties: Schema.optional(Schema.Unknown),
+  hasProperties: Schema.optional(Schema.Boolean),
+});
+const ItemSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  key: Schema.optional(Schema.String),
+  value: Schema.optional(Schema.String),
+});
+const DimensionSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  health: Schema.optional(
+    Schema.Literals(["Healthy", "Warning", "Error", "NotMonitored", "Missing"]),
+  ),
+  simpleProperties: Schema.optional(Schema.Unknown),
+  activeAlerts: Schema.optional(Schema.Number),
+  additionalInformation: Schema.optional(Schema.String),
+  lastUpdated: Schema.optional(Schema.String),
+  displayName: Schema.optional(Schema.String),
+  resolvedAlerts: Schema.optional(Schema.Number),
+  signature: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
+const AddsServiceMemberSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  domainName: Schema.optional(Schema.String),
+  siteName: Schema.optional(Schema.String),
+  addsRoles: Schema.optional(Schema.Array(Schema.String)),
+  gcReachable: Schema.optional(Schema.Boolean),
+  isAdvertising: Schema.optional(Schema.Boolean),
+  pdcReachable: Schema.optional(Schema.Boolean),
+  sysvolState: Schema.optional(Schema.Boolean),
+  dcTypes: Schema.optional(Schema.Array(Schema.String)),
+  serviceMemberId: Schema.optional(Schema.String),
+  serviceId: Schema.optional(Schema.String),
+  tenantId: Schema.optional(Schema.String),
+  activeAlerts: Schema.optional(Schema.Number),
+  additionalInformation: Schema.optional(Schema.String),
+  createdDate: Schema.optional(Schema.String),
+  dimensions: Schema.optional(Schema.Array(Schema.suspend(() => ItemSchema))),
+  disabled: Schema.optional(Schema.Boolean),
+  disabledReason: Schema.optional(Schema.Number),
+  installedQfes: Schema.optional(
+    Schema.Array(Schema.suspend(() => HotfixSchema)),
+  ),
+  lastDisabled: Schema.optional(Schema.String),
+  lastReboot: Schema.optional(Schema.String),
+  lastServerReportedMonitoringLevelChange: Schema.optional(Schema.String),
+  lastUpdated: Schema.optional(Schema.String),
+  machineId: Schema.optional(Schema.String),
+  machineName: Schema.optional(Schema.String),
+  monitoringConfigurationsComputed: Schema.optional(
+    Schema.Array(Schema.suspend(() => ItemSchema)),
+  ),
+  monitoringConfigurationsCustomized: Schema.optional(
+    Schema.Array(Schema.suspend(() => ItemSchema)),
+  ),
+  osName: Schema.optional(Schema.String),
+  osVersion: Schema.optional(Schema.String),
+  properties: Schema.optional(Schema.Array(Schema.suspend(() => ItemSchema))),
+  recommendedQfes: Schema.optional(
+    Schema.Array(Schema.suspend(() => HotfixSchema)),
+  ),
+  resolvedAlerts: Schema.optional(Schema.Number),
+  role: Schema.optional(Schema.String),
+  serverReportedMonitoringLevel: Schema.optional(
+    Schema.Literals(["Partial", "Full", "Off"]),
+  ),
+  status: Schema.optional(Schema.String),
+});
+const HotfixSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  kbName: Schema.optional(Schema.String),
+  link: Schema.optional(Schema.String),
+  installedDate: Schema.optional(Schema.String),
+});
+const MetricSetSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  setName: Schema.optional(Schema.String),
+  values: Schema.optional(Schema.Array(Schema.Number)),
+});
+const MetricMetadataSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  metricsProcessorClassName: Schema.optional(Schema.String),
+  metricName: Schema.optional(Schema.String),
+  groupings: Schema.optional(
+    Schema.Array(Schema.suspend(() => MetricGroupSchema)),
+  ),
+  displayName: Schema.optional(Schema.String),
+  valueKind: Schema.optional(Schema.String),
+  minValue: Schema.optional(Schema.Number),
+  maxValue: Schema.optional(Schema.Number),
+  kind: Schema.optional(Schema.String),
+  isDefault: Schema.optional(Schema.Boolean),
+  isPerfCounter: Schema.optional(Schema.Boolean),
+  isDevOps: Schema.optional(Schema.Boolean),
+});
+const MetricGroupSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  key: Schema.optional(Schema.String),
+  displayName: Schema.optional(Schema.String),
+  invisibleForUi: Schema.optional(Schema.Boolean),
+});
+const ReplicationSummarySchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  targetServer: Schema.optional(Schema.String),
+  site: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+  status: Schema.optional(Schema.Number),
+  lastAttemptedSync: Schema.optional(Schema.String),
+  lastSuccessfulSync: Schema.optional(Schema.String),
+  inboundNeighborCollection: Schema.optional(
+    Schema.Array(Schema.suspend(() => InboundReplicationNeighborSchema)),
+  ),
+});
+const InboundReplicationNeighborSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    sourceDomainController: Schema.optional(Schema.String),
+    consecutiveFailureCount: Schema.optional(Schema.Number),
+    namingContext: Schema.optional(Schema.String),
+    status: Schema.optional(Schema.Number),
+    lastAttemptedSync: Schema.optional(Schema.String),
+    lastSuccessfulSync: Schema.optional(Schema.String),
+    lastErrorCode: Schema.optional(Schema.Number),
+    lastErrorMessage: Schema.optional(Schema.String),
+    errorTitle: Schema.optional(Schema.String),
+    errorDescription: Schema.optional(Schema.String),
+    fixLink: Schema.optional(Schema.String),
+    fixDetails: Schema.optional(Schema.String),
+    additionalInfo: Schema.optional(Schema.String),
+  });
+const ServiceMemberSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  serviceMemberId: Schema.optional(Schema.String),
+  serviceId: Schema.optional(Schema.String),
+  tenantId: Schema.optional(Schema.String),
+  activeAlerts: Schema.optional(Schema.Number),
+  additionalInformation: Schema.optional(Schema.String),
+  createdDate: Schema.optional(Schema.String),
+  dimensions: Schema.optional(Schema.Unknown),
+  disabled: Schema.optional(Schema.Boolean),
+  disabledReason: Schema.optional(Schema.Number),
+  installedQfes: Schema.optional(Schema.Unknown),
+  lastDisabled: Schema.optional(Schema.String),
+  lastReboot: Schema.optional(Schema.String),
+  lastServerReportedMonitoringLevelChange: Schema.optional(Schema.String),
+  lastUpdated: Schema.optional(Schema.String),
+  machineId: Schema.optional(Schema.String),
+  machineName: Schema.optional(Schema.String),
+  monitoringConfigurationsComputed: Schema.optional(Schema.Unknown),
+  monitoringConfigurationsCustomized: Schema.optional(Schema.Unknown),
+  osName: Schema.optional(Schema.String),
+  osVersion: Schema.optional(Schema.String),
+  properties: Schema.optional(Schema.Unknown),
+  recommendedQfes: Schema.optional(Schema.Unknown),
+  resolvedAlerts: Schema.optional(Schema.Number),
+  role: Schema.optional(Schema.String),
+  serverReportedMonitoringLevel: Schema.optional(
+    Schema.Literals(["Partial", "Full", "Off"]),
+  ),
+  status: Schema.optional(Schema.String),
+});
+const CredentialSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  identifier: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  credentialData: Schema.optional(Schema.Array(Schema.String)),
+});
+const OperationSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  display: Schema.optional(Schema.Unknown),
+});
+const ErrorCountSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  errorBucket: Schema.optional(Schema.String),
+  count: Schema.optional(Schema.Number),
+  truncated: Schema.optional(Schema.Boolean),
+});
+const MergedExportErrorSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  incomingObjectDisplayName: Schema.optional(Schema.String),
+  incomingObjectType: Schema.optional(Schema.String),
+  userPrincipalName: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  attributeName: Schema.optional(Schema.String),
+  attributeValue: Schema.optional(Schema.String),
+  timeOccurred: Schema.optional(Schema.String),
+  timeFirstOccurred: Schema.optional(Schema.String),
+  csObjectId: Schema.optional(Schema.String),
+  dn: Schema.optional(Schema.String),
+  incomingObject: Schema.optional(Schema.suspend(() => AssociatedObjectSchema)),
+  existingObject: Schema.optional(Schema.suspend(() => AssociatedObjectSchema)),
+  modifiedOrRemovedAttributeValue: Schema.optional(Schema.String),
+  runStepResultId: Schema.optional(Schema.String),
+  samAccountName: Schema.optional(Schema.String),
+  serverErrorDetail: Schema.optional(Schema.String),
+  serviceId: Schema.optional(Schema.String),
+  serviceMemberId: Schema.optional(Schema.String),
+  mergedEntityId: Schema.optional(Schema.String),
+  createdDate: Schema.optional(Schema.String),
+  exportErrorStatus: Schema.optional(Schema.Number),
+});
+const AssociatedObjectSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  displayName: Schema.optional(Schema.String),
+  distinguishedName: Schema.optional(Schema.String),
+  lastDirSyncTime: Schema.optional(Schema.String),
+  mail: Schema.optional(Schema.String),
+  objectGuid: Schema.optional(Schema.String),
+  objectType: Schema.optional(Schema.String),
+  onpremisesUserPrincipalName: Schema.optional(Schema.String),
+  proxyAddresses: Schema.optional(Schema.String),
+  sourceAnchor: Schema.optional(Schema.String),
+  sourceOfAuthority: Schema.optional(Schema.String),
+  timeOccurred: Schema.optional(Schema.String),
+  userPrincipalName: Schema.optional(Schema.String),
+});
+const ExportStatusSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  serviceId: Schema.optional(Schema.String),
+  serviceMemberId: Schema.optional(Schema.String),
+  endTime: Schema.optional(Schema.String),
+  runStepResultId: Schema.optional(Schema.String),
+});
+const AlertFeedbackSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  level: Schema.optional(Schema.String),
+  state: Schema.optional(Schema.String),
+  shortName: Schema.optional(Schema.String),
+  feedback: Schema.optional(Schema.String),
+  comment: Schema.optional(Schema.String),
+  consentedToShare: Schema.optional(Schema.Boolean),
+  serviceMemberId: Schema.optional(Schema.String),
+  createdDate: Schema.optional(Schema.String),
+});
+const ErrorReportUsersEntrySchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  userId: Schema.optional(Schema.String),
+  ipAddress: Schema.optional(Schema.String),
+  lastUpdated: Schema.optional(Schema.String),
+  uniqueIpAddresses: Schema.optional(Schema.String),
+  totalErrorAttempts: Schema.optional(Schema.Number),
+});
+const ConnectorSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  connectorId: Schema.optional(Schema.String),
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  version: Schema.optional(Schema.Number),
+  type: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+  schemaXml: Schema.optional(Schema.String),
+  passwordManagementSettings: Schema.optional(Schema.Unknown),
+  passwordHashSyncConfiguration: Schema.optional(Schema.Unknown),
+  timeCreated: Schema.optional(Schema.String),
+  timeLastModified: Schema.optional(Schema.String),
+  partitions: Schema.optional(
+    Schema.Array(Schema.suspend(() => PartitionSchema)),
+  ),
+  runProfiles: Schema.optional(
+    Schema.Array(Schema.suspend(() => RunProfileSchema)),
+  ),
+  classesIncluded: Schema.optional(Schema.Array(Schema.String)),
+  attributesIncluded: Schema.optional(Schema.Array(Schema.String)),
+});
+const PartitionSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  dn: Schema.optional(Schema.String),
+  enabled: Schema.optional(Schema.Boolean),
+  timeCreated: Schema.optional(Schema.String),
+  timeLastModified: Schema.optional(Schema.String),
+  partitionScope: Schema.optional(Schema.suspend(() => PartitionScopeSchema)),
+  name: Schema.optional(Schema.String),
+  isDomain: Schema.optional(Schema.Boolean),
+  type: Schema.optional(Schema.String),
+});
+const PartitionScopeSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  isDefault: Schema.optional(Schema.Boolean),
+  objectClasses: Schema.optional(Schema.Array(Schema.String)),
+  containersIncluded: Schema.optional(Schema.Array(Schema.String)),
+  containersExcluded: Schema.optional(Schema.Array(Schema.String)),
+});
+const RunProfileSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  runSteps: Schema.optional(Schema.Array(Schema.suspend(() => RunStepSchema))),
+});
+const RunStepSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  batchSize: Schema.optional(Schema.Number),
+  objectProcessLimit: Schema.optional(Schema.Number),
+  objectDeleteLimit: Schema.optional(Schema.Number),
+  pageSize: Schema.optional(Schema.Number),
+  partitionId: Schema.optional(Schema.String),
+  operationType: Schema.optional(Schema.Number),
+  timeout: Schema.optional(Schema.Number),
+});
+const GlobalConfigurationSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  version: Schema.optional(Schema.Number),
+  schemaXml: Schema.optional(Schema.String),
+  passwordSyncEnabled: Schema.optional(Schema.Boolean),
+  numSavedPwdEvent: Schema.optional(Schema.Number),
+  featureSet: Schema.optional(Schema.Array(Schema.suspend(() => ItemSchema))),
+});
+const RiskyIPBlobUriSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  tenantId: Schema.optional(Schema.String),
+  serviceId: Schema.optional(Schema.String),
+  resultSasUri: Schema.optional(Schema.String),
+  blobCreateDateTime: Schema.optional(Schema.String),
+  jobCompletionTime: Schema.optional(Schema.String),
+  status: Schema.optional(Schema.String),
+});
+const ConnectorMetadataDetailsSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    connectorId: Schema.optional(Schema.String),
+    connectorDisplayName: Schema.optional(Schema.String),
+  });
+const IPAddressAggregateSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  tenantId: Schema.optional(Schema.String),
+  serviceId: Schema.optional(Schema.String),
+  ipAddress: Schema.optional(Schema.String),
+  timestamp: Schema.optional(Schema.String),
+  firstAuditTimestamp: Schema.optional(Schema.String),
+  lastAuditTimestamp: Schema.optional(Schema.String),
+  extranetLockoutErrorCount: Schema.optional(Schema.Number),
+  badPasswordErrorCount: Schema.optional(Schema.Number),
+  uniqueUsernamesAttemptedCount: Schema.optional(Schema.Number),
+  attemptCountThresholdIsExceeded: Schema.optional(Schema.Boolean),
+  timeSpan: Schema.optional(Schema.String),
+  isWhitelistedIpAddress: Schema.optional(Schema.Boolean),
+  networkLocation: Schema.optional(Schema.String),
+  attemptCountThresholdOnTrigger: Schema.optional(Schema.Number),
+  attemptThresholdTypeOnTrigger: Schema.optional(Schema.String),
+  geographicLocation: Schema.optional(Schema.String),
+});
+
 // Input Schema
 export const AdDomainServiceMembersListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -33,92 +423,7 @@ export const AdDomainServiceMembersListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          domainName: Schema.optional(Schema.String),
-          siteName: Schema.optional(Schema.String),
-          addsRoles: Schema.optional(Schema.Array(Schema.String)),
-          gcReachable: Schema.optional(Schema.Boolean),
-          isAdvertising: Schema.optional(Schema.Boolean),
-          pdcReachable: Schema.optional(Schema.Boolean),
-          sysvolState: Schema.optional(Schema.Boolean),
-          dcTypes: Schema.optional(Schema.Array(Schema.String)),
-          serviceMemberId: Schema.optional(Schema.String),
-          serviceId: Schema.optional(Schema.String),
-          tenantId: Schema.optional(Schema.String),
-          activeAlerts: Schema.optional(Schema.Number),
-          additionalInformation: Schema.optional(Schema.String),
-          createdDate: Schema.optional(Schema.String),
-          dimensions: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                key: Schema.optional(Schema.String),
-                value: Schema.optional(Schema.String),
-              }),
-            ),
-          ),
-          disabled: Schema.optional(Schema.Boolean),
-          disabledReason: Schema.optional(Schema.Number),
-          installedQfes: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                kbName: Schema.optional(Schema.String),
-                link: Schema.optional(Schema.String),
-                installedDate: Schema.optional(Schema.String),
-              }),
-            ),
-          ),
-          lastDisabled: Schema.optional(Schema.String),
-          lastReboot: Schema.optional(Schema.String),
-          lastServerReportedMonitoringLevelChange: Schema.optional(
-            Schema.String,
-          ),
-          lastUpdated: Schema.optional(Schema.String),
-          machineId: Schema.optional(Schema.String),
-          machineName: Schema.optional(Schema.String),
-          monitoringConfigurationsComputed: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                key: Schema.optional(Schema.String),
-                value: Schema.optional(Schema.String),
-              }),
-            ),
-          ),
-          monitoringConfigurationsCustomized: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                key: Schema.optional(Schema.String),
-                value: Schema.optional(Schema.String),
-              }),
-            ),
-          ),
-          osName: Schema.optional(Schema.String),
-          osVersion: Schema.optional(Schema.String),
-          properties: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                key: Schema.optional(Schema.String),
-                value: Schema.optional(Schema.String),
-              }),
-            ),
-          ),
-          recommendedQfes: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                kbName: Schema.optional(Schema.String),
-                link: Schema.optional(Schema.String),
-                installedDate: Schema.optional(Schema.String),
-              }),
-            ),
-          ),
-          resolvedAlerts: Schema.optional(Schema.Number),
-          role: Schema.optional(Schema.String),
-          serverReportedMonitoringLevel: Schema.optional(
-            Schema.Literals(["Partial", "Full", "Off"]),
-          ),
-          status: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => AddsServiceMemberSchema)),
     ),
     totalCount: Schema.optional(Schema.Number),
     continuationToken: Schema.optional(Schema.String),
@@ -165,14 +470,7 @@ export type AddsServiceGetMetricsInput = typeof AddsServiceGetMetricsInput.Type;
 // Output Schema
 export const AddsServiceGetMetricsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    sets: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          setName: Schema.optional(Schema.String),
-          values: Schema.optional(Schema.Array(Schema.Number)),
-        }),
-      ),
-    ),
+    sets: Schema.optional(Schema.Array(Schema.suspend(() => MetricSetSchema))),
     timeStamps: Schema.optional(Schema.Array(Schema.String)),
   });
 export type AddsServiceGetMetricsOutput =
@@ -313,92 +611,7 @@ export const AddsServiceMembersListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          domainName: Schema.optional(Schema.String),
-          siteName: Schema.optional(Schema.String),
-          addsRoles: Schema.optional(Schema.Array(Schema.String)),
-          gcReachable: Schema.optional(Schema.Boolean),
-          isAdvertising: Schema.optional(Schema.Boolean),
-          pdcReachable: Schema.optional(Schema.Boolean),
-          sysvolState: Schema.optional(Schema.Boolean),
-          dcTypes: Schema.optional(Schema.Array(Schema.String)),
-          serviceMemberId: Schema.optional(Schema.String),
-          serviceId: Schema.optional(Schema.String),
-          tenantId: Schema.optional(Schema.String),
-          activeAlerts: Schema.optional(Schema.Number),
-          additionalInformation: Schema.optional(Schema.String),
-          createdDate: Schema.optional(Schema.String),
-          dimensions: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                key: Schema.optional(Schema.String),
-                value: Schema.optional(Schema.String),
-              }),
-            ),
-          ),
-          disabled: Schema.optional(Schema.Boolean),
-          disabledReason: Schema.optional(Schema.Number),
-          installedQfes: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                kbName: Schema.optional(Schema.String),
-                link: Schema.optional(Schema.String),
-                installedDate: Schema.optional(Schema.String),
-              }),
-            ),
-          ),
-          lastDisabled: Schema.optional(Schema.String),
-          lastReboot: Schema.optional(Schema.String),
-          lastServerReportedMonitoringLevelChange: Schema.optional(
-            Schema.String,
-          ),
-          lastUpdated: Schema.optional(Schema.String),
-          machineId: Schema.optional(Schema.String),
-          machineName: Schema.optional(Schema.String),
-          monitoringConfigurationsComputed: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                key: Schema.optional(Schema.String),
-                value: Schema.optional(Schema.String),
-              }),
-            ),
-          ),
-          monitoringConfigurationsCustomized: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                key: Schema.optional(Schema.String),
-                value: Schema.optional(Schema.String),
-              }),
-            ),
-          ),
-          osName: Schema.optional(Schema.String),
-          osVersion: Schema.optional(Schema.String),
-          properties: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                key: Schema.optional(Schema.String),
-                value: Schema.optional(Schema.String),
-              }),
-            ),
-          ),
-          recommendedQfes: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                kbName: Schema.optional(Schema.String),
-                link: Schema.optional(Schema.String),
-                installedDate: Schema.optional(Schema.String),
-              }),
-            ),
-          ),
-          resolvedAlerts: Schema.optional(Schema.Number),
-          role: Schema.optional(Schema.String),
-          serverReportedMonitoringLevel: Schema.optional(
-            Schema.Literals(["Partial", "Full", "Off"]),
-          ),
-          status: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => AddsServiceMemberSchema)),
     ),
     totalCount: Schema.optional(Schema.Number),
     continuationToken: Schema.optional(Schema.String),
@@ -439,13 +652,7 @@ export type AddsServiceMembersListCredentialsInput =
 export const AddsServiceMembersListCredentialsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          identifier: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          credentialData: Schema.optional(Schema.Array(Schema.String)),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => CredentialSchema)),
     ),
   });
 export type AddsServiceMembersListCredentialsOutput =
@@ -676,13 +883,7 @@ export const AddsServicesGetMetricMetadataOutput =
     metricsProcessorClassName: Schema.optional(Schema.String),
     metricName: Schema.optional(Schema.String),
     groupings: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          key: Schema.optional(Schema.String),
-          displayName: Schema.optional(Schema.String),
-          invisibleForUi: Schema.optional(Schema.Boolean),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => MetricGroupSchema)),
     ),
     displayName: Schema.optional(Schema.String),
     valueKind: Schema.optional(Schema.String),
@@ -730,14 +931,7 @@ export type AddsServicesGetMetricMetadataForGroupInput =
 // Output Schema
 export const AddsServicesGetMetricMetadataForGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    sets: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          setName: Schema.optional(Schema.String),
-          values: Schema.optional(Schema.Array(Schema.Number)),
-        }),
-      ),
-    ),
+    sets: Schema.optional(Schema.Array(Schema.suspend(() => MetricSetSchema))),
     timeStamps: Schema.optional(Schema.Array(Schema.String)),
   });
 export type AddsServicesGetMetricMetadataForGroupOutput =
@@ -779,40 +973,7 @@ export const AddsServicesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     nextLink: Schema.optional(Schema.String),
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          activeAlerts: Schema.optional(Schema.Number),
-          additionalInformation: Schema.optional(Schema.String),
-          createdDate: Schema.optional(Schema.String),
-          customNotificationEmails: Schema.optional(
-            Schema.Array(Schema.String),
-          ),
-          disabled: Schema.optional(Schema.Boolean),
-          displayName: Schema.optional(Schema.String),
-          health: Schema.optional(Schema.String),
-          lastDisabled: Schema.optional(Schema.String),
-          lastUpdated: Schema.optional(Schema.String),
-          monitoringConfigurationsComputed: Schema.optional(Schema.Unknown),
-          monitoringConfigurationsCustomized: Schema.optional(Schema.Unknown),
-          notificationEmailEnabled: Schema.optional(Schema.Boolean),
-          notificationEmailEnabledForGlobalAdmins: Schema.optional(
-            Schema.Boolean,
-          ),
-          notificationEmailsEnabledForGlobalAdmins: Schema.optional(
-            Schema.Boolean,
-          ),
-          notificationEmails: Schema.optional(Schema.Array(Schema.String)),
-          originalDisabledState: Schema.optional(Schema.Boolean),
-          resolvedAlerts: Schema.optional(Schema.Number),
-          serviceId: Schema.optional(Schema.String),
-          serviceName: Schema.optional(Schema.String),
-          signature: Schema.optional(Schema.String),
-          simpleProperties: Schema.optional(Schema.Unknown),
-          tenantId: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => ServicePropertiesSchema)),
     ),
     totalCount: Schema.optional(Schema.Number),
     continuationToken: Schema.optional(Schema.String),
@@ -854,29 +1015,7 @@ export const AddsServicesListMetricMetadataOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          metricsProcessorClassName: Schema.optional(Schema.String),
-          metricName: Schema.optional(Schema.String),
-          groupings: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                key: Schema.optional(Schema.String),
-                displayName: Schema.optional(Schema.String),
-                invisibleForUi: Schema.optional(Schema.Boolean),
-              }),
-            ),
-          ),
-          displayName: Schema.optional(Schema.String),
-          valueKind: Schema.optional(Schema.String),
-          minValue: Schema.optional(Schema.Number),
-          maxValue: Schema.optional(Schema.Number),
-          kind: Schema.optional(Schema.String),
-          isDefault: Schema.optional(Schema.Boolean),
-          isPerfCounter: Schema.optional(Schema.Boolean),
-          isDevOps: Schema.optional(Schema.Boolean),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => MetricMetadataSchema)),
     ),
     totalCount: Schema.optional(Schema.Number),
     continuationToken: Schema.optional(Schema.String),
@@ -917,14 +1056,7 @@ export type AddsServicesListMetricsAverageInput =
 export const AddsServicesListMetricsAverageOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          key: Schema.optional(Schema.String),
-          value: Schema.optional(Schema.String),
-        }),
-      ),
-    ),
+    value: Schema.optional(Schema.Array(Schema.suspend(() => ItemSchema))),
     totalCount: Schema.optional(Schema.Number),
     continuationToken: Schema.optional(Schema.String),
   });
@@ -964,14 +1096,7 @@ export type AddsServicesListMetricsSumInput =
 export const AddsServicesListMetricsSumOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          key: Schema.optional(Schema.String),
-          value: Schema.optional(Schema.String),
-        }),
-      ),
-    ),
+    value: Schema.optional(Schema.Array(Schema.suspend(() => ItemSchema))),
     totalCount: Schema.optional(Schema.Number),
     continuationToken: Schema.optional(Schema.String),
   });
@@ -1014,40 +1139,7 @@ export const AddsServicesListPremiumServicesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          activeAlerts: Schema.optional(Schema.Number),
-          additionalInformation: Schema.optional(Schema.String),
-          createdDate: Schema.optional(Schema.String),
-          customNotificationEmails: Schema.optional(
-            Schema.Array(Schema.String),
-          ),
-          disabled: Schema.optional(Schema.Boolean),
-          displayName: Schema.optional(Schema.String),
-          health: Schema.optional(Schema.String),
-          lastDisabled: Schema.optional(Schema.String),
-          lastUpdated: Schema.optional(Schema.String),
-          monitoringConfigurationsComputed: Schema.optional(Schema.Unknown),
-          monitoringConfigurationsCustomized: Schema.optional(Schema.Unknown),
-          notificationEmailEnabled: Schema.optional(Schema.Boolean),
-          notificationEmailEnabledForGlobalAdmins: Schema.optional(
-            Schema.Boolean,
-          ),
-          notificationEmailsEnabledForGlobalAdmins: Schema.optional(
-            Schema.Boolean,
-          ),
-          notificationEmails: Schema.optional(Schema.Array(Schema.String)),
-          originalDisabledState: Schema.optional(Schema.Boolean),
-          resolvedAlerts: Schema.optional(Schema.Number),
-          serviceId: Schema.optional(Schema.String),
-          serviceName: Schema.optional(Schema.String),
-          signature: Schema.optional(Schema.String),
-          simpleProperties: Schema.optional(Schema.Unknown),
-          tenantId: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => ServicePropertiesSchema)),
     ),
     totalCount: Schema.optional(Schema.Number),
     continuationToken: Schema.optional(Schema.String),
@@ -1089,35 +1181,7 @@ export type AddsServicesListReplicationDetailsInput =
 export const AddsServicesListReplicationDetailsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          targetServer: Schema.optional(Schema.String),
-          site: Schema.optional(Schema.String),
-          domain: Schema.optional(Schema.String),
-          status: Schema.optional(Schema.Number),
-          lastAttemptedSync: Schema.optional(Schema.String),
-          lastSuccessfulSync: Schema.optional(Schema.String),
-          inboundNeighborCollection: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                sourceDomainController: Schema.optional(Schema.String),
-                consecutiveFailureCount: Schema.optional(Schema.Number),
-                namingContext: Schema.optional(Schema.String),
-                status: Schema.optional(Schema.Number),
-                lastAttemptedSync: Schema.optional(Schema.String),
-                lastSuccessfulSync: Schema.optional(Schema.String),
-                lastErrorCode: Schema.optional(Schema.Number),
-                lastErrorMessage: Schema.optional(Schema.String),
-                errorTitle: Schema.optional(Schema.String),
-                errorDescription: Schema.optional(Schema.String),
-                fixLink: Schema.optional(Schema.String),
-                fixDetails: Schema.optional(Schema.String),
-                additionalInfo: Schema.optional(Schema.String),
-              }),
-            ),
-          ),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => ReplicationSummarySchema)),
     ),
     totalCount: Schema.optional(Schema.Number),
     continuationToken: Schema.optional(Schema.String),
@@ -1163,35 +1227,7 @@ export type AddsServicesListReplicationSummaryInput =
 export const AddsServicesListReplicationSummaryOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          targetServer: Schema.optional(Schema.String),
-          site: Schema.optional(Schema.String),
-          domain: Schema.optional(Schema.String),
-          status: Schema.optional(Schema.Number),
-          lastAttemptedSync: Schema.optional(Schema.String),
-          lastSuccessfulSync: Schema.optional(Schema.String),
-          inboundNeighborCollection: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                sourceDomainController: Schema.optional(Schema.String),
-                consecutiveFailureCount: Schema.optional(Schema.Number),
-                namingContext: Schema.optional(Schema.String),
-                status: Schema.optional(Schema.Number),
-                lastAttemptedSync: Schema.optional(Schema.String),
-                lastSuccessfulSync: Schema.optional(Schema.String),
-                lastErrorCode: Schema.optional(Schema.Number),
-                lastErrorMessage: Schema.optional(Schema.String),
-                errorTitle: Schema.optional(Schema.String),
-                errorDescription: Schema.optional(Schema.String),
-                fixLink: Schema.optional(Schema.String),
-                fixDetails: Schema.optional(Schema.String),
-                additionalInfo: Schema.optional(Schema.String),
-              }),
-            ),
-          ),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => ReplicationSummarySchema)),
     ),
   });
 export type AddsServicesListReplicationSummaryOutput =
@@ -1236,71 +1272,7 @@ export type AddsServicesListServerAlertsInput =
 // Output Schema
 export const AddsServicesListServerAlertsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          alertId: Schema.optional(Schema.String),
-          level: Schema.optional(
-            Schema.Literals(["Warning", "Error", "PreWarning"]),
-          ),
-          state: Schema.optional(
-            Schema.Literals([
-              "Active",
-              "ResolvedByPositiveResult",
-              "ResolvedManually",
-              "ResolvedByTimer",
-              "ResolvedByStateChange",
-            ]),
-          ),
-          shortName: Schema.optional(Schema.String),
-          displayName: Schema.optional(Schema.String),
-          description: Schema.optional(Schema.String),
-          remediation: Schema.optional(Schema.String),
-          relatedLinks: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                title: Schema.optional(Schema.String),
-                url: Schema.optional(Schema.String),
-              }),
-            ),
-          ),
-          scope: Schema.optional(Schema.String),
-          additionalInformation: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                titleName: Schema.optional(Schema.String),
-                titleValue: Schema.optional(Schema.String),
-                properties: Schema.optional(Schema.Unknown),
-                hasProperties: Schema.optional(Schema.Boolean),
-              }),
-            ),
-          ),
-          createdDate: Schema.optional(Schema.String),
-          resolvedDate: Schema.optional(Schema.String),
-          lastUpdated: Schema.optional(Schema.String),
-          monitorRoleType: Schema.optional(Schema.String),
-          activeAlertProperties: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                key: Schema.optional(Schema.String),
-                value: Schema.optional(Schema.String),
-              }),
-            ),
-          ),
-          resolvedAlertProperties: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                key: Schema.optional(Schema.String),
-                value: Schema.optional(Schema.String),
-              }),
-            ),
-          ),
-          tenantId: Schema.optional(Schema.String),
-          serviceId: Schema.optional(Schema.String),
-          serviceMemberId: Schema.optional(Schema.String),
-        }),
-      ),
-    ),
+    value: Schema.optional(Schema.Array(Schema.suspend(() => AlertSchema))),
     nextLink: Schema.optional(Schema.String),
     totalCount: Schema.optional(Schema.Number),
     continuationToken: Schema.optional(Schema.String),
@@ -1469,40 +1441,7 @@ export const AddsServicesServiceMembersListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          serviceMemberId: Schema.optional(Schema.String),
-          serviceId: Schema.optional(Schema.String),
-          tenantId: Schema.optional(Schema.String),
-          activeAlerts: Schema.optional(Schema.Number),
-          additionalInformation: Schema.optional(Schema.String),
-          createdDate: Schema.optional(Schema.String),
-          dimensions: Schema.optional(Schema.Unknown),
-          disabled: Schema.optional(Schema.Boolean),
-          disabledReason: Schema.optional(Schema.Number),
-          installedQfes: Schema.optional(Schema.Unknown),
-          lastDisabled: Schema.optional(Schema.String),
-          lastReboot: Schema.optional(Schema.String),
-          lastServerReportedMonitoringLevelChange: Schema.optional(
-            Schema.String,
-          ),
-          lastUpdated: Schema.optional(Schema.String),
-          machineId: Schema.optional(Schema.String),
-          machineName: Schema.optional(Schema.String),
-          monitoringConfigurationsComputed: Schema.optional(Schema.Unknown),
-          monitoringConfigurationsCustomized: Schema.optional(Schema.Unknown),
-          osName: Schema.optional(Schema.String),
-          osVersion: Schema.optional(Schema.String),
-          properties: Schema.optional(Schema.Unknown),
-          recommendedQfes: Schema.optional(Schema.Unknown),
-          resolvedAlerts: Schema.optional(Schema.Number),
-          role: Schema.optional(Schema.String),
-          serverReportedMonitoringLevel: Schema.optional(
-            Schema.Literals(["Partial", "Full", "Off"]),
-          ),
-          status: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => ServiceMemberSchema)),
     ),
     totalCount: Schema.optional(Schema.Number),
     continuationToken: Schema.optional(Schema.String),
@@ -1722,71 +1661,7 @@ export type AlertsListAddsAlertsInput = typeof AlertsListAddsAlertsInput.Type;
 // Output Schema
 export const AlertsListAddsAlertsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          alertId: Schema.optional(Schema.String),
-          level: Schema.optional(
-            Schema.Literals(["Warning", "Error", "PreWarning"]),
-          ),
-          state: Schema.optional(
-            Schema.Literals([
-              "Active",
-              "ResolvedByPositiveResult",
-              "ResolvedManually",
-              "ResolvedByTimer",
-              "ResolvedByStateChange",
-            ]),
-          ),
-          shortName: Schema.optional(Schema.String),
-          displayName: Schema.optional(Schema.String),
-          description: Schema.optional(Schema.String),
-          remediation: Schema.optional(Schema.String),
-          relatedLinks: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                title: Schema.optional(Schema.String),
-                url: Schema.optional(Schema.String),
-              }),
-            ),
-          ),
-          scope: Schema.optional(Schema.String),
-          additionalInformation: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                titleName: Schema.optional(Schema.String),
-                titleValue: Schema.optional(Schema.String),
-                properties: Schema.optional(Schema.Unknown),
-                hasProperties: Schema.optional(Schema.Boolean),
-              }),
-            ),
-          ),
-          createdDate: Schema.optional(Schema.String),
-          resolvedDate: Schema.optional(Schema.String),
-          lastUpdated: Schema.optional(Schema.String),
-          monitorRoleType: Schema.optional(Schema.String),
-          activeAlertProperties: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                key: Schema.optional(Schema.String),
-                value: Schema.optional(Schema.String),
-              }),
-            ),
-          ),
-          resolvedAlertProperties: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                key: Schema.optional(Schema.String),
-                value: Schema.optional(Schema.String),
-              }),
-            ),
-          ),
-          tenantId: Schema.optional(Schema.String),
-          serviceId: Schema.optional(Schema.String),
-          serviceMemberId: Schema.optional(Schema.String),
-        }),
-      ),
-    ),
+    value: Schema.optional(Schema.Array(Schema.suspend(() => AlertSchema))),
     nextLink: Schema.optional(Schema.String),
     totalCount: Schema.optional(Schema.Number),
     continuationToken: Schema.optional(Schema.String),
@@ -1924,14 +1799,7 @@ export type ConfigurationListAddsConfigurationsInput =
 export const ConfigurationListAddsConfigurationsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          key: Schema.optional(Schema.String),
-          value: Schema.optional(Schema.String),
-        }),
-      ),
-    ),
+    value: Schema.optional(Schema.Array(Schema.suspend(() => ItemSchema))),
     totalCount: Schema.optional(Schema.Number),
     continuationToken: Schema.optional(Schema.String),
   });
@@ -2037,29 +1905,7 @@ export type DimensionsListAddsDimensionsInput =
 export const DimensionsListAddsDimensionsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          health: Schema.optional(
-            Schema.Literals([
-              "Healthy",
-              "Warning",
-              "Error",
-              "NotMonitored",
-              "Missing",
-            ]),
-          ),
-          simpleProperties: Schema.optional(Schema.Unknown),
-          activeAlerts: Schema.optional(Schema.Number),
-          additionalInformation: Schema.optional(Schema.String),
-          lastUpdated: Schema.optional(Schema.String),
-          displayName: Schema.optional(Schema.String),
-          resolvedAlerts: Schema.optional(Schema.Number),
-          signature: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
-    ),
+    value: Schema.optional(Schema.Array(Schema.suspend(() => DimensionSchema))),
     totalCount: Schema.optional(Schema.Number),
     continuationToken: Schema.optional(Schema.String),
   });
@@ -2097,27 +1943,7 @@ export type ListIPAddressAggregatesByServiceInput =
 export const ListIPAddressAggregatesByServiceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          tenantId: Schema.optional(Schema.String),
-          serviceId: Schema.optional(Schema.String),
-          ipAddress: Schema.optional(Schema.String),
-          timestamp: Schema.optional(Schema.String),
-          firstAuditTimestamp: Schema.optional(Schema.String),
-          lastAuditTimestamp: Schema.optional(Schema.String),
-          extranetLockoutErrorCount: Schema.optional(Schema.Number),
-          badPasswordErrorCount: Schema.optional(Schema.Number),
-          uniqueUsernamesAttemptedCount: Schema.optional(Schema.Number),
-          attemptCountThresholdIsExceeded: Schema.optional(Schema.Boolean),
-          timeSpan: Schema.optional(Schema.String),
-          isWhitelistedIpAddress: Schema.optional(Schema.Boolean),
-          networkLocation: Schema.optional(Schema.String),
-          attemptCountThresholdOnTrigger: Schema.optional(Schema.Number),
-          attemptThresholdTypeOnTrigger: Schema.optional(Schema.String),
-          geographicLocation: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => IPAddressAggregateSchema)),
     ),
     nextLink: Schema.optional(Schema.String),
     totalCount: Schema.optional(Schema.Number),
@@ -2195,14 +2021,7 @@ export type OperationsListInput = typeof OperationsListInput.Type;
 // Output Schema
 export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   nextLink: Schema.optional(Schema.String),
-  value: Schema.optional(
-    Schema.Array(
-      Schema.Struct({
-        name: Schema.optional(Schema.String),
-        display: Schema.optional(Schema.Unknown),
-      }),
-    ),
-  ),
+  value: Schema.optional(Schema.Array(Schema.suspend(() => OperationSchema))),
   totalCount: Schema.optional(Schema.Number),
   continuationToken: Schema.optional(Schema.String),
 });
@@ -2266,14 +2085,7 @@ export type ServiceGetMetricsInput = typeof ServiceGetMetricsInput.Type;
 // Output Schema
 export const ServiceGetMetricsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    sets: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          setName: Schema.optional(Schema.String),
-          values: Schema.optional(Schema.Array(Schema.Number)),
-        }),
-      ),
-    ),
+    sets: Schema.optional(Schema.Array(Schema.suspend(() => MetricSetSchema))),
     timeStamps: Schema.optional(Schema.Array(Schema.String)),
   });
 export type ServiceGetMetricsOutput = typeof ServiceGetMetricsOutput.Type;
@@ -2527,12 +2339,7 @@ export type ServiceMembersGetConnectorMetadataInput =
 export const ServiceMembersGetConnectorMetadataOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     connectors: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          connectorId: Schema.optional(Schema.String),
-          connectorDisplayName: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => ConnectorMetadataDetailsSchema)),
     ),
     runProfileNames: Schema.optional(Schema.Array(Schema.String)),
   });
@@ -2575,14 +2382,7 @@ export type ServiceMembersGetMetricsInput =
 // Output Schema
 export const ServiceMembersGetMetricsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    sets: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          setName: Schema.optional(Schema.String),
-          values: Schema.optional(Schema.Array(Schema.Number)),
-        }),
-      ),
-    ),
+    sets: Schema.optional(Schema.Array(Schema.suspend(() => MetricSetSchema))),
     timeStamps: Schema.optional(Schema.Array(Schema.String)),
   });
 export type ServiceMembersGetMetricsOutput =
@@ -2670,40 +2470,7 @@ export const ServiceMembersListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          serviceMemberId: Schema.optional(Schema.String),
-          serviceId: Schema.optional(Schema.String),
-          tenantId: Schema.optional(Schema.String),
-          activeAlerts: Schema.optional(Schema.Number),
-          additionalInformation: Schema.optional(Schema.String),
-          createdDate: Schema.optional(Schema.String),
-          dimensions: Schema.optional(Schema.Unknown),
-          disabled: Schema.optional(Schema.Boolean),
-          disabledReason: Schema.optional(Schema.Number),
-          installedQfes: Schema.optional(Schema.Unknown),
-          lastDisabled: Schema.optional(Schema.String),
-          lastReboot: Schema.optional(Schema.String),
-          lastServerReportedMonitoringLevelChange: Schema.optional(
-            Schema.String,
-          ),
-          lastUpdated: Schema.optional(Schema.String),
-          machineId: Schema.optional(Schema.String),
-          machineName: Schema.optional(Schema.String),
-          monitoringConfigurationsComputed: Schema.optional(Schema.Unknown),
-          monitoringConfigurationsCustomized: Schema.optional(Schema.Unknown),
-          osName: Schema.optional(Schema.String),
-          osVersion: Schema.optional(Schema.String),
-          properties: Schema.optional(Schema.Unknown),
-          recommendedQfes: Schema.optional(Schema.Unknown),
-          resolvedAlerts: Schema.optional(Schema.Number),
-          role: Schema.optional(Schema.String),
-          serverReportedMonitoringLevel: Schema.optional(
-            Schema.Literals(["Partial", "Full", "Off"]),
-          ),
-          status: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => ServiceMemberSchema)),
     ),
     totalCount: Schema.optional(Schema.Number),
     continuationToken: Schema.optional(Schema.String),
@@ -2745,71 +2512,7 @@ export type ServiceMembersListAlertsInput =
 // Output Schema
 export const ServiceMembersListAlertsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          alertId: Schema.optional(Schema.String),
-          level: Schema.optional(
-            Schema.Literals(["Warning", "Error", "PreWarning"]),
-          ),
-          state: Schema.optional(
-            Schema.Literals([
-              "Active",
-              "ResolvedByPositiveResult",
-              "ResolvedManually",
-              "ResolvedByTimer",
-              "ResolvedByStateChange",
-            ]),
-          ),
-          shortName: Schema.optional(Schema.String),
-          displayName: Schema.optional(Schema.String),
-          description: Schema.optional(Schema.String),
-          remediation: Schema.optional(Schema.String),
-          relatedLinks: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                title: Schema.optional(Schema.String),
-                url: Schema.optional(Schema.String),
-              }),
-            ),
-          ),
-          scope: Schema.optional(Schema.String),
-          additionalInformation: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                titleName: Schema.optional(Schema.String),
-                titleValue: Schema.optional(Schema.String),
-                properties: Schema.optional(Schema.Unknown),
-                hasProperties: Schema.optional(Schema.Boolean),
-              }),
-            ),
-          ),
-          createdDate: Schema.optional(Schema.String),
-          resolvedDate: Schema.optional(Schema.String),
-          lastUpdated: Schema.optional(Schema.String),
-          monitorRoleType: Schema.optional(Schema.String),
-          activeAlertProperties: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                key: Schema.optional(Schema.String),
-                value: Schema.optional(Schema.String),
-              }),
-            ),
-          ),
-          resolvedAlertProperties: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                key: Schema.optional(Schema.String),
-                value: Schema.optional(Schema.String),
-              }),
-            ),
-          ),
-          tenantId: Schema.optional(Schema.String),
-          serviceId: Schema.optional(Schema.String),
-          serviceMemberId: Schema.optional(Schema.String),
-        }),
-      ),
-    ),
+    value: Schema.optional(Schema.Array(Schema.suspend(() => AlertSchema))),
     nextLink: Schema.optional(Schema.String),
     totalCount: Schema.optional(Schema.Number),
     continuationToken: Schema.optional(Schema.String),
@@ -2852,72 +2555,7 @@ export type ServiceMembersListConnectorsInput =
 // Output Schema
 export const ServiceMembersListConnectorsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          connectorId: Schema.optional(Schema.String),
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          version: Schema.optional(Schema.Number),
-          type: Schema.optional(Schema.String),
-          description: Schema.optional(Schema.String),
-          schemaXml: Schema.optional(Schema.String),
-          passwordManagementSettings: Schema.optional(Schema.Unknown),
-          passwordHashSyncConfiguration: Schema.optional(Schema.Unknown),
-          timeCreated: Schema.optional(Schema.String),
-          timeLastModified: Schema.optional(Schema.String),
-          partitions: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                id: Schema.optional(Schema.String),
-                dn: Schema.optional(Schema.String),
-                enabled: Schema.optional(Schema.Boolean),
-                timeCreated: Schema.optional(Schema.String),
-                timeLastModified: Schema.optional(Schema.String),
-                partitionScope: Schema.optional(
-                  Schema.Struct({
-                    isDefault: Schema.optional(Schema.Boolean),
-                    objectClasses: Schema.optional(Schema.Array(Schema.String)),
-                    containersIncluded: Schema.optional(
-                      Schema.Array(Schema.String),
-                    ),
-                    containersExcluded: Schema.optional(
-                      Schema.Array(Schema.String),
-                    ),
-                  }),
-                ),
-                name: Schema.optional(Schema.String),
-                isDomain: Schema.optional(Schema.Boolean),
-                type: Schema.optional(Schema.String),
-              }),
-            ),
-          ),
-          runProfiles: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                id: Schema.optional(Schema.String),
-                name: Schema.optional(Schema.String),
-                runSteps: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      batchSize: Schema.optional(Schema.Number),
-                      objectProcessLimit: Schema.optional(Schema.Number),
-                      objectDeleteLimit: Schema.optional(Schema.Number),
-                      pageSize: Schema.optional(Schema.Number),
-                      partitionId: Schema.optional(Schema.String),
-                      operationType: Schema.optional(Schema.Number),
-                      timeout: Schema.optional(Schema.Number),
-                    }),
-                  ),
-                ),
-              }),
-            ),
-          ),
-          classesIncluded: Schema.optional(Schema.Array(Schema.String)),
-          attributesIncluded: Schema.optional(Schema.Array(Schema.String)),
-        }),
-      ),
-    ),
+    value: Schema.optional(Schema.Array(Schema.suspend(() => ConnectorSchema))),
   });
 export type ServiceMembersListConnectorsOutput =
   typeof ServiceMembersListConnectorsOutput.Type;
@@ -2954,13 +2592,7 @@ export type ServiceMembersListCredentialsInput =
 export const ServiceMembersListCredentialsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          identifier: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          credentialData: Schema.optional(Schema.Array(Schema.String)),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => CredentialSchema)),
     ),
   });
 export type ServiceMembersListCredentialsOutput =
@@ -2997,14 +2629,7 @@ export type ServiceMembersListDataFreshnessInput =
 // Output Schema
 export const ServiceMembersListDataFreshnessOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          key: Schema.optional(Schema.String),
-          value: Schema.optional(Schema.String),
-        }),
-      ),
-    ),
+    value: Schema.optional(Schema.Array(Schema.suspend(() => ItemSchema))),
   });
 export type ServiceMembersListDataFreshnessOutput =
   typeof ServiceMembersListDataFreshnessOutput.Type;
@@ -3041,14 +2666,7 @@ export const ServiceMembersListExportStatusOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          serviceId: Schema.optional(Schema.String),
-          serviceMemberId: Schema.optional(Schema.String),
-          endTime: Schema.optional(Schema.String),
-          runStepResultId: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => ExportStatusSchema)),
     ),
     totalCount: Schema.optional(Schema.Number),
     continuationToken: Schema.optional(Schema.String),
@@ -3087,22 +2705,7 @@ export type ServiceMembersListGlobalConfigurationInput =
 export const ServiceMembersListGlobalConfigurationOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          version: Schema.optional(Schema.Number),
-          schemaXml: Schema.optional(Schema.String),
-          passwordSyncEnabled: Schema.optional(Schema.Boolean),
-          numSavedPwdEvent: Schema.optional(Schema.Number),
-          featureSet: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                key: Schema.optional(Schema.String),
-                value: Schema.optional(Schema.String),
-              }),
-            ),
-          ),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => GlobalConfigurationSchema)),
     ),
   });
 export type ServiceMembersListGlobalConfigurationOutput =
@@ -3376,13 +2979,7 @@ export const ServicesGetMetricMetadataOutput =
     metricsProcessorClassName: Schema.optional(Schema.String),
     metricName: Schema.optional(Schema.String),
     groupings: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          key: Schema.optional(Schema.String),
-          displayName: Schema.optional(Schema.String),
-          invisibleForUi: Schema.optional(Schema.Boolean),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => MetricGroupSchema)),
     ),
     displayName: Schema.optional(Schema.String),
     valueKind: Schema.optional(Schema.String),
@@ -3431,14 +3028,7 @@ export type ServicesGetMetricMetadataForGroupInput =
 // Output Schema
 export const ServicesGetMetricMetadataForGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    sets: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          setName: Schema.optional(Schema.String),
-          values: Schema.optional(Schema.Array(Schema.Number)),
-        }),
-      ),
-    ),
+    sets: Schema.optional(Schema.Array(Schema.suspend(() => MetricSetSchema))),
     timeStamps: Schema.optional(Schema.Array(Schema.String)),
   });
 export type ServicesGetMetricMetadataForGroupOutput =
@@ -3514,38 +3104,7 @@ export type ServicesListInput = typeof ServicesListInput.Type;
 export const ServicesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   nextLink: Schema.optional(Schema.String),
   value: Schema.optional(
-    Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        activeAlerts: Schema.optional(Schema.Number),
-        additionalInformation: Schema.optional(Schema.String),
-        createdDate: Schema.optional(Schema.String),
-        customNotificationEmails: Schema.optional(Schema.Array(Schema.String)),
-        disabled: Schema.optional(Schema.Boolean),
-        displayName: Schema.optional(Schema.String),
-        health: Schema.optional(Schema.String),
-        lastDisabled: Schema.optional(Schema.String),
-        lastUpdated: Schema.optional(Schema.String),
-        monitoringConfigurationsComputed: Schema.optional(Schema.Unknown),
-        monitoringConfigurationsCustomized: Schema.optional(Schema.Unknown),
-        notificationEmailEnabled: Schema.optional(Schema.Boolean),
-        notificationEmailEnabledForGlobalAdmins: Schema.optional(
-          Schema.Boolean,
-        ),
-        notificationEmailsEnabledForGlobalAdmins: Schema.optional(
-          Schema.Boolean,
-        ),
-        notificationEmails: Schema.optional(Schema.Array(Schema.String)),
-        originalDisabledState: Schema.optional(Schema.Boolean),
-        resolvedAlerts: Schema.optional(Schema.Number),
-        serviceId: Schema.optional(Schema.String),
-        serviceName: Schema.optional(Schema.String),
-        signature: Schema.optional(Schema.String),
-        simpleProperties: Schema.optional(Schema.Unknown),
-        tenantId: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-      }),
-    ),
+    Schema.Array(Schema.suspend(() => ServicePropertiesSchema)),
   ),
   totalCount: Schema.optional(Schema.Number),
   continuationToken: Schema.optional(Schema.String),
@@ -3584,18 +3143,7 @@ export type ServicesListAlertFeedbackInput =
 export const ServicesListAlertFeedbackOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          level: Schema.optional(Schema.String),
-          state: Schema.optional(Schema.String),
-          shortName: Schema.optional(Schema.String),
-          feedback: Schema.optional(Schema.String),
-          comment: Schema.optional(Schema.String),
-          consentedToShare: Schema.optional(Schema.Boolean),
-          serviceMemberId: Schema.optional(Schema.String),
-          createdDate: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => AlertFeedbackSchema)),
     ),
   });
 export type ServicesListAlertFeedbackOutput =
@@ -3634,71 +3182,7 @@ export type ServicesListAlertsInput = typeof ServicesListAlertsInput.Type;
 // Output Schema
 export const ServicesListAlertsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          alertId: Schema.optional(Schema.String),
-          level: Schema.optional(
-            Schema.Literals(["Warning", "Error", "PreWarning"]),
-          ),
-          state: Schema.optional(
-            Schema.Literals([
-              "Active",
-              "ResolvedByPositiveResult",
-              "ResolvedManually",
-              "ResolvedByTimer",
-              "ResolvedByStateChange",
-            ]),
-          ),
-          shortName: Schema.optional(Schema.String),
-          displayName: Schema.optional(Schema.String),
-          description: Schema.optional(Schema.String),
-          remediation: Schema.optional(Schema.String),
-          relatedLinks: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                title: Schema.optional(Schema.String),
-                url: Schema.optional(Schema.String),
-              }),
-            ),
-          ),
-          scope: Schema.optional(Schema.String),
-          additionalInformation: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                titleName: Schema.optional(Schema.String),
-                titleValue: Schema.optional(Schema.String),
-                properties: Schema.optional(Schema.Unknown),
-                hasProperties: Schema.optional(Schema.Boolean),
-              }),
-            ),
-          ),
-          createdDate: Schema.optional(Schema.String),
-          resolvedDate: Schema.optional(Schema.String),
-          lastUpdated: Schema.optional(Schema.String),
-          monitorRoleType: Schema.optional(Schema.String),
-          activeAlertProperties: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                key: Schema.optional(Schema.String),
-                value: Schema.optional(Schema.String),
-              }),
-            ),
-          ),
-          resolvedAlertProperties: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                key: Schema.optional(Schema.String),
-                value: Schema.optional(Schema.String),
-              }),
-            ),
-          ),
-          tenantId: Schema.optional(Schema.String),
-          serviceId: Schema.optional(Schema.String),
-          serviceMemberId: Schema.optional(Schema.String),
-        }),
-      ),
-    ),
+    value: Schema.optional(Schema.Array(Schema.suspend(() => AlertSchema))),
     nextLink: Schema.optional(Schema.String),
     totalCount: Schema.optional(Schema.Number),
     continuationToken: Schema.optional(Schema.String),
@@ -3737,16 +3221,7 @@ export type ServicesListAllRiskyIpDownloadReportInput =
 export const ServicesListAllRiskyIpDownloadReportOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          tenantId: Schema.optional(Schema.String),
-          serviceId: Schema.optional(Schema.String),
-          resultSasUri: Schema.optional(Schema.String),
-          blobCreateDateTime: Schema.optional(Schema.String),
-          jobCompletionTime: Schema.optional(Schema.String),
-          status: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => RiskyIPBlobUriSchema)),
     ),
   });
 export type ServicesListAllRiskyIpDownloadReportOutput =
@@ -3781,16 +3256,7 @@ export type ServicesListCurrentRiskyIpDownloadReportInput =
 export const ServicesListCurrentRiskyIpDownloadReportOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          tenantId: Schema.optional(Schema.String),
-          serviceId: Schema.optional(Schema.String),
-          resultSasUri: Schema.optional(Schema.String),
-          blobCreateDateTime: Schema.optional(Schema.String),
-          jobCompletionTime: Schema.optional(Schema.String),
-          status: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => RiskyIPBlobUriSchema)),
     ),
   });
 export type ServicesListCurrentRiskyIpDownloadReportOutput =
@@ -3825,13 +3291,7 @@ export type ServicesListExportErrorsInput =
 export const ServicesListExportErrorsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          errorBucket: Schema.optional(Schema.String),
-          count: Schema.optional(Schema.Number),
-          truncated: Schema.optional(Schema.Boolean),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => ErrorCountSchema)),
     ),
   });
 export type ServicesListExportErrorsOutput =
@@ -3868,62 +3328,7 @@ export type ServicesListExportErrorsV2Input =
 export const ServicesListExportErrorsV2Output =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          incomingObjectDisplayName: Schema.optional(Schema.String),
-          incomingObjectType: Schema.optional(Schema.String),
-          userPrincipalName: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          attributeName: Schema.optional(Schema.String),
-          attributeValue: Schema.optional(Schema.String),
-          timeOccurred: Schema.optional(Schema.String),
-          timeFirstOccurred: Schema.optional(Schema.String),
-          csObjectId: Schema.optional(Schema.String),
-          dn: Schema.optional(Schema.String),
-          incomingObject: Schema.optional(
-            Schema.Struct({
-              displayName: Schema.optional(Schema.String),
-              distinguishedName: Schema.optional(Schema.String),
-              lastDirSyncTime: Schema.optional(Schema.String),
-              mail: Schema.optional(Schema.String),
-              objectGuid: Schema.optional(Schema.String),
-              objectType: Schema.optional(Schema.String),
-              onpremisesUserPrincipalName: Schema.optional(Schema.String),
-              proxyAddresses: Schema.optional(Schema.String),
-              sourceAnchor: Schema.optional(Schema.String),
-              sourceOfAuthority: Schema.optional(Schema.String),
-              timeOccurred: Schema.optional(Schema.String),
-              userPrincipalName: Schema.optional(Schema.String),
-            }),
-          ),
-          existingObject: Schema.optional(
-            Schema.Struct({
-              displayName: Schema.optional(Schema.String),
-              distinguishedName: Schema.optional(Schema.String),
-              lastDirSyncTime: Schema.optional(Schema.String),
-              mail: Schema.optional(Schema.String),
-              objectGuid: Schema.optional(Schema.String),
-              objectType: Schema.optional(Schema.String),
-              onpremisesUserPrincipalName: Schema.optional(Schema.String),
-              proxyAddresses: Schema.optional(Schema.String),
-              sourceAnchor: Schema.optional(Schema.String),
-              sourceOfAuthority: Schema.optional(Schema.String),
-              timeOccurred: Schema.optional(Schema.String),
-              userPrincipalName: Schema.optional(Schema.String),
-            }),
-          ),
-          modifiedOrRemovedAttributeValue: Schema.optional(Schema.String),
-          runStepResultId: Schema.optional(Schema.String),
-          samAccountName: Schema.optional(Schema.String),
-          serverErrorDetail: Schema.optional(Schema.String),
-          serviceId: Schema.optional(Schema.String),
-          serviceMemberId: Schema.optional(Schema.String),
-          mergedEntityId: Schema.optional(Schema.String),
-          createdDate: Schema.optional(Schema.String),
-          exportErrorStatus: Schema.optional(Schema.Number),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => MergedExportErrorSchema)),
     ),
   });
 export type ServicesListExportErrorsV2Output =
@@ -3961,14 +3366,7 @@ export const ServicesListExportStatusOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          serviceId: Schema.optional(Schema.String),
-          serviceMemberId: Schema.optional(Schema.String),
-          endTime: Schema.optional(Schema.String),
-          runStepResultId: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => ExportStatusSchema)),
     ),
     totalCount: Schema.optional(Schema.Number),
     continuationToken: Schema.optional(Schema.String),
@@ -4009,29 +3407,7 @@ export const ServicesListMetricMetadataOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          metricsProcessorClassName: Schema.optional(Schema.String),
-          metricName: Schema.optional(Schema.String),
-          groupings: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                key: Schema.optional(Schema.String),
-                displayName: Schema.optional(Schema.String),
-                invisibleForUi: Schema.optional(Schema.Boolean),
-              }),
-            ),
-          ),
-          displayName: Schema.optional(Schema.String),
-          valueKind: Schema.optional(Schema.String),
-          minValue: Schema.optional(Schema.Number),
-          maxValue: Schema.optional(Schema.Number),
-          kind: Schema.optional(Schema.String),
-          isDefault: Schema.optional(Schema.Boolean),
-          isPerfCounter: Schema.optional(Schema.Boolean),
-          isDevOps: Schema.optional(Schema.Boolean),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => MetricMetadataSchema)),
     ),
     totalCount: Schema.optional(Schema.Number),
     continuationToken: Schema.optional(Schema.String),
@@ -4073,14 +3449,7 @@ export type ServicesListMetricsAverageInput =
 export const ServicesListMetricsAverageOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          key: Schema.optional(Schema.String),
-          value: Schema.optional(Schema.String),
-        }),
-      ),
-    ),
+    value: Schema.optional(Schema.Array(Schema.suspend(() => ItemSchema))),
     totalCount: Schema.optional(Schema.Number),
     continuationToken: Schema.optional(Schema.String),
   });
@@ -4121,14 +3490,7 @@ export type ServicesListMetricsSumInput =
 export const ServicesListMetricsSumOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          key: Schema.optional(Schema.String),
-          value: Schema.optional(Schema.String),
-        }),
-      ),
-    ),
+    value: Schema.optional(Schema.Array(Schema.suspend(() => ItemSchema))),
     totalCount: Schema.optional(Schema.Number),
     continuationToken: Schema.optional(Schema.String),
   });
@@ -4166,14 +3528,7 @@ export type ServicesListMonitoringConfigurationsInput =
 // Output Schema
 export const ServicesListMonitoringConfigurationsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          key: Schema.optional(Schema.String),
-          value: Schema.optional(Schema.String),
-        }),
-      ),
-    ),
+    value: Schema.optional(Schema.Array(Schema.suspend(() => ItemSchema))),
   });
 export type ServicesListMonitoringConfigurationsOutput =
   typeof ServicesListMonitoringConfigurationsOutput.Type;
@@ -4210,40 +3565,7 @@ export const ServicesListPremiumOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          activeAlerts: Schema.optional(Schema.Number),
-          additionalInformation: Schema.optional(Schema.String),
-          createdDate: Schema.optional(Schema.String),
-          customNotificationEmails: Schema.optional(
-            Schema.Array(Schema.String),
-          ),
-          disabled: Schema.optional(Schema.Boolean),
-          displayName: Schema.optional(Schema.String),
-          health: Schema.optional(Schema.String),
-          lastDisabled: Schema.optional(Schema.String),
-          lastUpdated: Schema.optional(Schema.String),
-          monitoringConfigurationsComputed: Schema.optional(Schema.Unknown),
-          monitoringConfigurationsCustomized: Schema.optional(Schema.Unknown),
-          notificationEmailEnabled: Schema.optional(Schema.Boolean),
-          notificationEmailEnabledForGlobalAdmins: Schema.optional(
-            Schema.Boolean,
-          ),
-          notificationEmailsEnabledForGlobalAdmins: Schema.optional(
-            Schema.Boolean,
-          ),
-          notificationEmails: Schema.optional(Schema.Array(Schema.String)),
-          originalDisabledState: Schema.optional(Schema.Boolean),
-          resolvedAlerts: Schema.optional(Schema.Number),
-          serviceId: Schema.optional(Schema.String),
-          serviceName: Schema.optional(Schema.String),
-          signature: Schema.optional(Schema.String),
-          simpleProperties: Schema.optional(Schema.Unknown),
-          tenantId: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => ServicePropertiesSchema)),
     ),
     totalCount: Schema.optional(Schema.Number),
     continuationToken: Schema.optional(Schema.String),
@@ -4282,15 +3604,7 @@ export type ServicesListUserBadPasswordReportInput =
 export const ServicesListUserBadPasswordReportOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          userId: Schema.optional(Schema.String),
-          ipAddress: Schema.optional(Schema.String),
-          lastUpdated: Schema.optional(Schema.String),
-          uniqueIpAddresses: Schema.optional(Schema.String),
-          totalErrorAttempts: Schema.optional(Schema.Number),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => ErrorReportUsersEntrySchema)),
     ),
   });
 export type ServicesListUserBadPasswordReportOutput =

@@ -8,6 +8,420 @@ import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
+// Shared schemas
+const OperationSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  isDataAction: Schema.optional(Schema.Boolean),
+  display: Schema.optional(Schema.suspend(() => OperationDisplaySchema)),
+  origin: Schema.optional(Schema.String),
+  properties: Schema.optional(Schema.suspend(() => OperationPropertiesSchema)),
+});
+const OperationDisplaySchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  provider: Schema.optional(Schema.String),
+  resource: Schema.optional(Schema.String),
+  operation: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+});
+const OperationPropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  serviceSpecification: Schema.optional(
+    Schema.suspend(() => ServiceSpecificationSchema),
+  ),
+});
+const ServiceSpecificationSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  metricSpecifications: Schema.optional(
+    Schema.Array(Schema.suspend(() => MetricSpecificationSchema)),
+  ),
+  logSpecifications: Schema.optional(
+    Schema.Array(Schema.suspend(() => LogSpecificationSchema)),
+  ),
+});
+const MetricSpecificationSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  displayName: Schema.optional(Schema.String),
+  displayDescription: Schema.optional(Schema.String),
+  unit: Schema.optional(Schema.String),
+  aggregationType: Schema.optional(Schema.String),
+  fillGapWithZero: Schema.optional(Schema.String),
+  category: Schema.optional(Schema.String),
+  dimensions: Schema.optional(
+    Schema.Array(Schema.suspend(() => DimensionSchema)),
+  ),
+});
+const DimensionSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  displayName: Schema.optional(Schema.String),
+  internalName: Schema.optional(Schema.String),
+  toBeExportedForShoebox: Schema.optional(Schema.Boolean),
+});
+const LogSpecificationSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  displayName: Schema.optional(Schema.String),
+});
+const SignalRServiceUsageSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  currentValue: Schema.optional(Schema.Number),
+  limit: Schema.optional(Schema.Number),
+  name: Schema.optional(Schema.suspend(() => SignalRServiceUsageNameSchema)),
+  unit: Schema.optional(Schema.String),
+});
+const SignalRServiceUsageNameSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    value: Schema.optional(Schema.String),
+    localizedValue: Schema.optional(Schema.String),
+  },
+);
+const WebPubSubResourceSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+});
+const systemDataSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  createdBy: Schema.optional(Schema.String),
+  createdByType: Schema.optional(
+    Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+  ),
+  createdAt: Schema.optional(Schema.String),
+  lastModifiedBy: Schema.optional(Schema.String),
+  lastModifiedByType: Schema.optional(
+    Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+  ),
+  lastModifiedAt: Schema.optional(Schema.String),
+});
+const ResourceSkuSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.String,
+  tier: Schema.optional(Schema.suspend(() => WebPubSubSkuTierSchema)),
+  size: Schema.optional(Schema.String),
+  family: Schema.optional(Schema.String),
+  capacity: Schema.optional(Schema.Number),
+});
+const WebPubSubSkuTierSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Free",
+  "Basic",
+  "Standard",
+  "Premium",
+]);
+const WebPubSubPropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  provisioningState: Schema.optional(
+    Schema.suspend(() => ProvisioningStateSchema),
+  ),
+  externalIP: Schema.optional(Schema.String),
+  hostName: Schema.optional(Schema.String),
+  publicPort: Schema.optional(Schema.Number),
+  serverPort: Schema.optional(Schema.Number),
+  version: Schema.optional(Schema.String),
+  privateEndpointConnections: Schema.optional(
+    Schema.Array(Schema.suspend(() => PrivateEndpointConnectionSchema)),
+  ),
+  sharedPrivateLinkResources: Schema.optional(
+    Schema.Array(Schema.suspend(() => SharedPrivateLinkResourceSchema)),
+  ),
+  tls: Schema.optional(Schema.suspend(() => WebPubSubTlsSettingsSchema)),
+  hostNamePrefix: Schema.optional(Schema.String),
+  liveTraceConfiguration: Schema.optional(
+    Schema.suspend(() => LiveTraceConfigurationSchema),
+  ),
+  resourceLogConfiguration: Schema.optional(
+    Schema.suspend(() => ResourceLogConfigurationSchema),
+  ),
+  networkACLs: Schema.optional(
+    Schema.suspend(() => WebPubSubNetworkACLsSchema),
+  ),
+  publicNetworkAccess: Schema.optional(Schema.String),
+  disableLocalAuth: Schema.optional(Schema.Boolean),
+  disableAadAuth: Schema.optional(Schema.Boolean),
+  regionEndpointEnabled: Schema.optional(Schema.String),
+  resourceStopped: Schema.optional(Schema.String),
+  socketIO: Schema.optional(
+    Schema.suspend(() => WebPubSubSocketIOSettingsSchema),
+  ),
+});
+const ProvisioningStateSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Unknown",
+  "Succeeded",
+  "Failed",
+  "Canceled",
+  "Running",
+  "Creating",
+  "Updating",
+  "Deleting",
+  "Moving",
+]);
+const PrivateEndpointConnectionSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+  });
+const SharedPrivateLinkResourceSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+  });
+const WebPubSubTlsSettingsSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  clientCertEnabled: Schema.optional(Schema.Boolean),
+});
+const LiveTraceConfigurationSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  enabled: Schema.optional(Schema.String),
+  categories: Schema.optional(
+    Schema.Array(Schema.suspend(() => LiveTraceCategorySchema)),
+  ),
+});
+const LiveTraceCategorySchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  enabled: Schema.optional(Schema.String),
+});
+const ResourceLogConfigurationSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    categories: Schema.optional(
+      Schema.Array(Schema.suspend(() => ResourceLogCategorySchema)),
+    ),
+  });
+const ResourceLogCategorySchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  enabled: Schema.optional(Schema.String),
+});
+const WebPubSubNetworkACLsSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  defaultAction: Schema.optional(Schema.suspend(() => ACLActionSchema)),
+  publicNetwork: Schema.optional(Schema.suspend(() => NetworkACLSchema)),
+  privateEndpoints: Schema.optional(
+    Schema.Array(Schema.suspend(() => PrivateEndpointACLSchema)),
+  ),
+  ipRules: Schema.optional(Schema.Array(Schema.suspend(() => IPRuleSchema))),
+});
+const ACLActionSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Allow",
+  "Deny",
+]);
+const NetworkACLSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  allow: Schema.optional(
+    Schema.Array(Schema.suspend(() => WebPubSubRequestTypeSchema)),
+  ),
+  deny: Schema.optional(
+    Schema.Array(Schema.suspend(() => WebPubSubRequestTypeSchema)),
+  ),
+});
+const WebPubSubRequestTypeSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "ClientConnection",
+  "ServerConnection",
+  "RESTAPI",
+  "Trace",
+]);
+const PrivateEndpointACLSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  allow: Schema.optional(
+    Schema.Array(Schema.suspend(() => WebPubSubRequestTypeSchema)),
+  ),
+  deny: Schema.optional(
+    Schema.Array(Schema.suspend(() => WebPubSubRequestTypeSchema)),
+  ),
+});
+const IPRuleSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  value: Schema.optional(Schema.String),
+  action: Schema.optional(Schema.suspend(() => ACLActionSchema)),
+});
+const WebPubSubSocketIOSettingsSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    serviceMode: Schema.optional(Schema.String),
+  });
+const ServiceKindSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "WebPubSub",
+  "SocketIO",
+]);
+const ManagedIdentitySchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  type: Schema.optional(Schema.suspend(() => ManagedIdentityTypeSchema)),
+  userAssignedIdentities: Schema.optional(
+    Schema.Record(
+      Schema.String,
+      Schema.suspend(() => UserAssignedIdentityPropertySchema),
+    ),
+  ),
+  principalId: Schema.optional(Schema.String),
+  tenantId: Schema.optional(Schema.String),
+});
+const ManagedIdentityTypeSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "None",
+  "SystemAssigned",
+  "UserAssigned",
+]);
+const UserAssignedIdentityPropertySchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    principalId: Schema.optional(Schema.String),
+    clientId: Schema.optional(Schema.String),
+  });
+const CustomCertificateSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+});
+const CustomCertificatePropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    provisioningState: Schema.optional(
+      Schema.suspend(() => ProvisioningStateSchema),
+    ),
+    keyVaultBaseUri: Schema.String,
+    keyVaultSecretName: Schema.String,
+    keyVaultSecretVersion: Schema.optional(Schema.String),
+  });
+const CustomDomainSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+});
+const CustomDomainPropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  provisioningState: Schema.optional(
+    Schema.suspend(() => ProvisioningStateSchema),
+  ),
+  domainName: Schema.String,
+  customCertificate: Schema.suspend(() => ResourceReferenceSchema),
+});
+const ResourceReferenceSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+});
+const WebPubSubHubSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+});
+const WebPubSubHubPropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  eventHandlers: Schema.optional(
+    Schema.Array(Schema.suspend(() => EventHandlerSchema)),
+  ),
+  eventListeners: Schema.optional(
+    Schema.Array(Schema.suspend(() => EventListenerSchema)),
+  ),
+  anonymousConnectPolicy: Schema.optional(Schema.String),
+  webSocketKeepAliveIntervalInSeconds: Schema.optional(Schema.Number),
+});
+const EventHandlerSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  urlTemplate: Schema.String,
+  userEventPattern: Schema.optional(Schema.String),
+  systemEvents: Schema.optional(Schema.Array(Schema.String)),
+  auth: Schema.optional(Schema.suspend(() => UpstreamAuthSettingsSchema)),
+});
+const UpstreamAuthSettingsSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  type: Schema.optional(Schema.suspend(() => UpstreamAuthTypeSchema)),
+  managedIdentity: Schema.optional(
+    Schema.suspend(() => ManagedIdentitySettingsSchema),
+  ),
+});
+const UpstreamAuthTypeSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "None",
+  "ManagedIdentity",
+]);
+const ManagedIdentitySettingsSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    resource: Schema.optional(Schema.String),
+  },
+);
+const EventListenerSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  filter: Schema.suspend(() => EventListenerFilterSchema),
+  endpoint: Schema.suspend(() => EventListenerEndpointSchema),
+});
+const EventListenerFilterSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  type: Schema.Literals(["EventName"]),
+});
+const EventListenerEndpointSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  type: Schema.Literals(["EventHub"]),
+});
+const PrivateEndpointConnectionPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    provisioningState: Schema.optional(
+      Schema.suspend(() => ProvisioningStateSchema),
+    ),
+    privateEndpoint: Schema.optional(
+      Schema.suspend(() => PrivateEndpointSchema),
+    ),
+    groupIds: Schema.optional(Schema.Array(Schema.String)),
+    privateLinkServiceConnectionState: Schema.optional(
+      Schema.suspend(() => PrivateLinkServiceConnectionStateSchema),
+    ),
+  });
+const PrivateEndpointSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+});
+const PrivateLinkServiceConnectionStateSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    status: Schema.optional(
+      Schema.suspend(() => PrivateLinkServiceConnectionStatusSchema),
+    ),
+    description: Schema.optional(Schema.String),
+    actionsRequired: Schema.optional(Schema.String),
+  });
+const PrivateLinkServiceConnectionStatusSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+    "Pending",
+    "Approved",
+    "Rejected",
+    "Disconnected",
+  ]);
+const PrivateLinkResourceSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+});
+const KeyTypeSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Primary",
+  "Secondary",
+  "Salt",
+]);
+const ReplicaSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+});
+const ReplicaPropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  provisioningState: Schema.optional(
+    Schema.suspend(() => ProvisioningStateSchema),
+  ),
+  regionEndpointEnabled: Schema.optional(Schema.String),
+  resourceStopped: Schema.optional(Schema.String),
+});
+const SharedPrivateLinkResourcePropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    groupId: Schema.String,
+    privateLinkResourceId: Schema.String,
+    provisioningState: Schema.optional(
+      Schema.suspend(() => ProvisioningStateSchema),
+    ),
+    requestMessage: Schema.optional(Schema.String),
+    status: Schema.optional(
+      Schema.suspend(() => SharedPrivateLinkResourceStatusSchema),
+    ),
+  });
+const SharedPrivateLinkResourceStatusSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+    "Pending",
+    "Approved",
+    "Rejected",
+    "Disconnected",
+    "Timeout",
+  ]);
+const SkuSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  resourceType: Schema.optional(Schema.String),
+  sku: Schema.optional(Schema.suspend(() => ResourceSkuSchema)),
+  capacity: Schema.optional(Schema.suspend(() => SkuCapacitySchema)),
+});
+const SkuCapacitySchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  minimum: Schema.optional(Schema.Number),
+  maximum: Schema.optional(Schema.Number),
+  default: Schema.optional(Schema.Number),
+  allowedValues: Schema.optional(Schema.Array(Schema.Number)),
+  scaleType: Schema.optional(Schema.suspend(() => ScaleTypeSchema)),
+});
+const ScaleTypeSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "None",
+  "Manual",
+  "Automatic",
+]);
+
 // Input Schema
 export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {},
@@ -22,64 +436,7 @@ export type OperationsListInput = typeof OperationsListInput.Type;
 
 // Output Schema
 export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  value: Schema.optional(
-    Schema.Array(
-      Schema.Struct({
-        name: Schema.optional(Schema.String),
-        isDataAction: Schema.optional(Schema.Boolean),
-        display: Schema.optional(
-          Schema.Struct({
-            provider: Schema.optional(Schema.String),
-            resource: Schema.optional(Schema.String),
-            operation: Schema.optional(Schema.String),
-            description: Schema.optional(Schema.String),
-          }),
-        ),
-        origin: Schema.optional(Schema.String),
-        properties: Schema.optional(
-          Schema.Struct({
-            serviceSpecification: Schema.optional(
-              Schema.Struct({
-                metricSpecifications: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      name: Schema.optional(Schema.String),
-                      displayName: Schema.optional(Schema.String),
-                      displayDescription: Schema.optional(Schema.String),
-                      unit: Schema.optional(Schema.String),
-                      aggregationType: Schema.optional(Schema.String),
-                      fillGapWithZero: Schema.optional(Schema.String),
-                      category: Schema.optional(Schema.String),
-                      dimensions: Schema.optional(
-                        Schema.Array(
-                          Schema.Struct({
-                            name: Schema.optional(Schema.String),
-                            displayName: Schema.optional(Schema.String),
-                            internalName: Schema.optional(Schema.String),
-                            toBeExportedForShoebox: Schema.optional(
-                              Schema.Boolean,
-                            ),
-                          }),
-                        ),
-                      ),
-                    }),
-                  ),
-                ),
-                logSpecifications: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      name: Schema.optional(Schema.String),
-                      displayName: Schema.optional(Schema.String),
-                    }),
-                  ),
-                ),
-              }),
-            ),
-          }),
-        ),
-      }),
-    ),
-  ),
+  value: Schema.optional(Schema.Array(Schema.suspend(() => OperationSchema))),
   nextLink: Schema.optional(Schema.String),
 });
 export type OperationsListOutput = typeof OperationsListOutput.Type;
@@ -110,20 +467,7 @@ export type UsagesListInput = typeof UsagesListInput.Type;
 // Output Schema
 export const UsagesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.optional(
-    Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        currentValue: Schema.optional(Schema.Number),
-        limit: Schema.optional(Schema.Number),
-        name: Schema.optional(
-          Schema.Struct({
-            value: Schema.optional(Schema.String),
-            localizedValue: Schema.optional(Schema.String),
-          }),
-        ),
-        unit: Schema.optional(Schema.String),
-      }),
-    ),
+    Schema.Array(Schema.suspend(() => SignalRServiceUsageSchema)),
   ),
   nextLink: Schema.optional(Schema.String),
 });
@@ -186,228 +530,12 @@ export const WebPubSubCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    sku: Schema.optional(
-      Schema.Struct({
-        name: Schema.String,
-        tier: Schema.optional(
-          Schema.Literals(["Free", "Basic", "Standard", "Premium"]),
-        ),
-        size: Schema.optional(Schema.String),
-        family: Schema.optional(Schema.String),
-        capacity: Schema.optional(Schema.Number),
-      }),
-    ),
+    sku: Schema.optional(Schema.suspend(() => ResourceSkuSchema)),
     properties: Schema.optional(
-      Schema.Struct({
-        provisioningState: Schema.optional(
-          Schema.Literals([
-            "Unknown",
-            "Succeeded",
-            "Failed",
-            "Canceled",
-            "Running",
-            "Creating",
-            "Updating",
-            "Deleting",
-            "Moving",
-          ]),
-        ),
-        externalIP: Schema.optional(Schema.String),
-        hostName: Schema.optional(Schema.String),
-        publicPort: Schema.optional(Schema.Number),
-        serverPort: Schema.optional(Schema.Number),
-        version: Schema.optional(Schema.String),
-        privateEndpointConnections: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              id: Schema.optional(Schema.String),
-              name: Schema.optional(Schema.String),
-              type: Schema.optional(Schema.String),
-              systemData: Schema.optional(
-                Schema.Struct({
-                  createdBy: Schema.optional(Schema.String),
-                  createdByType: Schema.optional(
-                    Schema.Literals([
-                      "User",
-                      "Application",
-                      "ManagedIdentity",
-                      "Key",
-                    ]),
-                  ),
-                  createdAt: Schema.optional(Schema.String),
-                  lastModifiedBy: Schema.optional(Schema.String),
-                  lastModifiedByType: Schema.optional(
-                    Schema.Literals([
-                      "User",
-                      "Application",
-                      "ManagedIdentity",
-                      "Key",
-                    ]),
-                  ),
-                  lastModifiedAt: Schema.optional(Schema.String),
-                }),
-              ),
-            }),
-          ),
-        ),
-        sharedPrivateLinkResources: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              id: Schema.optional(Schema.String),
-              name: Schema.optional(Schema.String),
-              type: Schema.optional(Schema.String),
-              systemData: Schema.optional(
-                Schema.Struct({
-                  createdBy: Schema.optional(Schema.String),
-                  createdByType: Schema.optional(
-                    Schema.Literals([
-                      "User",
-                      "Application",
-                      "ManagedIdentity",
-                      "Key",
-                    ]),
-                  ),
-                  createdAt: Schema.optional(Schema.String),
-                  lastModifiedBy: Schema.optional(Schema.String),
-                  lastModifiedByType: Schema.optional(
-                    Schema.Literals([
-                      "User",
-                      "Application",
-                      "ManagedIdentity",
-                      "Key",
-                    ]),
-                  ),
-                  lastModifiedAt: Schema.optional(Schema.String),
-                }),
-              ),
-            }),
-          ),
-        ),
-        tls: Schema.optional(
-          Schema.Struct({
-            clientCertEnabled: Schema.optional(Schema.Boolean),
-          }),
-        ),
-        hostNamePrefix: Schema.optional(Schema.String),
-        liveTraceConfiguration: Schema.optional(
-          Schema.Struct({
-            enabled: Schema.optional(Schema.String),
-            categories: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  name: Schema.optional(Schema.String),
-                  enabled: Schema.optional(Schema.String),
-                }),
-              ),
-            ),
-          }),
-        ),
-        resourceLogConfiguration: Schema.optional(
-          Schema.Struct({
-            categories: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  name: Schema.optional(Schema.String),
-                  enabled: Schema.optional(Schema.String),
-                }),
-              ),
-            ),
-          }),
-        ),
-        networkACLs: Schema.optional(
-          Schema.Struct({
-            defaultAction: Schema.optional(Schema.Literals(["Allow", "Deny"])),
-            publicNetwork: Schema.optional(
-              Schema.Struct({
-                allow: Schema.optional(
-                  Schema.Array(
-                    Schema.Literals([
-                      "ClientConnection",
-                      "ServerConnection",
-                      "RESTAPI",
-                      "Trace",
-                    ]),
-                  ),
-                ),
-                deny: Schema.optional(
-                  Schema.Array(
-                    Schema.Literals([
-                      "ClientConnection",
-                      "ServerConnection",
-                      "RESTAPI",
-                      "Trace",
-                    ]),
-                  ),
-                ),
-              }),
-            ),
-            privateEndpoints: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  allow: Schema.optional(
-                    Schema.Array(
-                      Schema.Literals([
-                        "ClientConnection",
-                        "ServerConnection",
-                        "RESTAPI",
-                        "Trace",
-                      ]),
-                    ),
-                  ),
-                  deny: Schema.optional(
-                    Schema.Array(
-                      Schema.Literals([
-                        "ClientConnection",
-                        "ServerConnection",
-                        "RESTAPI",
-                        "Trace",
-                      ]),
-                    ),
-                  ),
-                }),
-              ),
-            ),
-            ipRules: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  value: Schema.optional(Schema.String),
-                  action: Schema.optional(Schema.Literals(["Allow", "Deny"])),
-                }),
-              ),
-            ),
-          }),
-        ),
-        publicNetworkAccess: Schema.optional(Schema.String),
-        disableLocalAuth: Schema.optional(Schema.Boolean),
-        disableAadAuth: Schema.optional(Schema.Boolean),
-        regionEndpointEnabled: Schema.optional(Schema.String),
-        resourceStopped: Schema.optional(Schema.String),
-        socketIO: Schema.optional(
-          Schema.Struct({
-            serviceMode: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
+      Schema.suspend(() => WebPubSubPropertiesSchema),
     ),
-    kind: Schema.optional(Schema.Literals(["WebPubSub", "SocketIO"])),
-    identity: Schema.optional(
-      Schema.Struct({
-        type: Schema.optional(
-          Schema.Literals(["None", "SystemAssigned", "UserAssigned"]),
-        ),
-        userAssignedIdentities: Schema.optional(
-          Schema.Record(
-            Schema.String,
-            Schema.Struct({
-              principalId: Schema.optional(Schema.String),
-              clientId: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        principalId: Schema.optional(Schema.String),
-        tenantId: Schema.optional(Schema.String),
-      }),
-    ),
+    kind: Schema.optional(Schema.suspend(() => ServiceKindSchema)),
+    identity: Schema.optional(Schema.suspend(() => ManagedIdentitySchema)),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     location: Schema.String,
   }).pipe(
@@ -424,23 +552,18 @@ export type WebPubSubCreateOrUpdateInput =
 // Output Schema
 export const WebPubSubCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    sku: Schema.optional(Schema.suspend(() => ResourceSkuSchema)),
+    properties: Schema.optional(
+      Schema.suspend(() => WebPubSubPropertiesSchema),
+    ),
+    kind: Schema.optional(Schema.suspend(() => ServiceKindSchema)),
+    identity: Schema.optional(Schema.suspend(() => ManagedIdentitySchema)),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type WebPubSubCreateOrUpdateOutput =
   typeof WebPubSubCreateOrUpdateOutput.Type;
@@ -465,24 +588,7 @@ export const WebPubSubCustomCertificatesCreateOrUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     certificateName: Schema.String.pipe(T.PathParam()),
-    properties: Schema.Struct({
-      provisioningState: Schema.optional(
-        Schema.Literals([
-          "Unknown",
-          "Succeeded",
-          "Failed",
-          "Canceled",
-          "Running",
-          "Creating",
-          "Updating",
-          "Deleting",
-          "Moving",
-        ]),
-      ),
-      keyVaultBaseUri: Schema.String,
-      keyVaultSecretName: Schema.String,
-      keyVaultSecretVersion: Schema.optional(Schema.String),
-    }),
+    properties: Schema.suspend(() => CustomCertificatePropertiesSchema),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -497,23 +603,11 @@ export type WebPubSubCustomCertificatesCreateOrUpdateInput =
 // Output Schema
 export const WebPubSubCustomCertificatesCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.suspend(() => CustomCertificatePropertiesSchema),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type WebPubSubCustomCertificatesCreateOrUpdateOutput =
   typeof WebPubSubCustomCertificatesCreateOrUpdateOutput.Type;
@@ -587,23 +681,11 @@ export type WebPubSubCustomCertificatesGetInput =
 // Output Schema
 export const WebPubSubCustomCertificatesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.suspend(() => CustomCertificatePropertiesSchema),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type WebPubSubCustomCertificatesGetOutput =
   typeof WebPubSubCustomCertificatesGetOutput.Type;
@@ -641,37 +723,7 @@ export type WebPubSubCustomCertificatesListInput =
 export const WebPubSubCustomCertificatesListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.String),
-              createdByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              createdAt: Schema.optional(Schema.String),
-              lastModifiedBy: Schema.optional(Schema.String),
-              lastModifiedByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              lastModifiedAt: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => CustomCertificateSchema)),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -697,25 +749,7 @@ export const WebPubSubCustomDomainsCreateOrUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    properties: Schema.Struct({
-      provisioningState: Schema.optional(
-        Schema.Literals([
-          "Unknown",
-          "Succeeded",
-          "Failed",
-          "Canceled",
-          "Running",
-          "Creating",
-          "Updating",
-          "Deleting",
-          "Moving",
-        ]),
-      ),
-      domainName: Schema.String,
-      customCertificate: Schema.Struct({
-        id: Schema.optional(Schema.String),
-      }),
-    }),
+    properties: Schema.suspend(() => CustomDomainPropertiesSchema),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -730,23 +764,11 @@ export type WebPubSubCustomDomainsCreateOrUpdateInput =
 // Output Schema
 export const WebPubSubCustomDomainsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.suspend(() => CustomDomainPropertiesSchema),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type WebPubSubCustomDomainsCreateOrUpdateOutput =
   typeof WebPubSubCustomDomainsCreateOrUpdateOutput.Type;
@@ -821,23 +843,11 @@ export type WebPubSubCustomDomainsGetInput =
 // Output Schema
 export const WebPubSubCustomDomainsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.suspend(() => CustomDomainPropertiesSchema),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type WebPubSubCustomDomainsGetOutput =
   typeof WebPubSubCustomDomainsGetOutput.Type;
@@ -876,37 +886,7 @@ export type WebPubSubCustomDomainsListInput =
 export const WebPubSubCustomDomainsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.String),
-              createdByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              createdAt: Schema.optional(Schema.String),
-              lastModifiedBy: Schema.optional(Schema.String),
-              lastModifiedByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              lastModifiedAt: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => CustomDomainSchema)),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -972,23 +952,16 @@ export type WebPubSubGetInput = typeof WebPubSubGetInput.Type;
 
 // Output Schema
 export const WebPubSubGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  sku: Schema.optional(Schema.suspend(() => ResourceSkuSchema)),
+  properties: Schema.optional(Schema.suspend(() => WebPubSubPropertiesSchema)),
+  kind: Schema.optional(Schema.suspend(() => ServiceKindSchema)),
+  identity: Schema.optional(Schema.suspend(() => ManagedIdentitySchema)),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  location: Schema.String,
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
-  systemData: Schema.optional(
-    Schema.Struct({
-      createdBy: Schema.optional(Schema.String),
-      createdByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      createdAt: Schema.optional(Schema.String),
-      lastModifiedBy: Schema.optional(Schema.String),
-      lastModifiedByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      lastModifiedAt: Schema.optional(Schema.String),
-    }),
-  ),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
 });
 export type WebPubSubGetOutput = typeof WebPubSubGetOutput.Type;
 
@@ -1010,43 +983,7 @@ export const WebPubSubHubsCreateOrUpdateInput =
     hubName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    properties: Schema.Struct({
-      eventHandlers: Schema.optional(
-        Schema.Array(
-          Schema.Struct({
-            urlTemplate: Schema.String,
-            userEventPattern: Schema.optional(Schema.String),
-            systemEvents: Schema.optional(Schema.Array(Schema.String)),
-            auth: Schema.optional(
-              Schema.Struct({
-                type: Schema.optional(
-                  Schema.Literals(["None", "ManagedIdentity"]),
-                ),
-                managedIdentity: Schema.optional(
-                  Schema.Struct({
-                    resource: Schema.optional(Schema.String),
-                  }),
-                ),
-              }),
-            ),
-          }),
-        ),
-      ),
-      eventListeners: Schema.optional(
-        Schema.Array(
-          Schema.Struct({
-            filter: Schema.Struct({
-              type: Schema.Literals(["EventName"]),
-            }),
-            endpoint: Schema.Struct({
-              type: Schema.Literals(["EventHub"]),
-            }),
-          }),
-        ),
-      ),
-      anonymousConnectPolicy: Schema.optional(Schema.String),
-      webSocketKeepAliveIntervalInSeconds: Schema.optional(Schema.Number),
-    }),
+    properties: Schema.suspend(() => WebPubSubHubPropertiesSchema),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -1061,23 +998,11 @@ export type WebPubSubHubsCreateOrUpdateInput =
 // Output Schema
 export const WebPubSubHubsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.suspend(() => WebPubSubHubPropertiesSchema),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type WebPubSubHubsCreateOrUpdateOutput =
   typeof WebPubSubHubsCreateOrUpdateOutput.Type;
@@ -1148,23 +1073,11 @@ export type WebPubSubHubsGetInput = typeof WebPubSubHubsGetInput.Type;
 // Output Schema
 export const WebPubSubHubsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
+    properties: Schema.suspend(() => WebPubSubHubPropertiesSchema),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   },
 );
 export type WebPubSubHubsGetOutput = typeof WebPubSubHubsGetOutput.Type;
@@ -1201,37 +1114,7 @@ export type WebPubSubHubsListInput = typeof WebPubSubHubsListInput.Type;
 export const WebPubSubHubsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.String),
-              createdByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              createdAt: Schema.optional(Schema.String),
-              lastModifiedBy: Schema.optional(Schema.String),
-              lastModifiedByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              lastModifiedAt: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => WebPubSubHubSchema)),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -1268,37 +1151,7 @@ export type WebPubSubListByResourceGroupInput =
 export const WebPubSubListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.String),
-              createdByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              createdAt: Schema.optional(Schema.String),
-              lastModifiedBy: Schema.optional(Schema.String),
-              lastModifiedByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              lastModifiedAt: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => WebPubSubResourceSchema)),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -1336,37 +1189,7 @@ export type WebPubSubListBySubscriptionInput =
 export const WebPubSubListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.String),
-              createdByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              createdAt: Schema.optional(Schema.String),
-              lastModifiedBy: Schema.optional(Schema.String),
-              lastModifiedByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              lastModifiedAt: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => WebPubSubResourceSchema)),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -1441,35 +1264,7 @@ export type WebPubSubListReplicaSkusInput =
 // Output Schema
 export const WebPubSubListReplicaSkusOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          resourceType: Schema.optional(Schema.String),
-          sku: Schema.optional(
-            Schema.Struct({
-              name: Schema.String,
-              tier: Schema.optional(
-                Schema.Literals(["Free", "Basic", "Standard", "Premium"]),
-              ),
-              size: Schema.optional(Schema.String),
-              family: Schema.optional(Schema.String),
-              capacity: Schema.optional(Schema.Number),
-            }),
-          ),
-          capacity: Schema.optional(
-            Schema.Struct({
-              minimum: Schema.optional(Schema.Number),
-              maximum: Schema.optional(Schema.Number),
-              default: Schema.optional(Schema.Number),
-              allowedValues: Schema.optional(Schema.Array(Schema.Number)),
-              scaleType: Schema.optional(
-                Schema.Literals(["None", "Manual", "Automatic"]),
-              ),
-            }),
-          ),
-        }),
-      ),
-    ),
+    value: Schema.optional(Schema.Array(Schema.suspend(() => SkuSchema))),
     nextLink: Schema.optional(Schema.String),
   });
 export type WebPubSubListReplicaSkusOutput =
@@ -1507,35 +1302,7 @@ export type WebPubSubListSkusInput = typeof WebPubSubListSkusInput.Type;
 // Output Schema
 export const WebPubSubListSkusOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          resourceType: Schema.optional(Schema.String),
-          sku: Schema.optional(
-            Schema.Struct({
-              name: Schema.String,
-              tier: Schema.optional(
-                Schema.Literals(["Free", "Basic", "Standard", "Premium"]),
-              ),
-              size: Schema.optional(Schema.String),
-              family: Schema.optional(Schema.String),
-              capacity: Schema.optional(Schema.Number),
-            }),
-          ),
-          capacity: Schema.optional(
-            Schema.Struct({
-              minimum: Schema.optional(Schema.Number),
-              maximum: Schema.optional(Schema.Number),
-              default: Schema.optional(Schema.Number),
-              allowedValues: Schema.optional(Schema.Array(Schema.Number)),
-              scaleType: Schema.optional(
-                Schema.Literals(["None", "Manual", "Automatic"]),
-              ),
-            }),
-          ),
-        }),
-      ),
-    ),
+    value: Schema.optional(Schema.Array(Schema.suspend(() => SkuSchema))),
     nextLink: Schema.optional(Schema.String),
   });
 export type WebPubSubListSkusOutput = typeof WebPubSubListSkusOutput.Type;
@@ -1608,23 +1375,13 @@ export type WebPubSubPrivateEndpointConnectionsGetInput =
 // Output Schema
 export const WebPubSubPrivateEndpointConnectionsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => PrivateEndpointConnectionPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type WebPubSubPrivateEndpointConnectionsGetOutput =
   typeof WebPubSubPrivateEndpointConnectionsGetOutput.Type;
@@ -1662,37 +1419,7 @@ export type WebPubSubPrivateEndpointConnectionsListInput =
 export const WebPubSubPrivateEndpointConnectionsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.String),
-              createdByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              createdAt: Schema.optional(Schema.String),
-              lastModifiedBy: Schema.optional(Schema.String),
-              lastModifiedByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              lastModifiedAt: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => PrivateEndpointConnectionSchema)),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -1719,41 +1446,7 @@ export const WebPubSubPrivateEndpointConnectionsUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        provisioningState: Schema.optional(
-          Schema.Literals([
-            "Unknown",
-            "Succeeded",
-            "Failed",
-            "Canceled",
-            "Running",
-            "Creating",
-            "Updating",
-            "Deleting",
-            "Moving",
-          ]),
-        ),
-        privateEndpoint: Schema.optional(
-          Schema.Struct({
-            id: Schema.optional(Schema.String),
-          }),
-        ),
-        groupIds: Schema.optional(Schema.Array(Schema.String)),
-        privateLinkServiceConnectionState: Schema.optional(
-          Schema.Struct({
-            status: Schema.optional(
-              Schema.Literals([
-                "Pending",
-                "Approved",
-                "Rejected",
-                "Disconnected",
-              ]),
-            ),
-            description: Schema.optional(Schema.String),
-            actionsRequired: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
+      Schema.suspend(() => PrivateEndpointConnectionPropertiesSchema),
     ),
   }).pipe(
     T.Http({
@@ -1768,23 +1461,13 @@ export type WebPubSubPrivateEndpointConnectionsUpdateInput =
 // Output Schema
 export const WebPubSubPrivateEndpointConnectionsUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => PrivateEndpointConnectionPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type WebPubSubPrivateEndpointConnectionsUpdateOutput =
   typeof WebPubSubPrivateEndpointConnectionsUpdateOutput.Type;
@@ -1822,37 +1505,7 @@ export type WebPubSubPrivateLinkResourcesListInput =
 export const WebPubSubPrivateLinkResourcesListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.String),
-              createdByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              createdAt: Schema.optional(Schema.String),
-              lastModifiedBy: Schema.optional(Schema.String),
-              lastModifiedByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              lastModifiedAt: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => PrivateLinkResourceSchema)),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -1877,7 +1530,7 @@ export const WebPubSubRegenerateKeyInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    keyType: Schema.optional(Schema.Literals(["Primary", "Secondary", "Salt"])),
+    keyType: Schema.optional(Schema.suspend(() => KeyTypeSchema)),
   }).pipe(
     T.Http({
       method: "POST",
@@ -1919,36 +1572,8 @@ export const WebPubSubReplicasCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    sku: Schema.optional(
-      Schema.Struct({
-        name: Schema.String,
-        tier: Schema.optional(
-          Schema.Literals(["Free", "Basic", "Standard", "Premium"]),
-        ),
-        size: Schema.optional(Schema.String),
-        family: Schema.optional(Schema.String),
-        capacity: Schema.optional(Schema.Number),
-      }),
-    ),
-    properties: Schema.optional(
-      Schema.Struct({
-        provisioningState: Schema.optional(
-          Schema.Literals([
-            "Unknown",
-            "Succeeded",
-            "Failed",
-            "Canceled",
-            "Running",
-            "Creating",
-            "Updating",
-            "Deleting",
-            "Moving",
-          ]),
-        ),
-        regionEndpointEnabled: Schema.optional(Schema.String),
-        resourceStopped: Schema.optional(Schema.String),
-      }),
-    ),
+    sku: Schema.optional(Schema.suspend(() => ResourceSkuSchema)),
+    properties: Schema.optional(Schema.suspend(() => ReplicaPropertiesSchema)),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     location: Schema.String,
   }).pipe(
@@ -1965,23 +1590,14 @@ export type WebPubSubReplicasCreateOrUpdateInput =
 // Output Schema
 export const WebPubSubReplicasCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    sku: Schema.optional(Schema.suspend(() => ResourceSkuSchema)),
+    properties: Schema.optional(Schema.suspend(() => ReplicaPropertiesSchema)),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type WebPubSubReplicasCreateOrUpdateOutput =
   typeof WebPubSubReplicasCreateOrUpdateOutput.Type;
@@ -2051,23 +1667,14 @@ export type WebPubSubReplicasGetInput = typeof WebPubSubReplicasGetInput.Type;
 // Output Schema
 export const WebPubSubReplicasGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    sku: Schema.optional(Schema.suspend(() => ResourceSkuSchema)),
+    properties: Schema.optional(Schema.suspend(() => ReplicaPropertiesSchema)),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type WebPubSubReplicasGetOutput = typeof WebPubSubReplicasGetOutput.Type;
 
@@ -2091,33 +1698,7 @@ export const WebPubSubReplicaSharedPrivateLinkResourcesCreateOrUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        groupId: Schema.String,
-        privateLinkResourceId: Schema.String,
-        provisioningState: Schema.optional(
-          Schema.Literals([
-            "Unknown",
-            "Succeeded",
-            "Failed",
-            "Canceled",
-            "Running",
-            "Creating",
-            "Updating",
-            "Deleting",
-            "Moving",
-          ]),
-        ),
-        requestMessage: Schema.optional(Schema.String),
-        status: Schema.optional(
-          Schema.Literals([
-            "Pending",
-            "Approved",
-            "Rejected",
-            "Disconnected",
-            "Timeout",
-          ]),
-        ),
-      }),
+      Schema.suspend(() => SharedPrivateLinkResourcePropertiesSchema),
     ),
   }).pipe(
     T.Http({
@@ -2133,23 +1714,13 @@ export type WebPubSubReplicaSharedPrivateLinkResourcesCreateOrUpdateInput =
 // Output Schema
 export const WebPubSubReplicaSharedPrivateLinkResourcesCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => SharedPrivateLinkResourcePropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type WebPubSubReplicaSharedPrivateLinkResourcesCreateOrUpdateOutput =
   typeof WebPubSubReplicaSharedPrivateLinkResourcesCreateOrUpdateOutput.Type;
@@ -2186,23 +1757,13 @@ export type WebPubSubReplicaSharedPrivateLinkResourcesGetInput =
 // Output Schema
 export const WebPubSubReplicaSharedPrivateLinkResourcesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => SharedPrivateLinkResourcePropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type WebPubSubReplicaSharedPrivateLinkResourcesGetOutput =
   typeof WebPubSubReplicaSharedPrivateLinkResourcesGetOutput.Type;
@@ -2239,37 +1800,7 @@ export type WebPubSubReplicaSharedPrivateLinkResourcesListInput =
 export const WebPubSubReplicaSharedPrivateLinkResourcesListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.String),
-              createdByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              createdAt: Schema.optional(Schema.String),
-              lastModifiedBy: Schema.optional(Schema.String),
-              lastModifiedByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              lastModifiedAt: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => SharedPrivateLinkResourceSchema)),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -2306,39 +1837,7 @@ export type WebPubSubReplicasListInput = typeof WebPubSubReplicasListInput.Type;
 // Output Schema
 export const WebPubSubReplicasListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.String),
-              createdByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              createdAt: Schema.optional(Schema.String),
-              lastModifiedBy: Schema.optional(Schema.String),
-              lastModifiedByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              lastModifiedAt: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
-    ),
+    value: Schema.optional(Schema.Array(Schema.suspend(() => ReplicaSchema))),
     nextLink: Schema.optional(Schema.String),
   });
 export type WebPubSubReplicasListOutput =
@@ -2399,36 +1898,8 @@ export const WebPubSubReplicasUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    sku: Schema.optional(
-      Schema.Struct({
-        name: Schema.String,
-        tier: Schema.optional(
-          Schema.Literals(["Free", "Basic", "Standard", "Premium"]),
-        ),
-        size: Schema.optional(Schema.String),
-        family: Schema.optional(Schema.String),
-        capacity: Schema.optional(Schema.Number),
-      }),
-    ),
-    properties: Schema.optional(
-      Schema.Struct({
-        provisioningState: Schema.optional(
-          Schema.Literals([
-            "Unknown",
-            "Succeeded",
-            "Failed",
-            "Canceled",
-            "Running",
-            "Creating",
-            "Updating",
-            "Deleting",
-            "Moving",
-          ]),
-        ),
-        regionEndpointEnabled: Schema.optional(Schema.String),
-        resourceStopped: Schema.optional(Schema.String),
-      }),
-    ),
+    sku: Schema.optional(Schema.suspend(() => ResourceSkuSchema)),
+    properties: Schema.optional(Schema.suspend(() => ReplicaPropertiesSchema)),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     location: Schema.String,
   }).pipe(
@@ -2445,23 +1916,14 @@ export type WebPubSubReplicasUpdateInput =
 // Output Schema
 export const WebPubSubReplicasUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    sku: Schema.optional(Schema.suspend(() => ResourceSkuSchema)),
+    properties: Schema.optional(Schema.suspend(() => ReplicaPropertiesSchema)),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type WebPubSubReplicasUpdateOutput =
   typeof WebPubSubReplicasUpdateOutput.Type;
@@ -2516,33 +1978,7 @@ export const WebPubSubSharedPrivateLinkResourcesCreateOrUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        groupId: Schema.String,
-        privateLinkResourceId: Schema.String,
-        provisioningState: Schema.optional(
-          Schema.Literals([
-            "Unknown",
-            "Succeeded",
-            "Failed",
-            "Canceled",
-            "Running",
-            "Creating",
-            "Updating",
-            "Deleting",
-            "Moving",
-          ]),
-        ),
-        requestMessage: Schema.optional(Schema.String),
-        status: Schema.optional(
-          Schema.Literals([
-            "Pending",
-            "Approved",
-            "Rejected",
-            "Disconnected",
-            "Timeout",
-          ]),
-        ),
-      }),
+      Schema.suspend(() => SharedPrivateLinkResourcePropertiesSchema),
     ),
   }).pipe(
     T.Http({
@@ -2558,23 +1994,13 @@ export type WebPubSubSharedPrivateLinkResourcesCreateOrUpdateInput =
 // Output Schema
 export const WebPubSubSharedPrivateLinkResourcesCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => SharedPrivateLinkResourcePropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type WebPubSubSharedPrivateLinkResourcesCreateOrUpdateOutput =
   typeof WebPubSubSharedPrivateLinkResourcesCreateOrUpdateOutput.Type;
@@ -2645,23 +2071,13 @@ export type WebPubSubSharedPrivateLinkResourcesGetInput =
 // Output Schema
 export const WebPubSubSharedPrivateLinkResourcesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => SharedPrivateLinkResourcePropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type WebPubSubSharedPrivateLinkResourcesGetOutput =
   typeof WebPubSubSharedPrivateLinkResourcesGetOutput.Type;
@@ -2698,37 +2114,7 @@ export type WebPubSubSharedPrivateLinkResourcesListInput =
 export const WebPubSubSharedPrivateLinkResourcesListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.String),
-              createdByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              createdAt: Schema.optional(Schema.String),
-              lastModifiedBy: Schema.optional(Schema.String),
-              lastModifiedByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              lastModifiedAt: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => SharedPrivateLinkResourceSchema)),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -2752,228 +2138,10 @@ export const WebPubSubSharedPrivateLinkResourcesList =
 export const WebPubSubUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
-  sku: Schema.optional(
-    Schema.Struct({
-      name: Schema.String,
-      tier: Schema.optional(
-        Schema.Literals(["Free", "Basic", "Standard", "Premium"]),
-      ),
-      size: Schema.optional(Schema.String),
-      family: Schema.optional(Schema.String),
-      capacity: Schema.optional(Schema.Number),
-    }),
-  ),
-  properties: Schema.optional(
-    Schema.Struct({
-      provisioningState: Schema.optional(
-        Schema.Literals([
-          "Unknown",
-          "Succeeded",
-          "Failed",
-          "Canceled",
-          "Running",
-          "Creating",
-          "Updating",
-          "Deleting",
-          "Moving",
-        ]),
-      ),
-      externalIP: Schema.optional(Schema.String),
-      hostName: Schema.optional(Schema.String),
-      publicPort: Schema.optional(Schema.Number),
-      serverPort: Schema.optional(Schema.Number),
-      version: Schema.optional(Schema.String),
-      privateEndpointConnections: Schema.optional(
-        Schema.Array(
-          Schema.Struct({
-            id: Schema.optional(Schema.String),
-            name: Schema.optional(Schema.String),
-            type: Schema.optional(Schema.String),
-            systemData: Schema.optional(
-              Schema.Struct({
-                createdBy: Schema.optional(Schema.String),
-                createdByType: Schema.optional(
-                  Schema.Literals([
-                    "User",
-                    "Application",
-                    "ManagedIdentity",
-                    "Key",
-                  ]),
-                ),
-                createdAt: Schema.optional(Schema.String),
-                lastModifiedBy: Schema.optional(Schema.String),
-                lastModifiedByType: Schema.optional(
-                  Schema.Literals([
-                    "User",
-                    "Application",
-                    "ManagedIdentity",
-                    "Key",
-                  ]),
-                ),
-                lastModifiedAt: Schema.optional(Schema.String),
-              }),
-            ),
-          }),
-        ),
-      ),
-      sharedPrivateLinkResources: Schema.optional(
-        Schema.Array(
-          Schema.Struct({
-            id: Schema.optional(Schema.String),
-            name: Schema.optional(Schema.String),
-            type: Schema.optional(Schema.String),
-            systemData: Schema.optional(
-              Schema.Struct({
-                createdBy: Schema.optional(Schema.String),
-                createdByType: Schema.optional(
-                  Schema.Literals([
-                    "User",
-                    "Application",
-                    "ManagedIdentity",
-                    "Key",
-                  ]),
-                ),
-                createdAt: Schema.optional(Schema.String),
-                lastModifiedBy: Schema.optional(Schema.String),
-                lastModifiedByType: Schema.optional(
-                  Schema.Literals([
-                    "User",
-                    "Application",
-                    "ManagedIdentity",
-                    "Key",
-                  ]),
-                ),
-                lastModifiedAt: Schema.optional(Schema.String),
-              }),
-            ),
-          }),
-        ),
-      ),
-      tls: Schema.optional(
-        Schema.Struct({
-          clientCertEnabled: Schema.optional(Schema.Boolean),
-        }),
-      ),
-      hostNamePrefix: Schema.optional(Schema.String),
-      liveTraceConfiguration: Schema.optional(
-        Schema.Struct({
-          enabled: Schema.optional(Schema.String),
-          categories: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                name: Schema.optional(Schema.String),
-                enabled: Schema.optional(Schema.String),
-              }),
-            ),
-          ),
-        }),
-      ),
-      resourceLogConfiguration: Schema.optional(
-        Schema.Struct({
-          categories: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                name: Schema.optional(Schema.String),
-                enabled: Schema.optional(Schema.String),
-              }),
-            ),
-          ),
-        }),
-      ),
-      networkACLs: Schema.optional(
-        Schema.Struct({
-          defaultAction: Schema.optional(Schema.Literals(["Allow", "Deny"])),
-          publicNetwork: Schema.optional(
-            Schema.Struct({
-              allow: Schema.optional(
-                Schema.Array(
-                  Schema.Literals([
-                    "ClientConnection",
-                    "ServerConnection",
-                    "RESTAPI",
-                    "Trace",
-                  ]),
-                ),
-              ),
-              deny: Schema.optional(
-                Schema.Array(
-                  Schema.Literals([
-                    "ClientConnection",
-                    "ServerConnection",
-                    "RESTAPI",
-                    "Trace",
-                  ]),
-                ),
-              ),
-            }),
-          ),
-          privateEndpoints: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                allow: Schema.optional(
-                  Schema.Array(
-                    Schema.Literals([
-                      "ClientConnection",
-                      "ServerConnection",
-                      "RESTAPI",
-                      "Trace",
-                    ]),
-                  ),
-                ),
-                deny: Schema.optional(
-                  Schema.Array(
-                    Schema.Literals([
-                      "ClientConnection",
-                      "ServerConnection",
-                      "RESTAPI",
-                      "Trace",
-                    ]),
-                  ),
-                ),
-              }),
-            ),
-          ),
-          ipRules: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                value: Schema.optional(Schema.String),
-                action: Schema.optional(Schema.Literals(["Allow", "Deny"])),
-              }),
-            ),
-          ),
-        }),
-      ),
-      publicNetworkAccess: Schema.optional(Schema.String),
-      disableLocalAuth: Schema.optional(Schema.Boolean),
-      disableAadAuth: Schema.optional(Schema.Boolean),
-      regionEndpointEnabled: Schema.optional(Schema.String),
-      resourceStopped: Schema.optional(Schema.String),
-      socketIO: Schema.optional(
-        Schema.Struct({
-          serviceMode: Schema.optional(Schema.String),
-        }),
-      ),
-    }),
-  ),
-  kind: Schema.optional(Schema.Literals(["WebPubSub", "SocketIO"])),
-  identity: Schema.optional(
-    Schema.Struct({
-      type: Schema.optional(
-        Schema.Literals(["None", "SystemAssigned", "UserAssigned"]),
-      ),
-      userAssignedIdentities: Schema.optional(
-        Schema.Record(
-          Schema.String,
-          Schema.Struct({
-            principalId: Schema.optional(Schema.String),
-            clientId: Schema.optional(Schema.String),
-          }),
-        ),
-      ),
-      principalId: Schema.optional(Schema.String),
-      tenantId: Schema.optional(Schema.String),
-    }),
-  ),
+  sku: Schema.optional(Schema.suspend(() => ResourceSkuSchema)),
+  properties: Schema.optional(Schema.suspend(() => WebPubSubPropertiesSchema)),
+  kind: Schema.optional(Schema.suspend(() => ServiceKindSchema)),
+  identity: Schema.optional(Schema.suspend(() => ManagedIdentitySchema)),
   tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   location: Schema.String,
 }).pipe(
@@ -2988,23 +2156,16 @@ export type WebPubSubUpdateInput = typeof WebPubSubUpdateInput.Type;
 
 // Output Schema
 export const WebPubSubUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  sku: Schema.optional(Schema.suspend(() => ResourceSkuSchema)),
+  properties: Schema.optional(Schema.suspend(() => WebPubSubPropertiesSchema)),
+  kind: Schema.optional(Schema.suspend(() => ServiceKindSchema)),
+  identity: Schema.optional(Schema.suspend(() => ManagedIdentitySchema)),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  location: Schema.String,
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
-  systemData: Schema.optional(
-    Schema.Struct({
-      createdBy: Schema.optional(Schema.String),
-      createdByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      createdAt: Schema.optional(Schema.String),
-      lastModifiedBy: Schema.optional(Schema.String),
-      lastModifiedByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      lastModifiedAt: Schema.optional(Schema.String),
-    }),
-  ),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
 });
 export type WebPubSubUpdateOutput = typeof WebPubSubUpdateOutput.Type;
 

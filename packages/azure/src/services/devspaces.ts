@@ -8,6 +8,63 @@ import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
+// Shared schemas
+const ResourceProviderOperationDefinitionSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    display: Schema.optional(
+      Schema.suspend(() => ResourceProviderOperationDisplaySchema),
+    ),
+  });
+const ResourceProviderOperationDisplaySchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    provider: Schema.optional(Schema.String),
+    resource: Schema.optional(Schema.String),
+    operation: Schema.optional(Schema.String),
+    description: Schema.optional(Schema.String),
+  });
+const ControllerPropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  provisioningState: Schema.optional(
+    Schema.Literals([
+      "Succeeded",
+      "Failed",
+      "Canceled",
+      "Updating",
+      "Creating",
+      "Deleting",
+      "Deleted",
+    ]),
+  ),
+  hostSuffix: Schema.optional(Schema.String),
+  dataPlaneFqdn: Schema.optional(Schema.String),
+  targetContainerHostApiServerFqdn: Schema.optional(Schema.String),
+  targetContainerHostResourceId: Schema.String,
+  targetContainerHostCredentialsBase64: Schema.String,
+});
+const SkuSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.Literals(["S1"]),
+  tier: Schema.optional(Schema.Literals(["Standard"])),
+});
+const ControllerUpdateParametersPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    targetContainerHostCredentialsBase64: Schema.optional(Schema.String),
+  });
+const ControllerSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
+const ControllerConnectionDetailsSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    orchestratorSpecificConnectionDetails: Schema.optional(
+      Schema.suspend(() => OrchestratorSpecificConnectionDetailsSchema),
+    ),
+  });
+const OrchestratorSpecificConnectionDetailsSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    instanceType: Schema.optional(Schema.String),
+  });
+
 // Input Schema
 export const ContainerHostMappingsGetContainerHostMappingInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -47,28 +104,8 @@ export const ContainerHostMappingsGetContainerHostMapping =
 // Input Schema
 export const ControllersCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
-    properties: Schema.Struct({
-      provisioningState: Schema.optional(
-        Schema.Literals([
-          "Succeeded",
-          "Failed",
-          "Canceled",
-          "Updating",
-          "Creating",
-          "Deleting",
-          "Deleted",
-        ]),
-      ),
-      hostSuffix: Schema.optional(Schema.String),
-      dataPlaneFqdn: Schema.optional(Schema.String),
-      targetContainerHostApiServerFqdn: Schema.optional(Schema.String),
-      targetContainerHostResourceId: Schema.String,
-      targetContainerHostCredentialsBase64: Schema.String,
-    }),
-    sku: Schema.Struct({
-      name: Schema.Literals(["S1"]),
-      tier: Schema.optional(Schema.Literals(["Standard"])),
-    }),
+    properties: Schema.suspend(() => ControllerPropertiesSchema),
+    sku: Schema.suspend(() => SkuSchema),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     location: Schema.String,
   },
@@ -85,6 +122,10 @@ export type ControllersCreateInput = typeof ControllersCreateInput.Type;
 // Output Schema
 export const ControllersCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.suspend(() => ControllerPropertiesSchema),
+    sku: Schema.suspend(() => SkuSchema),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -142,6 +183,10 @@ export type ControllersGetInput = typeof ControllersGetInput.Type;
 
 // Output Schema
 export const ControllersGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.suspend(() => ControllerPropertiesSchema),
+  sku: Schema.suspend(() => SkuSchema),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  location: Schema.String,
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -172,15 +217,7 @@ export type ControllersListInput = typeof ControllersListInput.Type;
 
 // Output Schema
 export const ControllersListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  value: Schema.optional(
-    Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-      }),
-    ),
-  ),
+  value: Schema.optional(Schema.Array(Schema.suspend(() => ControllerSchema))),
   nextLink: Schema.optional(Schema.String),
 });
 export type ControllersListOutput = typeof ControllersListOutput.Type;
@@ -211,13 +248,7 @@ export type ControllersListByResourceGroupInput =
 export const ControllersListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => ControllerSchema)),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -253,15 +284,7 @@ export type ControllersListConnectionDetailsInput =
 export const ControllersListConnectionDetailsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     connectionDetailsList: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          orchestratorSpecificConnectionDetails: Schema.optional(
-            Schema.Struct({
-              instanceType: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => ControllerConnectionDetailsSchema)),
     ),
   });
 export type ControllersListConnectionDetailsOutput =
@@ -283,9 +306,7 @@ export const ControllersUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     tags: Schema.optional(Schema.Unknown),
     properties: Schema.optional(
-      Schema.Struct({
-        targetContainerHostCredentialsBase64: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(() => ControllerUpdateParametersPropertiesSchema),
     ),
   },
 ).pipe(
@@ -300,6 +321,10 @@ export type ControllersUpdateInput = typeof ControllersUpdateInput.Type;
 // Output Schema
 export const ControllersUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.suspend(() => ControllerPropertiesSchema),
+    sku: Schema.suspend(() => SkuSchema),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -332,17 +357,7 @@ export type OperationsListInput = typeof OperationsListInput.Type;
 export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
-      Schema.Struct({
-        name: Schema.optional(Schema.String),
-        display: Schema.optional(
-          Schema.Struct({
-            provider: Schema.optional(Schema.String),
-            resource: Schema.optional(Schema.String),
-            operation: Schema.optional(Schema.String),
-            description: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
+      Schema.suspend(() => ResourceProviderOperationDefinitionSchema),
     ),
   ),
   nextLink: Schema.optional(Schema.String),

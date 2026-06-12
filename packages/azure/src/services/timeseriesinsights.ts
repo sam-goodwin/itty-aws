@@ -8,17 +8,151 @@ import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
+// Shared schemas
+const OperationSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  display: Schema.optional(
+    Schema.Struct({
+      provider: Schema.optional(Schema.String),
+      resource: Schema.optional(Schema.String),
+      operation: Schema.optional(Schema.String),
+      description: Schema.optional(Schema.String),
+    }),
+  ),
+  origin: Schema.optional(Schema.String),
+  properties: Schema.optional(Schema.suspend(() => OperationPropertiesSchema)),
+});
+const OperationPropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  serviceSpecification: Schema.optional(
+    Schema.suspend(() => ServiceSpecificationSchema),
+  ),
+});
+const ServiceSpecificationSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  metricSpecifications: Schema.optional(
+    Schema.Array(Schema.suspend(() => MetricSpecificationSchema)),
+  ),
+  logSpecifications: Schema.optional(
+    Schema.Array(Schema.suspend(() => LogSpecificationSchema)),
+  ),
+});
+const MetricSpecificationSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  displayName: Schema.optional(Schema.String),
+  displayDescription: Schema.optional(Schema.String),
+  unit: Schema.optional(Schema.String),
+  dimensions: Schema.optional(
+    Schema.Array(Schema.suspend(() => DimensionSchema)),
+  ),
+  aggregationType: Schema.optional(Schema.String),
+  availabilities: Schema.optional(
+    Schema.Array(Schema.suspend(() => MetricAvailabilitySchema)),
+  ),
+  category: Schema.optional(Schema.String),
+  resourceIdDimensionNameOverride: Schema.optional(Schema.String),
+});
+const DimensionSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  displayName: Schema.optional(Schema.String),
+});
+const MetricAvailabilitySchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  timeGrain: Schema.optional(Schema.String),
+  blobDuration: Schema.optional(Schema.String),
+});
+const LogSpecificationSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  displayName: Schema.optional(Schema.String),
+});
+const SkuSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.Literals(["S1", "S2", "P1", "L1"]),
+  capacity: Schema.Number,
+});
+const EnvironmentResourceSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
+const LocalTimestampSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  format: Schema.optional(Schema.Literals(["Embedded"])),
+  timeZoneOffset: Schema.optional(
+    Schema.Struct({
+      propertyName: Schema.optional(Schema.String),
+    }),
+  ),
+});
+const EventSourceResourceSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
+const ReferenceDataSetResourcePropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    keyProperties: Schema.Array(
+      Schema.suspend(() => ReferenceDataSetKeyPropertySchema),
+    ),
+    dataStringComparisonBehavior: Schema.optional(
+      Schema.Literals(["Ordinal", "OrdinalIgnoreCase"]),
+    ),
+    provisioningState: Schema.optional(
+      Schema.suspend(() => ProvisioningStateSchema),
+    ),
+    creationTime: Schema.optional(Schema.String),
+  });
+const ReferenceDataSetKeyPropertySchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(
+      Schema.Literals(["String", "Double", "Bool", "DateTime"]),
+    ),
+  });
+const ProvisioningStateSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Accepted",
+  "Creating",
+  "Updating",
+  "Succeeded",
+  "Failed",
+  "Deleting",
+]);
+const ReferenceDataSetCreationPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    keyProperties: Schema.Array(
+      Schema.suspend(() => ReferenceDataSetKeyPropertySchema),
+    ),
+    dataStringComparisonBehavior: Schema.optional(
+      Schema.Literals(["Ordinal", "OrdinalIgnoreCase"]),
+    ),
+  });
+const ReferenceDataSetResourceSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
+const AccessPolicyResourcePropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    principalObjectId: Schema.optional(Schema.String),
+    description: Schema.optional(Schema.String),
+    roles: Schema.optional(
+      Schema.Array(Schema.Literals(["Reader", "Contributor"])),
+    ),
+  });
+const AccessPolicyMutablePropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    description: Schema.optional(Schema.String),
+    roles: Schema.optional(
+      Schema.Array(Schema.Literals(["Reader", "Contributor"])),
+    ),
+  });
+const AccessPolicyResourceSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
+
 // Input Schema
 export const AccessPoliciesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     accessPolicyName: Schema.String.pipe(T.PathParam()),
-    properties: Schema.Struct({
-      principalObjectId: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      roles: Schema.optional(
-        Schema.Array(Schema.Literals(["Reader", "Contributor"])),
-      ),
-    }),
+    properties: Schema.suspend(() => AccessPolicyResourcePropertiesSchema),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -32,6 +166,9 @@ export type AccessPoliciesCreateOrUpdateInput =
 // Output Schema
 export const AccessPoliciesCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => AccessPolicyResourcePropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -91,6 +228,9 @@ export type AccessPoliciesGetInput = typeof AccessPoliciesGetInput.Type;
 // Output Schema
 export const AccessPoliciesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => AccessPolicyResourcePropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -121,13 +261,7 @@ export type AccessPoliciesListByEnvironmentInput =
 export const AccessPoliciesListByEnvironmentOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => AccessPolicyResourceSchema)),
     ),
   });
 export type AccessPoliciesListByEnvironmentOutput =
@@ -146,12 +280,7 @@ export const AccessPoliciesListByEnvironment =
 export const AccessPoliciesUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     properties: Schema.optional(
-      Schema.Struct({
-        description: Schema.optional(Schema.String),
-        roles: Schema.optional(
-          Schema.Array(Schema.Literals(["Reader", "Contributor"])),
-        ),
-      }),
+      Schema.suspend(() => AccessPolicyMutablePropertiesSchema),
     ),
   }).pipe(
     T.Http({
@@ -165,6 +294,9 @@ export type AccessPoliciesUpdateInput = typeof AccessPoliciesUpdateInput.Type;
 // Output Schema
 export const AccessPoliciesUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => AccessPolicyResourcePropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -186,10 +318,7 @@ export const EnvironmentsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     environmentName: Schema.String.pipe(T.PathParam()),
     kind: Schema.Literals(["Gen1", "Gen2"]),
-    sku: Schema.Struct({
-      name: Schema.Literals(["S1", "S2", "P1", "L1"]),
-      capacity: Schema.Number,
-    }),
+    sku: Schema.suspend(() => SkuSchema),
     location: Schema.String,
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
@@ -206,6 +335,10 @@ export type EnvironmentsCreateOrUpdateInput =
 // Output Schema
 export const EnvironmentsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    sku: Schema.suspend(() => SkuSchema),
+    kind: Schema.Literals(["Gen1", "Gen2"]),
+    location: Schema.String,
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -262,6 +395,10 @@ export type EnvironmentsGetInput = typeof EnvironmentsGetInput.Type;
 
 // Output Schema
 export const EnvironmentsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  sku: Schema.suspend(() => SkuSchema),
+  kind: Schema.Literals(["Gen1", "Gen2"]),
+  location: Schema.String,
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -292,13 +429,7 @@ export type EnvironmentsListByResourceGroupInput =
 export const EnvironmentsListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => EnvironmentResourceSchema)),
     ),
   });
 export type EnvironmentsListByResourceGroupOutput =
@@ -329,13 +460,7 @@ export type EnvironmentsListBySubscriptionInput =
 export const EnvironmentsListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => EnvironmentResourceSchema)),
     ),
   });
 export type EnvironmentsListBySubscriptionOutput =
@@ -368,6 +493,10 @@ export type EnvironmentsUpdateInput = typeof EnvironmentsUpdateInput.Type;
 // Output Schema
 export const EnvironmentsUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    sku: Schema.suspend(() => SkuSchema),
+    kind: Schema.Literals(["Gen1", "Gen2"]),
+    location: Schema.String,
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -387,16 +516,7 @@ export const EventSourcesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     eventSourceName: Schema.String.pipe(T.PathParam()),
     kind: Schema.Literals(["Microsoft.EventHub", "Microsoft.IoTHub"]),
-    localTimestamp: Schema.optional(
-      Schema.Struct({
-        format: Schema.optional(Schema.Literals(["Embedded"])),
-        timeZoneOffset: Schema.optional(
-          Schema.Struct({
-            propertyName: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    localTimestamp: Schema.optional(Schema.suspend(() => LocalTimestampSchema)),
     location: Schema.String,
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
@@ -412,6 +532,9 @@ export type EventSourcesCreateOrUpdateInput =
 // Output Schema
 export const EventSourcesCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    kind: Schema.Literals(["Microsoft.EventHub", "Microsoft.IoTHub"]),
+    location: Schema.String,
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -468,6 +591,9 @@ export type EventSourcesGetInput = typeof EventSourcesGetInput.Type;
 
 // Output Schema
 export const EventSourcesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  kind: Schema.Literals(["Microsoft.EventHub", "Microsoft.IoTHub"]),
+  location: Schema.String,
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -498,13 +624,7 @@ export type EventSourcesListByEnvironmentInput =
 export const EventSourcesListByEnvironmentOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => EventSourceResourceSchema)),
     ),
   });
 export type EventSourcesListByEnvironmentOutput =
@@ -536,6 +656,9 @@ export type EventSourcesUpdateInput = typeof EventSourcesUpdateInput.Type;
 // Output Schema
 export const EventSourcesUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    kind: Schema.Literals(["Microsoft.EventHub", "Microsoft.IoTHub"]),
+    location: Schema.String,
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -564,69 +687,7 @@ export type OperationsListInput = typeof OperationsListInput.Type;
 
 // Output Schema
 export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  value: Schema.optional(
-    Schema.Array(
-      Schema.Struct({
-        name: Schema.optional(Schema.String),
-        display: Schema.optional(
-          Schema.Struct({
-            provider: Schema.optional(Schema.String),
-            resource: Schema.optional(Schema.String),
-            operation: Schema.optional(Schema.String),
-            description: Schema.optional(Schema.String),
-          }),
-        ),
-        origin: Schema.optional(Schema.String),
-        properties: Schema.optional(
-          Schema.Struct({
-            serviceSpecification: Schema.optional(
-              Schema.Struct({
-                metricSpecifications: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      name: Schema.optional(Schema.String),
-                      displayName: Schema.optional(Schema.String),
-                      displayDescription: Schema.optional(Schema.String),
-                      unit: Schema.optional(Schema.String),
-                      dimensions: Schema.optional(
-                        Schema.Array(
-                          Schema.Struct({
-                            name: Schema.optional(Schema.String),
-                            displayName: Schema.optional(Schema.String),
-                          }),
-                        ),
-                      ),
-                      aggregationType: Schema.optional(Schema.String),
-                      availabilities: Schema.optional(
-                        Schema.Array(
-                          Schema.Struct({
-                            timeGrain: Schema.optional(Schema.String),
-                            blobDuration: Schema.optional(Schema.String),
-                          }),
-                        ),
-                      ),
-                      category: Schema.optional(Schema.String),
-                      resourceIdDimensionNameOverride: Schema.optional(
-                        Schema.String,
-                      ),
-                    }),
-                  ),
-                ),
-                logSpecifications: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      name: Schema.optional(Schema.String),
-                      displayName: Schema.optional(Schema.String),
-                    }),
-                  ),
-                ),
-              }),
-            ),
-          }),
-        ),
-      }),
-    ),
-  ),
+  value: Schema.optional(Schema.Array(Schema.suspend(() => OperationSchema))),
   nextLink: Schema.optional(Schema.String),
 });
 export type OperationsListOutput = typeof OperationsListOutput.Type;
@@ -643,19 +704,7 @@ export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const ReferenceDataSetsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     referenceDataSetName: Schema.String.pipe(T.PathParam()),
-    properties: Schema.Struct({
-      keyProperties: Schema.Array(
-        Schema.Struct({
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(
-            Schema.Literals(["String", "Double", "Bool", "DateTime"]),
-          ),
-        }),
-      ),
-      dataStringComparisonBehavior: Schema.optional(
-        Schema.Literals(["Ordinal", "OrdinalIgnoreCase"]),
-      ),
-    }),
+    properties: Schema.suspend(() => ReferenceDataSetCreationPropertiesSchema),
     location: Schema.String,
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
@@ -671,6 +720,11 @@ export type ReferenceDataSetsCreateOrUpdateInput =
 // Output Schema
 export const ReferenceDataSetsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => ReferenceDataSetResourcePropertiesSchema),
+    ),
+    location: Schema.String,
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -731,6 +785,11 @@ export type ReferenceDataSetsGetInput = typeof ReferenceDataSetsGetInput.Type;
 // Output Schema
 export const ReferenceDataSetsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => ReferenceDataSetResourcePropertiesSchema),
+    ),
+    location: Schema.String,
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -763,13 +822,7 @@ export type ReferenceDataSetsListByEnvironmentInput =
 export const ReferenceDataSetsListByEnvironmentOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => ReferenceDataSetResourceSchema)),
     ),
   });
 export type ReferenceDataSetsListByEnvironmentOutput =
@@ -801,6 +854,11 @@ export type ReferenceDataSetsUpdateInput =
 // Output Schema
 export const ReferenceDataSetsUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => ReferenceDataSetResourcePropertiesSchema),
+    ),
+    location: Schema.String,
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),

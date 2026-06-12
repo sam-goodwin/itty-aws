@@ -8,6 +8,75 @@ import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
+// Shared schemas
+const OperationSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  display: Schema.optional(
+    Schema.Struct({
+      provider: Schema.optional(Schema.String),
+      resource: Schema.optional(Schema.String),
+      operation: Schema.optional(Schema.String),
+      description: Schema.optional(Schema.String),
+    }),
+  ),
+});
+const WorkspacePropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  userStorageAccountId: Schema.String,
+  ownerEmail: Schema.String,
+  workspaceType: Schema.optional(
+    Schema.Literals([
+      "Production",
+      "Free",
+      "Anonymous",
+      "PaidStandard",
+      "PaidPremium",
+    ]),
+  ),
+  workspaceState: Schema.optional(
+    Schema.Literals([
+      "Deleted",
+      "Enabled",
+      "Disabled",
+      "Migrated",
+      "Updated",
+      "Registered",
+      "Unregistered",
+    ]),
+  ),
+  workspaceId: Schema.optional(Schema.String),
+  creationTime: Schema.optional(Schema.String),
+  studioEndpoint: Schema.optional(Schema.String),
+  keyVaultIdentifierId: Schema.optional(Schema.String),
+});
+const SkuSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  tier: Schema.optional(Schema.String),
+});
+const WorkspacePropertiesUpdateParametersSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    workspaceState: Schema.optional(
+      Schema.Literals([
+        "Deleted",
+        "Enabled",
+        "Disabled",
+        "Migrated",
+        "Updated",
+        "Registered",
+        "Unregistered",
+      ]),
+    ),
+    keyVaultIdentifierId: Schema.optional(Schema.String),
+    sku: Schema.optional(Schema.suspend(() => SkuSchema)),
+  });
+const WorkspaceSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  location: Schema.String,
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  sku: Schema.optional(Schema.suspend(() => SkuSchema)),
+});
+
 // Input Schema
 export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {},
@@ -22,21 +91,7 @@ export type OperationsListInput = typeof OperationsListInput.Type;
 
 // Output Schema
 export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  value: Schema.optional(
-    Schema.Array(
-      Schema.Struct({
-        name: Schema.optional(Schema.String),
-        display: Schema.optional(
-          Schema.Struct({
-            provider: Schema.optional(Schema.String),
-            resource: Schema.optional(Schema.String),
-            operation: Schema.optional(Schema.String),
-            description: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
-  ),
+  value: Schema.optional(Schema.Array(Schema.suspend(() => OperationSchema))),
 });
 export type OperationsListOutput = typeof OperationsListOutput.Type;
 
@@ -52,46 +107,14 @@ export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const WorkspacesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     properties: Schema.optional(
-      Schema.Struct({
-        userStorageAccountId: Schema.String,
-        ownerEmail: Schema.String,
-        workspaceType: Schema.optional(
-          Schema.Literals([
-            "Production",
-            "Free",
-            "Anonymous",
-            "PaidStandard",
-            "PaidPremium",
-          ]),
-        ),
-        workspaceState: Schema.optional(
-          Schema.Literals([
-            "Deleted",
-            "Enabled",
-            "Disabled",
-            "Migrated",
-            "Updated",
-            "Registered",
-            "Unregistered",
-          ]),
-        ),
-        workspaceId: Schema.optional(Schema.String),
-        creationTime: Schema.optional(Schema.String),
-        studioEndpoint: Schema.optional(Schema.String),
-        keyVaultIdentifierId: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(() => WorkspacePropertiesSchema),
     ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
     location: Schema.String,
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    sku: Schema.optional(
-      Schema.Struct({
-        name: Schema.optional(Schema.String),
-        tier: Schema.optional(Schema.String),
-      }),
-    ),
+    sku: Schema.optional(Schema.suspend(() => SkuSchema)),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -105,17 +128,15 @@ export type WorkspacesCreateOrUpdateInput =
 // Output Schema
 export const WorkspacesCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => WorkspacePropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
     location: Schema.String,
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    sku: Schema.optional(
-      Schema.Struct({
-        name: Schema.optional(Schema.String),
-        tier: Schema.optional(Schema.String),
-      }),
-    ),
+    sku: Schema.optional(Schema.suspend(() => SkuSchema)),
   });
 export type WorkspacesCreateOrUpdateOutput =
   typeof WorkspacesCreateOrUpdateOutput.Type;
@@ -168,17 +189,13 @@ export type WorkspacesGetInput = typeof WorkspacesGetInput.Type;
 
 // Output Schema
 export const WorkspacesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.optional(Schema.suspend(() => WorkspacePropertiesSchema)),
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
   location: Schema.String,
   tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-  sku: Schema.optional(
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      tier: Schema.optional(Schema.String),
-    }),
-  ),
+  sku: Schema.optional(Schema.suspend(() => SkuSchema)),
 });
 export type WorkspacesGetOutput = typeof WorkspacesGetOutput.Type;
 
@@ -204,23 +221,7 @@ export type WorkspacesListInput = typeof WorkspacesListInput.Type;
 
 // Output Schema
 export const WorkspacesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  value: Schema.optional(
-    Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        location: Schema.String,
-        tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        sku: Schema.optional(
-          Schema.Struct({
-            name: Schema.optional(Schema.String),
-            tier: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
-  ),
+  value: Schema.optional(Schema.Array(Schema.suspend(() => WorkspaceSchema))),
   nextLink: Schema.optional(Schema.String),
 });
 export type WorkspacesListOutput = typeof WorkspacesListOutput.Type;
@@ -248,23 +249,7 @@ export type WorkspacesListByResourceGroupInput =
 // Output Schema
 export const WorkspacesListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          location: Schema.String,
-          tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-          sku: Schema.optional(
-            Schema.Struct({
-              name: Schema.optional(Schema.String),
-              tier: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
-    ),
+    value: Schema.optional(Schema.Array(Schema.suspend(() => WorkspaceSchema))),
     nextLink: Schema.optional(Schema.String),
   });
 export type WorkspacesListByResourceGroupOutput =
@@ -342,26 +327,7 @@ export const WorkspacesResyncStorageKeys = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const WorkspacesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   properties: Schema.optional(
-    Schema.Struct({
-      workspaceState: Schema.optional(
-        Schema.Literals([
-          "Deleted",
-          "Enabled",
-          "Disabled",
-          "Migrated",
-          "Updated",
-          "Registered",
-          "Unregistered",
-        ]),
-      ),
-      keyVaultIdentifierId: Schema.optional(Schema.String),
-      sku: Schema.optional(
-        Schema.Struct({
-          name: Schema.optional(Schema.String),
-          tier: Schema.optional(Schema.String),
-        }),
-      ),
-    }),
+    Schema.suspend(() => WorkspacePropertiesUpdateParametersSchema),
   ),
 }).pipe(
   T.Http({
@@ -375,17 +341,15 @@ export type WorkspacesUpdateInput = typeof WorkspacesUpdateInput.Type;
 // Output Schema
 export const WorkspacesUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
+    properties: Schema.optional(
+      Schema.suspend(() => WorkspacePropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
     location: Schema.String,
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    sku: Schema.optional(
-      Schema.Struct({
-        name: Schema.optional(Schema.String),
-        tier: Schema.optional(Schema.String),
-      }),
-    ),
+    sku: Schema.optional(Schema.suspend(() => SkuSchema)),
   },
 );
 export type WorkspacesUpdateOutput = typeof WorkspacesUpdateOutput.Type;

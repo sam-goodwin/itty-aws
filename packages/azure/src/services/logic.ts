@@ -7,7 +7,1674 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
-import { SensitiveString } from "../sensitive.ts";
+import { SensitiveOutputString } from "../sensitive.ts";
+
+// Shared schemas
+const WorkflowSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  location: Schema.optional(Schema.String),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+});
+const WorkflowPropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  provisioningState: Schema.optional(
+    Schema.suspend(() => WorkflowProvisioningStateSchema),
+  ),
+  createdTime: Schema.optional(Schema.String),
+  changedTime: Schema.optional(Schema.String),
+  state: Schema.optional(Schema.suspend(() => WorkflowStateSchema)),
+  version: Schema.optional(Schema.String),
+  accessEndpoint: Schema.optional(Schema.String),
+  endpointsConfiguration: Schema.optional(
+    Schema.suspend(() => FlowEndpointsConfigurationSchema),
+  ),
+  accessControl: Schema.optional(
+    Schema.suspend(() => FlowAccessControlConfigurationSchema),
+  ),
+  sku: Schema.optional(Schema.suspend(() => SkuSchema)),
+  integrationAccount: Schema.optional(
+    Schema.suspend(() => ResourceReferenceSchema),
+  ),
+  integrationServiceEnvironment: Schema.optional(
+    Schema.suspend(() => ResourceReferenceSchema),
+  ),
+  definition: Schema.optional(Schema.suspend(() => ObjectSchema)),
+  parameters: Schema.optional(
+    Schema.Record(
+      Schema.String,
+      Schema.suspend(() => WorkflowParameterSchema),
+    ),
+  ),
+});
+const WorkflowProvisioningStateSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+    "NotSpecified",
+    "Accepted",
+    "Running",
+    "Ready",
+    "Creating",
+    "Created",
+    "Deleting",
+    "Deleted",
+    "Canceled",
+    "Failed",
+    "Succeeded",
+    "Moving",
+    "Updating",
+    "Registering",
+    "Registered",
+    "Unregistering",
+    "Unregistered",
+    "Completed",
+    "Renewing",
+    "Pending",
+    "Waiting",
+    "InProgress",
+  ]);
+const WorkflowStateSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "NotSpecified",
+  "Completed",
+  "Enabled",
+  "Disabled",
+  "Deleted",
+  "Suspended",
+]);
+const FlowEndpointsConfigurationSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    workflow: Schema.optional(Schema.suspend(() => FlowEndpointsSchema)),
+    connector: Schema.optional(Schema.suspend(() => FlowEndpointsSchema)),
+  });
+const FlowEndpointsSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  outgoingIpAddresses: Schema.optional(
+    Schema.Array(Schema.suspend(() => IpAddressSchema)),
+  ),
+  accessEndpointIpAddresses: Schema.optional(
+    Schema.Array(Schema.suspend(() => IpAddressSchema)),
+  ),
+});
+const IpAddressSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  address: Schema.optional(Schema.String),
+});
+const FlowAccessControlConfigurationSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    triggers: Schema.optional(
+      Schema.suspend(() => FlowAccessControlConfigurationPolicySchema),
+    ),
+    contents: Schema.optional(
+      Schema.suspend(() => FlowAccessControlConfigurationPolicySchema),
+    ),
+    actions: Schema.optional(
+      Schema.suspend(() => FlowAccessControlConfigurationPolicySchema),
+    ),
+    workflowManagement: Schema.optional(
+      Schema.suspend(() => FlowAccessControlConfigurationPolicySchema),
+    ),
+  });
+const FlowAccessControlConfigurationPolicySchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    allowedCallerIpAddresses: Schema.optional(
+      Schema.Array(Schema.suspend(() => IpAddressRangeSchema)),
+    ),
+    openAuthenticationPolicies: Schema.optional(
+      Schema.suspend(() => OpenAuthenticationAccessPoliciesSchema),
+    ),
+  });
+const IpAddressRangeSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  addressRange: Schema.optional(Schema.String),
+});
+const OpenAuthenticationAccessPoliciesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    policies: Schema.optional(
+      Schema.Record(
+        Schema.String,
+        Schema.suspend(() => OpenAuthenticationAccessPolicySchema),
+      ),
+    ),
+  });
+const OpenAuthenticationAccessPolicySchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    type: Schema.optional(
+      Schema.suspend(() => OpenAuthenticationProviderTypeSchema),
+    ),
+    claims: Schema.optional(
+      Schema.Array(Schema.suspend(() => OpenAuthenticationPolicyClaimSchema)),
+    ),
+  });
+const OpenAuthenticationProviderTypeSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Literals(["AAD"]);
+const OpenAuthenticationPolicyClaimSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    value: Schema.optional(Schema.String),
+  });
+const SkuSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.suspend(() => SkuNameSchema),
+  plan: Schema.optional(Schema.suspend(() => ResourceReferenceSchema)),
+});
+const SkuNameSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "NotSpecified",
+  "Free",
+  "Shared",
+  "Basic",
+  "Standard",
+  "Premium",
+]);
+const ResourceReferenceSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
+const ObjectSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+const WorkflowParameterSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  type: Schema.optional(Schema.suspend(() => ParameterTypeSchema)),
+  value: Schema.optional(Schema.suspend(() => ObjectSchema)),
+  metadata: Schema.optional(Schema.suspend(() => ObjectSchema)),
+  description: Schema.optional(Schema.String),
+});
+const ParameterTypeSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "NotSpecified",
+  "String",
+  "SecureString",
+  "Int",
+  "Float",
+  "Bool",
+  "Array",
+  "Object",
+  "SecureObject",
+]);
+const ManagedServiceIdentitySchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  type: Schema.Literals(["SystemAssigned", "UserAssigned", "None"]),
+  tenantId: Schema.optional(Schema.String),
+  principalId: Schema.optional(Schema.String),
+  userAssignedIdentities: Schema.optional(
+    Schema.Record(
+      Schema.String,
+      Schema.suspend(() => userAssignedIdentitySchema),
+    ),
+  ),
+});
+const userAssignedIdentitySchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  principalId: Schema.optional(Schema.String),
+  clientId: Schema.optional(Schema.String),
+});
+const KeyTypeSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "NotSpecified",
+  "Primary",
+  "Secondary",
+]);
+const WorkflowTriggerListCallbackUrlQueriesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    "api-version": Schema.optional(Schema.String),
+    sp: Schema.optional(Schema.String),
+    sv: Schema.optional(Schema.String),
+    sig: Schema.optional(Schema.String),
+    se: Schema.optional(Schema.String),
+  });
+const WorkflowVersionSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  location: Schema.optional(Schema.String),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+});
+const WorkflowVersionPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    provisioningState: Schema.optional(
+      Schema.suspend(() => WorkflowProvisioningStateSchema),
+    ),
+    createdTime: Schema.optional(Schema.String),
+    changedTime: Schema.optional(Schema.String),
+    state: Schema.optional(Schema.suspend(() => WorkflowStateSchema)),
+    version: Schema.optional(Schema.String),
+    accessEndpoint: Schema.optional(Schema.String),
+    endpointsConfiguration: Schema.optional(
+      Schema.suspend(() => FlowEndpointsConfigurationSchema),
+    ),
+    accessControl: Schema.optional(
+      Schema.suspend(() => FlowAccessControlConfigurationSchema),
+    ),
+    sku: Schema.optional(Schema.suspend(() => SkuSchema)),
+    integrationAccount: Schema.optional(
+      Schema.suspend(() => ResourceReferenceSchema),
+    ),
+    definition: Schema.optional(Schema.suspend(() => ObjectSchema)),
+    parameters: Schema.optional(
+      Schema.Record(
+        Schema.String,
+        Schema.suspend(() => WorkflowParameterSchema),
+      ),
+    ),
+  });
+const WorkflowTriggerSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+});
+const WorkflowTriggerPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    provisioningState: Schema.optional(
+      Schema.suspend(() => WorkflowTriggerProvisioningStateSchema),
+    ),
+    createdTime: Schema.optional(Schema.String),
+    changedTime: Schema.optional(Schema.String),
+    state: Schema.optional(Schema.suspend(() => WorkflowStateSchema)),
+    status: Schema.optional(Schema.suspend(() => WorkflowStatusSchema)),
+    lastExecutionTime: Schema.optional(Schema.String),
+    nextExecutionTime: Schema.optional(Schema.String),
+    recurrence: Schema.optional(
+      Schema.suspend(() => WorkflowTriggerRecurrenceSchema),
+    ),
+    workflow: Schema.optional(Schema.suspend(() => ResourceReferenceSchema)),
+  });
+const WorkflowTriggerProvisioningStateSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+    "NotSpecified",
+    "Accepted",
+    "Running",
+    "Ready",
+    "Creating",
+    "Created",
+    "Deleting",
+    "Deleted",
+    "Canceled",
+    "Failed",
+    "Succeeded",
+    "Moving",
+    "Updating",
+    "Registering",
+    "Registered",
+    "Unregistering",
+    "Unregistered",
+    "Completed",
+  ]);
+const WorkflowStatusSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "NotSpecified",
+  "Paused",
+  "Running",
+  "Waiting",
+  "Succeeded",
+  "Skipped",
+  "Suspended",
+  "Cancelled",
+  "Failed",
+  "Faulted",
+  "TimedOut",
+  "Aborted",
+  "Ignored",
+]);
+const WorkflowTriggerRecurrenceSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    frequency: Schema.optional(Schema.suspend(() => RecurrenceFrequencySchema)),
+    interval: Schema.optional(Schema.Number),
+    startTime: Schema.optional(Schema.String),
+    endTime: Schema.optional(Schema.String),
+    timeZone: Schema.optional(Schema.String),
+    schedule: Schema.optional(Schema.suspend(() => RecurrenceScheduleSchema)),
+  });
+const RecurrenceFrequencySchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "NotSpecified",
+  "Second",
+  "Minute",
+  "Hour",
+  "Day",
+  "Week",
+  "Month",
+  "Year",
+]);
+const RecurrenceScheduleSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  minutes: Schema.optional(Schema.Array(Schema.Number)),
+  hours: Schema.optional(Schema.Array(Schema.Number)),
+  weekDays: Schema.optional(
+    Schema.Array(
+      Schema.Literals([
+        "Sunday",
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday",
+      ]),
+    ),
+  ),
+  monthDays: Schema.optional(Schema.Array(Schema.Number)),
+  monthlyOccurrences: Schema.optional(
+    Schema.Array(Schema.suspend(() => RecurrenceScheduleOccurrenceSchema)),
+  ),
+});
+const RecurrenceScheduleOccurrenceSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    day: Schema.optional(Schema.suspend(() => DayOfWeekSchema)),
+    occurrence: Schema.optional(Schema.Number),
+  });
+const DayOfWeekSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Sunday",
+  "Monday",
+  "Tuesday",
+  "Wednesday",
+  "Thursday",
+  "Friday",
+  "Saturday",
+]);
+const WorkflowTriggerReferenceSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
+const WorkflowTriggerHistorySchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+});
+const WorkflowTriggerHistoryPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    startTime: Schema.optional(Schema.String),
+    endTime: Schema.optional(Schema.String),
+    scheduledTime: Schema.optional(Schema.String),
+    status: Schema.optional(Schema.suspend(() => WorkflowStatusSchema)),
+    code: Schema.optional(Schema.String),
+    error: Schema.optional(Schema.suspend(() => ObjectSchema)),
+    trackingId: Schema.optional(Schema.String),
+    correlation: Schema.optional(Schema.suspend(() => CorrelationSchema)),
+    inputsLink: Schema.optional(Schema.suspend(() => ContentLinkSchema)),
+    outputsLink: Schema.optional(Schema.suspend(() => ContentLinkSchema)),
+    fired: Schema.optional(Schema.Boolean),
+    run: Schema.optional(Schema.suspend(() => ResourceReferenceSchema)),
+  });
+const CorrelationSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  clientTrackingId: Schema.optional(Schema.String),
+});
+const ContentLinkSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  uri: Schema.optional(Schema.String),
+  contentVersion: Schema.optional(Schema.String),
+  contentSize: Schema.optional(Schema.Number),
+  contentHash: Schema.optional(Schema.suspend(() => ContentHashSchema)),
+  metadata: Schema.optional(Schema.suspend(() => ObjectSchema)),
+});
+const ContentHashSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  algorithm: Schema.optional(Schema.String),
+  value: Schema.optional(Schema.String),
+});
+const WorkflowRunSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+});
+const WorkflowRunPropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  waitEndTime: Schema.optional(Schema.String),
+  startTime: Schema.optional(Schema.String),
+  endTime: Schema.optional(Schema.String),
+  status: Schema.optional(Schema.suspend(() => WorkflowStatusSchema)),
+  code: Schema.optional(Schema.String),
+  error: Schema.optional(Schema.suspend(() => ObjectSchema)),
+  correlationId: Schema.optional(Schema.String),
+  correlation: Schema.optional(Schema.suspend(() => CorrelationSchema)),
+  workflow: Schema.optional(Schema.suspend(() => ResourceReferenceSchema)),
+  trigger: Schema.optional(Schema.suspend(() => WorkflowRunTriggerSchema)),
+  outputs: Schema.optional(
+    Schema.Record(
+      Schema.String,
+      Schema.suspend(() => WorkflowOutputParameterSchema),
+    ),
+  ),
+  response: Schema.optional(Schema.suspend(() => WorkflowRunTriggerSchema)),
+});
+const WorkflowRunTriggerSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  inputs: Schema.optional(Schema.suspend(() => ObjectSchema)),
+  inputsLink: Schema.optional(Schema.suspend(() => ContentLinkSchema)),
+  outputs: Schema.optional(Schema.suspend(() => ObjectSchema)),
+  outputsLink: Schema.optional(Schema.suspend(() => ContentLinkSchema)),
+  scheduledTime: Schema.optional(Schema.String),
+  startTime: Schema.optional(Schema.String),
+  endTime: Schema.optional(Schema.String),
+  trackingId: Schema.optional(Schema.String),
+  correlation: Schema.optional(Schema.suspend(() => CorrelationSchema)),
+  code: Schema.optional(Schema.String),
+  status: Schema.optional(Schema.suspend(() => WorkflowStatusSchema)),
+  error: Schema.optional(Schema.suspend(() => ObjectSchema)),
+  trackedProperties: Schema.optional(Schema.suspend(() => ObjectSchema)),
+});
+const WorkflowOutputParameterSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    type: Schema.optional(Schema.suspend(() => ParameterTypeSchema)),
+    value: Schema.optional(Schema.suspend(() => ObjectSchema)),
+    metadata: Schema.optional(Schema.suspend(() => ObjectSchema)),
+    description: Schema.optional(Schema.String),
+  },
+);
+const WorkflowRunActionSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+});
+const WorkflowRunActionPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    startTime: Schema.optional(Schema.String),
+    endTime: Schema.optional(Schema.String),
+    status: Schema.optional(Schema.suspend(() => WorkflowStatusSchema)),
+    code: Schema.optional(Schema.String),
+    error: Schema.optional(Schema.suspend(() => ObjectSchema)),
+    trackingId: Schema.optional(Schema.String),
+    correlation: Schema.optional(
+      Schema.suspend(() => RunActionCorrelationSchema),
+    ),
+    inputsLink: Schema.optional(Schema.suspend(() => ContentLinkSchema)),
+    outputsLink: Schema.optional(Schema.suspend(() => ContentLinkSchema)),
+    trackedProperties: Schema.optional(Schema.suspend(() => ObjectSchema)),
+    retryHistory: Schema.optional(
+      Schema.Array(Schema.suspend(() => RetryHistorySchema)),
+    ),
+  });
+const RunActionCorrelationSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  clientTrackingId: Schema.optional(Schema.String),
+  clientKeywords: Schema.optional(Schema.Array(Schema.String)),
+});
+const RetryHistorySchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  startTime: Schema.optional(Schema.String),
+  endTime: Schema.optional(Schema.String),
+  code: Schema.optional(Schema.String),
+  clientRequestId: Schema.optional(Schema.String),
+  serviceRequestId: Schema.optional(Schema.String),
+  error: Schema.optional(Schema.suspend(() => ErrorResponseSchema)),
+});
+const ErrorResponseSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  error: Schema.optional(Schema.suspend(() => ErrorPropertiesSchema)),
+});
+const ErrorPropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  code: Schema.optional(Schema.String),
+  message: Schema.optional(Schema.String),
+});
+const ExpressionRootSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  text: Schema.optional(Schema.String),
+  value: Schema.optional(Schema.Unknown),
+  subexpressions: Schema.optional(
+    Schema.Array(Schema.suspend(() => ExpressionSchema)),
+  ),
+  error: Schema.optional(Schema.suspend(() => AzureResourceErrorInfoSchema)),
+});
+const ExpressionSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  text: Schema.optional(Schema.String),
+  value: Schema.optional(Schema.Unknown),
+  subexpressions: Schema.optional(Schema.Array(Schema.Unknown)),
+  error: Schema.optional(Schema.suspend(() => AzureResourceErrorInfoSchema)),
+});
+const AzureResourceErrorInfoSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  code: Schema.String,
+});
+const WorkflowRunActionRepetitionDefinitionSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    location: Schema.optional(Schema.String),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  });
+const WorkflowRunActionRepetitionPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    startTime: Schema.optional(Schema.String),
+    endTime: Schema.optional(Schema.String),
+    correlation: Schema.optional(
+      Schema.suspend(() => RunActionCorrelationSchema),
+    ),
+    status: Schema.optional(Schema.suspend(() => WorkflowStatusSchema)),
+    code: Schema.optional(Schema.String),
+    error: Schema.optional(Schema.Unknown),
+  });
+const RequestHistorySchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  location: Schema.optional(Schema.String),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+});
+const RequestHistoryPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    startTime: Schema.optional(Schema.String),
+    endTime: Schema.optional(Schema.String),
+    request: Schema.optional(Schema.suspend(() => RequestSchema)),
+    response: Schema.optional(Schema.suspend(() => ResponseSchema)),
+  });
+const RequestSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  headers: Schema.optional(Schema.suspend(() => ObjectSchema)),
+  uri: Schema.optional(Schema.String),
+  method: Schema.optional(Schema.String),
+});
+const ResponseSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  headers: Schema.optional(Schema.suspend(() => ObjectSchema)),
+  statusCode: Schema.optional(Schema.Number),
+  bodyLink: Schema.optional(Schema.suspend(() => ContentLinkSchema)),
+});
+const IntegrationAccountSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  location: Schema.optional(Schema.String),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+});
+const IntegrationAccountPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    integrationServiceEnvironment: Schema.optional(
+      Schema.suspend(() => ResourceReferenceSchema),
+    ),
+    state: Schema.optional(Schema.suspend(() => WorkflowStateSchema)),
+  });
+const IntegrationAccountSkuSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.suspend(() => IntegrationAccountSkuNameSchema),
+});
+const IntegrationAccountSkuNameSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+    "NotSpecified",
+    "Free",
+    "Basic",
+    "Standard",
+  ]);
+const AssemblyDefinitionSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  location: Schema.optional(Schema.String),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+});
+const AssemblyPropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  createdTime: Schema.optional(Schema.String),
+  changedTime: Schema.optional(Schema.String),
+  metadata: Schema.optional(Schema.Unknown),
+});
+const BatchConfigurationSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  location: Schema.optional(Schema.String),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+});
+const BatchConfigurationPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    createdTime: Schema.optional(Schema.String),
+    changedTime: Schema.optional(Schema.String),
+    metadata: Schema.optional(Schema.Unknown),
+  });
+const KeyVaultReferenceSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
+const KeyVaultKeySchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  kid: Schema.optional(Schema.String),
+  attributes: Schema.optional(
+    Schema.Struct({
+      enabled: Schema.optional(Schema.Boolean),
+      created: Schema.optional(Schema.Number),
+      updated: Schema.optional(Schema.Number),
+    }),
+  ),
+});
+const TrackEventsOperationOptionsSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+    "None",
+    "DisableSourceInfoEnrich",
+  ]);
+const TrackingEventSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  eventLevel: Schema.suspend(() => EventLevelSchema),
+  eventTime: Schema.String,
+  recordType: Schema.suspend(() => TrackingRecordTypeSchema),
+  record: Schema.optional(Schema.suspend(() => ObjectSchema)),
+  error: Schema.optional(Schema.suspend(() => TrackingEventErrorInfoSchema)),
+});
+const EventLevelSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "LogAlways",
+  "Critical",
+  "Error",
+  "Warning",
+  "Informational",
+  "Verbose",
+]);
+const TrackingRecordTypeSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "NotSpecified",
+  "Custom",
+  "AS2Message",
+  "AS2MDN",
+  "X12Interchange",
+  "X12FunctionalGroup",
+  "X12TransactionSet",
+  "X12InterchangeAcknowledgment",
+  "X12FunctionalGroupAcknowledgment",
+  "X12TransactionSetAcknowledgment",
+  "EdifactInterchange",
+  "EdifactFunctionalGroup",
+  "EdifactTransactionSet",
+  "EdifactInterchangeAcknowledgment",
+  "EdifactFunctionalGroupAcknowledgment",
+  "EdifactTransactionSetAcknowledgment",
+]);
+const TrackingEventErrorInfoSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  message: Schema.optional(Schema.String),
+  code: Schema.optional(Schema.String),
+});
+const IntegrationAccountSchemaSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    location: Schema.optional(Schema.String),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  });
+const IntegrationAccountSchemaPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    schemaType: Schema.suspend(() => SchemaTypeSchema),
+    targetNamespace: Schema.optional(Schema.String),
+    documentName: Schema.optional(Schema.String),
+    fileName: Schema.optional(Schema.String),
+    createdTime: Schema.optional(Schema.String),
+    changedTime: Schema.optional(Schema.String),
+    metadata: Schema.optional(Schema.Struct({})),
+    content: Schema.optional(Schema.String),
+    contentType: Schema.optional(Schema.String),
+    contentLink: Schema.optional(Schema.suspend(() => ContentLinkSchema)),
+  });
+const SchemaTypeSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "NotSpecified",
+  "Xml",
+]);
+const IntegrationAccountMapSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  location: Schema.optional(Schema.String),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+});
+const IntegrationAccountMapPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    mapType: Schema.suspend(() => MapTypeSchema),
+    parametersSchema: Schema.optional(
+      Schema.Struct({
+        ref: Schema.optional(Schema.String),
+      }),
+    ),
+    createdTime: Schema.optional(Schema.String),
+    changedTime: Schema.optional(Schema.String),
+    content: Schema.optional(Schema.String),
+    contentType: Schema.optional(Schema.String),
+    contentLink: Schema.optional(Schema.suspend(() => ContentLinkSchema)),
+    metadata: Schema.optional(Schema.Struct({})),
+  });
+const MapTypeSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "NotSpecified",
+  "Xslt",
+  "Xslt20",
+  "Xslt30",
+  "Liquid",
+]);
+const IntegrationAccountPartnerSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    location: Schema.optional(Schema.String),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  });
+const IntegrationAccountPartnerPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    partnerType: Schema.suspend(() => PartnerTypeSchema),
+    createdTime: Schema.optional(Schema.String),
+    changedTime: Schema.optional(Schema.String),
+    metadata: Schema.optional(Schema.Struct({})),
+    content: Schema.suspend(() => PartnerContentSchema),
+  });
+const PartnerTypeSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "NotSpecified",
+  "B2B",
+]);
+const PartnerContentSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  b2b: Schema.optional(Schema.suspend(() => B2BPartnerContentSchema)),
+});
+const B2BPartnerContentSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  businessIdentities: Schema.optional(
+    Schema.Array(Schema.suspend(() => BusinessIdentitySchema)),
+  ),
+});
+const BusinessIdentitySchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  qualifier: Schema.String,
+  value: Schema.String,
+});
+const IntegrationAccountAgreementSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    location: Schema.optional(Schema.String),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  });
+const IntegrationAccountAgreementPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    createdTime: Schema.optional(Schema.String),
+    changedTime: Schema.optional(Schema.String),
+    metadata: Schema.optional(Schema.Struct({})),
+    agreementType: Schema.suspend(() => AgreementTypeSchema),
+    hostPartner: Schema.String,
+    guestPartner: Schema.String,
+    hostIdentity: Schema.suspend(() => BusinessIdentitySchema),
+    guestIdentity: Schema.suspend(() => BusinessIdentitySchema),
+    content: Schema.suspend(() => AgreementContentSchema),
+  });
+const AgreementTypeSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "NotSpecified",
+  "AS2",
+  "X12",
+  "Edifact",
+]);
+const AgreementContentSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  aS2: Schema.optional(Schema.suspend(() => AS2AgreementContentSchema)),
+  x12: Schema.optional(Schema.suspend(() => X12AgreementContentSchema)),
+  edifact: Schema.optional(Schema.suspend(() => EdifactAgreementContentSchema)),
+});
+const AS2AgreementContentSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  receiveAgreement: Schema.suspend(() => AS2OneWayAgreementSchema),
+  sendAgreement: Schema.suspend(() => AS2OneWayAgreementSchema),
+});
+const AS2OneWayAgreementSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  senderBusinessIdentity: Schema.suspend(() => BusinessIdentitySchema),
+  receiverBusinessIdentity: Schema.suspend(() => BusinessIdentitySchema),
+  protocolSettings: Schema.suspend(() => AS2ProtocolSettingsSchema),
+});
+const AS2ProtocolSettingsSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  messageConnectionSettings: Schema.suspend(
+    () => AS2MessageConnectionSettingsSchema,
+  ),
+  acknowledgementConnectionSettings: Schema.suspend(
+    () => AS2AcknowledgementConnectionSettingsSchema,
+  ),
+  mdnSettings: Schema.suspend(() => AS2MdnSettingsSchema),
+  securitySettings: Schema.suspend(() => AS2SecuritySettingsSchema),
+  validationSettings: Schema.suspend(() => AS2ValidationSettingsSchema),
+  envelopeSettings: Schema.suspend(() => AS2EnvelopeSettingsSchema),
+  errorSettings: Schema.suspend(() => AS2ErrorSettingsSchema),
+});
+const AS2MessageConnectionSettingsSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    ignoreCertificateNameMismatch: Schema.Boolean,
+    supportHttpStatusCodeContinue: Schema.Boolean,
+    keepHttpConnectionAlive: Schema.Boolean,
+    unfoldHttpHeaders: Schema.Boolean,
+  });
+const AS2AcknowledgementConnectionSettingsSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    ignoreCertificateNameMismatch: Schema.Boolean,
+    supportHttpStatusCodeContinue: Schema.Boolean,
+    keepHttpConnectionAlive: Schema.Boolean,
+    unfoldHttpHeaders: Schema.Boolean,
+  });
+const AS2MdnSettingsSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  needMDN: Schema.Boolean,
+  signMDN: Schema.Boolean,
+  sendMDNAsynchronously: Schema.Boolean,
+  receiptDeliveryUrl: Schema.optional(Schema.String),
+  dispositionNotificationTo: Schema.optional(Schema.String),
+  signOutboundMDNIfOptional: Schema.Boolean,
+  mdnText: Schema.optional(Schema.String),
+  sendInboundMDNToMessageBox: Schema.Boolean,
+  micHashingAlgorithm: Schema.suspend(() => HashingAlgorithmSchema),
+});
+const HashingAlgorithmSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "NotSpecified",
+  "None",
+  "MD5",
+  "SHA1",
+  "SHA2256",
+  "SHA2384",
+  "SHA2512",
+]);
+const AS2SecuritySettingsSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  overrideGroupSigningCertificate: Schema.Boolean,
+  signingCertificateName: Schema.optional(Schema.String),
+  encryptionCertificateName: Schema.optional(Schema.String),
+  enableNRRForInboundEncodedMessages: Schema.Boolean,
+  enableNRRForInboundDecodedMessages: Schema.Boolean,
+  enableNRRForOutboundMDN: Schema.Boolean,
+  enableNRRForOutboundEncodedMessages: Schema.Boolean,
+  enableNRRForOutboundDecodedMessages: Schema.Boolean,
+  enableNRRForInboundMDN: Schema.Boolean,
+  sha2AlgorithmFormat: Schema.optional(Schema.String),
+});
+const AS2ValidationSettingsSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  overrideMessageProperties: Schema.Boolean,
+  encryptMessage: Schema.Boolean,
+  signMessage: Schema.Boolean,
+  compressMessage: Schema.Boolean,
+  checkDuplicateMessage: Schema.Boolean,
+  interchangeDuplicatesValidityDays: Schema.Number,
+  checkCertificateRevocationListOnSend: Schema.Boolean,
+  checkCertificateRevocationListOnReceive: Schema.Boolean,
+  encryptionAlgorithm: Schema.suspend(() => EncryptionAlgorithmSchema),
+  signingAlgorithm: Schema.optional(
+    Schema.suspend(() => SigningAlgorithmSchema),
+  ),
+});
+const EncryptionAlgorithmSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "NotSpecified",
+  "None",
+  "DES3",
+  "RC2",
+  "AES128",
+  "AES192",
+  "AES256",
+]);
+const SigningAlgorithmSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "NotSpecified",
+  "Default",
+  "SHA1",
+  "SHA2256",
+  "SHA2384",
+  "SHA2512",
+]);
+const AS2EnvelopeSettingsSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  messageContentType: Schema.String,
+  transmitFileNameInMimeHeader: Schema.Boolean,
+  fileNameTemplate: Schema.String,
+  suspendMessageOnFileNameGenerationError: Schema.Boolean,
+  autogenerateFileName: Schema.Boolean,
+});
+const AS2ErrorSettingsSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  suspendDuplicateMessage: Schema.Boolean,
+  resendIfMDNNotReceived: Schema.Boolean,
+});
+const X12AgreementContentSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  receiveAgreement: Schema.suspend(() => X12OneWayAgreementSchema),
+  sendAgreement: Schema.suspend(() => X12OneWayAgreementSchema),
+});
+const X12OneWayAgreementSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  senderBusinessIdentity: Schema.suspend(() => BusinessIdentitySchema),
+  receiverBusinessIdentity: Schema.suspend(() => BusinessIdentitySchema),
+  protocolSettings: Schema.suspend(() => X12ProtocolSettingsSchema),
+});
+const X12ProtocolSettingsSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  validationSettings: Schema.suspend(() => X12ValidationSettingsSchema),
+  framingSettings: Schema.suspend(() => X12FramingSettingsSchema),
+  envelopeSettings: Schema.suspend(() => X12EnvelopeSettingsSchema),
+  acknowledgementSettings: Schema.suspend(
+    () => X12AcknowledgementSettingsSchema,
+  ),
+  messageFilter: Schema.suspend(() => X12MessageFilterSchema),
+  securitySettings: Schema.suspend(() => X12SecuritySettingsSchema),
+  processingSettings: Schema.suspend(() => X12ProcessingSettingsSchema),
+  envelopeOverrides: Schema.optional(
+    Schema.Array(Schema.suspend(() => X12EnvelopeOverrideSchema)),
+  ),
+  validationOverrides: Schema.optional(
+    Schema.Array(Schema.suspend(() => X12ValidationOverrideSchema)),
+  ),
+  messageFilterList: Schema.optional(
+    Schema.Array(Schema.suspend(() => X12MessageIdentifierSchema)),
+  ),
+  schemaReferences: Schema.Array(
+    Schema.suspend(() => X12SchemaReferenceSchema),
+  ),
+  x12DelimiterOverrides: Schema.optional(
+    Schema.Array(Schema.suspend(() => X12DelimiterOverridesSchema)),
+  ),
+});
+const X12ValidationSettingsSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  validateCharacterSet: Schema.Boolean,
+  checkDuplicateInterchangeControlNumber: Schema.Boolean,
+  interchangeControlNumberValidityDays: Schema.Number,
+  checkDuplicateGroupControlNumber: Schema.Boolean,
+  checkDuplicateTransactionSetControlNumber: Schema.Boolean,
+  validateEDITypes: Schema.Boolean,
+  validateXSDTypes: Schema.Boolean,
+  allowLeadingAndTrailingSpacesAndZeroes: Schema.Boolean,
+  trimLeadingAndTrailingSpacesAndZeroes: Schema.Boolean,
+  trailingSeparatorPolicy: Schema.suspend(() => TrailingSeparatorPolicySchema),
+});
+const TrailingSeparatorPolicySchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+    "NotSpecified",
+    "NotAllowed",
+    "Optional",
+    "Mandatory",
+  ]);
+const X12FramingSettingsSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  dataElementSeparator: Schema.Number,
+  componentSeparator: Schema.Number,
+  replaceSeparatorsInPayload: Schema.Boolean,
+  replaceCharacter: Schema.Number,
+  segmentTerminator: Schema.Number,
+  characterSet: Schema.suspend(() => X12CharacterSetSchema),
+  segmentTerminatorSuffix: Schema.suspend(() => SegmentTerminatorSuffixSchema),
+});
+const X12CharacterSetSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "NotSpecified",
+  "Basic",
+  "Extended",
+  "UTF8",
+]);
+const SegmentTerminatorSuffixSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+    "NotSpecified",
+    "None",
+    "CR",
+    "LF",
+    "CRLF",
+  ]);
+const X12EnvelopeSettingsSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  controlStandardsId: Schema.Number,
+  useControlStandardsIdAsRepetitionCharacter: Schema.Boolean,
+  senderApplicationId: Schema.String,
+  receiverApplicationId: Schema.String,
+  controlVersionNumber: Schema.String,
+  interchangeControlNumberLowerBound: Schema.Number,
+  interchangeControlNumberUpperBound: Schema.Number,
+  rolloverInterchangeControlNumber: Schema.Boolean,
+  enableDefaultGroupHeaders: Schema.Boolean,
+  functionalGroupId: Schema.optional(Schema.String),
+  groupControlNumberLowerBound: Schema.Number,
+  groupControlNumberUpperBound: Schema.Number,
+  rolloverGroupControlNumber: Schema.Boolean,
+  groupHeaderAgencyCode: Schema.String,
+  groupHeaderVersion: Schema.String,
+  transactionSetControlNumberLowerBound: Schema.Number,
+  transactionSetControlNumberUpperBound: Schema.Number,
+  rolloverTransactionSetControlNumber: Schema.Boolean,
+  transactionSetControlNumberPrefix: Schema.optional(Schema.String),
+  transactionSetControlNumberSuffix: Schema.optional(Schema.String),
+  overwriteExistingTransactionSetControlNumber: Schema.Boolean,
+  groupHeaderDateFormat: Schema.suspend(() => X12DateFormatSchema),
+  groupHeaderTimeFormat: Schema.suspend(() => X12TimeFormatSchema),
+  usageIndicator: Schema.suspend(() => UsageIndicatorSchema),
+});
+const X12DateFormatSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "NotSpecified",
+  "CCYYMMDD",
+  "YYMMDD",
+]);
+const X12TimeFormatSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "NotSpecified",
+  "HHMM",
+  "HHMMSS",
+  "HHMMSSdd",
+  "HHMMSSd",
+]);
+const UsageIndicatorSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "NotSpecified",
+  "Test",
+  "Information",
+  "Production",
+]);
+const X12AcknowledgementSettingsSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    needTechnicalAcknowledgement: Schema.Boolean,
+    batchTechnicalAcknowledgements: Schema.Boolean,
+    needFunctionalAcknowledgement: Schema.Boolean,
+    functionalAcknowledgementVersion: Schema.optional(Schema.String),
+    batchFunctionalAcknowledgements: Schema.Boolean,
+    needImplementationAcknowledgement: Schema.Boolean,
+    implementationAcknowledgementVersion: Schema.optional(Schema.String),
+    batchImplementationAcknowledgements: Schema.Boolean,
+    needLoopForValidMessages: Schema.Boolean,
+    sendSynchronousAcknowledgement: Schema.Boolean,
+    acknowledgementControlNumberPrefix: Schema.optional(Schema.String),
+    acknowledgementControlNumberSuffix: Schema.optional(Schema.String),
+    acknowledgementControlNumberLowerBound: Schema.Number,
+    acknowledgementControlNumberUpperBound: Schema.Number,
+    rolloverAcknowledgementControlNumber: Schema.Boolean,
+  });
+const X12MessageFilterSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  messageFilterType: Schema.suspend(() => MessageFilterTypeSchema),
+});
+const MessageFilterTypeSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "NotSpecified",
+  "Include",
+  "Exclude",
+]);
+const X12SecuritySettingsSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  authorizationQualifier: Schema.String,
+  authorizationValue: Schema.optional(Schema.String),
+  securityQualifier: Schema.String,
+  passwordValue: Schema.optional(SensitiveOutputString),
+});
+const X12ProcessingSettingsSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  maskSecurityInfo: Schema.Boolean,
+  convertImpliedDecimal: Schema.Boolean,
+  preserveInterchange: Schema.Boolean,
+  suspendInterchangeOnError: Schema.Boolean,
+  createEmptyXmlTagsForTrailingSeparators: Schema.Boolean,
+  useDotAsDecimalSeparator: Schema.Boolean,
+});
+const X12EnvelopeOverrideSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  targetNamespace: Schema.String,
+  protocolVersion: Schema.String,
+  messageId: Schema.String,
+  responsibleAgencyCode: Schema.String,
+  headerVersion: Schema.String,
+  senderApplicationId: Schema.String,
+  receiverApplicationId: Schema.String,
+  functionalIdentifierCode: Schema.optional(Schema.String),
+  dateFormat: Schema.suspend(() => X12DateFormatSchema),
+  timeFormat: Schema.suspend(() => X12TimeFormatSchema),
+});
+const X12ValidationOverrideSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  messageId: Schema.String,
+  validateEDITypes: Schema.Boolean,
+  validateXSDTypes: Schema.Boolean,
+  allowLeadingAndTrailingSpacesAndZeroes: Schema.Boolean,
+  validateCharacterSet: Schema.Boolean,
+  trimLeadingAndTrailingSpacesAndZeroes: Schema.Boolean,
+  trailingSeparatorPolicy: Schema.suspend(() => TrailingSeparatorPolicySchema),
+});
+const X12MessageIdentifierSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  messageId: Schema.String,
+});
+const X12SchemaReferenceSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  messageId: Schema.String,
+  senderApplicationId: Schema.optional(Schema.String),
+  schemaVersion: Schema.String,
+  schemaName: Schema.String,
+});
+const X12DelimiterOverridesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  protocolVersion: Schema.optional(Schema.String),
+  messageId: Schema.optional(Schema.String),
+  dataElementSeparator: Schema.Number,
+  componentSeparator: Schema.Number,
+  segmentTerminator: Schema.Number,
+  segmentTerminatorSuffix: Schema.suspend(() => SegmentTerminatorSuffixSchema),
+  replaceCharacter: Schema.Number,
+  replaceSeparatorsInPayload: Schema.Boolean,
+  targetNamespace: Schema.optional(Schema.String),
+});
+const EdifactAgreementContentSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    receiveAgreement: Schema.suspend(() => EdifactOneWayAgreementSchema),
+    sendAgreement: Schema.suspend(() => EdifactOneWayAgreementSchema),
+  },
+);
+const EdifactOneWayAgreementSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  senderBusinessIdentity: Schema.suspend(() => BusinessIdentitySchema),
+  receiverBusinessIdentity: Schema.suspend(() => BusinessIdentitySchema),
+  protocolSettings: Schema.suspend(() => EdifactProtocolSettingsSchema),
+});
+const EdifactProtocolSettingsSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    validationSettings: Schema.suspend(() => EdifactValidationSettingsSchema),
+    framingSettings: Schema.suspend(() => EdifactFramingSettingsSchema),
+    envelopeSettings: Schema.suspend(() => EdifactEnvelopeSettingsSchema),
+    acknowledgementSettings: Schema.suspend(
+      () => EdifactAcknowledgementSettingsSchema,
+    ),
+    messageFilter: Schema.suspend(() => EdifactMessageFilterSchema),
+    processingSettings: Schema.suspend(() => EdifactProcessingSettingsSchema),
+    envelopeOverrides: Schema.optional(
+      Schema.Array(Schema.suspend(() => EdifactEnvelopeOverrideSchema)),
+    ),
+    messageFilterList: Schema.optional(
+      Schema.Array(Schema.suspend(() => EdifactMessageIdentifierSchema)),
+    ),
+    schemaReferences: Schema.Array(
+      Schema.suspend(() => EdifactSchemaReferenceSchema),
+    ),
+    validationOverrides: Schema.optional(
+      Schema.Array(Schema.suspend(() => EdifactValidationOverrideSchema)),
+    ),
+    edifactDelimiterOverrides: Schema.optional(
+      Schema.Array(Schema.suspend(() => EdifactDelimiterOverrideSchema)),
+    ),
+  },
+);
+const EdifactValidationSettingsSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    validateCharacterSet: Schema.Boolean,
+    checkDuplicateInterchangeControlNumber: Schema.Boolean,
+    interchangeControlNumberValidityDays: Schema.Number,
+    checkDuplicateGroupControlNumber: Schema.Boolean,
+    checkDuplicateTransactionSetControlNumber: Schema.Boolean,
+    validateEDITypes: Schema.Boolean,
+    validateXSDTypes: Schema.Boolean,
+    allowLeadingAndTrailingSpacesAndZeroes: Schema.Boolean,
+    trimLeadingAndTrailingSpacesAndZeroes: Schema.Boolean,
+    trailingSeparatorPolicy: Schema.suspend(
+      () => TrailingSeparatorPolicySchema,
+    ),
+  });
+const EdifactFramingSettingsSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  serviceCodeListDirectoryVersion: Schema.optional(Schema.String),
+  characterEncoding: Schema.optional(Schema.String),
+  protocolVersion: Schema.Number,
+  dataElementSeparator: Schema.Number,
+  componentSeparator: Schema.Number,
+  segmentTerminator: Schema.Number,
+  releaseIndicator: Schema.Number,
+  repetitionSeparator: Schema.Number,
+  characterSet: Schema.suspend(() => EdifactCharacterSetSchema),
+  decimalPointIndicator: Schema.suspend(() => EdifactDecimalIndicatorSchema),
+  segmentTerminatorSuffix: Schema.suspend(() => SegmentTerminatorSuffixSchema),
+});
+const EdifactCharacterSetSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "NotSpecified",
+  "UNOB",
+  "UNOA",
+  "UNOC",
+  "UNOD",
+  "UNOE",
+  "UNOF",
+  "UNOG",
+  "UNOH",
+  "UNOI",
+  "UNOJ",
+  "UNOK",
+  "UNOX",
+  "UNOY",
+  "KECA",
+]);
+const EdifactDecimalIndicatorSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+    "NotSpecified",
+    "Comma",
+    "Decimal",
+  ]);
+const EdifactEnvelopeSettingsSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    groupAssociationAssignedCode: Schema.optional(Schema.String),
+    communicationAgreementId: Schema.optional(Schema.String),
+    applyDelimiterStringAdvice: Schema.Boolean,
+    createGroupingSegments: Schema.Boolean,
+    enableDefaultGroupHeaders: Schema.Boolean,
+    recipientReferencePasswordValue: Schema.optional(SensitiveOutputString),
+    recipientReferencePasswordQualifier: Schema.optional(SensitiveOutputString),
+    applicationReferenceId: Schema.optional(Schema.String),
+    processingPriorityCode: Schema.optional(Schema.String),
+    interchangeControlNumberLowerBound: Schema.Number,
+    interchangeControlNumberUpperBound: Schema.Number,
+    rolloverInterchangeControlNumber: Schema.Boolean,
+    interchangeControlNumberPrefix: Schema.optional(Schema.String),
+    interchangeControlNumberSuffix: Schema.optional(Schema.String),
+    senderReverseRoutingAddress: Schema.optional(Schema.String),
+    receiverReverseRoutingAddress: Schema.optional(Schema.String),
+    functionalGroupId: Schema.optional(Schema.String),
+    groupControllingAgencyCode: Schema.optional(Schema.String),
+    groupMessageVersion: Schema.optional(Schema.String),
+    groupMessageRelease: Schema.optional(Schema.String),
+    groupControlNumberLowerBound: Schema.Number,
+    groupControlNumberUpperBound: Schema.Number,
+    rolloverGroupControlNumber: Schema.Boolean,
+    groupControlNumberPrefix: Schema.optional(Schema.String),
+    groupControlNumberSuffix: Schema.optional(Schema.String),
+    groupApplicationReceiverQualifier: Schema.optional(Schema.String),
+    groupApplicationReceiverId: Schema.optional(Schema.String),
+    groupApplicationSenderQualifier: Schema.optional(Schema.String),
+    groupApplicationSenderId: Schema.optional(Schema.String),
+    groupApplicationPassword: Schema.optional(SensitiveOutputString),
+    overwriteExistingTransactionSetControlNumber: Schema.Boolean,
+    transactionSetControlNumberPrefix: Schema.optional(Schema.String),
+    transactionSetControlNumberSuffix: Schema.optional(Schema.String),
+    transactionSetControlNumberLowerBound: Schema.Number,
+    transactionSetControlNumberUpperBound: Schema.Number,
+    rolloverTransactionSetControlNumber: Schema.Boolean,
+    isTestInterchange: Schema.Boolean,
+    senderInternalIdentification: Schema.optional(Schema.String),
+    senderInternalSubIdentification: Schema.optional(Schema.String),
+    receiverInternalIdentification: Schema.optional(Schema.String),
+    receiverInternalSubIdentification: Schema.optional(Schema.String),
+  },
+);
+const EdifactAcknowledgementSettingsSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    needTechnicalAcknowledgement: Schema.Boolean,
+    batchTechnicalAcknowledgements: Schema.Boolean,
+    needFunctionalAcknowledgement: Schema.Boolean,
+    batchFunctionalAcknowledgements: Schema.Boolean,
+    needLoopForValidMessages: Schema.Boolean,
+    sendSynchronousAcknowledgement: Schema.Boolean,
+    acknowledgementControlNumberPrefix: Schema.optional(Schema.String),
+    acknowledgementControlNumberSuffix: Schema.optional(Schema.String),
+    acknowledgementControlNumberLowerBound: Schema.Number,
+    acknowledgementControlNumberUpperBound: Schema.Number,
+    rolloverAcknowledgementControlNumber: Schema.Boolean,
+  });
+const EdifactMessageFilterSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  messageFilterType: Schema.suspend(() => MessageFilterTypeSchema),
+});
+const EdifactProcessingSettingsSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    maskSecurityInfo: Schema.Boolean,
+    preserveInterchange: Schema.Boolean,
+    suspendInterchangeOnError: Schema.Boolean,
+    createEmptyXmlTagsForTrailingSeparators: Schema.Boolean,
+    useDotAsDecimalSeparator: Schema.Boolean,
+  });
+const EdifactEnvelopeOverrideSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    messageId: Schema.optional(Schema.String),
+    messageVersion: Schema.optional(Schema.String),
+    messageRelease: Schema.optional(Schema.String),
+    messageAssociationAssignedCode: Schema.optional(Schema.String),
+    targetNamespace: Schema.optional(Schema.String),
+    functionalGroupId: Schema.optional(Schema.String),
+    senderApplicationQualifier: Schema.optional(Schema.String),
+    senderApplicationId: Schema.optional(Schema.String),
+    receiverApplicationQualifier: Schema.optional(Schema.String),
+    receiverApplicationId: Schema.optional(Schema.String),
+    controllingAgencyCode: Schema.optional(Schema.String),
+    groupHeaderMessageVersion: Schema.optional(Schema.String),
+    groupHeaderMessageRelease: Schema.optional(Schema.String),
+    associationAssignedCode: Schema.optional(Schema.String),
+    applicationPassword: Schema.optional(SensitiveOutputString),
+  },
+);
+const EdifactMessageIdentifierSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    messageId: Schema.String,
+  });
+const EdifactSchemaReferenceSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  messageId: Schema.String,
+  messageVersion: Schema.String,
+  messageRelease: Schema.String,
+  senderApplicationId: Schema.optional(Schema.String),
+  senderApplicationQualifier: Schema.optional(Schema.String),
+  associationAssignedCode: Schema.optional(Schema.String),
+  schemaName: Schema.String,
+});
+const EdifactValidationOverrideSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    messageId: Schema.String,
+    enforceCharacterSet: Schema.Boolean,
+    validateEDITypes: Schema.Boolean,
+    validateXSDTypes: Schema.Boolean,
+    allowLeadingAndTrailingSpacesAndZeroes: Schema.Boolean,
+    trailingSeparatorPolicy: Schema.suspend(
+      () => TrailingSeparatorPolicySchema,
+    ),
+    trimLeadingAndTrailingSpacesAndZeroes: Schema.Boolean,
+  });
+const EdifactDelimiterOverrideSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    messageId: Schema.optional(Schema.String),
+    messageVersion: Schema.optional(Schema.String),
+    messageRelease: Schema.optional(Schema.String),
+    dataElementSeparator: Schema.Number,
+    componentSeparator: Schema.Number,
+    segmentTerminator: Schema.Number,
+    repetitionSeparator: Schema.Number,
+    segmentTerminatorSuffix: Schema.suspend(
+      () => SegmentTerminatorSuffixSchema,
+    ),
+    decimalPointIndicator: Schema.suspend(() => EdifactDecimalIndicatorSchema),
+    releaseIndicator: Schema.Number,
+    messageAssociationAssignedCode: Schema.optional(Schema.String),
+    targetNamespace: Schema.optional(Schema.String),
+  });
+const IntegrationAccountCertificateSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    location: Schema.optional(Schema.String),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  });
+const IntegrationAccountCertificatePropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    createdTime: Schema.optional(Schema.String),
+    changedTime: Schema.optional(Schema.String),
+    metadata: Schema.optional(Schema.Struct({})),
+    key: Schema.optional(Schema.suspend(() => KeyVaultKeyReferenceSchema)),
+    publicCertificate: Schema.optional(Schema.String),
+  });
+const KeyVaultKeyReferenceSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  keyVault: Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  }),
+  keyName: Schema.String,
+  keyVersion: Schema.optional(Schema.String),
+});
+const IntegrationAccountSessionSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    location: Schema.optional(Schema.String),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  });
+const IntegrationAccountSessionPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    createdTime: Schema.optional(Schema.String),
+    changedTime: Schema.optional(Schema.String),
+    content: Schema.optional(Schema.suspend(() => ObjectSchema)),
+  });
+const IntegrationServiceEnvironmentSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    location: Schema.optional(Schema.String),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  });
+const IntegrationServiceEnvironmentPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    provisioningState: Schema.optional(
+      Schema.suspend(() => WorkflowProvisioningStateSchema),
+    ),
+    state: Schema.optional(Schema.suspend(() => WorkflowStateSchema)),
+    integrationServiceEnvironmentId: Schema.optional(Schema.String),
+    endpointsConfiguration: Schema.optional(
+      Schema.suspend(() => FlowEndpointsConfigurationSchema),
+    ),
+    networkConfiguration: Schema.optional(
+      Schema.suspend(() => NetworkConfigurationSchema),
+    ),
+    encryptionConfiguration: Schema.optional(
+      Schema.suspend(
+        () => IntegrationServiceEnvironmenEncryptionConfigurationSchema,
+      ),
+    ),
+  });
+const NetworkConfigurationSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  virtualNetworkAddressSpace: Schema.optional(Schema.String),
+  accessEndpoint: Schema.optional(
+    Schema.suspend(() => IntegrationServiceEnvironmentAccessEndpointSchema),
+  ),
+  subnets: Schema.optional(
+    Schema.Array(Schema.suspend(() => ResourceReferenceSchema)),
+  ),
+});
+const IntegrationServiceEnvironmentAccessEndpointSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    type: Schema.optional(
+      Schema.suspend(
+        () => IntegrationServiceEnvironmentAccessEndpointTypeSchema,
+      ),
+    ),
+  });
+const IntegrationServiceEnvironmentAccessEndpointTypeSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+    "NotSpecified",
+    "External",
+    "Internal",
+  ]);
+const IntegrationServiceEnvironmenEncryptionConfigurationSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    encryptionKeyReference: Schema.optional(
+      Schema.suspend(
+        () => IntegrationServiceEnvironmenEncryptionKeyReferenceSchema,
+      ),
+    ),
+  });
+const IntegrationServiceEnvironmenEncryptionKeyReferenceSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    keyVault: Schema.optional(Schema.suspend(() => ResourceReferenceSchema)),
+    keyName: Schema.optional(Schema.String),
+    keyVersion: Schema.optional(Schema.String),
+  });
+const IntegrationServiceEnvironmentSkuSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(
+      Schema.suspend(() => IntegrationServiceEnvironmentSkuNameSchema),
+    ),
+    capacity: Schema.optional(Schema.Number),
+  });
+const IntegrationServiceEnvironmentSkuNameSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+    "NotSpecified",
+    "Premium",
+    "Developer",
+  ]);
+const IntegrationServiceEnvironmentSkuDefinitionSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resourceType: Schema.optional(Schema.String),
+    sku: Schema.optional(
+      Schema.Struct({
+        name: Schema.optional(
+          Schema.suspend(() => IntegrationServiceEnvironmentSkuNameSchema),
+        ),
+        tier: Schema.optional(Schema.String),
+      }),
+    ),
+    capacity: Schema.optional(
+      Schema.suspend(() => IntegrationServiceEnvironmentSkuCapacitySchema),
+    ),
+  });
+const IntegrationServiceEnvironmentSkuCapacitySchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    minimum: Schema.optional(Schema.Number),
+    maximum: Schema.optional(Schema.Number),
+    default: Schema.optional(Schema.Number),
+    scaleType: Schema.optional(
+      Schema.suspend(() => IntegrationServiceEnvironmentSkuScaleTypeSchema),
+    ),
+  });
+const IntegrationServiceEnvironmentSkuScaleTypeSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Literals(["Manual", "Automatic", "None"]);
+const IntegrationServiceEnvironmentSubnetNetworkHealthSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    outboundNetworkDependencies: Schema.optional(
+      Schema.Array(
+        Schema.suspend(
+          () => IntegrationServiceEnvironmentNetworkDependencySchema,
+        ),
+      ),
+    ),
+    outboundNetworkHealth: Schema.optional(
+      Schema.suspend(
+        () => IntegrationServiceEnvironmentNetworkDependencyHealthSchema,
+      ),
+    ),
+    networkDependencyHealthState: Schema.suspend(
+      () =>
+        IntegrationServiceEnvironmentNetworkEndPointAccessibilityStateSchema,
+    ),
+  });
+const IntegrationServiceEnvironmentNetworkDependencySchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    category: Schema.optional(
+      Schema.suspend(
+        () => IntegrationServiceEnvironmentNetworkDependencyCategoryTypeSchema,
+      ),
+    ),
+    displayName: Schema.optional(Schema.String),
+    endpoints: Schema.optional(
+      Schema.Array(
+        Schema.suspend(
+          () => IntegrationServiceEnvironmentNetworkEndpointSchema,
+        ),
+      ),
+    ),
+  });
+const IntegrationServiceEnvironmentNetworkDependencyCategoryTypeSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+    "NotSpecified",
+    "AzureStorage",
+    "AzureManagement",
+    "AzureActiveDirectory",
+    "SSLCertificateVerification",
+    "DiagnosticLogsAndMetrics",
+    "IntegrationServiceEnvironmentConnectors",
+    "RedisCache",
+    "AccessEndpoints",
+    "RecoveryService",
+    "SQL",
+    "RegionalService",
+  ]);
+const IntegrationServiceEnvironmentNetworkEndpointSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    accessibility: Schema.optional(
+      Schema.suspend(
+        () =>
+          IntegrationServiceEnvironmentNetworkEndPointAccessibilityStateSchema,
+      ),
+    ),
+    domainName: Schema.optional(Schema.String),
+    ports: Schema.optional(Schema.Array(Schema.String)),
+  });
+const IntegrationServiceEnvironmentNetworkEndPointAccessibilityStateSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+    "NotSpecified",
+    "Unknown",
+    "Available",
+    "NotAvailable",
+  ]);
+const IntegrationServiceEnvironmentNetworkDependencyHealthSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    error: Schema.optional(Schema.suspend(() => ExtendedErrorInfoSchema)),
+    state: Schema.optional(
+      Schema.suspend(
+        () => IntegrationServiceEnvironmentNetworkDependencyHealthStateSchema,
+      ),
+    ),
+  });
+const ExtendedErrorInfoSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  code: Schema.suspend(() => ErrorResponseCodeSchema),
+  message: Schema.String,
+  details: Schema.optional(Schema.Array(Schema.Unknown)),
+  innerError: Schema.optional(Schema.suspend(() => ObjectSchema)),
+});
+const ErrorResponseCodeSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "NotSpecified",
+  "IntegrationServiceEnvironmentNotFound",
+  "InternalServerError",
+  "InvalidOperationId",
+]);
+const IntegrationServiceEnvironmentNetworkDependencyHealthStateSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+    "NotSpecified",
+    "Healthy",
+    "Unhealthy",
+    "Unknown",
+  ]);
+const IntegrationServiceEnvironmentManagedApiSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    location: Schema.optional(Schema.String),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  });
+const IntegrationServiceEnvironmentManagedApiPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    connectionParameters: Schema.optional(
+      Schema.Record(
+        Schema.String,
+        Schema.suspend(() => ObjectSchema),
+      ),
+    ),
+    metadata: Schema.optional(Schema.suspend(() => ApiResourceMetadataSchema)),
+    runtimeUrls: Schema.optional(Schema.Array(Schema.String)),
+    generalInformation: Schema.optional(
+      Schema.suspend(() => ApiResourceGeneralInformationSchema),
+    ),
+    capabilities: Schema.optional(Schema.Array(Schema.String)),
+    backendService: Schema.optional(
+      Schema.suspend(() => ApiResourceBackendServiceSchema),
+    ),
+    policies: Schema.optional(Schema.suspend(() => ApiResourcePoliciesSchema)),
+    apiDefinitionUrl: Schema.optional(Schema.String),
+    apiDefinitions: Schema.optional(
+      Schema.suspend(() => ApiResourceDefinitionsSchema),
+    ),
+    integrationServiceEnvironment: Schema.optional(
+      Schema.suspend(() => ResourceReferenceSchema),
+    ),
+    provisioningState: Schema.optional(
+      Schema.suspend(() => WorkflowProvisioningStateSchema),
+    ),
+    category: Schema.optional(Schema.suspend(() => ApiTierSchema)),
+  });
+const ApiResourceMetadataSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  source: Schema.optional(Schema.String),
+  brandColor: Schema.optional(Schema.String),
+  hideKey: Schema.optional(Schema.String),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  ApiType: Schema.optional(Schema.suspend(() => ApiTypeSchema)),
+  wsdlService: Schema.optional(Schema.suspend(() => WsdlServiceSchema)),
+  wsdlImportMethod: Schema.optional(
+    Schema.suspend(() => WsdlImportMethodSchema),
+  ),
+  connectionType: Schema.optional(Schema.String),
+  provisioningState: Schema.optional(
+    Schema.suspend(() => WorkflowProvisioningStateSchema),
+  ),
+  deploymentParameters: Schema.optional(
+    Schema.suspend(() => ApiDeploymentParameterMetadataSetSchema),
+  ),
+});
+const ApiTypeSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "NotSpecified",
+  "Rest",
+  "Soap",
+]);
+const WsdlServiceSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  qualifiedName: Schema.optional(Schema.String),
+  EndpointQualifiedNames: Schema.optional(Schema.Array(Schema.String)),
+});
+const WsdlImportMethodSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "NotSpecified",
+  "SoapToRest",
+  "SoapPassThrough",
+]);
+const ApiDeploymentParameterMetadataSetSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    packageContentLink: Schema.optional(
+      Schema.suspend(() => ApiDeploymentParameterMetadataSchema),
+    ),
+    redisCacheConnectionString: Schema.optional(
+      Schema.suspend(() => ApiDeploymentParameterMetadataSchema),
+    ),
+  });
+const ApiDeploymentParameterMetadataSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    type: Schema.optional(Schema.String),
+    isRequired: Schema.optional(Schema.Boolean),
+    displayName: Schema.optional(Schema.String),
+    description: Schema.optional(Schema.String),
+    visibility: Schema.optional(
+      Schema.suspend(() => ApiDeploymentParameterVisibilitySchema),
+    ),
+  });
+const ApiDeploymentParameterVisibilitySchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+    "NotSpecified",
+    "Default",
+    "Internal",
+  ]);
+const ApiResourceGeneralInformationSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    iconUrl: Schema.optional(Schema.String),
+    displayName: Schema.optional(Schema.String),
+    description: Schema.optional(Schema.String),
+    termsOfUseUrl: Schema.optional(Schema.String),
+    releaseTag: Schema.optional(Schema.String),
+    tier: Schema.optional(Schema.suspend(() => ApiTierSchema)),
+  });
+const ApiTierSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "NotSpecified",
+  "Enterprise",
+  "Standard",
+  "Premium",
+]);
+const ApiResourceBackendServiceSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    serviceUrl: Schema.optional(Schema.String),
+  });
+const ApiResourcePoliciesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  content: Schema.optional(Schema.String),
+  contentLink: Schema.optional(Schema.String),
+});
+const ApiResourceDefinitionsSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  originalSwaggerUrl: Schema.optional(Schema.String),
+  modifiedSwaggerUrl: Schema.optional(Schema.String),
+});
+const ApiOperationSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  location: Schema.optional(Schema.String),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+});
+const OperationSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  origin: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  display: Schema.optional(
+    Schema.Struct({
+      provider: Schema.optional(Schema.String),
+      resource: Schema.optional(Schema.String),
+      operation: Schema.optional(Schema.String),
+      description: Schema.optional(Schema.String),
+    }),
+  ),
+  properties: Schema.optional(Schema.suspend(() => ObjectSchema)),
+});
 
 // Input Schema
 export const IntegrationAccountAgreementsCreateOrUpdateInput =
@@ -15,1180 +1682,9 @@ export const IntegrationAccountAgreementsCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     integrationAccountName: Schema.String.pipe(T.PathParam()),
     agreementName: Schema.String.pipe(T.PathParam()),
-    properties: Schema.Struct({
-      createdTime: Schema.optional(Schema.String),
-      changedTime: Schema.optional(Schema.String),
-      metadata: Schema.optional(Schema.Struct({})),
-      agreementType: Schema.Literals(["NotSpecified", "AS2", "X12", "Edifact"]),
-      hostPartner: Schema.String,
-      guestPartner: Schema.String,
-      hostIdentity: Schema.Struct({
-        qualifier: Schema.String,
-        value: Schema.String,
-      }),
-      guestIdentity: Schema.Struct({
-        qualifier: Schema.String,
-        value: Schema.String,
-      }),
-      content: Schema.Struct({
-        aS2: Schema.optional(
-          Schema.Struct({
-            receiveAgreement: Schema.Struct({
-              senderBusinessIdentity: Schema.Struct({
-                qualifier: Schema.String,
-                value: Schema.String,
-              }),
-              receiverBusinessIdentity: Schema.Struct({
-                qualifier: Schema.String,
-                value: Schema.String,
-              }),
-              protocolSettings: Schema.Struct({
-                messageConnectionSettings: Schema.Struct({
-                  ignoreCertificateNameMismatch: Schema.Boolean,
-                  supportHttpStatusCodeContinue: Schema.Boolean,
-                  keepHttpConnectionAlive: Schema.Boolean,
-                  unfoldHttpHeaders: Schema.Boolean,
-                }),
-                acknowledgementConnectionSettings: Schema.Struct({
-                  ignoreCertificateNameMismatch: Schema.Boolean,
-                  supportHttpStatusCodeContinue: Schema.Boolean,
-                  keepHttpConnectionAlive: Schema.Boolean,
-                  unfoldHttpHeaders: Schema.Boolean,
-                }),
-                mdnSettings: Schema.Struct({
-                  needMDN: Schema.Boolean,
-                  signMDN: Schema.Boolean,
-                  sendMDNAsynchronously: Schema.Boolean,
-                  receiptDeliveryUrl: Schema.optional(Schema.String),
-                  dispositionNotificationTo: Schema.optional(Schema.String),
-                  signOutboundMDNIfOptional: Schema.Boolean,
-                  mdnText: Schema.optional(Schema.String),
-                  sendInboundMDNToMessageBox: Schema.Boolean,
-                  micHashingAlgorithm: Schema.Literals([
-                    "NotSpecified",
-                    "None",
-                    "MD5",
-                    "SHA1",
-                    "SHA2256",
-                    "SHA2384",
-                    "SHA2512",
-                  ]),
-                }),
-                securitySettings: Schema.Struct({
-                  overrideGroupSigningCertificate: Schema.Boolean,
-                  signingCertificateName: Schema.optional(Schema.String),
-                  encryptionCertificateName: Schema.optional(Schema.String),
-                  enableNRRForInboundEncodedMessages: Schema.Boolean,
-                  enableNRRForInboundDecodedMessages: Schema.Boolean,
-                  enableNRRForOutboundMDN: Schema.Boolean,
-                  enableNRRForOutboundEncodedMessages: Schema.Boolean,
-                  enableNRRForOutboundDecodedMessages: Schema.Boolean,
-                  enableNRRForInboundMDN: Schema.Boolean,
-                  sha2AlgorithmFormat: Schema.optional(Schema.String),
-                }),
-                validationSettings: Schema.Struct({
-                  overrideMessageProperties: Schema.Boolean,
-                  encryptMessage: Schema.Boolean,
-                  signMessage: Schema.Boolean,
-                  compressMessage: Schema.Boolean,
-                  checkDuplicateMessage: Schema.Boolean,
-                  interchangeDuplicatesValidityDays: Schema.Number,
-                  checkCertificateRevocationListOnSend: Schema.Boolean,
-                  checkCertificateRevocationListOnReceive: Schema.Boolean,
-                  encryptionAlgorithm: Schema.Literals([
-                    "NotSpecified",
-                    "None",
-                    "DES3",
-                    "RC2",
-                    "AES128",
-                    "AES192",
-                    "AES256",
-                  ]),
-                  signingAlgorithm: Schema.optional(
-                    Schema.Literals([
-                      "NotSpecified",
-                      "Default",
-                      "SHA1",
-                      "SHA2256",
-                      "SHA2384",
-                      "SHA2512",
-                    ]),
-                  ),
-                }),
-                envelopeSettings: Schema.Struct({
-                  messageContentType: Schema.String,
-                  transmitFileNameInMimeHeader: Schema.Boolean,
-                  fileNameTemplate: Schema.String,
-                  suspendMessageOnFileNameGenerationError: Schema.Boolean,
-                  autogenerateFileName: Schema.Boolean,
-                }),
-                errorSettings: Schema.Struct({
-                  suspendDuplicateMessage: Schema.Boolean,
-                  resendIfMDNNotReceived: Schema.Boolean,
-                }),
-              }),
-            }),
-            sendAgreement: Schema.Struct({
-              senderBusinessIdentity: Schema.Struct({
-                qualifier: Schema.String,
-                value: Schema.String,
-              }),
-              receiverBusinessIdentity: Schema.Struct({
-                qualifier: Schema.String,
-                value: Schema.String,
-              }),
-              protocolSettings: Schema.Struct({
-                messageConnectionSettings: Schema.Struct({
-                  ignoreCertificateNameMismatch: Schema.Boolean,
-                  supportHttpStatusCodeContinue: Schema.Boolean,
-                  keepHttpConnectionAlive: Schema.Boolean,
-                  unfoldHttpHeaders: Schema.Boolean,
-                }),
-                acknowledgementConnectionSettings: Schema.Struct({
-                  ignoreCertificateNameMismatch: Schema.Boolean,
-                  supportHttpStatusCodeContinue: Schema.Boolean,
-                  keepHttpConnectionAlive: Schema.Boolean,
-                  unfoldHttpHeaders: Schema.Boolean,
-                }),
-                mdnSettings: Schema.Struct({
-                  needMDN: Schema.Boolean,
-                  signMDN: Schema.Boolean,
-                  sendMDNAsynchronously: Schema.Boolean,
-                  receiptDeliveryUrl: Schema.optional(Schema.String),
-                  dispositionNotificationTo: Schema.optional(Schema.String),
-                  signOutboundMDNIfOptional: Schema.Boolean,
-                  mdnText: Schema.optional(Schema.String),
-                  sendInboundMDNToMessageBox: Schema.Boolean,
-                  micHashingAlgorithm: Schema.Literals([
-                    "NotSpecified",
-                    "None",
-                    "MD5",
-                    "SHA1",
-                    "SHA2256",
-                    "SHA2384",
-                    "SHA2512",
-                  ]),
-                }),
-                securitySettings: Schema.Struct({
-                  overrideGroupSigningCertificate: Schema.Boolean,
-                  signingCertificateName: Schema.optional(Schema.String),
-                  encryptionCertificateName: Schema.optional(Schema.String),
-                  enableNRRForInboundEncodedMessages: Schema.Boolean,
-                  enableNRRForInboundDecodedMessages: Schema.Boolean,
-                  enableNRRForOutboundMDN: Schema.Boolean,
-                  enableNRRForOutboundEncodedMessages: Schema.Boolean,
-                  enableNRRForOutboundDecodedMessages: Schema.Boolean,
-                  enableNRRForInboundMDN: Schema.Boolean,
-                  sha2AlgorithmFormat: Schema.optional(Schema.String),
-                }),
-                validationSettings: Schema.Struct({
-                  overrideMessageProperties: Schema.Boolean,
-                  encryptMessage: Schema.Boolean,
-                  signMessage: Schema.Boolean,
-                  compressMessage: Schema.Boolean,
-                  checkDuplicateMessage: Schema.Boolean,
-                  interchangeDuplicatesValidityDays: Schema.Number,
-                  checkCertificateRevocationListOnSend: Schema.Boolean,
-                  checkCertificateRevocationListOnReceive: Schema.Boolean,
-                  encryptionAlgorithm: Schema.Literals([
-                    "NotSpecified",
-                    "None",
-                    "DES3",
-                    "RC2",
-                    "AES128",
-                    "AES192",
-                    "AES256",
-                  ]),
-                  signingAlgorithm: Schema.optional(
-                    Schema.Literals([
-                      "NotSpecified",
-                      "Default",
-                      "SHA1",
-                      "SHA2256",
-                      "SHA2384",
-                      "SHA2512",
-                    ]),
-                  ),
-                }),
-                envelopeSettings: Schema.Struct({
-                  messageContentType: Schema.String,
-                  transmitFileNameInMimeHeader: Schema.Boolean,
-                  fileNameTemplate: Schema.String,
-                  suspendMessageOnFileNameGenerationError: Schema.Boolean,
-                  autogenerateFileName: Schema.Boolean,
-                }),
-                errorSettings: Schema.Struct({
-                  suspendDuplicateMessage: Schema.Boolean,
-                  resendIfMDNNotReceived: Schema.Boolean,
-                }),
-              }),
-            }),
-          }),
-        ),
-        x12: Schema.optional(
-          Schema.Struct({
-            receiveAgreement: Schema.Struct({
-              senderBusinessIdentity: Schema.Struct({
-                qualifier: Schema.String,
-                value: Schema.String,
-              }),
-              receiverBusinessIdentity: Schema.Struct({
-                qualifier: Schema.String,
-                value: Schema.String,
-              }),
-              protocolSettings: Schema.Struct({
-                validationSettings: Schema.Struct({
-                  validateCharacterSet: Schema.Boolean,
-                  checkDuplicateInterchangeControlNumber: Schema.Boolean,
-                  interchangeControlNumberValidityDays: Schema.Number,
-                  checkDuplicateGroupControlNumber: Schema.Boolean,
-                  checkDuplicateTransactionSetControlNumber: Schema.Boolean,
-                  validateEDITypes: Schema.Boolean,
-                  validateXSDTypes: Schema.Boolean,
-                  allowLeadingAndTrailingSpacesAndZeroes: Schema.Boolean,
-                  trimLeadingAndTrailingSpacesAndZeroes: Schema.Boolean,
-                  trailingSeparatorPolicy: Schema.Literals([
-                    "NotSpecified",
-                    "NotAllowed",
-                    "Optional",
-                    "Mandatory",
-                  ]),
-                }),
-                framingSettings: Schema.Struct({
-                  dataElementSeparator: Schema.Number,
-                  componentSeparator: Schema.Number,
-                  replaceSeparatorsInPayload: Schema.Boolean,
-                  replaceCharacter: Schema.Number,
-                  segmentTerminator: Schema.Number,
-                  characterSet: Schema.Literals([
-                    "NotSpecified",
-                    "Basic",
-                    "Extended",
-                    "UTF8",
-                  ]),
-                  segmentTerminatorSuffix: Schema.Literals([
-                    "NotSpecified",
-                    "None",
-                    "CR",
-                    "LF",
-                    "CRLF",
-                  ]),
-                }),
-                envelopeSettings: Schema.Struct({
-                  controlStandardsId: Schema.Number,
-                  useControlStandardsIdAsRepetitionCharacter: Schema.Boolean,
-                  senderApplicationId: Schema.String,
-                  receiverApplicationId: Schema.String,
-                  controlVersionNumber: Schema.String,
-                  interchangeControlNumberLowerBound: Schema.Number,
-                  interchangeControlNumberUpperBound: Schema.Number,
-                  rolloverInterchangeControlNumber: Schema.Boolean,
-                  enableDefaultGroupHeaders: Schema.Boolean,
-                  functionalGroupId: Schema.optional(Schema.String),
-                  groupControlNumberLowerBound: Schema.Number,
-                  groupControlNumberUpperBound: Schema.Number,
-                  rolloverGroupControlNumber: Schema.Boolean,
-                  groupHeaderAgencyCode: Schema.String,
-                  groupHeaderVersion: Schema.String,
-                  transactionSetControlNumberLowerBound: Schema.Number,
-                  transactionSetControlNumberUpperBound: Schema.Number,
-                  rolloverTransactionSetControlNumber: Schema.Boolean,
-                  transactionSetControlNumberPrefix: Schema.optional(
-                    Schema.String,
-                  ),
-                  transactionSetControlNumberSuffix: Schema.optional(
-                    Schema.String,
-                  ),
-                  overwriteExistingTransactionSetControlNumber: Schema.Boolean,
-                  groupHeaderDateFormat: Schema.Literals([
-                    "NotSpecified",
-                    "CCYYMMDD",
-                    "YYMMDD",
-                  ]),
-                  groupHeaderTimeFormat: Schema.Literals([
-                    "NotSpecified",
-                    "HHMM",
-                    "HHMMSS",
-                    "HHMMSSdd",
-                    "HHMMSSd",
-                  ]),
-                  usageIndicator: Schema.Literals([
-                    "NotSpecified",
-                    "Test",
-                    "Information",
-                    "Production",
-                  ]),
-                }),
-                acknowledgementSettings: Schema.Struct({
-                  needTechnicalAcknowledgement: Schema.Boolean,
-                  batchTechnicalAcknowledgements: Schema.Boolean,
-                  needFunctionalAcknowledgement: Schema.Boolean,
-                  functionalAcknowledgementVersion: Schema.optional(
-                    Schema.String,
-                  ),
-                  batchFunctionalAcknowledgements: Schema.Boolean,
-                  needImplementationAcknowledgement: Schema.Boolean,
-                  implementationAcknowledgementVersion: Schema.optional(
-                    Schema.String,
-                  ),
-                  batchImplementationAcknowledgements: Schema.Boolean,
-                  needLoopForValidMessages: Schema.Boolean,
-                  sendSynchronousAcknowledgement: Schema.Boolean,
-                  acknowledgementControlNumberPrefix: Schema.optional(
-                    Schema.String,
-                  ),
-                  acknowledgementControlNumberSuffix: Schema.optional(
-                    Schema.String,
-                  ),
-                  acknowledgementControlNumberLowerBound: Schema.Number,
-                  acknowledgementControlNumberUpperBound: Schema.Number,
-                  rolloverAcknowledgementControlNumber: Schema.Boolean,
-                }),
-                messageFilter: Schema.Struct({
-                  messageFilterType: Schema.Literals([
-                    "NotSpecified",
-                    "Include",
-                    "Exclude",
-                  ]),
-                }),
-                securitySettings: Schema.Struct({
-                  authorizationQualifier: Schema.String,
-                  authorizationValue: Schema.optional(Schema.String),
-                  securityQualifier: Schema.String,
-                  passwordValue: Schema.optional(SensitiveString),
-                }),
-                processingSettings: Schema.Struct({
-                  maskSecurityInfo: Schema.Boolean,
-                  convertImpliedDecimal: Schema.Boolean,
-                  preserveInterchange: Schema.Boolean,
-                  suspendInterchangeOnError: Schema.Boolean,
-                  createEmptyXmlTagsForTrailingSeparators: Schema.Boolean,
-                  useDotAsDecimalSeparator: Schema.Boolean,
-                }),
-                envelopeOverrides: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      targetNamespace: Schema.String,
-                      protocolVersion: Schema.String,
-                      messageId: Schema.String,
-                      responsibleAgencyCode: Schema.String,
-                      headerVersion: Schema.String,
-                      senderApplicationId: Schema.String,
-                      receiverApplicationId: Schema.String,
-                      functionalIdentifierCode: Schema.optional(Schema.String),
-                      dateFormat: Schema.Literals([
-                        "NotSpecified",
-                        "CCYYMMDD",
-                        "YYMMDD",
-                      ]),
-                      timeFormat: Schema.Literals([
-                        "NotSpecified",
-                        "HHMM",
-                        "HHMMSS",
-                        "HHMMSSdd",
-                        "HHMMSSd",
-                      ]),
-                    }),
-                  ),
-                ),
-                validationOverrides: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      messageId: Schema.String,
-                      validateEDITypes: Schema.Boolean,
-                      validateXSDTypes: Schema.Boolean,
-                      allowLeadingAndTrailingSpacesAndZeroes: Schema.Boolean,
-                      validateCharacterSet: Schema.Boolean,
-                      trimLeadingAndTrailingSpacesAndZeroes: Schema.Boolean,
-                      trailingSeparatorPolicy: Schema.Literals([
-                        "NotSpecified",
-                        "NotAllowed",
-                        "Optional",
-                        "Mandatory",
-                      ]),
-                    }),
-                  ),
-                ),
-                messageFilterList: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      messageId: Schema.String,
-                    }),
-                  ),
-                ),
-                schemaReferences: Schema.Array(
-                  Schema.Struct({
-                    messageId: Schema.String,
-                    senderApplicationId: Schema.optional(Schema.String),
-                    schemaVersion: Schema.String,
-                    schemaName: Schema.String,
-                  }),
-                ),
-                x12DelimiterOverrides: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      protocolVersion: Schema.optional(Schema.String),
-                      messageId: Schema.optional(Schema.String),
-                      dataElementSeparator: Schema.Number,
-                      componentSeparator: Schema.Number,
-                      segmentTerminator: Schema.Number,
-                      segmentTerminatorSuffix: Schema.Literals([
-                        "NotSpecified",
-                        "None",
-                        "CR",
-                        "LF",
-                        "CRLF",
-                      ]),
-                      replaceCharacter: Schema.Number,
-                      replaceSeparatorsInPayload: Schema.Boolean,
-                      targetNamespace: Schema.optional(Schema.String),
-                    }),
-                  ),
-                ),
-              }),
-            }),
-            sendAgreement: Schema.Struct({
-              senderBusinessIdentity: Schema.Struct({
-                qualifier: Schema.String,
-                value: Schema.String,
-              }),
-              receiverBusinessIdentity: Schema.Struct({
-                qualifier: Schema.String,
-                value: Schema.String,
-              }),
-              protocolSettings: Schema.Struct({
-                validationSettings: Schema.Struct({
-                  validateCharacterSet: Schema.Boolean,
-                  checkDuplicateInterchangeControlNumber: Schema.Boolean,
-                  interchangeControlNumberValidityDays: Schema.Number,
-                  checkDuplicateGroupControlNumber: Schema.Boolean,
-                  checkDuplicateTransactionSetControlNumber: Schema.Boolean,
-                  validateEDITypes: Schema.Boolean,
-                  validateXSDTypes: Schema.Boolean,
-                  allowLeadingAndTrailingSpacesAndZeroes: Schema.Boolean,
-                  trimLeadingAndTrailingSpacesAndZeroes: Schema.Boolean,
-                  trailingSeparatorPolicy: Schema.Literals([
-                    "NotSpecified",
-                    "NotAllowed",
-                    "Optional",
-                    "Mandatory",
-                  ]),
-                }),
-                framingSettings: Schema.Struct({
-                  dataElementSeparator: Schema.Number,
-                  componentSeparator: Schema.Number,
-                  replaceSeparatorsInPayload: Schema.Boolean,
-                  replaceCharacter: Schema.Number,
-                  segmentTerminator: Schema.Number,
-                  characterSet: Schema.Literals([
-                    "NotSpecified",
-                    "Basic",
-                    "Extended",
-                    "UTF8",
-                  ]),
-                  segmentTerminatorSuffix: Schema.Literals([
-                    "NotSpecified",
-                    "None",
-                    "CR",
-                    "LF",
-                    "CRLF",
-                  ]),
-                }),
-                envelopeSettings: Schema.Struct({
-                  controlStandardsId: Schema.Number,
-                  useControlStandardsIdAsRepetitionCharacter: Schema.Boolean,
-                  senderApplicationId: Schema.String,
-                  receiverApplicationId: Schema.String,
-                  controlVersionNumber: Schema.String,
-                  interchangeControlNumberLowerBound: Schema.Number,
-                  interchangeControlNumberUpperBound: Schema.Number,
-                  rolloverInterchangeControlNumber: Schema.Boolean,
-                  enableDefaultGroupHeaders: Schema.Boolean,
-                  functionalGroupId: Schema.optional(Schema.String),
-                  groupControlNumberLowerBound: Schema.Number,
-                  groupControlNumberUpperBound: Schema.Number,
-                  rolloverGroupControlNumber: Schema.Boolean,
-                  groupHeaderAgencyCode: Schema.String,
-                  groupHeaderVersion: Schema.String,
-                  transactionSetControlNumberLowerBound: Schema.Number,
-                  transactionSetControlNumberUpperBound: Schema.Number,
-                  rolloverTransactionSetControlNumber: Schema.Boolean,
-                  transactionSetControlNumberPrefix: Schema.optional(
-                    Schema.String,
-                  ),
-                  transactionSetControlNumberSuffix: Schema.optional(
-                    Schema.String,
-                  ),
-                  overwriteExistingTransactionSetControlNumber: Schema.Boolean,
-                  groupHeaderDateFormat: Schema.Literals([
-                    "NotSpecified",
-                    "CCYYMMDD",
-                    "YYMMDD",
-                  ]),
-                  groupHeaderTimeFormat: Schema.Literals([
-                    "NotSpecified",
-                    "HHMM",
-                    "HHMMSS",
-                    "HHMMSSdd",
-                    "HHMMSSd",
-                  ]),
-                  usageIndicator: Schema.Literals([
-                    "NotSpecified",
-                    "Test",
-                    "Information",
-                    "Production",
-                  ]),
-                }),
-                acknowledgementSettings: Schema.Struct({
-                  needTechnicalAcknowledgement: Schema.Boolean,
-                  batchTechnicalAcknowledgements: Schema.Boolean,
-                  needFunctionalAcknowledgement: Schema.Boolean,
-                  functionalAcknowledgementVersion: Schema.optional(
-                    Schema.String,
-                  ),
-                  batchFunctionalAcknowledgements: Schema.Boolean,
-                  needImplementationAcknowledgement: Schema.Boolean,
-                  implementationAcknowledgementVersion: Schema.optional(
-                    Schema.String,
-                  ),
-                  batchImplementationAcknowledgements: Schema.Boolean,
-                  needLoopForValidMessages: Schema.Boolean,
-                  sendSynchronousAcknowledgement: Schema.Boolean,
-                  acknowledgementControlNumberPrefix: Schema.optional(
-                    Schema.String,
-                  ),
-                  acknowledgementControlNumberSuffix: Schema.optional(
-                    Schema.String,
-                  ),
-                  acknowledgementControlNumberLowerBound: Schema.Number,
-                  acknowledgementControlNumberUpperBound: Schema.Number,
-                  rolloverAcknowledgementControlNumber: Schema.Boolean,
-                }),
-                messageFilter: Schema.Struct({
-                  messageFilterType: Schema.Literals([
-                    "NotSpecified",
-                    "Include",
-                    "Exclude",
-                  ]),
-                }),
-                securitySettings: Schema.Struct({
-                  authorizationQualifier: Schema.String,
-                  authorizationValue: Schema.optional(Schema.String),
-                  securityQualifier: Schema.String,
-                  passwordValue: Schema.optional(SensitiveString),
-                }),
-                processingSettings: Schema.Struct({
-                  maskSecurityInfo: Schema.Boolean,
-                  convertImpliedDecimal: Schema.Boolean,
-                  preserveInterchange: Schema.Boolean,
-                  suspendInterchangeOnError: Schema.Boolean,
-                  createEmptyXmlTagsForTrailingSeparators: Schema.Boolean,
-                  useDotAsDecimalSeparator: Schema.Boolean,
-                }),
-                envelopeOverrides: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      targetNamespace: Schema.String,
-                      protocolVersion: Schema.String,
-                      messageId: Schema.String,
-                      responsibleAgencyCode: Schema.String,
-                      headerVersion: Schema.String,
-                      senderApplicationId: Schema.String,
-                      receiverApplicationId: Schema.String,
-                      functionalIdentifierCode: Schema.optional(Schema.String),
-                      dateFormat: Schema.Literals([
-                        "NotSpecified",
-                        "CCYYMMDD",
-                        "YYMMDD",
-                      ]),
-                      timeFormat: Schema.Literals([
-                        "NotSpecified",
-                        "HHMM",
-                        "HHMMSS",
-                        "HHMMSSdd",
-                        "HHMMSSd",
-                      ]),
-                    }),
-                  ),
-                ),
-                validationOverrides: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      messageId: Schema.String,
-                      validateEDITypes: Schema.Boolean,
-                      validateXSDTypes: Schema.Boolean,
-                      allowLeadingAndTrailingSpacesAndZeroes: Schema.Boolean,
-                      validateCharacterSet: Schema.Boolean,
-                      trimLeadingAndTrailingSpacesAndZeroes: Schema.Boolean,
-                      trailingSeparatorPolicy: Schema.Literals([
-                        "NotSpecified",
-                        "NotAllowed",
-                        "Optional",
-                        "Mandatory",
-                      ]),
-                    }),
-                  ),
-                ),
-                messageFilterList: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      messageId: Schema.String,
-                    }),
-                  ),
-                ),
-                schemaReferences: Schema.Array(
-                  Schema.Struct({
-                    messageId: Schema.String,
-                    senderApplicationId: Schema.optional(Schema.String),
-                    schemaVersion: Schema.String,
-                    schemaName: Schema.String,
-                  }),
-                ),
-                x12DelimiterOverrides: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      protocolVersion: Schema.optional(Schema.String),
-                      messageId: Schema.optional(Schema.String),
-                      dataElementSeparator: Schema.Number,
-                      componentSeparator: Schema.Number,
-                      segmentTerminator: Schema.Number,
-                      segmentTerminatorSuffix: Schema.Literals([
-                        "NotSpecified",
-                        "None",
-                        "CR",
-                        "LF",
-                        "CRLF",
-                      ]),
-                      replaceCharacter: Schema.Number,
-                      replaceSeparatorsInPayload: Schema.Boolean,
-                      targetNamespace: Schema.optional(Schema.String),
-                    }),
-                  ),
-                ),
-              }),
-            }),
-          }),
-        ),
-        edifact: Schema.optional(
-          Schema.Struct({
-            receiveAgreement: Schema.Struct({
-              senderBusinessIdentity: Schema.Struct({
-                qualifier: Schema.String,
-                value: Schema.String,
-              }),
-              receiverBusinessIdentity: Schema.Struct({
-                qualifier: Schema.String,
-                value: Schema.String,
-              }),
-              protocolSettings: Schema.Struct({
-                validationSettings: Schema.Struct({
-                  validateCharacterSet: Schema.Boolean,
-                  checkDuplicateInterchangeControlNumber: Schema.Boolean,
-                  interchangeControlNumberValidityDays: Schema.Number,
-                  checkDuplicateGroupControlNumber: Schema.Boolean,
-                  checkDuplicateTransactionSetControlNumber: Schema.Boolean,
-                  validateEDITypes: Schema.Boolean,
-                  validateXSDTypes: Schema.Boolean,
-                  allowLeadingAndTrailingSpacesAndZeroes: Schema.Boolean,
-                  trimLeadingAndTrailingSpacesAndZeroes: Schema.Boolean,
-                  trailingSeparatorPolicy: Schema.Literals([
-                    "NotSpecified",
-                    "NotAllowed",
-                    "Optional",
-                    "Mandatory",
-                  ]),
-                }),
-                framingSettings: Schema.Struct({
-                  serviceCodeListDirectoryVersion: Schema.optional(
-                    Schema.String,
-                  ),
-                  characterEncoding: Schema.optional(Schema.String),
-                  protocolVersion: Schema.Number,
-                  dataElementSeparator: Schema.Number,
-                  componentSeparator: Schema.Number,
-                  segmentTerminator: Schema.Number,
-                  releaseIndicator: Schema.Number,
-                  repetitionSeparator: Schema.Number,
-                  characterSet: Schema.Literals([
-                    "NotSpecified",
-                    "UNOB",
-                    "UNOA",
-                    "UNOC",
-                    "UNOD",
-                    "UNOE",
-                    "UNOF",
-                    "UNOG",
-                    "UNOH",
-                    "UNOI",
-                    "UNOJ",
-                    "UNOK",
-                    "UNOX",
-                    "UNOY",
-                    "KECA",
-                  ]),
-                  decimalPointIndicator: Schema.Literals([
-                    "NotSpecified",
-                    "Comma",
-                    "Decimal",
-                  ]),
-                  segmentTerminatorSuffix: Schema.Literals([
-                    "NotSpecified",
-                    "None",
-                    "CR",
-                    "LF",
-                    "CRLF",
-                  ]),
-                }),
-                envelopeSettings: Schema.Struct({
-                  groupAssociationAssignedCode: Schema.optional(Schema.String),
-                  communicationAgreementId: Schema.optional(Schema.String),
-                  applyDelimiterStringAdvice: Schema.Boolean,
-                  createGroupingSegments: Schema.Boolean,
-                  enableDefaultGroupHeaders: Schema.Boolean,
-                  recipientReferencePasswordValue:
-                    Schema.optional(SensitiveString),
-                  recipientReferencePasswordQualifier:
-                    Schema.optional(SensitiveString),
-                  applicationReferenceId: Schema.optional(Schema.String),
-                  processingPriorityCode: Schema.optional(Schema.String),
-                  interchangeControlNumberLowerBound: Schema.Number,
-                  interchangeControlNumberUpperBound: Schema.Number,
-                  rolloverInterchangeControlNumber: Schema.Boolean,
-                  interchangeControlNumberPrefix: Schema.optional(
-                    Schema.String,
-                  ),
-                  interchangeControlNumberSuffix: Schema.optional(
-                    Schema.String,
-                  ),
-                  senderReverseRoutingAddress: Schema.optional(Schema.String),
-                  receiverReverseRoutingAddress: Schema.optional(Schema.String),
-                  functionalGroupId: Schema.optional(Schema.String),
-                  groupControllingAgencyCode: Schema.optional(Schema.String),
-                  groupMessageVersion: Schema.optional(Schema.String),
-                  groupMessageRelease: Schema.optional(Schema.String),
-                  groupControlNumberLowerBound: Schema.Number,
-                  groupControlNumberUpperBound: Schema.Number,
-                  rolloverGroupControlNumber: Schema.Boolean,
-                  groupControlNumberPrefix: Schema.optional(Schema.String),
-                  groupControlNumberSuffix: Schema.optional(Schema.String),
-                  groupApplicationReceiverQualifier: Schema.optional(
-                    Schema.String,
-                  ),
-                  groupApplicationReceiverId: Schema.optional(Schema.String),
-                  groupApplicationSenderQualifier: Schema.optional(
-                    Schema.String,
-                  ),
-                  groupApplicationSenderId: Schema.optional(Schema.String),
-                  groupApplicationPassword: Schema.optional(SensitiveString),
-                  overwriteExistingTransactionSetControlNumber: Schema.Boolean,
-                  transactionSetControlNumberPrefix: Schema.optional(
-                    Schema.String,
-                  ),
-                  transactionSetControlNumberSuffix: Schema.optional(
-                    Schema.String,
-                  ),
-                  transactionSetControlNumberLowerBound: Schema.Number,
-                  transactionSetControlNumberUpperBound: Schema.Number,
-                  rolloverTransactionSetControlNumber: Schema.Boolean,
-                  isTestInterchange: Schema.Boolean,
-                  senderInternalIdentification: Schema.optional(Schema.String),
-                  senderInternalSubIdentification: Schema.optional(
-                    Schema.String,
-                  ),
-                  receiverInternalIdentification: Schema.optional(
-                    Schema.String,
-                  ),
-                  receiverInternalSubIdentification: Schema.optional(
-                    Schema.String,
-                  ),
-                }),
-                acknowledgementSettings: Schema.Struct({
-                  needTechnicalAcknowledgement: Schema.Boolean,
-                  batchTechnicalAcknowledgements: Schema.Boolean,
-                  needFunctionalAcknowledgement: Schema.Boolean,
-                  batchFunctionalAcknowledgements: Schema.Boolean,
-                  needLoopForValidMessages: Schema.Boolean,
-                  sendSynchronousAcknowledgement: Schema.Boolean,
-                  acknowledgementControlNumberPrefix: Schema.optional(
-                    Schema.String,
-                  ),
-                  acknowledgementControlNumberSuffix: Schema.optional(
-                    Schema.String,
-                  ),
-                  acknowledgementControlNumberLowerBound: Schema.Number,
-                  acknowledgementControlNumberUpperBound: Schema.Number,
-                  rolloverAcknowledgementControlNumber: Schema.Boolean,
-                }),
-                messageFilter: Schema.Struct({
-                  messageFilterType: Schema.Literals([
-                    "NotSpecified",
-                    "Include",
-                    "Exclude",
-                  ]),
-                }),
-                processingSettings: Schema.Struct({
-                  maskSecurityInfo: Schema.Boolean,
-                  preserveInterchange: Schema.Boolean,
-                  suspendInterchangeOnError: Schema.Boolean,
-                  createEmptyXmlTagsForTrailingSeparators: Schema.Boolean,
-                  useDotAsDecimalSeparator: Schema.Boolean,
-                }),
-                envelopeOverrides: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      messageId: Schema.optional(Schema.String),
-                      messageVersion: Schema.optional(Schema.String),
-                      messageRelease: Schema.optional(Schema.String),
-                      messageAssociationAssignedCode: Schema.optional(
-                        Schema.String,
-                      ),
-                      targetNamespace: Schema.optional(Schema.String),
-                      functionalGroupId: Schema.optional(Schema.String),
-                      senderApplicationQualifier: Schema.optional(
-                        Schema.String,
-                      ),
-                      senderApplicationId: Schema.optional(Schema.String),
-                      receiverApplicationQualifier: Schema.optional(
-                        Schema.String,
-                      ),
-                      receiverApplicationId: Schema.optional(Schema.String),
-                      controllingAgencyCode: Schema.optional(Schema.String),
-                      groupHeaderMessageVersion: Schema.optional(Schema.String),
-                      groupHeaderMessageRelease: Schema.optional(Schema.String),
-                      associationAssignedCode: Schema.optional(Schema.String),
-                      applicationPassword: Schema.optional(SensitiveString),
-                    }),
-                  ),
-                ),
-                messageFilterList: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      messageId: Schema.String,
-                    }),
-                  ),
-                ),
-                schemaReferences: Schema.Array(
-                  Schema.Struct({
-                    messageId: Schema.String,
-                    messageVersion: Schema.String,
-                    messageRelease: Schema.String,
-                    senderApplicationId: Schema.optional(Schema.String),
-                    senderApplicationQualifier: Schema.optional(Schema.String),
-                    associationAssignedCode: Schema.optional(Schema.String),
-                    schemaName: Schema.String,
-                  }),
-                ),
-                validationOverrides: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      messageId: Schema.String,
-                      enforceCharacterSet: Schema.Boolean,
-                      validateEDITypes: Schema.Boolean,
-                      validateXSDTypes: Schema.Boolean,
-                      allowLeadingAndTrailingSpacesAndZeroes: Schema.Boolean,
-                      trailingSeparatorPolicy: Schema.Literals([
-                        "NotSpecified",
-                        "NotAllowed",
-                        "Optional",
-                        "Mandatory",
-                      ]),
-                      trimLeadingAndTrailingSpacesAndZeroes: Schema.Boolean,
-                    }),
-                  ),
-                ),
-                edifactDelimiterOverrides: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      messageId: Schema.optional(Schema.String),
-                      messageVersion: Schema.optional(Schema.String),
-                      messageRelease: Schema.optional(Schema.String),
-                      dataElementSeparator: Schema.Number,
-                      componentSeparator: Schema.Number,
-                      segmentTerminator: Schema.Number,
-                      repetitionSeparator: Schema.Number,
-                      segmentTerminatorSuffix: Schema.Literals([
-                        "NotSpecified",
-                        "None",
-                        "CR",
-                        "LF",
-                        "CRLF",
-                      ]),
-                      decimalPointIndicator: Schema.Literals([
-                        "NotSpecified",
-                        "Comma",
-                        "Decimal",
-                      ]),
-                      releaseIndicator: Schema.Number,
-                      messageAssociationAssignedCode: Schema.optional(
-                        Schema.String,
-                      ),
-                      targetNamespace: Schema.optional(Schema.String),
-                    }),
-                  ),
-                ),
-              }),
-            }),
-            sendAgreement: Schema.Struct({
-              senderBusinessIdentity: Schema.Struct({
-                qualifier: Schema.String,
-                value: Schema.String,
-              }),
-              receiverBusinessIdentity: Schema.Struct({
-                qualifier: Schema.String,
-                value: Schema.String,
-              }),
-              protocolSettings: Schema.Struct({
-                validationSettings: Schema.Struct({
-                  validateCharacterSet: Schema.Boolean,
-                  checkDuplicateInterchangeControlNumber: Schema.Boolean,
-                  interchangeControlNumberValidityDays: Schema.Number,
-                  checkDuplicateGroupControlNumber: Schema.Boolean,
-                  checkDuplicateTransactionSetControlNumber: Schema.Boolean,
-                  validateEDITypes: Schema.Boolean,
-                  validateXSDTypes: Schema.Boolean,
-                  allowLeadingAndTrailingSpacesAndZeroes: Schema.Boolean,
-                  trimLeadingAndTrailingSpacesAndZeroes: Schema.Boolean,
-                  trailingSeparatorPolicy: Schema.Literals([
-                    "NotSpecified",
-                    "NotAllowed",
-                    "Optional",
-                    "Mandatory",
-                  ]),
-                }),
-                framingSettings: Schema.Struct({
-                  serviceCodeListDirectoryVersion: Schema.optional(
-                    Schema.String,
-                  ),
-                  characterEncoding: Schema.optional(Schema.String),
-                  protocolVersion: Schema.Number,
-                  dataElementSeparator: Schema.Number,
-                  componentSeparator: Schema.Number,
-                  segmentTerminator: Schema.Number,
-                  releaseIndicator: Schema.Number,
-                  repetitionSeparator: Schema.Number,
-                  characterSet: Schema.Literals([
-                    "NotSpecified",
-                    "UNOB",
-                    "UNOA",
-                    "UNOC",
-                    "UNOD",
-                    "UNOE",
-                    "UNOF",
-                    "UNOG",
-                    "UNOH",
-                    "UNOI",
-                    "UNOJ",
-                    "UNOK",
-                    "UNOX",
-                    "UNOY",
-                    "KECA",
-                  ]),
-                  decimalPointIndicator: Schema.Literals([
-                    "NotSpecified",
-                    "Comma",
-                    "Decimal",
-                  ]),
-                  segmentTerminatorSuffix: Schema.Literals([
-                    "NotSpecified",
-                    "None",
-                    "CR",
-                    "LF",
-                    "CRLF",
-                  ]),
-                }),
-                envelopeSettings: Schema.Struct({
-                  groupAssociationAssignedCode: Schema.optional(Schema.String),
-                  communicationAgreementId: Schema.optional(Schema.String),
-                  applyDelimiterStringAdvice: Schema.Boolean,
-                  createGroupingSegments: Schema.Boolean,
-                  enableDefaultGroupHeaders: Schema.Boolean,
-                  recipientReferencePasswordValue:
-                    Schema.optional(SensitiveString),
-                  recipientReferencePasswordQualifier:
-                    Schema.optional(SensitiveString),
-                  applicationReferenceId: Schema.optional(Schema.String),
-                  processingPriorityCode: Schema.optional(Schema.String),
-                  interchangeControlNumberLowerBound: Schema.Number,
-                  interchangeControlNumberUpperBound: Schema.Number,
-                  rolloverInterchangeControlNumber: Schema.Boolean,
-                  interchangeControlNumberPrefix: Schema.optional(
-                    Schema.String,
-                  ),
-                  interchangeControlNumberSuffix: Schema.optional(
-                    Schema.String,
-                  ),
-                  senderReverseRoutingAddress: Schema.optional(Schema.String),
-                  receiverReverseRoutingAddress: Schema.optional(Schema.String),
-                  functionalGroupId: Schema.optional(Schema.String),
-                  groupControllingAgencyCode: Schema.optional(Schema.String),
-                  groupMessageVersion: Schema.optional(Schema.String),
-                  groupMessageRelease: Schema.optional(Schema.String),
-                  groupControlNumberLowerBound: Schema.Number,
-                  groupControlNumberUpperBound: Schema.Number,
-                  rolloverGroupControlNumber: Schema.Boolean,
-                  groupControlNumberPrefix: Schema.optional(Schema.String),
-                  groupControlNumberSuffix: Schema.optional(Schema.String),
-                  groupApplicationReceiverQualifier: Schema.optional(
-                    Schema.String,
-                  ),
-                  groupApplicationReceiverId: Schema.optional(Schema.String),
-                  groupApplicationSenderQualifier: Schema.optional(
-                    Schema.String,
-                  ),
-                  groupApplicationSenderId: Schema.optional(Schema.String),
-                  groupApplicationPassword: Schema.optional(SensitiveString),
-                  overwriteExistingTransactionSetControlNumber: Schema.Boolean,
-                  transactionSetControlNumberPrefix: Schema.optional(
-                    Schema.String,
-                  ),
-                  transactionSetControlNumberSuffix: Schema.optional(
-                    Schema.String,
-                  ),
-                  transactionSetControlNumberLowerBound: Schema.Number,
-                  transactionSetControlNumberUpperBound: Schema.Number,
-                  rolloverTransactionSetControlNumber: Schema.Boolean,
-                  isTestInterchange: Schema.Boolean,
-                  senderInternalIdentification: Schema.optional(Schema.String),
-                  senderInternalSubIdentification: Schema.optional(
-                    Schema.String,
-                  ),
-                  receiverInternalIdentification: Schema.optional(
-                    Schema.String,
-                  ),
-                  receiverInternalSubIdentification: Schema.optional(
-                    Schema.String,
-                  ),
-                }),
-                acknowledgementSettings: Schema.Struct({
-                  needTechnicalAcknowledgement: Schema.Boolean,
-                  batchTechnicalAcknowledgements: Schema.Boolean,
-                  needFunctionalAcknowledgement: Schema.Boolean,
-                  batchFunctionalAcknowledgements: Schema.Boolean,
-                  needLoopForValidMessages: Schema.Boolean,
-                  sendSynchronousAcknowledgement: Schema.Boolean,
-                  acknowledgementControlNumberPrefix: Schema.optional(
-                    Schema.String,
-                  ),
-                  acknowledgementControlNumberSuffix: Schema.optional(
-                    Schema.String,
-                  ),
-                  acknowledgementControlNumberLowerBound: Schema.Number,
-                  acknowledgementControlNumberUpperBound: Schema.Number,
-                  rolloverAcknowledgementControlNumber: Schema.Boolean,
-                }),
-                messageFilter: Schema.Struct({
-                  messageFilterType: Schema.Literals([
-                    "NotSpecified",
-                    "Include",
-                    "Exclude",
-                  ]),
-                }),
-                processingSettings: Schema.Struct({
-                  maskSecurityInfo: Schema.Boolean,
-                  preserveInterchange: Schema.Boolean,
-                  suspendInterchangeOnError: Schema.Boolean,
-                  createEmptyXmlTagsForTrailingSeparators: Schema.Boolean,
-                  useDotAsDecimalSeparator: Schema.Boolean,
-                }),
-                envelopeOverrides: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      messageId: Schema.optional(Schema.String),
-                      messageVersion: Schema.optional(Schema.String),
-                      messageRelease: Schema.optional(Schema.String),
-                      messageAssociationAssignedCode: Schema.optional(
-                        Schema.String,
-                      ),
-                      targetNamespace: Schema.optional(Schema.String),
-                      functionalGroupId: Schema.optional(Schema.String),
-                      senderApplicationQualifier: Schema.optional(
-                        Schema.String,
-                      ),
-                      senderApplicationId: Schema.optional(Schema.String),
-                      receiverApplicationQualifier: Schema.optional(
-                        Schema.String,
-                      ),
-                      receiverApplicationId: Schema.optional(Schema.String),
-                      controllingAgencyCode: Schema.optional(Schema.String),
-                      groupHeaderMessageVersion: Schema.optional(Schema.String),
-                      groupHeaderMessageRelease: Schema.optional(Schema.String),
-                      associationAssignedCode: Schema.optional(Schema.String),
-                      applicationPassword: Schema.optional(SensitiveString),
-                    }),
-                  ),
-                ),
-                messageFilterList: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      messageId: Schema.String,
-                    }),
-                  ),
-                ),
-                schemaReferences: Schema.Array(
-                  Schema.Struct({
-                    messageId: Schema.String,
-                    messageVersion: Schema.String,
-                    messageRelease: Schema.String,
-                    senderApplicationId: Schema.optional(Schema.String),
-                    senderApplicationQualifier: Schema.optional(Schema.String),
-                    associationAssignedCode: Schema.optional(Schema.String),
-                    schemaName: Schema.String,
-                  }),
-                ),
-                validationOverrides: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      messageId: Schema.String,
-                      enforceCharacterSet: Schema.Boolean,
-                      validateEDITypes: Schema.Boolean,
-                      validateXSDTypes: Schema.Boolean,
-                      allowLeadingAndTrailingSpacesAndZeroes: Schema.Boolean,
-                      trailingSeparatorPolicy: Schema.Literals([
-                        "NotSpecified",
-                        "NotAllowed",
-                        "Optional",
-                        "Mandatory",
-                      ]),
-                      trimLeadingAndTrailingSpacesAndZeroes: Schema.Boolean,
-                    }),
-                  ),
-                ),
-                edifactDelimiterOverrides: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      messageId: Schema.optional(Schema.String),
-                      messageVersion: Schema.optional(Schema.String),
-                      messageRelease: Schema.optional(Schema.String),
-                      dataElementSeparator: Schema.Number,
-                      componentSeparator: Schema.Number,
-                      segmentTerminator: Schema.Number,
-                      repetitionSeparator: Schema.Number,
-                      segmentTerminatorSuffix: Schema.Literals([
-                        "NotSpecified",
-                        "None",
-                        "CR",
-                        "LF",
-                        "CRLF",
-                      ]),
-                      decimalPointIndicator: Schema.Literals([
-                        "NotSpecified",
-                        "Comma",
-                        "Decimal",
-                      ]),
-                      releaseIndicator: Schema.Number,
-                      messageAssociationAssignedCode: Schema.optional(
-                        Schema.String,
-                      ),
-                      targetNamespace: Schema.optional(Schema.String),
-                    }),
-                  ),
-                ),
-              }),
-            }),
-          }),
-        ),
-      }),
-    }),
+    properties: Schema.suspend(
+      () => IntegrationAccountAgreementPropertiesSchema,
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1207,6 +1703,9 @@ export type IntegrationAccountAgreementsCreateOrUpdateInput =
 // Output Schema
 export const IntegrationAccountAgreementsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.suspend(
+      () => IntegrationAccountAgreementPropertiesSchema,
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1283,6 +1782,9 @@ export type IntegrationAccountAgreementsGetInput =
 // Output Schema
 export const IntegrationAccountAgreementsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.suspend(
+      () => IntegrationAccountAgreementPropertiesSchema,
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1326,15 +1828,7 @@ export type IntegrationAccountAgreementsListInput =
 export const IntegrationAccountAgreementsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          location: Schema.optional(Schema.String),
-          tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => IntegrationAccountAgreementSchema)),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -1362,9 +1856,7 @@ export const IntegrationAccountAgreementsListContentCallbackUrlInput =
     integrationAccountName: Schema.String.pipe(T.PathParam()),
     agreementName: Schema.String.pipe(T.PathParam()),
     notAfter: Schema.optional(Schema.String),
-    keyType: Schema.optional(
-      Schema.Literals(["NotSpecified", "Primary", "Secondary"]),
-    ),
+    keyType: Schema.optional(Schema.suspend(() => KeyTypeSchema)),
   }).pipe(
     T.Http({
       method: "POST",
@@ -1384,13 +1876,7 @@ export const IntegrationAccountAgreementsListContentCallbackUrlOutput =
     relativePath: Schema.optional(Schema.String),
     relativePathParameters: Schema.optional(Schema.Array(Schema.String)),
     queries: Schema.optional(
-      Schema.Struct({
-        "api-version": Schema.optional(Schema.String),
-        sp: Schema.optional(Schema.String),
-        sv: Schema.optional(Schema.String),
-        sig: Schema.optional(Schema.String),
-        se: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(() => WorkflowTriggerListCallbackUrlQueriesSchema),
     ),
   });
 export type IntegrationAccountAgreementsListContentCallbackUrlOutput =
@@ -1415,11 +1901,7 @@ export const IntegrationAccountAssembliesCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     integrationAccountName: Schema.String.pipe(T.PathParam()),
     assemblyArtifactName: Schema.String.pipe(T.PathParam()),
-    properties: Schema.Struct({
-      createdTime: Schema.optional(Schema.String),
-      changedTime: Schema.optional(Schema.String),
-      metadata: Schema.optional(Schema.Unknown),
-    }),
+    properties: Schema.suspend(() => AssemblyPropertiesSchema),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1438,6 +1920,7 @@ export type IntegrationAccountAssembliesCreateOrUpdateInput =
 // Output Schema
 export const IntegrationAccountAssembliesCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.suspend(() => AssemblyPropertiesSchema),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1514,6 +1997,7 @@ export type IntegrationAccountAssembliesGetInput =
 // Output Schema
 export const IntegrationAccountAssembliesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.suspend(() => AssemblyPropertiesSchema),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1555,15 +2039,7 @@ export type IntegrationAccountAssembliesListInput =
 export const IntegrationAccountAssembliesListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          location: Schema.optional(Schema.String),
-          tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => AssemblyDefinitionSchema)),
     ),
   });
 export type IntegrationAccountAssembliesListOutput =
@@ -1606,13 +2082,7 @@ export const IntegrationAccountAssembliesListContentCallbackUrlOutput =
     relativePath: Schema.optional(Schema.String),
     relativePathParameters: Schema.optional(Schema.Array(Schema.String)),
     queries: Schema.optional(
-      Schema.Struct({
-        "api-version": Schema.optional(Schema.String),
-        sp: Schema.optional(Schema.String),
-        sv: Schema.optional(Schema.String),
-        sig: Schema.optional(Schema.String),
-        se: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(() => WorkflowTriggerListCallbackUrlQueriesSchema),
     ),
   });
 export type IntegrationAccountAssembliesListContentCallbackUrlOutput =
@@ -1637,11 +2107,7 @@ export const IntegrationAccountBatchConfigurationsCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     integrationAccountName: Schema.String.pipe(T.PathParam()),
     batchConfigurationName: Schema.String.pipe(T.PathParam()),
-    properties: Schema.Struct({
-      createdTime: Schema.optional(Schema.String),
-      changedTime: Schema.optional(Schema.String),
-      metadata: Schema.optional(Schema.Unknown),
-    }),
+    properties: Schema.suspend(() => BatchConfigurationPropertiesSchema),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1660,6 +2126,7 @@ export type IntegrationAccountBatchConfigurationsCreateOrUpdateInput =
 // Output Schema
 export const IntegrationAccountBatchConfigurationsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.suspend(() => BatchConfigurationPropertiesSchema),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1736,6 +2203,7 @@ export type IntegrationAccountBatchConfigurationsGetInput =
 // Output Schema
 export const IntegrationAccountBatchConfigurationsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.suspend(() => BatchConfigurationPropertiesSchema),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1777,15 +2245,7 @@ export type IntegrationAccountBatchConfigurationsListInput =
 export const IntegrationAccountBatchConfigurationsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          location: Schema.optional(Schema.String),
-          tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => BatchConfigurationSchema)),
     ),
   });
 export type IntegrationAccountBatchConfigurationsListOutput =
@@ -1809,23 +2269,9 @@ export const IntegrationAccountCertificatesCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     integrationAccountName: Schema.String.pipe(T.PathParam()),
     certificateName: Schema.String.pipe(T.PathParam()),
-    properties: Schema.Struct({
-      createdTime: Schema.optional(Schema.String),
-      changedTime: Schema.optional(Schema.String),
-      metadata: Schema.optional(Schema.Struct({})),
-      key: Schema.optional(
-        Schema.Struct({
-          keyVault: Schema.Struct({
-            id: Schema.optional(Schema.String),
-            name: Schema.optional(Schema.String),
-            type: Schema.optional(Schema.String),
-          }),
-          keyName: Schema.String,
-          keyVersion: Schema.optional(Schema.String),
-        }),
-      ),
-      publicCertificate: Schema.optional(Schema.String),
-    }),
+    properties: Schema.suspend(
+      () => IntegrationAccountCertificatePropertiesSchema,
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1844,6 +2290,9 @@ export type IntegrationAccountCertificatesCreateOrUpdateInput =
 // Output Schema
 export const IntegrationAccountCertificatesCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.suspend(
+      () => IntegrationAccountCertificatePropertiesSchema,
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1920,6 +2369,9 @@ export type IntegrationAccountCertificatesGetInput =
 // Output Schema
 export const IntegrationAccountCertificatesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.suspend(
+      () => IntegrationAccountCertificatePropertiesSchema,
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1962,15 +2414,7 @@ export type IntegrationAccountCertificatesListInput =
 export const IntegrationAccountCertificatesListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          location: Schema.optional(Schema.String),
-          tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => IntegrationAccountCertificateSchema)),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -1996,39 +2440,7 @@ export const IntegrationAccountMapsCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     integrationAccountName: Schema.String.pipe(T.PathParam()),
     mapName: Schema.String.pipe(T.PathParam()),
-    properties: Schema.Struct({
-      mapType: Schema.Literals([
-        "NotSpecified",
-        "Xslt",
-        "Xslt20",
-        "Xslt30",
-        "Liquid",
-      ]),
-      parametersSchema: Schema.optional(
-        Schema.Struct({
-          ref: Schema.optional(Schema.String),
-        }),
-      ),
-      createdTime: Schema.optional(Schema.String),
-      changedTime: Schema.optional(Schema.String),
-      content: Schema.optional(Schema.String),
-      contentType: Schema.optional(Schema.String),
-      contentLink: Schema.optional(
-        Schema.Struct({
-          uri: Schema.optional(Schema.String),
-          contentVersion: Schema.optional(Schema.String),
-          contentSize: Schema.optional(Schema.Number),
-          contentHash: Schema.optional(
-            Schema.Struct({
-              algorithm: Schema.optional(Schema.String),
-              value: Schema.optional(Schema.String),
-            }),
-          ),
-          metadata: Schema.optional(Schema.Struct({})),
-        }),
-      ),
-      metadata: Schema.optional(Schema.Struct({})),
-    }),
+    properties: Schema.suspend(() => IntegrationAccountMapPropertiesSchema),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2047,6 +2459,7 @@ export type IntegrationAccountMapsCreateOrUpdateInput =
 // Output Schema
 export const IntegrationAccountMapsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.suspend(() => IntegrationAccountMapPropertiesSchema),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2123,6 +2536,7 @@ export type IntegrationAccountMapsGetInput =
 // Output Schema
 export const IntegrationAccountMapsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.suspend(() => IntegrationAccountMapPropertiesSchema),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2167,15 +2581,7 @@ export type IntegrationAccountMapsListInput =
 export const IntegrationAccountMapsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          location: Schema.optional(Schema.String),
-          tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => IntegrationAccountMapSchema)),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -2204,9 +2610,7 @@ export const IntegrationAccountMapsListContentCallbackUrlInput =
     integrationAccountName: Schema.String.pipe(T.PathParam()),
     mapName: Schema.String.pipe(T.PathParam()),
     notAfter: Schema.optional(Schema.String),
-    keyType: Schema.optional(
-      Schema.Literals(["NotSpecified", "Primary", "Secondary"]),
-    ),
+    keyType: Schema.optional(Schema.suspend(() => KeyTypeSchema)),
   }).pipe(
     T.Http({
       method: "POST",
@@ -2226,13 +2630,7 @@ export const IntegrationAccountMapsListContentCallbackUrlOutput =
     relativePath: Schema.optional(Schema.String),
     relativePathParameters: Schema.optional(Schema.Array(Schema.String)),
     queries: Schema.optional(
-      Schema.Struct({
-        "api-version": Schema.optional(Schema.String),
-        sp: Schema.optional(Schema.String),
-        sv: Schema.optional(Schema.String),
-        sig: Schema.optional(Schema.String),
-        se: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(() => WorkflowTriggerListCallbackUrlQueriesSchema),
     ),
   });
 export type IntegrationAccountMapsListContentCallbackUrlOutput =
@@ -2257,26 +2655,7 @@ export const IntegrationAccountPartnersCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     integrationAccountName: Schema.String.pipe(T.PathParam()),
     partnerName: Schema.String.pipe(T.PathParam()),
-    properties: Schema.Struct({
-      partnerType: Schema.Literals(["NotSpecified", "B2B"]),
-      createdTime: Schema.optional(Schema.String),
-      changedTime: Schema.optional(Schema.String),
-      metadata: Schema.optional(Schema.Struct({})),
-      content: Schema.Struct({
-        b2b: Schema.optional(
-          Schema.Struct({
-            businessIdentities: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  qualifier: Schema.String,
-                  value: Schema.String,
-                }),
-              ),
-            ),
-          }),
-        ),
-      }),
-    }),
+    properties: Schema.suspend(() => IntegrationAccountPartnerPropertiesSchema),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2295,6 +2674,7 @@ export type IntegrationAccountPartnersCreateOrUpdateInput =
 // Output Schema
 export const IntegrationAccountPartnersCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.suspend(() => IntegrationAccountPartnerPropertiesSchema),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2371,6 +2751,7 @@ export type IntegrationAccountPartnersGetInput =
 // Output Schema
 export const IntegrationAccountPartnersGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.suspend(() => IntegrationAccountPartnerPropertiesSchema),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2414,15 +2795,7 @@ export type IntegrationAccountPartnersListInput =
 export const IntegrationAccountPartnersListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          location: Schema.optional(Schema.String),
-          tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => IntegrationAccountPartnerSchema)),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -2450,9 +2823,7 @@ export const IntegrationAccountPartnersListContentCallbackUrlInput =
     integrationAccountName: Schema.String.pipe(T.PathParam()),
     partnerName: Schema.String.pipe(T.PathParam()),
     notAfter: Schema.optional(Schema.String),
-    keyType: Schema.optional(
-      Schema.Literals(["NotSpecified", "Primary", "Secondary"]),
-    ),
+    keyType: Schema.optional(Schema.suspend(() => KeyTypeSchema)),
   }).pipe(
     T.Http({
       method: "POST",
@@ -2472,13 +2843,7 @@ export const IntegrationAccountPartnersListContentCallbackUrlOutput =
     relativePath: Schema.optional(Schema.String),
     relativePathParameters: Schema.optional(Schema.Array(Schema.String)),
     queries: Schema.optional(
-      Schema.Struct({
-        "api-version": Schema.optional(Schema.String),
-        sp: Schema.optional(Schema.String),
-        sv: Schema.optional(Schema.String),
-        sig: Schema.optional(Schema.String),
-        se: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(() => WorkflowTriggerListCallbackUrlQueriesSchema),
     ),
   });
 export type IntegrationAccountPartnersListContentCallbackUrlOutput =
@@ -2503,31 +2868,7 @@ export const IntegrationAccountSchemasCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     integrationAccountName: Schema.String.pipe(T.PathParam()),
     schemaName: Schema.String.pipe(T.PathParam()),
-    properties: Schema.Struct({
-      schemaType: Schema.Literals(["NotSpecified", "Xml"]),
-      targetNamespace: Schema.optional(Schema.String),
-      documentName: Schema.optional(Schema.String),
-      fileName: Schema.optional(Schema.String),
-      createdTime: Schema.optional(Schema.String),
-      changedTime: Schema.optional(Schema.String),
-      metadata: Schema.optional(Schema.Struct({})),
-      content: Schema.optional(Schema.String),
-      contentType: Schema.optional(Schema.String),
-      contentLink: Schema.optional(
-        Schema.Struct({
-          uri: Schema.optional(Schema.String),
-          contentVersion: Schema.optional(Schema.String),
-          contentSize: Schema.optional(Schema.Number),
-          contentHash: Schema.optional(
-            Schema.Struct({
-              algorithm: Schema.optional(Schema.String),
-              value: Schema.optional(Schema.String),
-            }),
-          ),
-          metadata: Schema.optional(Schema.Struct({})),
-        }),
-      ),
-    }),
+    properties: Schema.suspend(() => IntegrationAccountSchemaPropertiesSchema),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2546,6 +2887,7 @@ export type IntegrationAccountSchemasCreateOrUpdateInput =
 // Output Schema
 export const IntegrationAccountSchemasCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.suspend(() => IntegrationAccountSchemaPropertiesSchema),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2622,6 +2964,7 @@ export type IntegrationAccountSchemasGetInput =
 // Output Schema
 export const IntegrationAccountSchemasGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.suspend(() => IntegrationAccountSchemaPropertiesSchema),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2665,15 +3008,7 @@ export type IntegrationAccountSchemasListInput =
 export const IntegrationAccountSchemasListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          location: Schema.optional(Schema.String),
-          tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => IntegrationAccountSchemaSchema)),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -2701,9 +3036,7 @@ export const IntegrationAccountSchemasListContentCallbackUrlInput =
     integrationAccountName: Schema.String.pipe(T.PathParam()),
     schemaName: Schema.String.pipe(T.PathParam()),
     notAfter: Schema.optional(Schema.String),
-    keyType: Schema.optional(
-      Schema.Literals(["NotSpecified", "Primary", "Secondary"]),
-    ),
+    keyType: Schema.optional(Schema.suspend(() => KeyTypeSchema)),
   }).pipe(
     T.Http({
       method: "POST",
@@ -2723,13 +3056,7 @@ export const IntegrationAccountSchemasListContentCallbackUrlOutput =
     relativePath: Schema.optional(Schema.String),
     relativePathParameters: Schema.optional(Schema.Array(Schema.String)),
     queries: Schema.optional(
-      Schema.Struct({
-        "api-version": Schema.optional(Schema.String),
-        sp: Schema.optional(Schema.String),
-        sv: Schema.optional(Schema.String),
-        sig: Schema.optional(Schema.String),
-        se: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(() => WorkflowTriggerListCallbackUrlQueriesSchema),
     ),
   });
 export type IntegrationAccountSchemasListContentCallbackUrlOutput =
@@ -2754,31 +3081,9 @@ export const IntegrationAccountsCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     integrationAccountName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        integrationServiceEnvironment: Schema.optional(
-          Schema.Struct({
-            id: Schema.optional(Schema.String),
-            name: Schema.optional(Schema.String),
-            type: Schema.optional(Schema.String),
-          }),
-        ),
-        state: Schema.optional(
-          Schema.Literals([
-            "NotSpecified",
-            "Completed",
-            "Enabled",
-            "Disabled",
-            "Deleted",
-            "Suspended",
-          ]),
-        ),
-      }),
+      Schema.suspend(() => IntegrationAccountPropertiesSchema),
     ),
-    sku: Schema.optional(
-      Schema.Struct({
-        name: Schema.Literals(["NotSpecified", "Free", "Basic", "Standard"]),
-      }),
-    ),
+    sku: Schema.optional(Schema.suspend(() => IntegrationAccountSkuSchema)),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2797,6 +3102,10 @@ export type IntegrationAccountsCreateOrUpdateInput =
 // Output Schema
 export const IntegrationAccountsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => IntegrationAccountPropertiesSchema),
+    ),
+    sku: Schema.optional(Schema.suspend(() => IntegrationAccountSkuSchema)),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2858,11 +3167,7 @@ export const IntegrationAccountSessionsCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     integrationAccountName: Schema.String.pipe(T.PathParam()),
     sessionName: Schema.String.pipe(T.PathParam()),
-    properties: Schema.Struct({
-      createdTime: Schema.optional(Schema.String),
-      changedTime: Schema.optional(Schema.String),
-      content: Schema.optional(Schema.Struct({})),
-    }),
+    properties: Schema.suspend(() => IntegrationAccountSessionPropertiesSchema),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2881,6 +3186,7 @@ export type IntegrationAccountSessionsCreateOrUpdateInput =
 // Output Schema
 export const IntegrationAccountSessionsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.suspend(() => IntegrationAccountSessionPropertiesSchema),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2957,6 +3263,7 @@ export type IntegrationAccountSessionsGetInput =
 // Output Schema
 export const IntegrationAccountSessionsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.suspend(() => IntegrationAccountSessionPropertiesSchema),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -3000,15 +3307,7 @@ export type IntegrationAccountSessionsListInput =
 export const IntegrationAccountSessionsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          location: Schema.optional(Schema.String),
-          tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => IntegrationAccountSessionSchema)),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -3047,6 +3346,10 @@ export type IntegrationAccountsGetInput =
 // Output Schema
 export const IntegrationAccountsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => IntegrationAccountPropertiesSchema),
+    ),
+    sku: Schema.optional(Schema.suspend(() => IntegrationAccountSkuSchema)),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -3088,15 +3391,7 @@ export type IntegrationAccountsListByResourceGroupInput =
 export const IntegrationAccountsListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          location: Schema.optional(Schema.String),
-          tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => IntegrationAccountSchema)),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -3133,15 +3428,7 @@ export type IntegrationAccountsListBySubscriptionInput =
 export const IntegrationAccountsListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          location: Schema.optional(Schema.String),
-          tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => IntegrationAccountSchema)),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -3165,9 +3452,7 @@ export const IntegrationAccountsListCallbackUrlInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     integrationAccountName: Schema.String.pipe(T.PathParam()),
     notAfter: Schema.optional(Schema.String),
-    keyType: Schema.optional(
-      Schema.Literals(["NotSpecified", "Primary", "Secondary"]),
-    ),
+    keyType: Schema.optional(Schema.suspend(() => KeyTypeSchema)),
   }).pipe(
     T.Http({
       method: "POST",
@@ -3203,11 +3488,7 @@ export const IntegrationAccountsListKeyVaultKeysInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     integrationAccountName: Schema.String.pipe(T.PathParam()),
-    keyVault: Schema.Struct({
-      id: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      type: Schema.optional(Schema.String),
-    }),
+    keyVault: Schema.suspend(() => KeyVaultReferenceSchema),
     skipToken: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
@@ -3223,18 +3504,7 @@ export type IntegrationAccountsListKeyVaultKeysInput =
 export const IntegrationAccountsListKeyVaultKeysOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          kid: Schema.optional(Schema.String),
-          attributes: Schema.optional(
-            Schema.Struct({
-              enabled: Schema.optional(Schema.Boolean),
-              created: Schema.optional(Schema.Number),
-              updated: Schema.optional(Schema.Number),
-            }),
-          ),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => KeyVaultKeySchema)),
     ),
     skipToken: Schema.optional(Schema.String),
   });
@@ -3260,46 +3530,9 @@ export const IntegrationAccountsLogTrackingEventsInput =
     integrationAccountName: Schema.String.pipe(T.PathParam()),
     sourceType: Schema.String,
     trackEventsOptions: Schema.optional(
-      Schema.Literals(["None", "DisableSourceInfoEnrich"]),
+      Schema.suspend(() => TrackEventsOperationOptionsSchema),
     ),
-    events: Schema.Array(
-      Schema.Struct({
-        eventLevel: Schema.Literals([
-          "LogAlways",
-          "Critical",
-          "Error",
-          "Warning",
-          "Informational",
-          "Verbose",
-        ]),
-        eventTime: Schema.String,
-        recordType: Schema.Literals([
-          "NotSpecified",
-          "Custom",
-          "AS2Message",
-          "AS2MDN",
-          "X12Interchange",
-          "X12FunctionalGroup",
-          "X12TransactionSet",
-          "X12InterchangeAcknowledgment",
-          "X12FunctionalGroupAcknowledgment",
-          "X12TransactionSetAcknowledgment",
-          "EdifactInterchange",
-          "EdifactFunctionalGroup",
-          "EdifactTransactionSet",
-          "EdifactInterchangeAcknowledgment",
-          "EdifactFunctionalGroupAcknowledgment",
-          "EdifactTransactionSetAcknowledgment",
-        ]),
-        record: Schema.optional(Schema.Struct({})),
-        error: Schema.optional(
-          Schema.Struct({
-            message: Schema.optional(Schema.String),
-            code: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    events: Schema.Array(Schema.suspend(() => TrackingEventSchema)),
   }).pipe(
     T.Http({
       method: "POST",
@@ -3333,9 +3566,7 @@ export const IntegrationAccountsRegenerateAccessKeyInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     integrationAccountName: Schema.String.pipe(T.PathParam()),
-    keyType: Schema.optional(
-      Schema.Literals(["NotSpecified", "Primary", "Secondary"]),
-    ),
+    keyType: Schema.optional(Schema.suspend(() => KeyTypeSchema)),
   }).pipe(
     T.Http({
       method: "POST",
@@ -3349,6 +3580,10 @@ export type IntegrationAccountsRegenerateAccessKeyInput =
 // Output Schema
 export const IntegrationAccountsRegenerateAccessKeyOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => IntegrationAccountPropertiesSchema),
+    ),
+    sku: Schema.optional(Schema.suspend(() => IntegrationAccountSkuSchema)),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -3376,31 +3611,9 @@ export const IntegrationAccountsUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     integrationAccountName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        integrationServiceEnvironment: Schema.optional(
-          Schema.Struct({
-            id: Schema.optional(Schema.String),
-            name: Schema.optional(Schema.String),
-            type: Schema.optional(Schema.String),
-          }),
-        ),
-        state: Schema.optional(
-          Schema.Literals([
-            "NotSpecified",
-            "Completed",
-            "Enabled",
-            "Disabled",
-            "Deleted",
-            "Suspended",
-          ]),
-        ),
-      }),
+      Schema.suspend(() => IntegrationAccountPropertiesSchema),
     ),
-    sku: Schema.optional(
-      Schema.Struct({
-        name: Schema.Literals(["NotSpecified", "Free", "Basic", "Standard"]),
-      }),
-    ),
+    sku: Schema.optional(Schema.suspend(() => IntegrationAccountSkuSchema)),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -3419,6 +3632,10 @@ export type IntegrationAccountsUpdateInput =
 // Output Schema
 export const IntegrationAccountsUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => IntegrationAccountPropertiesSchema),
+    ),
+    sku: Schema.optional(Schema.suspend(() => IntegrationAccountSkuSchema)),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -3461,15 +3678,7 @@ export type IntegrationServiceEnvironmentManagedApiOperationsListInput =
 export const IntegrationServiceEnvironmentManagedApiOperationsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          location: Schema.optional(Schema.String),
-          tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => ApiOperationSchema)),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -3544,6 +3753,11 @@ export type IntegrationServiceEnvironmentManagedApisGetInput =
 // Output Schema
 export const IntegrationServiceEnvironmentManagedApisGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(
+        () => IntegrationServiceEnvironmentManagedApiPropertiesSchema,
+      ),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -3586,13 +3800,7 @@ export const IntegrationServiceEnvironmentManagedApisListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          location: Schema.optional(Schema.String),
-          tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        }),
+        Schema.suspend(() => IntegrationServiceEnvironmentManagedApiSchema),
       ),
     ),
     nextLink: Schema.optional(Schema.String),
@@ -3619,169 +3827,9 @@ export const IntegrationServiceEnvironmentManagedApisPutInput =
     integrationServiceEnvironmentName: Schema.String.pipe(T.PathParam()),
     apiName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        name: Schema.optional(Schema.String),
-        connectionParameters: Schema.optional(
-          Schema.Record(Schema.String, Schema.Struct({})),
-        ),
-        metadata: Schema.optional(
-          Schema.Struct({
-            source: Schema.optional(Schema.String),
-            brandColor: Schema.optional(Schema.String),
-            hideKey: Schema.optional(Schema.String),
-            tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-            ApiType: Schema.optional(
-              Schema.Literals(["NotSpecified", "Rest", "Soap"]),
-            ),
-            wsdlService: Schema.optional(
-              Schema.Struct({
-                qualifiedName: Schema.optional(Schema.String),
-                EndpointQualifiedNames: Schema.optional(
-                  Schema.Array(Schema.String),
-                ),
-              }),
-            ),
-            wsdlImportMethod: Schema.optional(
-              Schema.Literals([
-                "NotSpecified",
-                "SoapToRest",
-                "SoapPassThrough",
-              ]),
-            ),
-            connectionType: Schema.optional(Schema.String),
-            provisioningState: Schema.optional(
-              Schema.Literals([
-                "NotSpecified",
-                "Accepted",
-                "Running",
-                "Ready",
-                "Creating",
-                "Created",
-                "Deleting",
-                "Deleted",
-                "Canceled",
-                "Failed",
-                "Succeeded",
-                "Moving",
-                "Updating",
-                "Registering",
-                "Registered",
-                "Unregistering",
-                "Unregistered",
-                "Completed",
-                "Renewing",
-                "Pending",
-                "Waiting",
-                "InProgress",
-              ]),
-            ),
-            deploymentParameters: Schema.optional(
-              Schema.Struct({
-                packageContentLink: Schema.optional(
-                  Schema.Struct({
-                    type: Schema.optional(Schema.String),
-                    isRequired: Schema.optional(Schema.Boolean),
-                    displayName: Schema.optional(Schema.String),
-                    description: Schema.optional(Schema.String),
-                    visibility: Schema.optional(
-                      Schema.Literals(["NotSpecified", "Default", "Internal"]),
-                    ),
-                  }),
-                ),
-                redisCacheConnectionString: Schema.optional(
-                  Schema.Struct({
-                    type: Schema.optional(Schema.String),
-                    isRequired: Schema.optional(Schema.Boolean),
-                    displayName: Schema.optional(Schema.String),
-                    description: Schema.optional(Schema.String),
-                    visibility: Schema.optional(
-                      Schema.Literals(["NotSpecified", "Default", "Internal"]),
-                    ),
-                  }),
-                ),
-              }),
-            ),
-          }),
-        ),
-        runtimeUrls: Schema.optional(Schema.Array(Schema.String)),
-        generalInformation: Schema.optional(
-          Schema.Struct({
-            iconUrl: Schema.optional(Schema.String),
-            displayName: Schema.optional(Schema.String),
-            description: Schema.optional(Schema.String),
-            termsOfUseUrl: Schema.optional(Schema.String),
-            releaseTag: Schema.optional(Schema.String),
-            tier: Schema.optional(
-              Schema.Literals([
-                "NotSpecified",
-                "Enterprise",
-                "Standard",
-                "Premium",
-              ]),
-            ),
-          }),
-        ),
-        capabilities: Schema.optional(Schema.Array(Schema.String)),
-        backendService: Schema.optional(
-          Schema.Struct({
-            serviceUrl: Schema.optional(Schema.String),
-          }),
-        ),
-        policies: Schema.optional(
-          Schema.Struct({
-            content: Schema.optional(Schema.String),
-            contentLink: Schema.optional(Schema.String),
-          }),
-        ),
-        apiDefinitionUrl: Schema.optional(Schema.String),
-        apiDefinitions: Schema.optional(
-          Schema.Struct({
-            originalSwaggerUrl: Schema.optional(Schema.String),
-            modifiedSwaggerUrl: Schema.optional(Schema.String),
-          }),
-        ),
-        integrationServiceEnvironment: Schema.optional(
-          Schema.Struct({
-            id: Schema.optional(Schema.String),
-            name: Schema.optional(Schema.String),
-            type: Schema.optional(Schema.String),
-          }),
-        ),
-        provisioningState: Schema.optional(
-          Schema.Literals([
-            "NotSpecified",
-            "Accepted",
-            "Running",
-            "Ready",
-            "Creating",
-            "Created",
-            "Deleting",
-            "Deleted",
-            "Canceled",
-            "Failed",
-            "Succeeded",
-            "Moving",
-            "Updating",
-            "Registering",
-            "Registered",
-            "Unregistering",
-            "Unregistered",
-            "Completed",
-            "Renewing",
-            "Pending",
-            "Waiting",
-            "InProgress",
-          ]),
-        ),
-        category: Schema.optional(
-          Schema.Literals([
-            "NotSpecified",
-            "Enterprise",
-            "Standard",
-            "Premium",
-          ]),
-        ),
-      }),
+      Schema.suspend(
+        () => IntegrationServiceEnvironmentManagedApiPropertiesSchema,
+      ),
     ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -3802,6 +3850,11 @@ export type IntegrationServiceEnvironmentManagedApisPutInput =
 // Output Schema
 export const IntegrationServiceEnvironmentManagedApisPutOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(
+        () => IntegrationServiceEnvironmentManagedApiPropertiesSchema,
+      ),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -3843,78 +3896,9 @@ export type IntegrationServiceEnvironmentNetworkHealthGetInput =
 export const IntegrationServiceEnvironmentNetworkHealthGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Record(
     Schema.String,
-    Schema.Struct({
-      outboundNetworkDependencies: Schema.optional(
-        Schema.Array(
-          Schema.Struct({
-            category: Schema.optional(
-              Schema.Literals([
-                "NotSpecified",
-                "AzureStorage",
-                "AzureManagement",
-                "AzureActiveDirectory",
-                "SSLCertificateVerification",
-                "DiagnosticLogsAndMetrics",
-                "IntegrationServiceEnvironmentConnectors",
-                "RedisCache",
-                "AccessEndpoints",
-                "RecoveryService",
-                "SQL",
-                "RegionalService",
-              ]),
-            ),
-            displayName: Schema.optional(Schema.String),
-            endpoints: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  accessibility: Schema.optional(
-                    Schema.Literals([
-                      "NotSpecified",
-                      "Unknown",
-                      "Available",
-                      "NotAvailable",
-                    ]),
-                  ),
-                  domainName: Schema.optional(Schema.String),
-                  ports: Schema.optional(Schema.Array(Schema.String)),
-                }),
-              ),
-            ),
-          }),
-        ),
-      ),
-      outboundNetworkHealth: Schema.optional(
-        Schema.Struct({
-          error: Schema.optional(
-            Schema.Struct({
-              code: Schema.Literals([
-                "NotSpecified",
-                "IntegrationServiceEnvironmentNotFound",
-                "InternalServerError",
-                "InvalidOperationId",
-              ]),
-              message: Schema.String,
-              details: Schema.optional(Schema.Array(Schema.Unknown)),
-              innerError: Schema.optional(Schema.Struct({})),
-            }),
-          ),
-          state: Schema.optional(
-            Schema.Literals([
-              "NotSpecified",
-              "Healthy",
-              "Unhealthy",
-              "Unknown",
-            ]),
-          ),
-        }),
-      ),
-      networkDependencyHealthState: Schema.Literals([
-        "NotSpecified",
-        "Unknown",
-        "Available",
-        "NotAvailable",
-      ]),
-    }),
+    Schema.suspend(
+      () => IntegrationServiceEnvironmentSubnetNetworkHealthSchema,
+    ),
   );
 export type IntegrationServiceEnvironmentNetworkHealthGetOutput =
   typeof IntegrationServiceEnvironmentNetworkHealthGetOutput.Type;
@@ -3937,147 +3921,13 @@ export const IntegrationServiceEnvironmentsCreateOrUpdateInput =
     resourceGroup: Schema.String.pipe(T.PathParam()),
     integrationServiceEnvironmentName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        provisioningState: Schema.optional(
-          Schema.Literals([
-            "NotSpecified",
-            "Accepted",
-            "Running",
-            "Ready",
-            "Creating",
-            "Created",
-            "Deleting",
-            "Deleted",
-            "Canceled",
-            "Failed",
-            "Succeeded",
-            "Moving",
-            "Updating",
-            "Registering",
-            "Registered",
-            "Unregistering",
-            "Unregistered",
-            "Completed",
-            "Renewing",
-            "Pending",
-            "Waiting",
-            "InProgress",
-          ]),
-        ),
-        state: Schema.optional(
-          Schema.Literals([
-            "NotSpecified",
-            "Completed",
-            "Enabled",
-            "Disabled",
-            "Deleted",
-            "Suspended",
-          ]),
-        ),
-        integrationServiceEnvironmentId: Schema.optional(Schema.String),
-        endpointsConfiguration: Schema.optional(
-          Schema.Struct({
-            workflow: Schema.optional(
-              Schema.Struct({
-                outgoingIpAddresses: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      address: Schema.optional(Schema.String),
-                    }),
-                  ),
-                ),
-                accessEndpointIpAddresses: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      address: Schema.optional(Schema.String),
-                    }),
-                  ),
-                ),
-              }),
-            ),
-            connector: Schema.optional(
-              Schema.Struct({
-                outgoingIpAddresses: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      address: Schema.optional(Schema.String),
-                    }),
-                  ),
-                ),
-                accessEndpointIpAddresses: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      address: Schema.optional(Schema.String),
-                    }),
-                  ),
-                ),
-              }),
-            ),
-          }),
-        ),
-        networkConfiguration: Schema.optional(
-          Schema.Struct({
-            virtualNetworkAddressSpace: Schema.optional(Schema.String),
-            accessEndpoint: Schema.optional(
-              Schema.Struct({
-                type: Schema.optional(
-                  Schema.Literals(["NotSpecified", "External", "Internal"]),
-                ),
-              }),
-            ),
-            subnets: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  id: Schema.optional(Schema.String),
-                  name: Schema.optional(Schema.String),
-                  type: Schema.optional(Schema.String),
-                }),
-              ),
-            ),
-          }),
-        ),
-        encryptionConfiguration: Schema.optional(
-          Schema.Struct({
-            encryptionKeyReference: Schema.optional(
-              Schema.Struct({
-                keyVault: Schema.optional(
-                  Schema.Struct({
-                    id: Schema.optional(Schema.String),
-                    name: Schema.optional(Schema.String),
-                    type: Schema.optional(Schema.String),
-                  }),
-                ),
-                keyName: Schema.optional(Schema.String),
-                keyVersion: Schema.optional(Schema.String),
-              }),
-            ),
-          }),
-        ),
-      }),
+      Schema.suspend(() => IntegrationServiceEnvironmentPropertiesSchema),
     ),
     sku: Schema.optional(
-      Schema.Struct({
-        name: Schema.optional(
-          Schema.Literals(["NotSpecified", "Premium", "Developer"]),
-        ),
-        capacity: Schema.optional(Schema.Number),
-      }),
+      Schema.suspend(() => IntegrationServiceEnvironmentSkuSchema),
     ),
     identity: Schema.optional(
-      Schema.Struct({
-        type: Schema.Literals(["SystemAssigned", "UserAssigned", "None"]),
-        tenantId: Schema.optional(Schema.String),
-        principalId: Schema.optional(Schema.String),
-        userAssignedIdentities: Schema.optional(
-          Schema.Record(
-            Schema.String,
-            Schema.Struct({
-              principalId: Schema.optional(Schema.String),
-              clientId: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-      }),
+      Schema.suspend(() => ManagedServiceIdentitySchema),
     ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -4098,6 +3948,15 @@ export type IntegrationServiceEnvironmentsCreateOrUpdateInput =
 // Output Schema
 export const IntegrationServiceEnvironmentsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => IntegrationServiceEnvironmentPropertiesSchema),
+    ),
+    sku: Schema.optional(
+      Schema.suspend(() => IntegrationServiceEnvironmentSkuSchema),
+    ),
+    identity: Schema.optional(
+      Schema.suspend(() => ManagedServiceIdentitySchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -4170,6 +4029,15 @@ export type IntegrationServiceEnvironmentsGetInput =
 // Output Schema
 export const IntegrationServiceEnvironmentsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => IntegrationServiceEnvironmentPropertiesSchema),
+    ),
+    sku: Schema.optional(
+      Schema.suspend(() => IntegrationServiceEnvironmentSkuSchema),
+    ),
+    identity: Schema.optional(
+      Schema.suspend(() => ManagedServiceIdentitySchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -4211,27 +4079,7 @@ export const IntegrationServiceEnvironmentSkusListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
-        Schema.Struct({
-          resourceType: Schema.optional(Schema.String),
-          sku: Schema.optional(
-            Schema.Struct({
-              name: Schema.optional(
-                Schema.Literals(["NotSpecified", "Premium", "Developer"]),
-              ),
-              tier: Schema.optional(Schema.String),
-            }),
-          ),
-          capacity: Schema.optional(
-            Schema.Struct({
-              minimum: Schema.optional(Schema.Number),
-              maximum: Schema.optional(Schema.Number),
-              default: Schema.optional(Schema.Number),
-              scaleType: Schema.optional(
-                Schema.Literals(["Manual", "Automatic", "None"]),
-              ),
-            }),
-          ),
-        }),
+        Schema.suspend(() => IntegrationServiceEnvironmentSkuDefinitionSchema),
       ),
     ),
     nextLink: Schema.optional(Schema.String),
@@ -4270,15 +4118,7 @@ export type IntegrationServiceEnvironmentsListByResourceGroupInput =
 export const IntegrationServiceEnvironmentsListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          location: Schema.optional(Schema.String),
-          tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => IntegrationServiceEnvironmentSchema)),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -4315,15 +4155,7 @@ export type IntegrationServiceEnvironmentsListBySubscriptionInput =
 export const IntegrationServiceEnvironmentsListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          location: Schema.optional(Schema.String),
-          tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => IntegrationServiceEnvironmentSchema)),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -4380,147 +4212,13 @@ export const IntegrationServiceEnvironmentsUpdateInput =
     resourceGroup: Schema.String.pipe(T.PathParam()),
     integrationServiceEnvironmentName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        provisioningState: Schema.optional(
-          Schema.Literals([
-            "NotSpecified",
-            "Accepted",
-            "Running",
-            "Ready",
-            "Creating",
-            "Created",
-            "Deleting",
-            "Deleted",
-            "Canceled",
-            "Failed",
-            "Succeeded",
-            "Moving",
-            "Updating",
-            "Registering",
-            "Registered",
-            "Unregistering",
-            "Unregistered",
-            "Completed",
-            "Renewing",
-            "Pending",
-            "Waiting",
-            "InProgress",
-          ]),
-        ),
-        state: Schema.optional(
-          Schema.Literals([
-            "NotSpecified",
-            "Completed",
-            "Enabled",
-            "Disabled",
-            "Deleted",
-            "Suspended",
-          ]),
-        ),
-        integrationServiceEnvironmentId: Schema.optional(Schema.String),
-        endpointsConfiguration: Schema.optional(
-          Schema.Struct({
-            workflow: Schema.optional(
-              Schema.Struct({
-                outgoingIpAddresses: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      address: Schema.optional(Schema.String),
-                    }),
-                  ),
-                ),
-                accessEndpointIpAddresses: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      address: Schema.optional(Schema.String),
-                    }),
-                  ),
-                ),
-              }),
-            ),
-            connector: Schema.optional(
-              Schema.Struct({
-                outgoingIpAddresses: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      address: Schema.optional(Schema.String),
-                    }),
-                  ),
-                ),
-                accessEndpointIpAddresses: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      address: Schema.optional(Schema.String),
-                    }),
-                  ),
-                ),
-              }),
-            ),
-          }),
-        ),
-        networkConfiguration: Schema.optional(
-          Schema.Struct({
-            virtualNetworkAddressSpace: Schema.optional(Schema.String),
-            accessEndpoint: Schema.optional(
-              Schema.Struct({
-                type: Schema.optional(
-                  Schema.Literals(["NotSpecified", "External", "Internal"]),
-                ),
-              }),
-            ),
-            subnets: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  id: Schema.optional(Schema.String),
-                  name: Schema.optional(Schema.String),
-                  type: Schema.optional(Schema.String),
-                }),
-              ),
-            ),
-          }),
-        ),
-        encryptionConfiguration: Schema.optional(
-          Schema.Struct({
-            encryptionKeyReference: Schema.optional(
-              Schema.Struct({
-                keyVault: Schema.optional(
-                  Schema.Struct({
-                    id: Schema.optional(Schema.String),
-                    name: Schema.optional(Schema.String),
-                    type: Schema.optional(Schema.String),
-                  }),
-                ),
-                keyName: Schema.optional(Schema.String),
-                keyVersion: Schema.optional(Schema.String),
-              }),
-            ),
-          }),
-        ),
-      }),
+      Schema.suspend(() => IntegrationServiceEnvironmentPropertiesSchema),
     ),
     sku: Schema.optional(
-      Schema.Struct({
-        name: Schema.optional(
-          Schema.Literals(["NotSpecified", "Premium", "Developer"]),
-        ),
-        capacity: Schema.optional(Schema.Number),
-      }),
+      Schema.suspend(() => IntegrationServiceEnvironmentSkuSchema),
     ),
     identity: Schema.optional(
-      Schema.Struct({
-        type: Schema.Literals(["SystemAssigned", "UserAssigned", "None"]),
-        tenantId: Schema.optional(Schema.String),
-        principalId: Schema.optional(Schema.String),
-        userAssignedIdentities: Schema.optional(
-          Schema.Record(
-            Schema.String,
-            Schema.Struct({
-              principalId: Schema.optional(Schema.String),
-              clientId: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-      }),
+      Schema.suspend(() => ManagedServiceIdentitySchema),
     ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -4541,6 +4239,15 @@ export type IntegrationServiceEnvironmentsUpdateInput =
 // Output Schema
 export const IntegrationServiceEnvironmentsUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => IntegrationServiceEnvironmentPropertiesSchema),
+    ),
+    sku: Schema.optional(
+      Schema.suspend(() => IntegrationServiceEnvironmentSkuSchema),
+    ),
+    identity: Schema.optional(
+      Schema.suspend(() => ManagedServiceIdentitySchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -4576,23 +4283,7 @@ export type OperationsListInput = typeof OperationsListInput.Type;
 
 // Output Schema
 export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  value: Schema.optional(
-    Schema.Array(
-      Schema.Struct({
-        origin: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        display: Schema.optional(
-          Schema.Struct({
-            provider: Schema.optional(Schema.String),
-            resource: Schema.optional(Schema.String),
-            operation: Schema.optional(Schema.String),
-            description: Schema.optional(Schema.String),
-          }),
-        ),
-        properties: Schema.optional(Schema.Struct({})),
-      }),
-    ),
-  ),
+  value: Schema.optional(Schema.Array(Schema.suspend(() => OperationSchema))),
   nextLink: Schema.optional(Schema.String),
 });
 export type OperationsListOutput = typeof OperationsListOutput.Type;
@@ -4626,6 +4317,9 @@ export type WorkflowRunActionRepetitionsGetInput =
 // Output Schema
 export const WorkflowRunActionRepetitionsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.suspend(
+      () => WorkflowRunActionRepetitionPropertiesSchema,
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -4673,13 +4367,7 @@ export const WorkflowRunActionRepetitionsListOutput =
     nextLink: Schema.optional(Schema.String),
     value: Schema.optional(
       Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          location: Schema.optional(Schema.String),
-          tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        }),
+        Schema.suspend(() => WorkflowRunActionRepetitionDefinitionSchema),
       ),
     ),
   });
@@ -4722,18 +4410,7 @@ export type WorkflowRunActionRepetitionsListExpressionTracesInput =
 export const WorkflowRunActionRepetitionsListExpressionTracesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     inputs: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          text: Schema.optional(Schema.String),
-          value: Schema.optional(Schema.Unknown),
-          subexpressions: Schema.optional(Schema.Array(Schema.Unknown)),
-          error: Schema.optional(
-            Schema.Struct({
-              code: Schema.String,
-            }),
-          ),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => ExpressionRootSchema)),
     ),
   });
 export type WorkflowRunActionRepetitionsListExpressionTracesOutput =
@@ -4776,6 +4453,9 @@ export type WorkflowRunActionRepetitionsRequestHistoriesGetInput =
 // Output Schema
 export const WorkflowRunActionRepetitionsRequestHistoriesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => RequestHistoryPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -4823,15 +4503,7 @@ export type WorkflowRunActionRepetitionsRequestHistoriesListInput =
 export const WorkflowRunActionRepetitionsRequestHistoriesListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          location: Schema.optional(Schema.String),
-          tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => RequestHistorySchema)),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -4874,6 +4546,9 @@ export type WorkflowRunActionRequestHistoriesGetInput =
 // Output Schema
 export const WorkflowRunActionRequestHistoriesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => RequestHistoryPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -4919,15 +4594,7 @@ export type WorkflowRunActionRequestHistoriesListInput =
 export const WorkflowRunActionRequestHistoriesListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          location: Schema.optional(Schema.String),
-          tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => RequestHistorySchema)),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -4969,6 +4636,9 @@ export type WorkflowRunActionScopeRepetitionsGetInput =
 // Output Schema
 export const WorkflowRunActionScopeRepetitionsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.suspend(
+      () => WorkflowRunActionRepetitionPropertiesSchema,
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -5016,13 +4686,7 @@ export const WorkflowRunActionScopeRepetitionsListOutput =
     nextLink: Schema.optional(Schema.String),
     value: Schema.optional(
       Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          location: Schema.optional(Schema.String),
-          tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        }),
+        Schema.suspend(() => WorkflowRunActionRepetitionDefinitionSchema),
       ),
     ),
   });
@@ -5062,6 +4726,11 @@ export type WorkflowRunActionsGetInput = typeof WorkflowRunActionsGetInput.Type;
 // Output Schema
 export const WorkflowRunActionsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => WorkflowRunActionPropertiesSchema),
+    ),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
   });
 export type WorkflowRunActionsGetOutput =
@@ -5104,11 +4773,7 @@ export type WorkflowRunActionsListInput =
 export const WorkflowRunActionsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => WorkflowRunActionSchema)),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -5152,18 +4817,7 @@ export type WorkflowRunActionsListExpressionTracesInput =
 export const WorkflowRunActionsListExpressionTracesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     inputs: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          text: Schema.optional(Schema.String),
-          value: Schema.optional(Schema.Unknown),
-          subexpressions: Schema.optional(Schema.Array(Schema.Unknown)),
-          error: Schema.optional(
-            Schema.Struct({
-              code: Schema.String,
-            }),
-          ),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => ExpressionRootSchema)),
     ),
   });
 export type WorkflowRunActionsListExpressionTracesOutput =
@@ -5203,6 +4857,11 @@ export type WorkflowRunOperationsGetInput =
 // Output Schema
 export const WorkflowRunOperationsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => WorkflowRunPropertiesSchema),
+    ),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
   });
 export type WorkflowRunOperationsGetOutput =
@@ -5270,6 +4929,11 @@ export type WorkflowRunsGetInput = typeof WorkflowRunsGetInput.Type;
 
 // Output Schema
 export const WorkflowRunsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.optional(
+    Schema.suspend(() => WorkflowRunPropertiesSchema),
+  ),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
   id: Schema.optional(Schema.String),
 });
 export type WorkflowRunsGetOutput = typeof WorkflowRunsGetOutput.Type;
@@ -5305,11 +4969,7 @@ export type WorkflowRunsListInput = typeof WorkflowRunsListInput.Type;
 export const WorkflowRunsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => WorkflowRunSchema)),
     ),
     nextLink: Schema.optional(Schema.String),
   },
@@ -5334,290 +4994,9 @@ export const WorkflowsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workflowName: Schema.String.pipe(T.PathParam()),
-    properties: Schema.optional(
-      Schema.Struct({
-        provisioningState: Schema.optional(
-          Schema.Literals([
-            "NotSpecified",
-            "Accepted",
-            "Running",
-            "Ready",
-            "Creating",
-            "Created",
-            "Deleting",
-            "Deleted",
-            "Canceled",
-            "Failed",
-            "Succeeded",
-            "Moving",
-            "Updating",
-            "Registering",
-            "Registered",
-            "Unregistering",
-            "Unregistered",
-            "Completed",
-            "Renewing",
-            "Pending",
-            "Waiting",
-            "InProgress",
-          ]),
-        ),
-        createdTime: Schema.optional(Schema.String),
-        changedTime: Schema.optional(Schema.String),
-        state: Schema.optional(
-          Schema.Literals([
-            "NotSpecified",
-            "Completed",
-            "Enabled",
-            "Disabled",
-            "Deleted",
-            "Suspended",
-          ]),
-        ),
-        version: Schema.optional(Schema.String),
-        accessEndpoint: Schema.optional(Schema.String),
-        endpointsConfiguration: Schema.optional(
-          Schema.Struct({
-            workflow: Schema.optional(
-              Schema.Struct({
-                outgoingIpAddresses: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      address: Schema.optional(Schema.String),
-                    }),
-                  ),
-                ),
-                accessEndpointIpAddresses: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      address: Schema.optional(Schema.String),
-                    }),
-                  ),
-                ),
-              }),
-            ),
-            connector: Schema.optional(
-              Schema.Struct({
-                outgoingIpAddresses: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      address: Schema.optional(Schema.String),
-                    }),
-                  ),
-                ),
-                accessEndpointIpAddresses: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      address: Schema.optional(Schema.String),
-                    }),
-                  ),
-                ),
-              }),
-            ),
-          }),
-        ),
-        accessControl: Schema.optional(
-          Schema.Struct({
-            triggers: Schema.optional(
-              Schema.Struct({
-                allowedCallerIpAddresses: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      addressRange: Schema.optional(Schema.String),
-                    }),
-                  ),
-                ),
-                openAuthenticationPolicies: Schema.optional(
-                  Schema.Struct({
-                    policies: Schema.optional(
-                      Schema.Record(
-                        Schema.String,
-                        Schema.Struct({
-                          type: Schema.optional(Schema.Literals(["AAD"])),
-                          claims: Schema.optional(
-                            Schema.Array(
-                              Schema.Struct({
-                                name: Schema.optional(Schema.String),
-                                value: Schema.optional(Schema.String),
-                              }),
-                            ),
-                          ),
-                        }),
-                      ),
-                    ),
-                  }),
-                ),
-              }),
-            ),
-            contents: Schema.optional(
-              Schema.Struct({
-                allowedCallerIpAddresses: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      addressRange: Schema.optional(Schema.String),
-                    }),
-                  ),
-                ),
-                openAuthenticationPolicies: Schema.optional(
-                  Schema.Struct({
-                    policies: Schema.optional(
-                      Schema.Record(
-                        Schema.String,
-                        Schema.Struct({
-                          type: Schema.optional(Schema.Literals(["AAD"])),
-                          claims: Schema.optional(
-                            Schema.Array(
-                              Schema.Struct({
-                                name: Schema.optional(Schema.String),
-                                value: Schema.optional(Schema.String),
-                              }),
-                            ),
-                          ),
-                        }),
-                      ),
-                    ),
-                  }),
-                ),
-              }),
-            ),
-            actions: Schema.optional(
-              Schema.Struct({
-                allowedCallerIpAddresses: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      addressRange: Schema.optional(Schema.String),
-                    }),
-                  ),
-                ),
-                openAuthenticationPolicies: Schema.optional(
-                  Schema.Struct({
-                    policies: Schema.optional(
-                      Schema.Record(
-                        Schema.String,
-                        Schema.Struct({
-                          type: Schema.optional(Schema.Literals(["AAD"])),
-                          claims: Schema.optional(
-                            Schema.Array(
-                              Schema.Struct({
-                                name: Schema.optional(Schema.String),
-                                value: Schema.optional(Schema.String),
-                              }),
-                            ),
-                          ),
-                        }),
-                      ),
-                    ),
-                  }),
-                ),
-              }),
-            ),
-            workflowManagement: Schema.optional(
-              Schema.Struct({
-                allowedCallerIpAddresses: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      addressRange: Schema.optional(Schema.String),
-                    }),
-                  ),
-                ),
-                openAuthenticationPolicies: Schema.optional(
-                  Schema.Struct({
-                    policies: Schema.optional(
-                      Schema.Record(
-                        Schema.String,
-                        Schema.Struct({
-                          type: Schema.optional(Schema.Literals(["AAD"])),
-                          claims: Schema.optional(
-                            Schema.Array(
-                              Schema.Struct({
-                                name: Schema.optional(Schema.String),
-                                value: Schema.optional(Schema.String),
-                              }),
-                            ),
-                          ),
-                        }),
-                      ),
-                    ),
-                  }),
-                ),
-              }),
-            ),
-          }),
-        ),
-        sku: Schema.optional(
-          Schema.Struct({
-            name: Schema.Literals([
-              "NotSpecified",
-              "Free",
-              "Shared",
-              "Basic",
-              "Standard",
-              "Premium",
-            ]),
-            plan: Schema.optional(
-              Schema.Struct({
-                id: Schema.optional(Schema.String),
-                name: Schema.optional(Schema.String),
-                type: Schema.optional(Schema.String),
-              }),
-            ),
-          }),
-        ),
-        integrationAccount: Schema.optional(
-          Schema.Struct({
-            id: Schema.optional(Schema.String),
-            name: Schema.optional(Schema.String),
-            type: Schema.optional(Schema.String),
-          }),
-        ),
-        integrationServiceEnvironment: Schema.optional(
-          Schema.Struct({
-            id: Schema.optional(Schema.String),
-            name: Schema.optional(Schema.String),
-            type: Schema.optional(Schema.String),
-          }),
-        ),
-        definition: Schema.optional(Schema.Struct({})),
-        parameters: Schema.optional(
-          Schema.Record(
-            Schema.String,
-            Schema.Struct({
-              type: Schema.optional(
-                Schema.Literals([
-                  "NotSpecified",
-                  "String",
-                  "SecureString",
-                  "Int",
-                  "Float",
-                  "Bool",
-                  "Array",
-                  "Object",
-                  "SecureObject",
-                ]),
-              ),
-              value: Schema.optional(Schema.Struct({})),
-              metadata: Schema.optional(Schema.Struct({})),
-              description: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-      }),
-    ),
+    properties: Schema.optional(Schema.suspend(() => WorkflowPropertiesSchema)),
     identity: Schema.optional(
-      Schema.Struct({
-        type: Schema.Literals(["SystemAssigned", "UserAssigned", "None"]),
-        tenantId: Schema.optional(Schema.String),
-        principalId: Schema.optional(Schema.String),
-        userAssignedIdentities: Schema.optional(
-          Schema.Record(
-            Schema.String,
-            Schema.Struct({
-              principalId: Schema.optional(Schema.String),
-              clientId: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-      }),
+      Schema.suspend(() => ManagedServiceIdentitySchema),
     ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -5637,6 +5016,10 @@ export type WorkflowsCreateOrUpdateInput =
 // Output Schema
 export const WorkflowsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(Schema.suspend(() => WorkflowPropertiesSchema)),
+    identity: Schema.optional(
+      Schema.suspend(() => ManagedServiceIdentitySchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -5792,6 +5175,8 @@ export type WorkflowsGetInput = typeof WorkflowsGetInput.Type;
 
 // Output Schema
 export const WorkflowsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.optional(Schema.suspend(() => WorkflowPropertiesSchema)),
+  identity: Schema.optional(Schema.suspend(() => ManagedServiceIdentitySchema)),
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -5830,17 +5215,7 @@ export type WorkflowsListByResourceGroupInput =
 // Output Schema
 export const WorkflowsListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          location: Schema.optional(Schema.String),
-          tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        }),
-      ),
-    ),
+    value: Schema.optional(Schema.Array(Schema.suspend(() => WorkflowSchema))),
     nextLink: Schema.optional(Schema.String),
   });
 export type WorkflowsListByResourceGroupOutput =
@@ -5877,17 +5252,7 @@ export type WorkflowsListBySubscriptionInput =
 // Output Schema
 export const WorkflowsListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          location: Schema.optional(Schema.String),
-          tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        }),
-      ),
-    ),
+    value: Schema.optional(Schema.Array(Schema.suspend(() => WorkflowSchema))),
     nextLink: Schema.optional(Schema.String),
   });
 export type WorkflowsListBySubscriptionOutput =
@@ -5912,9 +5277,7 @@ export const WorkflowsListCallbackUrlInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workflowName: Schema.String.pipe(T.PathParam()),
     notAfter: Schema.optional(Schema.String),
-    keyType: Schema.optional(
-      Schema.Literals(["NotSpecified", "Primary", "Secondary"]),
-    ),
+    keyType: Schema.optional(Schema.suspend(() => KeyTypeSchema)),
   }).pipe(
     T.Http({
       method: "POST",
@@ -5934,13 +5297,7 @@ export const WorkflowsListCallbackUrlOutput =
     relativePath: Schema.optional(Schema.String),
     relativePathParameters: Schema.optional(Schema.Array(Schema.String)),
     queries: Schema.optional(
-      Schema.Struct({
-        "api-version": Schema.optional(Schema.String),
-        sp: Schema.optional(Schema.String),
-        sv: Schema.optional(Schema.String),
-        sig: Schema.optional(Schema.String),
-        se: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(() => WorkflowTriggerListCallbackUrlQueriesSchema),
     ),
   });
 export type WorkflowsListCallbackUrlOutput =
@@ -6028,9 +5385,7 @@ export const WorkflowsRegenerateAccessKeyInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workflowName: Schema.String.pipe(T.PathParam()),
-    keyType: Schema.optional(
-      Schema.Literals(["NotSpecified", "Primary", "Secondary"]),
-    ),
+    keyType: Schema.optional(Schema.suspend(() => KeyTypeSchema)),
   }).pipe(
     T.Http({
       method: "POST",
@@ -6074,6 +5429,8 @@ export type WorkflowsUpdateInput = typeof WorkflowsUpdateInput.Type;
 
 // Output Schema
 export const WorkflowsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.optional(Schema.suspend(() => WorkflowPropertiesSchema)),
+  identity: Schema.optional(Schema.suspend(() => ManagedServiceIdentitySchema)),
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -6099,290 +5456,9 @@ export const WorkflowsValidateByLocationInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
     workflowName: Schema.String.pipe(T.PathParam()),
-    properties: Schema.optional(
-      Schema.Struct({
-        provisioningState: Schema.optional(
-          Schema.Literals([
-            "NotSpecified",
-            "Accepted",
-            "Running",
-            "Ready",
-            "Creating",
-            "Created",
-            "Deleting",
-            "Deleted",
-            "Canceled",
-            "Failed",
-            "Succeeded",
-            "Moving",
-            "Updating",
-            "Registering",
-            "Registered",
-            "Unregistering",
-            "Unregistered",
-            "Completed",
-            "Renewing",
-            "Pending",
-            "Waiting",
-            "InProgress",
-          ]),
-        ),
-        createdTime: Schema.optional(Schema.String),
-        changedTime: Schema.optional(Schema.String),
-        state: Schema.optional(
-          Schema.Literals([
-            "NotSpecified",
-            "Completed",
-            "Enabled",
-            "Disabled",
-            "Deleted",
-            "Suspended",
-          ]),
-        ),
-        version: Schema.optional(Schema.String),
-        accessEndpoint: Schema.optional(Schema.String),
-        endpointsConfiguration: Schema.optional(
-          Schema.Struct({
-            workflow: Schema.optional(
-              Schema.Struct({
-                outgoingIpAddresses: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      address: Schema.optional(Schema.String),
-                    }),
-                  ),
-                ),
-                accessEndpointIpAddresses: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      address: Schema.optional(Schema.String),
-                    }),
-                  ),
-                ),
-              }),
-            ),
-            connector: Schema.optional(
-              Schema.Struct({
-                outgoingIpAddresses: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      address: Schema.optional(Schema.String),
-                    }),
-                  ),
-                ),
-                accessEndpointIpAddresses: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      address: Schema.optional(Schema.String),
-                    }),
-                  ),
-                ),
-              }),
-            ),
-          }),
-        ),
-        accessControl: Schema.optional(
-          Schema.Struct({
-            triggers: Schema.optional(
-              Schema.Struct({
-                allowedCallerIpAddresses: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      addressRange: Schema.optional(Schema.String),
-                    }),
-                  ),
-                ),
-                openAuthenticationPolicies: Schema.optional(
-                  Schema.Struct({
-                    policies: Schema.optional(
-                      Schema.Record(
-                        Schema.String,
-                        Schema.Struct({
-                          type: Schema.optional(Schema.Literals(["AAD"])),
-                          claims: Schema.optional(
-                            Schema.Array(
-                              Schema.Struct({
-                                name: Schema.optional(Schema.String),
-                                value: Schema.optional(Schema.String),
-                              }),
-                            ),
-                          ),
-                        }),
-                      ),
-                    ),
-                  }),
-                ),
-              }),
-            ),
-            contents: Schema.optional(
-              Schema.Struct({
-                allowedCallerIpAddresses: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      addressRange: Schema.optional(Schema.String),
-                    }),
-                  ),
-                ),
-                openAuthenticationPolicies: Schema.optional(
-                  Schema.Struct({
-                    policies: Schema.optional(
-                      Schema.Record(
-                        Schema.String,
-                        Schema.Struct({
-                          type: Schema.optional(Schema.Literals(["AAD"])),
-                          claims: Schema.optional(
-                            Schema.Array(
-                              Schema.Struct({
-                                name: Schema.optional(Schema.String),
-                                value: Schema.optional(Schema.String),
-                              }),
-                            ),
-                          ),
-                        }),
-                      ),
-                    ),
-                  }),
-                ),
-              }),
-            ),
-            actions: Schema.optional(
-              Schema.Struct({
-                allowedCallerIpAddresses: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      addressRange: Schema.optional(Schema.String),
-                    }),
-                  ),
-                ),
-                openAuthenticationPolicies: Schema.optional(
-                  Schema.Struct({
-                    policies: Schema.optional(
-                      Schema.Record(
-                        Schema.String,
-                        Schema.Struct({
-                          type: Schema.optional(Schema.Literals(["AAD"])),
-                          claims: Schema.optional(
-                            Schema.Array(
-                              Schema.Struct({
-                                name: Schema.optional(Schema.String),
-                                value: Schema.optional(Schema.String),
-                              }),
-                            ),
-                          ),
-                        }),
-                      ),
-                    ),
-                  }),
-                ),
-              }),
-            ),
-            workflowManagement: Schema.optional(
-              Schema.Struct({
-                allowedCallerIpAddresses: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      addressRange: Schema.optional(Schema.String),
-                    }),
-                  ),
-                ),
-                openAuthenticationPolicies: Schema.optional(
-                  Schema.Struct({
-                    policies: Schema.optional(
-                      Schema.Record(
-                        Schema.String,
-                        Schema.Struct({
-                          type: Schema.optional(Schema.Literals(["AAD"])),
-                          claims: Schema.optional(
-                            Schema.Array(
-                              Schema.Struct({
-                                name: Schema.optional(Schema.String),
-                                value: Schema.optional(Schema.String),
-                              }),
-                            ),
-                          ),
-                        }),
-                      ),
-                    ),
-                  }),
-                ),
-              }),
-            ),
-          }),
-        ),
-        sku: Schema.optional(
-          Schema.Struct({
-            name: Schema.Literals([
-              "NotSpecified",
-              "Free",
-              "Shared",
-              "Basic",
-              "Standard",
-              "Premium",
-            ]),
-            plan: Schema.optional(
-              Schema.Struct({
-                id: Schema.optional(Schema.String),
-                name: Schema.optional(Schema.String),
-                type: Schema.optional(Schema.String),
-              }),
-            ),
-          }),
-        ),
-        integrationAccount: Schema.optional(
-          Schema.Struct({
-            id: Schema.optional(Schema.String),
-            name: Schema.optional(Schema.String),
-            type: Schema.optional(Schema.String),
-          }),
-        ),
-        integrationServiceEnvironment: Schema.optional(
-          Schema.Struct({
-            id: Schema.optional(Schema.String),
-            name: Schema.optional(Schema.String),
-            type: Schema.optional(Schema.String),
-          }),
-        ),
-        definition: Schema.optional(Schema.Struct({})),
-        parameters: Schema.optional(
-          Schema.Record(
-            Schema.String,
-            Schema.Struct({
-              type: Schema.optional(
-                Schema.Literals([
-                  "NotSpecified",
-                  "String",
-                  "SecureString",
-                  "Int",
-                  "Float",
-                  "Bool",
-                  "Array",
-                  "Object",
-                  "SecureObject",
-                ]),
-              ),
-              value: Schema.optional(Schema.Struct({})),
-              metadata: Schema.optional(Schema.Struct({})),
-              description: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-      }),
-    ),
+    properties: Schema.optional(Schema.suspend(() => WorkflowPropertiesSchema)),
     identity: Schema.optional(
-      Schema.Struct({
-        type: Schema.Literals(["SystemAssigned", "UserAssigned", "None"]),
-        tenantId: Schema.optional(Schema.String),
-        principalId: Schema.optional(Schema.String),
-        userAssignedIdentities: Schema.optional(
-          Schema.Record(
-            Schema.String,
-            Schema.Struct({
-              principalId: Schema.optional(Schema.String),
-              clientId: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-      }),
+      Schema.suspend(() => ManagedServiceIdentitySchema),
     ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -6423,290 +5499,9 @@ export const WorkflowsValidateByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workflowName: Schema.String.pipe(T.PathParam()),
-    properties: Schema.optional(
-      Schema.Struct({
-        provisioningState: Schema.optional(
-          Schema.Literals([
-            "NotSpecified",
-            "Accepted",
-            "Running",
-            "Ready",
-            "Creating",
-            "Created",
-            "Deleting",
-            "Deleted",
-            "Canceled",
-            "Failed",
-            "Succeeded",
-            "Moving",
-            "Updating",
-            "Registering",
-            "Registered",
-            "Unregistering",
-            "Unregistered",
-            "Completed",
-            "Renewing",
-            "Pending",
-            "Waiting",
-            "InProgress",
-          ]),
-        ),
-        createdTime: Schema.optional(Schema.String),
-        changedTime: Schema.optional(Schema.String),
-        state: Schema.optional(
-          Schema.Literals([
-            "NotSpecified",
-            "Completed",
-            "Enabled",
-            "Disabled",
-            "Deleted",
-            "Suspended",
-          ]),
-        ),
-        version: Schema.optional(Schema.String),
-        accessEndpoint: Schema.optional(Schema.String),
-        endpointsConfiguration: Schema.optional(
-          Schema.Struct({
-            workflow: Schema.optional(
-              Schema.Struct({
-                outgoingIpAddresses: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      address: Schema.optional(Schema.String),
-                    }),
-                  ),
-                ),
-                accessEndpointIpAddresses: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      address: Schema.optional(Schema.String),
-                    }),
-                  ),
-                ),
-              }),
-            ),
-            connector: Schema.optional(
-              Schema.Struct({
-                outgoingIpAddresses: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      address: Schema.optional(Schema.String),
-                    }),
-                  ),
-                ),
-                accessEndpointIpAddresses: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      address: Schema.optional(Schema.String),
-                    }),
-                  ),
-                ),
-              }),
-            ),
-          }),
-        ),
-        accessControl: Schema.optional(
-          Schema.Struct({
-            triggers: Schema.optional(
-              Schema.Struct({
-                allowedCallerIpAddresses: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      addressRange: Schema.optional(Schema.String),
-                    }),
-                  ),
-                ),
-                openAuthenticationPolicies: Schema.optional(
-                  Schema.Struct({
-                    policies: Schema.optional(
-                      Schema.Record(
-                        Schema.String,
-                        Schema.Struct({
-                          type: Schema.optional(Schema.Literals(["AAD"])),
-                          claims: Schema.optional(
-                            Schema.Array(
-                              Schema.Struct({
-                                name: Schema.optional(Schema.String),
-                                value: Schema.optional(Schema.String),
-                              }),
-                            ),
-                          ),
-                        }),
-                      ),
-                    ),
-                  }),
-                ),
-              }),
-            ),
-            contents: Schema.optional(
-              Schema.Struct({
-                allowedCallerIpAddresses: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      addressRange: Schema.optional(Schema.String),
-                    }),
-                  ),
-                ),
-                openAuthenticationPolicies: Schema.optional(
-                  Schema.Struct({
-                    policies: Schema.optional(
-                      Schema.Record(
-                        Schema.String,
-                        Schema.Struct({
-                          type: Schema.optional(Schema.Literals(["AAD"])),
-                          claims: Schema.optional(
-                            Schema.Array(
-                              Schema.Struct({
-                                name: Schema.optional(Schema.String),
-                                value: Schema.optional(Schema.String),
-                              }),
-                            ),
-                          ),
-                        }),
-                      ),
-                    ),
-                  }),
-                ),
-              }),
-            ),
-            actions: Schema.optional(
-              Schema.Struct({
-                allowedCallerIpAddresses: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      addressRange: Schema.optional(Schema.String),
-                    }),
-                  ),
-                ),
-                openAuthenticationPolicies: Schema.optional(
-                  Schema.Struct({
-                    policies: Schema.optional(
-                      Schema.Record(
-                        Schema.String,
-                        Schema.Struct({
-                          type: Schema.optional(Schema.Literals(["AAD"])),
-                          claims: Schema.optional(
-                            Schema.Array(
-                              Schema.Struct({
-                                name: Schema.optional(Schema.String),
-                                value: Schema.optional(Schema.String),
-                              }),
-                            ),
-                          ),
-                        }),
-                      ),
-                    ),
-                  }),
-                ),
-              }),
-            ),
-            workflowManagement: Schema.optional(
-              Schema.Struct({
-                allowedCallerIpAddresses: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      addressRange: Schema.optional(Schema.String),
-                    }),
-                  ),
-                ),
-                openAuthenticationPolicies: Schema.optional(
-                  Schema.Struct({
-                    policies: Schema.optional(
-                      Schema.Record(
-                        Schema.String,
-                        Schema.Struct({
-                          type: Schema.optional(Schema.Literals(["AAD"])),
-                          claims: Schema.optional(
-                            Schema.Array(
-                              Schema.Struct({
-                                name: Schema.optional(Schema.String),
-                                value: Schema.optional(Schema.String),
-                              }),
-                            ),
-                          ),
-                        }),
-                      ),
-                    ),
-                  }),
-                ),
-              }),
-            ),
-          }),
-        ),
-        sku: Schema.optional(
-          Schema.Struct({
-            name: Schema.Literals([
-              "NotSpecified",
-              "Free",
-              "Shared",
-              "Basic",
-              "Standard",
-              "Premium",
-            ]),
-            plan: Schema.optional(
-              Schema.Struct({
-                id: Schema.optional(Schema.String),
-                name: Schema.optional(Schema.String),
-                type: Schema.optional(Schema.String),
-              }),
-            ),
-          }),
-        ),
-        integrationAccount: Schema.optional(
-          Schema.Struct({
-            id: Schema.optional(Schema.String),
-            name: Schema.optional(Schema.String),
-            type: Schema.optional(Schema.String),
-          }),
-        ),
-        integrationServiceEnvironment: Schema.optional(
-          Schema.Struct({
-            id: Schema.optional(Schema.String),
-            name: Schema.optional(Schema.String),
-            type: Schema.optional(Schema.String),
-          }),
-        ),
-        definition: Schema.optional(Schema.Struct({})),
-        parameters: Schema.optional(
-          Schema.Record(
-            Schema.String,
-            Schema.Struct({
-              type: Schema.optional(
-                Schema.Literals([
-                  "NotSpecified",
-                  "String",
-                  "SecureString",
-                  "Int",
-                  "Float",
-                  "Bool",
-                  "Array",
-                  "Object",
-                  "SecureObject",
-                ]),
-              ),
-              value: Schema.optional(Schema.Struct({})),
-              metadata: Schema.optional(Schema.Struct({})),
-              description: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-      }),
-    ),
+    properties: Schema.optional(Schema.suspend(() => WorkflowPropertiesSchema)),
     identity: Schema.optional(
-      Schema.Struct({
-        type: Schema.Literals(["SystemAssigned", "UserAssigned", "None"]),
-        tenantId: Schema.optional(Schema.String),
-        principalId: Schema.optional(Schema.String),
-        userAssignedIdentities: Schema.optional(
-          Schema.Record(
-            Schema.String,
-            Schema.Struct({
-              principalId: Schema.optional(Schema.String),
-              clientId: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-      }),
+      Schema.suspend(() => ManagedServiceIdentitySchema),
     ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -6761,6 +5556,11 @@ export type WorkflowTriggerHistoriesGetInput =
 // Output Schema
 export const WorkflowTriggerHistoriesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => WorkflowTriggerHistoryPropertiesSchema),
+    ),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
   });
 export type WorkflowTriggerHistoriesGetOutput =
@@ -6803,11 +5603,7 @@ export type WorkflowTriggerHistoriesListInput =
 export const WorkflowTriggerHistoriesListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => WorkflowTriggerHistorySchema)),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -6884,6 +5680,11 @@ export type WorkflowTriggersGetInput = typeof WorkflowTriggersGetInput.Type;
 // Output Schema
 export const WorkflowTriggersGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => WorkflowTriggerPropertiesSchema),
+    ),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
   });
 export type WorkflowTriggersGetOutput = typeof WorkflowTriggersGetOutput.Type;
@@ -6958,11 +5759,7 @@ export type WorkflowTriggersListInput = typeof WorkflowTriggersListInput.Type;
 export const WorkflowTriggersListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => WorkflowTriggerSchema)),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -7008,13 +5805,7 @@ export const WorkflowTriggersListCallbackUrlOutput =
     relativePath: Schema.optional(Schema.String),
     relativePathParameters: Schema.optional(Schema.Array(Schema.String)),
     queries: Schema.optional(
-      Schema.Struct({
-        "api-version": Schema.optional(Schema.String),
-        sp: Schema.optional(Schema.String),
-        sv: Schema.optional(Schema.String),
-        sig: Schema.optional(Schema.String),
-        se: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(() => WorkflowTriggerListCallbackUrlQueriesSchema),
     ),
   });
 export type WorkflowTriggersListCallbackUrlOutput =
@@ -7106,11 +5897,7 @@ export const WorkflowTriggersSetStateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     workflowName: Schema.String.pipe(T.PathParam()),
     triggerName: Schema.String.pipe(T.PathParam()),
-    source: Schema.Struct({
-      id: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      type: Schema.optional(Schema.String),
-    }),
+    source: Schema.suspend(() => WorkflowTriggerReferenceSchema),
   }).pipe(
     T.Http({
       method: "POST",
@@ -7159,6 +5946,9 @@ export type WorkflowVersionsGetInput = typeof WorkflowVersionsGetInput.Type;
 // Output Schema
 export const WorkflowVersionsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => WorkflowVersionPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -7198,15 +5988,7 @@ export type WorkflowVersionsListInput = typeof WorkflowVersionsListInput.Type;
 export const WorkflowVersionsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          location: Schema.optional(Schema.String),
-          tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => WorkflowVersionSchema)),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -7234,9 +6016,7 @@ export const WorkflowVersionTriggersListCallbackUrlInput =
     versionId: Schema.String.pipe(T.PathParam()),
     triggerName: Schema.String.pipe(T.PathParam()),
     notAfter: Schema.optional(Schema.String),
-    keyType: Schema.optional(
-      Schema.Literals(["NotSpecified", "Primary", "Secondary"]),
-    ),
+    keyType: Schema.optional(Schema.suspend(() => KeyTypeSchema)),
   }).pipe(
     T.Http({
       method: "POST",
@@ -7256,13 +6036,7 @@ export const WorkflowVersionTriggersListCallbackUrlOutput =
     relativePath: Schema.optional(Schema.String),
     relativePathParameters: Schema.optional(Schema.Array(Schema.String)),
     queries: Schema.optional(
-      Schema.Struct({
-        "api-version": Schema.optional(Schema.String),
-        sp: Schema.optional(Schema.String),
-        sv: Schema.optional(Schema.String),
-        sig: Schema.optional(Schema.String),
-        se: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(() => WorkflowTriggerListCallbackUrlQueriesSchema),
     ),
   });
 export type WorkflowVersionTriggersListCallbackUrlOutput =

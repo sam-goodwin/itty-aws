@@ -8,11 +8,103 @@ import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
+// Shared schemas
+const CountryCodeSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.String;
+const NameAvailabilityReasonSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Literals(["AlreadyExists", "Invalid"]);
+const B2CTenantResourceSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  type: Schema.optional(
+    Schema.Literals(["Microsoft.AzureActiveDirectory/b2cDirectories"]),
+  ),
+  sku: Schema.suspend(() => B2CResourceSKUSchema),
+  properties: Schema.optional(
+    Schema.suspend(() => B2CTenantResourcePropertiesSchema),
+  ),
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  location: Schema.String,
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
+const B2CResourceSKUSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(
+    Schema.Literals(["Standard", "PremiumP1", "PremiumP2"]),
+  ),
+  tier: Schema.optional(Schema.Literals(["A0"])),
+});
+const B2CTenantResourcePropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    billingConfig: Schema.optional(
+      Schema.Struct({
+        billingType: Schema.optional(Schema.Literals(["MAU", "Auths"])),
+        effectiveStartDateUtc: Schema.optional(Schema.String),
+      }),
+    ),
+    tenantId: Schema.optional(Schema.String),
+  });
+const CreateTenantPropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  displayName: Schema.optional(Schema.String),
+  countryCode: Schema.optional(Schema.suspend(() => CountryCodeSchema)),
+});
+const OperationDetailSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  isDataAction: Schema.optional(Schema.Boolean),
+  display: Schema.optional(Schema.suspend(() => OperationDisplaySchema)),
+  origin: Schema.optional(Schema.String),
+});
+const OperationDisplaySchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  provider: Schema.optional(Schema.String),
+  resource: Schema.optional(Schema.String),
+  operation: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+});
+const GuestUsagesResourcePropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    tenantId: Schema.optional(Schema.String),
+  });
+const GuestUsagesResourceSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  location: Schema.optional(Schema.String),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  properties: Schema.optional(
+    Schema.suspend(() => GuestUsagesResourcePropertiesSchema),
+  ),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
+
 // Input Schema
 export const B2CTenantsCheckNameAvailabilityInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String,
-    countryCode: Schema.String,
+    countryCode: Schema.suspend(() => CountryCodeSchema),
   }).pipe(
     T.Http({
       method: "POST",
@@ -28,7 +120,7 @@ export const B2CTenantsCheckNameAvailabilityOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     message: Schema.optional(Schema.String),
     nameAvailable: Schema.optional(Schema.Boolean),
-    reason: Schema.optional(Schema.Literals(["AlreadyExists", "Invalid"])),
+    reason: Schema.optional(Schema.suspend(() => NameAvailabilityReasonSchema)),
   });
 export type B2CTenantsCheckNameAvailabilityOutput =
   typeof B2CTenantsCheckNameAvailabilityOutput.Type;
@@ -47,18 +139,10 @@ export const B2CTenantsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   location: Schema.String,
   properties: Schema.Struct({
     createTenantProperties: Schema.optional(
-      Schema.Struct({
-        displayName: Schema.optional(Schema.String),
-        countryCode: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(() => CreateTenantPropertiesSchema),
     ),
   }),
-  sku: Schema.Struct({
-    name: Schema.optional(
-      Schema.Literals(["Standard", "PremiumP1", "PremiumP2"]),
-    ),
-    tier: Schema.optional(Schema.Literals(["A0"])),
-  }),
+  sku: Schema.suspend(() => B2CResourceSKUSchema),
   tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
 }).pipe(
   T.Http({
@@ -76,22 +160,9 @@ export const B2CTenantsCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     type: Schema.optional(
       Schema.Literals(["Microsoft.AzureActiveDirectory/b2cDirectories"]),
     ),
-    sku: Schema.Struct({
-      name: Schema.optional(
-        Schema.Literals(["Standard", "PremiumP1", "PremiumP2"]),
-      ),
-      tier: Schema.optional(Schema.Literals(["A0"])),
-    }),
+    sku: Schema.suspend(() => B2CResourceSKUSchema),
     properties: Schema.optional(
-      Schema.Struct({
-        billingConfig: Schema.optional(
-          Schema.Struct({
-            billingType: Schema.optional(Schema.Literals(["MAU", "Auths"])),
-            effectiveStartDateUtc: Schema.optional(Schema.String),
-          }),
-        ),
-        tenantId: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(() => B2CTenantResourcePropertiesSchema),
     ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -165,22 +236,9 @@ export const B2CTenantsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   type: Schema.optional(
     Schema.Literals(["Microsoft.AzureActiveDirectory/b2cDirectories"]),
   ),
-  sku: Schema.Struct({
-    name: Schema.optional(
-      Schema.Literals(["Standard", "PremiumP1", "PremiumP2"]),
-    ),
-    tier: Schema.optional(Schema.Literals(["A0"])),
-  }),
+  sku: Schema.suspend(() => B2CResourceSKUSchema),
   properties: Schema.optional(
-    Schema.Struct({
-      billingConfig: Schema.optional(
-        Schema.Struct({
-          billingType: Schema.optional(Schema.Literals(["MAU", "Auths"])),
-          effectiveStartDateUtc: Schema.optional(Schema.String),
-        }),
-      ),
-      tenantId: Schema.optional(Schema.String),
-    }),
+    Schema.suspend(() => B2CTenantResourcePropertiesSchema),
   ),
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -227,60 +285,7 @@ export type B2CTenantsListByResourceGroupInput =
 export const B2CTenantsListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          type: Schema.optional(
-            Schema.Literals(["Microsoft.AzureActiveDirectory/b2cDirectories"]),
-          ),
-          sku: Schema.Struct({
-            name: Schema.optional(
-              Schema.Literals(["Standard", "PremiumP1", "PremiumP2"]),
-            ),
-            tier: Schema.optional(Schema.Literals(["A0"])),
-          }),
-          properties: Schema.optional(
-            Schema.Struct({
-              billingConfig: Schema.optional(
-                Schema.Struct({
-                  billingType: Schema.optional(
-                    Schema.Literals(["MAU", "Auths"]),
-                  ),
-                  effectiveStartDateUtc: Schema.optional(Schema.String),
-                }),
-              ),
-              tenantId: Schema.optional(Schema.String),
-            }),
-          ),
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          location: Schema.String,
-          tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.String),
-              createdByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              createdAt: Schema.optional(Schema.String),
-              lastModifiedBy: Schema.optional(Schema.String),
-              lastModifiedByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              lastModifiedAt: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => B2CTenantResourceSchema)),
     ),
   });
 export type B2CTenantsListByResourceGroupOutput =
@@ -311,60 +316,7 @@ export type B2CTenantsListBySubscriptionInput =
 export const B2CTenantsListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          type: Schema.optional(
-            Schema.Literals(["Microsoft.AzureActiveDirectory/b2cDirectories"]),
-          ),
-          sku: Schema.Struct({
-            name: Schema.optional(
-              Schema.Literals(["Standard", "PremiumP1", "PremiumP2"]),
-            ),
-            tier: Schema.optional(Schema.Literals(["A0"])),
-          }),
-          properties: Schema.optional(
-            Schema.Struct({
-              billingConfig: Schema.optional(
-                Schema.Struct({
-                  billingType: Schema.optional(
-                    Schema.Literals(["MAU", "Auths"]),
-                  ),
-                  effectiveStartDateUtc: Schema.optional(Schema.String),
-                }),
-              ),
-              tenantId: Schema.optional(Schema.String),
-            }),
-          ),
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          location: Schema.String,
-          tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.String),
-              createdByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              createdAt: Schema.optional(Schema.String),
-              lastModifiedBy: Schema.optional(Schema.String),
-              lastModifiedByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              lastModifiedAt: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => B2CTenantResourceSchema)),
     ),
   });
 export type B2CTenantsListBySubscriptionOutput =
@@ -381,24 +333,9 @@ export const B2CTenantsListBySubscription =
   }));
 // Input Schema
 export const B2CTenantsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  sku: Schema.optional(
-    Schema.Struct({
-      name: Schema.optional(
-        Schema.Literals(["Standard", "PremiumP1", "PremiumP2"]),
-      ),
-      tier: Schema.optional(Schema.Literals(["A0"])),
-    }),
-  ),
+  sku: Schema.optional(Schema.suspend(() => B2CResourceSKUSchema)),
   properties: Schema.optional(
-    Schema.Struct({
-      billingConfig: Schema.optional(
-        Schema.Struct({
-          billingType: Schema.optional(Schema.Literals(["MAU", "Auths"])),
-          effectiveStartDateUtc: Schema.optional(Schema.String),
-        }),
-      ),
-      tenantId: Schema.optional(Schema.String),
-    }),
+    Schema.suspend(() => B2CTenantResourcePropertiesSchema),
   ),
   tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
 }).pipe(
@@ -416,22 +353,9 @@ export const B2CTenantsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     type: Schema.optional(
       Schema.Literals(["Microsoft.AzureActiveDirectory/b2cDirectories"]),
     ),
-    sku: Schema.Struct({
-      name: Schema.optional(
-        Schema.Literals(["Standard", "PremiumP1", "PremiumP2"]),
-      ),
-      tier: Schema.optional(Schema.Literals(["A0"])),
-    }),
+    sku: Schema.suspend(() => B2CResourceSKUSchema),
     properties: Schema.optional(
-      Schema.Struct({
-        billingConfig: Schema.optional(
-          Schema.Struct({
-            billingType: Schema.optional(Schema.Literals(["MAU", "Auths"])),
-            effectiveStartDateUtc: Schema.optional(Schema.String),
-          }),
-        ),
-        tenantId: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(() => B2CTenantResourcePropertiesSchema),
     ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -472,9 +396,7 @@ export const GuestUsagesCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     location: Schema.optional(Schema.String),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     properties: Schema.optional(
-      Schema.Struct({
-        tenantId: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(() => GuestUsagesResourcePropertiesSchema),
     ),
     systemData: Schema.optional(
       Schema.Struct({
@@ -509,9 +431,7 @@ export const GuestUsagesCreateOutput =
     location: Schema.optional(Schema.String),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     properties: Schema.optional(
-      Schema.Struct({
-        tenantId: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(() => GuestUsagesResourcePropertiesSchema),
     ),
     systemData: Schema.optional(
       Schema.Struct({
@@ -586,9 +506,7 @@ export const GuestUsagesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   location: Schema.optional(Schema.String),
   tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   properties: Schema.optional(
-    Schema.Struct({
-      tenantId: Schema.optional(Schema.String),
-    }),
+    Schema.suspend(() => GuestUsagesResourcePropertiesSchema),
   ),
   systemData: Schema.optional(
     Schema.Struct({
@@ -633,44 +551,7 @@ export type GuestUsagesListByResourceGroupInput =
 export const GuestUsagesListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          location: Schema.optional(Schema.String),
-          tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-          properties: Schema.optional(
-            Schema.Struct({
-              tenantId: Schema.optional(Schema.String),
-            }),
-          ),
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.String),
-              createdByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              createdAt: Schema.optional(Schema.String),
-              lastModifiedBy: Schema.optional(Schema.String),
-              lastModifiedByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              lastModifiedAt: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => GuestUsagesResourceSchema)),
     ),
   });
 export type GuestUsagesListByResourceGroupOutput =
@@ -703,44 +584,7 @@ export type GuestUsagesListBySubscriptionInput =
 export const GuestUsagesListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          location: Schema.optional(Schema.String),
-          tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-          properties: Schema.optional(
-            Schema.Struct({
-              tenantId: Schema.optional(Schema.String),
-            }),
-          ),
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.String),
-              createdByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              createdAt: Schema.optional(Schema.String),
-              lastModifiedBy: Schema.optional(Schema.String),
-              lastModifiedByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              lastModifiedAt: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => GuestUsagesResourceSchema)),
     ),
   });
 export type GuestUsagesListBySubscriptionOutput =
@@ -780,9 +624,7 @@ export const GuestUsagesUpdateOutput =
     location: Schema.optional(Schema.String),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     properties: Schema.optional(
-      Schema.Struct({
-        tenantId: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(() => GuestUsagesResourcePropertiesSchema),
     ),
     systemData: Schema.optional(
       Schema.Struct({
@@ -826,21 +668,7 @@ export type OperationsListInput = typeof OperationsListInput.Type;
 // Output Schema
 export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.optional(
-    Schema.Array(
-      Schema.Struct({
-        name: Schema.optional(Schema.String),
-        isDataAction: Schema.optional(Schema.Boolean),
-        display: Schema.optional(
-          Schema.Struct({
-            provider: Schema.optional(Schema.String),
-            resource: Schema.optional(Schema.String),
-            operation: Schema.optional(Schema.String),
-            description: Schema.optional(Schema.String),
-          }),
-        ),
-        origin: Schema.optional(Schema.String),
-      }),
-    ),
+    Schema.Array(Schema.suspend(() => OperationDetailSchema)),
   ),
   nextLink: Schema.optional(Schema.String),
 });

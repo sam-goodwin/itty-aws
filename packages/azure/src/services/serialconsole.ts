@@ -9,6 +9,65 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 import { SensitiveOutputString } from "../sensitive.ts";
 
+// Shared schemas
+const SerialConsoleOperationsValueItemSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    isDataAction: Schema.optional(Schema.String),
+    display: Schema.optional(
+      Schema.suspend(() => SerialConsoleOperationsValueItemDisplaySchema),
+    ),
+  });
+const SerialConsoleOperationsValueItemDisplaySchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    provider: Schema.optional(Schema.String),
+    resource: Schema.optional(Schema.String),
+    operation: Schema.optional(Schema.String),
+    description: Schema.optional(Schema.String),
+  });
+const SerialConsoleStatusPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    disabled: Schema.optional(Schema.Boolean),
+  });
+const DisableSerialConsoleResultPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    disabled: Schema.optional(Schema.Boolean),
+  });
+const EnableSerialConsoleResultPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    disabled: Schema.optional(Schema.Boolean),
+  });
+const SerialPortSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+});
+const systemDataSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  createdBy: Schema.optional(Schema.String),
+  createdByType: Schema.optional(
+    Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+  ),
+  createdAt: Schema.optional(Schema.String),
+  lastModifiedBy: Schema.optional(Schema.String),
+  lastModifiedByType: Schema.optional(
+    Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+  ),
+  lastModifiedAt: Schema.optional(Schema.String),
+});
+const SerialPortPropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  state: Schema.optional(Schema.suspend(() => SerialPortStateSchema)),
+  connectionState: Schema.optional(
+    Schema.suspend(() => SerialPortConnectionStateSchema),
+  ),
+});
+const SerialPortStateSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "enabled",
+  "disabled",
+]);
+const SerialPortConnectionStateSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Literals(["active", "inactive"]);
+
 // Input Schema
 export const DisableConsoleInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -25,9 +84,7 @@ export type DisableConsoleInput = typeof DisableConsoleInput.Type;
 // Output Schema
 export const DisableConsoleOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   properties: Schema.optional(
-    Schema.Struct({
-      disabled: Schema.optional(Schema.Boolean),
-    }),
+    Schema.suspend(() => DisableSerialConsoleResultPropertiesSchema),
   ),
 });
 export type DisableConsoleOutput = typeof DisableConsoleOutput.Type;
@@ -62,9 +119,7 @@ export type EnableConsoleInput = typeof EnableConsoleInput.Type;
 // Output Schema
 export const EnableConsoleOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   properties: Schema.optional(
-    Schema.Struct({
-      disabled: Schema.optional(Schema.Boolean),
-    }),
+    Schema.suspend(() => EnableSerialConsoleResultPropertiesSchema),
   ),
 });
 export type EnableConsoleOutput = typeof EnableConsoleOutput.Type;
@@ -100,9 +155,7 @@ export type GetConsoleStatusInput = typeof GetConsoleStatusInput.Type;
 export const GetConsoleStatusOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     properties: Schema.optional(
-      Schema.Struct({
-        disabled: Schema.optional(Schema.Boolean),
-      }),
+      Schema.suspend(() => SerialConsoleStatusPropertiesSchema),
     ),
   },
 );
@@ -137,20 +190,7 @@ export type ListOperationsInput = typeof ListOperationsInput.Type;
 // Output Schema
 export const ListOperationsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.optional(
-    Schema.Array(
-      Schema.Struct({
-        name: Schema.optional(Schema.String),
-        isDataAction: Schema.optional(Schema.String),
-        display: Schema.optional(
-          Schema.Struct({
-            provider: Schema.optional(Schema.String),
-            resource: Schema.optional(Schema.String),
-            operation: Schema.optional(Schema.String),
-            description: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    Schema.Array(Schema.suspend(() => SerialConsoleOperationsValueItemSchema)),
   ),
 });
 export type ListOperationsOutput = typeof ListOperationsOutput.Type;
@@ -216,12 +256,7 @@ export const SerialPortsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     parentResource: Schema.String.pipe(T.PathParam()),
     serialPort: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        state: Schema.optional(Schema.Literals(["enabled", "disabled"])),
-        connectionState: Schema.optional(
-          Schema.Literals(["active", "inactive"]),
-        ),
-      }),
+      Schema.suspend(() => SerialPortPropertiesSchema),
     ),
   },
 ).pipe(
@@ -236,23 +271,13 @@ export type SerialPortsCreateInput = typeof SerialPortsCreateInput.Type;
 // Output Schema
 export const SerialPortsCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => SerialPortPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type SerialPortsCreateOutput = typeof SerialPortsCreateOutput.Type;
 
@@ -291,23 +316,11 @@ export type SerialPortsGetInput = typeof SerialPortsGetInput.Type;
 
 // Output Schema
 export const SerialPortsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.optional(Schema.suspend(() => SerialPortPropertiesSchema)),
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
-  systemData: Schema.optional(
-    Schema.Struct({
-      createdBy: Schema.optional(Schema.String),
-      createdByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      createdAt: Schema.optional(Schema.String),
-      lastModifiedBy: Schema.optional(Schema.String),
-      lastModifiedByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      lastModifiedAt: Schema.optional(Schema.String),
-    }),
-  ),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
 });
 export type SerialPortsGetOutput = typeof SerialPortsGetOutput.Type;
 
@@ -345,39 +358,7 @@ export type SerialPortsListInput = typeof SerialPortsListInput.Type;
 
 // Output Schema
 export const SerialPortsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  value: Schema.optional(
-    Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
-  ),
+  value: Schema.optional(Schema.Array(Schema.suspend(() => SerialPortSchema))),
 });
 export type SerialPortsListOutput = typeof SerialPortsListOutput.Type;
 
@@ -414,37 +395,7 @@ export type SerialPortsListBySubscriptionsInput =
 export const SerialPortsListBySubscriptionsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.String),
-              createdByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              createdAt: Schema.optional(Schema.String),
-              lastModifiedBy: Schema.optional(Schema.String),
-              lastModifiedByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              lastModifiedAt: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => SerialPortSchema)),
     ),
   });
 export type SerialPortsListBySubscriptionsOutput =

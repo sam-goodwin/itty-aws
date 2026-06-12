@@ -7,7 +7,364 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
-import { SensitiveOutputString, SensitiveString } from "../sensitive.ts";
+import { SensitiveOutputString } from "../sensitive.ts";
+
+// Shared schemas
+const OperationSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  isDataAction: Schema.optional(Schema.Boolean),
+  display: Schema.optional(
+    Schema.Struct({
+      provider: Schema.optional(Schema.String),
+      resource: Schema.optional(Schema.String),
+      operation: Schema.optional(Schema.String),
+      description: Schema.optional(Schema.String),
+    }),
+  ),
+  origin: Schema.optional(Schema.Literals(["user", "system", "user,system"])),
+  actionType: Schema.optional(Schema.Literals(["Internal"])),
+});
+const MongoClusterSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+});
+const systemDataSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  createdBy: Schema.optional(Schema.String),
+  createdByType: Schema.optional(
+    Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+  ),
+  createdAt: Schema.optional(Schema.String),
+  lastModifiedBy: Schema.optional(Schema.String),
+  lastModifiedByType: Schema.optional(
+    Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+  ),
+  lastModifiedAt: Schema.optional(Schema.String),
+});
+const MongoClusterPropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  createMode: Schema.optional(Schema.suspend(() => CreateModeSchema)),
+  restoreParameters: Schema.optional(
+    Schema.suspend(() => MongoClusterRestoreParametersSchema),
+  ),
+  replicaParameters: Schema.optional(
+    Schema.suspend(() => MongoClusterReplicaParametersSchema),
+  ),
+  administrator: Schema.optional(
+    Schema.suspend(() => AdministratorPropertiesSchema),
+  ),
+  serverVersion: Schema.optional(Schema.String),
+  connectionString: Schema.optional(SensitiveOutputString),
+  provisioningState: Schema.optional(
+    Schema.suspend(() => ProvisioningStateSchema),
+  ),
+  clusterStatus: Schema.optional(
+    Schema.suspend(() => MongoClusterStatusSchema),
+  ),
+  publicNetworkAccess: Schema.optional(
+    Schema.suspend(() => PublicNetworkAccessSchema),
+  ),
+  highAvailability: Schema.optional(
+    Schema.suspend(() => HighAvailabilityPropertiesSchema),
+  ),
+  storage: Schema.optional(Schema.suspend(() => StoragePropertiesSchema)),
+  sharding: Schema.optional(Schema.suspend(() => ShardingPropertiesSchema)),
+  compute: Schema.optional(Schema.suspend(() => ComputePropertiesSchema)),
+  backup: Schema.optional(Schema.suspend(() => BackupPropertiesSchema)),
+  dataApi: Schema.optional(Schema.suspend(() => DataApiPropertiesSchema)),
+  privateEndpointConnections: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+        systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+      }),
+    ),
+  ),
+  previewFeatures: Schema.optional(
+    Schema.Array(Schema.suspend(() => PreviewFeatureSchema)),
+  ),
+  replica: Schema.optional(Schema.suspend(() => ReplicationPropertiesSchema)),
+  infrastructureVersion: Schema.optional(Schema.String),
+  authConfig: Schema.optional(Schema.suspend(() => AuthConfigPropertiesSchema)),
+  encryption: Schema.optional(Schema.suspend(() => EncryptionPropertiesSchema)),
+});
+const CreateModeSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Default",
+  "PointInTimeRestore",
+  "GeoReplica",
+  "Replica",
+]);
+const MongoClusterRestoreParametersSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    pointInTimeUTC: Schema.optional(Schema.String),
+    sourceResourceId: Schema.optional(
+      Schema.suspend(() => MongoClusterResourceIdSchema),
+    ),
+  });
+const MongoClusterResourceIdSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.String;
+const MongoClusterReplicaParametersSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    sourceResourceId: Schema.suspend(() => MongoClusterResourceIdSchema),
+    sourceLocation: Schema.suspend(() => Azure_Core_azureLocationSchema),
+  });
+const Azure_Core_azureLocationSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.String;
+const AdministratorPropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    userName: Schema.optional(Schema.String),
+    password: Schema.optional(SensitiveOutputString),
+  },
+);
+const ProvisioningStateSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Succeeded",
+  "Failed",
+  "Canceled",
+  "InProgress",
+  "Updating",
+  "Dropping",
+]);
+const MongoClusterStatusSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Ready",
+  "Provisioning",
+  "Updating",
+  "Starting",
+  "Stopping",
+  "Stopped",
+  "Dropping",
+]);
+const PublicNetworkAccessSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Enabled",
+  "Disabled",
+]);
+const HighAvailabilityPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    targetMode: Schema.optional(
+      Schema.suspend(() => HighAvailabilityModeSchema),
+    ),
+  });
+const HighAvailabilityModeSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Disabled",
+  "SameZone",
+  "ZoneRedundantPreferred",
+]);
+const StoragePropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  sizeGb: Schema.optional(Schema.Number),
+  type: Schema.optional(Schema.suspend(() => StorageTypeSchema)),
+});
+const StorageTypeSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "PremiumSSD",
+  "PremiumSSDv2",
+]);
+const ShardingPropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  shardCount: Schema.optional(Schema.Number),
+});
+const ComputePropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  tier: Schema.optional(Schema.String),
+});
+const BackupPropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  earliestRestoreTime: Schema.optional(Schema.String),
+});
+const DataApiPropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  mode: Schema.optional(Schema.suspend(() => DataApiModeSchema)),
+});
+const DataApiModeSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Enabled",
+  "Disabled",
+]);
+const PreviewFeatureSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "GeoReplicas",
+]);
+const ReplicationPropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  sourceResourceId: Schema.optional(
+    Schema.suspend(() => MongoClusterResourceIdSchema),
+  ),
+  role: Schema.optional(Schema.suspend(() => ReplicationRoleSchema)),
+  replicationState: Schema.optional(
+    Schema.suspend(() => ReplicationStateSchema),
+  ),
+});
+const ReplicationRoleSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Primary",
+  "AsyncReplica",
+  "GeoAsyncReplica",
+]);
+const ReplicationStateSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Active",
+  "Catchup",
+  "Provisioning",
+  "Updating",
+  "Broken",
+  "Reconfiguring",
+]);
+const AuthConfigPropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  allowedModes: Schema.optional(
+    Schema.Array(Schema.suspend(() => AuthenticationModeSchema)),
+  ),
+});
+const AuthenticationModeSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "NativeAuth",
+  "MicrosoftEntraID",
+]);
+const EncryptionPropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  customerManagedKeyEncryption: Schema.optional(
+    Schema.suspend(() => CustomerManagedKeyEncryptionPropertiesSchema),
+  ),
+});
+const CustomerManagedKeyEncryptionPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    keyEncryptionKeyIdentity: Schema.optional(
+      Schema.suspend(() => KeyEncryptionKeyIdentitySchema),
+    ),
+    keyEncryptionKeyUrl: Schema.optional(Schema.String),
+  });
+const KeyEncryptionKeyIdentitySchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    identityType: Schema.optional(
+      Schema.suspend(() => KeyEncryptionKeyIdentityTypeSchema),
+    ),
+    userAssignedIdentityResourceId: Schema.optional(Schema.String),
+  });
+const KeyEncryptionKeyIdentityTypeSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Literals(["UserAssignedIdentity"]);
+const ManagedServiceIdentityTypeSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+    "None",
+    "SystemAssigned",
+    "UserAssigned",
+    "SystemAssigned,UserAssigned",
+  ]);
+const UserAssignedIdentitiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Record(
+  Schema.String,
+  Schema.suspend(() => UserAssignedIdentitySchema),
+);
+const UserAssignedIdentitySchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  principalId: Schema.optional(Schema.String),
+  clientId: Schema.optional(Schema.String),
+});
+const MongoClusterUpdatePropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    administrator: Schema.optional(
+      Schema.suspend(() => AdministratorPropertiesSchema),
+    ),
+    serverVersion: Schema.optional(Schema.String),
+    publicNetworkAccess: Schema.optional(
+      Schema.suspend(() => PublicNetworkAccessSchema),
+    ),
+    highAvailability: Schema.optional(
+      Schema.suspend(() => HighAvailabilityPropertiesSchema),
+    ),
+    storage: Schema.optional(Schema.suspend(() => StoragePropertiesSchema)),
+    sharding: Schema.optional(Schema.suspend(() => ShardingPropertiesSchema)),
+    compute: Schema.optional(Schema.suspend(() => ComputePropertiesSchema)),
+    backup: Schema.optional(Schema.suspend(() => BackupPropertiesSchema)),
+    dataApi: Schema.optional(Schema.suspend(() => DataApiPropertiesSchema)),
+    previewFeatures: Schema.optional(
+      Schema.Array(Schema.suspend(() => PreviewFeatureSchema)),
+    ),
+    authConfig: Schema.optional(
+      Schema.suspend(() => AuthConfigPropertiesSchema),
+    ),
+    encryption: Schema.optional(
+      Schema.suspend(() => EncryptionPropertiesSchema),
+    ),
+  });
+const FirewallRuleSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+});
+const FirewallRulePropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  provisioningState: Schema.optional(
+    Schema.suspend(() => ProvisioningStateSchema),
+  ),
+  startIpAddress: Schema.String,
+  endIpAddress: Schema.String,
+});
+const ConnectionStringSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  connectionString: Schema.optional(SensitiveOutputString),
+  description: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+});
+const PrivateEndpointConnectionResourceSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+  });
+const PrivateEndpointSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+});
+const PrivateLinkServiceConnectionStateSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    status: Schema.optional(
+      Schema.suspend(() => PrivateEndpointServiceConnectionStatusSchema),
+    ),
+    description: Schema.optional(Schema.String),
+    actionsRequired: Schema.optional(Schema.String),
+  });
+const PrivateEndpointServiceConnectionStatusSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+    "Pending",
+    "Approved",
+    "Rejected",
+  ]);
+const PrivateEndpointConnectionProvisioningStateSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+    "Succeeded",
+    "Creating",
+    "Deleting",
+    "Failed",
+  ]);
+const PrivateLinkResourceSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+});
+const PromoteOptionSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Forced",
+]);
+const PromoteModeSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Switchover",
+]);
+const ReplicaSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+});
+const UserSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+});
+const UserPropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  provisioningState: Schema.optional(
+    Schema.suspend(() => ProvisioningStateSchema),
+  ),
+  identityProvider: Schema.optional(
+    Schema.suspend(() => IdentityProviderSchema),
+  ),
+  roles: Schema.optional(
+    Schema.Array(Schema.suspend(() => DatabaseRoleSchema)),
+  ),
+});
+const IdentityProviderSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  type: Schema.suspend(() => IdentityProviderTypeSchema),
+});
+const IdentityProviderTypeSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "MicrosoftEntraID",
+]);
+const DatabaseRoleSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  db: Schema.String,
+  role: Schema.suspend(() => UserRoleSchema),
+});
+const UserRoleSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals(["root"]);
 
 // Input Schema
 export const FirewallRulesCreateOrUpdateInput =
@@ -17,20 +374,7 @@ export const FirewallRulesCreateOrUpdateInput =
     mongoClusterName: Schema.String.pipe(T.PathParam()),
     firewallRuleName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        provisioningState: Schema.optional(
-          Schema.Literals([
-            "Succeeded",
-            "Failed",
-            "Canceled",
-            "InProgress",
-            "Updating",
-            "Dropping",
-          ]),
-        ),
-        startIpAddress: Schema.String,
-        endIpAddress: Schema.String,
-      }),
+      Schema.suspend(() => FirewallRulePropertiesSchema),
     ),
   }).pipe(
     T.Http({
@@ -46,23 +390,13 @@ export type FirewallRulesCreateOrUpdateInput =
 // Output Schema
 export const FirewallRulesCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => FirewallRulePropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type FirewallRulesCreateOrUpdateOutput =
   typeof FirewallRulesCreateOrUpdateOutput.Type;
@@ -137,23 +471,13 @@ export type FirewallRulesGetInput = typeof FirewallRulesGetInput.Type;
 // Output Schema
 export const FirewallRulesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
+    properties: Schema.optional(
+      Schema.suspend(() => FirewallRulePropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   },
 );
 export type FirewallRulesGetOutput = typeof FirewallRulesGetOutput.Type;
@@ -191,37 +515,7 @@ export type FirewallRulesListByMongoClusterInput =
 // Output Schema
 export const FirewallRulesListByMongoClusterOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => FirewallRuleSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type FirewallRulesListByMongoClusterOutput =
@@ -290,199 +584,15 @@ export const MongoClustersCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     mongoClusterName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        createMode: Schema.optional(
-          Schema.Literals([
-            "Default",
-            "PointInTimeRestore",
-            "GeoReplica",
-            "Replica",
-          ]),
-        ),
-        restoreParameters: Schema.optional(
-          Schema.Struct({
-            pointInTimeUTC: Schema.optional(Schema.String),
-            sourceResourceId: Schema.optional(Schema.String),
-          }),
-        ),
-        replicaParameters: Schema.optional(
-          Schema.Struct({
-            sourceResourceId: Schema.String,
-            sourceLocation: Schema.String,
-          }),
-        ),
-        administrator: Schema.optional(
-          Schema.Struct({
-            userName: Schema.optional(Schema.String),
-            password: Schema.optional(SensitiveString),
-          }),
-        ),
-        serverVersion: Schema.optional(Schema.String),
-        connectionString: Schema.optional(SensitiveString),
-        provisioningState: Schema.optional(
-          Schema.Literals([
-            "Succeeded",
-            "Failed",
-            "Canceled",
-            "InProgress",
-            "Updating",
-            "Dropping",
-          ]),
-        ),
-        clusterStatus: Schema.optional(
-          Schema.Literals([
-            "Ready",
-            "Provisioning",
-            "Updating",
-            "Starting",
-            "Stopping",
-            "Stopped",
-            "Dropping",
-          ]),
-        ),
-        publicNetworkAccess: Schema.optional(
-          Schema.Literals(["Enabled", "Disabled"]),
-        ),
-        highAvailability: Schema.optional(
-          Schema.Struct({
-            targetMode: Schema.optional(
-              Schema.Literals([
-                "Disabled",
-                "SameZone",
-                "ZoneRedundantPreferred",
-              ]),
-            ),
-          }),
-        ),
-        storage: Schema.optional(
-          Schema.Struct({
-            sizeGb: Schema.optional(Schema.Number),
-            type: Schema.optional(
-              Schema.Literals(["PremiumSSD", "PremiumSSDv2"]),
-            ),
-          }),
-        ),
-        sharding: Schema.optional(
-          Schema.Struct({
-            shardCount: Schema.optional(Schema.Number),
-          }),
-        ),
-        compute: Schema.optional(
-          Schema.Struct({
-            tier: Schema.optional(Schema.String),
-          }),
-        ),
-        backup: Schema.optional(
-          Schema.Struct({
-            earliestRestoreTime: Schema.optional(Schema.String),
-          }),
-        ),
-        dataApi: Schema.optional(
-          Schema.Struct({
-            mode: Schema.optional(Schema.Literals(["Enabled", "Disabled"])),
-          }),
-        ),
-        privateEndpointConnections: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              id: Schema.optional(Schema.String),
-              name: Schema.optional(Schema.String),
-              type: Schema.optional(Schema.String),
-              systemData: Schema.optional(
-                Schema.Struct({
-                  createdBy: Schema.optional(Schema.String),
-                  createdByType: Schema.optional(
-                    Schema.Literals([
-                      "User",
-                      "Application",
-                      "ManagedIdentity",
-                      "Key",
-                    ]),
-                  ),
-                  createdAt: Schema.optional(Schema.String),
-                  lastModifiedBy: Schema.optional(Schema.String),
-                  lastModifiedByType: Schema.optional(
-                    Schema.Literals([
-                      "User",
-                      "Application",
-                      "ManagedIdentity",
-                      "Key",
-                    ]),
-                  ),
-                  lastModifiedAt: Schema.optional(Schema.String),
-                }),
-              ),
-            }),
-          ),
-        ),
-        previewFeatures: Schema.optional(
-          Schema.Array(Schema.Literals(["GeoReplicas"])),
-        ),
-        replica: Schema.optional(
-          Schema.Struct({
-            sourceResourceId: Schema.optional(Schema.String),
-            role: Schema.optional(
-              Schema.Literals(["Primary", "AsyncReplica", "GeoAsyncReplica"]),
-            ),
-            replicationState: Schema.optional(
-              Schema.Literals([
-                "Active",
-                "Catchup",
-                "Provisioning",
-                "Updating",
-                "Broken",
-                "Reconfiguring",
-              ]),
-            ),
-          }),
-        ),
-        infrastructureVersion: Schema.optional(Schema.String),
-        authConfig: Schema.optional(
-          Schema.Struct({
-            allowedModes: Schema.optional(
-              Schema.Array(Schema.Literals(["NativeAuth", "MicrosoftEntraID"])),
-            ),
-          }),
-        ),
-        encryption: Schema.optional(
-          Schema.Struct({
-            customerManagedKeyEncryption: Schema.optional(
-              Schema.Struct({
-                keyEncryptionKeyIdentity: Schema.optional(
-                  Schema.Struct({
-                    identityType: Schema.optional(
-                      Schema.Literals(["UserAssignedIdentity"]),
-                    ),
-                    userAssignedIdentityResourceId: Schema.optional(
-                      Schema.String,
-                    ),
-                  }),
-                ),
-                keyEncryptionKeyUrl: Schema.optional(Schema.String),
-              }),
-            ),
-          }),
-        ),
-      }),
+      Schema.suspend(() => MongoClusterPropertiesSchema),
     ),
     identity: Schema.optional(
       Schema.Struct({
         principalId: Schema.optional(Schema.String),
         tenantId: Schema.optional(Schema.String),
-        type: Schema.Literals([
-          "None",
-          "SystemAssigned",
-          "UserAssigned",
-          "SystemAssigned,UserAssigned",
-        ]),
+        type: Schema.suspend(() => ManagedServiceIdentityTypeSchema),
         userAssignedIdentities: Schema.optional(
-          Schema.Record(
-            Schema.String,
-            Schema.Struct({
-              principalId: Schema.optional(Schema.String),
-              clientId: Schema.optional(Schema.String),
-            }),
-          ),
+          Schema.suspend(() => UserAssignedIdentitiesSchema),
         ),
       }),
     ),
@@ -502,23 +612,25 @@ export type MongoClustersCreateOrUpdateInput =
 // Output Schema
 export const MongoClustersCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => MongoClusterPropertiesSchema),
+    ),
+    identity: Schema.optional(
+      Schema.Struct({
+        principalId: Schema.optional(Schema.String),
+        tenantId: Schema.optional(Schema.String),
+        type: Schema.suspend(() => ManagedServiceIdentityTypeSchema),
+        userAssignedIdentities: Schema.optional(
+          Schema.suspend(() => UserAssignedIdentitiesSchema),
+        ),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type MongoClustersCreateOrUpdateOutput =
   typeof MongoClustersCreateOrUpdateOutput.Type;
@@ -589,23 +701,25 @@ export type MongoClustersGetInput = typeof MongoClustersGetInput.Type;
 // Output Schema
 export const MongoClustersGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
+    properties: Schema.optional(
+      Schema.suspend(() => MongoClusterPropertiesSchema),
+    ),
+    identity: Schema.optional(
+      Schema.Struct({
+        principalId: Schema.optional(Schema.String),
+        tenantId: Schema.optional(Schema.String),
+        type: Schema.suspend(() => ManagedServiceIdentityTypeSchema),
+        userAssignedIdentities: Schema.optional(
+          Schema.suspend(() => UserAssignedIdentitiesSchema),
+        ),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   },
 );
 export type MongoClustersGetOutput = typeof MongoClustersGetOutput.Type;
@@ -640,37 +754,7 @@ export type MongoClustersListInput = typeof MongoClustersListInput.Type;
 // Output Schema
 export const MongoClustersListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => MongoClusterSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type MongoClustersListOutput = typeof MongoClustersListOutput.Type;
@@ -704,37 +788,7 @@ export type MongoClustersListByResourceGroupInput =
 // Output Schema
 export const MongoClustersListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => MongoClusterSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type MongoClustersListByResourceGroupOutput =
@@ -773,13 +827,7 @@ export type MongoClustersListConnectionStringsInput =
 export const MongoClustersListConnectionStringsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     connectionStrings: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          connectionString: Schema.optional(SensitiveOutputString),
-          description: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => ConnectionStringSchema)),
     ),
   });
 export type MongoClustersListConnectionStringsOutput =
@@ -805,8 +853,8 @@ export const MongoClustersPromoteInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     mongoClusterName: Schema.String.pipe(T.PathParam()),
-    promoteOption: Schema.Literals(["Forced"]),
-    mode: Schema.optional(Schema.Literals(["Switchover"])),
+    promoteOption: Schema.suspend(() => PromoteOptionSchema),
+    mode: Schema.optional(Schema.suspend(() => PromoteModeSchema)),
   }).pipe(
     T.Http({
       method: "POST",
@@ -847,105 +895,15 @@ export const MongoClustersUpdateInput =
       Schema.Struct({
         principalId: Schema.optional(Schema.String),
         tenantId: Schema.optional(Schema.String),
-        type: Schema.Literals([
-          "None",
-          "SystemAssigned",
-          "UserAssigned",
-          "SystemAssigned,UserAssigned",
-        ]),
+        type: Schema.suspend(() => ManagedServiceIdentityTypeSchema),
         userAssignedIdentities: Schema.optional(
-          Schema.Record(
-            Schema.String,
-            Schema.Struct({
-              principalId: Schema.optional(Schema.String),
-              clientId: Schema.optional(Schema.String),
-            }),
-          ),
+          Schema.suspend(() => UserAssignedIdentitiesSchema),
         ),
       }),
     ),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     properties: Schema.optional(
-      Schema.Struct({
-        administrator: Schema.optional(
-          Schema.Struct({
-            userName: Schema.optional(Schema.String),
-            password: Schema.optional(SensitiveString),
-          }),
-        ),
-        serverVersion: Schema.optional(Schema.String),
-        publicNetworkAccess: Schema.optional(
-          Schema.Literals(["Enabled", "Disabled"]),
-        ),
-        highAvailability: Schema.optional(
-          Schema.Struct({
-            targetMode: Schema.optional(
-              Schema.Literals([
-                "Disabled",
-                "SameZone",
-                "ZoneRedundantPreferred",
-              ]),
-            ),
-          }),
-        ),
-        storage: Schema.optional(
-          Schema.Struct({
-            sizeGb: Schema.optional(Schema.Number),
-            type: Schema.optional(
-              Schema.Literals(["PremiumSSD", "PremiumSSDv2"]),
-            ),
-          }),
-        ),
-        sharding: Schema.optional(
-          Schema.Struct({
-            shardCount: Schema.optional(Schema.Number),
-          }),
-        ),
-        compute: Schema.optional(
-          Schema.Struct({
-            tier: Schema.optional(Schema.String),
-          }),
-        ),
-        backup: Schema.optional(
-          Schema.Struct({
-            earliestRestoreTime: Schema.optional(Schema.String),
-          }),
-        ),
-        dataApi: Schema.optional(
-          Schema.Struct({
-            mode: Schema.optional(Schema.Literals(["Enabled", "Disabled"])),
-          }),
-        ),
-        previewFeatures: Schema.optional(
-          Schema.Array(Schema.Literals(["GeoReplicas"])),
-        ),
-        authConfig: Schema.optional(
-          Schema.Struct({
-            allowedModes: Schema.optional(
-              Schema.Array(Schema.Literals(["NativeAuth", "MicrosoftEntraID"])),
-            ),
-          }),
-        ),
-        encryption: Schema.optional(
-          Schema.Struct({
-            customerManagedKeyEncryption: Schema.optional(
-              Schema.Struct({
-                keyEncryptionKeyIdentity: Schema.optional(
-                  Schema.Struct({
-                    identityType: Schema.optional(
-                      Schema.Literals(["UserAssignedIdentity"]),
-                    ),
-                    userAssignedIdentityResourceId: Schema.optional(
-                      Schema.String,
-                    ),
-                  }),
-                ),
-                keyEncryptionKeyUrl: Schema.optional(Schema.String),
-              }),
-            ),
-          }),
-        ),
-      }),
+      Schema.suspend(() => MongoClusterUpdatePropertiesSchema),
     ),
   }).pipe(
     T.Http({
@@ -960,23 +918,25 @@ export type MongoClustersUpdateInput = typeof MongoClustersUpdateInput.Type;
 // Output Schema
 export const MongoClustersUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => MongoClusterPropertiesSchema),
+    ),
+    identity: Schema.optional(
+      Schema.Struct({
+        principalId: Schema.optional(Schema.String),
+        tenantId: Schema.optional(Schema.String),
+        type: Schema.suspend(() => ManagedServiceIdentityTypeSchema),
+        userAssignedIdentities: Schema.optional(
+          Schema.suspend(() => UserAssignedIdentitiesSchema),
+        ),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type MongoClustersUpdateOutput = typeof MongoClustersUpdateOutput.Type;
 
@@ -1007,26 +967,7 @@ export type OperationsListInput = typeof OperationsListInput.Type;
 
 // Output Schema
 export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  value: Schema.optional(
-    Schema.Array(
-      Schema.Struct({
-        name: Schema.optional(Schema.String),
-        isDataAction: Schema.optional(Schema.Boolean),
-        display: Schema.optional(
-          Schema.Struct({
-            provider: Schema.optional(Schema.String),
-            resource: Schema.optional(Schema.String),
-            operation: Schema.optional(Schema.String),
-            description: Schema.optional(Schema.String),
-          }),
-        ),
-        origin: Schema.optional(
-          Schema.Literals(["user", "system", "user,system"]),
-        ),
-        actionType: Schema.optional(Schema.Literals(["Internal"])),
-      }),
-    ),
-  ),
+  value: Schema.optional(Schema.Array(Schema.suspend(() => OperationSchema))),
   nextLink: Schema.optional(Schema.String),
 });
 export type OperationsListOutput = typeof OperationsListOutput.Type;
@@ -1052,19 +993,15 @@ export const PrivateEndpointConnectionsCreateInput =
       Schema.Struct({
         groupIds: Schema.optional(Schema.Array(Schema.String)),
         privateEndpoint: Schema.optional(
-          Schema.Struct({
-            id: Schema.optional(Schema.String),
-          }),
+          Schema.suspend(() => PrivateEndpointSchema),
         ),
-        privateLinkServiceConnectionState: Schema.Struct({
-          status: Schema.optional(
-            Schema.Literals(["Pending", "Approved", "Rejected"]),
-          ),
-          description: Schema.optional(Schema.String),
-          actionsRequired: Schema.optional(Schema.String),
-        }),
+        privateLinkServiceConnectionState: Schema.suspend(
+          () => PrivateLinkServiceConnectionStateSchema,
+        ),
         provisioningState: Schema.optional(
-          Schema.Literals(["Succeeded", "Creating", "Deleting", "Failed"]),
+          Schema.suspend(
+            () => PrivateEndpointConnectionProvisioningStateSchema,
+          ),
         ),
       }),
     ),
@@ -1082,23 +1019,26 @@ export type PrivateEndpointConnectionsCreateInput =
 // Output Schema
 export const PrivateEndpointConnectionsCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.Struct({
+        groupIds: Schema.optional(Schema.Array(Schema.String)),
+        privateEndpoint: Schema.optional(
+          Schema.suspend(() => PrivateEndpointSchema),
+        ),
+        privateLinkServiceConnectionState: Schema.suspend(
+          () => PrivateLinkServiceConnectionStateSchema,
+        ),
+        provisioningState: Schema.optional(
+          Schema.suspend(
+            () => PrivateEndpointConnectionProvisioningStateSchema,
+          ),
+        ),
+      }),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type PrivateEndpointConnectionsCreateOutput =
   typeof PrivateEndpointConnectionsCreateOutput.Type;
@@ -1177,23 +1117,26 @@ export type PrivateEndpointConnectionsGetInput =
 // Output Schema
 export const PrivateEndpointConnectionsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.Struct({
+        groupIds: Schema.optional(Schema.Array(Schema.String)),
+        privateEndpoint: Schema.optional(
+          Schema.suspend(() => PrivateEndpointSchema),
+        ),
+        privateLinkServiceConnectionState: Schema.suspend(
+          () => PrivateLinkServiceConnectionStateSchema,
+        ),
+        provisioningState: Schema.optional(
+          Schema.suspend(
+            () => PrivateEndpointConnectionProvisioningStateSchema,
+          ),
+        ),
+      }),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type PrivateEndpointConnectionsGetOutput =
   typeof PrivateEndpointConnectionsGetOutput.Type;
@@ -1233,35 +1176,7 @@ export type PrivateEndpointConnectionsListByMongoClusterInput =
 export const PrivateEndpointConnectionsListByMongoClusterOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
+      Schema.suspend(() => PrivateEndpointConnectionResourceSchema),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -1301,37 +1216,7 @@ export type PrivateLinksListByMongoClusterInput =
 // Output Schema
 export const PrivateLinksListByMongoClusterOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => PrivateLinkResourceSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type PrivateLinksListByMongoClusterOutput =
@@ -1369,37 +1254,7 @@ export type ReplicasListByParentInput = typeof ReplicasListByParentInput.Type;
 // Output Schema
 export const ReplicasListByParentOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => ReplicaSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type ReplicasListByParentOutput = typeof ReplicasListByParentOutput.Type;
@@ -1426,33 +1281,7 @@ export const UsersCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     mongoClusterName: Schema.String.pipe(T.PathParam()),
     userName: Schema.String.pipe(T.PathParam()),
-    properties: Schema.optional(
-      Schema.Struct({
-        provisioningState: Schema.optional(
-          Schema.Literals([
-            "Succeeded",
-            "Failed",
-            "Canceled",
-            "InProgress",
-            "Updating",
-            "Dropping",
-          ]),
-        ),
-        identityProvider: Schema.optional(
-          Schema.Struct({
-            type: Schema.Literals(["MicrosoftEntraID"]),
-          }),
-        ),
-        roles: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              db: Schema.String,
-              role: Schema.Literals(["root"]),
-            }),
-          ),
-        ),
-      }),
-    ),
+    properties: Schema.optional(Schema.suspend(() => UserPropertiesSchema)),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -1466,23 +1295,11 @@ export type UsersCreateOrUpdateInput = typeof UsersCreateOrUpdateInput.Type;
 // Output Schema
 export const UsersCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(Schema.suspend(() => UserPropertiesSchema)),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type UsersCreateOrUpdateOutput = typeof UsersCreateOrUpdateOutput.Type;
 
@@ -1551,23 +1368,11 @@ export type UsersGetInput = typeof UsersGetInput.Type;
 
 // Output Schema
 export const UsersGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.optional(Schema.suspend(() => UserPropertiesSchema)),
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
-  systemData: Schema.optional(
-    Schema.Struct({
-      createdBy: Schema.optional(Schema.String),
-      createdByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      createdAt: Schema.optional(Schema.String),
-      lastModifiedBy: Schema.optional(Schema.String),
-      lastModifiedByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      lastModifiedAt: Schema.optional(Schema.String),
-    }),
-  ),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
 });
 export type UsersGetOutput = typeof UsersGetOutput.Type;
 
@@ -1604,37 +1409,7 @@ export type UsersListByMongoClusterInput =
 // Output Schema
 export const UsersListByMongoClusterOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => UserSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type UsersListByMongoClusterOutput =

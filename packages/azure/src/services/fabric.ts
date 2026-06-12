@@ -8,6 +8,99 @@ import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
+// Shared schemas
+const OperationSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  isDataAction: Schema.optional(Schema.Boolean),
+  display: Schema.optional(
+    Schema.Struct({
+      provider: Schema.optional(Schema.String),
+      resource: Schema.optional(Schema.String),
+      operation: Schema.optional(Schema.String),
+      description: Schema.optional(Schema.String),
+    }),
+  ),
+  origin: Schema.optional(Schema.Literals(["user", "system", "user,system"])),
+  actionType: Schema.optional(Schema.Literals(["Internal"])),
+});
+const FabricCapacitySchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+});
+const systemDataSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  createdBy: Schema.optional(Schema.String),
+  createdByType: Schema.optional(
+    Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+  ),
+  createdAt: Schema.optional(Schema.String),
+  lastModifiedBy: Schema.optional(Schema.String),
+  lastModifiedByType: Schema.optional(
+    Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+  ),
+  lastModifiedAt: Schema.optional(Schema.String),
+});
+const RpSkuDetailsForNewResourceSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resourceType: Schema.String,
+    name: Schema.String,
+    locations: Schema.Array(
+      Schema.suspend(() => Azure_Core_azureLocationSchema),
+    ),
+  });
+const Azure_Core_azureLocationSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.String;
+const FabricCapacityPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    provisioningState: Schema.optional(
+      Schema.suspend(() => ProvisioningStateSchema),
+    ),
+    state: Schema.optional(Schema.suspend(() => ResourceStateSchema)),
+    administration: Schema.suspend(() => CapacityAdministrationSchema),
+  });
+const ProvisioningStateSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Succeeded",
+  "Failed",
+  "Canceled",
+  "Deleting",
+  "Provisioning",
+  "Updating",
+]);
+const ResourceStateSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Active",
+  "Provisioning",
+  "Failed",
+  "Updating",
+  "Deleting",
+  "Suspending",
+  "Suspended",
+  "Pausing",
+  "Paused",
+  "Resuming",
+  "Scaling",
+  "Preparing",
+]);
+const CapacityAdministrationSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  members: Schema.Array(Schema.String),
+});
+const RpSkuSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.String,
+  tier: Schema.suspend(() => RpSkuTierSchema),
+});
+const RpSkuTierSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals(["Fabric"]);
+const FabricCapacityUpdatePropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    administration: Schema.optional(
+      Schema.suspend(() => CapacityAdministrationSchema),
+    ),
+  });
+const RpSkuDetailsForExistingResourceSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resourceType: Schema.String,
+    sku: Schema.suspend(() => RpSkuSchema),
+  });
+
 // Input Schema
 export const FabricCapacitiesCheckNameAvailabilityInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -56,41 +149,8 @@ export const FabricCapacitiesCreateOrUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     capacityName: Schema.String.pipe(T.PathParam()),
-    properties: Schema.Struct({
-      provisioningState: Schema.optional(
-        Schema.Literals([
-          "Succeeded",
-          "Failed",
-          "Canceled",
-          "Deleting",
-          "Provisioning",
-          "Updating",
-        ]),
-      ),
-      state: Schema.optional(
-        Schema.Literals([
-          "Active",
-          "Provisioning",
-          "Failed",
-          "Updating",
-          "Deleting",
-          "Suspending",
-          "Suspended",
-          "Pausing",
-          "Paused",
-          "Resuming",
-          "Scaling",
-          "Preparing",
-        ]),
-      ),
-      administration: Schema.Struct({
-        members: Schema.Array(Schema.String),
-      }),
-    }),
-    sku: Schema.Struct({
-      name: Schema.String,
-      tier: Schema.Literals(["Fabric"]),
-    }),
+    properties: Schema.suspend(() => FabricCapacityPropertiesSchema),
+    sku: Schema.suspend(() => RpSkuSchema),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     location: Schema.String,
   }).pipe(
@@ -107,23 +167,14 @@ export type FabricCapacitiesCreateOrUpdateInput =
 // Output Schema
 export const FabricCapacitiesCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.suspend(() => FabricCapacityPropertiesSchema),
+    sku: Schema.suspend(() => RpSkuSchema),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type FabricCapacitiesCreateOrUpdateOutput =
   typeof FabricCapacitiesCreateOrUpdateOutput.Type;
@@ -198,23 +249,14 @@ export type FabricCapacitiesGetInput = typeof FabricCapacitiesGetInput.Type;
 // Output Schema
 export const FabricCapacitiesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.suspend(() => FabricCapacityPropertiesSchema),
+    sku: Schema.suspend(() => RpSkuSchema),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type FabricCapacitiesGetOutput = typeof FabricCapacitiesGetOutput.Type;
 
@@ -249,37 +291,7 @@ export type FabricCapacitiesListByResourceGroupInput =
 // Output Schema
 export const FabricCapacitiesListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => FabricCapacitySchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type FabricCapacitiesListByResourceGroupOutput =
@@ -315,37 +327,7 @@ export type FabricCapacitiesListBySubscriptionInput =
 // Output Schema
 export const FabricCapacitiesListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => FabricCapacitySchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type FabricCapacitiesListBySubscriptionOutput =
@@ -380,13 +362,7 @@ export type FabricCapacitiesListSkusInput =
 // Output Schema
 export const FabricCapacitiesListSkusOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        resourceType: Schema.String,
-        name: Schema.String,
-        locations: Schema.Array(Schema.String),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => RpSkuDetailsForNewResourceSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type FabricCapacitiesListSkusOutput =
@@ -425,13 +401,7 @@ export type FabricCapacitiesListSkusForCapacityInput =
 export const FabricCapacitiesListSkusForCapacityOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
-      Schema.Struct({
-        resourceType: Schema.String,
-        sku: Schema.Struct({
-          name: Schema.String,
-          tier: Schema.Literals(["Fabric"]),
-        }),
-      }),
+      Schema.suspend(() => RpSkuDetailsForExistingResourceSchema),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -534,21 +504,10 @@ export const FabricCapacitiesUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     capacityName: Schema.String.pipe(T.PathParam()),
-    sku: Schema.optional(
-      Schema.Struct({
-        name: Schema.String,
-        tier: Schema.Literals(["Fabric"]),
-      }),
-    ),
+    sku: Schema.optional(Schema.suspend(() => RpSkuSchema)),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     properties: Schema.optional(
-      Schema.Struct({
-        administration: Schema.optional(
-          Schema.Struct({
-            members: Schema.Array(Schema.String),
-          }),
-        ),
-      }),
+      Schema.suspend(() => FabricCapacityUpdatePropertiesSchema),
     ),
   }).pipe(
     T.Http({
@@ -564,23 +523,14 @@ export type FabricCapacitiesUpdateInput =
 // Output Schema
 export const FabricCapacitiesUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.suspend(() => FabricCapacityPropertiesSchema),
+    sku: Schema.suspend(() => RpSkuSchema),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type FabricCapacitiesUpdateOutput =
   typeof FabricCapacitiesUpdateOutput.Type;
@@ -614,26 +564,7 @@ export type OperationsListInput = typeof OperationsListInput.Type;
 
 // Output Schema
 export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  value: Schema.optional(
-    Schema.Array(
-      Schema.Struct({
-        name: Schema.optional(Schema.String),
-        isDataAction: Schema.optional(Schema.Boolean),
-        display: Schema.optional(
-          Schema.Struct({
-            provider: Schema.optional(Schema.String),
-            resource: Schema.optional(Schema.String),
-            operation: Schema.optional(Schema.String),
-            description: Schema.optional(Schema.String),
-          }),
-        ),
-        origin: Schema.optional(
-          Schema.Literals(["user", "system", "user,system"]),
-        ),
-        actionType: Schema.optional(Schema.Literals(["Internal"])),
-      }),
-    ),
-  ),
+  value: Schema.optional(Schema.Array(Schema.suspend(() => OperationSchema))),
   nextLink: Schema.optional(Schema.String),
 });
 export type OperationsListOutput = typeof OperationsListOutput.Type;

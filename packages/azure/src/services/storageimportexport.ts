@@ -8,6 +8,180 @@ import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
+// Shared schemas
+const LocationSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  properties: Schema.optional(
+    Schema.Struct({
+      recipientName: Schema.optional(Schema.String),
+      streetAddress1: Schema.optional(Schema.String),
+      streetAddress2: Schema.optional(Schema.String),
+      city: Schema.optional(Schema.String),
+      stateOrProvince: Schema.optional(Schema.String),
+      postalCode: Schema.optional(Schema.String),
+      countryOrRegion: Schema.optional(Schema.String),
+      phone: Schema.optional(Schema.String),
+      additionalShippingInformation: Schema.optional(Schema.String),
+      supportedCarriers: Schema.optional(Schema.Array(Schema.String)),
+      alternateLocations: Schema.optional(Schema.Array(Schema.String)),
+    }),
+  ),
+});
+const JobResponseSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  location: Schema.optional(Schema.String),
+  tags: Schema.optional(Schema.Unknown),
+  properties: Schema.optional(Schema.suspend(() => JobDetailsSchema)),
+  identity: Schema.optional(Schema.suspend(() => IdentityDetailsSchema)),
+});
+const JobDetailsSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  storageAccountId: Schema.optional(Schema.String),
+  jobType: Schema.optional(Schema.String),
+  returnAddress: Schema.optional(Schema.suspend(() => ReturnAddressSchema)),
+  returnShipping: Schema.optional(Schema.suspend(() => ReturnShippingSchema)),
+  shippingInformation: Schema.optional(
+    Schema.suspend(() => ShippingInformationSchema),
+  ),
+  deliveryPackage: Schema.optional(
+    Schema.suspend(() => DeliveryPackageInformationSchema),
+  ),
+  returnPackage: Schema.optional(
+    Schema.suspend(() => PackageInformationSchema),
+  ),
+  diagnosticsPath: Schema.optional(Schema.String),
+  logLevel: Schema.optional(Schema.String),
+  backupDriveManifest: Schema.optional(Schema.Boolean),
+  state: Schema.optional(Schema.String),
+  cancelRequested: Schema.optional(Schema.Boolean),
+  percentComplete: Schema.optional(Schema.Number),
+  incompleteBlobListUri: Schema.optional(Schema.String),
+  driveList: Schema.optional(
+    Schema.Array(Schema.suspend(() => DriveStatusSchema)),
+  ),
+  export: Schema.optional(Schema.suspend(() => ExportSchema)),
+  provisioningState: Schema.optional(Schema.String),
+  encryptionKey: Schema.optional(
+    Schema.suspend(() => EncryptionKeyDetailsSchema),
+  ),
+});
+const ReturnAddressSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  recipientName: Schema.String,
+  streetAddress1: Schema.String,
+  streetAddress2: Schema.optional(Schema.String),
+  city: Schema.String,
+  stateOrProvince: Schema.optional(Schema.String),
+  postalCode: Schema.String,
+  countryOrRegion: Schema.String,
+  phone: Schema.String,
+  email: Schema.String,
+});
+const ReturnShippingSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  carrierName: Schema.String,
+  carrierAccountNumber: Schema.String,
+});
+const ShippingInformationSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  recipientName: Schema.optional(Schema.String),
+  streetAddress1: Schema.optional(Schema.String),
+  streetAddress2: Schema.optional(Schema.String),
+  city: Schema.optional(Schema.String),
+  stateOrProvince: Schema.optional(Schema.String),
+  postalCode: Schema.optional(Schema.String),
+  countryOrRegion: Schema.optional(Schema.String),
+  phone: Schema.optional(Schema.String),
+  additionalInformation: Schema.optional(Schema.String),
+});
+const DeliveryPackageInformationSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    carrierName: Schema.String,
+    trackingNumber: Schema.String,
+    driveCount: Schema.optional(Schema.Number),
+    shipDate: Schema.optional(Schema.String),
+  });
+const PackageInformationSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  carrierName: Schema.String,
+  trackingNumber: Schema.String,
+  driveCount: Schema.Number,
+  shipDate: Schema.String,
+});
+const DriveStatusSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  driveId: Schema.optional(Schema.String),
+  bitLockerKey: Schema.optional(Schema.String),
+  manifestFile: Schema.optional(Schema.String),
+  manifestHash: Schema.optional(Schema.String),
+  driveHeaderHash: Schema.optional(Schema.String),
+  state: Schema.optional(
+    Schema.Literals([
+      "Specified",
+      "Received",
+      "NeverReceived",
+      "Transferring",
+      "Completed",
+      "CompletedMoreInfo",
+      "ShippedBack",
+    ]),
+  ),
+  copyStatus: Schema.optional(Schema.String),
+  percentComplete: Schema.optional(Schema.Number),
+  verboseLogUri: Schema.optional(Schema.String),
+  errorLogUri: Schema.optional(Schema.String),
+  manifestUri: Schema.optional(Schema.String),
+  bytesSucceeded: Schema.optional(Schema.Number),
+});
+const ExportSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  blobList: Schema.optional(
+    Schema.Struct({
+      blobPath: Schema.optional(Schema.Array(Schema.String)),
+      blobPathPrefix: Schema.optional(Schema.Array(Schema.String)),
+    }),
+  ),
+  blobListBlobPath: Schema.optional(Schema.String),
+});
+const EncryptionKeyDetailsSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  kekType: Schema.optional(
+    Schema.Literals(["MicrosoftManaged", "CustomerManaged"]),
+  ),
+  kekUrl: Schema.optional(Schema.String),
+  kekVaultResourceID: Schema.optional(Schema.String),
+});
+const IdentityDetailsSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  type: Schema.optional(
+    Schema.Literals(["None", "SystemAssigned", "UserAssigned"]),
+  ),
+  principalId: Schema.optional(Schema.String),
+  tenantId: Schema.optional(Schema.String),
+});
+const DriveBitLockerKeySchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  bitLockerKey: Schema.optional(Schema.String),
+  driveId: Schema.optional(Schema.String),
+});
+const OperationSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.String,
+  display: Schema.Struct({
+    provider: Schema.optional(Schema.String),
+    resource: Schema.optional(Schema.String),
+    operation: Schema.optional(Schema.String),
+    description: Schema.optional(Schema.String),
+  }),
+});
+
 // Input Schema
 export const BitLockerKeysListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
@@ -26,12 +200,7 @@ export type BitLockerKeysListInput = typeof BitLockerKeysListInput.Type;
 export const BitLockerKeysListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          bitLockerKey: Schema.optional(Schema.String),
-          driveId: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => DriveBitLockerKeySchema)),
     ),
   });
 export type BitLockerKeysListOutput = typeof BitLockerKeysListOutput.Type;
@@ -51,116 +220,7 @@ export const JobsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   jobName: Schema.String.pipe(T.PathParam()),
   location: Schema.optional(Schema.String),
   tags: Schema.optional(Schema.Unknown),
-  properties: Schema.optional(
-    Schema.Struct({
-      storageAccountId: Schema.optional(Schema.String),
-      jobType: Schema.optional(Schema.String),
-      returnAddress: Schema.optional(
-        Schema.Struct({
-          recipientName: Schema.String,
-          streetAddress1: Schema.String,
-          streetAddress2: Schema.optional(Schema.String),
-          city: Schema.String,
-          stateOrProvince: Schema.optional(Schema.String),
-          postalCode: Schema.String,
-          countryOrRegion: Schema.String,
-          phone: Schema.String,
-          email: Schema.String,
-        }),
-      ),
-      returnShipping: Schema.optional(
-        Schema.Struct({
-          carrierName: Schema.String,
-          carrierAccountNumber: Schema.String,
-        }),
-      ),
-      shippingInformation: Schema.optional(
-        Schema.Struct({
-          recipientName: Schema.optional(Schema.String),
-          streetAddress1: Schema.optional(Schema.String),
-          streetAddress2: Schema.optional(Schema.String),
-          city: Schema.optional(Schema.String),
-          stateOrProvince: Schema.optional(Schema.String),
-          postalCode: Schema.optional(Schema.String),
-          countryOrRegion: Schema.optional(Schema.String),
-          phone: Schema.optional(Schema.String),
-          additionalInformation: Schema.optional(Schema.String),
-        }),
-      ),
-      deliveryPackage: Schema.optional(
-        Schema.Struct({
-          carrierName: Schema.String,
-          trackingNumber: Schema.String,
-          driveCount: Schema.optional(Schema.Number),
-          shipDate: Schema.optional(Schema.String),
-        }),
-      ),
-      returnPackage: Schema.optional(
-        Schema.Struct({
-          carrierName: Schema.String,
-          trackingNumber: Schema.String,
-          driveCount: Schema.Number,
-          shipDate: Schema.String,
-        }),
-      ),
-      diagnosticsPath: Schema.optional(Schema.String),
-      logLevel: Schema.optional(Schema.String),
-      backupDriveManifest: Schema.optional(Schema.Boolean),
-      state: Schema.optional(Schema.String),
-      cancelRequested: Schema.optional(Schema.Boolean),
-      percentComplete: Schema.optional(Schema.Number),
-      incompleteBlobListUri: Schema.optional(Schema.String),
-      driveList: Schema.optional(
-        Schema.Array(
-          Schema.Struct({
-            driveId: Schema.optional(Schema.String),
-            bitLockerKey: Schema.optional(Schema.String),
-            manifestFile: Schema.optional(Schema.String),
-            manifestHash: Schema.optional(Schema.String),
-            driveHeaderHash: Schema.optional(Schema.String),
-            state: Schema.optional(
-              Schema.Literals([
-                "Specified",
-                "Received",
-                "NeverReceived",
-                "Transferring",
-                "Completed",
-                "CompletedMoreInfo",
-                "ShippedBack",
-              ]),
-            ),
-            copyStatus: Schema.optional(Schema.String),
-            percentComplete: Schema.optional(Schema.Number),
-            verboseLogUri: Schema.optional(Schema.String),
-            errorLogUri: Schema.optional(Schema.String),
-            manifestUri: Schema.optional(Schema.String),
-            bytesSucceeded: Schema.optional(Schema.Number),
-          }),
-        ),
-      ),
-      export: Schema.optional(
-        Schema.Struct({
-          blobList: Schema.optional(
-            Schema.Struct({
-              blobPath: Schema.optional(Schema.Array(Schema.String)),
-              blobPathPrefix: Schema.optional(Schema.Array(Schema.String)),
-            }),
-          ),
-          blobListBlobPath: Schema.optional(Schema.String),
-        }),
-      ),
-      provisioningState: Schema.optional(Schema.String),
-      encryptionKey: Schema.optional(
-        Schema.Struct({
-          kekType: Schema.optional(
-            Schema.Literals(["MicrosoftManaged", "CustomerManaged"]),
-          ),
-          kekUrl: Schema.optional(Schema.String),
-          kekVaultResourceID: Schema.optional(Schema.String),
-        }),
-      ),
-    }),
-  ),
+  properties: Schema.optional(Schema.suspend(() => JobDetailsSchema)),
 }).pipe(
   T.Http({
     method: "PUT",
@@ -191,125 +251,8 @@ export const JobsCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   type: Schema.optional(Schema.String),
   location: Schema.optional(Schema.String),
   tags: Schema.optional(Schema.Unknown),
-  properties: Schema.optional(
-    Schema.Struct({
-      storageAccountId: Schema.optional(Schema.String),
-      jobType: Schema.optional(Schema.String),
-      returnAddress: Schema.optional(
-        Schema.Struct({
-          recipientName: Schema.String,
-          streetAddress1: Schema.String,
-          streetAddress2: Schema.optional(Schema.String),
-          city: Schema.String,
-          stateOrProvince: Schema.optional(Schema.String),
-          postalCode: Schema.String,
-          countryOrRegion: Schema.String,
-          phone: Schema.String,
-          email: Schema.String,
-        }),
-      ),
-      returnShipping: Schema.optional(
-        Schema.Struct({
-          carrierName: Schema.String,
-          carrierAccountNumber: Schema.String,
-        }),
-      ),
-      shippingInformation: Schema.optional(
-        Schema.Struct({
-          recipientName: Schema.optional(Schema.String),
-          streetAddress1: Schema.optional(Schema.String),
-          streetAddress2: Schema.optional(Schema.String),
-          city: Schema.optional(Schema.String),
-          stateOrProvince: Schema.optional(Schema.String),
-          postalCode: Schema.optional(Schema.String),
-          countryOrRegion: Schema.optional(Schema.String),
-          phone: Schema.optional(Schema.String),
-          additionalInformation: Schema.optional(Schema.String),
-        }),
-      ),
-      deliveryPackage: Schema.optional(
-        Schema.Struct({
-          carrierName: Schema.String,
-          trackingNumber: Schema.String,
-          driveCount: Schema.optional(Schema.Number),
-          shipDate: Schema.optional(Schema.String),
-        }),
-      ),
-      returnPackage: Schema.optional(
-        Schema.Struct({
-          carrierName: Schema.String,
-          trackingNumber: Schema.String,
-          driveCount: Schema.Number,
-          shipDate: Schema.String,
-        }),
-      ),
-      diagnosticsPath: Schema.optional(Schema.String),
-      logLevel: Schema.optional(Schema.String),
-      backupDriveManifest: Schema.optional(Schema.Boolean),
-      state: Schema.optional(Schema.String),
-      cancelRequested: Schema.optional(Schema.Boolean),
-      percentComplete: Schema.optional(Schema.Number),
-      incompleteBlobListUri: Schema.optional(Schema.String),
-      driveList: Schema.optional(
-        Schema.Array(
-          Schema.Struct({
-            driveId: Schema.optional(Schema.String),
-            bitLockerKey: Schema.optional(Schema.String),
-            manifestFile: Schema.optional(Schema.String),
-            manifestHash: Schema.optional(Schema.String),
-            driveHeaderHash: Schema.optional(Schema.String),
-            state: Schema.optional(
-              Schema.Literals([
-                "Specified",
-                "Received",
-                "NeverReceived",
-                "Transferring",
-                "Completed",
-                "CompletedMoreInfo",
-                "ShippedBack",
-              ]),
-            ),
-            copyStatus: Schema.optional(Schema.String),
-            percentComplete: Schema.optional(Schema.Number),
-            verboseLogUri: Schema.optional(Schema.String),
-            errorLogUri: Schema.optional(Schema.String),
-            manifestUri: Schema.optional(Schema.String),
-            bytesSucceeded: Schema.optional(Schema.Number),
-          }),
-        ),
-      ),
-      export: Schema.optional(
-        Schema.Struct({
-          blobList: Schema.optional(
-            Schema.Struct({
-              blobPath: Schema.optional(Schema.Array(Schema.String)),
-              blobPathPrefix: Schema.optional(Schema.Array(Schema.String)),
-            }),
-          ),
-          blobListBlobPath: Schema.optional(Schema.String),
-        }),
-      ),
-      provisioningState: Schema.optional(Schema.String),
-      encryptionKey: Schema.optional(
-        Schema.Struct({
-          kekType: Schema.optional(
-            Schema.Literals(["MicrosoftManaged", "CustomerManaged"]),
-          ),
-          kekUrl: Schema.optional(Schema.String),
-          kekVaultResourceID: Schema.optional(Schema.String),
-        }),
-      ),
-    }),
-  ),
-  identity: Schema.optional(
-    Schema.Struct({
-      type: Schema.optional(
-        Schema.Literals(["None", "SystemAssigned", "UserAssigned"]),
-      ),
-      principalId: Schema.optional(Schema.String),
-      tenantId: Schema.optional(Schema.String),
-    }),
-  ),
+  properties: Schema.optional(Schema.suspend(() => JobDetailsSchema)),
+  identity: Schema.optional(Schema.suspend(() => IdentityDetailsSchema)),
 });
 export type JobsCreateOutput = typeof JobsCreateOutput.Type;
 
@@ -382,125 +325,8 @@ export const JobsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   type: Schema.optional(Schema.String),
   location: Schema.optional(Schema.String),
   tags: Schema.optional(Schema.Unknown),
-  properties: Schema.optional(
-    Schema.Struct({
-      storageAccountId: Schema.optional(Schema.String),
-      jobType: Schema.optional(Schema.String),
-      returnAddress: Schema.optional(
-        Schema.Struct({
-          recipientName: Schema.String,
-          streetAddress1: Schema.String,
-          streetAddress2: Schema.optional(Schema.String),
-          city: Schema.String,
-          stateOrProvince: Schema.optional(Schema.String),
-          postalCode: Schema.String,
-          countryOrRegion: Schema.String,
-          phone: Schema.String,
-          email: Schema.String,
-        }),
-      ),
-      returnShipping: Schema.optional(
-        Schema.Struct({
-          carrierName: Schema.String,
-          carrierAccountNumber: Schema.String,
-        }),
-      ),
-      shippingInformation: Schema.optional(
-        Schema.Struct({
-          recipientName: Schema.optional(Schema.String),
-          streetAddress1: Schema.optional(Schema.String),
-          streetAddress2: Schema.optional(Schema.String),
-          city: Schema.optional(Schema.String),
-          stateOrProvince: Schema.optional(Schema.String),
-          postalCode: Schema.optional(Schema.String),
-          countryOrRegion: Schema.optional(Schema.String),
-          phone: Schema.optional(Schema.String),
-          additionalInformation: Schema.optional(Schema.String),
-        }),
-      ),
-      deliveryPackage: Schema.optional(
-        Schema.Struct({
-          carrierName: Schema.String,
-          trackingNumber: Schema.String,
-          driveCount: Schema.optional(Schema.Number),
-          shipDate: Schema.optional(Schema.String),
-        }),
-      ),
-      returnPackage: Schema.optional(
-        Schema.Struct({
-          carrierName: Schema.String,
-          trackingNumber: Schema.String,
-          driveCount: Schema.Number,
-          shipDate: Schema.String,
-        }),
-      ),
-      diagnosticsPath: Schema.optional(Schema.String),
-      logLevel: Schema.optional(Schema.String),
-      backupDriveManifest: Schema.optional(Schema.Boolean),
-      state: Schema.optional(Schema.String),
-      cancelRequested: Schema.optional(Schema.Boolean),
-      percentComplete: Schema.optional(Schema.Number),
-      incompleteBlobListUri: Schema.optional(Schema.String),
-      driveList: Schema.optional(
-        Schema.Array(
-          Schema.Struct({
-            driveId: Schema.optional(Schema.String),
-            bitLockerKey: Schema.optional(Schema.String),
-            manifestFile: Schema.optional(Schema.String),
-            manifestHash: Schema.optional(Schema.String),
-            driveHeaderHash: Schema.optional(Schema.String),
-            state: Schema.optional(
-              Schema.Literals([
-                "Specified",
-                "Received",
-                "NeverReceived",
-                "Transferring",
-                "Completed",
-                "CompletedMoreInfo",
-                "ShippedBack",
-              ]),
-            ),
-            copyStatus: Schema.optional(Schema.String),
-            percentComplete: Schema.optional(Schema.Number),
-            verboseLogUri: Schema.optional(Schema.String),
-            errorLogUri: Schema.optional(Schema.String),
-            manifestUri: Schema.optional(Schema.String),
-            bytesSucceeded: Schema.optional(Schema.Number),
-          }),
-        ),
-      ),
-      export: Schema.optional(
-        Schema.Struct({
-          blobList: Schema.optional(
-            Schema.Struct({
-              blobPath: Schema.optional(Schema.Array(Schema.String)),
-              blobPathPrefix: Schema.optional(Schema.Array(Schema.String)),
-            }),
-          ),
-          blobListBlobPath: Schema.optional(Schema.String),
-        }),
-      ),
-      provisioningState: Schema.optional(Schema.String),
-      encryptionKey: Schema.optional(
-        Schema.Struct({
-          kekType: Schema.optional(
-            Schema.Literals(["MicrosoftManaged", "CustomerManaged"]),
-          ),
-          kekUrl: Schema.optional(Schema.String),
-          kekVaultResourceID: Schema.optional(Schema.String),
-        }),
-      ),
-    }),
-  ),
-  identity: Schema.optional(
-    Schema.Struct({
-      type: Schema.optional(
-        Schema.Literals(["None", "SystemAssigned", "UserAssigned"]),
-      ),
-      principalId: Schema.optional(Schema.String),
-      tenantId: Schema.optional(Schema.String),
-    }),
-  ),
+  properties: Schema.optional(Schema.suspend(() => JobDetailsSchema)),
+  identity: Schema.optional(Schema.suspend(() => IdentityDetailsSchema)),
 });
 export type JobsGetOutput = typeof JobsGetOutput.Type;
 
@@ -534,160 +360,7 @@ export const JobsListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.String),
-              createdByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              createdAt: Schema.optional(Schema.String),
-              lastModifiedBy: Schema.optional(Schema.String),
-              lastModifiedByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              lastModifiedAt: Schema.optional(Schema.String),
-            }),
-          ),
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          location: Schema.optional(Schema.String),
-          tags: Schema.optional(Schema.Unknown),
-          properties: Schema.optional(
-            Schema.Struct({
-              storageAccountId: Schema.optional(Schema.String),
-              jobType: Schema.optional(Schema.String),
-              returnAddress: Schema.optional(
-                Schema.Struct({
-                  recipientName: Schema.String,
-                  streetAddress1: Schema.String,
-                  streetAddress2: Schema.optional(Schema.String),
-                  city: Schema.String,
-                  stateOrProvince: Schema.optional(Schema.String),
-                  postalCode: Schema.String,
-                  countryOrRegion: Schema.String,
-                  phone: Schema.String,
-                  email: Schema.String,
-                }),
-              ),
-              returnShipping: Schema.optional(
-                Schema.Struct({
-                  carrierName: Schema.String,
-                  carrierAccountNumber: Schema.String,
-                }),
-              ),
-              shippingInformation: Schema.optional(
-                Schema.Struct({
-                  recipientName: Schema.optional(Schema.String),
-                  streetAddress1: Schema.optional(Schema.String),
-                  streetAddress2: Schema.optional(Schema.String),
-                  city: Schema.optional(Schema.String),
-                  stateOrProvince: Schema.optional(Schema.String),
-                  postalCode: Schema.optional(Schema.String),
-                  countryOrRegion: Schema.optional(Schema.String),
-                  phone: Schema.optional(Schema.String),
-                  additionalInformation: Schema.optional(Schema.String),
-                }),
-              ),
-              deliveryPackage: Schema.optional(
-                Schema.Struct({
-                  carrierName: Schema.String,
-                  trackingNumber: Schema.String,
-                  driveCount: Schema.optional(Schema.Number),
-                  shipDate: Schema.optional(Schema.String),
-                }),
-              ),
-              returnPackage: Schema.optional(
-                Schema.Struct({
-                  carrierName: Schema.String,
-                  trackingNumber: Schema.String,
-                  driveCount: Schema.Number,
-                  shipDate: Schema.String,
-                }),
-              ),
-              diagnosticsPath: Schema.optional(Schema.String),
-              logLevel: Schema.optional(Schema.String),
-              backupDriveManifest: Schema.optional(Schema.Boolean),
-              state: Schema.optional(Schema.String),
-              cancelRequested: Schema.optional(Schema.Boolean),
-              percentComplete: Schema.optional(Schema.Number),
-              incompleteBlobListUri: Schema.optional(Schema.String),
-              driveList: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    driveId: Schema.optional(Schema.String),
-                    bitLockerKey: Schema.optional(Schema.String),
-                    manifestFile: Schema.optional(Schema.String),
-                    manifestHash: Schema.optional(Schema.String),
-                    driveHeaderHash: Schema.optional(Schema.String),
-                    state: Schema.optional(
-                      Schema.Literals([
-                        "Specified",
-                        "Received",
-                        "NeverReceived",
-                        "Transferring",
-                        "Completed",
-                        "CompletedMoreInfo",
-                        "ShippedBack",
-                      ]),
-                    ),
-                    copyStatus: Schema.optional(Schema.String),
-                    percentComplete: Schema.optional(Schema.Number),
-                    verboseLogUri: Schema.optional(Schema.String),
-                    errorLogUri: Schema.optional(Schema.String),
-                    manifestUri: Schema.optional(Schema.String),
-                    bytesSucceeded: Schema.optional(Schema.Number),
-                  }),
-                ),
-              ),
-              export: Schema.optional(
-                Schema.Struct({
-                  blobList: Schema.optional(
-                    Schema.Struct({
-                      blobPath: Schema.optional(Schema.Array(Schema.String)),
-                      blobPathPrefix: Schema.optional(
-                        Schema.Array(Schema.String),
-                      ),
-                    }),
-                  ),
-                  blobListBlobPath: Schema.optional(Schema.String),
-                }),
-              ),
-              provisioningState: Schema.optional(Schema.String),
-              encryptionKey: Schema.optional(
-                Schema.Struct({
-                  kekType: Schema.optional(
-                    Schema.Literals(["MicrosoftManaged", "CustomerManaged"]),
-                  ),
-                  kekUrl: Schema.optional(Schema.String),
-                  kekVaultResourceID: Schema.optional(Schema.String),
-                }),
-              ),
-            }),
-          ),
-          identity: Schema.optional(
-            Schema.Struct({
-              type: Schema.optional(
-                Schema.Literals(["None", "SystemAssigned", "UserAssigned"]),
-              ),
-              principalId: Schema.optional(Schema.String),
-              tenantId: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => JobResponseSchema)),
     ),
   });
 export type JobsListByResourceGroupOutput =
@@ -726,160 +399,7 @@ export const JobsListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.String),
-              createdByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              createdAt: Schema.optional(Schema.String),
-              lastModifiedBy: Schema.optional(Schema.String),
-              lastModifiedByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              lastModifiedAt: Schema.optional(Schema.String),
-            }),
-          ),
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          location: Schema.optional(Schema.String),
-          tags: Schema.optional(Schema.Unknown),
-          properties: Schema.optional(
-            Schema.Struct({
-              storageAccountId: Schema.optional(Schema.String),
-              jobType: Schema.optional(Schema.String),
-              returnAddress: Schema.optional(
-                Schema.Struct({
-                  recipientName: Schema.String,
-                  streetAddress1: Schema.String,
-                  streetAddress2: Schema.optional(Schema.String),
-                  city: Schema.String,
-                  stateOrProvince: Schema.optional(Schema.String),
-                  postalCode: Schema.String,
-                  countryOrRegion: Schema.String,
-                  phone: Schema.String,
-                  email: Schema.String,
-                }),
-              ),
-              returnShipping: Schema.optional(
-                Schema.Struct({
-                  carrierName: Schema.String,
-                  carrierAccountNumber: Schema.String,
-                }),
-              ),
-              shippingInformation: Schema.optional(
-                Schema.Struct({
-                  recipientName: Schema.optional(Schema.String),
-                  streetAddress1: Schema.optional(Schema.String),
-                  streetAddress2: Schema.optional(Schema.String),
-                  city: Schema.optional(Schema.String),
-                  stateOrProvince: Schema.optional(Schema.String),
-                  postalCode: Schema.optional(Schema.String),
-                  countryOrRegion: Schema.optional(Schema.String),
-                  phone: Schema.optional(Schema.String),
-                  additionalInformation: Schema.optional(Schema.String),
-                }),
-              ),
-              deliveryPackage: Schema.optional(
-                Schema.Struct({
-                  carrierName: Schema.String,
-                  trackingNumber: Schema.String,
-                  driveCount: Schema.optional(Schema.Number),
-                  shipDate: Schema.optional(Schema.String),
-                }),
-              ),
-              returnPackage: Schema.optional(
-                Schema.Struct({
-                  carrierName: Schema.String,
-                  trackingNumber: Schema.String,
-                  driveCount: Schema.Number,
-                  shipDate: Schema.String,
-                }),
-              ),
-              diagnosticsPath: Schema.optional(Schema.String),
-              logLevel: Schema.optional(Schema.String),
-              backupDriveManifest: Schema.optional(Schema.Boolean),
-              state: Schema.optional(Schema.String),
-              cancelRequested: Schema.optional(Schema.Boolean),
-              percentComplete: Schema.optional(Schema.Number),
-              incompleteBlobListUri: Schema.optional(Schema.String),
-              driveList: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    driveId: Schema.optional(Schema.String),
-                    bitLockerKey: Schema.optional(Schema.String),
-                    manifestFile: Schema.optional(Schema.String),
-                    manifestHash: Schema.optional(Schema.String),
-                    driveHeaderHash: Schema.optional(Schema.String),
-                    state: Schema.optional(
-                      Schema.Literals([
-                        "Specified",
-                        "Received",
-                        "NeverReceived",
-                        "Transferring",
-                        "Completed",
-                        "CompletedMoreInfo",
-                        "ShippedBack",
-                      ]),
-                    ),
-                    copyStatus: Schema.optional(Schema.String),
-                    percentComplete: Schema.optional(Schema.Number),
-                    verboseLogUri: Schema.optional(Schema.String),
-                    errorLogUri: Schema.optional(Schema.String),
-                    manifestUri: Schema.optional(Schema.String),
-                    bytesSucceeded: Schema.optional(Schema.Number),
-                  }),
-                ),
-              ),
-              export: Schema.optional(
-                Schema.Struct({
-                  blobList: Schema.optional(
-                    Schema.Struct({
-                      blobPath: Schema.optional(Schema.Array(Schema.String)),
-                      blobPathPrefix: Schema.optional(
-                        Schema.Array(Schema.String),
-                      ),
-                    }),
-                  ),
-                  blobListBlobPath: Schema.optional(Schema.String),
-                }),
-              ),
-              provisioningState: Schema.optional(Schema.String),
-              encryptionKey: Schema.optional(
-                Schema.Struct({
-                  kekType: Schema.optional(
-                    Schema.Literals(["MicrosoftManaged", "CustomerManaged"]),
-                  ),
-                  kekUrl: Schema.optional(Schema.String),
-                  kekVaultResourceID: Schema.optional(Schema.String),
-                }),
-              ),
-            }),
-          ),
-          identity: Schema.optional(
-            Schema.Struct({
-              type: Schema.optional(
-                Schema.Literals(["None", "SystemAssigned", "UserAssigned"]),
-              ),
-              principalId: Schema.optional(Schema.String),
-              tenantId: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => JobResponseSchema)),
     ),
   });
 export type JobsListBySubscriptionOutput =
@@ -906,62 +426,17 @@ export const JobsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     Schema.Struct({
       cancelRequested: Schema.optional(Schema.Boolean),
       state: Schema.optional(Schema.String),
-      returnAddress: Schema.optional(
-        Schema.Struct({
-          recipientName: Schema.String,
-          streetAddress1: Schema.String,
-          streetAddress2: Schema.optional(Schema.String),
-          city: Schema.String,
-          stateOrProvince: Schema.optional(Schema.String),
-          postalCode: Schema.String,
-          countryOrRegion: Schema.String,
-          phone: Schema.String,
-          email: Schema.String,
-        }),
-      ),
+      returnAddress: Schema.optional(Schema.suspend(() => ReturnAddressSchema)),
       returnShipping: Schema.optional(
-        Schema.Struct({
-          carrierName: Schema.String,
-          carrierAccountNumber: Schema.String,
-        }),
+        Schema.suspend(() => ReturnShippingSchema),
       ),
       deliveryPackage: Schema.optional(
-        Schema.Struct({
-          carrierName: Schema.String,
-          trackingNumber: Schema.String,
-          driveCount: Schema.optional(Schema.Number),
-          shipDate: Schema.optional(Schema.String),
-        }),
+        Schema.suspend(() => DeliveryPackageInformationSchema),
       ),
       logLevel: Schema.optional(Schema.String),
       backupDriveManifest: Schema.optional(Schema.Boolean),
       driveList: Schema.optional(
-        Schema.Array(
-          Schema.Struct({
-            driveId: Schema.optional(Schema.String),
-            bitLockerKey: Schema.optional(Schema.String),
-            manifestFile: Schema.optional(Schema.String),
-            manifestHash: Schema.optional(Schema.String),
-            driveHeaderHash: Schema.optional(Schema.String),
-            state: Schema.optional(
-              Schema.Literals([
-                "Specified",
-                "Received",
-                "NeverReceived",
-                "Transferring",
-                "Completed",
-                "CompletedMoreInfo",
-                "ShippedBack",
-              ]),
-            ),
-            copyStatus: Schema.optional(Schema.String),
-            percentComplete: Schema.optional(Schema.Number),
-            verboseLogUri: Schema.optional(Schema.String),
-            errorLogUri: Schema.optional(Schema.String),
-            manifestUri: Schema.optional(Schema.String),
-            bytesSucceeded: Schema.optional(Schema.Number),
-          }),
-        ),
+        Schema.Array(Schema.suspend(() => DriveStatusSchema)),
       ),
     }),
   ),
@@ -995,125 +470,8 @@ export const JobsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   type: Schema.optional(Schema.String),
   location: Schema.optional(Schema.String),
   tags: Schema.optional(Schema.Unknown),
-  properties: Schema.optional(
-    Schema.Struct({
-      storageAccountId: Schema.optional(Schema.String),
-      jobType: Schema.optional(Schema.String),
-      returnAddress: Schema.optional(
-        Schema.Struct({
-          recipientName: Schema.String,
-          streetAddress1: Schema.String,
-          streetAddress2: Schema.optional(Schema.String),
-          city: Schema.String,
-          stateOrProvince: Schema.optional(Schema.String),
-          postalCode: Schema.String,
-          countryOrRegion: Schema.String,
-          phone: Schema.String,
-          email: Schema.String,
-        }),
-      ),
-      returnShipping: Schema.optional(
-        Schema.Struct({
-          carrierName: Schema.String,
-          carrierAccountNumber: Schema.String,
-        }),
-      ),
-      shippingInformation: Schema.optional(
-        Schema.Struct({
-          recipientName: Schema.optional(Schema.String),
-          streetAddress1: Schema.optional(Schema.String),
-          streetAddress2: Schema.optional(Schema.String),
-          city: Schema.optional(Schema.String),
-          stateOrProvince: Schema.optional(Schema.String),
-          postalCode: Schema.optional(Schema.String),
-          countryOrRegion: Schema.optional(Schema.String),
-          phone: Schema.optional(Schema.String),
-          additionalInformation: Schema.optional(Schema.String),
-        }),
-      ),
-      deliveryPackage: Schema.optional(
-        Schema.Struct({
-          carrierName: Schema.String,
-          trackingNumber: Schema.String,
-          driveCount: Schema.optional(Schema.Number),
-          shipDate: Schema.optional(Schema.String),
-        }),
-      ),
-      returnPackage: Schema.optional(
-        Schema.Struct({
-          carrierName: Schema.String,
-          trackingNumber: Schema.String,
-          driveCount: Schema.Number,
-          shipDate: Schema.String,
-        }),
-      ),
-      diagnosticsPath: Schema.optional(Schema.String),
-      logLevel: Schema.optional(Schema.String),
-      backupDriveManifest: Schema.optional(Schema.Boolean),
-      state: Schema.optional(Schema.String),
-      cancelRequested: Schema.optional(Schema.Boolean),
-      percentComplete: Schema.optional(Schema.Number),
-      incompleteBlobListUri: Schema.optional(Schema.String),
-      driveList: Schema.optional(
-        Schema.Array(
-          Schema.Struct({
-            driveId: Schema.optional(Schema.String),
-            bitLockerKey: Schema.optional(Schema.String),
-            manifestFile: Schema.optional(Schema.String),
-            manifestHash: Schema.optional(Schema.String),
-            driveHeaderHash: Schema.optional(Schema.String),
-            state: Schema.optional(
-              Schema.Literals([
-                "Specified",
-                "Received",
-                "NeverReceived",
-                "Transferring",
-                "Completed",
-                "CompletedMoreInfo",
-                "ShippedBack",
-              ]),
-            ),
-            copyStatus: Schema.optional(Schema.String),
-            percentComplete: Schema.optional(Schema.Number),
-            verboseLogUri: Schema.optional(Schema.String),
-            errorLogUri: Schema.optional(Schema.String),
-            manifestUri: Schema.optional(Schema.String),
-            bytesSucceeded: Schema.optional(Schema.Number),
-          }),
-        ),
-      ),
-      export: Schema.optional(
-        Schema.Struct({
-          blobList: Schema.optional(
-            Schema.Struct({
-              blobPath: Schema.optional(Schema.Array(Schema.String)),
-              blobPathPrefix: Schema.optional(Schema.Array(Schema.String)),
-            }),
-          ),
-          blobListBlobPath: Schema.optional(Schema.String),
-        }),
-      ),
-      provisioningState: Schema.optional(Schema.String),
-      encryptionKey: Schema.optional(
-        Schema.Struct({
-          kekType: Schema.optional(
-            Schema.Literals(["MicrosoftManaged", "CustomerManaged"]),
-          ),
-          kekUrl: Schema.optional(Schema.String),
-          kekVaultResourceID: Schema.optional(Schema.String),
-        }),
-      ),
-    }),
-  ),
-  identity: Schema.optional(
-    Schema.Struct({
-      type: Schema.optional(
-        Schema.Literals(["None", "SystemAssigned", "UserAssigned"]),
-      ),
-      principalId: Schema.optional(Schema.String),
-      tenantId: Schema.optional(Schema.String),
-    }),
-  ),
+  properties: Schema.optional(Schema.suspend(() => JobDetailsSchema)),
+  identity: Schema.optional(Schema.suspend(() => IdentityDetailsSchema)),
 });
 export type JobsUpdateOutput = typeof JobsUpdateOutput.Type;
 
@@ -1186,30 +544,7 @@ export type LocationsListInput = typeof LocationsListInput.Type;
 
 // Output Schema
 export const LocationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  value: Schema.optional(
-    Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        properties: Schema.optional(
-          Schema.Struct({
-            recipientName: Schema.optional(Schema.String),
-            streetAddress1: Schema.optional(Schema.String),
-            streetAddress2: Schema.optional(Schema.String),
-            city: Schema.optional(Schema.String),
-            stateOrProvince: Schema.optional(Schema.String),
-            postalCode: Schema.optional(Schema.String),
-            countryOrRegion: Schema.optional(Schema.String),
-            phone: Schema.optional(Schema.String),
-            additionalShippingInformation: Schema.optional(Schema.String),
-            supportedCarriers: Schema.optional(Schema.Array(Schema.String)),
-            alternateLocations: Schema.optional(Schema.Array(Schema.String)),
-          }),
-        ),
-      }),
-    ),
-  ),
+  value: Schema.optional(Schema.Array(Schema.suspend(() => LocationSchema))),
 });
 export type LocationsListOutput = typeof LocationsListOutput.Type;
 
@@ -1235,19 +570,7 @@ export type OperationsListInput = typeof OperationsListInput.Type;
 
 // Output Schema
 export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  value: Schema.optional(
-    Schema.Array(
-      Schema.Struct({
-        name: Schema.String,
-        display: Schema.Struct({
-          provider: Schema.optional(Schema.String),
-          resource: Schema.optional(Schema.String),
-          operation: Schema.optional(Schema.String),
-          description: Schema.optional(Schema.String),
-        }),
-      }),
-    ),
-  ),
+  value: Schema.optional(Schema.Array(Schema.suspend(() => OperationSchema))),
 });
 export type OperationsListOutput = typeof OperationsListOutput.Type;
 

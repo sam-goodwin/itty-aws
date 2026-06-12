@@ -1,4 +1,9 @@
 import * as Schema from "effect/Schema";
+import {
+  NeonAuthProviderProjectOwnedBySchema,
+  NeonAuthProviderProjectTransferStatusSchema,
+  NeonAuthSupportedAuthProviderSchema,
+} from "./_schemas.ts";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
@@ -16,16 +21,17 @@ export type GetNeonAuthInput = typeof GetNeonAuthInput.Type;
 
 // Output Schema
 export const GetNeonAuthOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  auth_provider: Schema.Literals(["mock", "stack", "stack_v2", "better_auth"]),
+  auth_provider: Schema.suspend(() => NeonAuthSupportedAuthProviderSchema),
   auth_provider_project_id: Schema.String,
   branch_id: Schema.String,
   db_name: Schema.String,
   created_at: Schema.String,
-  owned_by: Schema.Literals(["user", "neon"]),
-  transfer_status: Schema.optional(Schema.Literals(["initiated", "finished"])),
+  owned_by: Schema.suspend(() => NeonAuthProviderProjectOwnedBySchema),
+  transfer_status: Schema.optional(
+    Schema.suspend(() => NeonAuthProviderProjectTransferStatusSchema),
+  ),
   jwks_url: Schema.String,
   base_url: Schema.optional(Schema.String),
-  name: Schema.optional(Schema.String),
 });
 export type GetNeonAuthOutput = typeof GetNeonAuthOutput.Type;
 

@@ -8,6 +8,78 @@ import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
+// Shared schemas
+const WorkbookSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+});
+const systemDataSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  createdBy: Schema.optional(Schema.String),
+  createdByType: Schema.optional(
+    Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+  ),
+  createdAt: Schema.optional(Schema.String),
+  lastModifiedBy: Schema.optional(Schema.String),
+  lastModifiedByType: Schema.optional(
+    Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+  ),
+  lastModifiedAt: Schema.optional(Schema.String),
+});
+const WorkbookPropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  displayName: Schema.String,
+  serializedData: Schema.NullOr(Schema.String),
+  version: Schema.optional(Schema.String),
+  timeModified: Schema.optional(Schema.String),
+  category: Schema.String,
+  tags: Schema.optional(Schema.Array(Schema.String)),
+  userId: Schema.optional(Schema.String),
+  sourceId: Schema.optional(Schema.String),
+  storageUri: Schema.optional(Schema.NullOr(Schema.String)),
+  description: Schema.optional(Schema.NullOr(Schema.String)),
+  revision: Schema.optional(Schema.NullOr(Schema.String)),
+});
+const WorkbookResourceIdentitySchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    principalId: Schema.optional(Schema.String),
+    tenantId: Schema.optional(Schema.String),
+    type: Schema.suspend(() => ManagedServiceIdentityTypeSchema),
+    userAssignedIdentities: Schema.optional(
+      Schema.suspend(() => UserAssignedIdentitiesSchema),
+    ),
+  });
+const ManagedServiceIdentityTypeSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+    "None",
+    "SystemAssigned",
+    "UserAssigned",
+    "SystemAssigned,UserAssigned",
+  ]);
+const UserAssignedIdentitiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.NullOr(
+  Schema.Record(
+    Schema.String,
+    Schema.suspend(() => UserAssignedIdentitySchema),
+  ),
+);
+const UserAssignedIdentitySchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  principalId: Schema.optional(Schema.String),
+  clientId: Schema.optional(Schema.String),
+});
+const ApplicationInsightsCommonTypes_WorkbookSharedTypeKindSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Literals(["shared"]);
+const WorkbookUpdateSharedTypeKindSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Literals(["shared"]);
+const WorkbookPropertiesUpdateParametersSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    displayName: Schema.optional(Schema.String),
+    serializedData: Schema.optional(Schema.String),
+    category: Schema.optional(Schema.String),
+    tags: Schema.optional(Schema.Array(Schema.String)),
+    description: Schema.optional(Schema.NullOr(Schema.String)),
+    revision: Schema.optional(Schema.NullOr(Schema.String)),
+  });
+
 // Input Schema
 export const WorkbooksCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -15,45 +87,15 @@ export const WorkbooksCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
     sourceId: Schema.optional(Schema.String),
-    properties: Schema.optional(
-      Schema.Struct({
-        displayName: Schema.String,
-        serializedData: Schema.NullOr(Schema.String),
-        version: Schema.optional(Schema.String),
-        timeModified: Schema.optional(Schema.String),
-        category: Schema.String,
-        tags: Schema.optional(Schema.Array(Schema.String)),
-        userId: Schema.optional(Schema.String),
-        sourceId: Schema.optional(Schema.String),
-        storageUri: Schema.optional(Schema.NullOr(Schema.String)),
-        description: Schema.optional(Schema.NullOr(Schema.String)),
-        revision: Schema.optional(Schema.NullOr(Schema.String)),
-      }),
-    ),
+    properties: Schema.optional(Schema.suspend(() => WorkbookPropertiesSchema)),
     identity: Schema.optional(
-      Schema.Struct({
-        principalId: Schema.optional(Schema.String),
-        tenantId: Schema.optional(Schema.String),
-        type: Schema.Literals([
-          "None",
-          "SystemAssigned",
-          "UserAssigned",
-          "SystemAssigned,UserAssigned",
-        ]),
-        userAssignedIdentities: Schema.optional(
-          Schema.NullOr(
-            Schema.Record(
-              Schema.String,
-              Schema.Struct({
-                principalId: Schema.optional(Schema.String),
-                clientId: Schema.optional(Schema.String),
-              }),
-            ),
-          ),
-        ),
-      }),
+      Schema.suspend(() => WorkbookResourceIdentitySchema),
     ),
-    kind: Schema.optional(Schema.Literals(["shared"])),
+    kind: Schema.optional(
+      Schema.suspend(
+        () => ApplicationInsightsCommonTypes_WorkbookSharedTypeKindSchema,
+      ),
+    ),
     etag: Schema.optional(Schema.String),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     location: Schema.String,
@@ -70,23 +112,22 @@ export type WorkbooksCreateOrUpdateInput =
 // Output Schema
 export const WorkbooksCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(Schema.suspend(() => WorkbookPropertiesSchema)),
+    identity: Schema.optional(
+      Schema.suspend(() => WorkbookResourceIdentitySchema),
+    ),
+    kind: Schema.optional(
+      Schema.suspend(
+        () => ApplicationInsightsCommonTypes_WorkbookSharedTypeKindSchema,
+      ),
+    ),
+    etag: Schema.optional(Schema.String),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type WorkbooksCreateOrUpdateOutput =
   typeof WorkbooksCreateOrUpdateOutput.Type;
@@ -155,23 +196,22 @@ export type WorkbooksGetInput = typeof WorkbooksGetInput.Type;
 
 // Output Schema
 export const WorkbooksGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.optional(Schema.suspend(() => WorkbookPropertiesSchema)),
+  identity: Schema.optional(
+    Schema.suspend(() => WorkbookResourceIdentitySchema),
+  ),
+  kind: Schema.optional(
+    Schema.suspend(
+      () => ApplicationInsightsCommonTypes_WorkbookSharedTypeKindSchema,
+    ),
+  ),
+  etag: Schema.optional(Schema.String),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  location: Schema.String,
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
-  systemData: Schema.optional(
-    Schema.Struct({
-      createdBy: Schema.optional(Schema.String),
-      createdByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      createdAt: Schema.optional(Schema.String),
-      lastModifiedBy: Schema.optional(Schema.String),
-      lastModifiedByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      lastModifiedAt: Schema.optional(Schema.String),
-    }),
-  ),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
 });
 export type WorkbooksGetOutput = typeof WorkbooksGetOutput.Type;
 
@@ -211,39 +251,7 @@ export type WorkbooksListByResourceGroupInput =
 // Output Schema
 export const WorkbooksListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.String),
-              createdByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              createdAt: Schema.optional(Schema.String),
-              lastModifiedBy: Schema.optional(Schema.String),
-              lastModifiedByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              lastModifiedAt: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
-    ),
+    value: Schema.optional(Schema.Array(Schema.suspend(() => WorkbookSchema))),
     nextLink: Schema.optional(Schema.String),
   });
 export type WorkbooksListByResourceGroupOutput =
@@ -286,39 +294,7 @@ export type WorkbooksListBySubscriptionInput =
 // Output Schema
 export const WorkbooksListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.String),
-              createdByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              createdAt: Schema.optional(Schema.String),
-              lastModifiedBy: Schema.optional(Schema.String),
-              lastModifiedByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              lastModifiedAt: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
-    ),
+    value: Schema.optional(Schema.Array(Schema.suspend(() => WorkbookSchema))),
     nextLink: Schema.optional(Schema.String),
   });
 export type WorkbooksListBySubscriptionOutput =
@@ -359,23 +335,22 @@ export type WorkbooksRevisionGetInput = typeof WorkbooksRevisionGetInput.Type;
 // Output Schema
 export const WorkbooksRevisionGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(Schema.suspend(() => WorkbookPropertiesSchema)),
+    identity: Schema.optional(
+      Schema.suspend(() => WorkbookResourceIdentitySchema),
+    ),
+    kind: Schema.optional(
+      Schema.suspend(
+        () => ApplicationInsightsCommonTypes_WorkbookSharedTypeKindSchema,
+      ),
+    ),
+    etag: Schema.optional(Schema.String),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type WorkbooksRevisionGetOutput = typeof WorkbooksRevisionGetOutput.Type;
 
@@ -414,39 +389,7 @@ export type WorkbooksRevisionsListInput =
 // Output Schema
 export const WorkbooksRevisionsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.String),
-              createdByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              createdAt: Schema.optional(Schema.String),
-              lastModifiedBy: Schema.optional(Schema.String),
-              lastModifiedByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              lastModifiedAt: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
-    ),
+    value: Schema.optional(Schema.Array(Schema.suspend(() => WorkbookSchema))),
     nextLink: Schema.optional(Schema.String),
   });
 export type WorkbooksRevisionsListOutput =
@@ -473,17 +416,12 @@ export const WorkbooksUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   resourceName: Schema.String.pipe(T.PathParam()),
   sourceId: Schema.optional(Schema.String),
-  kind: Schema.optional(Schema.Literals(["shared"])),
+  kind: Schema.optional(
+    Schema.suspend(() => WorkbookUpdateSharedTypeKindSchema),
+  ),
   tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   properties: Schema.optional(
-    Schema.Struct({
-      displayName: Schema.optional(Schema.String),
-      serializedData: Schema.optional(Schema.String),
-      category: Schema.optional(Schema.String),
-      tags: Schema.optional(Schema.Array(Schema.String)),
-      description: Schema.optional(Schema.NullOr(Schema.String)),
-      revision: Schema.optional(Schema.NullOr(Schema.String)),
-    }),
+    Schema.suspend(() => WorkbookPropertiesUpdateParametersSchema),
   ),
 }).pipe(
   T.Http({
@@ -496,23 +434,22 @@ export type WorkbooksUpdateInput = typeof WorkbooksUpdateInput.Type;
 
 // Output Schema
 export const WorkbooksUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.optional(Schema.suspend(() => WorkbookPropertiesSchema)),
+  identity: Schema.optional(
+    Schema.suspend(() => WorkbookResourceIdentitySchema),
+  ),
+  kind: Schema.optional(
+    Schema.suspend(
+      () => ApplicationInsightsCommonTypes_WorkbookSharedTypeKindSchema,
+    ),
+  ),
+  etag: Schema.optional(Schema.String),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  location: Schema.String,
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
-  systemData: Schema.optional(
-    Schema.Struct({
-      createdBy: Schema.optional(Schema.String),
-      createdByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      createdAt: Schema.optional(Schema.String),
-      lastModifiedBy: Schema.optional(Schema.String),
-      lastModifiedByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      lastModifiedAt: Schema.optional(Schema.String),
-    }),
-  ),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
 });
 export type WorkbooksUpdateOutput = typeof WorkbooksUpdateOutput.Type;
 

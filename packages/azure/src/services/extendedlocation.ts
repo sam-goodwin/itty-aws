@@ -8,33 +8,63 @@ import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
+// Shared schemas
+const customLocationOperationSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    display: Schema.optional(
+      Schema.suspend(() => customLocationOperationValueDisplaySchema),
+    ),
+    isDataAction: Schema.optional(Schema.Boolean),
+    name: Schema.optional(Schema.String),
+    origin: Schema.optional(Schema.String),
+  },
+);
+const customLocationOperationValueDisplaySchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    description: Schema.optional(Schema.String),
+    operation: Schema.optional(Schema.String),
+    provider: Schema.optional(Schema.String),
+    resource: Schema.optional(Schema.String),
+  });
+const customLocationSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
+const IdentitySchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  principalId: Schema.optional(Schema.String),
+  tenantId: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.Literals(["SystemAssigned", "None"])),
+});
+const customLocationPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    authentication: Schema.optional(
+      Schema.Struct({
+        type: Schema.optional(Schema.String),
+        value: Schema.optional(Schema.String),
+      }),
+    ),
+    clusterExtensionIds: Schema.optional(Schema.Array(Schema.String)),
+    displayName: Schema.optional(Schema.String),
+    hostResourceId: Schema.optional(Schema.String),
+    hostType: Schema.optional(Schema.Literals(["Kubernetes"])),
+    namespace: Schema.optional(Schema.String),
+    provisioningState: Schema.optional(Schema.String),
+  });
+const EnabledResourceTypeSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
+
 // Input Schema
 export const CustomLocationsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    identity: Schema.optional(
-      Schema.Struct({
-        principalId: Schema.optional(Schema.String),
-        tenantId: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.Literals(["SystemAssigned", "None"])),
-      }),
-    ),
+    identity: Schema.optional(Schema.suspend(() => IdentitySchema)),
     properties: Schema.optional(
-      Schema.Struct({
-        authentication: Schema.optional(
-          Schema.Struct({
-            type: Schema.optional(Schema.String),
-            value: Schema.optional(Schema.String),
-          }),
-        ),
-        clusterExtensionIds: Schema.optional(Schema.Array(Schema.String)),
-        displayName: Schema.optional(Schema.String),
-        hostResourceId: Schema.optional(Schema.String),
-        hostType: Schema.optional(Schema.Literals(["Kubernetes"])),
-        namespace: Schema.optional(Schema.String),
-        provisioningState: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(() => customLocationPropertiesSchema),
     ),
     systemData: Schema.optional(
       Schema.Struct({
@@ -66,6 +96,26 @@ export type CustomLocationsCreateOrUpdateInput =
 // Output Schema
 export const CustomLocationsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    identity: Schema.optional(Schema.suspend(() => IdentitySchema)),
+    properties: Schema.optional(
+      Schema.suspend(() => customLocationPropertiesSchema),
+    ),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -142,6 +192,26 @@ export type CustomLocationsGetInput = typeof CustomLocationsGetInput.Type;
 // Output Schema
 export const CustomLocationsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    identity: Schema.optional(Schema.suspend(() => IdentitySchema)),
+    properties: Schema.optional(
+      Schema.suspend(() => customLocationPropertiesSchema),
+    ),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -182,13 +252,7 @@ export const CustomLocationsListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => customLocationSchema)),
     ),
   });
 export type CustomLocationsListByResourceGroupOutput =
@@ -228,13 +292,7 @@ export const CustomLocationsListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => customLocationSchema)),
     ),
   });
 export type CustomLocationsListBySubscriptionOutput =
@@ -274,13 +332,7 @@ export const CustomLocationsListEnabledResourceTypesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => EnabledResourceTypeSchema)),
     ),
   });
 export type CustomLocationsListEnabledResourceTypesOutput =
@@ -317,21 +369,7 @@ export type CustomLocationsListOperationsInput =
 export const CustomLocationsListOperationsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
-    value: Schema.Array(
-      Schema.Struct({
-        display: Schema.optional(
-          Schema.Struct({
-            description: Schema.optional(Schema.String),
-            operation: Schema.optional(Schema.String),
-            provider: Schema.optional(Schema.String),
-            resource: Schema.optional(Schema.String),
-          }),
-        ),
-        isDataAction: Schema.optional(Schema.Boolean),
-        name: Schema.optional(Schema.String),
-        origin: Schema.optional(Schema.String),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => customLocationOperationSchema)),
   });
 export type CustomLocationsListOperationsOutput =
   typeof CustomLocationsListOperationsOutput.Type;
@@ -352,28 +390,9 @@ export const CustomLocationsUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    identity: Schema.optional(
-      Schema.Struct({
-        principalId: Schema.optional(Schema.String),
-        tenantId: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.Literals(["SystemAssigned", "None"])),
-      }),
-    ),
+    identity: Schema.optional(Schema.suspend(() => IdentitySchema)),
     properties: Schema.optional(
-      Schema.Struct({
-        authentication: Schema.optional(
-          Schema.Struct({
-            type: Schema.optional(Schema.String),
-            value: Schema.optional(Schema.String),
-          }),
-        ),
-        clusterExtensionIds: Schema.optional(Schema.Array(Schema.String)),
-        displayName: Schema.optional(Schema.String),
-        hostResourceId: Schema.optional(Schema.String),
-        hostType: Schema.optional(Schema.Literals(["Kubernetes"])),
-        namespace: Schema.optional(Schema.String),
-        provisioningState: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(() => customLocationPropertiesSchema),
     ),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
@@ -388,6 +407,26 @@ export type CustomLocationsUpdateInput = typeof CustomLocationsUpdateInput.Type;
 // Output Schema
 export const CustomLocationsUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    identity: Schema.optional(Schema.suspend(() => IdentitySchema)),
+    properties: Schema.optional(
+      Schema.suspend(() => customLocationPropertiesSchema),
+    ),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),

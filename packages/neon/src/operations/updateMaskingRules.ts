@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { MaskingRuleSchema } from "./_schemas.ts";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
@@ -7,16 +8,7 @@ export const UpdateMaskingRulesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
     branch_id: Schema.String.pipe(T.PathParam()),
-    masking_rules: Schema.Array(
-      Schema.Struct({
-        database_name: Schema.String,
-        schema_name: Schema.String,
-        table_name: Schema.String,
-        column_name: Schema.String,
-        masking_function: Schema.optional(Schema.String),
-        masking_value: Schema.optional(Schema.String),
-      }),
-    ),
+    masking_rules: Schema.Array(Schema.suspend(() => MaskingRuleSchema)),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -28,16 +20,7 @@ export type UpdateMaskingRulesInput = typeof UpdateMaskingRulesInput.Type;
 // Output Schema
 export const UpdateMaskingRulesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    masking_rules: Schema.Array(
-      Schema.Struct({
-        database_name: Schema.String,
-        schema_name: Schema.String,
-        table_name: Schema.String,
-        column_name: Schema.String,
-        masking_function: Schema.optional(Schema.String),
-        masking_value: Schema.optional(Schema.String),
-      }),
-    ),
+    masking_rules: Schema.Array(Schema.suspend(() => MaskingRuleSchema)),
   });
 export type UpdateMaskingRulesOutput = typeof UpdateMaskingRulesOutput.Type;
 

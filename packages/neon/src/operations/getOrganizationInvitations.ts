@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { InvitationSchema } from "./_schemas.ts";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
@@ -15,16 +16,7 @@ export type GetOrganizationInvitationsInput =
 // Output Schema
 export const GetOrganizationInvitationsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    invitations: Schema.Array(
-      Schema.Struct({
-        id: Schema.String,
-        email: Schema.String,
-        org_id: Schema.String,
-        invited_by: Schema.String,
-        invited_at: Schema.String,
-        role: Schema.Literals(["admin", "member"]),
-      }),
-    ),
+    invitations: Schema.Array(Schema.suspend(() => InvitationSchema)),
   });
 export type GetOrganizationInvitationsOutput =
   typeof GetOrganizationInvitationsOutput.Type;

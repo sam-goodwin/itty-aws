@@ -1,4 +1,8 @@
 import * as Schema from "effect/Schema";
+import {
+  InvitationSchema,
+  OrganizationInviteCreateRequestSchema,
+} from "./_schemas.ts";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
@@ -7,10 +11,7 @@ export const CreateOrganizationInvitationsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     org_id: Schema.String.pipe(T.PathParam()),
     invitations: Schema.Array(
-      Schema.Struct({
-        email: Schema.String,
-        role: Schema.Literals(["admin", "member"]),
-      }),
+      Schema.suspend(() => OrganizationInviteCreateRequestSchema),
     ),
   }).pipe(
     T.Http({ method: "POST", path: "/organizations/{org_id}/invitations" }),
@@ -21,16 +22,7 @@ export type CreateOrganizationInvitationsInput =
 // Output Schema
 export const CreateOrganizationInvitationsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    invitations: Schema.Array(
-      Schema.Struct({
-        id: Schema.String,
-        email: Schema.String,
-        org_id: Schema.String,
-        invited_by: Schema.String,
-        invited_at: Schema.String,
-        role: Schema.Literals(["admin", "member"]),
-      }),
-    ),
+    invitations: Schema.Array(Schema.suspend(() => InvitationSchema)),
   });
 export type CreateOrganizationInvitationsOutput =
   typeof CreateOrganizationInvitationsOutput.Type;

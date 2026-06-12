@@ -8,6 +8,229 @@ import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
+// Shared schemas
+const RegistrationDefinitionPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    description: Schema.optional(Schema.String),
+    authorizations: Schema.Array(Schema.suspend(() => AuthorizationSchema)),
+    eligibleAuthorizations: Schema.optional(
+      Schema.Array(Schema.suspend(() => EligibleAuthorizationSchema)),
+    ),
+    registrationDefinitionName: Schema.optional(Schema.String),
+    managedByTenantId: Schema.String,
+    provisioningState: Schema.optional(
+      Schema.Literals([
+        "NotSpecified",
+        "Accepted",
+        "Running",
+        "Ready",
+        "Creating",
+        "Created",
+        "Deleting",
+        "Deleted",
+        "Canceled",
+        "Failed",
+        "Succeeded",
+        "Updating",
+      ]),
+    ),
+    manageeTenantId: Schema.optional(Schema.String),
+    manageeTenantName: Schema.optional(Schema.String),
+    managedByTenantName: Schema.optional(Schema.String),
+  });
+const AuthorizationSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  principalId: Schema.String,
+  principalIdDisplayName: Schema.optional(Schema.String),
+  roleDefinitionId: Schema.String,
+  delegatedRoleDefinitionIds: Schema.optional(Schema.Array(Schema.String)),
+});
+const EligibleAuthorizationSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  principalId: Schema.String,
+  principalIdDisplayName: Schema.optional(Schema.String),
+  roleDefinitionId: Schema.String,
+  justInTimeAccessPolicy: Schema.optional(
+    Schema.suspend(() => JustInTimeAccessPolicySchema),
+  ),
+});
+const JustInTimeAccessPolicySchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  multiFactorAuthProvider: Schema.Literals(["Azure", "None"]),
+  maximumActivationDuration: Schema.optional(Schema.String),
+  managedByTenantApprovers: Schema.optional(
+    Schema.Array(Schema.suspend(() => EligibleApproverSchema)),
+  ),
+});
+const EligibleApproverSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  principalId: Schema.String,
+  principalIdDisplayName: Schema.optional(Schema.String),
+});
+const PlanSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.String,
+  publisher: Schema.String,
+  product: Schema.String,
+  version: Schema.String,
+});
+const RegistrationAssignmentPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    registrationDefinitionId: Schema.String,
+    provisioningState: Schema.optional(
+      Schema.Literals([
+        "NotSpecified",
+        "Accepted",
+        "Running",
+        "Ready",
+        "Creating",
+        "Created",
+        "Deleting",
+        "Deleted",
+        "Canceled",
+        "Failed",
+        "Succeeded",
+        "Updating",
+      ]),
+    ),
+    registrationDefinition: Schema.optional(
+      Schema.Struct({
+        properties: Schema.optional(
+          Schema.Struct({
+            description: Schema.optional(Schema.String),
+            authorizations: Schema.optional(
+              Schema.Array(Schema.suspend(() => AuthorizationSchema)),
+            ),
+            eligibleAuthorizations: Schema.optional(
+              Schema.Array(Schema.suspend(() => EligibleAuthorizationSchema)),
+            ),
+            registrationDefinitionName: Schema.optional(Schema.String),
+            provisioningState: Schema.optional(
+              Schema.Literals([
+                "NotSpecified",
+                "Accepted",
+                "Running",
+                "Ready",
+                "Creating",
+                "Created",
+                "Deleting",
+                "Deleted",
+                "Canceled",
+                "Failed",
+                "Succeeded",
+                "Updating",
+              ]),
+            ),
+            manageeTenantId: Schema.optional(Schema.String),
+            manageeTenantName: Schema.optional(Schema.String),
+            managedByTenantId: Schema.optional(Schema.String),
+            managedByTenantName: Schema.optional(Schema.String),
+          }),
+        ),
+        plan: Schema.optional(Schema.suspend(() => PlanSchema)),
+        id: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        systemData: Schema.optional(
+          Schema.Struct({
+            createdBy: Schema.optional(Schema.String),
+            createdByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            createdAt: Schema.optional(Schema.String),
+            lastModifiedBy: Schema.optional(Schema.String),
+            lastModifiedByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            lastModifiedAt: Schema.optional(Schema.String),
+          }),
+        ),
+      }),
+    ),
+  });
+const RegistrationDefinitionSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.optional(
+    Schema.suspend(() => RegistrationDefinitionPropertiesSchema),
+  ),
+  plan: Schema.optional(Schema.suspend(() => PlanSchema)),
+  id: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
+const RegistrationAssignmentSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.optional(
+    Schema.suspend(() => RegistrationAssignmentPropertiesSchema),
+  ),
+  id: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
+const MarketplaceRegistrationDefinitionSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => MarketplaceRegistrationDefinitionPropertiesSchema),
+    ),
+    plan: Schema.optional(Schema.suspend(() => PlanSchema)),
+    id: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+  });
+const MarketplaceRegistrationDefinitionPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    managedByTenantId: Schema.String,
+    authorizations: Schema.Array(Schema.suspend(() => AuthorizationSchema)),
+    eligibleAuthorizations: Schema.optional(
+      Schema.Array(Schema.suspend(() => EligibleAuthorizationSchema)),
+    ),
+    offerDisplayName: Schema.optional(Schema.String),
+    publisherDisplayName: Schema.optional(Schema.String),
+    planDisplayName: Schema.optional(Schema.String),
+  });
+const OperationSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  display: Schema.optional(
+    Schema.Struct({
+      provider: Schema.optional(Schema.String),
+      resource: Schema.optional(Schema.String),
+      operation: Schema.optional(Schema.String),
+      description: Schema.optional(Schema.String),
+    }),
+  ),
+});
+
 // Input Schema
 export const MarketplaceRegistrationDefinitionsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
@@ -24,54 +247,9 @@ export type MarketplaceRegistrationDefinitionsGetInput =
 export const MarketplaceRegistrationDefinitionsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     properties: Schema.optional(
-      Schema.Struct({
-        managedByTenantId: Schema.String,
-        authorizations: Schema.Array(
-          Schema.Struct({
-            principalId: Schema.String,
-            principalIdDisplayName: Schema.optional(Schema.String),
-            roleDefinitionId: Schema.String,
-            delegatedRoleDefinitionIds: Schema.optional(
-              Schema.Array(Schema.String),
-            ),
-          }),
-        ),
-        eligibleAuthorizations: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              principalId: Schema.String,
-              principalIdDisplayName: Schema.optional(Schema.String),
-              roleDefinitionId: Schema.String,
-              justInTimeAccessPolicy: Schema.optional(
-                Schema.Struct({
-                  multiFactorAuthProvider: Schema.Literals(["Azure", "None"]),
-                  maximumActivationDuration: Schema.optional(Schema.String),
-                  managedByTenantApprovers: Schema.optional(
-                    Schema.Array(
-                      Schema.Struct({
-                        principalId: Schema.String,
-                        principalIdDisplayName: Schema.optional(Schema.String),
-                      }),
-                    ),
-                  ),
-                }),
-              ),
-            }),
-          ),
-        ),
-        offerDisplayName: Schema.optional(Schema.String),
-        publisherDisplayName: Schema.optional(Schema.String),
-        planDisplayName: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(() => MarketplaceRegistrationDefinitionPropertiesSchema),
     ),
-    plan: Schema.optional(
-      Schema.Struct({
-        name: Schema.String,
-        publisher: Schema.String,
-        product: Schema.String,
-        version: Schema.String,
-      }),
-    ),
+    plan: Schema.optional(Schema.suspend(() => PlanSchema)),
     id: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -105,67 +283,7 @@ export const MarketplaceRegistrationDefinitionsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
-        Schema.Struct({
-          properties: Schema.optional(
-            Schema.Struct({
-              managedByTenantId: Schema.String,
-              authorizations: Schema.Array(
-                Schema.Struct({
-                  principalId: Schema.String,
-                  principalIdDisplayName: Schema.optional(Schema.String),
-                  roleDefinitionId: Schema.String,
-                  delegatedRoleDefinitionIds: Schema.optional(
-                    Schema.Array(Schema.String),
-                  ),
-                }),
-              ),
-              eligibleAuthorizations: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    principalId: Schema.String,
-                    principalIdDisplayName: Schema.optional(Schema.String),
-                    roleDefinitionId: Schema.String,
-                    justInTimeAccessPolicy: Schema.optional(
-                      Schema.Struct({
-                        multiFactorAuthProvider: Schema.Literals([
-                          "Azure",
-                          "None",
-                        ]),
-                        maximumActivationDuration: Schema.optional(
-                          Schema.String,
-                        ),
-                        managedByTenantApprovers: Schema.optional(
-                          Schema.Array(
-                            Schema.Struct({
-                              principalId: Schema.String,
-                              principalIdDisplayName: Schema.optional(
-                                Schema.String,
-                              ),
-                            }),
-                          ),
-                        ),
-                      }),
-                    ),
-                  }),
-                ),
-              ),
-              offerDisplayName: Schema.optional(Schema.String),
-              publisherDisplayName: Schema.optional(Schema.String),
-              planDisplayName: Schema.optional(Schema.String),
-            }),
-          ),
-          plan: Schema.optional(
-            Schema.Struct({
-              name: Schema.String,
-              publisher: Schema.String,
-              product: Schema.String,
-              version: Schema.String,
-            }),
-          ),
-          id: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-        }),
+        Schema.suspend(() => MarketplaceRegistrationDefinitionSchema),
       ),
     ),
     nextLink: Schema.optional(Schema.String),
@@ -198,54 +316,9 @@ export type MarketplaceRegistrationDefinitionsWithoutScopeGetInput =
 export const MarketplaceRegistrationDefinitionsWithoutScopeGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     properties: Schema.optional(
-      Schema.Struct({
-        managedByTenantId: Schema.String,
-        authorizations: Schema.Array(
-          Schema.Struct({
-            principalId: Schema.String,
-            principalIdDisplayName: Schema.optional(Schema.String),
-            roleDefinitionId: Schema.String,
-            delegatedRoleDefinitionIds: Schema.optional(
-              Schema.Array(Schema.String),
-            ),
-          }),
-        ),
-        eligibleAuthorizations: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              principalId: Schema.String,
-              principalIdDisplayName: Schema.optional(Schema.String),
-              roleDefinitionId: Schema.String,
-              justInTimeAccessPolicy: Schema.optional(
-                Schema.Struct({
-                  multiFactorAuthProvider: Schema.Literals(["Azure", "None"]),
-                  maximumActivationDuration: Schema.optional(Schema.String),
-                  managedByTenantApprovers: Schema.optional(
-                    Schema.Array(
-                      Schema.Struct({
-                        principalId: Schema.String,
-                        principalIdDisplayName: Schema.optional(Schema.String),
-                      }),
-                    ),
-                  ),
-                }),
-              ),
-            }),
-          ),
-        ),
-        offerDisplayName: Schema.optional(Schema.String),
-        publisherDisplayName: Schema.optional(Schema.String),
-        planDisplayName: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(() => MarketplaceRegistrationDefinitionPropertiesSchema),
     ),
-    plan: Schema.optional(
-      Schema.Struct({
-        name: Schema.String,
-        publisher: Schema.String,
-        product: Schema.String,
-        version: Schema.String,
-      }),
-    ),
+    plan: Schema.optional(Schema.suspend(() => PlanSchema)),
     id: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -279,67 +352,7 @@ export const MarketplaceRegistrationDefinitionsWithoutScopeListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
-        Schema.Struct({
-          properties: Schema.optional(
-            Schema.Struct({
-              managedByTenantId: Schema.String,
-              authorizations: Schema.Array(
-                Schema.Struct({
-                  principalId: Schema.String,
-                  principalIdDisplayName: Schema.optional(Schema.String),
-                  roleDefinitionId: Schema.String,
-                  delegatedRoleDefinitionIds: Schema.optional(
-                    Schema.Array(Schema.String),
-                  ),
-                }),
-              ),
-              eligibleAuthorizations: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    principalId: Schema.String,
-                    principalIdDisplayName: Schema.optional(Schema.String),
-                    roleDefinitionId: Schema.String,
-                    justInTimeAccessPolicy: Schema.optional(
-                      Schema.Struct({
-                        multiFactorAuthProvider: Schema.Literals([
-                          "Azure",
-                          "None",
-                        ]),
-                        maximumActivationDuration: Schema.optional(
-                          Schema.String,
-                        ),
-                        managedByTenantApprovers: Schema.optional(
-                          Schema.Array(
-                            Schema.Struct({
-                              principalId: Schema.String,
-                              principalIdDisplayName: Schema.optional(
-                                Schema.String,
-                              ),
-                            }),
-                          ),
-                        ),
-                      }),
-                    ),
-                  }),
-                ),
-              ),
-              offerDisplayName: Schema.optional(Schema.String),
-              publisherDisplayName: Schema.optional(Schema.String),
-              planDisplayName: Schema.optional(Schema.String),
-            }),
-          ),
-          plan: Schema.optional(
-            Schema.Struct({
-              name: Schema.String,
-              publisher: Schema.String,
-              product: Schema.String,
-              version: Schema.String,
-            }),
-          ),
-          id: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-        }),
+        Schema.suspend(() => MarketplaceRegistrationDefinitionSchema),
       ),
     ),
     nextLink: Schema.optional(Schema.String),
@@ -370,21 +383,7 @@ export type OperationsListInput = typeof OperationsListInput.Type;
 
 // Output Schema
 export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  value: Schema.optional(
-    Schema.Array(
-      Schema.Struct({
-        name: Schema.optional(Schema.String),
-        display: Schema.optional(
-          Schema.Struct({
-            provider: Schema.optional(Schema.String),
-            resource: Schema.optional(Schema.String),
-            operation: Schema.optional(Schema.String),
-            description: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
-  ),
+  value: Schema.optional(Schema.Array(Schema.suspend(() => OperationSchema))),
 });
 export type OperationsListOutput = typeof OperationsListOutput.Type;
 
@@ -411,21 +410,7 @@ export type OperationsWithScopeListInput =
 // Output Schema
 export const OperationsWithScopeListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          name: Schema.optional(Schema.String),
-          display: Schema.optional(
-            Schema.Struct({
-              provider: Schema.optional(Schema.String),
-              resource: Schema.optional(Schema.String),
-              operation: Schema.optional(Schema.String),
-              description: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
-    ),
+    value: Schema.optional(Schema.Array(Schema.suspend(() => OperationSchema))),
   });
 export type OperationsWithScopeListOutput =
   typeof OperationsWithScopeListOutput.Type;
@@ -444,132 +429,7 @@ export const OperationsWithScopeList = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const RegistrationAssignmentsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     properties: Schema.optional(
-      Schema.Struct({
-        registrationDefinitionId: Schema.String,
-        provisioningState: Schema.optional(
-          Schema.Literals([
-            "NotSpecified",
-            "Accepted",
-            "Running",
-            "Ready",
-            "Creating",
-            "Created",
-            "Deleting",
-            "Deleted",
-            "Canceled",
-            "Failed",
-            "Succeeded",
-            "Updating",
-          ]),
-        ),
-        registrationDefinition: Schema.optional(
-          Schema.Struct({
-            properties: Schema.optional(
-              Schema.Struct({
-                description: Schema.optional(Schema.String),
-                authorizations: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      principalId: Schema.String,
-                      principalIdDisplayName: Schema.optional(Schema.String),
-                      roleDefinitionId: Schema.String,
-                      delegatedRoleDefinitionIds: Schema.optional(
-                        Schema.Array(Schema.String),
-                      ),
-                    }),
-                  ),
-                ),
-                eligibleAuthorizations: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      principalId: Schema.String,
-                      principalIdDisplayName: Schema.optional(Schema.String),
-                      roleDefinitionId: Schema.String,
-                      justInTimeAccessPolicy: Schema.optional(
-                        Schema.Struct({
-                          multiFactorAuthProvider: Schema.Literals([
-                            "Azure",
-                            "None",
-                          ]),
-                          maximumActivationDuration: Schema.optional(
-                            Schema.String,
-                          ),
-                          managedByTenantApprovers: Schema.optional(
-                            Schema.Array(
-                              Schema.Struct({
-                                principalId: Schema.String,
-                                principalIdDisplayName: Schema.optional(
-                                  Schema.String,
-                                ),
-                              }),
-                            ),
-                          ),
-                        }),
-                      ),
-                    }),
-                  ),
-                ),
-                registrationDefinitionName: Schema.optional(Schema.String),
-                provisioningState: Schema.optional(
-                  Schema.Literals([
-                    "NotSpecified",
-                    "Accepted",
-                    "Running",
-                    "Ready",
-                    "Creating",
-                    "Created",
-                    "Deleting",
-                    "Deleted",
-                    "Canceled",
-                    "Failed",
-                    "Succeeded",
-                    "Updating",
-                  ]),
-                ),
-                manageeTenantId: Schema.optional(Schema.String),
-                manageeTenantName: Schema.optional(Schema.String),
-                managedByTenantId: Schema.optional(Schema.String),
-                managedByTenantName: Schema.optional(Schema.String),
-              }),
-            ),
-            plan: Schema.optional(
-              Schema.Struct({
-                name: Schema.String,
-                publisher: Schema.String,
-                product: Schema.String,
-                version: Schema.String,
-              }),
-            ),
-            id: Schema.optional(Schema.String),
-            type: Schema.optional(Schema.String),
-            name: Schema.optional(Schema.String),
-            systemData: Schema.optional(
-              Schema.Struct({
-                createdBy: Schema.optional(Schema.String),
-                createdByType: Schema.optional(
-                  Schema.Literals([
-                    "User",
-                    "Application",
-                    "ManagedIdentity",
-                    "Key",
-                  ]),
-                ),
-                createdAt: Schema.optional(Schema.String),
-                lastModifiedBy: Schema.optional(Schema.String),
-                lastModifiedByType: Schema.optional(
-                  Schema.Literals([
-                    "User",
-                    "Application",
-                    "ManagedIdentity",
-                    "Key",
-                  ]),
-                ),
-                lastModifiedAt: Schema.optional(Schema.String),
-              }),
-            ),
-          }),
-        ),
-      }),
+      Schema.suspend(() => RegistrationAssignmentPropertiesSchema),
     ),
     id: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -603,132 +463,7 @@ export type RegistrationAssignmentsCreateOrUpdateInput =
 export const RegistrationAssignmentsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     properties: Schema.optional(
-      Schema.Struct({
-        registrationDefinitionId: Schema.String,
-        provisioningState: Schema.optional(
-          Schema.Literals([
-            "NotSpecified",
-            "Accepted",
-            "Running",
-            "Ready",
-            "Creating",
-            "Created",
-            "Deleting",
-            "Deleted",
-            "Canceled",
-            "Failed",
-            "Succeeded",
-            "Updating",
-          ]),
-        ),
-        registrationDefinition: Schema.optional(
-          Schema.Struct({
-            properties: Schema.optional(
-              Schema.Struct({
-                description: Schema.optional(Schema.String),
-                authorizations: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      principalId: Schema.String,
-                      principalIdDisplayName: Schema.optional(Schema.String),
-                      roleDefinitionId: Schema.String,
-                      delegatedRoleDefinitionIds: Schema.optional(
-                        Schema.Array(Schema.String),
-                      ),
-                    }),
-                  ),
-                ),
-                eligibleAuthorizations: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      principalId: Schema.String,
-                      principalIdDisplayName: Schema.optional(Schema.String),
-                      roleDefinitionId: Schema.String,
-                      justInTimeAccessPolicy: Schema.optional(
-                        Schema.Struct({
-                          multiFactorAuthProvider: Schema.Literals([
-                            "Azure",
-                            "None",
-                          ]),
-                          maximumActivationDuration: Schema.optional(
-                            Schema.String,
-                          ),
-                          managedByTenantApprovers: Schema.optional(
-                            Schema.Array(
-                              Schema.Struct({
-                                principalId: Schema.String,
-                                principalIdDisplayName: Schema.optional(
-                                  Schema.String,
-                                ),
-                              }),
-                            ),
-                          ),
-                        }),
-                      ),
-                    }),
-                  ),
-                ),
-                registrationDefinitionName: Schema.optional(Schema.String),
-                provisioningState: Schema.optional(
-                  Schema.Literals([
-                    "NotSpecified",
-                    "Accepted",
-                    "Running",
-                    "Ready",
-                    "Creating",
-                    "Created",
-                    "Deleting",
-                    "Deleted",
-                    "Canceled",
-                    "Failed",
-                    "Succeeded",
-                    "Updating",
-                  ]),
-                ),
-                manageeTenantId: Schema.optional(Schema.String),
-                manageeTenantName: Schema.optional(Schema.String),
-                managedByTenantId: Schema.optional(Schema.String),
-                managedByTenantName: Schema.optional(Schema.String),
-              }),
-            ),
-            plan: Schema.optional(
-              Schema.Struct({
-                name: Schema.String,
-                publisher: Schema.String,
-                product: Schema.String,
-                version: Schema.String,
-              }),
-            ),
-            id: Schema.optional(Schema.String),
-            type: Schema.optional(Schema.String),
-            name: Schema.optional(Schema.String),
-            systemData: Schema.optional(
-              Schema.Struct({
-                createdBy: Schema.optional(Schema.String),
-                createdByType: Schema.optional(
-                  Schema.Literals([
-                    "User",
-                    "Application",
-                    "ManagedIdentity",
-                    "Key",
-                  ]),
-                ),
-                createdAt: Schema.optional(Schema.String),
-                lastModifiedBy: Schema.optional(Schema.String),
-                lastModifiedByType: Schema.optional(
-                  Schema.Literals([
-                    "User",
-                    "Application",
-                    "ManagedIdentity",
-                    "Key",
-                  ]),
-                ),
-                lastModifiedAt: Schema.optional(Schema.String),
-              }),
-            ),
-          }),
-        ),
-      }),
+      Schema.suspend(() => RegistrationAssignmentPropertiesSchema),
     ),
     id: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -804,132 +539,7 @@ export type RegistrationAssignmentsGetInput =
 export const RegistrationAssignmentsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     properties: Schema.optional(
-      Schema.Struct({
-        registrationDefinitionId: Schema.String,
-        provisioningState: Schema.optional(
-          Schema.Literals([
-            "NotSpecified",
-            "Accepted",
-            "Running",
-            "Ready",
-            "Creating",
-            "Created",
-            "Deleting",
-            "Deleted",
-            "Canceled",
-            "Failed",
-            "Succeeded",
-            "Updating",
-          ]),
-        ),
-        registrationDefinition: Schema.optional(
-          Schema.Struct({
-            properties: Schema.optional(
-              Schema.Struct({
-                description: Schema.optional(Schema.String),
-                authorizations: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      principalId: Schema.String,
-                      principalIdDisplayName: Schema.optional(Schema.String),
-                      roleDefinitionId: Schema.String,
-                      delegatedRoleDefinitionIds: Schema.optional(
-                        Schema.Array(Schema.String),
-                      ),
-                    }),
-                  ),
-                ),
-                eligibleAuthorizations: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      principalId: Schema.String,
-                      principalIdDisplayName: Schema.optional(Schema.String),
-                      roleDefinitionId: Schema.String,
-                      justInTimeAccessPolicy: Schema.optional(
-                        Schema.Struct({
-                          multiFactorAuthProvider: Schema.Literals([
-                            "Azure",
-                            "None",
-                          ]),
-                          maximumActivationDuration: Schema.optional(
-                            Schema.String,
-                          ),
-                          managedByTenantApprovers: Schema.optional(
-                            Schema.Array(
-                              Schema.Struct({
-                                principalId: Schema.String,
-                                principalIdDisplayName: Schema.optional(
-                                  Schema.String,
-                                ),
-                              }),
-                            ),
-                          ),
-                        }),
-                      ),
-                    }),
-                  ),
-                ),
-                registrationDefinitionName: Schema.optional(Schema.String),
-                provisioningState: Schema.optional(
-                  Schema.Literals([
-                    "NotSpecified",
-                    "Accepted",
-                    "Running",
-                    "Ready",
-                    "Creating",
-                    "Created",
-                    "Deleting",
-                    "Deleted",
-                    "Canceled",
-                    "Failed",
-                    "Succeeded",
-                    "Updating",
-                  ]),
-                ),
-                manageeTenantId: Schema.optional(Schema.String),
-                manageeTenantName: Schema.optional(Schema.String),
-                managedByTenantId: Schema.optional(Schema.String),
-                managedByTenantName: Schema.optional(Schema.String),
-              }),
-            ),
-            plan: Schema.optional(
-              Schema.Struct({
-                name: Schema.String,
-                publisher: Schema.String,
-                product: Schema.String,
-                version: Schema.String,
-              }),
-            ),
-            id: Schema.optional(Schema.String),
-            type: Schema.optional(Schema.String),
-            name: Schema.optional(Schema.String),
-            systemData: Schema.optional(
-              Schema.Struct({
-                createdBy: Schema.optional(Schema.String),
-                createdByType: Schema.optional(
-                  Schema.Literals([
-                    "User",
-                    "Application",
-                    "ManagedIdentity",
-                    "Key",
-                  ]),
-                ),
-                createdAt: Schema.optional(Schema.String),
-                lastModifiedBy: Schema.optional(Schema.String),
-                lastModifiedByType: Schema.optional(
-                  Schema.Literals([
-                    "User",
-                    "Application",
-                    "ManagedIdentity",
-                    "Key",
-                  ]),
-                ),
-                lastModifiedAt: Schema.optional(Schema.String),
-              }),
-            ),
-          }),
-        ),
-      }),
+      Schema.suspend(() => RegistrationAssignmentPropertiesSchema),
     ),
     id: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -978,171 +588,7 @@ export type RegistrationAssignmentsListInput =
 export const RegistrationAssignmentsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          properties: Schema.optional(
-            Schema.Struct({
-              registrationDefinitionId: Schema.String,
-              provisioningState: Schema.optional(
-                Schema.Literals([
-                  "NotSpecified",
-                  "Accepted",
-                  "Running",
-                  "Ready",
-                  "Creating",
-                  "Created",
-                  "Deleting",
-                  "Deleted",
-                  "Canceled",
-                  "Failed",
-                  "Succeeded",
-                  "Updating",
-                ]),
-              ),
-              registrationDefinition: Schema.optional(
-                Schema.Struct({
-                  properties: Schema.optional(
-                    Schema.Struct({
-                      description: Schema.optional(Schema.String),
-                      authorizations: Schema.optional(
-                        Schema.Array(
-                          Schema.Struct({
-                            principalId: Schema.String,
-                            principalIdDisplayName: Schema.optional(
-                              Schema.String,
-                            ),
-                            roleDefinitionId: Schema.String,
-                            delegatedRoleDefinitionIds: Schema.optional(
-                              Schema.Array(Schema.String),
-                            ),
-                          }),
-                        ),
-                      ),
-                      eligibleAuthorizations: Schema.optional(
-                        Schema.Array(
-                          Schema.Struct({
-                            principalId: Schema.String,
-                            principalIdDisplayName: Schema.optional(
-                              Schema.String,
-                            ),
-                            roleDefinitionId: Schema.String,
-                            justInTimeAccessPolicy: Schema.optional(
-                              Schema.Struct({
-                                multiFactorAuthProvider: Schema.Literals([
-                                  "Azure",
-                                  "None",
-                                ]),
-                                maximumActivationDuration: Schema.optional(
-                                  Schema.String,
-                                ),
-                                managedByTenantApprovers: Schema.optional(
-                                  Schema.Array(
-                                    Schema.Struct({
-                                      principalId: Schema.String,
-                                      principalIdDisplayName: Schema.optional(
-                                        Schema.String,
-                                      ),
-                                    }),
-                                  ),
-                                ),
-                              }),
-                            ),
-                          }),
-                        ),
-                      ),
-                      registrationDefinitionName: Schema.optional(
-                        Schema.String,
-                      ),
-                      provisioningState: Schema.optional(
-                        Schema.Literals([
-                          "NotSpecified",
-                          "Accepted",
-                          "Running",
-                          "Ready",
-                          "Creating",
-                          "Created",
-                          "Deleting",
-                          "Deleted",
-                          "Canceled",
-                          "Failed",
-                          "Succeeded",
-                          "Updating",
-                        ]),
-                      ),
-                      manageeTenantId: Schema.optional(Schema.String),
-                      manageeTenantName: Schema.optional(Schema.String),
-                      managedByTenantId: Schema.optional(Schema.String),
-                      managedByTenantName: Schema.optional(Schema.String),
-                    }),
-                  ),
-                  plan: Schema.optional(
-                    Schema.Struct({
-                      name: Schema.String,
-                      publisher: Schema.String,
-                      product: Schema.String,
-                      version: Schema.String,
-                    }),
-                  ),
-                  id: Schema.optional(Schema.String),
-                  type: Schema.optional(Schema.String),
-                  name: Schema.optional(Schema.String),
-                  systemData: Schema.optional(
-                    Schema.Struct({
-                      createdBy: Schema.optional(Schema.String),
-                      createdByType: Schema.optional(
-                        Schema.Literals([
-                          "User",
-                          "Application",
-                          "ManagedIdentity",
-                          "Key",
-                        ]),
-                      ),
-                      createdAt: Schema.optional(Schema.String),
-                      lastModifiedBy: Schema.optional(Schema.String),
-                      lastModifiedByType: Schema.optional(
-                        Schema.Literals([
-                          "User",
-                          "Application",
-                          "ManagedIdentity",
-                          "Key",
-                        ]),
-                      ),
-                      lastModifiedAt: Schema.optional(Schema.String),
-                    }),
-                  ),
-                }),
-              ),
-            }),
-          ),
-          id: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.String),
-              createdByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              createdAt: Schema.optional(Schema.String),
-              lastModifiedBy: Schema.optional(Schema.String),
-              lastModifiedByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              lastModifiedAt: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => RegistrationAssignmentSchema)),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -1163,72 +609,9 @@ export const RegistrationAssignmentsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const RegistrationDefinitionsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     properties: Schema.optional(
-      Schema.Struct({
-        description: Schema.optional(Schema.String),
-        authorizations: Schema.Array(
-          Schema.Struct({
-            principalId: Schema.String,
-            principalIdDisplayName: Schema.optional(Schema.String),
-            roleDefinitionId: Schema.String,
-            delegatedRoleDefinitionIds: Schema.optional(
-              Schema.Array(Schema.String),
-            ),
-          }),
-        ),
-        eligibleAuthorizations: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              principalId: Schema.String,
-              principalIdDisplayName: Schema.optional(Schema.String),
-              roleDefinitionId: Schema.String,
-              justInTimeAccessPolicy: Schema.optional(
-                Schema.Struct({
-                  multiFactorAuthProvider: Schema.Literals(["Azure", "None"]),
-                  maximumActivationDuration: Schema.optional(Schema.String),
-                  managedByTenantApprovers: Schema.optional(
-                    Schema.Array(
-                      Schema.Struct({
-                        principalId: Schema.String,
-                        principalIdDisplayName: Schema.optional(Schema.String),
-                      }),
-                    ),
-                  ),
-                }),
-              ),
-            }),
-          ),
-        ),
-        registrationDefinitionName: Schema.optional(Schema.String),
-        managedByTenantId: Schema.String,
-        provisioningState: Schema.optional(
-          Schema.Literals([
-            "NotSpecified",
-            "Accepted",
-            "Running",
-            "Ready",
-            "Creating",
-            "Created",
-            "Deleting",
-            "Deleted",
-            "Canceled",
-            "Failed",
-            "Succeeded",
-            "Updating",
-          ]),
-        ),
-        manageeTenantId: Schema.optional(Schema.String),
-        manageeTenantName: Schema.optional(Schema.String),
-        managedByTenantName: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(() => RegistrationDefinitionPropertiesSchema),
     ),
-    plan: Schema.optional(
-      Schema.Struct({
-        name: Schema.String,
-        publisher: Schema.String,
-        product: Schema.String,
-        version: Schema.String,
-      }),
-    ),
+    plan: Schema.optional(Schema.suspend(() => PlanSchema)),
     id: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -1261,72 +644,9 @@ export type RegistrationDefinitionsCreateOrUpdateInput =
 export const RegistrationDefinitionsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     properties: Schema.optional(
-      Schema.Struct({
-        description: Schema.optional(Schema.String),
-        authorizations: Schema.Array(
-          Schema.Struct({
-            principalId: Schema.String,
-            principalIdDisplayName: Schema.optional(Schema.String),
-            roleDefinitionId: Schema.String,
-            delegatedRoleDefinitionIds: Schema.optional(
-              Schema.Array(Schema.String),
-            ),
-          }),
-        ),
-        eligibleAuthorizations: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              principalId: Schema.String,
-              principalIdDisplayName: Schema.optional(Schema.String),
-              roleDefinitionId: Schema.String,
-              justInTimeAccessPolicy: Schema.optional(
-                Schema.Struct({
-                  multiFactorAuthProvider: Schema.Literals(["Azure", "None"]),
-                  maximumActivationDuration: Schema.optional(Schema.String),
-                  managedByTenantApprovers: Schema.optional(
-                    Schema.Array(
-                      Schema.Struct({
-                        principalId: Schema.String,
-                        principalIdDisplayName: Schema.optional(Schema.String),
-                      }),
-                    ),
-                  ),
-                }),
-              ),
-            }),
-          ),
-        ),
-        registrationDefinitionName: Schema.optional(Schema.String),
-        managedByTenantId: Schema.String,
-        provisioningState: Schema.optional(
-          Schema.Literals([
-            "NotSpecified",
-            "Accepted",
-            "Running",
-            "Ready",
-            "Creating",
-            "Created",
-            "Deleting",
-            "Deleted",
-            "Canceled",
-            "Failed",
-            "Succeeded",
-            "Updating",
-          ]),
-        ),
-        manageeTenantId: Schema.optional(Schema.String),
-        manageeTenantName: Schema.optional(Schema.String),
-        managedByTenantName: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(() => RegistrationDefinitionPropertiesSchema),
     ),
-    plan: Schema.optional(
-      Schema.Struct({
-        name: Schema.String,
-        publisher: Schema.String,
-        product: Schema.String,
-        version: Schema.String,
-      }),
-    ),
+    plan: Schema.optional(Schema.suspend(() => PlanSchema)),
     id: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -1400,72 +720,9 @@ export type RegistrationDefinitionsGetInput =
 export const RegistrationDefinitionsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     properties: Schema.optional(
-      Schema.Struct({
-        description: Schema.optional(Schema.String),
-        authorizations: Schema.Array(
-          Schema.Struct({
-            principalId: Schema.String,
-            principalIdDisplayName: Schema.optional(Schema.String),
-            roleDefinitionId: Schema.String,
-            delegatedRoleDefinitionIds: Schema.optional(
-              Schema.Array(Schema.String),
-            ),
-          }),
-        ),
-        eligibleAuthorizations: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              principalId: Schema.String,
-              principalIdDisplayName: Schema.optional(Schema.String),
-              roleDefinitionId: Schema.String,
-              justInTimeAccessPolicy: Schema.optional(
-                Schema.Struct({
-                  multiFactorAuthProvider: Schema.Literals(["Azure", "None"]),
-                  maximumActivationDuration: Schema.optional(Schema.String),
-                  managedByTenantApprovers: Schema.optional(
-                    Schema.Array(
-                      Schema.Struct({
-                        principalId: Schema.String,
-                        principalIdDisplayName: Schema.optional(Schema.String),
-                      }),
-                    ),
-                  ),
-                }),
-              ),
-            }),
-          ),
-        ),
-        registrationDefinitionName: Schema.optional(Schema.String),
-        managedByTenantId: Schema.String,
-        provisioningState: Schema.optional(
-          Schema.Literals([
-            "NotSpecified",
-            "Accepted",
-            "Running",
-            "Ready",
-            "Creating",
-            "Created",
-            "Deleting",
-            "Deleted",
-            "Canceled",
-            "Failed",
-            "Succeeded",
-            "Updating",
-          ]),
-        ),
-        manageeTenantId: Schema.optional(Schema.String),
-        manageeTenantName: Schema.optional(Schema.String),
-        managedByTenantName: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(() => RegistrationDefinitionPropertiesSchema),
     ),
-    plan: Schema.optional(
-      Schema.Struct({
-        name: Schema.String,
-        publisher: Schema.String,
-        product: Schema.String,
-        version: Schema.String,
-      }),
-    ),
+    plan: Schema.optional(Schema.suspend(() => PlanSchema)),
     id: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -1513,111 +770,7 @@ export type RegistrationDefinitionsListInput =
 export const RegistrationDefinitionsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          properties: Schema.optional(
-            Schema.Struct({
-              description: Schema.optional(Schema.String),
-              authorizations: Schema.Array(
-                Schema.Struct({
-                  principalId: Schema.String,
-                  principalIdDisplayName: Schema.optional(Schema.String),
-                  roleDefinitionId: Schema.String,
-                  delegatedRoleDefinitionIds: Schema.optional(
-                    Schema.Array(Schema.String),
-                  ),
-                }),
-              ),
-              eligibleAuthorizations: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    principalId: Schema.String,
-                    principalIdDisplayName: Schema.optional(Schema.String),
-                    roleDefinitionId: Schema.String,
-                    justInTimeAccessPolicy: Schema.optional(
-                      Schema.Struct({
-                        multiFactorAuthProvider: Schema.Literals([
-                          "Azure",
-                          "None",
-                        ]),
-                        maximumActivationDuration: Schema.optional(
-                          Schema.String,
-                        ),
-                        managedByTenantApprovers: Schema.optional(
-                          Schema.Array(
-                            Schema.Struct({
-                              principalId: Schema.String,
-                              principalIdDisplayName: Schema.optional(
-                                Schema.String,
-                              ),
-                            }),
-                          ),
-                        ),
-                      }),
-                    ),
-                  }),
-                ),
-              ),
-              registrationDefinitionName: Schema.optional(Schema.String),
-              managedByTenantId: Schema.String,
-              provisioningState: Schema.optional(
-                Schema.Literals([
-                  "NotSpecified",
-                  "Accepted",
-                  "Running",
-                  "Ready",
-                  "Creating",
-                  "Created",
-                  "Deleting",
-                  "Deleted",
-                  "Canceled",
-                  "Failed",
-                  "Succeeded",
-                  "Updating",
-                ]),
-              ),
-              manageeTenantId: Schema.optional(Schema.String),
-              manageeTenantName: Schema.optional(Schema.String),
-              managedByTenantName: Schema.optional(Schema.String),
-            }),
-          ),
-          plan: Schema.optional(
-            Schema.Struct({
-              name: Schema.String,
-              publisher: Schema.String,
-              product: Schema.String,
-              version: Schema.String,
-            }),
-          ),
-          id: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.String),
-              createdByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              createdAt: Schema.optional(Schema.String),
-              lastModifiedBy: Schema.optional(Schema.String),
-              lastModifiedByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              lastModifiedAt: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => RegistrationDefinitionSchema)),
     ),
     nextLink: Schema.optional(Schema.String),
   });

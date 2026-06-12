@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { BackupScheduleItemSchema } from "./_schemas.ts";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
@@ -18,15 +19,7 @@ export type GetSnapshotScheduleInput = typeof GetSnapshotScheduleInput.Type;
 // Output Schema
 export const GetSnapshotScheduleOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    schedule: Schema.Array(
-      Schema.Struct({
-        frequency: Schema.String,
-        hour: Schema.optional(Schema.Number),
-        day: Schema.optional(Schema.Number),
-        month: Schema.optional(Schema.Number),
-        retention_seconds: Schema.optional(Schema.Number),
-      }),
-    ),
+    schedule: Schema.Array(Schema.suspend(() => BackupScheduleItemSchema)),
   });
 export type GetSnapshotScheduleOutput = typeof GetSnapshotScheduleOutput.Type;
 

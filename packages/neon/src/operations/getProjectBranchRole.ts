@@ -1,8 +1,8 @@
 import * as Schema from "effect/Schema";
+import { RoleSchema } from "./_schemas.ts";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 import { NotFound } from "../errors.ts";
-import { SensitiveString } from "../sensitive.ts";
 
 // Input Schema
 export const GetProjectBranchRoleInput =
@@ -21,15 +21,7 @@ export type GetProjectBranchRoleInput = typeof GetProjectBranchRoleInput.Type;
 // Output Schema
 export const GetProjectBranchRoleOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    role: Schema.Struct({
-      branch_id: Schema.String,
-      name: Schema.String,
-      password: Schema.optional(SensitiveString),
-      protected: Schema.optional(Schema.Boolean),
-      authentication_method: Schema.optional(Schema.String),
-      created_at: Schema.String,
-      updated_at: Schema.String,
-    }),
+    role: Schema.suspend(() => RoleSchema),
   });
 export type GetProjectBranchRoleOutput = typeof GetProjectBranchRoleOutput.Type;
 

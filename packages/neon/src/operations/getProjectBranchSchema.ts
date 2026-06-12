@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { BranchSchemaJSONSchema } from "./_schemas.ts";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 import { NotFound } from "../errors.ts";
@@ -25,40 +26,7 @@ export type GetProjectBranchSchemaInput =
 export const GetProjectBranchSchemaOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     sql: Schema.optional(Schema.String),
-    json: Schema.optional(
-      Schema.Struct({
-        tables: Schema.Array(
-          Schema.Struct({
-            schema: Schema.String,
-            name: Schema.String,
-            columns: Schema.Array(
-              Schema.Struct({
-                name: Schema.String,
-                type: Schema.String,
-                nullable: Schema.optional(Schema.Boolean),
-                generated: Schema.optional(Schema.Boolean),
-              }),
-            ),
-            constraints: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  type: Schema.String,
-                  columns: Schema.Array(Schema.String),
-                  name: Schema.optional(Schema.String),
-                  referenced_table: Schema.optional(
-                    Schema.Struct({
-                      schema: Schema.String,
-                      table: Schema.String,
-                      columns: Schema.Array(Schema.String),
-                    }),
-                  ),
-                }),
-              ),
-            ),
-          }),
-        ),
-      }),
-    ),
+    json: Schema.optional(Schema.suspend(() => BranchSchemaJSONSchema)),
   });
 export type GetProjectBranchSchemaOutput =
   typeof GetProjectBranchSchemaOutput.Type;

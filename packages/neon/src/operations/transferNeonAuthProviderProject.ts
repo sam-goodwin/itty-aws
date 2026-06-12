@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { NeonAuthSupportedAuthProviderSchema } from "./_schemas.ts";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
@@ -6,12 +7,7 @@ import * as T from "../traits.ts";
 export const TransferNeonAuthProviderProjectInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String,
-    auth_provider: Schema.Literals([
-      "mock",
-      "stack",
-      "stack_v2",
-      "better_auth",
-    ]),
+    auth_provider: Schema.suspend(() => NeonAuthSupportedAuthProviderSchema),
   }).pipe(
     T.Http({ method: "POST", path: "/projects/auth/transfer_ownership" }),
   );

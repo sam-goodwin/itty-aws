@@ -8,6 +8,217 @@ import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
+// Shared schemas
+const OperationSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  display: Schema.optional(Schema.suspend(() => OperationDisplaySchema)),
+  properties: Schema.optional(Schema.suspend(() => OperationPropertiesSchema)),
+});
+const OperationDisplaySchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  provider: Schema.optional(Schema.String),
+  resource: Schema.optional(Schema.String),
+  operation: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+});
+const OperationPropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  statusCode: Schema.optional(Schema.String),
+});
+const GuestConfigurationAssignmentSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.String,
+    location: Schema.optional(Schema.String),
+    type: Schema.optional(
+      Schema.suspend(() => Azure_Core_armResourceTypeSchema),
+    ),
+  });
+const Azure_Core_armResourceTypeSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.String;
+const GuestConfigurationAssignmentPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    targetResourceId: Schema.optional(Schema.NullOr(Schema.String)),
+    guestConfiguration: Schema.optional(
+      Schema.suspend(() => GuestConfigurationNavigationSchema),
+    ),
+    complianceStatus: Schema.optional(
+      Schema.suspend(() => ComplianceStatusSchema),
+    ),
+    lastComplianceStatusChecked: Schema.optional(Schema.NullOr(Schema.String)),
+    latestReportId: Schema.optional(Schema.NullOr(Schema.String)),
+    parameterHash: Schema.optional(Schema.NullOr(Schema.String)),
+    latestAssignmentReport: Schema.optional(
+      Schema.suspend(() => AssignmentReportSchema),
+    ),
+    context: Schema.optional(Schema.String),
+    assignmentHash: Schema.optional(Schema.NullOr(Schema.String)),
+    provisioningState: Schema.optional(
+      Schema.suspend(() => ProvisioningStateSchema),
+    ),
+    resourceType: Schema.optional(Schema.NullOr(Schema.String)),
+    vmssVMList: Schema.optional(
+      Schema.Array(Schema.suspend(() => VMSSVMInfoSchema)),
+    ),
+  });
+const GuestConfigurationNavigationSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    kind: Schema.optional(Schema.suspend(() => KindSchema)),
+    name: Schema.optional(Schema.String),
+    version: Schema.optional(Schema.String),
+    contentUri: Schema.optional(Schema.String),
+    contentHash: Schema.optional(Schema.String),
+    contentManagedIdentity: Schema.optional(Schema.String),
+    assignmentType: Schema.optional(Schema.suspend(() => AssignmentTypeSchema)),
+    assignmentSource: Schema.optional(Schema.NullOr(Schema.String)),
+    contentType: Schema.optional(Schema.NullOr(Schema.String)),
+    configurationParameter: Schema.optional(
+      Schema.Array(Schema.suspend(() => ConfigurationParameterSchema)),
+    ),
+    configurationProtectedParameter: Schema.optional(
+      Schema.Array(Schema.suspend(() => ConfigurationParameterSchema)),
+    ),
+    configurationSetting: Schema.optional(
+      Schema.suspend(() => ConfigurationSettingSchema),
+    ),
+  });
+const KindSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals(["DSC"]);
+const AssignmentTypeSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Audit",
+  "DeployAndAutoCorrect",
+  "ApplyAndAutoCorrect",
+  "ApplyAndMonitor",
+]);
+const ConfigurationParameterSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  value: Schema.optional(Schema.String),
+});
+const ConfigurationSettingSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  configurationMode: Schema.optional(
+    Schema.suspend(() => ConfigurationModeSchema),
+  ),
+  allowModuleOverwrite: Schema.optional(Schema.Boolean),
+  actionAfterReboot: Schema.optional(
+    Schema.suspend(() => ActionAfterRebootSchema),
+  ),
+  refreshFrequencyMins: Schema.optional(Schema.Number),
+  rebootIfNeeded: Schema.optional(Schema.Boolean),
+  configurationModeFrequencyMins: Schema.optional(Schema.Number),
+});
+const ConfigurationModeSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "ApplyOnly",
+  "ApplyAndMonitor",
+  "ApplyAndAutoCorrect",
+]);
+const ActionAfterRebootSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "ContinueConfiguration",
+  "StopConfiguration",
+]);
+const ComplianceStatusSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Compliant",
+  "NonCompliant",
+  "Pending",
+]);
+const AssignmentReportSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  reportId: Schema.optional(Schema.String),
+  assignment: Schema.optional(Schema.suspend(() => AssignmentInfoSchema)),
+  vm: Schema.optional(Schema.suspend(() => VMInfoSchema)),
+  startTime: Schema.optional(Schema.String),
+  endTime: Schema.optional(Schema.String),
+  complianceStatus: Schema.optional(
+    Schema.suspend(() => ComplianceStatusSchema),
+  ),
+  operationType: Schema.optional(Schema.suspend(() => TypeSchema)),
+  resources: Schema.optional(
+    Schema.Array(Schema.suspend(() => AssignmentReportResourceSchema)),
+  ),
+});
+const AssignmentInfoSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  configuration: Schema.optional(Schema.suspend(() => ConfigurationInfoSchema)),
+});
+const ConfigurationInfoSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  version: Schema.optional(Schema.String),
+});
+const VMInfoSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  uuid: Schema.optional(Schema.String),
+});
+const TypeSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Consistency",
+  "Initial",
+]);
+const AssignmentReportResourceSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    complianceStatus: Schema.optional(
+      Schema.suspend(() => ComplianceStatusSchema),
+    ),
+    resourceId: Schema.optional(Schema.String),
+    reasons: Schema.optional(
+      Schema.Array(
+        Schema.suspend(() => AssignmentReportResourceComplianceReasonSchema),
+      ),
+    ),
+    properties: Schema.optional(Schema.Unknown),
+  });
+const AssignmentReportResourceComplianceReasonSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    phrase: Schema.optional(Schema.String),
+    code: Schema.optional(Schema.String),
+  });
+const ProvisioningStateSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Succeeded",
+  "Failed",
+  "Canceled",
+  "Created",
+]);
+const VMSSVMInfoSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  vmId: Schema.optional(Schema.String),
+  vmResourceId: Schema.optional(Schema.String),
+  complianceStatus: Schema.optional(
+    Schema.suspend(() => ComplianceStatusSchema),
+  ),
+  latestReportId: Schema.optional(Schema.NullOr(Schema.String)),
+  lastComplianceChecked: Schema.optional(Schema.NullOr(Schema.String)),
+});
+const GuestConfigurationAssignmentReportSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    properties: Schema.optional(
+      Schema.suspend(() => GuestConfigurationAssignmentReportPropertiesSchema),
+    ),
+  });
+const GuestConfigurationAssignmentReportPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    complianceStatus: Schema.optional(
+      Schema.suspend(() => ComplianceStatusSchema),
+    ),
+    reportId: Schema.optional(Schema.String),
+    assignment: Schema.optional(Schema.suspend(() => AssignmentInfoSchema)),
+    vm: Schema.optional(Schema.suspend(() => VMInfoSchema)),
+    startTime: Schema.optional(Schema.String),
+    endTime: Schema.optional(Schema.String),
+    details: Schema.optional(
+      Schema.suspend(() => AssignmentReportDetailsSchema),
+    ),
+    vmssResourceId: Schema.optional(Schema.String),
+  });
+const AssignmentReportDetailsSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    complianceStatus: Schema.optional(
+      Schema.suspend(() => ComplianceStatusSchema),
+    ),
+    startTime: Schema.optional(Schema.String),
+    endTime: Schema.optional(Schema.String),
+    jobId: Schema.optional(Schema.String),
+    operationType: Schema.optional(Schema.suspend(() => TypeSchema)),
+    resources: Schema.optional(
+      Schema.Array(Schema.suspend(() => AssignmentReportResourceSchema)),
+    ),
+  },
+);
+
 // Input Schema
 export const GuestConfigurationAssignmentReportsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -32,64 +243,7 @@ export const GuestConfigurationAssignmentReportsGetOutput =
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     properties: Schema.optional(
-      Schema.Struct({
-        complianceStatus: Schema.optional(
-          Schema.Literals(["Compliant", "NonCompliant", "Pending"]),
-        ),
-        reportId: Schema.optional(Schema.String),
-        assignment: Schema.optional(
-          Schema.Struct({
-            name: Schema.optional(Schema.String),
-            configuration: Schema.optional(
-              Schema.Struct({
-                name: Schema.optional(Schema.String),
-                version: Schema.optional(Schema.String),
-              }),
-            ),
-          }),
-        ),
-        vm: Schema.optional(
-          Schema.Struct({
-            id: Schema.optional(Schema.String),
-            uuid: Schema.optional(Schema.String),
-          }),
-        ),
-        startTime: Schema.optional(Schema.String),
-        endTime: Schema.optional(Schema.String),
-        details: Schema.optional(
-          Schema.Struct({
-            complianceStatus: Schema.optional(
-              Schema.Literals(["Compliant", "NonCompliant", "Pending"]),
-            ),
-            startTime: Schema.optional(Schema.String),
-            endTime: Schema.optional(Schema.String),
-            jobId: Schema.optional(Schema.String),
-            operationType: Schema.optional(
-              Schema.Literals(["Consistency", "Initial"]),
-            ),
-            resources: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  complianceStatus: Schema.optional(
-                    Schema.Literals(["Compliant", "NonCompliant", "Pending"]),
-                  ),
-                  resourceId: Schema.optional(Schema.String),
-                  reasons: Schema.optional(
-                    Schema.Array(
-                      Schema.Struct({
-                        phrase: Schema.optional(Schema.String),
-                        code: Schema.optional(Schema.String),
-                      }),
-                    ),
-                  ),
-                  properties: Schema.optional(Schema.Unknown),
-                }),
-              ),
-            ),
-          }),
-        ),
-        vmssResourceId: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(() => GuestConfigurationAssignmentReportPropertiesSchema),
     ),
   });
 export type GuestConfigurationAssignmentReportsGetOutput =
@@ -133,74 +287,7 @@ export const GuestConfigurationAssignmentReportsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          properties: Schema.optional(
-            Schema.Struct({
-              complianceStatus: Schema.optional(
-                Schema.Literals(["Compliant", "NonCompliant", "Pending"]),
-              ),
-              reportId: Schema.optional(Schema.String),
-              assignment: Schema.optional(
-                Schema.Struct({
-                  name: Schema.optional(Schema.String),
-                  configuration: Schema.optional(
-                    Schema.Struct({
-                      name: Schema.optional(Schema.String),
-                      version: Schema.optional(Schema.String),
-                    }),
-                  ),
-                }),
-              ),
-              vm: Schema.optional(
-                Schema.Struct({
-                  id: Schema.optional(Schema.String),
-                  uuid: Schema.optional(Schema.String),
-                }),
-              ),
-              startTime: Schema.optional(Schema.String),
-              endTime: Schema.optional(Schema.String),
-              details: Schema.optional(
-                Schema.Struct({
-                  complianceStatus: Schema.optional(
-                    Schema.Literals(["Compliant", "NonCompliant", "Pending"]),
-                  ),
-                  startTime: Schema.optional(Schema.String),
-                  endTime: Schema.optional(Schema.String),
-                  jobId: Schema.optional(Schema.String),
-                  operationType: Schema.optional(
-                    Schema.Literals(["Consistency", "Initial"]),
-                  ),
-                  resources: Schema.optional(
-                    Schema.Array(
-                      Schema.Struct({
-                        complianceStatus: Schema.optional(
-                          Schema.Literals([
-                            "Compliant",
-                            "NonCompliant",
-                            "Pending",
-                          ]),
-                        ),
-                        resourceId: Schema.optional(Schema.String),
-                        reasons: Schema.optional(
-                          Schema.Array(
-                            Schema.Struct({
-                              phrase: Schema.optional(Schema.String),
-                              code: Schema.optional(Schema.String),
-                            }),
-                          ),
-                        ),
-                        properties: Schema.optional(Schema.Unknown),
-                      }),
-                    ),
-                  ),
-                }),
-              ),
-              vmssResourceId: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
+        Schema.suspend(() => GuestConfigurationAssignmentReportSchema),
       ),
     ),
     nextLink: Schema.optional(Schema.String),
@@ -247,64 +334,7 @@ export const GuestConfigurationAssignmentReportsVMSSGetOutput =
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     properties: Schema.optional(
-      Schema.Struct({
-        complianceStatus: Schema.optional(
-          Schema.Literals(["Compliant", "NonCompliant", "Pending"]),
-        ),
-        reportId: Schema.optional(Schema.String),
-        assignment: Schema.optional(
-          Schema.Struct({
-            name: Schema.optional(Schema.String),
-            configuration: Schema.optional(
-              Schema.Struct({
-                name: Schema.optional(Schema.String),
-                version: Schema.optional(Schema.String),
-              }),
-            ),
-          }),
-        ),
-        vm: Schema.optional(
-          Schema.Struct({
-            id: Schema.optional(Schema.String),
-            uuid: Schema.optional(Schema.String),
-          }),
-        ),
-        startTime: Schema.optional(Schema.String),
-        endTime: Schema.optional(Schema.String),
-        details: Schema.optional(
-          Schema.Struct({
-            complianceStatus: Schema.optional(
-              Schema.Literals(["Compliant", "NonCompliant", "Pending"]),
-            ),
-            startTime: Schema.optional(Schema.String),
-            endTime: Schema.optional(Schema.String),
-            jobId: Schema.optional(Schema.String),
-            operationType: Schema.optional(
-              Schema.Literals(["Consistency", "Initial"]),
-            ),
-            resources: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  complianceStatus: Schema.optional(
-                    Schema.Literals(["Compliant", "NonCompliant", "Pending"]),
-                  ),
-                  resourceId: Schema.optional(Schema.String),
-                  reasons: Schema.optional(
-                    Schema.Array(
-                      Schema.Struct({
-                        phrase: Schema.optional(Schema.String),
-                        code: Schema.optional(Schema.String),
-                      }),
-                    ),
-                  ),
-                  properties: Schema.optional(Schema.Unknown),
-                }),
-              ),
-            ),
-          }),
-        ),
-        vmssResourceId: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(() => GuestConfigurationAssignmentReportPropertiesSchema),
     ),
   });
 export type GuestConfigurationAssignmentReportsVMSSGetOutput =
@@ -348,74 +378,7 @@ export const GuestConfigurationAssignmentReportsVMSSListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          properties: Schema.optional(
-            Schema.Struct({
-              complianceStatus: Schema.optional(
-                Schema.Literals(["Compliant", "NonCompliant", "Pending"]),
-              ),
-              reportId: Schema.optional(Schema.String),
-              assignment: Schema.optional(
-                Schema.Struct({
-                  name: Schema.optional(Schema.String),
-                  configuration: Schema.optional(
-                    Schema.Struct({
-                      name: Schema.optional(Schema.String),
-                      version: Schema.optional(Schema.String),
-                    }),
-                  ),
-                }),
-              ),
-              vm: Schema.optional(
-                Schema.Struct({
-                  id: Schema.optional(Schema.String),
-                  uuid: Schema.optional(Schema.String),
-                }),
-              ),
-              startTime: Schema.optional(Schema.String),
-              endTime: Schema.optional(Schema.String),
-              details: Schema.optional(
-                Schema.Struct({
-                  complianceStatus: Schema.optional(
-                    Schema.Literals(["Compliant", "NonCompliant", "Pending"]),
-                  ),
-                  startTime: Schema.optional(Schema.String),
-                  endTime: Schema.optional(Schema.String),
-                  jobId: Schema.optional(Schema.String),
-                  operationType: Schema.optional(
-                    Schema.Literals(["Consistency", "Initial"]),
-                  ),
-                  resources: Schema.optional(
-                    Schema.Array(
-                      Schema.Struct({
-                        complianceStatus: Schema.optional(
-                          Schema.Literals([
-                            "Compliant",
-                            "NonCompliant",
-                            "Pending",
-                          ]),
-                        ),
-                        resourceId: Schema.optional(Schema.String),
-                        reasons: Schema.optional(
-                          Schema.Array(
-                            Schema.Struct({
-                              phrase: Schema.optional(Schema.String),
-                              code: Schema.optional(Schema.String),
-                            }),
-                          ),
-                        ),
-                        properties: Schema.optional(Schema.Unknown),
-                      }),
-                    ),
-                  ),
-                }),
-              ),
-              vmssResourceId: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
+        Schema.suspend(() => GuestConfigurationAssignmentReportSchema),
       ),
     ),
     nextLink: Schema.optional(Schema.String),
@@ -446,145 +409,7 @@ export const GuestConfigurationAssignmentsCreateOrUpdateInput =
     vmName: Schema.String.pipe(T.PathParam()),
     guestConfigurationAssignmentName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        targetResourceId: Schema.optional(Schema.NullOr(Schema.String)),
-        guestConfiguration: Schema.optional(
-          Schema.Struct({
-            kind: Schema.optional(Schema.Literals(["DSC"])),
-            name: Schema.optional(Schema.String),
-            version: Schema.optional(Schema.String),
-            contentUri: Schema.optional(Schema.String),
-            contentHash: Schema.optional(Schema.String),
-            contentManagedIdentity: Schema.optional(Schema.String),
-            assignmentType: Schema.optional(
-              Schema.Literals([
-                "Audit",
-                "DeployAndAutoCorrect",
-                "ApplyAndAutoCorrect",
-                "ApplyAndMonitor",
-              ]),
-            ),
-            assignmentSource: Schema.optional(Schema.NullOr(Schema.String)),
-            contentType: Schema.optional(Schema.NullOr(Schema.String)),
-            configurationParameter: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  name: Schema.optional(Schema.String),
-                  value: Schema.optional(Schema.String),
-                }),
-              ),
-            ),
-            configurationProtectedParameter: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  name: Schema.optional(Schema.String),
-                  value: Schema.optional(Schema.String),
-                }),
-              ),
-            ),
-            configurationSetting: Schema.optional(
-              Schema.Struct({
-                configurationMode: Schema.optional(
-                  Schema.Literals([
-                    "ApplyOnly",
-                    "ApplyAndMonitor",
-                    "ApplyAndAutoCorrect",
-                  ]),
-                ),
-                allowModuleOverwrite: Schema.optional(Schema.Boolean),
-                actionAfterReboot: Schema.optional(
-                  Schema.Literals([
-                    "ContinueConfiguration",
-                    "StopConfiguration",
-                  ]),
-                ),
-                refreshFrequencyMins: Schema.optional(Schema.Number),
-                rebootIfNeeded: Schema.optional(Schema.Boolean),
-                configurationModeFrequencyMins: Schema.optional(Schema.Number),
-              }),
-            ),
-          }),
-        ),
-        complianceStatus: Schema.optional(
-          Schema.Literals(["Compliant", "NonCompliant", "Pending"]),
-        ),
-        lastComplianceStatusChecked: Schema.optional(
-          Schema.NullOr(Schema.String),
-        ),
-        latestReportId: Schema.optional(Schema.NullOr(Schema.String)),
-        parameterHash: Schema.optional(Schema.NullOr(Schema.String)),
-        latestAssignmentReport: Schema.optional(
-          Schema.Struct({
-            id: Schema.optional(Schema.String),
-            reportId: Schema.optional(Schema.String),
-            assignment: Schema.optional(
-              Schema.Struct({
-                name: Schema.optional(Schema.String),
-                configuration: Schema.optional(
-                  Schema.Struct({
-                    name: Schema.optional(Schema.String),
-                    version: Schema.optional(Schema.String),
-                  }),
-                ),
-              }),
-            ),
-            vm: Schema.optional(
-              Schema.Struct({
-                id: Schema.optional(Schema.String),
-                uuid: Schema.optional(Schema.String),
-              }),
-            ),
-            startTime: Schema.optional(Schema.String),
-            endTime: Schema.optional(Schema.String),
-            complianceStatus: Schema.optional(
-              Schema.Literals(["Compliant", "NonCompliant", "Pending"]),
-            ),
-            operationType: Schema.optional(
-              Schema.Literals(["Consistency", "Initial"]),
-            ),
-            resources: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  complianceStatus: Schema.optional(
-                    Schema.Literals(["Compliant", "NonCompliant", "Pending"]),
-                  ),
-                  resourceId: Schema.optional(Schema.String),
-                  reasons: Schema.optional(
-                    Schema.Array(
-                      Schema.Struct({
-                        phrase: Schema.optional(Schema.String),
-                        code: Schema.optional(Schema.String),
-                      }),
-                    ),
-                  ),
-                  properties: Schema.optional(Schema.Unknown),
-                }),
-              ),
-            ),
-          }),
-        ),
-        context: Schema.optional(Schema.String),
-        assignmentHash: Schema.optional(Schema.NullOr(Schema.String)),
-        provisioningState: Schema.optional(
-          Schema.Literals(["Succeeded", "Failed", "Canceled", "Created"]),
-        ),
-        resourceType: Schema.optional(Schema.NullOr(Schema.String)),
-        vmssVMList: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              vmId: Schema.optional(Schema.String),
-              vmResourceId: Schema.optional(Schema.String),
-              complianceStatus: Schema.optional(
-                Schema.Literals(["Compliant", "NonCompliant", "Pending"]),
-              ),
-              latestReportId: Schema.optional(Schema.NullOr(Schema.String)),
-              lastComplianceChecked: Schema.optional(
-                Schema.NullOr(Schema.String),
-              ),
-            }),
-          ),
-        ),
-      }),
+      Schema.suspend(() => GuestConfigurationAssignmentPropertiesSchema),
     ),
     systemData: Schema.optional(
       Schema.Struct({
@@ -603,7 +428,9 @@ export const GuestConfigurationAssignmentsCreateOrUpdateInput =
     id: Schema.optional(Schema.String),
     name: Schema.String,
     location: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
+    type: Schema.optional(
+      Schema.suspend(() => Azure_Core_armResourceTypeSchema),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -617,10 +444,29 @@ export type GuestConfigurationAssignmentsCreateOrUpdateInput =
 // Output Schema
 export const GuestConfigurationAssignmentsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => GuestConfigurationAssignmentPropertiesSchema),
+    ),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.String,
     location: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
+    type: Schema.optional(
+      Schema.suspend(() => Azure_Core_armResourceTypeSchema),
+    ),
   });
 export type GuestConfigurationAssignmentsCreateOrUpdateOutput =
   typeof GuestConfigurationAssignmentsCreateOrUpdateOutput.Type;
@@ -698,10 +544,29 @@ export type GuestConfigurationAssignmentsGetInput =
 // Output Schema
 export const GuestConfigurationAssignmentsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => GuestConfigurationAssignmentPropertiesSchema),
+    ),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.String,
     location: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
+    type: Schema.optional(
+      Schema.suspend(() => Azure_Core_armResourceTypeSchema),
+    ),
   });
 export type GuestConfigurationAssignmentsGetOutput =
   typeof GuestConfigurationAssignmentsGetOutput.Type;
@@ -741,14 +606,7 @@ export type GuestConfigurationAssignmentsListInput =
 export const GuestConfigurationAssignmentsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.String,
-          location: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => GuestConfigurationAssignmentSchema)),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -788,14 +646,7 @@ export type GuestConfigurationAssignmentsRGListInput =
 export const GuestConfigurationAssignmentsRGListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.String,
-          location: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => GuestConfigurationAssignmentSchema)),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -833,14 +684,7 @@ export type GuestConfigurationAssignmentsSubscriptionListInput =
 export const GuestConfigurationAssignmentsSubscriptionListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.String,
-          location: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => GuestConfigurationAssignmentSchema)),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -867,145 +711,7 @@ export const GuestConfigurationAssignmentsVMSSCreateOrUpdateInput =
     vmssName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        targetResourceId: Schema.optional(Schema.NullOr(Schema.String)),
-        guestConfiguration: Schema.optional(
-          Schema.Struct({
-            kind: Schema.optional(Schema.Literals(["DSC"])),
-            name: Schema.optional(Schema.String),
-            version: Schema.optional(Schema.String),
-            contentUri: Schema.optional(Schema.String),
-            contentHash: Schema.optional(Schema.String),
-            contentManagedIdentity: Schema.optional(Schema.String),
-            assignmentType: Schema.optional(
-              Schema.Literals([
-                "Audit",
-                "DeployAndAutoCorrect",
-                "ApplyAndAutoCorrect",
-                "ApplyAndMonitor",
-              ]),
-            ),
-            assignmentSource: Schema.optional(Schema.NullOr(Schema.String)),
-            contentType: Schema.optional(Schema.NullOr(Schema.String)),
-            configurationParameter: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  name: Schema.optional(Schema.String),
-                  value: Schema.optional(Schema.String),
-                }),
-              ),
-            ),
-            configurationProtectedParameter: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  name: Schema.optional(Schema.String),
-                  value: Schema.optional(Schema.String),
-                }),
-              ),
-            ),
-            configurationSetting: Schema.optional(
-              Schema.Struct({
-                configurationMode: Schema.optional(
-                  Schema.Literals([
-                    "ApplyOnly",
-                    "ApplyAndMonitor",
-                    "ApplyAndAutoCorrect",
-                  ]),
-                ),
-                allowModuleOverwrite: Schema.optional(Schema.Boolean),
-                actionAfterReboot: Schema.optional(
-                  Schema.Literals([
-                    "ContinueConfiguration",
-                    "StopConfiguration",
-                  ]),
-                ),
-                refreshFrequencyMins: Schema.optional(Schema.Number),
-                rebootIfNeeded: Schema.optional(Schema.Boolean),
-                configurationModeFrequencyMins: Schema.optional(Schema.Number),
-              }),
-            ),
-          }),
-        ),
-        complianceStatus: Schema.optional(
-          Schema.Literals(["Compliant", "NonCompliant", "Pending"]),
-        ),
-        lastComplianceStatusChecked: Schema.optional(
-          Schema.NullOr(Schema.String),
-        ),
-        latestReportId: Schema.optional(Schema.NullOr(Schema.String)),
-        parameterHash: Schema.optional(Schema.NullOr(Schema.String)),
-        latestAssignmentReport: Schema.optional(
-          Schema.Struct({
-            id: Schema.optional(Schema.String),
-            reportId: Schema.optional(Schema.String),
-            assignment: Schema.optional(
-              Schema.Struct({
-                name: Schema.optional(Schema.String),
-                configuration: Schema.optional(
-                  Schema.Struct({
-                    name: Schema.optional(Schema.String),
-                    version: Schema.optional(Schema.String),
-                  }),
-                ),
-              }),
-            ),
-            vm: Schema.optional(
-              Schema.Struct({
-                id: Schema.optional(Schema.String),
-                uuid: Schema.optional(Schema.String),
-              }),
-            ),
-            startTime: Schema.optional(Schema.String),
-            endTime: Schema.optional(Schema.String),
-            complianceStatus: Schema.optional(
-              Schema.Literals(["Compliant", "NonCompliant", "Pending"]),
-            ),
-            operationType: Schema.optional(
-              Schema.Literals(["Consistency", "Initial"]),
-            ),
-            resources: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  complianceStatus: Schema.optional(
-                    Schema.Literals(["Compliant", "NonCompliant", "Pending"]),
-                  ),
-                  resourceId: Schema.optional(Schema.String),
-                  reasons: Schema.optional(
-                    Schema.Array(
-                      Schema.Struct({
-                        phrase: Schema.optional(Schema.String),
-                        code: Schema.optional(Schema.String),
-                      }),
-                    ),
-                  ),
-                  properties: Schema.optional(Schema.Unknown),
-                }),
-              ),
-            ),
-          }),
-        ),
-        context: Schema.optional(Schema.String),
-        assignmentHash: Schema.optional(Schema.NullOr(Schema.String)),
-        provisioningState: Schema.optional(
-          Schema.Literals(["Succeeded", "Failed", "Canceled", "Created"]),
-        ),
-        resourceType: Schema.optional(Schema.NullOr(Schema.String)),
-        vmssVMList: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              vmId: Schema.optional(Schema.String),
-              vmResourceId: Schema.optional(Schema.String),
-              complianceStatus: Schema.optional(
-                Schema.Literals(["Compliant", "NonCompliant", "Pending"]),
-              ),
-              latestReportId: Schema.optional(Schema.NullOr(Schema.String)),
-              lastComplianceChecked: Schema.optional(
-                Schema.NullOr(Schema.String),
-              ),
-            }),
-          ),
-        ),
-      }),
+      Schema.suspend(() => GuestConfigurationAssignmentPropertiesSchema),
     ),
     systemData: Schema.optional(
       Schema.Struct({
@@ -1023,7 +729,9 @@ export const GuestConfigurationAssignmentsVMSSCreateOrUpdateInput =
     ),
     id: Schema.optional(Schema.String),
     location: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
+    type: Schema.optional(
+      Schema.suspend(() => Azure_Core_armResourceTypeSchema),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -1037,10 +745,29 @@ export type GuestConfigurationAssignmentsVMSSCreateOrUpdateInput =
 // Output Schema
 export const GuestConfigurationAssignmentsVMSSCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => GuestConfigurationAssignmentPropertiesSchema),
+    ),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.String,
     location: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
+    type: Schema.optional(
+      Schema.suspend(() => Azure_Core_armResourceTypeSchema),
+    ),
   });
 export type GuestConfigurationAssignmentsVMSSCreateOrUpdateOutput =
   typeof GuestConfigurationAssignmentsVMSSCreateOrUpdateOutput.Type;
@@ -1080,10 +807,29 @@ export type GuestConfigurationAssignmentsVMSSDeleteInput =
 // Output Schema
 export const GuestConfigurationAssignmentsVMSSDeleteOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => GuestConfigurationAssignmentPropertiesSchema),
+    ),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.String,
     location: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
+    type: Schema.optional(
+      Schema.suspend(() => Azure_Core_armResourceTypeSchema),
+    ),
   });
 export type GuestConfigurationAssignmentsVMSSDeleteOutput =
   typeof GuestConfigurationAssignmentsVMSSDeleteOutput.Type;
@@ -1123,10 +869,29 @@ export type GuestConfigurationAssignmentsVMSSGetInput =
 // Output Schema
 export const GuestConfigurationAssignmentsVMSSGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => GuestConfigurationAssignmentPropertiesSchema),
+    ),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.String,
     location: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
+    type: Schema.optional(
+      Schema.suspend(() => Azure_Core_armResourceTypeSchema),
+    ),
   });
 export type GuestConfigurationAssignmentsVMSSGetOutput =
   typeof GuestConfigurationAssignmentsVMSSGetOutput.Type;
@@ -1166,14 +931,7 @@ export type GuestConfigurationAssignmentsVMSSListInput =
 export const GuestConfigurationAssignmentsVMSSListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.String,
-          location: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => GuestConfigurationAssignmentSchema)),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -1202,145 +960,7 @@ export const GuestConfigurationConnectedVMwarevSphereAssignmentsCreateOrUpdateIn
     vmName: Schema.String.pipe(T.PathParam()),
     guestConfigurationAssignmentName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        targetResourceId: Schema.optional(Schema.NullOr(Schema.String)),
-        guestConfiguration: Schema.optional(
-          Schema.Struct({
-            kind: Schema.optional(Schema.Literals(["DSC"])),
-            name: Schema.optional(Schema.String),
-            version: Schema.optional(Schema.String),
-            contentUri: Schema.optional(Schema.String),
-            contentHash: Schema.optional(Schema.String),
-            contentManagedIdentity: Schema.optional(Schema.String),
-            assignmentType: Schema.optional(
-              Schema.Literals([
-                "Audit",
-                "DeployAndAutoCorrect",
-                "ApplyAndAutoCorrect",
-                "ApplyAndMonitor",
-              ]),
-            ),
-            assignmentSource: Schema.optional(Schema.NullOr(Schema.String)),
-            contentType: Schema.optional(Schema.NullOr(Schema.String)),
-            configurationParameter: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  name: Schema.optional(Schema.String),
-                  value: Schema.optional(Schema.String),
-                }),
-              ),
-            ),
-            configurationProtectedParameter: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  name: Schema.optional(Schema.String),
-                  value: Schema.optional(Schema.String),
-                }),
-              ),
-            ),
-            configurationSetting: Schema.optional(
-              Schema.Struct({
-                configurationMode: Schema.optional(
-                  Schema.Literals([
-                    "ApplyOnly",
-                    "ApplyAndMonitor",
-                    "ApplyAndAutoCorrect",
-                  ]),
-                ),
-                allowModuleOverwrite: Schema.optional(Schema.Boolean),
-                actionAfterReboot: Schema.optional(
-                  Schema.Literals([
-                    "ContinueConfiguration",
-                    "StopConfiguration",
-                  ]),
-                ),
-                refreshFrequencyMins: Schema.optional(Schema.Number),
-                rebootIfNeeded: Schema.optional(Schema.Boolean),
-                configurationModeFrequencyMins: Schema.optional(Schema.Number),
-              }),
-            ),
-          }),
-        ),
-        complianceStatus: Schema.optional(
-          Schema.Literals(["Compliant", "NonCompliant", "Pending"]),
-        ),
-        lastComplianceStatusChecked: Schema.optional(
-          Schema.NullOr(Schema.String),
-        ),
-        latestReportId: Schema.optional(Schema.NullOr(Schema.String)),
-        parameterHash: Schema.optional(Schema.NullOr(Schema.String)),
-        latestAssignmentReport: Schema.optional(
-          Schema.Struct({
-            id: Schema.optional(Schema.String),
-            reportId: Schema.optional(Schema.String),
-            assignment: Schema.optional(
-              Schema.Struct({
-                name: Schema.optional(Schema.String),
-                configuration: Schema.optional(
-                  Schema.Struct({
-                    name: Schema.optional(Schema.String),
-                    version: Schema.optional(Schema.String),
-                  }),
-                ),
-              }),
-            ),
-            vm: Schema.optional(
-              Schema.Struct({
-                id: Schema.optional(Schema.String),
-                uuid: Schema.optional(Schema.String),
-              }),
-            ),
-            startTime: Schema.optional(Schema.String),
-            endTime: Schema.optional(Schema.String),
-            complianceStatus: Schema.optional(
-              Schema.Literals(["Compliant", "NonCompliant", "Pending"]),
-            ),
-            operationType: Schema.optional(
-              Schema.Literals(["Consistency", "Initial"]),
-            ),
-            resources: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  complianceStatus: Schema.optional(
-                    Schema.Literals(["Compliant", "NonCompliant", "Pending"]),
-                  ),
-                  resourceId: Schema.optional(Schema.String),
-                  reasons: Schema.optional(
-                    Schema.Array(
-                      Schema.Struct({
-                        phrase: Schema.optional(Schema.String),
-                        code: Schema.optional(Schema.String),
-                      }),
-                    ),
-                  ),
-                  properties: Schema.optional(Schema.Unknown),
-                }),
-              ),
-            ),
-          }),
-        ),
-        context: Schema.optional(Schema.String),
-        assignmentHash: Schema.optional(Schema.NullOr(Schema.String)),
-        provisioningState: Schema.optional(
-          Schema.Literals(["Succeeded", "Failed", "Canceled", "Created"]),
-        ),
-        resourceType: Schema.optional(Schema.NullOr(Schema.String)),
-        vmssVMList: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              vmId: Schema.optional(Schema.String),
-              vmResourceId: Schema.optional(Schema.String),
-              complianceStatus: Schema.optional(
-                Schema.Literals(["Compliant", "NonCompliant", "Pending"]),
-              ),
-              latestReportId: Schema.optional(Schema.NullOr(Schema.String)),
-              lastComplianceChecked: Schema.optional(
-                Schema.NullOr(Schema.String),
-              ),
-            }),
-          ),
-        ),
-      }),
+      Schema.suspend(() => GuestConfigurationAssignmentPropertiesSchema),
     ),
     systemData: Schema.optional(
       Schema.Struct({
@@ -1359,7 +979,9 @@ export const GuestConfigurationConnectedVMwarevSphereAssignmentsCreateOrUpdateIn
     id: Schema.optional(Schema.String),
     name: Schema.String,
     location: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
+    type: Schema.optional(
+      Schema.suspend(() => Azure_Core_armResourceTypeSchema),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -1373,10 +995,29 @@ export type GuestConfigurationConnectedVMwarevSphereAssignmentsCreateOrUpdateInp
 // Output Schema
 export const GuestConfigurationConnectedVMwarevSphereAssignmentsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => GuestConfigurationAssignmentPropertiesSchema),
+    ),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.String,
     location: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
+    type: Schema.optional(
+      Schema.suspend(() => Azure_Core_armResourceTypeSchema),
+    ),
   });
 export type GuestConfigurationConnectedVMwarevSphereAssignmentsCreateOrUpdateOutput =
   typeof GuestConfigurationConnectedVMwarevSphereAssignmentsCreateOrUpdateOutput.Type;
@@ -1457,10 +1098,29 @@ export type GuestConfigurationConnectedVMwarevSphereAssignmentsGetInput =
 // Output Schema
 export const GuestConfigurationConnectedVMwarevSphereAssignmentsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => GuestConfigurationAssignmentPropertiesSchema),
+    ),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.String,
     location: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
+    type: Schema.optional(
+      Schema.suspend(() => Azure_Core_armResourceTypeSchema),
+    ),
   });
 export type GuestConfigurationConnectedVMwarevSphereAssignmentsGetOutput =
   typeof GuestConfigurationConnectedVMwarevSphereAssignmentsGetOutput.Type;
@@ -1500,14 +1160,7 @@ export type GuestConfigurationConnectedVMwarevSphereAssignmentsListInput =
 export const GuestConfigurationConnectedVMwarevSphereAssignmentsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.String,
-          location: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => GuestConfigurationAssignmentSchema)),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -1552,64 +1205,7 @@ export const GuestConfigurationConnectedVMwarevSphereAssignmentsReportsGetOutput
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     properties: Schema.optional(
-      Schema.Struct({
-        complianceStatus: Schema.optional(
-          Schema.Literals(["Compliant", "NonCompliant", "Pending"]),
-        ),
-        reportId: Schema.optional(Schema.String),
-        assignment: Schema.optional(
-          Schema.Struct({
-            name: Schema.optional(Schema.String),
-            configuration: Schema.optional(
-              Schema.Struct({
-                name: Schema.optional(Schema.String),
-                version: Schema.optional(Schema.String),
-              }),
-            ),
-          }),
-        ),
-        vm: Schema.optional(
-          Schema.Struct({
-            id: Schema.optional(Schema.String),
-            uuid: Schema.optional(Schema.String),
-          }),
-        ),
-        startTime: Schema.optional(Schema.String),
-        endTime: Schema.optional(Schema.String),
-        details: Schema.optional(
-          Schema.Struct({
-            complianceStatus: Schema.optional(
-              Schema.Literals(["Compliant", "NonCompliant", "Pending"]),
-            ),
-            startTime: Schema.optional(Schema.String),
-            endTime: Schema.optional(Schema.String),
-            jobId: Schema.optional(Schema.String),
-            operationType: Schema.optional(
-              Schema.Literals(["Consistency", "Initial"]),
-            ),
-            resources: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  complianceStatus: Schema.optional(
-                    Schema.Literals(["Compliant", "NonCompliant", "Pending"]),
-                  ),
-                  resourceId: Schema.optional(Schema.String),
-                  reasons: Schema.optional(
-                    Schema.Array(
-                      Schema.Struct({
-                        phrase: Schema.optional(Schema.String),
-                        code: Schema.optional(Schema.String),
-                      }),
-                    ),
-                  ),
-                  properties: Schema.optional(Schema.Unknown),
-                }),
-              ),
-            ),
-          }),
-        ),
-        vmssResourceId: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(() => GuestConfigurationAssignmentReportPropertiesSchema),
     ),
   });
 export type GuestConfigurationConnectedVMwarevSphereAssignmentsReportsGetOutput =
@@ -1655,74 +1251,7 @@ export const GuestConfigurationConnectedVMwarevSphereAssignmentsReportsListOutpu
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          properties: Schema.optional(
-            Schema.Struct({
-              complianceStatus: Schema.optional(
-                Schema.Literals(["Compliant", "NonCompliant", "Pending"]),
-              ),
-              reportId: Schema.optional(Schema.String),
-              assignment: Schema.optional(
-                Schema.Struct({
-                  name: Schema.optional(Schema.String),
-                  configuration: Schema.optional(
-                    Schema.Struct({
-                      name: Schema.optional(Schema.String),
-                      version: Schema.optional(Schema.String),
-                    }),
-                  ),
-                }),
-              ),
-              vm: Schema.optional(
-                Schema.Struct({
-                  id: Schema.optional(Schema.String),
-                  uuid: Schema.optional(Schema.String),
-                }),
-              ),
-              startTime: Schema.optional(Schema.String),
-              endTime: Schema.optional(Schema.String),
-              details: Schema.optional(
-                Schema.Struct({
-                  complianceStatus: Schema.optional(
-                    Schema.Literals(["Compliant", "NonCompliant", "Pending"]),
-                  ),
-                  startTime: Schema.optional(Schema.String),
-                  endTime: Schema.optional(Schema.String),
-                  jobId: Schema.optional(Schema.String),
-                  operationType: Schema.optional(
-                    Schema.Literals(["Consistency", "Initial"]),
-                  ),
-                  resources: Schema.optional(
-                    Schema.Array(
-                      Schema.Struct({
-                        complianceStatus: Schema.optional(
-                          Schema.Literals([
-                            "Compliant",
-                            "NonCompliant",
-                            "Pending",
-                          ]),
-                        ),
-                        resourceId: Schema.optional(Schema.String),
-                        reasons: Schema.optional(
-                          Schema.Array(
-                            Schema.Struct({
-                              phrase: Schema.optional(Schema.String),
-                              code: Schema.optional(Schema.String),
-                            }),
-                          ),
-                        ),
-                        properties: Schema.optional(Schema.Unknown),
-                      }),
-                    ),
-                  ),
-                }),
-              ),
-              vmssResourceId: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
+        Schema.suspend(() => GuestConfigurationAssignmentReportSchema),
       ),
     ),
     nextLink: Schema.optional(Schema.String),
@@ -1771,64 +1300,7 @@ export const GuestConfigurationHCRPAssignmentReportsGetOutput =
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     properties: Schema.optional(
-      Schema.Struct({
-        complianceStatus: Schema.optional(
-          Schema.Literals(["Compliant", "NonCompliant", "Pending"]),
-        ),
-        reportId: Schema.optional(Schema.String),
-        assignment: Schema.optional(
-          Schema.Struct({
-            name: Schema.optional(Schema.String),
-            configuration: Schema.optional(
-              Schema.Struct({
-                name: Schema.optional(Schema.String),
-                version: Schema.optional(Schema.String),
-              }),
-            ),
-          }),
-        ),
-        vm: Schema.optional(
-          Schema.Struct({
-            id: Schema.optional(Schema.String),
-            uuid: Schema.optional(Schema.String),
-          }),
-        ),
-        startTime: Schema.optional(Schema.String),
-        endTime: Schema.optional(Schema.String),
-        details: Schema.optional(
-          Schema.Struct({
-            complianceStatus: Schema.optional(
-              Schema.Literals(["Compliant", "NonCompliant", "Pending"]),
-            ),
-            startTime: Schema.optional(Schema.String),
-            endTime: Schema.optional(Schema.String),
-            jobId: Schema.optional(Schema.String),
-            operationType: Schema.optional(
-              Schema.Literals(["Consistency", "Initial"]),
-            ),
-            resources: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  complianceStatus: Schema.optional(
-                    Schema.Literals(["Compliant", "NonCompliant", "Pending"]),
-                  ),
-                  resourceId: Schema.optional(Schema.String),
-                  reasons: Schema.optional(
-                    Schema.Array(
-                      Schema.Struct({
-                        phrase: Schema.optional(Schema.String),
-                        code: Schema.optional(Schema.String),
-                      }),
-                    ),
-                  ),
-                  properties: Schema.optional(Schema.Unknown),
-                }),
-              ),
-            ),
-          }),
-        ),
-        vmssResourceId: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(() => GuestConfigurationAssignmentReportPropertiesSchema),
     ),
   });
 export type GuestConfigurationHCRPAssignmentReportsGetOutput =
@@ -1872,74 +1344,7 @@ export const GuestConfigurationHCRPAssignmentReportsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          properties: Schema.optional(
-            Schema.Struct({
-              complianceStatus: Schema.optional(
-                Schema.Literals(["Compliant", "NonCompliant", "Pending"]),
-              ),
-              reportId: Schema.optional(Schema.String),
-              assignment: Schema.optional(
-                Schema.Struct({
-                  name: Schema.optional(Schema.String),
-                  configuration: Schema.optional(
-                    Schema.Struct({
-                      name: Schema.optional(Schema.String),
-                      version: Schema.optional(Schema.String),
-                    }),
-                  ),
-                }),
-              ),
-              vm: Schema.optional(
-                Schema.Struct({
-                  id: Schema.optional(Schema.String),
-                  uuid: Schema.optional(Schema.String),
-                }),
-              ),
-              startTime: Schema.optional(Schema.String),
-              endTime: Schema.optional(Schema.String),
-              details: Schema.optional(
-                Schema.Struct({
-                  complianceStatus: Schema.optional(
-                    Schema.Literals(["Compliant", "NonCompliant", "Pending"]),
-                  ),
-                  startTime: Schema.optional(Schema.String),
-                  endTime: Schema.optional(Schema.String),
-                  jobId: Schema.optional(Schema.String),
-                  operationType: Schema.optional(
-                    Schema.Literals(["Consistency", "Initial"]),
-                  ),
-                  resources: Schema.optional(
-                    Schema.Array(
-                      Schema.Struct({
-                        complianceStatus: Schema.optional(
-                          Schema.Literals([
-                            "Compliant",
-                            "NonCompliant",
-                            "Pending",
-                          ]),
-                        ),
-                        resourceId: Schema.optional(Schema.String),
-                        reasons: Schema.optional(
-                          Schema.Array(
-                            Schema.Struct({
-                              phrase: Schema.optional(Schema.String),
-                              code: Schema.optional(Schema.String),
-                            }),
-                          ),
-                        ),
-                        properties: Schema.optional(Schema.Unknown),
-                      }),
-                    ),
-                  ),
-                }),
-              ),
-              vmssResourceId: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
+        Schema.suspend(() => GuestConfigurationAssignmentReportSchema),
       ),
     ),
     nextLink: Schema.optional(Schema.String),
@@ -1970,145 +1375,7 @@ export const GuestConfigurationHCRPAssignmentsCreateOrUpdateInput =
     machineName: Schema.String.pipe(T.PathParam()),
     guestConfigurationAssignmentName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        targetResourceId: Schema.optional(Schema.NullOr(Schema.String)),
-        guestConfiguration: Schema.optional(
-          Schema.Struct({
-            kind: Schema.optional(Schema.Literals(["DSC"])),
-            name: Schema.optional(Schema.String),
-            version: Schema.optional(Schema.String),
-            contentUri: Schema.optional(Schema.String),
-            contentHash: Schema.optional(Schema.String),
-            contentManagedIdentity: Schema.optional(Schema.String),
-            assignmentType: Schema.optional(
-              Schema.Literals([
-                "Audit",
-                "DeployAndAutoCorrect",
-                "ApplyAndAutoCorrect",
-                "ApplyAndMonitor",
-              ]),
-            ),
-            assignmentSource: Schema.optional(Schema.NullOr(Schema.String)),
-            contentType: Schema.optional(Schema.NullOr(Schema.String)),
-            configurationParameter: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  name: Schema.optional(Schema.String),
-                  value: Schema.optional(Schema.String),
-                }),
-              ),
-            ),
-            configurationProtectedParameter: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  name: Schema.optional(Schema.String),
-                  value: Schema.optional(Schema.String),
-                }),
-              ),
-            ),
-            configurationSetting: Schema.optional(
-              Schema.Struct({
-                configurationMode: Schema.optional(
-                  Schema.Literals([
-                    "ApplyOnly",
-                    "ApplyAndMonitor",
-                    "ApplyAndAutoCorrect",
-                  ]),
-                ),
-                allowModuleOverwrite: Schema.optional(Schema.Boolean),
-                actionAfterReboot: Schema.optional(
-                  Schema.Literals([
-                    "ContinueConfiguration",
-                    "StopConfiguration",
-                  ]),
-                ),
-                refreshFrequencyMins: Schema.optional(Schema.Number),
-                rebootIfNeeded: Schema.optional(Schema.Boolean),
-                configurationModeFrequencyMins: Schema.optional(Schema.Number),
-              }),
-            ),
-          }),
-        ),
-        complianceStatus: Schema.optional(
-          Schema.Literals(["Compliant", "NonCompliant", "Pending"]),
-        ),
-        lastComplianceStatusChecked: Schema.optional(
-          Schema.NullOr(Schema.String),
-        ),
-        latestReportId: Schema.optional(Schema.NullOr(Schema.String)),
-        parameterHash: Schema.optional(Schema.NullOr(Schema.String)),
-        latestAssignmentReport: Schema.optional(
-          Schema.Struct({
-            id: Schema.optional(Schema.String),
-            reportId: Schema.optional(Schema.String),
-            assignment: Schema.optional(
-              Schema.Struct({
-                name: Schema.optional(Schema.String),
-                configuration: Schema.optional(
-                  Schema.Struct({
-                    name: Schema.optional(Schema.String),
-                    version: Schema.optional(Schema.String),
-                  }),
-                ),
-              }),
-            ),
-            vm: Schema.optional(
-              Schema.Struct({
-                id: Schema.optional(Schema.String),
-                uuid: Schema.optional(Schema.String),
-              }),
-            ),
-            startTime: Schema.optional(Schema.String),
-            endTime: Schema.optional(Schema.String),
-            complianceStatus: Schema.optional(
-              Schema.Literals(["Compliant", "NonCompliant", "Pending"]),
-            ),
-            operationType: Schema.optional(
-              Schema.Literals(["Consistency", "Initial"]),
-            ),
-            resources: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  complianceStatus: Schema.optional(
-                    Schema.Literals(["Compliant", "NonCompliant", "Pending"]),
-                  ),
-                  resourceId: Schema.optional(Schema.String),
-                  reasons: Schema.optional(
-                    Schema.Array(
-                      Schema.Struct({
-                        phrase: Schema.optional(Schema.String),
-                        code: Schema.optional(Schema.String),
-                      }),
-                    ),
-                  ),
-                  properties: Schema.optional(Schema.Unknown),
-                }),
-              ),
-            ),
-          }),
-        ),
-        context: Schema.optional(Schema.String),
-        assignmentHash: Schema.optional(Schema.NullOr(Schema.String)),
-        provisioningState: Schema.optional(
-          Schema.Literals(["Succeeded", "Failed", "Canceled", "Created"]),
-        ),
-        resourceType: Schema.optional(Schema.NullOr(Schema.String)),
-        vmssVMList: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              vmId: Schema.optional(Schema.String),
-              vmResourceId: Schema.optional(Schema.String),
-              complianceStatus: Schema.optional(
-                Schema.Literals(["Compliant", "NonCompliant", "Pending"]),
-              ),
-              latestReportId: Schema.optional(Schema.NullOr(Schema.String)),
-              lastComplianceChecked: Schema.optional(
-                Schema.NullOr(Schema.String),
-              ),
-            }),
-          ),
-        ),
-      }),
+      Schema.suspend(() => GuestConfigurationAssignmentPropertiesSchema),
     ),
     systemData: Schema.optional(
       Schema.Struct({
@@ -2127,7 +1394,9 @@ export const GuestConfigurationHCRPAssignmentsCreateOrUpdateInput =
     id: Schema.optional(Schema.String),
     name: Schema.String,
     location: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
+    type: Schema.optional(
+      Schema.suspend(() => Azure_Core_armResourceTypeSchema),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -2141,10 +1410,29 @@ export type GuestConfigurationHCRPAssignmentsCreateOrUpdateInput =
 // Output Schema
 export const GuestConfigurationHCRPAssignmentsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => GuestConfigurationAssignmentPropertiesSchema),
+    ),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.String,
     location: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
+    type: Schema.optional(
+      Schema.suspend(() => Azure_Core_armResourceTypeSchema),
+    ),
   });
 export type GuestConfigurationHCRPAssignmentsCreateOrUpdateOutput =
   typeof GuestConfigurationHCRPAssignmentsCreateOrUpdateOutput.Type;
@@ -2222,10 +1510,29 @@ export type GuestConfigurationHCRPAssignmentsGetInput =
 // Output Schema
 export const GuestConfigurationHCRPAssignmentsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => GuestConfigurationAssignmentPropertiesSchema),
+    ),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.String,
     location: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
+    type: Schema.optional(
+      Schema.suspend(() => Azure_Core_armResourceTypeSchema),
+    ),
   });
 export type GuestConfigurationHCRPAssignmentsGetOutput =
   typeof GuestConfigurationHCRPAssignmentsGetOutput.Type;
@@ -2265,14 +1572,7 @@ export type GuestConfigurationHCRPAssignmentsListInput =
 export const GuestConfigurationHCRPAssignmentsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.String,
-          location: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => GuestConfigurationAssignmentSchema)),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -2307,24 +1607,7 @@ export type OperationsListInput = typeof OperationsListInput.Type;
 
 // Output Schema
 export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  value: Schema.Array(
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      display: Schema.optional(
-        Schema.Struct({
-          provider: Schema.optional(Schema.String),
-          resource: Schema.optional(Schema.String),
-          operation: Schema.optional(Schema.String),
-          description: Schema.optional(Schema.String),
-        }),
-      ),
-      properties: Schema.optional(
-        Schema.Struct({
-          statusCode: Schema.optional(Schema.String),
-        }),
-      ),
-    }),
-  ),
+  value: Schema.Array(Schema.suspend(() => OperationSchema)),
   nextLink: Schema.optional(Schema.String),
 });
 export type OperationsListOutput = typeof OperationsListOutput.Type;

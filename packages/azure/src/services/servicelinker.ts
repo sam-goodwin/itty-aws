@@ -8,6 +8,277 @@ import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
+// Shared schemas
+const DryrunResourceSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+});
+const systemDataSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  createdBy: Schema.optional(Schema.String),
+  createdByType: Schema.optional(
+    Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+  ),
+  createdAt: Schema.optional(Schema.String),
+  lastModifiedBy: Schema.optional(Schema.String),
+  lastModifiedByType: Schema.optional(
+    Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+  ),
+  lastModifiedAt: Schema.optional(Schema.String),
+});
+const DryrunPropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  parameters: Schema.optional(Schema.suspend(() => DryrunParametersSchema)),
+  prerequisiteResults: Schema.optional(
+    Schema.Array(Schema.suspend(() => DryrunPrerequisiteResultSchema)),
+  ),
+  operationPreviews: Schema.optional(
+    Schema.Array(Schema.suspend(() => DryrunOperationPreviewSchema)),
+  ),
+  provisioningState: Schema.optional(Schema.String),
+});
+const DryrunParametersSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  actionName: Schema.suspend(() => DryrunActionNameSchema),
+});
+const DryrunActionNameSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "createOrUpdate",
+]);
+const DryrunPrerequisiteResultSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    type: Schema.suspend(() => DryrunPrerequisiteResultTypeSchema),
+  });
+const DryrunPrerequisiteResultTypeSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+    "basicError",
+    "permissionsMissing",
+  ]);
+const DryrunOperationPreviewSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  operationType: Schema.optional(
+    Schema.Literals(["configConnection", "configNetwork", "configAuth"]),
+  ),
+  description: Schema.optional(Schema.String),
+  action: Schema.optional(Schema.String),
+  scope: Schema.optional(Schema.String),
+});
+const LinkerResourceSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+});
+const LinkerPropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  targetService: Schema.optional(Schema.suspend(() => TargetServiceBaseSchema)),
+  authInfo: Schema.optional(Schema.suspend(() => AuthInfoBaseSchema)),
+  clientType: Schema.optional(Schema.suspend(() => ClientTypeSchema)),
+  provisioningState: Schema.optional(Schema.String),
+  vNetSolution: Schema.optional(Schema.suspend(() => VNetSolutionSchema)),
+  secretStore: Schema.optional(Schema.suspend(() => SecretStoreSchema)),
+  scope: Schema.optional(Schema.NullOr(Schema.String)),
+  publicNetworkSolution: Schema.optional(
+    Schema.suspend(() => PublicNetworkSolutionSchema),
+  ),
+  configurationInfo: Schema.optional(
+    Schema.suspend(() => ConfigurationInfoSchema),
+  ),
+});
+const TargetServiceBaseSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  type: Schema.suspend(() => TargetServiceTypeSchema),
+});
+const TargetServiceTypeSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "AzureResource",
+  "ConfluentBootstrapServer",
+  "ConfluentSchemaRegistry",
+  "SelfHostedServer",
+]);
+const AuthInfoBaseSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  authType: Schema.suspend(() => AuthTypeSchema),
+  authMode: Schema.optional(Schema.suspend(() => AuthModeSchema)),
+});
+const AuthTypeSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "systemAssignedIdentity",
+  "userAssignedIdentity",
+  "servicePrincipalSecret",
+  "servicePrincipalCertificate",
+  "secret",
+  "accessKey",
+  "userAccount",
+  "easyAuthMicrosoftEntraID",
+]);
+const AuthModeSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "optInAllAuth",
+  "optOutAllAuth",
+]);
+const ClientTypeSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "none",
+  "dotnet",
+  "java",
+  "python",
+  "go",
+  "php",
+  "ruby",
+  "django",
+  "nodejs",
+  "springBoot",
+  "kafka-springBoot",
+  "jms-springBoot",
+  "dapr",
+]);
+const VNetSolutionSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  type: Schema.optional(
+    Schema.NullOr(Schema.Literals(["serviceEndpoint", "privateLink"])),
+  ),
+  deleteOrUpdateBehavior: Schema.optional(
+    Schema.suspend(() => DeleteOrUpdateBehaviorSchema),
+  ),
+});
+const DeleteOrUpdateBehaviorSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Literals(["Default", "ForcedCleanup"]);
+const SecretStoreSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  keyVaultId: Schema.optional(Schema.NullOr(Schema.String)),
+  keyVaultSecretName: Schema.optional(Schema.NullOr(Schema.String)),
+});
+const PublicNetworkSolutionSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  deleteOrUpdateBehavior: Schema.optional(
+    Schema.suspend(() => DeleteOrUpdateBehaviorSchema),
+  ),
+  action: Schema.optional(Schema.suspend(() => ActionTypeSchema)),
+  firewallRules: Schema.optional(Schema.suspend(() => FirewallRulesSchema)),
+});
+const ActionTypeSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "enable",
+  "optOut",
+]);
+const FirewallRulesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  ipRanges: Schema.optional(Schema.Array(Schema.String)),
+  azureServices: Schema.optional(Schema.suspend(() => AllowTypeSchema)),
+  callerClientIP: Schema.optional(Schema.suspend(() => AllowTypeSchema)),
+});
+const AllowTypeSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "true",
+  "false",
+]);
+const ConfigurationInfoSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  deleteOrUpdateBehavior: Schema.optional(
+    Schema.suspend(() => DeleteOrUpdateBehaviorSchema),
+  ),
+  action: Schema.optional(Schema.suspend(() => ActionTypeSchema)),
+  customizedKeys: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  daprProperties: Schema.optional(Schema.suspend(() => DaprPropertiesSchema)),
+  additionalConfigurations: Schema.optional(
+    Schema.Record(Schema.String, Schema.String),
+  ),
+  additionalConnectionStringProperties: Schema.optional(
+    Schema.Record(Schema.String, Schema.String),
+  ),
+  configurationStore: Schema.optional(
+    Schema.suspend(() => ConfigurationStoreSchema),
+  ),
+});
+const DaprPropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  version: Schema.optional(Schema.NullOr(Schema.String)),
+  componentType: Schema.optional(Schema.NullOr(Schema.String)),
+  secretStoreComponent: Schema.optional(Schema.NullOr(Schema.String)),
+  metadata: Schema.optional(
+    Schema.Array(Schema.suspend(() => DaprMetadataSchema)),
+  ),
+  scopes: Schema.optional(Schema.Array(Schema.String)),
+  runtimeVersion: Schema.optional(Schema.NullOr(Schema.String)),
+  bindingComponentDirection: Schema.optional(
+    Schema.NullOr(Schema.Literals(["input", "output"])),
+  ),
+});
+const DaprMetadataSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  value: Schema.optional(Schema.String),
+  secretRef: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+  required: Schema.optional(Schema.Literals(["true", "false"])),
+});
+const ConfigurationStoreSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  appConfigurationId: Schema.optional(Schema.NullOr(Schema.String)),
+});
+const ValidateResultSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  linkerName: Schema.optional(Schema.NullOr(Schema.String)),
+  isConnectionAvailable: Schema.optional(Schema.NullOr(Schema.Boolean)),
+  reportStartTimeUtc: Schema.optional(Schema.NullOr(Schema.String)),
+  reportEndTimeUtc: Schema.optional(Schema.NullOr(Schema.String)),
+  sourceId: Schema.optional(Schema.NullOr(Schema.String)),
+  targetId: Schema.optional(Schema.NullOr(Schema.String)),
+  authType: Schema.optional(Schema.suspend(() => AuthTypeSchema)),
+  validationDetail: Schema.optional(
+    Schema.Array(Schema.suspend(() => ValidationResultItemSchema)),
+  ),
+});
+const ValidationResultItemSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.NullOr(Schema.String)),
+  result: Schema.optional(
+    Schema.NullOr(Schema.Literals(["success", "failure", "warning"])),
+  ),
+  errorMessage: Schema.optional(Schema.NullOr(Schema.String)),
+  errorCode: Schema.optional(Schema.NullOr(Schema.String)),
+});
+const SourceConfigurationSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  value: Schema.optional(Schema.NullOr(Schema.String)),
+  configType: Schema.optional(
+    Schema.suspend(() => LinkerConfigurationTypeSchema),
+  ),
+  keyVaultReferenceIdentity: Schema.optional(Schema.NullOr(Schema.String)),
+  description: Schema.optional(Schema.NullOr(Schema.String)),
+});
+const LinkerConfigurationTypeSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Literals(["Default", "KeyVaultSecret"]);
+const OperationSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  isDataAction: Schema.optional(Schema.Boolean),
+  display: Schema.optional(
+    Schema.Struct({
+      provider: Schema.optional(Schema.String),
+      resource: Schema.optional(Schema.String),
+      operation: Schema.optional(Schema.String),
+      description: Schema.optional(Schema.String),
+    }),
+  ),
+  origin: Schema.optional(Schema.Literals(["user", "system", "user,system"])),
+  actionType: Schema.optional(Schema.Literals(["Internal"])),
+});
+const ConfigurationNameItemSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.optional(Schema.suspend(() => ConfigurationNamesSchema)),
+});
+const ConfigurationNamesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  targetService: Schema.optional(Schema.String),
+  clientType: Schema.optional(Schema.suspend(() => ClientTypeSchema)),
+  authType: Schema.optional(Schema.suspend(() => AuthTypeSchema)),
+  secretType: Schema.optional(Schema.suspend(() => SecretSourceTypeSchema)),
+  daprProperties: Schema.optional(Schema.suspend(() => DaprPropertiesSchema)),
+  names: Schema.optional(
+    Schema.Array(Schema.suspend(() => ConfigurationNameSchema)),
+  ),
+});
+const SecretSourceTypeSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "rawValue",
+  "keyVaultSecret",
+]);
+const ConfigurationNameSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  value: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+  required: Schema.optional(Schema.Boolean),
+});
+const DaprConfigurationResourceSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => DaprConfigurationPropertiesSchema),
+    ),
+  });
+const DaprConfigurationPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    targetType: Schema.optional(Schema.String),
+    authType: Schema.optional(Schema.suspend(() => AuthTypeSchema)),
+    daprProperties: Schema.optional(Schema.suspend(() => DaprPropertiesSchema)),
+  });
+
 // Input Schema
 export const ConfigurationNamesListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -27,83 +298,7 @@ export type ConfigurationNamesListInput =
 export const ConfigurationNamesListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          properties: Schema.optional(
-            Schema.Struct({
-              targetService: Schema.optional(Schema.String),
-              clientType: Schema.optional(
-                Schema.Literals([
-                  "none",
-                  "dotnet",
-                  "java",
-                  "python",
-                  "go",
-                  "php",
-                  "ruby",
-                  "django",
-                  "nodejs",
-                  "springBoot",
-                  "kafka-springBoot",
-                  "jms-springBoot",
-                  "dapr",
-                ]),
-              ),
-              authType: Schema.optional(
-                Schema.Literals([
-                  "systemAssignedIdentity",
-                  "userAssignedIdentity",
-                  "servicePrincipalSecret",
-                  "servicePrincipalCertificate",
-                  "secret",
-                  "accessKey",
-                  "userAccount",
-                  "easyAuthMicrosoftEntraID",
-                ]),
-              ),
-              secretType: Schema.optional(
-                Schema.Literals(["rawValue", "keyVaultSecret"]),
-              ),
-              daprProperties: Schema.optional(
-                Schema.Struct({
-                  version: Schema.optional(Schema.NullOr(Schema.String)),
-                  componentType: Schema.optional(Schema.NullOr(Schema.String)),
-                  secretStoreComponent: Schema.optional(
-                    Schema.NullOr(Schema.String),
-                  ),
-                  metadata: Schema.optional(
-                    Schema.Array(
-                      Schema.Struct({
-                        name: Schema.optional(Schema.String),
-                        value: Schema.optional(Schema.String),
-                        secretRef: Schema.optional(Schema.String),
-                        description: Schema.optional(Schema.String),
-                        required: Schema.optional(
-                          Schema.Literals(["true", "false"]),
-                        ),
-                      }),
-                    ),
-                  ),
-                  scopes: Schema.optional(Schema.Array(Schema.String)),
-                  runtimeVersion: Schema.optional(Schema.NullOr(Schema.String)),
-                  bindingComponentDirection: Schema.optional(
-                    Schema.NullOr(Schema.Literals(["input", "output"])),
-                  ),
-                }),
-              ),
-              names: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    value: Schema.optional(Schema.String),
-                    description: Schema.optional(Schema.String),
-                    required: Schema.optional(Schema.Boolean),
-                  }),
-                ),
-              ),
-            }),
-          ),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => ConfigurationNameItemSchema)),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -130,40 +325,7 @@ export const ConnectorCreateDryrunInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
     dryrunName: Schema.String.pipe(T.PathParam()),
-    properties: Schema.optional(
-      Schema.Struct({
-        parameters: Schema.optional(
-          Schema.Struct({
-            actionName: Schema.Literals(["createOrUpdate"]),
-          }),
-        ),
-        prerequisiteResults: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              type: Schema.Literals(["basicError", "permissionsMissing"]),
-            }),
-          ),
-        ),
-        operationPreviews: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              name: Schema.optional(Schema.String),
-              operationType: Schema.optional(
-                Schema.Literals([
-                  "configConnection",
-                  "configNetwork",
-                  "configAuth",
-                ]),
-              ),
-              description: Schema.optional(Schema.String),
-              action: Schema.optional(Schema.String),
-              scope: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        provisioningState: Schema.optional(Schema.String),
-      }),
-    ),
+    properties: Schema.optional(Schema.suspend(() => DryrunPropertiesSchema)),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -177,23 +339,11 @@ export type ConnectorCreateDryrunInput = typeof ConnectorCreateDryrunInput.Type;
 // Output Schema
 export const ConnectorCreateDryrunOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(Schema.suspend(() => DryrunPropertiesSchema)),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type ConnectorCreateDryrunOutput =
   typeof ConnectorCreateDryrunOutput.Type;
@@ -218,138 +368,7 @@ export const ConnectorCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
-    properties: Schema.Struct({
-      targetService: Schema.optional(
-        Schema.Struct({
-          type: Schema.Literals([
-            "AzureResource",
-            "ConfluentBootstrapServer",
-            "ConfluentSchemaRegistry",
-            "SelfHostedServer",
-          ]),
-        }),
-      ),
-      authInfo: Schema.optional(
-        Schema.Struct({
-          authType: Schema.Literals([
-            "systemAssignedIdentity",
-            "userAssignedIdentity",
-            "servicePrincipalSecret",
-            "servicePrincipalCertificate",
-            "secret",
-            "accessKey",
-            "userAccount",
-            "easyAuthMicrosoftEntraID",
-          ]),
-          authMode: Schema.optional(
-            Schema.Literals(["optInAllAuth", "optOutAllAuth"]),
-          ),
-        }),
-      ),
-      clientType: Schema.optional(
-        Schema.Literals([
-          "none",
-          "dotnet",
-          "java",
-          "python",
-          "go",
-          "php",
-          "ruby",
-          "django",
-          "nodejs",
-          "springBoot",
-          "kafka-springBoot",
-          "jms-springBoot",
-          "dapr",
-        ]),
-      ),
-      provisioningState: Schema.optional(Schema.String),
-      vNetSolution: Schema.optional(
-        Schema.Struct({
-          type: Schema.optional(
-            Schema.NullOr(Schema.Literals(["serviceEndpoint", "privateLink"])),
-          ),
-          deleteOrUpdateBehavior: Schema.optional(
-            Schema.Literals(["Default", "ForcedCleanup"]),
-          ),
-        }),
-      ),
-      secretStore: Schema.optional(
-        Schema.Struct({
-          keyVaultId: Schema.optional(Schema.NullOr(Schema.String)),
-          keyVaultSecretName: Schema.optional(Schema.NullOr(Schema.String)),
-        }),
-      ),
-      scope: Schema.optional(Schema.NullOr(Schema.String)),
-      publicNetworkSolution: Schema.optional(
-        Schema.Struct({
-          deleteOrUpdateBehavior: Schema.optional(
-            Schema.Literals(["Default", "ForcedCleanup"]),
-          ),
-          action: Schema.optional(Schema.Literals(["enable", "optOut"])),
-          firewallRules: Schema.optional(
-            Schema.Struct({
-              ipRanges: Schema.optional(Schema.Array(Schema.String)),
-              azureServices: Schema.optional(
-                Schema.Literals(["true", "false"]),
-              ),
-              callerClientIP: Schema.optional(
-                Schema.Literals(["true", "false"]),
-              ),
-            }),
-          ),
-        }),
-      ),
-      configurationInfo: Schema.optional(
-        Schema.Struct({
-          deleteOrUpdateBehavior: Schema.optional(
-            Schema.Literals(["Default", "ForcedCleanup"]),
-          ),
-          action: Schema.optional(Schema.Literals(["enable", "optOut"])),
-          customizedKeys: Schema.optional(
-            Schema.Record(Schema.String, Schema.String),
-          ),
-          daprProperties: Schema.optional(
-            Schema.Struct({
-              version: Schema.optional(Schema.NullOr(Schema.String)),
-              componentType: Schema.optional(Schema.NullOr(Schema.String)),
-              secretStoreComponent: Schema.optional(
-                Schema.NullOr(Schema.String),
-              ),
-              metadata: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    name: Schema.optional(Schema.String),
-                    value: Schema.optional(Schema.String),
-                    secretRef: Schema.optional(Schema.String),
-                    description: Schema.optional(Schema.String),
-                    required: Schema.optional(
-                      Schema.Literals(["true", "false"]),
-                    ),
-                  }),
-                ),
-              ),
-              scopes: Schema.optional(Schema.Array(Schema.String)),
-              runtimeVersion: Schema.optional(Schema.NullOr(Schema.String)),
-              bindingComponentDirection: Schema.optional(
-                Schema.NullOr(Schema.Literals(["input", "output"])),
-              ),
-            }),
-          ),
-          additionalConfigurations: Schema.optional(
-            Schema.Record(Schema.String, Schema.String),
-          ),
-          additionalConnectionStringProperties: Schema.optional(
-            Schema.Record(Schema.String, Schema.String),
-          ),
-          configurationStore: Schema.optional(
-            Schema.Struct({
-              appConfigurationId: Schema.optional(Schema.NullOr(Schema.String)),
-            }),
-          ),
-        }),
-      ),
-    }),
+    properties: Schema.suspend(() => LinkerPropertiesSchema),
     systemData: Schema.optional(
       Schema.Struct({
         createdBy: Schema.optional(Schema.String),
@@ -378,23 +397,11 @@ export type ConnectorCreateOrUpdateInput =
 // Output Schema
 export const ConnectorCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.suspend(() => LinkerPropertiesSchema),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
   });
 export type ConnectorCreateOrUpdateOutput =
   typeof ConnectorCreateOrUpdateOutput.Type;
@@ -485,35 +492,13 @@ export const ConnectorGenerateConfigurationsInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
     deleteOrUpdateBehavior: Schema.optional(
-      Schema.Literals(["Default", "ForcedCleanup"]),
+      Schema.suspend(() => DeleteOrUpdateBehaviorSchema),
     ),
-    action: Schema.optional(Schema.Literals(["enable", "optOut"])),
+    action: Schema.optional(Schema.suspend(() => ActionTypeSchema)),
     customizedKeys: Schema.optional(
       Schema.Record(Schema.String, Schema.String),
     ),
-    daprProperties: Schema.optional(
-      Schema.Struct({
-        version: Schema.optional(Schema.NullOr(Schema.String)),
-        componentType: Schema.optional(Schema.NullOr(Schema.String)),
-        secretStoreComponent: Schema.optional(Schema.NullOr(Schema.String)),
-        metadata: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              name: Schema.optional(Schema.String),
-              value: Schema.optional(Schema.String),
-              secretRef: Schema.optional(Schema.String),
-              description: Schema.optional(Schema.String),
-              required: Schema.optional(Schema.Literals(["true", "false"])),
-            }),
-          ),
-        ),
-        scopes: Schema.optional(Schema.Array(Schema.String)),
-        runtimeVersion: Schema.optional(Schema.NullOr(Schema.String)),
-        bindingComponentDirection: Schema.optional(
-          Schema.NullOr(Schema.Literals(["input", "output"])),
-        ),
-      }),
-    ),
+    daprProperties: Schema.optional(Schema.suspend(() => DaprPropertiesSchema)),
     additionalConfigurations: Schema.optional(
       Schema.Record(Schema.String, Schema.String),
     ),
@@ -521,9 +506,7 @@ export const ConnectorGenerateConfigurationsInput =
       Schema.Record(Schema.String, Schema.String),
     ),
     configurationStore: Schema.optional(
-      Schema.Struct({
-        appConfigurationId: Schema.optional(Schema.NullOr(Schema.String)),
-      }),
+      Schema.suspend(() => ConfigurationStoreSchema),
     ),
   }).pipe(
     T.Http({
@@ -539,19 +522,7 @@ export type ConnectorGenerateConfigurationsInput =
 export const ConnectorGenerateConfigurationsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     configurations: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          name: Schema.optional(Schema.String),
-          value: Schema.optional(Schema.NullOr(Schema.String)),
-          configType: Schema.optional(
-            Schema.Literals(["Default", "KeyVaultSecret"]),
-          ),
-          keyVaultReferenceIdentity: Schema.optional(
-            Schema.NullOr(Schema.String),
-          ),
-          description: Schema.optional(Schema.NullOr(Schema.String)),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => SourceConfigurationSchema)),
     ),
   });
 export type ConnectorGenerateConfigurationsOutput =
@@ -585,23 +556,11 @@ export type ConnectorGetInput = typeof ConnectorGetInput.Type;
 
 // Output Schema
 export const ConnectorGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.suspend(() => LinkerPropertiesSchema),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
-  systemData: Schema.optional(
-    Schema.Struct({
-      createdBy: Schema.optional(Schema.String),
-      createdByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      createdAt: Schema.optional(Schema.String),
-      lastModifiedBy: Schema.optional(Schema.String),
-      lastModifiedByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      lastModifiedAt: Schema.optional(Schema.String),
-    }),
-  ),
 });
 export type ConnectorGetOutput = typeof ConnectorGetOutput.Type;
 
@@ -635,23 +594,11 @@ export type ConnectorGetDryrunInput = typeof ConnectorGetDryrunInput.Type;
 // Output Schema
 export const ConnectorGetDryrunOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(Schema.suspend(() => DryrunPropertiesSchema)),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type ConnectorGetDryrunOutput = typeof ConnectorGetDryrunOutput.Type;
 
@@ -685,37 +632,7 @@ export type ConnectorListInput = typeof ConnectorListInput.Type;
 export const ConnectorListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   nextLink: Schema.optional(Schema.NullOr(Schema.String)),
   value: Schema.optional(
-    Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    Schema.Array(Schema.suspend(() => LinkerResourceSchema)),
   ),
 });
 export type ConnectorListOutput = typeof ConnectorListOutput.Type;
@@ -751,37 +668,7 @@ export const ConnectorListDryrunOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.NullOr(Schema.String)),
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.String),
-              createdByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              createdAt: Schema.optional(Schema.String),
-              lastModifiedBy: Schema.optional(Schema.String),
-              lastModifiedByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              lastModifiedAt: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => DryrunResourceSchema)),
     ),
   });
 export type ConnectorListDryrunOutput = typeof ConnectorListDryrunOutput.Type;
@@ -802,140 +689,7 @@ export const ConnectorListDryrun = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const ConnectorUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   location: Schema.String.pipe(T.PathParam()),
-  properties: Schema.optional(
-    Schema.Struct({
-      targetService: Schema.optional(
-        Schema.Struct({
-          type: Schema.Literals([
-            "AzureResource",
-            "ConfluentBootstrapServer",
-            "ConfluentSchemaRegistry",
-            "SelfHostedServer",
-          ]),
-        }),
-      ),
-      authInfo: Schema.optional(
-        Schema.Struct({
-          authType: Schema.Literals([
-            "systemAssignedIdentity",
-            "userAssignedIdentity",
-            "servicePrincipalSecret",
-            "servicePrincipalCertificate",
-            "secret",
-            "accessKey",
-            "userAccount",
-            "easyAuthMicrosoftEntraID",
-          ]),
-          authMode: Schema.optional(
-            Schema.Literals(["optInAllAuth", "optOutAllAuth"]),
-          ),
-        }),
-      ),
-      clientType: Schema.optional(
-        Schema.Literals([
-          "none",
-          "dotnet",
-          "java",
-          "python",
-          "go",
-          "php",
-          "ruby",
-          "django",
-          "nodejs",
-          "springBoot",
-          "kafka-springBoot",
-          "jms-springBoot",
-          "dapr",
-        ]),
-      ),
-      provisioningState: Schema.optional(Schema.String),
-      vNetSolution: Schema.optional(
-        Schema.Struct({
-          type: Schema.optional(
-            Schema.NullOr(Schema.Literals(["serviceEndpoint", "privateLink"])),
-          ),
-          deleteOrUpdateBehavior: Schema.optional(
-            Schema.Literals(["Default", "ForcedCleanup"]),
-          ),
-        }),
-      ),
-      secretStore: Schema.optional(
-        Schema.Struct({
-          keyVaultId: Schema.optional(Schema.NullOr(Schema.String)),
-          keyVaultSecretName: Schema.optional(Schema.NullOr(Schema.String)),
-        }),
-      ),
-      scope: Schema.optional(Schema.NullOr(Schema.String)),
-      publicNetworkSolution: Schema.optional(
-        Schema.Struct({
-          deleteOrUpdateBehavior: Schema.optional(
-            Schema.Literals(["Default", "ForcedCleanup"]),
-          ),
-          action: Schema.optional(Schema.Literals(["enable", "optOut"])),
-          firewallRules: Schema.optional(
-            Schema.Struct({
-              ipRanges: Schema.optional(Schema.Array(Schema.String)),
-              azureServices: Schema.optional(
-                Schema.Literals(["true", "false"]),
-              ),
-              callerClientIP: Schema.optional(
-                Schema.Literals(["true", "false"]),
-              ),
-            }),
-          ),
-        }),
-      ),
-      configurationInfo: Schema.optional(
-        Schema.Struct({
-          deleteOrUpdateBehavior: Schema.optional(
-            Schema.Literals(["Default", "ForcedCleanup"]),
-          ),
-          action: Schema.optional(Schema.Literals(["enable", "optOut"])),
-          customizedKeys: Schema.optional(
-            Schema.Record(Schema.String, Schema.String),
-          ),
-          daprProperties: Schema.optional(
-            Schema.Struct({
-              version: Schema.optional(Schema.NullOr(Schema.String)),
-              componentType: Schema.optional(Schema.NullOr(Schema.String)),
-              secretStoreComponent: Schema.optional(
-                Schema.NullOr(Schema.String),
-              ),
-              metadata: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    name: Schema.optional(Schema.String),
-                    value: Schema.optional(Schema.String),
-                    secretRef: Schema.optional(Schema.String),
-                    description: Schema.optional(Schema.String),
-                    required: Schema.optional(
-                      Schema.Literals(["true", "false"]),
-                    ),
-                  }),
-                ),
-              ),
-              scopes: Schema.optional(Schema.Array(Schema.String)),
-              runtimeVersion: Schema.optional(Schema.NullOr(Schema.String)),
-              bindingComponentDirection: Schema.optional(
-                Schema.NullOr(Schema.Literals(["input", "output"])),
-              ),
-            }),
-          ),
-          additionalConfigurations: Schema.optional(
-            Schema.Record(Schema.String, Schema.String),
-          ),
-          additionalConnectionStringProperties: Schema.optional(
-            Schema.Record(Schema.String, Schema.String),
-          ),
-          configurationStore: Schema.optional(
-            Schema.Struct({
-              appConfigurationId: Schema.optional(Schema.NullOr(Schema.String)),
-            }),
-          ),
-        }),
-      ),
-    }),
-  ),
+  properties: Schema.optional(Schema.suspend(() => LinkerPropertiesSchema)),
 }).pipe(
   T.Http({
     method: "PATCH",
@@ -948,23 +702,11 @@ export type ConnectorUpdateInput = typeof ConnectorUpdateInput.Type;
 
 // Output Schema
 export const ConnectorUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.suspend(() => LinkerPropertiesSchema),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
-  systemData: Schema.optional(
-    Schema.Struct({
-      createdBy: Schema.optional(Schema.String),
-      createdByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      createdAt: Schema.optional(Schema.String),
-      lastModifiedBy: Schema.optional(Schema.String),
-      lastModifiedByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      lastModifiedAt: Schema.optional(Schema.String),
-    }),
-  ),
 });
 export type ConnectorUpdateOutput = typeof ConnectorUpdateOutput.Type;
 
@@ -986,40 +728,7 @@ export const ConnectorUpdateDryrunInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
     dryrunName: Schema.String.pipe(T.PathParam()),
-    properties: Schema.optional(
-      Schema.Struct({
-        parameters: Schema.optional(
-          Schema.Struct({
-            actionName: Schema.Literals(["createOrUpdate"]),
-          }),
-        ),
-        prerequisiteResults: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              type: Schema.Literals(["basicError", "permissionsMissing"]),
-            }),
-          ),
-        ),
-        operationPreviews: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              name: Schema.optional(Schema.String),
-              operationType: Schema.optional(
-                Schema.Literals([
-                  "configConnection",
-                  "configNetwork",
-                  "configAuth",
-                ]),
-              ),
-              description: Schema.optional(Schema.String),
-              action: Schema.optional(Schema.String),
-              scope: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        provisioningState: Schema.optional(Schema.String),
-      }),
-    ),
+    properties: Schema.optional(Schema.suspend(() => DryrunPropertiesSchema)),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -1033,23 +742,11 @@ export type ConnectorUpdateDryrunInput = typeof ConnectorUpdateDryrunInput.Type;
 // Output Schema
 export const ConnectorUpdateDryrunOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(Schema.suspend(() => DryrunPropertiesSchema)),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type ConnectorUpdateDryrunOutput =
   typeof ConnectorUpdateDryrunOutput.Type;
@@ -1088,43 +785,7 @@ export type ConnectorValidateInput = typeof ConnectorValidateInput.Type;
 // Output Schema
 export const ConnectorValidateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    properties: Schema.optional(
-      Schema.Struct({
-        linkerName: Schema.optional(Schema.NullOr(Schema.String)),
-        isConnectionAvailable: Schema.optional(Schema.NullOr(Schema.Boolean)),
-        reportStartTimeUtc: Schema.optional(Schema.NullOr(Schema.String)),
-        reportEndTimeUtc: Schema.optional(Schema.NullOr(Schema.String)),
-        sourceId: Schema.optional(Schema.NullOr(Schema.String)),
-        targetId: Schema.optional(Schema.NullOr(Schema.String)),
-        authType: Schema.optional(
-          Schema.Literals([
-            "systemAssignedIdentity",
-            "userAssignedIdentity",
-            "servicePrincipalSecret",
-            "servicePrincipalCertificate",
-            "secret",
-            "accessKey",
-            "userAccount",
-            "easyAuthMicrosoftEntraID",
-          ]),
-        ),
-        validationDetail: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              name: Schema.optional(Schema.String),
-              description: Schema.optional(Schema.NullOr(Schema.String)),
-              result: Schema.optional(
-                Schema.NullOr(
-                  Schema.Literals(["success", "failure", "warning"]),
-                ),
-              ),
-              errorMessage: Schema.optional(Schema.NullOr(Schema.String)),
-              errorCode: Schema.optional(Schema.NullOr(Schema.String)),
-            }),
-          ),
-        ),
-      }),
-    ),
+    properties: Schema.optional(Schema.suspend(() => ValidateResultSchema)),
     resourceId: Schema.optional(Schema.NullOr(Schema.String)),
     status: Schema.optional(Schema.NullOr(Schema.String)),
   });
@@ -1145,138 +806,7 @@ export const ConnectorValidate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const LinkerCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    properties: Schema.Struct({
-      targetService: Schema.optional(
-        Schema.Struct({
-          type: Schema.Literals([
-            "AzureResource",
-            "ConfluentBootstrapServer",
-            "ConfluentSchemaRegistry",
-            "SelfHostedServer",
-          ]),
-        }),
-      ),
-      authInfo: Schema.optional(
-        Schema.Struct({
-          authType: Schema.Literals([
-            "systemAssignedIdentity",
-            "userAssignedIdentity",
-            "servicePrincipalSecret",
-            "servicePrincipalCertificate",
-            "secret",
-            "accessKey",
-            "userAccount",
-            "easyAuthMicrosoftEntraID",
-          ]),
-          authMode: Schema.optional(
-            Schema.Literals(["optInAllAuth", "optOutAllAuth"]),
-          ),
-        }),
-      ),
-      clientType: Schema.optional(
-        Schema.Literals([
-          "none",
-          "dotnet",
-          "java",
-          "python",
-          "go",
-          "php",
-          "ruby",
-          "django",
-          "nodejs",
-          "springBoot",
-          "kafka-springBoot",
-          "jms-springBoot",
-          "dapr",
-        ]),
-      ),
-      provisioningState: Schema.optional(Schema.String),
-      vNetSolution: Schema.optional(
-        Schema.Struct({
-          type: Schema.optional(
-            Schema.NullOr(Schema.Literals(["serviceEndpoint", "privateLink"])),
-          ),
-          deleteOrUpdateBehavior: Schema.optional(
-            Schema.Literals(["Default", "ForcedCleanup"]),
-          ),
-        }),
-      ),
-      secretStore: Schema.optional(
-        Schema.Struct({
-          keyVaultId: Schema.optional(Schema.NullOr(Schema.String)),
-          keyVaultSecretName: Schema.optional(Schema.NullOr(Schema.String)),
-        }),
-      ),
-      scope: Schema.optional(Schema.NullOr(Schema.String)),
-      publicNetworkSolution: Schema.optional(
-        Schema.Struct({
-          deleteOrUpdateBehavior: Schema.optional(
-            Schema.Literals(["Default", "ForcedCleanup"]),
-          ),
-          action: Schema.optional(Schema.Literals(["enable", "optOut"])),
-          firewallRules: Schema.optional(
-            Schema.Struct({
-              ipRanges: Schema.optional(Schema.Array(Schema.String)),
-              azureServices: Schema.optional(
-                Schema.Literals(["true", "false"]),
-              ),
-              callerClientIP: Schema.optional(
-                Schema.Literals(["true", "false"]),
-              ),
-            }),
-          ),
-        }),
-      ),
-      configurationInfo: Schema.optional(
-        Schema.Struct({
-          deleteOrUpdateBehavior: Schema.optional(
-            Schema.Literals(["Default", "ForcedCleanup"]),
-          ),
-          action: Schema.optional(Schema.Literals(["enable", "optOut"])),
-          customizedKeys: Schema.optional(
-            Schema.Record(Schema.String, Schema.String),
-          ),
-          daprProperties: Schema.optional(
-            Schema.Struct({
-              version: Schema.optional(Schema.NullOr(Schema.String)),
-              componentType: Schema.optional(Schema.NullOr(Schema.String)),
-              secretStoreComponent: Schema.optional(
-                Schema.NullOr(Schema.String),
-              ),
-              metadata: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    name: Schema.optional(Schema.String),
-                    value: Schema.optional(Schema.String),
-                    secretRef: Schema.optional(Schema.String),
-                    description: Schema.optional(Schema.String),
-                    required: Schema.optional(
-                      Schema.Literals(["true", "false"]),
-                    ),
-                  }),
-                ),
-              ),
-              scopes: Schema.optional(Schema.Array(Schema.String)),
-              runtimeVersion: Schema.optional(Schema.NullOr(Schema.String)),
-              bindingComponentDirection: Schema.optional(
-                Schema.NullOr(Schema.Literals(["input", "output"])),
-              ),
-            }),
-          ),
-          additionalConfigurations: Schema.optional(
-            Schema.Record(Schema.String, Schema.String),
-          ),
-          additionalConnectionStringProperties: Schema.optional(
-            Schema.Record(Schema.String, Schema.String),
-          ),
-          configurationStore: Schema.optional(
-            Schema.Struct({
-              appConfigurationId: Schema.optional(Schema.NullOr(Schema.String)),
-            }),
-          ),
-        }),
-      ),
-    }),
+    properties: Schema.suspend(() => LinkerPropertiesSchema),
     systemData: Schema.optional(
       Schema.Struct({
         createdBy: Schema.optional(Schema.String),
@@ -1304,23 +834,11 @@ export type LinkerCreateOrUpdateInput = typeof LinkerCreateOrUpdateInput.Type;
 // Output Schema
 export const LinkerCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.suspend(() => LinkerPropertiesSchema),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
   });
 export type LinkerCreateOrUpdateOutput = typeof LinkerCreateOrUpdateOutput.Type;
 
@@ -1377,23 +895,11 @@ export type LinkerGetInput = typeof LinkerGetInput.Type;
 
 // Output Schema
 export const LinkerGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.suspend(() => LinkerPropertiesSchema),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
-  systemData: Schema.optional(
-    Schema.Struct({
-      createdBy: Schema.optional(Schema.String),
-      createdByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      createdAt: Schema.optional(Schema.String),
-      lastModifiedBy: Schema.optional(Schema.String),
-      lastModifiedByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      lastModifiedAt: Schema.optional(Schema.String),
-    }),
-  ),
 });
 export type LinkerGetOutput = typeof LinkerGetOutput.Type;
 
@@ -1423,37 +929,7 @@ export type LinkerListInput = typeof LinkerListInput.Type;
 export const LinkerListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   nextLink: Schema.optional(Schema.NullOr(Schema.String)),
   value: Schema.optional(
-    Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    Schema.Array(Schema.suspend(() => LinkerResourceSchema)),
   ),
 });
 export type LinkerListOutput = typeof LinkerListOutput.Type;
@@ -1484,19 +960,7 @@ export type LinkerListConfigurationsInput =
 export const LinkerListConfigurationsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     configurations: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          name: Schema.optional(Schema.String),
-          value: Schema.optional(Schema.NullOr(Schema.String)),
-          configType: Schema.optional(
-            Schema.Literals(["Default", "KeyVaultSecret"]),
-          ),
-          keyVaultReferenceIdentity: Schema.optional(
-            Schema.NullOr(Schema.String),
-          ),
-          description: Schema.optional(Schema.NullOr(Schema.String)),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => SourceConfigurationSchema)),
     ),
   });
 export type LinkerListConfigurationsOutput =
@@ -1518,40 +982,7 @@ export const LinkerListConfigurations = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const LinkersCreateDryrunInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dryrunName: Schema.String.pipe(T.PathParam()),
-    properties: Schema.optional(
-      Schema.Struct({
-        parameters: Schema.optional(
-          Schema.Struct({
-            actionName: Schema.Literals(["createOrUpdate"]),
-          }),
-        ),
-        prerequisiteResults: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              type: Schema.Literals(["basicError", "permissionsMissing"]),
-            }),
-          ),
-        ),
-        operationPreviews: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              name: Schema.optional(Schema.String),
-              operationType: Schema.optional(
-                Schema.Literals([
-                  "configConnection",
-                  "configNetwork",
-                  "configAuth",
-                ]),
-              ),
-              description: Schema.optional(Schema.String),
-              action: Schema.optional(Schema.String),
-              scope: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        provisioningState: Schema.optional(Schema.String),
-      }),
-    ),
+    properties: Schema.optional(Schema.suspend(() => DryrunPropertiesSchema)),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -1565,23 +996,11 @@ export type LinkersCreateDryrunInput = typeof LinkersCreateDryrunInput.Type;
 // Output Schema
 export const LinkersCreateDryrunOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(Schema.suspend(() => DryrunPropertiesSchema)),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type LinkersCreateDryrunOutput = typeof LinkersCreateDryrunOutput.Type;
 
@@ -1629,35 +1048,13 @@ export const LinkersDeleteDryrun = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const LinkersGenerateConfigurationsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     deleteOrUpdateBehavior: Schema.optional(
-      Schema.Literals(["Default", "ForcedCleanup"]),
+      Schema.suspend(() => DeleteOrUpdateBehaviorSchema),
     ),
-    action: Schema.optional(Schema.Literals(["enable", "optOut"])),
+    action: Schema.optional(Schema.suspend(() => ActionTypeSchema)),
     customizedKeys: Schema.optional(
       Schema.Record(Schema.String, Schema.String),
     ),
-    daprProperties: Schema.optional(
-      Schema.Struct({
-        version: Schema.optional(Schema.NullOr(Schema.String)),
-        componentType: Schema.optional(Schema.NullOr(Schema.String)),
-        secretStoreComponent: Schema.optional(Schema.NullOr(Schema.String)),
-        metadata: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              name: Schema.optional(Schema.String),
-              value: Schema.optional(Schema.String),
-              secretRef: Schema.optional(Schema.String),
-              description: Schema.optional(Schema.String),
-              required: Schema.optional(Schema.Literals(["true", "false"])),
-            }),
-          ),
-        ),
-        scopes: Schema.optional(Schema.Array(Schema.String)),
-        runtimeVersion: Schema.optional(Schema.NullOr(Schema.String)),
-        bindingComponentDirection: Schema.optional(
-          Schema.NullOr(Schema.Literals(["input", "output"])),
-        ),
-      }),
-    ),
+    daprProperties: Schema.optional(Schema.suspend(() => DaprPropertiesSchema)),
     additionalConfigurations: Schema.optional(
       Schema.Record(Schema.String, Schema.String),
     ),
@@ -1665,9 +1062,7 @@ export const LinkersGenerateConfigurationsInput =
       Schema.Record(Schema.String, Schema.String),
     ),
     configurationStore: Schema.optional(
-      Schema.Struct({
-        appConfigurationId: Schema.optional(Schema.NullOr(Schema.String)),
-      }),
+      Schema.suspend(() => ConfigurationStoreSchema),
     ),
   }).pipe(
     T.Http({
@@ -1683,19 +1078,7 @@ export type LinkersGenerateConfigurationsInput =
 export const LinkersGenerateConfigurationsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     configurations: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          name: Schema.optional(Schema.String),
-          value: Schema.optional(Schema.NullOr(Schema.String)),
-          configType: Schema.optional(
-            Schema.Literals(["Default", "KeyVaultSecret"]),
-          ),
-          keyVaultReferenceIdentity: Schema.optional(
-            Schema.NullOr(Schema.String),
-          ),
-          description: Schema.optional(Schema.NullOr(Schema.String)),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => SourceConfigurationSchema)),
     ),
   });
 export type LinkersGenerateConfigurationsOutput =
@@ -1727,23 +1110,11 @@ export type LinkersGetDryrunInput = typeof LinkersGetDryrunInput.Type;
 // Output Schema
 export const LinkersGetDryrunOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
+    properties: Schema.optional(Schema.suspend(() => DryrunPropertiesSchema)),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   },
 );
 export type LinkersGetDryrunOutput = typeof LinkersGetDryrunOutput.Type;
@@ -1775,54 +1146,7 @@ export type LinkersListDaprConfigurationsInput =
 export const LinkersListDaprConfigurationsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          properties: Schema.optional(
-            Schema.Struct({
-              targetType: Schema.optional(Schema.String),
-              authType: Schema.optional(
-                Schema.Literals([
-                  "systemAssignedIdentity",
-                  "userAssignedIdentity",
-                  "servicePrincipalSecret",
-                  "servicePrincipalCertificate",
-                  "secret",
-                  "accessKey",
-                  "userAccount",
-                  "easyAuthMicrosoftEntraID",
-                ]),
-              ),
-              daprProperties: Schema.optional(
-                Schema.Struct({
-                  version: Schema.optional(Schema.NullOr(Schema.String)),
-                  componentType: Schema.optional(Schema.NullOr(Schema.String)),
-                  secretStoreComponent: Schema.optional(
-                    Schema.NullOr(Schema.String),
-                  ),
-                  metadata: Schema.optional(
-                    Schema.Array(
-                      Schema.Struct({
-                        name: Schema.optional(Schema.String),
-                        value: Schema.optional(Schema.String),
-                        secretRef: Schema.optional(Schema.String),
-                        description: Schema.optional(Schema.String),
-                        required: Schema.optional(
-                          Schema.Literals(["true", "false"]),
-                        ),
-                      }),
-                    ),
-                  ),
-                  scopes: Schema.optional(Schema.Array(Schema.String)),
-                  runtimeVersion: Schema.optional(Schema.NullOr(Schema.String)),
-                  bindingComponentDirection: Schema.optional(
-                    Schema.NullOr(Schema.Literals(["input", "output"])),
-                  ),
-                }),
-              ),
-            }),
-          ),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => DaprConfigurationResourceSchema)),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -1857,37 +1181,7 @@ export const LinkersListDryrunOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.NullOr(Schema.String)),
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.String),
-              createdByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              createdAt: Schema.optional(Schema.String),
-              lastModifiedBy: Schema.optional(Schema.String),
-              lastModifiedByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              lastModifiedAt: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => DryrunResourceSchema)),
     ),
   });
 export type LinkersListDryrunOutput = typeof LinkersListDryrunOutput.Type;
@@ -1906,40 +1200,7 @@ export const LinkersListDryrun = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const LinkersUpdateDryrunInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dryrunName: Schema.String.pipe(T.PathParam()),
-    properties: Schema.optional(
-      Schema.Struct({
-        parameters: Schema.optional(
-          Schema.Struct({
-            actionName: Schema.Literals(["createOrUpdate"]),
-          }),
-        ),
-        prerequisiteResults: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              type: Schema.Literals(["basicError", "permissionsMissing"]),
-            }),
-          ),
-        ),
-        operationPreviews: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              name: Schema.optional(Schema.String),
-              operationType: Schema.optional(
-                Schema.Literals([
-                  "configConnection",
-                  "configNetwork",
-                  "configAuth",
-                ]),
-              ),
-              description: Schema.optional(Schema.String),
-              action: Schema.optional(Schema.String),
-              scope: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        provisioningState: Schema.optional(Schema.String),
-      }),
-    ),
+    properties: Schema.optional(Schema.suspend(() => DryrunPropertiesSchema)),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -1953,23 +1214,11 @@ export type LinkersUpdateDryrunInput = typeof LinkersUpdateDryrunInput.Type;
 // Output Schema
 export const LinkersUpdateDryrunOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(Schema.suspend(() => DryrunPropertiesSchema)),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type LinkersUpdateDryrunOutput = typeof LinkersUpdateDryrunOutput.Type;
 
@@ -1986,140 +1235,7 @@ export const LinkersUpdateDryrun = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const LinkerUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  properties: Schema.optional(
-    Schema.Struct({
-      targetService: Schema.optional(
-        Schema.Struct({
-          type: Schema.Literals([
-            "AzureResource",
-            "ConfluentBootstrapServer",
-            "ConfluentSchemaRegistry",
-            "SelfHostedServer",
-          ]),
-        }),
-      ),
-      authInfo: Schema.optional(
-        Schema.Struct({
-          authType: Schema.Literals([
-            "systemAssignedIdentity",
-            "userAssignedIdentity",
-            "servicePrincipalSecret",
-            "servicePrincipalCertificate",
-            "secret",
-            "accessKey",
-            "userAccount",
-            "easyAuthMicrosoftEntraID",
-          ]),
-          authMode: Schema.optional(
-            Schema.Literals(["optInAllAuth", "optOutAllAuth"]),
-          ),
-        }),
-      ),
-      clientType: Schema.optional(
-        Schema.Literals([
-          "none",
-          "dotnet",
-          "java",
-          "python",
-          "go",
-          "php",
-          "ruby",
-          "django",
-          "nodejs",
-          "springBoot",
-          "kafka-springBoot",
-          "jms-springBoot",
-          "dapr",
-        ]),
-      ),
-      provisioningState: Schema.optional(Schema.String),
-      vNetSolution: Schema.optional(
-        Schema.Struct({
-          type: Schema.optional(
-            Schema.NullOr(Schema.Literals(["serviceEndpoint", "privateLink"])),
-          ),
-          deleteOrUpdateBehavior: Schema.optional(
-            Schema.Literals(["Default", "ForcedCleanup"]),
-          ),
-        }),
-      ),
-      secretStore: Schema.optional(
-        Schema.Struct({
-          keyVaultId: Schema.optional(Schema.NullOr(Schema.String)),
-          keyVaultSecretName: Schema.optional(Schema.NullOr(Schema.String)),
-        }),
-      ),
-      scope: Schema.optional(Schema.NullOr(Schema.String)),
-      publicNetworkSolution: Schema.optional(
-        Schema.Struct({
-          deleteOrUpdateBehavior: Schema.optional(
-            Schema.Literals(["Default", "ForcedCleanup"]),
-          ),
-          action: Schema.optional(Schema.Literals(["enable", "optOut"])),
-          firewallRules: Schema.optional(
-            Schema.Struct({
-              ipRanges: Schema.optional(Schema.Array(Schema.String)),
-              azureServices: Schema.optional(
-                Schema.Literals(["true", "false"]),
-              ),
-              callerClientIP: Schema.optional(
-                Schema.Literals(["true", "false"]),
-              ),
-            }),
-          ),
-        }),
-      ),
-      configurationInfo: Schema.optional(
-        Schema.Struct({
-          deleteOrUpdateBehavior: Schema.optional(
-            Schema.Literals(["Default", "ForcedCleanup"]),
-          ),
-          action: Schema.optional(Schema.Literals(["enable", "optOut"])),
-          customizedKeys: Schema.optional(
-            Schema.Record(Schema.String, Schema.String),
-          ),
-          daprProperties: Schema.optional(
-            Schema.Struct({
-              version: Schema.optional(Schema.NullOr(Schema.String)),
-              componentType: Schema.optional(Schema.NullOr(Schema.String)),
-              secretStoreComponent: Schema.optional(
-                Schema.NullOr(Schema.String),
-              ),
-              metadata: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    name: Schema.optional(Schema.String),
-                    value: Schema.optional(Schema.String),
-                    secretRef: Schema.optional(Schema.String),
-                    description: Schema.optional(Schema.String),
-                    required: Schema.optional(
-                      Schema.Literals(["true", "false"]),
-                    ),
-                  }),
-                ),
-              ),
-              scopes: Schema.optional(Schema.Array(Schema.String)),
-              runtimeVersion: Schema.optional(Schema.NullOr(Schema.String)),
-              bindingComponentDirection: Schema.optional(
-                Schema.NullOr(Schema.Literals(["input", "output"])),
-              ),
-            }),
-          ),
-          additionalConfigurations: Schema.optional(
-            Schema.Record(Schema.String, Schema.String),
-          ),
-          additionalConnectionStringProperties: Schema.optional(
-            Schema.Record(Schema.String, Schema.String),
-          ),
-          configurationStore: Schema.optional(
-            Schema.Struct({
-              appConfigurationId: Schema.optional(Schema.NullOr(Schema.String)),
-            }),
-          ),
-        }),
-      ),
-    }),
-  ),
+  properties: Schema.optional(Schema.suspend(() => LinkerPropertiesSchema)),
 }).pipe(
   T.Http({
     method: "PATCH",
@@ -2132,23 +1248,11 @@ export type LinkerUpdateInput = typeof LinkerUpdateInput.Type;
 
 // Output Schema
 export const LinkerUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.suspend(() => LinkerPropertiesSchema),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
-  systemData: Schema.optional(
-    Schema.Struct({
-      createdBy: Schema.optional(Schema.String),
-      createdByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      createdAt: Schema.optional(Schema.String),
-      lastModifiedBy: Schema.optional(Schema.String),
-      lastModifiedByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      lastModifiedAt: Schema.optional(Schema.String),
-    }),
-  ),
 });
 export type LinkerUpdateOutput = typeof LinkerUpdateOutput.Type;
 
@@ -2177,41 +1281,7 @@ export type LinkerValidateInput = typeof LinkerValidateInput.Type;
 
 // Output Schema
 export const LinkerValidateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  properties: Schema.optional(
-    Schema.Struct({
-      linkerName: Schema.optional(Schema.NullOr(Schema.String)),
-      isConnectionAvailable: Schema.optional(Schema.NullOr(Schema.Boolean)),
-      reportStartTimeUtc: Schema.optional(Schema.NullOr(Schema.String)),
-      reportEndTimeUtc: Schema.optional(Schema.NullOr(Schema.String)),
-      sourceId: Schema.optional(Schema.NullOr(Schema.String)),
-      targetId: Schema.optional(Schema.NullOr(Schema.String)),
-      authType: Schema.optional(
-        Schema.Literals([
-          "systemAssignedIdentity",
-          "userAssignedIdentity",
-          "servicePrincipalSecret",
-          "servicePrincipalCertificate",
-          "secret",
-          "accessKey",
-          "userAccount",
-          "easyAuthMicrosoftEntraID",
-        ]),
-      ),
-      validationDetail: Schema.optional(
-        Schema.Array(
-          Schema.Struct({
-            name: Schema.optional(Schema.String),
-            description: Schema.optional(Schema.NullOr(Schema.String)),
-            result: Schema.optional(
-              Schema.NullOr(Schema.Literals(["success", "failure", "warning"])),
-            ),
-            errorMessage: Schema.optional(Schema.NullOr(Schema.String)),
-            errorCode: Schema.optional(Schema.NullOr(Schema.String)),
-          }),
-        ),
-      ),
-    }),
-  ),
+  properties: Schema.optional(Schema.suspend(() => ValidateResultSchema)),
   resourceId: Schema.optional(Schema.NullOr(Schema.String)),
   status: Schema.optional(Schema.NullOr(Schema.String)),
 });
@@ -2241,26 +1311,7 @@ export type OperationsListInput = typeof OperationsListInput.Type;
 
 // Output Schema
 export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  value: Schema.optional(
-    Schema.Array(
-      Schema.Struct({
-        name: Schema.optional(Schema.String),
-        isDataAction: Schema.optional(Schema.Boolean),
-        display: Schema.optional(
-          Schema.Struct({
-            provider: Schema.optional(Schema.String),
-            resource: Schema.optional(Schema.String),
-            operation: Schema.optional(Schema.String),
-            description: Schema.optional(Schema.String),
-          }),
-        ),
-        origin: Schema.optional(
-          Schema.Literals(["user", "system", "user,system"]),
-        ),
-        actionType: Schema.optional(Schema.Literals(["Internal"])),
-      }),
-    ),
-  ),
+  value: Schema.optional(Schema.Array(Schema.suspend(() => OperationSchema))),
   nextLink: Schema.optional(Schema.String),
 });
 export type OperationsListOutput = typeof OperationsListOutput.Type;

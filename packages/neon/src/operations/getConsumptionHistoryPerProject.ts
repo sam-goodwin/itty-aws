@@ -1,4 +1,8 @@
 import * as Schema from "effect/Schema";
+import {
+  ConsumptionHistoryPerProjectSchema,
+  PaginationSchema,
+} from "./_schemas.ts";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
@@ -23,36 +27,9 @@ export type GetConsumptionHistoryPerProjectInput =
 export const GetConsumptionHistoryPerProjectOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     projects: Schema.Array(
-      Schema.Struct({
-        project_id: Schema.String,
-        periods: Schema.Array(
-          Schema.Struct({
-            period_id: Schema.String,
-            period_plan: Schema.String,
-            period_start: Schema.String,
-            period_end: Schema.optional(Schema.String),
-            consumption: Schema.Array(
-              Schema.Struct({
-                timeframe_start: Schema.String,
-                timeframe_end: Schema.String,
-                active_time_seconds: Schema.Number,
-                compute_time_seconds: Schema.Number,
-                written_data_bytes: Schema.Number,
-                synthetic_storage_size_bytes: Schema.Number,
-                data_storage_bytes_hour: Schema.optional(Schema.Number),
-                logical_size_bytes: Schema.optional(Schema.Number),
-                logical_size_bytes_hour: Schema.optional(Schema.Number),
-              }),
-            ),
-          }),
-        ),
-      }),
+      Schema.suspend(() => ConsumptionHistoryPerProjectSchema),
     ),
-    pagination: Schema.optional(
-      Schema.Struct({
-        cursor: Schema.String,
-      }),
-    ),
+    pagination: Schema.optional(Schema.suspend(() => PaginationSchema)),
   });
 export type GetConsumptionHistoryPerProjectOutput =
   typeof GetConsumptionHistoryPerProjectOutput.Type;

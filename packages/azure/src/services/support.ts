@@ -8,6 +8,253 @@ import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
+// Shared schemas
+const TypeSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Microsoft.Support/supportTickets",
+  "Microsoft.Support/communications",
+]);
+const FileWorkspaceDetailsPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    createdOn: Schema.optional(Schema.String),
+    expirationTime: Schema.optional(Schema.String),
+  });
+const systemDataSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  createdBy: Schema.optional(Schema.String),
+  createdByType: Schema.optional(
+    Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+  ),
+  createdAt: Schema.optional(Schema.String),
+  lastModifiedBy: Schema.optional(Schema.String),
+  lastModifiedByType: Schema.optional(
+    Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+  ),
+  lastModifiedAt: Schema.optional(Schema.String),
+});
+const FileDetailsSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+});
+const FileDetailsPropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  createdOn: Schema.optional(Schema.String),
+  chunkSize: Schema.optional(Schema.Number),
+  fileSize: Schema.optional(Schema.Number),
+  numberOfChunks: Schema.optional(Schema.Number),
+});
+const OperationSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  isDataAction: Schema.optional(Schema.Boolean),
+  display: Schema.optional(
+    Schema.Struct({
+      provider: Schema.optional(Schema.String),
+      resource: Schema.optional(Schema.String),
+      operation: Schema.optional(Schema.String),
+      description: Schema.optional(Schema.String),
+    }),
+  ),
+  origin: Schema.optional(Schema.Literals(["user", "system", "user,system"])),
+  actionType: Schema.optional(Schema.Literals(["Internal"])),
+});
+const ServiceSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+});
+const ServicePropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  displayName: Schema.optional(Schema.String),
+  resourceTypes: Schema.optional(Schema.Array(Schema.String)),
+});
+const ProblemClassificationSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+});
+const ProblemClassificationPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    displayName: Schema.optional(Schema.String),
+    secondaryConsentEnabled: Schema.optional(
+      Schema.Array(Schema.suspend(() => SecondaryConsentEnabledSchema)),
+    ),
+  });
+const SecondaryConsentEnabledSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    description: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  },
+);
+const SupportTicketDetailsSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+});
+const SupportTicketDetailsPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    supportTicketId: Schema.optional(Schema.String),
+    description: Schema.String,
+    problemClassificationId: Schema.String,
+    problemClassificationDisplayName: Schema.optional(Schema.String),
+    severity: Schema.suspend(() => SeverityLevelSchema),
+    enrollmentId: Schema.optional(Schema.String),
+    require24X7Response: Schema.optional(Schema.Boolean),
+    advancedDiagnosticConsent: Schema.suspend(() => ConsentSchema),
+    problemScopingQuestions: Schema.optional(Schema.String),
+    supportPlanId: Schema.optional(Schema.String),
+    contactDetails: Schema.suspend(() => ContactProfileSchema),
+    serviceLevelAgreement: Schema.optional(
+      Schema.suspend(() => ServiceLevelAgreementSchema),
+    ),
+    supportEngineer: Schema.optional(
+      Schema.suspend(() => SupportEngineerSchema),
+    ),
+    supportPlanType: Schema.optional(Schema.String),
+    supportPlanDisplayName: Schema.optional(Schema.String),
+    title: Schema.String,
+    problemStartTime: Schema.optional(Schema.String),
+    serviceId: Schema.String,
+    serviceDisplayName: Schema.optional(Schema.String),
+    status: Schema.optional(Schema.String),
+    createdDate: Schema.optional(Schema.String),
+    modifiedDate: Schema.optional(Schema.String),
+    fileWorkspaceName: Schema.optional(Schema.String),
+    isTemporaryTicket: Schema.optional(
+      Schema.suspend(() => IsTemporaryTicketSchema),
+    ),
+    technicalTicketDetails: Schema.optional(
+      Schema.suspend(() => TechnicalTicketDetailsSchema),
+    ),
+    quotaTicketDetails: Schema.optional(
+      Schema.suspend(() => QuotaTicketDetailsSchema),
+    ),
+    secondaryConsent: Schema.optional(
+      Schema.Array(Schema.suspend(() => SecondaryConsentSchema)),
+    ),
+  });
+const SeverityLevelSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "minimal",
+  "moderate",
+  "critical",
+  "highestcriticalimpact",
+]);
+const ConsentSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Yes",
+  "No",
+]);
+const ContactProfileSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  firstName: Schema.String,
+  lastName: Schema.String,
+  preferredContactMethod: Schema.suspend(() => PreferredContactMethodSchema),
+  primaryEmailAddress: Schema.String,
+  additionalEmailAddresses: Schema.optional(Schema.Array(Schema.String)),
+  phoneNumber: Schema.optional(Schema.String),
+  preferredTimeZone: Schema.String,
+  country: Schema.String,
+  preferredSupportLanguage: Schema.String,
+});
+const PreferredContactMethodSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Literals(["email", "phone"]);
+const ServiceLevelAgreementSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  startTime: Schema.optional(Schema.String),
+  expirationTime: Schema.optional(Schema.String),
+  slaMinutes: Schema.optional(Schema.Number),
+});
+const SupportEngineerSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  emailAddress: Schema.optional(Schema.String),
+});
+const IsTemporaryTicketSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Yes",
+  "No",
+]);
+const TechnicalTicketDetailsSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  resourceId: Schema.optional(Schema.String),
+});
+const QuotaTicketDetailsSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  quotaChangeRequestSubType: Schema.optional(Schema.String),
+  quotaChangeRequestVersion: Schema.optional(Schema.String),
+  quotaChangeRequests: Schema.optional(
+    Schema.Array(Schema.suspend(() => QuotaChangeRequestSchema)),
+  ),
+});
+const QuotaChangeRequestSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  region: Schema.optional(Schema.String),
+  payload: Schema.optional(Schema.String),
+});
+const SecondaryConsentSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  userConsent: Schema.optional(Schema.suspend(() => UserConsentSchema)),
+  type: Schema.optional(Schema.String),
+});
+const UserConsentSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Yes",
+  "No",
+]);
+const StatusSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "open",
+  "closed",
+]);
+const UpdateContactProfileSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  firstName: Schema.optional(Schema.String),
+  lastName: Schema.optional(Schema.String),
+  preferredContactMethod: Schema.optional(
+    Schema.suspend(() => PreferredContactMethodSchema),
+  ),
+  primaryEmailAddress: Schema.optional(Schema.String),
+  additionalEmailAddresses: Schema.optional(Schema.Array(Schema.String)),
+  phoneNumber: Schema.optional(Schema.String),
+  preferredTimeZone: Schema.optional(Schema.String),
+  country: Schema.optional(Schema.String),
+  preferredSupportLanguage: Schema.optional(Schema.String),
+});
+const ChatTranscriptDetailsSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+});
+const ChatTranscriptDetailsPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    messages: Schema.optional(
+      Schema.Array(Schema.suspend(() => MessagePropertiesSchema)),
+    ),
+    startTime: Schema.optional(Schema.String),
+  });
+const MessagePropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  contentType: Schema.optional(Schema.String),
+  communicationDirection: Schema.optional(
+    Schema.suspend(() => CommunicationDirectionSchema),
+  ),
+  sender: Schema.optional(Schema.String),
+  body: Schema.optional(Schema.String),
+  createdDate: Schema.optional(Schema.String),
+});
+const CommunicationDirectionSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Literals(["inbound", "outbound"]);
+const CommunicationDetailsSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+});
+const CommunicationDetailsPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    communicationType: Schema.optional(
+      Schema.suspend(() => CommunicationTypeSchema),
+    ),
+    communicationDirection: Schema.optional(
+      Schema.suspend(() => CommunicationDirectionSchema),
+    ),
+    sender: Schema.optional(Schema.String),
+    subject: Schema.String,
+    body: Schema.String,
+    createdDate: Schema.optional(Schema.String),
+  });
+const CommunicationTypeSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "web",
+  "phone",
+]);
+
 // Input Schema
 export const ChatTranscriptsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -26,23 +273,13 @@ export type ChatTranscriptsGetInput = typeof ChatTranscriptsGetInput.Type;
 // Output Schema
 export const ChatTranscriptsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => ChatTranscriptDetailsPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type ChatTranscriptsGetOutput = typeof ChatTranscriptsGetOutput.Type;
 
@@ -78,37 +315,7 @@ export const ChatTranscriptsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.String),
-              createdByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              createdAt: Schema.optional(Schema.String),
-              lastModifiedBy: Schema.optional(Schema.String),
-              lastModifiedByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              lastModifiedAt: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => ChatTranscriptDetailsSchema)),
     ),
   });
 export type ChatTranscriptsListOutput = typeof ChatTranscriptsListOutput.Type;
@@ -143,23 +350,13 @@ export type ChatTranscriptsNoSubscriptionGetInput =
 // Output Schema
 export const ChatTranscriptsNoSubscriptionGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => ChatTranscriptDetailsPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type ChatTranscriptsNoSubscriptionGetOutput =
   typeof ChatTranscriptsNoSubscriptionGetOutput.Type;
@@ -196,37 +393,7 @@ export const ChatTranscriptsNoSubscriptionListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.String),
-              createdByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              createdAt: Schema.optional(Schema.String),
-              lastModifiedBy: Schema.optional(Schema.String),
-              lastModifiedByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              lastModifiedAt: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => ChatTranscriptDetailsSchema)),
     ),
   });
 export type ChatTranscriptsNoSubscriptionListOutput =
@@ -250,10 +417,7 @@ export const CommunicationsCheckNameAvailabilityInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     supportTicketName: Schema.String.pipe(T.PathParam()),
     name: Schema.String,
-    type: Schema.Literals([
-      "Microsoft.Support/supportTickets",
-      "Microsoft.Support/communications",
-    ]),
+    type: Schema.suspend(() => TypeSchema),
   }).pipe(
     T.Http({
       method: "POST",
@@ -293,16 +457,7 @@ export const CommunicationsCreateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     supportTicketName: Schema.String.pipe(T.PathParam()),
     communicationName: Schema.String.pipe(T.PathParam()),
-    properties: Schema.Struct({
-      communicationType: Schema.optional(Schema.Literals(["web", "phone"])),
-      communicationDirection: Schema.optional(
-        Schema.Literals(["inbound", "outbound"]),
-      ),
-      sender: Schema.optional(Schema.String),
-      subject: Schema.String,
-      body: Schema.String,
-      createdDate: Schema.optional(Schema.String),
-    }),
+    properties: Schema.suspend(() => CommunicationDetailsPropertiesSchema),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -316,23 +471,11 @@ export type CommunicationsCreateInput = typeof CommunicationsCreateInput.Type;
 // Output Schema
 export const CommunicationsCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.suspend(() => CommunicationDetailsPropertiesSchema),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type CommunicationsCreateOutput = typeof CommunicationsCreateOutput.Type;
 
@@ -370,23 +513,11 @@ export type CommunicationsGetInput = typeof CommunicationsGetInput.Type;
 // Output Schema
 export const CommunicationsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.suspend(() => CommunicationDetailsPropertiesSchema),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type CommunicationsGetOutput = typeof CommunicationsGetOutput.Type;
 
@@ -424,37 +555,7 @@ export const CommunicationsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.String),
-              createdByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              createdAt: Schema.optional(Schema.String),
-              lastModifiedBy: Schema.optional(Schema.String),
-              lastModifiedByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              lastModifiedAt: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => CommunicationDetailsSchema)),
     ),
   });
 export type CommunicationsListOutput = typeof CommunicationsListOutput.Type;
@@ -478,10 +579,7 @@ export const CommunicationsNoSubscriptionCheckNameAvailabilityInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     supportTicketName: Schema.String.pipe(T.PathParam()),
     name: Schema.String,
-    type: Schema.Literals([
-      "Microsoft.Support/supportTickets",
-      "Microsoft.Support/communications",
-    ]),
+    type: Schema.suspend(() => TypeSchema),
   }).pipe(
     T.Http({
       method: "POST",
@@ -519,16 +617,7 @@ export const CommunicationsNoSubscriptionCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     supportTicketName: Schema.String.pipe(T.PathParam()),
     communicationName: Schema.String.pipe(T.PathParam()),
-    properties: Schema.Struct({
-      communicationType: Schema.optional(Schema.Literals(["web", "phone"])),
-      communicationDirection: Schema.optional(
-        Schema.Literals(["inbound", "outbound"]),
-      ),
-      sender: Schema.optional(Schema.String),
-      subject: Schema.String,
-      body: Schema.String,
-      createdDate: Schema.optional(Schema.String),
-    }),
+    properties: Schema.suspend(() => CommunicationDetailsPropertiesSchema),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -543,23 +632,11 @@ export type CommunicationsNoSubscriptionCreateInput =
 // Output Schema
 export const CommunicationsNoSubscriptionCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.suspend(() => CommunicationDetailsPropertiesSchema),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type CommunicationsNoSubscriptionCreateOutput =
   typeof CommunicationsNoSubscriptionCreateOutput.Type;
@@ -595,23 +672,11 @@ export type CommunicationsNoSubscriptionGetInput =
 // Output Schema
 export const CommunicationsNoSubscriptionGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.suspend(() => CommunicationDetailsPropertiesSchema),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type CommunicationsNoSubscriptionGetOutput =
   typeof CommunicationsNoSubscriptionGetOutput.Type;
@@ -650,37 +715,7 @@ export const CommunicationsNoSubscriptionListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.String),
-              createdByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              createdAt: Schema.optional(Schema.String),
-              lastModifiedBy: Schema.optional(Schema.String),
-              lastModifiedByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              lastModifiedAt: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => CommunicationDetailsSchema)),
     ),
   });
 export type CommunicationsNoSubscriptionListOutput =
@@ -706,12 +741,7 @@ export const FilesCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   fileWorkspaceName: Schema.String.pipe(T.PathParam()),
   fileName: Schema.String.pipe(T.PathParam()),
   properties: Schema.optional(
-    Schema.Struct({
-      createdOn: Schema.optional(Schema.String),
-      chunkSize: Schema.optional(Schema.Number),
-      fileSize: Schema.optional(Schema.Number),
-      numberOfChunks: Schema.optional(Schema.Number),
-    }),
+    Schema.suspend(() => FileDetailsPropertiesSchema),
   ),
 }).pipe(
   T.Http({
@@ -724,23 +754,13 @@ export type FilesCreateInput = typeof FilesCreateInput.Type;
 
 // Output Schema
 export const FilesCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.optional(
+    Schema.suspend(() => FileDetailsPropertiesSchema),
+  ),
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
-  systemData: Schema.optional(
-    Schema.Struct({
-      createdBy: Schema.optional(Schema.String),
-      createdByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      createdAt: Schema.optional(Schema.String),
-      lastModifiedBy: Schema.optional(Schema.String),
-      lastModifiedByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      lastModifiedAt: Schema.optional(Schema.String),
-    }),
-  ),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
 });
 export type FilesCreateOutput = typeof FilesCreateOutput.Type;
 
@@ -773,23 +793,13 @@ export type FilesGetInput = typeof FilesGetInput.Type;
 
 // Output Schema
 export const FilesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.optional(
+    Schema.suspend(() => FileDetailsPropertiesSchema),
+  ),
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
-  systemData: Schema.optional(
-    Schema.Struct({
-      createdBy: Schema.optional(Schema.String),
-      createdByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      createdAt: Schema.optional(Schema.String),
-      lastModifiedBy: Schema.optional(Schema.String),
-      lastModifiedByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      lastModifiedAt: Schema.optional(Schema.String),
-    }),
-  ),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
 });
 export type FilesGetOutput = typeof FilesGetOutput.Type;
 
@@ -822,39 +832,7 @@ export type FilesListInput = typeof FilesListInput.Type;
 // Output Schema
 export const FilesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   nextLink: Schema.optional(Schema.String),
-  value: Schema.optional(
-    Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
-  ),
+  value: Schema.optional(Schema.Array(Schema.suspend(() => FileDetailsSchema))),
 });
 export type FilesListOutput = typeof FilesListOutput.Type;
 
@@ -876,12 +854,7 @@ export const FilesNoSubscriptionCreateInput =
     fileWorkspaceName: Schema.String.pipe(T.PathParam()),
     fileName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        createdOn: Schema.optional(Schema.String),
-        chunkSize: Schema.optional(Schema.Number),
-        fileSize: Schema.optional(Schema.Number),
-        numberOfChunks: Schema.optional(Schema.Number),
-      }),
+      Schema.suspend(() => FileDetailsPropertiesSchema),
     ),
   }).pipe(
     T.Http({
@@ -896,23 +869,13 @@ export type FilesNoSubscriptionCreateInput =
 // Output Schema
 export const FilesNoSubscriptionCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => FileDetailsPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type FilesNoSubscriptionCreateOutput =
   typeof FilesNoSubscriptionCreateOutput.Type;
@@ -949,23 +912,13 @@ export type FilesNoSubscriptionGetInput =
 // Output Schema
 export const FilesNoSubscriptionGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => FileDetailsPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type FilesNoSubscriptionGetOutput =
   typeof FilesNoSubscriptionGetOutput.Type;
@@ -1003,37 +956,7 @@ export const FilesNoSubscriptionListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.String),
-              createdByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              createdAt: Schema.optional(Schema.String),
-              lastModifiedBy: Schema.optional(Schema.String),
-              lastModifiedByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              lastModifiedAt: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => FileDetailsSchema)),
     ),
   });
 export type FilesNoSubscriptionListOutput =
@@ -1139,23 +1062,13 @@ export type FileWorkspacesCreateInput = typeof FileWorkspacesCreateInput.Type;
 // Output Schema
 export const FileWorkspacesCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => FileWorkspaceDetailsPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type FileWorkspacesCreateOutput = typeof FileWorkspacesCreateOutput.Type;
 
@@ -1191,23 +1104,13 @@ export type FileWorkspacesGetInput = typeof FileWorkspacesGetInput.Type;
 // Output Schema
 export const FileWorkspacesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => FileWorkspaceDetailsPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type FileWorkspacesGetOutput = typeof FileWorkspacesGetOutput.Type;
 
@@ -1240,23 +1143,13 @@ export type FileWorkspacesNoSubscriptionCreateInput =
 // Output Schema
 export const FileWorkspacesNoSubscriptionCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => FileWorkspaceDetailsPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type FileWorkspacesNoSubscriptionCreateOutput =
   typeof FileWorkspacesNoSubscriptionCreateOutput.Type;
@@ -1290,23 +1183,13 @@ export type FileWorkspacesNoSubscriptionGetInput =
 // Output Schema
 export const FileWorkspacesNoSubscriptionGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => FileWorkspaceDetailsPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type FileWorkspacesNoSubscriptionGetOutput =
   typeof FileWorkspacesNoSubscriptionGetOutput.Type;
@@ -1337,26 +1220,7 @@ export type OperationsListInput = typeof OperationsListInput.Type;
 
 // Output Schema
 export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  value: Schema.optional(
-    Schema.Array(
-      Schema.Struct({
-        name: Schema.optional(Schema.String),
-        isDataAction: Schema.optional(Schema.Boolean),
-        display: Schema.optional(
-          Schema.Struct({
-            provider: Schema.optional(Schema.String),
-            resource: Schema.optional(Schema.String),
-            operation: Schema.optional(Schema.String),
-            description: Schema.optional(Schema.String),
-          }),
-        ),
-        origin: Schema.optional(
-          Schema.Literals(["user", "system", "user,system"]),
-        ),
-        actionType: Schema.optional(Schema.Literals(["Internal"])),
-      }),
-    ),
-  ),
+  value: Schema.optional(Schema.Array(Schema.suspend(() => OperationSchema))),
   nextLink: Schema.optional(Schema.String),
 });
 export type OperationsListOutput = typeof OperationsListOutput.Type;
@@ -1389,23 +1253,13 @@ export type ProblemClassificationsGetInput =
 // Output Schema
 export const ProblemClassificationsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => ProblemClassificationPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type ProblemClassificationsGetOutput =
   typeof ProblemClassificationsGetOutput.Type;
@@ -1443,37 +1297,7 @@ export const ProblemClassificationsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.String),
-              createdByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              createdAt: Schema.optional(Schema.String),
-              lastModifiedBy: Schema.optional(Schema.String),
-              lastModifiedByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              lastModifiedAt: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => ProblemClassificationSchema)),
     ),
   });
 export type ProblemClassificationsListOutput =
@@ -1506,23 +1330,11 @@ export type ServicesGetInput = typeof ServicesGetInput.Type;
 
 // Output Schema
 export const ServicesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.optional(Schema.suspend(() => ServicePropertiesSchema)),
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
-  systemData: Schema.optional(
-    Schema.Struct({
-      createdBy: Schema.optional(Schema.String),
-      createdByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      createdAt: Schema.optional(Schema.String),
-      lastModifiedBy: Schema.optional(Schema.String),
-      lastModifiedByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      lastModifiedAt: Schema.optional(Schema.String),
-    }),
-  ),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
 });
 export type ServicesGetOutput = typeof ServicesGetOutput.Type;
 
@@ -1552,39 +1364,7 @@ export type ServicesListInput = typeof ServicesListInput.Type;
 // Output Schema
 export const ServicesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   nextLink: Schema.optional(Schema.String),
-  value: Schema.optional(
-    Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
-  ),
+  value: Schema.optional(Schema.Array(Schema.suspend(() => ServiceSchema))),
 });
 export type ServicesListOutput = typeof ServicesListOutput.Type;
 
@@ -1603,10 +1383,7 @@ export const SupportTicketsCheckNameAvailabilityInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     name: Schema.String,
-    type: Schema.Literals([
-      "Microsoft.Support/supportTickets",
-      "Microsoft.Support/communications",
-    ]),
+    type: Schema.suspend(() => TypeSchema),
   }).pipe(
     T.Http({
       method: "POST",
@@ -1644,84 +1421,7 @@ export const SupportTicketsCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     supportTicketName: Schema.String.pipe(T.PathParam()),
-    properties: Schema.Struct({
-      supportTicketId: Schema.optional(Schema.String),
-      description: Schema.String,
-      problemClassificationId: Schema.String,
-      problemClassificationDisplayName: Schema.optional(Schema.String),
-      severity: Schema.Literals([
-        "minimal",
-        "moderate",
-        "critical",
-        "highestcriticalimpact",
-      ]),
-      enrollmentId: Schema.optional(Schema.String),
-      require24X7Response: Schema.optional(Schema.Boolean),
-      advancedDiagnosticConsent: Schema.Literals(["Yes", "No"]),
-      problemScopingQuestions: Schema.optional(Schema.String),
-      supportPlanId: Schema.optional(Schema.String),
-      contactDetails: Schema.Struct({
-        firstName: Schema.String,
-        lastName: Schema.String,
-        preferredContactMethod: Schema.Literals(["email", "phone"]),
-        primaryEmailAddress: Schema.String,
-        additionalEmailAddresses: Schema.optional(Schema.Array(Schema.String)),
-        phoneNumber: Schema.optional(Schema.String),
-        preferredTimeZone: Schema.String,
-        country: Schema.String,
-        preferredSupportLanguage: Schema.String,
-      }),
-      serviceLevelAgreement: Schema.optional(
-        Schema.Struct({
-          startTime: Schema.optional(Schema.String),
-          expirationTime: Schema.optional(Schema.String),
-          slaMinutes: Schema.optional(Schema.Number),
-        }),
-      ),
-      supportEngineer: Schema.optional(
-        Schema.Struct({
-          emailAddress: Schema.optional(Schema.String),
-        }),
-      ),
-      supportPlanType: Schema.optional(Schema.String),
-      supportPlanDisplayName: Schema.optional(Schema.String),
-      title: Schema.String,
-      problemStartTime: Schema.optional(Schema.String),
-      serviceId: Schema.String,
-      serviceDisplayName: Schema.optional(Schema.String),
-      status: Schema.optional(Schema.String),
-      createdDate: Schema.optional(Schema.String),
-      modifiedDate: Schema.optional(Schema.String),
-      fileWorkspaceName: Schema.optional(Schema.String),
-      isTemporaryTicket: Schema.optional(Schema.Literals(["Yes", "No"])),
-      technicalTicketDetails: Schema.optional(
-        Schema.Struct({
-          resourceId: Schema.optional(Schema.String),
-        }),
-      ),
-      quotaTicketDetails: Schema.optional(
-        Schema.Struct({
-          quotaChangeRequestSubType: Schema.optional(Schema.String),
-          quotaChangeRequestVersion: Schema.optional(Schema.String),
-          quotaChangeRequests: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                region: Schema.optional(Schema.String),
-                payload: Schema.optional(Schema.String),
-              }),
-            ),
-          ),
-        }),
-      ),
-      secondaryConsent: Schema.optional(
-        Schema.Array(
-          Schema.Struct({
-            userConsent: Schema.optional(Schema.Literals(["Yes", "No"])),
-            type: Schema.optional(Schema.String),
-          }),
-        ),
-      ),
-    }),
+    properties: Schema.suspend(() => SupportTicketDetailsPropertiesSchema),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -1735,23 +1435,11 @@ export type SupportTicketsCreateInput = typeof SupportTicketsCreateInput.Type;
 // Output Schema
 export const SupportTicketsCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.suspend(() => SupportTicketDetailsPropertiesSchema),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type SupportTicketsCreateOutput = typeof SupportTicketsCreateOutput.Type;
 
@@ -1787,23 +1475,11 @@ export type SupportTicketsGetInput = typeof SupportTicketsGetInput.Type;
 // Output Schema
 export const SupportTicketsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.suspend(() => SupportTicketDetailsPropertiesSchema),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type SupportTicketsGetOutput = typeof SupportTicketsGetOutput.Type;
 
@@ -1839,37 +1515,7 @@ export const SupportTicketsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.String),
-              createdByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              createdAt: Schema.optional(Schema.String),
-              lastModifiedBy: Schema.optional(Schema.String),
-              lastModifiedByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              lastModifiedAt: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => SupportTicketDetailsSchema)),
     ),
   });
 export type SupportTicketsListOutput = typeof SupportTicketsListOutput.Type;
@@ -1891,10 +1537,7 @@ export const SupportTicketsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const SupportTicketsNoSubscriptionCheckNameAvailabilityInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String,
-    type: Schema.Literals([
-      "Microsoft.Support/supportTickets",
-      "Microsoft.Support/communications",
-    ]),
+    type: Schema.suspend(() => TypeSchema),
   }).pipe(
     T.Http({
       method: "POST",
@@ -1930,84 +1573,7 @@ export const SupportTicketsNoSubscriptionCheckNameAvailability =
 export const SupportTicketsNoSubscriptionCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     supportTicketName: Schema.String.pipe(T.PathParam()),
-    properties: Schema.Struct({
-      supportTicketId: Schema.optional(Schema.String),
-      description: Schema.String,
-      problemClassificationId: Schema.String,
-      problemClassificationDisplayName: Schema.optional(Schema.String),
-      severity: Schema.Literals([
-        "minimal",
-        "moderate",
-        "critical",
-        "highestcriticalimpact",
-      ]),
-      enrollmentId: Schema.optional(Schema.String),
-      require24X7Response: Schema.optional(Schema.Boolean),
-      advancedDiagnosticConsent: Schema.Literals(["Yes", "No"]),
-      problemScopingQuestions: Schema.optional(Schema.String),
-      supportPlanId: Schema.optional(Schema.String),
-      contactDetails: Schema.Struct({
-        firstName: Schema.String,
-        lastName: Schema.String,
-        preferredContactMethod: Schema.Literals(["email", "phone"]),
-        primaryEmailAddress: Schema.String,
-        additionalEmailAddresses: Schema.optional(Schema.Array(Schema.String)),
-        phoneNumber: Schema.optional(Schema.String),
-        preferredTimeZone: Schema.String,
-        country: Schema.String,
-        preferredSupportLanguage: Schema.String,
-      }),
-      serviceLevelAgreement: Schema.optional(
-        Schema.Struct({
-          startTime: Schema.optional(Schema.String),
-          expirationTime: Schema.optional(Schema.String),
-          slaMinutes: Schema.optional(Schema.Number),
-        }),
-      ),
-      supportEngineer: Schema.optional(
-        Schema.Struct({
-          emailAddress: Schema.optional(Schema.String),
-        }),
-      ),
-      supportPlanType: Schema.optional(Schema.String),
-      supportPlanDisplayName: Schema.optional(Schema.String),
-      title: Schema.String,
-      problemStartTime: Schema.optional(Schema.String),
-      serviceId: Schema.String,
-      serviceDisplayName: Schema.optional(Schema.String),
-      status: Schema.optional(Schema.String),
-      createdDate: Schema.optional(Schema.String),
-      modifiedDate: Schema.optional(Schema.String),
-      fileWorkspaceName: Schema.optional(Schema.String),
-      isTemporaryTicket: Schema.optional(Schema.Literals(["Yes", "No"])),
-      technicalTicketDetails: Schema.optional(
-        Schema.Struct({
-          resourceId: Schema.optional(Schema.String),
-        }),
-      ),
-      quotaTicketDetails: Schema.optional(
-        Schema.Struct({
-          quotaChangeRequestSubType: Schema.optional(Schema.String),
-          quotaChangeRequestVersion: Schema.optional(Schema.String),
-          quotaChangeRequests: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                region: Schema.optional(Schema.String),
-                payload: Schema.optional(Schema.String),
-              }),
-            ),
-          ),
-        }),
-      ),
-      secondaryConsent: Schema.optional(
-        Schema.Array(
-          Schema.Struct({
-            userConsent: Schema.optional(Schema.Literals(["Yes", "No"])),
-            type: Schema.optional(Schema.String),
-          }),
-        ),
-      ),
-    }),
+    properties: Schema.suspend(() => SupportTicketDetailsPropertiesSchema),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -2022,23 +1588,11 @@ export type SupportTicketsNoSubscriptionCreateInput =
 // Output Schema
 export const SupportTicketsNoSubscriptionCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.suspend(() => SupportTicketDetailsPropertiesSchema),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type SupportTicketsNoSubscriptionCreateOutput =
   typeof SupportTicketsNoSubscriptionCreateOutput.Type;
@@ -2072,23 +1626,11 @@ export type SupportTicketsNoSubscriptionGetInput =
 // Output Schema
 export const SupportTicketsNoSubscriptionGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.suspend(() => SupportTicketDetailsPropertiesSchema),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type SupportTicketsNoSubscriptionGetOutput =
   typeof SupportTicketsNoSubscriptionGetOutput.Type;
@@ -2125,37 +1667,7 @@ export const SupportTicketsNoSubscriptionListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.String),
-              createdByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              createdAt: Schema.optional(Schema.String),
-              lastModifiedBy: Schema.optional(Schema.String),
-              lastModifiedByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              lastModifiedAt: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => SupportTicketDetailsSchema)),
     ),
   });
 export type SupportTicketsNoSubscriptionListOutput =
@@ -2178,38 +1690,16 @@ export const SupportTicketsNoSubscriptionList =
 export const SupportTicketsNoSubscriptionUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     supportTicketName: Schema.String.pipe(T.PathParam()),
-    severity: Schema.optional(
-      Schema.Literals([
-        "minimal",
-        "moderate",
-        "critical",
-        "highestcriticalimpact",
-      ]),
-    ),
-    status: Schema.optional(Schema.Literals(["open", "closed"])),
+    severity: Schema.optional(Schema.suspend(() => SeverityLevelSchema)),
+    status: Schema.optional(Schema.suspend(() => StatusSchema)),
     contactDetails: Schema.optional(
-      Schema.Struct({
-        firstName: Schema.optional(Schema.String),
-        lastName: Schema.optional(Schema.String),
-        preferredContactMethod: Schema.optional(
-          Schema.Literals(["email", "phone"]),
-        ),
-        primaryEmailAddress: Schema.optional(Schema.String),
-        additionalEmailAddresses: Schema.optional(Schema.Array(Schema.String)),
-        phoneNumber: Schema.optional(Schema.String),
-        preferredTimeZone: Schema.optional(Schema.String),
-        country: Schema.optional(Schema.String),
-        preferredSupportLanguage: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(() => UpdateContactProfileSchema),
     ),
-    advancedDiagnosticConsent: Schema.optional(Schema.Literals(["Yes", "No"])),
+    advancedDiagnosticConsent: Schema.optional(
+      Schema.suspend(() => ConsentSchema),
+    ),
     secondaryConsent: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          userConsent: Schema.optional(Schema.Literals(["Yes", "No"])),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => SecondaryConsentSchema)),
     ),
   }).pipe(
     T.Http({
@@ -2224,23 +1714,11 @@ export type SupportTicketsNoSubscriptionUpdateInput =
 // Output Schema
 export const SupportTicketsNoSubscriptionUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.suspend(() => SupportTicketDetailsPropertiesSchema),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type SupportTicketsNoSubscriptionUpdateOutput =
   typeof SupportTicketsNoSubscriptionUpdateOutput.Type;
@@ -2262,38 +1740,16 @@ export const SupportTicketsUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     supportTicketName: Schema.String.pipe(T.PathParam()),
-    severity: Schema.optional(
-      Schema.Literals([
-        "minimal",
-        "moderate",
-        "critical",
-        "highestcriticalimpact",
-      ]),
-    ),
-    status: Schema.optional(Schema.Literals(["open", "closed"])),
+    severity: Schema.optional(Schema.suspend(() => SeverityLevelSchema)),
+    status: Schema.optional(Schema.suspend(() => StatusSchema)),
     contactDetails: Schema.optional(
-      Schema.Struct({
-        firstName: Schema.optional(Schema.String),
-        lastName: Schema.optional(Schema.String),
-        preferredContactMethod: Schema.optional(
-          Schema.Literals(["email", "phone"]),
-        ),
-        primaryEmailAddress: Schema.optional(Schema.String),
-        additionalEmailAddresses: Schema.optional(Schema.Array(Schema.String)),
-        phoneNumber: Schema.optional(Schema.String),
-        preferredTimeZone: Schema.optional(Schema.String),
-        country: Schema.optional(Schema.String),
-        preferredSupportLanguage: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(() => UpdateContactProfileSchema),
     ),
-    advancedDiagnosticConsent: Schema.optional(Schema.Literals(["Yes", "No"])),
+    advancedDiagnosticConsent: Schema.optional(
+      Schema.suspend(() => ConsentSchema),
+    ),
     secondaryConsent: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          userConsent: Schema.optional(Schema.Literals(["Yes", "No"])),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => SecondaryConsentSchema)),
     ),
   }).pipe(
     T.Http({
@@ -2307,23 +1763,11 @@ export type SupportTicketsUpdateInput = typeof SupportTicketsUpdateInput.Type;
 // Output Schema
 export const SupportTicketsUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.suspend(() => SupportTicketDetailsPropertiesSchema),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type SupportTicketsUpdateOutput = typeof SupportTicketsUpdateOutput.Type;
 

@@ -8,29 +8,315 @@ import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
+// Shared schemas
+const TransformationPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    streamingUnits: Schema.optional(Schema.Number),
+    validStreamingUnits: Schema.optional(Schema.Array(Schema.Number)),
+    query: Schema.optional(Schema.String),
+    etag: Schema.optional(Schema.String),
+  });
+const PrivateEndpointPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    createdDate: Schema.optional(Schema.String),
+    manualPrivateLinkServiceConnections: Schema.optional(
+      Schema.Array(Schema.suspend(() => PrivateLinkServiceConnectionSchema)),
+    ),
+  });
+const PrivateLinkServiceConnectionSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => PrivateLinkServiceConnectionPropertiesSchema),
+    ),
+  });
+const PrivateLinkServiceConnectionPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    privateLinkServiceId: Schema.optional(Schema.String),
+    groupIds: Schema.optional(Schema.Array(Schema.String)),
+    requestMessage: Schema.optional(Schema.String),
+    privateLinkServiceConnectionState: Schema.optional(
+      Schema.suspend(() => PrivateLinkConnectionStateSchema),
+    ),
+  });
+const PrivateLinkConnectionStateSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    status: Schema.optional(Schema.String),
+    description: Schema.optional(Schema.String),
+    actionsRequired: Schema.optional(Schema.String),
+  });
+const PrivateEndpointSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
+const OperationSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  isDataAction: Schema.optional(Schema.Boolean),
+  display: Schema.optional(
+    Schema.Struct({
+      provider: Schema.optional(Schema.String),
+      resource: Schema.optional(Schema.String),
+      operation: Schema.optional(Schema.String),
+      description: Schema.optional(Schema.String),
+    }),
+  ),
+});
+const StreamingJobPropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  sku: Schema.optional(Schema.suspend(() => SkuSchema)),
+  jobId: Schema.optional(Schema.String),
+  provisioningState: Schema.optional(Schema.String),
+  jobState: Schema.optional(Schema.String),
+  jobType: Schema.optional(Schema.Literals(["Cloud", "Edge"])),
+  outputStartMode: Schema.optional(Schema.suspend(() => OutputStartModeSchema)),
+  outputStartTime: Schema.optional(Schema.String),
+  lastOutputEventTime: Schema.optional(Schema.String),
+  eventsOutOfOrderPolicy: Schema.optional(
+    Schema.suspend(() => EventsOutOfOrderPolicySchema),
+  ),
+  outputErrorPolicy: Schema.optional(
+    Schema.suspend(() => OutputErrorPolicySchema),
+  ),
+  eventsOutOfOrderMaxDelayInSeconds: Schema.optional(Schema.Number),
+  eventsLateArrivalMaxDelayInSeconds: Schema.optional(Schema.Number),
+  dataLocale: Schema.optional(Schema.String),
+  compatibilityLevel: Schema.optional(
+    Schema.suspend(() => CompatibilityLevelSchema),
+  ),
+  createdDate: Schema.optional(Schema.String),
+  inputs: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+      }),
+    ),
+  ),
+  transformation: Schema.optional(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+    }),
+  ),
+  outputs: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+      }),
+    ),
+  ),
+  functions: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+      }),
+    ),
+  ),
+  etag: Schema.optional(Schema.String),
+  jobStorageAccount: Schema.optional(
+    Schema.suspend(() => JobStorageAccountSchema),
+  ),
+  contentStoragePolicy: Schema.optional(
+    Schema.Literals(["SystemAccount", "JobStorageAccount"]),
+  ),
+  cluster: Schema.optional(Schema.suspend(() => ClusterInfoSchema)),
+});
+const SkuSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.Literals(["Standard"])),
+});
+const OutputStartModeSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "JobStartTime",
+  "CustomTime",
+  "LastOutputEventTime",
+]);
+const EventsOutOfOrderPolicySchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Literals(["Adjust", "Drop"]);
+const OutputErrorPolicySchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Stop",
+  "Drop",
+]);
+const CompatibilityLevelSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "1.0",
+  "1.2",
+]);
+const JobStorageAccountSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  accountName: Schema.optional(Schema.String),
+  accountKey: Schema.optional(Schema.String),
+});
+const ClusterInfoSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+});
+const IdentitySchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  tenantId: Schema.optional(Schema.String),
+  principalId: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
+const StreamingJobSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
+const OutputPropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  datasource: Schema.optional(Schema.suspend(() => OutputDataSourceSchema)),
+  timeWindow: Schema.optional(Schema.String),
+  sizeWindow: Schema.optional(Schema.Number),
+  serialization: Schema.optional(
+    Schema.Struct({
+      type: Schema.suspend(() => EventSerializationTypeSchema),
+    }),
+  ),
+  diagnostics: Schema.optional(
+    Schema.Struct({
+      conditions: Schema.optional(
+        Schema.Array(Schema.suspend(() => DiagnosticConditionSchema)),
+      ),
+    }),
+  ),
+  etag: Schema.optional(Schema.String),
+});
+const OutputDataSourceSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  type: Schema.String,
+});
+const EventSerializationTypeSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+    "Csv",
+    "Avro",
+    "Json",
+    "Parquet",
+  ]);
+const DiagnosticConditionSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  since: Schema.optional(Schema.String),
+  code: Schema.optional(Schema.String),
+  message: Schema.optional(Schema.String),
+});
+const OutputSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
+const ErrorResponseSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  code: Schema.optional(Schema.String),
+  message: Schema.optional(Schema.String),
+});
+const SubscriptionQuotaSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
+const InputPropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  type: Schema.String,
+  serialization: Schema.optional(Schema.suspend(() => SerializationSchema)),
+  diagnostics: Schema.optional(Schema.suspend(() => DiagnosticsSchema)),
+  etag: Schema.optional(Schema.String),
+  compression: Schema.optional(Schema.suspend(() => CompressionSchema)),
+  partitionKey: Schema.optional(Schema.String),
+});
+const SerializationSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  type: Schema.suspend(() => EventSerializationTypeSchema),
+});
+const DiagnosticsSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  conditions: Schema.optional(
+    Schema.Array(Schema.suspend(() => DiagnosticConditionSchema)),
+  ),
+});
+const CompressionSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  type: Schema.suspend(() => CompressionTypeSchema),
+});
+const CompressionTypeSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "None",
+  "GZip",
+  "Deflate",
+]);
+const InputSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
+const ClusterSkuSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.Literals(["Default"])),
+  capacity: Schema.optional(Schema.Number),
+});
+const ClusterPropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  createdDate: Schema.optional(Schema.String),
+  clusterId: Schema.optional(Schema.String),
+  provisioningState: Schema.optional(
+    Schema.suspend(() => ClusterProvisioningStateSchema),
+  ),
+  capacityAllocated: Schema.optional(Schema.Number),
+  capacityAssigned: Schema.optional(Schema.Number),
+});
+const ClusterProvisioningStateSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+    "Succeeded",
+    "Failed",
+    "Canceled",
+    "InProgress",
+  ]);
+const ClusterSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
+const ClusterJobSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  streamingUnits: Schema.optional(Schema.Number),
+  jobState: Schema.optional(Schema.suspend(() => JobStateSchema)),
+});
+const JobStateSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Created",
+  "Starting",
+  "Running",
+  "Stopping",
+  "Stopped",
+  "Deleting",
+  "Failed",
+  "Degraded",
+  "Restarting",
+  "Scaling",
+]);
+const FunctionPropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  type: Schema.String,
+  etag: Schema.optional(Schema.String),
+  properties: Schema.optional(
+    Schema.suspend(() => FunctionConfigurationSchema),
+  ),
+});
+const FunctionConfigurationSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  inputs: Schema.optional(
+    Schema.Array(Schema.suspend(() => FunctionInputSchema)),
+  ),
+  output: Schema.optional(Schema.suspend(() => FunctionOutputSchema)),
+  binding: Schema.optional(Schema.suspend(() => FunctionBindingSchema)),
+});
+const FunctionInputSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  dataType: Schema.optional(Schema.String),
+  isConfigurationParameter: Schema.optional(Schema.Boolean),
+});
+const FunctionOutputSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  dataType: Schema.optional(Schema.String),
+});
+const FunctionBindingSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  type: Schema.String,
+});
+const FunctionSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
+
 // Input Schema
 export const ClustersCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    sku: Schema.optional(
-      Schema.Struct({
-        name: Schema.optional(Schema.Literals(["Default"])),
-        capacity: Schema.optional(Schema.Number),
-      }),
-    ),
+    sku: Schema.optional(Schema.suspend(() => ClusterSkuSchema)),
     etag: Schema.optional(Schema.String),
-    properties: Schema.optional(
-      Schema.Struct({
-        createdDate: Schema.optional(Schema.String),
-        clusterId: Schema.optional(Schema.String),
-        provisioningState: Schema.optional(
-          Schema.Literals(["Succeeded", "Failed", "Canceled", "InProgress"]),
-        ),
-        capacityAllocated: Schema.optional(Schema.Number),
-        capacityAssigned: Schema.optional(Schema.Number),
-      }),
-    ),
+    properties: Schema.optional(Schema.suspend(() => ClusterPropertiesSchema)),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     location: Schema.optional(Schema.String),
   }).pipe(
@@ -47,6 +333,11 @@ export type ClustersCreateOrUpdateInput =
 // Output Schema
 export const ClustersCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    sku: Schema.optional(Schema.suspend(() => ClusterSkuSchema)),
+    etag: Schema.optional(Schema.String),
+    properties: Schema.optional(Schema.suspend(() => ClusterPropertiesSchema)),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -115,6 +406,11 @@ export type ClustersGetInput = typeof ClustersGetInput.Type;
 
 // Output Schema
 export const ClustersGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  sku: Schema.optional(Schema.suspend(() => ClusterSkuSchema)),
+  etag: Schema.optional(Schema.String),
+  properties: Schema.optional(Schema.suspend(() => ClusterPropertiesSchema)),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  location: Schema.optional(Schema.String),
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -151,15 +447,7 @@ export type ClustersListByResourceGroupInput =
 // Output Schema
 export const ClustersListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
-    ),
+    value: Schema.optional(Schema.Array(Schema.suspend(() => ClusterSchema))),
     nextLink: Schema.optional(Schema.String),
   });
 export type ClustersListByResourceGroupOutput =
@@ -196,15 +484,7 @@ export type ClustersListBySubscriptionInput =
 // Output Schema
 export const ClustersListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
-    ),
+    value: Schema.optional(Schema.Array(Schema.suspend(() => ClusterSchema))),
     nextLink: Schema.optional(Schema.String),
   });
 export type ClustersListBySubscriptionOutput =
@@ -242,26 +522,7 @@ export type ClustersListStreamingJobsInput =
 export const ClustersListStreamingJobsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          streamingUnits: Schema.optional(Schema.Number),
-          jobState: Schema.optional(
-            Schema.Literals([
-              "Created",
-              "Starting",
-              "Running",
-              "Stopping",
-              "Stopped",
-              "Deleting",
-              "Failed",
-              "Degraded",
-              "Restarting",
-              "Scaling",
-            ]),
-          ),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => ClusterJobSchema)),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -286,24 +547,9 @@ export const ClustersListStreamingJobs = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const ClustersUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
-  sku: Schema.optional(
-    Schema.Struct({
-      name: Schema.optional(Schema.Literals(["Default"])),
-      capacity: Schema.optional(Schema.Number),
-    }),
-  ),
+  sku: Schema.optional(Schema.suspend(() => ClusterSkuSchema)),
   etag: Schema.optional(Schema.String),
-  properties: Schema.optional(
-    Schema.Struct({
-      createdDate: Schema.optional(Schema.String),
-      clusterId: Schema.optional(Schema.String),
-      provisioningState: Schema.optional(
-        Schema.Literals(["Succeeded", "Failed", "Canceled", "InProgress"]),
-      ),
-      capacityAllocated: Schema.optional(Schema.Number),
-      capacityAssigned: Schema.optional(Schema.Number),
-    }),
-  ),
+  properties: Schema.optional(Schema.suspend(() => ClusterPropertiesSchema)),
   tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   location: Schema.optional(Schema.String),
 }).pipe(
@@ -318,6 +564,11 @@ export type ClustersUpdateInput = typeof ClustersUpdateInput.Type;
 
 // Output Schema
 export const ClustersUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  sku: Schema.optional(Schema.suspend(() => ClusterSkuSchema)),
+  etag: Schema.optional(Schema.String),
+  properties: Schema.optional(Schema.suspend(() => ClusterPropertiesSchema)),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  location: Schema.optional(Schema.String),
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -343,34 +594,7 @@ export const FunctionsCreateOrReplaceInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     jobName: Schema.String.pipe(T.PathParam()),
-    properties: Schema.optional(
-      Schema.Struct({
-        type: Schema.String,
-        etag: Schema.optional(Schema.String),
-        properties: Schema.optional(
-          Schema.Struct({
-            inputs: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  dataType: Schema.optional(Schema.String),
-                  isConfigurationParameter: Schema.optional(Schema.Boolean),
-                }),
-              ),
-            ),
-            output: Schema.optional(
-              Schema.Struct({
-                dataType: Schema.optional(Schema.String),
-              }),
-            ),
-            binding: Schema.optional(
-              Schema.Struct({
-                type: Schema.String,
-              }),
-            ),
-          }),
-        ),
-      }),
-    ),
+    properties: Schema.optional(Schema.suspend(() => FunctionPropertiesSchema)),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -387,6 +611,7 @@ export type FunctionsCreateOrReplaceInput =
 // Output Schema
 export const FunctionsCreateOrReplaceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(Schema.suspend(() => FunctionPropertiesSchema)),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -458,6 +683,7 @@ export type FunctionsGetInput = typeof FunctionsGetInput.Type;
 
 // Output Schema
 export const FunctionsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.optional(Schema.suspend(() => FunctionPropertiesSchema)),
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -497,15 +723,7 @@ export type FunctionsListByStreamingJobInput =
 // Output Schema
 export const FunctionsListByStreamingJobOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
-    ),
+    value: Schema.optional(Schema.Array(Schema.suspend(() => FunctionSchema))),
     nextLink: Schema.optional(Schema.String),
   });
 export type FunctionsListByStreamingJobOutput =
@@ -547,6 +765,7 @@ export type FunctionsRetrieveDefaultDefinitionInput =
 // Output Schema
 export const FunctionsRetrieveDefaultDefinitionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(Schema.suspend(() => FunctionPropertiesSchema)),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -573,34 +792,7 @@ export const FunctionsTestInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   jobName: Schema.String.pipe(T.PathParam()),
-  properties: Schema.optional(
-    Schema.Struct({
-      type: Schema.String,
-      etag: Schema.optional(Schema.String),
-      properties: Schema.optional(
-        Schema.Struct({
-          inputs: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                dataType: Schema.optional(Schema.String),
-                isConfigurationParameter: Schema.optional(Schema.Boolean),
-              }),
-            ),
-          ),
-          output: Schema.optional(
-            Schema.Struct({
-              dataType: Schema.optional(Schema.String),
-            }),
-          ),
-          binding: Schema.optional(
-            Schema.Struct({
-              type: Schema.String,
-            }),
-          ),
-        }),
-      ),
-    }),
-  ),
+  properties: Schema.optional(Schema.suspend(() => FunctionPropertiesSchema)),
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -617,12 +809,7 @@ export type FunctionsTestInput = typeof FunctionsTestInput.Type;
 // Output Schema
 export const FunctionsTestOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   status: Schema.optional(Schema.String),
-  error: Schema.optional(
-    Schema.Struct({
-      code: Schema.optional(Schema.String),
-      message: Schema.optional(Schema.String),
-    }),
-  ),
+  error: Schema.optional(Schema.suspend(() => ErrorResponseSchema)),
 });
 export type FunctionsTestOutput = typeof FunctionsTestOutput.Type;
 
@@ -644,34 +831,7 @@ export const FunctionsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   jobName: Schema.String.pipe(T.PathParam()),
-  properties: Schema.optional(
-    Schema.Struct({
-      type: Schema.String,
-      etag: Schema.optional(Schema.String),
-      properties: Schema.optional(
-        Schema.Struct({
-          inputs: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                dataType: Schema.optional(Schema.String),
-                isConfigurationParameter: Schema.optional(Schema.Boolean),
-              }),
-            ),
-          ),
-          output: Schema.optional(
-            Schema.Struct({
-              dataType: Schema.optional(Schema.String),
-            }),
-          ),
-          binding: Schema.optional(
-            Schema.Struct({
-              type: Schema.String,
-            }),
-          ),
-        }),
-      ),
-    }),
-  ),
+  properties: Schema.optional(Schema.suspend(() => FunctionPropertiesSchema)),
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -686,6 +846,7 @@ export type FunctionsUpdateInput = typeof FunctionsUpdateInput.Type;
 
 // Output Schema
 export const FunctionsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.optional(Schema.suspend(() => FunctionPropertiesSchema)),
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -712,36 +873,7 @@ export const InputsCreateOrReplaceInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     jobName: Schema.String.pipe(T.PathParam()),
-    properties: Schema.optional(
-      Schema.Struct({
-        type: Schema.String,
-        serialization: Schema.optional(
-          Schema.Struct({
-            type: Schema.Literals(["Csv", "Avro", "Json", "Parquet"]),
-          }),
-        ),
-        diagnostics: Schema.optional(
-          Schema.Struct({
-            conditions: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  since: Schema.optional(Schema.String),
-                  code: Schema.optional(Schema.String),
-                  message: Schema.optional(Schema.String),
-                }),
-              ),
-            ),
-          }),
-        ),
-        etag: Schema.optional(Schema.String),
-        compression: Schema.optional(
-          Schema.Struct({
-            type: Schema.Literals(["None", "GZip", "Deflate"]),
-          }),
-        ),
-        partitionKey: Schema.optional(Schema.String),
-      }),
-    ),
+    properties: Schema.optional(Schema.suspend(() => InputPropertiesSchema)),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -757,6 +889,7 @@ export type InputsCreateOrReplaceInput = typeof InputsCreateOrReplaceInput.Type;
 // Output Schema
 export const InputsCreateOrReplaceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(Schema.suspend(() => InputPropertiesSchema)),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -828,6 +961,7 @@ export type InputsGetInput = typeof InputsGetInput.Type;
 
 // Output Schema
 export const InputsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.optional(Schema.suspend(() => InputPropertiesSchema)),
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -867,15 +1001,7 @@ export type InputsListByStreamingJobInput =
 // Output Schema
 export const InputsListByStreamingJobOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
-    ),
+    value: Schema.optional(Schema.Array(Schema.suspend(() => InputSchema))),
     nextLink: Schema.optional(Schema.String),
   });
 export type InputsListByStreamingJobOutput =
@@ -902,36 +1028,7 @@ export const InputsTestInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   jobName: Schema.String.pipe(T.PathParam()),
-  properties: Schema.optional(
-    Schema.Struct({
-      type: Schema.String,
-      serialization: Schema.optional(
-        Schema.Struct({
-          type: Schema.Literals(["Csv", "Avro", "Json", "Parquet"]),
-        }),
-      ),
-      diagnostics: Schema.optional(
-        Schema.Struct({
-          conditions: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                since: Schema.optional(Schema.String),
-                code: Schema.optional(Schema.String),
-                message: Schema.optional(Schema.String),
-              }),
-            ),
-          ),
-        }),
-      ),
-      etag: Schema.optional(Schema.String),
-      compression: Schema.optional(
-        Schema.Struct({
-          type: Schema.Literals(["None", "GZip", "Deflate"]),
-        }),
-      ),
-      partitionKey: Schema.optional(Schema.String),
-    }),
-  ),
+  properties: Schema.optional(Schema.suspend(() => InputPropertiesSchema)),
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -948,12 +1045,7 @@ export type InputsTestInput = typeof InputsTestInput.Type;
 // Output Schema
 export const InputsTestOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   status: Schema.optional(Schema.String),
-  error: Schema.optional(
-    Schema.Struct({
-      code: Schema.optional(Schema.String),
-      message: Schema.optional(Schema.String),
-    }),
-  ),
+  error: Schema.optional(Schema.suspend(() => ErrorResponseSchema)),
 });
 export type InputsTestOutput = typeof InputsTestOutput.Type;
 
@@ -975,36 +1067,7 @@ export const InputsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   jobName: Schema.String.pipe(T.PathParam()),
-  properties: Schema.optional(
-    Schema.Struct({
-      type: Schema.String,
-      serialization: Schema.optional(
-        Schema.Struct({
-          type: Schema.Literals(["Csv", "Avro", "Json", "Parquet"]),
-        }),
-      ),
-      diagnostics: Schema.optional(
-        Schema.Struct({
-          conditions: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                since: Schema.optional(Schema.String),
-                code: Schema.optional(Schema.String),
-                message: Schema.optional(Schema.String),
-              }),
-            ),
-          ),
-        }),
-      ),
-      etag: Schema.optional(Schema.String),
-      compression: Schema.optional(
-        Schema.Struct({
-          type: Schema.Literals(["None", "GZip", "Deflate"]),
-        }),
-      ),
-      partitionKey: Schema.optional(Schema.String),
-    }),
-  ),
+  properties: Schema.optional(Schema.suspend(() => InputPropertiesSchema)),
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -1019,6 +1082,7 @@ export type InputsUpdateInput = typeof InputsUpdateInput.Type;
 
 // Output Schema
 export const InputsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.optional(Schema.suspend(() => InputPropertiesSchema)),
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -1053,22 +1117,7 @@ export type OperationsListInput = typeof OperationsListInput.Type;
 
 // Output Schema
 export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  value: Schema.optional(
-    Schema.Array(
-      Schema.Struct({
-        name: Schema.optional(Schema.String),
-        isDataAction: Schema.optional(Schema.Boolean),
-        display: Schema.optional(
-          Schema.Struct({
-            provider: Schema.optional(Schema.String),
-            resource: Schema.optional(Schema.String),
-            operation: Schema.optional(Schema.String),
-            description: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
-  ),
+  value: Schema.optional(Schema.Array(Schema.suspend(() => OperationSchema))),
   nextLink: Schema.optional(Schema.String),
 });
 export type OperationsListOutput = typeof OperationsListOutput.Type;
@@ -1089,36 +1138,7 @@ export const OutputsCreateOrReplaceInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     jobName: Schema.String.pipe(T.PathParam()),
-    properties: Schema.optional(
-      Schema.Struct({
-        datasource: Schema.optional(
-          Schema.Struct({
-            type: Schema.String,
-          }),
-        ),
-        timeWindow: Schema.optional(Schema.String),
-        sizeWindow: Schema.optional(Schema.Number),
-        serialization: Schema.optional(
-          Schema.Struct({
-            type: Schema.Literals(["Csv", "Avro", "Json", "Parquet"]),
-          }),
-        ),
-        diagnostics: Schema.optional(
-          Schema.Struct({
-            conditions: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  since: Schema.optional(Schema.String),
-                  code: Schema.optional(Schema.String),
-                  message: Schema.optional(Schema.String),
-                }),
-              ),
-            ),
-          }),
-        ),
-        etag: Schema.optional(Schema.String),
-      }),
-    ),
+    properties: Schema.optional(Schema.suspend(() => OutputPropertiesSchema)),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1135,6 +1155,7 @@ export type OutputsCreateOrReplaceInput =
 // Output Schema
 export const OutputsCreateOrReplaceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(Schema.suspend(() => OutputPropertiesSchema)),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1206,6 +1227,7 @@ export type OutputsGetInput = typeof OutputsGetInput.Type;
 
 // Output Schema
 export const OutputsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.optional(Schema.suspend(() => OutputPropertiesSchema)),
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -1245,15 +1267,7 @@ export type OutputsListByStreamingJobInput =
 // Output Schema
 export const OutputsListByStreamingJobOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
-    ),
+    value: Schema.optional(Schema.Array(Schema.suspend(() => OutputSchema))),
     nextLink: Schema.optional(Schema.String),
   });
 export type OutputsListByStreamingJobOutput =
@@ -1280,36 +1294,7 @@ export const OutputsTestInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   jobName: Schema.String.pipe(T.PathParam()),
-  properties: Schema.optional(
-    Schema.Struct({
-      datasource: Schema.optional(
-        Schema.Struct({
-          type: Schema.String,
-        }),
-      ),
-      timeWindow: Schema.optional(Schema.String),
-      sizeWindow: Schema.optional(Schema.Number),
-      serialization: Schema.optional(
-        Schema.Struct({
-          type: Schema.Literals(["Csv", "Avro", "Json", "Parquet"]),
-        }),
-      ),
-      diagnostics: Schema.optional(
-        Schema.Struct({
-          conditions: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                since: Schema.optional(Schema.String),
-                code: Schema.optional(Schema.String),
-                message: Schema.optional(Schema.String),
-              }),
-            ),
-          ),
-        }),
-      ),
-      etag: Schema.optional(Schema.String),
-    }),
-  ),
+  properties: Schema.optional(Schema.suspend(() => OutputPropertiesSchema)),
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -1326,12 +1311,7 @@ export type OutputsTestInput = typeof OutputsTestInput.Type;
 // Output Schema
 export const OutputsTestOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   status: Schema.optional(Schema.String),
-  error: Schema.optional(
-    Schema.Struct({
-      code: Schema.optional(Schema.String),
-      message: Schema.optional(Schema.String),
-    }),
-  ),
+  error: Schema.optional(Schema.suspend(() => ErrorResponseSchema)),
 });
 export type OutputsTestOutput = typeof OutputsTestOutput.Type;
 
@@ -1353,36 +1333,7 @@ export const OutputsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   jobName: Schema.String.pipe(T.PathParam()),
-  properties: Schema.optional(
-    Schema.Struct({
-      datasource: Schema.optional(
-        Schema.Struct({
-          type: Schema.String,
-        }),
-      ),
-      timeWindow: Schema.optional(Schema.String),
-      sizeWindow: Schema.optional(Schema.Number),
-      serialization: Schema.optional(
-        Schema.Struct({
-          type: Schema.Literals(["Csv", "Avro", "Json", "Parquet"]),
-        }),
-      ),
-      diagnostics: Schema.optional(
-        Schema.Struct({
-          conditions: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                since: Schema.optional(Schema.String),
-                code: Schema.optional(Schema.String),
-                message: Schema.optional(Schema.String),
-              }),
-            ),
-          ),
-        }),
-      ),
-      etag: Schema.optional(Schema.String),
-    }),
-  ),
+  properties: Schema.optional(Schema.suspend(() => OutputPropertiesSchema)),
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -1397,6 +1348,7 @@ export type OutputsUpdateInput = typeof OutputsUpdateInput.Type;
 
 // Output Schema
 export const OutputsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.optional(Schema.suspend(() => OutputPropertiesSchema)),
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -1424,29 +1376,7 @@ export const PrivateEndpointsCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        createdDate: Schema.optional(Schema.String),
-        manualPrivateLinkServiceConnections: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              properties: Schema.optional(
-                Schema.Struct({
-                  privateLinkServiceId: Schema.optional(Schema.String),
-                  groupIds: Schema.optional(Schema.Array(Schema.String)),
-                  requestMessage: Schema.optional(Schema.String),
-                  privateLinkServiceConnectionState: Schema.optional(
-                    Schema.Struct({
-                      status: Schema.optional(Schema.String),
-                      description: Schema.optional(Schema.String),
-                      actionsRequired: Schema.optional(Schema.String),
-                    }),
-                  ),
-                }),
-              ),
-            }),
-          ),
-        ),
-      }),
+      Schema.suspend(() => PrivateEndpointPropertiesSchema),
     ),
     etag: Schema.optional(Schema.String),
   }).pipe(
@@ -1462,6 +1392,10 @@ export type PrivateEndpointsCreateOrUpdateInput =
 // Output Schema
 export const PrivateEndpointsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => PrivateEndpointPropertiesSchema),
+    ),
+    etag: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1541,6 +1475,10 @@ export type PrivateEndpointsGetInput = typeof PrivateEndpointsGetInput.Type;
 // Output Schema
 export const PrivateEndpointsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => PrivateEndpointPropertiesSchema),
+    ),
+    etag: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1580,13 +1518,7 @@ export type PrivateEndpointsListByClusterInput =
 export const PrivateEndpointsListByClusterOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => PrivateEndpointSchema)),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -1614,92 +1546,9 @@ export const StreamingJobsCreateOrReplaceInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     jobName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        sku: Schema.optional(
-          Schema.Struct({
-            name: Schema.optional(Schema.Literals(["Standard"])),
-          }),
-        ),
-        jobId: Schema.optional(Schema.String),
-        provisioningState: Schema.optional(Schema.String),
-        jobState: Schema.optional(Schema.String),
-        jobType: Schema.optional(Schema.Literals(["Cloud", "Edge"])),
-        outputStartMode: Schema.optional(
-          Schema.Literals([
-            "JobStartTime",
-            "CustomTime",
-            "LastOutputEventTime",
-          ]),
-        ),
-        outputStartTime: Schema.optional(Schema.String),
-        lastOutputEventTime: Schema.optional(Schema.String),
-        eventsOutOfOrderPolicy: Schema.optional(
-          Schema.Literals(["Adjust", "Drop"]),
-        ),
-        outputErrorPolicy: Schema.optional(Schema.Literals(["Stop", "Drop"])),
-        eventsOutOfOrderMaxDelayInSeconds: Schema.optional(Schema.Number),
-        eventsLateArrivalMaxDelayInSeconds: Schema.optional(Schema.Number),
-        dataLocale: Schema.optional(Schema.String),
-        compatibilityLevel: Schema.optional(Schema.Literals(["1.0", "1.2"])),
-        createdDate: Schema.optional(Schema.String),
-        inputs: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              id: Schema.optional(Schema.String),
-              name: Schema.optional(Schema.String),
-              type: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        transformation: Schema.optional(
-          Schema.Struct({
-            id: Schema.optional(Schema.String),
-            name: Schema.optional(Schema.String),
-            type: Schema.optional(Schema.String),
-          }),
-        ),
-        outputs: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              id: Schema.optional(Schema.String),
-              name: Schema.optional(Schema.String),
-              type: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        functions: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              id: Schema.optional(Schema.String),
-              name: Schema.optional(Schema.String),
-              type: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        etag: Schema.optional(Schema.String),
-        jobStorageAccount: Schema.optional(
-          Schema.Struct({
-            accountName: Schema.optional(Schema.String),
-            accountKey: Schema.optional(Schema.String),
-          }),
-        ),
-        contentStoragePolicy: Schema.optional(
-          Schema.Literals(["SystemAccount", "JobStorageAccount"]),
-        ),
-        cluster: Schema.optional(
-          Schema.Struct({
-            id: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
+      Schema.suspend(() => StreamingJobPropertiesSchema),
     ),
-    identity: Schema.optional(
-      Schema.Struct({
-        tenantId: Schema.optional(Schema.String),
-        principalId: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-      }),
-    ),
+    identity: Schema.optional(Schema.suspend(() => IdentitySchema)),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     location: Schema.optional(Schema.String),
   }).pipe(
@@ -1716,6 +1565,12 @@ export type StreamingJobsCreateOrReplaceInput =
 // Output Schema
 export const StreamingJobsCreateOrReplaceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => StreamingJobPropertiesSchema),
+    ),
+    identity: Schema.optional(Schema.suspend(() => IdentitySchema)),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1791,6 +1646,12 @@ export type StreamingJobsGetInput = typeof StreamingJobsGetInput.Type;
 // Output Schema
 export const StreamingJobsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
+    properties: Schema.optional(
+      Schema.suspend(() => StreamingJobPropertiesSchema),
+    ),
+    identity: Schema.optional(Schema.suspend(() => IdentitySchema)),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1831,13 +1692,7 @@ export type StreamingJobsListInput = typeof StreamingJobsListInput.Type;
 export const StreamingJobsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => StreamingJobSchema)),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -1875,13 +1730,7 @@ export type StreamingJobsListByResourceGroupInput =
 export const StreamingJobsListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => StreamingJobSchema)),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -1943,7 +1792,7 @@ export const StreamingJobsStartInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     jobName: Schema.String.pipe(T.PathParam()),
     outputStartMode: Schema.optional(
-      Schema.Literals(["JobStartTime", "CustomTime", "LastOutputEventTime"]),
+      Schema.suspend(() => OutputStartModeSchema),
     ),
     outputStartTime: Schema.optional(Schema.String),
   }).pipe(
@@ -2014,92 +1863,9 @@ export const StreamingJobsUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     jobName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        sku: Schema.optional(
-          Schema.Struct({
-            name: Schema.optional(Schema.Literals(["Standard"])),
-          }),
-        ),
-        jobId: Schema.optional(Schema.String),
-        provisioningState: Schema.optional(Schema.String),
-        jobState: Schema.optional(Schema.String),
-        jobType: Schema.optional(Schema.Literals(["Cloud", "Edge"])),
-        outputStartMode: Schema.optional(
-          Schema.Literals([
-            "JobStartTime",
-            "CustomTime",
-            "LastOutputEventTime",
-          ]),
-        ),
-        outputStartTime: Schema.optional(Schema.String),
-        lastOutputEventTime: Schema.optional(Schema.String),
-        eventsOutOfOrderPolicy: Schema.optional(
-          Schema.Literals(["Adjust", "Drop"]),
-        ),
-        outputErrorPolicy: Schema.optional(Schema.Literals(["Stop", "Drop"])),
-        eventsOutOfOrderMaxDelayInSeconds: Schema.optional(Schema.Number),
-        eventsLateArrivalMaxDelayInSeconds: Schema.optional(Schema.Number),
-        dataLocale: Schema.optional(Schema.String),
-        compatibilityLevel: Schema.optional(Schema.Literals(["1.0", "1.2"])),
-        createdDate: Schema.optional(Schema.String),
-        inputs: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              id: Schema.optional(Schema.String),
-              name: Schema.optional(Schema.String),
-              type: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        transformation: Schema.optional(
-          Schema.Struct({
-            id: Schema.optional(Schema.String),
-            name: Schema.optional(Schema.String),
-            type: Schema.optional(Schema.String),
-          }),
-        ),
-        outputs: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              id: Schema.optional(Schema.String),
-              name: Schema.optional(Schema.String),
-              type: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        functions: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              id: Schema.optional(Schema.String),
-              name: Schema.optional(Schema.String),
-              type: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        etag: Schema.optional(Schema.String),
-        jobStorageAccount: Schema.optional(
-          Schema.Struct({
-            accountName: Schema.optional(Schema.String),
-            accountKey: Schema.optional(Schema.String),
-          }),
-        ),
-        contentStoragePolicy: Schema.optional(
-          Schema.Literals(["SystemAccount", "JobStorageAccount"]),
-        ),
-        cluster: Schema.optional(
-          Schema.Struct({
-            id: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
+      Schema.suspend(() => StreamingJobPropertiesSchema),
     ),
-    identity: Schema.optional(
-      Schema.Struct({
-        tenantId: Schema.optional(Schema.String),
-        principalId: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-      }),
-    ),
+    identity: Schema.optional(Schema.suspend(() => IdentitySchema)),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     location: Schema.optional(Schema.String),
   }).pipe(
@@ -2114,6 +1880,12 @@ export type StreamingJobsUpdateInput = typeof StreamingJobsUpdateInput.Type;
 // Output Schema
 export const StreamingJobsUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => StreamingJobPropertiesSchema),
+    ),
+    identity: Schema.optional(Schema.suspend(() => IdentitySchema)),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2153,13 +1925,7 @@ export type SubscriptionsListQuotasInput =
 export const SubscriptionsListQuotasOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => SubscriptionQuotaSchema)),
     ),
   });
 export type SubscriptionsListQuotasOutput =
@@ -2186,12 +1952,7 @@ export const TransformationsCreateOrReplaceInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     jobName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        streamingUnits: Schema.optional(Schema.Number),
-        validStreamingUnits: Schema.optional(Schema.Array(Schema.Number)),
-        query: Schema.optional(Schema.String),
-        etag: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(() => TransformationPropertiesSchema),
     ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -2209,6 +1970,9 @@ export type TransformationsCreateOrReplaceInput =
 // Output Schema
 export const TransformationsCreateOrReplaceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => TransformationPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2250,6 +2014,9 @@ export type TransformationsGetInput = typeof TransformationsGetInput.Type;
 // Output Schema
 export const TransformationsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => TransformationPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2276,12 +2043,7 @@ export const TransformationsUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     jobName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        streamingUnits: Schema.optional(Schema.Number),
-        validStreamingUnits: Schema.optional(Schema.Array(Schema.Number)),
-        query: Schema.optional(Schema.String),
-        etag: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(() => TransformationPropertiesSchema),
     ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -2298,6 +2060,9 @@ export type TransformationsUpdateInput = typeof TransformationsUpdateInput.Type;
 // Output Schema
 export const TransformationsUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => TransformationPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),

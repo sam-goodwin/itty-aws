@@ -1,7 +1,12 @@
 import * as Schema from "effect/Schema";
+import {
+  NeonAuthEmailAndPasswordConfigSchema,
+  NeonAuthEmailServerConfigSchema,
+  NeonAuthOauthProviderSchema,
+  NeonAuthOrganizationConfigSchema,
+} from "./_schemas.ts";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
-import { SensitiveString } from "../sensitive.ts";
 
 // Input Schema
 export const GetNeonAuthPluginConfigsInput =
@@ -21,49 +26,16 @@ export type GetNeonAuthPluginConfigsInput =
 export const GetNeonAuthPluginConfigsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     organization: Schema.optional(
-      Schema.Struct({
-        enabled: Schema.Boolean,
-        organization_limit: Schema.Number,
-        membership_limit: Schema.Number,
-        creator_role: Schema.Literals(["admin", "owner"]),
-        send_invitation_email: Schema.Boolean,
-      }),
+      Schema.suspend(() => NeonAuthOrganizationConfigSchema),
     ),
-    magic_link: Schema.optional(
-      Schema.Struct({
-        enabled: Schema.Boolean,
-        expires_in: Schema.Number,
-        disable_sign_up: Schema.Boolean,
-      }),
+    email_provider: Schema.optional(
+      Schema.suspend(() => NeonAuthEmailServerConfigSchema),
     ),
-    phone_number: Schema.optional(
-      Schema.Struct({
-        enabled: Schema.Boolean,
-        otp_expires_in: Schema.optional(Schema.Number),
-        allowed_attempts: Schema.optional(Schema.Number),
-      }),
-    ),
-    email_provider: Schema.optional(Schema.Unknown),
     email_and_password: Schema.optional(
-      Schema.Struct({
-        enabled: Schema.Boolean,
-        email_verification_method: Schema.Literals(["link", "otp"]),
-        require_email_verification: Schema.Boolean,
-        auto_sign_in_after_verification: Schema.Boolean,
-        send_verification_email_on_sign_up: Schema.Boolean,
-        send_verification_email_on_sign_in: Schema.Boolean,
-        disable_sign_up: Schema.Boolean,
-      }),
+      Schema.suspend(() => NeonAuthEmailAndPasswordConfigSchema),
     ),
     oauth_providers: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.Literals(["google", "github", "microsoft", "vercel"]),
-          type: Schema.Literals(["standard", "shared"]),
-          client_id: Schema.optional(Schema.String),
-          client_secret: Schema.optional(SensitiveString),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => NeonAuthOauthProviderSchema)),
     ),
     allow_localhost: Schema.optional(Schema.Boolean),
   });

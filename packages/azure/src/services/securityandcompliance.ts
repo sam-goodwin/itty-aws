@@ -8,6 +8,314 @@ import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
+// Shared schemas
+const OperationSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  isDataAction: Schema.optional(Schema.Boolean),
+  origin: Schema.optional(Schema.String),
+  display: Schema.optional(Schema.suspend(() => OperationDisplaySchema)),
+});
+const OperationDisplaySchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  provider: Schema.optional(Schema.String),
+  resource: Schema.optional(Schema.String),
+  operation: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+});
+const ServiceAccessPoliciesInfoSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
+    Schema.suspend(() => ServiceAccessPolicyEntrySchema),
+  );
+const ServiceAccessPolicyEntrySchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    objectId: Schema.String,
+  });
+const ServiceCosmosDbConfigurationInfoSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    offerThroughput: Schema.optional(Schema.Number),
+    keyVaultKeyUri: Schema.optional(Schema.String),
+  });
+const ServiceAuthenticationConfigurationInfoSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    authority: Schema.optional(Schema.String),
+    audience: Schema.optional(Schema.String),
+    smartProxyEnabled: Schema.optional(Schema.Boolean),
+  });
+const ServiceCorsConfigurationInfoSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    origins: Schema.optional(
+      Schema.Array(
+        Schema.suspend(() => ServiceCorsConfigurationOriginEntrySchema),
+      ),
+    ),
+    headers: Schema.optional(
+      Schema.Array(
+        Schema.suspend(() => ServiceCorsConfigurationHeaderEntrySchema),
+      ),
+    ),
+    methods: Schema.optional(
+      Schema.Array(
+        Schema.suspend(() => ServiceCorsConfigurationMethodEntrySchema),
+      ),
+    ),
+    maxAge: Schema.optional(Schema.Number),
+    allowCredentials: Schema.optional(Schema.Boolean),
+  });
+const ServiceCorsConfigurationOriginEntrySchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.String;
+const ServiceCorsConfigurationHeaderEntrySchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.String;
+const ServiceCorsConfigurationMethodEntrySchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.String;
+const ServiceExportConfigurationInfoSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    storageAccountName: Schema.optional(Schema.String),
+  });
+const PrivateEndpointConnectionSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
+const ServicesPropertiesUpdateParametersSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    publicNetworkAccess: Schema.optional(
+      Schema.Literals(["Enabled", "Disabled"]),
+    ),
+  });
+const PrivateLinkServicesForSCCPowershellDescriptionSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+    kind: Schema.Literals(["fhir", "fhir-Stu3", "fhir-R4"]),
+    location: Schema.String,
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    etag: Schema.optional(Schema.String),
+    identity: Schema.optional(
+      Schema.Struct({
+        principalId: Schema.optional(Schema.String),
+        tenantId: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.Literals(["SystemAssigned", "None"])),
+      }),
+    ),
+  });
+const PrivateEndpointConnectionPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    privateEndpoint: Schema.optional(
+      Schema.suspend(() => PrivateEndpointSchema),
+    ),
+    privateLinkServiceConnectionState: Schema.suspend(
+      () => PrivateLinkServiceConnectionStateSchema,
+    ),
+    provisioningState: Schema.optional(
+      Schema.suspend(() => PrivateEndpointConnectionProvisioningStateSchema),
+    ),
+  });
+const PrivateEndpointSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+});
+const PrivateLinkServiceConnectionStateSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    status: Schema.optional(
+      Schema.suspend(() => PrivateEndpointServiceConnectionStatusSchema),
+    ),
+    description: Schema.optional(Schema.String),
+    actionsRequired: Schema.optional(Schema.String),
+  });
+const PrivateEndpointServiceConnectionStatusSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+    "Pending",
+    "Approved",
+    "Rejected",
+  ]);
+const PrivateEndpointConnectionProvisioningStateSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+    "Succeeded",
+    "Creating",
+    "Deleting",
+    "Failed",
+  ]);
+const PrivateLinkResourceSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
+const PrivateLinkResourcePropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    groupId: Schema.optional(Schema.String),
+    requiredMembers: Schema.optional(Schema.Array(Schema.String)),
+    requiredZoneNames: Schema.optional(Schema.Array(Schema.String)),
+  });
+const PrivateLinkServicesForEDMUploadDescriptionSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+    kind: Schema.Literals(["fhir", "fhir-Stu3", "fhir-R4"]),
+    location: Schema.String,
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    etag: Schema.optional(Schema.String),
+    identity: Schema.optional(
+      Schema.Struct({
+        principalId: Schema.optional(Schema.String),
+        tenantId: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.Literals(["SystemAssigned", "None"])),
+      }),
+    ),
+  });
+const PrivateLinkServicesForM365ComplianceCenterDescriptionSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+    kind: Schema.Literals(["fhir", "fhir-Stu3", "fhir-R4"]),
+    location: Schema.String,
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    etag: Schema.optional(Schema.String),
+    identity: Schema.optional(
+      Schema.Struct({
+        principalId: Schema.optional(Schema.String),
+        tenantId: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.Literals(["SystemAssigned", "None"])),
+      }),
+    ),
+  });
+const PrivateLinkServicesForMIPPolicySyncDescriptionSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+    kind: Schema.Literals(["fhir", "fhir-Stu3", "fhir-R4"]),
+    location: Schema.String,
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    etag: Schema.optional(Schema.String),
+    identity: Schema.optional(
+      Schema.Struct({
+        principalId: Schema.optional(Schema.String),
+        tenantId: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.Literals(["SystemAssigned", "None"])),
+      }),
+    ),
+  });
+const PrivateLinkServicesForM365SecurityCenterDescriptionSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+    kind: Schema.Literals(["fhir", "fhir-Stu3", "fhir-R4"]),
+    location: Schema.String,
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    etag: Schema.optional(Schema.String),
+    identity: Schema.optional(
+      Schema.Struct({
+        principalId: Schema.optional(Schema.String),
+        tenantId: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.Literals(["SystemAssigned", "None"])),
+      }),
+    ),
+  });
+const PrivateLinkServicesForO365ManagementActivityAPIDescriptionSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+    kind: Schema.Literals(["fhir", "fhir-Stu3", "fhir-R4"]),
+    location: Schema.String,
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    etag: Schema.optional(Schema.String),
+    identity: Schema.optional(
+      Schema.Struct({
+        principalId: Schema.optional(Schema.String),
+        tenantId: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.Literals(["SystemAssigned", "None"])),
+      }),
+    ),
+  });
+
 // Input Schema
 export const OperationResultsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
@@ -61,23 +369,7 @@ export type OperationsListInput = typeof OperationsListInput.Type;
 // Output Schema
 export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   nextLink: Schema.optional(Schema.String),
-  value: Schema.optional(
-    Schema.Array(
-      Schema.Struct({
-        name: Schema.optional(Schema.String),
-        isDataAction: Schema.optional(Schema.Boolean),
-        origin: Schema.optional(Schema.String),
-        display: Schema.optional(
-          Schema.Struct({
-            provider: Schema.optional(Schema.String),
-            resource: Schema.optional(Schema.String),
-            operation: Schema.optional(Schema.String),
-            description: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
-  ),
+  value: Schema.optional(Schema.Array(Schema.suspend(() => OperationSchema))),
 });
 export type OperationsListOutput = typeof OperationsListOutput.Type;
 
@@ -111,23 +403,7 @@ export const PrivateEndpointConnectionsAdtAPICreateOrUpdateInput =
       }),
     ),
     properties: Schema.optional(
-      Schema.Struct({
-        privateEndpoint: Schema.optional(
-          Schema.Struct({
-            id: Schema.optional(Schema.String),
-          }),
-        ),
-        privateLinkServiceConnectionState: Schema.Struct({
-          status: Schema.optional(
-            Schema.Literals(["Pending", "Approved", "Rejected"]),
-          ),
-          description: Schema.optional(Schema.String),
-          actionsRequired: Schema.optional(Schema.String),
-        }),
-        provisioningState: Schema.optional(
-          Schema.Literals(["Succeeded", "Creating", "Deleting", "Failed"]),
-        ),
-      }),
+      Schema.suspend(() => PrivateEndpointConnectionPropertiesSchema),
     ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -146,6 +422,23 @@ export type PrivateEndpointConnectionsAdtAPICreateOrUpdateInput =
 // Output Schema
 export const PrivateEndpointConnectionsAdtAPICreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+    properties: Schema.optional(
+      Schema.suspend(() => PrivateEndpointConnectionPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -229,6 +522,23 @@ export type PrivateEndpointConnectionsAdtAPIGetInput =
 // Output Schema
 export const PrivateEndpointConnectionsAdtAPIGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+    properties: Schema.optional(
+      Schema.suspend(() => PrivateEndpointConnectionPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -271,13 +581,7 @@ export type PrivateEndpointConnectionsAdtAPIListByServiceInput =
 export const PrivateEndpointConnectionsAdtAPIListByServiceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => PrivateEndpointConnectionSchema)),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -320,23 +624,7 @@ export const PrivateEndpointConnectionsCompCreateOrUpdateInput =
       }),
     ),
     properties: Schema.optional(
-      Schema.Struct({
-        privateEndpoint: Schema.optional(
-          Schema.Struct({
-            id: Schema.optional(Schema.String),
-          }),
-        ),
-        privateLinkServiceConnectionState: Schema.Struct({
-          status: Schema.optional(
-            Schema.Literals(["Pending", "Approved", "Rejected"]),
-          ),
-          description: Schema.optional(Schema.String),
-          actionsRequired: Schema.optional(Schema.String),
-        }),
-        provisioningState: Schema.optional(
-          Schema.Literals(["Succeeded", "Creating", "Deleting", "Failed"]),
-        ),
-      }),
+      Schema.suspend(() => PrivateEndpointConnectionPropertiesSchema),
     ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -355,6 +643,23 @@ export type PrivateEndpointConnectionsCompCreateOrUpdateInput =
 // Output Schema
 export const PrivateEndpointConnectionsCompCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+    properties: Schema.optional(
+      Schema.suspend(() => PrivateEndpointConnectionPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -438,6 +743,23 @@ export type PrivateEndpointConnectionsCompGetInput =
 // Output Schema
 export const PrivateEndpointConnectionsCompGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+    properties: Schema.optional(
+      Schema.suspend(() => PrivateEndpointConnectionPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -480,13 +802,7 @@ export type PrivateEndpointConnectionsCompListByServiceInput =
 export const PrivateEndpointConnectionsCompListByServiceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => PrivateEndpointConnectionSchema)),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -529,23 +845,7 @@ export const PrivateEndpointConnectionsForEDMCreateOrUpdateInput =
       }),
     ),
     properties: Schema.optional(
-      Schema.Struct({
-        privateEndpoint: Schema.optional(
-          Schema.Struct({
-            id: Schema.optional(Schema.String),
-          }),
-        ),
-        privateLinkServiceConnectionState: Schema.Struct({
-          status: Schema.optional(
-            Schema.Literals(["Pending", "Approved", "Rejected"]),
-          ),
-          description: Schema.optional(Schema.String),
-          actionsRequired: Schema.optional(Schema.String),
-        }),
-        provisioningState: Schema.optional(
-          Schema.Literals(["Succeeded", "Creating", "Deleting", "Failed"]),
-        ),
-      }),
+      Schema.suspend(() => PrivateEndpointConnectionPropertiesSchema),
     ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -564,6 +864,23 @@ export type PrivateEndpointConnectionsForEDMCreateOrUpdateInput =
 // Output Schema
 export const PrivateEndpointConnectionsForEDMCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+    properties: Schema.optional(
+      Schema.suspend(() => PrivateEndpointConnectionPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -647,6 +964,23 @@ export type PrivateEndpointConnectionsForEDMGetInput =
 // Output Schema
 export const PrivateEndpointConnectionsForEDMGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+    properties: Schema.optional(
+      Schema.suspend(() => PrivateEndpointConnectionPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -689,13 +1023,7 @@ export type PrivateEndpointConnectionsForEDMListByServiceInput =
 export const PrivateEndpointConnectionsForEDMListByServiceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => PrivateEndpointConnectionSchema)),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -738,23 +1066,7 @@ export const PrivateEndpointConnectionsForMIPPolicySyncCreateOrUpdateInput =
       }),
     ),
     properties: Schema.optional(
-      Schema.Struct({
-        privateEndpoint: Schema.optional(
-          Schema.Struct({
-            id: Schema.optional(Schema.String),
-          }),
-        ),
-        privateLinkServiceConnectionState: Schema.Struct({
-          status: Schema.optional(
-            Schema.Literals(["Pending", "Approved", "Rejected"]),
-          ),
-          description: Schema.optional(Schema.String),
-          actionsRequired: Schema.optional(Schema.String),
-        }),
-        provisioningState: Schema.optional(
-          Schema.Literals(["Succeeded", "Creating", "Deleting", "Failed"]),
-        ),
-      }),
+      Schema.suspend(() => PrivateEndpointConnectionPropertiesSchema),
     ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -773,6 +1085,23 @@ export type PrivateEndpointConnectionsForMIPPolicySyncCreateOrUpdateInput =
 // Output Schema
 export const PrivateEndpointConnectionsForMIPPolicySyncCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+    properties: Schema.optional(
+      Schema.suspend(() => PrivateEndpointConnectionPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -857,6 +1186,23 @@ export type PrivateEndpointConnectionsForMIPPolicySyncGetInput =
 // Output Schema
 export const PrivateEndpointConnectionsForMIPPolicySyncGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+    properties: Schema.optional(
+      Schema.suspend(() => PrivateEndpointConnectionPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -899,13 +1245,7 @@ export type PrivateEndpointConnectionsForMIPPolicySyncListByServiceInput =
 export const PrivateEndpointConnectionsForMIPPolicySyncListByServiceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => PrivateEndpointConnectionSchema)),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -948,23 +1288,7 @@ export const PrivateEndpointConnectionsForSCCPowershellCreateOrUpdateInput =
       }),
     ),
     properties: Schema.optional(
-      Schema.Struct({
-        privateEndpoint: Schema.optional(
-          Schema.Struct({
-            id: Schema.optional(Schema.String),
-          }),
-        ),
-        privateLinkServiceConnectionState: Schema.Struct({
-          status: Schema.optional(
-            Schema.Literals(["Pending", "Approved", "Rejected"]),
-          ),
-          description: Schema.optional(Schema.String),
-          actionsRequired: Schema.optional(Schema.String),
-        }),
-        provisioningState: Schema.optional(
-          Schema.Literals(["Succeeded", "Creating", "Deleting", "Failed"]),
-        ),
-      }),
+      Schema.suspend(() => PrivateEndpointConnectionPropertiesSchema),
     ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -983,6 +1307,23 @@ export type PrivateEndpointConnectionsForSCCPowershellCreateOrUpdateInput =
 // Output Schema
 export const PrivateEndpointConnectionsForSCCPowershellCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+    properties: Schema.optional(
+      Schema.suspend(() => PrivateEndpointConnectionPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1067,6 +1408,23 @@ export type PrivateEndpointConnectionsForSCCPowershellGetInput =
 // Output Schema
 export const PrivateEndpointConnectionsForSCCPowershellGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+    properties: Schema.optional(
+      Schema.suspend(() => PrivateEndpointConnectionPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1109,13 +1467,7 @@ export type PrivateEndpointConnectionsForSCCPowershellListByServiceInput =
 export const PrivateEndpointConnectionsForSCCPowershellListByServiceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => PrivateEndpointConnectionSchema)),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -1158,23 +1510,7 @@ export const PrivateEndpointConnectionsSecCreateOrUpdateInput =
       }),
     ),
     properties: Schema.optional(
-      Schema.Struct({
-        privateEndpoint: Schema.optional(
-          Schema.Struct({
-            id: Schema.optional(Schema.String),
-          }),
-        ),
-        privateLinkServiceConnectionState: Schema.Struct({
-          status: Schema.optional(
-            Schema.Literals(["Pending", "Approved", "Rejected"]),
-          ),
-          description: Schema.optional(Schema.String),
-          actionsRequired: Schema.optional(Schema.String),
-        }),
-        provisioningState: Schema.optional(
-          Schema.Literals(["Succeeded", "Creating", "Deleting", "Failed"]),
-        ),
-      }),
+      Schema.suspend(() => PrivateEndpointConnectionPropertiesSchema),
     ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -1193,6 +1529,23 @@ export type PrivateEndpointConnectionsSecCreateOrUpdateInput =
 // Output Schema
 export const PrivateEndpointConnectionsSecCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+    properties: Schema.optional(
+      Schema.suspend(() => PrivateEndpointConnectionPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1276,6 +1629,23 @@ export type PrivateEndpointConnectionsSecGetInput =
 // Output Schema
 export const PrivateEndpointConnectionsSecGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+    properties: Schema.optional(
+      Schema.suspend(() => PrivateEndpointConnectionPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1318,13 +1688,7 @@ export type PrivateEndpointConnectionsSecListByServiceInput =
 export const PrivateEndpointConnectionsSecListByServiceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => PrivateEndpointConnectionSchema)),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -1365,6 +1729,23 @@ export type PrivateLinkResourcesAdtAPIGetInput =
 // Output Schema
 export const PrivateLinkResourcesAdtAPIGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+    properties: Schema.optional(
+      Schema.suspend(() => PrivateLinkResourcePropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1407,13 +1788,7 @@ export type PrivateLinkResourcesAdtAPIListByServiceInput =
 export const PrivateLinkResourcesAdtAPIListByServiceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => PrivateLinkResourceSchema)),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -1454,6 +1829,23 @@ export type PrivateLinkResourcesCompGetInput =
 // Output Schema
 export const PrivateLinkResourcesCompGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+    properties: Schema.optional(
+      Schema.suspend(() => PrivateLinkResourcePropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1497,13 +1889,7 @@ export type PrivateLinkResourcesCompListByServiceInput =
 export const PrivateLinkResourcesCompListByServiceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => PrivateLinkResourceSchema)),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -1544,6 +1930,23 @@ export type PrivateLinkResourcesForMIPPolicySyncGetInput =
 // Output Schema
 export const PrivateLinkResourcesForMIPPolicySyncGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+    properties: Schema.optional(
+      Schema.suspend(() => PrivateLinkResourcePropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1586,13 +1989,7 @@ export type PrivateLinkResourcesForMIPPolicySyncListByServiceInput =
 export const PrivateLinkResourcesForMIPPolicySyncListByServiceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => PrivateLinkResourceSchema)),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -1633,6 +2030,23 @@ export type PrivateLinkResourcesForSCCPowershellGetInput =
 // Output Schema
 export const PrivateLinkResourcesForSCCPowershellGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+    properties: Schema.optional(
+      Schema.suspend(() => PrivateLinkResourcePropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1675,13 +2089,7 @@ export type PrivateLinkResourcesForSCCPowershellListByServiceInput =
 export const PrivateLinkResourcesForSCCPowershellListByServiceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => PrivateLinkResourceSchema)),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -1722,6 +2130,23 @@ export type PrivateLinkResourcesGetInput =
 // Output Schema
 export const PrivateLinkResourcesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+    properties: Schema.optional(
+      Schema.suspend(() => PrivateLinkResourcePropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1765,13 +2190,7 @@ export type PrivateLinkResourcesListByServiceInput =
 export const PrivateLinkResourcesListByServiceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => PrivateLinkResourceSchema)),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -1812,6 +2231,23 @@ export type PrivateLinkResourcesSecGetInput =
 // Output Schema
 export const PrivateLinkResourcesSecGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+    properties: Schema.optional(
+      Schema.suspend(() => PrivateLinkResourcePropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1855,13 +2291,7 @@ export type PrivateLinkResourcesSecListByServiceInput =
 export const PrivateLinkResourcesSecListByServiceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => PrivateLinkResourceSchema)),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -1904,47 +2334,22 @@ export const PrivateLinkServicesForEDMUploadCreateOrUpdateInput =
           ]),
         ),
         accessPolicies: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              objectId: Schema.String,
-            }),
-          ),
+          Schema.suspend(() => ServiceAccessPoliciesInfoSchema),
         ),
         cosmosDbConfiguration: Schema.optional(
-          Schema.Struct({
-            offerThroughput: Schema.optional(Schema.Number),
-            keyVaultKeyUri: Schema.optional(Schema.String),
-          }),
+          Schema.suspend(() => ServiceCosmosDbConfigurationInfoSchema),
         ),
         authenticationConfiguration: Schema.optional(
-          Schema.Struct({
-            authority: Schema.optional(Schema.String),
-            audience: Schema.optional(Schema.String),
-            smartProxyEnabled: Schema.optional(Schema.Boolean),
-          }),
+          Schema.suspend(() => ServiceAuthenticationConfigurationInfoSchema),
         ),
         corsConfiguration: Schema.optional(
-          Schema.Struct({
-            origins: Schema.optional(Schema.Array(Schema.String)),
-            headers: Schema.optional(Schema.Array(Schema.String)),
-            methods: Schema.optional(Schema.Array(Schema.String)),
-            maxAge: Schema.optional(Schema.Number),
-            allowCredentials: Schema.optional(Schema.Boolean),
-          }),
+          Schema.suspend(() => ServiceCorsConfigurationInfoSchema),
         ),
         exportConfiguration: Schema.optional(
-          Schema.Struct({
-            storageAccountName: Schema.optional(Schema.String),
-          }),
+          Schema.suspend(() => ServiceExportConfigurationInfoSchema),
         ),
         privateEndpointConnections: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              id: Schema.optional(Schema.String),
-              name: Schema.optional(Schema.String),
-              type: Schema.optional(Schema.String),
-            }),
-          ),
+          Schema.Array(Schema.suspend(() => PrivateEndpointConnectionSchema)),
         ),
         publicNetworkAccess: Schema.optional(
           Schema.Literals(["Enabled", "Disabled"]),
@@ -1993,6 +2398,44 @@ export type PrivateLinkServicesForEDMUploadCreateOrUpdateInput =
 // Output Schema
 export const PrivateLinkServicesForEDMUploadCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.Struct({
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Deleting",
+            "Succeeded",
+            "Creating",
+            "Accepted",
+            "Verifying",
+            "Updating",
+            "Failed",
+            "Canceled",
+            "Deprovisioned",
+          ]),
+        ),
+        accessPolicies: Schema.optional(
+          Schema.suspend(() => ServiceAccessPoliciesInfoSchema),
+        ),
+        cosmosDbConfiguration: Schema.optional(
+          Schema.suspend(() => ServiceCosmosDbConfigurationInfoSchema),
+        ),
+        authenticationConfiguration: Schema.optional(
+          Schema.suspend(() => ServiceAuthenticationConfigurationInfoSchema),
+        ),
+        corsConfiguration: Schema.optional(
+          Schema.suspend(() => ServiceCorsConfigurationInfoSchema),
+        ),
+        exportConfiguration: Schema.optional(
+          Schema.suspend(() => ServiceExportConfigurationInfoSchema),
+        ),
+        privateEndpointConnections: Schema.optional(
+          Schema.Array(Schema.suspend(() => PrivateEndpointConnectionSchema)),
+        ),
+        publicNetworkAccess: Schema.optional(
+          Schema.Literals(["Enabled", "Disabled"]),
+        ),
+      }),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2058,6 +2501,44 @@ export type PrivateLinkServicesForEDMUploadGetInput =
 // Output Schema
 export const PrivateLinkServicesForEDMUploadGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.Struct({
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Deleting",
+            "Succeeded",
+            "Creating",
+            "Accepted",
+            "Verifying",
+            "Updating",
+            "Failed",
+            "Canceled",
+            "Deprovisioned",
+          ]),
+        ),
+        accessPolicies: Schema.optional(
+          Schema.suspend(() => ServiceAccessPoliciesInfoSchema),
+        ),
+        cosmosDbConfiguration: Schema.optional(
+          Schema.suspend(() => ServiceCosmosDbConfigurationInfoSchema),
+        ),
+        authenticationConfiguration: Schema.optional(
+          Schema.suspend(() => ServiceAuthenticationConfigurationInfoSchema),
+        ),
+        corsConfiguration: Schema.optional(
+          Schema.suspend(() => ServiceCorsConfigurationInfoSchema),
+        ),
+        exportConfiguration: Schema.optional(
+          Schema.suspend(() => ServiceExportConfigurationInfoSchema),
+        ),
+        privateEndpointConnections: Schema.optional(
+          Schema.Array(Schema.suspend(() => PrivateEndpointConnectionSchema)),
+        ),
+        publicNetworkAccess: Schema.optional(
+          Schema.Literals(["Enabled", "Disabled"]),
+        ),
+      }),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2124,48 +2605,7 @@ export const PrivateLinkServicesForEDMUploadListOutput =
     nextLink: Schema.optional(Schema.String),
     value: Schema.optional(
       Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.String),
-              createdByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              createdAt: Schema.optional(Schema.String),
-              lastModifiedBy: Schema.optional(Schema.String),
-              lastModifiedByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              lastModifiedAt: Schema.optional(Schema.String),
-            }),
-          ),
-          kind: Schema.Literals(["fhir", "fhir-Stu3", "fhir-R4"]),
-          location: Schema.String,
-          tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-          etag: Schema.optional(Schema.String),
-          identity: Schema.optional(
-            Schema.Struct({
-              principalId: Schema.optional(Schema.String),
-              tenantId: Schema.optional(Schema.String),
-              type: Schema.optional(
-                Schema.Literals(["SystemAssigned", "None"]),
-              ),
-            }),
-          ),
-        }),
+        Schema.suspend(() => PrivateLinkServicesForEDMUploadDescriptionSchema),
       ),
     ),
   });
@@ -2205,48 +2645,7 @@ export const PrivateLinkServicesForEDMUploadListByResourceGroupOutput =
     nextLink: Schema.optional(Schema.String),
     value: Schema.optional(
       Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.String),
-              createdByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              createdAt: Schema.optional(Schema.String),
-              lastModifiedBy: Schema.optional(Schema.String),
-              lastModifiedByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              lastModifiedAt: Schema.optional(Schema.String),
-            }),
-          ),
-          kind: Schema.Literals(["fhir", "fhir-Stu3", "fhir-R4"]),
-          location: Schema.String,
-          tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-          etag: Schema.optional(Schema.String),
-          identity: Schema.optional(
-            Schema.Struct({
-              principalId: Schema.optional(Schema.String),
-              tenantId: Schema.optional(Schema.String),
-              type: Schema.optional(
-                Schema.Literals(["SystemAssigned", "None"]),
-              ),
-            }),
-          ),
-        }),
+        Schema.suspend(() => PrivateLinkServicesForEDMUploadDescriptionSchema),
       ),
     ),
   });
@@ -2274,11 +2673,7 @@ export const PrivateLinkServicesForEDMUploadUpdateInput =
     resourceName: Schema.String.pipe(T.PathParam()),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     properties: Schema.optional(
-      Schema.Struct({
-        publicNetworkAccess: Schema.optional(
-          Schema.Literals(["Enabled", "Disabled"]),
-        ),
-      }),
+      Schema.suspend(() => ServicesPropertiesUpdateParametersSchema),
     ),
   }).pipe(
     T.Http({
@@ -2294,6 +2689,44 @@ export type PrivateLinkServicesForEDMUploadUpdateInput =
 // Output Schema
 export const PrivateLinkServicesForEDMUploadUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.Struct({
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Deleting",
+            "Succeeded",
+            "Creating",
+            "Accepted",
+            "Verifying",
+            "Updating",
+            "Failed",
+            "Canceled",
+            "Deprovisioned",
+          ]),
+        ),
+        accessPolicies: Schema.optional(
+          Schema.suspend(() => ServiceAccessPoliciesInfoSchema),
+        ),
+        cosmosDbConfiguration: Schema.optional(
+          Schema.suspend(() => ServiceCosmosDbConfigurationInfoSchema),
+        ),
+        authenticationConfiguration: Schema.optional(
+          Schema.suspend(() => ServiceAuthenticationConfigurationInfoSchema),
+        ),
+        corsConfiguration: Schema.optional(
+          Schema.suspend(() => ServiceCorsConfigurationInfoSchema),
+        ),
+        exportConfiguration: Schema.optional(
+          Schema.suspend(() => ServiceExportConfigurationInfoSchema),
+        ),
+        privateEndpointConnections: Schema.optional(
+          Schema.Array(Schema.suspend(() => PrivateEndpointConnectionSchema)),
+        ),
+        publicNetworkAccess: Schema.optional(
+          Schema.Literals(["Enabled", "Disabled"]),
+        ),
+      }),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2364,47 +2797,22 @@ export const PrivateLinkServicesForM365ComplianceCenterCreateOrUpdateInput =
           ]),
         ),
         accessPolicies: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              objectId: Schema.String,
-            }),
-          ),
+          Schema.suspend(() => ServiceAccessPoliciesInfoSchema),
         ),
         cosmosDbConfiguration: Schema.optional(
-          Schema.Struct({
-            offerThroughput: Schema.optional(Schema.Number),
-            keyVaultKeyUri: Schema.optional(Schema.String),
-          }),
+          Schema.suspend(() => ServiceCosmosDbConfigurationInfoSchema),
         ),
         authenticationConfiguration: Schema.optional(
-          Schema.Struct({
-            authority: Schema.optional(Schema.String),
-            audience: Schema.optional(Schema.String),
-            smartProxyEnabled: Schema.optional(Schema.Boolean),
-          }),
+          Schema.suspend(() => ServiceAuthenticationConfigurationInfoSchema),
         ),
         corsConfiguration: Schema.optional(
-          Schema.Struct({
-            origins: Schema.optional(Schema.Array(Schema.String)),
-            headers: Schema.optional(Schema.Array(Schema.String)),
-            methods: Schema.optional(Schema.Array(Schema.String)),
-            maxAge: Schema.optional(Schema.Number),
-            allowCredentials: Schema.optional(Schema.Boolean),
-          }),
+          Schema.suspend(() => ServiceCorsConfigurationInfoSchema),
         ),
         exportConfiguration: Schema.optional(
-          Schema.Struct({
-            storageAccountName: Schema.optional(Schema.String),
-          }),
+          Schema.suspend(() => ServiceExportConfigurationInfoSchema),
         ),
         privateEndpointConnections: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              id: Schema.optional(Schema.String),
-              name: Schema.optional(Schema.String),
-              type: Schema.optional(Schema.String),
-            }),
-          ),
+          Schema.Array(Schema.suspend(() => PrivateEndpointConnectionSchema)),
         ),
         publicNetworkAccess: Schema.optional(
           Schema.Literals(["Enabled", "Disabled"]),
@@ -2453,6 +2861,44 @@ export type PrivateLinkServicesForM365ComplianceCenterCreateOrUpdateInput =
 // Output Schema
 export const PrivateLinkServicesForM365ComplianceCenterCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.Struct({
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Deleting",
+            "Succeeded",
+            "Creating",
+            "Accepted",
+            "Verifying",
+            "Updating",
+            "Failed",
+            "Canceled",
+            "Deprovisioned",
+          ]),
+        ),
+        accessPolicies: Schema.optional(
+          Schema.suspend(() => ServiceAccessPoliciesInfoSchema),
+        ),
+        cosmosDbConfiguration: Schema.optional(
+          Schema.suspend(() => ServiceCosmosDbConfigurationInfoSchema),
+        ),
+        authenticationConfiguration: Schema.optional(
+          Schema.suspend(() => ServiceAuthenticationConfigurationInfoSchema),
+        ),
+        corsConfiguration: Schema.optional(
+          Schema.suspend(() => ServiceCorsConfigurationInfoSchema),
+        ),
+        exportConfiguration: Schema.optional(
+          Schema.suspend(() => ServiceExportConfigurationInfoSchema),
+        ),
+        privateEndpointConnections: Schema.optional(
+          Schema.Array(Schema.suspend(() => PrivateEndpointConnectionSchema)),
+        ),
+        publicNetworkAccess: Schema.optional(
+          Schema.Literals(["Enabled", "Disabled"]),
+        ),
+      }),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2556,6 +3002,44 @@ export type PrivateLinkServicesForM365ComplianceCenterGetInput =
 // Output Schema
 export const PrivateLinkServicesForM365ComplianceCenterGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.Struct({
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Deleting",
+            "Succeeded",
+            "Creating",
+            "Accepted",
+            "Verifying",
+            "Updating",
+            "Failed",
+            "Canceled",
+            "Deprovisioned",
+          ]),
+        ),
+        accessPolicies: Schema.optional(
+          Schema.suspend(() => ServiceAccessPoliciesInfoSchema),
+        ),
+        cosmosDbConfiguration: Schema.optional(
+          Schema.suspend(() => ServiceCosmosDbConfigurationInfoSchema),
+        ),
+        authenticationConfiguration: Schema.optional(
+          Schema.suspend(() => ServiceAuthenticationConfigurationInfoSchema),
+        ),
+        corsConfiguration: Schema.optional(
+          Schema.suspend(() => ServiceCorsConfigurationInfoSchema),
+        ),
+        exportConfiguration: Schema.optional(
+          Schema.suspend(() => ServiceExportConfigurationInfoSchema),
+        ),
+        privateEndpointConnections: Schema.optional(
+          Schema.Array(Schema.suspend(() => PrivateEndpointConnectionSchema)),
+        ),
+        publicNetworkAccess: Schema.optional(
+          Schema.Literals(["Enabled", "Disabled"]),
+        ),
+      }),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2622,48 +3106,9 @@ export const PrivateLinkServicesForM365ComplianceCenterListOutput =
     nextLink: Schema.optional(Schema.String),
     value: Schema.optional(
       Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.String),
-              createdByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              createdAt: Schema.optional(Schema.String),
-              lastModifiedBy: Schema.optional(Schema.String),
-              lastModifiedByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              lastModifiedAt: Schema.optional(Schema.String),
-            }),
-          ),
-          kind: Schema.Literals(["fhir", "fhir-Stu3", "fhir-R4"]),
-          location: Schema.String,
-          tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-          etag: Schema.optional(Schema.String),
-          identity: Schema.optional(
-            Schema.Struct({
-              principalId: Schema.optional(Schema.String),
-              tenantId: Schema.optional(Schema.String),
-              type: Schema.optional(
-                Schema.Literals(["SystemAssigned", "None"]),
-              ),
-            }),
-          ),
-        }),
+        Schema.suspend(
+          () => PrivateLinkServicesForM365ComplianceCenterDescriptionSchema,
+        ),
       ),
     ),
   });
@@ -2703,48 +3148,9 @@ export const PrivateLinkServicesForM365ComplianceCenterListByResourceGroupOutput
     nextLink: Schema.optional(Schema.String),
     value: Schema.optional(
       Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.String),
-              createdByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              createdAt: Schema.optional(Schema.String),
-              lastModifiedBy: Schema.optional(Schema.String),
-              lastModifiedByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              lastModifiedAt: Schema.optional(Schema.String),
-            }),
-          ),
-          kind: Schema.Literals(["fhir", "fhir-Stu3", "fhir-R4"]),
-          location: Schema.String,
-          tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-          etag: Schema.optional(Schema.String),
-          identity: Schema.optional(
-            Schema.Struct({
-              principalId: Schema.optional(Schema.String),
-              tenantId: Schema.optional(Schema.String),
-              type: Schema.optional(
-                Schema.Literals(["SystemAssigned", "None"]),
-              ),
-            }),
-          ),
-        }),
+        Schema.suspend(
+          () => PrivateLinkServicesForM365ComplianceCenterDescriptionSchema,
+        ),
       ),
     ),
   });
@@ -2774,11 +3180,7 @@ export const PrivateLinkServicesForM365ComplianceCenterUpdateInput =
     resourceName: Schema.String.pipe(T.PathParam()),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     properties: Schema.optional(
-      Schema.Struct({
-        publicNetworkAccess: Schema.optional(
-          Schema.Literals(["Enabled", "Disabled"]),
-        ),
-      }),
+      Schema.suspend(() => ServicesPropertiesUpdateParametersSchema),
     ),
   }).pipe(
     T.Http({
@@ -2794,6 +3196,44 @@ export type PrivateLinkServicesForM365ComplianceCenterUpdateInput =
 // Output Schema
 export const PrivateLinkServicesForM365ComplianceCenterUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.Struct({
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Deleting",
+            "Succeeded",
+            "Creating",
+            "Accepted",
+            "Verifying",
+            "Updating",
+            "Failed",
+            "Canceled",
+            "Deprovisioned",
+          ]),
+        ),
+        accessPolicies: Schema.optional(
+          Schema.suspend(() => ServiceAccessPoliciesInfoSchema),
+        ),
+        cosmosDbConfiguration: Schema.optional(
+          Schema.suspend(() => ServiceCosmosDbConfigurationInfoSchema),
+        ),
+        authenticationConfiguration: Schema.optional(
+          Schema.suspend(() => ServiceAuthenticationConfigurationInfoSchema),
+        ),
+        corsConfiguration: Schema.optional(
+          Schema.suspend(() => ServiceCorsConfigurationInfoSchema),
+        ),
+        exportConfiguration: Schema.optional(
+          Schema.suspend(() => ServiceExportConfigurationInfoSchema),
+        ),
+        privateEndpointConnections: Schema.optional(
+          Schema.Array(Schema.suspend(() => PrivateEndpointConnectionSchema)),
+        ),
+        publicNetworkAccess: Schema.optional(
+          Schema.Literals(["Enabled", "Disabled"]),
+        ),
+      }),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2864,47 +3304,22 @@ export const PrivateLinkServicesForM365SecurityCenterCreateOrUpdateInput =
           ]),
         ),
         accessPolicies: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              objectId: Schema.String,
-            }),
-          ),
+          Schema.suspend(() => ServiceAccessPoliciesInfoSchema),
         ),
         cosmosDbConfiguration: Schema.optional(
-          Schema.Struct({
-            offerThroughput: Schema.optional(Schema.Number),
-            keyVaultKeyUri: Schema.optional(Schema.String),
-          }),
+          Schema.suspend(() => ServiceCosmosDbConfigurationInfoSchema),
         ),
         authenticationConfiguration: Schema.optional(
-          Schema.Struct({
-            authority: Schema.optional(Schema.String),
-            audience: Schema.optional(Schema.String),
-            smartProxyEnabled: Schema.optional(Schema.Boolean),
-          }),
+          Schema.suspend(() => ServiceAuthenticationConfigurationInfoSchema),
         ),
         corsConfiguration: Schema.optional(
-          Schema.Struct({
-            origins: Schema.optional(Schema.Array(Schema.String)),
-            headers: Schema.optional(Schema.Array(Schema.String)),
-            methods: Schema.optional(Schema.Array(Schema.String)),
-            maxAge: Schema.optional(Schema.Number),
-            allowCredentials: Schema.optional(Schema.Boolean),
-          }),
+          Schema.suspend(() => ServiceCorsConfigurationInfoSchema),
         ),
         exportConfiguration: Schema.optional(
-          Schema.Struct({
-            storageAccountName: Schema.optional(Schema.String),
-          }),
+          Schema.suspend(() => ServiceExportConfigurationInfoSchema),
         ),
         privateEndpointConnections: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              id: Schema.optional(Schema.String),
-              name: Schema.optional(Schema.String),
-              type: Schema.optional(Schema.String),
-            }),
-          ),
+          Schema.Array(Schema.suspend(() => PrivateEndpointConnectionSchema)),
         ),
         publicNetworkAccess: Schema.optional(
           Schema.Literals(["Enabled", "Disabled"]),
@@ -2953,6 +3368,44 @@ export type PrivateLinkServicesForM365SecurityCenterCreateOrUpdateInput =
 // Output Schema
 export const PrivateLinkServicesForM365SecurityCenterCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.Struct({
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Deleting",
+            "Succeeded",
+            "Creating",
+            "Accepted",
+            "Verifying",
+            "Updating",
+            "Failed",
+            "Canceled",
+            "Deprovisioned",
+          ]),
+        ),
+        accessPolicies: Schema.optional(
+          Schema.suspend(() => ServiceAccessPoliciesInfoSchema),
+        ),
+        cosmosDbConfiguration: Schema.optional(
+          Schema.suspend(() => ServiceCosmosDbConfigurationInfoSchema),
+        ),
+        authenticationConfiguration: Schema.optional(
+          Schema.suspend(() => ServiceAuthenticationConfigurationInfoSchema),
+        ),
+        corsConfiguration: Schema.optional(
+          Schema.suspend(() => ServiceCorsConfigurationInfoSchema),
+        ),
+        exportConfiguration: Schema.optional(
+          Schema.suspend(() => ServiceExportConfigurationInfoSchema),
+        ),
+        privateEndpointConnections: Schema.optional(
+          Schema.Array(Schema.suspend(() => PrivateEndpointConnectionSchema)),
+        ),
+        publicNetworkAccess: Schema.optional(
+          Schema.Literals(["Enabled", "Disabled"]),
+        ),
+      }),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -3055,6 +3508,44 @@ export type PrivateLinkServicesForM365SecurityCenterGetInput =
 // Output Schema
 export const PrivateLinkServicesForM365SecurityCenterGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.Struct({
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Deleting",
+            "Succeeded",
+            "Creating",
+            "Accepted",
+            "Verifying",
+            "Updating",
+            "Failed",
+            "Canceled",
+            "Deprovisioned",
+          ]),
+        ),
+        accessPolicies: Schema.optional(
+          Schema.suspend(() => ServiceAccessPoliciesInfoSchema),
+        ),
+        cosmosDbConfiguration: Schema.optional(
+          Schema.suspend(() => ServiceCosmosDbConfigurationInfoSchema),
+        ),
+        authenticationConfiguration: Schema.optional(
+          Schema.suspend(() => ServiceAuthenticationConfigurationInfoSchema),
+        ),
+        corsConfiguration: Schema.optional(
+          Schema.suspend(() => ServiceCorsConfigurationInfoSchema),
+        ),
+        exportConfiguration: Schema.optional(
+          Schema.suspend(() => ServiceExportConfigurationInfoSchema),
+        ),
+        privateEndpointConnections: Schema.optional(
+          Schema.Array(Schema.suspend(() => PrivateEndpointConnectionSchema)),
+        ),
+        publicNetworkAccess: Schema.optional(
+          Schema.Literals(["Enabled", "Disabled"]),
+        ),
+      }),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -3121,48 +3612,9 @@ export const PrivateLinkServicesForM365SecurityCenterListOutput =
     nextLink: Schema.optional(Schema.String),
     value: Schema.optional(
       Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.String),
-              createdByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              createdAt: Schema.optional(Schema.String),
-              lastModifiedBy: Schema.optional(Schema.String),
-              lastModifiedByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              lastModifiedAt: Schema.optional(Schema.String),
-            }),
-          ),
-          kind: Schema.Literals(["fhir", "fhir-Stu3", "fhir-R4"]),
-          location: Schema.String,
-          tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-          etag: Schema.optional(Schema.String),
-          identity: Schema.optional(
-            Schema.Struct({
-              principalId: Schema.optional(Schema.String),
-              tenantId: Schema.optional(Schema.String),
-              type: Schema.optional(
-                Schema.Literals(["SystemAssigned", "None"]),
-              ),
-            }),
-          ),
-        }),
+        Schema.suspend(
+          () => PrivateLinkServicesForM365SecurityCenterDescriptionSchema,
+        ),
       ),
     ),
   });
@@ -3202,48 +3654,9 @@ export const PrivateLinkServicesForM365SecurityCenterListByResourceGroupOutput =
     nextLink: Schema.optional(Schema.String),
     value: Schema.optional(
       Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.String),
-              createdByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              createdAt: Schema.optional(Schema.String),
-              lastModifiedBy: Schema.optional(Schema.String),
-              lastModifiedByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              lastModifiedAt: Schema.optional(Schema.String),
-            }),
-          ),
-          kind: Schema.Literals(["fhir", "fhir-Stu3", "fhir-R4"]),
-          location: Schema.String,
-          tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-          etag: Schema.optional(Schema.String),
-          identity: Schema.optional(
-            Schema.Struct({
-              principalId: Schema.optional(Schema.String),
-              tenantId: Schema.optional(Schema.String),
-              type: Schema.optional(
-                Schema.Literals(["SystemAssigned", "None"]),
-              ),
-            }),
-          ),
-        }),
+        Schema.suspend(
+          () => PrivateLinkServicesForM365SecurityCenterDescriptionSchema,
+        ),
       ),
     ),
   });
@@ -3273,11 +3686,7 @@ export const PrivateLinkServicesForM365SecurityCenterUpdateInput =
     resourceName: Schema.String.pipe(T.PathParam()),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     properties: Schema.optional(
-      Schema.Struct({
-        publicNetworkAccess: Schema.optional(
-          Schema.Literals(["Enabled", "Disabled"]),
-        ),
-      }),
+      Schema.suspend(() => ServicesPropertiesUpdateParametersSchema),
     ),
   }).pipe(
     T.Http({
@@ -3293,6 +3702,44 @@ export type PrivateLinkServicesForM365SecurityCenterUpdateInput =
 // Output Schema
 export const PrivateLinkServicesForM365SecurityCenterUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.Struct({
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Deleting",
+            "Succeeded",
+            "Creating",
+            "Accepted",
+            "Verifying",
+            "Updating",
+            "Failed",
+            "Canceled",
+            "Deprovisioned",
+          ]),
+        ),
+        accessPolicies: Schema.optional(
+          Schema.suspend(() => ServiceAccessPoliciesInfoSchema),
+        ),
+        cosmosDbConfiguration: Schema.optional(
+          Schema.suspend(() => ServiceCosmosDbConfigurationInfoSchema),
+        ),
+        authenticationConfiguration: Schema.optional(
+          Schema.suspend(() => ServiceAuthenticationConfigurationInfoSchema),
+        ),
+        corsConfiguration: Schema.optional(
+          Schema.suspend(() => ServiceCorsConfigurationInfoSchema),
+        ),
+        exportConfiguration: Schema.optional(
+          Schema.suspend(() => ServiceExportConfigurationInfoSchema),
+        ),
+        privateEndpointConnections: Schema.optional(
+          Schema.Array(Schema.suspend(() => PrivateEndpointConnectionSchema)),
+        ),
+        publicNetworkAccess: Schema.optional(
+          Schema.Literals(["Enabled", "Disabled"]),
+        ),
+      }),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -3363,47 +3810,22 @@ export const PrivateLinkServicesForMIPPolicySyncCreateOrUpdateInput =
           ]),
         ),
         accessPolicies: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              objectId: Schema.String,
-            }),
-          ),
+          Schema.suspend(() => ServiceAccessPoliciesInfoSchema),
         ),
         cosmosDbConfiguration: Schema.optional(
-          Schema.Struct({
-            offerThroughput: Schema.optional(Schema.Number),
-            keyVaultKeyUri: Schema.optional(Schema.String),
-          }),
+          Schema.suspend(() => ServiceCosmosDbConfigurationInfoSchema),
         ),
         authenticationConfiguration: Schema.optional(
-          Schema.Struct({
-            authority: Schema.optional(Schema.String),
-            audience: Schema.optional(Schema.String),
-            smartProxyEnabled: Schema.optional(Schema.Boolean),
-          }),
+          Schema.suspend(() => ServiceAuthenticationConfigurationInfoSchema),
         ),
         corsConfiguration: Schema.optional(
-          Schema.Struct({
-            origins: Schema.optional(Schema.Array(Schema.String)),
-            headers: Schema.optional(Schema.Array(Schema.String)),
-            methods: Schema.optional(Schema.Array(Schema.String)),
-            maxAge: Schema.optional(Schema.Number),
-            allowCredentials: Schema.optional(Schema.Boolean),
-          }),
+          Schema.suspend(() => ServiceCorsConfigurationInfoSchema),
         ),
         exportConfiguration: Schema.optional(
-          Schema.Struct({
-            storageAccountName: Schema.optional(Schema.String),
-          }),
+          Schema.suspend(() => ServiceExportConfigurationInfoSchema),
         ),
         privateEndpointConnections: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              id: Schema.optional(Schema.String),
-              name: Schema.optional(Schema.String),
-              type: Schema.optional(Schema.String),
-            }),
-          ),
+          Schema.Array(Schema.suspend(() => PrivateEndpointConnectionSchema)),
         ),
         publicNetworkAccess: Schema.optional(
           Schema.Literals(["Enabled", "Disabled"]),
@@ -3452,6 +3874,44 @@ export type PrivateLinkServicesForMIPPolicySyncCreateOrUpdateInput =
 // Output Schema
 export const PrivateLinkServicesForMIPPolicySyncCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.Struct({
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Deleting",
+            "Succeeded",
+            "Creating",
+            "Accepted",
+            "Verifying",
+            "Updating",
+            "Failed",
+            "Canceled",
+            "Deprovisioned",
+          ]),
+        ),
+        accessPolicies: Schema.optional(
+          Schema.suspend(() => ServiceAccessPoliciesInfoSchema),
+        ),
+        cosmosDbConfiguration: Schema.optional(
+          Schema.suspend(() => ServiceCosmosDbConfigurationInfoSchema),
+        ),
+        authenticationConfiguration: Schema.optional(
+          Schema.suspend(() => ServiceAuthenticationConfigurationInfoSchema),
+        ),
+        corsConfiguration: Schema.optional(
+          Schema.suspend(() => ServiceCorsConfigurationInfoSchema),
+        ),
+        exportConfiguration: Schema.optional(
+          Schema.suspend(() => ServiceExportConfigurationInfoSchema),
+        ),
+        privateEndpointConnections: Schema.optional(
+          Schema.Array(Schema.suspend(() => PrivateEndpointConnectionSchema)),
+        ),
+        publicNetworkAccess: Schema.optional(
+          Schema.Literals(["Enabled", "Disabled"]),
+        ),
+      }),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -3554,6 +4014,44 @@ export type PrivateLinkServicesForMIPPolicySyncGetInput =
 // Output Schema
 export const PrivateLinkServicesForMIPPolicySyncGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.Struct({
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Deleting",
+            "Succeeded",
+            "Creating",
+            "Accepted",
+            "Verifying",
+            "Updating",
+            "Failed",
+            "Canceled",
+            "Deprovisioned",
+          ]),
+        ),
+        accessPolicies: Schema.optional(
+          Schema.suspend(() => ServiceAccessPoliciesInfoSchema),
+        ),
+        cosmosDbConfiguration: Schema.optional(
+          Schema.suspend(() => ServiceCosmosDbConfigurationInfoSchema),
+        ),
+        authenticationConfiguration: Schema.optional(
+          Schema.suspend(() => ServiceAuthenticationConfigurationInfoSchema),
+        ),
+        corsConfiguration: Schema.optional(
+          Schema.suspend(() => ServiceCorsConfigurationInfoSchema),
+        ),
+        exportConfiguration: Schema.optional(
+          Schema.suspend(() => ServiceExportConfigurationInfoSchema),
+        ),
+        privateEndpointConnections: Schema.optional(
+          Schema.Array(Schema.suspend(() => PrivateEndpointConnectionSchema)),
+        ),
+        publicNetworkAccess: Schema.optional(
+          Schema.Literals(["Enabled", "Disabled"]),
+        ),
+      }),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -3620,48 +4118,9 @@ export const PrivateLinkServicesForMIPPolicySyncListOutput =
     nextLink: Schema.optional(Schema.String),
     value: Schema.optional(
       Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.String),
-              createdByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              createdAt: Schema.optional(Schema.String),
-              lastModifiedBy: Schema.optional(Schema.String),
-              lastModifiedByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              lastModifiedAt: Schema.optional(Schema.String),
-            }),
-          ),
-          kind: Schema.Literals(["fhir", "fhir-Stu3", "fhir-R4"]),
-          location: Schema.String,
-          tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-          etag: Schema.optional(Schema.String),
-          identity: Schema.optional(
-            Schema.Struct({
-              principalId: Schema.optional(Schema.String),
-              tenantId: Schema.optional(Schema.String),
-              type: Schema.optional(
-                Schema.Literals(["SystemAssigned", "None"]),
-              ),
-            }),
-          ),
-        }),
+        Schema.suspend(
+          () => PrivateLinkServicesForMIPPolicySyncDescriptionSchema,
+        ),
       ),
     ),
   });
@@ -3701,48 +4160,9 @@ export const PrivateLinkServicesForMIPPolicySyncListByResourceGroupOutput =
     nextLink: Schema.optional(Schema.String),
     value: Schema.optional(
       Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.String),
-              createdByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              createdAt: Schema.optional(Schema.String),
-              lastModifiedBy: Schema.optional(Schema.String),
-              lastModifiedByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              lastModifiedAt: Schema.optional(Schema.String),
-            }),
-          ),
-          kind: Schema.Literals(["fhir", "fhir-Stu3", "fhir-R4"]),
-          location: Schema.String,
-          tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-          etag: Schema.optional(Schema.String),
-          identity: Schema.optional(
-            Schema.Struct({
-              principalId: Schema.optional(Schema.String),
-              tenantId: Schema.optional(Schema.String),
-              type: Schema.optional(
-                Schema.Literals(["SystemAssigned", "None"]),
-              ),
-            }),
-          ),
-        }),
+        Schema.suspend(
+          () => PrivateLinkServicesForMIPPolicySyncDescriptionSchema,
+        ),
       ),
     ),
   });
@@ -3770,11 +4190,7 @@ export const PrivateLinkServicesForMIPPolicySyncUpdateInput =
     resourceName: Schema.String.pipe(T.PathParam()),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     properties: Schema.optional(
-      Schema.Struct({
-        publicNetworkAccess: Schema.optional(
-          Schema.Literals(["Enabled", "Disabled"]),
-        ),
-      }),
+      Schema.suspend(() => ServicesPropertiesUpdateParametersSchema),
     ),
   }).pipe(
     T.Http({
@@ -3790,6 +4206,44 @@ export type PrivateLinkServicesForMIPPolicySyncUpdateInput =
 // Output Schema
 export const PrivateLinkServicesForMIPPolicySyncUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.Struct({
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Deleting",
+            "Succeeded",
+            "Creating",
+            "Accepted",
+            "Verifying",
+            "Updating",
+            "Failed",
+            "Canceled",
+            "Deprovisioned",
+          ]),
+        ),
+        accessPolicies: Schema.optional(
+          Schema.suspend(() => ServiceAccessPoliciesInfoSchema),
+        ),
+        cosmosDbConfiguration: Schema.optional(
+          Schema.suspend(() => ServiceCosmosDbConfigurationInfoSchema),
+        ),
+        authenticationConfiguration: Schema.optional(
+          Schema.suspend(() => ServiceAuthenticationConfigurationInfoSchema),
+        ),
+        corsConfiguration: Schema.optional(
+          Schema.suspend(() => ServiceCorsConfigurationInfoSchema),
+        ),
+        exportConfiguration: Schema.optional(
+          Schema.suspend(() => ServiceExportConfigurationInfoSchema),
+        ),
+        privateEndpointConnections: Schema.optional(
+          Schema.Array(Schema.suspend(() => PrivateEndpointConnectionSchema)),
+        ),
+        publicNetworkAccess: Schema.optional(
+          Schema.Literals(["Enabled", "Disabled"]),
+        ),
+      }),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -3860,47 +4314,22 @@ export const PrivateLinkServicesForO365ManagementActivityAPICreateOrUpdateInput 
           ]),
         ),
         accessPolicies: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              objectId: Schema.String,
-            }),
-          ),
+          Schema.suspend(() => ServiceAccessPoliciesInfoSchema),
         ),
         cosmosDbConfiguration: Schema.optional(
-          Schema.Struct({
-            offerThroughput: Schema.optional(Schema.Number),
-            keyVaultKeyUri: Schema.optional(Schema.String),
-          }),
+          Schema.suspend(() => ServiceCosmosDbConfigurationInfoSchema),
         ),
         authenticationConfiguration: Schema.optional(
-          Schema.Struct({
-            authority: Schema.optional(Schema.String),
-            audience: Schema.optional(Schema.String),
-            smartProxyEnabled: Schema.optional(Schema.Boolean),
-          }),
+          Schema.suspend(() => ServiceAuthenticationConfigurationInfoSchema),
         ),
         corsConfiguration: Schema.optional(
-          Schema.Struct({
-            origins: Schema.optional(Schema.Array(Schema.String)),
-            headers: Schema.optional(Schema.Array(Schema.String)),
-            methods: Schema.optional(Schema.Array(Schema.String)),
-            maxAge: Schema.optional(Schema.Number),
-            allowCredentials: Schema.optional(Schema.Boolean),
-          }),
+          Schema.suspend(() => ServiceCorsConfigurationInfoSchema),
         ),
         exportConfiguration: Schema.optional(
-          Schema.Struct({
-            storageAccountName: Schema.optional(Schema.String),
-          }),
+          Schema.suspend(() => ServiceExportConfigurationInfoSchema),
         ),
         privateEndpointConnections: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              id: Schema.optional(Schema.String),
-              name: Schema.optional(Schema.String),
-              type: Schema.optional(Schema.String),
-            }),
-          ),
+          Schema.Array(Schema.suspend(() => PrivateEndpointConnectionSchema)),
         ),
         publicNetworkAccess: Schema.optional(
           Schema.Literals(["Enabled", "Disabled"]),
@@ -3949,6 +4378,44 @@ export type PrivateLinkServicesForO365ManagementActivityAPICreateOrUpdateInput =
 // Output Schema
 export const PrivateLinkServicesForO365ManagementActivityAPICreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.Struct({
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Deleting",
+            "Succeeded",
+            "Creating",
+            "Accepted",
+            "Verifying",
+            "Updating",
+            "Failed",
+            "Canceled",
+            "Deprovisioned",
+          ]),
+        ),
+        accessPolicies: Schema.optional(
+          Schema.suspend(() => ServiceAccessPoliciesInfoSchema),
+        ),
+        cosmosDbConfiguration: Schema.optional(
+          Schema.suspend(() => ServiceCosmosDbConfigurationInfoSchema),
+        ),
+        authenticationConfiguration: Schema.optional(
+          Schema.suspend(() => ServiceAuthenticationConfigurationInfoSchema),
+        ),
+        corsConfiguration: Schema.optional(
+          Schema.suspend(() => ServiceCorsConfigurationInfoSchema),
+        ),
+        exportConfiguration: Schema.optional(
+          Schema.suspend(() => ServiceExportConfigurationInfoSchema),
+        ),
+        privateEndpointConnections: Schema.optional(
+          Schema.Array(Schema.suspend(() => PrivateEndpointConnectionSchema)),
+        ),
+        publicNetworkAccess: Schema.optional(
+          Schema.Literals(["Enabled", "Disabled"]),
+        ),
+      }),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -4053,6 +4520,44 @@ export type PrivateLinkServicesForO365ManagementActivityAPIGetInput =
 // Output Schema
 export const PrivateLinkServicesForO365ManagementActivityAPIGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.Struct({
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Deleting",
+            "Succeeded",
+            "Creating",
+            "Accepted",
+            "Verifying",
+            "Updating",
+            "Failed",
+            "Canceled",
+            "Deprovisioned",
+          ]),
+        ),
+        accessPolicies: Schema.optional(
+          Schema.suspend(() => ServiceAccessPoliciesInfoSchema),
+        ),
+        cosmosDbConfiguration: Schema.optional(
+          Schema.suspend(() => ServiceCosmosDbConfigurationInfoSchema),
+        ),
+        authenticationConfiguration: Schema.optional(
+          Schema.suspend(() => ServiceAuthenticationConfigurationInfoSchema),
+        ),
+        corsConfiguration: Schema.optional(
+          Schema.suspend(() => ServiceCorsConfigurationInfoSchema),
+        ),
+        exportConfiguration: Schema.optional(
+          Schema.suspend(() => ServiceExportConfigurationInfoSchema),
+        ),
+        privateEndpointConnections: Schema.optional(
+          Schema.Array(Schema.suspend(() => PrivateEndpointConnectionSchema)),
+        ),
+        publicNetworkAccess: Schema.optional(
+          Schema.Literals(["Enabled", "Disabled"]),
+        ),
+      }),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -4119,48 +4624,10 @@ export const PrivateLinkServicesForO365ManagementActivityAPIListOutput =
     nextLink: Schema.optional(Schema.String),
     value: Schema.optional(
       Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.String),
-              createdByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              createdAt: Schema.optional(Schema.String),
-              lastModifiedBy: Schema.optional(Schema.String),
-              lastModifiedByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              lastModifiedAt: Schema.optional(Schema.String),
-            }),
-          ),
-          kind: Schema.Literals(["fhir", "fhir-Stu3", "fhir-R4"]),
-          location: Schema.String,
-          tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-          etag: Schema.optional(Schema.String),
-          identity: Schema.optional(
-            Schema.Struct({
-              principalId: Schema.optional(Schema.String),
-              tenantId: Schema.optional(Schema.String),
-              type: Schema.optional(
-                Schema.Literals(["SystemAssigned", "None"]),
-              ),
-            }),
-          ),
-        }),
+        Schema.suspend(
+          () =>
+            PrivateLinkServicesForO365ManagementActivityAPIDescriptionSchema,
+        ),
       ),
     ),
   });
@@ -4200,48 +4667,10 @@ export const PrivateLinkServicesForO365ManagementActivityAPIListByResourceGroupO
     nextLink: Schema.optional(Schema.String),
     value: Schema.optional(
       Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.String),
-              createdByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              createdAt: Schema.optional(Schema.String),
-              lastModifiedBy: Schema.optional(Schema.String),
-              lastModifiedByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              lastModifiedAt: Schema.optional(Schema.String),
-            }),
-          ),
-          kind: Schema.Literals(["fhir", "fhir-Stu3", "fhir-R4"]),
-          location: Schema.String,
-          tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-          etag: Schema.optional(Schema.String),
-          identity: Schema.optional(
-            Schema.Struct({
-              principalId: Schema.optional(Schema.String),
-              tenantId: Schema.optional(Schema.String),
-              type: Schema.optional(
-                Schema.Literals(["SystemAssigned", "None"]),
-              ),
-            }),
-          ),
-        }),
+        Schema.suspend(
+          () =>
+            PrivateLinkServicesForO365ManagementActivityAPIDescriptionSchema,
+        ),
       ),
     ),
   });
@@ -4271,11 +4700,7 @@ export const PrivateLinkServicesForO365ManagementActivityAPIUpdateInput =
     resourceName: Schema.String.pipe(T.PathParam()),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     properties: Schema.optional(
-      Schema.Struct({
-        publicNetworkAccess: Schema.optional(
-          Schema.Literals(["Enabled", "Disabled"]),
-        ),
-      }),
+      Schema.suspend(() => ServicesPropertiesUpdateParametersSchema),
     ),
   }).pipe(
     T.Http({
@@ -4291,6 +4716,44 @@ export type PrivateLinkServicesForO365ManagementActivityAPIUpdateInput =
 // Output Schema
 export const PrivateLinkServicesForO365ManagementActivityAPIUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.Struct({
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Deleting",
+            "Succeeded",
+            "Creating",
+            "Accepted",
+            "Verifying",
+            "Updating",
+            "Failed",
+            "Canceled",
+            "Deprovisioned",
+          ]),
+        ),
+        accessPolicies: Schema.optional(
+          Schema.suspend(() => ServiceAccessPoliciesInfoSchema),
+        ),
+        cosmosDbConfiguration: Schema.optional(
+          Schema.suspend(() => ServiceCosmosDbConfigurationInfoSchema),
+        ),
+        authenticationConfiguration: Schema.optional(
+          Schema.suspend(() => ServiceAuthenticationConfigurationInfoSchema),
+        ),
+        corsConfiguration: Schema.optional(
+          Schema.suspend(() => ServiceCorsConfigurationInfoSchema),
+        ),
+        exportConfiguration: Schema.optional(
+          Schema.suspend(() => ServiceExportConfigurationInfoSchema),
+        ),
+        privateEndpointConnections: Schema.optional(
+          Schema.Array(Schema.suspend(() => PrivateEndpointConnectionSchema)),
+        ),
+        publicNetworkAccess: Schema.optional(
+          Schema.Literals(["Enabled", "Disabled"]),
+        ),
+      }),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -4361,47 +4824,22 @@ export const PrivateLinkServicesForSCCPowershellCreateOrUpdateInput =
           ]),
         ),
         accessPolicies: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              objectId: Schema.String,
-            }),
-          ),
+          Schema.suspend(() => ServiceAccessPoliciesInfoSchema),
         ),
         cosmosDbConfiguration: Schema.optional(
-          Schema.Struct({
-            offerThroughput: Schema.optional(Schema.Number),
-            keyVaultKeyUri: Schema.optional(Schema.String),
-          }),
+          Schema.suspend(() => ServiceCosmosDbConfigurationInfoSchema),
         ),
         authenticationConfiguration: Schema.optional(
-          Schema.Struct({
-            authority: Schema.optional(Schema.String),
-            audience: Schema.optional(Schema.String),
-            smartProxyEnabled: Schema.optional(Schema.Boolean),
-          }),
+          Schema.suspend(() => ServiceAuthenticationConfigurationInfoSchema),
         ),
         corsConfiguration: Schema.optional(
-          Schema.Struct({
-            origins: Schema.optional(Schema.Array(Schema.String)),
-            headers: Schema.optional(Schema.Array(Schema.String)),
-            methods: Schema.optional(Schema.Array(Schema.String)),
-            maxAge: Schema.optional(Schema.Number),
-            allowCredentials: Schema.optional(Schema.Boolean),
-          }),
+          Schema.suspend(() => ServiceCorsConfigurationInfoSchema),
         ),
         exportConfiguration: Schema.optional(
-          Schema.Struct({
-            storageAccountName: Schema.optional(Schema.String),
-          }),
+          Schema.suspend(() => ServiceExportConfigurationInfoSchema),
         ),
         privateEndpointConnections: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              id: Schema.optional(Schema.String),
-              name: Schema.optional(Schema.String),
-              type: Schema.optional(Schema.String),
-            }),
-          ),
+          Schema.Array(Schema.suspend(() => PrivateEndpointConnectionSchema)),
         ),
         publicNetworkAccess: Schema.optional(
           Schema.Literals(["Enabled", "Disabled"]),
@@ -4450,6 +4888,44 @@ export type PrivateLinkServicesForSCCPowershellCreateOrUpdateInput =
 // Output Schema
 export const PrivateLinkServicesForSCCPowershellCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.Struct({
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Deleting",
+            "Succeeded",
+            "Creating",
+            "Accepted",
+            "Verifying",
+            "Updating",
+            "Failed",
+            "Canceled",
+            "Deprovisioned",
+          ]),
+        ),
+        accessPolicies: Schema.optional(
+          Schema.suspend(() => ServiceAccessPoliciesInfoSchema),
+        ),
+        cosmosDbConfiguration: Schema.optional(
+          Schema.suspend(() => ServiceCosmosDbConfigurationInfoSchema),
+        ),
+        authenticationConfiguration: Schema.optional(
+          Schema.suspend(() => ServiceAuthenticationConfigurationInfoSchema),
+        ),
+        corsConfiguration: Schema.optional(
+          Schema.suspend(() => ServiceCorsConfigurationInfoSchema),
+        ),
+        exportConfiguration: Schema.optional(
+          Schema.suspend(() => ServiceExportConfigurationInfoSchema),
+        ),
+        privateEndpointConnections: Schema.optional(
+          Schema.Array(Schema.suspend(() => PrivateEndpointConnectionSchema)),
+        ),
+        publicNetworkAccess: Schema.optional(
+          Schema.Literals(["Enabled", "Disabled"]),
+        ),
+      }),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -4552,6 +5028,44 @@ export type PrivateLinkServicesForSCCPowershellGetInput =
 // Output Schema
 export const PrivateLinkServicesForSCCPowershellGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.Struct({
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Deleting",
+            "Succeeded",
+            "Creating",
+            "Accepted",
+            "Verifying",
+            "Updating",
+            "Failed",
+            "Canceled",
+            "Deprovisioned",
+          ]),
+        ),
+        accessPolicies: Schema.optional(
+          Schema.suspend(() => ServiceAccessPoliciesInfoSchema),
+        ),
+        cosmosDbConfiguration: Schema.optional(
+          Schema.suspend(() => ServiceCosmosDbConfigurationInfoSchema),
+        ),
+        authenticationConfiguration: Schema.optional(
+          Schema.suspend(() => ServiceAuthenticationConfigurationInfoSchema),
+        ),
+        corsConfiguration: Schema.optional(
+          Schema.suspend(() => ServiceCorsConfigurationInfoSchema),
+        ),
+        exportConfiguration: Schema.optional(
+          Schema.suspend(() => ServiceExportConfigurationInfoSchema),
+        ),
+        privateEndpointConnections: Schema.optional(
+          Schema.Array(Schema.suspend(() => PrivateEndpointConnectionSchema)),
+        ),
+        publicNetworkAccess: Schema.optional(
+          Schema.Literals(["Enabled", "Disabled"]),
+        ),
+      }),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -4618,48 +5132,9 @@ export const PrivateLinkServicesForSCCPowershellListOutput =
     nextLink: Schema.optional(Schema.String),
     value: Schema.optional(
       Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.String),
-              createdByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              createdAt: Schema.optional(Schema.String),
-              lastModifiedBy: Schema.optional(Schema.String),
-              lastModifiedByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              lastModifiedAt: Schema.optional(Schema.String),
-            }),
-          ),
-          kind: Schema.Literals(["fhir", "fhir-Stu3", "fhir-R4"]),
-          location: Schema.String,
-          tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-          etag: Schema.optional(Schema.String),
-          identity: Schema.optional(
-            Schema.Struct({
-              principalId: Schema.optional(Schema.String),
-              tenantId: Schema.optional(Schema.String),
-              type: Schema.optional(
-                Schema.Literals(["SystemAssigned", "None"]),
-              ),
-            }),
-          ),
-        }),
+        Schema.suspend(
+          () => PrivateLinkServicesForSCCPowershellDescriptionSchema,
+        ),
       ),
     ),
   });
@@ -4699,48 +5174,9 @@ export const PrivateLinkServicesForSCCPowershellListByResourceGroupOutput =
     nextLink: Schema.optional(Schema.String),
     value: Schema.optional(
       Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.String),
-              createdByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              createdAt: Schema.optional(Schema.String),
-              lastModifiedBy: Schema.optional(Schema.String),
-              lastModifiedByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              lastModifiedAt: Schema.optional(Schema.String),
-            }),
-          ),
-          kind: Schema.Literals(["fhir", "fhir-Stu3", "fhir-R4"]),
-          location: Schema.String,
-          tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-          etag: Schema.optional(Schema.String),
-          identity: Schema.optional(
-            Schema.Struct({
-              principalId: Schema.optional(Schema.String),
-              tenantId: Schema.optional(Schema.String),
-              type: Schema.optional(
-                Schema.Literals(["SystemAssigned", "None"]),
-              ),
-            }),
-          ),
-        }),
+        Schema.suspend(
+          () => PrivateLinkServicesForSCCPowershellDescriptionSchema,
+        ),
       ),
     ),
   });
@@ -4768,11 +5204,7 @@ export const PrivateLinkServicesForSCCPowershellUpdateInput =
     resourceName: Schema.String.pipe(T.PathParam()),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     properties: Schema.optional(
-      Schema.Struct({
-        publicNetworkAccess: Schema.optional(
-          Schema.Literals(["Enabled", "Disabled"]),
-        ),
-      }),
+      Schema.suspend(() => ServicesPropertiesUpdateParametersSchema),
     ),
   }).pipe(
     T.Http({
@@ -4788,6 +5220,44 @@ export type PrivateLinkServicesForSCCPowershellUpdateInput =
 // Output Schema
 export const PrivateLinkServicesForSCCPowershellUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.Struct({
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Deleting",
+            "Succeeded",
+            "Creating",
+            "Accepted",
+            "Verifying",
+            "Updating",
+            "Failed",
+            "Canceled",
+            "Deprovisioned",
+          ]),
+        ),
+        accessPolicies: Schema.optional(
+          Schema.suspend(() => ServiceAccessPoliciesInfoSchema),
+        ),
+        cosmosDbConfiguration: Schema.optional(
+          Schema.suspend(() => ServiceCosmosDbConfigurationInfoSchema),
+        ),
+        authenticationConfiguration: Schema.optional(
+          Schema.suspend(() => ServiceAuthenticationConfigurationInfoSchema),
+        ),
+        corsConfiguration: Schema.optional(
+          Schema.suspend(() => ServiceCorsConfigurationInfoSchema),
+        ),
+        exportConfiguration: Schema.optional(
+          Schema.suspend(() => ServiceExportConfigurationInfoSchema),
+        ),
+        privateEndpointConnections: Schema.optional(
+          Schema.Array(Schema.suspend(() => PrivateEndpointConnectionSchema)),
+        ),
+        publicNetworkAccess: Schema.optional(
+          Schema.Literals(["Enabled", "Disabled"]),
+        ),
+      }),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),

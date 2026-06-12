@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { BackupScheduleItemSchema } from "./_schemas.ts";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
@@ -7,15 +8,7 @@ export const SetSnapshotScheduleInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
     branch_id: Schema.String.pipe(T.PathParam()),
-    schedule: Schema.Array(
-      Schema.Struct({
-        frequency: Schema.String,
-        hour: Schema.optional(Schema.Number),
-        day: Schema.optional(Schema.Number),
-        month: Schema.optional(Schema.Number),
-        retention_seconds: Schema.optional(Schema.Number),
-      }),
-    ),
+    schedule: Schema.Array(Schema.suspend(() => BackupScheduleItemSchema)),
   }).pipe(
     T.Http({
       method: "PUT",

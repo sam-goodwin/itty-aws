@@ -7,7 +7,2454 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
-import { SensitiveString } from "../sensitive.ts";
+import { SensitiveOutputString } from "../sensitive.ts";
+
+// Shared schemas
+const OperationSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  isDataAction: Schema.optional(Schema.Boolean),
+  display: Schema.optional(
+    Schema.Struct({
+      provider: Schema.optional(Schema.String),
+      resource: Schema.optional(Schema.String),
+      operation: Schema.optional(Schema.String),
+      description: Schema.optional(Schema.String),
+    }),
+  ),
+  origin: Schema.optional(Schema.Literals(["user", "system", "user,system"])),
+  actionType: Schema.optional(Schema.Literals(["Internal"])),
+});
+const AccessControlListSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+});
+const systemDataSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  createdBy: Schema.optional(Schema.String),
+  createdByType: Schema.optional(
+    Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+  ),
+  createdAt: Schema.optional(Schema.String),
+  lastModifiedBy: Schema.optional(Schema.String),
+  lastModifiedByType: Schema.optional(
+    Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+  ),
+  lastModifiedAt: Schema.optional(Schema.String),
+});
+const InternetGatewayRuleSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+});
+const InternetGatewaySchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+});
+const IpCommunitySchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+});
+const IpExtendedCommunitySchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+});
+const IpPrefixSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+});
+const L2IsolationDomainSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+});
+const L3IsolationDomainSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+});
+const NeighborGroupSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+});
+const NetworkBootstrapDeviceSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+});
+const NetworkDeviceSkuSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+});
+const NetworkDeviceSkuPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    model: Schema.String,
+    manufacturer: Schema.optional(Schema.String),
+    supportedVersions: Schema.optional(
+      Schema.Array(Schema.suspend(() => SupportedVersionPropertiesSchema)),
+    ),
+    supportedRoleTypes: Schema.optional(
+      Schema.Array(Schema.suspend(() => NetworkDeviceRoleNameSchema)),
+    ),
+    interfaces: Schema.optional(
+      Schema.Array(Schema.suspend(() => DeviceInterfacePropertiesSchema)),
+    ),
+    provisioningState: Schema.optional(
+      Schema.suspend(() => ProvisioningStateSchema),
+    ),
+  });
+const SupportedVersionPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    version: Schema.optional(Schema.String),
+    vendorOsVersion: Schema.optional(Schema.String),
+    vendorFirmwareVersion: Schema.optional(Schema.String),
+    isDefault: Schema.optional(Schema.suspend(() => BooleanEnumPropertySchema)),
+  });
+const BooleanEnumPropertySchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "True",
+  "False",
+]);
+const NetworkDeviceRoleNameSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals(
+  ["CE", "ToR", "NPB", "TS", "Management"],
+);
+const DeviceInterfacePropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    identifier: Schema.optional(Schema.String),
+    interfaceType: Schema.optional(Schema.String),
+    supportedConnectorTypes: Schema.optional(
+      Schema.Array(Schema.suspend(() => SupportedConnectorPropertiesSchema)),
+    ),
+  });
+const SupportedConnectorPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    connectorType: Schema.optional(Schema.String),
+    maxSpeedInMbps: Schema.optional(Schema.Number),
+  });
+const ProvisioningStateSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Accepted",
+  "Succeeded",
+  "Updating",
+  "Deleting",
+  "Failed",
+  "Canceled",
+]);
+const NetworkDeviceSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+});
+const NetworkFabricControllerSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+  },
+);
+const NetworkFabricSkuSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+});
+const NetworkFabricSkuPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    type: Schema.optional(Schema.suspend(() => FabricSkuTypeSchema)),
+    maxComputeRacks: Schema.optional(Schema.Number),
+    maximumServerCount: Schema.optional(Schema.Number),
+    supportedVersions: Schema.optional(Schema.Array(Schema.String)),
+    details: Schema.optional(Schema.String),
+    provisioningState: Schema.optional(
+      Schema.suspend(() => ProvisioningStateSchema),
+    ),
+  });
+const FabricSkuTypeSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "SingleRack",
+  "MultiRack",
+]);
+const NetworkFabricSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+});
+const NetworkMonitorSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+});
+const NetworkPacketBrokerSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+});
+const NetworkRackSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+});
+const NetworkTapRuleSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+});
+const NetworkTapSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+});
+const RoutePolicySchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+});
+const AccessControlListPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    annotation: Schema.optional(Schema.String),
+    configurationType: Schema.suspend(() => ConfigurationTypeSchema),
+    aclsUrl: Schema.optional(Schema.String),
+    defaultAction: Schema.optional(Schema.Literals(["Permit", "Deny"])),
+    matchConfigurations: Schema.optional(
+      Schema.Array(
+        Schema.suspend(() => AccessControlListMatchConfigurationSchema),
+      ),
+    ),
+    dynamicMatchConfigurations: Schema.optional(
+      Schema.Array(Schema.suspend(() => CommonDynamicMatchConfigurationSchema)),
+    ),
+    lastSyncedTime: Schema.optional(Schema.String),
+    aclType: Schema.optional(Schema.suspend(() => AclTypeSchema)),
+    deviceRole: Schema.optional(Schema.suspend(() => DeviceRoleSchema)),
+    globalAccessControlListActions: Schema.optional(
+      Schema.suspend(() => GlobalAccessControlListActionPropertiesSchema),
+    ),
+    lastOperation: Schema.optional(
+      Schema.suspend(() => LastOperationPropertiesSchema),
+    ),
+    networkFabricIds: Schema.optional(Schema.Array(Schema.String)),
+    controlPlaneAclConfiguration: Schema.optional(
+      Schema.Array(Schema.suspend(() => ControlPlaneAclPropertiesSchema)),
+    ),
+    configurationState: Schema.optional(
+      Schema.suspend(() => ConfigurationStateSchema),
+    ),
+    provisioningState: Schema.optional(
+      Schema.suspend(() => ProvisioningStateSchema),
+    ),
+    administrativeState: Schema.optional(
+      Schema.suspend(() => AdministrativeStateSchema),
+    ),
+  });
+const ConfigurationTypeSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "File",
+  "Inline",
+]);
+const AccessControlListMatchConfigurationSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    matchConfigurationName: Schema.optional(Schema.String),
+    sequenceNumber: Schema.optional(Schema.Number),
+    ipAddressType: Schema.optional(Schema.suspend(() => IPAddressTypeSchema)),
+    matchConditions: Schema.optional(
+      Schema.Array(Schema.suspend(() => AccessControlListMatchConditionSchema)),
+    ),
+    actions: Schema.optional(
+      Schema.Array(Schema.suspend(() => AccessControlListActionSchema)),
+    ),
+  });
+const IPAddressTypeSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "IPv4",
+  "IPv6",
+]);
+const AccessControlListMatchConditionSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    protocolTypes: Schema.optional(Schema.Array(Schema.String)),
+    vlanMatchCondition: Schema.optional(
+      Schema.suspend(() => VlanMatchConditionSchema),
+    ),
+    ipCondition: Schema.optional(Schema.suspend(() => IpMatchConditionSchema)),
+  });
+const VlanMatchConditionSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  vlans: Schema.optional(Schema.Array(Schema.String)),
+  innerVlans: Schema.optional(Schema.Array(Schema.String)),
+  vlanGroupNames: Schema.optional(Schema.Array(Schema.String)),
+});
+const IpMatchConditionSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  type: Schema.optional(Schema.suspend(() => SourceDestinationTypeSchema)),
+  prefixType: Schema.optional(Schema.suspend(() => PrefixTypeSchema)),
+  ipPrefixValues: Schema.optional(Schema.Array(Schema.String)),
+  ipGroupNames: Schema.optional(Schema.Array(Schema.String)),
+});
+const SourceDestinationTypeSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals(
+  ["SourceIP", "DestinationIP", "Bidirectional"],
+);
+const PrefixTypeSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Prefix",
+  "LongestPrefix",
+]);
+const AccessControlListActionSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    type: Schema.optional(Schema.suspend(() => AclActionTypeSchema)),
+    counterName: Schema.optional(Schema.String),
+    remarkComment: Schema.optional(Schema.String),
+    policeRateConfiguration: Schema.optional(
+      Schema.suspend(() => PoliceRateConfigurationPropertiesSchema),
+    ),
+  },
+);
+const AclActionTypeSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Drop",
+  "Count",
+  "Log",
+  "Remark",
+  "PoliceRate",
+]);
+const PoliceRateConfigurationPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    bitRate: Schema.optional(Schema.suspend(() => BitRateSchema)),
+    burstSize: Schema.optional(Schema.suspend(() => BurstSizeSchema)),
+  });
+const BitRateSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  rate: Schema.optional(Schema.Number),
+  unit: Schema.optional(Schema.suspend(() => BitRateUnitSchema)),
+});
+const BitRateUnitSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "bps",
+  "Kbps",
+  "Mbps",
+  "Gbps",
+  "Pps",
+]);
+const BurstSizeSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  size: Schema.optional(Schema.Number),
+  unit: Schema.optional(Schema.suspend(() => BurstSizeUnitSchema)),
+});
+const BurstSizeUnitSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Bytes",
+  "KBytes",
+  "MBytes",
+  "GBytes",
+  "Packets",
+]);
+const CommonDynamicMatchConfigurationSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    ipGroups: Schema.optional(
+      Schema.Array(Schema.suspend(() => IpGroupPropertiesSchema)),
+    ),
+    vlanGroups: Schema.optional(
+      Schema.Array(Schema.suspend(() => VlanGroupPropertiesSchema)),
+    ),
+    portGroups: Schema.optional(
+      Schema.Array(Schema.suspend(() => PortGroupPropertiesSchema)),
+    ),
+  });
+const IpGroupPropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  ipAddressType: Schema.optional(Schema.suspend(() => IPAddressTypeSchema)),
+  ipPrefixes: Schema.optional(Schema.Array(Schema.String)),
+});
+const VlanGroupPropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  vlans: Schema.optional(Schema.Array(Schema.String)),
+});
+const PortGroupPropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  ports: Schema.optional(Schema.Array(Schema.String)),
+});
+const AclTypeSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "ControlPlaneTrafficPolicy",
+  "Tenant",
+  "Management",
+  "ControlPlaneAcl",
+]);
+const DeviceRoleSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "CE",
+  "ToR",
+  "NPB",
+  "ManagementSwitch",
+]);
+const GlobalAccessControlListActionPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    enableCount: Schema.optional(Schema.Literals(["True", "False"])),
+  });
+const LastOperationPropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    details: Schema.optional(Schema.String),
+  },
+);
+const ControlPlaneAclPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    ipAddressType: Schema.optional(Schema.suspend(() => IPAddressTypeSchema)),
+    matchConfigurations: Schema.optional(
+      Schema.Array(
+        Schema.suspend(() => ControlPlaneAclMatchConfigurationPropertiesSchema),
+      ),
+    ),
+  });
+const ControlPlaneAclMatchConfigurationPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    matchConfigurationName: Schema.optional(Schema.String),
+    sequenceNumber: Schema.optional(Schema.Number),
+    matchCondition: Schema.optional(
+      Schema.suspend(() => ControlPlaneAclMatchConditionSchema),
+    ),
+    action: Schema.optional(Schema.suspend(() => ControlPlaneAclActionSchema)),
+  });
+const ControlPlaneAclMatchConditionSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    protocolTypes: Schema.optional(Schema.String),
+    ipCondition: Schema.optional(
+      Schema.suspend(() => ControlPlanAclIpMatchConditionSchema),
+    ),
+    ttlMatchCondition: Schema.optional(
+      Schema.suspend(() => ControlPlaneAclTtlMatchConditionSchema),
+    ),
+    portCondition: Schema.optional(
+      Schema.suspend(() => ControlPlaneAclPortMatchConditionSchema),
+    ),
+    flags: Schema.optional(Schema.Array(Schema.String)),
+    icmpConfiguration: Schema.optional(
+      Schema.suspend(() => IcmpConfigurationPropertiesSchema),
+    ),
+  });
+const ControlPlanAclIpMatchConditionSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    sourceIpPrefix: Schema.optional(Schema.String),
+    destinationIpPrefix: Schema.optional(Schema.String),
+  });
+const ControlPlaneAclTtlMatchConditionSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    ttlValue: Schema.optional(Schema.String),
+    ttlMatchType: Schema.optional(
+      Schema.suspend(() => ControlPlaneAclTtlMatchTypeSchema),
+    ),
+  });
+const ControlPlaneAclTtlMatchTypeSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Literals(["eq", "neq", "gt", "lt"]);
+const ControlPlaneAclPortMatchConditionSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    sourcePorts: Schema.optional(
+      Schema.suspend(() => ControlPlaneAclPortConditionSchema),
+    ),
+    destinationPorts: Schema.optional(
+      Schema.suspend(() => ControlPlaneAclPortConditionSchema),
+    ),
+  });
+const ControlPlaneAclPortConditionSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    ports: Schema.optional(Schema.Array(Schema.String)),
+    portMatchType: Schema.optional(
+      Schema.suspend(() => ControlPlaneAclPortMatchTypeSchema),
+    ),
+  });
+const ControlPlaneAclPortMatchTypeSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+    "eq",
+    "neq",
+    "gt",
+    "lt",
+    "range",
+  ]);
+const IcmpConfigurationPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    icmpTypes: Schema.optional(Schema.Array(Schema.String)),
+  });
+const ControlPlaneAclActionSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  type: Schema.optional(Schema.suspend(() => ControlPlaneAclActionTypeSchema)),
+  remarkComment: Schema.optional(Schema.String),
+});
+const ControlPlaneAclActionTypeSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Literals(["Permit", "Deny", "Remark"]);
+const ConfigurationStateSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Succeeded",
+  "Failed",
+  "Rejected",
+  "Accepted",
+  "Provisioned",
+  "ErrorProvisioning",
+  "Deprovisioning",
+  "Deprovisioned",
+  "ErrorDeprovisioning",
+  "DeferredControl",
+  "Provisioning",
+  "PendingCommit",
+  "PendingAdministrativeUpdate",
+]);
+const AdministrativeStateSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Enabled",
+  "Disabled",
+  "MAT",
+  "RMA",
+  "UnderMaintenance",
+  "EnabledDegraded",
+]);
+const AccessControlListPatchPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    configurationType: Schema.optional(
+      Schema.suspend(() => ConfigurationTypeSchema),
+    ),
+    aclsUrl: Schema.optional(Schema.String),
+    defaultAction: Schema.optional(
+      Schema.suspend(() => CommunityActionTypesSchema),
+    ),
+    matchConfigurations: Schema.optional(
+      Schema.Array(
+        Schema.suspend(() => AccessControlListMatchConfigurationPatchSchema),
+      ),
+    ),
+    dynamicMatchConfigurations: Schema.optional(
+      Schema.Array(
+        Schema.suspend(() => CommonDynamicMatchConfigurationPatchSchema),
+      ),
+    ),
+    controlPlaneAclConfiguration: Schema.optional(
+      Schema.Array(Schema.suspend(() => ControlPlaneAclPatchPropertiesSchema)),
+    ),
+    aclType: Schema.optional(Schema.suspend(() => AclTypeSchema)),
+    deviceRole: Schema.optional(Schema.suspend(() => DeviceRoleSchema)),
+    globalAccessControlListActions: Schema.optional(
+      Schema.suspend(() => GlobalAccessControlListActionPatchPropertiesSchema),
+    ),
+    annotation: Schema.optional(Schema.String),
+  });
+const CommunityActionTypesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Permit",
+  "Deny",
+]);
+const AccessControlListMatchConfigurationPatchSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    matchConfigurationName: Schema.optional(Schema.String),
+    sequenceNumber: Schema.optional(Schema.Number),
+    ipAddressType: Schema.optional(Schema.suspend(() => IPAddressTypeSchema)),
+    matchConditions: Schema.optional(
+      Schema.Array(
+        Schema.suspend(() => AccessControlListMatchConditionPatchSchema),
+      ),
+    ),
+    actions: Schema.optional(
+      Schema.Array(Schema.suspend(() => AccessControlListActionPatchSchema)),
+    ),
+  });
+const AccessControlListMatchConditionPatchSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    protocolTypes: Schema.optional(Schema.Array(Schema.String)),
+    vlanMatchCondition: Schema.optional(
+      Schema.suspend(() => VlanMatchConditionPatchSchema),
+    ),
+    ipCondition: Schema.optional(
+      Schema.suspend(() => IpMatchConditionPatchSchema),
+    ),
+  });
+const VlanMatchConditionPatchSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    vlans: Schema.optional(Schema.Array(Schema.String)),
+    innerVlans: Schema.optional(Schema.Array(Schema.String)),
+    vlanGroupNames: Schema.optional(Schema.Array(Schema.String)),
+  },
+);
+const IpMatchConditionPatchSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  type: Schema.optional(Schema.suspend(() => SourceDestinationTypeSchema)),
+  prefixType: Schema.optional(Schema.suspend(() => PrefixTypeSchema)),
+  ipPrefixValues: Schema.optional(Schema.Array(Schema.String)),
+  ipGroupNames: Schema.optional(Schema.Array(Schema.String)),
+});
+const AccessControlListActionPatchSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    type: Schema.optional(Schema.suspend(() => AclActionTypeSchema)),
+    counterName: Schema.optional(Schema.String),
+    remarkComment: Schema.optional(Schema.String),
+    policeRateConfiguration: Schema.optional(
+      Schema.suspend(() => PoliceRateConfigurationPropertiesSchema),
+    ),
+  });
+const CommonDynamicMatchConfigurationPatchSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    ipGroups: Schema.optional(
+      Schema.Array(Schema.suspend(() => IpGroupPatchPropertiesSchema)),
+    ),
+    vlanGroups: Schema.optional(
+      Schema.Array(Schema.suspend(() => VlanGroupPatchPropertiesSchema)),
+    ),
+    portGroups: Schema.optional(
+      Schema.Array(Schema.suspend(() => PortGroupPatchPropertiesSchema)),
+    ),
+  });
+const IpGroupPatchPropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  ipAddressType: Schema.optional(Schema.suspend(() => IPAddressTypeSchema)),
+  ipPrefixes: Schema.optional(Schema.Array(Schema.String)),
+});
+const VlanGroupPatchPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    vlans: Schema.optional(Schema.Array(Schema.String)),
+  });
+const PortGroupPatchPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    ports: Schema.optional(Schema.Array(Schema.String)),
+  });
+const ControlPlaneAclPatchPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    ipAddressType: Schema.optional(Schema.suspend(() => IPAddressTypeSchema)),
+    matchConfigurations: Schema.optional(
+      Schema.Array(
+        Schema.suspend(
+          () => ControlPlaneAclMatchConfigurationPatchPropertiesSchema,
+        ),
+      ),
+    ),
+  });
+const ControlPlaneAclMatchConfigurationPatchPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    matchConfigurationName: Schema.optional(Schema.String),
+    sequenceNumber: Schema.optional(Schema.Number),
+    matchCondition: Schema.optional(
+      Schema.suspend(() => ControlPlaneAclMatchConditionPatchSchema),
+    ),
+    action: Schema.optional(
+      Schema.suspend(() => ControlPlaneAclActionPatchSchema),
+    ),
+  });
+const ControlPlaneAclMatchConditionPatchSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    protocolTypes: Schema.optional(Schema.String),
+    ipCondition: Schema.optional(
+      Schema.suspend(() => ControlPlaneAclIpMatchConditionPatchSchema),
+    ),
+    ttlMatchCondition: Schema.optional(
+      Schema.suspend(() => ControlPlaneAclTtlMatchConditionPatchSchema),
+    ),
+    portCondition: Schema.optional(
+      Schema.suspend(() => ControlPlaneAclPortMatchConditionPatchSchema),
+    ),
+    flags: Schema.optional(Schema.Array(Schema.String)),
+    icmpConfiguration: Schema.optional(
+      Schema.suspend(() => IcmpConfigurationPatchPropertiesSchema),
+    ),
+  });
+const ControlPlaneAclIpMatchConditionPatchSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    sourceIpPrefix: Schema.optional(Schema.String),
+    destinationIpPrefix: Schema.optional(Schema.String),
+  });
+const ControlPlaneAclTtlMatchConditionPatchSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    ttlValue: Schema.optional(Schema.String),
+    ttlMatchType: Schema.optional(
+      Schema.suspend(() => ControlPlaneAclTtlMatchTypeSchema),
+    ),
+  });
+const ControlPlaneAclPortMatchConditionPatchSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    sourcePorts: Schema.optional(
+      Schema.suspend(() => ControlPlaneAclPortConditionSchema),
+    ),
+    destinationPorts: Schema.optional(
+      Schema.suspend(() => ControlPlaneAclPortConditionSchema),
+    ),
+  });
+const IcmpConfigurationPatchPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    icmpTypes: Schema.optional(Schema.Array(Schema.String)),
+  });
+const ControlPlaneAclActionPatchSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    type: Schema.optional(
+      Schema.suspend(() => ControlPlaneAclActionTypeSchema),
+    ),
+    remarkComment: Schema.optional(Schema.String),
+  });
+const GlobalAccessControlListActionPatchPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    enableCount: Schema.optional(
+      Schema.suspend(() => BooleanEnumPropertySchema),
+    ),
+  });
+const ErrorDetailSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  code: Schema.optional(Schema.String),
+  message: Schema.optional(Schema.String),
+  target: Schema.optional(Schema.String),
+  details: Schema.optional(Schema.Array(Schema.Unknown)),
+  additionalInfo: Schema.optional(
+    Schema.Array(Schema.suspend(() => ErrorAdditionalInfoSchema)),
+  ),
+});
+const ErrorAdditionalInfoSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  type: Schema.optional(Schema.String),
+  info: Schema.optional(Schema.Unknown),
+});
+const EnableDisableStateSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Enable",
+  "Disable",
+  "UnderMaintenance",
+]);
+const OperationStatusResultSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  resourceId: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  status: Schema.String,
+  percentComplete: Schema.optional(Schema.Number),
+  startTime: Schema.optional(Schema.String),
+  endTime: Schema.optional(Schema.String),
+  operations: Schema.optional(Schema.Array(Schema.Unknown)),
+  error: Schema.optional(Schema.suspend(() => ErrorDetailSchema)),
+});
+const UpdateAdministrativeStateResponsePropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    successfulResources: Schema.optional(Schema.Array(Schema.String)),
+    failedResources: Schema.optional(Schema.Array(Schema.String)),
+  });
+const InternetGatewayRulePropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    annotation: Schema.optional(Schema.String),
+  });
+const InternetGatewayPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    annotation: Schema.optional(Schema.String),
+    internetGatewayRuleId: Schema.optional(Schema.String),
+    ipv4Address: Schema.optional(Schema.String),
+    port: Schema.optional(Schema.Number),
+    type: Schema.optional(Schema.suspend(() => GatewayTypeSchema)),
+    internetGatewayType: Schema.optional(
+      Schema.suspend(() => GatewayTypeSchema),
+    ),
+    networkFabricControllerId: Schema.String,
+    lastOperation: Schema.optional(
+      Schema.suspend(() => LastOperationPropertiesSchema),
+    ),
+    provisioningState: Schema.optional(
+      Schema.suspend(() => ProvisioningStateSchema),
+    ),
+  });
+const GatewayTypeSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Infrastructure",
+  "Workload",
+]);
+const InternetGatewayPatchPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    internetGatewayRuleId: Schema.optional(Schema.String),
+  });
+const IpCommunityPropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  annotation: Schema.optional(Schema.String),
+  networkFabricId: Schema.optional(Schema.String),
+  ipCommunityRules: Schema.Array(Schema.suspend(() => IpCommunityRuleSchema)),
+  lastOperation: Schema.optional(
+    Schema.suspend(() => LastOperationPropertiesSchema),
+  ),
+  configurationState: Schema.optional(
+    Schema.suspend(() => ConfigurationStateSchema),
+  ),
+  provisioningState: Schema.optional(
+    Schema.suspend(() => ProvisioningStateSchema),
+  ),
+  administrativeState: Schema.optional(
+    Schema.suspend(() => AdministrativeStateSchema),
+  ),
+});
+const IpCommunityRuleSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  action: Schema.suspend(() => CommunityActionTypesSchema),
+  sequenceNumber: Schema.Number,
+  wellKnownCommunities: Schema.optional(
+    Schema.Array(Schema.suspend(() => WellKnownCommunitiesSchema)),
+  ),
+  communityMembers: Schema.Array(Schema.String),
+});
+const WellKnownCommunitiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Internet",
+  "LocalAS",
+  "NoAdvertise",
+  "NoExport",
+  "GShut",
+]);
+const IpCommunityPatchablePropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    ipCommunityRules: Schema.optional(
+      Schema.Array(Schema.suspend(() => IpCommunityRuleSchema)),
+    ),
+  });
+const IpExtendedCommunityPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    annotation: Schema.optional(Schema.String),
+    ipExtendedCommunityRules: Schema.Array(
+      Schema.suspend(() => IpExtendedCommunityRuleSchema),
+    ),
+    networkFabricId: Schema.optional(Schema.String),
+    lastOperation: Schema.optional(
+      Schema.suspend(() => LastOperationPropertiesSchema),
+    ),
+    configurationState: Schema.optional(
+      Schema.suspend(() => ConfigurationStateSchema),
+    ),
+    provisioningState: Schema.optional(
+      Schema.suspend(() => ProvisioningStateSchema),
+    ),
+    administrativeState: Schema.optional(
+      Schema.suspend(() => AdministrativeStateSchema),
+    ),
+  });
+const IpExtendedCommunityRuleSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    action: Schema.suspend(() => CommunityActionTypesSchema),
+    sequenceNumber: Schema.Number,
+    routeTargets: Schema.Array(Schema.String),
+  },
+);
+const IpExtendedCommunityPatchPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    annotation: Schema.optional(Schema.String),
+    ipExtendedCommunityRules: Schema.optional(
+      Schema.Array(Schema.suspend(() => IpExtendedCommunityRuleSchema)),
+    ),
+  });
+const IpPrefixPropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  annotation: Schema.optional(Schema.String),
+  networkFabricId: Schema.optional(Schema.String),
+  ipPrefixRules: Schema.Array(Schema.suspend(() => IpPrefixRuleSchema)),
+  lastOperation: Schema.optional(
+    Schema.suspend(() => LastOperationPropertiesSchema),
+  ),
+  configurationState: Schema.optional(
+    Schema.suspend(() => ConfigurationStateSchema),
+  ),
+  provisioningState: Schema.optional(
+    Schema.suspend(() => ProvisioningStateSchema),
+  ),
+  administrativeState: Schema.optional(
+    Schema.suspend(() => AdministrativeStateSchema),
+  ),
+});
+const IpPrefixRuleSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  action: Schema.suspend(() => CommunityActionTypesSchema),
+  sequenceNumber: Schema.Number,
+  networkPrefix: Schema.String,
+  condition: Schema.optional(Schema.suspend(() => ConditionSchema)),
+  subnetMaskLength: Schema.optional(Schema.String),
+});
+const ConditionSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "EqualTo",
+  "GreaterThanOrEqualTo",
+  "LesserThanOrEqualTo",
+  "Range",
+]);
+const IpPrefixPatchPropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    annotation: Schema.optional(Schema.String),
+    ipPrefixRules: Schema.optional(
+      Schema.Array(Schema.suspend(() => IpPrefixRuleSchema)),
+    ),
+  },
+);
+const L2IsolationDomainPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    annotation: Schema.optional(Schema.String),
+  });
+const ManagedServiceIdentityTypeSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+    "None",
+    "SystemAssigned",
+    "UserAssigned",
+    "SystemAssigned,UserAssigned",
+  ]);
+const UserAssignedIdentitiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Record(
+  Schema.String,
+  Schema.suspend(() => UserAssignedIdentitySchema),
+);
+const UserAssignedIdentitySchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  principalId: Schema.optional(Schema.String),
+  clientId: Schema.optional(Schema.String),
+});
+const L2IsolationDomainPatchPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    annotation: Schema.optional(Schema.String),
+  });
+const ManagedServiceIdentityPatchSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    type: Schema.optional(
+      Schema.Literals([
+        "None",
+        "SystemAssigned",
+        "UserAssigned",
+        "SystemAssigned,UserAssigned",
+      ]),
+    ),
+    userAssignedIdentities: Schema.optional(
+      Schema.Record(
+        Schema.String,
+        Schema.Struct({
+          principalId: Schema.optional(Schema.String),
+          clientId: Schema.optional(Schema.String),
+        }),
+      ),
+    ),
+  });
+const L3IsolationDomainPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    annotation: Schema.optional(Schema.String),
+    redistributeConnectedSubnets: Schema.optional(
+      Schema.Literals(["True", "False"]),
+    ),
+    redistributeStaticRoutes: Schema.optional(
+      Schema.Literals(["True", "False"]),
+    ),
+    aggregateRouteConfiguration: Schema.optional(
+      Schema.suspend(() => AggregateRouteConfigurationSchema),
+    ),
+    connectedSubnetRoutePolicy: Schema.optional(
+      Schema.suspend(() => ConnectedSubnetRoutePolicySchema),
+    ),
+    networkFabricId: Schema.String,
+    staticRouteRoutePolicy: Schema.optional(
+      Schema.suspend(() => StaticRouteRoutePolicySchema),
+    ),
+    uniqueRdConfiguration: Schema.optional(
+      Schema.suspend(() => L3UniqueRouteDistinguisherPropertiesSchema),
+    ),
+    v4routePrefixLimit: Schema.optional(
+      Schema.suspend(() => RoutePrefixLimitPropertiesSchema),
+    ),
+    v6routePrefixLimit: Schema.optional(
+      Schema.suspend(() => RoutePrefixLimitPropertiesSchema),
+    ),
+    lastOperation: Schema.optional(
+      Schema.suspend(() => LastOperationPropertiesSchema),
+    ),
+    exportPolicyConfiguration: Schema.optional(
+      Schema.suspend(() => BmpExportPolicyPropertiesSchema),
+    ),
+    configurationState: Schema.optional(
+      Schema.suspend(() => ConfigurationStateSchema),
+    ),
+    provisioningState: Schema.optional(
+      Schema.suspend(() => ProvisioningStateSchema),
+    ),
+    administrativeState: Schema.optional(
+      Schema.suspend(() => AdministrativeStateSchema),
+    ),
+  });
+const AggregateRouteConfigurationSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    ipv4Routes: Schema.optional(
+      Schema.Array(Schema.suspend(() => AggregateRouteSchema)),
+    ),
+    ipv6Routes: Schema.optional(
+      Schema.Array(Schema.suspend(() => AggregateRouteSchema)),
+    ),
+  });
+const AggregateRouteSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  prefix: Schema.String,
+});
+const ConnectedSubnetRoutePolicySchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    exportRoutePolicy: Schema.optional(
+      Schema.suspend(() => L3ExportRoutePolicySchema),
+    ),
+  });
+const L3ExportRoutePolicySchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  exportIpv4RoutePolicyId: Schema.optional(Schema.String),
+  exportIpv6RoutePolicyId: Schema.optional(Schema.String),
+});
+const StaticRouteRoutePolicySchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  exportRoutePolicy: Schema.optional(
+    Schema.suspend(() => L3ExportRoutePolicySchema),
+  ),
+});
+const L3UniqueRouteDistinguisherPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    uniqueRds: Schema.optional(Schema.Array(Schema.String)),
+  });
+const RoutePrefixLimitPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    hardLimit: Schema.optional(Schema.Number),
+    threshold: Schema.optional(Schema.Number),
+  });
+const BmpExportPolicyPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    exportPolicies: Schema.optional(
+      Schema.Array(Schema.suspend(() => BmpExportPolicySchema)),
+    ),
+  });
+const BmpExportPolicySchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Pre-Policy",
+  "Post-Policy",
+  "All",
+  "LocalRib",
+]);
+const L3IsolationDomainPatchPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    annotation: Schema.optional(Schema.String),
+    redistributeConnectedSubnets: Schema.optional(
+      Schema.suspend(() => RedistributeConnectedSubnetsSchema),
+    ),
+    redistributeStaticRoutes: Schema.optional(
+      Schema.suspend(() => RedistributeStaticRoutesSchema),
+    ),
+    aggregateRouteConfiguration: Schema.optional(
+      Schema.suspend(() => AggregateRoutePatchConfigurationSchema),
+    ),
+    connectedSubnetRoutePolicy: Schema.optional(
+      Schema.suspend(() => ConnectedSubnetRoutePolicyPatchSchema),
+    ),
+    staticRouteRoutePolicy: Schema.optional(
+      Schema.suspend(() => StaticRouteRoutePolicyPatchSchema),
+    ),
+    v4routePrefixLimit: Schema.optional(
+      Schema.suspend(() => RoutePrefixLimitPatchPropertiesSchema),
+    ),
+    v6routePrefixLimit: Schema.optional(
+      Schema.suspend(() => RoutePrefixLimitPatchPropertiesSchema),
+    ),
+    exportPolicyConfiguration: Schema.optional(
+      Schema.suspend(() => BmpExportPolicyPatchPropertiesSchema),
+    ),
+  });
+const RedistributeConnectedSubnetsSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Literals(["True", "False"]);
+const RedistributeStaticRoutesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Literals(["True", "False"]);
+const AggregateRoutePatchConfigurationSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    ipv4Routes: Schema.optional(
+      Schema.Array(Schema.suspend(() => AggregateRouteSchema)),
+    ),
+    ipv6Routes: Schema.optional(
+      Schema.Array(Schema.suspend(() => AggregateRouteSchema)),
+    ),
+  });
+const ConnectedSubnetRoutePolicyPatchSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    exportRoutePolicy: Schema.optional(
+      Schema.suspend(() => L3ExportRoutePolicyPatchSchema),
+    ),
+  });
+const L3ExportRoutePolicyPatchSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    exportIpv4RoutePolicyId: Schema.optional(Schema.String),
+    exportIpv6RoutePolicyId: Schema.optional(Schema.String),
+  });
+const StaticRouteRoutePolicyPatchSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    exportRoutePolicy: Schema.optional(
+      Schema.suspend(() => L3ExportRoutePolicyPatchSchema),
+    ),
+  });
+const RoutePrefixLimitPatchPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    hardLimit: Schema.optional(Schema.Number),
+    threshold: Schema.optional(Schema.Number),
+  });
+const BmpExportPolicyPatchPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    exportPolicies: Schema.optional(
+      Schema.Array(Schema.suspend(() => BmpExportPolicySchema)),
+    ),
+  });
+const ExternalNetworkSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+});
+const ExternalNetworkPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    annotation: Schema.optional(Schema.String),
+    networkToNetworkInterconnectId: Schema.optional(Schema.String),
+    importRoutePolicy: Schema.optional(
+      Schema.suspend(() => ImportRoutePolicySchema),
+    ),
+    exportRoutePolicy: Schema.optional(
+      Schema.suspend(() => ExportRoutePolicySchema),
+    ),
+    peeringOption: Schema.suspend(() => PeeringOptionSchema),
+    optionBProperties: Schema.optional(
+      Schema.suspend(() => L3OptionBPropertiesSchema),
+    ),
+    optionAProperties: Schema.optional(
+      Schema.suspend(() => ExternalNetworkPropertiesOptionAPropertiesSchema),
+    ),
+    staticRouteConfiguration: Schema.optional(
+      Schema.suspend(() => ExternalNetworkStaticRouteConfigurationSchema),
+    ),
+    lastOperation: Schema.optional(
+      Schema.suspend(() => LastOperationPropertiesSchema),
+    ),
+    networkFabricId: Schema.optional(Schema.String),
+    configurationState: Schema.optional(
+      Schema.suspend(() => ConfigurationStateSchema),
+    ),
+    provisioningState: Schema.optional(
+      Schema.suspend(() => ProvisioningStateSchema),
+    ),
+    administrativeState: Schema.optional(
+      Schema.suspend(() => AdministrativeStateSchema),
+    ),
+  });
+const ImportRoutePolicySchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  importIpv4RoutePolicyId: Schema.optional(Schema.String),
+  importIpv6RoutePolicyId: Schema.optional(Schema.String),
+});
+const ExportRoutePolicySchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  exportIpv4RoutePolicyId: Schema.optional(Schema.String),
+  exportIpv6RoutePolicyId: Schema.optional(Schema.String),
+});
+const PeeringOptionSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "OptionA",
+  "OptionB",
+]);
+const L3OptionBPropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  importRouteTargets: Schema.optional(Schema.Array(Schema.String)),
+  exportRouteTargets: Schema.optional(Schema.Array(Schema.String)),
+  routeTargets: Schema.optional(
+    Schema.suspend(() => RouteTargetInformationSchema),
+  ),
+});
+const RouteTargetInformationSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  importIpv4RouteTargets: Schema.optional(Schema.Array(Schema.String)),
+  importIpv6RouteTargets: Schema.optional(Schema.Array(Schema.String)),
+  exportIpv4RouteTargets: Schema.optional(Schema.Array(Schema.String)),
+  exportIpv6RouteTargets: Schema.optional(Schema.Array(Schema.String)),
+});
+const ExternalNetworkPropertiesOptionAPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    primaryIpv4Prefix: Schema.optional(Schema.String),
+    primaryIpv6Prefix: Schema.optional(Schema.String),
+    secondaryIpv4Prefix: Schema.optional(Schema.String),
+    secondaryIpv6Prefix: Schema.optional(Schema.String),
+    mtu: Schema.optional(Schema.Number),
+    vlanId: Schema.Number,
+    fabricASN: Schema.optional(Schema.Number),
+    peerASN: Schema.Number,
+    bfdConfiguration: Schema.optional(
+      Schema.suspend(() => BfdConfigurationSchema),
+    ),
+    ingressAclId: Schema.optional(Schema.String),
+    bmpConfiguration: Schema.optional(
+      Schema.suspend(() => ExternalNetworkBmpPropertiesSchema),
+    ),
+    egressAclId: Schema.optional(Schema.String),
+    v4OverV6BgpSession: Schema.optional(
+      Schema.Literals(["Enabled", "Disabled"]),
+    ),
+    v6OverV4BgpSession: Schema.optional(
+      Schema.Literals(["Enabled", "Disabled"]),
+    ),
+    nativeIpv4PrefixLimit: Schema.optional(
+      Schema.suspend(() => NativeIpv4PrefixLimitPropertiesSchema),
+    ),
+    nativeIpv6PrefixLimit: Schema.optional(
+      Schema.suspend(() => NativeIpv6PrefixLimitPropertiesSchema),
+    ),
+  });
+const BfdConfigurationSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  administrativeState: Schema.optional(
+    Schema.Literals(["Enabled", "Disabled", "MAT", "RMA"]),
+  ),
+  intervalInMilliSeconds: Schema.optional(Schema.Number),
+  multiplier: Schema.optional(Schema.Number),
+});
+const ExternalNetworkBmpPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    configurationState: Schema.optional(
+      Schema.Literals(["Enabled", "Disabled"]),
+    ),
+  });
+const NativeIpv4PrefixLimitPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    prefixLimits: Schema.optional(
+      Schema.Array(Schema.suspend(() => PrefixLimitPropertiesSchema)),
+    ),
+  });
+const PrefixLimitPropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  maximumRoutes: Schema.optional(Schema.Number),
+  threshold: Schema.optional(Schema.Number),
+  idleTimeExpiry: Schema.optional(Schema.Number),
+});
+const NativeIpv6PrefixLimitPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    prefixLimits: Schema.optional(
+      Schema.Array(Schema.suspend(() => PrefixLimitPropertiesSchema)),
+    ),
+  });
+const ExternalNetworkStaticRouteConfigurationSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    bfdConfiguration: Schema.optional(
+      Schema.suspend(() => BfdConfigurationSchema),
+    ),
+    ipv4Routes: Schema.optional(
+      Schema.Array(Schema.suspend(() => StaticRoutePropertiesSchema)),
+    ),
+    ipv6Routes: Schema.optional(
+      Schema.Array(Schema.suspend(() => StaticRoutePropertiesSchema)),
+    ),
+  });
+const StaticRoutePropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  prefix: Schema.String,
+  nextHop: Schema.Array(Schema.String),
+});
+const ExternalNetworkPatchPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    annotation: Schema.optional(Schema.String),
+    networkToNetworkInterconnectId: Schema.optional(Schema.String),
+    importRoutePolicy: Schema.optional(
+      Schema.suspend(() => ImportRoutePolicyPatchSchema),
+    ),
+    exportRoutePolicy: Schema.optional(
+      Schema.suspend(() => ExportRoutePolicyPatchSchema),
+    ),
+    peeringOption: Schema.optional(Schema.suspend(() => PeeringOptionSchema)),
+    optionBProperties: Schema.optional(
+      Schema.suspend(() => L3OptionBPatchPropertiesSchema),
+    ),
+    optionAProperties: Schema.optional(
+      Schema.suspend(
+        () => ExternalNetworkPatchPropertiesOptionAPropertiesSchema,
+      ),
+    ),
+    staticRouteConfiguration: Schema.optional(
+      Schema.suspend(() => ExternalNetworkStaticRoutePatchConfigurationSchema),
+    ),
+  });
+const ImportRoutePolicyPatchSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  importIpv4RoutePolicyId: Schema.optional(Schema.String),
+  importIpv6RoutePolicyId: Schema.optional(Schema.String),
+});
+const ExportRoutePolicyPatchSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  exportIpv4RoutePolicyId: Schema.optional(Schema.String),
+  exportIpv6RoutePolicyId: Schema.optional(Schema.String),
+});
+const L3OptionBPatchPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    importRouteTargets: Schema.optional(Schema.Array(Schema.String)),
+    exportRouteTargets: Schema.optional(Schema.Array(Schema.String)),
+    routeTargets: Schema.optional(
+      Schema.suspend(() => RouteTargetPatchInformationSchema),
+    ),
+  });
+const RouteTargetPatchInformationSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    importIpv4RouteTargets: Schema.optional(Schema.Array(Schema.String)),
+    importIpv6RouteTargets: Schema.optional(Schema.Array(Schema.String)),
+    exportIpv4RouteTargets: Schema.optional(Schema.Array(Schema.String)),
+    exportIpv6RouteTargets: Schema.optional(Schema.Array(Schema.String)),
+  });
+const ExternalNetworkPatchPropertiesOptionAPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    primaryIpv4Prefix: Schema.optional(Schema.String),
+    primaryIpv6Prefix: Schema.optional(Schema.String),
+    secondaryIpv4Prefix: Schema.optional(Schema.String),
+    secondaryIpv6Prefix: Schema.optional(Schema.String),
+    mtu: Schema.optional(Schema.Number),
+    vlanId: Schema.optional(Schema.Number),
+    fabricASN: Schema.optional(Schema.Number),
+    peerASN: Schema.optional(Schema.Number),
+    bfdConfiguration: Schema.optional(
+      Schema.suspend(() => BfdPatchConfigurationSchema),
+    ),
+    ingressAclId: Schema.optional(Schema.String),
+    egressAclId: Schema.optional(Schema.String),
+    bmpConfiguration: Schema.optional(
+      Schema.suspend(() => ExternalNetworkBmpPatchPropertiesSchema),
+    ),
+    v4OverV6BgpSession: Schema.optional(
+      Schema.suspend(() => V4OverV6BgpSessionStateSchema),
+    ),
+    v6OverV4BgpSession: Schema.optional(
+      Schema.suspend(() => V6OverV4BgpSessionStateSchema),
+    ),
+    nativeIpv4PrefixLimit: Schema.optional(
+      Schema.suspend(() => NativeIpv4PrefixLimitPatchPropertiesSchema),
+    ),
+    nativeIpv6PrefixLimit: Schema.optional(
+      Schema.suspend(() => NativeIpv6PrefixLimitPatchPropertiesSchema),
+    ),
+  });
+const BfdPatchConfigurationSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  administrativeState: Schema.optional(
+    Schema.suspend(() => BfdAdministrativeStateSchema),
+  ),
+  intervalInMilliSeconds: Schema.optional(Schema.Number),
+  multiplier: Schema.optional(Schema.Number),
+});
+const BfdAdministrativeStateSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+    "Enabled",
+    "Disabled",
+    "MAT",
+    "RMA",
+  ]);
+const ExternalNetworkBmpPatchPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    configurationState: Schema.optional(
+      Schema.suspend(() => BmpConfigurationStateSchema),
+    ),
+  });
+const BmpConfigurationStateSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals(
+  ["Enabled", "Disabled"],
+);
+const V4OverV6BgpSessionStateSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Literals(["Enabled", "Disabled"]);
+const V6OverV4BgpSessionStateSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Literals(["Enabled", "Disabled"]);
+const NativeIpv4PrefixLimitPatchPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    prefixLimits: Schema.optional(
+      Schema.Array(Schema.suspend(() => PrefixLimitPatchPropertiesSchema)),
+    ),
+  });
+const PrefixLimitPatchPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    maximumRoutes: Schema.optional(Schema.Number),
+    threshold: Schema.optional(Schema.Number),
+    idleTimeExpiry: Schema.optional(Schema.Number),
+  });
+const NativeIpv6PrefixLimitPatchPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    prefixLimits: Schema.optional(
+      Schema.Array(Schema.suspend(() => PrefixLimitPatchPropertiesSchema)),
+    ),
+  });
+const ExternalNetworkStaticRoutePatchConfigurationSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    bfdConfiguration: Schema.optional(
+      Schema.suspend(() => BfdPatchConfigurationSchema),
+    ),
+    ipv4Routes: Schema.optional(
+      Schema.Array(Schema.suspend(() => StaticRoutePatchPropertiesSchema)),
+    ),
+    ipv6Routes: Schema.optional(
+      Schema.Array(Schema.suspend(() => StaticRoutePatchPropertiesSchema)),
+    ),
+  });
+const StaticRoutePatchPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    prefix: Schema.String,
+    nextHop: Schema.Array(Schema.String),
+  });
+const ExternalNetworkRouteTypeSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Literals(["Static", "OptionA"]);
+const ExternalNetworkUpdateBfdAdministrativeStateResponsePropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    routeType: Schema.optional(
+      Schema.suspend(() => ExternalNetworkRouteTypeSchema),
+    ),
+    administrativeState: Schema.optional(
+      Schema.suspend(() => BfdAdministrativeStateSchema),
+    ),
+  });
+const InternalNetworkSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+});
+const InternalNetworkPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    annotation: Schema.optional(Schema.String),
+    extension: Schema.optional(Schema.Literals(["NoExtension", "NPB"])),
+    mtu: Schema.optional(Schema.Number),
+    connectedIPv4Subnets: Schema.optional(
+      Schema.Array(Schema.suspend(() => ConnectedSubnetSchema)),
+    ),
+    connectedIPv6Subnets: Schema.optional(
+      Schema.Array(Schema.suspend(() => ConnectedSubnetSchema)),
+    ),
+    importRoutePolicy: Schema.optional(
+      Schema.suspend(() => ImportRoutePolicySchema),
+    ),
+    exportRoutePolicy: Schema.optional(
+      Schema.suspend(() => ExportRoutePolicySchema),
+    ),
+    ingressAclId: Schema.optional(Schema.String),
+    egressAclId: Schema.optional(Schema.String),
+    isMonitoringEnabled: Schema.optional(Schema.Literals(["True", "False"])),
+    vlanId: Schema.Number,
+    bgpConfiguration: Schema.optional(
+      Schema.suspend(() => BgpConfigurationSchema),
+    ),
+    staticRouteConfiguration: Schema.optional(
+      Schema.suspend(() => StaticRouteConfigurationSchema),
+    ),
+    nativeIpv4PrefixLimit: Schema.optional(
+      Schema.suspend(() => NativeIpv4PrefixLimitPropertiesSchema),
+    ),
+    nativeIpv6PrefixLimit: Schema.optional(
+      Schema.suspend(() => NativeIpv6PrefixLimitPropertiesSchema),
+    ),
+    lastOperation: Schema.optional(
+      Schema.suspend(() => LastOperationPropertiesSchema),
+    ),
+    networkFabricId: Schema.optional(Schema.String),
+    configurationState: Schema.optional(
+      Schema.suspend(() => ConfigurationStateSchema),
+    ),
+    provisioningState: Schema.optional(
+      Schema.suspend(() => ProvisioningStateSchema),
+    ),
+    administrativeState: Schema.optional(
+      Schema.suspend(() => AdministrativeStateSchema),
+    ),
+  });
+const ConnectedSubnetSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  annotation: Schema.optional(Schema.String),
+});
+const BgpConfigurationSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  annotation: Schema.optional(Schema.String),
+});
+const StaticRouteConfigurationSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    bfdConfiguration: Schema.optional(
+      Schema.suspend(() => BfdConfigurationSchema),
+    ),
+    ipv4Routes: Schema.optional(
+      Schema.Array(Schema.suspend(() => StaticRoutePropertiesSchema)),
+    ),
+    ipv6Routes: Schema.optional(
+      Schema.Array(Schema.suspend(() => StaticRoutePropertiesSchema)),
+    ),
+    extension: Schema.optional(Schema.Literals(["NoExtension", "NPB"])),
+  });
+const InternalNetworkPatchPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    annotation: Schema.optional(Schema.String),
+    mtu: Schema.optional(Schema.Number),
+    connectedIPv4Subnets: Schema.optional(
+      Schema.Array(Schema.suspend(() => ConnectedSubnetPatchSchema)),
+    ),
+    connectedIPv6Subnets: Schema.optional(
+      Schema.Array(Schema.suspend(() => ConnectedSubnetPatchSchema)),
+    ),
+    importRoutePolicy: Schema.optional(
+      Schema.suspend(() => ImportRoutePolicySchema),
+    ),
+    exportRoutePolicy: Schema.optional(
+      Schema.suspend(() => ExportRoutePolicySchema),
+    ),
+    ingressAclId: Schema.optional(Schema.String),
+    egressAclId: Schema.optional(Schema.String),
+    isMonitoringEnabled: Schema.optional(
+      Schema.suspend(() => IsMonitoringEnabledSchema),
+    ),
+    bgpConfiguration: Schema.optional(
+      Schema.suspend(() => BgpPatchConfigurationSchema),
+    ),
+    staticRouteConfiguration: Schema.optional(
+      Schema.suspend(() => StaticRoutePatchConfigurationSchema),
+    ),
+    nativeIpv4PrefixLimit: Schema.optional(
+      Schema.suspend(() => NativeIpv4PrefixLimitPatchPropertiesSchema),
+    ),
+    nativeIpv6PrefixLimit: Schema.optional(
+      Schema.suspend(() => NativeIpv6PrefixLimitPatchPropertiesSchema),
+    ),
+  });
+const ConnectedSubnetPatchSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  annotation: Schema.optional(Schema.String),
+});
+const IsMonitoringEnabledSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "True",
+  "False",
+]);
+const BgpPatchConfigurationSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  annotation: Schema.optional(Schema.String),
+});
+const StaticRoutePatchConfigurationSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    bfdConfiguration: Schema.optional(
+      Schema.suspend(() => BfdPatchConfigurationSchema),
+    ),
+    ipv4Routes: Schema.optional(
+      Schema.Array(Schema.suspend(() => StaticRoutePatchPropertiesSchema)),
+    ),
+    ipv6Routes: Schema.optional(
+      Schema.Array(Schema.suspend(() => StaticRoutePatchPropertiesSchema)),
+    ),
+  });
+const InternalNetworkRouteTypeSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Literals(["Static", "Bgp"]);
+const InternalNetworkUpdateBfdAdministrativeStateResponsePropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    neighborAddressAdministrativeStatus: Schema.optional(
+      Schema.Array(
+        Schema.suspend(() => NeighborAddressBfdAdministrativeStatusSchema),
+      ),
+    ),
+  });
+const NeighborAddressBfdAdministrativeStatusSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    neighborAddress: Schema.optional(Schema.String),
+    administrativeState: Schema.optional(
+      Schema.suspend(() => BfdAdministrativeStateSchema),
+    ),
+    error: Schema.optional(Schema.String),
+  });
+const BgpAdministrativeStateSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Literals(["Enabled", "Disabled"]);
+const InternalNetworkUpdateBgpAdministrativeStateResponsePropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    neighborAddressAdministrativeStatus: Schema.optional(
+      Schema.Array(
+        Schema.suspend(() => NeighborAddressBgpAdministrativeStatusSchema),
+      ),
+    ),
+  });
+const NeighborAddressBgpAdministrativeStatusSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    neighborAddress: Schema.optional(Schema.String),
+    administrativeState: Schema.optional(
+      Schema.suspend(() => BgpAdministrativeStateSchema),
+    ),
+    error: Schema.optional(Schema.String),
+  });
+const NeighborGroupPropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    annotation: Schema.optional(Schema.String),
+    destination: Schema.suspend(() => NeighborGroupDestinationSchema),
+    networkTapIds: Schema.optional(Schema.Array(Schema.String)),
+    networkTapRuleIds: Schema.optional(Schema.Array(Schema.String)),
+    networkFabricIds: Schema.optional(Schema.Array(Schema.String)),
+    lastOperation: Schema.optional(
+      Schema.suspend(() => LastOperationPropertiesSchema),
+    ),
+    provisioningState: Schema.optional(
+      Schema.suspend(() => ProvisioningStateSchema),
+    ),
+    configurationState: Schema.optional(
+      Schema.suspend(() => ConfigurationStateSchema),
+    ),
+  },
+);
+const NeighborGroupDestinationSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    ipv4Addresses: Schema.optional(Schema.Array(Schema.String)),
+    ipv6Addresses: Schema.optional(Schema.Array(Schema.String)),
+  });
+const NeighborGroupPatchPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    annotation: Schema.optional(Schema.String),
+    destination: Schema.optional(
+      Schema.suspend(() => NeighborGroupDestinationPatchSchema),
+    ),
+  });
+const NeighborGroupDestinationPatchSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    ipv4Addresses: Schema.optional(Schema.Array(Schema.String)),
+    ipv6Addresses: Schema.optional(Schema.Array(Schema.String)),
+  });
+const NetworkBootstrapDevicePropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    annotation: Schema.optional(Schema.String),
+    hostName: Schema.optional(Schema.String),
+    serialNumber: Schema.optional(Schema.String),
+    version: Schema.optional(Schema.String),
+    networkDeviceSku: Schema.optional(Schema.String),
+    networkFabricId: Schema.optional(Schema.String),
+    secondaryManagementIpv4Address: Schema.optional(Schema.String),
+    dhcpV4ServerIpAddress: Schema.optional(Schema.String),
+    primaryManagementIpv6Address: Schema.optional(Schema.String),
+    secondaryManagementIpv6Address: Schema.optional(Schema.String),
+    provisioningState: Schema.optional(
+      Schema.suspend(() => ProvisioningStateSchema),
+    ),
+    primaryManagementIpv4Address: Schema.optional(Schema.String),
+    administrativeState: Schema.optional(
+      Schema.suspend(() => AdministrativeStateSchema),
+    ),
+    configurationState: Schema.optional(
+      Schema.suspend(() => ConfigurationStateSchema),
+    ),
+  });
+const NetworkBootstrapDevicePatchPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    annotation: Schema.optional(Schema.String),
+    hostName: Schema.optional(Schema.String),
+    serialNumber: Schema.optional(Schema.String),
+  });
+const NetworkBootstrapInterfaceSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+  });
+const NetworkBootstrapInterfacePropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    annotation: Schema.optional(Schema.String),
+  });
+const NetworkBootstrapInterfacePatchPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    annotation: Schema.optional(Schema.String),
+  });
+const DeviceAdministrativeStateSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+    "RMA",
+    "UngracefulRMA",
+    "Resync",
+    "GracefulQuarantine",
+    "UngracefulQuarantine",
+    "Quarantine",
+    "UnderMaintenance",
+    "Enable",
+    "Disable",
+  ]);
+const NetworkDevicePropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    annotation: Schema.optional(Schema.String),
+    hostName: Schema.optional(Schema.String),
+    serialNumber: Schema.String,
+    identitySelector: Schema.optional(
+      Schema.suspend(() => IdentitySelectorSchema),
+    ),
+    version: Schema.optional(Schema.String),
+    networkDeviceSku: Schema.optional(Schema.String),
+    networkDeviceRole: Schema.optional(
+      Schema.suspend(() => NetworkDeviceRoleSchema),
+    ),
+    networkRackId: Schema.optional(Schema.String),
+    managementIpv4Address: Schema.optional(Schema.String),
+    managementIpv6Address: Schema.optional(Schema.String),
+    rwDeviceConfig: Schema.optional(Schema.String),
+    lastOperation: Schema.optional(
+      Schema.suspend(() => LastOperationPropertiesSchema),
+    ),
+    configurationState: Schema.optional(
+      Schema.suspend(() => ConfigurationStateSchema),
+    ),
+    provisioningState: Schema.optional(
+      Schema.suspend(() => ProvisioningStateSchema),
+    ),
+    administrativeState: Schema.optional(
+      Schema.suspend(() => AdministrativeStateSchema),
+    ),
+    secretRotationStatus: Schema.optional(
+      Schema.Array(Schema.suspend(() => SecretRotationStatusSchema)),
+    ),
+    certificateRotationStatus: Schema.optional(
+      Schema.Array(Schema.suspend(() => CertificateRotationStatusSchema)),
+    ),
+    networkFabricId: Schema.optional(Schema.String),
+  },
+);
+const IdentitySelectorSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  identityType: Schema.suspend(() => ManagedServiceIdentitySelectorTypeSchema),
+  userAssignedIdentityResourceId: Schema.optional(Schema.String),
+});
+const ManagedServiceIdentitySelectorTypeSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+    "SystemAssignedIdentity",
+    "UserAssignedIdentity",
+  ]);
+const NetworkDeviceRoleSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "CE",
+  "ToR",
+  "NPB",
+  "TS",
+  "Management",
+]);
+const SecretRotationStatusSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  lastRotationTime: Schema.optional(Schema.String),
+  synchronizationStatus: Schema.optional(
+    Schema.suspend(() => SynchronizationStatusSchema),
+  ),
+  secretArchiveReference: Schema.optional(
+    Schema.suspend(() => SecretArchiveReferenceSchema),
+  ),
+  secretType: Schema.optional(Schema.String),
+});
+const SynchronizationStatusSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals(
+  ["InSync", "Synchronizing", "OutOfSync"],
+);
+const SecretArchiveReferenceSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  keyVaultUri: Schema.optional(Schema.String),
+  keyVaultId: Schema.optional(Schema.String),
+  secretName: Schema.optional(Schema.String),
+  secretVersion: Schema.optional(Schema.String),
+});
+const CertificateRotationStatusSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    expireTime: Schema.optional(Schema.String),
+    lastRotationTime: Schema.optional(Schema.String),
+    synchronizationStatus: Schema.optional(
+      Schema.suspend(() => SynchronizationStatusSchema),
+    ),
+    certificateArchiveReference: Schema.optional(
+      Schema.suspend(() => CertificateArchiveReferenceSchema),
+    ),
+    certificateType: Schema.optional(Schema.String),
+  });
+const CertificateArchiveReferenceSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    keyVaultUri: Schema.optional(Schema.String),
+    keyVaultId: Schema.optional(Schema.String),
+    certificateName: Schema.optional(Schema.String),
+    certificateVersion: Schema.optional(Schema.String),
+  });
+const NetworkDevicePatchParametersPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    annotation: Schema.optional(Schema.String),
+    hostName: Schema.optional(Schema.String),
+    serialNumber: Schema.optional(Schema.String),
+    identitySelector: Schema.optional(
+      Schema.suspend(() => IdentitySelectorPatchSchema),
+    ),
+  });
+const IdentitySelectorPatchSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  identityType: Schema.optional(
+    Schema.suspend(() => ManagedServiceIdentitySelectorTypeSchema),
+  ),
+  userAssignedIdentityResourceId: Schema.optional(Schema.String),
+});
+const NetworkInterfaceSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+});
+const NetworkInterfacePropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    annotation: Schema.optional(Schema.String),
+  });
+const NetworkInterfacePatchPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    annotation: Schema.optional(Schema.String),
+  });
+const RebootTypeSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "GracefulRebootWithZTP",
+  "GracefulRebootWithoutZTP",
+  "UngracefulRebootWithZTP",
+  "UngracefulRebootWithoutZTP",
+]);
+const CommonPostActionResponseForDeviceROCommandsSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    configurationState: Schema.optional(
+      Schema.suspend(() => ConfigurationStateSchema),
+    ),
+    outputUrl: Schema.optional(Schema.String),
+    deviceConfigurationPreview: Schema.optional(Schema.String),
+  });
+const NetworkDeviceRwCommandResponsePropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    configurationState: Schema.optional(
+      Schema.suspend(() => ConfigurationStateSchema),
+    ),
+    outputUrl: Schema.optional(Schema.String),
+  });
+const NetworkFabricControllerPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    annotation: Schema.optional(Schema.String),
+    infrastructureExpressRouteConnections: Schema.optional(
+      Schema.Array(
+        Schema.suspend(() => ExpressRouteConnectionInformationSchema),
+      ),
+    ),
+    workloadExpressRouteConnections: Schema.optional(
+      Schema.Array(
+        Schema.suspend(() => ExpressRouteConnectionInformationSchema),
+      ),
+    ),
+    infrastructureServices: Schema.optional(
+      Schema.suspend(() => ControllerServicesSchema),
+    ),
+    workloadServices: Schema.optional(
+      Schema.suspend(() => ControllerServicesSchema),
+    ),
+    managedResourceGroupConfiguration: Schema.optional(
+      Schema.suspend(() => ManagedResourceGroupConfigurationSchema),
+    ),
+    networkFabricIds: Schema.optional(Schema.Array(Schema.String)),
+    isWorkloadManagementNetworkEnabled: Schema.optional(
+      Schema.Literals(["True", "False"]),
+    ),
+    tenantInternetGatewayIds: Schema.optional(Schema.Array(Schema.String)),
+    ipv4AddressSpace: Schema.optional(Schema.String),
+    ipv6AddressSpace: Schema.optional(Schema.String),
+    nfcSku: Schema.optional(
+      Schema.Literals(["Basic", "Standard", "HighPerformance"]),
+    ),
+    lastOperation: Schema.optional(
+      Schema.suspend(() => LastOperationPropertiesSchema),
+    ),
+    provisioningState: Schema.optional(
+      Schema.suspend(() => ProvisioningStateSchema),
+    ),
+  });
+const ExpressRouteConnectionInformationSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    expressRouteCircuitId: Schema.String,
+    expressRouteAuthorizationKey: Schema.String,
+  });
+const ControllerServicesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  ipv4AddressSpaces: Schema.optional(Schema.Array(Schema.String)),
+  ipv6AddressSpaces: Schema.optional(Schema.Array(Schema.String)),
+});
+const ManagedResourceGroupConfigurationSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    location: Schema.optional(Schema.String),
+  });
+const NetworkFabricControllerPatchPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    infrastructureExpressRouteConnections: Schema.optional(
+      Schema.Array(
+        Schema.suspend(() => ExpressRouteConnectionInformationSchema),
+      ),
+    ),
+    workloadExpressRouteConnections: Schema.optional(
+      Schema.Array(
+        Schema.suspend(() => ExpressRouteConnectionInformationSchema),
+      ),
+    ),
+  });
+const NetworkFabricPropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    annotation: Schema.optional(Schema.String),
+  },
+);
+const NetworkFabricPatchPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    annotation: Schema.optional(Schema.String),
+    rackCount: Schema.optional(Schema.Number),
+    serverCountPerRack: Schema.optional(Schema.Number),
+    ipv4Prefix: Schema.optional(Schema.String),
+    ipv6Prefix: Schema.optional(Schema.String),
+    fabricASN: Schema.optional(Schema.Number),
+    terminalServerConfiguration: Schema.optional(
+      Schema.suspend(() => TerminalServerPatchConfigurationSchema),
+    ),
+    managementNetworkConfiguration: Schema.optional(
+      Schema.suspend(() => ManagementNetworkPatchConfigurationSchema),
+    ),
+    storageAccountConfiguration: Schema.optional(
+      Schema.suspend(() => StorageAccountPatchConfigurationSchema),
+    ),
+    hardwareAlertThreshold: Schema.optional(Schema.Number),
+    controlPlaneAcls: Schema.optional(Schema.Array(Schema.String)),
+    trustedIpPrefixes: Schema.optional(Schema.Array(Schema.String)),
+    uniqueRdConfiguration: Schema.optional(
+      Schema.suspend(() => UniqueRouteDistinguisherPatchPropertiesSchema),
+    ),
+    qosConfiguration: Schema.optional(
+      Schema.suspend(() => QosPatchPropertiesSchema),
+    ),
+    featureFlags: Schema.optional(
+      Schema.Array(Schema.suspend(() => FeatureFlagPropertiesSchema)),
+    ),
+    authorizedTransceiver: Schema.optional(
+      Schema.suspend(() => AuthorizedTransceiverPatchPropertiesSchema),
+    ),
+  });
+const TerminalServerPatchConfigurationSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    username: Schema.optional(Schema.String),
+    password: Schema.optional(SensitiveOutputString),
+    serialNumber: Schema.optional(Schema.String),
+    primaryIpv4Prefix: Schema.optional(Schema.String),
+    primaryIpv6Prefix: Schema.optional(Schema.String),
+    secondaryIpv4Prefix: Schema.optional(Schema.String),
+    secondaryIpv6Prefix: Schema.optional(Schema.String),
+  });
+const ManagementNetworkPatchConfigurationSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    infrastructureVpnConfiguration: Schema.optional(
+      Schema.suspend(() => VpnConfigurationPatchablePropertiesSchema),
+    ),
+    workloadVpnConfiguration: Schema.optional(
+      Schema.suspend(() => VpnConfigurationPatchablePropertiesSchema),
+    ),
+  });
+const VpnConfigurationPatchablePropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    networkToNetworkInterconnectId: Schema.optional(Schema.String),
+    peeringOption: Schema.optional(Schema.suspend(() => PeeringOptionSchema)),
+    optionBProperties: Schema.optional(
+      Schema.suspend(() => VpnOptionBPatchPropertiesSchema),
+    ),
+    optionAProperties: Schema.optional(
+      Schema.suspend(() => VpnOptionAPatchPropertiesSchema),
+    ),
+  });
+const VpnOptionBPatchPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    importRouteTargets: Schema.optional(Schema.Array(Schema.String)),
+    exportRouteTargets: Schema.optional(Schema.Array(Schema.String)),
+    routeTargets: Schema.optional(
+      Schema.suspend(() => RouteTargetPatchInformationSchema),
+    ),
+  });
+const VpnOptionAPatchPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    primaryIpv4Prefix: Schema.optional(Schema.String),
+    primaryIpv6Prefix: Schema.optional(Schema.String),
+    secondaryIpv4Prefix: Schema.optional(Schema.String),
+    secondaryIpv6Prefix: Schema.optional(Schema.String),
+  });
+const StorageAccountPatchConfigurationSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    storageAccountId: Schema.optional(Schema.String),
+    storageAccountIdentity: Schema.optional(
+      Schema.suspend(() => IdentitySelectorPatchSchema),
+    ),
+  });
+const UniqueRouteDistinguisherPatchPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    uniqueRdConfigurationState: Schema.optional(
+      Schema.suspend(() => UniqueRouteDistinguisherConfigurationStateSchema),
+    ),
+    nniDerivedUniqueRdConfigurationState: Schema.optional(
+      Schema.suspend(
+        () => NNIDerivedUniqueRouteDistinguisherConfigurationStateSchema,
+      ),
+    ),
+  });
+const UniqueRouteDistinguisherConfigurationStateSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Literals(["Enabled", "Disabled"]);
+const NNIDerivedUniqueRouteDistinguisherConfigurationStateSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Literals(["Enabled", "Disabled"]);
+const QosPatchPropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  qosConfigurationState: Schema.optional(
+    Schema.suspend(() => QosConfigurationStateSchema),
+  ),
+});
+const QosConfigurationStateSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals(
+  ["Disabled", "Enabled"],
+);
+const FeatureFlagPropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  featureFlagName: Schema.optional(Schema.String),
+  featureFlagValue: Schema.optional(Schema.String),
+});
+const AuthorizedTransceiverPatchPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    vendor: Schema.optional(Schema.String),
+    key: Schema.optional(Schema.String),
+  });
+const ArmConfigurationDiffResponsePropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    configurationDiffUrl: Schema.optional(Schema.String),
+  });
+const CommitBatchStatusResponsePropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    commitBatchId: Schema.optional(Schema.String),
+    commitBatchState: Schema.optional(
+      Schema.suspend(() => CommitBatchStateSchema),
+    ),
+    commitBatchDetails: Schema.optional(
+      Schema.suspend(() => CommitBatchDetailsSchema),
+    ),
+  });
+const CommitBatchStateSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Processing",
+  "Succeeded",
+  "Failed",
+]);
+const CommitBatchDetailsSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  failedDevices: Schema.optional(Schema.Array(Schema.String)),
+});
+const CommitStageSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Start",
+  "Continue",
+  "Rollback",
+]);
+const CommitConfigurationPolicySchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Literals(["StageCEConfiguration"]);
+const DiscardCommitBatchResponsePropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    commitBatchId: Schema.optional(Schema.String),
+  });
+const GetTopologyResponsePropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    url: Schema.optional(Schema.String),
+  });
+const NetworkFabricLockTypeSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals(
+  ["Administrative", "Configuration"],
+);
+const NetworkFabricLockActionSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Literals(["Lock", "Unlock"]);
+const NetworkToNetworkInterconnectSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+  });
+const NetworkToNetworkInterconnectPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    nniType: Schema.optional(Schema.Literals(["CE", "NPB"])),
+    isManagementType: Schema.optional(Schema.Literals(["True", "False"])),
+    useOptionB: Schema.suspend(() => BooleanEnumPropertySchema),
+    layer2Configuration: Schema.optional(
+      Schema.suspend(() => Layer2ConfigurationSchema),
+    ),
+    optionBLayer3Configuration: Schema.optional(
+      Schema.suspend(() => OptionBLayer3ConfigurationSchema),
+    ),
+    npbStaticRouteConfiguration: Schema.optional(
+      Schema.suspend(() => NpbStaticRouteConfigurationSchema),
+    ),
+    staticRouteConfiguration: Schema.optional(
+      Schema.suspend(() => NniStaticRouteConfigurationSchema),
+    ),
+    importRoutePolicy: Schema.optional(
+      Schema.suspend(() => ImportRoutePolicyInformationSchema),
+    ),
+    exportRoutePolicy: Schema.optional(
+      Schema.suspend(() => ExportRoutePolicyInformationSchema),
+    ),
+    egressAclId: Schema.optional(Schema.String),
+    ingressAclId: Schema.optional(Schema.String),
+    microBfdState: Schema.optional(Schema.suspend(() => MicroBfdStateSchema)),
+    conditionalDefaultRouteConfiguration: Schema.optional(
+      Schema.suspend(() => ConditionalDefaultRoutePropertiesSchema),
+    ),
+    lastOperation: Schema.optional(
+      Schema.suspend(() => LastOperationPropertiesSchema),
+    ),
+    configurationState: Schema.optional(
+      Schema.suspend(() => ConfigurationStateSchema),
+    ),
+    provisioningState: Schema.optional(
+      Schema.suspend(() => ProvisioningStateSchema),
+    ),
+    administrativeState: Schema.optional(
+      Schema.suspend(() => AdministrativeStateSchema),
+    ),
+  });
+const Layer2ConfigurationSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  mtu: Schema.optional(Schema.Number),
+  interfaces: Schema.optional(Schema.Array(Schema.String)),
+});
+const OptionBLayer3ConfigurationSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    primaryIpv4Prefix: Schema.optional(Schema.String),
+    primaryIpv6Prefix: Schema.optional(Schema.String),
+    secondaryIpv4Prefix: Schema.optional(Schema.String),
+    secondaryIpv6Prefix: Schema.optional(Schema.String),
+  });
+const NpbStaticRouteConfigurationSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    bfdConfiguration: Schema.optional(
+      Schema.suspend(() => BfdConfigurationSchema),
+    ),
+    ipv4Routes: Schema.optional(
+      Schema.Array(Schema.suspend(() => StaticRoutePropertiesSchema)),
+    ),
+    ipv6Routes: Schema.optional(
+      Schema.Array(Schema.suspend(() => StaticRoutePropertiesSchema)),
+    ),
+  });
+const NniStaticRouteConfigurationSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    bfdConfiguration: Schema.optional(
+      Schema.suspend(() => BfdConfigurationSchema),
+    ),
+    ipv4Routes: Schema.optional(
+      Schema.Array(Schema.suspend(() => StaticRoutePropertiesSchema)),
+    ),
+    ipv6Routes: Schema.optional(
+      Schema.Array(Schema.suspend(() => StaticRoutePropertiesSchema)),
+    ),
+  });
+const ImportRoutePolicyInformationSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    importIpv4RoutePolicyId: Schema.optional(Schema.String),
+    importIpv6RoutePolicyId: Schema.optional(Schema.String),
+  });
+const ExportRoutePolicyInformationSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    exportIpv4RoutePolicyId: Schema.optional(Schema.String),
+    exportIpv6RoutePolicyId: Schema.optional(Schema.String),
+  });
+const MicroBfdStateSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Enabled",
+  "Disabled",
+]);
+const ConditionalDefaultRoutePropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    ipv4Routes: Schema.optional(
+      Schema.Array(Schema.suspend(() => StaticRoutePropertiesSchema)),
+    ),
+    ipv6Routes: Schema.optional(
+      Schema.Array(Schema.suspend(() => StaticRoutePropertiesSchema)),
+    ),
+  });
+const NetworkToNetworkInterconnectPatchPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    layer2Configuration: Schema.optional(
+      Schema.suspend(() => Layer2ConfigurationPatchSchema),
+    ),
+    optionBLayer3Configuration: Schema.optional(
+      Schema.suspend(() => OptionBLayer3ConfigurationPatchPropertiesSchema),
+    ),
+    npbStaticRouteConfiguration: Schema.optional(
+      Schema.suspend(() => NpbStaticRouteConfigurationPatchSchema),
+    ),
+    staticRouteConfiguration: Schema.optional(
+      Schema.suspend(() => NniStaticRoutePatchConfigurationSchema),
+    ),
+    importRoutePolicy: Schema.optional(
+      Schema.suspend(() => ImportRoutePolicyInformationPatchSchema),
+    ),
+    exportRoutePolicy: Schema.optional(
+      Schema.suspend(() => ExportRoutePolicyInformationPatchSchema),
+    ),
+    egressAclId: Schema.optional(Schema.String),
+    ingressAclId: Schema.optional(Schema.String),
+    microBfdState: Schema.optional(Schema.suspend(() => MicroBfdStateSchema)),
+  });
+const Layer2ConfigurationPatchSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    mtu: Schema.optional(Schema.Number),
+    interfaces: Schema.optional(Schema.Array(Schema.String)),
+  });
+const OptionBLayer3ConfigurationPatchPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    primaryIpv4Prefix: Schema.optional(Schema.String),
+    primaryIpv6Prefix: Schema.optional(Schema.String),
+    secondaryIpv4Prefix: Schema.optional(Schema.String),
+    secondaryIpv6Prefix: Schema.optional(Schema.String),
+  });
+const NpbStaticRouteConfigurationPatchSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    bfdConfiguration: Schema.optional(
+      Schema.suspend(() => BfdPatchConfigurationSchema),
+    ),
+    ipv4Routes: Schema.optional(
+      Schema.Array(Schema.suspend(() => StaticRoutePatchPropertiesSchema)),
+    ),
+    ipv6Routes: Schema.optional(
+      Schema.Array(Schema.suspend(() => StaticRoutePatchPropertiesSchema)),
+    ),
+  });
+const NniStaticRoutePatchConfigurationSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    bfdConfiguration: Schema.optional(
+      Schema.suspend(() => BfdPatchConfigurationSchema),
+    ),
+    ipv4Routes: Schema.optional(
+      Schema.Array(Schema.suspend(() => StaticRoutePatchPropertiesSchema)),
+    ),
+    ipv6Routes: Schema.optional(
+      Schema.Array(Schema.suspend(() => StaticRoutePatchPropertiesSchema)),
+    ),
+  });
+const ImportRoutePolicyInformationPatchSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    importIpv4RoutePolicyId: Schema.optional(Schema.String),
+    importIpv6RoutePolicyId: Schema.optional(Schema.String),
+  });
+const ExportRoutePolicyInformationPatchSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    exportIpv4RoutePolicyId: Schema.optional(Schema.String),
+    exportIpv6RoutePolicyId: Schema.optional(Schema.String),
+  });
+const RouteTypeSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Static",
+  "OptionA",
+]);
+const NniUpdateBfdAdministrativeStateResponsePropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    routeType: Schema.optional(Schema.suspend(() => RouteTypeSchema)),
+    administrativeState: Schema.optional(
+      Schema.suspend(() => BfdAdministrativeStateSchema),
+    ),
+  });
+const NetworkFabricUpgradeActionSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Literals(["Start", "Complete"]);
+const ValidateActionSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Cabling",
+  "Configuration",
+  "Connectivity",
+]);
+const ViewDeviceConfigurationResponsePropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    deviceConfigurationUrl: Schema.optional(Schema.String),
+  });
+const NetworkMonitorPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    annotation: Schema.optional(Schema.String),
+  });
+const NetworkMonitorPatchPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    bmpConfiguration: Schema.optional(
+      Schema.suspend(() => BmpConfigurationPatchPropertiesSchema),
+    ),
+  });
+const BmpConfigurationPatchPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    stationConfigurationState: Schema.optional(
+      Schema.suspend(() => StationConfigurationStateSchema),
+    ),
+    scopeResourceId: Schema.optional(Schema.String),
+    stationName: Schema.optional(Schema.String),
+    stationIp: Schema.optional(Schema.String),
+    stationPort: Schema.optional(Schema.Number),
+    stationConnectionMode: Schema.optional(
+      Schema.suspend(() => StationConnectionModeSchema),
+    ),
+    stationConnectionProperties: Schema.optional(
+      Schema.suspend(() => StationConnectionPatchPropertiesSchema),
+    ),
+    stationNetwork: Schema.optional(Schema.String),
+    monitoredNetworks: Schema.optional(Schema.Array(Schema.String)),
+    exportPolicy: Schema.optional(Schema.suspend(() => BmpExportPolicySchema)),
+    exportPolicyConfiguration: Schema.optional(
+      Schema.suspend(() => BmpExportPolicyPatchPropertiesSchema),
+    ),
+    monitoredAddressFamilies: Schema.optional(
+      Schema.Array(Schema.suspend(() => BmpMonitoredAddressFamilySchema)),
+    ),
+  });
+const StationConfigurationStateSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Literals(["Enabled", "Disabled"]);
+const StationConnectionModeSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals(
+  ["Active", "Passive"],
+);
+const StationConnectionPatchPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    keepaliveIdleTime: Schema.optional(Schema.Number),
+    probeInterval: Schema.optional(Schema.Number),
+    probeCount: Schema.optional(Schema.Number),
+  });
+const BmpMonitoredAddressFamilySchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+    "ipv4Unicast",
+    "ipv6Unicast",
+    "vpnIpv4",
+    "vpnIpv6",
+    "All",
+  ]);
+const NetworkPacketBrokerPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    networkFabricId: Schema.String,
+    networkDeviceIds: Schema.optional(Schema.Array(Schema.String)),
+    sourceInterfaceIds: Schema.optional(Schema.Array(Schema.String)),
+    networkTapIds: Schema.optional(Schema.Array(Schema.String)),
+    neighborGroupIds: Schema.optional(Schema.Array(Schema.String)),
+    lastOperation: Schema.optional(
+      Schema.suspend(() => LastOperationPropertiesSchema),
+    ),
+    provisioningState: Schema.optional(
+      Schema.suspend(() => ProvisioningStateSchema),
+    ),
+    configurationState: Schema.optional(
+      Schema.suspend(() => ConfigurationStateSchema),
+    ),
+  });
+const NetworkRackPropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  annotation: Schema.optional(Schema.String),
+});
+const NetworkTapRulePropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    annotation: Schema.optional(Schema.String),
+    configurationType: Schema.suspend(() => ConfigurationTypeSchema),
+    tapRulesUrl: Schema.optional(Schema.String),
+    identitySelector: Schema.optional(
+      Schema.suspend(() => IdentitySelectorSchema),
+    ),
+    matchConfigurations: Schema.optional(
+      Schema.Array(
+        Schema.suspend(() => NetworkTapRuleMatchConfigurationSchema),
+      ),
+    ),
+    dynamicMatchConfigurations: Schema.optional(
+      Schema.Array(Schema.suspend(() => CommonDynamicMatchConfigurationSchema)),
+    ),
+    networkTapId: Schema.optional(Schema.String),
+    networkTapIds: Schema.optional(Schema.Array(Schema.String)),
+    pollingIntervalInSeconds: Schema.optional(Schema.Number),
+    lastSyncedTime: Schema.optional(Schema.String),
+    globalNetworkTapRuleActions: Schema.optional(
+      Schema.suspend(() => GlobalNetworkTapRuleActionPropertiesSchema),
+    ),
+    lastOperation: Schema.optional(
+      Schema.suspend(() => LastOperationPropertiesSchema),
+    ),
+    networkFabricIds: Schema.optional(Schema.Array(Schema.String)),
+    configurationState: Schema.optional(
+      Schema.suspend(() => ConfigurationStateSchema),
+    ),
+    provisioningState: Schema.optional(
+      Schema.suspend(() => ProvisioningStateSchema),
+    ),
+    administrativeState: Schema.optional(
+      Schema.suspend(() => AdministrativeStateSchema),
+    ),
+  });
+const NetworkTapRuleMatchConfigurationSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    matchConfigurationName: Schema.optional(Schema.String),
+    sequenceNumber: Schema.optional(Schema.Number),
+    ipAddressType: Schema.optional(Schema.suspend(() => IPAddressTypeSchema)),
+    matchConditions: Schema.optional(
+      Schema.Array(Schema.suspend(() => NetworkTapRuleMatchConditionSchema)),
+    ),
+    actions: Schema.optional(
+      Schema.Array(Schema.suspend(() => NetworkTapRuleActionSchema)),
+    ),
+  });
+const NetworkTapRuleMatchConditionSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    protocolTypes: Schema.optional(Schema.Array(Schema.String)),
+    vlanMatchCondition: Schema.optional(
+      Schema.suspend(() => VlanMatchConditionSchema),
+    ),
+    ipCondition: Schema.optional(Schema.suspend(() => IpMatchConditionSchema)),
+  });
+const NetworkTapRuleActionSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  type: Schema.optional(Schema.suspend(() => TapRuleActionTypeSchema)),
+  truncate: Schema.optional(Schema.String),
+  isTimestampEnabled: Schema.optional(
+    Schema.suspend(() => BooleanEnumPropertySchema),
+  ),
+  destinationId: Schema.optional(Schema.String),
+  matchConfigurationName: Schema.optional(Schema.String),
+});
+const TapRuleActionTypeSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Drop",
+  "Count",
+  "Log",
+  "Replicate",
+  "Goto",
+  "Redirect",
+  "Mirror",
+]);
+const GlobalNetworkTapRuleActionPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    enableCount: Schema.optional(Schema.Literals(["True", "False"])),
+    truncate: Schema.optional(Schema.String),
+  });
+const NetworkTapRulePatchPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    annotation: Schema.optional(Schema.String),
+    configurationType: Schema.optional(
+      Schema.suspend(() => ConfigurationTypeSchema),
+    ),
+    tapRulesUrl: Schema.optional(Schema.String),
+    matchConfigurations: Schema.optional(
+      Schema.Array(
+        Schema.suspend(() => NetworkTapRuleMatchConfigurationPatchSchema),
+      ),
+    ),
+    dynamicMatchConfigurations: Schema.optional(
+      Schema.Array(
+        Schema.suspend(() => CommonDynamicMatchConfigurationPatchSchema),
+      ),
+    ),
+    identitySelector: Schema.optional(
+      Schema.suspend(() => IdentitySelectorPatchSchema),
+    ),
+    globalNetworkTapRuleActions: Schema.optional(
+      Schema.suspend(() => GlobalNetworkTapRuleActionPatchPropertiesSchema),
+    ),
+  });
+const NetworkTapRuleMatchConfigurationPatchSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    matchConfigurationName: Schema.optional(Schema.String),
+    sequenceNumber: Schema.optional(Schema.Number),
+    ipAddressType: Schema.optional(Schema.suspend(() => IPAddressTypeSchema)),
+    matchConditions: Schema.optional(
+      Schema.Array(
+        Schema.suspend(() => NetworkTapRuleMatchConditionPatchSchema),
+      ),
+    ),
+    actions: Schema.optional(
+      Schema.Array(Schema.suspend(() => NetworkTapRuleActionPatchSchema)),
+    ),
+  });
+const NetworkTapRuleMatchConditionPatchSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    protocolTypes: Schema.optional(Schema.Array(Schema.String)),
+    vlanMatchCondition: Schema.optional(
+      Schema.suspend(() => VlanMatchConditionPatchSchema),
+    ),
+    ipCondition: Schema.optional(
+      Schema.suspend(() => IpMatchConditionPatchSchema),
+    ),
+  });
+const NetworkTapRuleActionPatchSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    type: Schema.optional(Schema.suspend(() => TapRuleActionTypeSchema)),
+    truncate: Schema.optional(Schema.String),
+    isTimestampEnabled: Schema.optional(
+      Schema.suspend(() => BooleanEnumPropertySchema),
+    ),
+    destinationId: Schema.optional(Schema.String),
+    matchConfigurationName: Schema.optional(Schema.String),
+  });
+const GlobalNetworkTapRuleActionPatchPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    enableCount: Schema.optional(
+      Schema.suspend(() => BooleanEnumPropertySchema),
+    ),
+    truncate: Schema.optional(Schema.String),
+  });
+const NetworkTapPropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  annotation: Schema.optional(Schema.String),
+});
+const NetworkTapPatchPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    annotation: Schema.optional(Schema.String),
+  });
+const RoutePolicyPropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  annotation: Schema.optional(Schema.String),
+  defaultAction: Schema.optional(Schema.Literals(["Permit", "Deny"])),
+  statements: Schema.Array(
+    Schema.suspend(() => RoutePolicyStatementPropertiesSchema),
+  ),
+  networkFabricId: Schema.String,
+  addressFamilyType: Schema.optional(Schema.Literals(["IPv4", "IPv6"])),
+  lastOperation: Schema.optional(
+    Schema.suspend(() => LastOperationPropertiesSchema),
+  ),
+  configurationState: Schema.optional(
+    Schema.suspend(() => ConfigurationStateSchema),
+  ),
+  provisioningState: Schema.optional(
+    Schema.suspend(() => ProvisioningStateSchema),
+  ),
+  administrativeState: Schema.optional(
+    Schema.suspend(() => AdministrativeStateSchema),
+  ),
+});
+const RoutePolicyStatementPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    annotation: Schema.optional(Schema.String),
+  });
+const RoutePolicyPatchablePropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    defaultAction: Schema.optional(
+      Schema.suspend(() => CommunityActionTypesSchema),
+    ),
+    statements: Schema.optional(
+      Schema.Array(
+        Schema.suspend(() => RoutePolicyStatementPatchPropertiesSchema),
+      ),
+    ),
+  });
+const RoutePolicyStatementPatchPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    annotation: Schema.optional(Schema.String),
+  });
 
 // Input Schema
 export const AccessControlListsCreateInput =
@@ -15,285 +2462,7 @@ export const AccessControlListsCreateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accessControlListName: Schema.String.pipe(T.PathParam()),
-    properties: Schema.Struct({
-      annotation: Schema.optional(Schema.String),
-      configurationType: Schema.Literals(["File", "Inline"]),
-      aclsUrl: Schema.optional(Schema.String),
-      defaultAction: Schema.optional(Schema.Literals(["Permit", "Deny"])),
-      matchConfigurations: Schema.optional(
-        Schema.Array(
-          Schema.Struct({
-            matchConfigurationName: Schema.optional(Schema.String),
-            sequenceNumber: Schema.optional(Schema.Number),
-            ipAddressType: Schema.optional(Schema.Literals(["IPv4", "IPv6"])),
-            matchConditions: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  protocolTypes: Schema.optional(Schema.Array(Schema.String)),
-                  vlanMatchCondition: Schema.optional(
-                    Schema.Struct({
-                      vlans: Schema.optional(Schema.Array(Schema.String)),
-                      innerVlans: Schema.optional(Schema.Array(Schema.String)),
-                      vlanGroupNames: Schema.optional(
-                        Schema.Array(Schema.String),
-                      ),
-                    }),
-                  ),
-                  ipCondition: Schema.optional(
-                    Schema.Struct({
-                      type: Schema.optional(
-                        Schema.Literals([
-                          "SourceIP",
-                          "DestinationIP",
-                          "Bidirectional",
-                        ]),
-                      ),
-                      prefixType: Schema.optional(
-                        Schema.Literals(["Prefix", "LongestPrefix"]),
-                      ),
-                      ipPrefixValues: Schema.optional(
-                        Schema.Array(Schema.String),
-                      ),
-                      ipGroupNames: Schema.optional(
-                        Schema.Array(Schema.String),
-                      ),
-                    }),
-                  ),
-                }),
-              ),
-            ),
-            actions: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  type: Schema.optional(
-                    Schema.Literals([
-                      "Drop",
-                      "Count",
-                      "Log",
-                      "Remark",
-                      "PoliceRate",
-                    ]),
-                  ),
-                  counterName: Schema.optional(Schema.String),
-                  remarkComment: Schema.optional(Schema.String),
-                  policeRateConfiguration: Schema.optional(
-                    Schema.Struct({
-                      bitRate: Schema.optional(
-                        Schema.Struct({
-                          rate: Schema.optional(Schema.Number),
-                          unit: Schema.optional(
-                            Schema.Literals([
-                              "bps",
-                              "Kbps",
-                              "Mbps",
-                              "Gbps",
-                              "Pps",
-                            ]),
-                          ),
-                        }),
-                      ),
-                      burstSize: Schema.optional(
-                        Schema.Struct({
-                          size: Schema.optional(Schema.Number),
-                          unit: Schema.optional(
-                            Schema.Literals([
-                              "Bytes",
-                              "KBytes",
-                              "MBytes",
-                              "GBytes",
-                              "Packets",
-                            ]),
-                          ),
-                        }),
-                      ),
-                    }),
-                  ),
-                }),
-              ),
-            ),
-          }),
-        ),
-      ),
-      dynamicMatchConfigurations: Schema.optional(
-        Schema.Array(
-          Schema.Struct({
-            ipGroups: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  name: Schema.optional(Schema.String),
-                  ipAddressType: Schema.optional(
-                    Schema.Literals(["IPv4", "IPv6"]),
-                  ),
-                  ipPrefixes: Schema.optional(Schema.Array(Schema.String)),
-                }),
-              ),
-            ),
-            vlanGroups: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  name: Schema.optional(Schema.String),
-                  vlans: Schema.optional(Schema.Array(Schema.String)),
-                }),
-              ),
-            ),
-            portGroups: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  name: Schema.optional(Schema.String),
-                  ports: Schema.optional(Schema.Array(Schema.String)),
-                }),
-              ),
-            ),
-          }),
-        ),
-      ),
-      lastSyncedTime: Schema.optional(Schema.String),
-      aclType: Schema.optional(
-        Schema.Literals([
-          "ControlPlaneTrafficPolicy",
-          "Tenant",
-          "Management",
-          "ControlPlaneAcl",
-        ]),
-      ),
-      deviceRole: Schema.optional(
-        Schema.Literals(["CE", "ToR", "NPB", "ManagementSwitch"]),
-      ),
-      globalAccessControlListActions: Schema.optional(
-        Schema.Struct({
-          enableCount: Schema.optional(Schema.Literals(["True", "False"])),
-        }),
-      ),
-      lastOperation: Schema.optional(
-        Schema.Struct({
-          details: Schema.optional(Schema.String),
-        }),
-      ),
-      networkFabricIds: Schema.optional(Schema.Array(Schema.String)),
-      controlPlaneAclConfiguration: Schema.optional(
-        Schema.Array(
-          Schema.Struct({
-            ipAddressType: Schema.optional(Schema.Literals(["IPv4", "IPv6"])),
-            matchConfigurations: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  matchConfigurationName: Schema.optional(Schema.String),
-                  sequenceNumber: Schema.optional(Schema.Number),
-                  matchCondition: Schema.optional(
-                    Schema.Struct({
-                      protocolTypes: Schema.optional(Schema.String),
-                      ipCondition: Schema.optional(
-                        Schema.Struct({
-                          sourceIpPrefix: Schema.optional(Schema.String),
-                          destinationIpPrefix: Schema.optional(Schema.String),
-                        }),
-                      ),
-                      ttlMatchCondition: Schema.optional(
-                        Schema.Struct({
-                          ttlValue: Schema.optional(Schema.String),
-                          ttlMatchType: Schema.optional(
-                            Schema.Literals(["eq", "neq", "gt", "lt"]),
-                          ),
-                        }),
-                      ),
-                      portCondition: Schema.optional(
-                        Schema.Struct({
-                          sourcePorts: Schema.optional(
-                            Schema.Struct({
-                              ports: Schema.optional(
-                                Schema.Array(Schema.String),
-                              ),
-                              portMatchType: Schema.optional(
-                                Schema.Literals([
-                                  "eq",
-                                  "neq",
-                                  "gt",
-                                  "lt",
-                                  "range",
-                                ]),
-                              ),
-                            }),
-                          ),
-                          destinationPorts: Schema.optional(
-                            Schema.Struct({
-                              ports: Schema.optional(
-                                Schema.Array(Schema.String),
-                              ),
-                              portMatchType: Schema.optional(
-                                Schema.Literals([
-                                  "eq",
-                                  "neq",
-                                  "gt",
-                                  "lt",
-                                  "range",
-                                ]),
-                              ),
-                            }),
-                          ),
-                        }),
-                      ),
-                      flags: Schema.optional(Schema.Array(Schema.String)),
-                      icmpConfiguration: Schema.optional(
-                        Schema.Struct({
-                          icmpTypes: Schema.optional(
-                            Schema.Array(Schema.String),
-                          ),
-                        }),
-                      ),
-                    }),
-                  ),
-                  action: Schema.optional(
-                    Schema.Struct({
-                      type: Schema.optional(
-                        Schema.Literals(["Permit", "Deny", "Remark"]),
-                      ),
-                      remarkComment: Schema.optional(Schema.String),
-                    }),
-                  ),
-                }),
-              ),
-            ),
-          }),
-        ),
-      ),
-      configurationState: Schema.optional(
-        Schema.Literals([
-          "Succeeded",
-          "Failed",
-          "Rejected",
-          "Accepted",
-          "Provisioned",
-          "ErrorProvisioning",
-          "Deprovisioning",
-          "Deprovisioned",
-          "ErrorDeprovisioning",
-          "DeferredControl",
-          "Provisioning",
-          "PendingCommit",
-          "PendingAdministrativeUpdate",
-        ]),
-      ),
-      provisioningState: Schema.optional(
-        Schema.Literals([
-          "Accepted",
-          "Succeeded",
-          "Updating",
-          "Deleting",
-          "Failed",
-          "Canceled",
-        ]),
-      ),
-      administrativeState: Schema.optional(
-        Schema.Literals([
-          "Enabled",
-          "Disabled",
-          "MAT",
-          "RMA",
-          "UnderMaintenance",
-          "EnabledDegraded",
-        ]),
-      ),
-    }),
+    properties: Schema.suspend(() => AccessControlListPropertiesSchema),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     location: Schema.String,
   }).pipe(
@@ -310,23 +2479,13 @@ export type AccessControlListsCreateInput =
 // Output Schema
 export const AccessControlListsCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.suspend(() => AccessControlListPropertiesSchema),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type AccessControlListsCreateOutput =
   typeof AccessControlListsCreateOutput.Type;
@@ -402,23 +2561,13 @@ export type AccessControlListsGetInput = typeof AccessControlListsGetInput.Type;
 // Output Schema
 export const AccessControlListsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.suspend(() => AccessControlListPropertiesSchema),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type AccessControlListsGetOutput =
   typeof AccessControlListsGetOutput.Type;
@@ -456,37 +2605,7 @@ export type AccessControlListsListByResourceGroupInput =
 // Output Schema
 export const AccessControlListsListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => AccessControlListSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type AccessControlListsListByResourceGroupOutput =
@@ -522,37 +2641,7 @@ export type AccessControlListsListBySubscriptionInput =
 // Output Schema
 export const AccessControlListsListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => AccessControlListSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type AccessControlListsListBySubscriptionOutput =
@@ -590,22 +2679,10 @@ export type AccessControlListsResyncInput =
 // Output Schema
 export const AccessControlListsResyncOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    error: Schema.optional(
-      Schema.Struct({
-        code: Schema.optional(Schema.String),
-        message: Schema.optional(Schema.String),
-        target: Schema.optional(Schema.String),
-        details: Schema.optional(Schema.Array(Schema.Unknown)),
-        additionalInfo: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              type: Schema.optional(Schema.String),
-              info: Schema.optional(Schema.Unknown),
-            }),
-          ),
-        ),
-      }),
+    configurationState: Schema.optional(
+      Schema.suspend(() => ConfigurationStateSchema),
     ),
+    error: Schema.optional(Schema.suspend(() => ErrorDetailSchema)),
   });
 export type AccessControlListsResyncOutput =
   typeof AccessControlListsResyncOutput.Type;
@@ -632,243 +2709,7 @@ export const AccessControlListsUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accessControlListName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        configurationType: Schema.optional(Schema.Literals(["File", "Inline"])),
-        aclsUrl: Schema.optional(Schema.String),
-        defaultAction: Schema.optional(Schema.Literals(["Permit", "Deny"])),
-        matchConfigurations: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              matchConfigurationName: Schema.optional(Schema.String),
-              sequenceNumber: Schema.optional(Schema.Number),
-              ipAddressType: Schema.optional(Schema.Literals(["IPv4", "IPv6"])),
-              matchConditions: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    protocolTypes: Schema.optional(Schema.Array(Schema.String)),
-                    vlanMatchCondition: Schema.optional(
-                      Schema.Struct({
-                        vlans: Schema.optional(Schema.Array(Schema.String)),
-                        innerVlans: Schema.optional(
-                          Schema.Array(Schema.String),
-                        ),
-                        vlanGroupNames: Schema.optional(
-                          Schema.Array(Schema.String),
-                        ),
-                      }),
-                    ),
-                    ipCondition: Schema.optional(
-                      Schema.Struct({
-                        type: Schema.optional(
-                          Schema.Literals([
-                            "SourceIP",
-                            "DestinationIP",
-                            "Bidirectional",
-                          ]),
-                        ),
-                        prefixType: Schema.optional(
-                          Schema.Literals(["Prefix", "LongestPrefix"]),
-                        ),
-                        ipPrefixValues: Schema.optional(
-                          Schema.Array(Schema.String),
-                        ),
-                        ipGroupNames: Schema.optional(
-                          Schema.Array(Schema.String),
-                        ),
-                      }),
-                    ),
-                  }),
-                ),
-              ),
-              actions: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    type: Schema.optional(
-                      Schema.Literals([
-                        "Drop",
-                        "Count",
-                        "Log",
-                        "Remark",
-                        "PoliceRate",
-                      ]),
-                    ),
-                    counterName: Schema.optional(Schema.String),
-                    remarkComment: Schema.optional(Schema.String),
-                    policeRateConfiguration: Schema.optional(
-                      Schema.Struct({
-                        bitRate: Schema.optional(
-                          Schema.Struct({
-                            rate: Schema.optional(Schema.Number),
-                            unit: Schema.optional(
-                              Schema.Literals([
-                                "bps",
-                                "Kbps",
-                                "Mbps",
-                                "Gbps",
-                                "Pps",
-                              ]),
-                            ),
-                          }),
-                        ),
-                        burstSize: Schema.optional(
-                          Schema.Struct({
-                            size: Schema.optional(Schema.Number),
-                            unit: Schema.optional(
-                              Schema.Literals([
-                                "Bytes",
-                                "KBytes",
-                                "MBytes",
-                                "GBytes",
-                                "Packets",
-                              ]),
-                            ),
-                          }),
-                        ),
-                      }),
-                    ),
-                  }),
-                ),
-              ),
-            }),
-          ),
-        ),
-        dynamicMatchConfigurations: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              ipGroups: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    name: Schema.optional(Schema.String),
-                    ipAddressType: Schema.optional(
-                      Schema.Literals(["IPv4", "IPv6"]),
-                    ),
-                    ipPrefixes: Schema.optional(Schema.Array(Schema.String)),
-                  }),
-                ),
-              ),
-              vlanGroups: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    name: Schema.optional(Schema.String),
-                    vlans: Schema.optional(Schema.Array(Schema.String)),
-                  }),
-                ),
-              ),
-              portGroups: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    name: Schema.optional(Schema.String),
-                    ports: Schema.optional(Schema.Array(Schema.String)),
-                  }),
-                ),
-              ),
-            }),
-          ),
-        ),
-        controlPlaneAclConfiguration: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              ipAddressType: Schema.optional(Schema.Literals(["IPv4", "IPv6"])),
-              matchConfigurations: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    matchConfigurationName: Schema.optional(Schema.String),
-                    sequenceNumber: Schema.optional(Schema.Number),
-                    matchCondition: Schema.optional(
-                      Schema.Struct({
-                        protocolTypes: Schema.optional(Schema.String),
-                        ipCondition: Schema.optional(
-                          Schema.Struct({
-                            sourceIpPrefix: Schema.optional(Schema.String),
-                            destinationIpPrefix: Schema.optional(Schema.String),
-                          }),
-                        ),
-                        ttlMatchCondition: Schema.optional(
-                          Schema.Struct({
-                            ttlValue: Schema.optional(Schema.String),
-                            ttlMatchType: Schema.optional(
-                              Schema.Literals(["eq", "neq", "gt", "lt"]),
-                            ),
-                          }),
-                        ),
-                        portCondition: Schema.optional(
-                          Schema.Struct({
-                            sourcePorts: Schema.optional(
-                              Schema.Struct({
-                                ports: Schema.optional(
-                                  Schema.Array(Schema.String),
-                                ),
-                                portMatchType: Schema.optional(
-                                  Schema.Literals([
-                                    "eq",
-                                    "neq",
-                                    "gt",
-                                    "lt",
-                                    "range",
-                                  ]),
-                                ),
-                              }),
-                            ),
-                            destinationPorts: Schema.optional(
-                              Schema.Struct({
-                                ports: Schema.optional(
-                                  Schema.Array(Schema.String),
-                                ),
-                                portMatchType: Schema.optional(
-                                  Schema.Literals([
-                                    "eq",
-                                    "neq",
-                                    "gt",
-                                    "lt",
-                                    "range",
-                                  ]),
-                                ),
-                              }),
-                            ),
-                          }),
-                        ),
-                        flags: Schema.optional(Schema.Array(Schema.String)),
-                        icmpConfiguration: Schema.optional(
-                          Schema.Struct({
-                            icmpTypes: Schema.optional(
-                              Schema.Array(Schema.String),
-                            ),
-                          }),
-                        ),
-                      }),
-                    ),
-                    action: Schema.optional(
-                      Schema.Struct({
-                        type: Schema.optional(
-                          Schema.Literals(["Permit", "Deny", "Remark"]),
-                        ),
-                        remarkComment: Schema.optional(Schema.String),
-                      }),
-                    ),
-                  }),
-                ),
-              ),
-            }),
-          ),
-        ),
-        aclType: Schema.optional(
-          Schema.Literals([
-            "ControlPlaneTrafficPolicy",
-            "Tenant",
-            "Management",
-            "ControlPlaneAcl",
-          ]),
-        ),
-        deviceRole: Schema.optional(
-          Schema.Literals(["CE", "ToR", "NPB", "ManagementSwitch"]),
-        ),
-        globalAccessControlListActions: Schema.optional(
-          Schema.Struct({
-            enableCount: Schema.optional(Schema.Literals(["True", "False"])),
-          }),
-        ),
-        annotation: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(() => AccessControlListPatchPropertiesSchema),
     ),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
@@ -885,23 +2726,13 @@ export type AccessControlListsUpdateInput =
 // Output Schema
 export const AccessControlListsUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.suspend(() => AccessControlListPropertiesSchema),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type AccessControlListsUpdateOutput =
   typeof AccessControlListsUpdateOutput.Type;
@@ -927,9 +2758,7 @@ export const AccessControlListsUpdateAdministrativeStateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accessControlListName: Schema.String.pipe(T.PathParam()),
-    state: Schema.optional(
-      Schema.Literals(["Enable", "Disable", "UnderMaintenance"]),
-    ),
+    state: Schema.optional(Schema.suspend(() => EnableDisableStateSchema)),
     resourceIds: Schema.optional(Schema.Array(Schema.String)),
   }).pipe(
     T.Http({
@@ -962,51 +2791,9 @@ export const AccessControlListsUpdateAdministrativeStateOutput =
           startTime: Schema.optional(Schema.String),
           endTime: Schema.optional(Schema.String),
           operations: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                id: Schema.optional(Schema.String),
-                resourceId: Schema.optional(Schema.String),
-                name: Schema.optional(Schema.String),
-                status: Schema.String,
-                percentComplete: Schema.optional(Schema.Number),
-                startTime: Schema.optional(Schema.String),
-                endTime: Schema.optional(Schema.String),
-                operations: Schema.optional(Schema.Array(Schema.Unknown)),
-                error: Schema.optional(
-                  Schema.Struct({
-                    code: Schema.optional(Schema.String),
-                    message: Schema.optional(Schema.String),
-                    target: Schema.optional(Schema.String),
-                    details: Schema.optional(Schema.Array(Schema.Unknown)),
-                    additionalInfo: Schema.optional(
-                      Schema.Array(
-                        Schema.Struct({
-                          type: Schema.optional(Schema.String),
-                          info: Schema.optional(Schema.Unknown),
-                        }),
-                      ),
-                    ),
-                  }),
-                ),
-              }),
-            ),
+            Schema.Array(Schema.suspend(() => OperationStatusResultSchema)),
           ),
-          error: Schema.optional(
-            Schema.Struct({
-              code: Schema.optional(Schema.String),
-              message: Schema.optional(Schema.String),
-              target: Schema.optional(Schema.String),
-              details: Schema.optional(Schema.Array(Schema.Unknown)),
-              additionalInfo: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    type: Schema.optional(Schema.String),
-                    info: Schema.optional(Schema.Unknown),
-                  }),
-                ),
-              ),
-            }),
-          ),
+          error: Schema.optional(Schema.suspend(() => ErrorDetailSchema)),
         }),
       ),
     ),
@@ -1016,39 +2803,16 @@ export const AccessControlListsUpdateAdministrativeStateOutput =
         message: Schema.optional(Schema.String),
         target: Schema.optional(Schema.String),
         details: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              code: Schema.optional(Schema.String),
-              message: Schema.optional(Schema.String),
-              target: Schema.optional(Schema.String),
-              details: Schema.optional(Schema.Array(Schema.Unknown)),
-              additionalInfo: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    type: Schema.optional(Schema.String),
-                    info: Schema.optional(Schema.Unknown),
-                  }),
-                ),
-              ),
-            }),
-          ),
+          Schema.Array(Schema.suspend(() => ErrorDetailSchema)),
         ),
         additionalInfo: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              type: Schema.optional(Schema.String),
-              info: Schema.optional(Schema.Unknown),
-            }),
-          ),
+          Schema.Array(Schema.suspend(() => ErrorAdditionalInfoSchema)),
         ),
       }),
     ),
     resourceId: Schema.optional(Schema.String),
     properties: Schema.optional(
-      Schema.Struct({
-        successfulResources: Schema.optional(Schema.Array(Schema.String)),
-        failedResources: Schema.optional(Schema.Array(Schema.String)),
-      }),
+      Schema.suspend(() => UpdateAdministrativeStateResponsePropertiesSchema),
     ),
   });
 export type AccessControlListsUpdateAdministrativeStateOutput =
@@ -1088,22 +2852,11 @@ export type AccessControlListsValidateConfigurationInput =
 // Output Schema
 export const AccessControlListsValidateConfigurationOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    error: Schema.optional(
-      Schema.Struct({
-        code: Schema.optional(Schema.String),
-        message: Schema.optional(Schema.String),
-        target: Schema.optional(Schema.String),
-        details: Schema.optional(Schema.Array(Schema.Unknown)),
-        additionalInfo: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              type: Schema.optional(Schema.String),
-              info: Schema.optional(Schema.Unknown),
-            }),
-          ),
-        ),
-      }),
+    configurationState: Schema.optional(
+      Schema.suspend(() => ConfigurationStateSchema),
     ),
+    url: Schema.optional(Schema.String),
+    error: Schema.optional(Schema.suspend(() => ErrorDetailSchema)),
   });
 export type AccessControlListsValidateConfigurationOutput =
   typeof AccessControlListsValidateConfigurationOutput.Type;
@@ -1129,179 +2882,7 @@ export const ExternalNetworksCreateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     l3IsolationDomainName: Schema.String.pipe(T.PathParam()),
     externalNetworkName: Schema.String.pipe(T.PathParam()),
-    properties: Schema.Struct({
-      annotation: Schema.optional(Schema.String),
-      networkToNetworkInterconnectId: Schema.optional(Schema.String),
-      importRoutePolicy: Schema.optional(
-        Schema.Struct({
-          importIpv4RoutePolicyId: Schema.optional(Schema.String),
-          importIpv6RoutePolicyId: Schema.optional(Schema.String),
-        }),
-      ),
-      exportRoutePolicy: Schema.optional(
-        Schema.Struct({
-          exportIpv4RoutePolicyId: Schema.optional(Schema.String),
-          exportIpv6RoutePolicyId: Schema.optional(Schema.String),
-        }),
-      ),
-      peeringOption: Schema.Literals(["OptionA", "OptionB"]),
-      optionBProperties: Schema.optional(
-        Schema.Struct({
-          importRouteTargets: Schema.optional(Schema.Array(Schema.String)),
-          exportRouteTargets: Schema.optional(Schema.Array(Schema.String)),
-          routeTargets: Schema.optional(
-            Schema.Struct({
-              importIpv4RouteTargets: Schema.optional(
-                Schema.Array(Schema.String),
-              ),
-              importIpv6RouteTargets: Schema.optional(
-                Schema.Array(Schema.String),
-              ),
-              exportIpv4RouteTargets: Schema.optional(
-                Schema.Array(Schema.String),
-              ),
-              exportIpv6RouteTargets: Schema.optional(
-                Schema.Array(Schema.String),
-              ),
-            }),
-          ),
-        }),
-      ),
-      optionAProperties: Schema.optional(
-        Schema.Struct({
-          primaryIpv4Prefix: Schema.optional(Schema.String),
-          primaryIpv6Prefix: Schema.optional(Schema.String),
-          secondaryIpv4Prefix: Schema.optional(Schema.String),
-          secondaryIpv6Prefix: Schema.optional(Schema.String),
-          mtu: Schema.optional(Schema.Number),
-          vlanId: Schema.Number,
-          fabricASN: Schema.optional(Schema.Number),
-          peerASN: Schema.Number,
-          bfdConfiguration: Schema.optional(
-            Schema.Struct({
-              administrativeState: Schema.optional(
-                Schema.Literals(["Enabled", "Disabled", "MAT", "RMA"]),
-              ),
-              intervalInMilliSeconds: Schema.optional(Schema.Number),
-              multiplier: Schema.optional(Schema.Number),
-            }),
-          ),
-          ingressAclId: Schema.optional(Schema.String),
-          bmpConfiguration: Schema.optional(
-            Schema.Struct({
-              configurationState: Schema.optional(
-                Schema.Literals(["Enabled", "Disabled"]),
-              ),
-            }),
-          ),
-          egressAclId: Schema.optional(Schema.String),
-          v4OverV6BgpSession: Schema.optional(
-            Schema.Literals(["Enabled", "Disabled"]),
-          ),
-          v6OverV4BgpSession: Schema.optional(
-            Schema.Literals(["Enabled", "Disabled"]),
-          ),
-          nativeIpv4PrefixLimit: Schema.optional(
-            Schema.Struct({
-              prefixLimits: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    maximumRoutes: Schema.optional(Schema.Number),
-                    threshold: Schema.optional(Schema.Number),
-                    idleTimeExpiry: Schema.optional(Schema.Number),
-                  }),
-                ),
-              ),
-            }),
-          ),
-          nativeIpv6PrefixLimit: Schema.optional(
-            Schema.Struct({
-              prefixLimits: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    maximumRoutes: Schema.optional(Schema.Number),
-                    threshold: Schema.optional(Schema.Number),
-                    idleTimeExpiry: Schema.optional(Schema.Number),
-                  }),
-                ),
-              ),
-            }),
-          ),
-        }),
-      ),
-      staticRouteConfiguration: Schema.optional(
-        Schema.Struct({
-          bfdConfiguration: Schema.optional(
-            Schema.Struct({
-              administrativeState: Schema.optional(
-                Schema.Literals(["Enabled", "Disabled", "MAT", "RMA"]),
-              ),
-              intervalInMilliSeconds: Schema.optional(Schema.Number),
-              multiplier: Schema.optional(Schema.Number),
-            }),
-          ),
-          ipv4Routes: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                prefix: Schema.String,
-                nextHop: Schema.Array(Schema.String),
-              }),
-            ),
-          ),
-          ipv6Routes: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                prefix: Schema.String,
-                nextHop: Schema.Array(Schema.String),
-              }),
-            ),
-          ),
-        }),
-      ),
-      lastOperation: Schema.optional(
-        Schema.Struct({
-          details: Schema.optional(Schema.String),
-        }),
-      ),
-      networkFabricId: Schema.optional(Schema.String),
-      configurationState: Schema.optional(
-        Schema.Literals([
-          "Succeeded",
-          "Failed",
-          "Rejected",
-          "Accepted",
-          "Provisioned",
-          "ErrorProvisioning",
-          "Deprovisioning",
-          "Deprovisioned",
-          "ErrorDeprovisioning",
-          "DeferredControl",
-          "Provisioning",
-          "PendingCommit",
-          "PendingAdministrativeUpdate",
-        ]),
-      ),
-      provisioningState: Schema.optional(
-        Schema.Literals([
-          "Accepted",
-          "Succeeded",
-          "Updating",
-          "Deleting",
-          "Failed",
-          "Canceled",
-        ]),
-      ),
-      administrativeState: Schema.optional(
-        Schema.Literals([
-          "Enabled",
-          "Disabled",
-          "MAT",
-          "RMA",
-          "UnderMaintenance",
-          "EnabledDegraded",
-        ]),
-      ),
-    }),
+    properties: Schema.suspend(() => ExternalNetworkPropertiesSchema),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -1316,23 +2897,11 @@ export type ExternalNetworksCreateInput =
 // Output Schema
 export const ExternalNetworksCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.suspend(() => ExternalNetworkPropertiesSchema),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type ExternalNetworksCreateOutput =
   typeof ExternalNetworksCreateOutput.Type;
@@ -1412,23 +2981,11 @@ export type ExternalNetworksGetInput = typeof ExternalNetworksGetInput.Type;
 // Output Schema
 export const ExternalNetworksGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.suspend(() => ExternalNetworkPropertiesSchema),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type ExternalNetworksGetOutput = typeof ExternalNetworksGetOutput.Type;
 
@@ -1465,37 +3022,7 @@ export type ExternalNetworksListByL3IsolationDomainInput =
 // Output Schema
 export const ExternalNetworksListByL3IsolationDomainOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => ExternalNetworkSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type ExternalNetworksListByL3IsolationDomainOutput =
@@ -1523,136 +3050,7 @@ export const ExternalNetworksUpdateInput =
     l3IsolationDomainName: Schema.String.pipe(T.PathParam()),
     externalNetworkName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        annotation: Schema.optional(Schema.String),
-        networkToNetworkInterconnectId: Schema.optional(Schema.String),
-        importRoutePolicy: Schema.optional(
-          Schema.Struct({
-            importIpv4RoutePolicyId: Schema.optional(Schema.String),
-            importIpv6RoutePolicyId: Schema.optional(Schema.String),
-          }),
-        ),
-        exportRoutePolicy: Schema.optional(
-          Schema.Struct({
-            exportIpv4RoutePolicyId: Schema.optional(Schema.String),
-            exportIpv6RoutePolicyId: Schema.optional(Schema.String),
-          }),
-        ),
-        peeringOption: Schema.optional(Schema.Literals(["OptionA", "OptionB"])),
-        optionBProperties: Schema.optional(
-          Schema.Struct({
-            importRouteTargets: Schema.optional(Schema.Array(Schema.String)),
-            exportRouteTargets: Schema.optional(Schema.Array(Schema.String)),
-            routeTargets: Schema.optional(
-              Schema.Struct({
-                importIpv4RouteTargets: Schema.optional(
-                  Schema.Array(Schema.String),
-                ),
-                importIpv6RouteTargets: Schema.optional(
-                  Schema.Array(Schema.String),
-                ),
-                exportIpv4RouteTargets: Schema.optional(
-                  Schema.Array(Schema.String),
-                ),
-                exportIpv6RouteTargets: Schema.optional(
-                  Schema.Array(Schema.String),
-                ),
-              }),
-            ),
-          }),
-        ),
-        optionAProperties: Schema.optional(
-          Schema.Struct({
-            primaryIpv4Prefix: Schema.optional(Schema.String),
-            primaryIpv6Prefix: Schema.optional(Schema.String),
-            secondaryIpv4Prefix: Schema.optional(Schema.String),
-            secondaryIpv6Prefix: Schema.optional(Schema.String),
-            mtu: Schema.optional(Schema.Number),
-            vlanId: Schema.optional(Schema.Number),
-            fabricASN: Schema.optional(Schema.Number),
-            peerASN: Schema.optional(Schema.Number),
-            bfdConfiguration: Schema.optional(
-              Schema.Struct({
-                administrativeState: Schema.optional(
-                  Schema.Literals(["Enabled", "Disabled", "MAT", "RMA"]),
-                ),
-                intervalInMilliSeconds: Schema.optional(Schema.Number),
-                multiplier: Schema.optional(Schema.Number),
-              }),
-            ),
-            ingressAclId: Schema.optional(Schema.String),
-            egressAclId: Schema.optional(Schema.String),
-            bmpConfiguration: Schema.optional(
-              Schema.Struct({
-                configurationState: Schema.optional(
-                  Schema.Literals(["Enabled", "Disabled"]),
-                ),
-              }),
-            ),
-            v4OverV6BgpSession: Schema.optional(
-              Schema.Literals(["Enabled", "Disabled"]),
-            ),
-            v6OverV4BgpSession: Schema.optional(
-              Schema.Literals(["Enabled", "Disabled"]),
-            ),
-            nativeIpv4PrefixLimit: Schema.optional(
-              Schema.Struct({
-                prefixLimits: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      maximumRoutes: Schema.optional(Schema.Number),
-                      threshold: Schema.optional(Schema.Number),
-                      idleTimeExpiry: Schema.optional(Schema.Number),
-                    }),
-                  ),
-                ),
-              }),
-            ),
-            nativeIpv6PrefixLimit: Schema.optional(
-              Schema.Struct({
-                prefixLimits: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      maximumRoutes: Schema.optional(Schema.Number),
-                      threshold: Schema.optional(Schema.Number),
-                      idleTimeExpiry: Schema.optional(Schema.Number),
-                    }),
-                  ),
-                ),
-              }),
-            ),
-          }),
-        ),
-        staticRouteConfiguration: Schema.optional(
-          Schema.Struct({
-            bfdConfiguration: Schema.optional(
-              Schema.Struct({
-                administrativeState: Schema.optional(
-                  Schema.Literals(["Enabled", "Disabled", "MAT", "RMA"]),
-                ),
-                intervalInMilliSeconds: Schema.optional(Schema.Number),
-                multiplier: Schema.optional(Schema.Number),
-              }),
-            ),
-            ipv4Routes: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  prefix: Schema.String,
-                  nextHop: Schema.Array(Schema.String),
-                }),
-              ),
-            ),
-            ipv6Routes: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  prefix: Schema.String,
-                  nextHop: Schema.Array(Schema.String),
-                }),
-              ),
-            ),
-          }),
-        ),
-      }),
+      Schema.suspend(() => ExternalNetworkPatchPropertiesSchema),
     ),
   }).pipe(
     T.Http({
@@ -1668,23 +3066,11 @@ export type ExternalNetworksUpdateInput =
 // Output Schema
 export const ExternalNetworksUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.suspend(() => ExternalNetworkPropertiesSchema),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type ExternalNetworksUpdateOutput =
   typeof ExternalNetworksUpdateOutput.Type;
@@ -1712,9 +3098,7 @@ export const ExternalNetworksUpdateAdministrativeStateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     l3IsolationDomainName: Schema.String.pipe(T.PathParam()),
     externalNetworkName: Schema.String.pipe(T.PathParam()),
-    state: Schema.optional(
-      Schema.Literals(["Enable", "Disable", "UnderMaintenance"]),
-    ),
+    state: Schema.optional(Schema.suspend(() => EnableDisableStateSchema)),
     resourceIds: Schema.optional(Schema.Array(Schema.String)),
   }).pipe(
     T.Http({
@@ -1747,51 +3131,9 @@ export const ExternalNetworksUpdateAdministrativeStateOutput =
           startTime: Schema.optional(Schema.String),
           endTime: Schema.optional(Schema.String),
           operations: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                id: Schema.optional(Schema.String),
-                resourceId: Schema.optional(Schema.String),
-                name: Schema.optional(Schema.String),
-                status: Schema.String,
-                percentComplete: Schema.optional(Schema.Number),
-                startTime: Schema.optional(Schema.String),
-                endTime: Schema.optional(Schema.String),
-                operations: Schema.optional(Schema.Array(Schema.Unknown)),
-                error: Schema.optional(
-                  Schema.Struct({
-                    code: Schema.optional(Schema.String),
-                    message: Schema.optional(Schema.String),
-                    target: Schema.optional(Schema.String),
-                    details: Schema.optional(Schema.Array(Schema.Unknown)),
-                    additionalInfo: Schema.optional(
-                      Schema.Array(
-                        Schema.Struct({
-                          type: Schema.optional(Schema.String),
-                          info: Schema.optional(Schema.Unknown),
-                        }),
-                      ),
-                    ),
-                  }),
-                ),
-              }),
-            ),
+            Schema.Array(Schema.suspend(() => OperationStatusResultSchema)),
           ),
-          error: Schema.optional(
-            Schema.Struct({
-              code: Schema.optional(Schema.String),
-              message: Schema.optional(Schema.String),
-              target: Schema.optional(Schema.String),
-              details: Schema.optional(Schema.Array(Schema.Unknown)),
-              additionalInfo: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    type: Schema.optional(Schema.String),
-                    info: Schema.optional(Schema.Unknown),
-                  }),
-                ),
-              ),
-            }),
-          ),
+          error: Schema.optional(Schema.suspend(() => ErrorDetailSchema)),
         }),
       ),
     ),
@@ -1801,39 +3143,16 @@ export const ExternalNetworksUpdateAdministrativeStateOutput =
         message: Schema.optional(Schema.String),
         target: Schema.optional(Schema.String),
         details: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              code: Schema.optional(Schema.String),
-              message: Schema.optional(Schema.String),
-              target: Schema.optional(Schema.String),
-              details: Schema.optional(Schema.Array(Schema.Unknown)),
-              additionalInfo: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    type: Schema.optional(Schema.String),
-                    info: Schema.optional(Schema.Unknown),
-                  }),
-                ),
-              ),
-            }),
-          ),
+          Schema.Array(Schema.suspend(() => ErrorDetailSchema)),
         ),
         additionalInfo: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              type: Schema.optional(Schema.String),
-              info: Schema.optional(Schema.Unknown),
-            }),
-          ),
+          Schema.Array(Schema.suspend(() => ErrorAdditionalInfoSchema)),
         ),
       }),
     ),
     resourceId: Schema.optional(Schema.String),
     properties: Schema.optional(
-      Schema.Struct({
-        successfulResources: Schema.optional(Schema.Array(Schema.String)),
-        failedResources: Schema.optional(Schema.Array(Schema.String)),
-      }),
+      Schema.suspend(() => UpdateAdministrativeStateResponsePropertiesSchema),
     ),
   });
 export type ExternalNetworksUpdateAdministrativeStateOutput =
@@ -1861,9 +3180,11 @@ export const ExternalNetworksUpdateBfdAdministrativeStateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     l3IsolationDomainName: Schema.String.pipe(T.PathParam()),
     externalNetworkName: Schema.String.pipe(T.PathParam()),
-    routeType: Schema.optional(Schema.Literals(["Static", "OptionA"])),
+    routeType: Schema.optional(
+      Schema.suspend(() => ExternalNetworkRouteTypeSchema),
+    ),
     administrativeState: Schema.optional(
-      Schema.Literals(["Enabled", "Disabled", "MAT", "RMA"]),
+      Schema.suspend(() => BfdAdministrativeStateSchema),
     ),
   }).pipe(
     T.Http({
@@ -1896,51 +3217,9 @@ export const ExternalNetworksUpdateBfdAdministrativeStateOutput =
           startTime: Schema.optional(Schema.String),
           endTime: Schema.optional(Schema.String),
           operations: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                id: Schema.optional(Schema.String),
-                resourceId: Schema.optional(Schema.String),
-                name: Schema.optional(Schema.String),
-                status: Schema.String,
-                percentComplete: Schema.optional(Schema.Number),
-                startTime: Schema.optional(Schema.String),
-                endTime: Schema.optional(Schema.String),
-                operations: Schema.optional(Schema.Array(Schema.Unknown)),
-                error: Schema.optional(
-                  Schema.Struct({
-                    code: Schema.optional(Schema.String),
-                    message: Schema.optional(Schema.String),
-                    target: Schema.optional(Schema.String),
-                    details: Schema.optional(Schema.Array(Schema.Unknown)),
-                    additionalInfo: Schema.optional(
-                      Schema.Array(
-                        Schema.Struct({
-                          type: Schema.optional(Schema.String),
-                          info: Schema.optional(Schema.Unknown),
-                        }),
-                      ),
-                    ),
-                  }),
-                ),
-              }),
-            ),
+            Schema.Array(Schema.suspend(() => OperationStatusResultSchema)),
           ),
-          error: Schema.optional(
-            Schema.Struct({
-              code: Schema.optional(Schema.String),
-              message: Schema.optional(Schema.String),
-              target: Schema.optional(Schema.String),
-              details: Schema.optional(Schema.Array(Schema.Unknown)),
-              additionalInfo: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    type: Schema.optional(Schema.String),
-                    info: Schema.optional(Schema.Unknown),
-                  }),
-                ),
-              ),
-            }),
-          ),
+          error: Schema.optional(Schema.suspend(() => ErrorDetailSchema)),
         }),
       ),
     ),
@@ -1950,41 +3229,19 @@ export const ExternalNetworksUpdateBfdAdministrativeStateOutput =
         message: Schema.optional(Schema.String),
         target: Schema.optional(Schema.String),
         details: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              code: Schema.optional(Schema.String),
-              message: Schema.optional(Schema.String),
-              target: Schema.optional(Schema.String),
-              details: Schema.optional(Schema.Array(Schema.Unknown)),
-              additionalInfo: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    type: Schema.optional(Schema.String),
-                    info: Schema.optional(Schema.Unknown),
-                  }),
-                ),
-              ),
-            }),
-          ),
+          Schema.Array(Schema.suspend(() => ErrorDetailSchema)),
         ),
         additionalInfo: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              type: Schema.optional(Schema.String),
-              info: Schema.optional(Schema.Unknown),
-            }),
-          ),
+          Schema.Array(Schema.suspend(() => ErrorAdditionalInfoSchema)),
         ),
       }),
     ),
     resourceId: Schema.optional(Schema.String),
     properties: Schema.optional(
-      Schema.Struct({
-        routeType: Schema.optional(Schema.Literals(["Static", "OptionA"])),
-        administrativeState: Schema.optional(
-          Schema.Literals(["Enabled", "Disabled", "MAT", "RMA"]),
-        ),
-      }),
+      Schema.suspend(
+        () =>
+          ExternalNetworkUpdateBfdAdministrativeStateResponsePropertiesSchema,
+      ),
     ),
   });
 export type ExternalNetworksUpdateBfdAdministrativeStateOutput =
@@ -2012,9 +3269,7 @@ export const ExternalNetworksUpdateStaticRouteBfdAdministrativeStateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     l3IsolationDomainName: Schema.String.pipe(T.PathParam()),
     externalNetworkName: Schema.String.pipe(T.PathParam()),
-    state: Schema.optional(
-      Schema.Literals(["Enable", "Disable", "UnderMaintenance"]),
-    ),
+    state: Schema.optional(Schema.suspend(() => EnableDisableStateSchema)),
     resourceIds: Schema.optional(Schema.Array(Schema.String)),
   }).pipe(
     T.Http({
@@ -2047,51 +3302,9 @@ export const ExternalNetworksUpdateStaticRouteBfdAdministrativeStateOutput =
           startTime: Schema.optional(Schema.String),
           endTime: Schema.optional(Schema.String),
           operations: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                id: Schema.optional(Schema.String),
-                resourceId: Schema.optional(Schema.String),
-                name: Schema.optional(Schema.String),
-                status: Schema.String,
-                percentComplete: Schema.optional(Schema.Number),
-                startTime: Schema.optional(Schema.String),
-                endTime: Schema.optional(Schema.String),
-                operations: Schema.optional(Schema.Array(Schema.Unknown)),
-                error: Schema.optional(
-                  Schema.Struct({
-                    code: Schema.optional(Schema.String),
-                    message: Schema.optional(Schema.String),
-                    target: Schema.optional(Schema.String),
-                    details: Schema.optional(Schema.Array(Schema.Unknown)),
-                    additionalInfo: Schema.optional(
-                      Schema.Array(
-                        Schema.Struct({
-                          type: Schema.optional(Schema.String),
-                          info: Schema.optional(Schema.Unknown),
-                        }),
-                      ),
-                    ),
-                  }),
-                ),
-              }),
-            ),
+            Schema.Array(Schema.suspend(() => OperationStatusResultSchema)),
           ),
-          error: Schema.optional(
-            Schema.Struct({
-              code: Schema.optional(Schema.String),
-              message: Schema.optional(Schema.String),
-              target: Schema.optional(Schema.String),
-              details: Schema.optional(Schema.Array(Schema.Unknown)),
-              additionalInfo: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    type: Schema.optional(Schema.String),
-                    info: Schema.optional(Schema.Unknown),
-                  }),
-                ),
-              ),
-            }),
-          ),
+          error: Schema.optional(Schema.suspend(() => ErrorDetailSchema)),
         }),
       ),
     ),
@@ -2101,39 +3314,16 @@ export const ExternalNetworksUpdateStaticRouteBfdAdministrativeStateOutput =
         message: Schema.optional(Schema.String),
         target: Schema.optional(Schema.String),
         details: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              code: Schema.optional(Schema.String),
-              message: Schema.optional(Schema.String),
-              target: Schema.optional(Schema.String),
-              details: Schema.optional(Schema.Array(Schema.Unknown)),
-              additionalInfo: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    type: Schema.optional(Schema.String),
-                    info: Schema.optional(Schema.Unknown),
-                  }),
-                ),
-              ),
-            }),
-          ),
+          Schema.Array(Schema.suspend(() => ErrorDetailSchema)),
         ),
         additionalInfo: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              type: Schema.optional(Schema.String),
-              info: Schema.optional(Schema.Unknown),
-            }),
-          ),
+          Schema.Array(Schema.suspend(() => ErrorAdditionalInfoSchema)),
         ),
       }),
     ),
     resourceId: Schema.optional(Schema.String),
     properties: Schema.optional(
-      Schema.Struct({
-        successfulResources: Schema.optional(Schema.Array(Schema.String)),
-        failedResources: Schema.optional(Schema.Array(Schema.String)),
-      }),
+      Schema.suspend(() => UpdateAdministrativeStateResponsePropertiesSchema),
     ),
   });
 export type ExternalNetworksUpdateStaticRouteBfdAdministrativeStateOutput =
@@ -2161,145 +3351,7 @@ export const InternalNetworksCreateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     l3IsolationDomainName: Schema.String.pipe(T.PathParam()),
     internalNetworkName: Schema.String.pipe(T.PathParam()),
-    properties: Schema.Struct({
-      annotation: Schema.optional(Schema.String),
-      extension: Schema.optional(Schema.Literals(["NoExtension", "NPB"])),
-      mtu: Schema.optional(Schema.Number),
-      connectedIPv4Subnets: Schema.optional(
-        Schema.Array(
-          Schema.Struct({
-            annotation: Schema.optional(Schema.String),
-          }),
-        ),
-      ),
-      connectedIPv6Subnets: Schema.optional(
-        Schema.Array(
-          Schema.Struct({
-            annotation: Schema.optional(Schema.String),
-          }),
-        ),
-      ),
-      importRoutePolicy: Schema.optional(
-        Schema.Struct({
-          importIpv4RoutePolicyId: Schema.optional(Schema.String),
-          importIpv6RoutePolicyId: Schema.optional(Schema.String),
-        }),
-      ),
-      exportRoutePolicy: Schema.optional(
-        Schema.Struct({
-          exportIpv4RoutePolicyId: Schema.optional(Schema.String),
-          exportIpv6RoutePolicyId: Schema.optional(Schema.String),
-        }),
-      ),
-      ingressAclId: Schema.optional(Schema.String),
-      egressAclId: Schema.optional(Schema.String),
-      isMonitoringEnabled: Schema.optional(Schema.Literals(["True", "False"])),
-      vlanId: Schema.Number,
-      bgpConfiguration: Schema.optional(
-        Schema.Struct({
-          annotation: Schema.optional(Schema.String),
-        }),
-      ),
-      staticRouteConfiguration: Schema.optional(
-        Schema.Struct({
-          bfdConfiguration: Schema.optional(
-            Schema.Struct({
-              administrativeState: Schema.optional(
-                Schema.Literals(["Enabled", "Disabled", "MAT", "RMA"]),
-              ),
-              intervalInMilliSeconds: Schema.optional(Schema.Number),
-              multiplier: Schema.optional(Schema.Number),
-            }),
-          ),
-          ipv4Routes: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                prefix: Schema.String,
-                nextHop: Schema.Array(Schema.String),
-              }),
-            ),
-          ),
-          ipv6Routes: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                prefix: Schema.String,
-                nextHop: Schema.Array(Schema.String),
-              }),
-            ),
-          ),
-          extension: Schema.optional(Schema.Literals(["NoExtension", "NPB"])),
-        }),
-      ),
-      nativeIpv4PrefixLimit: Schema.optional(
-        Schema.Struct({
-          prefixLimits: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                maximumRoutes: Schema.optional(Schema.Number),
-                threshold: Schema.optional(Schema.Number),
-                idleTimeExpiry: Schema.optional(Schema.Number),
-              }),
-            ),
-          ),
-        }),
-      ),
-      nativeIpv6PrefixLimit: Schema.optional(
-        Schema.Struct({
-          prefixLimits: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                maximumRoutes: Schema.optional(Schema.Number),
-                threshold: Schema.optional(Schema.Number),
-                idleTimeExpiry: Schema.optional(Schema.Number),
-              }),
-            ),
-          ),
-        }),
-      ),
-      lastOperation: Schema.optional(
-        Schema.Struct({
-          details: Schema.optional(Schema.String),
-        }),
-      ),
-      networkFabricId: Schema.optional(Schema.String),
-      configurationState: Schema.optional(
-        Schema.Literals([
-          "Succeeded",
-          "Failed",
-          "Rejected",
-          "Accepted",
-          "Provisioned",
-          "ErrorProvisioning",
-          "Deprovisioning",
-          "Deprovisioned",
-          "ErrorDeprovisioning",
-          "DeferredControl",
-          "Provisioning",
-          "PendingCommit",
-          "PendingAdministrativeUpdate",
-        ]),
-      ),
-      provisioningState: Schema.optional(
-        Schema.Literals([
-          "Accepted",
-          "Succeeded",
-          "Updating",
-          "Deleting",
-          "Failed",
-          "Canceled",
-        ]),
-      ),
-      administrativeState: Schema.optional(
-        Schema.Literals([
-          "Enabled",
-          "Disabled",
-          "MAT",
-          "RMA",
-          "UnderMaintenance",
-          "EnabledDegraded",
-        ]),
-      ),
-    }),
+    properties: Schema.suspend(() => InternalNetworkPropertiesSchema),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -2314,23 +3366,11 @@ export type InternalNetworksCreateInput =
 // Output Schema
 export const InternalNetworksCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.suspend(() => InternalNetworkPropertiesSchema),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type InternalNetworksCreateOutput =
   typeof InternalNetworksCreateOutput.Type;
@@ -2410,23 +3450,11 @@ export type InternalNetworksGetInput = typeof InternalNetworksGetInput.Type;
 // Output Schema
 export const InternalNetworksGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.suspend(() => InternalNetworkPropertiesSchema),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type InternalNetworksGetOutput = typeof InternalNetworksGetOutput.Type;
 
@@ -2463,37 +3491,7 @@ export type InternalNetworksListByL3IsolationDomainInput =
 // Output Schema
 export const InternalNetworksListByL3IsolationDomainOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => InternalNetworkSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type InternalNetworksListByL3IsolationDomainOutput =
@@ -2521,101 +3519,7 @@ export const InternalNetworksUpdateInput =
     l3IsolationDomainName: Schema.String.pipe(T.PathParam()),
     internalNetworkName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        annotation: Schema.optional(Schema.String),
-        mtu: Schema.optional(Schema.Number),
-        connectedIPv4Subnets: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              annotation: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        connectedIPv6Subnets: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              annotation: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        importRoutePolicy: Schema.optional(
-          Schema.Struct({
-            importIpv4RoutePolicyId: Schema.optional(Schema.String),
-            importIpv6RoutePolicyId: Schema.optional(Schema.String),
-          }),
-        ),
-        exportRoutePolicy: Schema.optional(
-          Schema.Struct({
-            exportIpv4RoutePolicyId: Schema.optional(Schema.String),
-            exportIpv6RoutePolicyId: Schema.optional(Schema.String),
-          }),
-        ),
-        ingressAclId: Schema.optional(Schema.String),
-        egressAclId: Schema.optional(Schema.String),
-        isMonitoringEnabled: Schema.optional(
-          Schema.Literals(["True", "False"]),
-        ),
-        bgpConfiguration: Schema.optional(
-          Schema.Struct({
-            annotation: Schema.optional(Schema.String),
-          }),
-        ),
-        staticRouteConfiguration: Schema.optional(
-          Schema.Struct({
-            bfdConfiguration: Schema.optional(
-              Schema.Struct({
-                administrativeState: Schema.optional(
-                  Schema.Literals(["Enabled", "Disabled", "MAT", "RMA"]),
-                ),
-                intervalInMilliSeconds: Schema.optional(Schema.Number),
-                multiplier: Schema.optional(Schema.Number),
-              }),
-            ),
-            ipv4Routes: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  prefix: Schema.String,
-                  nextHop: Schema.Array(Schema.String),
-                }),
-              ),
-            ),
-            ipv6Routes: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  prefix: Schema.String,
-                  nextHop: Schema.Array(Schema.String),
-                }),
-              ),
-            ),
-          }),
-        ),
-        nativeIpv4PrefixLimit: Schema.optional(
-          Schema.Struct({
-            prefixLimits: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  maximumRoutes: Schema.optional(Schema.Number),
-                  threshold: Schema.optional(Schema.Number),
-                  idleTimeExpiry: Schema.optional(Schema.Number),
-                }),
-              ),
-            ),
-          }),
-        ),
-        nativeIpv6PrefixLimit: Schema.optional(
-          Schema.Struct({
-            prefixLimits: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  maximumRoutes: Schema.optional(Schema.Number),
-                  threshold: Schema.optional(Schema.Number),
-                  idleTimeExpiry: Schema.optional(Schema.Number),
-                }),
-              ),
-            ),
-          }),
-        ),
-      }),
+      Schema.suspend(() => InternalNetworkPatchPropertiesSchema),
     ),
   }).pipe(
     T.Http({
@@ -2631,23 +3535,11 @@ export type InternalNetworksUpdateInput =
 // Output Schema
 export const InternalNetworksUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.suspend(() => InternalNetworkPropertiesSchema),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type InternalNetworksUpdateOutput =
   typeof InternalNetworksUpdateOutput.Type;
@@ -2675,9 +3567,7 @@ export const InternalNetworksUpdateAdministrativeStateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     l3IsolationDomainName: Schema.String.pipe(T.PathParam()),
     internalNetworkName: Schema.String.pipe(T.PathParam()),
-    state: Schema.optional(
-      Schema.Literals(["Enable", "Disable", "UnderMaintenance"]),
-    ),
+    state: Schema.optional(Schema.suspend(() => EnableDisableStateSchema)),
     resourceIds: Schema.optional(Schema.Array(Schema.String)),
   }).pipe(
     T.Http({
@@ -2710,51 +3600,9 @@ export const InternalNetworksUpdateAdministrativeStateOutput =
           startTime: Schema.optional(Schema.String),
           endTime: Schema.optional(Schema.String),
           operations: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                id: Schema.optional(Schema.String),
-                resourceId: Schema.optional(Schema.String),
-                name: Schema.optional(Schema.String),
-                status: Schema.String,
-                percentComplete: Schema.optional(Schema.Number),
-                startTime: Schema.optional(Schema.String),
-                endTime: Schema.optional(Schema.String),
-                operations: Schema.optional(Schema.Array(Schema.Unknown)),
-                error: Schema.optional(
-                  Schema.Struct({
-                    code: Schema.optional(Schema.String),
-                    message: Schema.optional(Schema.String),
-                    target: Schema.optional(Schema.String),
-                    details: Schema.optional(Schema.Array(Schema.Unknown)),
-                    additionalInfo: Schema.optional(
-                      Schema.Array(
-                        Schema.Struct({
-                          type: Schema.optional(Schema.String),
-                          info: Schema.optional(Schema.Unknown),
-                        }),
-                      ),
-                    ),
-                  }),
-                ),
-              }),
-            ),
+            Schema.Array(Schema.suspend(() => OperationStatusResultSchema)),
           ),
-          error: Schema.optional(
-            Schema.Struct({
-              code: Schema.optional(Schema.String),
-              message: Schema.optional(Schema.String),
-              target: Schema.optional(Schema.String),
-              details: Schema.optional(Schema.Array(Schema.Unknown)),
-              additionalInfo: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    type: Schema.optional(Schema.String),
-                    info: Schema.optional(Schema.Unknown),
-                  }),
-                ),
-              ),
-            }),
-          ),
+          error: Schema.optional(Schema.suspend(() => ErrorDetailSchema)),
         }),
       ),
     ),
@@ -2764,39 +3612,16 @@ export const InternalNetworksUpdateAdministrativeStateOutput =
         message: Schema.optional(Schema.String),
         target: Schema.optional(Schema.String),
         details: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              code: Schema.optional(Schema.String),
-              message: Schema.optional(Schema.String),
-              target: Schema.optional(Schema.String),
-              details: Schema.optional(Schema.Array(Schema.Unknown)),
-              additionalInfo: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    type: Schema.optional(Schema.String),
-                    info: Schema.optional(Schema.Unknown),
-                  }),
-                ),
-              ),
-            }),
-          ),
+          Schema.Array(Schema.suspend(() => ErrorDetailSchema)),
         ),
         additionalInfo: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              type: Schema.optional(Schema.String),
-              info: Schema.optional(Schema.Unknown),
-            }),
-          ),
+          Schema.Array(Schema.suspend(() => ErrorAdditionalInfoSchema)),
         ),
       }),
     ),
     resourceId: Schema.optional(Schema.String),
     properties: Schema.optional(
-      Schema.Struct({
-        successfulResources: Schema.optional(Schema.Array(Schema.String)),
-        failedResources: Schema.optional(Schema.Array(Schema.String)),
-      }),
+      Schema.suspend(() => UpdateAdministrativeStateResponsePropertiesSchema),
     ),
   });
 export type InternalNetworksUpdateAdministrativeStateOutput =
@@ -2824,10 +3649,12 @@ export const InternalNetworksUpdateBfdAdministrativeStateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     l3IsolationDomainName: Schema.String.pipe(T.PathParam()),
     internalNetworkName: Schema.String.pipe(T.PathParam()),
-    routeType: Schema.optional(Schema.Literals(["Static", "Bgp"])),
+    routeType: Schema.optional(
+      Schema.suspend(() => InternalNetworkRouteTypeSchema),
+    ),
     neighborAddress: Schema.optional(Schema.String),
     administrativeState: Schema.optional(
-      Schema.Literals(["Enabled", "Disabled", "MAT", "RMA"]),
+      Schema.suspend(() => BfdAdministrativeStateSchema),
     ),
   }).pipe(
     T.Http({
@@ -2860,51 +3687,9 @@ export const InternalNetworksUpdateBfdAdministrativeStateOutput =
           startTime: Schema.optional(Schema.String),
           endTime: Schema.optional(Schema.String),
           operations: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                id: Schema.optional(Schema.String),
-                resourceId: Schema.optional(Schema.String),
-                name: Schema.optional(Schema.String),
-                status: Schema.String,
-                percentComplete: Schema.optional(Schema.Number),
-                startTime: Schema.optional(Schema.String),
-                endTime: Schema.optional(Schema.String),
-                operations: Schema.optional(Schema.Array(Schema.Unknown)),
-                error: Schema.optional(
-                  Schema.Struct({
-                    code: Schema.optional(Schema.String),
-                    message: Schema.optional(Schema.String),
-                    target: Schema.optional(Schema.String),
-                    details: Schema.optional(Schema.Array(Schema.Unknown)),
-                    additionalInfo: Schema.optional(
-                      Schema.Array(
-                        Schema.Struct({
-                          type: Schema.optional(Schema.String),
-                          info: Schema.optional(Schema.Unknown),
-                        }),
-                      ),
-                    ),
-                  }),
-                ),
-              }),
-            ),
+            Schema.Array(Schema.suspend(() => OperationStatusResultSchema)),
           ),
-          error: Schema.optional(
-            Schema.Struct({
-              code: Schema.optional(Schema.String),
-              message: Schema.optional(Schema.String),
-              target: Schema.optional(Schema.String),
-              details: Schema.optional(Schema.Array(Schema.Unknown)),
-              additionalInfo: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    type: Schema.optional(Schema.String),
-                    info: Schema.optional(Schema.Unknown),
-                  }),
-                ),
-              ),
-            }),
-          ),
+          error: Schema.optional(Schema.suspend(() => ErrorDetailSchema)),
         }),
       ),
     ),
@@ -2914,48 +3699,19 @@ export const InternalNetworksUpdateBfdAdministrativeStateOutput =
         message: Schema.optional(Schema.String),
         target: Schema.optional(Schema.String),
         details: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              code: Schema.optional(Schema.String),
-              message: Schema.optional(Schema.String),
-              target: Schema.optional(Schema.String),
-              details: Schema.optional(Schema.Array(Schema.Unknown)),
-              additionalInfo: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    type: Schema.optional(Schema.String),
-                    info: Schema.optional(Schema.Unknown),
-                  }),
-                ),
-              ),
-            }),
-          ),
+          Schema.Array(Schema.suspend(() => ErrorDetailSchema)),
         ),
         additionalInfo: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              type: Schema.optional(Schema.String),
-              info: Schema.optional(Schema.Unknown),
-            }),
-          ),
+          Schema.Array(Schema.suspend(() => ErrorAdditionalInfoSchema)),
         ),
       }),
     ),
     resourceId: Schema.optional(Schema.String),
     properties: Schema.optional(
-      Schema.Struct({
-        neighborAddressAdministrativeStatus: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              neighborAddress: Schema.optional(Schema.String),
-              administrativeState: Schema.optional(
-                Schema.Literals(["Enabled", "Disabled", "MAT", "RMA"]),
-              ),
-              error: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-      }),
+      Schema.suspend(
+        () =>
+          InternalNetworkUpdateBfdAdministrativeStateResponsePropertiesSchema,
+      ),
     ),
   });
 export type InternalNetworksUpdateBfdAdministrativeStateOutput =
@@ -2985,7 +3741,7 @@ export const InternalNetworksUpdateBgpAdministrativeStateInput =
     internalNetworkName: Schema.String.pipe(T.PathParam()),
     neighborAddress: Schema.optional(Schema.String),
     administrativeState: Schema.optional(
-      Schema.Literals(["Enabled", "Disabled"]),
+      Schema.suspend(() => BgpAdministrativeStateSchema),
     ),
   }).pipe(
     T.Http({
@@ -3018,51 +3774,9 @@ export const InternalNetworksUpdateBgpAdministrativeStateOutput =
           startTime: Schema.optional(Schema.String),
           endTime: Schema.optional(Schema.String),
           operations: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                id: Schema.optional(Schema.String),
-                resourceId: Schema.optional(Schema.String),
-                name: Schema.optional(Schema.String),
-                status: Schema.String,
-                percentComplete: Schema.optional(Schema.Number),
-                startTime: Schema.optional(Schema.String),
-                endTime: Schema.optional(Schema.String),
-                operations: Schema.optional(Schema.Array(Schema.Unknown)),
-                error: Schema.optional(
-                  Schema.Struct({
-                    code: Schema.optional(Schema.String),
-                    message: Schema.optional(Schema.String),
-                    target: Schema.optional(Schema.String),
-                    details: Schema.optional(Schema.Array(Schema.Unknown)),
-                    additionalInfo: Schema.optional(
-                      Schema.Array(
-                        Schema.Struct({
-                          type: Schema.optional(Schema.String),
-                          info: Schema.optional(Schema.Unknown),
-                        }),
-                      ),
-                    ),
-                  }),
-                ),
-              }),
-            ),
+            Schema.Array(Schema.suspend(() => OperationStatusResultSchema)),
           ),
-          error: Schema.optional(
-            Schema.Struct({
-              code: Schema.optional(Schema.String),
-              message: Schema.optional(Schema.String),
-              target: Schema.optional(Schema.String),
-              details: Schema.optional(Schema.Array(Schema.Unknown)),
-              additionalInfo: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    type: Schema.optional(Schema.String),
-                    info: Schema.optional(Schema.Unknown),
-                  }),
-                ),
-              ),
-            }),
-          ),
+          error: Schema.optional(Schema.suspend(() => ErrorDetailSchema)),
         }),
       ),
     ),
@@ -3072,48 +3786,19 @@ export const InternalNetworksUpdateBgpAdministrativeStateOutput =
         message: Schema.optional(Schema.String),
         target: Schema.optional(Schema.String),
         details: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              code: Schema.optional(Schema.String),
-              message: Schema.optional(Schema.String),
-              target: Schema.optional(Schema.String),
-              details: Schema.optional(Schema.Array(Schema.Unknown)),
-              additionalInfo: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    type: Schema.optional(Schema.String),
-                    info: Schema.optional(Schema.Unknown),
-                  }),
-                ),
-              ),
-            }),
-          ),
+          Schema.Array(Schema.suspend(() => ErrorDetailSchema)),
         ),
         additionalInfo: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              type: Schema.optional(Schema.String),
-              info: Schema.optional(Schema.Unknown),
-            }),
-          ),
+          Schema.Array(Schema.suspend(() => ErrorAdditionalInfoSchema)),
         ),
       }),
     ),
     resourceId: Schema.optional(Schema.String),
     properties: Schema.optional(
-      Schema.Struct({
-        neighborAddressAdministrativeStatus: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              neighborAddress: Schema.optional(Schema.String),
-              administrativeState: Schema.optional(
-                Schema.Literals(["Enabled", "Disabled"]),
-              ),
-              error: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-      }),
+      Schema.suspend(
+        () =>
+          InternalNetworkUpdateBgpAdministrativeStateResponsePropertiesSchema,
+      ),
     ),
   });
 export type InternalNetworksUpdateBgpAdministrativeStateOutput =
@@ -3141,9 +3826,7 @@ export const InternalNetworksUpdateStaticRouteBfdAdministrativeStateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     l3IsolationDomainName: Schema.String.pipe(T.PathParam()),
     internalNetworkName: Schema.String.pipe(T.PathParam()),
-    state: Schema.optional(
-      Schema.Literals(["Enable", "Disable", "UnderMaintenance"]),
-    ),
+    state: Schema.optional(Schema.suspend(() => EnableDisableStateSchema)),
     resourceIds: Schema.optional(Schema.Array(Schema.String)),
   }).pipe(
     T.Http({
@@ -3176,51 +3859,9 @@ export const InternalNetworksUpdateStaticRouteBfdAdministrativeStateOutput =
           startTime: Schema.optional(Schema.String),
           endTime: Schema.optional(Schema.String),
           operations: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                id: Schema.optional(Schema.String),
-                resourceId: Schema.optional(Schema.String),
-                name: Schema.optional(Schema.String),
-                status: Schema.String,
-                percentComplete: Schema.optional(Schema.Number),
-                startTime: Schema.optional(Schema.String),
-                endTime: Schema.optional(Schema.String),
-                operations: Schema.optional(Schema.Array(Schema.Unknown)),
-                error: Schema.optional(
-                  Schema.Struct({
-                    code: Schema.optional(Schema.String),
-                    message: Schema.optional(Schema.String),
-                    target: Schema.optional(Schema.String),
-                    details: Schema.optional(Schema.Array(Schema.Unknown)),
-                    additionalInfo: Schema.optional(
-                      Schema.Array(
-                        Schema.Struct({
-                          type: Schema.optional(Schema.String),
-                          info: Schema.optional(Schema.Unknown),
-                        }),
-                      ),
-                    ),
-                  }),
-                ),
-              }),
-            ),
+            Schema.Array(Schema.suspend(() => OperationStatusResultSchema)),
           ),
-          error: Schema.optional(
-            Schema.Struct({
-              code: Schema.optional(Schema.String),
-              message: Schema.optional(Schema.String),
-              target: Schema.optional(Schema.String),
-              details: Schema.optional(Schema.Array(Schema.Unknown)),
-              additionalInfo: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    type: Schema.optional(Schema.String),
-                    info: Schema.optional(Schema.Unknown),
-                  }),
-                ),
-              ),
-            }),
-          ),
+          error: Schema.optional(Schema.suspend(() => ErrorDetailSchema)),
         }),
       ),
     ),
@@ -3230,39 +3871,16 @@ export const InternalNetworksUpdateStaticRouteBfdAdministrativeStateOutput =
         message: Schema.optional(Schema.String),
         target: Schema.optional(Schema.String),
         details: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              code: Schema.optional(Schema.String),
-              message: Schema.optional(Schema.String),
-              target: Schema.optional(Schema.String),
-              details: Schema.optional(Schema.Array(Schema.Unknown)),
-              additionalInfo: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    type: Schema.optional(Schema.String),
-                    info: Schema.optional(Schema.Unknown),
-                  }),
-                ),
-              ),
-            }),
-          ),
+          Schema.Array(Schema.suspend(() => ErrorDetailSchema)),
         ),
         additionalInfo: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              type: Schema.optional(Schema.String),
-              info: Schema.optional(Schema.Unknown),
-            }),
-          ),
+          Schema.Array(Schema.suspend(() => ErrorAdditionalInfoSchema)),
         ),
       }),
     ),
     resourceId: Schema.optional(Schema.String),
     properties: Schema.optional(
-      Schema.Struct({
-        successfulResources: Schema.optional(Schema.Array(Schema.String)),
-        failedResources: Schema.optional(Schema.Array(Schema.String)),
-      }),
+      Schema.suspend(() => UpdateAdministrativeStateResponsePropertiesSchema),
     ),
   });
 export type InternalNetworksUpdateStaticRouteBfdAdministrativeStateOutput =
@@ -3289,9 +3907,7 @@ export const InternetGatewayRulesCreateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     internetGatewayRuleName: Schema.String.pipe(T.PathParam()),
-    properties: Schema.Struct({
-      annotation: Schema.optional(Schema.String),
-    }),
+    properties: Schema.suspend(() => InternetGatewayRulePropertiesSchema),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     location: Schema.String,
   }).pipe(
@@ -3308,23 +3924,13 @@ export type InternetGatewayRulesCreateInput =
 // Output Schema
 export const InternetGatewayRulesCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.suspend(() => InternetGatewayRulePropertiesSchema),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type InternetGatewayRulesCreateOutput =
   typeof InternetGatewayRulesCreateOutput.Type;
@@ -3401,23 +4007,13 @@ export type InternetGatewayRulesGetInput =
 // Output Schema
 export const InternetGatewayRulesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.suspend(() => InternetGatewayRulePropertiesSchema),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type InternetGatewayRulesGetOutput =
   typeof InternetGatewayRulesGetOutput.Type;
@@ -3455,37 +4051,7 @@ export type InternetGatewayRulesListByResourceGroupInput =
 // Output Schema
 export const InternetGatewayRulesListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => InternetGatewayRuleSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type InternetGatewayRulesListByResourceGroupOutput =
@@ -3521,37 +4087,7 @@ export type InternetGatewayRulesListBySubscriptionInput =
 // Output Schema
 export const InternetGatewayRulesListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => InternetGatewayRuleSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type InternetGatewayRulesListBySubscriptionOutput =
@@ -3590,23 +4126,13 @@ export type InternetGatewayRulesUpdateInput =
 // Output Schema
 export const InternetGatewayRulesUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.suspend(() => InternetGatewayRulePropertiesSchema),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type InternetGatewayRulesUpdateOutput =
   typeof InternetGatewayRulesUpdateOutput.Type;
@@ -3632,32 +4158,7 @@ export const InternetGatewaysCreateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     internetGatewayName: Schema.String.pipe(T.PathParam()),
-    properties: Schema.Struct({
-      annotation: Schema.optional(Schema.String),
-      internetGatewayRuleId: Schema.optional(Schema.String),
-      ipv4Address: Schema.optional(Schema.String),
-      port: Schema.optional(Schema.Number),
-      type: Schema.optional(Schema.Literals(["Infrastructure", "Workload"])),
-      internetGatewayType: Schema.optional(
-        Schema.Literals(["Infrastructure", "Workload"]),
-      ),
-      networkFabricControllerId: Schema.String,
-      lastOperation: Schema.optional(
-        Schema.Struct({
-          details: Schema.optional(Schema.String),
-        }),
-      ),
-      provisioningState: Schema.optional(
-        Schema.Literals([
-          "Accepted",
-          "Succeeded",
-          "Updating",
-          "Deleting",
-          "Failed",
-          "Canceled",
-        ]),
-      ),
-    }),
+    properties: Schema.suspend(() => InternetGatewayPropertiesSchema),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     location: Schema.String,
   }).pipe(
@@ -3674,23 +4175,13 @@ export type InternetGatewaysCreateInput =
 // Output Schema
 export const InternetGatewaysCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.suspend(() => InternetGatewayPropertiesSchema),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type InternetGatewaysCreateOutput =
   typeof InternetGatewaysCreateOutput.Type;
@@ -3766,23 +4257,13 @@ export type InternetGatewaysGetInput = typeof InternetGatewaysGetInput.Type;
 // Output Schema
 export const InternetGatewaysGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.suspend(() => InternetGatewayPropertiesSchema),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type InternetGatewaysGetOutput = typeof InternetGatewaysGetOutput.Type;
 
@@ -3817,37 +4298,7 @@ export type InternetGatewaysListByResourceGroupInput =
 // Output Schema
 export const InternetGatewaysListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => InternetGatewaySchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type InternetGatewaysListByResourceGroupOutput =
@@ -3883,37 +4334,7 @@ export type InternetGatewaysListBySubscriptionInput =
 // Output Schema
 export const InternetGatewaysListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => InternetGatewaySchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type InternetGatewaysListBySubscriptionOutput =
@@ -3938,9 +4359,7 @@ export const InternetGatewaysUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     internetGatewayName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        internetGatewayRuleId: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(() => InternetGatewayPatchPropertiesSchema),
     ),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
@@ -3957,23 +4376,13 @@ export type InternetGatewaysUpdateInput =
 // Output Schema
 export const InternetGatewaysUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.suspend(() => InternetGatewayPropertiesSchema),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type InternetGatewaysUpdateOutput =
   typeof InternetGatewaysUpdateOutput.Type;
@@ -3999,70 +4408,7 @@ export const IpCommunitiesCreateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     ipCommunityName: Schema.String.pipe(T.PathParam()),
-    properties: Schema.Struct({
-      annotation: Schema.optional(Schema.String),
-      networkFabricId: Schema.optional(Schema.String),
-      ipCommunityRules: Schema.Array(
-        Schema.Struct({
-          action: Schema.Literals(["Permit", "Deny"]),
-          sequenceNumber: Schema.Number,
-          wellKnownCommunities: Schema.optional(
-            Schema.Array(
-              Schema.Literals([
-                "Internet",
-                "LocalAS",
-                "NoAdvertise",
-                "NoExport",
-                "GShut",
-              ]),
-            ),
-          ),
-          communityMembers: Schema.Array(Schema.String),
-        }),
-      ),
-      lastOperation: Schema.optional(
-        Schema.Struct({
-          details: Schema.optional(Schema.String),
-        }),
-      ),
-      configurationState: Schema.optional(
-        Schema.Literals([
-          "Succeeded",
-          "Failed",
-          "Rejected",
-          "Accepted",
-          "Provisioned",
-          "ErrorProvisioning",
-          "Deprovisioning",
-          "Deprovisioned",
-          "ErrorDeprovisioning",
-          "DeferredControl",
-          "Provisioning",
-          "PendingCommit",
-          "PendingAdministrativeUpdate",
-        ]),
-      ),
-      provisioningState: Schema.optional(
-        Schema.Literals([
-          "Accepted",
-          "Succeeded",
-          "Updating",
-          "Deleting",
-          "Failed",
-          "Canceled",
-        ]),
-      ),
-      administrativeState: Schema.optional(
-        Schema.Literals([
-          "Enabled",
-          "Disabled",
-          "MAT",
-          "RMA",
-          "UnderMaintenance",
-          "EnabledDegraded",
-        ]),
-      ),
-    }),
+    properties: Schema.suspend(() => IpCommunityPropertiesSchema),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     location: Schema.String,
   }).pipe(
@@ -4078,23 +4424,13 @@ export type IpCommunitiesCreateInput = typeof IpCommunitiesCreateInput.Type;
 // Output Schema
 export const IpCommunitiesCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.suspend(() => IpCommunityPropertiesSchema),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type IpCommunitiesCreateOutput = typeof IpCommunitiesCreateOutput.Type;
 
@@ -4162,23 +4498,13 @@ export type IpCommunitiesGetInput = typeof IpCommunitiesGetInput.Type;
 // Output Schema
 export const IpCommunitiesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
+    properties: Schema.suspend(() => IpCommunityPropertiesSchema),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   },
 );
 export type IpCommunitiesGetOutput = typeof IpCommunitiesGetOutput.Type;
@@ -4214,37 +4540,7 @@ export type IpCommunitiesListByResourceGroupInput =
 // Output Schema
 export const IpCommunitiesListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => IpCommunitySchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type IpCommunitiesListByResourceGroupOutput =
@@ -4280,37 +4576,7 @@ export type IpCommunitiesListBySubscriptionInput =
 // Output Schema
 export const IpCommunitiesListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => IpCommunitySchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type IpCommunitiesListBySubscriptionOutput =
@@ -4335,28 +4601,7 @@ export const IpCommunitiesUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     ipCommunityName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        ipCommunityRules: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              action: Schema.Literals(["Permit", "Deny"]),
-              sequenceNumber: Schema.Number,
-              wellKnownCommunities: Schema.optional(
-                Schema.Array(
-                  Schema.Literals([
-                    "Internet",
-                    "LocalAS",
-                    "NoAdvertise",
-                    "NoExport",
-                    "GShut",
-                  ]),
-                ),
-              ),
-              communityMembers: Schema.Array(Schema.String),
-            }),
-          ),
-        ),
-      }),
+      Schema.suspend(() => IpCommunityPatchablePropertiesSchema),
     ),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
@@ -4372,23 +4617,13 @@ export type IpCommunitiesUpdateInput = typeof IpCommunitiesUpdateInput.Type;
 // Output Schema
 export const IpCommunitiesUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.suspend(() => IpCommunityPropertiesSchema),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type IpCommunitiesUpdateOutput = typeof IpCommunitiesUpdateOutput.Type;
 
@@ -4411,59 +4646,7 @@ export const IpExtendedCommunitiesCreateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     ipExtendedCommunityName: Schema.String.pipe(T.PathParam()),
-    properties: Schema.Struct({
-      annotation: Schema.optional(Schema.String),
-      ipExtendedCommunityRules: Schema.Array(
-        Schema.Struct({
-          action: Schema.Literals(["Permit", "Deny"]),
-          sequenceNumber: Schema.Number,
-          routeTargets: Schema.Array(Schema.String),
-        }),
-      ),
-      networkFabricId: Schema.optional(Schema.String),
-      lastOperation: Schema.optional(
-        Schema.Struct({
-          details: Schema.optional(Schema.String),
-        }),
-      ),
-      configurationState: Schema.optional(
-        Schema.Literals([
-          "Succeeded",
-          "Failed",
-          "Rejected",
-          "Accepted",
-          "Provisioned",
-          "ErrorProvisioning",
-          "Deprovisioning",
-          "Deprovisioned",
-          "ErrorDeprovisioning",
-          "DeferredControl",
-          "Provisioning",
-          "PendingCommit",
-          "PendingAdministrativeUpdate",
-        ]),
-      ),
-      provisioningState: Schema.optional(
-        Schema.Literals([
-          "Accepted",
-          "Succeeded",
-          "Updating",
-          "Deleting",
-          "Failed",
-          "Canceled",
-        ]),
-      ),
-      administrativeState: Schema.optional(
-        Schema.Literals([
-          "Enabled",
-          "Disabled",
-          "MAT",
-          "RMA",
-          "UnderMaintenance",
-          "EnabledDegraded",
-        ]),
-      ),
-    }),
+    properties: Schema.suspend(() => IpExtendedCommunityPropertiesSchema),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     location: Schema.String,
   }).pipe(
@@ -4480,23 +4663,13 @@ export type IpExtendedCommunitiesCreateInput =
 // Output Schema
 export const IpExtendedCommunitiesCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.suspend(() => IpExtendedCommunityPropertiesSchema),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type IpExtendedCommunitiesCreateOutput =
   typeof IpExtendedCommunitiesCreateOutput.Type;
@@ -4573,23 +4746,13 @@ export type IpExtendedCommunitiesGetInput =
 // Output Schema
 export const IpExtendedCommunitiesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.suspend(() => IpExtendedCommunityPropertiesSchema),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type IpExtendedCommunitiesGetOutput =
   typeof IpExtendedCommunitiesGetOutput.Type;
@@ -4627,37 +4790,7 @@ export type IpExtendedCommunitiesListByResourceGroupInput =
 // Output Schema
 export const IpExtendedCommunitiesListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => IpExtendedCommunitySchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type IpExtendedCommunitiesListByResourceGroupOutput =
@@ -4693,37 +4826,7 @@ export type IpExtendedCommunitiesListBySubscriptionInput =
 // Output Schema
 export const IpExtendedCommunitiesListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => IpExtendedCommunitySchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type IpExtendedCommunitiesListBySubscriptionOutput =
@@ -4748,18 +4851,7 @@ export const IpExtendedCommunitiesUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     ipExtendedCommunityName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        annotation: Schema.optional(Schema.String),
-        ipExtendedCommunityRules: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              action: Schema.Literals(["Permit", "Deny"]),
-              sequenceNumber: Schema.Number,
-              routeTargets: Schema.Array(Schema.String),
-            }),
-          ),
-        ),
-      }),
+      Schema.suspend(() => IpExtendedCommunityPatchPropertiesSchema),
     ),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
@@ -4776,23 +4868,13 @@ export type IpExtendedCommunitiesUpdateInput =
 // Output Schema
 export const IpExtendedCommunitiesUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.suspend(() => IpExtendedCommunityPropertiesSchema),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type IpExtendedCommunitiesUpdateOutput =
   typeof IpExtendedCommunitiesUpdateOutput.Type;
@@ -4817,68 +4899,7 @@ export const IpPrefixesCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   ipPrefixName: Schema.String.pipe(T.PathParam()),
-  properties: Schema.Struct({
-    annotation: Schema.optional(Schema.String),
-    networkFabricId: Schema.optional(Schema.String),
-    ipPrefixRules: Schema.Array(
-      Schema.Struct({
-        action: Schema.Literals(["Permit", "Deny"]),
-        sequenceNumber: Schema.Number,
-        networkPrefix: Schema.String,
-        condition: Schema.optional(
-          Schema.Literals([
-            "EqualTo",
-            "GreaterThanOrEqualTo",
-            "LesserThanOrEqualTo",
-            "Range",
-          ]),
-        ),
-        subnetMaskLength: Schema.optional(Schema.String),
-      }),
-    ),
-    lastOperation: Schema.optional(
-      Schema.Struct({
-        details: Schema.optional(Schema.String),
-      }),
-    ),
-    configurationState: Schema.optional(
-      Schema.Literals([
-        "Succeeded",
-        "Failed",
-        "Rejected",
-        "Accepted",
-        "Provisioned",
-        "ErrorProvisioning",
-        "Deprovisioning",
-        "Deprovisioned",
-        "ErrorDeprovisioning",
-        "DeferredControl",
-        "Provisioning",
-        "PendingCommit",
-        "PendingAdministrativeUpdate",
-      ]),
-    ),
-    provisioningState: Schema.optional(
-      Schema.Literals([
-        "Accepted",
-        "Succeeded",
-        "Updating",
-        "Deleting",
-        "Failed",
-        "Canceled",
-      ]),
-    ),
-    administrativeState: Schema.optional(
-      Schema.Literals([
-        "Enabled",
-        "Disabled",
-        "MAT",
-        "RMA",
-        "UnderMaintenance",
-        "EnabledDegraded",
-      ]),
-    ),
-  }),
+  properties: Schema.suspend(() => IpPrefixPropertiesSchema),
   tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   location: Schema.String,
 }).pipe(
@@ -4894,23 +4915,13 @@ export type IpPrefixesCreateInput = typeof IpPrefixesCreateInput.Type;
 // Output Schema
 export const IpPrefixesCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
+    properties: Schema.suspend(() => IpPrefixPropertiesSchema),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   },
 );
 export type IpPrefixesCreateOutput = typeof IpPrefixesCreateOutput.Type;
@@ -4976,23 +4987,13 @@ export type IpPrefixesGetInput = typeof IpPrefixesGetInput.Type;
 
 // Output Schema
 export const IpPrefixesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.suspend(() => IpPrefixPropertiesSchema),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  location: Schema.String,
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
-  systemData: Schema.optional(
-    Schema.Struct({
-      createdBy: Schema.optional(Schema.String),
-      createdByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      createdAt: Schema.optional(Schema.String),
-      lastModifiedBy: Schema.optional(Schema.String),
-      lastModifiedByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      lastModifiedAt: Schema.optional(Schema.String),
-    }),
-  ),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
 });
 export type IpPrefixesGetOutput = typeof IpPrefixesGetOutput.Type;
 
@@ -5027,37 +5028,7 @@ export type IpPrefixesListByResourceGroupInput =
 // Output Schema
 export const IpPrefixesListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => IpPrefixSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type IpPrefixesListByResourceGroupOutput =
@@ -5093,37 +5064,7 @@ export type IpPrefixesListBySubscriptionInput =
 // Output Schema
 export const IpPrefixesListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => IpPrefixSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type IpPrefixesListBySubscriptionOutput =
@@ -5147,27 +5088,7 @@ export const IpPrefixesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   ipPrefixName: Schema.String.pipe(T.PathParam()),
   properties: Schema.optional(
-    Schema.Struct({
-      annotation: Schema.optional(Schema.String),
-      ipPrefixRules: Schema.optional(
-        Schema.Array(
-          Schema.Struct({
-            action: Schema.Literals(["Permit", "Deny"]),
-            sequenceNumber: Schema.Number,
-            networkPrefix: Schema.String,
-            condition: Schema.optional(
-              Schema.Literals([
-                "EqualTo",
-                "GreaterThanOrEqualTo",
-                "LesserThanOrEqualTo",
-                "Range",
-              ]),
-            ),
-            subnetMaskLength: Schema.optional(Schema.String),
-          }),
-        ),
-      ),
-    }),
+    Schema.suspend(() => IpPrefixPatchPropertiesSchema),
   ),
   tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
 }).pipe(
@@ -5183,23 +5104,13 @@ export type IpPrefixesUpdateInput = typeof IpPrefixesUpdateInput.Type;
 // Output Schema
 export const IpPrefixesUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
+    properties: Schema.suspend(() => IpPrefixPropertiesSchema),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   },
 );
 export type IpPrefixesUpdateOutput = typeof IpPrefixesUpdateOutput.Type;
@@ -5237,22 +5148,10 @@ export type L2IsolationDomainsCommitConfigurationInput =
 // Output Schema
 export const L2IsolationDomainsCommitConfigurationOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    error: Schema.optional(
-      Schema.Struct({
-        code: Schema.optional(Schema.String),
-        message: Schema.optional(Schema.String),
-        target: Schema.optional(Schema.String),
-        details: Schema.optional(Schema.Array(Schema.Unknown)),
-        additionalInfo: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              type: Schema.optional(Schema.String),
-              info: Schema.optional(Schema.Unknown),
-            }),
-          ),
-        ),
-      }),
+    configurationState: Schema.optional(
+      Schema.suspend(() => ConfigurationStateSchema),
     ),
+    error: Schema.optional(Schema.suspend(() => ErrorDetailSchema)),
   });
 export type L2IsolationDomainsCommitConfigurationOutput =
   typeof L2IsolationDomainsCommitConfigurationOutput.Type;
@@ -5277,27 +5176,14 @@ export const L2IsolationDomainsCreateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     l2IsolationDomainName: Schema.String.pipe(T.PathParam()),
-    properties: Schema.Struct({
-      annotation: Schema.optional(Schema.String),
-    }),
+    properties: Schema.suspend(() => L2IsolationDomainPropertiesSchema),
     identity: Schema.optional(
       Schema.Struct({
         principalId: Schema.optional(Schema.String),
         tenantId: Schema.optional(Schema.String),
-        type: Schema.Literals([
-          "None",
-          "SystemAssigned",
-          "UserAssigned",
-          "SystemAssigned,UserAssigned",
-        ]),
+        type: Schema.suspend(() => ManagedServiceIdentityTypeSchema),
         userAssignedIdentities: Schema.optional(
-          Schema.Record(
-            Schema.String,
-            Schema.Struct({
-              principalId: Schema.optional(Schema.String),
-              clientId: Schema.optional(Schema.String),
-            }),
-          ),
+          Schema.suspend(() => UserAssignedIdentitiesSchema),
         ),
       }),
     ),
@@ -5317,23 +5203,23 @@ export type L2IsolationDomainsCreateInput =
 // Output Schema
 export const L2IsolationDomainsCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.suspend(() => L2IsolationDomainPropertiesSchema),
+    identity: Schema.optional(
+      Schema.Struct({
+        principalId: Schema.optional(Schema.String),
+        tenantId: Schema.optional(Schema.String),
+        type: Schema.suspend(() => ManagedServiceIdentityTypeSchema),
+        userAssignedIdentities: Schema.optional(
+          Schema.suspend(() => UserAssignedIdentitiesSchema),
+        ),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type L2IsolationDomainsCreateOutput =
   typeof L2IsolationDomainsCreateOutput.Type;
@@ -5409,23 +5295,23 @@ export type L2IsolationDomainsGetInput = typeof L2IsolationDomainsGetInput.Type;
 // Output Schema
 export const L2IsolationDomainsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.suspend(() => L2IsolationDomainPropertiesSchema),
+    identity: Schema.optional(
+      Schema.Struct({
+        principalId: Schema.optional(Schema.String),
+        tenantId: Schema.optional(Schema.String),
+        type: Schema.suspend(() => ManagedServiceIdentityTypeSchema),
+        userAssignedIdentities: Schema.optional(
+          Schema.suspend(() => UserAssignedIdentitiesSchema),
+        ),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type L2IsolationDomainsGetOutput =
   typeof L2IsolationDomainsGetOutput.Type;
@@ -5463,37 +5349,7 @@ export type L2IsolationDomainsListByResourceGroupInput =
 // Output Schema
 export const L2IsolationDomainsListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => L2IsolationDomainSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type L2IsolationDomainsListByResourceGroupOutput =
@@ -5529,37 +5385,7 @@ export type L2IsolationDomainsListBySubscriptionInput =
 // Output Schema
 export const L2IsolationDomainsListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => L2IsolationDomainSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type L2IsolationDomainsListBySubscriptionOutput =
@@ -5584,30 +5410,10 @@ export const L2IsolationDomainsUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     l2IsolationDomainName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        annotation: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(() => L2IsolationDomainPatchPropertiesSchema),
     ),
     identity: Schema.optional(
-      Schema.Struct({
-        type: Schema.optional(
-          Schema.Literals([
-            "None",
-            "SystemAssigned",
-            "UserAssigned",
-            "SystemAssigned,UserAssigned",
-          ]),
-        ),
-        userAssignedIdentities: Schema.optional(
-          Schema.Record(
-            Schema.String,
-            Schema.Struct({
-              principalId: Schema.optional(Schema.String),
-              clientId: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-      }),
+      Schema.suspend(() => ManagedServiceIdentityPatchSchema),
     ),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
@@ -5624,23 +5430,23 @@ export type L2IsolationDomainsUpdateInput =
 // Output Schema
 export const L2IsolationDomainsUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.suspend(() => L2IsolationDomainPropertiesSchema),
+    identity: Schema.optional(
+      Schema.Struct({
+        principalId: Schema.optional(Schema.String),
+        tenantId: Schema.optional(Schema.String),
+        type: Schema.suspend(() => ManagedServiceIdentityTypeSchema),
+        userAssignedIdentities: Schema.optional(
+          Schema.suspend(() => UserAssignedIdentitiesSchema),
+        ),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type L2IsolationDomainsUpdateOutput =
   typeof L2IsolationDomainsUpdateOutput.Type;
@@ -5666,9 +5472,7 @@ export const L2IsolationDomainsUpdateAdministrativeStateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     l2IsolationDomainName: Schema.String.pipe(T.PathParam()),
-    state: Schema.optional(
-      Schema.Literals(["Enable", "Disable", "UnderMaintenance"]),
-    ),
+    state: Schema.optional(Schema.suspend(() => EnableDisableStateSchema)),
     resourceIds: Schema.optional(Schema.Array(Schema.String)),
   }).pipe(
     T.Http({
@@ -5701,51 +5505,9 @@ export const L2IsolationDomainsUpdateAdministrativeStateOutput =
           startTime: Schema.optional(Schema.String),
           endTime: Schema.optional(Schema.String),
           operations: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                id: Schema.optional(Schema.String),
-                resourceId: Schema.optional(Schema.String),
-                name: Schema.optional(Schema.String),
-                status: Schema.String,
-                percentComplete: Schema.optional(Schema.Number),
-                startTime: Schema.optional(Schema.String),
-                endTime: Schema.optional(Schema.String),
-                operations: Schema.optional(Schema.Array(Schema.Unknown)),
-                error: Schema.optional(
-                  Schema.Struct({
-                    code: Schema.optional(Schema.String),
-                    message: Schema.optional(Schema.String),
-                    target: Schema.optional(Schema.String),
-                    details: Schema.optional(Schema.Array(Schema.Unknown)),
-                    additionalInfo: Schema.optional(
-                      Schema.Array(
-                        Schema.Struct({
-                          type: Schema.optional(Schema.String),
-                          info: Schema.optional(Schema.Unknown),
-                        }),
-                      ),
-                    ),
-                  }),
-                ),
-              }),
-            ),
+            Schema.Array(Schema.suspend(() => OperationStatusResultSchema)),
           ),
-          error: Schema.optional(
-            Schema.Struct({
-              code: Schema.optional(Schema.String),
-              message: Schema.optional(Schema.String),
-              target: Schema.optional(Schema.String),
-              details: Schema.optional(Schema.Array(Schema.Unknown)),
-              additionalInfo: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    type: Schema.optional(Schema.String),
-                    info: Schema.optional(Schema.Unknown),
-                  }),
-                ),
-              ),
-            }),
-          ),
+          error: Schema.optional(Schema.suspend(() => ErrorDetailSchema)),
         }),
       ),
     ),
@@ -5755,39 +5517,16 @@ export const L2IsolationDomainsUpdateAdministrativeStateOutput =
         message: Schema.optional(Schema.String),
         target: Schema.optional(Schema.String),
         details: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              code: Schema.optional(Schema.String),
-              message: Schema.optional(Schema.String),
-              target: Schema.optional(Schema.String),
-              details: Schema.optional(Schema.Array(Schema.Unknown)),
-              additionalInfo: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    type: Schema.optional(Schema.String),
-                    info: Schema.optional(Schema.Unknown),
-                  }),
-                ),
-              ),
-            }),
-          ),
+          Schema.Array(Schema.suspend(() => ErrorDetailSchema)),
         ),
         additionalInfo: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              type: Schema.optional(Schema.String),
-              info: Schema.optional(Schema.Unknown),
-            }),
-          ),
+          Schema.Array(Schema.suspend(() => ErrorAdditionalInfoSchema)),
         ),
       }),
     ),
     resourceId: Schema.optional(Schema.String),
     properties: Schema.optional(
-      Schema.Struct({
-        successfulResources: Schema.optional(Schema.Array(Schema.String)),
-        failedResources: Schema.optional(Schema.Array(Schema.String)),
-      }),
+      Schema.suspend(() => UpdateAdministrativeStateResponsePropertiesSchema),
     ),
   });
 export type L2IsolationDomainsUpdateAdministrativeStateOutput =
@@ -5827,22 +5566,11 @@ export type L2IsolationDomainsValidateConfigurationInput =
 // Output Schema
 export const L2IsolationDomainsValidateConfigurationOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    error: Schema.optional(
-      Schema.Struct({
-        code: Schema.optional(Schema.String),
-        message: Schema.optional(Schema.String),
-        target: Schema.optional(Schema.String),
-        details: Schema.optional(Schema.Array(Schema.Unknown)),
-        additionalInfo: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              type: Schema.optional(Schema.String),
-              info: Schema.optional(Schema.Unknown),
-            }),
-          ),
-        ),
-      }),
+    configurationState: Schema.optional(
+      Schema.suspend(() => ConfigurationStateSchema),
     ),
+    url: Schema.optional(Schema.String),
+    error: Schema.optional(Schema.suspend(() => ErrorDetailSchema)),
   });
 export type L2IsolationDomainsValidateConfigurationOutput =
   typeof L2IsolationDomainsValidateConfigurationOutput.Type;
@@ -5881,22 +5609,10 @@ export type L3IsolationDomainsCommitConfigurationInput =
 // Output Schema
 export const L3IsolationDomainsCommitConfigurationOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    error: Schema.optional(
-      Schema.Struct({
-        code: Schema.optional(Schema.String),
-        message: Schema.optional(Schema.String),
-        target: Schema.optional(Schema.String),
-        details: Schema.optional(Schema.Array(Schema.Unknown)),
-        additionalInfo: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              type: Schema.optional(Schema.String),
-              info: Schema.optional(Schema.Unknown),
-            }),
-          ),
-        ),
-      }),
+    configurationState: Schema.optional(
+      Schema.suspend(() => ConfigurationStateSchema),
     ),
+    error: Schema.optional(Schema.suspend(() => ErrorDetailSchema)),
   });
 export type L3IsolationDomainsCommitConfigurationOutput =
   typeof L3IsolationDomainsCommitConfigurationOutput.Type;
@@ -5921,140 +5637,14 @@ export const L3IsolationDomainsCreateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     l3IsolationDomainName: Schema.String.pipe(T.PathParam()),
-    properties: Schema.Struct({
-      annotation: Schema.optional(Schema.String),
-      redistributeConnectedSubnets: Schema.optional(
-        Schema.Literals(["True", "False"]),
-      ),
-      redistributeStaticRoutes: Schema.optional(
-        Schema.Literals(["True", "False"]),
-      ),
-      aggregateRouteConfiguration: Schema.optional(
-        Schema.Struct({
-          ipv4Routes: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                prefix: Schema.String,
-              }),
-            ),
-          ),
-          ipv6Routes: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                prefix: Schema.String,
-              }),
-            ),
-          ),
-        }),
-      ),
-      connectedSubnetRoutePolicy: Schema.optional(
-        Schema.Struct({
-          exportRoutePolicy: Schema.optional(
-            Schema.Struct({
-              exportIpv4RoutePolicyId: Schema.optional(Schema.String),
-              exportIpv6RoutePolicyId: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
-      networkFabricId: Schema.String,
-      staticRouteRoutePolicy: Schema.optional(
-        Schema.Struct({
-          exportRoutePolicy: Schema.optional(
-            Schema.Struct({
-              exportIpv4RoutePolicyId: Schema.optional(Schema.String),
-              exportIpv6RoutePolicyId: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
-      uniqueRdConfiguration: Schema.optional(
-        Schema.Struct({
-          uniqueRds: Schema.optional(Schema.Array(Schema.String)),
-        }),
-      ),
-      v4routePrefixLimit: Schema.optional(
-        Schema.Struct({
-          hardLimit: Schema.optional(Schema.Number),
-          threshold: Schema.optional(Schema.Number),
-        }),
-      ),
-      v6routePrefixLimit: Schema.optional(
-        Schema.Struct({
-          hardLimit: Schema.optional(Schema.Number),
-          threshold: Schema.optional(Schema.Number),
-        }),
-      ),
-      lastOperation: Schema.optional(
-        Schema.Struct({
-          details: Schema.optional(Schema.String),
-        }),
-      ),
-      exportPolicyConfiguration: Schema.optional(
-        Schema.Struct({
-          exportPolicies: Schema.optional(
-            Schema.Array(
-              Schema.Literals(["Pre-Policy", "Post-Policy", "All", "LocalRib"]),
-            ),
-          ),
-        }),
-      ),
-      configurationState: Schema.optional(
-        Schema.Literals([
-          "Succeeded",
-          "Failed",
-          "Rejected",
-          "Accepted",
-          "Provisioned",
-          "ErrorProvisioning",
-          "Deprovisioning",
-          "Deprovisioned",
-          "ErrorDeprovisioning",
-          "DeferredControl",
-          "Provisioning",
-          "PendingCommit",
-          "PendingAdministrativeUpdate",
-        ]),
-      ),
-      provisioningState: Schema.optional(
-        Schema.Literals([
-          "Accepted",
-          "Succeeded",
-          "Updating",
-          "Deleting",
-          "Failed",
-          "Canceled",
-        ]),
-      ),
-      administrativeState: Schema.optional(
-        Schema.Literals([
-          "Enabled",
-          "Disabled",
-          "MAT",
-          "RMA",
-          "UnderMaintenance",
-          "EnabledDegraded",
-        ]),
-      ),
-    }),
+    properties: Schema.suspend(() => L3IsolationDomainPropertiesSchema),
     identity: Schema.optional(
       Schema.Struct({
         principalId: Schema.optional(Schema.String),
         tenantId: Schema.optional(Schema.String),
-        type: Schema.Literals([
-          "None",
-          "SystemAssigned",
-          "UserAssigned",
-          "SystemAssigned,UserAssigned",
-        ]),
+        type: Schema.suspend(() => ManagedServiceIdentityTypeSchema),
         userAssignedIdentities: Schema.optional(
-          Schema.Record(
-            Schema.String,
-            Schema.Struct({
-              principalId: Schema.optional(Schema.String),
-              clientId: Schema.optional(Schema.String),
-            }),
-          ),
+          Schema.suspend(() => UserAssignedIdentitiesSchema),
         ),
       }),
     ),
@@ -6074,23 +5664,23 @@ export type L3IsolationDomainsCreateInput =
 // Output Schema
 export const L3IsolationDomainsCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.suspend(() => L3IsolationDomainPropertiesSchema),
+    identity: Schema.optional(
+      Schema.Struct({
+        principalId: Schema.optional(Schema.String),
+        tenantId: Schema.optional(Schema.String),
+        type: Schema.suspend(() => ManagedServiceIdentityTypeSchema),
+        userAssignedIdentities: Schema.optional(
+          Schema.suspend(() => UserAssignedIdentitiesSchema),
+        ),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type L3IsolationDomainsCreateOutput =
   typeof L3IsolationDomainsCreateOutput.Type;
@@ -6166,23 +5756,23 @@ export type L3IsolationDomainsGetInput = typeof L3IsolationDomainsGetInput.Type;
 // Output Schema
 export const L3IsolationDomainsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.suspend(() => L3IsolationDomainPropertiesSchema),
+    identity: Schema.optional(
+      Schema.Struct({
+        principalId: Schema.optional(Schema.String),
+        tenantId: Schema.optional(Schema.String),
+        type: Schema.suspend(() => ManagedServiceIdentityTypeSchema),
+        userAssignedIdentities: Schema.optional(
+          Schema.suspend(() => UserAssignedIdentitiesSchema),
+        ),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type L3IsolationDomainsGetOutput =
   typeof L3IsolationDomainsGetOutput.Type;
@@ -6220,37 +5810,7 @@ export type L3IsolationDomainsListByResourceGroupInput =
 // Output Schema
 export const L3IsolationDomainsListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => L3IsolationDomainSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type L3IsolationDomainsListByResourceGroupOutput =
@@ -6286,37 +5846,7 @@ export type L3IsolationDomainsListBySubscriptionInput =
 // Output Schema
 export const L3IsolationDomainsListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => L3IsolationDomainSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type L3IsolationDomainsListBySubscriptionOutput =
@@ -6341,100 +5871,10 @@ export const L3IsolationDomainsUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     l3IsolationDomainName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        annotation: Schema.optional(Schema.String),
-        redistributeConnectedSubnets: Schema.optional(
-          Schema.Literals(["True", "False"]),
-        ),
-        redistributeStaticRoutes: Schema.optional(
-          Schema.Literals(["True", "False"]),
-        ),
-        aggregateRouteConfiguration: Schema.optional(
-          Schema.Struct({
-            ipv4Routes: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  prefix: Schema.String,
-                }),
-              ),
-            ),
-            ipv6Routes: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  prefix: Schema.String,
-                }),
-              ),
-            ),
-          }),
-        ),
-        connectedSubnetRoutePolicy: Schema.optional(
-          Schema.Struct({
-            exportRoutePolicy: Schema.optional(
-              Schema.Struct({
-                exportIpv4RoutePolicyId: Schema.optional(Schema.String),
-                exportIpv6RoutePolicyId: Schema.optional(Schema.String),
-              }),
-            ),
-          }),
-        ),
-        staticRouteRoutePolicy: Schema.optional(
-          Schema.Struct({
-            exportRoutePolicy: Schema.optional(
-              Schema.Struct({
-                exportIpv4RoutePolicyId: Schema.optional(Schema.String),
-                exportIpv6RoutePolicyId: Schema.optional(Schema.String),
-              }),
-            ),
-          }),
-        ),
-        v4routePrefixLimit: Schema.optional(
-          Schema.Struct({
-            hardLimit: Schema.optional(Schema.Number),
-            threshold: Schema.optional(Schema.Number),
-          }),
-        ),
-        v6routePrefixLimit: Schema.optional(
-          Schema.Struct({
-            hardLimit: Schema.optional(Schema.Number),
-            threshold: Schema.optional(Schema.Number),
-          }),
-        ),
-        exportPolicyConfiguration: Schema.optional(
-          Schema.Struct({
-            exportPolicies: Schema.optional(
-              Schema.Array(
-                Schema.Literals([
-                  "Pre-Policy",
-                  "Post-Policy",
-                  "All",
-                  "LocalRib",
-                ]),
-              ),
-            ),
-          }),
-        ),
-      }),
+      Schema.suspend(() => L3IsolationDomainPatchPropertiesSchema),
     ),
     identity: Schema.optional(
-      Schema.Struct({
-        type: Schema.optional(
-          Schema.Literals([
-            "None",
-            "SystemAssigned",
-            "UserAssigned",
-            "SystemAssigned,UserAssigned",
-          ]),
-        ),
-        userAssignedIdentities: Schema.optional(
-          Schema.Record(
-            Schema.String,
-            Schema.Struct({
-              principalId: Schema.optional(Schema.String),
-              clientId: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-      }),
+      Schema.suspend(() => ManagedServiceIdentityPatchSchema),
     ),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
@@ -6451,23 +5891,23 @@ export type L3IsolationDomainsUpdateInput =
 // Output Schema
 export const L3IsolationDomainsUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.suspend(() => L3IsolationDomainPropertiesSchema),
+    identity: Schema.optional(
+      Schema.Struct({
+        principalId: Schema.optional(Schema.String),
+        tenantId: Schema.optional(Schema.String),
+        type: Schema.suspend(() => ManagedServiceIdentityTypeSchema),
+        userAssignedIdentities: Schema.optional(
+          Schema.suspend(() => UserAssignedIdentitiesSchema),
+        ),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type L3IsolationDomainsUpdateOutput =
   typeof L3IsolationDomainsUpdateOutput.Type;
@@ -6493,9 +5933,7 @@ export const L3IsolationDomainsUpdateAdministrativeStateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     l3IsolationDomainName: Schema.String.pipe(T.PathParam()),
-    state: Schema.optional(
-      Schema.Literals(["Enable", "Disable", "UnderMaintenance"]),
-    ),
+    state: Schema.optional(Schema.suspend(() => EnableDisableStateSchema)),
     resourceIds: Schema.optional(Schema.Array(Schema.String)),
   }).pipe(
     T.Http({
@@ -6528,51 +5966,9 @@ export const L3IsolationDomainsUpdateAdministrativeStateOutput =
           startTime: Schema.optional(Schema.String),
           endTime: Schema.optional(Schema.String),
           operations: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                id: Schema.optional(Schema.String),
-                resourceId: Schema.optional(Schema.String),
-                name: Schema.optional(Schema.String),
-                status: Schema.String,
-                percentComplete: Schema.optional(Schema.Number),
-                startTime: Schema.optional(Schema.String),
-                endTime: Schema.optional(Schema.String),
-                operations: Schema.optional(Schema.Array(Schema.Unknown)),
-                error: Schema.optional(
-                  Schema.Struct({
-                    code: Schema.optional(Schema.String),
-                    message: Schema.optional(Schema.String),
-                    target: Schema.optional(Schema.String),
-                    details: Schema.optional(Schema.Array(Schema.Unknown)),
-                    additionalInfo: Schema.optional(
-                      Schema.Array(
-                        Schema.Struct({
-                          type: Schema.optional(Schema.String),
-                          info: Schema.optional(Schema.Unknown),
-                        }),
-                      ),
-                    ),
-                  }),
-                ),
-              }),
-            ),
+            Schema.Array(Schema.suspend(() => OperationStatusResultSchema)),
           ),
-          error: Schema.optional(
-            Schema.Struct({
-              code: Schema.optional(Schema.String),
-              message: Schema.optional(Schema.String),
-              target: Schema.optional(Schema.String),
-              details: Schema.optional(Schema.Array(Schema.Unknown)),
-              additionalInfo: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    type: Schema.optional(Schema.String),
-                    info: Schema.optional(Schema.Unknown),
-                  }),
-                ),
-              ),
-            }),
-          ),
+          error: Schema.optional(Schema.suspend(() => ErrorDetailSchema)),
         }),
       ),
     ),
@@ -6582,39 +5978,16 @@ export const L3IsolationDomainsUpdateAdministrativeStateOutput =
         message: Schema.optional(Schema.String),
         target: Schema.optional(Schema.String),
         details: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              code: Schema.optional(Schema.String),
-              message: Schema.optional(Schema.String),
-              target: Schema.optional(Schema.String),
-              details: Schema.optional(Schema.Array(Schema.Unknown)),
-              additionalInfo: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    type: Schema.optional(Schema.String),
-                    info: Schema.optional(Schema.Unknown),
-                  }),
-                ),
-              ),
-            }),
-          ),
+          Schema.Array(Schema.suspend(() => ErrorDetailSchema)),
         ),
         additionalInfo: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              type: Schema.optional(Schema.String),
-              info: Schema.optional(Schema.Unknown),
-            }),
-          ),
+          Schema.Array(Schema.suspend(() => ErrorAdditionalInfoSchema)),
         ),
       }),
     ),
     resourceId: Schema.optional(Schema.String),
     properties: Schema.optional(
-      Schema.Struct({
-        successfulResources: Schema.optional(Schema.Array(Schema.String)),
-        failedResources: Schema.optional(Schema.Array(Schema.String)),
-      }),
+      Schema.suspend(() => UpdateAdministrativeStateResponsePropertiesSchema),
     ),
   });
 export type L3IsolationDomainsUpdateAdministrativeStateOutput =
@@ -6654,22 +6027,11 @@ export type L3IsolationDomainsValidateConfigurationInput =
 // Output Schema
 export const L3IsolationDomainsValidateConfigurationOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    error: Schema.optional(
-      Schema.Struct({
-        code: Schema.optional(Schema.String),
-        message: Schema.optional(Schema.String),
-        target: Schema.optional(Schema.String),
-        details: Schema.optional(Schema.Array(Schema.Unknown)),
-        additionalInfo: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              type: Schema.optional(Schema.String),
-              info: Schema.optional(Schema.Unknown),
-            }),
-          ),
-        ),
-      }),
+    configurationState: Schema.optional(
+      Schema.suspend(() => ConfigurationStateSchema),
     ),
+    url: Schema.optional(Schema.String),
+    error: Schema.optional(Schema.suspend(() => ErrorDetailSchema)),
   });
 export type L3IsolationDomainsValidateConfigurationOutput =
   typeof L3IsolationDomainsValidateConfigurationOutput.Type;
@@ -6694,66 +6056,14 @@ export const NeighborGroupsCreateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     neighborGroupName: Schema.String.pipe(T.PathParam()),
-    properties: Schema.Struct({
-      annotation: Schema.optional(Schema.String),
-      destination: Schema.Struct({
-        ipv4Addresses: Schema.optional(Schema.Array(Schema.String)),
-        ipv6Addresses: Schema.optional(Schema.Array(Schema.String)),
-      }),
-      networkTapIds: Schema.optional(Schema.Array(Schema.String)),
-      networkTapRuleIds: Schema.optional(Schema.Array(Schema.String)),
-      networkFabricIds: Schema.optional(Schema.Array(Schema.String)),
-      lastOperation: Schema.optional(
-        Schema.Struct({
-          details: Schema.optional(Schema.String),
-        }),
-      ),
-      provisioningState: Schema.optional(
-        Schema.Literals([
-          "Accepted",
-          "Succeeded",
-          "Updating",
-          "Deleting",
-          "Failed",
-          "Canceled",
-        ]),
-      ),
-      configurationState: Schema.optional(
-        Schema.Literals([
-          "Succeeded",
-          "Failed",
-          "Rejected",
-          "Accepted",
-          "Provisioned",
-          "ErrorProvisioning",
-          "Deprovisioning",
-          "Deprovisioned",
-          "ErrorDeprovisioning",
-          "DeferredControl",
-          "Provisioning",
-          "PendingCommit",
-          "PendingAdministrativeUpdate",
-        ]),
-      ),
-    }),
+    properties: Schema.suspend(() => NeighborGroupPropertiesSchema),
     identity: Schema.optional(
       Schema.Struct({
         principalId: Schema.optional(Schema.String),
         tenantId: Schema.optional(Schema.String),
-        type: Schema.Literals([
-          "None",
-          "SystemAssigned",
-          "UserAssigned",
-          "SystemAssigned,UserAssigned",
-        ]),
+        type: Schema.suspend(() => ManagedServiceIdentityTypeSchema),
         userAssignedIdentities: Schema.optional(
-          Schema.Record(
-            Schema.String,
-            Schema.Struct({
-              principalId: Schema.optional(Schema.String),
-              clientId: Schema.optional(Schema.String),
-            }),
-          ),
+          Schema.suspend(() => UserAssignedIdentitiesSchema),
         ),
       }),
     ),
@@ -6772,23 +6082,23 @@ export type NeighborGroupsCreateInput = typeof NeighborGroupsCreateInput.Type;
 // Output Schema
 export const NeighborGroupsCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.suspend(() => NeighborGroupPropertiesSchema),
+    identity: Schema.optional(
+      Schema.Struct({
+        principalId: Schema.optional(Schema.String),
+        tenantId: Schema.optional(Schema.String),
+        type: Schema.suspend(() => ManagedServiceIdentityTypeSchema),
+        userAssignedIdentities: Schema.optional(
+          Schema.suspend(() => UserAssignedIdentitiesSchema),
+        ),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type NeighborGroupsCreateOutput = typeof NeighborGroupsCreateOutput.Type;
 
@@ -6862,23 +6172,23 @@ export type NeighborGroupsGetInput = typeof NeighborGroupsGetInput.Type;
 // Output Schema
 export const NeighborGroupsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.suspend(() => NeighborGroupPropertiesSchema),
+    identity: Schema.optional(
+      Schema.Struct({
+        principalId: Schema.optional(Schema.String),
+        tenantId: Schema.optional(Schema.String),
+        type: Schema.suspend(() => ManagedServiceIdentityTypeSchema),
+        userAssignedIdentities: Schema.optional(
+          Schema.suspend(() => UserAssignedIdentitiesSchema),
+        ),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type NeighborGroupsGetOutput = typeof NeighborGroupsGetOutput.Type;
 
@@ -6913,37 +6223,7 @@ export type NeighborGroupsListByResourceGroupInput =
 // Output Schema
 export const NeighborGroupsListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => NeighborGroupSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type NeighborGroupsListByResourceGroupOutput =
@@ -6979,37 +6259,7 @@ export type NeighborGroupsListBySubscriptionInput =
 // Output Schema
 export const NeighborGroupsListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => NeighborGroupSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type NeighborGroupsListBySubscriptionOutput =
@@ -7063,51 +6313,9 @@ export const NeighborGroupsResyncOutput =
           startTime: Schema.optional(Schema.String),
           endTime: Schema.optional(Schema.String),
           operations: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                id: Schema.optional(Schema.String),
-                resourceId: Schema.optional(Schema.String),
-                name: Schema.optional(Schema.String),
-                status: Schema.String,
-                percentComplete: Schema.optional(Schema.Number),
-                startTime: Schema.optional(Schema.String),
-                endTime: Schema.optional(Schema.String),
-                operations: Schema.optional(Schema.Array(Schema.Unknown)),
-                error: Schema.optional(
-                  Schema.Struct({
-                    code: Schema.optional(Schema.String),
-                    message: Schema.optional(Schema.String),
-                    target: Schema.optional(Schema.String),
-                    details: Schema.optional(Schema.Array(Schema.Unknown)),
-                    additionalInfo: Schema.optional(
-                      Schema.Array(
-                        Schema.Struct({
-                          type: Schema.optional(Schema.String),
-                          info: Schema.optional(Schema.Unknown),
-                        }),
-                      ),
-                    ),
-                  }),
-                ),
-              }),
-            ),
+            Schema.Array(Schema.suspend(() => OperationStatusResultSchema)),
           ),
-          error: Schema.optional(
-            Schema.Struct({
-              code: Schema.optional(Schema.String),
-              message: Schema.optional(Schema.String),
-              target: Schema.optional(Schema.String),
-              details: Schema.optional(Schema.Array(Schema.Unknown)),
-              additionalInfo: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    type: Schema.optional(Schema.String),
-                    info: Schema.optional(Schema.Unknown),
-                  }),
-                ),
-              ),
-            }),
-          ),
+          error: Schema.optional(Schema.suspend(() => ErrorDetailSchema)),
         }),
       ),
     ),
@@ -7117,30 +6325,10 @@ export const NeighborGroupsResyncOutput =
         message: Schema.optional(Schema.String),
         target: Schema.optional(Schema.String),
         details: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              code: Schema.optional(Schema.String),
-              message: Schema.optional(Schema.String),
-              target: Schema.optional(Schema.String),
-              details: Schema.optional(Schema.Array(Schema.Unknown)),
-              additionalInfo: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    type: Schema.optional(Schema.String),
-                    info: Schema.optional(Schema.Unknown),
-                  }),
-                ),
-              ),
-            }),
-          ),
+          Schema.Array(Schema.suspend(() => ErrorDetailSchema)),
         ),
         additionalInfo: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              type: Schema.optional(Schema.String),
-              info: Schema.optional(Schema.Unknown),
-            }),
-          ),
+          Schema.Array(Schema.suspend(() => ErrorAdditionalInfoSchema)),
         ),
       }),
     ),
@@ -7170,36 +6358,10 @@ export const NeighborGroupsUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     neighborGroupName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        annotation: Schema.optional(Schema.String),
-        destination: Schema.optional(
-          Schema.Struct({
-            ipv4Addresses: Schema.optional(Schema.Array(Schema.String)),
-            ipv6Addresses: Schema.optional(Schema.Array(Schema.String)),
-          }),
-        ),
-      }),
+      Schema.suspend(() => NeighborGroupPatchPropertiesSchema),
     ),
     identity: Schema.optional(
-      Schema.Struct({
-        type: Schema.optional(
-          Schema.Literals([
-            "None",
-            "SystemAssigned",
-            "UserAssigned",
-            "SystemAssigned,UserAssigned",
-          ]),
-        ),
-        userAssignedIdentities: Schema.optional(
-          Schema.Record(
-            Schema.String,
-            Schema.Struct({
-              principalId: Schema.optional(Schema.String),
-              clientId: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-      }),
+      Schema.suspend(() => ManagedServiceIdentityPatchSchema),
     ),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
@@ -7215,23 +6377,23 @@ export type NeighborGroupsUpdateInput = typeof NeighborGroupsUpdateInput.Type;
 // Output Schema
 export const NeighborGroupsUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.suspend(() => NeighborGroupPropertiesSchema),
+    identity: Schema.optional(
+      Schema.Struct({
+        principalId: Schema.optional(Schema.String),
+        tenantId: Schema.optional(Schema.String),
+        type: Schema.suspend(() => ManagedServiceIdentityTypeSchema),
+        userAssignedIdentities: Schema.optional(
+          Schema.suspend(() => UserAssignedIdentitiesSchema),
+        ),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type NeighborGroupsUpdateOutput = typeof NeighborGroupsUpdateOutput.Type;
 
@@ -7256,74 +6418,14 @@ export const NetworkBootstrapDevicesCreateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     networkBootstrapDeviceName: Schema.String.pipe(T.PathParam()),
-    properties: Schema.Struct({
-      annotation: Schema.optional(Schema.String),
-      hostName: Schema.optional(Schema.String),
-      serialNumber: Schema.optional(Schema.String),
-      version: Schema.optional(Schema.String),
-      networkDeviceSku: Schema.optional(Schema.String),
-      networkFabricId: Schema.optional(Schema.String),
-      secondaryManagementIpv4Address: Schema.optional(Schema.String),
-      dhcpV4ServerIpAddress: Schema.optional(Schema.String),
-      primaryManagementIpv6Address: Schema.optional(Schema.String),
-      secondaryManagementIpv6Address: Schema.optional(Schema.String),
-      provisioningState: Schema.optional(
-        Schema.Literals([
-          "Accepted",
-          "Succeeded",
-          "Updating",
-          "Deleting",
-          "Failed",
-          "Canceled",
-        ]),
-      ),
-      primaryManagementIpv4Address: Schema.optional(Schema.String),
-      administrativeState: Schema.optional(
-        Schema.Literals([
-          "Enabled",
-          "Disabled",
-          "MAT",
-          "RMA",
-          "UnderMaintenance",
-          "EnabledDegraded",
-        ]),
-      ),
-      configurationState: Schema.optional(
-        Schema.Literals([
-          "Succeeded",
-          "Failed",
-          "Rejected",
-          "Accepted",
-          "Provisioned",
-          "ErrorProvisioning",
-          "Deprovisioning",
-          "Deprovisioned",
-          "ErrorDeprovisioning",
-          "DeferredControl",
-          "Provisioning",
-          "PendingCommit",
-          "PendingAdministrativeUpdate",
-        ]),
-      ),
-    }),
+    properties: Schema.suspend(() => NetworkBootstrapDevicePropertiesSchema),
     identity: Schema.optional(
       Schema.Struct({
         principalId: Schema.optional(Schema.String),
         tenantId: Schema.optional(Schema.String),
-        type: Schema.Literals([
-          "None",
-          "SystemAssigned",
-          "UserAssigned",
-          "SystemAssigned,UserAssigned",
-        ]),
+        type: Schema.suspend(() => ManagedServiceIdentityTypeSchema),
         userAssignedIdentities: Schema.optional(
-          Schema.Record(
-            Schema.String,
-            Schema.Struct({
-              principalId: Schema.optional(Schema.String),
-              clientId: Schema.optional(Schema.String),
-            }),
-          ),
+          Schema.suspend(() => UserAssignedIdentitiesSchema),
         ),
       }),
     ),
@@ -7343,23 +6445,23 @@ export type NetworkBootstrapDevicesCreateInput =
 // Output Schema
 export const NetworkBootstrapDevicesCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.suspend(() => NetworkBootstrapDevicePropertiesSchema),
+    identity: Schema.optional(
+      Schema.Struct({
+        principalId: Schema.optional(Schema.String),
+        tenantId: Schema.optional(Schema.String),
+        type: Schema.suspend(() => ManagedServiceIdentityTypeSchema),
+        userAssignedIdentities: Schema.optional(
+          Schema.suspend(() => UserAssignedIdentitiesSchema),
+        ),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type NetworkBootstrapDevicesCreateOutput =
   typeof NetworkBootstrapDevicesCreateOutput.Type;
@@ -7434,23 +6536,23 @@ export type NetworkBootstrapDevicesGetInput =
 // Output Schema
 export const NetworkBootstrapDevicesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.suspend(() => NetworkBootstrapDevicePropertiesSchema),
+    identity: Schema.optional(
+      Schema.Struct({
+        principalId: Schema.optional(Schema.String),
+        tenantId: Schema.optional(Schema.String),
+        type: Schema.suspend(() => ManagedServiceIdentityTypeSchema),
+        userAssignedIdentities: Schema.optional(
+          Schema.suspend(() => UserAssignedIdentitiesSchema),
+        ),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type NetworkBootstrapDevicesGetOutput =
   typeof NetworkBootstrapDevicesGetOutput.Type;
@@ -7488,37 +6590,7 @@ export type NetworkBootstrapDevicesListByResourceGroupInput =
 // Output Schema
 export const NetworkBootstrapDevicesListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => NetworkBootstrapDeviceSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type NetworkBootstrapDevicesListByResourceGroupOutput =
@@ -7554,37 +6626,7 @@ export type NetworkBootstrapDevicesListBySubscriptionInput =
 // Output Schema
 export const NetworkBootstrapDevicesListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => NetworkBootstrapDeviceSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type NetworkBootstrapDevicesListBySubscriptionOutput =
@@ -7639,51 +6681,9 @@ export const NetworkBootstrapDevicesRebootOutput =
           startTime: Schema.optional(Schema.String),
           endTime: Schema.optional(Schema.String),
           operations: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                id: Schema.optional(Schema.String),
-                resourceId: Schema.optional(Schema.String),
-                name: Schema.optional(Schema.String),
-                status: Schema.String,
-                percentComplete: Schema.optional(Schema.Number),
-                startTime: Schema.optional(Schema.String),
-                endTime: Schema.optional(Schema.String),
-                operations: Schema.optional(Schema.Array(Schema.Unknown)),
-                error: Schema.optional(
-                  Schema.Struct({
-                    code: Schema.optional(Schema.String),
-                    message: Schema.optional(Schema.String),
-                    target: Schema.optional(Schema.String),
-                    details: Schema.optional(Schema.Array(Schema.Unknown)),
-                    additionalInfo: Schema.optional(
-                      Schema.Array(
-                        Schema.Struct({
-                          type: Schema.optional(Schema.String),
-                          info: Schema.optional(Schema.Unknown),
-                        }),
-                      ),
-                    ),
-                  }),
-                ),
-              }),
-            ),
+            Schema.Array(Schema.suspend(() => OperationStatusResultSchema)),
           ),
-          error: Schema.optional(
-            Schema.Struct({
-              code: Schema.optional(Schema.String),
-              message: Schema.optional(Schema.String),
-              target: Schema.optional(Schema.String),
-              details: Schema.optional(Schema.Array(Schema.Unknown)),
-              additionalInfo: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    type: Schema.optional(Schema.String),
-                    info: Schema.optional(Schema.Unknown),
-                  }),
-                ),
-              ),
-            }),
-          ),
+          error: Schema.optional(Schema.suspend(() => ErrorDetailSchema)),
         }),
       ),
     ),
@@ -7693,30 +6693,10 @@ export const NetworkBootstrapDevicesRebootOutput =
         message: Schema.optional(Schema.String),
         target: Schema.optional(Schema.String),
         details: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              code: Schema.optional(Schema.String),
-              message: Schema.optional(Schema.String),
-              target: Schema.optional(Schema.String),
-              details: Schema.optional(Schema.Array(Schema.Unknown)),
-              additionalInfo: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    type: Schema.optional(Schema.String),
-                    info: Schema.optional(Schema.Unknown),
-                  }),
-                ),
-              ),
-            }),
-          ),
+          Schema.Array(Schema.suspend(() => ErrorDetailSchema)),
         ),
         additionalInfo: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              type: Schema.optional(Schema.String),
-              info: Schema.optional(Schema.Unknown),
-            }),
-          ),
+          Schema.Array(Schema.suspend(() => ErrorAdditionalInfoSchema)),
         ),
       }),
     ),
@@ -7776,51 +6756,9 @@ export const NetworkBootstrapDevicesRefreshConfigurationOutput =
           startTime: Schema.optional(Schema.String),
           endTime: Schema.optional(Schema.String),
           operations: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                id: Schema.optional(Schema.String),
-                resourceId: Schema.optional(Schema.String),
-                name: Schema.optional(Schema.String),
-                status: Schema.String,
-                percentComplete: Schema.optional(Schema.Number),
-                startTime: Schema.optional(Schema.String),
-                endTime: Schema.optional(Schema.String),
-                operations: Schema.optional(Schema.Array(Schema.Unknown)),
-                error: Schema.optional(
-                  Schema.Struct({
-                    code: Schema.optional(Schema.String),
-                    message: Schema.optional(Schema.String),
-                    target: Schema.optional(Schema.String),
-                    details: Schema.optional(Schema.Array(Schema.Unknown)),
-                    additionalInfo: Schema.optional(
-                      Schema.Array(
-                        Schema.Struct({
-                          type: Schema.optional(Schema.String),
-                          info: Schema.optional(Schema.Unknown),
-                        }),
-                      ),
-                    ),
-                  }),
-                ),
-              }),
-            ),
+            Schema.Array(Schema.suspend(() => OperationStatusResultSchema)),
           ),
-          error: Schema.optional(
-            Schema.Struct({
-              code: Schema.optional(Schema.String),
-              message: Schema.optional(Schema.String),
-              target: Schema.optional(Schema.String),
-              details: Schema.optional(Schema.Array(Schema.Unknown)),
-              additionalInfo: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    type: Schema.optional(Schema.String),
-                    info: Schema.optional(Schema.Unknown),
-                  }),
-                ),
-              ),
-            }),
-          ),
+          error: Schema.optional(Schema.suspend(() => ErrorDetailSchema)),
         }),
       ),
     ),
@@ -7830,30 +6768,10 @@ export const NetworkBootstrapDevicesRefreshConfigurationOutput =
         message: Schema.optional(Schema.String),
         target: Schema.optional(Schema.String),
         details: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              code: Schema.optional(Schema.String),
-              message: Schema.optional(Schema.String),
-              target: Schema.optional(Schema.String),
-              details: Schema.optional(Schema.Array(Schema.Unknown)),
-              additionalInfo: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    type: Schema.optional(Schema.String),
-                    info: Schema.optional(Schema.Unknown),
-                  }),
-                ),
-              ),
-            }),
-          ),
+          Schema.Array(Schema.suspend(() => ErrorDetailSchema)),
         ),
         additionalInfo: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              type: Schema.optional(Schema.String),
-              info: Schema.optional(Schema.Unknown),
-            }),
-          ),
+          Schema.Array(Schema.suspend(() => ErrorAdditionalInfoSchema)),
         ),
       }),
     ),
@@ -7913,51 +6831,9 @@ export const NetworkBootstrapDevicesResyncPasswordsOutput =
           startTime: Schema.optional(Schema.String),
           endTime: Schema.optional(Schema.String),
           operations: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                id: Schema.optional(Schema.String),
-                resourceId: Schema.optional(Schema.String),
-                name: Schema.optional(Schema.String),
-                status: Schema.String,
-                percentComplete: Schema.optional(Schema.Number),
-                startTime: Schema.optional(Schema.String),
-                endTime: Schema.optional(Schema.String),
-                operations: Schema.optional(Schema.Array(Schema.Unknown)),
-                error: Schema.optional(
-                  Schema.Struct({
-                    code: Schema.optional(Schema.String),
-                    message: Schema.optional(Schema.String),
-                    target: Schema.optional(Schema.String),
-                    details: Schema.optional(Schema.Array(Schema.Unknown)),
-                    additionalInfo: Schema.optional(
-                      Schema.Array(
-                        Schema.Struct({
-                          type: Schema.optional(Schema.String),
-                          info: Schema.optional(Schema.Unknown),
-                        }),
-                      ),
-                    ),
-                  }),
-                ),
-              }),
-            ),
+            Schema.Array(Schema.suspend(() => OperationStatusResultSchema)),
           ),
-          error: Schema.optional(
-            Schema.Struct({
-              code: Schema.optional(Schema.String),
-              message: Schema.optional(Schema.String),
-              target: Schema.optional(Schema.String),
-              details: Schema.optional(Schema.Array(Schema.Unknown)),
-              additionalInfo: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    type: Schema.optional(Schema.String),
-                    info: Schema.optional(Schema.Unknown),
-                  }),
-                ),
-              ),
-            }),
-          ),
+          error: Schema.optional(Schema.suspend(() => ErrorDetailSchema)),
         }),
       ),
     ),
@@ -7967,30 +6843,10 @@ export const NetworkBootstrapDevicesResyncPasswordsOutput =
         message: Schema.optional(Schema.String),
         target: Schema.optional(Schema.String),
         details: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              code: Schema.optional(Schema.String),
-              message: Schema.optional(Schema.String),
-              target: Schema.optional(Schema.String),
-              details: Schema.optional(Schema.Array(Schema.Unknown)),
-              additionalInfo: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    type: Schema.optional(Schema.String),
-                    info: Schema.optional(Schema.Unknown),
-                  }),
-                ),
-              ),
-            }),
-          ),
+          Schema.Array(Schema.suspend(() => ErrorDetailSchema)),
         ),
         additionalInfo: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              type: Schema.optional(Schema.String),
-              info: Schema.optional(Schema.Unknown),
-            }),
-          ),
+          Schema.Array(Schema.suspend(() => ErrorAdditionalInfoSchema)),
         ),
       }),
     ),
@@ -8022,32 +6878,10 @@ export const NetworkBootstrapDevicesUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     networkBootstrapDeviceName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        annotation: Schema.optional(Schema.String),
-        hostName: Schema.optional(Schema.String),
-        serialNumber: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(() => NetworkBootstrapDevicePatchPropertiesSchema),
     ),
     identity: Schema.optional(
-      Schema.Struct({
-        type: Schema.optional(
-          Schema.Literals([
-            "None",
-            "SystemAssigned",
-            "UserAssigned",
-            "SystemAssigned,UserAssigned",
-          ]),
-        ),
-        userAssignedIdentities: Schema.optional(
-          Schema.Record(
-            Schema.String,
-            Schema.Struct({
-              principalId: Schema.optional(Schema.String),
-              clientId: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-      }),
+      Schema.suspend(() => ManagedServiceIdentityPatchSchema),
     ),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
@@ -8064,23 +6898,23 @@ export type NetworkBootstrapDevicesUpdateInput =
 // Output Schema
 export const NetworkBootstrapDevicesUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.suspend(() => NetworkBootstrapDevicePropertiesSchema),
+    identity: Schema.optional(
+      Schema.Struct({
+        principalId: Schema.optional(Schema.String),
+        tenantId: Schema.optional(Schema.String),
+        type: Schema.suspend(() => ManagedServiceIdentityTypeSchema),
+        userAssignedIdentities: Schema.optional(
+          Schema.suspend(() => UserAssignedIdentitiesSchema),
+        ),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type NetworkBootstrapDevicesUpdateOutput =
   typeof NetworkBootstrapDevicesUpdateOutput.Type;
@@ -8106,17 +6940,7 @@ export const NetworkBootstrapDevicesUpdateAdministrativeStateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     networkBootstrapDeviceName: Schema.String.pipe(T.PathParam()),
     state: Schema.optional(
-      Schema.Literals([
-        "RMA",
-        "UngracefulRMA",
-        "Resync",
-        "GracefulQuarantine",
-        "UngracefulQuarantine",
-        "Quarantine",
-        "UnderMaintenance",
-        "Enable",
-        "Disable",
-      ]),
+      Schema.suspend(() => DeviceAdministrativeStateSchema),
     ),
     resourceIds: Schema.optional(Schema.Array(Schema.String)),
   }).pipe(
@@ -8150,51 +6974,9 @@ export const NetworkBootstrapDevicesUpdateAdministrativeStateOutput =
           startTime: Schema.optional(Schema.String),
           endTime: Schema.optional(Schema.String),
           operations: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                id: Schema.optional(Schema.String),
-                resourceId: Schema.optional(Schema.String),
-                name: Schema.optional(Schema.String),
-                status: Schema.String,
-                percentComplete: Schema.optional(Schema.Number),
-                startTime: Schema.optional(Schema.String),
-                endTime: Schema.optional(Schema.String),
-                operations: Schema.optional(Schema.Array(Schema.Unknown)),
-                error: Schema.optional(
-                  Schema.Struct({
-                    code: Schema.optional(Schema.String),
-                    message: Schema.optional(Schema.String),
-                    target: Schema.optional(Schema.String),
-                    details: Schema.optional(Schema.Array(Schema.Unknown)),
-                    additionalInfo: Schema.optional(
-                      Schema.Array(
-                        Schema.Struct({
-                          type: Schema.optional(Schema.String),
-                          info: Schema.optional(Schema.Unknown),
-                        }),
-                      ),
-                    ),
-                  }),
-                ),
-              }),
-            ),
+            Schema.Array(Schema.suspend(() => OperationStatusResultSchema)),
           ),
-          error: Schema.optional(
-            Schema.Struct({
-              code: Schema.optional(Schema.String),
-              message: Schema.optional(Schema.String),
-              target: Schema.optional(Schema.String),
-              details: Schema.optional(Schema.Array(Schema.Unknown)),
-              additionalInfo: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    type: Schema.optional(Schema.String),
-                    info: Schema.optional(Schema.Unknown),
-                  }),
-                ),
-              ),
-            }),
-          ),
+          error: Schema.optional(Schema.suspend(() => ErrorDetailSchema)),
         }),
       ),
     ),
@@ -8204,30 +6986,10 @@ export const NetworkBootstrapDevicesUpdateAdministrativeStateOutput =
         message: Schema.optional(Schema.String),
         target: Schema.optional(Schema.String),
         details: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              code: Schema.optional(Schema.String),
-              message: Schema.optional(Schema.String),
-              target: Schema.optional(Schema.String),
-              details: Schema.optional(Schema.Array(Schema.Unknown)),
-              additionalInfo: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    type: Schema.optional(Schema.String),
-                    info: Schema.optional(Schema.Unknown),
-                  }),
-                ),
-              ),
-            }),
-          ),
+          Schema.Array(Schema.suspend(() => ErrorDetailSchema)),
         ),
         additionalInfo: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              type: Schema.optional(Schema.String),
-              info: Schema.optional(Schema.Unknown),
-            }),
-          ),
+          Schema.Array(Schema.suspend(() => ErrorAdditionalInfoSchema)),
         ),
       }),
     ),
@@ -8288,51 +7050,9 @@ export const NetworkBootstrapDevicesUpgradeOutput =
           startTime: Schema.optional(Schema.String),
           endTime: Schema.optional(Schema.String),
           operations: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                id: Schema.optional(Schema.String),
-                resourceId: Schema.optional(Schema.String),
-                name: Schema.optional(Schema.String),
-                status: Schema.String,
-                percentComplete: Schema.optional(Schema.Number),
-                startTime: Schema.optional(Schema.String),
-                endTime: Schema.optional(Schema.String),
-                operations: Schema.optional(Schema.Array(Schema.Unknown)),
-                error: Schema.optional(
-                  Schema.Struct({
-                    code: Schema.optional(Schema.String),
-                    message: Schema.optional(Schema.String),
-                    target: Schema.optional(Schema.String),
-                    details: Schema.optional(Schema.Array(Schema.Unknown)),
-                    additionalInfo: Schema.optional(
-                      Schema.Array(
-                        Schema.Struct({
-                          type: Schema.optional(Schema.String),
-                          info: Schema.optional(Schema.Unknown),
-                        }),
-                      ),
-                    ),
-                  }),
-                ),
-              }),
-            ),
+            Schema.Array(Schema.suspend(() => OperationStatusResultSchema)),
           ),
-          error: Schema.optional(
-            Schema.Struct({
-              code: Schema.optional(Schema.String),
-              message: Schema.optional(Schema.String),
-              target: Schema.optional(Schema.String),
-              details: Schema.optional(Schema.Array(Schema.Unknown)),
-              additionalInfo: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    type: Schema.optional(Schema.String),
-                    info: Schema.optional(Schema.Unknown),
-                  }),
-                ),
-              ),
-            }),
-          ),
+          error: Schema.optional(Schema.suspend(() => ErrorDetailSchema)),
         }),
       ),
     ),
@@ -8342,30 +7062,10 @@ export const NetworkBootstrapDevicesUpgradeOutput =
         message: Schema.optional(Schema.String),
         target: Schema.optional(Schema.String),
         details: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              code: Schema.optional(Schema.String),
-              message: Schema.optional(Schema.String),
-              target: Schema.optional(Schema.String),
-              details: Schema.optional(Schema.Array(Schema.Unknown)),
-              additionalInfo: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    type: Schema.optional(Schema.String),
-                    info: Schema.optional(Schema.Unknown),
-                  }),
-                ),
-              ),
-            }),
-          ),
+          Schema.Array(Schema.suspend(() => ErrorDetailSchema)),
         ),
         additionalInfo: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              type: Schema.optional(Schema.String),
-              info: Schema.optional(Schema.Unknown),
-            }),
-          ),
+          Schema.Array(Schema.suspend(() => ErrorAdditionalInfoSchema)),
         ),
       }),
     ),
@@ -8395,9 +7095,7 @@ export const NetworkBootstrapInterfacesCreateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     networkBootstrapDeviceName: Schema.String.pipe(T.PathParam()),
     networkBootstrapInterfaceName: Schema.String.pipe(T.PathParam()),
-    properties: Schema.Struct({
-      annotation: Schema.optional(Schema.String),
-    }),
+    properties: Schema.suspend(() => NetworkBootstrapInterfacePropertiesSchema),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -8412,23 +7110,11 @@ export type NetworkBootstrapInterfacesCreateInput =
 // Output Schema
 export const NetworkBootstrapInterfacesCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.suspend(() => NetworkBootstrapInterfacePropertiesSchema),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type NetworkBootstrapInterfacesCreateOutput =
   typeof NetworkBootstrapInterfacesCreateOutput.Type;
@@ -8507,23 +7193,11 @@ export type NetworkBootstrapInterfacesGetInput =
 // Output Schema
 export const NetworkBootstrapInterfacesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.suspend(() => NetworkBootstrapInterfacePropertiesSchema),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type NetworkBootstrapInterfacesGetOutput =
   typeof NetworkBootstrapInterfacesGetOutput.Type;
@@ -8562,37 +7236,7 @@ export type NetworkBootstrapInterfacesListByNetworkBootstrapDeviceInput =
 // Output Schema
 export const NetworkBootstrapInterfacesListByNetworkBootstrapDeviceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => NetworkBootstrapInterfaceSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type NetworkBootstrapInterfacesListByNetworkBootstrapDeviceOutput =
@@ -8620,9 +7264,7 @@ export const NetworkBootstrapInterfacesUpdateInput =
     networkBootstrapDeviceName: Schema.String.pipe(T.PathParam()),
     networkBootstrapInterfaceName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        annotation: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(() => NetworkBootstrapInterfacePatchPropertiesSchema),
     ),
   }).pipe(
     T.Http({
@@ -8638,23 +7280,11 @@ export type NetworkBootstrapInterfacesUpdateInput =
 // Output Schema
 export const NetworkBootstrapInterfacesUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.suspend(() => NetworkBootstrapInterfacePropertiesSchema),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type NetworkBootstrapInterfacesUpdateOutput =
   typeof NetworkBootstrapInterfacesUpdateOutput.Type;
@@ -8681,9 +7311,7 @@ export const NetworkBootstrapInterfacesUpdateAdministrativeStateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     networkBootstrapDeviceName: Schema.String.pipe(T.PathParam()),
     networkBootstrapInterfaceName: Schema.String.pipe(T.PathParam()),
-    state: Schema.optional(
-      Schema.Literals(["Enable", "Disable", "UnderMaintenance"]),
-    ),
+    state: Schema.optional(Schema.suspend(() => EnableDisableStateSchema)),
     resourceIds: Schema.optional(Schema.Array(Schema.String)),
   }).pipe(
     T.Http({
@@ -8699,22 +7327,10 @@ export type NetworkBootstrapInterfacesUpdateAdministrativeStateInput =
 // Output Schema
 export const NetworkBootstrapInterfacesUpdateAdministrativeStateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    error: Schema.optional(
-      Schema.Struct({
-        code: Schema.optional(Schema.String),
-        message: Schema.optional(Schema.String),
-        target: Schema.optional(Schema.String),
-        details: Schema.optional(Schema.Array(Schema.Unknown)),
-        additionalInfo: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              type: Schema.optional(Schema.String),
-              info: Schema.optional(Schema.Unknown),
-            }),
-          ),
-        ),
-      }),
+    configurationState: Schema.optional(
+      Schema.suspend(() => ConfigurationStateSchema),
     ),
+    error: Schema.optional(Schema.suspend(() => ErrorDetailSchema)),
   });
 export type NetworkBootstrapInterfacesUpdateAdministrativeStateOutput =
   typeof NetworkBootstrapInterfacesUpdateAdministrativeStateOutput.Type;
@@ -8740,129 +7356,14 @@ export const NetworkDevicesCreateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     networkDeviceName: Schema.String.pipe(T.PathParam()),
-    properties: Schema.Struct({
-      annotation: Schema.optional(Schema.String),
-      hostName: Schema.optional(Schema.String),
-      serialNumber: Schema.String,
-      identitySelector: Schema.optional(
-        Schema.Struct({
-          identityType: Schema.Literals([
-            "SystemAssignedIdentity",
-            "UserAssignedIdentity",
-          ]),
-          userAssignedIdentityResourceId: Schema.optional(Schema.String),
-        }),
-      ),
-      version: Schema.optional(Schema.String),
-      networkDeviceSku: Schema.optional(Schema.String),
-      networkDeviceRole: Schema.optional(
-        Schema.Literals(["CE", "ToR", "NPB", "TS", "Management"]),
-      ),
-      networkRackId: Schema.optional(Schema.String),
-      managementIpv4Address: Schema.optional(Schema.String),
-      managementIpv6Address: Schema.optional(Schema.String),
-      rwDeviceConfig: Schema.optional(Schema.String),
-      lastOperation: Schema.optional(
-        Schema.Struct({
-          details: Schema.optional(Schema.String),
-        }),
-      ),
-      configurationState: Schema.optional(
-        Schema.Literals([
-          "Succeeded",
-          "Failed",
-          "Rejected",
-          "Accepted",
-          "Provisioned",
-          "ErrorProvisioning",
-          "Deprovisioning",
-          "Deprovisioned",
-          "ErrorDeprovisioning",
-          "DeferredControl",
-          "Provisioning",
-          "PendingCommit",
-          "PendingAdministrativeUpdate",
-        ]),
-      ),
-      provisioningState: Schema.optional(
-        Schema.Literals([
-          "Accepted",
-          "Succeeded",
-          "Updating",
-          "Deleting",
-          "Failed",
-          "Canceled",
-        ]),
-      ),
-      administrativeState: Schema.optional(
-        Schema.Literals([
-          "Enabled",
-          "Disabled",
-          "MAT",
-          "RMA",
-          "UnderMaintenance",
-          "EnabledDegraded",
-        ]),
-      ),
-      secretRotationStatus: Schema.optional(
-        Schema.Array(
-          Schema.Struct({
-            lastRotationTime: Schema.optional(Schema.String),
-            synchronizationStatus: Schema.optional(
-              Schema.Literals(["InSync", "Synchronizing", "OutOfSync"]),
-            ),
-            secretArchiveReference: Schema.optional(
-              Schema.Struct({
-                keyVaultUri: Schema.optional(Schema.String),
-                keyVaultId: Schema.optional(Schema.String),
-                secretName: Schema.optional(Schema.String),
-                secretVersion: Schema.optional(Schema.String),
-              }),
-            ),
-            secretType: Schema.optional(Schema.String),
-          }),
-        ),
-      ),
-      certificateRotationStatus: Schema.optional(
-        Schema.Array(
-          Schema.Struct({
-            expireTime: Schema.optional(Schema.String),
-            lastRotationTime: Schema.optional(Schema.String),
-            synchronizationStatus: Schema.optional(
-              Schema.Literals(["InSync", "Synchronizing", "OutOfSync"]),
-            ),
-            certificateArchiveReference: Schema.optional(
-              Schema.Struct({
-                keyVaultUri: Schema.optional(Schema.String),
-                keyVaultId: Schema.optional(Schema.String),
-                certificateName: Schema.optional(Schema.String),
-                certificateVersion: Schema.optional(Schema.String),
-              }),
-            ),
-            certificateType: Schema.optional(Schema.String),
-          }),
-        ),
-      ),
-      networkFabricId: Schema.optional(Schema.String),
-    }),
+    properties: Schema.suspend(() => NetworkDevicePropertiesSchema),
     identity: Schema.optional(
       Schema.Struct({
         principalId: Schema.optional(Schema.String),
         tenantId: Schema.optional(Schema.String),
-        type: Schema.Literals([
-          "None",
-          "SystemAssigned",
-          "UserAssigned",
-          "SystemAssigned,UserAssigned",
-        ]),
+        type: Schema.suspend(() => ManagedServiceIdentityTypeSchema),
         userAssignedIdentities: Schema.optional(
-          Schema.Record(
-            Schema.String,
-            Schema.Struct({
-              principalId: Schema.optional(Schema.String),
-              clientId: Schema.optional(Schema.String),
-            }),
-          ),
+          Schema.suspend(() => UserAssignedIdentitiesSchema),
         ),
       }),
     ),
@@ -8881,23 +7382,23 @@ export type NetworkDevicesCreateInput = typeof NetworkDevicesCreateInput.Type;
 // Output Schema
 export const NetworkDevicesCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.suspend(() => NetworkDevicePropertiesSchema),
+    identity: Schema.optional(
+      Schema.Struct({
+        principalId: Schema.optional(Schema.String),
+        tenantId: Schema.optional(Schema.String),
+        type: Schema.suspend(() => ManagedServiceIdentityTypeSchema),
+        userAssignedIdentities: Schema.optional(
+          Schema.suspend(() => UserAssignedIdentitiesSchema),
+        ),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type NetworkDevicesCreateOutput = typeof NetworkDevicesCreateOutput.Type;
 
@@ -8971,23 +7472,23 @@ export type NetworkDevicesGetInput = typeof NetworkDevicesGetInput.Type;
 // Output Schema
 export const NetworkDevicesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.suspend(() => NetworkDevicePropertiesSchema),
+    identity: Schema.optional(
+      Schema.Struct({
+        principalId: Schema.optional(Schema.String),
+        tenantId: Schema.optional(Schema.String),
+        type: Schema.suspend(() => ManagedServiceIdentityTypeSchema),
+        userAssignedIdentities: Schema.optional(
+          Schema.suspend(() => UserAssignedIdentitiesSchema),
+        ),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type NetworkDevicesGetOutput = typeof NetworkDevicesGetOutput.Type;
 
@@ -9021,23 +7522,11 @@ export type NetworkDeviceSkusGetInput = typeof NetworkDeviceSkusGetInput.Type;
 // Output Schema
 export const NetworkDeviceSkusGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.suspend(() => NetworkDeviceSkuPropertiesSchema),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type NetworkDeviceSkusGetOutput = typeof NetworkDeviceSkusGetOutput.Type;
 
@@ -9072,37 +7561,7 @@ export type NetworkDeviceSkusListBySubscriptionInput =
 // Output Schema
 export const NetworkDeviceSkusListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => NetworkDeviceSkuSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type NetworkDeviceSkusListBySubscriptionOutput =
@@ -9138,37 +7597,7 @@ export type NetworkDevicesListByResourceGroupInput =
 // Output Schema
 export const NetworkDevicesListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => NetworkDeviceSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type NetworkDevicesListByResourceGroupOutput =
@@ -9204,37 +7633,7 @@ export type NetworkDevicesListBySubscriptionInput =
 // Output Schema
 export const NetworkDevicesListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => NetworkDeviceSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type NetworkDevicesListBySubscriptionOutput =
@@ -9258,14 +7657,7 @@ export const NetworkDevicesRebootInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     networkDeviceName: Schema.String.pipe(T.PathParam()),
-    rebootType: Schema.optional(
-      Schema.Literals([
-        "GracefulRebootWithZTP",
-        "GracefulRebootWithoutZTP",
-        "UngracefulRebootWithZTP",
-        "UngracefulRebootWithoutZTP",
-      ]),
-    ),
+    rebootType: Schema.optional(Schema.suspend(() => RebootTypeSchema)),
   }).pipe(
     T.Http({
       method: "POST",
@@ -9287,51 +7679,9 @@ export const NetworkDevicesRebootOutput =
     startTime: Schema.optional(Schema.String),
     endTime: Schema.optional(Schema.String),
     operations: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          resourceId: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          status: Schema.String,
-          percentComplete: Schema.optional(Schema.Number),
-          startTime: Schema.optional(Schema.String),
-          endTime: Schema.optional(Schema.String),
-          operations: Schema.optional(Schema.Array(Schema.Unknown)),
-          error: Schema.optional(
-            Schema.Struct({
-              code: Schema.optional(Schema.String),
-              message: Schema.optional(Schema.String),
-              target: Schema.optional(Schema.String),
-              details: Schema.optional(Schema.Array(Schema.Unknown)),
-              additionalInfo: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    type: Schema.optional(Schema.String),
-                    info: Schema.optional(Schema.Unknown),
-                  }),
-                ),
-              ),
-            }),
-          ),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => OperationStatusResultSchema)),
     ),
-    error: Schema.optional(
-      Schema.Struct({
-        code: Schema.optional(Schema.String),
-        message: Schema.optional(Schema.String),
-        target: Schema.optional(Schema.String),
-        details: Schema.optional(Schema.Array(Schema.Unknown)),
-        additionalInfo: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              type: Schema.optional(Schema.String),
-              info: Schema.optional(Schema.Unknown),
-            }),
-          ),
-        ),
-      }),
-    ),
+    error: Schema.optional(Schema.suspend(() => ErrorDetailSchema)),
   });
 export type NetworkDevicesRebootOutput = typeof NetworkDevicesRebootOutput.Type;
 
@@ -9387,51 +7737,9 @@ export const NetworkDevicesRefreshConfigurationOutput =
           startTime: Schema.optional(Schema.String),
           endTime: Schema.optional(Schema.String),
           operations: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                id: Schema.optional(Schema.String),
-                resourceId: Schema.optional(Schema.String),
-                name: Schema.optional(Schema.String),
-                status: Schema.String,
-                percentComplete: Schema.optional(Schema.Number),
-                startTime: Schema.optional(Schema.String),
-                endTime: Schema.optional(Schema.String),
-                operations: Schema.optional(Schema.Array(Schema.Unknown)),
-                error: Schema.optional(
-                  Schema.Struct({
-                    code: Schema.optional(Schema.String),
-                    message: Schema.optional(Schema.String),
-                    target: Schema.optional(Schema.String),
-                    details: Schema.optional(Schema.Array(Schema.Unknown)),
-                    additionalInfo: Schema.optional(
-                      Schema.Array(
-                        Schema.Struct({
-                          type: Schema.optional(Schema.String),
-                          info: Schema.optional(Schema.Unknown),
-                        }),
-                      ),
-                    ),
-                  }),
-                ),
-              }),
-            ),
+            Schema.Array(Schema.suspend(() => OperationStatusResultSchema)),
           ),
-          error: Schema.optional(
-            Schema.Struct({
-              code: Schema.optional(Schema.String),
-              message: Schema.optional(Schema.String),
-              target: Schema.optional(Schema.String),
-              details: Schema.optional(Schema.Array(Schema.Unknown)),
-              additionalInfo: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    type: Schema.optional(Schema.String),
-                    info: Schema.optional(Schema.Unknown),
-                  }),
-                ),
-              ),
-            }),
-          ),
+          error: Schema.optional(Schema.suspend(() => ErrorDetailSchema)),
         }),
       ),
     ),
@@ -9441,30 +7749,10 @@ export const NetworkDevicesRefreshConfigurationOutput =
         message: Schema.optional(Schema.String),
         target: Schema.optional(Schema.String),
         details: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              code: Schema.optional(Schema.String),
-              message: Schema.optional(Schema.String),
-              target: Schema.optional(Schema.String),
-              details: Schema.optional(Schema.Array(Schema.Unknown)),
-              additionalInfo: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    type: Schema.optional(Schema.String),
-                    info: Schema.optional(Schema.Unknown),
-                  }),
-                ),
-              ),
-            }),
-          ),
+          Schema.Array(Schema.suspend(() => ErrorDetailSchema)),
         ),
         additionalInfo: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              type: Schema.optional(Schema.String),
-              info: Schema.optional(Schema.Unknown),
-            }),
-          ),
+          Schema.Array(Schema.suspend(() => ErrorAdditionalInfoSchema)),
         ),
       }),
     ),
@@ -9524,51 +7812,9 @@ export const NetworkDevicesResyncCertificatesOutput =
           startTime: Schema.optional(Schema.String),
           endTime: Schema.optional(Schema.String),
           operations: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                id: Schema.optional(Schema.String),
-                resourceId: Schema.optional(Schema.String),
-                name: Schema.optional(Schema.String),
-                status: Schema.String,
-                percentComplete: Schema.optional(Schema.Number),
-                startTime: Schema.optional(Schema.String),
-                endTime: Schema.optional(Schema.String),
-                operations: Schema.optional(Schema.Array(Schema.Unknown)),
-                error: Schema.optional(
-                  Schema.Struct({
-                    code: Schema.optional(Schema.String),
-                    message: Schema.optional(Schema.String),
-                    target: Schema.optional(Schema.String),
-                    details: Schema.optional(Schema.Array(Schema.Unknown)),
-                    additionalInfo: Schema.optional(
-                      Schema.Array(
-                        Schema.Struct({
-                          type: Schema.optional(Schema.String),
-                          info: Schema.optional(Schema.Unknown),
-                        }),
-                      ),
-                    ),
-                  }),
-                ),
-              }),
-            ),
+            Schema.Array(Schema.suspend(() => OperationStatusResultSchema)),
           ),
-          error: Schema.optional(
-            Schema.Struct({
-              code: Schema.optional(Schema.String),
-              message: Schema.optional(Schema.String),
-              target: Schema.optional(Schema.String),
-              details: Schema.optional(Schema.Array(Schema.Unknown)),
-              additionalInfo: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    type: Schema.optional(Schema.String),
-                    info: Schema.optional(Schema.Unknown),
-                  }),
-                ),
-              ),
-            }),
-          ),
+          error: Schema.optional(Schema.suspend(() => ErrorDetailSchema)),
         }),
       ),
     ),
@@ -9578,30 +7824,10 @@ export const NetworkDevicesResyncCertificatesOutput =
         message: Schema.optional(Schema.String),
         target: Schema.optional(Schema.String),
         details: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              code: Schema.optional(Schema.String),
-              message: Schema.optional(Schema.String),
-              target: Schema.optional(Schema.String),
-              details: Schema.optional(Schema.Array(Schema.Unknown)),
-              additionalInfo: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    type: Schema.optional(Schema.String),
-                    info: Schema.optional(Schema.Unknown),
-                  }),
-                ),
-              ),
-            }),
-          ),
+          Schema.Array(Schema.suspend(() => ErrorDetailSchema)),
         ),
         additionalInfo: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              type: Schema.optional(Schema.String),
-              info: Schema.optional(Schema.Unknown),
-            }),
-          ),
+          Schema.Array(Schema.suspend(() => ErrorAdditionalInfoSchema)),
         ),
       }),
     ),
@@ -9663,51 +7889,9 @@ export const NetworkDevicesResyncPasswordsOutput =
           startTime: Schema.optional(Schema.String),
           endTime: Schema.optional(Schema.String),
           operations: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                id: Schema.optional(Schema.String),
-                resourceId: Schema.optional(Schema.String),
-                name: Schema.optional(Schema.String),
-                status: Schema.String,
-                percentComplete: Schema.optional(Schema.Number),
-                startTime: Schema.optional(Schema.String),
-                endTime: Schema.optional(Schema.String),
-                operations: Schema.optional(Schema.Array(Schema.Unknown)),
-                error: Schema.optional(
-                  Schema.Struct({
-                    code: Schema.optional(Schema.String),
-                    message: Schema.optional(Schema.String),
-                    target: Schema.optional(Schema.String),
-                    details: Schema.optional(Schema.Array(Schema.Unknown)),
-                    additionalInfo: Schema.optional(
-                      Schema.Array(
-                        Schema.Struct({
-                          type: Schema.optional(Schema.String),
-                          info: Schema.optional(Schema.Unknown),
-                        }),
-                      ),
-                    ),
-                  }),
-                ),
-              }),
-            ),
+            Schema.Array(Schema.suspend(() => OperationStatusResultSchema)),
           ),
-          error: Schema.optional(
-            Schema.Struct({
-              code: Schema.optional(Schema.String),
-              message: Schema.optional(Schema.String),
-              target: Schema.optional(Schema.String),
-              details: Schema.optional(Schema.Array(Schema.Unknown)),
-              additionalInfo: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    type: Schema.optional(Schema.String),
-                    info: Schema.optional(Schema.Unknown),
-                  }),
-                ),
-              ),
-            }),
-          ),
+          error: Schema.optional(Schema.suspend(() => ErrorDetailSchema)),
         }),
       ),
     ),
@@ -9717,30 +7901,10 @@ export const NetworkDevicesResyncPasswordsOutput =
         message: Schema.optional(Schema.String),
         target: Schema.optional(Schema.String),
         details: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              code: Schema.optional(Schema.String),
-              message: Schema.optional(Schema.String),
-              target: Schema.optional(Schema.String),
-              details: Schema.optional(Schema.Array(Schema.Unknown)),
-              additionalInfo: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    type: Schema.optional(Schema.String),
-                    info: Schema.optional(Schema.Unknown),
-                  }),
-                ),
-              ),
-            }),
-          ),
+          Schema.Array(Schema.suspend(() => ErrorDetailSchema)),
         ),
         additionalInfo: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              type: Schema.optional(Schema.String),
-              info: Schema.optional(Schema.Unknown),
-            }),
-          ),
+          Schema.Array(Schema.suspend(() => ErrorAdditionalInfoSchema)),
         ),
       }),
     ),
@@ -9786,22 +7950,16 @@ export type NetworkDevicesRunRoCommandInput =
 // Output Schema
 export const NetworkDevicesRunRoCommandOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    error: Schema.optional(
-      Schema.Struct({
-        code: Schema.optional(Schema.String),
-        message: Schema.optional(Schema.String),
-        target: Schema.optional(Schema.String),
-        details: Schema.optional(Schema.Array(Schema.Unknown)),
-        additionalInfo: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              type: Schema.optional(Schema.String),
-              info: Schema.optional(Schema.Unknown),
-            }),
-          ),
-        ),
-      }),
+    endTime: Schema.optional(Schema.String),
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    properties: Schema.optional(
+      Schema.suspend(() => CommonPostActionResponseForDeviceROCommandsSchema),
     ),
+    resourceId: Schema.optional(Schema.String),
+    startTime: Schema.optional(Schema.String),
+    status: Schema.String,
+    error: Schema.optional(Schema.suspend(() => ErrorDetailSchema)),
   });
 export type NetworkDevicesRunRoCommandOutput =
   typeof NetworkDevicesRunRoCommandOutput.Type;
@@ -9860,51 +8018,9 @@ export const NetworkDevicesRunRwCommandOutput =
           startTime: Schema.optional(Schema.String),
           endTime: Schema.optional(Schema.String),
           operations: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                id: Schema.optional(Schema.String),
-                resourceId: Schema.optional(Schema.String),
-                name: Schema.optional(Schema.String),
-                status: Schema.String,
-                percentComplete: Schema.optional(Schema.Number),
-                startTime: Schema.optional(Schema.String),
-                endTime: Schema.optional(Schema.String),
-                operations: Schema.optional(Schema.Array(Schema.Unknown)),
-                error: Schema.optional(
-                  Schema.Struct({
-                    code: Schema.optional(Schema.String),
-                    message: Schema.optional(Schema.String),
-                    target: Schema.optional(Schema.String),
-                    details: Schema.optional(Schema.Array(Schema.Unknown)),
-                    additionalInfo: Schema.optional(
-                      Schema.Array(
-                        Schema.Struct({
-                          type: Schema.optional(Schema.String),
-                          info: Schema.optional(Schema.Unknown),
-                        }),
-                      ),
-                    ),
-                  }),
-                ),
-              }),
-            ),
+            Schema.Array(Schema.suspend(() => OperationStatusResultSchema)),
           ),
-          error: Schema.optional(
-            Schema.Struct({
-              code: Schema.optional(Schema.String),
-              message: Schema.optional(Schema.String),
-              target: Schema.optional(Schema.String),
-              details: Schema.optional(Schema.Array(Schema.Unknown)),
-              additionalInfo: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    type: Schema.optional(Schema.String),
-                    info: Schema.optional(Schema.Unknown),
-                  }),
-                ),
-              ),
-            }),
-          ),
+          error: Schema.optional(Schema.suspend(() => ErrorDetailSchema)),
         }),
       ),
     ),
@@ -9914,55 +8030,16 @@ export const NetworkDevicesRunRwCommandOutput =
         message: Schema.optional(Schema.String),
         target: Schema.optional(Schema.String),
         details: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              code: Schema.optional(Schema.String),
-              message: Schema.optional(Schema.String),
-              target: Schema.optional(Schema.String),
-              details: Schema.optional(Schema.Array(Schema.Unknown)),
-              additionalInfo: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    type: Schema.optional(Schema.String),
-                    info: Schema.optional(Schema.Unknown),
-                  }),
-                ),
-              ),
-            }),
-          ),
+          Schema.Array(Schema.suspend(() => ErrorDetailSchema)),
         ),
         additionalInfo: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              type: Schema.optional(Schema.String),
-              info: Schema.optional(Schema.Unknown),
-            }),
-          ),
+          Schema.Array(Schema.suspend(() => ErrorAdditionalInfoSchema)),
         ),
       }),
     ),
     resourceId: Schema.optional(Schema.String),
     properties: Schema.optional(
-      Schema.Struct({
-        configurationState: Schema.optional(
-          Schema.Literals([
-            "Succeeded",
-            "Failed",
-            "Rejected",
-            "Accepted",
-            "Provisioned",
-            "ErrorProvisioning",
-            "Deprovisioning",
-            "Deprovisioned",
-            "ErrorDeprovisioning",
-            "DeferredControl",
-            "Provisioning",
-            "PendingCommit",
-            "PendingAdministrativeUpdate",
-          ]),
-        ),
-        outputUrl: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(() => NetworkDeviceRwCommandResponsePropertiesSchema),
     ),
   });
 export type NetworkDevicesRunRwCommandOutput =
@@ -9990,43 +8067,10 @@ export const NetworkDevicesUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     networkDeviceName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        annotation: Schema.optional(Schema.String),
-        hostName: Schema.optional(Schema.String),
-        serialNumber: Schema.optional(Schema.String),
-        identitySelector: Schema.optional(
-          Schema.Struct({
-            identityType: Schema.optional(
-              Schema.Literals([
-                "SystemAssignedIdentity",
-                "UserAssignedIdentity",
-              ]),
-            ),
-            userAssignedIdentityResourceId: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
+      Schema.suspend(() => NetworkDevicePatchParametersPropertiesSchema),
     ),
     identity: Schema.optional(
-      Schema.Struct({
-        type: Schema.optional(
-          Schema.Literals([
-            "None",
-            "SystemAssigned",
-            "UserAssigned",
-            "SystemAssigned,UserAssigned",
-          ]),
-        ),
-        userAssignedIdentities: Schema.optional(
-          Schema.Record(
-            Schema.String,
-            Schema.Struct({
-              principalId: Schema.optional(Schema.String),
-              clientId: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-      }),
+      Schema.suspend(() => ManagedServiceIdentityPatchSchema),
     ),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
@@ -10042,23 +8086,23 @@ export type NetworkDevicesUpdateInput = typeof NetworkDevicesUpdateInput.Type;
 // Output Schema
 export const NetworkDevicesUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.suspend(() => NetworkDevicePropertiesSchema),
+    identity: Schema.optional(
+      Schema.Struct({
+        principalId: Schema.optional(Schema.String),
+        tenantId: Schema.optional(Schema.String),
+        type: Schema.suspend(() => ManagedServiceIdentityTypeSchema),
+        userAssignedIdentities: Schema.optional(
+          Schema.suspend(() => UserAssignedIdentitiesSchema),
+        ),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type NetworkDevicesUpdateOutput = typeof NetworkDevicesUpdateOutput.Type;
 
@@ -10084,17 +8128,7 @@ export const NetworkDevicesUpdateAdministrativeStateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     networkDeviceName: Schema.String.pipe(T.PathParam()),
     state: Schema.optional(
-      Schema.Literals([
-        "RMA",
-        "UngracefulRMA",
-        "Resync",
-        "GracefulQuarantine",
-        "UngracefulQuarantine",
-        "Quarantine",
-        "UnderMaintenance",
-        "Enable",
-        "Disable",
-      ]),
+      Schema.suspend(() => DeviceAdministrativeStateSchema),
     ),
     resourceIds: Schema.optional(Schema.Array(Schema.String)),
   }).pipe(
@@ -10128,51 +8162,9 @@ export const NetworkDevicesUpdateAdministrativeStateOutput =
           startTime: Schema.optional(Schema.String),
           endTime: Schema.optional(Schema.String),
           operations: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                id: Schema.optional(Schema.String),
-                resourceId: Schema.optional(Schema.String),
-                name: Schema.optional(Schema.String),
-                status: Schema.String,
-                percentComplete: Schema.optional(Schema.Number),
-                startTime: Schema.optional(Schema.String),
-                endTime: Schema.optional(Schema.String),
-                operations: Schema.optional(Schema.Array(Schema.Unknown)),
-                error: Schema.optional(
-                  Schema.Struct({
-                    code: Schema.optional(Schema.String),
-                    message: Schema.optional(Schema.String),
-                    target: Schema.optional(Schema.String),
-                    details: Schema.optional(Schema.Array(Schema.Unknown)),
-                    additionalInfo: Schema.optional(
-                      Schema.Array(
-                        Schema.Struct({
-                          type: Schema.optional(Schema.String),
-                          info: Schema.optional(Schema.Unknown),
-                        }),
-                      ),
-                    ),
-                  }),
-                ),
-              }),
-            ),
+            Schema.Array(Schema.suspend(() => OperationStatusResultSchema)),
           ),
-          error: Schema.optional(
-            Schema.Struct({
-              code: Schema.optional(Schema.String),
-              message: Schema.optional(Schema.String),
-              target: Schema.optional(Schema.String),
-              details: Schema.optional(Schema.Array(Schema.Unknown)),
-              additionalInfo: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    type: Schema.optional(Schema.String),
-                    info: Schema.optional(Schema.Unknown),
-                  }),
-                ),
-              ),
-            }),
-          ),
+          error: Schema.optional(Schema.suspend(() => ErrorDetailSchema)),
         }),
       ),
     ),
@@ -10182,30 +8174,10 @@ export const NetworkDevicesUpdateAdministrativeStateOutput =
         message: Schema.optional(Schema.String),
         target: Schema.optional(Schema.String),
         details: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              code: Schema.optional(Schema.String),
-              message: Schema.optional(Schema.String),
-              target: Schema.optional(Schema.String),
-              details: Schema.optional(Schema.Array(Schema.Unknown)),
-              additionalInfo: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    type: Schema.optional(Schema.String),
-                    info: Schema.optional(Schema.Unknown),
-                  }),
-                ),
-              ),
-            }),
-          ),
+          Schema.Array(Schema.suspend(() => ErrorDetailSchema)),
         ),
         additionalInfo: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              type: Schema.optional(Schema.String),
-              info: Schema.optional(Schema.Unknown),
-            }),
-          ),
+          Schema.Array(Schema.suspend(() => ErrorAdditionalInfoSchema)),
         ),
       }),
     ),
@@ -10266,51 +8238,9 @@ export const NetworkDevicesUpgradeOutput =
           startTime: Schema.optional(Schema.String),
           endTime: Schema.optional(Schema.String),
           operations: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                id: Schema.optional(Schema.String),
-                resourceId: Schema.optional(Schema.String),
-                name: Schema.optional(Schema.String),
-                status: Schema.String,
-                percentComplete: Schema.optional(Schema.Number),
-                startTime: Schema.optional(Schema.String),
-                endTime: Schema.optional(Schema.String),
-                operations: Schema.optional(Schema.Array(Schema.Unknown)),
-                error: Schema.optional(
-                  Schema.Struct({
-                    code: Schema.optional(Schema.String),
-                    message: Schema.optional(Schema.String),
-                    target: Schema.optional(Schema.String),
-                    details: Schema.optional(Schema.Array(Schema.Unknown)),
-                    additionalInfo: Schema.optional(
-                      Schema.Array(
-                        Schema.Struct({
-                          type: Schema.optional(Schema.String),
-                          info: Schema.optional(Schema.Unknown),
-                        }),
-                      ),
-                    ),
-                  }),
-                ),
-              }),
-            ),
+            Schema.Array(Schema.suspend(() => OperationStatusResultSchema)),
           ),
-          error: Schema.optional(
-            Schema.Struct({
-              code: Schema.optional(Schema.String),
-              message: Schema.optional(Schema.String),
-              target: Schema.optional(Schema.String),
-              details: Schema.optional(Schema.Array(Schema.Unknown)),
-              additionalInfo: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    type: Schema.optional(Schema.String),
-                    info: Schema.optional(Schema.Unknown),
-                  }),
-                ),
-              ),
-            }),
-          ),
+          error: Schema.optional(Schema.suspend(() => ErrorDetailSchema)),
         }),
       ),
     ),
@@ -10320,30 +8250,10 @@ export const NetworkDevicesUpgradeOutput =
         message: Schema.optional(Schema.String),
         target: Schema.optional(Schema.String),
         details: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              code: Schema.optional(Schema.String),
-              message: Schema.optional(Schema.String),
-              target: Schema.optional(Schema.String),
-              details: Schema.optional(Schema.Array(Schema.Unknown)),
-              additionalInfo: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    type: Schema.optional(Schema.String),
-                    info: Schema.optional(Schema.Unknown),
-                  }),
-                ),
-              ),
-            }),
-          ),
+          Schema.Array(Schema.suspend(() => ErrorDetailSchema)),
         ),
         additionalInfo: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              type: Schema.optional(Schema.String),
-              info: Schema.optional(Schema.Unknown),
-            }),
-          ),
+          Schema.Array(Schema.suspend(() => ErrorAdditionalInfoSchema)),
         ),
       }),
     ),
@@ -10373,86 +8283,14 @@ export const NetworkFabricControllersCreateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     networkFabricControllerName: Schema.String.pipe(T.PathParam()),
-    properties: Schema.Struct({
-      annotation: Schema.optional(Schema.String),
-      infrastructureExpressRouteConnections: Schema.optional(
-        Schema.Array(
-          Schema.Struct({
-            expressRouteCircuitId: Schema.String,
-            expressRouteAuthorizationKey: Schema.String,
-          }),
-        ),
-      ),
-      workloadExpressRouteConnections: Schema.optional(
-        Schema.Array(
-          Schema.Struct({
-            expressRouteCircuitId: Schema.String,
-            expressRouteAuthorizationKey: Schema.String,
-          }),
-        ),
-      ),
-      infrastructureServices: Schema.optional(
-        Schema.Struct({
-          ipv4AddressSpaces: Schema.optional(Schema.Array(Schema.String)),
-          ipv6AddressSpaces: Schema.optional(Schema.Array(Schema.String)),
-        }),
-      ),
-      workloadServices: Schema.optional(
-        Schema.Struct({
-          ipv4AddressSpaces: Schema.optional(Schema.Array(Schema.String)),
-          ipv6AddressSpaces: Schema.optional(Schema.Array(Schema.String)),
-        }),
-      ),
-      managedResourceGroupConfiguration: Schema.optional(
-        Schema.Struct({
-          name: Schema.optional(Schema.String),
-          location: Schema.optional(Schema.String),
-        }),
-      ),
-      networkFabricIds: Schema.optional(Schema.Array(Schema.String)),
-      isWorkloadManagementNetworkEnabled: Schema.optional(
-        Schema.Literals(["True", "False"]),
-      ),
-      tenantInternetGatewayIds: Schema.optional(Schema.Array(Schema.String)),
-      ipv4AddressSpace: Schema.optional(Schema.String),
-      ipv6AddressSpace: Schema.optional(Schema.String),
-      nfcSku: Schema.optional(
-        Schema.Literals(["Basic", "Standard", "HighPerformance"]),
-      ),
-      lastOperation: Schema.optional(
-        Schema.Struct({
-          details: Schema.optional(Schema.String),
-        }),
-      ),
-      provisioningState: Schema.optional(
-        Schema.Literals([
-          "Accepted",
-          "Succeeded",
-          "Updating",
-          "Deleting",
-          "Failed",
-          "Canceled",
-        ]),
-      ),
-    }),
+    properties: Schema.suspend(() => NetworkFabricControllerPropertiesSchema),
     identity: Schema.optional(
       Schema.Struct({
         principalId: Schema.optional(Schema.String),
         tenantId: Schema.optional(Schema.String),
-        type: Schema.Literals([
-          "None",
-          "SystemAssigned",
-          "UserAssigned",
-          "SystemAssigned,UserAssigned",
-        ]),
+        type: Schema.suspend(() => ManagedServiceIdentityTypeSchema),
         userAssignedIdentities: Schema.optional(
-          Schema.Record(
-            Schema.String,
-            Schema.Struct({
-              principalId: Schema.optional(Schema.String),
-              clientId: Schema.optional(Schema.String),
-            }),
-          ),
+          Schema.suspend(() => UserAssignedIdentitiesSchema),
         ),
       }),
     ),
@@ -10472,23 +8310,23 @@ export type NetworkFabricControllersCreateInput =
 // Output Schema
 export const NetworkFabricControllersCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.suspend(() => NetworkFabricControllerPropertiesSchema),
+    identity: Schema.optional(
+      Schema.Struct({
+        principalId: Schema.optional(Schema.String),
+        tenantId: Schema.optional(Schema.String),
+        type: Schema.suspend(() => ManagedServiceIdentityTypeSchema),
+        userAssignedIdentities: Schema.optional(
+          Schema.suspend(() => UserAssignedIdentitiesSchema),
+        ),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type NetworkFabricControllersCreateOutput =
   typeof NetworkFabricControllersCreateOutput.Type;
@@ -10563,23 +8401,23 @@ export type NetworkFabricControllersGetInput =
 // Output Schema
 export const NetworkFabricControllersGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.suspend(() => NetworkFabricControllerPropertiesSchema),
+    identity: Schema.optional(
+      Schema.Struct({
+        principalId: Schema.optional(Schema.String),
+        tenantId: Schema.optional(Schema.String),
+        type: Schema.suspend(() => ManagedServiceIdentityTypeSchema),
+        userAssignedIdentities: Schema.optional(
+          Schema.suspend(() => UserAssignedIdentitiesSchema),
+        ),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type NetworkFabricControllersGetOutput =
   typeof NetworkFabricControllersGetOutput.Type;
@@ -10617,37 +8455,7 @@ export type NetworkFabricControllersListByResourceGroupInput =
 // Output Schema
 export const NetworkFabricControllersListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => NetworkFabricControllerSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type NetworkFabricControllersListByResourceGroupOutput =
@@ -10683,37 +8491,7 @@ export type NetworkFabricControllersListBySubscriptionInput =
 // Output Schema
 export const NetworkFabricControllersListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => NetworkFabricControllerSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type NetworkFabricControllersListBySubscriptionOutput =
@@ -10738,45 +8516,10 @@ export const NetworkFabricControllersUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     networkFabricControllerName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        infrastructureExpressRouteConnections: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              expressRouteCircuitId: Schema.String,
-              expressRouteAuthorizationKey: Schema.String,
-            }),
-          ),
-        ),
-        workloadExpressRouteConnections: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              expressRouteCircuitId: Schema.String,
-              expressRouteAuthorizationKey: Schema.String,
-            }),
-          ),
-        ),
-      }),
+      Schema.suspend(() => NetworkFabricControllerPatchPropertiesSchema),
     ),
     identity: Schema.optional(
-      Schema.Struct({
-        type: Schema.optional(
-          Schema.Literals([
-            "None",
-            "SystemAssigned",
-            "UserAssigned",
-            "SystemAssigned,UserAssigned",
-          ]),
-        ),
-        userAssignedIdentities: Schema.optional(
-          Schema.Record(
-            Schema.String,
-            Schema.Struct({
-              principalId: Schema.optional(Schema.String),
-              clientId: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-      }),
+      Schema.suspend(() => ManagedServiceIdentityPatchSchema),
     ),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
@@ -10793,23 +8536,23 @@ export type NetworkFabricControllersUpdateInput =
 // Output Schema
 export const NetworkFabricControllersUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.suspend(() => NetworkFabricControllerPropertiesSchema),
+    identity: Schema.optional(
+      Schema.Struct({
+        principalId: Schema.optional(Schema.String),
+        tenantId: Schema.optional(Schema.String),
+        type: Schema.suspend(() => ManagedServiceIdentityTypeSchema),
+        userAssignedIdentities: Schema.optional(
+          Schema.suspend(() => UserAssignedIdentitiesSchema),
+        ),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type NetworkFabricControllersUpdateOutput =
   typeof NetworkFabricControllersUpdateOutput.Type;
@@ -10865,51 +8608,9 @@ export const NetworkFabricsArmConfigurationDiffOutput =
           startTime: Schema.optional(Schema.String),
           endTime: Schema.optional(Schema.String),
           operations: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                id: Schema.optional(Schema.String),
-                resourceId: Schema.optional(Schema.String),
-                name: Schema.optional(Schema.String),
-                status: Schema.String,
-                percentComplete: Schema.optional(Schema.Number),
-                startTime: Schema.optional(Schema.String),
-                endTime: Schema.optional(Schema.String),
-                operations: Schema.optional(Schema.Array(Schema.Unknown)),
-                error: Schema.optional(
-                  Schema.Struct({
-                    code: Schema.optional(Schema.String),
-                    message: Schema.optional(Schema.String),
-                    target: Schema.optional(Schema.String),
-                    details: Schema.optional(Schema.Array(Schema.Unknown)),
-                    additionalInfo: Schema.optional(
-                      Schema.Array(
-                        Schema.Struct({
-                          type: Schema.optional(Schema.String),
-                          info: Schema.optional(Schema.Unknown),
-                        }),
-                      ),
-                    ),
-                  }),
-                ),
-              }),
-            ),
+            Schema.Array(Schema.suspend(() => OperationStatusResultSchema)),
           ),
-          error: Schema.optional(
-            Schema.Struct({
-              code: Schema.optional(Schema.String),
-              message: Schema.optional(Schema.String),
-              target: Schema.optional(Schema.String),
-              details: Schema.optional(Schema.Array(Schema.Unknown)),
-              additionalInfo: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    type: Schema.optional(Schema.String),
-                    info: Schema.optional(Schema.Unknown),
-                  }),
-                ),
-              ),
-            }),
-          ),
+          error: Schema.optional(Schema.suspend(() => ErrorDetailSchema)),
         }),
       ),
     ),
@@ -10919,38 +8620,16 @@ export const NetworkFabricsArmConfigurationDiffOutput =
         message: Schema.optional(Schema.String),
         target: Schema.optional(Schema.String),
         details: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              code: Schema.optional(Schema.String),
-              message: Schema.optional(Schema.String),
-              target: Schema.optional(Schema.String),
-              details: Schema.optional(Schema.Array(Schema.Unknown)),
-              additionalInfo: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    type: Schema.optional(Schema.String),
-                    info: Schema.optional(Schema.Unknown),
-                  }),
-                ),
-              ),
-            }),
-          ),
+          Schema.Array(Schema.suspend(() => ErrorDetailSchema)),
         ),
         additionalInfo: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              type: Schema.optional(Schema.String),
-              info: Schema.optional(Schema.Unknown),
-            }),
-          ),
+          Schema.Array(Schema.suspend(() => ErrorAdditionalInfoSchema)),
         ),
       }),
     ),
     resourceId: Schema.optional(Schema.String),
     properties: Schema.optional(
-      Schema.Struct({
-        configurationDiffUrl: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(() => ArmConfigurationDiffResponsePropertiesSchema),
     ),
   });
 export type NetworkFabricsArmConfigurationDiffOutput =
@@ -11008,51 +8687,9 @@ export const NetworkFabricsCommitBatchStatusOutput =
           startTime: Schema.optional(Schema.String),
           endTime: Schema.optional(Schema.String),
           operations: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                id: Schema.optional(Schema.String),
-                resourceId: Schema.optional(Schema.String),
-                name: Schema.optional(Schema.String),
-                status: Schema.String,
-                percentComplete: Schema.optional(Schema.Number),
-                startTime: Schema.optional(Schema.String),
-                endTime: Schema.optional(Schema.String),
-                operations: Schema.optional(Schema.Array(Schema.Unknown)),
-                error: Schema.optional(
-                  Schema.Struct({
-                    code: Schema.optional(Schema.String),
-                    message: Schema.optional(Schema.String),
-                    target: Schema.optional(Schema.String),
-                    details: Schema.optional(Schema.Array(Schema.Unknown)),
-                    additionalInfo: Schema.optional(
-                      Schema.Array(
-                        Schema.Struct({
-                          type: Schema.optional(Schema.String),
-                          info: Schema.optional(Schema.Unknown),
-                        }),
-                      ),
-                    ),
-                  }),
-                ),
-              }),
-            ),
+            Schema.Array(Schema.suspend(() => OperationStatusResultSchema)),
           ),
-          error: Schema.optional(
-            Schema.Struct({
-              code: Schema.optional(Schema.String),
-              message: Schema.optional(Schema.String),
-              target: Schema.optional(Schema.String),
-              details: Schema.optional(Schema.Array(Schema.Unknown)),
-              additionalInfo: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    type: Schema.optional(Schema.String),
-                    info: Schema.optional(Schema.Unknown),
-                  }),
-                ),
-              ),
-            }),
-          ),
+          error: Schema.optional(Schema.suspend(() => ErrorDetailSchema)),
         }),
       ),
     ),
@@ -11062,46 +8699,16 @@ export const NetworkFabricsCommitBatchStatusOutput =
         message: Schema.optional(Schema.String),
         target: Schema.optional(Schema.String),
         details: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              code: Schema.optional(Schema.String),
-              message: Schema.optional(Schema.String),
-              target: Schema.optional(Schema.String),
-              details: Schema.optional(Schema.Array(Schema.Unknown)),
-              additionalInfo: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    type: Schema.optional(Schema.String),
-                    info: Schema.optional(Schema.Unknown),
-                  }),
-                ),
-              ),
-            }),
-          ),
+          Schema.Array(Schema.suspend(() => ErrorDetailSchema)),
         ),
         additionalInfo: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              type: Schema.optional(Schema.String),
-              info: Schema.optional(Schema.Unknown),
-            }),
-          ),
+          Schema.Array(Schema.suspend(() => ErrorAdditionalInfoSchema)),
         ),
       }),
     ),
     resourceId: Schema.optional(Schema.String),
     properties: Schema.optional(
-      Schema.Struct({
-        commitBatchId: Schema.optional(Schema.String),
-        commitBatchState: Schema.optional(
-          Schema.Literals(["Processing", "Succeeded", "Failed"]),
-        ),
-        commitBatchDetails: Schema.optional(
-          Schema.Struct({
-            failedDevices: Schema.optional(Schema.Array(Schema.String)),
-          }),
-        ),
-      }),
+      Schema.suspend(() => CommitBatchStatusResponsePropertiesSchema),
     ),
   });
 export type NetworkFabricsCommitBatchStatusOutput =
@@ -11127,10 +8734,10 @@ export const NetworkFabricsCommitConfigurationInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     networkFabricName: Schema.String.pipe(T.PathParam()),
-    commitStage: Schema.optional(
-      Schema.Literals(["Start", "Continue", "Rollback"]),
+    commitStage: Schema.optional(Schema.suspend(() => CommitStageSchema)),
+    commitPolicy: Schema.optional(
+      Schema.suspend(() => CommitConfigurationPolicySchema),
     ),
-    commitPolicy: Schema.optional(Schema.Literals(["StageCEConfiguration"])),
     devices: Schema.optional(Schema.Array(Schema.String)),
   }).pipe(
     T.Http({
@@ -11163,51 +8770,9 @@ export const NetworkFabricsCommitConfigurationOutput =
           startTime: Schema.optional(Schema.String),
           endTime: Schema.optional(Schema.String),
           operations: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                id: Schema.optional(Schema.String),
-                resourceId: Schema.optional(Schema.String),
-                name: Schema.optional(Schema.String),
-                status: Schema.String,
-                percentComplete: Schema.optional(Schema.Number),
-                startTime: Schema.optional(Schema.String),
-                endTime: Schema.optional(Schema.String),
-                operations: Schema.optional(Schema.Array(Schema.Unknown)),
-                error: Schema.optional(
-                  Schema.Struct({
-                    code: Schema.optional(Schema.String),
-                    message: Schema.optional(Schema.String),
-                    target: Schema.optional(Schema.String),
-                    details: Schema.optional(Schema.Array(Schema.Unknown)),
-                    additionalInfo: Schema.optional(
-                      Schema.Array(
-                        Schema.Struct({
-                          type: Schema.optional(Schema.String),
-                          info: Schema.optional(Schema.Unknown),
-                        }),
-                      ),
-                    ),
-                  }),
-                ),
-              }),
-            ),
+            Schema.Array(Schema.suspend(() => OperationStatusResultSchema)),
           ),
-          error: Schema.optional(
-            Schema.Struct({
-              code: Schema.optional(Schema.String),
-              message: Schema.optional(Schema.String),
-              target: Schema.optional(Schema.String),
-              details: Schema.optional(Schema.Array(Schema.Unknown)),
-              additionalInfo: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    type: Schema.optional(Schema.String),
-                    info: Schema.optional(Schema.Unknown),
-                  }),
-                ),
-              ),
-            }),
-          ),
+          error: Schema.optional(Schema.suspend(() => ErrorDetailSchema)),
         }),
       ),
     ),
@@ -11217,30 +8782,10 @@ export const NetworkFabricsCommitConfigurationOutput =
         message: Schema.optional(Schema.String),
         target: Schema.optional(Schema.String),
         details: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              code: Schema.optional(Schema.String),
-              message: Schema.optional(Schema.String),
-              target: Schema.optional(Schema.String),
-              details: Schema.optional(Schema.Array(Schema.Unknown)),
-              additionalInfo: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    type: Schema.optional(Schema.String),
-                    info: Schema.optional(Schema.Unknown),
-                  }),
-                ),
-              ),
-            }),
-          ),
+          Schema.Array(Schema.suspend(() => ErrorDetailSchema)),
         ),
         additionalInfo: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              type: Schema.optional(Schema.String),
-              info: Schema.optional(Schema.Unknown),
-            }),
-          ),
+          Schema.Array(Schema.suspend(() => ErrorAdditionalInfoSchema)),
         ),
       }),
     ),
@@ -11269,27 +8814,14 @@ export const NetworkFabricsCreateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     networkFabricName: Schema.String.pipe(T.PathParam()),
-    properties: Schema.Struct({
-      annotation: Schema.optional(Schema.String),
-    }),
+    properties: Schema.suspend(() => NetworkFabricPropertiesSchema),
     identity: Schema.optional(
       Schema.Struct({
         principalId: Schema.optional(Schema.String),
         tenantId: Schema.optional(Schema.String),
-        type: Schema.Literals([
-          "None",
-          "SystemAssigned",
-          "UserAssigned",
-          "SystemAssigned,UserAssigned",
-        ]),
+        type: Schema.suspend(() => ManagedServiceIdentityTypeSchema),
         userAssignedIdentities: Schema.optional(
-          Schema.Record(
-            Schema.String,
-            Schema.Struct({
-              principalId: Schema.optional(Schema.String),
-              clientId: Schema.optional(Schema.String),
-            }),
-          ),
+          Schema.suspend(() => UserAssignedIdentitiesSchema),
         ),
       }),
     ),
@@ -11308,23 +8840,23 @@ export type NetworkFabricsCreateInput = typeof NetworkFabricsCreateInput.Type;
 // Output Schema
 export const NetworkFabricsCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.suspend(() => NetworkFabricPropertiesSchema),
+    identity: Schema.optional(
+      Schema.Struct({
+        principalId: Schema.optional(Schema.String),
+        tenantId: Schema.optional(Schema.String),
+        type: Schema.suspend(() => ManagedServiceIdentityTypeSchema),
+        userAssignedIdentities: Schema.optional(
+          Schema.suspend(() => UserAssignedIdentitiesSchema),
+        ),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type NetworkFabricsCreateOutput = typeof NetworkFabricsCreateOutput.Type;
 
@@ -11407,51 +8939,9 @@ export const NetworkFabricsDeprovisionOutput =
     startTime: Schema.optional(Schema.String),
     endTime: Schema.optional(Schema.String),
     operations: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          resourceId: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          status: Schema.String,
-          percentComplete: Schema.optional(Schema.Number),
-          startTime: Schema.optional(Schema.String),
-          endTime: Schema.optional(Schema.String),
-          operations: Schema.optional(Schema.Array(Schema.Unknown)),
-          error: Schema.optional(
-            Schema.Struct({
-              code: Schema.optional(Schema.String),
-              message: Schema.optional(Schema.String),
-              target: Schema.optional(Schema.String),
-              details: Schema.optional(Schema.Array(Schema.Unknown)),
-              additionalInfo: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    type: Schema.optional(Schema.String),
-                    info: Schema.optional(Schema.Unknown),
-                  }),
-                ),
-              ),
-            }),
-          ),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => OperationStatusResultSchema)),
     ),
-    error: Schema.optional(
-      Schema.Struct({
-        code: Schema.optional(Schema.String),
-        message: Schema.optional(Schema.String),
-        target: Schema.optional(Schema.String),
-        details: Schema.optional(Schema.Array(Schema.Unknown)),
-        additionalInfo: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              type: Schema.optional(Schema.String),
-              info: Schema.optional(Schema.Unknown),
-            }),
-          ),
-        ),
-      }),
-    ),
+    error: Schema.optional(Schema.suspend(() => ErrorDetailSchema)),
   });
 export type NetworkFabricsDeprovisionOutput =
   typeof NetworkFabricsDeprovisionOutput.Type;
@@ -11509,51 +8999,9 @@ export const NetworkFabricsDiscardCommitBatchOutput =
           startTime: Schema.optional(Schema.String),
           endTime: Schema.optional(Schema.String),
           operations: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                id: Schema.optional(Schema.String),
-                resourceId: Schema.optional(Schema.String),
-                name: Schema.optional(Schema.String),
-                status: Schema.String,
-                percentComplete: Schema.optional(Schema.Number),
-                startTime: Schema.optional(Schema.String),
-                endTime: Schema.optional(Schema.String),
-                operations: Schema.optional(Schema.Array(Schema.Unknown)),
-                error: Schema.optional(
-                  Schema.Struct({
-                    code: Schema.optional(Schema.String),
-                    message: Schema.optional(Schema.String),
-                    target: Schema.optional(Schema.String),
-                    details: Schema.optional(Schema.Array(Schema.Unknown)),
-                    additionalInfo: Schema.optional(
-                      Schema.Array(
-                        Schema.Struct({
-                          type: Schema.optional(Schema.String),
-                          info: Schema.optional(Schema.Unknown),
-                        }),
-                      ),
-                    ),
-                  }),
-                ),
-              }),
-            ),
+            Schema.Array(Schema.suspend(() => OperationStatusResultSchema)),
           ),
-          error: Schema.optional(
-            Schema.Struct({
-              code: Schema.optional(Schema.String),
-              message: Schema.optional(Schema.String),
-              target: Schema.optional(Schema.String),
-              details: Schema.optional(Schema.Array(Schema.Unknown)),
-              additionalInfo: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    type: Schema.optional(Schema.String),
-                    info: Schema.optional(Schema.Unknown),
-                  }),
-                ),
-              ),
-            }),
-          ),
+          error: Schema.optional(Schema.suspend(() => ErrorDetailSchema)),
         }),
       ),
     ),
@@ -11563,38 +9011,16 @@ export const NetworkFabricsDiscardCommitBatchOutput =
         message: Schema.optional(Schema.String),
         target: Schema.optional(Schema.String),
         details: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              code: Schema.optional(Schema.String),
-              message: Schema.optional(Schema.String),
-              target: Schema.optional(Schema.String),
-              details: Schema.optional(Schema.Array(Schema.Unknown)),
-              additionalInfo: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    type: Schema.optional(Schema.String),
-                    info: Schema.optional(Schema.Unknown),
-                  }),
-                ),
-              ),
-            }),
-          ),
+          Schema.Array(Schema.suspend(() => ErrorDetailSchema)),
         ),
         additionalInfo: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              type: Schema.optional(Schema.String),
-              info: Schema.optional(Schema.Unknown),
-            }),
-          ),
+          Schema.Array(Schema.suspend(() => ErrorAdditionalInfoSchema)),
         ),
       }),
     ),
     resourceId: Schema.optional(Schema.String),
     properties: Schema.optional(
-      Schema.Struct({
-        commitBatchId: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(() => DiscardCommitBatchResponsePropertiesSchema),
     ),
   });
 export type NetworkFabricsDiscardCommitBatchOutput =
@@ -11633,23 +9059,23 @@ export type NetworkFabricsGetInput = typeof NetworkFabricsGetInput.Type;
 // Output Schema
 export const NetworkFabricsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.suspend(() => NetworkFabricPropertiesSchema),
+    identity: Schema.optional(
+      Schema.Struct({
+        principalId: Schema.optional(Schema.String),
+        tenantId: Schema.optional(Schema.String),
+        type: Schema.suspend(() => ManagedServiceIdentityTypeSchema),
+        userAssignedIdentities: Schema.optional(
+          Schema.suspend(() => UserAssignedIdentitiesSchema),
+        ),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type NetworkFabricsGetOutput = typeof NetworkFabricsGetOutput.Type;
 
@@ -11703,51 +9129,9 @@ export const NetworkFabricsGetTopologyOutput =
           startTime: Schema.optional(Schema.String),
           endTime: Schema.optional(Schema.String),
           operations: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                id: Schema.optional(Schema.String),
-                resourceId: Schema.optional(Schema.String),
-                name: Schema.optional(Schema.String),
-                status: Schema.String,
-                percentComplete: Schema.optional(Schema.Number),
-                startTime: Schema.optional(Schema.String),
-                endTime: Schema.optional(Schema.String),
-                operations: Schema.optional(Schema.Array(Schema.Unknown)),
-                error: Schema.optional(
-                  Schema.Struct({
-                    code: Schema.optional(Schema.String),
-                    message: Schema.optional(Schema.String),
-                    target: Schema.optional(Schema.String),
-                    details: Schema.optional(Schema.Array(Schema.Unknown)),
-                    additionalInfo: Schema.optional(
-                      Schema.Array(
-                        Schema.Struct({
-                          type: Schema.optional(Schema.String),
-                          info: Schema.optional(Schema.Unknown),
-                        }),
-                      ),
-                    ),
-                  }),
-                ),
-              }),
-            ),
+            Schema.Array(Schema.suspend(() => OperationStatusResultSchema)),
           ),
-          error: Schema.optional(
-            Schema.Struct({
-              code: Schema.optional(Schema.String),
-              message: Schema.optional(Schema.String),
-              target: Schema.optional(Schema.String),
-              details: Schema.optional(Schema.Array(Schema.Unknown)),
-              additionalInfo: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    type: Schema.optional(Schema.String),
-                    info: Schema.optional(Schema.Unknown),
-                  }),
-                ),
-              ),
-            }),
-          ),
+          error: Schema.optional(Schema.suspend(() => ErrorDetailSchema)),
         }),
       ),
     ),
@@ -11757,38 +9141,16 @@ export const NetworkFabricsGetTopologyOutput =
         message: Schema.optional(Schema.String),
         target: Schema.optional(Schema.String),
         details: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              code: Schema.optional(Schema.String),
-              message: Schema.optional(Schema.String),
-              target: Schema.optional(Schema.String),
-              details: Schema.optional(Schema.Array(Schema.Unknown)),
-              additionalInfo: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    type: Schema.optional(Schema.String),
-                    info: Schema.optional(Schema.Unknown),
-                  }),
-                ),
-              ),
-            }),
-          ),
+          Schema.Array(Schema.suspend(() => ErrorDetailSchema)),
         ),
         additionalInfo: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              type: Schema.optional(Schema.String),
-              info: Schema.optional(Schema.Unknown),
-            }),
-          ),
+          Schema.Array(Schema.suspend(() => ErrorAdditionalInfoSchema)),
         ),
       }),
     ),
     resourceId: Schema.optional(Schema.String),
     properties: Schema.optional(
-      Schema.Struct({
-        url: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(() => GetTopologyResponsePropertiesSchema),
     ),
   });
 export type NetworkFabricsGetTopologyOutput =
@@ -11826,23 +9188,11 @@ export type NetworkFabricSkusGetInput = typeof NetworkFabricSkusGetInput.Type;
 // Output Schema
 export const NetworkFabricSkusGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.suspend(() => NetworkFabricSkuPropertiesSchema),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type NetworkFabricSkusGetOutput = typeof NetworkFabricSkusGetOutput.Type;
 
@@ -11877,37 +9227,7 @@ export type NetworkFabricSkusListBySubscriptionInput =
 // Output Schema
 export const NetworkFabricSkusListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => NetworkFabricSkuSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type NetworkFabricSkusListBySubscriptionOutput =
@@ -11943,37 +9263,7 @@ export type NetworkFabricsListByResourceGroupInput =
 // Output Schema
 export const NetworkFabricsListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => NetworkFabricSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type NetworkFabricsListByResourceGroupOutput =
@@ -12009,37 +9299,7 @@ export type NetworkFabricsListBySubscriptionInput =
 // Output Schema
 export const NetworkFabricsListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => NetworkFabricSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type NetworkFabricsListBySubscriptionOutput =
@@ -12064,9 +9324,11 @@ export const NetworkFabricsLockFabricInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     networkFabricName: Schema.String.pipe(T.PathParam()),
     lockType: Schema.optional(
-      Schema.Literals(["Administrative", "Configuration"]),
+      Schema.suspend(() => NetworkFabricLockTypeSchema),
     ),
-    action: Schema.optional(Schema.Literals(["Lock", "Unlock"])),
+    action: Schema.optional(
+      Schema.suspend(() => NetworkFabricLockActionSchema),
+    ),
   }).pipe(
     T.Http({
       method: "POST",
@@ -12089,51 +9351,9 @@ export const NetworkFabricsLockFabricOutput =
     startTime: Schema.optional(Schema.String),
     endTime: Schema.optional(Schema.String),
     operations: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          resourceId: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          status: Schema.String,
-          percentComplete: Schema.optional(Schema.Number),
-          startTime: Schema.optional(Schema.String),
-          endTime: Schema.optional(Schema.String),
-          operations: Schema.optional(Schema.Array(Schema.Unknown)),
-          error: Schema.optional(
-            Schema.Struct({
-              code: Schema.optional(Schema.String),
-              message: Schema.optional(Schema.String),
-              target: Schema.optional(Schema.String),
-              details: Schema.optional(Schema.Array(Schema.Unknown)),
-              additionalInfo: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    type: Schema.optional(Schema.String),
-                    info: Schema.optional(Schema.Unknown),
-                  }),
-                ),
-              ),
-            }),
-          ),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => OperationStatusResultSchema)),
     ),
-    error: Schema.optional(
-      Schema.Struct({
-        code: Schema.optional(Schema.String),
-        message: Schema.optional(Schema.String),
-        target: Schema.optional(Schema.String),
-        details: Schema.optional(Schema.Array(Schema.Unknown)),
-        additionalInfo: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              type: Schema.optional(Schema.String),
-              info: Schema.optional(Schema.Unknown),
-            }),
-          ),
-        ),
-      }),
-    ),
+    error: Schema.optional(Schema.suspend(() => ErrorDetailSchema)),
   });
 export type NetworkFabricsLockFabricOutput =
   typeof NetworkFabricsLockFabricOutput.Type;
@@ -12181,51 +9401,9 @@ export const NetworkFabricsProvisionOutput =
     startTime: Schema.optional(Schema.String),
     endTime: Schema.optional(Schema.String),
     operations: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          resourceId: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          status: Schema.String,
-          percentComplete: Schema.optional(Schema.Number),
-          startTime: Schema.optional(Schema.String),
-          endTime: Schema.optional(Schema.String),
-          operations: Schema.optional(Schema.Array(Schema.Unknown)),
-          error: Schema.optional(
-            Schema.Struct({
-              code: Schema.optional(Schema.String),
-              message: Schema.optional(Schema.String),
-              target: Schema.optional(Schema.String),
-              details: Schema.optional(Schema.Array(Schema.Unknown)),
-              additionalInfo: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    type: Schema.optional(Schema.String),
-                    info: Schema.optional(Schema.Unknown),
-                  }),
-                ),
-              ),
-            }),
-          ),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => OperationStatusResultSchema)),
     ),
-    error: Schema.optional(
-      Schema.Struct({
-        code: Schema.optional(Schema.String),
-        message: Schema.optional(Schema.String),
-        target: Schema.optional(Schema.String),
-        details: Schema.optional(Schema.Array(Schema.Unknown)),
-        additionalInfo: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              type: Schema.optional(Schema.String),
-              info: Schema.optional(Schema.Unknown),
-            }),
-          ),
-        ),
-      }),
-    ),
+    error: Schema.optional(Schema.suspend(() => ErrorDetailSchema)),
   });
 export type NetworkFabricsProvisionOutput =
   typeof NetworkFabricsProvisionOutput.Type;
@@ -12273,51 +9451,9 @@ export const NetworkFabricsRefreshConfigurationOutput =
     startTime: Schema.optional(Schema.String),
     endTime: Schema.optional(Schema.String),
     operations: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          resourceId: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          status: Schema.String,
-          percentComplete: Schema.optional(Schema.Number),
-          startTime: Schema.optional(Schema.String),
-          endTime: Schema.optional(Schema.String),
-          operations: Schema.optional(Schema.Array(Schema.Unknown)),
-          error: Schema.optional(
-            Schema.Struct({
-              code: Schema.optional(Schema.String),
-              message: Schema.optional(Schema.String),
-              target: Schema.optional(Schema.String),
-              details: Schema.optional(Schema.Array(Schema.Unknown)),
-              additionalInfo: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    type: Schema.optional(Schema.String),
-                    info: Schema.optional(Schema.Unknown),
-                  }),
-                ),
-              ),
-            }),
-          ),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => OperationStatusResultSchema)),
     ),
-    error: Schema.optional(
-      Schema.Struct({
-        code: Schema.optional(Schema.String),
-        message: Schema.optional(Schema.String),
-        target: Schema.optional(Schema.String),
-        details: Schema.optional(Schema.Array(Schema.Unknown)),
-        additionalInfo: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              type: Schema.optional(Schema.String),
-              info: Schema.optional(Schema.Unknown),
-            }),
-          ),
-        ),
-      }),
-    ),
+    error: Schema.optional(Schema.suspend(() => ErrorDetailSchema)),
   });
 export type NetworkFabricsRefreshConfigurationOutput =
   typeof NetworkFabricsRefreshConfigurationOutput.Type;
@@ -12373,51 +9509,9 @@ export const NetworkFabricsResyncCertificatesOutput =
           startTime: Schema.optional(Schema.String),
           endTime: Schema.optional(Schema.String),
           operations: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                id: Schema.optional(Schema.String),
-                resourceId: Schema.optional(Schema.String),
-                name: Schema.optional(Schema.String),
-                status: Schema.String,
-                percentComplete: Schema.optional(Schema.Number),
-                startTime: Schema.optional(Schema.String),
-                endTime: Schema.optional(Schema.String),
-                operations: Schema.optional(Schema.Array(Schema.Unknown)),
-                error: Schema.optional(
-                  Schema.Struct({
-                    code: Schema.optional(Schema.String),
-                    message: Schema.optional(Schema.String),
-                    target: Schema.optional(Schema.String),
-                    details: Schema.optional(Schema.Array(Schema.Unknown)),
-                    additionalInfo: Schema.optional(
-                      Schema.Array(
-                        Schema.Struct({
-                          type: Schema.optional(Schema.String),
-                          info: Schema.optional(Schema.Unknown),
-                        }),
-                      ),
-                    ),
-                  }),
-                ),
-              }),
-            ),
+            Schema.Array(Schema.suspend(() => OperationStatusResultSchema)),
           ),
-          error: Schema.optional(
-            Schema.Struct({
-              code: Schema.optional(Schema.String),
-              message: Schema.optional(Schema.String),
-              target: Schema.optional(Schema.String),
-              details: Schema.optional(Schema.Array(Schema.Unknown)),
-              additionalInfo: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    type: Schema.optional(Schema.String),
-                    info: Schema.optional(Schema.Unknown),
-                  }),
-                ),
-              ),
-            }),
-          ),
+          error: Schema.optional(Schema.suspend(() => ErrorDetailSchema)),
         }),
       ),
     ),
@@ -12427,30 +9521,10 @@ export const NetworkFabricsResyncCertificatesOutput =
         message: Schema.optional(Schema.String),
         target: Schema.optional(Schema.String),
         details: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              code: Schema.optional(Schema.String),
-              message: Schema.optional(Schema.String),
-              target: Schema.optional(Schema.String),
-              details: Schema.optional(Schema.Array(Schema.Unknown)),
-              additionalInfo: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    type: Schema.optional(Schema.String),
-                    info: Schema.optional(Schema.Unknown),
-                  }),
-                ),
-              ),
-            }),
-          ),
+          Schema.Array(Schema.suspend(() => ErrorDetailSchema)),
         ),
         additionalInfo: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              type: Schema.optional(Schema.String),
-              info: Schema.optional(Schema.Unknown),
-            }),
-          ),
+          Schema.Array(Schema.suspend(() => ErrorAdditionalInfoSchema)),
         ),
       }),
     ),
@@ -12512,51 +9586,9 @@ export const NetworkFabricsResyncPasswordsOutput =
           startTime: Schema.optional(Schema.String),
           endTime: Schema.optional(Schema.String),
           operations: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                id: Schema.optional(Schema.String),
-                resourceId: Schema.optional(Schema.String),
-                name: Schema.optional(Schema.String),
-                status: Schema.String,
-                percentComplete: Schema.optional(Schema.Number),
-                startTime: Schema.optional(Schema.String),
-                endTime: Schema.optional(Schema.String),
-                operations: Schema.optional(Schema.Array(Schema.Unknown)),
-                error: Schema.optional(
-                  Schema.Struct({
-                    code: Schema.optional(Schema.String),
-                    message: Schema.optional(Schema.String),
-                    target: Schema.optional(Schema.String),
-                    details: Schema.optional(Schema.Array(Schema.Unknown)),
-                    additionalInfo: Schema.optional(
-                      Schema.Array(
-                        Schema.Struct({
-                          type: Schema.optional(Schema.String),
-                          info: Schema.optional(Schema.Unknown),
-                        }),
-                      ),
-                    ),
-                  }),
-                ),
-              }),
-            ),
+            Schema.Array(Schema.suspend(() => OperationStatusResultSchema)),
           ),
-          error: Schema.optional(
-            Schema.Struct({
-              code: Schema.optional(Schema.String),
-              message: Schema.optional(Schema.String),
-              target: Schema.optional(Schema.String),
-              details: Schema.optional(Schema.Array(Schema.Unknown)),
-              additionalInfo: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    type: Schema.optional(Schema.String),
-                    info: Schema.optional(Schema.Unknown),
-                  }),
-                ),
-              ),
-            }),
-          ),
+          error: Schema.optional(Schema.suspend(() => ErrorDetailSchema)),
         }),
       ),
     ),
@@ -12566,30 +9598,10 @@ export const NetworkFabricsResyncPasswordsOutput =
         message: Schema.optional(Schema.String),
         target: Schema.optional(Schema.String),
         details: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              code: Schema.optional(Schema.String),
-              message: Schema.optional(Schema.String),
-              target: Schema.optional(Schema.String),
-              details: Schema.optional(Schema.Array(Schema.Unknown)),
-              additionalInfo: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    type: Schema.optional(Schema.String),
-                    info: Schema.optional(Schema.Unknown),
-                  }),
-                ),
-              ),
-            }),
-          ),
+          Schema.Array(Schema.suspend(() => ErrorDetailSchema)),
         ),
         additionalInfo: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              type: Schema.optional(Schema.String),
-              info: Schema.optional(Schema.Unknown),
-            }),
-          ),
+          Schema.Array(Schema.suspend(() => ErrorAdditionalInfoSchema)),
         ),
       }),
     ),
@@ -12652,51 +9664,9 @@ export const NetworkFabricsRotateCertificatesOutput =
           startTime: Schema.optional(Schema.String),
           endTime: Schema.optional(Schema.String),
           operations: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                id: Schema.optional(Schema.String),
-                resourceId: Schema.optional(Schema.String),
-                name: Schema.optional(Schema.String),
-                status: Schema.String,
-                percentComplete: Schema.optional(Schema.Number),
-                startTime: Schema.optional(Schema.String),
-                endTime: Schema.optional(Schema.String),
-                operations: Schema.optional(Schema.Array(Schema.Unknown)),
-                error: Schema.optional(
-                  Schema.Struct({
-                    code: Schema.optional(Schema.String),
-                    message: Schema.optional(Schema.String),
-                    target: Schema.optional(Schema.String),
-                    details: Schema.optional(Schema.Array(Schema.Unknown)),
-                    additionalInfo: Schema.optional(
-                      Schema.Array(
-                        Schema.Struct({
-                          type: Schema.optional(Schema.String),
-                          info: Schema.optional(Schema.Unknown),
-                        }),
-                      ),
-                    ),
-                  }),
-                ),
-              }),
-            ),
+            Schema.Array(Schema.suspend(() => OperationStatusResultSchema)),
           ),
-          error: Schema.optional(
-            Schema.Struct({
-              code: Schema.optional(Schema.String),
-              message: Schema.optional(Schema.String),
-              target: Schema.optional(Schema.String),
-              details: Schema.optional(Schema.Array(Schema.Unknown)),
-              additionalInfo: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    type: Schema.optional(Schema.String),
-                    info: Schema.optional(Schema.Unknown),
-                  }),
-                ),
-              ),
-            }),
-          ),
+          error: Schema.optional(Schema.suspend(() => ErrorDetailSchema)),
         }),
       ),
     ),
@@ -12706,30 +9676,10 @@ export const NetworkFabricsRotateCertificatesOutput =
         message: Schema.optional(Schema.String),
         target: Schema.optional(Schema.String),
         details: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              code: Schema.optional(Schema.String),
-              message: Schema.optional(Schema.String),
-              target: Schema.optional(Schema.String),
-              details: Schema.optional(Schema.Array(Schema.Unknown)),
-              additionalInfo: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    type: Schema.optional(Schema.String),
-                    info: Schema.optional(Schema.Unknown),
-                  }),
-                ),
-              ),
-            }),
-          ),
+          Schema.Array(Schema.suspend(() => ErrorDetailSchema)),
         ),
         additionalInfo: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              type: Schema.optional(Schema.String),
-              info: Schema.optional(Schema.Unknown),
-            }),
-          ),
+          Schema.Array(Schema.suspend(() => ErrorAdditionalInfoSchema)),
         ),
       }),
     ),
@@ -12791,51 +9741,9 @@ export const NetworkFabricsRotatePasswordsOutput =
           startTime: Schema.optional(Schema.String),
           endTime: Schema.optional(Schema.String),
           operations: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                id: Schema.optional(Schema.String),
-                resourceId: Schema.optional(Schema.String),
-                name: Schema.optional(Schema.String),
-                status: Schema.String,
-                percentComplete: Schema.optional(Schema.Number),
-                startTime: Schema.optional(Schema.String),
-                endTime: Schema.optional(Schema.String),
-                operations: Schema.optional(Schema.Array(Schema.Unknown)),
-                error: Schema.optional(
-                  Schema.Struct({
-                    code: Schema.optional(Schema.String),
-                    message: Schema.optional(Schema.String),
-                    target: Schema.optional(Schema.String),
-                    details: Schema.optional(Schema.Array(Schema.Unknown)),
-                    additionalInfo: Schema.optional(
-                      Schema.Array(
-                        Schema.Struct({
-                          type: Schema.optional(Schema.String),
-                          info: Schema.optional(Schema.Unknown),
-                        }),
-                      ),
-                    ),
-                  }),
-                ),
-              }),
-            ),
+            Schema.Array(Schema.suspend(() => OperationStatusResultSchema)),
           ),
-          error: Schema.optional(
-            Schema.Struct({
-              code: Schema.optional(Schema.String),
-              message: Schema.optional(Schema.String),
-              target: Schema.optional(Schema.String),
-              details: Schema.optional(Schema.Array(Schema.Unknown)),
-              additionalInfo: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    type: Schema.optional(Schema.String),
-                    info: Schema.optional(Schema.Unknown),
-                  }),
-                ),
-              ),
-            }),
-          ),
+          error: Schema.optional(Schema.suspend(() => ErrorDetailSchema)),
         }),
       ),
     ),
@@ -12845,30 +9753,10 @@ export const NetworkFabricsRotatePasswordsOutput =
         message: Schema.optional(Schema.String),
         target: Schema.optional(Schema.String),
         details: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              code: Schema.optional(Schema.String),
-              message: Schema.optional(Schema.String),
-              target: Schema.optional(Schema.String),
-              details: Schema.optional(Schema.Array(Schema.Unknown)),
-              additionalInfo: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    type: Schema.optional(Schema.String),
-                    info: Schema.optional(Schema.Unknown),
-                  }),
-                ),
-              ),
-            }),
-          ),
+          Schema.Array(Schema.suspend(() => ErrorDetailSchema)),
         ),
         additionalInfo: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              type: Schema.optional(Schema.String),
-              info: Schema.optional(Schema.Unknown),
-            }),
-          ),
+          Schema.Array(Schema.suspend(() => ErrorAdditionalInfoSchema)),
         ),
       }),
     ),
@@ -12903,184 +9791,10 @@ export const NetworkFabricsUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     networkFabricName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        annotation: Schema.optional(Schema.String),
-        rackCount: Schema.optional(Schema.Number),
-        serverCountPerRack: Schema.optional(Schema.Number),
-        ipv4Prefix: Schema.optional(Schema.String),
-        ipv6Prefix: Schema.optional(Schema.String),
-        fabricASN: Schema.optional(Schema.Number),
-        terminalServerConfiguration: Schema.optional(
-          Schema.Struct({
-            username: Schema.optional(Schema.String),
-            password: Schema.optional(SensitiveString),
-            serialNumber: Schema.optional(Schema.String),
-            primaryIpv4Prefix: Schema.optional(Schema.String),
-            primaryIpv6Prefix: Schema.optional(Schema.String),
-            secondaryIpv4Prefix: Schema.optional(Schema.String),
-            secondaryIpv6Prefix: Schema.optional(Schema.String),
-          }),
-        ),
-        managementNetworkConfiguration: Schema.optional(
-          Schema.Struct({
-            infrastructureVpnConfiguration: Schema.optional(
-              Schema.Struct({
-                networkToNetworkInterconnectId: Schema.optional(Schema.String),
-                peeringOption: Schema.optional(
-                  Schema.Literals(["OptionA", "OptionB"]),
-                ),
-                optionBProperties: Schema.optional(
-                  Schema.Struct({
-                    importRouteTargets: Schema.optional(
-                      Schema.Array(Schema.String),
-                    ),
-                    exportRouteTargets: Schema.optional(
-                      Schema.Array(Schema.String),
-                    ),
-                    routeTargets: Schema.optional(
-                      Schema.Struct({
-                        importIpv4RouteTargets: Schema.optional(
-                          Schema.Array(Schema.String),
-                        ),
-                        importIpv6RouteTargets: Schema.optional(
-                          Schema.Array(Schema.String),
-                        ),
-                        exportIpv4RouteTargets: Schema.optional(
-                          Schema.Array(Schema.String),
-                        ),
-                        exportIpv6RouteTargets: Schema.optional(
-                          Schema.Array(Schema.String),
-                        ),
-                      }),
-                    ),
-                  }),
-                ),
-                optionAProperties: Schema.optional(
-                  Schema.Struct({
-                    primaryIpv4Prefix: Schema.optional(Schema.String),
-                    primaryIpv6Prefix: Schema.optional(Schema.String),
-                    secondaryIpv4Prefix: Schema.optional(Schema.String),
-                    secondaryIpv6Prefix: Schema.optional(Schema.String),
-                  }),
-                ),
-              }),
-            ),
-            workloadVpnConfiguration: Schema.optional(
-              Schema.Struct({
-                networkToNetworkInterconnectId: Schema.optional(Schema.String),
-                peeringOption: Schema.optional(
-                  Schema.Literals(["OptionA", "OptionB"]),
-                ),
-                optionBProperties: Schema.optional(
-                  Schema.Struct({
-                    importRouteTargets: Schema.optional(
-                      Schema.Array(Schema.String),
-                    ),
-                    exportRouteTargets: Schema.optional(
-                      Schema.Array(Schema.String),
-                    ),
-                    routeTargets: Schema.optional(
-                      Schema.Struct({
-                        importIpv4RouteTargets: Schema.optional(
-                          Schema.Array(Schema.String),
-                        ),
-                        importIpv6RouteTargets: Schema.optional(
-                          Schema.Array(Schema.String),
-                        ),
-                        exportIpv4RouteTargets: Schema.optional(
-                          Schema.Array(Schema.String),
-                        ),
-                        exportIpv6RouteTargets: Schema.optional(
-                          Schema.Array(Schema.String),
-                        ),
-                      }),
-                    ),
-                  }),
-                ),
-                optionAProperties: Schema.optional(
-                  Schema.Struct({
-                    primaryIpv4Prefix: Schema.optional(Schema.String),
-                    primaryIpv6Prefix: Schema.optional(Schema.String),
-                    secondaryIpv4Prefix: Schema.optional(Schema.String),
-                    secondaryIpv6Prefix: Schema.optional(Schema.String),
-                  }),
-                ),
-              }),
-            ),
-          }),
-        ),
-        storageAccountConfiguration: Schema.optional(
-          Schema.Struct({
-            storageAccountId: Schema.optional(Schema.String),
-            storageAccountIdentity: Schema.optional(
-              Schema.Struct({
-                identityType: Schema.optional(
-                  Schema.Literals([
-                    "SystemAssignedIdentity",
-                    "UserAssignedIdentity",
-                  ]),
-                ),
-                userAssignedIdentityResourceId: Schema.optional(Schema.String),
-              }),
-            ),
-          }),
-        ),
-        hardwareAlertThreshold: Schema.optional(Schema.Number),
-        controlPlaneAcls: Schema.optional(Schema.Array(Schema.String)),
-        trustedIpPrefixes: Schema.optional(Schema.Array(Schema.String)),
-        uniqueRdConfiguration: Schema.optional(
-          Schema.Struct({
-            uniqueRdConfigurationState: Schema.optional(
-              Schema.Literals(["Enabled", "Disabled"]),
-            ),
-            nniDerivedUniqueRdConfigurationState: Schema.optional(
-              Schema.Literals(["Enabled", "Disabled"]),
-            ),
-          }),
-        ),
-        qosConfiguration: Schema.optional(
-          Schema.Struct({
-            qosConfigurationState: Schema.optional(
-              Schema.Literals(["Disabled", "Enabled"]),
-            ),
-          }),
-        ),
-        featureFlags: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              featureFlagName: Schema.optional(Schema.String),
-              featureFlagValue: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        authorizedTransceiver: Schema.optional(
-          Schema.Struct({
-            vendor: Schema.optional(Schema.String),
-            key: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
+      Schema.suspend(() => NetworkFabricPatchPropertiesSchema),
     ),
     identity: Schema.optional(
-      Schema.Struct({
-        type: Schema.optional(
-          Schema.Literals([
-            "None",
-            "SystemAssigned",
-            "UserAssigned",
-            "SystemAssigned,UserAssigned",
-          ]),
-        ),
-        userAssignedIdentities: Schema.optional(
-          Schema.Record(
-            Schema.String,
-            Schema.Struct({
-              principalId: Schema.optional(Schema.String),
-              clientId: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-      }),
+      Schema.suspend(() => ManagedServiceIdentityPatchSchema),
     ),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
@@ -13096,23 +9810,23 @@ export type NetworkFabricsUpdateInput = typeof NetworkFabricsUpdateInput.Type;
 // Output Schema
 export const NetworkFabricsUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.suspend(() => NetworkFabricPropertiesSchema),
+    identity: Schema.optional(
+      Schema.Struct({
+        principalId: Schema.optional(Schema.String),
+        tenantId: Schema.optional(Schema.String),
+        type: Schema.suspend(() => ManagedServiceIdentityTypeSchema),
+        userAssignedIdentities: Schema.optional(
+          Schema.suspend(() => UserAssignedIdentitiesSchema),
+        ),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type NetworkFabricsUpdateOutput = typeof NetworkFabricsUpdateOutput.Type;
 
@@ -13137,9 +9851,7 @@ export const NetworkFabricsUpdateInfraManagementBfdConfigurationInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     networkFabricName: Schema.String.pipe(T.PathParam()),
-    state: Schema.optional(
-      Schema.Literals(["Enable", "Disable", "UnderMaintenance"]),
-    ),
+    state: Schema.optional(Schema.suspend(() => EnableDisableStateSchema)),
     resourceIds: Schema.optional(Schema.Array(Schema.String)),
   }).pipe(
     T.Http({
@@ -13172,51 +9884,9 @@ export const NetworkFabricsUpdateInfraManagementBfdConfigurationOutput =
           startTime: Schema.optional(Schema.String),
           endTime: Schema.optional(Schema.String),
           operations: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                id: Schema.optional(Schema.String),
-                resourceId: Schema.optional(Schema.String),
-                name: Schema.optional(Schema.String),
-                status: Schema.String,
-                percentComplete: Schema.optional(Schema.Number),
-                startTime: Schema.optional(Schema.String),
-                endTime: Schema.optional(Schema.String),
-                operations: Schema.optional(Schema.Array(Schema.Unknown)),
-                error: Schema.optional(
-                  Schema.Struct({
-                    code: Schema.optional(Schema.String),
-                    message: Schema.optional(Schema.String),
-                    target: Schema.optional(Schema.String),
-                    details: Schema.optional(Schema.Array(Schema.Unknown)),
-                    additionalInfo: Schema.optional(
-                      Schema.Array(
-                        Schema.Struct({
-                          type: Schema.optional(Schema.String),
-                          info: Schema.optional(Schema.Unknown),
-                        }),
-                      ),
-                    ),
-                  }),
-                ),
-              }),
-            ),
+            Schema.Array(Schema.suspend(() => OperationStatusResultSchema)),
           ),
-          error: Schema.optional(
-            Schema.Struct({
-              code: Schema.optional(Schema.String),
-              message: Schema.optional(Schema.String),
-              target: Schema.optional(Schema.String),
-              details: Schema.optional(Schema.Array(Schema.Unknown)),
-              additionalInfo: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    type: Schema.optional(Schema.String),
-                    info: Schema.optional(Schema.Unknown),
-                  }),
-                ),
-              ),
-            }),
-          ),
+          error: Schema.optional(Schema.suspend(() => ErrorDetailSchema)),
         }),
       ),
     ),
@@ -13226,39 +9896,16 @@ export const NetworkFabricsUpdateInfraManagementBfdConfigurationOutput =
         message: Schema.optional(Schema.String),
         target: Schema.optional(Schema.String),
         details: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              code: Schema.optional(Schema.String),
-              message: Schema.optional(Schema.String),
-              target: Schema.optional(Schema.String),
-              details: Schema.optional(Schema.Array(Schema.Unknown)),
-              additionalInfo: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    type: Schema.optional(Schema.String),
-                    info: Schema.optional(Schema.Unknown),
-                  }),
-                ),
-              ),
-            }),
-          ),
+          Schema.Array(Schema.suspend(() => ErrorDetailSchema)),
         ),
         additionalInfo: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              type: Schema.optional(Schema.String),
-              info: Schema.optional(Schema.Unknown),
-            }),
-          ),
+          Schema.Array(Schema.suspend(() => ErrorAdditionalInfoSchema)),
         ),
       }),
     ),
     resourceId: Schema.optional(Schema.String),
     properties: Schema.optional(
-      Schema.Struct({
-        successfulResources: Schema.optional(Schema.Array(Schema.String)),
-        failedResources: Schema.optional(Schema.Array(Schema.String)),
-      }),
+      Schema.suspend(() => UpdateAdministrativeStateResponsePropertiesSchema),
     ),
   });
 export type NetworkFabricsUpdateInfraManagementBfdConfigurationOutput =
@@ -13284,9 +9931,7 @@ export const NetworkFabricsUpdateWorkloadManagementBfdConfigurationInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     networkFabricName: Schema.String.pipe(T.PathParam()),
-    state: Schema.optional(
-      Schema.Literals(["Enable", "Disable", "UnderMaintenance"]),
-    ),
+    state: Schema.optional(Schema.suspend(() => EnableDisableStateSchema)),
     resourceIds: Schema.optional(Schema.Array(Schema.String)),
   }).pipe(
     T.Http({
@@ -13319,51 +9964,9 @@ export const NetworkFabricsUpdateWorkloadManagementBfdConfigurationOutput =
           startTime: Schema.optional(Schema.String),
           endTime: Schema.optional(Schema.String),
           operations: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                id: Schema.optional(Schema.String),
-                resourceId: Schema.optional(Schema.String),
-                name: Schema.optional(Schema.String),
-                status: Schema.String,
-                percentComplete: Schema.optional(Schema.Number),
-                startTime: Schema.optional(Schema.String),
-                endTime: Schema.optional(Schema.String),
-                operations: Schema.optional(Schema.Array(Schema.Unknown)),
-                error: Schema.optional(
-                  Schema.Struct({
-                    code: Schema.optional(Schema.String),
-                    message: Schema.optional(Schema.String),
-                    target: Schema.optional(Schema.String),
-                    details: Schema.optional(Schema.Array(Schema.Unknown)),
-                    additionalInfo: Schema.optional(
-                      Schema.Array(
-                        Schema.Struct({
-                          type: Schema.optional(Schema.String),
-                          info: Schema.optional(Schema.Unknown),
-                        }),
-                      ),
-                    ),
-                  }),
-                ),
-              }),
-            ),
+            Schema.Array(Schema.suspend(() => OperationStatusResultSchema)),
           ),
-          error: Schema.optional(
-            Schema.Struct({
-              code: Schema.optional(Schema.String),
-              message: Schema.optional(Schema.String),
-              target: Schema.optional(Schema.String),
-              details: Schema.optional(Schema.Array(Schema.Unknown)),
-              additionalInfo: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    type: Schema.optional(Schema.String),
-                    info: Schema.optional(Schema.Unknown),
-                  }),
-                ),
-              ),
-            }),
-          ),
+          error: Schema.optional(Schema.suspend(() => ErrorDetailSchema)),
         }),
       ),
     ),
@@ -13373,39 +9976,16 @@ export const NetworkFabricsUpdateWorkloadManagementBfdConfigurationOutput =
         message: Schema.optional(Schema.String),
         target: Schema.optional(Schema.String),
         details: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              code: Schema.optional(Schema.String),
-              message: Schema.optional(Schema.String),
-              target: Schema.optional(Schema.String),
-              details: Schema.optional(Schema.Array(Schema.Unknown)),
-              additionalInfo: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    type: Schema.optional(Schema.String),
-                    info: Schema.optional(Schema.Unknown),
-                  }),
-                ),
-              ),
-            }),
-          ),
+          Schema.Array(Schema.suspend(() => ErrorDetailSchema)),
         ),
         additionalInfo: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              type: Schema.optional(Schema.String),
-              info: Schema.optional(Schema.Unknown),
-            }),
-          ),
+          Schema.Array(Schema.suspend(() => ErrorAdditionalInfoSchema)),
         ),
       }),
     ),
     resourceId: Schema.optional(Schema.String),
     properties: Schema.optional(
-      Schema.Struct({
-        successfulResources: Schema.optional(Schema.Array(Schema.String)),
-        failedResources: Schema.optional(Schema.Array(Schema.String)),
-      }),
+      Schema.suspend(() => UpdateAdministrativeStateResponsePropertiesSchema),
     ),
   });
 export type NetworkFabricsUpdateWorkloadManagementBfdConfigurationOutput =
@@ -13431,7 +10011,9 @@ export const NetworkFabricsUpgradeInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     networkFabricName: Schema.String.pipe(T.PathParam()),
-    action: Schema.optional(Schema.Literals(["Start", "Complete"])),
+    action: Schema.optional(
+      Schema.suspend(() => NetworkFabricUpgradeActionSchema),
+    ),
     version: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
@@ -13454,51 +10036,9 @@ export const NetworkFabricsUpgradeOutput =
     startTime: Schema.optional(Schema.String),
     endTime: Schema.optional(Schema.String),
     operations: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          resourceId: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          status: Schema.String,
-          percentComplete: Schema.optional(Schema.Number),
-          startTime: Schema.optional(Schema.String),
-          endTime: Schema.optional(Schema.String),
-          operations: Schema.optional(Schema.Array(Schema.Unknown)),
-          error: Schema.optional(
-            Schema.Struct({
-              code: Schema.optional(Schema.String),
-              message: Schema.optional(Schema.String),
-              target: Schema.optional(Schema.String),
-              details: Schema.optional(Schema.Array(Schema.Unknown)),
-              additionalInfo: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    type: Schema.optional(Schema.String),
-                    info: Schema.optional(Schema.Unknown),
-                  }),
-                ),
-              ),
-            }),
-          ),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => OperationStatusResultSchema)),
     ),
-    error: Schema.optional(
-      Schema.Struct({
-        code: Schema.optional(Schema.String),
-        message: Schema.optional(Schema.String),
-        target: Schema.optional(Schema.String),
-        details: Schema.optional(Schema.Array(Schema.Unknown)),
-        additionalInfo: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              type: Schema.optional(Schema.String),
-              info: Schema.optional(Schema.Unknown),
-            }),
-          ),
-        ),
-      }),
-    ),
+    error: Schema.optional(Schema.suspend(() => ErrorDetailSchema)),
   });
 export type NetworkFabricsUpgradeOutput =
   typeof NetworkFabricsUpgradeOutput.Type;
@@ -13524,9 +10064,7 @@ export const NetworkFabricsValidateConfigurationInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     networkFabricName: Schema.String.pipe(T.PathParam()),
-    validateAction: Schema.optional(
-      Schema.Literals(["Cabling", "Configuration", "Connectivity"]),
-    ),
+    validateAction: Schema.optional(Schema.suspend(() => ValidateActionSchema)),
   }).pipe(
     T.Http({
       method: "POST",
@@ -13541,22 +10079,11 @@ export type NetworkFabricsValidateConfigurationInput =
 // Output Schema
 export const NetworkFabricsValidateConfigurationOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    error: Schema.optional(
-      Schema.Struct({
-        code: Schema.optional(Schema.String),
-        message: Schema.optional(Schema.String),
-        target: Schema.optional(Schema.String),
-        details: Schema.optional(Schema.Array(Schema.Unknown)),
-        additionalInfo: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              type: Schema.optional(Schema.String),
-              info: Schema.optional(Schema.Unknown),
-            }),
-          ),
-        ),
-      }),
+    configurationState: Schema.optional(
+      Schema.suspend(() => ConfigurationStateSchema),
     ),
+    url: Schema.optional(Schema.String),
+    error: Schema.optional(Schema.suspend(() => ErrorDetailSchema)),
   });
 export type NetworkFabricsValidateConfigurationOutput =
   typeof NetworkFabricsValidateConfigurationOutput.Type;
@@ -13612,51 +10139,9 @@ export const NetworkFabricsViewDeviceConfigurationOutput =
           startTime: Schema.optional(Schema.String),
           endTime: Schema.optional(Schema.String),
           operations: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                id: Schema.optional(Schema.String),
-                resourceId: Schema.optional(Schema.String),
-                name: Schema.optional(Schema.String),
-                status: Schema.String,
-                percentComplete: Schema.optional(Schema.Number),
-                startTime: Schema.optional(Schema.String),
-                endTime: Schema.optional(Schema.String),
-                operations: Schema.optional(Schema.Array(Schema.Unknown)),
-                error: Schema.optional(
-                  Schema.Struct({
-                    code: Schema.optional(Schema.String),
-                    message: Schema.optional(Schema.String),
-                    target: Schema.optional(Schema.String),
-                    details: Schema.optional(Schema.Array(Schema.Unknown)),
-                    additionalInfo: Schema.optional(
-                      Schema.Array(
-                        Schema.Struct({
-                          type: Schema.optional(Schema.String),
-                          info: Schema.optional(Schema.Unknown),
-                        }),
-                      ),
-                    ),
-                  }),
-                ),
-              }),
-            ),
+            Schema.Array(Schema.suspend(() => OperationStatusResultSchema)),
           ),
-          error: Schema.optional(
-            Schema.Struct({
-              code: Schema.optional(Schema.String),
-              message: Schema.optional(Schema.String),
-              target: Schema.optional(Schema.String),
-              details: Schema.optional(Schema.Array(Schema.Unknown)),
-              additionalInfo: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    type: Schema.optional(Schema.String),
-                    info: Schema.optional(Schema.Unknown),
-                  }),
-                ),
-              ),
-            }),
-          ),
+          error: Schema.optional(Schema.suspend(() => ErrorDetailSchema)),
         }),
       ),
     ),
@@ -13666,38 +10151,16 @@ export const NetworkFabricsViewDeviceConfigurationOutput =
         message: Schema.optional(Schema.String),
         target: Schema.optional(Schema.String),
         details: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              code: Schema.optional(Schema.String),
-              message: Schema.optional(Schema.String),
-              target: Schema.optional(Schema.String),
-              details: Schema.optional(Schema.Array(Schema.Unknown)),
-              additionalInfo: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    type: Schema.optional(Schema.String),
-                    info: Schema.optional(Schema.Unknown),
-                  }),
-                ),
-              ),
-            }),
-          ),
+          Schema.Array(Schema.suspend(() => ErrorDetailSchema)),
         ),
         additionalInfo: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              type: Schema.optional(Schema.String),
-              info: Schema.optional(Schema.Unknown),
-            }),
-          ),
+          Schema.Array(Schema.suspend(() => ErrorAdditionalInfoSchema)),
         ),
       }),
     ),
     resourceId: Schema.optional(Schema.String),
     properties: Schema.optional(
-      Schema.Struct({
-        deviceConfigurationUrl: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(() => ViewDeviceConfigurationResponsePropertiesSchema),
     ),
   });
 export type NetworkFabricsViewDeviceConfigurationOutput =
@@ -13724,27 +10187,14 @@ export const NetworkInterfacesCreateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     networkDeviceName: Schema.String.pipe(T.PathParam()),
     networkInterfaceName: Schema.String.pipe(T.PathParam()),
-    properties: Schema.Struct({
-      annotation: Schema.optional(Schema.String),
-    }),
+    properties: Schema.suspend(() => NetworkInterfacePropertiesSchema),
     identity: Schema.optional(
       Schema.Struct({
         principalId: Schema.optional(Schema.String),
         tenantId: Schema.optional(Schema.String),
-        type: Schema.Literals([
-          "None",
-          "SystemAssigned",
-          "UserAssigned",
-          "SystemAssigned,UserAssigned",
-        ]),
+        type: Schema.suspend(() => ManagedServiceIdentityTypeSchema),
         userAssignedIdentities: Schema.optional(
-          Schema.Record(
-            Schema.String,
-            Schema.Struct({
-              principalId: Schema.optional(Schema.String),
-              clientId: Schema.optional(Schema.String),
-            }),
-          ),
+          Schema.suspend(() => UserAssignedIdentitiesSchema),
         ),
       }),
     ),
@@ -13762,23 +10212,21 @@ export type NetworkInterfacesCreateInput =
 // Output Schema
 export const NetworkInterfacesCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.suspend(() => NetworkInterfacePropertiesSchema),
+    identity: Schema.optional(
+      Schema.Struct({
+        principalId: Schema.optional(Schema.String),
+        tenantId: Schema.optional(Schema.String),
+        type: Schema.suspend(() => ManagedServiceIdentityTypeSchema),
+        userAssignedIdentities: Schema.optional(
+          Schema.suspend(() => UserAssignedIdentitiesSchema),
+        ),
+      }),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type NetworkInterfacesCreateOutput =
   typeof NetworkInterfacesCreateOutput.Type;
@@ -13858,23 +10306,21 @@ export type NetworkInterfacesGetInput = typeof NetworkInterfacesGetInput.Type;
 // Output Schema
 export const NetworkInterfacesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.suspend(() => NetworkInterfacePropertiesSchema),
+    identity: Schema.optional(
+      Schema.Struct({
+        principalId: Schema.optional(Schema.String),
+        tenantId: Schema.optional(Schema.String),
+        type: Schema.suspend(() => ManagedServiceIdentityTypeSchema),
+        userAssignedIdentities: Schema.optional(
+          Schema.suspend(() => UserAssignedIdentitiesSchema),
+        ),
+      }),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type NetworkInterfacesGetOutput = typeof NetworkInterfacesGetOutput.Type;
 
@@ -13913,37 +10359,7 @@ export type NetworkInterfacesListByNetworkDeviceInput =
 // Output Schema
 export const NetworkInterfacesListByNetworkDeviceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => NetworkInterfaceSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type NetworkInterfacesListByNetworkDeviceOutput =
@@ -13971,30 +10387,10 @@ export const NetworkInterfacesUpdateInput =
     networkDeviceName: Schema.String.pipe(T.PathParam()),
     networkInterfaceName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        annotation: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(() => NetworkInterfacePatchPropertiesSchema),
     ),
     identity: Schema.optional(
-      Schema.Struct({
-        type: Schema.optional(
-          Schema.Literals([
-            "None",
-            "SystemAssigned",
-            "UserAssigned",
-            "SystemAssigned,UserAssigned",
-          ]),
-        ),
-        userAssignedIdentities: Schema.optional(
-          Schema.Record(
-            Schema.String,
-            Schema.Struct({
-              principalId: Schema.optional(Schema.String),
-              clientId: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-      }),
+      Schema.suspend(() => ManagedServiceIdentityPatchSchema),
     ),
   }).pipe(
     T.Http({
@@ -14010,23 +10406,21 @@ export type NetworkInterfacesUpdateInput =
 // Output Schema
 export const NetworkInterfacesUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.suspend(() => NetworkInterfacePropertiesSchema),
+    identity: Schema.optional(
+      Schema.Struct({
+        principalId: Schema.optional(Schema.String),
+        tenantId: Schema.optional(Schema.String),
+        type: Schema.suspend(() => ManagedServiceIdentityTypeSchema),
+        userAssignedIdentities: Schema.optional(
+          Schema.suspend(() => UserAssignedIdentitiesSchema),
+        ),
+      }),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type NetworkInterfacesUpdateOutput =
   typeof NetworkInterfacesUpdateOutput.Type;
@@ -14054,9 +10448,7 @@ export const NetworkInterfacesUpdateAdministrativeStateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     networkDeviceName: Schema.String.pipe(T.PathParam()),
     networkInterfaceName: Schema.String.pipe(T.PathParam()),
-    state: Schema.optional(
-      Schema.Literals(["Enable", "Disable", "UnderMaintenance"]),
-    ),
+    state: Schema.optional(Schema.suspend(() => EnableDisableStateSchema)),
     resourceIds: Schema.optional(Schema.Array(Schema.String)),
   }).pipe(
     T.Http({
@@ -14089,51 +10481,9 @@ export const NetworkInterfacesUpdateAdministrativeStateOutput =
           startTime: Schema.optional(Schema.String),
           endTime: Schema.optional(Schema.String),
           operations: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                id: Schema.optional(Schema.String),
-                resourceId: Schema.optional(Schema.String),
-                name: Schema.optional(Schema.String),
-                status: Schema.String,
-                percentComplete: Schema.optional(Schema.Number),
-                startTime: Schema.optional(Schema.String),
-                endTime: Schema.optional(Schema.String),
-                operations: Schema.optional(Schema.Array(Schema.Unknown)),
-                error: Schema.optional(
-                  Schema.Struct({
-                    code: Schema.optional(Schema.String),
-                    message: Schema.optional(Schema.String),
-                    target: Schema.optional(Schema.String),
-                    details: Schema.optional(Schema.Array(Schema.Unknown)),
-                    additionalInfo: Schema.optional(
-                      Schema.Array(
-                        Schema.Struct({
-                          type: Schema.optional(Schema.String),
-                          info: Schema.optional(Schema.Unknown),
-                        }),
-                      ),
-                    ),
-                  }),
-                ),
-              }),
-            ),
+            Schema.Array(Schema.suspend(() => OperationStatusResultSchema)),
           ),
-          error: Schema.optional(
-            Schema.Struct({
-              code: Schema.optional(Schema.String),
-              message: Schema.optional(Schema.String),
-              target: Schema.optional(Schema.String),
-              details: Schema.optional(Schema.Array(Schema.Unknown)),
-              additionalInfo: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    type: Schema.optional(Schema.String),
-                    info: Schema.optional(Schema.Unknown),
-                  }),
-                ),
-              ),
-            }),
-          ),
+          error: Schema.optional(Schema.suspend(() => ErrorDetailSchema)),
         }),
       ),
     ),
@@ -14143,39 +10493,16 @@ export const NetworkInterfacesUpdateAdministrativeStateOutput =
         message: Schema.optional(Schema.String),
         target: Schema.optional(Schema.String),
         details: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              code: Schema.optional(Schema.String),
-              message: Schema.optional(Schema.String),
-              target: Schema.optional(Schema.String),
-              details: Schema.optional(Schema.Array(Schema.Unknown)),
-              additionalInfo: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    type: Schema.optional(Schema.String),
-                    info: Schema.optional(Schema.Unknown),
-                  }),
-                ),
-              ),
-            }),
-          ),
+          Schema.Array(Schema.suspend(() => ErrorDetailSchema)),
         ),
         additionalInfo: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              type: Schema.optional(Schema.String),
-              info: Schema.optional(Schema.Unknown),
-            }),
-          ),
+          Schema.Array(Schema.suspend(() => ErrorAdditionalInfoSchema)),
         ),
       }),
     ),
     resourceId: Schema.optional(Schema.String),
     properties: Schema.optional(
-      Schema.Struct({
-        successfulResources: Schema.optional(Schema.Array(Schema.String)),
-        failedResources: Schema.optional(Schema.Array(Schema.String)),
-      }),
+      Schema.suspend(() => UpdateAdministrativeStateResponsePropertiesSchema),
     ),
   });
 export type NetworkInterfacesUpdateAdministrativeStateOutput =
@@ -14202,9 +10529,7 @@ export const NetworkMonitorsCreateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     networkMonitorName: Schema.String.pipe(T.PathParam()),
-    properties: Schema.Struct({
-      annotation: Schema.optional(Schema.String),
-    }),
+    properties: Schema.suspend(() => NetworkMonitorPropertiesSchema),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     location: Schema.String,
   }).pipe(
@@ -14220,23 +10545,13 @@ export type NetworkMonitorsCreateInput = typeof NetworkMonitorsCreateInput.Type;
 // Output Schema
 export const NetworkMonitorsCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.suspend(() => NetworkMonitorPropertiesSchema),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type NetworkMonitorsCreateOutput =
   typeof NetworkMonitorsCreateOutput.Type;
@@ -14311,23 +10626,13 @@ export type NetworkMonitorsGetInput = typeof NetworkMonitorsGetInput.Type;
 // Output Schema
 export const NetworkMonitorsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.suspend(() => NetworkMonitorPropertiesSchema),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type NetworkMonitorsGetOutput = typeof NetworkMonitorsGetOutput.Type;
 
@@ -14362,37 +10667,7 @@ export type NetworkMonitorsListByResourceGroupInput =
 // Output Schema
 export const NetworkMonitorsListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => NetworkMonitorSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type NetworkMonitorsListByResourceGroupOutput =
@@ -14428,37 +10703,7 @@ export type NetworkMonitorsListBySubscriptionInput =
 // Output Schema
 export const NetworkMonitorsListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => NetworkMonitorSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type NetworkMonitorsListBySubscriptionOutput =
@@ -14483,59 +10728,7 @@ export const NetworkMonitorsUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     networkMonitorName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        bmpConfiguration: Schema.optional(
-          Schema.Struct({
-            stationConfigurationState: Schema.optional(
-              Schema.Literals(["Enabled", "Disabled"]),
-            ),
-            scopeResourceId: Schema.optional(Schema.String),
-            stationName: Schema.optional(Schema.String),
-            stationIp: Schema.optional(Schema.String),
-            stationPort: Schema.optional(Schema.Number),
-            stationConnectionMode: Schema.optional(
-              Schema.Literals(["Active", "Passive"]),
-            ),
-            stationConnectionProperties: Schema.optional(
-              Schema.Struct({
-                keepaliveIdleTime: Schema.optional(Schema.Number),
-                probeInterval: Schema.optional(Schema.Number),
-                probeCount: Schema.optional(Schema.Number),
-              }),
-            ),
-            stationNetwork: Schema.optional(Schema.String),
-            monitoredNetworks: Schema.optional(Schema.Array(Schema.String)),
-            exportPolicy: Schema.optional(
-              Schema.Literals(["Pre-Policy", "Post-Policy", "All", "LocalRib"]),
-            ),
-            exportPolicyConfiguration: Schema.optional(
-              Schema.Struct({
-                exportPolicies: Schema.optional(
-                  Schema.Array(
-                    Schema.Literals([
-                      "Pre-Policy",
-                      "Post-Policy",
-                      "All",
-                      "LocalRib",
-                    ]),
-                  ),
-                ),
-              }),
-            ),
-            monitoredAddressFamilies: Schema.optional(
-              Schema.Array(
-                Schema.Literals([
-                  "ipv4Unicast",
-                  "ipv6Unicast",
-                  "vpnIpv4",
-                  "vpnIpv6",
-                  "All",
-                ]),
-              ),
-            ),
-          }),
-        ),
-      }),
+      Schema.suspend(() => NetworkMonitorPatchPropertiesSchema),
     ),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
@@ -14551,23 +10744,13 @@ export type NetworkMonitorsUpdateInput = typeof NetworkMonitorsUpdateInput.Type;
 // Output Schema
 export const NetworkMonitorsUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.suspend(() => NetworkMonitorPropertiesSchema),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type NetworkMonitorsUpdateOutput =
   typeof NetworkMonitorsUpdateOutput.Type;
@@ -14593,9 +10776,7 @@ export const NetworkMonitorsUpdateAdministrativeStateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     networkMonitorName: Schema.String.pipe(T.PathParam()),
-    state: Schema.optional(
-      Schema.Literals(["Enable", "Disable", "UnderMaintenance"]),
-    ),
+    state: Schema.optional(Schema.suspend(() => EnableDisableStateSchema)),
     resourceIds: Schema.optional(Schema.Array(Schema.String)),
   }).pipe(
     T.Http({
@@ -14611,22 +10792,12 @@ export type NetworkMonitorsUpdateAdministrativeStateInput =
 // Output Schema
 export const NetworkMonitorsUpdateAdministrativeStateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    error: Schema.optional(
-      Schema.Struct({
-        code: Schema.optional(Schema.String),
-        message: Schema.optional(Schema.String),
-        target: Schema.optional(Schema.String),
-        details: Schema.optional(Schema.Array(Schema.Unknown)),
-        additionalInfo: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              type: Schema.optional(Schema.String),
-              info: Schema.optional(Schema.Unknown),
-            }),
-          ),
-        ),
-      }),
+    configurationState: Schema.optional(
+      Schema.suspend(() => ConfigurationStateSchema),
     ),
+    successfulDevices: Schema.optional(Schema.Array(Schema.String)),
+    failedDevices: Schema.optional(Schema.Array(Schema.String)),
+    error: Schema.optional(Schema.suspend(() => ErrorDetailSchema)),
   });
 export type NetworkMonitorsUpdateAdministrativeStateOutput =
   typeof NetworkMonitorsUpdateAdministrativeStateOutput.Type;
@@ -14651,63 +10822,14 @@ export const NetworkPacketBrokersCreateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     networkPacketBrokerName: Schema.String.pipe(T.PathParam()),
-    properties: Schema.Struct({
-      networkFabricId: Schema.String,
-      networkDeviceIds: Schema.optional(Schema.Array(Schema.String)),
-      sourceInterfaceIds: Schema.optional(Schema.Array(Schema.String)),
-      networkTapIds: Schema.optional(Schema.Array(Schema.String)),
-      neighborGroupIds: Schema.optional(Schema.Array(Schema.String)),
-      lastOperation: Schema.optional(
-        Schema.Struct({
-          details: Schema.optional(Schema.String),
-        }),
-      ),
-      provisioningState: Schema.optional(
-        Schema.Literals([
-          "Accepted",
-          "Succeeded",
-          "Updating",
-          "Deleting",
-          "Failed",
-          "Canceled",
-        ]),
-      ),
-      configurationState: Schema.optional(
-        Schema.Literals([
-          "Succeeded",
-          "Failed",
-          "Rejected",
-          "Accepted",
-          "Provisioned",
-          "ErrorProvisioning",
-          "Deprovisioning",
-          "Deprovisioned",
-          "ErrorDeprovisioning",
-          "DeferredControl",
-          "Provisioning",
-          "PendingCommit",
-          "PendingAdministrativeUpdate",
-        ]),
-      ),
-    }),
+    properties: Schema.suspend(() => NetworkPacketBrokerPropertiesSchema),
     identity: Schema.optional(
       Schema.Struct({
         principalId: Schema.optional(Schema.String),
         tenantId: Schema.optional(Schema.String),
-        type: Schema.Literals([
-          "None",
-          "SystemAssigned",
-          "UserAssigned",
-          "SystemAssigned,UserAssigned",
-        ]),
+        type: Schema.suspend(() => ManagedServiceIdentityTypeSchema),
         userAssignedIdentities: Schema.optional(
-          Schema.Record(
-            Schema.String,
-            Schema.Struct({
-              principalId: Schema.optional(Schema.String),
-              clientId: Schema.optional(Schema.String),
-            }),
-          ),
+          Schema.suspend(() => UserAssignedIdentitiesSchema),
         ),
       }),
     ),
@@ -14727,23 +10849,23 @@ export type NetworkPacketBrokersCreateInput =
 // Output Schema
 export const NetworkPacketBrokersCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.suspend(() => NetworkPacketBrokerPropertiesSchema),
+    identity: Schema.optional(
+      Schema.Struct({
+        principalId: Schema.optional(Schema.String),
+        tenantId: Schema.optional(Schema.String),
+        type: Schema.suspend(() => ManagedServiceIdentityTypeSchema),
+        userAssignedIdentities: Schema.optional(
+          Schema.suspend(() => UserAssignedIdentitiesSchema),
+        ),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type NetworkPacketBrokersCreateOutput =
   typeof NetworkPacketBrokersCreateOutput.Type;
@@ -14820,23 +10942,23 @@ export type NetworkPacketBrokersGetInput =
 // Output Schema
 export const NetworkPacketBrokersGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.suspend(() => NetworkPacketBrokerPropertiesSchema),
+    identity: Schema.optional(
+      Schema.Struct({
+        principalId: Schema.optional(Schema.String),
+        tenantId: Schema.optional(Schema.String),
+        type: Schema.suspend(() => ManagedServiceIdentityTypeSchema),
+        userAssignedIdentities: Schema.optional(
+          Schema.suspend(() => UserAssignedIdentitiesSchema),
+        ),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type NetworkPacketBrokersGetOutput =
   typeof NetworkPacketBrokersGetOutput.Type;
@@ -14874,37 +10996,7 @@ export type NetworkPacketBrokersListByResourceGroupInput =
 // Output Schema
 export const NetworkPacketBrokersListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => NetworkPacketBrokerSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type NetworkPacketBrokersListByResourceGroupOutput =
@@ -14940,37 +11032,7 @@ export type NetworkPacketBrokersListBySubscriptionInput =
 // Output Schema
 export const NetworkPacketBrokersListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => NetworkPacketBrokerSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type NetworkPacketBrokersListBySubscriptionOutput =
@@ -14995,25 +11057,7 @@ export const NetworkPacketBrokersUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     networkPacketBrokerName: Schema.String.pipe(T.PathParam()),
     identity: Schema.optional(
-      Schema.Struct({
-        type: Schema.optional(
-          Schema.Literals([
-            "None",
-            "SystemAssigned",
-            "UserAssigned",
-            "SystemAssigned,UserAssigned",
-          ]),
-        ),
-        userAssignedIdentities: Schema.optional(
-          Schema.Record(
-            Schema.String,
-            Schema.Struct({
-              principalId: Schema.optional(Schema.String),
-              clientId: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-      }),
+      Schema.suspend(() => ManagedServiceIdentityPatchSchema),
     ),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
@@ -15030,23 +11074,23 @@ export type NetworkPacketBrokersUpdateInput =
 // Output Schema
 export const NetworkPacketBrokersUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.suspend(() => NetworkPacketBrokerPropertiesSchema),
+    identity: Schema.optional(
+      Schema.Struct({
+        principalId: Schema.optional(Schema.String),
+        tenantId: Schema.optional(Schema.String),
+        type: Schema.suspend(() => ManagedServiceIdentityTypeSchema),
+        userAssignedIdentities: Schema.optional(
+          Schema.suspend(() => UserAssignedIdentitiesSchema),
+        ),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type NetworkPacketBrokersUpdateOutput =
   typeof NetworkPacketBrokersUpdateOutput.Type;
@@ -15072,9 +11116,7 @@ export const NetworkRacksCreateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     networkRackName: Schema.String.pipe(T.PathParam()),
-    properties: Schema.Struct({
-      annotation: Schema.optional(Schema.String),
-    }),
+    properties: Schema.suspend(() => NetworkRackPropertiesSchema),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     location: Schema.String,
   }).pipe(
@@ -15090,23 +11132,13 @@ export type NetworkRacksCreateInput = typeof NetworkRacksCreateInput.Type;
 // Output Schema
 export const NetworkRacksCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.suspend(() => NetworkRackPropertiesSchema),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type NetworkRacksCreateOutput = typeof NetworkRacksCreateOutput.Type;
 
@@ -15172,23 +11204,13 @@ export type NetworkRacksGetInput = typeof NetworkRacksGetInput.Type;
 
 // Output Schema
 export const NetworkRacksGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.suspend(() => NetworkRackPropertiesSchema),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  location: Schema.String,
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
-  systemData: Schema.optional(
-    Schema.Struct({
-      createdBy: Schema.optional(Schema.String),
-      createdByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      createdAt: Schema.optional(Schema.String),
-      lastModifiedBy: Schema.optional(Schema.String),
-      lastModifiedByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      lastModifiedAt: Schema.optional(Schema.String),
-    }),
-  ),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
 });
 export type NetworkRacksGetOutput = typeof NetworkRacksGetOutput.Type;
 
@@ -15223,37 +11245,7 @@ export type NetworkRacksListByResourceGroupInput =
 // Output Schema
 export const NetworkRacksListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => NetworkRackSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type NetworkRacksListByResourceGroupOutput =
@@ -15289,37 +11281,7 @@ export type NetworkRacksListBySubscriptionInput =
 // Output Schema
 export const NetworkRacksListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => NetworkRackSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type NetworkRacksListBySubscriptionOutput =
@@ -15357,23 +11319,13 @@ export type NetworkRacksUpdateInput = typeof NetworkRacksUpdateInput.Type;
 // Output Schema
 export const NetworkRacksUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.suspend(() => NetworkRackPropertiesSchema),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type NetworkRacksUpdateOutput = typeof NetworkRacksUpdateOutput.Type;
 
@@ -15396,192 +11348,14 @@ export const NetworkTapRulesCreateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     networkTapRuleName: Schema.String.pipe(T.PathParam()),
-    properties: Schema.Struct({
-      annotation: Schema.optional(Schema.String),
-      configurationType: Schema.Literals(["File", "Inline"]),
-      tapRulesUrl: Schema.optional(Schema.String),
-      identitySelector: Schema.optional(
-        Schema.Struct({
-          identityType: Schema.Literals([
-            "SystemAssignedIdentity",
-            "UserAssignedIdentity",
-          ]),
-          userAssignedIdentityResourceId: Schema.optional(Schema.String),
-        }),
-      ),
-      matchConfigurations: Schema.optional(
-        Schema.Array(
-          Schema.Struct({
-            matchConfigurationName: Schema.optional(Schema.String),
-            sequenceNumber: Schema.optional(Schema.Number),
-            ipAddressType: Schema.optional(Schema.Literals(["IPv4", "IPv6"])),
-            matchConditions: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  protocolTypes: Schema.optional(Schema.Array(Schema.String)),
-                  vlanMatchCondition: Schema.optional(
-                    Schema.Struct({
-                      vlans: Schema.optional(Schema.Array(Schema.String)),
-                      innerVlans: Schema.optional(Schema.Array(Schema.String)),
-                      vlanGroupNames: Schema.optional(
-                        Schema.Array(Schema.String),
-                      ),
-                    }),
-                  ),
-                  ipCondition: Schema.optional(
-                    Schema.Struct({
-                      type: Schema.optional(
-                        Schema.Literals([
-                          "SourceIP",
-                          "DestinationIP",
-                          "Bidirectional",
-                        ]),
-                      ),
-                      prefixType: Schema.optional(
-                        Schema.Literals(["Prefix", "LongestPrefix"]),
-                      ),
-                      ipPrefixValues: Schema.optional(
-                        Schema.Array(Schema.String),
-                      ),
-                      ipGroupNames: Schema.optional(
-                        Schema.Array(Schema.String),
-                      ),
-                    }),
-                  ),
-                }),
-              ),
-            ),
-            actions: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  type: Schema.optional(
-                    Schema.Literals([
-                      "Drop",
-                      "Count",
-                      "Log",
-                      "Replicate",
-                      "Goto",
-                      "Redirect",
-                      "Mirror",
-                    ]),
-                  ),
-                  truncate: Schema.optional(Schema.String),
-                  isTimestampEnabled: Schema.optional(
-                    Schema.Literals(["True", "False"]),
-                  ),
-                  destinationId: Schema.optional(Schema.String),
-                  matchConfigurationName: Schema.optional(Schema.String),
-                }),
-              ),
-            ),
-          }),
-        ),
-      ),
-      dynamicMatchConfigurations: Schema.optional(
-        Schema.Array(
-          Schema.Struct({
-            ipGroups: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  name: Schema.optional(Schema.String),
-                  ipAddressType: Schema.optional(
-                    Schema.Literals(["IPv4", "IPv6"]),
-                  ),
-                  ipPrefixes: Schema.optional(Schema.Array(Schema.String)),
-                }),
-              ),
-            ),
-            vlanGroups: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  name: Schema.optional(Schema.String),
-                  vlans: Schema.optional(Schema.Array(Schema.String)),
-                }),
-              ),
-            ),
-            portGroups: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  name: Schema.optional(Schema.String),
-                  ports: Schema.optional(Schema.Array(Schema.String)),
-                }),
-              ),
-            ),
-          }),
-        ),
-      ),
-      networkTapId: Schema.optional(Schema.String),
-      networkTapIds: Schema.optional(Schema.Array(Schema.String)),
-      pollingIntervalInSeconds: Schema.optional(Schema.Number),
-      lastSyncedTime: Schema.optional(Schema.String),
-      globalNetworkTapRuleActions: Schema.optional(
-        Schema.Struct({
-          enableCount: Schema.optional(Schema.Literals(["True", "False"])),
-          truncate: Schema.optional(Schema.String),
-        }),
-      ),
-      lastOperation: Schema.optional(
-        Schema.Struct({
-          details: Schema.optional(Schema.String),
-        }),
-      ),
-      networkFabricIds: Schema.optional(Schema.Array(Schema.String)),
-      configurationState: Schema.optional(
-        Schema.Literals([
-          "Succeeded",
-          "Failed",
-          "Rejected",
-          "Accepted",
-          "Provisioned",
-          "ErrorProvisioning",
-          "Deprovisioning",
-          "Deprovisioned",
-          "ErrorDeprovisioning",
-          "DeferredControl",
-          "Provisioning",
-          "PendingCommit",
-          "PendingAdministrativeUpdate",
-        ]),
-      ),
-      provisioningState: Schema.optional(
-        Schema.Literals([
-          "Accepted",
-          "Succeeded",
-          "Updating",
-          "Deleting",
-          "Failed",
-          "Canceled",
-        ]),
-      ),
-      administrativeState: Schema.optional(
-        Schema.Literals([
-          "Enabled",
-          "Disabled",
-          "MAT",
-          "RMA",
-          "UnderMaintenance",
-          "EnabledDegraded",
-        ]),
-      ),
-    }),
+    properties: Schema.suspend(() => NetworkTapRulePropertiesSchema),
     identity: Schema.optional(
       Schema.Struct({
         principalId: Schema.optional(Schema.String),
         tenantId: Schema.optional(Schema.String),
-        type: Schema.Literals([
-          "None",
-          "SystemAssigned",
-          "UserAssigned",
-          "SystemAssigned,UserAssigned",
-        ]),
+        type: Schema.suspend(() => ManagedServiceIdentityTypeSchema),
         userAssignedIdentities: Schema.optional(
-          Schema.Record(
-            Schema.String,
-            Schema.Struct({
-              principalId: Schema.optional(Schema.String),
-              clientId: Schema.optional(Schema.String),
-            }),
-          ),
+          Schema.suspend(() => UserAssignedIdentitiesSchema),
         ),
       }),
     ),
@@ -15600,23 +11374,23 @@ export type NetworkTapRulesCreateInput = typeof NetworkTapRulesCreateInput.Type;
 // Output Schema
 export const NetworkTapRulesCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.suspend(() => NetworkTapRulePropertiesSchema),
+    identity: Schema.optional(
+      Schema.Struct({
+        principalId: Schema.optional(Schema.String),
+        tenantId: Schema.optional(Schema.String),
+        type: Schema.suspend(() => ManagedServiceIdentityTypeSchema),
+        userAssignedIdentities: Schema.optional(
+          Schema.suspend(() => UserAssignedIdentitiesSchema),
+        ),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type NetworkTapRulesCreateOutput =
   typeof NetworkTapRulesCreateOutput.Type;
@@ -15691,23 +11465,23 @@ export type NetworkTapRulesGetInput = typeof NetworkTapRulesGetInput.Type;
 // Output Schema
 export const NetworkTapRulesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.suspend(() => NetworkTapRulePropertiesSchema),
+    identity: Schema.optional(
+      Schema.Struct({
+        principalId: Schema.optional(Schema.String),
+        tenantId: Schema.optional(Schema.String),
+        type: Schema.suspend(() => ManagedServiceIdentityTypeSchema),
+        userAssignedIdentities: Schema.optional(
+          Schema.suspend(() => UserAssignedIdentitiesSchema),
+        ),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type NetworkTapRulesGetOutput = typeof NetworkTapRulesGetOutput.Type;
 
@@ -15742,37 +11516,7 @@ export type NetworkTapRulesListByResourceGroupInput =
 // Output Schema
 export const NetworkTapRulesListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => NetworkTapRuleSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type NetworkTapRulesListByResourceGroupOutput =
@@ -15808,37 +11552,7 @@ export type NetworkTapRulesListBySubscriptionInput =
 // Output Schema
 export const NetworkTapRulesListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => NetworkTapRuleSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type NetworkTapRulesListBySubscriptionOutput =
@@ -15892,51 +11606,9 @@ export const NetworkTapRulesResyncOutput =
           startTime: Schema.optional(Schema.String),
           endTime: Schema.optional(Schema.String),
           operations: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                id: Schema.optional(Schema.String),
-                resourceId: Schema.optional(Schema.String),
-                name: Schema.optional(Schema.String),
-                status: Schema.String,
-                percentComplete: Schema.optional(Schema.Number),
-                startTime: Schema.optional(Schema.String),
-                endTime: Schema.optional(Schema.String),
-                operations: Schema.optional(Schema.Array(Schema.Unknown)),
-                error: Schema.optional(
-                  Schema.Struct({
-                    code: Schema.optional(Schema.String),
-                    message: Schema.optional(Schema.String),
-                    target: Schema.optional(Schema.String),
-                    details: Schema.optional(Schema.Array(Schema.Unknown)),
-                    additionalInfo: Schema.optional(
-                      Schema.Array(
-                        Schema.Struct({
-                          type: Schema.optional(Schema.String),
-                          info: Schema.optional(Schema.Unknown),
-                        }),
-                      ),
-                    ),
-                  }),
-                ),
-              }),
-            ),
+            Schema.Array(Schema.suspend(() => OperationStatusResultSchema)),
           ),
-          error: Schema.optional(
-            Schema.Struct({
-              code: Schema.optional(Schema.String),
-              message: Schema.optional(Schema.String),
-              target: Schema.optional(Schema.String),
-              details: Schema.optional(Schema.Array(Schema.Unknown)),
-              additionalInfo: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    type: Schema.optional(Schema.String),
-                    info: Schema.optional(Schema.Unknown),
-                  }),
-                ),
-              ),
-            }),
-          ),
+          error: Schema.optional(Schema.suspend(() => ErrorDetailSchema)),
         }),
       ),
     ),
@@ -15946,30 +11618,10 @@ export const NetworkTapRulesResyncOutput =
         message: Schema.optional(Schema.String),
         target: Schema.optional(Schema.String),
         details: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              code: Schema.optional(Schema.String),
-              message: Schema.optional(Schema.String),
-              target: Schema.optional(Schema.String),
-              details: Schema.optional(Schema.Array(Schema.Unknown)),
-              additionalInfo: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    type: Schema.optional(Schema.String),
-                    info: Schema.optional(Schema.Unknown),
-                  }),
-                ),
-              ),
-            }),
-          ),
+          Schema.Array(Schema.suspend(() => ErrorDetailSchema)),
         ),
         additionalInfo: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              type: Schema.optional(Schema.String),
-              info: Schema.optional(Schema.Unknown),
-            }),
-          ),
+          Schema.Array(Schema.suspend(() => ErrorAdditionalInfoSchema)),
         ),
       }),
     ),
@@ -16000,152 +11652,10 @@ export const NetworkTapRulesUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     networkTapRuleName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        annotation: Schema.optional(Schema.String),
-        configurationType: Schema.optional(Schema.Literals(["File", "Inline"])),
-        tapRulesUrl: Schema.optional(Schema.String),
-        matchConfigurations: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              matchConfigurationName: Schema.optional(Schema.String),
-              sequenceNumber: Schema.optional(Schema.Number),
-              ipAddressType: Schema.optional(Schema.Literals(["IPv4", "IPv6"])),
-              matchConditions: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    protocolTypes: Schema.optional(Schema.Array(Schema.String)),
-                    vlanMatchCondition: Schema.optional(
-                      Schema.Struct({
-                        vlans: Schema.optional(Schema.Array(Schema.String)),
-                        innerVlans: Schema.optional(
-                          Schema.Array(Schema.String),
-                        ),
-                        vlanGroupNames: Schema.optional(
-                          Schema.Array(Schema.String),
-                        ),
-                      }),
-                    ),
-                    ipCondition: Schema.optional(
-                      Schema.Struct({
-                        type: Schema.optional(
-                          Schema.Literals([
-                            "SourceIP",
-                            "DestinationIP",
-                            "Bidirectional",
-                          ]),
-                        ),
-                        prefixType: Schema.optional(
-                          Schema.Literals(["Prefix", "LongestPrefix"]),
-                        ),
-                        ipPrefixValues: Schema.optional(
-                          Schema.Array(Schema.String),
-                        ),
-                        ipGroupNames: Schema.optional(
-                          Schema.Array(Schema.String),
-                        ),
-                      }),
-                    ),
-                  }),
-                ),
-              ),
-              actions: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    type: Schema.optional(
-                      Schema.Literals([
-                        "Drop",
-                        "Count",
-                        "Log",
-                        "Replicate",
-                        "Goto",
-                        "Redirect",
-                        "Mirror",
-                      ]),
-                    ),
-                    truncate: Schema.optional(Schema.String),
-                    isTimestampEnabled: Schema.optional(
-                      Schema.Literals(["True", "False"]),
-                    ),
-                    destinationId: Schema.optional(Schema.String),
-                    matchConfigurationName: Schema.optional(Schema.String),
-                  }),
-                ),
-              ),
-            }),
-          ),
-        ),
-        dynamicMatchConfigurations: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              ipGroups: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    name: Schema.optional(Schema.String),
-                    ipAddressType: Schema.optional(
-                      Schema.Literals(["IPv4", "IPv6"]),
-                    ),
-                    ipPrefixes: Schema.optional(Schema.Array(Schema.String)),
-                  }),
-                ),
-              ),
-              vlanGroups: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    name: Schema.optional(Schema.String),
-                    vlans: Schema.optional(Schema.Array(Schema.String)),
-                  }),
-                ),
-              ),
-              portGroups: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    name: Schema.optional(Schema.String),
-                    ports: Schema.optional(Schema.Array(Schema.String)),
-                  }),
-                ),
-              ),
-            }),
-          ),
-        ),
-        identitySelector: Schema.optional(
-          Schema.Struct({
-            identityType: Schema.optional(
-              Schema.Literals([
-                "SystemAssignedIdentity",
-                "UserAssignedIdentity",
-              ]),
-            ),
-            userAssignedIdentityResourceId: Schema.optional(Schema.String),
-          }),
-        ),
-        globalNetworkTapRuleActions: Schema.optional(
-          Schema.Struct({
-            enableCount: Schema.optional(Schema.Literals(["True", "False"])),
-            truncate: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
+      Schema.suspend(() => NetworkTapRulePatchPropertiesSchema),
     ),
     identity: Schema.optional(
-      Schema.Struct({
-        type: Schema.optional(
-          Schema.Literals([
-            "None",
-            "SystemAssigned",
-            "UserAssigned",
-            "SystemAssigned,UserAssigned",
-          ]),
-        ),
-        userAssignedIdentities: Schema.optional(
-          Schema.Record(
-            Schema.String,
-            Schema.Struct({
-              principalId: Schema.optional(Schema.String),
-              clientId: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-      }),
+      Schema.suspend(() => ManagedServiceIdentityPatchSchema),
     ),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
@@ -16161,23 +11671,23 @@ export type NetworkTapRulesUpdateInput = typeof NetworkTapRulesUpdateInput.Type;
 // Output Schema
 export const NetworkTapRulesUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.suspend(() => NetworkTapRulePropertiesSchema),
+    identity: Schema.optional(
+      Schema.Struct({
+        principalId: Schema.optional(Schema.String),
+        tenantId: Schema.optional(Schema.String),
+        type: Schema.suspend(() => ManagedServiceIdentityTypeSchema),
+        userAssignedIdentities: Schema.optional(
+          Schema.suspend(() => UserAssignedIdentitiesSchema),
+        ),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type NetworkTapRulesUpdateOutput =
   typeof NetworkTapRulesUpdateOutput.Type;
@@ -16203,9 +11713,7 @@ export const NetworkTapRulesUpdateAdministrativeStateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     networkTapRuleName: Schema.String.pipe(T.PathParam()),
-    state: Schema.optional(
-      Schema.Literals(["Enable", "Disable", "UnderMaintenance"]),
-    ),
+    state: Schema.optional(Schema.suspend(() => EnableDisableStateSchema)),
     resourceIds: Schema.optional(Schema.Array(Schema.String)),
   }).pipe(
     T.Http({
@@ -16221,22 +11729,10 @@ export type NetworkTapRulesUpdateAdministrativeStateInput =
 // Output Schema
 export const NetworkTapRulesUpdateAdministrativeStateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    error: Schema.optional(
-      Schema.Struct({
-        code: Schema.optional(Schema.String),
-        message: Schema.optional(Schema.String),
-        target: Schema.optional(Schema.String),
-        details: Schema.optional(Schema.Array(Schema.Unknown)),
-        additionalInfo: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              type: Schema.optional(Schema.String),
-              info: Schema.optional(Schema.Unknown),
-            }),
-          ),
-        ),
-      }),
+    configurationState: Schema.optional(
+      Schema.suspend(() => ConfigurationStateSchema),
     ),
+    error: Schema.optional(Schema.suspend(() => ErrorDetailSchema)),
   });
 export type NetworkTapRulesUpdateAdministrativeStateOutput =
   typeof NetworkTapRulesUpdateAdministrativeStateOutput.Type;
@@ -16275,22 +11771,11 @@ export type NetworkTapRulesValidateConfigurationInput =
 // Output Schema
 export const NetworkTapRulesValidateConfigurationOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    error: Schema.optional(
-      Schema.Struct({
-        code: Schema.optional(Schema.String),
-        message: Schema.optional(Schema.String),
-        target: Schema.optional(Schema.String),
-        details: Schema.optional(Schema.Array(Schema.Unknown)),
-        additionalInfo: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              type: Schema.optional(Schema.String),
-              info: Schema.optional(Schema.Unknown),
-            }),
-          ),
-        ),
-      }),
+    configurationState: Schema.optional(
+      Schema.suspend(() => ConfigurationStateSchema),
     ),
+    url: Schema.optional(Schema.String),
+    error: Schema.optional(Schema.suspend(() => ErrorDetailSchema)),
   });
 export type NetworkTapRulesValidateConfigurationOutput =
   typeof NetworkTapRulesValidateConfigurationOutput.Type;
@@ -16315,27 +11800,14 @@ export const NetworkTapsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     networkTapName: Schema.String.pipe(T.PathParam()),
-    properties: Schema.Struct({
-      annotation: Schema.optional(Schema.String),
-    }),
+    properties: Schema.suspend(() => NetworkTapPropertiesSchema),
     identity: Schema.optional(
       Schema.Struct({
         principalId: Schema.optional(Schema.String),
         tenantId: Schema.optional(Schema.String),
-        type: Schema.Literals([
-          "None",
-          "SystemAssigned",
-          "UserAssigned",
-          "SystemAssigned,UserAssigned",
-        ]),
+        type: Schema.suspend(() => ManagedServiceIdentityTypeSchema),
         userAssignedIdentities: Schema.optional(
-          Schema.Record(
-            Schema.String,
-            Schema.Struct({
-              principalId: Schema.optional(Schema.String),
-              clientId: Schema.optional(Schema.String),
-            }),
-          ),
+          Schema.suspend(() => UserAssignedIdentitiesSchema),
         ),
       }),
     ),
@@ -16355,23 +11827,23 @@ export type NetworkTapsCreateInput = typeof NetworkTapsCreateInput.Type;
 // Output Schema
 export const NetworkTapsCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.suspend(() => NetworkTapPropertiesSchema),
+    identity: Schema.optional(
+      Schema.Struct({
+        principalId: Schema.optional(Schema.String),
+        tenantId: Schema.optional(Schema.String),
+        type: Schema.suspend(() => ManagedServiceIdentityTypeSchema),
+        userAssignedIdentities: Schema.optional(
+          Schema.suspend(() => UserAssignedIdentitiesSchema),
+        ),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type NetworkTapsCreateOutput = typeof NetworkTapsCreateOutput.Type;
 
@@ -16438,23 +11910,23 @@ export type NetworkTapsGetInput = typeof NetworkTapsGetInput.Type;
 
 // Output Schema
 export const NetworkTapsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.suspend(() => NetworkTapPropertiesSchema),
+  identity: Schema.optional(
+    Schema.Struct({
+      principalId: Schema.optional(Schema.String),
+      tenantId: Schema.optional(Schema.String),
+      type: Schema.suspend(() => ManagedServiceIdentityTypeSchema),
+      userAssignedIdentities: Schema.optional(
+        Schema.suspend(() => UserAssignedIdentitiesSchema),
+      ),
+    }),
+  ),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  location: Schema.String,
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
-  systemData: Schema.optional(
-    Schema.Struct({
-      createdBy: Schema.optional(Schema.String),
-      createdByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      createdAt: Schema.optional(Schema.String),
-      lastModifiedBy: Schema.optional(Schema.String),
-      lastModifiedByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      lastModifiedAt: Schema.optional(Schema.String),
-    }),
-  ),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
 });
 export type NetworkTapsGetOutput = typeof NetworkTapsGetOutput.Type;
 
@@ -16489,37 +11961,7 @@ export type NetworkTapsListByResourceGroupInput =
 // Output Schema
 export const NetworkTapsListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => NetworkTapSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type NetworkTapsListByResourceGroupOutput =
@@ -16555,37 +11997,7 @@ export type NetworkTapsListBySubscriptionInput =
 // Output Schema
 export const NetworkTapsListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => NetworkTapSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type NetworkTapsListBySubscriptionOutput =
@@ -16640,51 +12052,9 @@ export const NetworkTapsResyncOutput =
           startTime: Schema.optional(Schema.String),
           endTime: Schema.optional(Schema.String),
           operations: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                id: Schema.optional(Schema.String),
-                resourceId: Schema.optional(Schema.String),
-                name: Schema.optional(Schema.String),
-                status: Schema.String,
-                percentComplete: Schema.optional(Schema.Number),
-                startTime: Schema.optional(Schema.String),
-                endTime: Schema.optional(Schema.String),
-                operations: Schema.optional(Schema.Array(Schema.Unknown)),
-                error: Schema.optional(
-                  Schema.Struct({
-                    code: Schema.optional(Schema.String),
-                    message: Schema.optional(Schema.String),
-                    target: Schema.optional(Schema.String),
-                    details: Schema.optional(Schema.Array(Schema.Unknown)),
-                    additionalInfo: Schema.optional(
-                      Schema.Array(
-                        Schema.Struct({
-                          type: Schema.optional(Schema.String),
-                          info: Schema.optional(Schema.Unknown),
-                        }),
-                      ),
-                    ),
-                  }),
-                ),
-              }),
-            ),
+            Schema.Array(Schema.suspend(() => OperationStatusResultSchema)),
           ),
-          error: Schema.optional(
-            Schema.Struct({
-              code: Schema.optional(Schema.String),
-              message: Schema.optional(Schema.String),
-              target: Schema.optional(Schema.String),
-              details: Schema.optional(Schema.Array(Schema.Unknown)),
-              additionalInfo: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    type: Schema.optional(Schema.String),
-                    info: Schema.optional(Schema.Unknown),
-                  }),
-                ),
-              ),
-            }),
-          ),
+          error: Schema.optional(Schema.suspend(() => ErrorDetailSchema)),
         }),
       ),
     ),
@@ -16694,30 +12064,10 @@ export const NetworkTapsResyncOutput =
         message: Schema.optional(Schema.String),
         target: Schema.optional(Schema.String),
         details: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              code: Schema.optional(Schema.String),
-              message: Schema.optional(Schema.String),
-              target: Schema.optional(Schema.String),
-              details: Schema.optional(Schema.Array(Schema.Unknown)),
-              additionalInfo: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    type: Schema.optional(Schema.String),
-                    info: Schema.optional(Schema.Unknown),
-                  }),
-                ),
-              ),
-            }),
-          ),
+          Schema.Array(Schema.suspend(() => ErrorDetailSchema)),
         ),
         additionalInfo: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              type: Schema.optional(Schema.String),
-              info: Schema.optional(Schema.Unknown),
-            }),
-          ),
+          Schema.Array(Schema.suspend(() => ErrorAdditionalInfoSchema)),
         ),
       }),
     ),
@@ -16745,30 +12095,10 @@ export const NetworkTapsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     networkTapName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        annotation: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(() => NetworkTapPatchPropertiesSchema),
     ),
     identity: Schema.optional(
-      Schema.Struct({
-        type: Schema.optional(
-          Schema.Literals([
-            "None",
-            "SystemAssigned",
-            "UserAssigned",
-            "SystemAssigned,UserAssigned",
-          ]),
-        ),
-        userAssignedIdentities: Schema.optional(
-          Schema.Record(
-            Schema.String,
-            Schema.Struct({
-              principalId: Schema.optional(Schema.String),
-              clientId: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-      }),
+      Schema.suspend(() => ManagedServiceIdentityPatchSchema),
     ),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   },
@@ -16785,23 +12115,23 @@ export type NetworkTapsUpdateInput = typeof NetworkTapsUpdateInput.Type;
 // Output Schema
 export const NetworkTapsUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.suspend(() => NetworkTapPropertiesSchema),
+    identity: Schema.optional(
+      Schema.Struct({
+        principalId: Schema.optional(Schema.String),
+        tenantId: Schema.optional(Schema.String),
+        type: Schema.suspend(() => ManagedServiceIdentityTypeSchema),
+        userAssignedIdentities: Schema.optional(
+          Schema.suspend(() => UserAssignedIdentitiesSchema),
+        ),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type NetworkTapsUpdateOutput = typeof NetworkTapsUpdateOutput.Type;
 
@@ -16824,9 +12154,7 @@ export const NetworkTapsUpdateAdministrativeStateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     networkTapName: Schema.String.pipe(T.PathParam()),
-    state: Schema.optional(
-      Schema.Literals(["Enable", "Disable", "UnderMaintenance"]),
-    ),
+    state: Schema.optional(Schema.suspend(() => EnableDisableStateSchema)),
     resourceIds: Schema.optional(Schema.Array(Schema.String)),
   }).pipe(
     T.Http({
@@ -16859,51 +12187,9 @@ export const NetworkTapsUpdateAdministrativeStateOutput =
           startTime: Schema.optional(Schema.String),
           endTime: Schema.optional(Schema.String),
           operations: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                id: Schema.optional(Schema.String),
-                resourceId: Schema.optional(Schema.String),
-                name: Schema.optional(Schema.String),
-                status: Schema.String,
-                percentComplete: Schema.optional(Schema.Number),
-                startTime: Schema.optional(Schema.String),
-                endTime: Schema.optional(Schema.String),
-                operations: Schema.optional(Schema.Array(Schema.Unknown)),
-                error: Schema.optional(
-                  Schema.Struct({
-                    code: Schema.optional(Schema.String),
-                    message: Schema.optional(Schema.String),
-                    target: Schema.optional(Schema.String),
-                    details: Schema.optional(Schema.Array(Schema.Unknown)),
-                    additionalInfo: Schema.optional(
-                      Schema.Array(
-                        Schema.Struct({
-                          type: Schema.optional(Schema.String),
-                          info: Schema.optional(Schema.Unknown),
-                        }),
-                      ),
-                    ),
-                  }),
-                ),
-              }),
-            ),
+            Schema.Array(Schema.suspend(() => OperationStatusResultSchema)),
           ),
-          error: Schema.optional(
-            Schema.Struct({
-              code: Schema.optional(Schema.String),
-              message: Schema.optional(Schema.String),
-              target: Schema.optional(Schema.String),
-              details: Schema.optional(Schema.Array(Schema.Unknown)),
-              additionalInfo: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    type: Schema.optional(Schema.String),
-                    info: Schema.optional(Schema.Unknown),
-                  }),
-                ),
-              ),
-            }),
-          ),
+          error: Schema.optional(Schema.suspend(() => ErrorDetailSchema)),
         }),
       ),
     ),
@@ -16913,39 +12199,16 @@ export const NetworkTapsUpdateAdministrativeStateOutput =
         message: Schema.optional(Schema.String),
         target: Schema.optional(Schema.String),
         details: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              code: Schema.optional(Schema.String),
-              message: Schema.optional(Schema.String),
-              target: Schema.optional(Schema.String),
-              details: Schema.optional(Schema.Array(Schema.Unknown)),
-              additionalInfo: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    type: Schema.optional(Schema.String),
-                    info: Schema.optional(Schema.Unknown),
-                  }),
-                ),
-              ),
-            }),
-          ),
+          Schema.Array(Schema.suspend(() => ErrorDetailSchema)),
         ),
         additionalInfo: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              type: Schema.optional(Schema.String),
-              info: Schema.optional(Schema.Unknown),
-            }),
-          ),
+          Schema.Array(Schema.suspend(() => ErrorAdditionalInfoSchema)),
         ),
       }),
     ),
     resourceId: Schema.optional(Schema.String),
     properties: Schema.optional(
-      Schema.Struct({
-        successfulResources: Schema.optional(Schema.Array(Schema.String)),
-        failedResources: Schema.optional(Schema.Array(Schema.String)),
-      }),
+      Schema.suspend(() => UpdateAdministrativeStateResponsePropertiesSchema),
     ),
   });
 export type NetworkTapsUpdateAdministrativeStateOutput =
@@ -16972,160 +12235,9 @@ export const NetworkToNetworkInterconnectsCreateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     networkFabricName: Schema.String.pipe(T.PathParam()),
     networkToNetworkInterconnectName: Schema.String.pipe(T.PathParam()),
-    properties: Schema.Struct({
-      nniType: Schema.optional(Schema.Literals(["CE", "NPB"])),
-      isManagementType: Schema.optional(Schema.Literals(["True", "False"])),
-      useOptionB: Schema.Literals(["True", "False"]),
-      layer2Configuration: Schema.optional(
-        Schema.Struct({
-          mtu: Schema.optional(Schema.Number),
-          interfaces: Schema.optional(Schema.Array(Schema.String)),
-        }),
-      ),
-      optionBLayer3Configuration: Schema.optional(
-        Schema.Struct({
-          primaryIpv4Prefix: Schema.optional(Schema.String),
-          primaryIpv6Prefix: Schema.optional(Schema.String),
-          secondaryIpv4Prefix: Schema.optional(Schema.String),
-          secondaryIpv6Prefix: Schema.optional(Schema.String),
-        }),
-      ),
-      npbStaticRouteConfiguration: Schema.optional(
-        Schema.Struct({
-          bfdConfiguration: Schema.optional(
-            Schema.Struct({
-              administrativeState: Schema.optional(
-                Schema.Literals(["Enabled", "Disabled", "MAT", "RMA"]),
-              ),
-              intervalInMilliSeconds: Schema.optional(Schema.Number),
-              multiplier: Schema.optional(Schema.Number),
-            }),
-          ),
-          ipv4Routes: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                prefix: Schema.String,
-                nextHop: Schema.Array(Schema.String),
-              }),
-            ),
-          ),
-          ipv6Routes: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                prefix: Schema.String,
-                nextHop: Schema.Array(Schema.String),
-              }),
-            ),
-          ),
-        }),
-      ),
-      staticRouteConfiguration: Schema.optional(
-        Schema.Struct({
-          bfdConfiguration: Schema.optional(
-            Schema.Struct({
-              administrativeState: Schema.optional(
-                Schema.Literals(["Enabled", "Disabled", "MAT", "RMA"]),
-              ),
-              intervalInMilliSeconds: Schema.optional(Schema.Number),
-              multiplier: Schema.optional(Schema.Number),
-            }),
-          ),
-          ipv4Routes: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                prefix: Schema.String,
-                nextHop: Schema.Array(Schema.String),
-              }),
-            ),
-          ),
-          ipv6Routes: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                prefix: Schema.String,
-                nextHop: Schema.Array(Schema.String),
-              }),
-            ),
-          ),
-        }),
-      ),
-      importRoutePolicy: Schema.optional(
-        Schema.Struct({
-          importIpv4RoutePolicyId: Schema.optional(Schema.String),
-          importIpv6RoutePolicyId: Schema.optional(Schema.String),
-        }),
-      ),
-      exportRoutePolicy: Schema.optional(
-        Schema.Struct({
-          exportIpv4RoutePolicyId: Schema.optional(Schema.String),
-          exportIpv6RoutePolicyId: Schema.optional(Schema.String),
-        }),
-      ),
-      egressAclId: Schema.optional(Schema.String),
-      ingressAclId: Schema.optional(Schema.String),
-      microBfdState: Schema.optional(Schema.Literals(["Enabled", "Disabled"])),
-      conditionalDefaultRouteConfiguration: Schema.optional(
-        Schema.Struct({
-          ipv4Routes: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                prefix: Schema.String,
-                nextHop: Schema.Array(Schema.String),
-              }),
-            ),
-          ),
-          ipv6Routes: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                prefix: Schema.String,
-                nextHop: Schema.Array(Schema.String),
-              }),
-            ),
-          ),
-        }),
-      ),
-      lastOperation: Schema.optional(
-        Schema.Struct({
-          details: Schema.optional(Schema.String),
-        }),
-      ),
-      configurationState: Schema.optional(
-        Schema.Literals([
-          "Succeeded",
-          "Failed",
-          "Rejected",
-          "Accepted",
-          "Provisioned",
-          "ErrorProvisioning",
-          "Deprovisioning",
-          "Deprovisioned",
-          "ErrorDeprovisioning",
-          "DeferredControl",
-          "Provisioning",
-          "PendingCommit",
-          "PendingAdministrativeUpdate",
-        ]),
-      ),
-      provisioningState: Schema.optional(
-        Schema.Literals([
-          "Accepted",
-          "Succeeded",
-          "Updating",
-          "Deleting",
-          "Failed",
-          "Canceled",
-        ]),
-      ),
-      administrativeState: Schema.optional(
-        Schema.Literals([
-          "Enabled",
-          "Disabled",
-          "MAT",
-          "RMA",
-          "UnderMaintenance",
-          "EnabledDegraded",
-        ]),
-      ),
-    }),
+    properties: Schema.suspend(
+      () => NetworkToNetworkInterconnectPropertiesSchema,
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -17140,23 +12252,13 @@ export type NetworkToNetworkInterconnectsCreateInput =
 // Output Schema
 export const NetworkToNetworkInterconnectsCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.suspend(
+      () => NetworkToNetworkInterconnectPropertiesSchema,
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type NetworkToNetworkInterconnectsCreateOutput =
   typeof NetworkToNetworkInterconnectsCreateOutput.Type;
@@ -17235,23 +12337,13 @@ export type NetworkToNetworkInterconnectsGetInput =
 // Output Schema
 export const NetworkToNetworkInterconnectsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.suspend(
+      () => NetworkToNetworkInterconnectPropertiesSchema,
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type NetworkToNetworkInterconnectsGetOutput =
   typeof NetworkToNetworkInterconnectsGetOutput.Type;
@@ -17291,35 +12383,7 @@ export type NetworkToNetworkInterconnectsListByNetworkFabricInput =
 export const NetworkToNetworkInterconnectsListByNetworkFabricOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
+      Schema.suspend(() => NetworkToNetworkInterconnectSchema),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -17348,97 +12412,7 @@ export const NetworkToNetworkInterconnectsUpdateInput =
     networkFabricName: Schema.String.pipe(T.PathParam()),
     networkToNetworkInterconnectName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        layer2Configuration: Schema.optional(
-          Schema.Struct({
-            mtu: Schema.optional(Schema.Number),
-            interfaces: Schema.optional(Schema.Array(Schema.String)),
-          }),
-        ),
-        optionBLayer3Configuration: Schema.optional(
-          Schema.Struct({
-            primaryIpv4Prefix: Schema.optional(Schema.String),
-            primaryIpv6Prefix: Schema.optional(Schema.String),
-            secondaryIpv4Prefix: Schema.optional(Schema.String),
-            secondaryIpv6Prefix: Schema.optional(Schema.String),
-          }),
-        ),
-        npbStaticRouteConfiguration: Schema.optional(
-          Schema.Struct({
-            bfdConfiguration: Schema.optional(
-              Schema.Struct({
-                administrativeState: Schema.optional(
-                  Schema.Literals(["Enabled", "Disabled", "MAT", "RMA"]),
-                ),
-                intervalInMilliSeconds: Schema.optional(Schema.Number),
-                multiplier: Schema.optional(Schema.Number),
-              }),
-            ),
-            ipv4Routes: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  prefix: Schema.String,
-                  nextHop: Schema.Array(Schema.String),
-                }),
-              ),
-            ),
-            ipv6Routes: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  prefix: Schema.String,
-                  nextHop: Schema.Array(Schema.String),
-                }),
-              ),
-            ),
-          }),
-        ),
-        staticRouteConfiguration: Schema.optional(
-          Schema.Struct({
-            bfdConfiguration: Schema.optional(
-              Schema.Struct({
-                administrativeState: Schema.optional(
-                  Schema.Literals(["Enabled", "Disabled", "MAT", "RMA"]),
-                ),
-                intervalInMilliSeconds: Schema.optional(Schema.Number),
-                multiplier: Schema.optional(Schema.Number),
-              }),
-            ),
-            ipv4Routes: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  prefix: Schema.String,
-                  nextHop: Schema.Array(Schema.String),
-                }),
-              ),
-            ),
-            ipv6Routes: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  prefix: Schema.String,
-                  nextHop: Schema.Array(Schema.String),
-                }),
-              ),
-            ),
-          }),
-        ),
-        importRoutePolicy: Schema.optional(
-          Schema.Struct({
-            importIpv4RoutePolicyId: Schema.optional(Schema.String),
-            importIpv6RoutePolicyId: Schema.optional(Schema.String),
-          }),
-        ),
-        exportRoutePolicy: Schema.optional(
-          Schema.Struct({
-            exportIpv4RoutePolicyId: Schema.optional(Schema.String),
-            exportIpv6RoutePolicyId: Schema.optional(Schema.String),
-          }),
-        ),
-        egressAclId: Schema.optional(Schema.String),
-        ingressAclId: Schema.optional(Schema.String),
-        microBfdState: Schema.optional(
-          Schema.Literals(["Enabled", "Disabled"]),
-        ),
-      }),
+      Schema.suspend(() => NetworkToNetworkInterconnectPatchPropertiesSchema),
     ),
     id: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -17470,23 +12444,13 @@ export type NetworkToNetworkInterconnectsUpdateInput =
 // Output Schema
 export const NetworkToNetworkInterconnectsUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.suspend(
+      () => NetworkToNetworkInterconnectPropertiesSchema,
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type NetworkToNetworkInterconnectsUpdateOutput =
   typeof NetworkToNetworkInterconnectsUpdateOutput.Type;
@@ -17513,9 +12477,7 @@ export const NetworkToNetworkInterconnectsUpdateAdministrativeStateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     networkFabricName: Schema.String.pipe(T.PathParam()),
     networkToNetworkInterconnectName: Schema.String.pipe(T.PathParam()),
-    state: Schema.optional(
-      Schema.Literals(["Enable", "Disable", "UnderMaintenance"]),
-    ),
+    state: Schema.optional(Schema.suspend(() => EnableDisableStateSchema)),
     resourceIds: Schema.optional(Schema.Array(Schema.String)),
   }).pipe(
     T.Http({
@@ -17548,51 +12510,9 @@ export const NetworkToNetworkInterconnectsUpdateAdministrativeStateOutput =
           startTime: Schema.optional(Schema.String),
           endTime: Schema.optional(Schema.String),
           operations: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                id: Schema.optional(Schema.String),
-                resourceId: Schema.optional(Schema.String),
-                name: Schema.optional(Schema.String),
-                status: Schema.String,
-                percentComplete: Schema.optional(Schema.Number),
-                startTime: Schema.optional(Schema.String),
-                endTime: Schema.optional(Schema.String),
-                operations: Schema.optional(Schema.Array(Schema.Unknown)),
-                error: Schema.optional(
-                  Schema.Struct({
-                    code: Schema.optional(Schema.String),
-                    message: Schema.optional(Schema.String),
-                    target: Schema.optional(Schema.String),
-                    details: Schema.optional(Schema.Array(Schema.Unknown)),
-                    additionalInfo: Schema.optional(
-                      Schema.Array(
-                        Schema.Struct({
-                          type: Schema.optional(Schema.String),
-                          info: Schema.optional(Schema.Unknown),
-                        }),
-                      ),
-                    ),
-                  }),
-                ),
-              }),
-            ),
+            Schema.Array(Schema.suspend(() => OperationStatusResultSchema)),
           ),
-          error: Schema.optional(
-            Schema.Struct({
-              code: Schema.optional(Schema.String),
-              message: Schema.optional(Schema.String),
-              target: Schema.optional(Schema.String),
-              details: Schema.optional(Schema.Array(Schema.Unknown)),
-              additionalInfo: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    type: Schema.optional(Schema.String),
-                    info: Schema.optional(Schema.Unknown),
-                  }),
-                ),
-              ),
-            }),
-          ),
+          error: Schema.optional(Schema.suspend(() => ErrorDetailSchema)),
         }),
       ),
     ),
@@ -17602,39 +12522,16 @@ export const NetworkToNetworkInterconnectsUpdateAdministrativeStateOutput =
         message: Schema.optional(Schema.String),
         target: Schema.optional(Schema.String),
         details: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              code: Schema.optional(Schema.String),
-              message: Schema.optional(Schema.String),
-              target: Schema.optional(Schema.String),
-              details: Schema.optional(Schema.Array(Schema.Unknown)),
-              additionalInfo: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    type: Schema.optional(Schema.String),
-                    info: Schema.optional(Schema.Unknown),
-                  }),
-                ),
-              ),
-            }),
-          ),
+          Schema.Array(Schema.suspend(() => ErrorDetailSchema)),
         ),
         additionalInfo: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              type: Schema.optional(Schema.String),
-              info: Schema.optional(Schema.Unknown),
-            }),
-          ),
+          Schema.Array(Schema.suspend(() => ErrorAdditionalInfoSchema)),
         ),
       }),
     ),
     resourceId: Schema.optional(Schema.String),
     properties: Schema.optional(
-      Schema.Struct({
-        successfulResources: Schema.optional(Schema.Array(Schema.String)),
-        failedResources: Schema.optional(Schema.Array(Schema.String)),
-      }),
+      Schema.suspend(() => UpdateAdministrativeStateResponsePropertiesSchema),
     ),
   });
 export type NetworkToNetworkInterconnectsUpdateAdministrativeStateOutput =
@@ -17662,9 +12559,9 @@ export const NetworkToNetworkInterconnectsUpdateBfdAdministrativeStateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     networkFabricName: Schema.String.pipe(T.PathParam()),
     networkToNetworkInterconnectName: Schema.String.pipe(T.PathParam()),
-    routeType: Schema.optional(Schema.Literals(["Static", "OptionA"])),
+    routeType: Schema.optional(Schema.suspend(() => RouteTypeSchema)),
     administrativeState: Schema.optional(
-      Schema.Literals(["Enabled", "Disabled", "MAT", "RMA"]),
+      Schema.suspend(() => BfdAdministrativeStateSchema),
     ),
   }).pipe(
     T.Http({
@@ -17697,51 +12594,9 @@ export const NetworkToNetworkInterconnectsUpdateBfdAdministrativeStateOutput =
           startTime: Schema.optional(Schema.String),
           endTime: Schema.optional(Schema.String),
           operations: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                id: Schema.optional(Schema.String),
-                resourceId: Schema.optional(Schema.String),
-                name: Schema.optional(Schema.String),
-                status: Schema.String,
-                percentComplete: Schema.optional(Schema.Number),
-                startTime: Schema.optional(Schema.String),
-                endTime: Schema.optional(Schema.String),
-                operations: Schema.optional(Schema.Array(Schema.Unknown)),
-                error: Schema.optional(
-                  Schema.Struct({
-                    code: Schema.optional(Schema.String),
-                    message: Schema.optional(Schema.String),
-                    target: Schema.optional(Schema.String),
-                    details: Schema.optional(Schema.Array(Schema.Unknown)),
-                    additionalInfo: Schema.optional(
-                      Schema.Array(
-                        Schema.Struct({
-                          type: Schema.optional(Schema.String),
-                          info: Schema.optional(Schema.Unknown),
-                        }),
-                      ),
-                    ),
-                  }),
-                ),
-              }),
-            ),
+            Schema.Array(Schema.suspend(() => OperationStatusResultSchema)),
           ),
-          error: Schema.optional(
-            Schema.Struct({
-              code: Schema.optional(Schema.String),
-              message: Schema.optional(Schema.String),
-              target: Schema.optional(Schema.String),
-              details: Schema.optional(Schema.Array(Schema.Unknown)),
-              additionalInfo: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    type: Schema.optional(Schema.String),
-                    info: Schema.optional(Schema.Unknown),
-                  }),
-                ),
-              ),
-            }),
-          ),
+          error: Schema.optional(Schema.suspend(() => ErrorDetailSchema)),
         }),
       ),
     ),
@@ -17751,41 +12606,18 @@ export const NetworkToNetworkInterconnectsUpdateBfdAdministrativeStateOutput =
         message: Schema.optional(Schema.String),
         target: Schema.optional(Schema.String),
         details: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              code: Schema.optional(Schema.String),
-              message: Schema.optional(Schema.String),
-              target: Schema.optional(Schema.String),
-              details: Schema.optional(Schema.Array(Schema.Unknown)),
-              additionalInfo: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    type: Schema.optional(Schema.String),
-                    info: Schema.optional(Schema.Unknown),
-                  }),
-                ),
-              ),
-            }),
-          ),
+          Schema.Array(Schema.suspend(() => ErrorDetailSchema)),
         ),
         additionalInfo: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              type: Schema.optional(Schema.String),
-              info: Schema.optional(Schema.Unknown),
-            }),
-          ),
+          Schema.Array(Schema.suspend(() => ErrorAdditionalInfoSchema)),
         ),
       }),
     ),
     resourceId: Schema.optional(Schema.String),
     properties: Schema.optional(
-      Schema.Struct({
-        routeType: Schema.optional(Schema.Literals(["Static", "OptionA"])),
-        administrativeState: Schema.optional(
-          Schema.Literals(["Enabled", "Disabled", "MAT", "RMA"]),
-        ),
-      }),
+      Schema.suspend(
+        () => NniUpdateBfdAdministrativeStateResponsePropertiesSchema,
+      ),
     ),
   });
 export type NetworkToNetworkInterconnectsUpdateBfdAdministrativeStateOutput =
@@ -17814,9 +12646,7 @@ export const NetworkToNetworkInterconnectsUpdateNpbStaticRouteBfdAdministrativeS
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     networkFabricName: Schema.String.pipe(T.PathParam()),
     networkToNetworkInterconnectName: Schema.String.pipe(T.PathParam()),
-    state: Schema.optional(
-      Schema.Literals(["Enable", "Disable", "UnderMaintenance"]),
-    ),
+    state: Schema.optional(Schema.suspend(() => EnableDisableStateSchema)),
     resourceIds: Schema.optional(Schema.Array(Schema.String)),
   }).pipe(
     T.Http({
@@ -17849,51 +12679,9 @@ export const NetworkToNetworkInterconnectsUpdateNpbStaticRouteBfdAdministrativeS
           startTime: Schema.optional(Schema.String),
           endTime: Schema.optional(Schema.String),
           operations: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                id: Schema.optional(Schema.String),
-                resourceId: Schema.optional(Schema.String),
-                name: Schema.optional(Schema.String),
-                status: Schema.String,
-                percentComplete: Schema.optional(Schema.Number),
-                startTime: Schema.optional(Schema.String),
-                endTime: Schema.optional(Schema.String),
-                operations: Schema.optional(Schema.Array(Schema.Unknown)),
-                error: Schema.optional(
-                  Schema.Struct({
-                    code: Schema.optional(Schema.String),
-                    message: Schema.optional(Schema.String),
-                    target: Schema.optional(Schema.String),
-                    details: Schema.optional(Schema.Array(Schema.Unknown)),
-                    additionalInfo: Schema.optional(
-                      Schema.Array(
-                        Schema.Struct({
-                          type: Schema.optional(Schema.String),
-                          info: Schema.optional(Schema.Unknown),
-                        }),
-                      ),
-                    ),
-                  }),
-                ),
-              }),
-            ),
+            Schema.Array(Schema.suspend(() => OperationStatusResultSchema)),
           ),
-          error: Schema.optional(
-            Schema.Struct({
-              code: Schema.optional(Schema.String),
-              message: Schema.optional(Schema.String),
-              target: Schema.optional(Schema.String),
-              details: Schema.optional(Schema.Array(Schema.Unknown)),
-              additionalInfo: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    type: Schema.optional(Schema.String),
-                    info: Schema.optional(Schema.Unknown),
-                  }),
-                ),
-              ),
-            }),
-          ),
+          error: Schema.optional(Schema.suspend(() => ErrorDetailSchema)),
         }),
       ),
     ),
@@ -17903,39 +12691,16 @@ export const NetworkToNetworkInterconnectsUpdateNpbStaticRouteBfdAdministrativeS
         message: Schema.optional(Schema.String),
         target: Schema.optional(Schema.String),
         details: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              code: Schema.optional(Schema.String),
-              message: Schema.optional(Schema.String),
-              target: Schema.optional(Schema.String),
-              details: Schema.optional(Schema.Array(Schema.Unknown)),
-              additionalInfo: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    type: Schema.optional(Schema.String),
-                    info: Schema.optional(Schema.Unknown),
-                  }),
-                ),
-              ),
-            }),
-          ),
+          Schema.Array(Schema.suspend(() => ErrorDetailSchema)),
         ),
         additionalInfo: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              type: Schema.optional(Schema.String),
-              info: Schema.optional(Schema.Unknown),
-            }),
-          ),
+          Schema.Array(Schema.suspend(() => ErrorAdditionalInfoSchema)),
         ),
       }),
     ),
     resourceId: Schema.optional(Schema.String),
     properties: Schema.optional(
-      Schema.Struct({
-        successfulResources: Schema.optional(Schema.Array(Schema.String)),
-        failedResources: Schema.optional(Schema.Array(Schema.String)),
-      }),
+      Schema.suspend(() => UpdateAdministrativeStateResponsePropertiesSchema),
     ),
   });
 export type NetworkToNetworkInterconnectsUpdateNpbStaticRouteBfdAdministrativeStateOutput =
@@ -17972,26 +12737,7 @@ export type OperationsListInput = typeof OperationsListInput.Type;
 
 // Output Schema
 export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  value: Schema.optional(
-    Schema.Array(
-      Schema.Struct({
-        name: Schema.optional(Schema.String),
-        isDataAction: Schema.optional(Schema.Boolean),
-        display: Schema.optional(
-          Schema.Struct({
-            provider: Schema.optional(Schema.String),
-            resource: Schema.optional(Schema.String),
-            operation: Schema.optional(Schema.String),
-            description: Schema.optional(Schema.String),
-          }),
-        ),
-        origin: Schema.optional(
-          Schema.Literals(["user", "system", "user,system"]),
-        ),
-        actionType: Schema.optional(Schema.Literals(["Internal"])),
-      }),
-    ),
-  ),
+  value: Schema.optional(Schema.Array(Schema.suspend(() => OperationSchema))),
   nextLink: Schema.optional(Schema.String),
 });
 export type OperationsListOutput = typeof OperationsListOutput.Type;
@@ -18026,22 +12772,10 @@ export type RoutePoliciesCommitConfigurationInput =
 // Output Schema
 export const RoutePoliciesCommitConfigurationOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    error: Schema.optional(
-      Schema.Struct({
-        code: Schema.optional(Schema.String),
-        message: Schema.optional(Schema.String),
-        target: Schema.optional(Schema.String),
-        details: Schema.optional(Schema.Array(Schema.Unknown)),
-        additionalInfo: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              type: Schema.optional(Schema.String),
-              info: Schema.optional(Schema.Unknown),
-            }),
-          ),
-        ),
-      }),
+    configurationState: Schema.optional(
+      Schema.suspend(() => ConfigurationStateSchema),
     ),
+    error: Schema.optional(Schema.suspend(() => ErrorDetailSchema)),
   });
 export type RoutePoliciesCommitConfigurationOutput =
   typeof RoutePoliciesCommitConfigurationOutput.Type;
@@ -18066,59 +12800,7 @@ export const RoutePoliciesCreateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     routePolicyName: Schema.String.pipe(T.PathParam()),
-    properties: Schema.Struct({
-      annotation: Schema.optional(Schema.String),
-      defaultAction: Schema.optional(Schema.Literals(["Permit", "Deny"])),
-      statements: Schema.Array(
-        Schema.Struct({
-          annotation: Schema.optional(Schema.String),
-        }),
-      ),
-      networkFabricId: Schema.String,
-      addressFamilyType: Schema.optional(Schema.Literals(["IPv4", "IPv6"])),
-      lastOperation: Schema.optional(
-        Schema.Struct({
-          details: Schema.optional(Schema.String),
-        }),
-      ),
-      configurationState: Schema.optional(
-        Schema.Literals([
-          "Succeeded",
-          "Failed",
-          "Rejected",
-          "Accepted",
-          "Provisioned",
-          "ErrorProvisioning",
-          "Deprovisioning",
-          "Deprovisioned",
-          "ErrorDeprovisioning",
-          "DeferredControl",
-          "Provisioning",
-          "PendingCommit",
-          "PendingAdministrativeUpdate",
-        ]),
-      ),
-      provisioningState: Schema.optional(
-        Schema.Literals([
-          "Accepted",
-          "Succeeded",
-          "Updating",
-          "Deleting",
-          "Failed",
-          "Canceled",
-        ]),
-      ),
-      administrativeState: Schema.optional(
-        Schema.Literals([
-          "Enabled",
-          "Disabled",
-          "MAT",
-          "RMA",
-          "UnderMaintenance",
-          "EnabledDegraded",
-        ]),
-      ),
-    }),
+    properties: Schema.suspend(() => RoutePolicyPropertiesSchema),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     location: Schema.String,
   }).pipe(
@@ -18134,23 +12816,13 @@ export type RoutePoliciesCreateInput = typeof RoutePoliciesCreateInput.Type;
 // Output Schema
 export const RoutePoliciesCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.suspend(() => RoutePolicyPropertiesSchema),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type RoutePoliciesCreateOutput = typeof RoutePoliciesCreateOutput.Type;
 
@@ -18218,23 +12890,13 @@ export type RoutePoliciesGetInput = typeof RoutePoliciesGetInput.Type;
 // Output Schema
 export const RoutePoliciesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
+    properties: Schema.suspend(() => RoutePolicyPropertiesSchema),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   },
 );
 export type RoutePoliciesGetOutput = typeof RoutePoliciesGetOutput.Type;
@@ -18270,37 +12932,7 @@ export type RoutePoliciesListByResourceGroupInput =
 // Output Schema
 export const RoutePoliciesListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => RoutePolicySchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type RoutePoliciesListByResourceGroupOutput =
@@ -18336,37 +12968,7 @@ export type RoutePoliciesListBySubscriptionInput =
 // Output Schema
 export const RoutePoliciesListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => RoutePolicySchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type RoutePoliciesListBySubscriptionOutput =
@@ -18391,16 +12993,7 @@ export const RoutePoliciesUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     routePolicyName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        defaultAction: Schema.optional(Schema.Literals(["Permit", "Deny"])),
-        statements: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              annotation: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-      }),
+      Schema.suspend(() => RoutePolicyPatchablePropertiesSchema),
     ),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
@@ -18416,23 +13009,13 @@ export type RoutePoliciesUpdateInput = typeof RoutePoliciesUpdateInput.Type;
 // Output Schema
 export const RoutePoliciesUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.suspend(() => RoutePolicyPropertiesSchema),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type RoutePoliciesUpdateOutput = typeof RoutePoliciesUpdateOutput.Type;
 
@@ -18455,9 +13038,7 @@ export const RoutePoliciesUpdateAdministrativeStateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     routePolicyName: Schema.String.pipe(T.PathParam()),
-    state: Schema.optional(
-      Schema.Literals(["Enable", "Disable", "UnderMaintenance"]),
-    ),
+    state: Schema.optional(Schema.suspend(() => EnableDisableStateSchema)),
     resourceIds: Schema.optional(Schema.Array(Schema.String)),
   }).pipe(
     T.Http({
@@ -18490,51 +13071,9 @@ export const RoutePoliciesUpdateAdministrativeStateOutput =
           startTime: Schema.optional(Schema.String),
           endTime: Schema.optional(Schema.String),
           operations: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                id: Schema.optional(Schema.String),
-                resourceId: Schema.optional(Schema.String),
-                name: Schema.optional(Schema.String),
-                status: Schema.String,
-                percentComplete: Schema.optional(Schema.Number),
-                startTime: Schema.optional(Schema.String),
-                endTime: Schema.optional(Schema.String),
-                operations: Schema.optional(Schema.Array(Schema.Unknown)),
-                error: Schema.optional(
-                  Schema.Struct({
-                    code: Schema.optional(Schema.String),
-                    message: Schema.optional(Schema.String),
-                    target: Schema.optional(Schema.String),
-                    details: Schema.optional(Schema.Array(Schema.Unknown)),
-                    additionalInfo: Schema.optional(
-                      Schema.Array(
-                        Schema.Struct({
-                          type: Schema.optional(Schema.String),
-                          info: Schema.optional(Schema.Unknown),
-                        }),
-                      ),
-                    ),
-                  }),
-                ),
-              }),
-            ),
+            Schema.Array(Schema.suspend(() => OperationStatusResultSchema)),
           ),
-          error: Schema.optional(
-            Schema.Struct({
-              code: Schema.optional(Schema.String),
-              message: Schema.optional(Schema.String),
-              target: Schema.optional(Schema.String),
-              details: Schema.optional(Schema.Array(Schema.Unknown)),
-              additionalInfo: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    type: Schema.optional(Schema.String),
-                    info: Schema.optional(Schema.Unknown),
-                  }),
-                ),
-              ),
-            }),
-          ),
+          error: Schema.optional(Schema.suspend(() => ErrorDetailSchema)),
         }),
       ),
     ),
@@ -18544,39 +13083,16 @@ export const RoutePoliciesUpdateAdministrativeStateOutput =
         message: Schema.optional(Schema.String),
         target: Schema.optional(Schema.String),
         details: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              code: Schema.optional(Schema.String),
-              message: Schema.optional(Schema.String),
-              target: Schema.optional(Schema.String),
-              details: Schema.optional(Schema.Array(Schema.Unknown)),
-              additionalInfo: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    type: Schema.optional(Schema.String),
-                    info: Schema.optional(Schema.Unknown),
-                  }),
-                ),
-              ),
-            }),
-          ),
+          Schema.Array(Schema.suspend(() => ErrorDetailSchema)),
         ),
         additionalInfo: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              type: Schema.optional(Schema.String),
-              info: Schema.optional(Schema.Unknown),
-            }),
-          ),
+          Schema.Array(Schema.suspend(() => ErrorAdditionalInfoSchema)),
         ),
       }),
     ),
     resourceId: Schema.optional(Schema.String),
     properties: Schema.optional(
-      Schema.Struct({
-        successfulResources: Schema.optional(Schema.Array(Schema.String)),
-        failedResources: Schema.optional(Schema.Array(Schema.String)),
-      }),
+      Schema.suspend(() => UpdateAdministrativeStateResponsePropertiesSchema),
     ),
   });
 export type RoutePoliciesUpdateAdministrativeStateOutput =
@@ -18616,22 +13132,11 @@ export type RoutePoliciesValidateConfigurationInput =
 // Output Schema
 export const RoutePoliciesValidateConfigurationOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    error: Schema.optional(
-      Schema.Struct({
-        code: Schema.optional(Schema.String),
-        message: Schema.optional(Schema.String),
-        target: Schema.optional(Schema.String),
-        details: Schema.optional(Schema.Array(Schema.Unknown)),
-        additionalInfo: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              type: Schema.optional(Schema.String),
-              info: Schema.optional(Schema.Unknown),
-            }),
-          ),
-        ),
-      }),
+    configurationState: Schema.optional(
+      Schema.suspend(() => ConfigurationStateSchema),
     ),
+    url: Schema.optional(Schema.String),
+    error: Schema.optional(Schema.suspend(() => ErrorDetailSchema)),
   });
 export type RoutePoliciesValidateConfigurationOutput =
   typeof RoutePoliciesValidateConfigurationOutput.Type;

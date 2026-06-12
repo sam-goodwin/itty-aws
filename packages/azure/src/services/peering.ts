@@ -8,6 +8,426 @@ import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
+// Shared schemas
+const OperationSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  display: Schema.optional(Schema.suspend(() => OperationDisplayInfoSchema)),
+  isDataAction: Schema.optional(Schema.Boolean),
+  properties: Schema.optional(Schema.suspend(() => OperationPropertiesSchema)),
+});
+const OperationDisplayInfoSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  provider: Schema.optional(Schema.String),
+  resource: Schema.optional(Schema.String),
+  operation: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+});
+const OperationPropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  serviceSpecification: Schema.optional(
+    Schema.suspend(() => ServiceSpecificationSchema),
+  ),
+});
+const ServiceSpecificationSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  metricSpecifications: Schema.optional(
+    Schema.Array(Schema.suspend(() => MetricSpecificationSchema)),
+  ),
+});
+const MetricSpecificationSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  displayName: Schema.optional(Schema.String),
+  displayDescription: Schema.optional(Schema.String),
+  unit: Schema.optional(Schema.String),
+  aggregationType: Schema.optional(Schema.String),
+  supportedTimeGrainTypes: Schema.optional(Schema.Array(Schema.String)),
+  dimensions: Schema.optional(
+    Schema.Array(Schema.suspend(() => MetricDimensionSchema)),
+  ),
+});
+const MetricDimensionSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  displayName: Schema.optional(Schema.String),
+});
+const CdnPeeringPrefixSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+});
+const systemDataSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  createdBy: Schema.optional(Schema.String),
+  createdByType: Schema.optional(
+    Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+  ),
+  createdAt: Schema.optional(Schema.String),
+  lastModifiedBy: Schema.optional(Schema.String),
+  lastModifiedByType: Schema.optional(
+    Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+  ),
+  lastModifiedAt: Schema.optional(Schema.String),
+});
+const PeeringSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+});
+const CommandSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Traceroute",
+  "Ping",
+  "BgpRoute",
+]);
+const PeerAsnSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+});
+const PeerAsnPropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  peerAsn: Schema.optional(Schema.Number),
+  peerContactDetail: Schema.optional(
+    Schema.Array(Schema.suspend(() => ContactDetailSchema)),
+  ),
+  peerName: Schema.optional(Schema.String),
+  validationState: Schema.optional(Schema.suspend(() => ValidationStateSchema)),
+  errorMessage: Schema.optional(Schema.String),
+});
+const ContactDetailSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  role: Schema.optional(Schema.suspend(() => RoleSchema)),
+  email: Schema.optional(Schema.String),
+  phone: Schema.optional(Schema.String),
+});
+const RoleSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Noc",
+  "Policy",
+  "Technical",
+  "Service",
+  "Escalation",
+  "Other",
+]);
+const ValidationStateSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "None",
+  "Pending",
+  "Approved",
+  "Failed",
+]);
+const PeeringLocationSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+});
+const PeeringServiceCountrySchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+});
+const PeeringServiceLocationSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+});
+const PeeringServiceProviderSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+});
+const PeeringServiceSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+});
+const PeeringServicePropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    peeringServiceLocation: Schema.optional(Schema.String),
+    peeringServiceProvider: Schema.optional(Schema.String),
+    provisioningState: Schema.optional(
+      Schema.suspend(() => ProvisioningStateSchema),
+    ),
+    providerPrimaryPeeringLocation: Schema.optional(Schema.String),
+    providerBackupPeeringLocation: Schema.optional(Schema.String),
+    logAnalyticsWorkspaceProperties: Schema.optional(
+      Schema.suspend(() => LogAnalyticsWorkspacePropertiesSchema),
+    ),
+  });
+const ProvisioningStateSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Succeeded",
+  "Updating",
+  "Deleting",
+  "Failed",
+  "Canceled",
+]);
+const LogAnalyticsWorkspacePropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    workspaceID: Schema.optional(Schema.String),
+    key: Schema.optional(Schema.String),
+    connectedAgents: Schema.optional(Schema.Array(Schema.String)),
+  });
+const PeeringServiceSkuSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+});
+const ConnectionMonitorTestSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+});
+const ConnectionMonitorTestPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    sourceAgent: Schema.optional(Schema.String),
+    destination: Schema.optional(Schema.String),
+    destinationPort: Schema.optional(Schema.Number),
+    testFrequencyInSec: Schema.optional(Schema.Number),
+    isTestSuccessful: Schema.optional(Schema.Boolean),
+    path: Schema.optional(Schema.Array(Schema.String)),
+    provisioningState: Schema.optional(
+      Schema.suspend(() => ProvisioningStateSchema),
+    ),
+  });
+const PeeringServicePrefixSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+});
+const PeeringServicePrefixPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    prefix: Schema.optional(Schema.String),
+    prefixValidationState: Schema.optional(
+      Schema.suspend(() => PrefixValidationStateSchema),
+    ),
+    learnedType: Schema.optional(Schema.suspend(() => LearnedTypeSchema)),
+    errorMessage: Schema.optional(Schema.String),
+    events: Schema.optional(
+      Schema.Array(Schema.suspend(() => PeeringServicePrefixEventSchema)),
+    ),
+    peeringServicePrefixKey: Schema.optional(Schema.String),
+    provisioningState: Schema.optional(
+      Schema.suspend(() => ProvisioningStateSchema),
+    ),
+  });
+const PrefixValidationStateSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals(
+  ["None", "Invalid", "Verified", "Failed", "Pending", "Warning", "Unknown"],
+);
+const LearnedTypeSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "None",
+  "ViaServiceProvider",
+  "ViaSession",
+]);
+const PeeringServicePrefixEventSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    eventTimestamp: Schema.optional(Schema.String),
+    eventType: Schema.optional(Schema.String),
+    eventSummary: Schema.optional(Schema.String),
+    eventLevel: Schema.optional(Schema.String),
+    eventDescription: Schema.optional(Schema.String),
+  });
+const PeeringPropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  direct: Schema.optional(Schema.suspend(() => PeeringPropertiesDirectSchema)),
+  exchange: Schema.optional(
+    Schema.suspend(() => PeeringPropertiesExchangeSchema),
+  ),
+  connectivityProbes: Schema.optional(
+    Schema.Array(Schema.suspend(() => ConnectivityProbeSchema)),
+  ),
+  peeringLocation: Schema.optional(Schema.String),
+  provisioningState: Schema.optional(
+    Schema.suspend(() => ProvisioningStateSchema),
+  ),
+});
+const PeeringPropertiesDirectSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    connections: Schema.optional(
+      Schema.Array(Schema.suspend(() => DirectConnectionSchema)),
+    ),
+    useForPeeringService: Schema.optional(Schema.Boolean),
+    peerAsn: Schema.optional(Schema.suspend(() => SubResourceSchema)),
+    directPeeringType: Schema.optional(
+      Schema.suspend(() => DirectPeeringTypeSchema),
+    ),
+  },
+);
+const DirectConnectionSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  bandwidthInMbps: Schema.optional(Schema.Number),
+  provisionedBandwidthInMbps: Schema.optional(Schema.Number),
+  sessionAddressProvider: Schema.optional(
+    Schema.suspend(() => SessionAddressProviderSchema),
+  ),
+  useForPeeringService: Schema.optional(Schema.Boolean),
+  microsoftTrackingId: Schema.optional(Schema.String),
+  peeringDBFacilityId: Schema.optional(Schema.Number),
+  connectionState: Schema.optional(Schema.suspend(() => ConnectionStateSchema)),
+  bgpSession: Schema.optional(Schema.suspend(() => BgpSessionSchema)),
+  connectionIdentifier: Schema.optional(Schema.String),
+  errorMessage: Schema.optional(Schema.String),
+});
+const SessionAddressProviderSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Literals(["Microsoft", "Peer"]);
+const ConnectionStateSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "None",
+  "PendingApproval",
+  "Approved",
+  "ProvisioningStarted",
+  "ProvisioningFailed",
+  "ProvisioningCompleted",
+  "Validating",
+  "Active",
+  "TypeChangeRequested",
+  "TypeChangeInProgress",
+  "ExternalBlocker",
+]);
+const BgpSessionSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  sessionPrefixV4: Schema.optional(Schema.String),
+  sessionPrefixV6: Schema.optional(Schema.String),
+  microsoftSessionIPv4Address: Schema.optional(Schema.String),
+  microsoftSessionIPv6Address: Schema.optional(Schema.String),
+  peerSessionIPv4Address: Schema.optional(Schema.String),
+  peerSessionIPv6Address: Schema.optional(Schema.String),
+  sessionStateV4: Schema.optional(Schema.suspend(() => SessionStateV4Schema)),
+  sessionStateV6: Schema.optional(Schema.suspend(() => SessionStateV6Schema)),
+  maxPrefixesAdvertisedV4: Schema.optional(Schema.Number),
+  maxPrefixesAdvertisedV6: Schema.optional(Schema.Number),
+  md5AuthenticationKey: Schema.optional(Schema.String),
+});
+const SessionStateV4Schema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "None",
+  "Idle",
+  "Connect",
+  "Active",
+  "OpenSent",
+  "OpenConfirm",
+  "OpenReceived",
+  "Established",
+  "PendingAdd",
+  "PendingUpdate",
+  "PendingRemove",
+]);
+const SessionStateV6Schema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "None",
+  "Idle",
+  "Connect",
+  "Active",
+  "OpenSent",
+  "OpenConfirm",
+  "OpenReceived",
+  "Established",
+  "PendingAdd",
+  "PendingUpdate",
+  "PendingRemove",
+]);
+const SubResourceSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+});
+const DirectPeeringTypeSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Edge",
+  "Transit",
+  "Cdn",
+  "Internal",
+  "Ix",
+  "IxRs",
+  "Voice",
+  "EdgeZoneForOperators",
+  "PeerProp",
+]);
+const PeeringPropertiesExchangeSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    connections: Schema.optional(
+      Schema.Array(Schema.suspend(() => ExchangeConnectionSchema)),
+    ),
+    peerAsn: Schema.optional(Schema.suspend(() => SubResourceSchema)),
+  });
+const ExchangeConnectionSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  peeringDBFacilityId: Schema.optional(Schema.Number),
+  connectionState: Schema.optional(Schema.suspend(() => ConnectionStateSchema)),
+  bgpSession: Schema.optional(Schema.suspend(() => BgpSessionSchema)),
+  connectionIdentifier: Schema.optional(Schema.String),
+  errorMessage: Schema.optional(Schema.String),
+});
+const ConnectivityProbeSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  endpoint: Schema.optional(Schema.String),
+  azureRegion: Schema.optional(Schema.String),
+  protocol: Schema.optional(Schema.suspend(() => ProtocolSchema)),
+  prefixesToAccesslist: Schema.optional(Schema.Array(Schema.String)),
+});
+const ProtocolSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "None",
+  "ICMP",
+  "TCP",
+]);
+const PeeringSkuSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  tier: Schema.optional(Schema.suspend(() => TierSchema)),
+  family: Schema.optional(Schema.suspend(() => FamilySchema)),
+  size: Schema.optional(Schema.suspend(() => SizeSchema)),
+});
+const TierSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Basic",
+  "Premium",
+]);
+const FamilySchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Direct",
+  "Exchange",
+]);
+const SizeSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Free",
+  "Metered",
+  "Unlimited",
+]);
+const KindSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Direct",
+  "Exchange",
+]);
+const PeeringReceivedRouteSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  prefix: Schema.optional(Schema.String),
+  nextHop: Schema.optional(Schema.String),
+  asPath: Schema.optional(Schema.String),
+  originAsValidationState: Schema.optional(Schema.String),
+  rpkiValidationState: Schema.optional(Schema.String),
+  trustAnchor: Schema.optional(Schema.String),
+  receivedTimestamp: Schema.optional(Schema.String),
+});
+const PeeringRegisteredAsnSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+});
+const PeeringRegisteredAsnPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    asn: Schema.optional(Schema.Number),
+    peeringServicePrefixKey: Schema.optional(Schema.String),
+    provisioningState: Schema.optional(
+      Schema.suspend(() => ProvisioningStateSchema),
+    ),
+  });
+const PeeringRegisteredPrefixSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+  },
+);
+const PeeringRegisteredPrefixPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    prefix: Schema.optional(Schema.String),
+    prefixValidationState: Schema.optional(
+      Schema.suspend(() => PrefixValidationStateSchema),
+    ),
+    peeringServicePrefixKey: Schema.optional(Schema.String),
+    errorMessage: Schema.optional(Schema.String),
+    provisioningState: Schema.optional(
+      Schema.suspend(() => ProvisioningStateSchema),
+    ),
+  });
+const RpUnbilledPrefixSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  prefix: Schema.optional(Schema.String),
+  azureRegion: Schema.optional(Schema.String),
+  peerAsn: Schema.optional(Schema.Number),
+});
+
 // Input Schema
 export const CdnPeeringPrefixesListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -26,37 +446,7 @@ export type CdnPeeringPrefixesListInput =
 // Output Schema
 export const CdnPeeringPrefixesListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => CdnPeeringPrefixSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type CdnPeeringPrefixesListOutput =
@@ -118,23 +508,7 @@ export const ConnectionMonitorTestsCreateOrUpdateInput =
     peeringServiceName: Schema.String.pipe(T.PathParam()),
     connectionMonitorTestName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        sourceAgent: Schema.optional(Schema.String),
-        destination: Schema.optional(Schema.String),
-        destinationPort: Schema.optional(Schema.Number),
-        testFrequencyInSec: Schema.optional(Schema.Number),
-        isTestSuccessful: Schema.optional(Schema.Boolean),
-        path: Schema.optional(Schema.Array(Schema.String)),
-        provisioningState: Schema.optional(
-          Schema.Literals([
-            "Succeeded",
-            "Updating",
-            "Deleting",
-            "Failed",
-            "Canceled",
-          ]),
-        ),
-      }),
+      Schema.suspend(() => ConnectionMonitorTestPropertiesSchema),
     ),
   }).pipe(
     T.Http({
@@ -149,23 +523,13 @@ export type ConnectionMonitorTestsCreateOrUpdateInput =
 // Output Schema
 export const ConnectionMonitorTestsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => ConnectionMonitorTestPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type ConnectionMonitorTestsCreateOrUpdateOutput =
   typeof ConnectionMonitorTestsCreateOrUpdateOutput.Type;
@@ -243,23 +607,13 @@ export type ConnectionMonitorTestsGetInput =
 // Output Schema
 export const ConnectionMonitorTestsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => ConnectionMonitorTestPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type ConnectionMonitorTestsGetOutput =
   typeof ConnectionMonitorTestsGetOutput.Type;
@@ -299,37 +653,7 @@ export type ConnectionMonitorTestsListByPeeringServiceInput =
 // Output Schema
 export const ConnectionMonitorTestsListByPeeringServiceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => ConnectionMonitorTestSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type ConnectionMonitorTestsListByPeeringServiceOutput =
@@ -381,37 +705,7 @@ export type LegacyPeeringsListInput = typeof LegacyPeeringsListInput.Type;
 // Output Schema
 export const LegacyPeeringsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => PeeringSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type LegacyPeeringsListOutput = typeof LegacyPeeringsListOutput.Type;
@@ -451,9 +745,7 @@ export type LookingGlassInvokeInput = typeof LookingGlassInvokeInput.Type;
 // Output Schema
 export const LookingGlassInvokeOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    command: Schema.optional(
-      Schema.Literals(["Traceroute", "Ping", "BgpRoute"]),
-    ),
+    command: Schema.optional(Schema.suspend(() => CommandSchema)),
     output: Schema.optional(Schema.String),
   });
 export type LookingGlassInvokeOutput = typeof LookingGlassInvokeOutput.Type;
@@ -487,52 +779,7 @@ export type OperationsListInput = typeof OperationsListInput.Type;
 
 // Output Schema
 export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  value: Schema.optional(
-    Schema.Array(
-      Schema.Struct({
-        name: Schema.optional(Schema.String),
-        display: Schema.optional(
-          Schema.Struct({
-            provider: Schema.optional(Schema.String),
-            resource: Schema.optional(Schema.String),
-            operation: Schema.optional(Schema.String),
-            description: Schema.optional(Schema.String),
-          }),
-        ),
-        isDataAction: Schema.optional(Schema.Boolean),
-        properties: Schema.optional(
-          Schema.Struct({
-            serviceSpecification: Schema.optional(
-              Schema.Struct({
-                metricSpecifications: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      name: Schema.optional(Schema.String),
-                      displayName: Schema.optional(Schema.String),
-                      displayDescription: Schema.optional(Schema.String),
-                      unit: Schema.optional(Schema.String),
-                      aggregationType: Schema.optional(Schema.String),
-                      supportedTimeGrainTypes: Schema.optional(
-                        Schema.Array(Schema.String),
-                      ),
-                      dimensions: Schema.optional(
-                        Schema.Array(
-                          Schema.Struct({
-                            name: Schema.optional(Schema.String),
-                            displayName: Schema.optional(Schema.String),
-                          }),
-                        ),
-                      ),
-                    }),
-                  ),
-                ),
-              }),
-            ),
-          }),
-        ),
-      }),
-    ),
-  ),
+  value: Schema.optional(Schema.Array(Schema.suspend(() => OperationSchema))),
   nextLink: Schema.optional(Schema.String),
 });
 export type OperationsListOutput = typeof OperationsListOutput.Type;
@@ -552,34 +799,7 @@ export const PeerAsnsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     peerAsnName: Schema.String.pipe(T.PathParam()),
-    properties: Schema.optional(
-      Schema.Struct({
-        peerAsn: Schema.optional(Schema.Number),
-        peerContactDetail: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              role: Schema.optional(
-                Schema.Literals([
-                  "Noc",
-                  "Policy",
-                  "Technical",
-                  "Service",
-                  "Escalation",
-                  "Other",
-                ]),
-              ),
-              email: Schema.optional(Schema.String),
-              phone: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        peerName: Schema.optional(Schema.String),
-        validationState: Schema.optional(
-          Schema.Literals(["None", "Pending", "Approved", "Failed"]),
-        ),
-        errorMessage: Schema.optional(Schema.String),
-      }),
-    ),
+    properties: Schema.optional(Schema.suspend(() => PeerAsnPropertiesSchema)),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -593,23 +813,11 @@ export type PeerAsnsCreateOrUpdateInput =
 // Output Schema
 export const PeerAsnsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(Schema.suspend(() => PeerAsnPropertiesSchema)),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type PeerAsnsCreateOrUpdateOutput =
   typeof PeerAsnsCreateOrUpdateOutput.Type;
@@ -672,23 +880,11 @@ export type PeerAsnsGetInput = typeof PeerAsnsGetInput.Type;
 
 // Output Schema
 export const PeerAsnsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.optional(Schema.suspend(() => PeerAsnPropertiesSchema)),
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
-  systemData: Schema.optional(
-    Schema.Struct({
-      createdBy: Schema.optional(Schema.String),
-      createdByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      createdAt: Schema.optional(Schema.String),
-      lastModifiedBy: Schema.optional(Schema.String),
-      lastModifiedByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      lastModifiedAt: Schema.optional(Schema.String),
-    }),
-  ),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
 });
 export type PeerAsnsGetOutput = typeof PeerAsnsGetOutput.Type;
 
@@ -721,37 +917,7 @@ export type PeerAsnsListBySubscriptionInput =
 // Output Schema
 export const PeerAsnsListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => PeerAsnSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type PeerAsnsListBySubscriptionOutput =
@@ -800,37 +966,7 @@ export type PeeringLocationsListInput = typeof PeeringLocationsListInput.Type;
 // Output Schema
 export const PeeringLocationsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => PeeringLocationSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type PeeringLocationsListOutput = typeof PeeringLocationsListOutput.Type;
@@ -856,222 +992,9 @@ export const PeeringsCreateOrUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     peeringName: Schema.String.pipe(T.PathParam()),
-    properties: Schema.optional(
-      Schema.Struct({
-        direct: Schema.optional(
-          Schema.Struct({
-            connections: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  bandwidthInMbps: Schema.optional(Schema.Number),
-                  provisionedBandwidthInMbps: Schema.optional(Schema.Number),
-                  sessionAddressProvider: Schema.optional(
-                    Schema.Literals(["Microsoft", "Peer"]),
-                  ),
-                  useForPeeringService: Schema.optional(Schema.Boolean),
-                  microsoftTrackingId: Schema.optional(Schema.String),
-                  peeringDBFacilityId: Schema.optional(Schema.Number),
-                  connectionState: Schema.optional(
-                    Schema.Literals([
-                      "None",
-                      "PendingApproval",
-                      "Approved",
-                      "ProvisioningStarted",
-                      "ProvisioningFailed",
-                      "ProvisioningCompleted",
-                      "Validating",
-                      "Active",
-                      "TypeChangeRequested",
-                      "TypeChangeInProgress",
-                      "ExternalBlocker",
-                    ]),
-                  ),
-                  bgpSession: Schema.optional(
-                    Schema.Struct({
-                      sessionPrefixV4: Schema.optional(Schema.String),
-                      sessionPrefixV6: Schema.optional(Schema.String),
-                      microsoftSessionIPv4Address: Schema.optional(
-                        Schema.String,
-                      ),
-                      microsoftSessionIPv6Address: Schema.optional(
-                        Schema.String,
-                      ),
-                      peerSessionIPv4Address: Schema.optional(Schema.String),
-                      peerSessionIPv6Address: Schema.optional(Schema.String),
-                      sessionStateV4: Schema.optional(
-                        Schema.Literals([
-                          "None",
-                          "Idle",
-                          "Connect",
-                          "Active",
-                          "OpenSent",
-                          "OpenConfirm",
-                          "OpenReceived",
-                          "Established",
-                          "PendingAdd",
-                          "PendingUpdate",
-                          "PendingRemove",
-                        ]),
-                      ),
-                      sessionStateV6: Schema.optional(
-                        Schema.Literals([
-                          "None",
-                          "Idle",
-                          "Connect",
-                          "Active",
-                          "OpenSent",
-                          "OpenConfirm",
-                          "OpenReceived",
-                          "Established",
-                          "PendingAdd",
-                          "PendingUpdate",
-                          "PendingRemove",
-                        ]),
-                      ),
-                      maxPrefixesAdvertisedV4: Schema.optional(Schema.Number),
-                      maxPrefixesAdvertisedV6: Schema.optional(Schema.Number),
-                      md5AuthenticationKey: Schema.optional(Schema.String),
-                    }),
-                  ),
-                  connectionIdentifier: Schema.optional(Schema.String),
-                  errorMessage: Schema.optional(Schema.String),
-                }),
-              ),
-            ),
-            useForPeeringService: Schema.optional(Schema.Boolean),
-            peerAsn: Schema.optional(
-              Schema.Struct({
-                id: Schema.optional(Schema.String),
-              }),
-            ),
-            directPeeringType: Schema.optional(
-              Schema.Literals([
-                "Edge",
-                "Transit",
-                "Cdn",
-                "Internal",
-                "Ix",
-                "IxRs",
-                "Voice",
-                "EdgeZoneForOperators",
-                "PeerProp",
-              ]),
-            ),
-          }),
-        ),
-        exchange: Schema.optional(
-          Schema.Struct({
-            connections: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  peeringDBFacilityId: Schema.optional(Schema.Number),
-                  connectionState: Schema.optional(
-                    Schema.Literals([
-                      "None",
-                      "PendingApproval",
-                      "Approved",
-                      "ProvisioningStarted",
-                      "ProvisioningFailed",
-                      "ProvisioningCompleted",
-                      "Validating",
-                      "Active",
-                      "TypeChangeRequested",
-                      "TypeChangeInProgress",
-                      "ExternalBlocker",
-                    ]),
-                  ),
-                  bgpSession: Schema.optional(
-                    Schema.Struct({
-                      sessionPrefixV4: Schema.optional(Schema.String),
-                      sessionPrefixV6: Schema.optional(Schema.String),
-                      microsoftSessionIPv4Address: Schema.optional(
-                        Schema.String,
-                      ),
-                      microsoftSessionIPv6Address: Schema.optional(
-                        Schema.String,
-                      ),
-                      peerSessionIPv4Address: Schema.optional(Schema.String),
-                      peerSessionIPv6Address: Schema.optional(Schema.String),
-                      sessionStateV4: Schema.optional(
-                        Schema.Literals([
-                          "None",
-                          "Idle",
-                          "Connect",
-                          "Active",
-                          "OpenSent",
-                          "OpenConfirm",
-                          "OpenReceived",
-                          "Established",
-                          "PendingAdd",
-                          "PendingUpdate",
-                          "PendingRemove",
-                        ]),
-                      ),
-                      sessionStateV6: Schema.optional(
-                        Schema.Literals([
-                          "None",
-                          "Idle",
-                          "Connect",
-                          "Active",
-                          "OpenSent",
-                          "OpenConfirm",
-                          "OpenReceived",
-                          "Established",
-                          "PendingAdd",
-                          "PendingUpdate",
-                          "PendingRemove",
-                        ]),
-                      ),
-                      maxPrefixesAdvertisedV4: Schema.optional(Schema.Number),
-                      maxPrefixesAdvertisedV6: Schema.optional(Schema.Number),
-                      md5AuthenticationKey: Schema.optional(Schema.String),
-                    }),
-                  ),
-                  connectionIdentifier: Schema.optional(Schema.String),
-                  errorMessage: Schema.optional(Schema.String),
-                }),
-              ),
-            ),
-            peerAsn: Schema.optional(
-              Schema.Struct({
-                id: Schema.optional(Schema.String),
-              }),
-            ),
-          }),
-        ),
-        connectivityProbes: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              endpoint: Schema.optional(Schema.String),
-              azureRegion: Schema.optional(Schema.String),
-              protocol: Schema.optional(
-                Schema.Literals(["None", "ICMP", "TCP"]),
-              ),
-              prefixesToAccesslist: Schema.optional(
-                Schema.Array(Schema.String),
-              ),
-            }),
-          ),
-        ),
-        peeringLocation: Schema.optional(Schema.String),
-        provisioningState: Schema.optional(
-          Schema.Literals([
-            "Succeeded",
-            "Updating",
-            "Deleting",
-            "Failed",
-            "Canceled",
-          ]),
-        ),
-      }),
-    ),
-    sku: Schema.Struct({
-      name: Schema.optional(Schema.String),
-      tier: Schema.optional(Schema.Literals(["Basic", "Premium"])),
-      family: Schema.optional(Schema.Literals(["Direct", "Exchange"])),
-      size: Schema.optional(Schema.Literals(["Free", "Metered", "Unlimited"])),
-    }),
-    kind: Schema.Literals(["Direct", "Exchange"]),
+    properties: Schema.optional(Schema.suspend(() => PeeringPropertiesSchema)),
+    sku: Schema.suspend(() => PeeringSkuSchema),
+    kind: Schema.suspend(() => KindSchema),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     location: Schema.String,
   }).pipe(
@@ -1087,23 +1010,15 @@ export type PeeringsCreateOrUpdateInput =
 // Output Schema
 export const PeeringsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(Schema.suspend(() => PeeringPropertiesSchema)),
+    sku: Schema.suspend(() => PeeringSkuSchema),
+    kind: Schema.suspend(() => KindSchema),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type PeeringsCreateOrUpdateOutput =
   typeof PeeringsCreateOrUpdateOutput.Type;
@@ -1171,37 +1086,7 @@ export type PeeringServiceCountriesListInput =
 // Output Schema
 export const PeeringServiceCountriesListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => PeeringServiceCountrySchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type PeeringServiceCountriesListOutput =
@@ -1238,37 +1123,7 @@ export type PeeringServiceLocationsListInput =
 // Output Schema
 export const PeeringServiceLocationsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => PeeringServiceLocationSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type PeeringServiceLocationsListOutput =
@@ -1305,37 +1160,7 @@ export type PeeringServiceProvidersListInput =
 // Output Schema
 export const PeeringServiceProvidersListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => PeeringServiceProviderSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type PeeringServiceProvidersListOutput =
@@ -1361,34 +1186,9 @@ export const PeeringServicesCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     peeringServiceName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        peeringServiceLocation: Schema.optional(Schema.String),
-        peeringServiceProvider: Schema.optional(Schema.String),
-        provisioningState: Schema.optional(
-          Schema.Literals([
-            "Succeeded",
-            "Updating",
-            "Deleting",
-            "Failed",
-            "Canceled",
-          ]),
-        ),
-        providerPrimaryPeeringLocation: Schema.optional(Schema.String),
-        providerBackupPeeringLocation: Schema.optional(Schema.String),
-        logAnalyticsWorkspaceProperties: Schema.optional(
-          Schema.Struct({
-            workspaceID: Schema.optional(Schema.String),
-            key: Schema.optional(Schema.String),
-            connectedAgents: Schema.optional(Schema.Array(Schema.String)),
-          }),
-        ),
-      }),
+      Schema.suspend(() => PeeringServicePropertiesSchema),
     ),
-    sku: Schema.optional(
-      Schema.Struct({
-        name: Schema.optional(Schema.String),
-      }),
-    ),
+    sku: Schema.optional(Schema.suspend(() => PeeringServiceSkuSchema)),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     location: Schema.String,
   }).pipe(
@@ -1404,23 +1204,16 @@ export type PeeringServicesCreateOrUpdateInput =
 // Output Schema
 export const PeeringServicesCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => PeeringServicePropertiesSchema),
+    ),
+    sku: Schema.optional(Schema.suspend(() => PeeringServiceSkuSchema)),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type PeeringServicesCreateOrUpdateOutput =
   typeof PeeringServicesCreateOrUpdateOutput.Type;
@@ -1493,23 +1286,16 @@ export type PeeringServicesGetInput = typeof PeeringServicesGetInput.Type;
 // Output Schema
 export const PeeringServicesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => PeeringServicePropertiesSchema),
+    ),
+    sku: Schema.optional(Schema.suspend(() => PeeringServiceSkuSchema)),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type PeeringServicesGetOutput = typeof PeeringServicesGetOutput.Type;
 
@@ -1576,37 +1362,7 @@ export type PeeringServicesListByResourceGroupInput =
 // Output Schema
 export const PeeringServicesListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => PeeringServiceSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type PeeringServicesListByResourceGroupOutput =
@@ -1642,37 +1398,7 @@ export type PeeringServicesListBySubscriptionInput =
 // Output Schema
 export const PeeringServicesListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => PeeringServiceSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type PeeringServicesListBySubscriptionOutput =
@@ -1709,23 +1435,16 @@ export type PeeringServicesUpdateInput = typeof PeeringServicesUpdateInput.Type;
 // Output Schema
 export const PeeringServicesUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => PeeringServicePropertiesSchema),
+    ),
+    sku: Schema.optional(Schema.suspend(() => PeeringServiceSkuSchema)),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type PeeringServicesUpdateOutput =
   typeof PeeringServicesUpdateOutput.Type;
@@ -1761,23 +1480,15 @@ export type PeeringsGetInput = typeof PeeringsGetInput.Type;
 
 // Output Schema
 export const PeeringsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.optional(Schema.suspend(() => PeeringPropertiesSchema)),
+  sku: Schema.suspend(() => PeeringSkuSchema),
+  kind: Schema.suspend(() => KindSchema),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  location: Schema.String,
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
-  systemData: Schema.optional(
-    Schema.Struct({
-      createdBy: Schema.optional(Schema.String),
-      createdByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      createdAt: Schema.optional(Schema.String),
-      lastModifiedBy: Schema.optional(Schema.String),
-      lastModifiedByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      lastModifiedAt: Schema.optional(Schema.String),
-    }),
-  ),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
 });
 export type PeeringsGetOutput = typeof PeeringsGetOutput.Type;
 
@@ -1812,37 +1523,7 @@ export type PeeringsListByResourceGroupInput =
 // Output Schema
 export const PeeringsListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => PeeringSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type PeeringsListByResourceGroupOutput =
@@ -1879,37 +1560,7 @@ export type PeeringsListBySubscriptionInput =
 // Output Schema
 export const PeeringsListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => PeeringSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type PeeringsListBySubscriptionOutput =
@@ -1945,23 +1596,15 @@ export type PeeringsUpdateInput = typeof PeeringsUpdateInput.Type;
 
 // Output Schema
 export const PeeringsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.optional(Schema.suspend(() => PeeringPropertiesSchema)),
+  sku: Schema.suspend(() => PeeringSkuSchema),
+  kind: Schema.suspend(() => KindSchema),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  location: Schema.String,
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
-  systemData: Schema.optional(
-    Schema.Struct({
-      createdBy: Schema.optional(Schema.String),
-      createdByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      createdAt: Schema.optional(Schema.String),
-      lastModifiedBy: Schema.optional(Schema.String),
-      lastModifiedByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      lastModifiedAt: Schema.optional(Schema.String),
-    }),
-  ),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
 });
 export type PeeringsUpdateOutput = typeof PeeringsUpdateOutput.Type;
 
@@ -1986,45 +1629,7 @@ export const PrefixesCreateOrUpdateInput =
     peeringServiceName: Schema.String.pipe(T.PathParam()),
     prefixName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        prefix: Schema.optional(Schema.String),
-        prefixValidationState: Schema.optional(
-          Schema.Literals([
-            "None",
-            "Invalid",
-            "Verified",
-            "Failed",
-            "Pending",
-            "Warning",
-            "Unknown",
-          ]),
-        ),
-        learnedType: Schema.optional(
-          Schema.Literals(["None", "ViaServiceProvider", "ViaSession"]),
-        ),
-        errorMessage: Schema.optional(Schema.String),
-        events: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              eventTimestamp: Schema.optional(Schema.String),
-              eventType: Schema.optional(Schema.String),
-              eventSummary: Schema.optional(Schema.String),
-              eventLevel: Schema.optional(Schema.String),
-              eventDescription: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        peeringServicePrefixKey: Schema.optional(Schema.String),
-        provisioningState: Schema.optional(
-          Schema.Literals([
-            "Succeeded",
-            "Updating",
-            "Deleting",
-            "Failed",
-            "Canceled",
-          ]),
-        ),
-      }),
+      Schema.suspend(() => PeeringServicePrefixPropertiesSchema),
     ),
   }).pipe(
     T.Http({
@@ -2039,23 +1644,13 @@ export type PrefixesCreateOrUpdateInput =
 // Output Schema
 export const PrefixesCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => PeeringServicePrefixPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type PrefixesCreateOrUpdateOutput =
   typeof PrefixesCreateOrUpdateOutput.Type;
@@ -2127,23 +1722,13 @@ export type PrefixesGetInput = typeof PrefixesGetInput.Type;
 
 // Output Schema
 export const PrefixesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.optional(
+    Schema.suspend(() => PeeringServicePrefixPropertiesSchema),
+  ),
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
-  systemData: Schema.optional(
-    Schema.Struct({
-      createdBy: Schema.optional(Schema.String),
-      createdByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      createdAt: Schema.optional(Schema.String),
-      lastModifiedBy: Schema.optional(Schema.String),
-      lastModifiedByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      lastModifiedAt: Schema.optional(Schema.String),
-    }),
-  ),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
 });
 export type PrefixesGetOutput = typeof PrefixesGetOutput.Type;
 
@@ -2182,37 +1767,7 @@ export type PrefixesListByPeeringServiceInput =
 // Output Schema
 export const PrefixesListByPeeringServiceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => PeeringServicePrefixSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type PrefixesListByPeeringServiceOutput =
@@ -2257,17 +1812,7 @@ export type ReceivedRoutesListByPeeringInput =
 // Output Schema
 export const ReceivedRoutesListByPeeringOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        prefix: Schema.optional(Schema.String),
-        nextHop: Schema.optional(Schema.String),
-        asPath: Schema.optional(Schema.String),
-        originAsValidationState: Schema.optional(Schema.String),
-        rpkiValidationState: Schema.optional(Schema.String),
-        trustAnchor: Schema.optional(Schema.String),
-        receivedTimestamp: Schema.optional(Schema.String),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => PeeringReceivedRouteSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type ReceivedRoutesListByPeeringOutput =
@@ -2301,19 +1846,7 @@ export const RegisteredAsnsCreateOrUpdateInput =
     peeringName: Schema.String.pipe(T.PathParam()),
     registeredAsnName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        asn: Schema.optional(Schema.Number),
-        peeringServicePrefixKey: Schema.optional(Schema.String),
-        provisioningState: Schema.optional(
-          Schema.Literals([
-            "Succeeded",
-            "Updating",
-            "Deleting",
-            "Failed",
-            "Canceled",
-          ]),
-        ),
-      }),
+      Schema.suspend(() => PeeringRegisteredAsnPropertiesSchema),
     ),
   }).pipe(
     T.Http({
@@ -2328,23 +1861,13 @@ export type RegisteredAsnsCreateOrUpdateInput =
 // Output Schema
 export const RegisteredAsnsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => PeeringRegisteredAsnPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type RegisteredAsnsCreateOrUpdateOutput =
   typeof RegisteredAsnsCreateOrUpdateOutput.Type;
@@ -2421,23 +1944,13 @@ export type RegisteredAsnsGetInput = typeof RegisteredAsnsGetInput.Type;
 // Output Schema
 export const RegisteredAsnsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => PeeringRegisteredAsnPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type RegisteredAsnsGetOutput = typeof RegisteredAsnsGetOutput.Type;
 
@@ -2474,37 +1987,7 @@ export type RegisteredAsnsListByPeeringInput =
 // Output Schema
 export const RegisteredAsnsListByPeeringOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => PeeringRegisteredAsnSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type RegisteredAsnsListByPeeringOutput =
@@ -2533,31 +2016,7 @@ export const RegisteredPrefixesCreateOrUpdateInput =
     peeringName: Schema.String.pipe(T.PathParam()),
     registeredPrefixName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        prefix: Schema.optional(Schema.String),
-        prefixValidationState: Schema.optional(
-          Schema.Literals([
-            "None",
-            "Invalid",
-            "Verified",
-            "Failed",
-            "Pending",
-            "Warning",
-            "Unknown",
-          ]),
-        ),
-        peeringServicePrefixKey: Schema.optional(Schema.String),
-        errorMessage: Schema.optional(Schema.String),
-        provisioningState: Schema.optional(
-          Schema.Literals([
-            "Succeeded",
-            "Updating",
-            "Deleting",
-            "Failed",
-            "Canceled",
-          ]),
-        ),
-      }),
+      Schema.suspend(() => PeeringRegisteredPrefixPropertiesSchema),
     ),
   }).pipe(
     T.Http({
@@ -2572,23 +2031,13 @@ export type RegisteredPrefixesCreateOrUpdateInput =
 // Output Schema
 export const RegisteredPrefixesCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => PeeringRegisteredPrefixPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type RegisteredPrefixesCreateOrUpdateOutput =
   typeof RegisteredPrefixesCreateOrUpdateOutput.Type;
@@ -2666,23 +2115,13 @@ export type RegisteredPrefixesGetInput = typeof RegisteredPrefixesGetInput.Type;
 // Output Schema
 export const RegisteredPrefixesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => PeeringRegisteredPrefixPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type RegisteredPrefixesGetOutput =
   typeof RegisteredPrefixesGetOutput.Type;
@@ -2722,37 +2161,7 @@ export type RegisteredPrefixesListByPeeringInput =
 // Output Schema
 export const RegisteredPrefixesListByPeeringOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => PeeringRegisteredPrefixSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type RegisteredPrefixesListByPeeringOutput =
@@ -2792,23 +2201,13 @@ export type RegisteredPrefixesValidateInput =
 // Output Schema
 export const RegisteredPrefixesValidateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => PeeringRegisteredPrefixPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type RegisteredPrefixesValidateOutput =
   typeof RegisteredPrefixesValidateOutput.Type;
@@ -2849,13 +2248,7 @@ export type RpUnbilledPrefixesListInput =
 // Output Schema
 export const RpUnbilledPrefixesListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        prefix: Schema.optional(Schema.String),
-        azureRegion: Schema.optional(Schema.String),
-        peerAsn: Schema.optional(Schema.Number),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => RpUnbilledPrefixSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type RpUnbilledPrefixesListOutput =

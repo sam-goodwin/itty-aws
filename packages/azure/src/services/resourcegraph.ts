@@ -8,6 +8,82 @@ import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
+// Shared schemas
+const OperationSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  display: Schema.optional(Schema.suspend(() => OperationDisplaySchema)),
+  origin: Schema.optional(Schema.String),
+});
+const OperationDisplaySchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  provider: Schema.optional(Schema.String),
+  resource: Schema.optional(Schema.String),
+  operation: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+});
+const QueryRequestOptionsSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  $skipToken: Schema.optional(Schema.String),
+  $top: Schema.optional(Schema.Number),
+  $skip: Schema.optional(Schema.Number),
+  resultFormat: Schema.optional(Schema.Literals(["table", "objectArray"])),
+  allowPartialScopes: Schema.optional(Schema.Boolean),
+  authorizationScopeFilter: Schema.optional(
+    Schema.Literals([
+      "AtScopeAndBelow",
+      "AtScopeAndAbove",
+      "AtScopeExact",
+      "AtScopeAboveAndBelow",
+    ]),
+  ),
+});
+const FacetRequestSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  expression: Schema.String,
+  options: Schema.optional(Schema.suspend(() => FacetRequestOptionsSchema)),
+});
+const FacetRequestOptionsSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  sortBy: Schema.optional(Schema.String),
+  sortOrder: Schema.optional(Schema.Literals(["asc", "desc"])),
+  filter: Schema.optional(Schema.String),
+  $top: Schema.optional(Schema.Number),
+});
+const ResultTruncatedSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "true",
+  "false",
+]);
+const FacetSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  expression: Schema.String,
+  resultType: Schema.String,
+});
+const GraphQueryResourceSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+});
+const systemDataSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  createdBy: Schema.optional(Schema.String),
+  createdByType: Schema.optional(
+    Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+  ),
+  createdAt: Schema.optional(Schema.String),
+  lastModifiedBy: Schema.optional(Schema.String),
+  lastModifiedByType: Schema.optional(
+    Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+  ),
+  lastModifiedAt: Schema.optional(Schema.String),
+});
+const GraphQueryPropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  timeModified: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+  query: Schema.String,
+  resultKind: Schema.optional(Schema.suspend(() => ResultKindSchema)),
+});
+const ResultKindSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals(["basic"]);
+const GraphQueryPropertiesUpdateParametersSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    description: Schema.optional(Schema.String),
+    query: Schema.optional(Schema.String),
+  });
+
 // Input Schema
 export const GraphQueryCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -15,12 +91,7 @@ export const GraphQueryCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        timeModified: Schema.optional(Schema.String),
-        description: Schema.optional(Schema.String),
-        query: Schema.String,
-        resultKind: Schema.optional(Schema.Literals(["basic"])),
-      }),
+      Schema.suspend(() => GraphQueryPropertiesSchema),
     ),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     location: Schema.optional(Schema.String),
@@ -28,20 +99,7 @@ export const GraphQueryCreateOrUpdateInput =
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -55,23 +113,16 @@ export type GraphQueryCreateOrUpdateInput =
 // Output Schema
 export const GraphQueryCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => GraphQueryPropertiesSchema),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.optional(Schema.String),
+    etag: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type GraphQueryCreateOrUpdateOutput =
   typeof GraphQueryCreateOrUpdateOutput.Type;
@@ -138,23 +189,14 @@ export type GraphQueryGetInput = typeof GraphQueryGetInput.Type;
 
 // Output Schema
 export const GraphQueryGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.optional(Schema.suspend(() => GraphQueryPropertiesSchema)),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  location: Schema.optional(Schema.String),
+  etag: Schema.optional(Schema.String),
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
-  systemData: Schema.optional(
-    Schema.Struct({
-      createdBy: Schema.optional(Schema.String),
-      createdByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      createdAt: Schema.optional(Schema.String),
-      lastModifiedBy: Schema.optional(Schema.String),
-      lastModifiedByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      lastModifiedAt: Schema.optional(Schema.String),
-    }),
-  ),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
 });
 export type GraphQueryGetOutput = typeof GraphQueryGetOutput.Type;
 
@@ -186,27 +228,7 @@ export type GraphQueryListInput = typeof GraphQueryListInput.Type;
 
 // Output Schema
 export const GraphQueryListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  value: Schema.Array(
-    Schema.Struct({
-      id: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      type: Schema.optional(Schema.String),
-      systemData: Schema.optional(
-        Schema.Struct({
-          createdBy: Schema.optional(Schema.String),
-          createdByType: Schema.optional(
-            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-          ),
-          createdAt: Schema.optional(Schema.String),
-          lastModifiedBy: Schema.optional(Schema.String),
-          lastModifiedByType: Schema.optional(
-            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-          ),
-          lastModifiedAt: Schema.optional(Schema.String),
-        }),
-      ),
-    }),
-  ),
+  value: Schema.Array(Schema.suspend(() => GraphQueryResourceSchema)),
   nextLink: Schema.optional(Schema.String),
 });
 export type GraphQueryListOutput = typeof GraphQueryListOutput.Type;
@@ -240,37 +262,7 @@ export type GraphQueryListBySubscriptionInput =
 // Output Schema
 export const GraphQueryListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => GraphQueryResourceSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type GraphQueryListBySubscriptionOutput =
@@ -296,10 +288,7 @@ export const GraphQueryUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   etag: Schema.optional(Schema.String),
   properties: Schema.optional(
-    Schema.Struct({
-      description: Schema.optional(Schema.String),
-      query: Schema.optional(Schema.String),
-    }),
+    Schema.suspend(() => GraphQueryPropertiesUpdateParametersSchema),
   ),
 }).pipe(
   T.Http({
@@ -313,23 +302,16 @@ export type GraphQueryUpdateInput = typeof GraphQueryUpdateInput.Type;
 // Output Schema
 export const GraphQueryUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
+    properties: Schema.optional(
+      Schema.suspend(() => GraphQueryPropertiesSchema),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.optional(Schema.String),
+    etag: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   },
 );
 export type GraphQueryUpdateOutput = typeof GraphQueryUpdateOutput.Type;
@@ -361,20 +343,7 @@ export type OperationsListInput = typeof OperationsListInput.Type;
 
 // Output Schema
 export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  value: Schema.Array(
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      display: Schema.optional(
-        Schema.Struct({
-          provider: Schema.optional(Schema.String),
-          resource: Schema.optional(Schema.String),
-          operation: Schema.optional(Schema.String),
-          description: Schema.optional(Schema.String),
-        }),
-      ),
-      origin: Schema.optional(Schema.String),
-    }),
-  ),
+  value: Schema.Array(Schema.suspend(() => OperationSchema)),
   nextLink: Schema.optional(Schema.String),
 });
 export type OperationsListOutput = typeof OperationsListOutput.Type;
@@ -394,37 +363,9 @@ export const ResourcesInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptions: Schema.optional(Schema.Array(Schema.String)),
   managementGroups: Schema.optional(Schema.Array(Schema.String)),
   query: Schema.String,
-  options: Schema.optional(
-    Schema.Struct({
-      $skipToken: Schema.optional(Schema.String),
-      $top: Schema.optional(Schema.Number),
-      $skip: Schema.optional(Schema.Number),
-      resultFormat: Schema.optional(Schema.Literals(["table", "objectArray"])),
-      allowPartialScopes: Schema.optional(Schema.Boolean),
-      authorizationScopeFilter: Schema.optional(
-        Schema.Literals([
-          "AtScopeAndBelow",
-          "AtScopeAndAbove",
-          "AtScopeExact",
-          "AtScopeAboveAndBelow",
-        ]),
-      ),
-    }),
-  ),
+  options: Schema.optional(Schema.suspend(() => QueryRequestOptionsSchema)),
   facets: Schema.optional(
-    Schema.Array(
-      Schema.Struct({
-        expression: Schema.String,
-        options: Schema.optional(
-          Schema.Struct({
-            sortBy: Schema.optional(Schema.String),
-            sortOrder: Schema.optional(Schema.Literals(["asc", "desc"])),
-            filter: Schema.optional(Schema.String),
-            $top: Schema.optional(Schema.Number),
-          }),
-        ),
-      }),
-    ),
+    Schema.Array(Schema.suspend(() => FacetRequestSchema)),
   ),
 }).pipe(
   T.Http({
@@ -439,17 +380,10 @@ export type ResourcesInput = typeof ResourcesInput.Type;
 export const ResourcesOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   totalRecords: Schema.Number,
   count: Schema.Number,
-  resultTruncated: Schema.Literals(["true", "false"]),
+  resultTruncated: Schema.suspend(() => ResultTruncatedSchema),
   $skipToken: Schema.optional(Schema.String),
   data: Schema.Unknown,
-  facets: Schema.optional(
-    Schema.Array(
-      Schema.Struct({
-        expression: Schema.String,
-        resultType: Schema.String,
-      }),
-    ),
-  ),
+  facets: Schema.optional(Schema.Array(Schema.suspend(() => FacetSchema))),
 });
 export type ResourcesOutput = typeof ResourcesOutput.Type;
 

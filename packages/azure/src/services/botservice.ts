@@ -7,46 +7,274 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
-import { SensitiveString } from "../sensitive.ts";
+import { SensitiveOutputString } from "../sensitive.ts";
+
+// Shared schemas
+const BotPropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  displayName: Schema.String,
+  description: Schema.optional(Schema.String),
+  iconUrl: Schema.optional(Schema.String),
+  endpoint: Schema.NullOr(Schema.String),
+  endpointVersion: Schema.optional(Schema.String),
+  allSettings: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  parameters: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  manifestUrl: Schema.optional(Schema.String),
+  msaAppType: Schema.optional(
+    Schema.Literals(["UserAssignedMSI", "SingleTenant", "MultiTenant"]),
+  ),
+  msaAppId: Schema.String,
+  msaAppTenantId: Schema.optional(Schema.String),
+  msaAppMSIResourceId: Schema.optional(Schema.String),
+  configuredChannels: Schema.optional(Schema.Array(Schema.String)),
+  enabledChannels: Schema.optional(Schema.Array(Schema.String)),
+  developerAppInsightKey: Schema.optional(Schema.String),
+  developerAppInsightsApiKey: Schema.optional(Schema.String),
+  developerAppInsightsApplicationId: Schema.optional(Schema.String),
+  luisAppIds: Schema.optional(Schema.Array(Schema.String)),
+  luisKey: Schema.optional(Schema.String),
+  isCmekEnabled: Schema.optional(Schema.Boolean),
+  cmekKeyVaultUrl: Schema.optional(Schema.String),
+  cmekEncryptionStatus: Schema.optional(Schema.String),
+  tenantId: Schema.optional(Schema.String),
+  publicNetworkAccess: Schema.optional(
+    Schema.Literals(["Enabled", "Disabled"]),
+  ),
+  isStreamingSupported: Schema.optional(Schema.Boolean),
+  isDeveloperAppInsightsApiKeySet: Schema.optional(Schema.Boolean),
+  migrationToken: Schema.optional(Schema.String),
+  disableLocalAuth: Schema.optional(Schema.Boolean),
+  schemaTransformationVersion: Schema.optional(Schema.NullOr(Schema.String)),
+  storageResourceId: Schema.optional(Schema.String),
+  privateEndpointConnections: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+      }),
+    ),
+  ),
+  openWithHint: Schema.optional(Schema.String),
+  appPasswordHint: Schema.optional(SensitiveOutputString),
+  provisioningState: Schema.optional(Schema.String),
+  publishingCredentials: Schema.optional(Schema.String),
+});
+const SkuSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.suspend(() => SkuNameSchema),
+  tier: Schema.optional(Schema.Literals(["Free", "Standard"])),
+});
+const SkuNameSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals(["F0", "S1"]);
+const KindSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "sdk",
+  "designer",
+  "bot",
+  "function",
+  "azurebot",
+]);
+const BotSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  location: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  sku: Schema.optional(Schema.suspend(() => SkuSchema)),
+  kind: Schema.optional(Schema.suspend(() => KindSchema)),
+  etag: Schema.optional(Schema.String),
+  zones: Schema.optional(Schema.Array(Schema.String)),
+});
+const ChannelSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  channelName: Schema.String,
+  etag: Schema.optional(Schema.NullOr(Schema.String)),
+  provisioningState: Schema.optional(Schema.String),
+  location: Schema.optional(Schema.String),
+});
+const ChannelSettingsSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  extensionKey1: Schema.optional(Schema.String),
+  extensionKey2: Schema.optional(Schema.String),
+  sites: Schema.optional(Schema.Array(Schema.suspend(() => SiteSchema))),
+  channelId: Schema.optional(Schema.String),
+  channelDisplayName: Schema.optional(Schema.String),
+  botId: Schema.optional(Schema.String),
+  botIconUrl: Schema.optional(Schema.String),
+  isEnabled: Schema.optional(Schema.Boolean),
+  disableLocalAuth: Schema.optional(Schema.Boolean),
+  requireTermsAgreement: Schema.optional(Schema.Boolean),
+});
+const SiteSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  tenantId: Schema.optional(Schema.String),
+  siteId: Schema.optional(Schema.String),
+  siteName: Schema.String,
+  key: Schema.optional(Schema.String),
+  key2: Schema.optional(Schema.String),
+  isEnabled: Schema.Boolean,
+  isTokenEnabled: Schema.optional(Schema.Boolean),
+  isEndpointParametersEnabled: Schema.optional(Schema.Boolean),
+  isDetailedLoggingEnabled: Schema.optional(Schema.Boolean),
+  isBlockUserUploadEnabled: Schema.optional(Schema.NullOr(Schema.Boolean)),
+  isNoStorageEnabled: Schema.optional(Schema.Boolean),
+  eTag: Schema.optional(Schema.String),
+  appId: Schema.optional(Schema.String),
+  isV1Enabled: Schema.optional(Schema.Boolean),
+  isV3Enabled: Schema.optional(Schema.Boolean),
+  isSecureSiteEnabled: Schema.optional(Schema.Boolean),
+  trustedOrigins: Schema.optional(Schema.Array(Schema.String)),
+  isWebChatSpeechEnabled: Schema.optional(Schema.Boolean),
+  isWebchatPreviewEnabled: Schema.optional(Schema.Boolean),
+});
+const BotChannelSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  location: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  sku: Schema.optional(Schema.suspend(() => SkuSchema)),
+  kind: Schema.optional(Schema.suspend(() => KindSchema)),
+  etag: Schema.optional(Schema.String),
+  zones: Schema.optional(Schema.Array(Schema.String)),
+});
+const CreateEmailSignInUrlResponsePropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    url: Schema.optional(Schema.String),
+  });
+const OperationEntitySchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  display: Schema.optional(Schema.suspend(() => OperationDisplayInfoSchema)),
+  origin: Schema.optional(Schema.String),
+  properties: Schema.optional(Schema.Unknown),
+});
+const OperationDisplayInfoSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  description: Schema.optional(Schema.String),
+  operation: Schema.optional(Schema.String),
+  provider: Schema.optional(Schema.String),
+  resource: Schema.optional(Schema.String),
+});
+const ServiceProviderSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.optional(
+    Schema.suspend(() => ServiceProviderPropertiesSchema),
+  ),
+});
+const ServiceProviderPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    displayName: Schema.optional(Schema.String),
+    serviceProviderName: Schema.optional(Schema.String),
+    devPortalUrl: Schema.optional(Schema.String),
+    iconUrl: Schema.optional(Schema.String),
+    parameters: Schema.optional(
+      Schema.Array(Schema.suspend(() => ServiceProviderParameterSchema)),
+    ),
+  });
+const ServiceProviderParameterSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    displayName: Schema.optional(Schema.String),
+    description: Schema.optional(Schema.String),
+    helpUrl: Schema.optional(Schema.String),
+    default: Schema.optional(Schema.String),
+    metadata: Schema.optional(
+      Schema.Struct({
+        constraints: Schema.optional(
+          Schema.Struct({
+            required: Schema.optional(Schema.Boolean),
+          }),
+        ),
+      }),
+    ),
+  });
+const ConnectionSettingPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    clientId: Schema.optional(Schema.String),
+    settingId: Schema.optional(Schema.String),
+    clientSecret: Schema.optional(SensitiveOutputString),
+    scopes: Schema.optional(Schema.String),
+    serviceProviderId: Schema.optional(Schema.String),
+    serviceProviderDisplayName: Schema.optional(Schema.String),
+    parameters: Schema.optional(
+      Schema.Array(Schema.suspend(() => ConnectionSettingParameterSchema)),
+    ),
+    provisioningState: Schema.optional(Schema.String),
+  });
+const ConnectionSettingParameterSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    key: Schema.optional(Schema.String),
+    value: Schema.optional(Schema.NullOr(Schema.String)),
+  });
+const ConnectionSettingSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  location: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  sku: Schema.optional(Schema.suspend(() => SkuSchema)),
+  kind: Schema.optional(Schema.suspend(() => KindSchema)),
+  etag: Schema.optional(Schema.String),
+  zones: Schema.optional(Schema.Array(Schema.String)),
+});
+const PrivateEndpointConnectionSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
+const PrivateEndpointConnectionPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    privateEndpoint: Schema.optional(
+      Schema.suspend(() => PrivateEndpointSchema),
+    ),
+    privateLinkServiceConnectionState: Schema.suspend(
+      () => PrivateLinkServiceConnectionStateSchema,
+    ),
+    provisioningState: Schema.optional(
+      Schema.suspend(() => PrivateEndpointConnectionProvisioningStateSchema),
+    ),
+    groupIds: Schema.optional(Schema.Array(Schema.String)),
+  });
+const PrivateEndpointSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+});
+const PrivateLinkServiceConnectionStateSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    status: Schema.optional(
+      Schema.suspend(() => PrivateEndpointServiceConnectionStatusSchema),
+    ),
+    description: Schema.optional(Schema.String),
+    actionsRequired: Schema.optional(Schema.String),
+  });
+const PrivateEndpointServiceConnectionStatusSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+    "Pending",
+    "Approved",
+    "Rejected",
+  ]);
+const PrivateEndpointConnectionProvisioningStateSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+    "Succeeded",
+    "Creating",
+    "Deleting",
+    "Failed",
+  ]);
+const PrivateLinkResourceSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
 
 // Input Schema
 export const BotConnectionCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     properties: Schema.optional(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        clientId: Schema.optional(Schema.String),
-        settingId: Schema.optional(Schema.String),
-        clientSecret: Schema.optional(SensitiveString),
-        scopes: Schema.optional(Schema.String),
-        serviceProviderId: Schema.optional(Schema.String),
-        serviceProviderDisplayName: Schema.optional(Schema.String),
-        parameters: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              key: Schema.optional(Schema.String),
-              value: Schema.optional(Schema.NullOr(Schema.String)),
-            }),
-          ),
-        ),
-        provisioningState: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(() => ConnectionSettingPropertiesSchema),
     ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     location: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    sku: Schema.optional(
-      Schema.Struct({
-        name: Schema.Literals(["F0", "S1"]),
-        tier: Schema.optional(Schema.Literals(["Free", "Standard"])),
-      }),
-    ),
-    kind: Schema.optional(
-      Schema.Literals(["sdk", "designer", "bot", "function", "azurebot"]),
-    ),
+    sku: Schema.optional(Schema.suspend(() => SkuSchema)),
+    kind: Schema.optional(Schema.suspend(() => KindSchema)),
     etag: Schema.optional(Schema.String),
     zones: Schema.optional(Schema.Array(Schema.String)),
   }).pipe(
@@ -61,20 +289,16 @@ export type BotConnectionCreateInput = typeof BotConnectionCreateInput.Type;
 // Output Schema
 export const BotConnectionCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => ConnectionSettingPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     location: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    sku: Schema.optional(
-      Schema.Struct({
-        name: Schema.Literals(["F0", "S1"]),
-        tier: Schema.optional(Schema.Literals(["Free", "Standard"])),
-      }),
-    ),
-    kind: Schema.optional(
-      Schema.Literals(["sdk", "designer", "bot", "function", "azurebot"]),
-    ),
+    sku: Schema.optional(Schema.suspend(() => SkuSchema)),
+    kind: Schema.optional(Schema.suspend(() => KindSchema)),
     etag: Schema.optional(Schema.String),
     zones: Schema.optional(Schema.Array(Schema.String)),
   });
@@ -127,20 +351,16 @@ export type BotConnectionGetInput = typeof BotConnectionGetInput.Type;
 // Output Schema
 export const BotConnectionGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
+    properties: Schema.optional(
+      Schema.suspend(() => ConnectionSettingPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     location: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    sku: Schema.optional(
-      Schema.Struct({
-        name: Schema.Literals(["F0", "S1"]),
-        tier: Schema.optional(Schema.Literals(["Free", "Standard"])),
-      }),
-    ),
-    kind: Schema.optional(
-      Schema.Literals(["sdk", "designer", "bot", "function", "azurebot"]),
-    ),
+    sku: Schema.optional(Schema.suspend(() => SkuSchema)),
+    kind: Schema.optional(Schema.suspend(() => KindSchema)),
     etag: Schema.optional(Schema.String),
     zones: Schema.optional(Schema.Array(Schema.String)),
   },
@@ -172,26 +392,7 @@ export const BotConnectionListByBotServiceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          location: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-          sku: Schema.optional(
-            Schema.Struct({
-              name: Schema.Literals(["F0", "S1"]),
-              tier: Schema.optional(Schema.Literals(["Free", "Standard"])),
-            }),
-          ),
-          kind: Schema.optional(
-            Schema.Literals(["sdk", "designer", "bot", "function", "azurebot"]),
-          ),
-          etag: Schema.optional(Schema.String),
-          zones: Schema.optional(Schema.Array(Schema.String)),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => ConnectionSettingSchema)),
     ),
   });
 export type BotConnectionListByBotServiceOutput =
@@ -223,40 +424,7 @@ export const BotConnectionListServiceProvidersOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          properties: Schema.optional(
-            Schema.Struct({
-              id: Schema.optional(Schema.String),
-              displayName: Schema.optional(Schema.String),
-              serviceProviderName: Schema.optional(Schema.String),
-              devPortalUrl: Schema.optional(Schema.String),
-              iconUrl: Schema.optional(Schema.String),
-              parameters: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    name: Schema.optional(Schema.String),
-                    type: Schema.optional(Schema.String),
-                    displayName: Schema.optional(Schema.String),
-                    description: Schema.optional(Schema.String),
-                    helpUrl: Schema.optional(Schema.String),
-                    default: Schema.optional(Schema.String),
-                    metadata: Schema.optional(
-                      Schema.Struct({
-                        constraints: Schema.optional(
-                          Schema.Struct({
-                            required: Schema.optional(Schema.Boolean),
-                          }),
-                        ),
-                      }),
-                    ),
-                  }),
-                ),
-              ),
-            }),
-          ),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => ServiceProviderSchema)),
     ),
   });
 export type BotConnectionListServiceProvidersOutput =
@@ -286,20 +454,16 @@ export type BotConnectionListWithSecretsInput =
 // Output Schema
 export const BotConnectionListWithSecretsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => ConnectionSettingPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     location: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    sku: Schema.optional(
-      Schema.Struct({
-        name: Schema.Literals(["F0", "S1"]),
-        tier: Schema.optional(Schema.Literals(["Free", "Standard"])),
-      }),
-    ),
-    kind: Schema.optional(
-      Schema.Literals(["sdk", "designer", "bot", "function", "azurebot"]),
-    ),
+    sku: Schema.optional(Schema.suspend(() => SkuSchema)),
+    kind: Schema.optional(Schema.suspend(() => KindSchema)),
     etag: Schema.optional(Schema.String),
     zones: Schema.optional(Schema.Array(Schema.String)),
   });
@@ -319,40 +483,15 @@ export const BotConnectionListWithSecrets =
 export const BotConnectionUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     properties: Schema.optional(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        clientId: Schema.optional(Schema.String),
-        settingId: Schema.optional(Schema.String),
-        clientSecret: Schema.optional(SensitiveString),
-        scopes: Schema.optional(Schema.String),
-        serviceProviderId: Schema.optional(Schema.String),
-        serviceProviderDisplayName: Schema.optional(Schema.String),
-        parameters: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              key: Schema.optional(Schema.String),
-              value: Schema.optional(Schema.NullOr(Schema.String)),
-            }),
-          ),
-        ),
-        provisioningState: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(() => ConnectionSettingPropertiesSchema),
     ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     location: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    sku: Schema.optional(
-      Schema.Struct({
-        name: Schema.Literals(["F0", "S1"]),
-        tier: Schema.optional(Schema.Literals(["Free", "Standard"])),
-      }),
-    ),
-    kind: Schema.optional(
-      Schema.Literals(["sdk", "designer", "bot", "function", "azurebot"]),
-    ),
+    sku: Schema.optional(Schema.suspend(() => SkuSchema)),
+    kind: Schema.optional(Schema.suspend(() => KindSchema)),
     etag: Schema.optional(Schema.String),
     zones: Schema.optional(Schema.Array(Schema.String)),
   }).pipe(
@@ -367,20 +506,16 @@ export type BotConnectionUpdateInput = typeof BotConnectionUpdateInput.Type;
 // Output Schema
 export const BotConnectionUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => ConnectionSettingPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     location: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    sku: Schema.optional(
-      Schema.Struct({
-        name: Schema.Literals(["F0", "S1"]),
-        tier: Schema.optional(Schema.Literals(["Free", "Standard"])),
-      }),
-    ),
-    kind: Schema.optional(
-      Schema.Literals(["sdk", "designer", "bot", "function", "azurebot"]),
-    ),
+    sku: Schema.optional(Schema.suspend(() => SkuSchema)),
+    kind: Schema.optional(Schema.suspend(() => KindSchema)),
     etag: Schema.optional(Schema.String),
     zones: Schema.optional(Schema.Array(Schema.String)),
   });
@@ -396,73 +531,14 @@ export const BotConnectionUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const BotsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  properties: Schema.optional(
-    Schema.Struct({
-      displayName: Schema.String,
-      description: Schema.optional(Schema.String),
-      iconUrl: Schema.optional(Schema.String),
-      endpoint: Schema.NullOr(Schema.String),
-      endpointVersion: Schema.optional(Schema.String),
-      allSettings: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      parameters: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      manifestUrl: Schema.optional(Schema.String),
-      msaAppType: Schema.optional(
-        Schema.Literals(["UserAssignedMSI", "SingleTenant", "MultiTenant"]),
-      ),
-      msaAppId: Schema.String,
-      msaAppTenantId: Schema.optional(Schema.String),
-      msaAppMSIResourceId: Schema.optional(Schema.String),
-      configuredChannels: Schema.optional(Schema.Array(Schema.String)),
-      enabledChannels: Schema.optional(Schema.Array(Schema.String)),
-      developerAppInsightKey: Schema.optional(Schema.String),
-      developerAppInsightsApiKey: Schema.optional(Schema.String),
-      developerAppInsightsApplicationId: Schema.optional(Schema.String),
-      luisAppIds: Schema.optional(Schema.Array(Schema.String)),
-      luisKey: Schema.optional(Schema.String),
-      isCmekEnabled: Schema.optional(Schema.Boolean),
-      cmekKeyVaultUrl: Schema.optional(Schema.String),
-      cmekEncryptionStatus: Schema.optional(Schema.String),
-      tenantId: Schema.optional(Schema.String),
-      publicNetworkAccess: Schema.optional(
-        Schema.Literals(["Enabled", "Disabled"]),
-      ),
-      isStreamingSupported: Schema.optional(Schema.Boolean),
-      isDeveloperAppInsightsApiKeySet: Schema.optional(Schema.Boolean),
-      migrationToken: Schema.optional(Schema.String),
-      disableLocalAuth: Schema.optional(Schema.Boolean),
-      schemaTransformationVersion: Schema.optional(
-        Schema.NullOr(Schema.String),
-      ),
-      storageResourceId: Schema.optional(Schema.String),
-      privateEndpointConnections: Schema.optional(
-        Schema.Array(
-          Schema.Struct({
-            id: Schema.optional(Schema.String),
-            name: Schema.optional(Schema.String),
-            type: Schema.optional(Schema.String),
-          }),
-        ),
-      ),
-      openWithHint: Schema.optional(Schema.String),
-      appPasswordHint: Schema.optional(SensitiveString),
-      provisioningState: Schema.optional(Schema.String),
-      publishingCredentials: Schema.optional(Schema.String),
-    }),
-  ),
+  properties: Schema.optional(Schema.suspend(() => BotPropertiesSchema)),
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   location: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
   tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-  sku: Schema.optional(
-    Schema.Struct({
-      name: Schema.Literals(["F0", "S1"]),
-      tier: Schema.optional(Schema.Literals(["Free", "Standard"])),
-    }),
-  ),
-  kind: Schema.optional(
-    Schema.Literals(["sdk", "designer", "bot", "function", "azurebot"]),
-  ),
+  sku: Schema.optional(Schema.suspend(() => SkuSchema)),
+  kind: Schema.optional(Schema.suspend(() => KindSchema)),
   etag: Schema.optional(Schema.String),
   zones: Schema.optional(Schema.Array(Schema.String)),
 }).pipe(
@@ -476,20 +552,14 @@ export type BotsCreateInput = typeof BotsCreateInput.Type;
 
 // Output Schema
 export const BotsCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.optional(Schema.suspend(() => BotPropertiesSchema)),
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   location: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
   tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-  sku: Schema.optional(
-    Schema.Struct({
-      name: Schema.Literals(["F0", "S1"]),
-      tier: Schema.optional(Schema.Literals(["Free", "Standard"])),
-    }),
-  ),
-  kind: Schema.optional(
-    Schema.Literals(["sdk", "designer", "bot", "function", "azurebot"]),
-  ),
+  sku: Schema.optional(Schema.suspend(() => SkuSchema)),
+  kind: Schema.optional(Schema.suspend(() => KindSchema)),
   etag: Schema.optional(Schema.String),
   zones: Schema.optional(Schema.Array(Schema.String)),
 });
@@ -539,20 +609,14 @@ export type BotsGetInput = typeof BotsGetInput.Type;
 
 // Output Schema
 export const BotsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.optional(Schema.suspend(() => BotPropertiesSchema)),
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   location: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
   tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-  sku: Schema.optional(
-    Schema.Struct({
-      name: Schema.Literals(["F0", "S1"]),
-      tier: Schema.optional(Schema.Literals(["Free", "Standard"])),
-    }),
-  ),
-  kind: Schema.optional(
-    Schema.Literals(["sdk", "designer", "bot", "function", "azurebot"]),
-  ),
+  sku: Schema.optional(Schema.suspend(() => SkuSchema)),
+  kind: Schema.optional(Schema.suspend(() => KindSchema)),
   etag: Schema.optional(Schema.String),
   zones: Schema.optional(Schema.Array(Schema.String)),
 });
@@ -613,28 +677,7 @@ export type BotsListInput = typeof BotsListInput.Type;
 // Output Schema
 export const BotsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   nextLink: Schema.optional(Schema.String),
-  value: Schema.optional(
-    Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        location: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        sku: Schema.optional(
-          Schema.Struct({
-            name: Schema.Literals(["F0", "S1"]),
-            tier: Schema.optional(Schema.Literals(["Free", "Standard"])),
-          }),
-        ),
-        kind: Schema.optional(
-          Schema.Literals(["sdk", "designer", "bot", "function", "azurebot"]),
-        ),
-        etag: Schema.optional(Schema.String),
-        zones: Schema.optional(Schema.Array(Schema.String)),
-      }),
-    ),
-  ),
+  value: Schema.optional(Schema.Array(Schema.suspend(() => BotSchema))),
 });
 export type BotsListOutput = typeof BotsListOutput.Type;
 
@@ -662,28 +705,7 @@ export type BotsListByResourceGroupInput =
 export const BotsListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          location: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-          sku: Schema.optional(
-            Schema.Struct({
-              name: Schema.Literals(["F0", "S1"]),
-              tier: Schema.optional(Schema.Literals(["Free", "Standard"])),
-            }),
-          ),
-          kind: Schema.optional(
-            Schema.Literals(["sdk", "designer", "bot", "function", "azurebot"]),
-          ),
-          etag: Schema.optional(Schema.String),
-          zones: Schema.optional(Schema.Array(Schema.String)),
-        }),
-      ),
-    ),
+    value: Schema.optional(Schema.Array(Schema.suspend(() => BotSchema))),
   });
 export type BotsListByResourceGroupOutput =
   typeof BotsListByResourceGroupOutput.Type;
@@ -700,73 +722,14 @@ export const BotsListByResourceGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const BotsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  properties: Schema.optional(
-    Schema.Struct({
-      displayName: Schema.String,
-      description: Schema.optional(Schema.String),
-      iconUrl: Schema.optional(Schema.String),
-      endpoint: Schema.NullOr(Schema.String),
-      endpointVersion: Schema.optional(Schema.String),
-      allSettings: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      parameters: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      manifestUrl: Schema.optional(Schema.String),
-      msaAppType: Schema.optional(
-        Schema.Literals(["UserAssignedMSI", "SingleTenant", "MultiTenant"]),
-      ),
-      msaAppId: Schema.String,
-      msaAppTenantId: Schema.optional(Schema.String),
-      msaAppMSIResourceId: Schema.optional(Schema.String),
-      configuredChannels: Schema.optional(Schema.Array(Schema.String)),
-      enabledChannels: Schema.optional(Schema.Array(Schema.String)),
-      developerAppInsightKey: Schema.optional(Schema.String),
-      developerAppInsightsApiKey: Schema.optional(Schema.String),
-      developerAppInsightsApplicationId: Schema.optional(Schema.String),
-      luisAppIds: Schema.optional(Schema.Array(Schema.String)),
-      luisKey: Schema.optional(Schema.String),
-      isCmekEnabled: Schema.optional(Schema.Boolean),
-      cmekKeyVaultUrl: Schema.optional(Schema.String),
-      cmekEncryptionStatus: Schema.optional(Schema.String),
-      tenantId: Schema.optional(Schema.String),
-      publicNetworkAccess: Schema.optional(
-        Schema.Literals(["Enabled", "Disabled"]),
-      ),
-      isStreamingSupported: Schema.optional(Schema.Boolean),
-      isDeveloperAppInsightsApiKeySet: Schema.optional(Schema.Boolean),
-      migrationToken: Schema.optional(Schema.String),
-      disableLocalAuth: Schema.optional(Schema.Boolean),
-      schemaTransformationVersion: Schema.optional(
-        Schema.NullOr(Schema.String),
-      ),
-      storageResourceId: Schema.optional(Schema.String),
-      privateEndpointConnections: Schema.optional(
-        Schema.Array(
-          Schema.Struct({
-            id: Schema.optional(Schema.String),
-            name: Schema.optional(Schema.String),
-            type: Schema.optional(Schema.String),
-          }),
-        ),
-      ),
-      openWithHint: Schema.optional(Schema.String),
-      appPasswordHint: Schema.optional(SensitiveString),
-      provisioningState: Schema.optional(Schema.String),
-      publishingCredentials: Schema.optional(Schema.String),
-    }),
-  ),
+  properties: Schema.optional(Schema.suspend(() => BotPropertiesSchema)),
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   location: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
   tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-  sku: Schema.optional(
-    Schema.Struct({
-      name: Schema.Literals(["F0", "S1"]),
-      tier: Schema.optional(Schema.Literals(["Free", "Standard"])),
-    }),
-  ),
-  kind: Schema.optional(
-    Schema.Literals(["sdk", "designer", "bot", "function", "azurebot"]),
-  ),
+  sku: Schema.optional(Schema.suspend(() => SkuSchema)),
+  kind: Schema.optional(Schema.suspend(() => KindSchema)),
   etag: Schema.optional(Schema.String),
   zones: Schema.optional(Schema.Array(Schema.String)),
 }).pipe(
@@ -780,20 +743,14 @@ export type BotsUpdateInput = typeof BotsUpdateInput.Type;
 
 // Output Schema
 export const BotsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.optional(Schema.suspend(() => BotPropertiesSchema)),
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   location: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
   tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-  sku: Schema.optional(
-    Schema.Struct({
-      name: Schema.Literals(["F0", "S1"]),
-      tier: Schema.optional(Schema.Literals(["Free", "Standard"])),
-    }),
-  ),
-  kind: Schema.optional(
-    Schema.Literals(["sdk", "designer", "bot", "function", "azurebot"]),
-  ),
+  sku: Schema.optional(Schema.suspend(() => SkuSchema)),
+  kind: Schema.optional(Schema.suspend(() => KindSchema)),
   etag: Schema.optional(Schema.String),
   zones: Schema.optional(Schema.Array(Schema.String)),
 });
@@ -809,28 +766,14 @@ export const BotsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const ChannelsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  properties: Schema.optional(
-    Schema.Struct({
-      channelName: Schema.String,
-      etag: Schema.optional(Schema.NullOr(Schema.String)),
-      provisioningState: Schema.optional(Schema.String),
-      location: Schema.optional(Schema.String),
-    }),
-  ),
+  properties: Schema.optional(Schema.suspend(() => ChannelSchema)),
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   location: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
   tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-  sku: Schema.optional(
-    Schema.Struct({
-      name: Schema.Literals(["F0", "S1"]),
-      tier: Schema.optional(Schema.Literals(["Free", "Standard"])),
-    }),
-  ),
-  kind: Schema.optional(
-    Schema.Literals(["sdk", "designer", "bot", "function", "azurebot"]),
-  ),
+  sku: Schema.optional(Schema.suspend(() => SkuSchema)),
+  kind: Schema.optional(Schema.suspend(() => KindSchema)),
   etag: Schema.optional(Schema.String),
   zones: Schema.optional(Schema.Array(Schema.String)),
 }).pipe(
@@ -844,20 +787,14 @@ export type ChannelsCreateInput = typeof ChannelsCreateInput.Type;
 
 // Output Schema
 export const ChannelsCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.optional(Schema.suspend(() => ChannelSchema)),
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   location: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
   tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-  sku: Schema.optional(
-    Schema.Struct({
-      name: Schema.Literals(["F0", "S1"]),
-      tier: Schema.optional(Schema.Literals(["Free", "Standard"])),
-    }),
-  ),
-  kind: Schema.optional(
-    Schema.Literals(["sdk", "designer", "bot", "function", "azurebot"]),
-  ),
+  sku: Schema.optional(Schema.suspend(() => SkuSchema)),
+  kind: Schema.optional(Schema.suspend(() => KindSchema)),
   etag: Schema.optional(Schema.String),
   zones: Schema.optional(Schema.Array(Schema.String)),
 });
@@ -911,20 +848,14 @@ export type ChannelsGetInput = typeof ChannelsGetInput.Type;
 
 // Output Schema
 export const ChannelsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.optional(Schema.suspend(() => ChannelSchema)),
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   location: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
   tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-  sku: Schema.optional(
-    Schema.Struct({
-      name: Schema.Literals(["F0", "S1"]),
-      tier: Schema.optional(Schema.Literals(["Free", "Standard"])),
-    }),
-  ),
-  kind: Schema.optional(
-    Schema.Literals(["sdk", "designer", "bot", "function", "azurebot"]),
-  ),
+  sku: Schema.optional(Schema.suspend(() => SkuSchema)),
+  kind: Schema.optional(Schema.suspend(() => KindSchema)),
   etag: Schema.optional(Schema.String),
   zones: Schema.optional(Schema.Array(Schema.String)),
 });
@@ -957,26 +888,7 @@ export const ChannelsListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          location: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-          sku: Schema.optional(
-            Schema.Struct({
-              name: Schema.Literals(["F0", "S1"]),
-              tier: Schema.optional(Schema.Literals(["Free", "Standard"])),
-            }),
-          ),
-          kind: Schema.optional(
-            Schema.Literals(["sdk", "designer", "bot", "function", "azurebot"]),
-          ),
-          etag: Schema.optional(Schema.String),
-          zones: Schema.optional(Schema.Array(Schema.String)),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => BotChannelSchema)),
     ),
   });
 export type ChannelsListByResourceGroupOutput =
@@ -1006,20 +918,19 @@ export type ChannelsListWithKeysInput = typeof ChannelsListWithKeysInput.Type;
 // Output Schema
 export const ChannelsListWithKeysOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resource: Schema.optional(Schema.suspend(() => ChannelSchema)),
+    setting: Schema.optional(Schema.suspend(() => ChannelSettingsSchema)),
+    provisioningState: Schema.optional(Schema.String),
+    entityTag: Schema.optional(Schema.String),
+    changedTime: Schema.optional(Schema.String),
+    properties: Schema.optional(Schema.suspend(() => ChannelSchema)),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     location: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    sku: Schema.optional(
-      Schema.Struct({
-        name: Schema.Literals(["F0", "S1"]),
-        tier: Schema.optional(Schema.Literals(["Free", "Standard"])),
-      }),
-    ),
-    kind: Schema.optional(
-      Schema.Literals(["sdk", "designer", "bot", "function", "azurebot"]),
-    ),
+    sku: Schema.optional(Schema.suspend(() => SkuSchema)),
+    kind: Schema.optional(Schema.suspend(() => KindSchema)),
     etag: Schema.optional(Schema.String),
     zones: Schema.optional(Schema.Array(Schema.String)),
   });
@@ -1037,28 +948,14 @@ export const ChannelsListWithKeys = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const ChannelsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  properties: Schema.optional(
-    Schema.Struct({
-      channelName: Schema.String,
-      etag: Schema.optional(Schema.NullOr(Schema.String)),
-      provisioningState: Schema.optional(Schema.String),
-      location: Schema.optional(Schema.String),
-    }),
-  ),
+  properties: Schema.optional(Schema.suspend(() => ChannelSchema)),
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   location: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
   tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-  sku: Schema.optional(
-    Schema.Struct({
-      name: Schema.Literals(["F0", "S1"]),
-      tier: Schema.optional(Schema.Literals(["Free", "Standard"])),
-    }),
-  ),
-  kind: Schema.optional(
-    Schema.Literals(["sdk", "designer", "bot", "function", "azurebot"]),
-  ),
+  sku: Schema.optional(Schema.suspend(() => SkuSchema)),
+  kind: Schema.optional(Schema.suspend(() => KindSchema)),
   etag: Schema.optional(Schema.String),
   zones: Schema.optional(Schema.Array(Schema.String)),
 }).pipe(
@@ -1072,20 +969,14 @@ export type ChannelsUpdateInput = typeof ChannelsUpdateInput.Type;
 
 // Output Schema
 export const ChannelsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.optional(Schema.suspend(() => ChannelSchema)),
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   location: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
   tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-  sku: Schema.optional(
-    Schema.Struct({
-      name: Schema.Literals(["F0", "S1"]),
-      tier: Schema.optional(Schema.Literals(["Free", "Standard"])),
-    }),
-  ),
-  kind: Schema.optional(
-    Schema.Literals(["sdk", "designer", "bot", "function", "azurebot"]),
-  ),
+  sku: Schema.optional(Schema.suspend(() => SkuSchema)),
+  kind: Schema.optional(Schema.suspend(() => KindSchema)),
   etag: Schema.optional(Schema.String),
   zones: Schema.optional(Schema.Array(Schema.String)),
 });
@@ -1117,20 +1008,14 @@ export type DirectLineRegenerateKeysInput =
 // Output Schema
 export const DirectLineRegenerateKeysOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(Schema.suspend(() => ChannelSchema)),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     location: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    sku: Schema.optional(
-      Schema.Struct({
-        name: Schema.Literals(["F0", "S1"]),
-        tier: Schema.optional(Schema.Literals(["Free", "Standard"])),
-      }),
-    ),
-    kind: Schema.optional(
-      Schema.Literals(["sdk", "designer", "bot", "function", "azurebot"]),
-    ),
+    sku: Schema.optional(Schema.suspend(() => SkuSchema)),
+    kind: Schema.optional(Schema.suspend(() => KindSchema)),
     etag: Schema.optional(Schema.String),
     zones: Schema.optional(Schema.Array(Schema.String)),
   });
@@ -1164,9 +1049,7 @@ export const EmailCreateSignInUrlOutput =
     id: Schema.optional(Schema.String),
     location: Schema.optional(Schema.String),
     properties: Schema.optional(
-      Schema.Struct({
-        url: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(() => CreateEmailSignInUrlResponsePropertiesSchema),
     ),
   });
 export type EmailCreateSignInUrlOutput = typeof EmailCreateSignInUrlOutput.Type;
@@ -1268,21 +1151,7 @@ export type OperationsListInput = typeof OperationsListInput.Type;
 export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   nextLink: Schema.optional(Schema.String),
   value: Schema.optional(
-    Schema.Array(
-      Schema.Struct({
-        name: Schema.optional(Schema.String),
-        display: Schema.optional(
-          Schema.Struct({
-            description: Schema.optional(Schema.String),
-            operation: Schema.optional(Schema.String),
-            provider: Schema.optional(Schema.String),
-            resource: Schema.optional(Schema.String),
-          }),
-        ),
-        origin: Schema.optional(Schema.String),
-        properties: Schema.optional(Schema.Unknown),
-      }),
-    ),
+    Schema.Array(Schema.suspend(() => OperationEntitySchema)),
   ),
 });
 export type OperationsListOutput = typeof OperationsListOutput.Type;
@@ -1300,24 +1169,7 @@ export const PrivateEndpointConnectionsCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     privateEndpointConnectionName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        privateEndpoint: Schema.optional(
-          Schema.Struct({
-            id: Schema.optional(Schema.String),
-          }),
-        ),
-        privateLinkServiceConnectionState: Schema.Struct({
-          status: Schema.optional(
-            Schema.Literals(["Pending", "Approved", "Rejected"]),
-          ),
-          description: Schema.optional(Schema.String),
-          actionsRequired: Schema.optional(Schema.String),
-        }),
-        provisioningState: Schema.optional(
-          Schema.Literals(["Succeeded", "Creating", "Deleting", "Failed"]),
-        ),
-        groupIds: Schema.optional(Schema.Array(Schema.String)),
-      }),
+      Schema.suspend(() => PrivateEndpointConnectionPropertiesSchema),
     ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -1335,6 +1187,9 @@ export type PrivateEndpointConnectionsCreateInput =
 // Output Schema
 export const PrivateEndpointConnectionsCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => PrivateEndpointConnectionPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1402,6 +1257,9 @@ export type PrivateEndpointConnectionsGetInput =
 // Output Schema
 export const PrivateEndpointConnectionsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => PrivateEndpointConnectionPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1436,13 +1294,7 @@ export type PrivateEndpointConnectionsListInput =
 export const PrivateEndpointConnectionsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => PrivateEndpointConnectionSchema)),
     ),
   });
 export type PrivateEndpointConnectionsListOutput =
@@ -1473,13 +1325,7 @@ export type PrivateLinkResourcesListByBotResourceInput =
 export const PrivateLinkResourcesListByBotResourceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => PrivateLinkResourceSchema)),
     ),
   });
 export type PrivateLinkResourcesListByBotResourceOutput =

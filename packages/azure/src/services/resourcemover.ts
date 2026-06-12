@@ -8,6 +8,260 @@ import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
+// Shared schemas
+const IdentitySchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  type: Schema.optional(Schema.suspend(() => ResourceIdentityTypeSchema)),
+  principalId: Schema.optional(Schema.String),
+  tenantId: Schema.optional(Schema.String),
+});
+const ResourceIdentityTypeSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "None",
+  "SystemAssigned",
+  "UserAssigned",
+]);
+const MoveCollectionPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    sourceRegion: Schema.optional(Schema.String),
+    targetRegion: Schema.optional(Schema.String),
+    moveRegion: Schema.optional(Schema.String),
+    provisioningState: Schema.optional(
+      Schema.suspend(() => ProvisioningStateSchema),
+    ),
+    version: Schema.optional(Schema.String),
+    moveType: Schema.optional(Schema.suspend(() => MoveTypeSchema)),
+    errors: Schema.optional(
+      Schema.Struct({
+        properties: Schema.optional(
+          Schema.suspend(() => MoveResourceErrorBodySchema),
+        ),
+      }),
+    ),
+  });
+const ProvisioningStateSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Succeeded",
+  "Updating",
+  "Creating",
+  "Failed",
+]);
+const MoveTypeSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "RegionToRegion",
+  "RegionToZone",
+]);
+const MoveResourceErrorBodySchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  code: Schema.optional(Schema.String),
+  message: Schema.optional(Schema.String),
+  target: Schema.optional(Schema.String),
+  details: Schema.optional(Schema.Array(Schema.Unknown)),
+});
+const OperationStatusErrorSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  code: Schema.optional(Schema.String),
+  message: Schema.optional(Schema.String),
+  details: Schema.optional(Schema.Array(Schema.Unknown)),
+  additionalInfo: Schema.optional(
+    Schema.Array(Schema.suspend(() => OperationErrorAdditionalInfoSchema)),
+  ),
+});
+const OperationErrorAdditionalInfoSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    type: Schema.optional(Schema.String),
+    info: Schema.optional(Schema.suspend(() => MoveErrorInfoSchema)),
+  });
+const MoveErrorInfoSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  moveResources: Schema.optional(
+    Schema.Array(Schema.suspend(() => AffectedMoveResourceSchema)),
+  ),
+});
+const AffectedMoveResourceSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  sourceId: Schema.optional(Schema.String),
+  moveResources: Schema.optional(Schema.Array(Schema.Unknown)),
+});
+const OperationStatusPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+const MoveResourceInputTypeSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals(
+  ["MoveResourceId", "MoveResourceSourceId"],
+);
+const MoveResourceSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  properties: Schema.optional(
+    Schema.suspend(() => MoveResourcePropertiesSchema),
+  ),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
+const MoveResourcePropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  provisioningState: Schema.optional(
+    Schema.suspend(() => ProvisioningStateSchema),
+  ),
+  sourceId: Schema.String,
+  targetId: Schema.optional(Schema.String),
+  existingTargetId: Schema.optional(Schema.String),
+  resourceSettings: Schema.optional(
+    Schema.suspend(() => ResourceSettingsSchema),
+  ),
+  sourceResourceSettings: Schema.optional(
+    Schema.suspend(() => ResourceSettingsSchema),
+  ),
+  moveStatus: Schema.optional(
+    Schema.Struct({
+      moveState: Schema.optional(Schema.suspend(() => MoveStateSchema)),
+      jobStatus: Schema.optional(Schema.suspend(() => JobStatusSchema)),
+      errors: Schema.optional(Schema.suspend(() => MoveResourceErrorSchema)),
+    }),
+  ),
+  dependsOn: Schema.optional(
+    Schema.Array(Schema.suspend(() => MoveResourceDependencySchema)),
+  ),
+  dependsOnOverrides: Schema.optional(
+    Schema.Array(Schema.suspend(() => MoveResourceDependencyOverrideSchema)),
+  ),
+  isResolveRequired: Schema.optional(Schema.Boolean),
+  errors: Schema.optional(
+    Schema.Struct({
+      properties: Schema.optional(
+        Schema.suspend(() => MoveResourceErrorBodySchema),
+      ),
+    }),
+  ),
+});
+const ResourceSettingsSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  resourceType: Schema.String,
+  targetResourceName: Schema.optional(Schema.String),
+  targetResourceGroupName: Schema.optional(Schema.String),
+});
+const MoveStateSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "AssignmentPending",
+  "PreparePending",
+  "PrepareInProgress",
+  "PrepareFailed",
+  "MovePending",
+  "MoveInProgress",
+  "MoveFailed",
+  "DiscardInProgress",
+  "DiscardFailed",
+  "CommitPending",
+  "CommitInProgress",
+  "CommitFailed",
+  "Committed",
+  "DeleteSourcePending",
+  "ResourceMoveCompleted",
+]);
+const JobStatusSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  jobName: Schema.optional(Schema.suspend(() => JobNameSchema)),
+  jobProgress: Schema.optional(Schema.String),
+});
+const JobNameSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "InitialSync",
+]);
+const MoveResourceErrorSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.optional(
+    Schema.suspend(() => MoveResourceErrorBodySchema),
+  ),
+});
+const MoveResourceDependencySchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  resolutionStatus: Schema.optional(Schema.String),
+  resolutionType: Schema.optional(Schema.suspend(() => ResolutionTypeSchema)),
+  dependencyType: Schema.optional(Schema.suspend(() => DependencyTypeSchema)),
+  manualResolution: Schema.optional(
+    Schema.suspend(() => ManualResolutionPropertiesSchema),
+  ),
+  automaticResolution: Schema.optional(
+    Schema.suspend(() => AutomaticResolutionPropertiesSchema),
+  ),
+  isOptional: Schema.optional(Schema.String),
+});
+const ResolutionTypeSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Manual",
+  "Automatic",
+]);
+const DependencyTypeSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "RequiredForPrepare",
+  "RequiredForMove",
+]);
+const ManualResolutionPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    targetId: Schema.optional(Schema.String),
+  });
+const AutomaticResolutionPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    moveResourceId: Schema.optional(Schema.String),
+  });
+const MoveResourceDependencyOverrideSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    targetId: Schema.optional(Schema.String),
+  });
+const SummaryCollectionSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  fieldName: Schema.optional(Schema.String),
+  summary: Schema.optional(Schema.Array(Schema.suspend(() => SummarySchema))),
+});
+const SummarySchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  count: Schema.optional(Schema.Number),
+  item: Schema.optional(Schema.String),
+});
+const UnresolvedDependencySchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  count: Schema.optional(Schema.Number),
+  id: Schema.optional(Schema.String),
+});
+const OperationsDiscoverySchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  isDataAction: Schema.optional(Schema.Boolean),
+  display: Schema.optional(Schema.suspend(() => DisplaySchema)),
+  origin: Schema.optional(Schema.String),
+  properties: Schema.optional(
+    Schema.suspend(() => OperationsDiscoveryPropertiesSchema),
+  ),
+});
+const DisplaySchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  provider: Schema.optional(Schema.String),
+  resource: Schema.optional(Schema.String),
+  operation: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+});
+const OperationsDiscoveryPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown;
+const MoveCollectionSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  etag: Schema.optional(Schema.String),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  location: Schema.optional(Schema.String),
+  identity: Schema.optional(Schema.suspend(() => IdentitySchema)),
+  properties: Schema.optional(
+    Schema.suspend(() => MoveCollectionPropertiesSchema),
+  ),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
+
 // Input Schema
 export const MoveCollectionsBulkRemoveInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -16,7 +270,7 @@ export const MoveCollectionsBulkRemoveInput =
     validateOnly: Schema.optional(Schema.Boolean),
     moveResources: Schema.optional(Schema.Array(Schema.String)),
     moveResourceInputType: Schema.optional(
-      Schema.Literals(["MoveResourceId", "MoveResourceSourceId"]),
+      Schema.suspend(() => MoveResourceInputTypeSchema),
     ),
   }).pipe(
     T.Http({
@@ -37,36 +291,10 @@ export const MoveCollectionsBulkRemoveOutput =
     status: Schema.optional(Schema.String),
     startTime: Schema.optional(Schema.String),
     endTime: Schema.optional(Schema.String),
-    error: Schema.optional(
-      Schema.Struct({
-        code: Schema.optional(Schema.String),
-        message: Schema.optional(Schema.String),
-        details: Schema.optional(Schema.Array(Schema.Unknown)),
-        additionalInfo: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              type: Schema.optional(Schema.String),
-              info: Schema.optional(
-                Schema.Struct({
-                  moveResources: Schema.optional(
-                    Schema.Array(
-                      Schema.Struct({
-                        id: Schema.optional(Schema.String),
-                        sourceId: Schema.optional(Schema.String),
-                        moveResources: Schema.optional(
-                          Schema.Array(Schema.Unknown),
-                        ),
-                      }),
-                    ),
-                  ),
-                }),
-              ),
-            }),
-          ),
-        ),
-      }),
+    error: Schema.optional(Schema.suspend(() => OperationStatusErrorSchema)),
+    properties: Schema.optional(
+      Schema.suspend(() => OperationStatusPropertiesSchema),
     ),
-    properties: Schema.optional(Schema.Struct({})),
   });
 export type MoveCollectionsBulkRemoveOutput =
   typeof MoveCollectionsBulkRemoveOutput.Type;
@@ -87,7 +315,7 @@ export const MoveCollectionsCommitInput =
     validateOnly: Schema.optional(Schema.Boolean),
     moveResources: Schema.Array(Schema.String),
     moveResourceInputType: Schema.optional(
-      Schema.Literals(["MoveResourceId", "MoveResourceSourceId"]),
+      Schema.suspend(() => MoveResourceInputTypeSchema),
     ),
   }).pipe(
     T.Http({
@@ -107,36 +335,10 @@ export const MoveCollectionsCommitOutput =
     status: Schema.optional(Schema.String),
     startTime: Schema.optional(Schema.String),
     endTime: Schema.optional(Schema.String),
-    error: Schema.optional(
-      Schema.Struct({
-        code: Schema.optional(Schema.String),
-        message: Schema.optional(Schema.String),
-        details: Schema.optional(Schema.Array(Schema.Unknown)),
-        additionalInfo: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              type: Schema.optional(Schema.String),
-              info: Schema.optional(
-                Schema.Struct({
-                  moveResources: Schema.optional(
-                    Schema.Array(
-                      Schema.Struct({
-                        id: Schema.optional(Schema.String),
-                        sourceId: Schema.optional(Schema.String),
-                        moveResources: Schema.optional(
-                          Schema.Array(Schema.Unknown),
-                        ),
-                      }),
-                    ),
-                  ),
-                }),
-              ),
-            }),
-          ),
-        ),
-      }),
+    error: Schema.optional(Schema.suspend(() => OperationStatusErrorSchema)),
+    properties: Schema.optional(
+      Schema.suspend(() => OperationStatusPropertiesSchema),
     ),
-    properties: Schema.optional(Schema.Struct({})),
   });
 export type MoveCollectionsCommitOutput =
   typeof MoveCollectionsCommitOutput.Type;
@@ -160,40 +362,9 @@ export const MoveCollectionsCreateInput =
     etag: Schema.optional(Schema.String),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     location: Schema.optional(Schema.String),
-    identity: Schema.optional(
-      Schema.Struct({
-        type: Schema.optional(
-          Schema.Literals(["None", "SystemAssigned", "UserAssigned"]),
-        ),
-        principalId: Schema.optional(Schema.String),
-        tenantId: Schema.optional(Schema.String),
-      }),
-    ),
+    identity: Schema.optional(Schema.suspend(() => IdentitySchema)),
     properties: Schema.optional(
-      Schema.Struct({
-        sourceRegion: Schema.optional(Schema.String),
-        targetRegion: Schema.optional(Schema.String),
-        moveRegion: Schema.optional(Schema.String),
-        provisioningState: Schema.optional(
-          Schema.Literals(["Succeeded", "Updating", "Creating", "Failed"]),
-        ),
-        version: Schema.optional(Schema.String),
-        moveType: Schema.optional(
-          Schema.Literals(["RegionToRegion", "RegionToZone"]),
-        ),
-        errors: Schema.optional(
-          Schema.Struct({
-            properties: Schema.optional(
-              Schema.Struct({
-                code: Schema.optional(Schema.String),
-                message: Schema.optional(Schema.String),
-                target: Schema.optional(Schema.String),
-                details: Schema.optional(Schema.Array(Schema.Unknown)),
-              }),
-            ),
-          }),
-        ),
-      }),
+      Schema.suspend(() => MoveCollectionPropertiesSchema),
     ),
     systemData: Schema.optional(
       Schema.Struct({
@@ -227,40 +398,9 @@ export const MoveCollectionsCreateOutput =
     etag: Schema.optional(Schema.String),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     location: Schema.optional(Schema.String),
-    identity: Schema.optional(
-      Schema.Struct({
-        type: Schema.optional(
-          Schema.Literals(["None", "SystemAssigned", "UserAssigned"]),
-        ),
-        principalId: Schema.optional(Schema.String),
-        tenantId: Schema.optional(Schema.String),
-      }),
-    ),
+    identity: Schema.optional(Schema.suspend(() => IdentitySchema)),
     properties: Schema.optional(
-      Schema.Struct({
-        sourceRegion: Schema.optional(Schema.String),
-        targetRegion: Schema.optional(Schema.String),
-        moveRegion: Schema.optional(Schema.String),
-        provisioningState: Schema.optional(
-          Schema.Literals(["Succeeded", "Updating", "Creating", "Failed"]),
-        ),
-        version: Schema.optional(Schema.String),
-        moveType: Schema.optional(
-          Schema.Literals(["RegionToRegion", "RegionToZone"]),
-        ),
-        errors: Schema.optional(
-          Schema.Struct({
-            properties: Schema.optional(
-              Schema.Struct({
-                code: Schema.optional(Schema.String),
-                message: Schema.optional(Schema.String),
-                target: Schema.optional(Schema.String),
-                details: Schema.optional(Schema.Array(Schema.Unknown)),
-              }),
-            ),
-          }),
-        ),
-      }),
+      Schema.suspend(() => MoveCollectionPropertiesSchema),
     ),
     systemData: Schema.optional(
       Schema.Struct({
@@ -310,36 +450,10 @@ export const MoveCollectionsDeleteOutput =
     status: Schema.optional(Schema.String),
     startTime: Schema.optional(Schema.String),
     endTime: Schema.optional(Schema.String),
-    error: Schema.optional(
-      Schema.Struct({
-        code: Schema.optional(Schema.String),
-        message: Schema.optional(Schema.String),
-        details: Schema.optional(Schema.Array(Schema.Unknown)),
-        additionalInfo: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              type: Schema.optional(Schema.String),
-              info: Schema.optional(
-                Schema.Struct({
-                  moveResources: Schema.optional(
-                    Schema.Array(
-                      Schema.Struct({
-                        id: Schema.optional(Schema.String),
-                        sourceId: Schema.optional(Schema.String),
-                        moveResources: Schema.optional(
-                          Schema.Array(Schema.Unknown),
-                        ),
-                      }),
-                    ),
-                  ),
-                }),
-              ),
-            }),
-          ),
-        ),
-      }),
+    error: Schema.optional(Schema.suspend(() => OperationStatusErrorSchema)),
+    properties: Schema.optional(
+      Schema.suspend(() => OperationStatusPropertiesSchema),
     ),
-    properties: Schema.optional(Schema.Struct({})),
   });
 export type MoveCollectionsDeleteOutput =
   typeof MoveCollectionsDeleteOutput.Type;
@@ -360,7 +474,7 @@ export const MoveCollectionsDiscardInput =
     validateOnly: Schema.optional(Schema.Boolean),
     moveResources: Schema.Array(Schema.String),
     moveResourceInputType: Schema.optional(
-      Schema.Literals(["MoveResourceId", "MoveResourceSourceId"]),
+      Schema.suspend(() => MoveResourceInputTypeSchema),
     ),
   }).pipe(
     T.Http({
@@ -381,36 +495,10 @@ export const MoveCollectionsDiscardOutput =
     status: Schema.optional(Schema.String),
     startTime: Schema.optional(Schema.String),
     endTime: Schema.optional(Schema.String),
-    error: Schema.optional(
-      Schema.Struct({
-        code: Schema.optional(Schema.String),
-        message: Schema.optional(Schema.String),
-        details: Schema.optional(Schema.Array(Schema.Unknown)),
-        additionalInfo: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              type: Schema.optional(Schema.String),
-              info: Schema.optional(
-                Schema.Struct({
-                  moveResources: Schema.optional(
-                    Schema.Array(
-                      Schema.Struct({
-                        id: Schema.optional(Schema.String),
-                        sourceId: Schema.optional(Schema.String),
-                        moveResources: Schema.optional(
-                          Schema.Array(Schema.Unknown),
-                        ),
-                      }),
-                    ),
-                  ),
-                }),
-              ),
-            }),
-          ),
-        ),
-      }),
+    error: Schema.optional(Schema.suspend(() => OperationStatusErrorSchema)),
+    properties: Schema.optional(
+      Schema.suspend(() => OperationStatusPropertiesSchema),
     ),
-    properties: Schema.optional(Schema.Struct({})),
   });
 export type MoveCollectionsDiscardOutput =
   typeof MoveCollectionsDiscardOutput.Type;
@@ -445,40 +533,9 @@ export const MoveCollectionsGetOutput =
     etag: Schema.optional(Schema.String),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     location: Schema.optional(Schema.String),
-    identity: Schema.optional(
-      Schema.Struct({
-        type: Schema.optional(
-          Schema.Literals(["None", "SystemAssigned", "UserAssigned"]),
-        ),
-        principalId: Schema.optional(Schema.String),
-        tenantId: Schema.optional(Schema.String),
-      }),
-    ),
+    identity: Schema.optional(Schema.suspend(() => IdentitySchema)),
     properties: Schema.optional(
-      Schema.Struct({
-        sourceRegion: Schema.optional(Schema.String),
-        targetRegion: Schema.optional(Schema.String),
-        moveRegion: Schema.optional(Schema.String),
-        provisioningState: Schema.optional(
-          Schema.Literals(["Succeeded", "Updating", "Creating", "Failed"]),
-        ),
-        version: Schema.optional(Schema.String),
-        moveType: Schema.optional(
-          Schema.Literals(["RegionToRegion", "RegionToZone"]),
-        ),
-        errors: Schema.optional(
-          Schema.Struct({
-            properties: Schema.optional(
-              Schema.Struct({
-                code: Schema.optional(Schema.String),
-                message: Schema.optional(Schema.String),
-                target: Schema.optional(Schema.String),
-                details: Schema.optional(Schema.Array(Schema.Unknown)),
-              }),
-            ),
-          }),
-        ),
-      }),
+      Schema.suspend(() => MoveCollectionPropertiesSchema),
     ),
     systemData: Schema.optional(
       Schema.Struct({
@@ -511,7 +568,7 @@ export const MoveCollectionsInitiateMoveInput =
     validateOnly: Schema.optional(Schema.Boolean),
     moveResources: Schema.Array(Schema.String),
     moveResourceInputType: Schema.optional(
-      Schema.Literals(["MoveResourceId", "MoveResourceSourceId"]),
+      Schema.suspend(() => MoveResourceInputTypeSchema),
     ),
   }).pipe(
     T.Http({
@@ -532,36 +589,10 @@ export const MoveCollectionsInitiateMoveOutput =
     status: Schema.optional(Schema.String),
     startTime: Schema.optional(Schema.String),
     endTime: Schema.optional(Schema.String),
-    error: Schema.optional(
-      Schema.Struct({
-        code: Schema.optional(Schema.String),
-        message: Schema.optional(Schema.String),
-        details: Schema.optional(Schema.Array(Schema.Unknown)),
-        additionalInfo: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              type: Schema.optional(Schema.String),
-              info: Schema.optional(
-                Schema.Struct({
-                  moveResources: Schema.optional(
-                    Schema.Array(
-                      Schema.Struct({
-                        id: Schema.optional(Schema.String),
-                        sourceId: Schema.optional(Schema.String),
-                        moveResources: Schema.optional(
-                          Schema.Array(Schema.Unknown),
-                        ),
-                      }),
-                    ),
-                  ),
-                }),
-              ),
-            }),
-          ),
-        ),
-      }),
+    error: Schema.optional(Schema.suspend(() => OperationStatusErrorSchema)),
+    properties: Schema.optional(
+      Schema.suspend(() => OperationStatusPropertiesSchema),
     ),
-    properties: Schema.optional(Schema.Struct({})),
   });
 export type MoveCollectionsInitiateMoveOutput =
   typeof MoveCollectionsInitiateMoveOutput.Type;
@@ -592,80 +623,7 @@ export type MoveCollectionsListMoveCollectionsByResourceGroupInput =
 export const MoveCollectionsListMoveCollectionsByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          etag: Schema.optional(Schema.String),
-          tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-          location: Schema.optional(Schema.String),
-          identity: Schema.optional(
-            Schema.Struct({
-              type: Schema.optional(
-                Schema.Literals(["None", "SystemAssigned", "UserAssigned"]),
-              ),
-              principalId: Schema.optional(Schema.String),
-              tenantId: Schema.optional(Schema.String),
-            }),
-          ),
-          properties: Schema.optional(
-            Schema.Struct({
-              sourceRegion: Schema.optional(Schema.String),
-              targetRegion: Schema.optional(Schema.String),
-              moveRegion: Schema.optional(Schema.String),
-              provisioningState: Schema.optional(
-                Schema.Literals([
-                  "Succeeded",
-                  "Updating",
-                  "Creating",
-                  "Failed",
-                ]),
-              ),
-              version: Schema.optional(Schema.String),
-              moveType: Schema.optional(
-                Schema.Literals(["RegionToRegion", "RegionToZone"]),
-              ),
-              errors: Schema.optional(
-                Schema.Struct({
-                  properties: Schema.optional(
-                    Schema.Struct({
-                      code: Schema.optional(Schema.String),
-                      message: Schema.optional(Schema.String),
-                      target: Schema.optional(Schema.String),
-                      details: Schema.optional(Schema.Array(Schema.Unknown)),
-                    }),
-                  ),
-                }),
-              ),
-            }),
-          ),
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.String),
-              createdByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              createdAt: Schema.optional(Schema.String),
-              lastModifiedBy: Schema.optional(Schema.String),
-              lastModifiedByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              lastModifiedAt: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => MoveCollectionSchema)),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -699,80 +657,7 @@ export type MoveCollectionsListMoveCollectionsBySubscriptionInput =
 export const MoveCollectionsListMoveCollectionsBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          etag: Schema.optional(Schema.String),
-          tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-          location: Schema.optional(Schema.String),
-          identity: Schema.optional(
-            Schema.Struct({
-              type: Schema.optional(
-                Schema.Literals(["None", "SystemAssigned", "UserAssigned"]),
-              ),
-              principalId: Schema.optional(Schema.String),
-              tenantId: Schema.optional(Schema.String),
-            }),
-          ),
-          properties: Schema.optional(
-            Schema.Struct({
-              sourceRegion: Schema.optional(Schema.String),
-              targetRegion: Schema.optional(Schema.String),
-              moveRegion: Schema.optional(Schema.String),
-              provisioningState: Schema.optional(
-                Schema.Literals([
-                  "Succeeded",
-                  "Updating",
-                  "Creating",
-                  "Failed",
-                ]),
-              ),
-              version: Schema.optional(Schema.String),
-              moveType: Schema.optional(
-                Schema.Literals(["RegionToRegion", "RegionToZone"]),
-              ),
-              errors: Schema.optional(
-                Schema.Struct({
-                  properties: Schema.optional(
-                    Schema.Struct({
-                      code: Schema.optional(Schema.String),
-                      message: Schema.optional(Schema.String),
-                      target: Schema.optional(Schema.String),
-                      details: Schema.optional(Schema.Array(Schema.Unknown)),
-                    }),
-                  ),
-                }),
-              ),
-            }),
-          ),
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.String),
-              createdByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              createdAt: Schema.optional(Schema.String),
-              lastModifiedBy: Schema.optional(Schema.String),
-              lastModifiedByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              lastModifiedAt: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => MoveCollectionSchema)),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -829,7 +714,7 @@ export const MoveCollectionsPrepareInput =
     validateOnly: Schema.optional(Schema.Boolean),
     moveResources: Schema.Array(Schema.String),
     moveResourceInputType: Schema.optional(
-      Schema.Literals(["MoveResourceId", "MoveResourceSourceId"]),
+      Schema.suspend(() => MoveResourceInputTypeSchema),
     ),
   }).pipe(
     T.Http({
@@ -850,36 +735,10 @@ export const MoveCollectionsPrepareOutput =
     status: Schema.optional(Schema.String),
     startTime: Schema.optional(Schema.String),
     endTime: Schema.optional(Schema.String),
-    error: Schema.optional(
-      Schema.Struct({
-        code: Schema.optional(Schema.String),
-        message: Schema.optional(Schema.String),
-        details: Schema.optional(Schema.Array(Schema.Unknown)),
-        additionalInfo: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              type: Schema.optional(Schema.String),
-              info: Schema.optional(
-                Schema.Struct({
-                  moveResources: Schema.optional(
-                    Schema.Array(
-                      Schema.Struct({
-                        id: Schema.optional(Schema.String),
-                        sourceId: Schema.optional(Schema.String),
-                        moveResources: Schema.optional(
-                          Schema.Array(Schema.Unknown),
-                        ),
-                      }),
-                    ),
-                  ),
-                }),
-              ),
-            }),
-          ),
-        ),
-      }),
+    error: Schema.optional(Schema.suspend(() => OperationStatusErrorSchema)),
+    properties: Schema.optional(
+      Schema.suspend(() => OperationStatusPropertiesSchema),
     ),
-    properties: Schema.optional(Schema.Struct({})),
   });
 export type MoveCollectionsPrepareOutput =
   typeof MoveCollectionsPrepareOutput.Type;
@@ -915,36 +774,10 @@ export const MoveCollectionsResolveDependenciesOutput =
     status: Schema.optional(Schema.String),
     startTime: Schema.optional(Schema.String),
     endTime: Schema.optional(Schema.String),
-    error: Schema.optional(
-      Schema.Struct({
-        code: Schema.optional(Schema.String),
-        message: Schema.optional(Schema.String),
-        details: Schema.optional(Schema.Array(Schema.Unknown)),
-        additionalInfo: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              type: Schema.optional(Schema.String),
-              info: Schema.optional(
-                Schema.Struct({
-                  moveResources: Schema.optional(
-                    Schema.Array(
-                      Schema.Struct({
-                        id: Schema.optional(Schema.String),
-                        sourceId: Schema.optional(Schema.String),
-                        moveResources: Schema.optional(
-                          Schema.Array(Schema.Unknown),
-                        ),
-                      }),
-                    ),
-                  ),
-                }),
-              ),
-            }),
-          ),
-        ),
-      }),
+    error: Schema.optional(Schema.suspend(() => OperationStatusErrorSchema)),
+    properties: Schema.optional(
+      Schema.suspend(() => OperationStatusPropertiesSchema),
     ),
-    properties: Schema.optional(Schema.Struct({})),
   });
 export type MoveCollectionsResolveDependenciesOutput =
   typeof MoveCollectionsResolveDependenciesOutput.Type;
@@ -962,15 +795,7 @@ export const MoveCollectionsResolveDependencies =
 export const MoveCollectionsUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    identity: Schema.optional(
-      Schema.Struct({
-        type: Schema.optional(
-          Schema.Literals(["None", "SystemAssigned", "UserAssigned"]),
-        ),
-        principalId: Schema.optional(Schema.String),
-        tenantId: Schema.optional(Schema.String),
-      }),
-    ),
+    identity: Schema.optional(Schema.suspend(() => IdentitySchema)),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -989,40 +814,9 @@ export const MoveCollectionsUpdateOutput =
     etag: Schema.optional(Schema.String),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     location: Schema.optional(Schema.String),
-    identity: Schema.optional(
-      Schema.Struct({
-        type: Schema.optional(
-          Schema.Literals(["None", "SystemAssigned", "UserAssigned"]),
-        ),
-        principalId: Schema.optional(Schema.String),
-        tenantId: Schema.optional(Schema.String),
-      }),
-    ),
+    identity: Schema.optional(Schema.suspend(() => IdentitySchema)),
     properties: Schema.optional(
-      Schema.Struct({
-        sourceRegion: Schema.optional(Schema.String),
-        targetRegion: Schema.optional(Schema.String),
-        moveRegion: Schema.optional(Schema.String),
-        provisioningState: Schema.optional(
-          Schema.Literals(["Succeeded", "Updating", "Creating", "Failed"]),
-        ),
-        version: Schema.optional(Schema.String),
-        moveType: Schema.optional(
-          Schema.Literals(["RegionToRegion", "RegionToZone"]),
-        ),
-        errors: Schema.optional(
-          Schema.Struct({
-            properties: Schema.optional(
-              Schema.Struct({
-                code: Schema.optional(Schema.String),
-                message: Schema.optional(Schema.String),
-                target: Schema.optional(Schema.String),
-                details: Schema.optional(Schema.Array(Schema.Unknown)),
-              }),
-            ),
-          }),
-        ),
-      }),
+      Schema.suspend(() => MoveCollectionPropertiesSchema),
     ),
     systemData: Schema.optional(
       Schema.Struct({
@@ -1059,115 +853,7 @@ export const MoveResourcesCreateInput =
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
     properties: Schema.optional(
-      Schema.Struct({
-        provisioningState: Schema.optional(
-          Schema.Literals(["Succeeded", "Updating", "Creating", "Failed"]),
-        ),
-        sourceId: Schema.String,
-        targetId: Schema.optional(Schema.String),
-        existingTargetId: Schema.optional(Schema.String),
-        resourceSettings: Schema.optional(
-          Schema.Struct({
-            resourceType: Schema.String,
-            targetResourceName: Schema.optional(Schema.String),
-            targetResourceGroupName: Schema.optional(Schema.String),
-          }),
-        ),
-        sourceResourceSettings: Schema.optional(
-          Schema.Struct({
-            resourceType: Schema.String,
-            targetResourceName: Schema.optional(Schema.String),
-            targetResourceGroupName: Schema.optional(Schema.String),
-          }),
-        ),
-        moveStatus: Schema.optional(
-          Schema.Struct({
-            moveState: Schema.optional(
-              Schema.Literals([
-                "AssignmentPending",
-                "PreparePending",
-                "PrepareInProgress",
-                "PrepareFailed",
-                "MovePending",
-                "MoveInProgress",
-                "MoveFailed",
-                "DiscardInProgress",
-                "DiscardFailed",
-                "CommitPending",
-                "CommitInProgress",
-                "CommitFailed",
-                "Committed",
-                "DeleteSourcePending",
-                "ResourceMoveCompleted",
-              ]),
-            ),
-            jobStatus: Schema.optional(
-              Schema.Struct({
-                jobName: Schema.optional(Schema.Literals(["InitialSync"])),
-                jobProgress: Schema.optional(Schema.String),
-              }),
-            ),
-            errors: Schema.optional(
-              Schema.Struct({
-                properties: Schema.optional(
-                  Schema.Struct({
-                    code: Schema.optional(Schema.String),
-                    message: Schema.optional(Schema.String),
-                    target: Schema.optional(Schema.String),
-                    details: Schema.optional(Schema.Array(Schema.Unknown)),
-                  }),
-                ),
-              }),
-            ),
-          }),
-        ),
-        dependsOn: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              id: Schema.optional(Schema.String),
-              resolutionStatus: Schema.optional(Schema.String),
-              resolutionType: Schema.optional(
-                Schema.Literals(["Manual", "Automatic"]),
-              ),
-              dependencyType: Schema.optional(
-                Schema.Literals(["RequiredForPrepare", "RequiredForMove"]),
-              ),
-              manualResolution: Schema.optional(
-                Schema.Struct({
-                  targetId: Schema.optional(Schema.String),
-                }),
-              ),
-              automaticResolution: Schema.optional(
-                Schema.Struct({
-                  moveResourceId: Schema.optional(Schema.String),
-                }),
-              ),
-              isOptional: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        dependsOnOverrides: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              id: Schema.optional(Schema.String),
-              targetId: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        isResolveRequired: Schema.optional(Schema.Boolean),
-        errors: Schema.optional(
-          Schema.Struct({
-            properties: Schema.optional(
-              Schema.Struct({
-                code: Schema.optional(Schema.String),
-                message: Schema.optional(Schema.String),
-                target: Schema.optional(Schema.String),
-                details: Schema.optional(Schema.Array(Schema.Unknown)),
-              }),
-            ),
-          }),
-        ),
-      }),
+      Schema.suspend(() => MoveResourcePropertiesSchema),
     ),
     systemData: Schema.optional(
       Schema.Struct({
@@ -1200,115 +886,7 @@ export const MoveResourcesCreateOutput =
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
     properties: Schema.optional(
-      Schema.Struct({
-        provisioningState: Schema.optional(
-          Schema.Literals(["Succeeded", "Updating", "Creating", "Failed"]),
-        ),
-        sourceId: Schema.String,
-        targetId: Schema.optional(Schema.String),
-        existingTargetId: Schema.optional(Schema.String),
-        resourceSettings: Schema.optional(
-          Schema.Struct({
-            resourceType: Schema.String,
-            targetResourceName: Schema.optional(Schema.String),
-            targetResourceGroupName: Schema.optional(Schema.String),
-          }),
-        ),
-        sourceResourceSettings: Schema.optional(
-          Schema.Struct({
-            resourceType: Schema.String,
-            targetResourceName: Schema.optional(Schema.String),
-            targetResourceGroupName: Schema.optional(Schema.String),
-          }),
-        ),
-        moveStatus: Schema.optional(
-          Schema.Struct({
-            moveState: Schema.optional(
-              Schema.Literals([
-                "AssignmentPending",
-                "PreparePending",
-                "PrepareInProgress",
-                "PrepareFailed",
-                "MovePending",
-                "MoveInProgress",
-                "MoveFailed",
-                "DiscardInProgress",
-                "DiscardFailed",
-                "CommitPending",
-                "CommitInProgress",
-                "CommitFailed",
-                "Committed",
-                "DeleteSourcePending",
-                "ResourceMoveCompleted",
-              ]),
-            ),
-            jobStatus: Schema.optional(
-              Schema.Struct({
-                jobName: Schema.optional(Schema.Literals(["InitialSync"])),
-                jobProgress: Schema.optional(Schema.String),
-              }),
-            ),
-            errors: Schema.optional(
-              Schema.Struct({
-                properties: Schema.optional(
-                  Schema.Struct({
-                    code: Schema.optional(Schema.String),
-                    message: Schema.optional(Schema.String),
-                    target: Schema.optional(Schema.String),
-                    details: Schema.optional(Schema.Array(Schema.Unknown)),
-                  }),
-                ),
-              }),
-            ),
-          }),
-        ),
-        dependsOn: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              id: Schema.optional(Schema.String),
-              resolutionStatus: Schema.optional(Schema.String),
-              resolutionType: Schema.optional(
-                Schema.Literals(["Manual", "Automatic"]),
-              ),
-              dependencyType: Schema.optional(
-                Schema.Literals(["RequiredForPrepare", "RequiredForMove"]),
-              ),
-              manualResolution: Schema.optional(
-                Schema.Struct({
-                  targetId: Schema.optional(Schema.String),
-                }),
-              ),
-              automaticResolution: Schema.optional(
-                Schema.Struct({
-                  moveResourceId: Schema.optional(Schema.String),
-                }),
-              ),
-              isOptional: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        dependsOnOverrides: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              id: Schema.optional(Schema.String),
-              targetId: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        isResolveRequired: Schema.optional(Schema.Boolean),
-        errors: Schema.optional(
-          Schema.Struct({
-            properties: Schema.optional(
-              Schema.Struct({
-                code: Schema.optional(Schema.String),
-                message: Schema.optional(Schema.String),
-                target: Schema.optional(Schema.String),
-                details: Schema.optional(Schema.Array(Schema.Unknown)),
-              }),
-            ),
-          }),
-        ),
-      }),
+      Schema.suspend(() => MoveResourcePropertiesSchema),
     ),
     systemData: Schema.optional(
       Schema.Struct({
@@ -1355,36 +933,10 @@ export const MoveResourcesDeleteOutput =
     status: Schema.optional(Schema.String),
     startTime: Schema.optional(Schema.String),
     endTime: Schema.optional(Schema.String),
-    error: Schema.optional(
-      Schema.Struct({
-        code: Schema.optional(Schema.String),
-        message: Schema.optional(Schema.String),
-        details: Schema.optional(Schema.Array(Schema.Unknown)),
-        additionalInfo: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              type: Schema.optional(Schema.String),
-              info: Schema.optional(
-                Schema.Struct({
-                  moveResources: Schema.optional(
-                    Schema.Array(
-                      Schema.Struct({
-                        id: Schema.optional(Schema.String),
-                        sourceId: Schema.optional(Schema.String),
-                        moveResources: Schema.optional(
-                          Schema.Array(Schema.Unknown),
-                        ),
-                      }),
-                    ),
-                  ),
-                }),
-              ),
-            }),
-          ),
-        ),
-      }),
+    error: Schema.optional(Schema.suspend(() => OperationStatusErrorSchema)),
+    properties: Schema.optional(
+      Schema.suspend(() => OperationStatusPropertiesSchema),
     ),
-    properties: Schema.optional(Schema.Struct({})),
   });
 export type MoveResourcesDeleteOutput = typeof MoveResourcesDeleteOutput.Type;
 
@@ -1415,115 +967,7 @@ export const MoveResourcesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
     properties: Schema.optional(
-      Schema.Struct({
-        provisioningState: Schema.optional(
-          Schema.Literals(["Succeeded", "Updating", "Creating", "Failed"]),
-        ),
-        sourceId: Schema.String,
-        targetId: Schema.optional(Schema.String),
-        existingTargetId: Schema.optional(Schema.String),
-        resourceSettings: Schema.optional(
-          Schema.Struct({
-            resourceType: Schema.String,
-            targetResourceName: Schema.optional(Schema.String),
-            targetResourceGroupName: Schema.optional(Schema.String),
-          }),
-        ),
-        sourceResourceSettings: Schema.optional(
-          Schema.Struct({
-            resourceType: Schema.String,
-            targetResourceName: Schema.optional(Schema.String),
-            targetResourceGroupName: Schema.optional(Schema.String),
-          }),
-        ),
-        moveStatus: Schema.optional(
-          Schema.Struct({
-            moveState: Schema.optional(
-              Schema.Literals([
-                "AssignmentPending",
-                "PreparePending",
-                "PrepareInProgress",
-                "PrepareFailed",
-                "MovePending",
-                "MoveInProgress",
-                "MoveFailed",
-                "DiscardInProgress",
-                "DiscardFailed",
-                "CommitPending",
-                "CommitInProgress",
-                "CommitFailed",
-                "Committed",
-                "DeleteSourcePending",
-                "ResourceMoveCompleted",
-              ]),
-            ),
-            jobStatus: Schema.optional(
-              Schema.Struct({
-                jobName: Schema.optional(Schema.Literals(["InitialSync"])),
-                jobProgress: Schema.optional(Schema.String),
-              }),
-            ),
-            errors: Schema.optional(
-              Schema.Struct({
-                properties: Schema.optional(
-                  Schema.Struct({
-                    code: Schema.optional(Schema.String),
-                    message: Schema.optional(Schema.String),
-                    target: Schema.optional(Schema.String),
-                    details: Schema.optional(Schema.Array(Schema.Unknown)),
-                  }),
-                ),
-              }),
-            ),
-          }),
-        ),
-        dependsOn: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              id: Schema.optional(Schema.String),
-              resolutionStatus: Schema.optional(Schema.String),
-              resolutionType: Schema.optional(
-                Schema.Literals(["Manual", "Automatic"]),
-              ),
-              dependencyType: Schema.optional(
-                Schema.Literals(["RequiredForPrepare", "RequiredForMove"]),
-              ),
-              manualResolution: Schema.optional(
-                Schema.Struct({
-                  targetId: Schema.optional(Schema.String),
-                }),
-              ),
-              automaticResolution: Schema.optional(
-                Schema.Struct({
-                  moveResourceId: Schema.optional(Schema.String),
-                }),
-              ),
-              isOptional: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        dependsOnOverrides: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              id: Schema.optional(Schema.String),
-              targetId: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        isResolveRequired: Schema.optional(Schema.Boolean),
-        errors: Schema.optional(
-          Schema.Struct({
-            properties: Schema.optional(
-              Schema.Struct({
-                code: Schema.optional(Schema.String),
-                message: Schema.optional(Schema.String),
-                target: Schema.optional(Schema.String),
-                details: Schema.optional(Schema.Array(Schema.Unknown)),
-              }),
-            ),
-          }),
-        ),
-      }),
+      Schema.suspend(() => MoveResourcePropertiesSchema),
     ),
     systemData: Schema.optional(
       Schema.Struct({
@@ -1569,174 +1013,11 @@ export type MoveResourcesListInput = typeof MoveResourcesListInput.Type;
 export const MoveResourcesListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          properties: Schema.optional(
-            Schema.Struct({
-              provisioningState: Schema.optional(
-                Schema.Literals([
-                  "Succeeded",
-                  "Updating",
-                  "Creating",
-                  "Failed",
-                ]),
-              ),
-              sourceId: Schema.String,
-              targetId: Schema.optional(Schema.String),
-              existingTargetId: Schema.optional(Schema.String),
-              resourceSettings: Schema.optional(
-                Schema.Struct({
-                  resourceType: Schema.String,
-                  targetResourceName: Schema.optional(Schema.String),
-                  targetResourceGroupName: Schema.optional(Schema.String),
-                }),
-              ),
-              sourceResourceSettings: Schema.optional(
-                Schema.Struct({
-                  resourceType: Schema.String,
-                  targetResourceName: Schema.optional(Schema.String),
-                  targetResourceGroupName: Schema.optional(Schema.String),
-                }),
-              ),
-              moveStatus: Schema.optional(
-                Schema.Struct({
-                  moveState: Schema.optional(
-                    Schema.Literals([
-                      "AssignmentPending",
-                      "PreparePending",
-                      "PrepareInProgress",
-                      "PrepareFailed",
-                      "MovePending",
-                      "MoveInProgress",
-                      "MoveFailed",
-                      "DiscardInProgress",
-                      "DiscardFailed",
-                      "CommitPending",
-                      "CommitInProgress",
-                      "CommitFailed",
-                      "Committed",
-                      "DeleteSourcePending",
-                      "ResourceMoveCompleted",
-                    ]),
-                  ),
-                  jobStatus: Schema.optional(
-                    Schema.Struct({
-                      jobName: Schema.optional(
-                        Schema.Literals(["InitialSync"]),
-                      ),
-                      jobProgress: Schema.optional(Schema.String),
-                    }),
-                  ),
-                  errors: Schema.optional(
-                    Schema.Struct({
-                      properties: Schema.optional(
-                        Schema.Struct({
-                          code: Schema.optional(Schema.String),
-                          message: Schema.optional(Schema.String),
-                          target: Schema.optional(Schema.String),
-                          details: Schema.optional(
-                            Schema.Array(Schema.Unknown),
-                          ),
-                        }),
-                      ),
-                    }),
-                  ),
-                }),
-              ),
-              dependsOn: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    id: Schema.optional(Schema.String),
-                    resolutionStatus: Schema.optional(Schema.String),
-                    resolutionType: Schema.optional(
-                      Schema.Literals(["Manual", "Automatic"]),
-                    ),
-                    dependencyType: Schema.optional(
-                      Schema.Literals([
-                        "RequiredForPrepare",
-                        "RequiredForMove",
-                      ]),
-                    ),
-                    manualResolution: Schema.optional(
-                      Schema.Struct({
-                        targetId: Schema.optional(Schema.String),
-                      }),
-                    ),
-                    automaticResolution: Schema.optional(
-                      Schema.Struct({
-                        moveResourceId: Schema.optional(Schema.String),
-                      }),
-                    ),
-                    isOptional: Schema.optional(Schema.String),
-                  }),
-                ),
-              ),
-              dependsOnOverrides: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    id: Schema.optional(Schema.String),
-                    targetId: Schema.optional(Schema.String),
-                  }),
-                ),
-              ),
-              isResolveRequired: Schema.optional(Schema.Boolean),
-              errors: Schema.optional(
-                Schema.Struct({
-                  properties: Schema.optional(
-                    Schema.Struct({
-                      code: Schema.optional(Schema.String),
-                      message: Schema.optional(Schema.String),
-                      target: Schema.optional(Schema.String),
-                      details: Schema.optional(Schema.Array(Schema.Unknown)),
-                    }),
-                  ),
-                }),
-              ),
-            }),
-          ),
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.String),
-              createdByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              createdAt: Schema.optional(Schema.String),
-              lastModifiedBy: Schema.optional(Schema.String),
-              lastModifiedByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              lastModifiedAt: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => MoveResourceSchema)),
     ),
     nextLink: Schema.optional(Schema.String),
     summaryCollection: Schema.optional(
-      Schema.Struct({
-        fieldName: Schema.optional(Schema.String),
-        summary: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              count: Schema.optional(Schema.Number),
-              item: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-      }),
+      Schema.suspend(() => SummaryCollectionSchema),
     ),
     totalCount: Schema.optional(Schema.Number),
   });
@@ -1768,22 +1049,7 @@ export type OperationsDiscoveryGetInput =
 export const OperationsDiscoveryGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          name: Schema.optional(Schema.String),
-          isDataAction: Schema.optional(Schema.Boolean),
-          display: Schema.optional(
-            Schema.Struct({
-              provider: Schema.optional(Schema.String),
-              resource: Schema.optional(Schema.String),
-              operation: Schema.optional(Schema.String),
-              description: Schema.optional(Schema.String),
-            }),
-          ),
-          origin: Schema.optional(Schema.String),
-          properties: Schema.optional(Schema.Unknown),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => OperationsDiscoverySchema)),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -1817,26 +1083,11 @@ export type UnresolvedDependenciesGetInput =
 export const UnresolvedDependenciesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          count: Schema.optional(Schema.Number),
-          id: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => UnresolvedDependencySchema)),
     ),
     nextLink: Schema.optional(Schema.String),
     summaryCollection: Schema.optional(
-      Schema.Struct({
-        fieldName: Schema.optional(Schema.String),
-        summary: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              count: Schema.optional(Schema.Number),
-              item: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-      }),
+      Schema.suspend(() => SummaryCollectionSchema),
     ),
     totalCount: Schema.optional(Schema.Number),
   });

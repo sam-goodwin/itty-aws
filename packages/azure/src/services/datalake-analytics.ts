@@ -9,6 +9,339 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 import { SensitiveOutputString } from "../sensitive.ts";
 
+// Shared schemas
+const DataLakeAnalyticsAccountBasicSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    location: Schema.optional(Schema.String),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  });
+const DataLakeAnalyticsAccountPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    accountId: Schema.optional(Schema.String),
+    provisioningState: Schema.optional(
+      Schema.Literals([
+        "Failed",
+        "Creating",
+        "Running",
+        "Succeeded",
+        "Patching",
+        "Suspending",
+        "Resuming",
+        "Deleting",
+        "Deleted",
+        "Undeleting",
+        "Canceled",
+      ]),
+    ),
+    state: Schema.optional(Schema.Literals(["Active", "Suspended"])),
+    creationTime: Schema.optional(Schema.String),
+    lastModifiedTime: Schema.optional(Schema.String),
+    endpoint: Schema.optional(Schema.String),
+  });
+const CreateDataLakeAnalyticsAccountPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    defaultDataLakeStoreAccount: Schema.String,
+    dataLakeStoreAccounts: Schema.Array(
+      Schema.suspend(() => AddDataLakeStoreWithAccountParametersSchema),
+    ),
+    storageAccounts: Schema.optional(
+      Schema.Array(
+        Schema.suspend(() => AddStorageAccountWithAccountParametersSchema),
+      ),
+    ),
+    computePolicies: Schema.optional(
+      Schema.Array(
+        Schema.suspend(() => CreateComputePolicyWithAccountParametersSchema),
+      ),
+    ),
+    firewallRules: Schema.optional(
+      Schema.Array(
+        Schema.suspend(() => CreateFirewallRuleWithAccountParametersSchema),
+      ),
+    ),
+    firewallState: Schema.optional(Schema.Literals(["Enabled", "Disabled"])),
+    firewallAllowAzureIps: Schema.optional(
+      Schema.Literals(["Enabled", "Disabled"]),
+    ),
+    newTier: Schema.optional(
+      Schema.Literals([
+        "Consumption",
+        "Commitment_100AUHours",
+        "Commitment_500AUHours",
+        "Commitment_1000AUHours",
+        "Commitment_5000AUHours",
+        "Commitment_10000AUHours",
+        "Commitment_50000AUHours",
+        "Commitment_100000AUHours",
+        "Commitment_500000AUHours",
+      ]),
+    ),
+    maxJobCount: Schema.optional(Schema.Number),
+    maxDegreeOfParallelism: Schema.optional(Schema.Number),
+    maxDegreeOfParallelismPerJob: Schema.optional(Schema.Number),
+    minPriorityPerJob: Schema.optional(Schema.Number),
+    queryStoreRetention: Schema.optional(Schema.Number),
+  });
+const AddDataLakeStoreWithAccountParametersSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String,
+    properties: Schema.optional(
+      Schema.suspend(() => AddDataLakeStorePropertiesSchema),
+    ),
+  });
+const AddDataLakeStorePropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    suffix: Schema.optional(Schema.String),
+  });
+const AddStorageAccountWithAccountParametersSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String,
+    properties: Schema.suspend(() => AddStorageAccountPropertiesSchema),
+  });
+const AddStorageAccountPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    accessKey: Schema.String,
+    suffix: Schema.optional(Schema.String),
+  });
+const CreateComputePolicyWithAccountParametersSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String,
+    properties: Schema.suspend(
+      () => CreateOrUpdateComputePolicyPropertiesSchema,
+    ),
+  });
+const CreateOrUpdateComputePolicyPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    objectId: Schema.String,
+    objectType: Schema.Literals(["User", "Group", "ServicePrincipal"]),
+    maxDegreeOfParallelismPerJob: Schema.optional(Schema.Number),
+    minPriorityPerJob: Schema.optional(Schema.Number),
+  });
+const CreateFirewallRuleWithAccountParametersSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String,
+    properties: Schema.suspend(
+      () => CreateOrUpdateFirewallRulePropertiesSchema,
+    ),
+  });
+const CreateOrUpdateFirewallRulePropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    startIpAddress: Schema.String,
+    endIpAddress: Schema.String,
+  });
+const UpdateDataLakeAnalyticsAccountPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    dataLakeStoreAccounts: Schema.optional(
+      Schema.Array(
+        Schema.suspend(() => UpdateDataLakeStoreWithAccountParametersSchema),
+      ),
+    ),
+    storageAccounts: Schema.optional(
+      Schema.Array(
+        Schema.suspend(() => UpdateStorageAccountWithAccountParametersSchema),
+      ),
+    ),
+    computePolicies: Schema.optional(
+      Schema.Array(
+        Schema.suspend(() => UpdateComputePolicyWithAccountParametersSchema),
+      ),
+    ),
+    firewallRules: Schema.optional(
+      Schema.Array(
+        Schema.suspend(() => UpdateFirewallRuleWithAccountParametersSchema),
+      ),
+    ),
+    firewallState: Schema.optional(Schema.Literals(["Enabled", "Disabled"])),
+    firewallAllowAzureIps: Schema.optional(
+      Schema.Literals(["Enabled", "Disabled"]),
+    ),
+    newTier: Schema.optional(
+      Schema.Literals([
+        "Consumption",
+        "Commitment_100AUHours",
+        "Commitment_500AUHours",
+        "Commitment_1000AUHours",
+        "Commitment_5000AUHours",
+        "Commitment_10000AUHours",
+        "Commitment_50000AUHours",
+        "Commitment_100000AUHours",
+        "Commitment_500000AUHours",
+      ]),
+    ),
+    maxJobCount: Schema.optional(Schema.Number),
+    maxDegreeOfParallelism: Schema.optional(Schema.Number),
+    maxDegreeOfParallelismPerJob: Schema.optional(Schema.Number),
+    minPriorityPerJob: Schema.optional(Schema.Number),
+    queryStoreRetention: Schema.optional(Schema.Number),
+  });
+const UpdateDataLakeStoreWithAccountParametersSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String,
+    properties: Schema.optional(
+      Schema.suspend(() => UpdateDataLakeStorePropertiesSchema),
+    ),
+  });
+const UpdateDataLakeStorePropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    suffix: Schema.optional(Schema.String),
+  });
+const UpdateStorageAccountWithAccountParametersSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String,
+    properties: Schema.optional(
+      Schema.suspend(() => UpdateStorageAccountPropertiesSchema),
+    ),
+  });
+const UpdateStorageAccountPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    accessKey: Schema.optional(Schema.String),
+    suffix: Schema.optional(Schema.String),
+  });
+const UpdateComputePolicyWithAccountParametersSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String,
+    properties: Schema.optional(
+      Schema.suspend(() => UpdateComputePolicyPropertiesSchema),
+    ),
+  });
+const UpdateComputePolicyPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    objectId: Schema.optional(Schema.String),
+    objectType: Schema.optional(
+      Schema.Literals(["User", "Group", "ServicePrincipal"]),
+    ),
+    maxDegreeOfParallelismPerJob: Schema.optional(Schema.Number),
+    minPriorityPerJob: Schema.optional(Schema.Number),
+  });
+const UpdateFirewallRuleWithAccountParametersSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String,
+    properties: Schema.optional(
+      Schema.suspend(() => UpdateFirewallRulePropertiesSchema),
+    ),
+  });
+const UpdateFirewallRulePropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    startIpAddress: Schema.optional(Schema.String),
+    endIpAddress: Schema.optional(Schema.String),
+  });
+const DataLakeStoreAccountInformationSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
+const DataLakeStoreAccountInformationPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    suffix: Schema.optional(Schema.String),
+  });
+const StorageAccountInformationSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
+const StorageAccountInformationPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    suffix: Schema.optional(Schema.String),
+  });
+const StorageContainerSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
+const StorageContainerPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    lastModifiedTime: Schema.optional(Schema.String),
+  });
+const SasTokenInformationSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  accessToken: Schema.optional(SensitiveOutputString),
+});
+const ComputePolicySchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
+const ComputePolicyPropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    objectId: Schema.optional(Schema.String),
+    objectType: Schema.optional(
+      Schema.Literals(["User", "Group", "ServicePrincipal"]),
+    ),
+    maxDegreeOfParallelismPerJob: Schema.optional(Schema.Number),
+    minPriorityPerJob: Schema.optional(Schema.Number),
+  },
+);
+const FirewallRuleSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
+const FirewallRulePropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  startIpAddress: Schema.optional(Schema.String),
+  endIpAddress: Schema.optional(Schema.String),
+});
+const OperationSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  display: Schema.optional(Schema.suspend(() => OperationDisplaySchema)),
+  properties: Schema.optional(
+    Schema.suspend(() => OperationMetaPropertyInfoSchema),
+  ),
+  origin: Schema.optional(Schema.Literals(["user", "system", "user,system"])),
+});
+const OperationDisplaySchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  provider: Schema.optional(Schema.String),
+  resource: Schema.optional(Schema.String),
+  operation: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+});
+const OperationMetaPropertyInfoSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    serviceSpecification: Schema.optional(
+      Schema.suspend(() => OperationMetaServiceSpecificationSchema),
+    ),
+  });
+const OperationMetaServiceSpecificationSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    metricSpecifications: Schema.optional(
+      Schema.Array(
+        Schema.suspend(() => OperationMetaMetricSpecificationSchema),
+      ),
+    ),
+    logSpecifications: Schema.optional(
+      Schema.Array(Schema.suspend(() => OperationMetaLogSpecificationSchema)),
+    ),
+  });
+const OperationMetaMetricSpecificationSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    displayDescription: Schema.optional(Schema.String),
+    displayName: Schema.optional(Schema.String),
+    unit: Schema.optional(Schema.String),
+    aggregationType: Schema.optional(Schema.String),
+    availabilities: Schema.optional(
+      Schema.Array(
+        Schema.suspend(
+          () => OperationMetaMetricAvailabilitiesSpecificationSchema,
+        ),
+      ),
+    ),
+  });
+const OperationMetaMetricAvailabilitiesSpecificationSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    timeGrain: Schema.optional(Schema.String),
+    blobDuration: Schema.optional(Schema.String),
+  });
+const OperationMetaLogSpecificationSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    displayName: Schema.optional(Schema.String),
+    blobDuration: Schema.optional(Schema.String),
+  });
+
 // Input Schema
 export const AccountsCheckNameAvailabilityInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -50,76 +383,9 @@ export const AccountsCheckNameAvailability =
 export const AccountsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   location: Schema.String,
   tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-  properties: Schema.Struct({
-    defaultDataLakeStoreAccount: Schema.String,
-    dataLakeStoreAccounts: Schema.Array(
-      Schema.Struct({
-        name: Schema.String,
-        properties: Schema.optional(
-          Schema.Struct({
-            suffix: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
-    storageAccounts: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          name: Schema.String,
-          properties: Schema.Struct({
-            accessKey: Schema.String,
-            suffix: Schema.optional(Schema.String),
-          }),
-        }),
-      ),
-    ),
-    computePolicies: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          name: Schema.String,
-          properties: Schema.Struct({
-            objectId: Schema.String,
-            objectType: Schema.Literals(["User", "Group", "ServicePrincipal"]),
-            maxDegreeOfParallelismPerJob: Schema.optional(Schema.Number),
-            minPriorityPerJob: Schema.optional(Schema.Number),
-          }),
-        }),
-      ),
-    ),
-    firewallRules: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          name: Schema.String,
-          properties: Schema.Struct({
-            startIpAddress: Schema.String,
-            endIpAddress: Schema.String,
-          }),
-        }),
-      ),
-    ),
-    firewallState: Schema.optional(Schema.Literals(["Enabled", "Disabled"])),
-    firewallAllowAzureIps: Schema.optional(
-      Schema.Literals(["Enabled", "Disabled"]),
-    ),
-    newTier: Schema.optional(
-      Schema.Literals([
-        "Consumption",
-        "Commitment_100AUHours",
-        "Commitment_500AUHours",
-        "Commitment_1000AUHours",
-        "Commitment_5000AUHours",
-        "Commitment_10000AUHours",
-        "Commitment_50000AUHours",
-        "Commitment_100000AUHours",
-        "Commitment_500000AUHours",
-      ]),
-    ),
-    maxJobCount: Schema.optional(Schema.Number),
-    maxDegreeOfParallelism: Schema.optional(Schema.Number),
-    maxDegreeOfParallelismPerJob: Schema.optional(Schema.Number),
-    minPriorityPerJob: Schema.optional(Schema.Number),
-    queryStoreRetention: Schema.optional(Schema.Number),
-  }),
+  properties: Schema.suspend(
+    () => CreateDataLakeAnalyticsAccountPropertiesSchema,
+  ),
 }).pipe(
   T.Http({
     method: "PUT",
@@ -132,6 +398,9 @@ export type AccountsCreateInput = typeof AccountsCreateInput.Type;
 
 // Output Schema
 export const AccountsCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.optional(
+    Schema.suspend(() => DataLakeAnalyticsAccountPropertiesSchema),
+  ),
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -187,6 +456,9 @@ export type AccountsGetInput = typeof AccountsGetInput.Type;
 
 // Output Schema
 export const AccountsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.optional(
+    Schema.suspend(() => DataLakeAnalyticsAccountPropertiesSchema),
+  ),
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -223,15 +495,7 @@ export type AccountsListInput = typeof AccountsListInput.Type;
 // Output Schema
 export const AccountsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.optional(
-    Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        location: Schema.optional(Schema.String),
-        tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      }),
-    ),
+    Schema.Array(Schema.suspend(() => DataLakeAnalyticsAccountBasicSchema)),
   ),
   count: Schema.optional(Schema.Number),
   nextLink: Schema.optional(Schema.String),
@@ -276,15 +540,7 @@ export type AccountsListByResourceGroupInput =
 export const AccountsListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          location: Schema.optional(Schema.String),
-          tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => DataLakeAnalyticsAccountBasicSchema)),
     ),
     count: Schema.optional(Schema.Number),
     nextLink: Schema.optional(Schema.String),
@@ -313,85 +569,7 @@ export const AccountsListByResourceGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const AccountsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   properties: Schema.optional(
-    Schema.Struct({
-      dataLakeStoreAccounts: Schema.optional(
-        Schema.Array(
-          Schema.Struct({
-            name: Schema.String,
-            properties: Schema.optional(
-              Schema.Struct({
-                suffix: Schema.optional(Schema.String),
-              }),
-            ),
-          }),
-        ),
-      ),
-      storageAccounts: Schema.optional(
-        Schema.Array(
-          Schema.Struct({
-            name: Schema.String,
-            properties: Schema.optional(
-              Schema.Struct({
-                accessKey: Schema.optional(Schema.String),
-                suffix: Schema.optional(Schema.String),
-              }),
-            ),
-          }),
-        ),
-      ),
-      computePolicies: Schema.optional(
-        Schema.Array(
-          Schema.Struct({
-            name: Schema.String,
-            properties: Schema.optional(
-              Schema.Struct({
-                objectId: Schema.optional(Schema.String),
-                objectType: Schema.optional(
-                  Schema.Literals(["User", "Group", "ServicePrincipal"]),
-                ),
-                maxDegreeOfParallelismPerJob: Schema.optional(Schema.Number),
-                minPriorityPerJob: Schema.optional(Schema.Number),
-              }),
-            ),
-          }),
-        ),
-      ),
-      firewallRules: Schema.optional(
-        Schema.Array(
-          Schema.Struct({
-            name: Schema.String,
-            properties: Schema.optional(
-              Schema.Struct({
-                startIpAddress: Schema.optional(Schema.String),
-                endIpAddress: Schema.optional(Schema.String),
-              }),
-            ),
-          }),
-        ),
-      ),
-      firewallState: Schema.optional(Schema.Literals(["Enabled", "Disabled"])),
-      firewallAllowAzureIps: Schema.optional(
-        Schema.Literals(["Enabled", "Disabled"]),
-      ),
-      newTier: Schema.optional(
-        Schema.Literals([
-          "Consumption",
-          "Commitment_100AUHours",
-          "Commitment_500AUHours",
-          "Commitment_1000AUHours",
-          "Commitment_5000AUHours",
-          "Commitment_10000AUHours",
-          "Commitment_50000AUHours",
-          "Commitment_100000AUHours",
-          "Commitment_500000AUHours",
-        ]),
-      ),
-      maxJobCount: Schema.optional(Schema.Number),
-      maxDegreeOfParallelism: Schema.optional(Schema.Number),
-      maxDegreeOfParallelismPerJob: Schema.optional(Schema.Number),
-      minPriorityPerJob: Schema.optional(Schema.Number),
-      queryStoreRetention: Schema.optional(Schema.Number),
-    }),
+    Schema.suspend(() => UpdateDataLakeAnalyticsAccountPropertiesSchema),
   ),
 }).pipe(
   T.Http({
@@ -405,6 +583,9 @@ export type AccountsUpdateInput = typeof AccountsUpdateInput.Type;
 
 // Output Schema
 export const AccountsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.optional(
+    Schema.suspend(() => DataLakeAnalyticsAccountPropertiesSchema),
+  ),
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -425,12 +606,9 @@ export const AccountsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const ComputePoliciesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     computePolicyName: Schema.String.pipe(T.PathParam()),
-    properties: Schema.Struct({
-      objectId: Schema.String,
-      objectType: Schema.Literals(["User", "Group", "ServicePrincipal"]),
-      maxDegreeOfParallelismPerJob: Schema.optional(Schema.Number),
-      minPriorityPerJob: Schema.optional(Schema.Number),
-    }),
+    properties: Schema.suspend(
+      () => CreateOrUpdateComputePolicyPropertiesSchema,
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -444,6 +622,9 @@ export type ComputePoliciesCreateOrUpdateInput =
 // Output Schema
 export const ComputePoliciesCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => ComputePolicyPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -509,6 +690,9 @@ export type ComputePoliciesGetInput = typeof ComputePoliciesGetInput.Type;
 // Output Schema
 export const ComputePoliciesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => ComputePolicyPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -541,13 +725,7 @@ export type ComputePoliciesListByAccountInput =
 export const ComputePoliciesListByAccountOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => ComputePolicySchema)),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -568,14 +746,7 @@ export const ComputePoliciesUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     computePolicyName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        objectId: Schema.optional(Schema.String),
-        objectType: Schema.optional(
-          Schema.Literals(["User", "Group", "ServicePrincipal"]),
-        ),
-        maxDegreeOfParallelismPerJob: Schema.optional(Schema.Number),
-        minPriorityPerJob: Schema.optional(Schema.Number),
-      }),
+      Schema.suspend(() => UpdateComputePolicyPropertiesSchema),
     ),
   }).pipe(
     T.Http({
@@ -589,6 +760,9 @@ export type ComputePoliciesUpdateInput = typeof ComputePoliciesUpdateInput.Type;
 // Output Schema
 export const ComputePoliciesUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => ComputePolicyPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -613,9 +787,7 @@ export const DataLakeStoreAccountsAddInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dataLakeStoreAccountName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        suffix: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(() => AddDataLakeStorePropertiesSchema),
     ),
   }).pipe(
     T.Http({
@@ -694,6 +866,9 @@ export type DataLakeStoreAccountsGetInput =
 // Output Schema
 export const DataLakeStoreAccountsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => DataLakeStoreAccountInformationPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -736,13 +911,7 @@ export type DataLakeStoreAccountsListByAccountInput =
 export const DataLakeStoreAccountsListByAccountOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => DataLakeStoreAccountInformationSchema)),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -769,10 +938,9 @@ export const DataLakeStoreAccountsListByAccount =
 export const FirewallRulesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     firewallRuleName: Schema.String.pipe(T.PathParam()),
-    properties: Schema.Struct({
-      startIpAddress: Schema.String,
-      endIpAddress: Schema.String,
-    }),
+    properties: Schema.suspend(
+      () => CreateOrUpdateFirewallRulePropertiesSchema,
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -786,6 +954,9 @@ export type FirewallRulesCreateOrUpdateInput =
 // Output Schema
 export const FirewallRulesCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => FirewallRulePropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -848,6 +1019,9 @@ export type FirewallRulesGetInput = typeof FirewallRulesGetInput.Type;
 // Output Schema
 export const FirewallRulesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
+    properties: Schema.optional(
+      Schema.suspend(() => FirewallRulePropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -881,13 +1055,7 @@ export type FirewallRulesListByAccountInput =
 export const FirewallRulesListByAccountOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => FirewallRuleSchema)),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -909,10 +1077,7 @@ export const FirewallRulesUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     firewallRuleName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        startIpAddress: Schema.optional(Schema.String),
-        endIpAddress: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(() => UpdateFirewallRulePropertiesSchema),
     ),
   }).pipe(
     T.Http({
@@ -926,6 +1091,9 @@ export type FirewallRulesUpdateInput = typeof FirewallRulesUpdateInput.Type;
 // Output Schema
 export const FirewallRulesUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => FirewallRulePropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1002,60 +1170,7 @@ export type OperationsListInput = typeof OperationsListInput.Type;
 
 // Output Schema
 export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  value: Schema.optional(
-    Schema.Array(
-      Schema.Struct({
-        name: Schema.optional(Schema.String),
-        display: Schema.optional(
-          Schema.Struct({
-            provider: Schema.optional(Schema.String),
-            resource: Schema.optional(Schema.String),
-            operation: Schema.optional(Schema.String),
-            description: Schema.optional(Schema.String),
-          }),
-        ),
-        properties: Schema.optional(
-          Schema.Struct({
-            serviceSpecification: Schema.optional(
-              Schema.Struct({
-                metricSpecifications: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      name: Schema.optional(Schema.String),
-                      displayDescription: Schema.optional(Schema.String),
-                      displayName: Schema.optional(Schema.String),
-                      unit: Schema.optional(Schema.String),
-                      aggregationType: Schema.optional(Schema.String),
-                      availabilities: Schema.optional(
-                        Schema.Array(
-                          Schema.Struct({
-                            timeGrain: Schema.optional(Schema.String),
-                            blobDuration: Schema.optional(Schema.String),
-                          }),
-                        ),
-                      ),
-                    }),
-                  ),
-                ),
-                logSpecifications: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      name: Schema.optional(Schema.String),
-                      displayName: Schema.optional(Schema.String),
-                      blobDuration: Schema.optional(Schema.String),
-                    }),
-                  ),
-                ),
-              }),
-            ),
-          }),
-        ),
-        origin: Schema.optional(
-          Schema.Literals(["user", "system", "user,system"]),
-        ),
-      }),
-    ),
-  ),
+  value: Schema.optional(Schema.Array(Schema.suspend(() => OperationSchema))),
   nextLink: Schema.optional(Schema.String),
 });
 export type OperationsListOutput = typeof OperationsListOutput.Type;
@@ -1072,10 +1187,7 @@ export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const StorageAccountsAddInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     storageAccountName: Schema.String.pipe(T.PathParam()),
-    properties: Schema.Struct({
-      accessKey: Schema.String,
-      suffix: Schema.optional(Schema.String),
-    }),
+    properties: Schema.suspend(() => AddStorageAccountPropertiesSchema),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -1146,6 +1258,9 @@ export type StorageAccountsGetInput = typeof StorageAccountsGetInput.Type;
 // Output Schema
 export const StorageAccountsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => StorageAccountInformationPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1180,6 +1295,9 @@ export type StorageAccountsGetStorageContainerInput =
 // Output Schema
 export const StorageAccountsGetStorageContainerOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => StorageContainerPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1222,13 +1340,7 @@ export type StorageAccountsListByAccountInput =
 export const StorageAccountsListByAccountOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => StorageAccountInformationSchema)),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -1270,11 +1382,7 @@ export type StorageAccountsListSasTokensInput =
 export const StorageAccountsListSasTokensOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          accessToken: Schema.optional(SensitiveOutputString),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => SasTokenInformationSchema)),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -1311,13 +1419,7 @@ export type StorageAccountsListStorageContainersInput =
 export const StorageAccountsListStorageContainersOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => StorageContainerSchema)),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -1340,10 +1442,7 @@ export const StorageAccountsUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     storageAccountName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        accessKey: Schema.optional(Schema.String),
-        suffix: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(() => UpdateStorageAccountPropertiesSchema),
     ),
   }).pipe(
     T.Http({

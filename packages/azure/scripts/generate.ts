@@ -556,6 +556,13 @@ function main() {
     { functionName: string; code: string }[]
   >();
 
+  // Map: service name → shared named-schema consts (defName → declaration) and
+  // the sensitive helpers those defs use. Operations reference these by name;
+  // emitting each definition once keeps the concatenated service file
+  // type-checkable (no per-operation inlining of deep resource schemas).
+  const serviceDefs = new Map<string, Map<string, string>>();
+  const serviceDefSensitive = new Map<string, Set<string>>();
+
   for (const spec of specs) {
     const label = spec.subService
       ? `${spec.service}/${spec.provider}/${spec.subService} (${spec.apiVersion})`
@@ -656,11 +663,34 @@ function main() {
           seenSymbols.add(inputName);
           seenSymbols.add(outputName);
 
+          if (file === "_schemas.ts") continue;
           const code = fs.readFileSync(
             path.join(specOutputDir, file),
             "utf-8",
           );
           ops.push({ functionName, code });
+        }
+
+        // Aggregate the spec's shared named-schema consts into the service,
+        // de-duplicating by name across the service's specs (keep first).
+        const schemasPath = path.join(specOutputDir, "_schemas.ts");
+        if (fs.existsSync(schemasPath)) {
+          const sc = fs.readFileSync(schemasPath, "utf-8");
+          if (!serviceDefs.has(spec.service)) {
+            serviceDefs.set(spec.service, new Map());
+            serviceDefSensitive.set(spec.service, new Set());
+          }
+          const defs = serviceDefs.get(spec.service)!;
+          const sens = serviceDefSensitive.get(spec.service)!;
+          const sm = sc.match(/import \{ ([^}]+) \} from ["']\.\.\/sensitive/);
+          if (sm) {
+            for (const n of sm[1].split(",").map((s) => s.trim())) sens.add(n);
+          }
+          for (const m of sc.matchAll(
+            /export const (\w+) = ([\s\S]*?);\n(?=export const |$)/g,
+          )) {
+            if (!defs.has(m[1])) defs.set(m[1], `const ${m[1]} = ${m[2]};`);
+          }
         }
       }
 
@@ -679,6 +709,8 @@ function main() {
 
     const displayName = toPascalCase(service);
     const { errors, sensitive } = collectExtraImports(ops);
+    // The shared named-schema consts may use sensitive helpers too.
+    for (const n of serviceDefSensitive.get(service) ?? []) sensitive.add(n);
 
     let imports = `/**
  * Azure ${displayName} API
@@ -700,8 +732,14 @@ import * as T from "../traits.ts";`;
     // Sort operations alphabetically for deterministic output
     ops.sort((a, b) => a.functionName.localeCompare(b.functionName));
 
+    const defsMap = serviceDefs.get(service);
+    const defBlock =
+      defsMap && defsMap.size > 0
+        ? `\n// Shared schemas\n${[...defsMap.values()].join("\n")}\n`
+        : "";
+
     const bodies = ops.map((op) => extractBody(op.code));
-    const content = [imports, "", ...bodies, ""].join("\n");
+    const content = [imports, defBlock, ...bodies, ""].join("\n");
 
     const filePath = path.join(servicesDir, `${service}.ts`);
     fs.writeFileSync(filePath, content);

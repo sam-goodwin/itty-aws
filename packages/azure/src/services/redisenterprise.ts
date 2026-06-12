@@ -8,28 +8,408 @@ import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
+// Shared schemas
+const OperationSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  isDataAction: Schema.optional(Schema.Boolean),
+  display: Schema.optional(
+    Schema.Struct({
+      provider: Schema.optional(Schema.String),
+      resource: Schema.optional(Schema.String),
+      operation: Schema.optional(Schema.String),
+      description: Schema.optional(Schema.String),
+    }),
+  ),
+  origin: Schema.optional(Schema.Literals(["user", "system", "user,system"])),
+  actionType: Schema.optional(Schema.Literals(["Internal"])),
+});
+const ErrorDetailSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  code: Schema.optional(Schema.String),
+  message: Schema.optional(Schema.String),
+  target: Schema.optional(Schema.String),
+  details: Schema.optional(Schema.Array(Schema.Unknown)),
+  additionalInfo: Schema.optional(
+    Schema.Array(Schema.suspend(() => ErrorAdditionalInfoSchema)),
+  ),
+});
+const ErrorAdditionalInfoSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  type: Schema.optional(Schema.String),
+  info: Schema.optional(Schema.Unknown),
+});
+const KindSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals(["v1", "v2"]);
+const SkuSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.Literals([
+    "Enterprise_E1",
+    "Enterprise_E5",
+    "Enterprise_E10",
+    "Enterprise_E20",
+    "Enterprise_E50",
+    "Enterprise_E100",
+    "Enterprise_E200",
+    "Enterprise_E400",
+    "EnterpriseFlash_F300",
+    "EnterpriseFlash_F700",
+    "EnterpriseFlash_F1500",
+    "Balanced_B0",
+    "Balanced_B1",
+    "Balanced_B3",
+    "Balanced_B5",
+    "Balanced_B10",
+    "Balanced_B20",
+    "Balanced_B50",
+    "Balanced_B100",
+    "Balanced_B150",
+    "Balanced_B250",
+    "Balanced_B350",
+    "Balanced_B500",
+    "Balanced_B700",
+    "Balanced_B1000",
+    "MemoryOptimized_M10",
+    "MemoryOptimized_M20",
+    "MemoryOptimized_M50",
+    "MemoryOptimized_M100",
+    "MemoryOptimized_M150",
+    "MemoryOptimized_M250",
+    "MemoryOptimized_M350",
+    "MemoryOptimized_M500",
+    "MemoryOptimized_M700",
+    "MemoryOptimized_M1000",
+    "MemoryOptimized_M1500",
+    "MemoryOptimized_M2000",
+    "ComputeOptimized_X3",
+    "ComputeOptimized_X5",
+    "ComputeOptimized_X10",
+    "ComputeOptimized_X20",
+    "ComputeOptimized_X50",
+    "ComputeOptimized_X100",
+    "ComputeOptimized_X150",
+    "ComputeOptimized_X250",
+    "ComputeOptimized_X350",
+    "ComputeOptimized_X500",
+    "ComputeOptimized_X700",
+    "FlashOptimized_A250",
+    "FlashOptimized_A500",
+    "FlashOptimized_A700",
+    "FlashOptimized_A1000",
+    "FlashOptimized_A1500",
+    "FlashOptimized_A2000",
+    "FlashOptimized_A4500",
+  ]),
+  capacity: Schema.optional(Schema.Number),
+});
+const ManagedServiceIdentityTypeSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+    "None",
+    "SystemAssigned",
+    "UserAssigned",
+    "SystemAssigned, UserAssigned",
+  ]);
+const UserAssignedIdentitiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Record(
+  Schema.String,
+  Schema.suspend(() => UserAssignedIdentitySchema),
+);
+const UserAssignedIdentitySchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  principalId: Schema.optional(Schema.String),
+  clientId: Schema.optional(Schema.String),
+});
+const ClusterCreatePropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    highAvailability: Schema.optional(Schema.Literals(["Enabled", "Disabled"])),
+    minimumTlsVersion: Schema.optional(Schema.Literals(["1.0", "1.1", "1.2"])),
+    encryption: Schema.optional(
+      Schema.Struct({
+        customerManagedKeyEncryption: Schema.optional(
+          Schema.Struct({
+            keyEncryptionKeyIdentity: Schema.optional(
+              Schema.Struct({
+                userAssignedIdentityResourceId: Schema.optional(Schema.String),
+                identityType: Schema.optional(
+                  Schema.Literals([
+                    "systemAssignedIdentity",
+                    "userAssignedIdentity",
+                  ]),
+                ),
+              }),
+            ),
+            keyEncryptionKeyUrl: Schema.optional(Schema.String),
+          }),
+        ),
+      }),
+    ),
+    hostName: Schema.optional(Schema.String),
+    provisioningState: Schema.optional(
+      Schema.suspend(() => ProvisioningStateSchema),
+    ),
+    redundancyMode: Schema.optional(Schema.Literals(["None", "LR", "ZR"])),
+    resourceState: Schema.optional(Schema.suspend(() => ResourceStateSchema)),
+    redisVersion: Schema.optional(Schema.String),
+    privateEndpointConnections: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
+        }),
+      ),
+    ),
+  },
+);
+const ProvisioningStateSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Succeeded",
+  "Failed",
+  "Canceled",
+  "Creating",
+  "Updating",
+  "Deleting",
+]);
+const ResourceStateSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Running",
+  "Creating",
+  "CreateFailed",
+  "Updating",
+  "UpdateFailed",
+  "Deleting",
+  "DeleteFailed",
+  "Enabling",
+  "EnableFailed",
+  "Disabling",
+  "DisableFailed",
+  "Disabled",
+  "Scaling",
+  "ScalingFailed",
+  "Moving",
+]);
+const ClusterUpdatePropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    highAvailability: Schema.optional(Schema.Literals(["Enabled", "Disabled"])),
+    minimumTlsVersion: Schema.optional(Schema.Literals(["1.0", "1.1", "1.2"])),
+    encryption: Schema.optional(
+      Schema.Struct({
+        customerManagedKeyEncryption: Schema.optional(
+          Schema.Struct({
+            keyEncryptionKeyIdentity: Schema.optional(
+              Schema.Struct({
+                userAssignedIdentityResourceId: Schema.optional(Schema.String),
+                identityType: Schema.optional(
+                  Schema.Literals([
+                    "systemAssignedIdentity",
+                    "userAssignedIdentity",
+                  ]),
+                ),
+              }),
+            ),
+            keyEncryptionKeyUrl: Schema.optional(Schema.String),
+          }),
+        ),
+      }),
+    ),
+    hostName: Schema.optional(Schema.String),
+    provisioningState: Schema.optional(
+      Schema.suspend(() => ProvisioningStateSchema),
+    ),
+    redundancyMode: Schema.optional(Schema.Literals(["None", "LR", "ZR"])),
+    resourceState: Schema.optional(Schema.suspend(() => ResourceStateSchema)),
+    redisVersion: Schema.optional(Schema.String),
+    privateEndpointConnections: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
+        }),
+      ),
+    ),
+  },
+);
+const ClusterSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
+const DatabaseSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
+const DatabaseCreatePropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    clientProtocol: Schema.optional(
+      Schema.Literals(["Encrypted", "Plaintext"]),
+    ),
+    port: Schema.optional(Schema.Number),
+    provisioningState: Schema.optional(
+      Schema.suspend(() => ProvisioningStateSchema),
+    ),
+    resourceState: Schema.optional(Schema.suspend(() => ResourceStateSchema)),
+    clusteringPolicy: Schema.optional(
+      Schema.Literals(["EnterpriseCluster", "OSSCluster", "NoCluster"]),
+    ),
+    evictionPolicy: Schema.optional(
+      Schema.Literals([
+        "AllKeysLFU",
+        "AllKeysLRU",
+        "AllKeysRandom",
+        "VolatileLRU",
+        "VolatileLFU",
+        "VolatileTTL",
+        "VolatileRandom",
+        "NoEviction",
+      ]),
+    ),
+    persistence: Schema.optional(Schema.suspend(() => PersistenceSchema)),
+    modules: Schema.optional(Schema.Array(Schema.suspend(() => ModuleSchema))),
+    geoReplication: Schema.optional(
+      Schema.Struct({
+        groupNickname: Schema.optional(Schema.String),
+        linkedDatabases: Schema.optional(
+          Schema.Array(Schema.suspend(() => LinkedDatabaseSchema)),
+        ),
+      }),
+    ),
+    redisVersion: Schema.optional(Schema.String),
+    deferUpgrade: Schema.optional(Schema.Literals(["Deferred", "NotDeferred"])),
+    accessKeysAuthentication: Schema.optional(
+      Schema.Literals(["Disabled", "Enabled"]),
+    ),
+  });
+const PersistenceSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  aofEnabled: Schema.optional(Schema.Boolean),
+  rdbEnabled: Schema.optional(Schema.Boolean),
+  aofFrequency: Schema.optional(Schema.Literals(["1s", "always"])),
+  rdbFrequency: Schema.optional(Schema.Literals(["1h", "6h", "12h"])),
+});
+const ModuleSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.String,
+  args: Schema.optional(Schema.String),
+  version: Schema.optional(Schema.String),
+});
+const LinkedDatabaseSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  state: Schema.optional(
+    Schema.Literals([
+      "Linked",
+      "Linking",
+      "Unlinking",
+      "LinkFailed",
+      "UnlinkFailed",
+    ]),
+  ),
+});
+const DatabaseUpdatePropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    clientProtocol: Schema.optional(
+      Schema.Literals(["Encrypted", "Plaintext"]),
+    ),
+    port: Schema.optional(Schema.Number),
+    provisioningState: Schema.optional(
+      Schema.suspend(() => ProvisioningStateSchema),
+    ),
+    resourceState: Schema.optional(Schema.suspend(() => ResourceStateSchema)),
+    clusteringPolicy: Schema.optional(
+      Schema.Literals(["EnterpriseCluster", "OSSCluster", "NoCluster"]),
+    ),
+    evictionPolicy: Schema.optional(
+      Schema.Literals([
+        "AllKeysLFU",
+        "AllKeysLRU",
+        "AllKeysRandom",
+        "VolatileLRU",
+        "VolatileLFU",
+        "VolatileTTL",
+        "VolatileRandom",
+        "NoEviction",
+      ]),
+    ),
+    persistence: Schema.optional(Schema.suspend(() => PersistenceSchema)),
+    modules: Schema.optional(Schema.Array(Schema.suspend(() => ModuleSchema))),
+    geoReplication: Schema.optional(
+      Schema.Struct({
+        groupNickname: Schema.optional(Schema.String),
+        linkedDatabases: Schema.optional(
+          Schema.Array(Schema.suspend(() => LinkedDatabaseSchema)),
+        ),
+      }),
+    ),
+    redisVersion: Schema.optional(Schema.String),
+    deferUpgrade: Schema.optional(Schema.Literals(["Deferred", "NotDeferred"])),
+    accessKeysAuthentication: Schema.optional(
+      Schema.Literals(["Disabled", "Enabled"]),
+    ),
+  });
+const AccessPolicyAssignmentPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    provisioningState: Schema.optional(
+      Schema.suspend(() => ProvisioningStateSchema),
+    ),
+    accessPolicyName: Schema.String,
+    user: Schema.Struct({
+      objectId: Schema.optional(Schema.String),
+    }),
+  });
+const AccessPolicyAssignmentSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
+const SkuDetailsSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  sizeInGB: Schema.optional(Schema.Number),
+});
+const PrivateEndpointConnectionSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
+const PrivateEndpointConnectionPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    privateEndpoint: Schema.optional(
+      Schema.suspend(() => PrivateEndpointSchema),
+    ),
+    privateLinkServiceConnectionState: Schema.suspend(
+      () => PrivateLinkServiceConnectionStateSchema,
+    ),
+    provisioningState: Schema.optional(
+      Schema.suspend(() => PrivateEndpointConnectionProvisioningStateSchema),
+    ),
+  });
+const PrivateEndpointSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+});
+const PrivateLinkServiceConnectionStateSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    status: Schema.optional(
+      Schema.suspend(() => PrivateEndpointServiceConnectionStatusSchema),
+    ),
+    description: Schema.optional(Schema.String),
+    actionsRequired: Schema.optional(Schema.String),
+  });
+const PrivateEndpointServiceConnectionStatusSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+    "Pending",
+    "Approved",
+    "Rejected",
+  ]);
+const PrivateEndpointConnectionProvisioningStateSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+    "Succeeded",
+    "Creating",
+    "Deleting",
+    "Failed",
+  ]);
+const PrivateLinkResourceSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
+
 // Input Schema
 export const AccessPolicyAssignmentCreateUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        provisioningState: Schema.optional(
-          Schema.Literals([
-            "Succeeded",
-            "Failed",
-            "Canceled",
-            "Creating",
-            "Updating",
-            "Deleting",
-          ]),
-        ),
-        accessPolicyName: Schema.String,
-        user: Schema.Struct({
-          objectId: Schema.optional(Schema.String),
-        }),
-      }),
+      Schema.suspend(() => AccessPolicyAssignmentPropertiesSchema),
     ),
   }).pipe(
     T.Http({
@@ -45,6 +425,9 @@ export type AccessPolicyAssignmentCreateUpdateInput =
 // Output Schema
 export const AccessPolicyAssignmentCreateUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => AccessPolicyAssignmentPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -118,6 +501,9 @@ export type AccessPolicyAssignmentGetInput =
 // Output Schema
 export const AccessPolicyAssignmentGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => AccessPolicyAssignmentPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -158,13 +544,7 @@ export type AccessPolicyAssignmentListInput =
 export const AccessPolicyAssignmentListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => AccessPolicyAssignmentSchema)),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -190,101 +570,7 @@ export const DatabasesCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
   properties: Schema.optional(
-    Schema.Struct({
-      clientProtocol: Schema.optional(
-        Schema.Literals(["Encrypted", "Plaintext"]),
-      ),
-      port: Schema.optional(Schema.Number),
-      provisioningState: Schema.optional(
-        Schema.Literals([
-          "Succeeded",
-          "Failed",
-          "Canceled",
-          "Creating",
-          "Updating",
-          "Deleting",
-        ]),
-      ),
-      resourceState: Schema.optional(
-        Schema.Literals([
-          "Running",
-          "Creating",
-          "CreateFailed",
-          "Updating",
-          "UpdateFailed",
-          "Deleting",
-          "DeleteFailed",
-          "Enabling",
-          "EnableFailed",
-          "Disabling",
-          "DisableFailed",
-          "Disabled",
-          "Scaling",
-          "ScalingFailed",
-          "Moving",
-        ]),
-      ),
-      clusteringPolicy: Schema.optional(
-        Schema.Literals(["EnterpriseCluster", "OSSCluster", "NoCluster"]),
-      ),
-      evictionPolicy: Schema.optional(
-        Schema.Literals([
-          "AllKeysLFU",
-          "AllKeysLRU",
-          "AllKeysRandom",
-          "VolatileLRU",
-          "VolatileLFU",
-          "VolatileTTL",
-          "VolatileRandom",
-          "NoEviction",
-        ]),
-      ),
-      persistence: Schema.optional(
-        Schema.Struct({
-          aofEnabled: Schema.optional(Schema.Boolean),
-          rdbEnabled: Schema.optional(Schema.Boolean),
-          aofFrequency: Schema.optional(Schema.Literals(["1s", "always"])),
-          rdbFrequency: Schema.optional(Schema.Literals(["1h", "6h", "12h"])),
-        }),
-      ),
-      modules: Schema.optional(
-        Schema.Array(
-          Schema.Struct({
-            name: Schema.String,
-            args: Schema.optional(Schema.String),
-            version: Schema.optional(Schema.String),
-          }),
-        ),
-      ),
-      geoReplication: Schema.optional(
-        Schema.Struct({
-          groupNickname: Schema.optional(Schema.String),
-          linkedDatabases: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                id: Schema.optional(Schema.String),
-                state: Schema.optional(
-                  Schema.Literals([
-                    "Linked",
-                    "Linking",
-                    "Unlinking",
-                    "LinkFailed",
-                    "UnlinkFailed",
-                  ]),
-                ),
-              }),
-            ),
-          ),
-        }),
-      ),
-      redisVersion: Schema.optional(Schema.String),
-      deferUpgrade: Schema.optional(
-        Schema.Literals(["Deferred", "NotDeferred"]),
-      ),
-      accessKeysAuthentication: Schema.optional(
-        Schema.Literals(["Disabled", "Enabled"]),
-      ),
-    }),
+    Schema.suspend(() => DatabaseCreatePropertiesSchema),
   ),
 }).pipe(
   T.Http({
@@ -298,6 +584,9 @@ export type DatabasesCreateInput = typeof DatabasesCreateInput.Type;
 
 // Output Schema
 export const DatabasesCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.optional(
+    Schema.suspend(() => DatabaseCreatePropertiesSchema),
+  ),
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -416,20 +705,7 @@ export const DatabasesForceLinkToReplicationGroupInput =
     geoReplication: Schema.Struct({
       groupNickname: Schema.optional(Schema.String),
       linkedDatabases: Schema.optional(
-        Schema.Array(
-          Schema.Struct({
-            id: Schema.optional(Schema.String),
-            state: Schema.optional(
-              Schema.Literals([
-                "Linked",
-                "Linking",
-                "Unlinking",
-                "LinkFailed",
-                "UnlinkFailed",
-              ]),
-            ),
-          }),
-        ),
+        Schema.Array(Schema.suspend(() => LinkedDatabaseSchema)),
       ),
     }),
   }).pipe(
@@ -512,6 +788,9 @@ export type DatabasesGetInput = typeof DatabasesGetInput.Type;
 
 // Output Schema
 export const DatabasesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.optional(
+    Schema.suspend(() => DatabaseCreatePropertiesSchema),
+  ),
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -579,15 +858,7 @@ export type DatabasesListByClusterInput =
 // Output Schema
 export const DatabasesListByClusterOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
-    ),
+    value: Schema.optional(Schema.Array(Schema.suspend(() => DatabaseSchema))),
     nextLink: Schema.optional(Schema.String),
   });
 export type DatabasesListByClusterOutput =
@@ -687,101 +958,7 @@ export const DatabasesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
   properties: Schema.optional(
-    Schema.Struct({
-      clientProtocol: Schema.optional(
-        Schema.Literals(["Encrypted", "Plaintext"]),
-      ),
-      port: Schema.optional(Schema.Number),
-      provisioningState: Schema.optional(
-        Schema.Literals([
-          "Succeeded",
-          "Failed",
-          "Canceled",
-          "Creating",
-          "Updating",
-          "Deleting",
-        ]),
-      ),
-      resourceState: Schema.optional(
-        Schema.Literals([
-          "Running",
-          "Creating",
-          "CreateFailed",
-          "Updating",
-          "UpdateFailed",
-          "Deleting",
-          "DeleteFailed",
-          "Enabling",
-          "EnableFailed",
-          "Disabling",
-          "DisableFailed",
-          "Disabled",
-          "Scaling",
-          "ScalingFailed",
-          "Moving",
-        ]),
-      ),
-      clusteringPolicy: Schema.optional(
-        Schema.Literals(["EnterpriseCluster", "OSSCluster", "NoCluster"]),
-      ),
-      evictionPolicy: Schema.optional(
-        Schema.Literals([
-          "AllKeysLFU",
-          "AllKeysLRU",
-          "AllKeysRandom",
-          "VolatileLRU",
-          "VolatileLFU",
-          "VolatileTTL",
-          "VolatileRandom",
-          "NoEviction",
-        ]),
-      ),
-      persistence: Schema.optional(
-        Schema.Struct({
-          aofEnabled: Schema.optional(Schema.Boolean),
-          rdbEnabled: Schema.optional(Schema.Boolean),
-          aofFrequency: Schema.optional(Schema.Literals(["1s", "always"])),
-          rdbFrequency: Schema.optional(Schema.Literals(["1h", "6h", "12h"])),
-        }),
-      ),
-      modules: Schema.optional(
-        Schema.Array(
-          Schema.Struct({
-            name: Schema.String,
-            args: Schema.optional(Schema.String),
-            version: Schema.optional(Schema.String),
-          }),
-        ),
-      ),
-      geoReplication: Schema.optional(
-        Schema.Struct({
-          groupNickname: Schema.optional(Schema.String),
-          linkedDatabases: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                id: Schema.optional(Schema.String),
-                state: Schema.optional(
-                  Schema.Literals([
-                    "Linked",
-                    "Linking",
-                    "Unlinking",
-                    "LinkFailed",
-                    "UnlinkFailed",
-                  ]),
-                ),
-              }),
-            ),
-          ),
-        }),
-      ),
-      redisVersion: Schema.optional(Schema.String),
-      deferUpgrade: Schema.optional(
-        Schema.Literals(["Deferred", "NotDeferred"]),
-      ),
-      accessKeysAuthentication: Schema.optional(
-        Schema.Literals(["Disabled", "Enabled"]),
-      ),
-    }),
+    Schema.suspend(() => DatabaseUpdatePropertiesSchema),
   ),
 }).pipe(
   T.Http({
@@ -795,6 +972,9 @@ export type DatabasesUpdateInput = typeof DatabasesUpdateInput.Type;
 
 // Output Schema
 export const DatabasesUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.optional(
+    Schema.suspend(() => DatabaseCreatePropertiesSchema),
+  ),
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -862,26 +1042,7 @@ export type OperationsListInput = typeof OperationsListInput.Type;
 
 // Output Schema
 export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  value: Schema.optional(
-    Schema.Array(
-      Schema.Struct({
-        name: Schema.optional(Schema.String),
-        isDataAction: Schema.optional(Schema.Boolean),
-        display: Schema.optional(
-          Schema.Struct({
-            provider: Schema.optional(Schema.String),
-            resource: Schema.optional(Schema.String),
-            operation: Schema.optional(Schema.String),
-            description: Schema.optional(Schema.String),
-          }),
-        ),
-        origin: Schema.optional(
-          Schema.Literals(["user", "system", "user,system"]),
-        ),
-        actionType: Schema.optional(Schema.Literals(["Internal"])),
-      }),
-    ),
-  ),
+  value: Schema.optional(Schema.Array(Schema.suspend(() => OperationSchema))),
   nextLink: Schema.optional(Schema.String),
 });
 export type OperationsListOutput = typeof OperationsListOutput.Type;
@@ -921,22 +1082,7 @@ export const OperationsStatusGetOutput =
     status: Schema.optional(Schema.String),
     error: Schema.optional(
       Schema.Struct({
-        error: Schema.optional(
-          Schema.Struct({
-            code: Schema.optional(Schema.String),
-            message: Schema.optional(Schema.String),
-            target: Schema.optional(Schema.String),
-            details: Schema.optional(Schema.Array(Schema.Unknown)),
-            additionalInfo: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  type: Schema.optional(Schema.String),
-                  info: Schema.optional(Schema.Unknown),
-                }),
-              ),
-            ),
-          }),
-        ),
+        error: Schema.optional(Schema.suspend(() => ErrorDetailSchema)),
       }),
     ),
   });
@@ -1011,6 +1157,9 @@ export type PrivateEndpointConnectionsGetInput =
 // Output Schema
 export const PrivateEndpointConnectionsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => PrivateEndpointConnectionPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1051,13 +1200,7 @@ export type PrivateEndpointConnectionsListInput =
 export const PrivateEndpointConnectionsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => PrivateEndpointConnectionSchema)),
     ),
   });
 export type PrivateEndpointConnectionsListOutput =
@@ -1083,23 +1226,7 @@ export const PrivateEndpointConnectionsPutInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     privateEndpointConnectionName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        privateEndpoint: Schema.optional(
-          Schema.Struct({
-            id: Schema.optional(Schema.String),
-          }),
-        ),
-        privateLinkServiceConnectionState: Schema.Struct({
-          status: Schema.optional(
-            Schema.Literals(["Pending", "Approved", "Rejected"]),
-          ),
-          description: Schema.optional(Schema.String),
-          actionsRequired: Schema.optional(Schema.String),
-        }),
-        provisioningState: Schema.optional(
-          Schema.Literals(["Succeeded", "Creating", "Deleting", "Failed"]),
-        ),
-      }),
+      Schema.suspend(() => PrivateEndpointConnectionPropertiesSchema),
     ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -1118,6 +1245,9 @@ export type PrivateEndpointConnectionsPutInput =
 // Output Schema
 export const PrivateEndpointConnectionsPutOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => PrivateEndpointConnectionPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1159,13 +1289,7 @@ export type PrivateLinkResourcesListByClusterInput =
 export const PrivateLinkResourcesListByClusterOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => PrivateLinkResourceSchema)),
     ),
   });
 export type PrivateLinkResourcesListByClusterOutput =
@@ -1189,161 +1313,21 @@ export const RedisEnterpriseCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    kind: Schema.optional(Schema.Literals(["v1", "v2"])),
-    sku: Schema.Struct({
-      name: Schema.Literals([
-        "Enterprise_E1",
-        "Enterprise_E5",
-        "Enterprise_E10",
-        "Enterprise_E20",
-        "Enterprise_E50",
-        "Enterprise_E100",
-        "Enterprise_E200",
-        "Enterprise_E400",
-        "EnterpriseFlash_F300",
-        "EnterpriseFlash_F700",
-        "EnterpriseFlash_F1500",
-        "Balanced_B0",
-        "Balanced_B1",
-        "Balanced_B3",
-        "Balanced_B5",
-        "Balanced_B10",
-        "Balanced_B20",
-        "Balanced_B50",
-        "Balanced_B100",
-        "Balanced_B150",
-        "Balanced_B250",
-        "Balanced_B350",
-        "Balanced_B500",
-        "Balanced_B700",
-        "Balanced_B1000",
-        "MemoryOptimized_M10",
-        "MemoryOptimized_M20",
-        "MemoryOptimized_M50",
-        "MemoryOptimized_M100",
-        "MemoryOptimized_M150",
-        "MemoryOptimized_M250",
-        "MemoryOptimized_M350",
-        "MemoryOptimized_M500",
-        "MemoryOptimized_M700",
-        "MemoryOptimized_M1000",
-        "MemoryOptimized_M1500",
-        "MemoryOptimized_M2000",
-        "ComputeOptimized_X3",
-        "ComputeOptimized_X5",
-        "ComputeOptimized_X10",
-        "ComputeOptimized_X20",
-        "ComputeOptimized_X50",
-        "ComputeOptimized_X100",
-        "ComputeOptimized_X150",
-        "ComputeOptimized_X250",
-        "ComputeOptimized_X350",
-        "ComputeOptimized_X500",
-        "ComputeOptimized_X700",
-        "FlashOptimized_A250",
-        "FlashOptimized_A500",
-        "FlashOptimized_A700",
-        "FlashOptimized_A1000",
-        "FlashOptimized_A1500",
-        "FlashOptimized_A2000",
-        "FlashOptimized_A4500",
-      ]),
-      capacity: Schema.optional(Schema.Number),
-    }),
+    kind: Schema.optional(Schema.suspend(() => KindSchema)),
+    sku: Schema.suspend(() => SkuSchema),
     zones: Schema.optional(Schema.Array(Schema.String)),
     identity: Schema.optional(
       Schema.Struct({
         principalId: Schema.optional(Schema.String),
         tenantId: Schema.optional(Schema.String),
-        type: Schema.Literals([
-          "None",
-          "SystemAssigned",
-          "UserAssigned",
-          "SystemAssigned, UserAssigned",
-        ]),
+        type: Schema.suspend(() => ManagedServiceIdentityTypeSchema),
         userAssignedIdentities: Schema.optional(
-          Schema.Record(
-            Schema.String,
-            Schema.Struct({
-              principalId: Schema.optional(Schema.String),
-              clientId: Schema.optional(Schema.String),
-            }),
-          ),
+          Schema.suspend(() => UserAssignedIdentitiesSchema),
         ),
       }),
     ),
     properties: Schema.optional(
-      Schema.Struct({
-        highAvailability: Schema.optional(
-          Schema.Literals(["Enabled", "Disabled"]),
-        ),
-        minimumTlsVersion: Schema.optional(
-          Schema.Literals(["1.0", "1.1", "1.2"]),
-        ),
-        encryption: Schema.optional(
-          Schema.Struct({
-            customerManagedKeyEncryption: Schema.optional(
-              Schema.Struct({
-                keyEncryptionKeyIdentity: Schema.optional(
-                  Schema.Struct({
-                    userAssignedIdentityResourceId: Schema.optional(
-                      Schema.String,
-                    ),
-                    identityType: Schema.optional(
-                      Schema.Literals([
-                        "systemAssignedIdentity",
-                        "userAssignedIdentity",
-                      ]),
-                    ),
-                  }),
-                ),
-                keyEncryptionKeyUrl: Schema.optional(Schema.String),
-              }),
-            ),
-          }),
-        ),
-        hostName: Schema.optional(Schema.String),
-        provisioningState: Schema.optional(
-          Schema.Literals([
-            "Succeeded",
-            "Failed",
-            "Canceled",
-            "Creating",
-            "Updating",
-            "Deleting",
-          ]),
-        ),
-        redundancyMode: Schema.optional(Schema.Literals(["None", "LR", "ZR"])),
-        resourceState: Schema.optional(
-          Schema.Literals([
-            "Running",
-            "Creating",
-            "CreateFailed",
-            "Updating",
-            "UpdateFailed",
-            "Deleting",
-            "DeleteFailed",
-            "Enabling",
-            "EnableFailed",
-            "Disabling",
-            "DisableFailed",
-            "Disabled",
-            "Scaling",
-            "ScalingFailed",
-            "Moving",
-          ]),
-        ),
-        redisVersion: Schema.optional(Schema.String),
-        privateEndpointConnections: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              id: Schema.optional(Schema.String),
-              name: Schema.optional(Schema.String),
-              type: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-      }),
+      Schema.suspend(() => ClusterCreatePropertiesSchema),
     ),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     location: Schema.String,
@@ -1360,6 +1344,24 @@ export type RedisEnterpriseCreateInput = typeof RedisEnterpriseCreateInput.Type;
 // Output Schema
 export const RedisEnterpriseCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    kind: Schema.optional(Schema.suspend(() => KindSchema)),
+    sku: Schema.suspend(() => SkuSchema),
+    zones: Schema.optional(Schema.Array(Schema.String)),
+    identity: Schema.optional(
+      Schema.Struct({
+        principalId: Schema.optional(Schema.String),
+        tenantId: Schema.optional(Schema.String),
+        type: Schema.suspend(() => ManagedServiceIdentityTypeSchema),
+        userAssignedIdentities: Schema.optional(
+          Schema.suspend(() => UserAssignedIdentitiesSchema),
+        ),
+      }),
+    ),
+    properties: Schema.optional(
+      Schema.suspend(() => ClusterCreatePropertiesSchema),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1433,6 +1435,24 @@ export type RedisEnterpriseGetInput = typeof RedisEnterpriseGetInput.Type;
 // Output Schema
 export const RedisEnterpriseGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    kind: Schema.optional(Schema.suspend(() => KindSchema)),
+    sku: Schema.suspend(() => SkuSchema),
+    zones: Schema.optional(Schema.Array(Schema.String)),
+    identity: Schema.optional(
+      Schema.Struct({
+        principalId: Schema.optional(Schema.String),
+        tenantId: Schema.optional(Schema.String),
+        type: Schema.suspend(() => ManagedServiceIdentityTypeSchema),
+        userAssignedIdentities: Schema.optional(
+          Schema.suspend(() => UserAssignedIdentitiesSchema),
+        ),
+      }),
+    ),
+    properties: Schema.optional(
+      Schema.suspend(() => ClusterCreatePropertiesSchema),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1467,15 +1487,7 @@ export type RedisEnterpriseListInput = typeof RedisEnterpriseListInput.Type;
 // Output Schema
 export const RedisEnterpriseListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
-    ),
+    value: Schema.optional(Schema.Array(Schema.suspend(() => ClusterSchema))),
     nextLink: Schema.optional(Schema.String),
   });
 export type RedisEnterpriseListOutput = typeof RedisEnterpriseListOutput.Type;
@@ -1509,15 +1521,7 @@ export type RedisEnterpriseListByResourceGroupInput =
 // Output Schema
 export const RedisEnterpriseListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
-    ),
+    value: Schema.optional(Schema.Array(Schema.suspend(() => ClusterSchema))),
     nextLink: Schema.optional(Schema.String),
   });
 export type RedisEnterpriseListByResourceGroupOutput =
@@ -1554,14 +1558,7 @@ export type RedisEnterpriseListSkusForScalingInput =
 // Output Schema
 export const RedisEnterpriseListSkusForScalingOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    skus: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          name: Schema.optional(Schema.String),
-          sizeInGB: Schema.optional(Schema.Number),
-        }),
-      ),
-    ),
+    skus: Schema.optional(Schema.Array(Schema.suspend(() => SkuDetailsSchema))),
   });
 export type RedisEnterpriseListSkusForScalingOutput =
   typeof RedisEnterpriseListSkusForScalingOutput.Type;
@@ -1584,159 +1581,17 @@ export const RedisEnterpriseUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    sku: Schema.optional(
-      Schema.Struct({
-        name: Schema.Literals([
-          "Enterprise_E1",
-          "Enterprise_E5",
-          "Enterprise_E10",
-          "Enterprise_E20",
-          "Enterprise_E50",
-          "Enterprise_E100",
-          "Enterprise_E200",
-          "Enterprise_E400",
-          "EnterpriseFlash_F300",
-          "EnterpriseFlash_F700",
-          "EnterpriseFlash_F1500",
-          "Balanced_B0",
-          "Balanced_B1",
-          "Balanced_B3",
-          "Balanced_B5",
-          "Balanced_B10",
-          "Balanced_B20",
-          "Balanced_B50",
-          "Balanced_B100",
-          "Balanced_B150",
-          "Balanced_B250",
-          "Balanced_B350",
-          "Balanced_B500",
-          "Balanced_B700",
-          "Balanced_B1000",
-          "MemoryOptimized_M10",
-          "MemoryOptimized_M20",
-          "MemoryOptimized_M50",
-          "MemoryOptimized_M100",
-          "MemoryOptimized_M150",
-          "MemoryOptimized_M250",
-          "MemoryOptimized_M350",
-          "MemoryOptimized_M500",
-          "MemoryOptimized_M700",
-          "MemoryOptimized_M1000",
-          "MemoryOptimized_M1500",
-          "MemoryOptimized_M2000",
-          "ComputeOptimized_X3",
-          "ComputeOptimized_X5",
-          "ComputeOptimized_X10",
-          "ComputeOptimized_X20",
-          "ComputeOptimized_X50",
-          "ComputeOptimized_X100",
-          "ComputeOptimized_X150",
-          "ComputeOptimized_X250",
-          "ComputeOptimized_X350",
-          "ComputeOptimized_X500",
-          "ComputeOptimized_X700",
-          "FlashOptimized_A250",
-          "FlashOptimized_A500",
-          "FlashOptimized_A700",
-          "FlashOptimized_A1000",
-          "FlashOptimized_A1500",
-          "FlashOptimized_A2000",
-          "FlashOptimized_A4500",
-        ]),
-        capacity: Schema.optional(Schema.Number),
-      }),
-    ),
+    sku: Schema.optional(Schema.suspend(() => SkuSchema)),
     properties: Schema.optional(
-      Schema.Struct({
-        highAvailability: Schema.optional(
-          Schema.Literals(["Enabled", "Disabled"]),
-        ),
-        minimumTlsVersion: Schema.optional(
-          Schema.Literals(["1.0", "1.1", "1.2"]),
-        ),
-        encryption: Schema.optional(
-          Schema.Struct({
-            customerManagedKeyEncryption: Schema.optional(
-              Schema.Struct({
-                keyEncryptionKeyIdentity: Schema.optional(
-                  Schema.Struct({
-                    userAssignedIdentityResourceId: Schema.optional(
-                      Schema.String,
-                    ),
-                    identityType: Schema.optional(
-                      Schema.Literals([
-                        "systemAssignedIdentity",
-                        "userAssignedIdentity",
-                      ]),
-                    ),
-                  }),
-                ),
-                keyEncryptionKeyUrl: Schema.optional(Schema.String),
-              }),
-            ),
-          }),
-        ),
-        hostName: Schema.optional(Schema.String),
-        provisioningState: Schema.optional(
-          Schema.Literals([
-            "Succeeded",
-            "Failed",
-            "Canceled",
-            "Creating",
-            "Updating",
-            "Deleting",
-          ]),
-        ),
-        redundancyMode: Schema.optional(Schema.Literals(["None", "LR", "ZR"])),
-        resourceState: Schema.optional(
-          Schema.Literals([
-            "Running",
-            "Creating",
-            "CreateFailed",
-            "Updating",
-            "UpdateFailed",
-            "Deleting",
-            "DeleteFailed",
-            "Enabling",
-            "EnableFailed",
-            "Disabling",
-            "DisableFailed",
-            "Disabled",
-            "Scaling",
-            "ScalingFailed",
-            "Moving",
-          ]),
-        ),
-        redisVersion: Schema.optional(Schema.String),
-        privateEndpointConnections: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              id: Schema.optional(Schema.String),
-              name: Schema.optional(Schema.String),
-              type: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-      }),
+      Schema.suspend(() => ClusterUpdatePropertiesSchema),
     ),
     identity: Schema.optional(
       Schema.Struct({
         principalId: Schema.optional(Schema.String),
         tenantId: Schema.optional(Schema.String),
-        type: Schema.Literals([
-          "None",
-          "SystemAssigned",
-          "UserAssigned",
-          "SystemAssigned, UserAssigned",
-        ]),
+        type: Schema.suspend(() => ManagedServiceIdentityTypeSchema),
         userAssignedIdentities: Schema.optional(
-          Schema.Record(
-            Schema.String,
-            Schema.Struct({
-              principalId: Schema.optional(Schema.String),
-              clientId: Schema.optional(Schema.String),
-            }),
-          ),
+          Schema.suspend(() => UserAssignedIdentitiesSchema),
         ),
       }),
     ),
@@ -1754,6 +1609,24 @@ export type RedisEnterpriseUpdateInput = typeof RedisEnterpriseUpdateInput.Type;
 // Output Schema
 export const RedisEnterpriseUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    kind: Schema.optional(Schema.suspend(() => KindSchema)),
+    sku: Schema.suspend(() => SkuSchema),
+    zones: Schema.optional(Schema.Array(Schema.String)),
+    identity: Schema.optional(
+      Schema.Struct({
+        principalId: Schema.optional(Schema.String),
+        tenantId: Schema.optional(Schema.String),
+        type: Schema.suspend(() => ManagedServiceIdentityTypeSchema),
+        userAssignedIdentities: Schema.optional(
+          Schema.suspend(() => UserAssignedIdentitiesSchema),
+        ),
+      }),
+    ),
+    properties: Schema.optional(
+      Schema.suspend(() => ClusterCreatePropertiesSchema),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),

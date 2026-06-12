@@ -8,6 +8,59 @@ import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
+// Shared schemas
+const AppPropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  applicationId: Schema.optional(Schema.String),
+  displayName: Schema.optional(Schema.String),
+  subdomain: Schema.optional(Schema.String),
+  template: Schema.optional(Schema.String),
+  state: Schema.optional(Schema.suspend(() => AppStateSchema)),
+});
+const AppStateSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "created",
+  "suspended",
+]);
+const AppSkuInfoSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.Literals(["ST0", "ST1", "ST2"]),
+});
+const SystemAssignedServiceIdentityTypeSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Literals(["None", "SystemAssigned"]);
+const AppSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  location: Schema.String,
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+});
+const AppTemplateSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  manifestId: Schema.optional(Schema.String),
+  manifestVersion: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  title: Schema.optional(Schema.String),
+  order: Schema.optional(Schema.Number),
+  description: Schema.optional(Schema.String),
+  industry: Schema.optional(Schema.String),
+  locations: Schema.optional(
+    Schema.Array(Schema.suspend(() => AppTemplateLocationsSchema)),
+  ),
+});
+const AppTemplateLocationsSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  displayName: Schema.optional(Schema.String),
+});
+const OperationSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  display: Schema.optional(Schema.suspend(() => OperationDisplaySchema)),
+  origin: Schema.optional(Schema.String),
+  properties: Schema.optional(Schema.Unknown),
+});
+const OperationDisplaySchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  provider: Schema.optional(Schema.String),
+  resource: Schema.optional(Schema.String),
+  operation: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+});
+
 // Input Schema
 export const AppsCheckNameAvailabilityInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -80,23 +133,13 @@ export const AppsCheckSubdomainAvailability =
 // Input Schema
 export const AppsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    properties: Schema.optional(
-      Schema.Struct({
-        applicationId: Schema.optional(Schema.String),
-        displayName: Schema.optional(Schema.String),
-        subdomain: Schema.optional(Schema.String),
-        template: Schema.optional(Schema.String),
-        state: Schema.optional(Schema.Literals(["created", "suspended"])),
-      }),
-    ),
-    sku: Schema.Struct({
-      name: Schema.Literals(["ST0", "ST1", "ST2"]),
-    }),
+    properties: Schema.optional(Schema.suspend(() => AppPropertiesSchema)),
+    sku: Schema.suspend(() => AppSkuInfoSchema),
     identity: Schema.optional(
       Schema.Struct({
         principalId: Schema.optional(Schema.String),
         tenantId: Schema.optional(Schema.String),
-        type: Schema.Literals(["None", "SystemAssigned"]),
+        type: Schema.suspend(() => SystemAssignedServiceIdentityTypeSchema),
       }),
     ),
     id: Schema.optional(Schema.String),
@@ -117,6 +160,15 @@ export type AppsCreateOrUpdateInput = typeof AppsCreateOrUpdateInput.Type;
 // Output Schema
 export const AppsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(Schema.suspend(() => AppPropertiesSchema)),
+    sku: Schema.suspend(() => AppSkuInfoSchema),
+    identity: Schema.optional(
+      Schema.Struct({
+        principalId: Schema.optional(Schema.String),
+        tenantId: Schema.optional(Schema.String),
+        type: Schema.suspend(() => SystemAssignedServiceIdentityTypeSchema),
+      }),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -170,6 +222,15 @@ export type AppsGetInput = typeof AppsGetInput.Type;
 
 // Output Schema
 export const AppsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.optional(Schema.suspend(() => AppPropertiesSchema)),
+  sku: Schema.suspend(() => AppSkuInfoSchema),
+  identity: Schema.optional(
+    Schema.Struct({
+      principalId: Schema.optional(Schema.String),
+      tenantId: Schema.optional(Schema.String),
+      type: Schema.suspend(() => SystemAssignedServiceIdentityTypeSchema),
+    }),
+  ),
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -202,17 +263,7 @@ export type AppsListByResourceGroupInput =
 export const AppsListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          location: Schema.String,
-          tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        }),
-      ),
-    ),
+    value: Schema.optional(Schema.Array(Schema.suspend(() => AppSchema))),
   });
 export type AppsListByResourceGroupOutput =
   typeof AppsListByResourceGroupOutput.Type;
@@ -243,17 +294,7 @@ export type AppsListBySubscriptionInput =
 export const AppsListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          location: Schema.String,
-          tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        }),
-      ),
-    ),
+    value: Schema.optional(Schema.Array(Schema.suspend(() => AppSchema))),
   });
 export type AppsListBySubscriptionOutput =
   typeof AppsListBySubscriptionOutput.Type;
@@ -285,25 +326,7 @@ export const AppsListTemplatesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          manifestId: Schema.optional(Schema.String),
-          manifestVersion: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          title: Schema.optional(Schema.String),
-          order: Schema.optional(Schema.Number),
-          description: Schema.optional(Schema.String),
-          industry: Schema.optional(Schema.String),
-          locations: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                id: Schema.optional(Schema.String),
-                displayName: Schema.optional(Schema.String),
-              }),
-            ),
-          ),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => AppTemplateSchema)),
     ),
   });
 export type AppsListTemplatesOutput = typeof AppsListTemplatesOutput.Type;
@@ -319,25 +342,13 @@ export const AppsListTemplates = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const AppsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-  sku: Schema.optional(
-    Schema.Struct({
-      name: Schema.Literals(["ST0", "ST1", "ST2"]),
-    }),
-  ),
-  properties: Schema.optional(
-    Schema.Struct({
-      applicationId: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      subdomain: Schema.optional(Schema.String),
-      template: Schema.optional(Schema.String),
-      state: Schema.optional(Schema.Literals(["created", "suspended"])),
-    }),
-  ),
+  sku: Schema.optional(Schema.suspend(() => AppSkuInfoSchema)),
+  properties: Schema.optional(Schema.suspend(() => AppPropertiesSchema)),
   identity: Schema.optional(
     Schema.Struct({
       principalId: Schema.optional(Schema.String),
       tenantId: Schema.optional(Schema.String),
-      type: Schema.Literals(["None", "SystemAssigned"]),
+      type: Schema.suspend(() => SystemAssignedServiceIdentityTypeSchema),
     }),
   ),
 }).pipe(
@@ -352,6 +363,15 @@ export type AppsUpdateInput = typeof AppsUpdateInput.Type;
 
 // Output Schema
 export const AppsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.optional(Schema.suspend(() => AppPropertiesSchema)),
+  sku: Schema.suspend(() => AppSkuInfoSchema),
+  identity: Schema.optional(
+    Schema.Struct({
+      principalId: Schema.optional(Schema.String),
+      tenantId: Schema.optional(Schema.String),
+      type: Schema.suspend(() => SystemAssignedServiceIdentityTypeSchema),
+    }),
+  ),
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -383,23 +403,7 @@ export type OperationsListInput = typeof OperationsListInput.Type;
 // Output Schema
 export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   nextLink: Schema.optional(Schema.String),
-  value: Schema.optional(
-    Schema.Array(
-      Schema.Struct({
-        name: Schema.optional(Schema.String),
-        display: Schema.optional(
-          Schema.Struct({
-            provider: Schema.optional(Schema.String),
-            resource: Schema.optional(Schema.String),
-            operation: Schema.optional(Schema.String),
-            description: Schema.optional(Schema.String),
-          }),
-        ),
-        origin: Schema.optional(Schema.String),
-        properties: Schema.optional(Schema.Unknown),
-      }),
-    ),
-  ),
+  value: Schema.optional(Schema.Array(Schema.suspend(() => OperationSchema))),
 });
 export type OperationsListOutput = typeof OperationsListOutput.Type;
 

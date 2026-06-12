@@ -8,32 +8,43 @@ import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
+// Shared schemas
+const OperationEntitySchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  display: Schema.optional(Schema.suspend(() => OperationDisplayInfoSchema)),
+});
+const OperationDisplayInfoSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  description: Schema.optional(Schema.String),
+  operation: Schema.optional(Schema.String),
+  provider: Schema.optional(Schema.String),
+  resource: Schema.optional(Schema.String),
+});
+const ADCCatalogSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  location: Schema.optional(Schema.String),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  etag: Schema.optional(Schema.String),
+});
+const ADCCatalogPropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  sku: Schema.optional(Schema.Literals(["Free", "Standard"])),
+  units: Schema.optional(Schema.Number),
+  admins: Schema.optional(Schema.Array(Schema.suspend(() => PrincipalsSchema))),
+  users: Schema.optional(Schema.Array(Schema.suspend(() => PrincipalsSchema))),
+  successfullyProvisioned: Schema.optional(Schema.Boolean),
+  enableAutomaticUnitAdjustment: Schema.optional(Schema.Boolean),
+});
+const PrincipalsSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  upn: Schema.optional(Schema.String),
+  objectId: Schema.optional(Schema.String),
+});
+
 // Input Schema
 export const ADCCatalogsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     properties: Schema.optional(
-      Schema.Struct({
-        sku: Schema.optional(Schema.Literals(["Free", "Standard"])),
-        units: Schema.optional(Schema.Number),
-        admins: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              upn: Schema.optional(Schema.String),
-              objectId: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        users: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              upn: Schema.optional(Schema.String),
-              objectId: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        successfullyProvisioned: Schema.optional(Schema.Boolean),
-        enableAutomaticUnitAdjustment: Schema.optional(Schema.Boolean),
-      }),
+      Schema.suspend(() => ADCCatalogPropertiesSchema),
     ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -54,6 +65,9 @@ export type ADCCatalogsCreateOrUpdateInput =
 // Output Schema
 export const ADCCatalogsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => ADCCatalogPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -117,6 +131,7 @@ export type ADCCatalogsGetInput = typeof ADCCatalogsGetInput.Type;
 
 // Output Schema
 export const ADCCatalogsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.optional(Schema.suspend(() => ADCCatalogPropertiesSchema)),
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -152,16 +167,7 @@ export type ADCCatalogsListtByResourceGroupInput =
 export const ADCCatalogsListtByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          location: Schema.optional(Schema.String),
-          tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-          etag: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => ADCCatalogSchema)),
     ),
   });
 export type ADCCatalogsListtByResourceGroupOutput =
@@ -182,28 +188,7 @@ export const ADCCatalogsListtByResourceGroup =
 export const ADCCatalogsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     properties: Schema.optional(
-      Schema.Struct({
-        sku: Schema.optional(Schema.Literals(["Free", "Standard"])),
-        units: Schema.optional(Schema.Number),
-        admins: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              upn: Schema.optional(Schema.String),
-              objectId: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        users: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              upn: Schema.optional(Schema.String),
-              objectId: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        successfullyProvisioned: Schema.optional(Schema.Boolean),
-        enableAutomaticUnitAdjustment: Schema.optional(Schema.Boolean),
-      }),
+      Schema.suspend(() => ADCCatalogPropertiesSchema),
     ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -224,6 +209,9 @@ export type ADCCatalogsUpdateInput = typeof ADCCatalogsUpdateInput.Type;
 // Output Schema
 export const ADCCatalogsUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => ADCCatalogPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -259,19 +247,7 @@ export type ADCOperationsListInput = typeof ADCOperationsListInput.Type;
 export const ADCOperationsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          name: Schema.optional(Schema.String),
-          display: Schema.optional(
-            Schema.Struct({
-              description: Schema.optional(Schema.String),
-              operation: Schema.optional(Schema.String),
-              provider: Schema.optional(Schema.String),
-              resource: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => OperationEntitySchema)),
     ),
   });
 export type ADCOperationsListOutput = typeof ADCOperationsListOutput.Type;

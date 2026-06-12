@@ -9,6 +9,143 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 import { SensitiveOutputString } from "../sensitive.ts";
 
+// Shared schemas
+const OfferSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+});
+const systemDataSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  createdBy: Schema.optional(Schema.String),
+  createdByType: Schema.optional(
+    Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+  ),
+  createdAt: Schema.optional(Schema.String),
+  lastModifiedBy: Schema.optional(Schema.String),
+  lastModifiedByType: Schema.optional(
+    Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+  ),
+  lastModifiedAt: Schema.optional(Schema.String),
+});
+const OfferPropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  contentVersion: Schema.optional(Schema.String),
+  contentUrl: Schema.optional(Schema.String),
+  offerContent: Schema.suspend(() => OfferContentSchema),
+  provisioningState: Schema.optional(
+    Schema.suspend(() => Azure_ResourceManager_ResourceProvisioningStateSchema),
+  ),
+  marketplaceSkus: Schema.optional(
+    Schema.Array(Schema.suspend(() => MarketplaceSkuSchema)),
+  ),
+});
+const OfferContentSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  displayName: Schema.String,
+  summary: Schema.optional(Schema.String),
+  longSummary: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+  offerId: Schema.String,
+  offerType: Schema.optional(Schema.String),
+  supportUri: Schema.optional(Schema.String),
+  popularity: Schema.optional(Schema.Number),
+  offerPublisher: Schema.optional(Schema.suspend(() => OfferPublisherSchema)),
+  availability: Schema.optional(Schema.suspend(() => OfferAvailabilitySchema)),
+  releaseType: Schema.optional(Schema.suspend(() => OfferReleaseTypeSchema)),
+  iconFileUris: Schema.optional(Schema.suspend(() => IconFileUrisSchema)),
+  termsAndConditions: Schema.optional(
+    Schema.suspend(() => TermsAndConditionsSchema),
+  ),
+  categoryIds: Schema.optional(Schema.Array(Schema.String)),
+  operatingSystems: Schema.optional(Schema.Array(Schema.String)),
+});
+const OfferPublisherSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  publisherId: Schema.String,
+  publisherDisplayName: Schema.String,
+});
+const OfferAvailabilitySchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Private",
+  "Public",
+]);
+const OfferReleaseTypeSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Preview",
+  "GA",
+]);
+const IconFileUrisSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  small: Schema.optional(Schema.String),
+  medium: Schema.optional(Schema.String),
+  wide: Schema.optional(Schema.String),
+  large: Schema.optional(Schema.String),
+});
+const TermsAndConditionsSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  legalTermsUri: Schema.optional(Schema.String),
+  legalTermsType: Schema.optional(Schema.String),
+  privacyPolicyUri: Schema.optional(Schema.String),
+});
+const Azure_ResourceManager_ResourceProvisioningStateSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+    "Succeeded",
+    "Failed",
+    "Canceled",
+  ]);
+const MarketplaceSkuSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  catalogPlanId: Schema.String,
+  marketplaceSkuId: Schema.String,
+  type: Schema.optional(Schema.String),
+  displayName: Schema.optional(Schema.String),
+  summary: Schema.optional(Schema.String),
+  longSummary: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+  generation: Schema.optional(Schema.String),
+  displayRank: Schema.optional(Schema.Number),
+  operatingSystem: Schema.optional(
+    Schema.suspend(() => SkuOperatingSystemSchema),
+  ),
+  marketplaceSkuVersions: Schema.optional(
+    Schema.Array(Schema.suspend(() => MarketplaceSkuVersionSchema)),
+  ),
+});
+const SkuOperatingSystemSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  family: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  name: Schema.String,
+});
+const MarketplaceSkuVersionSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.String,
+  sizeOnDiskInMb: Schema.optional(Schema.Number),
+  minimumDownloadSizeInMb: Schema.optional(Schema.Number),
+  stageName: Schema.optional(Schema.String),
+  launchType: Schema.optional(Schema.suspend(() => OfferLaunchTypeSchema)),
+});
+const OfferLaunchTypeSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Trusted",
+  "Unknown",
+]);
+const PublisherSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+});
+const PublisherPropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  provisioningState: Schema.optional(
+    Schema.suspend(() => Azure_ResourceManager_ResourceProvisioningStateSchema),
+  ),
+});
+const OperationSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  isDataAction: Schema.optional(Schema.Boolean),
+  display: Schema.optional(
+    Schema.Struct({
+      provider: Schema.optional(Schema.String),
+      resource: Schema.optional(Schema.String),
+      operation: Schema.optional(Schema.String),
+      description: Schema.optional(Schema.String),
+    }),
+  ),
+  origin: Schema.optional(Schema.Literals(["user", "system", "user,system"])),
+  actionType: Schema.optional(Schema.Literals(["Internal"])),
+});
+
 // Input Schema
 export const OffersGenerateAccessTokenInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -69,23 +206,11 @@ export type OffersGetInput = typeof OffersGetInput.Type;
 
 // Output Schema
 export const OffersGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.optional(Schema.suspend(() => OfferPropertiesSchema)),
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
-  systemData: Schema.optional(
-    Schema.Struct({
-      createdBy: Schema.optional(Schema.String),
-      createdByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      createdAt: Schema.optional(Schema.String),
-      lastModifiedBy: Schema.optional(Schema.String),
-      lastModifiedByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      lastModifiedAt: Schema.optional(Schema.String),
-    }),
-  ),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
 });
 export type OffersGetOutput = typeof OffersGetOutput.Type;
 
@@ -154,27 +279,7 @@ export type OffersListInput = typeof OffersListInput.Type;
 
 // Output Schema
 export const OffersListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  value: Schema.Array(
-    Schema.Struct({
-      id: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      type: Schema.optional(Schema.String),
-      systemData: Schema.optional(
-        Schema.Struct({
-          createdBy: Schema.optional(Schema.String),
-          createdByType: Schema.optional(
-            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-          ),
-          createdAt: Schema.optional(Schema.String),
-          lastModifiedBy: Schema.optional(Schema.String),
-          lastModifiedByType: Schema.optional(
-            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-          ),
-          lastModifiedAt: Schema.optional(Schema.String),
-        }),
-      ),
-    }),
-  ),
+  value: Schema.Array(Schema.suspend(() => OfferSchema)),
   nextLink: Schema.optional(Schema.String),
 });
 export type OffersListOutput = typeof OffersListOutput.Type;
@@ -211,37 +316,7 @@ export type OffersListBySubscriptionInput =
 // Output Schema
 export const OffersListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => OfferSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type OffersListBySubscriptionOutput =
@@ -274,26 +349,7 @@ export type OperationsListInput = typeof OperationsListInput.Type;
 
 // Output Schema
 export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  value: Schema.optional(
-    Schema.Array(
-      Schema.Struct({
-        name: Schema.optional(Schema.String),
-        isDataAction: Schema.optional(Schema.Boolean),
-        display: Schema.optional(
-          Schema.Struct({
-            provider: Schema.optional(Schema.String),
-            resource: Schema.optional(Schema.String),
-            operation: Schema.optional(Schema.String),
-            description: Schema.optional(Schema.String),
-          }),
-        ),
-        origin: Schema.optional(
-          Schema.Literals(["user", "system", "user,system"]),
-        ),
-        actionType: Schema.optional(Schema.Literals(["Internal"])),
-      }),
-    ),
-  ),
+  value: Schema.optional(Schema.Array(Schema.suspend(() => OperationSchema))),
   nextLink: Schema.optional(Schema.String),
 });
 export type OperationsListOutput = typeof OperationsListOutput.Type;
@@ -322,23 +378,11 @@ export type PublishersGetInput = typeof PublishersGetInput.Type;
 
 // Output Schema
 export const PublishersGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.optional(Schema.suspend(() => PublisherPropertiesSchema)),
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
-  systemData: Schema.optional(
-    Schema.Struct({
-      createdBy: Schema.optional(Schema.String),
-      createdByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      createdAt: Schema.optional(Schema.String),
-      lastModifiedBy: Schema.optional(Schema.String),
-      lastModifiedByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      lastModifiedAt: Schema.optional(Schema.String),
-    }),
-  ),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
 });
 export type PublishersGetOutput = typeof PublishersGetOutput.Type;
 
@@ -371,27 +415,7 @@ export type PublishersListInput = typeof PublishersListInput.Type;
 
 // Output Schema
 export const PublishersListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  value: Schema.Array(
-    Schema.Struct({
-      id: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      type: Schema.optional(Schema.String),
-      systemData: Schema.optional(
-        Schema.Struct({
-          createdBy: Schema.optional(Schema.String),
-          createdByType: Schema.optional(
-            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-          ),
-          createdAt: Schema.optional(Schema.String),
-          lastModifiedBy: Schema.optional(Schema.String),
-          lastModifiedByType: Schema.optional(
-            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-          ),
-          lastModifiedAt: Schema.optional(Schema.String),
-        }),
-      ),
-    }),
-  ),
+  value: Schema.Array(Schema.suspend(() => PublisherSchema)),
   nextLink: Schema.optional(Schema.String),
 });
 export type PublishersListOutput = typeof PublishersListOutput.Type;
@@ -428,37 +452,7 @@ export type PublishersListBySubscriptionInput =
 // Output Schema
 export const PublishersListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => PublisherSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type PublishersListBySubscriptionOutput =

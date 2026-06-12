@@ -8,6 +8,263 @@ import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
+// Shared schemas
+const OperationSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  isDataAction: Schema.optional(Schema.Boolean),
+  display: Schema.optional(
+    Schema.Struct({
+      provider: Schema.optional(Schema.String),
+      resource: Schema.optional(Schema.String),
+      operation: Schema.optional(Schema.String),
+      description: Schema.optional(Schema.String),
+    }),
+  ),
+  origin: Schema.optional(Schema.Literals(["user", "system", "user,system"])),
+  actionType: Schema.optional(Schema.Literals(["Internal"])),
+});
+const StandbyContainerGroupPoolResourceSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+  });
+const systemDataSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  createdBy: Schema.optional(Schema.String),
+  createdByType: Schema.optional(
+    Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+  ),
+  createdAt: Schema.optional(Schema.String),
+  lastModifiedBy: Schema.optional(Schema.String),
+  lastModifiedByType: Schema.optional(
+    Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+  ),
+  lastModifiedAt: Schema.optional(Schema.String),
+});
+const StandbyVirtualMachinePoolResourceSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+  });
+const StandbyContainerGroupPoolResourcePropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    elasticityProfile: Schema.suspend(
+      () => StandbyContainerGroupPoolElasticityProfileSchema,
+    ),
+    containerGroupProperties: Schema.suspend(
+      () => ContainerGroupPropertiesSchema,
+    ),
+    zones: Schema.optional(Schema.Array(Schema.String)),
+    provisioningState: Schema.optional(
+      Schema.suspend(() => ProvisioningStateSchema),
+    ),
+  });
+const StandbyContainerGroupPoolElasticityProfileSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    maxReadyCapacity: Schema.Number,
+    refillPolicy: Schema.optional(Schema.suspend(() => RefillPolicySchema)),
+    dynamicSizing: Schema.optional(Schema.suspend(() => DynamicSizingSchema)),
+  });
+const RefillPolicySchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "always",
+]);
+const DynamicSizingSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  enabled: Schema.optional(Schema.Boolean),
+});
+const ContainerGroupPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    containerGroupProfile: Schema.suspend(() => ContainerGroupProfileSchema),
+    subnetIds: Schema.optional(
+      Schema.Array(Schema.suspend(() => SubnetSchema)),
+    ),
+  });
+const ContainerGroupProfileSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.String,
+  revision: Schema.optional(Schema.Number),
+});
+const SubnetSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.String,
+});
+const ProvisioningStateSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Succeeded",
+  "Failed",
+  "Canceled",
+  "Deleting",
+]);
+const StandbyContainerGroupPoolResourceUpdatePropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    elasticityProfile: Schema.optional(
+      Schema.suspend(() => StandbyContainerGroupPoolElasticityProfileSchema),
+    ),
+    containerGroupProperties: Schema.optional(
+      Schema.suspend(() => ContainerGroupPropertiesSchema),
+    ),
+    zones: Schema.optional(Schema.Array(Schema.String)),
+  });
+const StandbyContainerGroupPoolRuntimeViewResourceSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+  });
+const StandbyContainerGroupPoolRuntimeViewResourcePropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    instanceCountSummary: Schema.Array(
+      Schema.suspend(() => ContainerGroupInstanceCountSummarySchema),
+    ),
+    status: Schema.optional(Schema.suspend(() => PoolStatusSchema)),
+    provisioningState: Schema.optional(
+      Schema.suspend(() => ProvisioningStateSchema),
+    ),
+    prediction: Schema.optional(
+      Schema.suspend(() => StandbyContainerGroupPoolPredictionSchema),
+    ),
+  });
+const ContainerGroupInstanceCountSummarySchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    zone: Schema.optional(Schema.Number),
+    instanceCountsByState: Schema.Array(
+      Schema.suspend(() => PoolContainerGroupStateCountSchema),
+    ),
+  });
+const PoolContainerGroupStateCountSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    state: Schema.suspend(() => PoolContainerGroupStateSchema),
+    count: Schema.Number,
+  });
+const PoolContainerGroupStateSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+    "Running",
+    "Creating",
+    "Deleting",
+  ]);
+const PoolStatusSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  code: Schema.suspend(() => HealthStateCodeSchema),
+  message: Schema.optional(Schema.String),
+});
+const HealthStateCodeSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "HealthState/healthy",
+  "HealthState/degraded",
+]);
+const StandbyContainerGroupPoolPredictionSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    forecastValues: Schema.suspend(
+      () => StandbyContainerGroupPoolForecastValuesSchema,
+    ),
+    forecastStartTime: Schema.String,
+    forecastInfo: Schema.String,
+  });
+const StandbyContainerGroupPoolForecastValuesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    instancesRequestedCount: Schema.Array(Schema.Number),
+  });
+const StandbyVirtualMachinePoolResourcePropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    elasticityProfile: Schema.optional(
+      Schema.suspend(() => StandbyVirtualMachinePoolElasticityProfileSchema),
+    ),
+    virtualMachineState: Schema.suspend(() => VirtualMachineStateSchema),
+    attachedVirtualMachineScaleSetId: Schema.optional(Schema.String),
+    provisioningState: Schema.optional(
+      Schema.suspend(() => ProvisioningStateSchema),
+    ),
+  });
+const StandbyVirtualMachinePoolElasticityProfileSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    maxReadyCapacity: Schema.Number,
+    minReadyCapacity: Schema.optional(Schema.Number),
+    postProvisioningDelay: Schema.optional(Schema.String),
+    dynamicSizing: Schema.optional(Schema.suspend(() => DynamicSizingSchema)),
+  });
+const VirtualMachineStateSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Running",
+  "Deallocated",
+  "Hibernated",
+]);
+const StandbyVirtualMachinePoolResourceUpdatePropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    elasticityProfile: Schema.optional(
+      Schema.suspend(() => StandbyVirtualMachinePoolElasticityProfileSchema),
+    ),
+    virtualMachineState: Schema.optional(
+      Schema.suspend(() => VirtualMachineStateSchema),
+    ),
+    attachedVirtualMachineScaleSetId: Schema.optional(Schema.String),
+  });
+const StandbyVirtualMachinePoolRuntimeViewResourceSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+  });
+const StandbyVirtualMachinePoolRuntimeViewResourcePropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    instanceCountSummary: Schema.Array(
+      Schema.suspend(() => VirtualMachineInstanceCountSummarySchema),
+    ),
+    status: Schema.optional(Schema.suspend(() => PoolStatusSchema)),
+    provisioningState: Schema.optional(
+      Schema.suspend(() => ProvisioningStateSchema),
+    ),
+    prediction: Schema.optional(
+      Schema.suspend(() => StandbyVirtualMachinePoolPredictionSchema),
+    ),
+  });
+const VirtualMachineInstanceCountSummarySchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    zone: Schema.optional(Schema.Number),
+    instanceCountsByState: Schema.Array(
+      Schema.suspend(() => PoolVirtualMachineStateCountSchema),
+    ),
+  });
+const PoolVirtualMachineStateCountSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    state: Schema.suspend(() => PoolVirtualMachineStateSchema),
+    count: Schema.Number,
+  });
+const PoolVirtualMachineStateSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+    "Running",
+    "Creating",
+    "Starting",
+    "Deleting",
+    "Deallocated",
+    "Deallocating",
+    "Hibernated",
+    "Hibernating",
+  ]);
+const StandbyVirtualMachinePoolPredictionSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    forecastValues: Schema.suspend(
+      () => StandbyVirtualMachinePoolForecastValuesSchema,
+    ),
+    forecastStartTime: Schema.String,
+    forecastInfo: Schema.String,
+  });
+const StandbyVirtualMachinePoolForecastValuesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    instancesRequestedCount: Schema.Array(Schema.Number),
+  });
+const StandbyVirtualMachineResourceSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+  });
+const StandbyVirtualMachineResourcePropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    virtualMachineResourceId: Schema.String,
+    provisioningState: Schema.optional(
+      Schema.suspend(() => ProvisioningStateSchema),
+    ),
+  });
+
 // Input Schema
 export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {},
@@ -22,26 +279,7 @@ export type OperationsListInput = typeof OperationsListInput.Type;
 
 // Output Schema
 export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  value: Schema.optional(
-    Schema.Array(
-      Schema.Struct({
-        name: Schema.optional(Schema.String),
-        isDataAction: Schema.optional(Schema.Boolean),
-        display: Schema.optional(
-          Schema.Struct({
-            provider: Schema.optional(Schema.String),
-            resource: Schema.optional(Schema.String),
-            operation: Schema.optional(Schema.String),
-            description: Schema.optional(Schema.String),
-          }),
-        ),
-        origin: Schema.optional(
-          Schema.Literals(["user", "system", "user,system"]),
-        ),
-        actionType: Schema.optional(Schema.Literals(["Internal"])),
-      }),
-    ),
-  ),
+  value: Schema.optional(Schema.Array(Schema.suspend(() => OperationSchema))),
   nextLink: Schema.optional(Schema.String),
 });
 export type OperationsListOutput = typeof OperationsListOutput.Type;
@@ -76,23 +314,15 @@ export type StandbyContainerGroupPoolRuntimeViewsGetInput =
 // Output Schema
 export const StandbyContainerGroupPoolRuntimeViewsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(
+        () => StandbyContainerGroupPoolRuntimeViewResourcePropertiesSchema,
+      ),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type StandbyContainerGroupPoolRuntimeViewsGetOutput =
   typeof StandbyContainerGroupPoolRuntimeViewsGetOutput.Type;
@@ -132,35 +362,7 @@ export type StandbyContainerGroupPoolRuntimeViewsListByStandbyPoolInput =
 export const StandbyContainerGroupPoolRuntimeViewsListByStandbyPoolOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
+      Schema.suspend(() => StandbyContainerGroupPoolRuntimeViewResourceSchema),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -188,34 +390,7 @@ export const StandbyContainerGroupPoolsCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     standbyContainerGroupPoolName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        elasticityProfile: Schema.Struct({
-          maxReadyCapacity: Schema.Number,
-          refillPolicy: Schema.optional(Schema.Literals(["always"])),
-          dynamicSizing: Schema.optional(
-            Schema.Struct({
-              enabled: Schema.optional(Schema.Boolean),
-            }),
-          ),
-        }),
-        containerGroupProperties: Schema.Struct({
-          containerGroupProfile: Schema.Struct({
-            id: Schema.String,
-            revision: Schema.optional(Schema.Number),
-          }),
-          subnetIds: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                id: Schema.String,
-              }),
-            ),
-          ),
-        }),
-        zones: Schema.optional(Schema.Array(Schema.String)),
-        provisioningState: Schema.optional(
-          Schema.Literals(["Succeeded", "Failed", "Canceled", "Deleting"]),
-        ),
-      }),
+      Schema.suspend(() => StandbyContainerGroupPoolResourcePropertiesSchema),
     ),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     location: Schema.String,
@@ -233,23 +408,15 @@ export type StandbyContainerGroupPoolsCreateOrUpdateInput =
 // Output Schema
 export const StandbyContainerGroupPoolsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => StandbyContainerGroupPoolResourcePropertiesSchema),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type StandbyContainerGroupPoolsCreateOrUpdateOutput =
   typeof StandbyContainerGroupPoolsCreateOrUpdateOutput.Type;
@@ -324,23 +491,15 @@ export type StandbyContainerGroupPoolsGetInput =
 // Output Schema
 export const StandbyContainerGroupPoolsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => StandbyContainerGroupPoolResourcePropertiesSchema),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type StandbyContainerGroupPoolsGetOutput =
   typeof StandbyContainerGroupPoolsGetOutput.Type;
@@ -378,35 +537,7 @@ export type StandbyContainerGroupPoolsListByResourceGroupInput =
 export const StandbyContainerGroupPoolsListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
+      Schema.suspend(() => StandbyContainerGroupPoolResourceSchema),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -444,35 +575,7 @@ export type StandbyContainerGroupPoolsListBySubscriptionInput =
 export const StandbyContainerGroupPoolsListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
+      Schema.suspend(() => StandbyContainerGroupPoolResourceSchema),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -499,35 +602,9 @@ export const StandbyContainerGroupPoolsUpdateInput =
     standbyContainerGroupPoolName: Schema.String.pipe(T.PathParam()),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     properties: Schema.optional(
-      Schema.Struct({
-        elasticityProfile: Schema.optional(
-          Schema.Struct({
-            maxReadyCapacity: Schema.Number,
-            refillPolicy: Schema.optional(Schema.Literals(["always"])),
-            dynamicSizing: Schema.optional(
-              Schema.Struct({
-                enabled: Schema.optional(Schema.Boolean),
-              }),
-            ),
-          }),
-        ),
-        containerGroupProperties: Schema.optional(
-          Schema.Struct({
-            containerGroupProfile: Schema.Struct({
-              id: Schema.String,
-              revision: Schema.optional(Schema.Number),
-            }),
-            subnetIds: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  id: Schema.String,
-                }),
-              ),
-            ),
-          }),
-        ),
-        zones: Schema.optional(Schema.Array(Schema.String)),
-      }),
+      Schema.suspend(
+        () => StandbyContainerGroupPoolResourceUpdatePropertiesSchema,
+      ),
     ),
   }).pipe(
     T.Http({
@@ -542,23 +619,15 @@ export type StandbyContainerGroupPoolsUpdateInput =
 // Output Schema
 export const StandbyContainerGroupPoolsUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => StandbyContainerGroupPoolResourcePropertiesSchema),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type StandbyContainerGroupPoolsUpdateOutput =
   typeof StandbyContainerGroupPoolsUpdateOutput.Type;
@@ -597,23 +666,15 @@ export type StandbyVirtualMachinePoolRuntimeViewsGetInput =
 // Output Schema
 export const StandbyVirtualMachinePoolRuntimeViewsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(
+        () => StandbyVirtualMachinePoolRuntimeViewResourcePropertiesSchema,
+      ),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type StandbyVirtualMachinePoolRuntimeViewsGetOutput =
   typeof StandbyVirtualMachinePoolRuntimeViewsGetOutput.Type;
@@ -653,35 +714,7 @@ export type StandbyVirtualMachinePoolRuntimeViewsListByStandbyPoolInput =
 export const StandbyVirtualMachinePoolRuntimeViewsListByStandbyPoolOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
+      Schema.suspend(() => StandbyVirtualMachinePoolRuntimeViewResourceSchema),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -709,29 +742,7 @@ export const StandbyVirtualMachinePoolsCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     standbyVirtualMachinePoolName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        elasticityProfile: Schema.optional(
-          Schema.Struct({
-            maxReadyCapacity: Schema.Number,
-            minReadyCapacity: Schema.optional(Schema.Number),
-            postProvisioningDelay: Schema.optional(Schema.String),
-            dynamicSizing: Schema.optional(
-              Schema.Struct({
-                enabled: Schema.optional(Schema.Boolean),
-              }),
-            ),
-          }),
-        ),
-        virtualMachineState: Schema.Literals([
-          "Running",
-          "Deallocated",
-          "Hibernated",
-        ]),
-        attachedVirtualMachineScaleSetId: Schema.optional(Schema.String),
-        provisioningState: Schema.optional(
-          Schema.Literals(["Succeeded", "Failed", "Canceled", "Deleting"]),
-        ),
-      }),
+      Schema.suspend(() => StandbyVirtualMachinePoolResourcePropertiesSchema),
     ),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     location: Schema.String,
@@ -749,23 +760,15 @@ export type StandbyVirtualMachinePoolsCreateOrUpdateInput =
 // Output Schema
 export const StandbyVirtualMachinePoolsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => StandbyVirtualMachinePoolResourcePropertiesSchema),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type StandbyVirtualMachinePoolsCreateOrUpdateOutput =
   typeof StandbyVirtualMachinePoolsCreateOrUpdateOutput.Type;
@@ -840,23 +843,15 @@ export type StandbyVirtualMachinePoolsGetInput =
 // Output Schema
 export const StandbyVirtualMachinePoolsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => StandbyVirtualMachinePoolResourcePropertiesSchema),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type StandbyVirtualMachinePoolsGetOutput =
   typeof StandbyVirtualMachinePoolsGetOutput.Type;
@@ -894,35 +889,7 @@ export type StandbyVirtualMachinePoolsListByResourceGroupInput =
 export const StandbyVirtualMachinePoolsListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
+      Schema.suspend(() => StandbyVirtualMachinePoolResourceSchema),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -960,35 +927,7 @@ export type StandbyVirtualMachinePoolsListBySubscriptionInput =
 export const StandbyVirtualMachinePoolsListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
+      Schema.suspend(() => StandbyVirtualMachinePoolResourceSchema),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -1015,24 +954,9 @@ export const StandbyVirtualMachinePoolsUpdateInput =
     standbyVirtualMachinePoolName: Schema.String.pipe(T.PathParam()),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     properties: Schema.optional(
-      Schema.Struct({
-        elasticityProfile: Schema.optional(
-          Schema.Struct({
-            maxReadyCapacity: Schema.Number,
-            minReadyCapacity: Schema.optional(Schema.Number),
-            postProvisioningDelay: Schema.optional(Schema.String),
-            dynamicSizing: Schema.optional(
-              Schema.Struct({
-                enabled: Schema.optional(Schema.Boolean),
-              }),
-            ),
-          }),
-        ),
-        virtualMachineState: Schema.optional(
-          Schema.Literals(["Running", "Deallocated", "Hibernated"]),
-        ),
-        attachedVirtualMachineScaleSetId: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () => StandbyVirtualMachinePoolResourceUpdatePropertiesSchema,
+      ),
     ),
   }).pipe(
     T.Http({
@@ -1047,23 +971,15 @@ export type StandbyVirtualMachinePoolsUpdateInput =
 // Output Schema
 export const StandbyVirtualMachinePoolsUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => StandbyVirtualMachinePoolResourcePropertiesSchema),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type StandbyVirtualMachinePoolsUpdateOutput =
   typeof StandbyVirtualMachinePoolsUpdateOutput.Type;
@@ -1102,23 +1018,13 @@ export type StandbyVirtualMachinesGetInput =
 // Output Schema
 export const StandbyVirtualMachinesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => StandbyVirtualMachineResourcePropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type StandbyVirtualMachinesGetOutput =
   typeof StandbyVirtualMachinesGetOutput.Type;
@@ -1159,35 +1065,7 @@ export type StandbyVirtualMachinesListByStandbyVirtualMachinePoolResourceInput =
 export const StandbyVirtualMachinesListByStandbyVirtualMachinePoolResourceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
+      Schema.suspend(() => StandbyVirtualMachineResourceSchema),
     ),
     nextLink: Schema.optional(Schema.String),
   });

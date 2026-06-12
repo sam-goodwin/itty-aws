@@ -8,6 +8,245 @@ import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
+// Shared schemas
+const OperationSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  isDataAction: Schema.optional(Schema.Boolean),
+  display: Schema.optional(
+    Schema.Struct({
+      provider: Schema.optional(Schema.String),
+      resource: Schema.optional(Schema.String),
+      operation: Schema.optional(Schema.String),
+      description: Schema.optional(Schema.String),
+    }),
+  ),
+  origin: Schema.optional(Schema.Literals(["user", "system", "user,system"])),
+  actionType: Schema.optional(Schema.Literals(["Internal"])),
+});
+const SpacecraftSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+});
+const systemDataSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  createdBy: Schema.optional(Schema.String),
+  createdByType: Schema.optional(
+    Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+  ),
+  createdAt: Schema.optional(Schema.String),
+  lastModifiedBy: Schema.optional(Schema.String),
+  lastModifiedByType: Schema.optional(
+    Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+  ),
+  lastModifiedAt: Schema.optional(Schema.String),
+});
+const SpacecraftsPropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  provisioningState: Schema.optional(
+    Schema.Literals([
+      "creating",
+      "succeeded",
+      "failed",
+      "canceled",
+      "updating",
+      "deleting",
+    ]),
+  ),
+  noradId: Schema.optional(Schema.String),
+  titleLine: Schema.String,
+  tleLine1: Schema.String,
+  tleLine2: Schema.String,
+  links: Schema.Array(Schema.suspend(() => SpacecraftLinkSchema)),
+});
+const SpacecraftLinkSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.String,
+  centerFrequencyMHz: Schema.Number,
+  bandwidthMHz: Schema.Number,
+  direction: Schema.Literals(["Uplink", "Downlink"]),
+  polarization: Schema.Literals([
+    "RHCP",
+    "LHCP",
+    "linearVertical",
+    "linearHorizontal",
+  ]),
+  authorizations: Schema.optional(
+    Schema.Array(Schema.suspend(() => AuthorizedGroundstationSchema)),
+  ),
+});
+const AuthorizedGroundstationSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    groundStation: Schema.String,
+    expirationDate: Schema.String,
+  },
+);
+const ContactSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+});
+const ContactsPropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  provisioningState: Schema.optional(
+    Schema.Literals([
+      "creating",
+      "succeeded",
+      "failed",
+      "canceled",
+      "updating",
+      "deleting",
+    ]),
+  ),
+  status: Schema.optional(
+    Schema.Literals([
+      "scheduled",
+      "cancelled",
+      "succeeded",
+      "failed",
+      "providerCancelled",
+    ]),
+  ),
+  reservationStartTime: Schema.String,
+  reservationEndTime: Schema.String,
+  rxStartTime: Schema.optional(Schema.String),
+  rxEndTime: Schema.optional(Schema.String),
+  txStartTime: Schema.optional(Schema.String),
+  txEndTime: Schema.optional(Schema.String),
+  errorMessage: Schema.optional(Schema.String),
+  maximumElevationDegrees: Schema.optional(Schema.Number),
+  startAzimuthDegrees: Schema.optional(Schema.Number),
+  endAzimuthDegrees: Schema.optional(Schema.Number),
+  groundStationName: Schema.String,
+  startElevationDegrees: Schema.optional(Schema.Number),
+  endElevationDegrees: Schema.optional(Schema.Number),
+  antennaConfiguration: Schema.optional(
+    Schema.Struct({
+      destinationIp: Schema.optional(Schema.String),
+      sourceIps: Schema.optional(Schema.Array(Schema.String)),
+    }),
+  ),
+  contactProfile: Schema.Struct({
+    id: Schema.String,
+  }),
+});
+const AvailableContactsSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  spacecraft: Schema.optional(
+    Schema.Struct({
+      id: Schema.String,
+    }),
+  ),
+  groundStationName: Schema.optional(Schema.String),
+  properties: Schema.optional(
+    Schema.Struct({
+      maximumElevationDegrees: Schema.optional(Schema.Number),
+      txStartTime: Schema.optional(Schema.String),
+      txEndTime: Schema.optional(Schema.String),
+      rxStartTime: Schema.optional(Schema.String),
+      rxEndTime: Schema.optional(Schema.String),
+      startAzimuthDegrees: Schema.optional(Schema.Number),
+      endAzimuthDegrees: Schema.optional(Schema.Number),
+      startElevationDegrees: Schema.optional(Schema.Number),
+      endElevationDegrees: Schema.optional(Schema.Number),
+    }),
+  ),
+});
+const ContactProfileThirdPartyConfigurationSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    providerName: Schema.String,
+    missionConfiguration: Schema.String,
+  });
+const ContactProfileLinkSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.String,
+  polarization: Schema.Literals([
+    "RHCP",
+    "LHCP",
+    "linearVertical",
+    "linearHorizontal",
+  ]),
+  direction: Schema.Literals(["Uplink", "Downlink"]),
+  gainOverTemperature: Schema.optional(Schema.Number),
+  eirpdBW: Schema.optional(Schema.Number),
+  channels: Schema.Array(Schema.suspend(() => ContactProfileLinkChannelSchema)),
+});
+const ContactProfileLinkChannelSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String,
+    centerFrequencyMHz: Schema.Number,
+    bandwidthMHz: Schema.Number,
+    endPoint: Schema.suspend(() => EndPointSchema),
+    modulationConfiguration: Schema.optional(Schema.String),
+    demodulationConfiguration: Schema.optional(Schema.String),
+    encodingConfiguration: Schema.optional(Schema.String),
+    decodingConfiguration: Schema.optional(Schema.String),
+  });
+const EndPointSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  ipAddress: Schema.String,
+  endPointName: Schema.String,
+  port: Schema.String,
+  protocol: Schema.Literals(["TCP", "UDP"]),
+});
+const ContactProfileSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+});
+const AvailableGroundStationSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  location: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  properties: Schema.Struct({
+    city: Schema.optional(Schema.String),
+    providerName: Schema.optional(Schema.String),
+    longitudeDegrees: Schema.optional(Schema.Number),
+    latitudeDegrees: Schema.optional(Schema.Number),
+    altitudeMeters: Schema.optional(Schema.Number),
+    releaseMode: Schema.optional(Schema.Literals(["Preview", "GA"])),
+  }),
+});
+const StatusSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Succeeded",
+  "Canceled",
+  "Failed",
+  "Running",
+]);
+const OperationResultPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+const OperationResultErrorPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    code: Schema.optional(Schema.String),
+    message: Schema.optional(Schema.String),
+  });
+const GroundStationSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+});
+const CapabilitySchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "EarthObservation",
+  "Communication",
+]);
+const EdgeSiteSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+});
+const L2ConnectionSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+});
+const GlobalCommunicationsSiteSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+  });
+
 // Input Schema
 export const AvailableGroundStationsListByCapabilityInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -26,22 +265,7 @@ export type AvailableGroundStationsListByCapabilityInput =
 export const AvailableGroundStationsListByCapabilityOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          location: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          properties: Schema.Struct({
-            city: Schema.optional(Schema.String),
-            providerName: Schema.optional(Schema.String),
-            longitudeDegrees: Schema.optional(Schema.Number),
-            latitudeDegrees: Schema.optional(Schema.Number),
-            altitudeMeters: Schema.optional(Schema.Number),
-            releaseMode: Schema.optional(Schema.Literals(["Preview", "GA"])),
-          }),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => AvailableGroundStationSchema)),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -87,43 +311,10 @@ export const ContactProfilesCreateOrUpdateInput =
       }),
       thirdPartyConfigurations: Schema.optional(
         Schema.Array(
-          Schema.Struct({
-            providerName: Schema.String,
-            missionConfiguration: Schema.String,
-          }),
+          Schema.suspend(() => ContactProfileThirdPartyConfigurationSchema),
         ),
       ),
-      links: Schema.Array(
-        Schema.Struct({
-          name: Schema.String,
-          polarization: Schema.Literals([
-            "RHCP",
-            "LHCP",
-            "linearVertical",
-            "linearHorizontal",
-          ]),
-          direction: Schema.Literals(["Uplink", "Downlink"]),
-          gainOverTemperature: Schema.optional(Schema.Number),
-          eirpdBW: Schema.optional(Schema.Number),
-          channels: Schema.Array(
-            Schema.Struct({
-              name: Schema.String,
-              centerFrequencyMHz: Schema.Number,
-              bandwidthMHz: Schema.Number,
-              endPoint: Schema.Struct({
-                ipAddress: Schema.String,
-                endPointName: Schema.String,
-                port: Schema.String,
-                protocol: Schema.Literals(["TCP", "UDP"]),
-              }),
-              modulationConfiguration: Schema.optional(Schema.String),
-              demodulationConfiguration: Schema.optional(Schema.String),
-              encodingConfiguration: Schema.optional(Schema.String),
-              decodingConfiguration: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
+      links: Schema.Array(Schema.suspend(() => ContactProfileLinkSchema)),
     }),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     location: Schema.String,
@@ -141,23 +332,39 @@ export type ContactProfilesCreateOrUpdateInput =
 // Output Schema
 export const ContactProfilesCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.Struct({
+      provisioningState: Schema.optional(
+        Schema.Literals([
+          "creating",
+          "succeeded",
+          "failed",
+          "canceled",
+          "updating",
+          "deleting",
+        ]),
+      ),
+      minimumViableContactDuration: Schema.optional(Schema.String),
+      minimumElevationDegrees: Schema.optional(Schema.Number),
+      autoTrackingConfiguration: Schema.optional(
+        Schema.Literals(["disabled", "xBand", "sBand"]),
+      ),
+      eventHubUri: Schema.optional(Schema.String),
+      networkConfiguration: Schema.Struct({
+        subnetId: Schema.String,
+      }),
+      thirdPartyConfigurations: Schema.optional(
+        Schema.Array(
+          Schema.suspend(() => ContactProfileThirdPartyConfigurationSchema),
+        ),
+      ),
+      links: Schema.Array(Schema.suspend(() => ContactProfileLinkSchema)),
+    }),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type ContactProfilesCreateOrUpdateOutput =
   typeof ContactProfilesCreateOrUpdateOutput.Type;
@@ -227,23 +434,39 @@ export type ContactProfilesGetInput = typeof ContactProfilesGetInput.Type;
 // Output Schema
 export const ContactProfilesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.Struct({
+      provisioningState: Schema.optional(
+        Schema.Literals([
+          "creating",
+          "succeeded",
+          "failed",
+          "canceled",
+          "updating",
+          "deleting",
+        ]),
+      ),
+      minimumViableContactDuration: Schema.optional(Schema.String),
+      minimumElevationDegrees: Schema.optional(Schema.Number),
+      autoTrackingConfiguration: Schema.optional(
+        Schema.Literals(["disabled", "xBand", "sBand"]),
+      ),
+      eventHubUri: Schema.optional(Schema.String),
+      networkConfiguration: Schema.Struct({
+        subnetId: Schema.String,
+      }),
+      thirdPartyConfigurations: Schema.optional(
+        Schema.Array(
+          Schema.suspend(() => ContactProfileThirdPartyConfigurationSchema),
+        ),
+      ),
+      links: Schema.Array(Schema.suspend(() => ContactProfileLinkSchema)),
+    }),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type ContactProfilesGetOutput = typeof ContactProfilesGetOutput.Type;
 
@@ -277,37 +500,7 @@ export type ContactProfilesListInput = typeof ContactProfilesListInput.Type;
 export const ContactProfilesListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.String),
-              createdByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              createdAt: Schema.optional(Schema.String),
-              lastModifiedBy: Schema.optional(Schema.String),
-              lastModifiedByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              lastModifiedAt: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => ContactProfileSchema)),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -343,37 +536,7 @@ export type ContactProfilesListBySubscriptionInput =
 export const ContactProfilesListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.String),
-              createdByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              createdAt: Schema.optional(Schema.String),
-              lastModifiedBy: Schema.optional(Schema.String),
-              lastModifiedByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              lastModifiedAt: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => ContactProfileSchema)),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -412,23 +575,39 @@ export type ContactProfilesUpdateTagsInput =
 // Output Schema
 export const ContactProfilesUpdateTagsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.Struct({
+      provisioningState: Schema.optional(
+        Schema.Literals([
+          "creating",
+          "succeeded",
+          "failed",
+          "canceled",
+          "updating",
+          "deleting",
+        ]),
+      ),
+      minimumViableContactDuration: Schema.optional(Schema.String),
+      minimumElevationDegrees: Schema.optional(Schema.Number),
+      autoTrackingConfiguration: Schema.optional(
+        Schema.Literals(["disabled", "xBand", "sBand"]),
+      ),
+      eventHubUri: Schema.optional(Schema.String),
+      networkConfiguration: Schema.Struct({
+        subnetId: Schema.String,
+      }),
+      thirdPartyConfigurations: Schema.optional(
+        Schema.Array(
+          Schema.suspend(() => ContactProfileThirdPartyConfigurationSchema),
+        ),
+      ),
+      links: Schema.Array(Schema.suspend(() => ContactProfileLinkSchema)),
+    }),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type ContactProfilesUpdateTagsOutput =
   typeof ContactProfilesUpdateTagsOutput.Type;
@@ -451,49 +630,7 @@ export const ContactProfilesUpdateTags = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const ContactsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
-  properties: Schema.Struct({
-    provisioningState: Schema.optional(
-      Schema.Literals([
-        "creating",
-        "succeeded",
-        "failed",
-        "canceled",
-        "updating",
-        "deleting",
-      ]),
-    ),
-    status: Schema.optional(
-      Schema.Literals([
-        "scheduled",
-        "cancelled",
-        "succeeded",
-        "failed",
-        "providerCancelled",
-      ]),
-    ),
-    reservationStartTime: Schema.String,
-    reservationEndTime: Schema.String,
-    rxStartTime: Schema.optional(Schema.String),
-    rxEndTime: Schema.optional(Schema.String),
-    txStartTime: Schema.optional(Schema.String),
-    txEndTime: Schema.optional(Schema.String),
-    errorMessage: Schema.optional(Schema.String),
-    maximumElevationDegrees: Schema.optional(Schema.Number),
-    startAzimuthDegrees: Schema.optional(Schema.Number),
-    endAzimuthDegrees: Schema.optional(Schema.Number),
-    groundStationName: Schema.String,
-    startElevationDegrees: Schema.optional(Schema.Number),
-    endElevationDegrees: Schema.optional(Schema.Number),
-    antennaConfiguration: Schema.optional(
-      Schema.Struct({
-        destinationIp: Schema.optional(Schema.String),
-        sourceIps: Schema.optional(Schema.Array(Schema.String)),
-      }),
-    ),
-    contactProfile: Schema.Struct({
-      id: Schema.String,
-    }),
-  }),
+  properties: Schema.suspend(() => ContactsPropertiesSchema),
 }).pipe(
   T.Http({
     method: "PUT",
@@ -506,23 +643,11 @@ export type ContactsCreateInput = typeof ContactsCreateInput.Type;
 
 // Output Schema
 export const ContactsCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.suspend(() => ContactsPropertiesSchema),
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
-  systemData: Schema.optional(
-    Schema.Struct({
-      createdBy: Schema.optional(Schema.String),
-      createdByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      createdAt: Schema.optional(Schema.String),
-      lastModifiedBy: Schema.optional(Schema.String),
-      lastModifiedByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      lastModifiedAt: Schema.optional(Schema.String),
-    }),
-  ),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
 });
 export type ContactsCreateOutput = typeof ContactsCreateOutput.Type;
 
@@ -583,23 +708,11 @@ export type ContactsGetInput = typeof ContactsGetInput.Type;
 
 // Output Schema
 export const ContactsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.suspend(() => ContactsPropertiesSchema),
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
-  systemData: Schema.optional(
-    Schema.Struct({
-      createdBy: Schema.optional(Schema.String),
-      createdByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      createdAt: Schema.optional(Schema.String),
-      lastModifiedBy: Schema.optional(Schema.String),
-      lastModifiedByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      lastModifiedAt: Schema.optional(Schema.String),
-    }),
-  ),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
 });
 export type ContactsGetOutput = typeof ContactsGetOutput.Type;
 
@@ -630,39 +743,7 @@ export type ContactsListInput = typeof ContactsListInput.Type;
 
 // Output Schema
 export const ContactsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  value: Schema.optional(
-    Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
-  ),
+  value: Schema.optional(Schema.Array(Schema.suspend(() => ContactSchema))),
   nextLink: Schema.optional(Schema.String),
 });
 export type ContactsListOutput = typeof ContactsListOutput.Type;
@@ -704,23 +785,17 @@ export type EdgeSitesCreateOrUpdateInput =
 // Output Schema
 export const EdgeSitesCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.Struct({
+      globalCommunicationsSite: Schema.Struct({
+        id: Schema.String,
+      }),
+    }),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type EdgeSitesCreateOrUpdateOutput =
   typeof EdgeSitesCreateOrUpdateOutput.Type;
@@ -783,23 +858,17 @@ export type EdgeSitesGetInput = typeof EdgeSitesGetInput.Type;
 
 // Output Schema
 export const EdgeSitesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.Struct({
+    globalCommunicationsSite: Schema.Struct({
+      id: Schema.String,
+    }),
+  }),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  location: Schema.String,
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
-  systemData: Schema.optional(
-    Schema.Struct({
-      createdBy: Schema.optional(Schema.String),
-      createdByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      createdAt: Schema.optional(Schema.String),
-      lastModifiedBy: Schema.optional(Schema.String),
-      lastModifiedByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      lastModifiedAt: Schema.optional(Schema.String),
-    }),
-  ),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
 });
 export type EdgeSitesGetOutput = typeof EdgeSitesGetOutput.Type;
 
@@ -830,39 +899,7 @@ export type EdgeSitesListInput = typeof EdgeSitesListInput.Type;
 
 // Output Schema
 export const EdgeSitesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  value: Schema.optional(
-    Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
-  ),
+  value: Schema.optional(Schema.Array(Schema.suspend(() => EdgeSiteSchema))),
   nextLink: Schema.optional(Schema.String),
 });
 export type EdgeSitesListOutput = typeof EdgeSitesListOutput.Type;
@@ -896,39 +933,7 @@ export type EdgeSitesListBySubscriptionInput =
 // Output Schema
 export const EdgeSitesListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.String),
-              createdByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              createdAt: Schema.optional(Schema.String),
-              lastModifiedBy: Schema.optional(Schema.String),
-              lastModifiedByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              lastModifiedAt: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
-    ),
+    value: Schema.optional(Schema.Array(Schema.suspend(() => EdgeSiteSchema))),
     nextLink: Schema.optional(Schema.String),
   });
 export type EdgeSitesListBySubscriptionOutput =
@@ -1009,23 +1014,17 @@ export type EdgeSitesUpdateTagsInput = typeof EdgeSitesUpdateTagsInput.Type;
 // Output Schema
 export const EdgeSitesUpdateTagsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.Struct({
+      globalCommunicationsSite: Schema.Struct({
+        id: Schema.String,
+      }),
+    }),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type EdgeSitesUpdateTagsOutput = typeof EdgeSitesUpdateTagsOutput.Type;
 
@@ -1059,37 +1058,7 @@ export type GlobalCommunicationsSitesListBySubscriptionInput =
 export const GlobalCommunicationsSitesListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.String),
-              createdByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              createdAt: Schema.optional(Schema.String),
-              lastModifiedBy: Schema.optional(Schema.String),
-              lastModifiedByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              lastModifiedAt: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => GlobalCommunicationsSiteSchema)),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -1116,9 +1085,7 @@ export const GroundStationsCreateOrUpdateInput =
     properties: Schema.optional(
       Schema.Struct({
         city: Schema.optional(Schema.String),
-        capabilities: Schema.Array(
-          Schema.Literals(["EarthObservation", "Communication"]),
-        ),
+        capabilities: Schema.Array(Schema.suspend(() => CapabilitySchema)),
         providerName: Schema.optional(Schema.String),
         longitudeDegrees: Schema.optional(Schema.Number),
         latitudeDegrees: Schema.optional(Schema.Number),
@@ -1144,23 +1111,26 @@ export type GroundStationsCreateOrUpdateInput =
 // Output Schema
 export const GroundStationsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.Struct({
+        city: Schema.optional(Schema.String),
+        capabilities: Schema.Array(Schema.suspend(() => CapabilitySchema)),
+        providerName: Schema.optional(Schema.String),
+        longitudeDegrees: Schema.optional(Schema.Number),
+        latitudeDegrees: Schema.optional(Schema.Number),
+        altitudeMeters: Schema.optional(Schema.Number),
+        releaseMode: Schema.optional(Schema.Literals(["Preview", "GA"])),
+        globalCommunicationsSite: Schema.Struct({
+          id: Schema.String,
+        }),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type GroundStationsCreateOrUpdateOutput =
   typeof GroundStationsCreateOrUpdateOutput.Type;
@@ -1229,23 +1199,26 @@ export type GroundStationsGetInput = typeof GroundStationsGetInput.Type;
 // Output Schema
 export const GroundStationsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.Struct({
+        city: Schema.optional(Schema.String),
+        capabilities: Schema.Array(Schema.suspend(() => CapabilitySchema)),
+        providerName: Schema.optional(Schema.String),
+        longitudeDegrees: Schema.optional(Schema.Number),
+        latitudeDegrees: Schema.optional(Schema.Number),
+        altitudeMeters: Schema.optional(Schema.Number),
+        releaseMode: Schema.optional(Schema.Literals(["Preview", "GA"])),
+        globalCommunicationsSite: Schema.Struct({
+          id: Schema.String,
+        }),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type GroundStationsGetOutput = typeof GroundStationsGetOutput.Type;
 
@@ -1279,37 +1252,7 @@ export type GroundStationsListInput = typeof GroundStationsListInput.Type;
 export const GroundStationsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.String),
-              createdByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              createdAt: Schema.optional(Schema.String),
-              lastModifiedBy: Schema.optional(Schema.String),
-              lastModifiedByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              lastModifiedAt: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => GroundStationSchema)),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -1345,37 +1288,7 @@ export type GroundStationsListBySubscriptionInput =
 export const GroundStationsListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.String),
-              createdByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              createdAt: Schema.optional(Schema.String),
-              lastModifiedBy: Schema.optional(Schema.String),
-              lastModifiedByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              lastModifiedAt: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => GroundStationSchema)),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -1456,23 +1369,26 @@ export type GroundStationsUpdateTagsInput =
 // Output Schema
 export const GroundStationsUpdateTagsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.Struct({
+        city: Schema.optional(Schema.String),
+        capabilities: Schema.Array(Schema.suspend(() => CapabilitySchema)),
+        providerName: Schema.optional(Schema.String),
+        longitudeDegrees: Schema.optional(Schema.Number),
+        latitudeDegrees: Schema.optional(Schema.Number),
+        altitudeMeters: Schema.optional(Schema.Number),
+        releaseMode: Schema.optional(Schema.Literals(["Preview", "GA"])),
+        globalCommunicationsSite: Schema.Struct({
+          id: Schema.String,
+        }),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type GroundStationsUpdateTagsOutput =
   typeof GroundStationsUpdateTagsOutput.Type;
@@ -1538,23 +1454,38 @@ export type L2ConnectionsCreateOrUpdateInput =
 // Output Schema
 export const L2ConnectionsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.Struct({
+      provisioningState: Schema.optional(
+        Schema.Literals([
+          "Creating",
+          "Succeeded",
+          "Failed",
+          "Canceled",
+          "Updating",
+          "Deleting",
+        ]),
+      ),
+      circuitId: Schema.optional(Schema.String),
+      edgeSite: Schema.Struct({
+        id: Schema.String,
+      }),
+      edgeSitePartnerRouter: Schema.Struct({
+        name: Schema.String,
+      }),
+      groundStation: Schema.Struct({
+        id: Schema.String,
+      }),
+      groundStationPartnerRouter: Schema.Struct({
+        name: Schema.String,
+      }),
+      vlanId: Schema.Number,
+    }),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type L2ConnectionsCreateOrUpdateOutput =
   typeof L2ConnectionsCreateOrUpdateOutput.Type;
@@ -1621,23 +1552,38 @@ export type L2ConnectionsGetInput = typeof L2ConnectionsGetInput.Type;
 // Output Schema
 export const L2ConnectionsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
+    properties: Schema.Struct({
+      provisioningState: Schema.optional(
+        Schema.Literals([
+          "Creating",
+          "Succeeded",
+          "Failed",
+          "Canceled",
+          "Updating",
+          "Deleting",
+        ]),
+      ),
+      circuitId: Schema.optional(Schema.String),
+      edgeSite: Schema.Struct({
+        id: Schema.String,
+      }),
+      edgeSitePartnerRouter: Schema.Struct({
+        name: Schema.String,
+      }),
+      groundStation: Schema.Struct({
+        id: Schema.String,
+      }),
+      groundStationPartnerRouter: Schema.Struct({
+        name: Schema.String,
+      }),
+      vlanId: Schema.Number,
+    }),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   },
 );
 export type L2ConnectionsGetOutput = typeof L2ConnectionsGetOutput.Type;
@@ -1673,37 +1619,7 @@ export type L2ConnectionsListInput = typeof L2ConnectionsListInput.Type;
 export const L2ConnectionsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.String),
-              createdByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              createdAt: Schema.optional(Schema.String),
-              lastModifiedBy: Schema.optional(Schema.String),
-              lastModifiedByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              lastModifiedAt: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => L2ConnectionSchema)),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -1739,37 +1655,7 @@ export type L2ConnectionsListBySubscriptionInput =
 export const L2ConnectionsListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.String),
-              createdByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              createdAt: Schema.optional(Schema.String),
-              lastModifiedBy: Schema.optional(Schema.String),
-              lastModifiedByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              lastModifiedAt: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => L2ConnectionSchema)),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -1808,23 +1694,38 @@ export type L2ConnectionsUpdateTagsInput =
 // Output Schema
 export const L2ConnectionsUpdateTagsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.Struct({
+      provisioningState: Schema.optional(
+        Schema.Literals([
+          "Creating",
+          "Succeeded",
+          "Failed",
+          "Canceled",
+          "Updating",
+          "Deleting",
+        ]),
+      ),
+      circuitId: Schema.optional(Schema.String),
+      edgeSite: Schema.Struct({
+        id: Schema.String,
+      }),
+      edgeSitePartnerRouter: Schema.Struct({
+        name: Schema.String,
+      }),
+      groundStation: Schema.Struct({
+        id: Schema.String,
+      }),
+      groundStationPartnerRouter: Schema.Struct({
+        name: Schema.String,
+      }),
+      vlanId: Schema.Number,
+    }),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type L2ConnectionsUpdateTagsOutput =
   typeof L2ConnectionsUpdateTagsOutput.Type;
@@ -1857,26 +1758,7 @@ export type OperationsListInput = typeof OperationsListInput.Type;
 
 // Output Schema
 export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  value: Schema.optional(
-    Schema.Array(
-      Schema.Struct({
-        name: Schema.optional(Schema.String),
-        isDataAction: Schema.optional(Schema.Boolean),
-        display: Schema.optional(
-          Schema.Struct({
-            provider: Schema.optional(Schema.String),
-            resource: Schema.optional(Schema.String),
-            operation: Schema.optional(Schema.String),
-            description: Schema.optional(Schema.String),
-          }),
-        ),
-        origin: Schema.optional(
-          Schema.Literals(["user", "system", "user,system"]),
-        ),
-        actionType: Schema.optional(Schema.Literals(["Internal"])),
-      }),
-    ),
-  ),
+  value: Schema.optional(Schema.Array(Schema.suspend(() => OperationSchema))),
   nextLink: Schema.optional(Schema.String),
 });
 export type OperationsListOutput = typeof OperationsListOutput.Type;
@@ -1912,20 +1794,17 @@ export const OperationsResultsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
-    status: Schema.optional(
-      Schema.Literals(["Succeeded", "Canceled", "Failed", "Running"]),
-    ),
+    status: Schema.optional(Schema.suspend(() => StatusSchema)),
     startTime: Schema.optional(Schema.String),
     endTime: Schema.optional(Schema.String),
     percentComplete: Schema.optional(Schema.Number),
     value: Schema.optional(Schema.Array(Schema.Struct({}))),
     nextLink: Schema.optional(Schema.String),
-    properties: Schema.optional(Schema.Struct({})),
+    properties: Schema.optional(
+      Schema.suspend(() => OperationResultPropertiesSchema),
+    ),
     error: Schema.optional(
-      Schema.Struct({
-        code: Schema.optional(Schema.String),
-        message: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(() => OperationResultErrorPropertiesSchema),
     ),
   });
 export type OperationsResultsGetOutput = typeof OperationsResultsGetOutput.Type;
@@ -1950,44 +1829,7 @@ export const SpacecraftsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    properties: Schema.Struct({
-      provisioningState: Schema.optional(
-        Schema.Literals([
-          "creating",
-          "succeeded",
-          "failed",
-          "canceled",
-          "updating",
-          "deleting",
-        ]),
-      ),
-      noradId: Schema.optional(Schema.String),
-      titleLine: Schema.String,
-      tleLine1: Schema.String,
-      tleLine2: Schema.String,
-      links: Schema.Array(
-        Schema.Struct({
-          name: Schema.String,
-          centerFrequencyMHz: Schema.Number,
-          bandwidthMHz: Schema.Number,
-          direction: Schema.Literals(["Uplink", "Downlink"]),
-          polarization: Schema.Literals([
-            "RHCP",
-            "LHCP",
-            "linearVertical",
-            "linearHorizontal",
-          ]),
-          authorizations: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                groundStation: Schema.String,
-                expirationDate: Schema.String,
-              }),
-            ),
-          ),
-        }),
-      ),
-    }),
+    properties: Schema.suspend(() => SpacecraftsPropertiesSchema),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     location: Schema.String,
   }).pipe(
@@ -2004,23 +1846,13 @@ export type SpacecraftsCreateOrUpdateInput =
 // Output Schema
 export const SpacecraftsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.suspend(() => SpacecraftsPropertiesSchema),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type SpacecraftsCreateOrUpdateOutput =
   typeof SpacecraftsCreateOrUpdateOutput.Type;
@@ -2086,23 +1918,13 @@ export type SpacecraftsGetInput = typeof SpacecraftsGetInput.Type;
 
 // Output Schema
 export const SpacecraftsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.suspend(() => SpacecraftsPropertiesSchema),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  location: Schema.String,
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
-  systemData: Schema.optional(
-    Schema.Struct({
-      createdBy: Schema.optional(Schema.String),
-      createdByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      createdAt: Schema.optional(Schema.String),
-      lastModifiedBy: Schema.optional(Schema.String),
-      lastModifiedByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      lastModifiedAt: Schema.optional(Schema.String),
-    }),
-  ),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
 });
 export type SpacecraftsGetOutput = typeof SpacecraftsGetOutput.Type;
 
@@ -2133,39 +1955,7 @@ export type SpacecraftsListInput = typeof SpacecraftsListInput.Type;
 
 // Output Schema
 export const SpacecraftsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  value: Schema.optional(
-    Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
-  ),
+  value: Schema.optional(Schema.Array(Schema.suspend(() => SpacecraftSchema))),
   nextLink: Schema.optional(Schema.String),
 });
 export type SpacecraftsListOutput = typeof SpacecraftsListOutput.Type;
@@ -2208,29 +1998,7 @@ export type SpacecraftsListAvailableContactsInput =
 export const SpacecraftsListAvailableContactsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          spacecraft: Schema.optional(
-            Schema.Struct({
-              id: Schema.String,
-            }),
-          ),
-          groundStationName: Schema.optional(Schema.String),
-          properties: Schema.optional(
-            Schema.Struct({
-              maximumElevationDegrees: Schema.optional(Schema.Number),
-              txStartTime: Schema.optional(Schema.String),
-              txEndTime: Schema.optional(Schema.String),
-              rxStartTime: Schema.optional(Schema.String),
-              rxEndTime: Schema.optional(Schema.String),
-              startAzimuthDegrees: Schema.optional(Schema.Number),
-              endAzimuthDegrees: Schema.optional(Schema.Number),
-              startElevationDegrees: Schema.optional(Schema.Number),
-              endElevationDegrees: Schema.optional(Schema.Number),
-            }),
-          ),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => AvailableContactsSchema)),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -2268,37 +2036,7 @@ export type SpacecraftsListBySubscriptionInput =
 export const SpacecraftsListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.String),
-              createdByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              createdAt: Schema.optional(Schema.String),
-              lastModifiedBy: Schema.optional(Schema.String),
-              lastModifiedByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              lastModifiedAt: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => SpacecraftSchema)),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -2336,23 +2074,13 @@ export type SpacecraftsUpdateTagsInput = typeof SpacecraftsUpdateTagsInput.Type;
 // Output Schema
 export const SpacecraftsUpdateTagsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.suspend(() => SpacecraftsPropertiesSchema),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type SpacecraftsUpdateTagsOutput =
   typeof SpacecraftsUpdateTagsOutput.Type;

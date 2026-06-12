@@ -8,6 +8,106 @@ import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
+// Shared schemas
+const OperationSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  isDataAction: Schema.optional(Schema.Boolean),
+  display: Schema.optional(
+    Schema.Struct({
+      provider: Schema.optional(Schema.String),
+      resource: Schema.optional(Schema.String),
+      operation: Schema.optional(Schema.String),
+      description: Schema.optional(Schema.String),
+    }),
+  ),
+  origin: Schema.optional(Schema.Literals(["user", "system", "user,system"])),
+  actionType: Schema.optional(Schema.Literals(["Internal"])),
+});
+const StorageDiscoveryWorkspaceSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+  });
+const systemDataSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  createdBy: Schema.optional(Schema.String),
+  createdByType: Schema.optional(
+    Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+  ),
+  createdAt: Schema.optional(Schema.String),
+  lastModifiedBy: Schema.optional(Schema.String),
+  lastModifiedByType: Schema.optional(
+    Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+  ),
+  lastModifiedAt: Schema.optional(Schema.String),
+});
+const ReportResourceSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+});
+const StorageDiscoveryWorkspacePropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    sku: Schema.optional(Schema.Literals(["Standard", "Free"])),
+    description: Schema.optional(Schema.String),
+    workspaceRoots: Schema.Array(Schema.String),
+    scopes: Schema.Array(Schema.suspend(() => StorageDiscoveryScopeSchema)),
+    provisioningState: Schema.optional(
+      Schema.suspend(
+        () => Azure_ResourceManager_ResourceProvisioningStateSchema,
+      ),
+    ),
+  });
+const StorageDiscoveryScopeSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  displayName: Schema.String,
+  resourceTypes: Schema.Array(
+    Schema.suspend(() => StorageDiscoveryResourceTypeSchema),
+  ),
+  tagKeysOnly: Schema.optional(Schema.Array(Schema.String)),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+});
+const StorageDiscoveryResourceTypeSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+    "Microsoft.Storage/storageAccounts",
+  ]);
+const Azure_ResourceManager_ResourceProvisioningStateSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+    "Succeeded",
+    "Failed",
+    "Canceled",
+  ]);
+const StorageDiscoveryWorkspacePropertiesUpdateSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    sku: Schema.optional(Schema.suspend(() => StorageDiscoverySkuSchema)),
+    description: Schema.optional(Schema.String),
+    workspaceRoots: Schema.optional(Schema.Array(Schema.String)),
+    scopes: Schema.optional(
+      Schema.Array(Schema.suspend(() => StorageDiscoveryScopeSchema)),
+    ),
+  });
+const StorageDiscoverySkuSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Standard",
+  "Free",
+]);
+const ReportResultSetSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  columns: Schema.optional(
+    Schema.Array(Schema.suspend(() => ReportResultColumnSchema)),
+  ),
+  rows: Schema.optional(Schema.Array(Schema.Array(Schema.String))),
+  errorCode: Schema.optional(Schema.String),
+});
+const ReportResultColumnSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.String,
+  type: Schema.String,
+});
+const ReportPropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  provisioningState: Schema.optional(
+    Schema.suspend(() => Azure_ResourceManager_ResourceProvisioningStateSchema),
+  ),
+});
+
 // Input Schema
 export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {},
@@ -22,26 +122,7 @@ export type OperationsListInput = typeof OperationsListInput.Type;
 
 // Output Schema
 export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  value: Schema.optional(
-    Schema.Array(
-      Schema.Struct({
-        name: Schema.optional(Schema.String),
-        isDataAction: Schema.optional(Schema.Boolean),
-        display: Schema.optional(
-          Schema.Struct({
-            provider: Schema.optional(Schema.String),
-            resource: Schema.optional(Schema.String),
-            operation: Schema.optional(Schema.String),
-            description: Schema.optional(Schema.String),
-          }),
-        ),
-        origin: Schema.optional(
-          Schema.Literals(["user", "system", "user,system"]),
-        ),
-        actionType: Schema.optional(Schema.Literals(["Internal"])),
-      }),
-    ),
-  ),
+  value: Schema.optional(Schema.Array(Schema.suspend(() => OperationSchema))),
   nextLink: Schema.optional(Schema.String),
 });
 export type OperationsListOutput = typeof OperationsListOutput.Type;
@@ -77,20 +158,7 @@ export type ReportGenerateReportInput = typeof ReportGenerateReportInput.Type;
 // Output Schema
 export const ReportGenerateReportOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    results: Schema.Array(
-      Schema.Struct({
-        columns: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              name: Schema.String,
-              type: Schema.String,
-            }),
-          ),
-        ),
-        rows: Schema.optional(Schema.Array(Schema.Array(Schema.String))),
-        errorCode: Schema.optional(Schema.String),
-      }),
-    ),
+    results: Schema.Array(Schema.suspend(() => ReportResultSetSchema)),
   });
 export type ReportGenerateReportOutput = typeof ReportGenerateReportOutput.Type;
 
@@ -127,23 +195,11 @@ export type ReportGetInput = typeof ReportGetInput.Type;
 
 // Output Schema
 export const ReportGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.optional(Schema.suspend(() => ReportPropertiesSchema)),
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
-  systemData: Schema.optional(
-    Schema.Struct({
-      createdBy: Schema.optional(Schema.String),
-      createdByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      createdAt: Schema.optional(Schema.String),
-      lastModifiedBy: Schema.optional(Schema.String),
-      lastModifiedByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      lastModifiedAt: Schema.optional(Schema.String),
-    }),
-  ),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
 });
 export type ReportGetOutput = typeof ReportGetOutput.Type;
 
@@ -180,37 +236,7 @@ export type ReportListByResourceGroupInput =
 // Output Schema
 export const ReportListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => ReportResourceSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type ReportListByResourceGroupOutput =
@@ -249,37 +275,7 @@ export type ReportListBySubscriptionInput =
 // Output Schema
 export const ReportListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => ReportResourceSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type ReportListBySubscriptionOutput =
@@ -306,24 +302,7 @@ export const StorageDiscoveryWorkspacesCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     storageDiscoveryWorkspaceName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        sku: Schema.optional(Schema.Literals(["Standard", "Free"])),
-        description: Schema.optional(Schema.String),
-        workspaceRoots: Schema.Array(Schema.String),
-        scopes: Schema.Array(
-          Schema.Struct({
-            displayName: Schema.String,
-            resourceTypes: Schema.Array(
-              Schema.Literals(["Microsoft.Storage/storageAccounts"]),
-            ),
-            tagKeysOnly: Schema.optional(Schema.Array(Schema.String)),
-            tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-          }),
-        ),
-        provisioningState: Schema.optional(
-          Schema.Literals(["Succeeded", "Failed", "Canceled"]),
-        ),
-      }),
+      Schema.suspend(() => StorageDiscoveryWorkspacePropertiesSchema),
     ),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     location: Schema.String,
@@ -340,23 +319,15 @@ export type StorageDiscoveryWorkspacesCreateOrUpdateInput =
 // Output Schema
 export const StorageDiscoveryWorkspacesCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => StorageDiscoveryWorkspacePropertiesSchema),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type StorageDiscoveryWorkspacesCreateOrUpdateOutput =
   typeof StorageDiscoveryWorkspacesCreateOrUpdateOutput.Type;
@@ -430,23 +401,15 @@ export type StorageDiscoveryWorkspacesGetInput =
 // Output Schema
 export const StorageDiscoveryWorkspacesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => StorageDiscoveryWorkspacePropertiesSchema),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type StorageDiscoveryWorkspacesGetOutput =
   typeof StorageDiscoveryWorkspacesGetOutput.Type;
@@ -483,37 +446,7 @@ export type StorageDiscoveryWorkspacesListByResourceGroupInput =
 // Output Schema
 export const StorageDiscoveryWorkspacesListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => StorageDiscoveryWorkspaceSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type StorageDiscoveryWorkspacesListByResourceGroupOutput =
@@ -549,37 +482,7 @@ export type StorageDiscoveryWorkspacesListBySubscriptionInput =
 // Output Schema
 export const StorageDiscoveryWorkspacesListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => StorageDiscoveryWorkspaceSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type StorageDiscoveryWorkspacesListBySubscriptionOutput =
@@ -618,20 +521,7 @@ export type StorageDiscoveryWorkspacesReportInput =
 // Output Schema
 export const StorageDiscoveryWorkspacesReportOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    results: Schema.Array(
-      Schema.Struct({
-        columns: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              name: Schema.String,
-              type: Schema.String,
-            }),
-          ),
-        ),
-        rows: Schema.optional(Schema.Array(Schema.Array(Schema.String))),
-        errorCode: Schema.optional(Schema.String),
-      }),
-    ),
+    results: Schema.Array(Schema.suspend(() => ReportResultSetSchema)),
   });
 export type StorageDiscoveryWorkspacesReportOutput =
   typeof StorageDiscoveryWorkspacesReportOutput.Type;
@@ -658,25 +548,7 @@ export const StorageDiscoveryWorkspacesUpdateInput =
     storageDiscoveryWorkspaceName: Schema.String.pipe(T.PathParam()),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     properties: Schema.optional(
-      Schema.Struct({
-        sku: Schema.optional(Schema.Literals(["Standard", "Free"])),
-        description: Schema.optional(Schema.String),
-        workspaceRoots: Schema.optional(Schema.Array(Schema.String)),
-        scopes: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              displayName: Schema.String,
-              resourceTypes: Schema.Array(
-                Schema.Literals(["Microsoft.Storage/storageAccounts"]),
-              ),
-              tagKeysOnly: Schema.optional(Schema.Array(Schema.String)),
-              tags: Schema.optional(
-                Schema.Record(Schema.String, Schema.String),
-              ),
-            }),
-          ),
-        ),
-      }),
+      Schema.suspend(() => StorageDiscoveryWorkspacePropertiesUpdateSchema),
     ),
   }).pipe(
     T.Http({
@@ -691,23 +563,15 @@ export type StorageDiscoveryWorkspacesUpdateInput =
 // Output Schema
 export const StorageDiscoveryWorkspacesUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => StorageDiscoveryWorkspacePropertiesSchema),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type StorageDiscoveryWorkspacesUpdateOutput =
   typeof StorageDiscoveryWorkspacesUpdateOutput.Type;

@@ -8,6 +8,68 @@ import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
+// Shared schemas
+const ReportTypeEnumSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "OverallSummaryReport",
+  "MonthlySummaryReport",
+  "TopItemsSummaryReport",
+  "TopItemsMonthlySummaryReport",
+  "ItemDetailsReport",
+]);
+const DateRangeSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  start: Schema.String,
+  end: Schema.String,
+});
+const EmissionScopeEnumSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Scope1",
+  "Scope2",
+  "Scope3",
+]);
+const CarbonEmissionDataSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  dataType: Schema.suspend(() => ResponseDataTypeEnumSchema),
+  latestMonthEmissions: Schema.Number,
+  previousMonthEmissions: Schema.Number,
+  monthOverMonthEmissionsChangeRatio: Schema.optional(Schema.Number),
+  monthlyEmissionsChangeValue: Schema.optional(Schema.Number),
+});
+const ResponseDataTypeEnumSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "OverallSummaryData",
+  "MonthlySummaryData",
+  "TopItemsSummaryData",
+  "ResourceTopItemsSummaryData",
+  "ResourceGroupTopItemsSummaryData",
+  "TopItemsMonthlySummaryData",
+  "ResourceTopItemsMonthlySummaryData",
+  "ResourceGroupTopItemsMonthlySummaryData",
+  "ItemDetailsData",
+  "ResourceItemDetailsData",
+  "ResourceGroupItemDetailsData",
+]);
+const SubscriptionAccessDecisionSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String,
+    decision: Schema.suspend(() => AccessDecisionEnumSchema),
+    denialReason: Schema.optional(Schema.String),
+  });
+const AccessDecisionEnumSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Allowed",
+  "Denied",
+]);
+const OperationSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  isDataAction: Schema.optional(Schema.Boolean),
+  display: Schema.optional(
+    Schema.Struct({
+      provider: Schema.optional(Schema.String),
+      resource: Schema.optional(Schema.String),
+      operation: Schema.optional(Schema.String),
+      description: Schema.optional(Schema.String),
+    }),
+  ),
+  origin: Schema.optional(Schema.Literals(["user", "system", "user,system"])),
+  actionType: Schema.optional(Schema.Literals(["Internal"])),
+});
+
 // Input Schema
 export const CarbonServiceQueryCarbonEmissionDataAvailableDateRangeInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
@@ -43,23 +105,14 @@ export const CarbonServiceQueryCarbonEmissionDataAvailableDateRange =
 // Input Schema
 export const CarbonServiceQueryCarbonEmissionReportsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    reportType: Schema.Literals([
-      "OverallSummaryReport",
-      "MonthlySummaryReport",
-      "TopItemsSummaryReport",
-      "TopItemsMonthlySummaryReport",
-      "ItemDetailsReport",
-    ]),
-    dateRange: Schema.Struct({
-      start: Schema.String,
-      end: Schema.String,
-    }),
+    reportType: Schema.suspend(() => ReportTypeEnumSchema),
+    dateRange: Schema.suspend(() => DateRangeSchema),
     subscriptionList: Schema.Array(Schema.String),
     resourceGroupUrlList: Schema.optional(Schema.Array(Schema.String)),
     resourceTypeList: Schema.optional(Schema.Array(Schema.String)),
     locationList: Schema.optional(Schema.Array(Schema.String)),
     carbonScopeList: Schema.Array(
-      Schema.Literals(["Scope1", "Scope2", "Scope3"]),
+      Schema.suspend(() => EmissionScopeEnumSchema),
     ),
   }).pipe(
     T.Http({
@@ -74,36 +127,10 @@ export type CarbonServiceQueryCarbonEmissionReportsInput =
 // Output Schema
 export const CarbonServiceQueryCarbonEmissionReportsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        dataType: Schema.Literals([
-          "OverallSummaryData",
-          "MonthlySummaryData",
-          "TopItemsSummaryData",
-          "ResourceTopItemsSummaryData",
-          "ResourceGroupTopItemsSummaryData",
-          "TopItemsMonthlySummaryData",
-          "ResourceTopItemsMonthlySummaryData",
-          "ResourceGroupTopItemsMonthlySummaryData",
-          "ItemDetailsData",
-          "ResourceItemDetailsData",
-          "ResourceGroupItemDetailsData",
-        ]),
-        latestMonthEmissions: Schema.Number,
-        previousMonthEmissions: Schema.Number,
-        monthOverMonthEmissionsChangeRatio: Schema.optional(Schema.Number),
-        monthlyEmissionsChangeValue: Schema.optional(Schema.Number),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => CarbonEmissionDataSchema)),
     skipToken: Schema.optional(Schema.String),
     subscriptionAccessDecisionList: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          subscriptionId: Schema.String,
-          decision: Schema.Literals(["Allowed", "Denied"]),
-          denialReason: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => SubscriptionAccessDecisionSchema)),
     ),
   });
 export type CarbonServiceQueryCarbonEmissionReportsOutput =
@@ -134,26 +161,7 @@ export type OperationsListInput = typeof OperationsListInput.Type;
 
 // Output Schema
 export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  value: Schema.optional(
-    Schema.Array(
-      Schema.Struct({
-        name: Schema.optional(Schema.String),
-        isDataAction: Schema.optional(Schema.Boolean),
-        display: Schema.optional(
-          Schema.Struct({
-            provider: Schema.optional(Schema.String),
-            resource: Schema.optional(Schema.String),
-            operation: Schema.optional(Schema.String),
-            description: Schema.optional(Schema.String),
-          }),
-        ),
-        origin: Schema.optional(
-          Schema.Literals(["user", "system", "user,system"]),
-        ),
-        actionType: Schema.optional(Schema.Literals(["Internal"])),
-      }),
-    ),
-  ),
+  value: Schema.optional(Schema.Array(Schema.suspend(() => OperationSchema))),
   nextLink: Schema.optional(Schema.String),
 });
 export type OperationsListOutput = typeof OperationsListOutput.Type;

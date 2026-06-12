@@ -8,6 +8,228 @@ import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
+// Shared schemas
+const DigitalTwinsPropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  createdTime: Schema.optional(Schema.String),
+  lastUpdatedTime: Schema.optional(Schema.String),
+  provisioningState: Schema.optional(
+    Schema.Literals([
+      "Provisioning",
+      "Deleting",
+      "Updating",
+      "Succeeded",
+      "Failed",
+      "Canceled",
+      "Deleted",
+      "Warning",
+      "Suspending",
+      "Restoring",
+      "Moving",
+    ]),
+  ),
+  hostName: Schema.optional(Schema.NullOr(Schema.String)),
+  privateEndpointConnections: Schema.optional(
+    Schema.NullOr(
+      Schema.Array(Schema.suspend(() => PrivateEndpointConnectionSchema)),
+    ),
+  ),
+  publicNetworkAccess: Schema.optional(
+    Schema.NullOr(Schema.Literals(["Enabled", "Disabled"])),
+  ),
+});
+const PrivateEndpointConnectionSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    properties: Schema.suspend(() => ConnectionPropertiesSchema),
+    systemData: Schema.optional(Schema.suspend(() => SystemDataSchema)),
+  });
+const ConnectionPropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  provisioningState: Schema.optional(
+    Schema.NullOr(
+      Schema.Literals(["Pending", "Approved", "Rejected", "Disconnected"]),
+    ),
+  ),
+  privateEndpoint: Schema.optional(Schema.suspend(() => PrivateEndpointSchema)),
+  groupIds: Schema.optional(Schema.Array(Schema.suspend(() => GroupIdSchema))),
+  privateLinkServiceConnectionState: Schema.optional(
+    Schema.Struct({
+      status: Schema.Literals([
+        "Pending",
+        "Approved",
+        "Rejected",
+        "Disconnected",
+      ]),
+      description: Schema.String,
+      actionsRequired: Schema.optional(Schema.String),
+    }),
+  ),
+});
+const PrivateEndpointSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+});
+const GroupIdSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.String;
+const SystemDataSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  createdBy: Schema.optional(Schema.NullOr(Schema.String)),
+  createdByType: Schema.optional(
+    Schema.NullOr(
+      Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+    ),
+  ),
+  createdAt: Schema.optional(Schema.NullOr(Schema.String)),
+  lastModifiedBy: Schema.optional(Schema.NullOr(Schema.String)),
+  lastModifiedByType: Schema.optional(
+    Schema.NullOr(
+      Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+    ),
+  ),
+  lastModifiedAt: Schema.optional(Schema.NullOr(Schema.String)),
+});
+const DigitalTwinsIdentitySchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  type: Schema.optional(
+    Schema.Literals([
+      "None",
+      "SystemAssigned",
+      "UserAssigned",
+      "SystemAssigned,UserAssigned",
+    ]),
+  ),
+  principalId: Schema.optional(Schema.NullOr(Schema.String)),
+  tenantId: Schema.optional(Schema.NullOr(Schema.String)),
+  userAssignedIdentities: Schema.optional(
+    Schema.NullOr(
+      Schema.Record(
+        Schema.String,
+        Schema.suspend(() => UserAssignedIdentitySchema),
+      ),
+    ),
+  ),
+});
+const UserAssignedIdentitySchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  clientId: Schema.optional(Schema.String),
+  principalId: Schema.optional(Schema.String),
+});
+const DigitalTwinsPatchPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    publicNetworkAccess: Schema.optional(
+      Schema.NullOr(Schema.Literals(["Enabled", "Disabled"])),
+    ),
+  });
+const DigitalTwinsEndpointResourceSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(Schema.suspend(() => SystemDataSchema)),
+  });
+const DigitalTwinsEndpointResourcePropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    endpointType: Schema.Literals(["EventHub", "EventGrid", "ServiceBus"]),
+    provisioningState: Schema.optional(
+      Schema.NullOr(
+        Schema.Literals([
+          "Provisioning",
+          "Deleting",
+          "Updating",
+          "Succeeded",
+          "Failed",
+          "Canceled",
+          "Deleted",
+          "Warning",
+          "Suspending",
+          "Restoring",
+          "Moving",
+          "Disabled",
+        ]),
+      ),
+    ),
+    createdTime: Schema.optional(Schema.NullOr(Schema.String)),
+    authenticationType: Schema.optional(
+      Schema.Literals(["KeyBased", "IdentityBased"]),
+    ),
+    deadLetterSecret: Schema.optional(Schema.NullOr(Schema.String)),
+    deadLetterUri: Schema.optional(Schema.NullOr(Schema.String)),
+    identity: Schema.optional(
+      Schema.suspend(() => ManagedIdentityReferenceSchema),
+    ),
+  });
+const ManagedIdentityReferenceSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    type: Schema.optional(Schema.Literals(["SystemAssigned", "UserAssigned"])),
+    userAssignedIdentity: Schema.optional(Schema.NullOr(Schema.String)),
+  });
+const DigitalTwinsDescriptionSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    location: Schema.String,
+    tags: Schema.optional(
+      Schema.NullOr(Schema.Record(Schema.String, Schema.String)),
+    ),
+    identity: Schema.optional(Schema.suspend(() => DigitalTwinsIdentitySchema)),
+    systemData: Schema.optional(Schema.suspend(() => SystemDataSchema)),
+  },
+);
+const OperationSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  display: Schema.optional(Schema.suspend(() => OperationDisplaySchema)),
+  origin: Schema.optional(Schema.NullOr(Schema.String)),
+  isDataAction: Schema.optional(Schema.Boolean),
+  properties: Schema.optional(
+    Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
+  ),
+});
+const OperationDisplaySchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  provider: Schema.optional(Schema.String),
+  resource: Schema.optional(Schema.String),
+  operation: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+});
+const GroupIdInformationSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.suspend(() => GroupIdInformationPropertiesSchema),
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
+const GroupIdInformationPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    groupId: Schema.optional(Schema.String),
+    requiredMembers: Schema.optional(Schema.Array(Schema.String)),
+    requiredZoneNames: Schema.optional(Schema.Array(Schema.String)),
+  });
+const TimeSeriesDatabaseConnectionSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(Schema.suspend(() => SystemDataSchema)),
+  });
+const TimeSeriesDatabaseConnectionPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    connectionType: Schema.Literals(["AzureDataExplorer"]),
+    provisioningState: Schema.optional(
+      Schema.Literals([
+        "Provisioning",
+        "Deleting",
+        "Updating",
+        "Succeeded",
+        "Failed",
+        "Canceled",
+        "Deleted",
+        "Warning",
+        "Suspending",
+        "Restoring",
+        "Moving",
+        "Disabled",
+      ]),
+    ),
+    identity: Schema.optional(
+      Schema.suspend(() => ManagedIdentityReferenceSchema),
+    ),
+  });
+
 // Input Schema
 export const DigitalTwinsCheckNameAvailabilityInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -48,102 +270,7 @@ export const DigitalTwinsCheckNameAvailability =
 export const DigitalTwinsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     properties: Schema.optional(
-      Schema.Struct({
-        createdTime: Schema.optional(Schema.String),
-        lastUpdatedTime: Schema.optional(Schema.String),
-        provisioningState: Schema.optional(
-          Schema.Literals([
-            "Provisioning",
-            "Deleting",
-            "Updating",
-            "Succeeded",
-            "Failed",
-            "Canceled",
-            "Deleted",
-            "Warning",
-            "Suspending",
-            "Restoring",
-            "Moving",
-          ]),
-        ),
-        hostName: Schema.optional(Schema.NullOr(Schema.String)),
-        privateEndpointConnections: Schema.optional(
-          Schema.NullOr(
-            Schema.Array(
-              Schema.Struct({
-                id: Schema.optional(Schema.String),
-                name: Schema.optional(Schema.String),
-                type: Schema.optional(Schema.String),
-                properties: Schema.Struct({
-                  provisioningState: Schema.optional(
-                    Schema.NullOr(
-                      Schema.Literals([
-                        "Pending",
-                        "Approved",
-                        "Rejected",
-                        "Disconnected",
-                      ]),
-                    ),
-                  ),
-                  privateEndpoint: Schema.optional(
-                    Schema.Struct({
-                      id: Schema.optional(Schema.String),
-                    }),
-                  ),
-                  groupIds: Schema.optional(Schema.Array(Schema.String)),
-                  privateLinkServiceConnectionState: Schema.optional(
-                    Schema.Struct({
-                      status: Schema.Literals([
-                        "Pending",
-                        "Approved",
-                        "Rejected",
-                        "Disconnected",
-                      ]),
-                      description: Schema.String,
-                      actionsRequired: Schema.optional(Schema.String),
-                    }),
-                  ),
-                }),
-                systemData: Schema.optional(
-                  Schema.Struct({
-                    createdBy: Schema.optional(Schema.NullOr(Schema.String)),
-                    createdByType: Schema.optional(
-                      Schema.NullOr(
-                        Schema.Literals([
-                          "User",
-                          "Application",
-                          "ManagedIdentity",
-                          "Key",
-                        ]),
-                      ),
-                    ),
-                    createdAt: Schema.optional(Schema.NullOr(Schema.String)),
-                    lastModifiedBy: Schema.optional(
-                      Schema.NullOr(Schema.String),
-                    ),
-                    lastModifiedByType: Schema.optional(
-                      Schema.NullOr(
-                        Schema.Literals([
-                          "User",
-                          "Application",
-                          "ManagedIdentity",
-                          "Key",
-                        ]),
-                      ),
-                    ),
-                    lastModifiedAt: Schema.optional(
-                      Schema.NullOr(Schema.String),
-                    ),
-                  }),
-                ),
-              }),
-            ),
-          ),
-        ),
-        publicNetworkAccess: Schema.optional(
-          Schema.NullOr(Schema.Literals(["Enabled", "Disabled"])),
-        ),
-      }),
+      Schema.suspend(() => DigitalTwinsPropertiesSchema),
     ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -152,49 +279,8 @@ export const DigitalTwinsCreateOrUpdateInput =
     tags: Schema.optional(
       Schema.NullOr(Schema.Record(Schema.String, Schema.String)),
     ),
-    identity: Schema.optional(
-      Schema.Struct({
-        type: Schema.optional(
-          Schema.Literals([
-            "None",
-            "SystemAssigned",
-            "UserAssigned",
-            "SystemAssigned,UserAssigned",
-          ]),
-        ),
-        principalId: Schema.optional(Schema.NullOr(Schema.String)),
-        tenantId: Schema.optional(Schema.NullOr(Schema.String)),
-        userAssignedIdentities: Schema.optional(
-          Schema.NullOr(
-            Schema.Record(
-              Schema.String,
-              Schema.Struct({
-                clientId: Schema.optional(Schema.String),
-                principalId: Schema.optional(Schema.String),
-              }),
-            ),
-          ),
-        ),
-      }),
-    ),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.NullOr(Schema.String)),
-        createdByType: Schema.optional(
-          Schema.NullOr(
-            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-          ),
-        ),
-        createdAt: Schema.optional(Schema.NullOr(Schema.String)),
-        lastModifiedBy: Schema.optional(Schema.NullOr(Schema.String)),
-        lastModifiedByType: Schema.optional(
-          Schema.NullOr(
-            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-          ),
-        ),
-        lastModifiedAt: Schema.optional(Schema.NullOr(Schema.String)),
-      }),
-    ),
+    identity: Schema.optional(Schema.suspend(() => DigitalTwinsIdentitySchema)),
+    systemData: Schema.optional(Schema.suspend(() => SystemDataSchema)),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -209,6 +295,9 @@ export type DigitalTwinsCreateOrUpdateInput =
 // Output Schema
 export const DigitalTwinsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => DigitalTwinsPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -216,49 +305,8 @@ export const DigitalTwinsCreateOrUpdateOutput =
     tags: Schema.optional(
       Schema.NullOr(Schema.Record(Schema.String, Schema.String)),
     ),
-    identity: Schema.optional(
-      Schema.Struct({
-        type: Schema.optional(
-          Schema.Literals([
-            "None",
-            "SystemAssigned",
-            "UserAssigned",
-            "SystemAssigned,UserAssigned",
-          ]),
-        ),
-        principalId: Schema.optional(Schema.NullOr(Schema.String)),
-        tenantId: Schema.optional(Schema.NullOr(Schema.String)),
-        userAssignedIdentities: Schema.optional(
-          Schema.NullOr(
-            Schema.Record(
-              Schema.String,
-              Schema.Struct({
-                clientId: Schema.optional(Schema.String),
-                principalId: Schema.optional(Schema.String),
-              }),
-            ),
-          ),
-        ),
-      }),
-    ),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.NullOr(Schema.String)),
-        createdByType: Schema.optional(
-          Schema.NullOr(
-            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-          ),
-        ),
-        createdAt: Schema.optional(Schema.NullOr(Schema.String)),
-        lastModifiedBy: Schema.optional(Schema.NullOr(Schema.String)),
-        lastModifiedByType: Schema.optional(
-          Schema.NullOr(
-            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-          ),
-        ),
-        lastModifiedAt: Schema.optional(Schema.NullOr(Schema.String)),
-      }),
-    ),
+    identity: Schema.optional(Schema.suspend(() => DigitalTwinsIdentitySchema)),
+    systemData: Schema.optional(Schema.suspend(() => SystemDataSchema)),
   });
 export type DigitalTwinsCreateOrUpdateOutput =
   typeof DigitalTwinsCreateOrUpdateOutput.Type;
@@ -288,6 +336,9 @@ export type DigitalTwinsDeleteInput = typeof DigitalTwinsDeleteInput.Type;
 // Output Schema
 export const DigitalTwinsDeleteOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => DigitalTwinsPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -295,49 +346,8 @@ export const DigitalTwinsDeleteOutput =
     tags: Schema.optional(
       Schema.NullOr(Schema.Record(Schema.String, Schema.String)),
     ),
-    identity: Schema.optional(
-      Schema.Struct({
-        type: Schema.optional(
-          Schema.Literals([
-            "None",
-            "SystemAssigned",
-            "UserAssigned",
-            "SystemAssigned,UserAssigned",
-          ]),
-        ),
-        principalId: Schema.optional(Schema.NullOr(Schema.String)),
-        tenantId: Schema.optional(Schema.NullOr(Schema.String)),
-        userAssignedIdentities: Schema.optional(
-          Schema.NullOr(
-            Schema.Record(
-              Schema.String,
-              Schema.Struct({
-                clientId: Schema.optional(Schema.String),
-                principalId: Schema.optional(Schema.String),
-              }),
-            ),
-          ),
-        ),
-      }),
-    ),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.NullOr(Schema.String)),
-        createdByType: Schema.optional(
-          Schema.NullOr(
-            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-          ),
-        ),
-        createdAt: Schema.optional(Schema.NullOr(Schema.String)),
-        lastModifiedBy: Schema.optional(Schema.NullOr(Schema.String)),
-        lastModifiedByType: Schema.optional(
-          Schema.NullOr(
-            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-          ),
-        ),
-        lastModifiedAt: Schema.optional(Schema.NullOr(Schema.String)),
-      }),
-    ),
+    identity: Schema.optional(Schema.suspend(() => DigitalTwinsIdentitySchema)),
+    systemData: Schema.optional(Schema.suspend(() => SystemDataSchema)),
   });
 export type DigitalTwinsDeleteOutput = typeof DigitalTwinsDeleteOutput.Type;
 
@@ -352,62 +362,13 @@ export const DigitalTwinsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const DigitalTwinsEndpointCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    properties: Schema.Struct({
-      endpointType: Schema.Literals(["EventHub", "EventGrid", "ServiceBus"]),
-      provisioningState: Schema.optional(
-        Schema.NullOr(
-          Schema.Literals([
-            "Provisioning",
-            "Deleting",
-            "Updating",
-            "Succeeded",
-            "Failed",
-            "Canceled",
-            "Deleted",
-            "Warning",
-            "Suspending",
-            "Restoring",
-            "Moving",
-            "Disabled",
-          ]),
-        ),
-      ),
-      createdTime: Schema.optional(Schema.NullOr(Schema.String)),
-      authenticationType: Schema.optional(
-        Schema.Literals(["KeyBased", "IdentityBased"]),
-      ),
-      deadLetterSecret: Schema.optional(Schema.NullOr(Schema.String)),
-      deadLetterUri: Schema.optional(Schema.NullOr(Schema.String)),
-      identity: Schema.optional(
-        Schema.Struct({
-          type: Schema.optional(
-            Schema.Literals(["SystemAssigned", "UserAssigned"]),
-          ),
-          userAssignedIdentity: Schema.optional(Schema.NullOr(Schema.String)),
-        }),
-      ),
-    }),
+    properties: Schema.suspend(
+      () => DigitalTwinsEndpointResourcePropertiesSchema,
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.NullOr(Schema.String)),
-        createdByType: Schema.optional(
-          Schema.NullOr(
-            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-          ),
-        ),
-        createdAt: Schema.optional(Schema.NullOr(Schema.String)),
-        lastModifiedBy: Schema.optional(Schema.NullOr(Schema.String)),
-        lastModifiedByType: Schema.optional(
-          Schema.NullOr(
-            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-          ),
-        ),
-        lastModifiedAt: Schema.optional(Schema.NullOr(Schema.String)),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => SystemDataSchema)),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -422,27 +383,13 @@ export type DigitalTwinsEndpointCreateOrUpdateInput =
 // Output Schema
 export const DigitalTwinsEndpointCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.suspend(
+      () => DigitalTwinsEndpointResourcePropertiesSchema,
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.NullOr(Schema.String)),
-        createdByType: Schema.optional(
-          Schema.NullOr(
-            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-          ),
-        ),
-        createdAt: Schema.optional(Schema.NullOr(Schema.String)),
-        lastModifiedBy: Schema.optional(Schema.NullOr(Schema.String)),
-        lastModifiedByType: Schema.optional(
-          Schema.NullOr(
-            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-          ),
-        ),
-        lastModifiedAt: Schema.optional(Schema.NullOr(Schema.String)),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => SystemDataSchema)),
   });
 export type DigitalTwinsEndpointCreateOrUpdateOutput =
   typeof DigitalTwinsEndpointCreateOrUpdateOutput.Type;
@@ -472,27 +419,13 @@ export type DigitalTwinsEndpointDeleteInput =
 // Output Schema
 export const DigitalTwinsEndpointDeleteOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.suspend(
+      () => DigitalTwinsEndpointResourcePropertiesSchema,
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.NullOr(Schema.String)),
-        createdByType: Schema.optional(
-          Schema.NullOr(
-            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-          ),
-        ),
-        createdAt: Schema.optional(Schema.NullOr(Schema.String)),
-        lastModifiedBy: Schema.optional(Schema.NullOr(Schema.String)),
-        lastModifiedByType: Schema.optional(
-          Schema.NullOr(
-            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-          ),
-        ),
-        lastModifiedAt: Schema.optional(Schema.NullOr(Schema.String)),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => SystemDataSchema)),
   });
 export type DigitalTwinsEndpointDeleteOutput =
   typeof DigitalTwinsEndpointDeleteOutput.Type;
@@ -522,27 +455,13 @@ export type DigitalTwinsEndpointGetInput =
 // Output Schema
 export const DigitalTwinsEndpointGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.suspend(
+      () => DigitalTwinsEndpointResourcePropertiesSchema,
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.NullOr(Schema.String)),
-        createdByType: Schema.optional(
-          Schema.NullOr(
-            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-          ),
-        ),
-        createdAt: Schema.optional(Schema.NullOr(Schema.String)),
-        lastModifiedBy: Schema.optional(Schema.NullOr(Schema.String)),
-        lastModifiedByType: Schema.optional(
-          Schema.NullOr(
-            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-          ),
-        ),
-        lastModifiedAt: Schema.optional(Schema.NullOr(Schema.String)),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => SystemDataSchema)),
   });
 export type DigitalTwinsEndpointGetOutput =
   typeof DigitalTwinsEndpointGetOutput.Type;
@@ -574,41 +493,7 @@ export const DigitalTwinsEndpointListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.NullOr(Schema.String)),
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.NullOr(Schema.String)),
-              createdByType: Schema.optional(
-                Schema.NullOr(
-                  Schema.Literals([
-                    "User",
-                    "Application",
-                    "ManagedIdentity",
-                    "Key",
-                  ]),
-                ),
-              ),
-              createdAt: Schema.optional(Schema.NullOr(Schema.String)),
-              lastModifiedBy: Schema.optional(Schema.NullOr(Schema.String)),
-              lastModifiedByType: Schema.optional(
-                Schema.NullOr(
-                  Schema.Literals([
-                    "User",
-                    "Application",
-                    "ManagedIdentity",
-                    "Key",
-                  ]),
-                ),
-              ),
-              lastModifiedAt: Schema.optional(Schema.NullOr(Schema.String)),
-            }),
-          ),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => DigitalTwinsEndpointResourceSchema)),
     ),
   });
 export type DigitalTwinsEndpointListOutput =
@@ -638,6 +523,9 @@ export type DigitalTwinsGetInput = typeof DigitalTwinsGetInput.Type;
 
 // Output Schema
 export const DigitalTwinsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.optional(
+    Schema.suspend(() => DigitalTwinsPropertiesSchema),
+  ),
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -645,49 +533,8 @@ export const DigitalTwinsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   tags: Schema.optional(
     Schema.NullOr(Schema.Record(Schema.String, Schema.String)),
   ),
-  identity: Schema.optional(
-    Schema.Struct({
-      type: Schema.optional(
-        Schema.Literals([
-          "None",
-          "SystemAssigned",
-          "UserAssigned",
-          "SystemAssigned,UserAssigned",
-        ]),
-      ),
-      principalId: Schema.optional(Schema.NullOr(Schema.String)),
-      tenantId: Schema.optional(Schema.NullOr(Schema.String)),
-      userAssignedIdentities: Schema.optional(
-        Schema.NullOr(
-          Schema.Record(
-            Schema.String,
-            Schema.Struct({
-              clientId: Schema.optional(Schema.String),
-              principalId: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-      ),
-    }),
-  ),
-  systemData: Schema.optional(
-    Schema.Struct({
-      createdBy: Schema.optional(Schema.NullOr(Schema.String)),
-      createdByType: Schema.optional(
-        Schema.NullOr(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-      ),
-      createdAt: Schema.optional(Schema.NullOr(Schema.String)),
-      lastModifiedBy: Schema.optional(Schema.NullOr(Schema.String)),
-      lastModifiedByType: Schema.optional(
-        Schema.NullOr(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-      ),
-      lastModifiedAt: Schema.optional(Schema.NullOr(Schema.String)),
-    }),
-  ),
+  identity: Schema.optional(Schema.suspend(() => DigitalTwinsIdentitySchema)),
+  systemData: Schema.optional(Schema.suspend(() => SystemDataSchema)),
 });
 export type DigitalTwinsGetOutput = typeof DigitalTwinsGetOutput.Type;
 
@@ -716,70 +563,7 @@ export const DigitalTwinsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     nextLink: Schema.optional(Schema.NullOr(Schema.String)),
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          location: Schema.String,
-          tags: Schema.optional(
-            Schema.NullOr(Schema.Record(Schema.String, Schema.String)),
-          ),
-          identity: Schema.optional(
-            Schema.Struct({
-              type: Schema.optional(
-                Schema.Literals([
-                  "None",
-                  "SystemAssigned",
-                  "UserAssigned",
-                  "SystemAssigned,UserAssigned",
-                ]),
-              ),
-              principalId: Schema.optional(Schema.NullOr(Schema.String)),
-              tenantId: Schema.optional(Schema.NullOr(Schema.String)),
-              userAssignedIdentities: Schema.optional(
-                Schema.NullOr(
-                  Schema.Record(
-                    Schema.String,
-                    Schema.Struct({
-                      clientId: Schema.optional(Schema.String),
-                      principalId: Schema.optional(Schema.String),
-                    }),
-                  ),
-                ),
-              ),
-            }),
-          ),
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.NullOr(Schema.String)),
-              createdByType: Schema.optional(
-                Schema.NullOr(
-                  Schema.Literals([
-                    "User",
-                    "Application",
-                    "ManagedIdentity",
-                    "Key",
-                  ]),
-                ),
-              ),
-              createdAt: Schema.optional(Schema.NullOr(Schema.String)),
-              lastModifiedBy: Schema.optional(Schema.NullOr(Schema.String)),
-              lastModifiedByType: Schema.optional(
-                Schema.NullOr(
-                  Schema.Literals([
-                    "User",
-                    "Application",
-                    "ManagedIdentity",
-                    "Key",
-                  ]),
-                ),
-              ),
-              lastModifiedAt: Schema.optional(Schema.NullOr(Schema.String)),
-            }),
-          ),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => DigitalTwinsDescriptionSchema)),
     ),
   },
 );
@@ -810,70 +594,7 @@ export const DigitalTwinsListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.NullOr(Schema.String)),
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          location: Schema.String,
-          tags: Schema.optional(
-            Schema.NullOr(Schema.Record(Schema.String, Schema.String)),
-          ),
-          identity: Schema.optional(
-            Schema.Struct({
-              type: Schema.optional(
-                Schema.Literals([
-                  "None",
-                  "SystemAssigned",
-                  "UserAssigned",
-                  "SystemAssigned,UserAssigned",
-                ]),
-              ),
-              principalId: Schema.optional(Schema.NullOr(Schema.String)),
-              tenantId: Schema.optional(Schema.NullOr(Schema.String)),
-              userAssignedIdentities: Schema.optional(
-                Schema.NullOr(
-                  Schema.Record(
-                    Schema.String,
-                    Schema.Struct({
-                      clientId: Schema.optional(Schema.String),
-                      principalId: Schema.optional(Schema.String),
-                    }),
-                  ),
-                ),
-              ),
-            }),
-          ),
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.NullOr(Schema.String)),
-              createdByType: Schema.optional(
-                Schema.NullOr(
-                  Schema.Literals([
-                    "User",
-                    "Application",
-                    "ManagedIdentity",
-                    "Key",
-                  ]),
-                ),
-              ),
-              createdAt: Schema.optional(Schema.NullOr(Schema.String)),
-              lastModifiedBy: Schema.optional(Schema.NullOr(Schema.String)),
-              lastModifiedByType: Schema.optional(
-                Schema.NullOr(
-                  Schema.Literals([
-                    "User",
-                    "Application",
-                    "ManagedIdentity",
-                    "Key",
-                  ]),
-                ),
-              ),
-              lastModifiedAt: Schema.optional(Schema.NullOr(Schema.String)),
-            }),
-          ),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => DigitalTwinsDescriptionSchema)),
     ),
   });
 export type DigitalTwinsListByResourceGroupOutput =
@@ -894,37 +615,9 @@ export const DigitalTwinsUpdateInput =
     tags: Schema.optional(
       Schema.NullOr(Schema.Record(Schema.String, Schema.String)),
     ),
-    identity: Schema.optional(
-      Schema.Struct({
-        type: Schema.optional(
-          Schema.Literals([
-            "None",
-            "SystemAssigned",
-            "UserAssigned",
-            "SystemAssigned,UserAssigned",
-          ]),
-        ),
-        principalId: Schema.optional(Schema.NullOr(Schema.String)),
-        tenantId: Schema.optional(Schema.NullOr(Schema.String)),
-        userAssignedIdentities: Schema.optional(
-          Schema.NullOr(
-            Schema.Record(
-              Schema.String,
-              Schema.Struct({
-                clientId: Schema.optional(Schema.String),
-                principalId: Schema.optional(Schema.String),
-              }),
-            ),
-          ),
-        ),
-      }),
-    ),
+    identity: Schema.optional(Schema.suspend(() => DigitalTwinsIdentitySchema)),
     properties: Schema.optional(
-      Schema.Struct({
-        publicNetworkAccess: Schema.optional(
-          Schema.NullOr(Schema.Literals(["Enabled", "Disabled"])),
-        ),
-      }),
+      Schema.suspend(() => DigitalTwinsPatchPropertiesSchema),
     ),
   }).pipe(
     T.Http({
@@ -939,6 +632,9 @@ export type DigitalTwinsUpdateInput = typeof DigitalTwinsUpdateInput.Type;
 // Output Schema
 export const DigitalTwinsUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => DigitalTwinsPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -946,49 +642,8 @@ export const DigitalTwinsUpdateOutput =
     tags: Schema.optional(
       Schema.NullOr(Schema.Record(Schema.String, Schema.String)),
     ),
-    identity: Schema.optional(
-      Schema.Struct({
-        type: Schema.optional(
-          Schema.Literals([
-            "None",
-            "SystemAssigned",
-            "UserAssigned",
-            "SystemAssigned,UserAssigned",
-          ]),
-        ),
-        principalId: Schema.optional(Schema.NullOr(Schema.String)),
-        tenantId: Schema.optional(Schema.NullOr(Schema.String)),
-        userAssignedIdentities: Schema.optional(
-          Schema.NullOr(
-            Schema.Record(
-              Schema.String,
-              Schema.Struct({
-                clientId: Schema.optional(Schema.String),
-                principalId: Schema.optional(Schema.String),
-              }),
-            ),
-          ),
-        ),
-      }),
-    ),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.NullOr(Schema.String)),
-        createdByType: Schema.optional(
-          Schema.NullOr(
-            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-          ),
-        ),
-        createdAt: Schema.optional(Schema.NullOr(Schema.String)),
-        lastModifiedBy: Schema.optional(Schema.NullOr(Schema.String)),
-        lastModifiedByType: Schema.optional(
-          Schema.NullOr(
-            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-          ),
-        ),
-        lastModifiedAt: Schema.optional(Schema.NullOr(Schema.String)),
-      }),
-    ),
+    identity: Schema.optional(Schema.suspend(() => DigitalTwinsIdentitySchema)),
+    systemData: Schema.optional(Schema.suspend(() => SystemDataSchema)),
   });
 export type DigitalTwinsUpdateOutput = typeof DigitalTwinsUpdateOutput.Type;
 
@@ -1015,26 +670,7 @@ export type OperationsListInput = typeof OperationsListInput.Type;
 // Output Schema
 export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   nextLink: Schema.optional(Schema.NullOr(Schema.String)),
-  value: Schema.optional(
-    Schema.Array(
-      Schema.Struct({
-        name: Schema.optional(Schema.String),
-        display: Schema.optional(
-          Schema.Struct({
-            provider: Schema.optional(Schema.String),
-            resource: Schema.optional(Schema.String),
-            operation: Schema.optional(Schema.String),
-            description: Schema.optional(Schema.String),
-          }),
-        ),
-        origin: Schema.optional(Schema.NullOr(Schema.String)),
-        isDataAction: Schema.optional(Schema.Boolean),
-        properties: Schema.optional(
-          Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
-        ),
-      }),
-    ),
-  ),
+  value: Schema.optional(Schema.Array(Schema.suspend(() => OperationSchema))),
 });
 export type OperationsListOutput = typeof OperationsListOutput.Type;
 
@@ -1052,49 +688,8 @@ export const PrivateEndpointConnectionsCreateOrUpdateInput =
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    properties: Schema.Struct({
-      provisioningState: Schema.optional(
-        Schema.NullOr(
-          Schema.Literals(["Pending", "Approved", "Rejected", "Disconnected"]),
-        ),
-      ),
-      privateEndpoint: Schema.optional(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-        }),
-      ),
-      groupIds: Schema.optional(Schema.Array(Schema.String)),
-      privateLinkServiceConnectionState: Schema.optional(
-        Schema.Struct({
-          status: Schema.Literals([
-            "Pending",
-            "Approved",
-            "Rejected",
-            "Disconnected",
-          ]),
-          description: Schema.String,
-          actionsRequired: Schema.optional(Schema.String),
-        }),
-      ),
-    }),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.NullOr(Schema.String)),
-        createdByType: Schema.optional(
-          Schema.NullOr(
-            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-          ),
-        ),
-        createdAt: Schema.optional(Schema.NullOr(Schema.String)),
-        lastModifiedBy: Schema.optional(Schema.NullOr(Schema.String)),
-        lastModifiedByType: Schema.optional(
-          Schema.NullOr(
-            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-          ),
-        ),
-        lastModifiedAt: Schema.optional(Schema.NullOr(Schema.String)),
-      }),
-    ),
+    properties: Schema.suspend(() => ConnectionPropertiesSchema),
+    systemData: Schema.optional(Schema.suspend(() => SystemDataSchema)),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -1112,49 +707,8 @@ export const PrivateEndpointConnectionsCreateOrUpdateOutput =
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    properties: Schema.Struct({
-      provisioningState: Schema.optional(
-        Schema.NullOr(
-          Schema.Literals(["Pending", "Approved", "Rejected", "Disconnected"]),
-        ),
-      ),
-      privateEndpoint: Schema.optional(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-        }),
-      ),
-      groupIds: Schema.optional(Schema.Array(Schema.String)),
-      privateLinkServiceConnectionState: Schema.optional(
-        Schema.Struct({
-          status: Schema.Literals([
-            "Pending",
-            "Approved",
-            "Rejected",
-            "Disconnected",
-          ]),
-          description: Schema.String,
-          actionsRequired: Schema.optional(Schema.String),
-        }),
-      ),
-    }),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.NullOr(Schema.String)),
-        createdByType: Schema.optional(
-          Schema.NullOr(
-            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-          ),
-        ),
-        createdAt: Schema.optional(Schema.NullOr(Schema.String)),
-        lastModifiedBy: Schema.optional(Schema.NullOr(Schema.String)),
-        lastModifiedByType: Schema.optional(
-          Schema.NullOr(
-            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-          ),
-        ),
-        lastModifiedAt: Schema.optional(Schema.NullOr(Schema.String)),
-      }),
-    ),
+    properties: Schema.suspend(() => ConnectionPropertiesSchema),
+    systemData: Schema.optional(Schema.suspend(() => SystemDataSchema)),
   });
 export type PrivateEndpointConnectionsCreateOrUpdateOutput =
   typeof PrivateEndpointConnectionsCreateOrUpdateOutput.Type;
@@ -1214,49 +768,8 @@ export const PrivateEndpointConnectionsGetOutput =
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    properties: Schema.Struct({
-      provisioningState: Schema.optional(
-        Schema.NullOr(
-          Schema.Literals(["Pending", "Approved", "Rejected", "Disconnected"]),
-        ),
-      ),
-      privateEndpoint: Schema.optional(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-        }),
-      ),
-      groupIds: Schema.optional(Schema.Array(Schema.String)),
-      privateLinkServiceConnectionState: Schema.optional(
-        Schema.Struct({
-          status: Schema.Literals([
-            "Pending",
-            "Approved",
-            "Rejected",
-            "Disconnected",
-          ]),
-          description: Schema.String,
-          actionsRequired: Schema.optional(Schema.String),
-        }),
-      ),
-    }),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.NullOr(Schema.String)),
-        createdByType: Schema.optional(
-          Schema.NullOr(
-            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-          ),
-        ),
-        createdAt: Schema.optional(Schema.NullOr(Schema.String)),
-        lastModifiedBy: Schema.optional(Schema.NullOr(Schema.String)),
-        lastModifiedByType: Schema.optional(
-          Schema.NullOr(
-            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-          ),
-        ),
-        lastModifiedAt: Schema.optional(Schema.NullOr(Schema.String)),
-      }),
-    ),
+    properties: Schema.suspend(() => ConnectionPropertiesSchema),
+    systemData: Schema.optional(Schema.suspend(() => SystemDataSchema)),
   });
 export type PrivateEndpointConnectionsGetOutput =
   typeof PrivateEndpointConnectionsGetOutput.Type;
@@ -1286,71 +799,7 @@ export type PrivateEndpointConnectionsListInput =
 export const PrivateEndpointConnectionsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          properties: Schema.Struct({
-            provisioningState: Schema.optional(
-              Schema.NullOr(
-                Schema.Literals([
-                  "Pending",
-                  "Approved",
-                  "Rejected",
-                  "Disconnected",
-                ]),
-              ),
-            ),
-            privateEndpoint: Schema.optional(
-              Schema.Struct({
-                id: Schema.optional(Schema.String),
-              }),
-            ),
-            groupIds: Schema.optional(Schema.Array(Schema.String)),
-            privateLinkServiceConnectionState: Schema.optional(
-              Schema.Struct({
-                status: Schema.Literals([
-                  "Pending",
-                  "Approved",
-                  "Rejected",
-                  "Disconnected",
-                ]),
-                description: Schema.String,
-                actionsRequired: Schema.optional(Schema.String),
-              }),
-            ),
-          }),
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.NullOr(Schema.String)),
-              createdByType: Schema.optional(
-                Schema.NullOr(
-                  Schema.Literals([
-                    "User",
-                    "Application",
-                    "ManagedIdentity",
-                    "Key",
-                  ]),
-                ),
-              ),
-              createdAt: Schema.optional(Schema.NullOr(Schema.String)),
-              lastModifiedBy: Schema.optional(Schema.NullOr(Schema.String)),
-              lastModifiedByType: Schema.optional(
-                Schema.NullOr(
-                  Schema.Literals([
-                    "User",
-                    "Application",
-                    "ManagedIdentity",
-                    "Key",
-                  ]),
-                ),
-              ),
-              lastModifiedAt: Schema.optional(Schema.NullOr(Schema.String)),
-            }),
-          ),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => PrivateEndpointConnectionSchema)),
     ),
   });
 export type PrivateEndpointConnectionsListOutput =
@@ -1380,11 +829,7 @@ export type PrivateLinkResourcesGetInput =
 // Output Schema
 export const PrivateLinkResourcesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    properties: Schema.Struct({
-      groupId: Schema.optional(Schema.String),
-      requiredMembers: Schema.optional(Schema.Array(Schema.String)),
-      requiredZoneNames: Schema.optional(Schema.Array(Schema.String)),
-    }),
+    properties: Schema.suspend(() => GroupIdInformationPropertiesSchema),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1418,18 +863,7 @@ export type PrivateLinkResourcesListInput =
 export const PrivateLinkResourcesListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          properties: Schema.Struct({
-            groupId: Schema.optional(Schema.String),
-            requiredMembers: Schema.optional(Schema.Array(Schema.String)),
-            requiredZoneNames: Schema.optional(Schema.Array(Schema.String)),
-          }),
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => GroupIdInformationSchema)),
     ),
   });
 export type PrivateLinkResourcesListOutput =
@@ -1449,55 +883,12 @@ export const PrivateLinkResourcesList = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const TimeSeriesDatabaseConnectionsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     properties: Schema.optional(
-      Schema.Struct({
-        connectionType: Schema.Literals(["AzureDataExplorer"]),
-        provisioningState: Schema.optional(
-          Schema.Literals([
-            "Provisioning",
-            "Deleting",
-            "Updating",
-            "Succeeded",
-            "Failed",
-            "Canceled",
-            "Deleted",
-            "Warning",
-            "Suspending",
-            "Restoring",
-            "Moving",
-            "Disabled",
-          ]),
-        ),
-        identity: Schema.optional(
-          Schema.Struct({
-            type: Schema.optional(
-              Schema.Literals(["SystemAssigned", "UserAssigned"]),
-            ),
-            userAssignedIdentity: Schema.optional(Schema.NullOr(Schema.String)),
-          }),
-        ),
-      }),
+      Schema.suspend(() => TimeSeriesDatabaseConnectionPropertiesSchema),
     ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.NullOr(Schema.String)),
-        createdByType: Schema.optional(
-          Schema.NullOr(
-            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-          ),
-        ),
-        createdAt: Schema.optional(Schema.NullOr(Schema.String)),
-        lastModifiedBy: Schema.optional(Schema.NullOr(Schema.String)),
-        lastModifiedByType: Schema.optional(
-          Schema.NullOr(
-            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-          ),
-        ),
-        lastModifiedAt: Schema.optional(Schema.NullOr(Schema.String)),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => SystemDataSchema)),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -1512,27 +903,13 @@ export type TimeSeriesDatabaseConnectionsCreateOrUpdateInput =
 // Output Schema
 export const TimeSeriesDatabaseConnectionsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => TimeSeriesDatabaseConnectionPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.NullOr(Schema.String)),
-        createdByType: Schema.optional(
-          Schema.NullOr(
-            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-          ),
-        ),
-        createdAt: Schema.optional(Schema.NullOr(Schema.String)),
-        lastModifiedBy: Schema.optional(Schema.NullOr(Schema.String)),
-        lastModifiedByType: Schema.optional(
-          Schema.NullOr(
-            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-          ),
-        ),
-        lastModifiedAt: Schema.optional(Schema.NullOr(Schema.String)),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => SystemDataSchema)),
   });
 export type TimeSeriesDatabaseConnectionsCreateOrUpdateOutput =
   typeof TimeSeriesDatabaseConnectionsCreateOrUpdateOutput.Type;
@@ -1562,27 +939,13 @@ export type TimeSeriesDatabaseConnectionsDeleteInput =
 // Output Schema
 export const TimeSeriesDatabaseConnectionsDeleteOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => TimeSeriesDatabaseConnectionPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.NullOr(Schema.String)),
-        createdByType: Schema.optional(
-          Schema.NullOr(
-            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-          ),
-        ),
-        createdAt: Schema.optional(Schema.NullOr(Schema.String)),
-        lastModifiedBy: Schema.optional(Schema.NullOr(Schema.String)),
-        lastModifiedByType: Schema.optional(
-          Schema.NullOr(
-            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-          ),
-        ),
-        lastModifiedAt: Schema.optional(Schema.NullOr(Schema.String)),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => SystemDataSchema)),
   });
 export type TimeSeriesDatabaseConnectionsDeleteOutput =
   typeof TimeSeriesDatabaseConnectionsDeleteOutput.Type;
@@ -1611,27 +974,13 @@ export type TimeSeriesDatabaseConnectionsGetInput =
 // Output Schema
 export const TimeSeriesDatabaseConnectionsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => TimeSeriesDatabaseConnectionPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.NullOr(Schema.String)),
-        createdByType: Schema.optional(
-          Schema.NullOr(
-            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-          ),
-        ),
-        createdAt: Schema.optional(Schema.NullOr(Schema.String)),
-        lastModifiedBy: Schema.optional(Schema.NullOr(Schema.String)),
-        lastModifiedByType: Schema.optional(
-          Schema.NullOr(
-            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-          ),
-        ),
-        lastModifiedAt: Schema.optional(Schema.NullOr(Schema.String)),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => SystemDataSchema)),
   });
 export type TimeSeriesDatabaseConnectionsGetOutput =
   typeof TimeSeriesDatabaseConnectionsGetOutput.Type;
@@ -1662,41 +1011,7 @@ export const TimeSeriesDatabaseConnectionsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.NullOr(Schema.String)),
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.NullOr(Schema.String)),
-              createdByType: Schema.optional(
-                Schema.NullOr(
-                  Schema.Literals([
-                    "User",
-                    "Application",
-                    "ManagedIdentity",
-                    "Key",
-                  ]),
-                ),
-              ),
-              createdAt: Schema.optional(Schema.NullOr(Schema.String)),
-              lastModifiedBy: Schema.optional(Schema.NullOr(Schema.String)),
-              lastModifiedByType: Schema.optional(
-                Schema.NullOr(
-                  Schema.Literals([
-                    "User",
-                    "Application",
-                    "ManagedIdentity",
-                    "Key",
-                  ]),
-                ),
-              ),
-              lastModifiedAt: Schema.optional(Schema.NullOr(Schema.String)),
-            }),
-          ),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => TimeSeriesDatabaseConnectionSchema)),
     ),
   });
 export type TimeSeriesDatabaseConnectionsListOutput =

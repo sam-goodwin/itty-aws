@@ -8,6 +8,444 @@ import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
+// Shared schemas
+const BudgetSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+});
+const systemDataSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  createdBy: Schema.optional(Schema.String),
+  createdByType: Schema.optional(
+    Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+  ),
+  createdAt: Schema.optional(Schema.String),
+  lastModifiedBy: Schema.optional(Schema.String),
+  lastModifiedByType: Schema.optional(
+    Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+  ),
+  lastModifiedAt: Schema.optional(Schema.String),
+});
+const BudgetPropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  category: Schema.suspend(() => CategoryTypeSchema),
+  amount: Schema.Number,
+  timeGrain: Schema.suspend(() => TimeGrainTypeSchema),
+  timePeriod: Schema.suspend(() => BudgetTimePeriodSchema),
+  filter: Schema.optional(Schema.suspend(() => BudgetFilterSchema)),
+  currentSpend: Schema.optional(Schema.suspend(() => CurrentSpendSchema)),
+  notifications: Schema.optional(
+    Schema.Record(
+      Schema.String,
+      Schema.suspend(() => NotificationSchema),
+    ),
+  ),
+  forecastSpend: Schema.optional(Schema.suspend(() => ForecastSpendSchema)),
+});
+const CategoryTypeSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Cost",
+]);
+const TimeGrainTypeSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Monthly",
+  "Quarterly",
+  "Annually",
+  "BillingMonth",
+  "BillingQuarter",
+  "BillingAnnual",
+]);
+const BudgetTimePeriodSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  startDate: Schema.String,
+  endDate: Schema.optional(Schema.String),
+});
+const BudgetFilterSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  and: Schema.optional(
+    Schema.Array(Schema.suspend(() => BudgetFilterPropertiesSchema)),
+  ),
+  dimensions: Schema.optional(
+    Schema.suspend(() => BudgetComparisonExpressionSchema),
+  ),
+  tags: Schema.optional(Schema.suspend(() => BudgetComparisonExpressionSchema)),
+});
+const BudgetFilterPropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  dimensions: Schema.optional(
+    Schema.suspend(() => BudgetComparisonExpressionSchema),
+  ),
+  tags: Schema.optional(Schema.suspend(() => BudgetComparisonExpressionSchema)),
+});
+const BudgetComparisonExpressionSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String,
+    operator: Schema.suspend(() => BudgetOperatorTypeSchema),
+    values: Schema.Array(Schema.String),
+  });
+const BudgetOperatorTypeSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "In",
+]);
+const CurrentSpendSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  amount: Schema.optional(Schema.Number),
+  unit: Schema.optional(Schema.String),
+});
+const NotificationSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  enabled: Schema.Boolean,
+  operator: Schema.suspend(() => OperatorTypeSchema),
+  threshold: Schema.Number,
+  contactEmails: Schema.Array(Schema.String),
+  contactRoles: Schema.optional(Schema.Array(Schema.String)),
+  contactGroups: Schema.optional(Schema.Array(Schema.String)),
+  thresholdType: Schema.optional(Schema.Literals(["Actual", "Forecasted"])),
+  locale: Schema.optional(Schema.suspend(() => CultureCodeSchema)),
+});
+const OperatorTypeSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "EqualTo",
+  "GreaterThan",
+  "GreaterThanOrEqualTo",
+]);
+const CultureCodeSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "en-us",
+  "ja-jp",
+  "zh-cn",
+  "de-de",
+  "es-es",
+  "fr-fr",
+  "it-it",
+  "ko-kr",
+  "pt-br",
+  "ru-ru",
+  "zh-tw",
+  "cs-cz",
+  "pl-pl",
+  "tr-tr",
+  "da-dk",
+  "en-gb",
+  "hu-hu",
+  "nb-no",
+  "nl-nl",
+  "pt-pt",
+  "sv-se",
+]);
+const ForecastSpendSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  amount: Schema.optional(Schema.Number),
+  unit: Schema.optional(Schema.String),
+});
+const ChargeSummarySchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+});
+const MarketplaceSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+});
+const ReservationDetailSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+});
+const ReservationRecommendationDetailsPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    currency: Schema.optional(Schema.String),
+    resource: Schema.optional(
+      Schema.suspend(
+        () => ReservationRecommendationDetailsResourcePropertiesSchema,
+      ),
+    ),
+    resourceGroup: Schema.optional(Schema.String),
+    savings: Schema.optional(
+      Schema.suspend(
+        () => ReservationRecommendationDetailsSavingsPropertiesSchema,
+      ),
+    ),
+    scope: Schema.optional(Schema.String),
+    usage: Schema.optional(
+      Schema.suspend(
+        () => ReservationRecommendationDetailsUsagePropertiesSchema,
+      ),
+    ),
+  });
+const ReservationRecommendationDetailsResourcePropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    appliedScopes: Schema.optional(Schema.Array(Schema.String)),
+    onDemandRate: Schema.optional(Schema.Number),
+    product: Schema.optional(Schema.String),
+    region: Schema.optional(Schema.String),
+    reservationRate: Schema.optional(Schema.Number),
+    resourceType: Schema.optional(Schema.String),
+  });
+const ReservationRecommendationDetailsSavingsPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    calculatedSavings: Schema.optional(
+      Schema.Array(
+        Schema.suspend(
+          () =>
+            ReservationRecommendationDetailsCalculatedSavingsPropertiesSchema,
+        ),
+      ),
+    ),
+    lookBackPeriod: Schema.optional(Schema.Number),
+    recommendedQuantity: Schema.optional(Schema.Number),
+    reservationOrderTerm: Schema.optional(Schema.String),
+    savingsType: Schema.optional(Schema.String),
+    unitOfMeasure: Schema.optional(Schema.String),
+  });
+const ReservationRecommendationDetailsCalculatedSavingsPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    onDemandCost: Schema.optional(Schema.Number),
+    overageCost: Schema.optional(Schema.Number),
+    quantity: Schema.optional(Schema.Number),
+    reservationCost: Schema.optional(Schema.Number),
+    totalReservationCost: Schema.optional(Schema.Number),
+    reservedUnitCount: Schema.optional(Schema.Number),
+    savings: Schema.optional(Schema.Number),
+  });
+const ReservationRecommendationDetailsUsagePropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    firstConsumptionDate: Schema.optional(Schema.String),
+    lastConsumptionDate: Schema.optional(Schema.String),
+    lookBackUnitType: Schema.optional(Schema.String),
+    usageData: Schema.optional(Schema.Array(Schema.Number)),
+    usageGrain: Schema.optional(Schema.String),
+  });
+const ReservationRecommendationSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(
+      Schema.suspend(() => Azure_Core_armResourceTypeSchema),
+    ),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+    location: Schema.optional(Schema.String),
+    sku: Schema.optional(Schema.String),
+    etag: Schema.optional(Schema.String),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    kind: Schema.suspend(() => ReservationRecommendationKindSchema),
+  });
+const Azure_Core_armResourceTypeSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.String;
+const ReservationRecommendationKindSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Literals(["legacy", "modern"]);
+const ReservationSummarySchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+});
+const TagPropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  tags: Schema.optional(Schema.Array(Schema.suspend(() => TagSchema))),
+  nextLink: Schema.optional(Schema.String),
+  previousLink: Schema.optional(Schema.String),
+});
+const TagSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  key: Schema.optional(Schema.String),
+  value: Schema.optional(Schema.Array(Schema.String)),
+});
+const UsageDetailSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+});
+const BalancePropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  currency: Schema.optional(Schema.String),
+  beginningBalance: Schema.optional(Schema.Number),
+  endingBalance: Schema.optional(Schema.Number),
+  newPurchases: Schema.optional(Schema.Number),
+  adjustments: Schema.optional(Schema.Number),
+  utilized: Schema.optional(Schema.Number),
+  serviceOverage: Schema.optional(Schema.Number),
+  chargesBilledSeparately: Schema.optional(Schema.Number),
+  totalOverage: Schema.optional(Schema.Number),
+  totalUsage: Schema.optional(Schema.Number),
+  azureMarketplaceServiceCharges: Schema.optional(Schema.Number),
+  billingFrequency: Schema.optional(
+    Schema.suspend(() => BillingFrequencySchema),
+  ),
+  priceHidden: Schema.optional(Schema.Boolean),
+  overageRefund: Schema.optional(Schema.Number),
+  newPurchasesDetails: Schema.optional(
+    Schema.Array(
+      Schema.suspend(() => BalancePropertiesNewPurchasesDetailsItemSchema),
+    ),
+  ),
+  adjustmentDetails: Schema.optional(
+    Schema.Array(
+      Schema.suspend(() => BalancePropertiesAdjustmentDetailsItemSchema),
+    ),
+  ),
+});
+const BillingFrequencySchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Month",
+  "Quarter",
+  "Year",
+]);
+const BalancePropertiesNewPurchasesDetailsItemSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    value: Schema.optional(Schema.Number),
+  });
+const BalancePropertiesAdjustmentDetailsItemSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    value: Schema.optional(Schema.Number),
+  });
+const OperationStatusTypeSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Running",
+  "Completed",
+  "Failed",
+]);
+const PricesheetDownloadPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    downloadUrl: Schema.optional(Schema.String),
+    validTill: Schema.optional(Schema.String),
+  });
+const CreditSummaryPropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    balanceSummary: Schema.optional(
+      Schema.suspend(() => CreditBalanceSummarySchema),
+    ),
+    pendingCreditAdjustments: Schema.optional(
+      Schema.suspend(() => amountSchema),
+    ),
+    expiredCredit: Schema.optional(Schema.suspend(() => amountSchema)),
+    pendingEligibleCharges: Schema.optional(Schema.suspend(() => amountSchema)),
+    creditCurrency: Schema.optional(Schema.String),
+    billingCurrency: Schema.optional(Schema.String),
+    reseller: Schema.optional(Schema.suspend(() => ResellerSchema)),
+    isEstimatedBalance: Schema.optional(Schema.Boolean),
+    eTag: Schema.optional(Schema.String),
+  },
+);
+const CreditBalanceSummarySchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  estimatedBalance: Schema.optional(Schema.suspend(() => amountSchema)),
+  currentBalance: Schema.optional(Schema.suspend(() => amountSchema)),
+  estimatedBalanceInBillingCurrency: Schema.optional(
+    Schema.suspend(() => AmountWithExchangeRateSchema),
+  ),
+});
+const amountSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  currency: Schema.optional(Schema.String),
+  value: Schema.optional(Schema.Number),
+});
+const AmountWithExchangeRateSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  currency: Schema.optional(Schema.String),
+  value: Schema.optional(Schema.Number),
+});
+const ResellerSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  resellerId: Schema.optional(Schema.String),
+  resellerDescription: Schema.optional(Schema.String),
+});
+const EventSummarySchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+});
+const LotSummarySchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+});
+const ModernReservationTransactionSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+  });
+const ReservationTransactionSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+});
+const OperationSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  display: Schema.optional(Schema.suspend(() => OperationDisplaySchema)),
+});
+const OperationDisplaySchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  provider: Schema.optional(Schema.String),
+  resource: Schema.optional(Schema.String),
+  operation: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+});
+const ManagementGroupAggregatedCostPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    billingPeriodId: Schema.optional(Schema.String),
+    usageStart: Schema.optional(Schema.String),
+    usageEnd: Schema.optional(Schema.String),
+    azureCharges: Schema.optional(Schema.Number),
+    marketplaceCharges: Schema.optional(Schema.Number),
+    chargesBilledSeparately: Schema.optional(Schema.Number),
+    currency: Schema.optional(Schema.String),
+    children: Schema.optional(
+      Schema.Array(
+        Schema.suspend(() => ManagementGroupAggregatedCostResultSchema),
+      ),
+    ),
+    includedSubscriptions: Schema.optional(Schema.Array(Schema.String)),
+    excludedSubscriptions: Schema.optional(Schema.Array(Schema.String)),
+  });
+const ManagementGroupAggregatedCostResultSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+  });
+const PriceSheetModelSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  pricesheets: Schema.optional(
+    Schema.Array(Schema.suspend(() => PriceSheetPropertiesSchema)),
+  ),
+  nextLink: Schema.optional(Schema.String),
+  download: Schema.optional(Schema.suspend(() => MeterDetailsSchema)),
+});
+const PriceSheetPropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  billingPeriodId: Schema.optional(Schema.String),
+  meterId: Schema.optional(Schema.String),
+  meterDetails: Schema.optional(Schema.suspend(() => MeterDetailsSchema)),
+  unitOfMeasure: Schema.optional(Schema.String),
+  includedQuantity: Schema.optional(Schema.Number),
+  partNumber: Schema.optional(Schema.String),
+  unitPrice: Schema.optional(Schema.Number),
+  currencyCode: Schema.optional(Schema.String),
+  offerId: Schema.optional(Schema.String),
+  savingsPlan: Schema.optional(Schema.suspend(() => SavingsPlanSchema)),
+});
+const MeterDetailsSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  meterName: Schema.optional(Schema.String),
+  meterCategory: Schema.optional(Schema.String),
+  meterSubCategory: Schema.optional(Schema.String),
+  unit: Schema.optional(Schema.String),
+  meterLocation: Schema.optional(Schema.String),
+  totalIncludedQuantity: Schema.optional(Schema.Number),
+  pretaxStandardRate: Schema.optional(Schema.Number),
+  serviceName: Schema.optional(Schema.String),
+  serviceTier: Schema.optional(Schema.String),
+});
+const SavingsPlanSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  term: Schema.optional(Schema.String),
+  marketPrice: Schema.optional(Schema.Number),
+  effectivePrice: Schema.optional(Schema.Number),
+});
+
 // Input Schema
 export const AggregatedCostGetByManagementGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -26,23 +464,15 @@ export type AggregatedCostGetByManagementGroupInput =
 // Output Schema
 export const AggregatedCostGetByManagementGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => ManagementGroupAggregatedCostPropertiesSchema),
+    ),
+    etag: Schema.optional(Schema.String),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type AggregatedCostGetByManagementGroupOutput =
   typeof AggregatedCostGetByManagementGroupOutput.Type;
@@ -78,23 +508,15 @@ export type AggregatedCostGetForBillingPeriodByManagementGroupInput =
 // Output Schema
 export const AggregatedCostGetForBillingPeriodByManagementGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => ManagementGroupAggregatedCostPropertiesSchema),
+    ),
+    etag: Schema.optional(Schema.String),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type AggregatedCostGetForBillingPeriodByManagementGroupOutput =
   typeof AggregatedCostGetForBillingPeriodByManagementGroupOutput.Type;
@@ -129,23 +551,13 @@ export type BalancesGetByBillingAccountInput =
 // Output Schema
 export const BalancesGetByBillingAccountOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(Schema.suspend(() => BalancePropertiesSchema)),
+    etag: Schema.optional(Schema.String),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type BalancesGetByBillingAccountOutput =
   typeof BalancesGetByBillingAccountOutput.Type;
@@ -181,23 +593,13 @@ export type BalancesGetForBillingPeriodByBillingAccountInput =
 // Output Schema
 export const BalancesGetForBillingPeriodByBillingAccountOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(Schema.suspend(() => BalancePropertiesSchema)),
+    etag: Schema.optional(Schema.String),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type BalancesGetForBillingPeriodByBillingAccountOutput =
   typeof BalancesGetForBillingPeriodByBillingAccountOutput.Type;
@@ -220,119 +622,7 @@ export const BudgetsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     scope: Schema.String.pipe(T.PathParam()),
     budgetName: Schema.String.pipe(T.PathParam()),
-    properties: Schema.optional(
-      Schema.Struct({
-        category: Schema.Literals(["Cost"]),
-        amount: Schema.Number,
-        timeGrain: Schema.Literals([
-          "Monthly",
-          "Quarterly",
-          "Annually",
-          "BillingMonth",
-          "BillingQuarter",
-          "BillingAnnual",
-        ]),
-        timePeriod: Schema.Struct({
-          startDate: Schema.String,
-          endDate: Schema.optional(Schema.String),
-        }),
-        filter: Schema.optional(
-          Schema.Struct({
-            and: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  dimensions: Schema.optional(
-                    Schema.Struct({
-                      name: Schema.String,
-                      operator: Schema.Literals(["In"]),
-                      values: Schema.Array(Schema.String),
-                    }),
-                  ),
-                  tags: Schema.optional(
-                    Schema.Struct({
-                      name: Schema.String,
-                      operator: Schema.Literals(["In"]),
-                      values: Schema.Array(Schema.String),
-                    }),
-                  ),
-                }),
-              ),
-            ),
-            dimensions: Schema.optional(
-              Schema.Struct({
-                name: Schema.String,
-                operator: Schema.Literals(["In"]),
-                values: Schema.Array(Schema.String),
-              }),
-            ),
-            tags: Schema.optional(
-              Schema.Struct({
-                name: Schema.String,
-                operator: Schema.Literals(["In"]),
-                values: Schema.Array(Schema.String),
-              }),
-            ),
-          }),
-        ),
-        currentSpend: Schema.optional(
-          Schema.Struct({
-            amount: Schema.optional(Schema.Number),
-            unit: Schema.optional(Schema.String),
-          }),
-        ),
-        notifications: Schema.optional(
-          Schema.Record(
-            Schema.String,
-            Schema.Struct({
-              enabled: Schema.Boolean,
-              operator: Schema.Literals([
-                "EqualTo",
-                "GreaterThan",
-                "GreaterThanOrEqualTo",
-              ]),
-              threshold: Schema.Number,
-              contactEmails: Schema.Array(Schema.String),
-              contactRoles: Schema.optional(Schema.Array(Schema.String)),
-              contactGroups: Schema.optional(Schema.Array(Schema.String)),
-              thresholdType: Schema.optional(
-                Schema.Literals(["Actual", "Forecasted"]),
-              ),
-              locale: Schema.optional(
-                Schema.Literals([
-                  "en-us",
-                  "ja-jp",
-                  "zh-cn",
-                  "de-de",
-                  "es-es",
-                  "fr-fr",
-                  "it-it",
-                  "ko-kr",
-                  "pt-br",
-                  "ru-ru",
-                  "zh-tw",
-                  "cs-cz",
-                  "pl-pl",
-                  "tr-tr",
-                  "da-dk",
-                  "en-gb",
-                  "hu-hu",
-                  "nb-no",
-                  "nl-nl",
-                  "pt-pt",
-                  "sv-se",
-                ]),
-              ),
-            }),
-          ),
-        ),
-        forecastSpend: Schema.optional(
-          Schema.Struct({
-            amount: Schema.optional(Schema.Number),
-            unit: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    properties: Schema.optional(Schema.suspend(() => BudgetPropertiesSchema)),
     eTag: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
@@ -346,23 +636,12 @@ export type BudgetsCreateOrUpdateInput = typeof BudgetsCreateOrUpdateInput.Type;
 // Output Schema
 export const BudgetsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(Schema.suspend(() => BudgetPropertiesSchema)),
+    eTag: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type BudgetsCreateOrUpdateOutput =
   typeof BudgetsCreateOrUpdateOutput.Type;
@@ -425,23 +704,12 @@ export type BudgetsGetInput = typeof BudgetsGetInput.Type;
 
 // Output Schema
 export const BudgetsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.optional(Schema.suspend(() => BudgetPropertiesSchema)),
+  eTag: Schema.optional(Schema.String),
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
-  systemData: Schema.optional(
-    Schema.Struct({
-      createdBy: Schema.optional(Schema.String),
-      createdByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      createdAt: Schema.optional(Schema.String),
-      lastModifiedBy: Schema.optional(Schema.String),
-      lastModifiedByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      lastModifiedAt: Schema.optional(Schema.String),
-    }),
-  ),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
 });
 export type BudgetsGetOutput = typeof BudgetsGetOutput.Type;
 
@@ -471,39 +739,7 @@ export type BudgetsListInput = typeof BudgetsListInput.Type;
 
 // Output Schema
 export const BudgetsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  value: Schema.optional(
-    Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
-  ),
+  value: Schema.optional(Schema.Array(Schema.suspend(() => BudgetSchema))),
   nextLink: Schema.optional(Schema.String),
 });
 export type BudgetsListOutput = typeof BudgetsListOutput.Type;
@@ -538,37 +774,7 @@ export type ChargesListInput = typeof ChargesListInput.Type;
 // Output Schema
 export const ChargesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.optional(
-    Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    Schema.Array(Schema.suspend(() => ChargeSummarySchema)),
   ),
 });
 export type ChargesListOutput = typeof ChargesListOutput.Type;
@@ -603,23 +809,15 @@ export type CreditsGetInput = typeof CreditsGetInput.Type;
 
 // Output Schema
 export const CreditsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.optional(
+    Schema.suspend(() => CreditSummaryPropertiesSchema),
+  ),
+  eTag: Schema.optional(Schema.String),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
-  systemData: Schema.optional(
-    Schema.Struct({
-      createdBy: Schema.optional(Schema.String),
-      createdByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      createdAt: Schema.optional(Schema.String),
-      lastModifiedBy: Schema.optional(Schema.String),
-      lastModifiedByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      lastModifiedAt: Schema.optional(Schema.String),
-    }),
-  ),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
 });
 export type CreditsGetOutput = typeof CreditsGetOutput.Type;
 
@@ -654,37 +852,7 @@ export type EventsListByBillingAccountInput =
 export const EventsListByBillingAccountOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.String),
-              createdByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              createdAt: Schema.optional(Schema.String),
-              lastModifiedBy: Schema.optional(Schema.String),
-              lastModifiedByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              lastModifiedAt: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => EventSummarySchema)),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -726,37 +894,7 @@ export type EventsListByBillingProfileInput =
 export const EventsListByBillingProfileOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.String),
-              createdByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              createdAt: Schema.optional(Schema.String),
-              lastModifiedBy: Schema.optional(Schema.String),
-              lastModifiedByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              lastModifiedAt: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => EventSummarySchema)),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -798,37 +936,7 @@ export type LotsListByBillingAccountInput =
 export const LotsListByBillingAccountOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.String),
-              createdByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              createdAt: Schema.optional(Schema.String),
-              lastModifiedBy: Schema.optional(Schema.String),
-              lastModifiedByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              lastModifiedAt: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => LotSummarySchema)),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -868,37 +976,7 @@ export type LotsListByBillingProfileInput =
 export const LotsListByBillingProfileOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.String),
-              createdByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              createdAt: Schema.optional(Schema.String),
-              lastModifiedBy: Schema.optional(Schema.String),
-              lastModifiedByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              lastModifiedAt: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => LotSummarySchema)),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -938,37 +1016,7 @@ export type LotsListByCustomerInput = typeof LotsListByCustomerInput.Type;
 export const LotsListByCustomerOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.String),
-              createdByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              createdAt: Schema.optional(Schema.String),
-              lastModifiedBy: Schema.optional(Schema.String),
-              lastModifiedByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              lastModifiedAt: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => LotSummarySchema)),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -1006,37 +1054,7 @@ export type MarketplacesListInput = typeof MarketplacesListInput.Type;
 export const MarketplacesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.String),
-              createdByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              createdAt: Schema.optional(Schema.String),
-              lastModifiedBy: Schema.optional(Schema.String),
-              lastModifiedByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              lastModifiedAt: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => MarketplaceSchema)),
     ),
     nextLink: Schema.optional(Schema.String),
   },
@@ -1071,22 +1089,7 @@ export type OperationsListInput = typeof OperationsListInput.Type;
 
 // Output Schema
 export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  value: Schema.optional(
-    Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        display: Schema.optional(
-          Schema.Struct({
-            provider: Schema.optional(Schema.String),
-            resource: Schema.optional(Schema.String),
-            operation: Schema.optional(Schema.String),
-            description: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
-  ),
+  value: Schema.optional(Schema.Array(Schema.suspend(() => OperationSchema))),
   nextLink: Schema.optional(Schema.String),
 });
 export type OperationsListOutput = typeof OperationsListOutput.Type;
@@ -1120,14 +1123,9 @@ export type PriceSheetDownloadByBillingAccountPeriodInput =
 // Output Schema
 export const PriceSheetDownloadByBillingAccountPeriodOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    status: Schema.optional(
-      Schema.Literals(["Running", "Completed", "Failed"]),
-    ),
+    status: Schema.optional(Schema.suspend(() => OperationStatusTypeSchema)),
     properties: Schema.optional(
-      Schema.Struct({
-        downloadUrl: Schema.optional(Schema.String),
-        validTill: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(() => PricesheetDownloadPropertiesSchema),
     ),
   });
 export type PriceSheetDownloadByBillingAccountPeriodOutput =
@@ -1163,23 +1161,13 @@ export type PriceSheetGetInput = typeof PriceSheetGetInput.Type;
 
 // Output Schema
 export const PriceSheetGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.optional(Schema.suspend(() => PriceSheetModelSchema)),
+  etag: Schema.optional(Schema.String),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
-  systemData: Schema.optional(
-    Schema.Struct({
-      createdBy: Schema.optional(Schema.String),
-      createdByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      createdAt: Schema.optional(Schema.String),
-      lastModifiedBy: Schema.optional(Schema.String),
-      lastModifiedByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      lastModifiedAt: Schema.optional(Schema.String),
-    }),
-  ),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
 });
 export type PriceSheetGetOutput = typeof PriceSheetGetOutput.Type;
 
@@ -1218,23 +1206,13 @@ export type PriceSheetGetByBillingPeriodInput =
 // Output Schema
 export const PriceSheetGetByBillingPeriodOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(Schema.suspend(() => PriceSheetModelSchema)),
+    etag: Schema.optional(Schema.String),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type PriceSheetGetByBillingPeriodOutput =
   typeof PriceSheetGetByBillingPeriodOutput.Type;
@@ -1278,23 +1256,17 @@ export type ReservationRecommendationDetailsGetInput =
 // Output Schema
 export const ReservationRecommendationDetailsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    location: Schema.optional(Schema.String),
+    sku: Schema.optional(Schema.String),
+    properties: Schema.optional(
+      Schema.suspend(() => ReservationRecommendationDetailsPropertiesSchema),
+    ),
+    etag: Schema.optional(Schema.String),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type ReservationRecommendationDetailsGetOutput =
   typeof ReservationRecommendationDetailsGetOutput.Type;
@@ -1336,42 +1308,7 @@ export type ReservationRecommendationsListInput =
 export const ReservationRecommendationsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.String),
-              createdByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              createdAt: Schema.optional(Schema.String),
-              lastModifiedBy: Schema.optional(Schema.String),
-              lastModifiedByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              lastModifiedAt: Schema.optional(Schema.String),
-            }),
-          ),
-          location: Schema.optional(Schema.String),
-          sku: Schema.optional(Schema.String),
-          etag: Schema.optional(Schema.String),
-          tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-          kind: Schema.Literals(["legacy", "modern"]),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => ReservationRecommendationSchema)),
     ),
     nextLink: Schema.optional(Schema.String),
     previousLink: Schema.optional(Schema.String),
@@ -1415,37 +1352,7 @@ export type ReservationsDetailsListInput =
 export const ReservationsDetailsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.String),
-              createdByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              createdAt: Schema.optional(Schema.String),
-              lastModifiedBy: Schema.optional(Schema.String),
-              lastModifiedByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              lastModifiedAt: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => ReservationDetailSchema)),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -1489,37 +1396,7 @@ export type ReservationsDetailsListByReservationOrderInput =
 export const ReservationsDetailsListByReservationOrderOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.String),
-              createdByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              createdAt: Schema.optional(Schema.String),
-              lastModifiedBy: Schema.optional(Schema.String),
-              lastModifiedByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              lastModifiedAt: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => ReservationDetailSchema)),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -1559,37 +1436,7 @@ export type ReservationsDetailsListByReservationOrderAndReservationInput =
 export const ReservationsDetailsListByReservationOrderAndReservationOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.String),
-              createdByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              createdAt: Schema.optional(Schema.String),
-              lastModifiedBy: Schema.optional(Schema.String),
-              lastModifiedByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              lastModifiedAt: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => ReservationDetailSchema)),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -1634,37 +1481,7 @@ export type ReservationsSummariesListInput =
 export const ReservationsSummariesListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.String),
-              createdByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              createdAt: Schema.optional(Schema.String),
-              lastModifiedBy: Schema.optional(Schema.String),
-              lastModifiedByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              lastModifiedAt: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => ReservationSummarySchema)),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -1710,37 +1527,7 @@ export type ReservationsSummariesListByReservationOrderInput =
 export const ReservationsSummariesListByReservationOrderOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.String),
-              createdByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              createdAt: Schema.optional(Schema.String),
-              lastModifiedBy: Schema.optional(Schema.String),
-              lastModifiedByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              lastModifiedAt: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => ReservationSummarySchema)),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -1782,37 +1569,7 @@ export type ReservationsSummariesListByReservationOrderAndReservationInput =
 export const ReservationsSummariesListByReservationOrderAndReservationOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.String),
-              createdByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              createdAt: Schema.optional(Schema.String),
-              lastModifiedBy: Schema.optional(Schema.String),
-              lastModifiedByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              lastModifiedAt: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => ReservationSummarySchema)),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -1856,37 +1613,7 @@ export type ReservationTransactionsListInput =
 export const ReservationTransactionsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.String),
-              createdByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              createdAt: Schema.optional(Schema.String),
-              lastModifiedBy: Schema.optional(Schema.String),
-              lastModifiedByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              lastModifiedAt: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => ReservationTransactionSchema)),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -1929,37 +1656,7 @@ export type ReservationTransactionsListByBillingProfileInput =
 export const ReservationTransactionsListByBillingProfileOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.String),
-              createdByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              createdAt: Schema.optional(Schema.String),
-              lastModifiedBy: Schema.optional(Schema.String),
-              lastModifiedByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              lastModifiedAt: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => ModernReservationTransactionSchema)),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -1994,23 +1691,12 @@ export type TagsGetInput = typeof TagsGetInput.Type;
 
 // Output Schema
 export const TagsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.optional(Schema.suspend(() => TagPropertiesSchema)),
+  eTag: Schema.optional(Schema.String),
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
-  systemData: Schema.optional(
-    Schema.Struct({
-      createdBy: Schema.optional(Schema.String),
-      createdByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      createdAt: Schema.optional(Schema.String),
-      lastModifiedBy: Schema.optional(Schema.String),
-      lastModifiedByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      lastModifiedAt: Schema.optional(Schema.String),
-    }),
-  ),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
 });
 export type TagsGetOutput = typeof TagsGetOutput.Type;
 
@@ -2048,37 +1734,7 @@ export type UsageDetailsListInput = typeof UsageDetailsListInput.Type;
 export const UsageDetailsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.String),
-              createdByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              createdAt: Schema.optional(Schema.String),
-              lastModifiedBy: Schema.optional(Schema.String),
-              lastModifiedByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              lastModifiedAt: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => UsageDetailSchema)),
     ),
     nextLink: Schema.optional(Schema.String),
   },

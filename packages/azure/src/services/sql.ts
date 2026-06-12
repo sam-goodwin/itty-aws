@@ -7,7 +7,4087 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
-import { SensitiveString } from "../sensitive.ts";
+import { SensitiveOutputString, SensitiveString } from "../sensitive.ts";
+
+// Shared schemas
+const ServerUsageSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  resourceName: Schema.optional(Schema.String),
+  displayName: Schema.optional(Schema.String),
+  currentValue: Schema.optional(Schema.Number),
+  limit: Schema.optional(Schema.Number),
+  unit: Schema.optional(Schema.String),
+  nextResetTime: Schema.optional(Schema.String),
+});
+const RecoverableDatabasePropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    edition: Schema.optional(Schema.String),
+    serviceLevelObjective: Schema.optional(Schema.String),
+    elasticPoolName: Schema.optional(Schema.String),
+    lastAvailableBackupDate: Schema.optional(Schema.String),
+  });
+const RecoverableDatabaseSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
+const ElasticPoolActivitySchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
+const ElasticPoolDatabaseActivitySchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
+const OperationSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  display: Schema.optional(Schema.suspend(() => OperationDisplaySchema)),
+  origin: Schema.optional(Schema.suspend(() => OperationOriginSchema)),
+  properties: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+});
+const OperationDisplaySchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  provider: Schema.optional(Schema.String),
+  resource: Schema.optional(Schema.String),
+  operation: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+});
+const OperationOriginSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "user",
+  "system",
+]);
+const CheckNameAvailabilityResourceTypeSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Literals(["Microsoft.Sql/servers"]);
+const CheckNameAvailabilityReasonSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Literals(["Invalid", "AlreadyExists"]);
+const DeletedServerSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+});
+const systemDataSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  createdBy: Schema.optional(Schema.String),
+  createdByType: Schema.optional(
+    Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+  ),
+  createdAt: Schema.optional(Schema.String),
+  lastModifiedBy: Schema.optional(Schema.String),
+  lastModifiedByType: Schema.optional(
+    Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+  ),
+  lastModifiedAt: Schema.optional(Schema.String),
+});
+const InstancePoolSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+});
+const ServerVersionCapabilitySchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    name: Schema.optional(Schema.String),
+    supportedEditions: Schema.optional(
+      Schema.Array(Schema.suspend(() => EditionCapabilitySchema)),
+    ),
+    supportedElasticPoolEditions: Schema.optional(
+      Schema.Array(Schema.suspend(() => ElasticPoolEditionCapabilitySchema)),
+    ),
+    status: Schema.optional(Schema.suspend(() => CapabilityStatusSchema)),
+    reason: Schema.optional(Schema.String),
+  },
+);
+const EditionCapabilitySchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  supportedServiceLevelObjectives: Schema.optional(
+    Schema.Array(Schema.suspend(() => ServiceObjectiveCapabilitySchema)),
+  ),
+  zoneRedundant: Schema.optional(Schema.Boolean),
+  readScale: Schema.optional(Schema.suspend(() => ReadScaleCapabilitySchema)),
+  supportedStorageCapabilities: Schema.optional(
+    Schema.Array(Schema.suspend(() => StorageCapabilitySchema)),
+  ),
+  zonePinning: Schema.optional(Schema.Boolean),
+  status: Schema.optional(Schema.suspend(() => CapabilityStatusSchema)),
+  reason: Schema.optional(Schema.String),
+});
+const ServiceObjectiveCapabilitySchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.suspend(() => Azure_Core_uuidSchema)),
+    name: Schema.optional(Schema.String),
+    supportedMaxSizes: Schema.optional(
+      Schema.Array(Schema.suspend(() => MaxSizeRangeCapabilitySchema)),
+    ),
+    performanceLevel: Schema.optional(
+      Schema.suspend(() => PerformanceLevelCapabilitySchema),
+    ),
+    sku: Schema.optional(Schema.suspend(() => SkuSchema)),
+    supportedLicenseTypes: Schema.optional(
+      Schema.Array(Schema.suspend(() => LicenseTypeCapabilitySchema)),
+    ),
+    includedMaxSize: Schema.optional(
+      Schema.suspend(() => MaxSizeCapabilitySchema),
+    ),
+    zoneRedundant: Schema.optional(Schema.Boolean),
+    supportedAutoPauseDelay: Schema.optional(
+      Schema.suspend(() => AutoPauseDelayTimeRangeSchema),
+    ),
+    supportedMinCapacities: Schema.optional(
+      Schema.Array(Schema.suspend(() => MinCapacityCapabilitySchema)),
+    ),
+    computeModel: Schema.optional(Schema.String),
+    supportedMaintenanceConfigurations: Schema.optional(
+      Schema.Array(
+        Schema.suspend(() => MaintenanceConfigurationCapabilitySchema),
+      ),
+    ),
+    zonePinning: Schema.optional(Schema.Boolean),
+    supportedZones: Schema.optional(
+      Schema.Array(Schema.suspend(() => ZonePinningCapabilitySchema)),
+    ),
+    supportedFreeLimitExhaustionBehaviors: Schema.optional(
+      Schema.Array(
+        Schema.suspend(() => FreeLimitExhaustionBehaviorCapabilitySchema),
+      ),
+    ),
+    status: Schema.optional(Schema.suspend(() => CapabilityStatusSchema)),
+    reason: Schema.optional(Schema.String),
+  });
+const Azure_Core_uuidSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.String;
+const MaxSizeRangeCapabilitySchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  minValue: Schema.optional(Schema.suspend(() => MaxSizeCapabilitySchema)),
+  maxValue: Schema.optional(Schema.suspend(() => MaxSizeCapabilitySchema)),
+  scaleSize: Schema.optional(Schema.suspend(() => MaxSizeCapabilitySchema)),
+  logSize: Schema.optional(Schema.suspend(() => LogSizeCapabilitySchema)),
+  status: Schema.optional(Schema.suspend(() => CapabilityStatusSchema)),
+  reason: Schema.optional(Schema.String),
+});
+const MaxSizeCapabilitySchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  limit: Schema.optional(Schema.Number),
+  unit: Schema.optional(Schema.suspend(() => MaxSizeUnitSchema)),
+});
+const MaxSizeUnitSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Megabytes",
+  "Gigabytes",
+  "Terabytes",
+  "Petabytes",
+]);
+const LogSizeCapabilitySchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  limit: Schema.optional(Schema.Number),
+  unit: Schema.optional(Schema.suspend(() => LogSizeUnitSchema)),
+});
+const LogSizeUnitSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Megabytes",
+  "Gigabytes",
+  "Terabytes",
+  "Petabytes",
+  "Percent",
+]);
+const CapabilityStatusSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Visible",
+  "Available",
+  "Default",
+  "Disabled",
+]);
+const PerformanceLevelCapabilitySchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    value: Schema.optional(Schema.Number),
+    unit: Schema.optional(Schema.suspend(() => PerformanceLevelUnitSchema)),
+  });
+const PerformanceLevelUnitSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "DTU",
+  "VCores",
+]);
+const SkuSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.String,
+  tier: Schema.optional(Schema.String),
+  size: Schema.optional(Schema.String),
+  family: Schema.optional(Schema.String),
+  capacity: Schema.optional(Schema.Number),
+});
+const LicenseTypeCapabilitySchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  status: Schema.optional(Schema.suspend(() => CapabilityStatusSchema)),
+  reason: Schema.optional(Schema.String),
+});
+const AutoPauseDelayTimeRangeSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    minValue: Schema.optional(Schema.Number),
+    maxValue: Schema.optional(Schema.Number),
+    stepSize: Schema.optional(Schema.Number),
+    default: Schema.optional(Schema.Number),
+    unit: Schema.optional(Schema.suspend(() => PauseDelayTimeUnitSchema)),
+    doNotPauseValue: Schema.optional(Schema.Number),
+  },
+);
+const PauseDelayTimeUnitSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Minutes",
+]);
+const MinCapacityCapabilitySchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  value: Schema.optional(Schema.Number),
+  status: Schema.optional(Schema.suspend(() => CapabilityStatusSchema)),
+  reason: Schema.optional(Schema.String),
+});
+const MaintenanceConfigurationCapabilitySchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    zoneRedundant: Schema.optional(Schema.Boolean),
+    status: Schema.optional(Schema.suspend(() => CapabilityStatusSchema)),
+    reason: Schema.optional(Schema.String),
+  });
+const ZonePinningCapabilitySchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  availabilityZone: Schema.optional(Schema.String),
+  status: Schema.optional(Schema.suspend(() => CapabilityStatusSchema)),
+  reason: Schema.optional(Schema.String),
+});
+const FreeLimitExhaustionBehaviorCapabilitySchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    exhaustionBehaviorType: Schema.optional(
+      Schema.suspend(() => FreeLimitExhaustionBehaviorSchema),
+    ),
+    status: Schema.optional(Schema.suspend(() => CapabilityStatusSchema)),
+  });
+const FreeLimitExhaustionBehaviorSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Literals(["AutoPause", "BillOverUsage"]);
+const ReadScaleCapabilitySchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  maxNumberOfReplicas: Schema.optional(Schema.Number),
+  status: Schema.optional(Schema.suspend(() => CapabilityStatusSchema)),
+  reason: Schema.optional(Schema.String),
+});
+const StorageCapabilitySchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  storageAccountType: Schema.optional(
+    Schema.suspend(() => StorageCapabilityStorageAccountTypeSchema),
+  ),
+  status: Schema.optional(Schema.suspend(() => CapabilityStatusSchema)),
+  reason: Schema.optional(Schema.String),
+});
+const StorageCapabilityStorageAccountTypeSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Literals(["GRS", "LRS", "ZRS", "GZRS"]);
+const ElasticPoolEditionCapabilitySchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    supportedElasticPoolPerformanceLevels: Schema.optional(
+      Schema.Array(
+        Schema.suspend(() => ElasticPoolPerformanceLevelCapabilitySchema),
+      ),
+    ),
+    zoneRedundant: Schema.optional(Schema.Boolean),
+    zonePinning: Schema.optional(Schema.Boolean),
+    status: Schema.optional(Schema.suspend(() => CapabilityStatusSchema)),
+    reason: Schema.optional(Schema.String),
+  });
+const ElasticPoolPerformanceLevelCapabilitySchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    performanceLevel: Schema.optional(
+      Schema.suspend(() => PerformanceLevelCapabilitySchema),
+    ),
+    sku: Schema.optional(Schema.suspend(() => SkuSchema)),
+    supportedLicenseTypes: Schema.optional(
+      Schema.Array(Schema.suspend(() => LicenseTypeCapabilitySchema)),
+    ),
+    maxDatabaseCount: Schema.optional(Schema.Number),
+    includedMaxSize: Schema.optional(
+      Schema.suspend(() => MaxSizeCapabilitySchema),
+    ),
+    supportedMaxSizes: Schema.optional(
+      Schema.Array(Schema.suspend(() => MaxSizeRangeCapabilitySchema)),
+    ),
+    supportedPerDatabaseMaxSizes: Schema.optional(
+      Schema.Array(Schema.suspend(() => MaxSizeRangeCapabilitySchema)),
+    ),
+    supportedPerDatabaseMaxPerformanceLevels: Schema.optional(
+      Schema.Array(
+        Schema.suspend(
+          () => ElasticPoolPerDatabaseMaxPerformanceLevelCapabilitySchema,
+        ),
+      ),
+    ),
+    zoneRedundant: Schema.optional(Schema.Boolean),
+    supportedMaintenanceConfigurations: Schema.optional(
+      Schema.Array(
+        Schema.suspend(() => MaintenanceConfigurationCapabilitySchema),
+      ),
+    ),
+    supportedMinCapacities: Schema.optional(
+      Schema.Array(Schema.suspend(() => MinCapacityCapabilitySchema)),
+    ),
+    supportedAutoPauseDelay: Schema.optional(
+      Schema.suspend(() => AutoPauseDelayTimeRangeSchema),
+    ),
+    supportedPerDatabaseAutoPauseDelay: Schema.optional(
+      Schema.suspend(() => PerDatabaseAutoPauseDelayTimeRangeSchema),
+    ),
+    supportedZones: Schema.optional(
+      Schema.Array(Schema.suspend(() => ZonePinningCapabilitySchema)),
+    ),
+    status: Schema.optional(Schema.suspend(() => CapabilityStatusSchema)),
+    reason: Schema.optional(Schema.String),
+  });
+const ElasticPoolPerDatabaseMaxPerformanceLevelCapabilitySchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    limit: Schema.optional(Schema.Number),
+    unit: Schema.optional(Schema.suspend(() => PerformanceLevelUnitSchema)),
+    supportedPerDatabaseMinPerformanceLevels: Schema.optional(
+      Schema.Array(
+        Schema.suspend(
+          () => ElasticPoolPerDatabaseMinPerformanceLevelCapabilitySchema,
+        ),
+      ),
+    ),
+    status: Schema.optional(Schema.suspend(() => CapabilityStatusSchema)),
+    reason: Schema.optional(Schema.String),
+  });
+const ElasticPoolPerDatabaseMinPerformanceLevelCapabilitySchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    limit: Schema.optional(Schema.Number),
+    unit: Schema.optional(Schema.suspend(() => PerformanceLevelUnitSchema)),
+    status: Schema.optional(Schema.suspend(() => CapabilityStatusSchema)),
+    reason: Schema.optional(Schema.String),
+  });
+const PerDatabaseAutoPauseDelayTimeRangeSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    minValue: Schema.optional(Schema.Number),
+    maxValue: Schema.optional(Schema.Number),
+    stepSize: Schema.optional(Schema.Number),
+    default: Schema.optional(Schema.Number),
+    unit: Schema.optional(Schema.suspend(() => PauseDelayTimeUnitSchema)),
+    doNotPauseValue: Schema.optional(Schema.Number),
+  });
+const ManagedInstanceVersionCapabilitySchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    supportedEditions: Schema.optional(
+      Schema.Array(
+        Schema.suspend(() => ManagedInstanceEditionCapabilitySchema),
+      ),
+    ),
+    supportedInstancePoolEditions: Schema.optional(
+      Schema.Array(Schema.suspend(() => InstancePoolEditionCapabilitySchema)),
+    ),
+    status: Schema.optional(Schema.suspend(() => CapabilityStatusSchema)),
+    reason: Schema.optional(Schema.String),
+  });
+const ManagedInstanceEditionCapabilitySchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    isGeneralPurposeV2: Schema.optional(Schema.Boolean),
+    supportedFamilies: Schema.optional(
+      Schema.Array(Schema.suspend(() => ManagedInstanceFamilyCapabilitySchema)),
+    ),
+    supportedStorageCapabilities: Schema.optional(
+      Schema.Array(Schema.suspend(() => StorageCapabilitySchema)),
+    ),
+    status: Schema.optional(Schema.suspend(() => CapabilityStatusSchema)),
+    reason: Schema.optional(Schema.String),
+  });
+const ManagedInstanceFamilyCapabilitySchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    sku: Schema.optional(Schema.String),
+    zoneRedundant: Schema.optional(Schema.Boolean),
+    supportedLicenseTypes: Schema.optional(
+      Schema.Array(Schema.suspend(() => LicenseTypeCapabilitySchema)),
+    ),
+    supportedVcoresValues: Schema.optional(
+      Schema.Array(Schema.suspend(() => ManagedInstanceVcoresCapabilitySchema)),
+    ),
+    status: Schema.optional(Schema.suspend(() => CapabilityStatusSchema)),
+    reason: Schema.optional(Schema.String),
+  });
+const ManagedInstanceVcoresCapabilitySchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    value: Schema.optional(Schema.Number),
+    supportedMemorySizesInGB: Schema.optional(
+      Schema.suspend(() => MaxLimitRangeCapabilitySchema),
+    ),
+    supportedMemoryLimitsMB: Schema.optional(
+      Schema.suspend(() => MaxLimitRangeCapabilitySchema),
+    ),
+    includedMaxSize: Schema.optional(
+      Schema.suspend(() => MaxSizeCapabilitySchema),
+    ),
+    supportedStorageSizes: Schema.optional(
+      Schema.Array(Schema.suspend(() => MaxSizeRangeCapabilitySchema)),
+    ),
+    includedStorageIOps: Schema.optional(Schema.Number),
+    supportedStorageIOps: Schema.optional(
+      Schema.suspend(() => MaxLimitRangeCapabilitySchema),
+    ),
+    iopsMinValueOverrideFactorPerSelectedStorageGB: Schema.optional(
+      Schema.Number,
+    ),
+    iopsIncludedValueOverrideFactorPerSelectedStorageGB: Schema.optional(
+      Schema.Number,
+    ),
+    includedStorageThroughputMBps: Schema.optional(Schema.Number),
+    supportedStorageThroughputMBps: Schema.optional(
+      Schema.suspend(() => MaxLimitRangeCapabilitySchema),
+    ),
+    throughputMBpsMinValueOverrideFactorPerSelectedStorageGB: Schema.optional(
+      Schema.Number,
+    ),
+    throughputMBpsIncludedValueOverrideFactorPerSelectedStorageGB:
+      Schema.optional(Schema.Number),
+    instancePoolSupported: Schema.optional(Schema.Boolean),
+    standaloneSupported: Schema.optional(Schema.Boolean),
+    supportedMaintenanceConfigurations: Schema.optional(
+      Schema.Array(
+        Schema.suspend(
+          () => ManagedInstanceMaintenanceConfigurationCapabilitySchema,
+        ),
+      ),
+    ),
+    status: Schema.optional(Schema.suspend(() => CapabilityStatusSchema)),
+    reason: Schema.optional(Schema.String),
+  });
+const MaxLimitRangeCapabilitySchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    minValue: Schema.optional(Schema.Number),
+    maxValue: Schema.optional(Schema.Number),
+    scaleSize: Schema.optional(Schema.Number),
+    status: Schema.optional(Schema.suspend(() => CapabilityStatusSchema)),
+    reason: Schema.optional(Schema.String),
+  },
+);
+const ManagedInstanceMaintenanceConfigurationCapabilitySchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    status: Schema.optional(Schema.suspend(() => CapabilityStatusSchema)),
+    reason: Schema.optional(Schema.String),
+  });
+const InstancePoolEditionCapabilitySchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    supportedFamilies: Schema.optional(
+      Schema.Array(Schema.suspend(() => InstancePoolFamilyCapabilitySchema)),
+    ),
+    status: Schema.optional(Schema.suspend(() => CapabilityStatusSchema)),
+    reason: Schema.optional(Schema.String),
+  });
+const InstancePoolFamilyCapabilitySchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    supportedLicenseTypes: Schema.optional(
+      Schema.Array(Schema.suspend(() => LicenseTypeCapabilitySchema)),
+    ),
+    supportedVcoresValues: Schema.optional(
+      Schema.Array(Schema.suspend(() => InstancePoolVcoresCapabilitySchema)),
+    ),
+    status: Schema.optional(Schema.suspend(() => CapabilityStatusSchema)),
+    reason: Schema.optional(Schema.String),
+  });
+const InstancePoolVcoresCapabilitySchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    value: Schema.optional(Schema.Number),
+    storageLimit: Schema.optional(
+      Schema.suspend(() => MaxSizeCapabilitySchema),
+    ),
+    status: Schema.optional(Schema.suspend(() => CapabilityStatusSchema)),
+    reason: Schema.optional(Schema.String),
+  });
+const JobAgentVersionCapabilitySchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    supportedEditions: Schema.optional(
+      Schema.Array(Schema.suspend(() => JobAgentEditionCapabilitySchema)),
+    ),
+    status: Schema.optional(Schema.suspend(() => CapabilityStatusSchema)),
+    reason: Schema.optional(Schema.String),
+  });
+const JobAgentEditionCapabilitySchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    supportedServiceLevelObjectives: Schema.optional(
+      Schema.Array(
+        Schema.suspend(() => JobAgentServiceLevelObjectiveCapabilitySchema),
+      ),
+    ),
+    status: Schema.optional(Schema.suspend(() => CapabilityStatusSchema)),
+    reason: Schema.optional(Schema.String),
+  });
+const JobAgentServiceLevelObjectiveCapabilitySchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    sku: Schema.optional(Schema.suspend(() => SkuSchema)),
+    status: Schema.optional(Schema.suspend(() => CapabilityStatusSchema)),
+    reason: Schema.optional(Schema.String),
+  });
+const DeletedServerPropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    version: Schema.optional(Schema.String),
+    deletionTime: Schema.optional(Schema.String),
+    originalId: Schema.optional(Schema.String),
+    fullyQualifiedDomainName: Schema.optional(Schema.String),
+  },
+);
+const LongTermRetentionBackupSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+  },
+);
+const ManagedInstanceLongTermRetentionBackupSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+  });
+const ManagedInstanceLongTermRetentionBackupPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    managedInstanceName: Schema.optional(Schema.String),
+    managedInstanceCreateTime: Schema.optional(Schema.String),
+    databaseName: Schema.optional(Schema.String),
+    databaseDeletionTime: Schema.optional(Schema.String),
+    backupTime: Schema.optional(Schema.String),
+    backupExpirationTime: Schema.optional(Schema.String),
+    backupStorageRedundancy: Schema.optional(
+      Schema.suspend(() => BackupStorageRedundancySchema),
+    ),
+    backupStorageAccessTier: Schema.optional(
+      Schema.suspend(() => BackupStorageAccessTierSchema),
+    ),
+  });
+const BackupStorageRedundancySchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+    "Geo",
+    "Local",
+    "Zone",
+    "GeoZone",
+  ]);
+const BackupStorageAccessTierSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Literals(["Hot", "Archive"]);
+const LongTermRetentionBackupPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    serverName: Schema.optional(Schema.String),
+    serverCreateTime: Schema.optional(Schema.String),
+    databaseName: Schema.optional(Schema.String),
+    databaseDeletionTime: Schema.optional(Schema.String),
+    backupTime: Schema.optional(Schema.String),
+    backupExpirationTime: Schema.optional(Schema.String),
+    backupStorageRedundancy: Schema.optional(
+      Schema.suspend(() => BackupStorageRedundancySchema),
+    ),
+    requestedBackupStorageRedundancy: Schema.optional(
+      Schema.suspend(() => BackupStorageRedundancySchema),
+    ),
+    isBackupImmutable: Schema.optional(Schema.Boolean),
+    timeBasedImmutability: Schema.optional(
+      Schema.suspend(() => TimeBasedImmutabilitySchema),
+    ),
+    timeBasedImmutabilityMode: Schema.optional(
+      Schema.suspend(() => TimeBasedImmutabilityModeSchema),
+    ),
+    legalHoldImmutability: Schema.optional(
+      Schema.suspend(() => SetLegalHoldImmutabilitySchema),
+    ),
+    backupStorageAccessTier: Schema.optional(
+      Schema.suspend(() => BackupStorageAccessTierSchema),
+    ),
+  });
+const TimeBasedImmutabilitySchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals(
+  ["Enabled", "Disabled"],
+);
+const TimeBasedImmutabilityModeSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Literals(["Locked", "Unlocked"]);
+const SetLegalHoldImmutabilitySchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Literals(["Enabled", "Disabled"]);
+const CopyLongTermRetentionBackupParametersPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    targetSubscriptionId: Schema.optional(Schema.String),
+    targetResourceGroup: Schema.optional(Schema.String),
+    targetServerResourceId: Schema.optional(Schema.String),
+    targetServerFullyQualifiedDomainName: Schema.optional(Schema.String),
+    targetDatabaseName: Schema.optional(Schema.String),
+    targetBackupStorageRedundancy: Schema.optional(
+      Schema.suspend(() => BackupStorageRedundancySchema),
+    ),
+  });
+const LongTermRetentionOperationResultPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    requestId: Schema.optional(Schema.suspend(() => Azure_Core_uuidSchema)),
+    operationType: Schema.optional(Schema.String),
+    fromBackupResourceId: Schema.optional(Schema.String),
+    toBackupResourceId: Schema.optional(Schema.String),
+    targetBackupStorageRedundancy: Schema.optional(
+      Schema.suspend(() => BackupStorageRedundancySchema),
+    ),
+    status: Schema.optional(Schema.String),
+    message: Schema.optional(Schema.String),
+  });
+const UpdateLongTermRetentionBackupParametersPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    requestedBackupStorageRedundancy: Schema.optional(
+      Schema.suspend(() => BackupStorageRedundancySchema),
+    ),
+  });
+const SyncDatabaseIdPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+  });
+const TimeZoneSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+});
+const TimeZonePropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  timeZoneId: Schema.optional(Schema.String),
+  displayName: Schema.optional(Schema.String),
+});
+const SubscriptionUsageSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+});
+const SubscriptionUsagePropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    displayName: Schema.optional(Schema.String),
+    currentValue: Schema.optional(Schema.Number),
+    limit: Schema.optional(Schema.Number),
+    unit: Schema.optional(Schema.String),
+  });
+const ManagedInstanceSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+});
+const ServerSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+});
+const VirtualClusterSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+});
+const InstancePoolPropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subnetId: Schema.String,
+  vCores: Schema.Number,
+  licenseType: Schema.suspend(() => InstancePoolLicenseTypeSchema),
+  dnsZone: Schema.optional(Schema.String),
+  maintenanceConfigurationId: Schema.optional(Schema.String),
+});
+const InstancePoolLicenseTypeSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Literals(["LicenseIncluded", "BasePrice"]);
+const InstancePoolOperationSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+});
+const InstancePoolOperationPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    instancePoolName: Schema.optional(Schema.String),
+    operation: Schema.optional(Schema.String),
+    operationFriendlyName: Schema.optional(Schema.String),
+    percentComplete: Schema.optional(Schema.Number),
+    startTime: Schema.optional(Schema.String),
+    state: Schema.optional(
+      Schema.suspend(() => ManagementOperationStateSchema),
+    ),
+    errorCode: Schema.optional(Schema.Number),
+    errorDescription: Schema.optional(Schema.String),
+    errorSeverity: Schema.optional(Schema.Number),
+    errorType: Schema.optional(Schema.suspend(() => ErrorTypeSchema)),
+    estimatedCompletionTime: Schema.optional(Schema.String),
+    description: Schema.optional(Schema.String),
+    isCancellable: Schema.optional(Schema.Boolean),
+  });
+const ManagementOperationStateSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+    "Pending",
+    "InProgress",
+    "Succeeded",
+    "Failed",
+    "CancelInProgress",
+    "Cancelled",
+  ]);
+const ErrorTypeSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "None",
+  "User",
+]);
+const UsageSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.suspend(() => NameSchema)),
+  type: Schema.optional(Schema.String),
+  unit: Schema.optional(Schema.String),
+  currentValue: Schema.optional(Schema.Number),
+  limit: Schema.optional(Schema.Number),
+  requestedLimit: Schema.optional(Schema.Number),
+});
+const NameSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  value: Schema.optional(Schema.String),
+  localizedValue: Schema.optional(Schema.String),
+});
+const InstanceFailoverGroupSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+});
+const InstanceFailoverGroupPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    secondaryType: Schema.optional(
+      Schema.suspend(() => SecondaryInstanceTypeSchema),
+    ),
+    readWriteEndpoint: Schema.suspend(
+      () => InstanceFailoverGroupReadWriteEndpointSchema,
+    ),
+    readOnlyEndpoint: Schema.optional(
+      Schema.suspend(() => InstanceFailoverGroupReadOnlyEndpointSchema),
+    ),
+    replicationRole: Schema.optional(
+      Schema.suspend(() => InstanceFailoverGroupReplicationRoleSchema),
+    ),
+    replicationState: Schema.optional(Schema.String),
+    partnerRegions: Schema.Array(Schema.suspend(() => PartnerRegionInfoSchema)),
+    managedInstancePairs: Schema.Array(
+      Schema.suspend(() => ManagedInstancePairInfoSchema),
+    ),
+  });
+const SecondaryInstanceTypeSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals(
+  ["Geo", "Standby"],
+);
+const InstanceFailoverGroupReadWriteEndpointSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    failoverPolicy: Schema.suspend(() => ReadWriteEndpointFailoverPolicySchema),
+    failoverWithDataLossGracePeriodMinutes: Schema.optional(Schema.Number),
+  });
+const ReadWriteEndpointFailoverPolicySchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Literals(["Manual", "Automatic"]);
+const InstanceFailoverGroupReadOnlyEndpointSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    failoverPolicy: Schema.optional(
+      Schema.suspend(() => ReadOnlyEndpointFailoverPolicySchema),
+    ),
+  });
+const ReadOnlyEndpointFailoverPolicySchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Literals(["Disabled", "Enabled"]);
+const InstanceFailoverGroupReplicationRoleSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Literals(["Primary", "Secondary"]);
+const PartnerRegionInfoSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  location: Schema.optional(Schema.String),
+  replicationRole: Schema.optional(
+    Schema.suspend(() => InstanceFailoverGroupReplicationRoleSchema),
+  ),
+});
+const ManagedInstancePairInfoSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    primaryManagedInstanceId: Schema.optional(Schema.String),
+    partnerManagedInstanceId: Schema.optional(Schema.String),
+  },
+);
+const ManagedDatabaseMoveOperationResultSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+  });
+const ManagedDatabaseMoveOperationResultPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    operation: Schema.optional(Schema.String),
+    operationFriendlyName: Schema.optional(Schema.String),
+    startTime: Schema.optional(Schema.String),
+    state: Schema.optional(
+      Schema.suspend(() => ManagementOperationStateSchema),
+    ),
+    operationMode: Schema.optional(
+      Schema.suspend(() => MoveOperationModeSchema),
+    ),
+    sourceManagedInstanceName: Schema.optional(Schema.String),
+    targetManagedInstanceName: Schema.optional(Schema.String),
+    sourceManagedInstanceId: Schema.optional(Schema.String),
+    targetManagedInstanceId: Schema.optional(Schema.String),
+    sourceDatabaseName: Schema.optional(Schema.String),
+    targetDatabaseName: Schema.optional(Schema.String),
+    isCancellable: Schema.optional(Schema.Boolean),
+    errorCode: Schema.optional(Schema.Number),
+    errorDescription: Schema.optional(Schema.String),
+    errorSeverity: Schema.optional(Schema.Number),
+    isUserError: Schema.optional(Schema.Boolean),
+  });
+const MoveOperationModeSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Move",
+  "Copy",
+]);
+const ServerTrustGroupSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+});
+const ServerTrustGroupPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    groupMembers: Schema.Array(Schema.suspend(() => ServerInfoSchema)),
+    trustScopes: Schema.Array(
+      Schema.suspend(() => ServerTrustGroupPropertiesTrustScopesItemSchema),
+    ),
+  });
+const ServerInfoSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  serverId: Schema.String,
+});
+const ServerTrustGroupPropertiesTrustScopesItemSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+    "GlobalTransactions",
+    "ServiceBroker",
+  ]);
+const ManagedInstancePropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    provisioningState: Schema.optional(
+      Schema.suspend(() => ProvisioningStateSchema),
+    ),
+    managedInstanceCreateMode: Schema.optional(
+      Schema.suspend(() => ManagedServerCreateModeSchema),
+    ),
+    fullyQualifiedDomainName: Schema.optional(Schema.String),
+    isGeneralPurposeV2: Schema.optional(Schema.Boolean),
+    administratorLogin: Schema.optional(Schema.String),
+    administratorLoginPassword: Schema.optional(SensitiveOutputString),
+    subnetId: Schema.optional(Schema.String),
+    state: Schema.optional(Schema.String),
+    licenseType: Schema.optional(
+      Schema.suspend(() => ManagedInstanceLicenseTypeSchema),
+    ),
+    hybridSecondaryUsage: Schema.optional(
+      Schema.suspend(() => HybridSecondaryUsageSchema),
+    ),
+    hybridSecondaryUsageDetected: Schema.optional(
+      Schema.suspend(() => HybridSecondaryUsageDetectedSchema),
+    ),
+    vCores: Schema.optional(Schema.Number),
+    storageSizeInGB: Schema.optional(Schema.Number),
+    storageIOps: Schema.optional(Schema.Number),
+    storageThroughputMBps: Schema.optional(Schema.Number),
+    memorySizeInGB: Schema.optional(Schema.Number),
+    collation: Schema.optional(Schema.String),
+    dnsZone: Schema.optional(Schema.String),
+    dnsZonePartner: Schema.optional(Schema.String),
+    publicDataEndpointEnabled: Schema.optional(Schema.Boolean),
+    sourceManagedInstanceId: Schema.optional(Schema.String),
+    restorePointInTime: Schema.optional(Schema.String),
+    proxyOverride: Schema.optional(
+      Schema.suspend(() => ManagedInstanceProxyOverrideSchema),
+    ),
+    timezoneId: Schema.optional(Schema.String),
+    instancePoolId: Schema.optional(Schema.String),
+    maintenanceConfigurationId: Schema.optional(Schema.String),
+    privateEndpointConnections: Schema.optional(
+      Schema.Array(Schema.suspend(() => ManagedInstancePecPropertySchema)),
+    ),
+    minimalTlsVersion: Schema.optional(Schema.String),
+    currentBackupStorageRedundancy: Schema.optional(
+      Schema.suspend(() => BackupStorageRedundancySchema),
+    ),
+    requestedBackupStorageRedundancy: Schema.optional(
+      Schema.suspend(() => BackupStorageRedundancySchema),
+    ),
+    zoneRedundant: Schema.optional(Schema.Boolean),
+    primaryUserAssignedIdentityId: Schema.optional(Schema.String),
+    keyId: Schema.optional(Schema.String),
+    administrators: Schema.optional(
+      Schema.suspend(() => ManagedInstanceExternalAdministratorSchema),
+    ),
+    servicePrincipal: Schema.optional(
+      Schema.suspend(() => ServicePrincipalSchema),
+    ),
+    virtualClusterId: Schema.optional(Schema.String),
+    externalGovernanceStatus: Schema.optional(
+      Schema.suspend(() => ExternalGovernanceStatusSchema),
+    ),
+    pricingModel: Schema.optional(Schema.suspend(() => PricingModelSchema)),
+    createTime: Schema.optional(Schema.String),
+    authenticationMetadata: Schema.optional(
+      Schema.suspend(() => AuthMetadataLookupModesSchema),
+    ),
+    databaseFormat: Schema.optional(
+      Schema.suspend(() => ManagedInstanceDatabaseFormatSchema),
+    ),
+    requestedLogicalAvailabilityZone: Schema.optional(
+      Schema.suspend(() => AvailabilityZoneTypeSchema),
+    ),
+  });
+const ProvisioningStateSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Created",
+  "InProgress",
+  "Succeeded",
+  "Failed",
+  "Canceled",
+]);
+const ManagedServerCreateModeSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+    "Default",
+    "PointInTimeRestore",
+  ]);
+const ManagedInstanceLicenseTypeSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Literals(["LicenseIncluded", "BasePrice"]);
+const HybridSecondaryUsageSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Active",
+  "Passive",
+]);
+const HybridSecondaryUsageDetectedSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Literals(["Active", "Passive"]);
+const ManagedInstanceProxyOverrideSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Literals(["Proxy", "Redirect", "Default"]);
+const ManagedInstancePecPropertySchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    properties: Schema.optional(
+      Schema.suspend(
+        () => ManagedInstancePrivateEndpointConnectionPropertiesSchema,
+      ),
+    ),
+  });
+const ManagedInstancePrivateEndpointConnectionPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    privateEndpoint: Schema.optional(
+      Schema.suspend(() => ManagedInstancePrivateEndpointPropertySchema),
+    ),
+    privateLinkServiceConnectionState: Schema.optional(
+      Schema.suspend(
+        () => ManagedInstancePrivateLinkServiceConnectionStatePropertySchema,
+      ),
+    ),
+    provisioningState: Schema.optional(Schema.String),
+  });
+const ManagedInstancePrivateEndpointPropertySchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+  });
+const ManagedInstancePrivateLinkServiceConnectionStatePropertySchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    status: Schema.String,
+    description: Schema.String,
+    actionsRequired: Schema.optional(Schema.String),
+  });
+const ManagedInstanceExternalAdministratorSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    administratorType: Schema.optional(
+      Schema.suspend(() => AdministratorTypeSchema),
+    ),
+    principalType: Schema.optional(Schema.suspend(() => PrincipalTypeSchema)),
+    login: Schema.optional(Schema.String),
+    sid: Schema.optional(Schema.suspend(() => Azure_Core_uuidSchema)),
+    tenantId: Schema.optional(Schema.suspend(() => Azure_Core_uuidSchema)),
+    azureADOnlyAuthentication: Schema.optional(Schema.Boolean),
+  });
+const AdministratorTypeSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "ActiveDirectory",
+]);
+const PrincipalTypeSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "User",
+  "Group",
+  "Application",
+]);
+const ServicePrincipalSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  principalId: Schema.optional(Schema.String),
+  clientId: Schema.optional(Schema.String),
+  tenantId: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.suspend(() => ServicePrincipalTypeSchema)),
+});
+const ServicePrincipalTypeSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "None",
+  "SystemAssigned",
+]);
+const ExternalGovernanceStatusSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Literals(["Enabled", "Disabled"]);
+const PricingModelSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Regular",
+  "Freemium",
+]);
+const AuthMetadataLookupModesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Literals(["AzureAD", "Paired", "Windows"]);
+const ManagedInstanceDatabaseFormatSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+    "AlwaysUpToDate",
+    "SQLServer2022",
+    "SQLServer2025",
+  ]);
+const AvailabilityZoneTypeSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "NoPreference",
+  "1",
+  "2",
+  "3",
+]);
+const ResourceIdentitySchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  userAssignedIdentities: Schema.optional(
+    Schema.Record(
+      Schema.String,
+      Schema.suspend(() => UserIdentitySchema),
+    ),
+  ),
+  principalId: Schema.optional(Schema.suspend(() => Azure_Core_uuidSchema)),
+  type: Schema.optional(Schema.suspend(() => IdentityTypeSchema)),
+  tenantId: Schema.optional(Schema.suspend(() => Azure_Core_uuidSchema)),
+});
+const UserIdentitySchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  principalId: Schema.optional(Schema.suspend(() => Azure_Core_uuidSchema)),
+  clientId: Schema.optional(Schema.suspend(() => Azure_Core_uuidSchema)),
+});
+const IdentityTypeSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "None",
+  "SystemAssigned",
+  "UserAssigned",
+  "SystemAssigned,UserAssigned",
+]);
+const ManagedInstanceAdministratorSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+  });
+const ManagedInstanceAdministratorPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    administratorType: Schema.suspend(
+      () => ManagedInstanceAdministratorTypeSchema,
+    ),
+    login: Schema.String,
+    sid: Schema.suspend(() => Azure_Core_uuidSchema),
+    tenantId: Schema.optional(Schema.suspend(() => Azure_Core_uuidSchema)),
+  });
+const ManagedInstanceAdministratorTypeSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Literals(["ActiveDirectory"]);
+const ManagedInstanceAdvancedThreatProtectionSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+  });
+const AdvancedThreatProtectionPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    state: Schema.suspend(() => AdvancedThreatProtectionStateSchema),
+    creationTime: Schema.optional(Schema.String),
+  });
+const AdvancedThreatProtectionStateSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Literals(["New", "Enabled", "Disabled"]);
+const ManagedInstanceAzureADOnlyAuthenticationSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+  });
+const ManagedInstanceAzureADOnlyAuthPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    azureADOnlyAuthentication: Schema.Boolean,
+  });
+const ManagedDatabaseSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+});
+const ManagedDatabasePropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    collation: Schema.optional(Schema.String),
+    status: Schema.optional(Schema.suspend(() => ManagedDatabaseStatusSchema)),
+    creationDate: Schema.optional(Schema.String),
+    earliestRestorePoint: Schema.optional(Schema.String),
+    restorePointInTime: Schema.optional(Schema.String),
+    defaultSecondaryLocation: Schema.optional(Schema.String),
+    catalogCollation: Schema.optional(
+      Schema.suspend(() => CatalogCollationTypeSchema),
+    ),
+    createMode: Schema.optional(
+      Schema.suspend(() => ManagedDatabaseCreateModeSchema),
+    ),
+    storageContainerUri: Schema.optional(Schema.String),
+    sourceDatabaseId: Schema.optional(Schema.String),
+    crossSubscriptionSourceDatabaseId: Schema.optional(Schema.String),
+    restorableDroppedDatabaseId: Schema.optional(Schema.String),
+    crossSubscriptionRestorableDroppedDatabaseId: Schema.optional(
+      Schema.String,
+    ),
+    storageContainerIdentity: Schema.optional(Schema.String),
+    storageContainerSasToken: Schema.optional(Schema.String),
+    failoverGroupId: Schema.optional(Schema.String),
+    recoverableDatabaseId: Schema.optional(Schema.String),
+    longTermRetentionBackupResourceId: Schema.optional(Schema.String),
+    autoCompleteRestore: Schema.optional(Schema.Boolean),
+    lastBackupName: Schema.optional(Schema.String),
+    crossSubscriptionTargetManagedInstanceId: Schema.optional(Schema.String),
+    isLedgerOn: Schema.optional(Schema.Boolean),
+    extendedAccessibilityInfo: Schema.optional(
+      Schema.suspend(() => ManagedDatabaseExtendedAccessibilityInfoSchema),
+    ),
+  });
+const ManagedDatabaseStatusSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals(
+  [
+    "Online",
+    "Offline",
+    "Shutdown",
+    "Creating",
+    "Inaccessible",
+    "Restoring",
+    "Updating",
+    "Stopping",
+    "Stopped",
+    "Starting",
+    "DbMoving",
+    "DbCopying",
+  ],
+);
+const CatalogCollationTypeSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "DATABASE_DEFAULT",
+  "SQL_Latin1_General_CP1_CI_AS",
+]);
+const ManagedDatabaseCreateModeSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+    "Default",
+    "RestoreExternalBackup",
+    "PointInTimeRestore",
+    "Recovery",
+    "RestoreLongTermRetentionBackup",
+  ]);
+const ManagedDatabaseExtendedAccessibilityInfoSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    inaccessibilityReasonErrorCode: Schema.String,
+    inaccessibilityReasonDescription: Schema.String,
+    inaccessibilityReasonKind: Schema.suspend(
+      () => InaccessibilityReasonSchema,
+    ),
+    inaccessibilityReasonTdeKeyUri: Schema.optional(Schema.String),
+  });
+const InaccessibilityReasonSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals(
+  ["Unknown", "TransparentDataEncryption", "DatabaseReplication"],
+);
+const ManagedDatabaseAdvancedThreatProtectionSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+  });
+const ManagedInstanceLongTermRetentionPolicySchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+  });
+const ManagedInstanceLongTermRetentionPolicyPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    backupStorageAccessTier: Schema.optional(
+      Schema.suspend(() => BackupStorageAccessTierSchema),
+    ),
+    weeklyRetention: Schema.optional(Schema.String),
+    monthlyRetention: Schema.optional(Schema.String),
+    yearlyRetention: Schema.optional(Schema.String),
+    weekOfYear: Schema.optional(Schema.Number),
+  });
+const ManagedBackupShortTermRetentionPolicySchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+  });
+const ManagedBackupShortTermRetentionPolicyPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    retentionDays: Schema.optional(Schema.Number),
+  });
+const DatabaseColumnSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+});
+const SensitivityLabelSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+});
+const SensitivityLabelUpdateSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+});
+const ManagedLedgerDigestUploadsSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+  });
+const ManagedLedgerDigestUploadsPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    digestStorageEndpoint: Schema.optional(Schema.String),
+    state: Schema.optional(
+      Schema.suspend(() => ManagedLedgerDigestUploadsStateSchema),
+    ),
+  });
+const ManagedLedgerDigestUploadsStateSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Literals(["Enabled", "Disabled"]);
+const QueryPropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  queryText: Schema.optional(Schema.String),
+});
+const QueryStatisticsSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+});
+const RecommendedSensitivityLabelUpdateSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+  });
+const ManagedDatabaseRestoreDetailsPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    type: Schema.optional(Schema.String),
+    status: Schema.optional(Schema.String),
+    blockReason: Schema.optional(Schema.String),
+    lastUploadedFileName: Schema.optional(Schema.String),
+    lastUploadedFileTime: Schema.optional(Schema.String),
+    lastRestoredFileName: Schema.optional(Schema.String),
+    lastRestoredFileTime: Schema.optional(Schema.String),
+    percentCompleted: Schema.optional(Schema.Number),
+    currentRestoredSizeMB: Schema.optional(Schema.Number),
+    currentRestorePlanSizeMB: Schema.optional(Schema.Number),
+    currentBackupType: Schema.optional(Schema.String),
+    currentRestoringFileName: Schema.optional(Schema.String),
+    numberOfFilesDetected: Schema.optional(Schema.Number),
+    numberOfFilesQueued: Schema.optional(Schema.Number),
+    numberOfFilesSkipped: Schema.optional(Schema.Number),
+    numberOfFilesRestoring: Schema.optional(Schema.Number),
+    numberOfFilesRestored: Schema.optional(Schema.Number),
+    numberOfFilesUnrestorable: Schema.optional(Schema.Number),
+    fullBackupSets: Schema.optional(
+      Schema.Array(
+        Schema.suspend(
+          () => ManagedDatabaseRestoreDetailsBackupSetPropertiesSchema,
+        ),
+      ),
+    ),
+    diffBackupSets: Schema.optional(
+      Schema.Array(
+        Schema.suspend(
+          () => ManagedDatabaseRestoreDetailsBackupSetPropertiesSchema,
+        ),
+      ),
+    ),
+    logBackupSets: Schema.optional(
+      Schema.Array(
+        Schema.suspend(
+          () => ManagedDatabaseRestoreDetailsBackupSetPropertiesSchema,
+        ),
+      ),
+    ),
+    unrestorableFiles: Schema.optional(
+      Schema.Array(
+        Schema.suspend(
+          () => ManagedDatabaseRestoreDetailsUnrestorableFilePropertiesSchema,
+        ),
+      ),
+    ),
+  });
+const ManagedDatabaseRestoreDetailsBackupSetPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    status: Schema.optional(Schema.String),
+    firstStripeName: Schema.optional(Schema.String),
+    numberOfStripes: Schema.optional(Schema.Number),
+    backupSizeMB: Schema.optional(Schema.Number),
+    restoreStartedTimestampUtc: Schema.optional(Schema.String),
+    restoreFinishedTimestampUtc: Schema.optional(Schema.String),
+  });
+const ManagedDatabaseRestoreDetailsUnrestorableFilePropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+  });
+const DatabaseSchemaSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+});
+const DatabaseTableSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+});
+const DatabaseTablePropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    temporalType: Schema.optional(
+      Schema.suspend(() => TableTemporalTypeSchema),
+    ),
+    memoryOptimized: Schema.optional(Schema.Boolean),
+  },
+);
+const TableTemporalTypeSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "NonTemporalTable",
+  "HistoryTable",
+  "SystemVersionedTemporalTable",
+]);
+const DatabaseColumnPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    columnType: Schema.optional(Schema.suspend(() => ColumnDataTypeSchema)),
+    temporalType: Schema.optional(
+      Schema.suspend(() => TableTemporalTypeSchema),
+    ),
+    memoryOptimized: Schema.optional(Schema.Boolean),
+    isComputed: Schema.optional(Schema.Boolean),
+  });
+const ColumnDataTypeSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "image",
+  "text",
+  "uniqueidentifier",
+  "date",
+  "time",
+  "datetime2",
+  "datetimeoffset",
+  "tinyint",
+  "smallint",
+  "int",
+  "smalldatetime",
+  "real",
+  "money",
+  "datetime",
+  "float",
+  "sql_variant",
+  "ntext",
+  "bit",
+  "decimal",
+  "numeric",
+  "smallmoney",
+  "bigint",
+  "hierarchyid",
+  "geometry",
+  "geography",
+  "varbinary",
+  "varchar",
+  "binary",
+  "char",
+  "timestamp",
+  "nvarchar",
+  "nchar",
+  "xml",
+  "sysname",
+]);
+const SensitivityLabelPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    schemaName: Schema.optional(Schema.String),
+    tableName: Schema.optional(Schema.String),
+    columnName: Schema.optional(Schema.String),
+    labelName: Schema.optional(Schema.String),
+    labelId: Schema.optional(Schema.String),
+    informationType: Schema.optional(Schema.String),
+    informationTypeId: Schema.optional(Schema.String),
+    isDisabled: Schema.optional(Schema.Boolean),
+    rank: Schema.optional(Schema.suspend(() => SensitivityLabelRankSchema)),
+    clientClassificationSource: Schema.optional(
+      Schema.suspend(() => ClientClassificationSourceSchema),
+    ),
+  });
+const SensitivityLabelRankSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "None",
+  "Low",
+  "Medium",
+  "High",
+  "Critical",
+]);
+const ClientClassificationSourceSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+    "None",
+    "Native",
+    "Recommended",
+    "MIP",
+  ]);
+const ManagedDatabaseSecurityAlertPolicySchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+  });
+const SecurityAlertPolicyPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    state: Schema.suspend(() => SecurityAlertPolicyStateSchema),
+    disabledAlerts: Schema.optional(Schema.Array(Schema.String)),
+    emailAddresses: Schema.optional(Schema.Array(Schema.String)),
+    emailAccountAdmins: Schema.optional(Schema.Boolean),
+    storageEndpoint: Schema.optional(Schema.String),
+    storageAccountAccessKey: Schema.optional(Schema.String),
+    retentionDays: Schema.optional(Schema.Number),
+    creationTime: Schema.optional(Schema.String),
+  });
+const SecurityAlertPolicyStateSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Literals(["New", "Enabled", "Disabled"]);
+const SecurityEventSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+});
+const ManagedTransparentDataEncryptionSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+  });
+const ManagedTransparentDataEncryptionPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    state: Schema.suspend(() => TransparentDataEncryptionStateSchema),
+  });
+const TransparentDataEncryptionStateSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Literals(["Enabled", "Disabled"]);
+const DatabaseVulnerabilityAssessmentSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+  });
+const DatabaseVulnerabilityAssessmentPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    storageContainerPath: Schema.optional(Schema.String),
+    storageContainerSasKey: Schema.optional(Schema.String),
+    storageAccountAccessKey: Schema.optional(Schema.String),
+    recurringScans: Schema.optional(
+      Schema.suspend(
+        () => VulnerabilityAssessmentRecurringScansPropertiesSchema,
+      ),
+    ),
+  });
+const VulnerabilityAssessmentRecurringScansPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    isEnabled: Schema.optional(Schema.Boolean),
+    emailSubscriptionAdmins: Schema.optional(Schema.Boolean),
+    emails: Schema.optional(Schema.Array(Schema.String)),
+  });
+const DatabaseVulnerabilityAssessmentRuleBaselinePropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    baselineResults: Schema.Array(
+      Schema.suspend(
+        () => DatabaseVulnerabilityAssessmentRuleBaselineItemSchema,
+      ),
+    ),
+  });
+const DatabaseVulnerabilityAssessmentRuleBaselineItemSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    result: Schema.Array(Schema.String),
+  });
+const VulnerabilityAssessmentScanRecordSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+  });
+const VulnerabilityAssessmentScanRecordPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    scanId: Schema.optional(Schema.String),
+    triggerType: Schema.optional(
+      Schema.suspend(() => VulnerabilityAssessmentScanTriggerTypeSchema),
+    ),
+    state: Schema.optional(
+      Schema.suspend(() => VulnerabilityAssessmentScanStateSchema),
+    ),
+    startTime: Schema.optional(Schema.String),
+    endTime: Schema.optional(Schema.String),
+    errors: Schema.optional(
+      Schema.Array(
+        Schema.suspend(() => VulnerabilityAssessmentScanErrorSchema),
+      ),
+    ),
+    storageContainerPath: Schema.optional(Schema.String),
+    numberOfFailedSecurityChecks: Schema.optional(Schema.Number),
+  });
+const VulnerabilityAssessmentScanTriggerTypeSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Literals(["OnDemand", "Recurring"]);
+const VulnerabilityAssessmentScanStateSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+    "Passed",
+    "Failed",
+    "FailedToRun",
+    "InProgress",
+  ]);
+const VulnerabilityAssessmentScanErrorSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    code: Schema.optional(Schema.String),
+    message: Schema.optional(Schema.String),
+  });
+const DatabaseVulnerabilityAssessmentScanExportPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    exportedReportLocation: Schema.optional(Schema.String),
+  });
+const DistributedAvailabilityGroupSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+  });
+const DistributedAvailabilityGroupPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    distributedAvailabilityGroupName: Schema.optional(Schema.String),
+    distributedAvailabilityGroupId: Schema.optional(
+      Schema.suspend(() => Azure_Core_uuidSchema),
+    ),
+    replicationMode: Schema.optional(
+      Schema.suspend(() => ReplicationModeTypeSchema),
+    ),
+    partnerLinkRole: Schema.optional(Schema.suspend(() => LinkRoleSchema)),
+    partnerAvailabilityGroupName: Schema.optional(Schema.String),
+    partnerEndpoint: Schema.optional(Schema.String),
+    instanceLinkRole: Schema.optional(Schema.suspend(() => LinkRoleSchema)),
+    instanceAvailabilityGroupName: Schema.optional(Schema.String),
+    failoverMode: Schema.optional(Schema.suspend(() => FailoverModeTypeSchema)),
+    seedingMode: Schema.optional(Schema.suspend(() => SeedingModeTypeSchema)),
+    databases: Schema.optional(
+      Schema.Array(
+        Schema.suspend(() => DistributedAvailabilityGroupDatabaseSchema),
+      ),
+    ),
+  });
+const ReplicationModeTypeSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Async",
+  "Sync",
+]);
+const LinkRoleSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Primary",
+  "Secondary",
+]);
+const FailoverModeTypeSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "None",
+  "Manual",
+]);
+const SeedingModeTypeSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Automatic",
+  "Manual",
+]);
+const DistributedAvailabilityGroupDatabaseSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    databaseName: Schema.optional(Schema.String),
+    instanceReplicaId: Schema.optional(
+      Schema.suspend(() => Azure_Core_uuidSchema),
+    ),
+    partnerReplicaId: Schema.optional(
+      Schema.suspend(() => Azure_Core_uuidSchema),
+    ),
+    replicaState: Schema.optional(Schema.String),
+    seedingProgress: Schema.optional(Schema.String),
+    synchronizationHealth: Schema.optional(
+      Schema.suspend(() => ReplicaSynchronizationHealthSchema),
+    ),
+    connectedState: Schema.optional(
+      Schema.suspend(() => ReplicaConnectedStateSchema),
+    ),
+    lastReceivedLsn: Schema.optional(Schema.String),
+    lastReceivedTime: Schema.optional(Schema.String),
+    lastSentLsn: Schema.optional(Schema.String),
+    lastSentTime: Schema.optional(Schema.String),
+    lastCommitLsn: Schema.optional(Schema.String),
+    lastCommitTime: Schema.optional(Schema.String),
+    lastHardenedLsn: Schema.optional(Schema.String),
+    lastHardenedTime: Schema.optional(Schema.String),
+    lastBackupLsn: Schema.optional(Schema.String),
+    lastBackupTime: Schema.optional(Schema.String),
+    mostRecentLinkError: Schema.optional(Schema.String),
+    partnerAuthCertValidity: Schema.optional(
+      Schema.suspend(() => CertificateInfoSchema),
+    ),
+    instanceSendReplicationLagSeconds: Schema.optional(Schema.Number),
+    instanceRedoReplicationLagSeconds: Schema.optional(Schema.Number),
+  });
+const ReplicaSynchronizationHealthSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+    "NOT_HEALTHY",
+    "PARTIALLY_HEALTHY",
+    "HEALTHY",
+  ]);
+const ReplicaConnectedStateSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals(
+  ["DISCONNECTED", "CONNECTED"],
+);
+const CertificateInfoSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  certificateName: Schema.optional(Schema.String),
+  expiryDate: Schema.optional(Schema.String),
+});
+const FailoverTypeSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "ForcedAllowDataLoss",
+  "Planned",
+]);
+const InstanceRoleSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Primary",
+  "Secondary",
+]);
+const RoleChangeTypeSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Forced",
+  "Planned",
+]);
+const ManagedServerDnsAliasSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+});
+const ManagedServerDnsAliasPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    azureDnsRecord: Schema.optional(Schema.String),
+    publicAzureDnsRecord: Schema.optional(Schema.String),
+  });
+const ManagedInstanceDtcSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+});
+const ManagedInstanceDtcPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    dtcEnabled: Schema.optional(Schema.Boolean),
+    securitySettings: Schema.optional(
+      Schema.suspend(() => ManagedInstanceDtcSecuritySettingsSchema),
+    ),
+    externalDnsSuffixSearchList: Schema.optional(Schema.Array(Schema.String)),
+    dtcHostNameDnsSuffix: Schema.optional(Schema.String),
+    provisioningState: Schema.optional(
+      Schema.suspend(() => ProvisioningStateSchema),
+    ),
+  });
+const ManagedInstanceDtcSecuritySettingsSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    transactionManagerCommunicationSettings: Schema.optional(
+      Schema.suspend(
+        () => ManagedInstanceDtcTransactionManagerCommunicationSettingsSchema,
+      ),
+    ),
+    xaTransactionsEnabled: Schema.optional(Schema.Boolean),
+    snaLu6point2TransactionsEnabled: Schema.optional(Schema.Boolean),
+    xaTransactionsDefaultTimeout: Schema.optional(Schema.Number),
+    xaTransactionsMaximumTimeout: Schema.optional(Schema.Number),
+  });
+const ManagedInstanceDtcTransactionManagerCommunicationSettingsSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    allowInboundEnabled: Schema.optional(Schema.Boolean),
+    allowOutboundEnabled: Schema.optional(Schema.Boolean),
+    authentication: Schema.optional(Schema.String),
+  });
+const ManagedInstanceEncryptionProtectorSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+  });
+const ManagedInstanceEncryptionProtectorPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    serverKeyName: Schema.optional(Schema.String),
+    serverKeyType: Schema.suspend(() => ServerKeyTypeSchema),
+    uri: Schema.optional(Schema.String),
+    thumbprint: Schema.optional(Schema.String),
+    autoRotationEnabled: Schema.optional(Schema.Boolean),
+  });
+const ServerKeyTypeSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "ServiceManaged",
+  "AzureKeyVault",
+]);
+const EndpointCertificateSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+});
+const EndpointCertificatePropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    publicBlob: Schema.optional(Schema.String),
+  });
+const ManagedInstanceKeySchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+});
+const ManagedInstanceKeyPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    serverKeyType: Schema.suspend(() => ServerKeyTypeSchema),
+    uri: Schema.optional(Schema.String),
+    thumbprint: Schema.optional(Schema.String),
+    creationDate: Schema.optional(Schema.String),
+    autoRotationEnabled: Schema.optional(Schema.Boolean),
+  });
+const ManagedInstanceOperationSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+  });
+const ManagedInstanceOperationPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    managedInstanceName: Schema.optional(Schema.String),
+    operation: Schema.optional(Schema.String),
+    operationFriendlyName: Schema.optional(Schema.String),
+    percentComplete: Schema.optional(Schema.Number),
+    startTime: Schema.optional(Schema.String),
+    state: Schema.optional(
+      Schema.suspend(() => ManagementOperationStateSchema),
+    ),
+    errorCode: Schema.optional(Schema.Number),
+    errorDescription: Schema.optional(Schema.String),
+    errorSeverity: Schema.optional(Schema.Number),
+    isUserError: Schema.optional(Schema.Boolean),
+    estimatedCompletionTime: Schema.optional(Schema.String),
+    description: Schema.optional(Schema.String),
+    isCancellable: Schema.optional(Schema.Boolean),
+    operationParameters: Schema.optional(
+      Schema.suspend(() => ManagedInstanceOperationParametersPairSchema),
+    ),
+    operationSteps: Schema.optional(
+      Schema.suspend(() => ManagedInstanceOperationStepsSchema),
+    ),
+  });
+const ManagedInstanceOperationParametersPairSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    currentParameters: Schema.optional(
+      Schema.suspend(() => UpsertManagedServerOperationParametersSchema),
+    ),
+    requestedParameters: Schema.optional(
+      Schema.suspend(() => UpsertManagedServerOperationParametersSchema),
+    ),
+  });
+const UpsertManagedServerOperationParametersSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    family: Schema.optional(Schema.String),
+    tier: Schema.optional(Schema.String),
+    vCores: Schema.optional(Schema.Number),
+    storageSizeInGB: Schema.optional(Schema.Number),
+  });
+const ManagedInstanceOperationStepsSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    totalSteps: Schema.optional(Schema.String),
+    currentStep: Schema.optional(Schema.Number),
+    stepsList: Schema.optional(
+      Schema.Array(
+        Schema.suspend(
+          () => UpsertManagedServerOperationStepWithEstimatesAndDurationSchema,
+        ),
+      ),
+    ),
+  });
+const UpsertManagedServerOperationStepWithEstimatesAndDurationSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    stepStartTime: Schema.optional(Schema.String),
+    stepEndTime: Schema.optional(Schema.String),
+    timeElapsed: Schema.optional(Schema.String),
+    order: Schema.optional(Schema.Number),
+    name: Schema.optional(Schema.String),
+    status: Schema.optional(
+      Schema.suspend(
+        () =>
+          UpsertManagedServerOperationStepWithEstimatesAndDurationStatusSchema,
+      ),
+    ),
+  });
+const UpsertManagedServerOperationStepWithEstimatesAndDurationStatusSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+    "NotStarted",
+    "InProgress",
+    "SlowedDown",
+    "Completed",
+    "Failed",
+    "Canceled",
+  ]);
+const OutboundEnvironmentEndpointSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    category: Schema.optional(Schema.String),
+    endpoints: Schema.optional(
+      Schema.Array(Schema.suspend(() => EndpointDependencySchema)),
+    ),
+  });
+const EndpointDependencySchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  domainName: Schema.optional(Schema.String),
+  endpointDetails: Schema.optional(
+    Schema.Array(Schema.suspend(() => EndpointDetailSchema)),
+  ),
+});
+const EndpointDetailSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  port: Schema.optional(Schema.Number),
+});
+const ManagedInstancePrivateEndpointConnectionSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+  });
+const ManagedInstancePrivateLinkSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+  });
+const ManagedInstancePrivateLinkPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    groupId: Schema.optional(Schema.String),
+    requiredMembers: Schema.optional(Schema.Array(Schema.String)),
+    requiredZoneNames: Schema.optional(Schema.Array(Schema.String)),
+  });
+const RecoverableManagedDatabaseSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+  });
+const RecoverableManagedDatabasePropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    lastAvailableBackupDate: Schema.optional(Schema.String),
+  });
+const RefreshExternalGovernanceStatusOperationResultPropertiesMISchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    requestId: Schema.optional(Schema.suspend(() => Azure_Core_uuidSchema)),
+    requestType: Schema.optional(Schema.String),
+    queuedTime: Schema.optional(Schema.String),
+    managedInstanceName: Schema.optional(Schema.String),
+    status: Schema.optional(Schema.String),
+    errorMessage: Schema.optional(Schema.String),
+  });
+const RestorableDroppedManagedDatabaseSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+  });
+const RestorableDroppedManagedDatabasePropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    databaseName: Schema.optional(Schema.String),
+    creationDate: Schema.optional(Schema.String),
+    deletionDate: Schema.optional(Schema.String),
+    earliestRestoreDate: Schema.optional(Schema.String),
+  });
+const ManagedServerSecurityAlertPolicySchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+  });
+const SecurityAlertsPolicyPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    state: Schema.suspend(() => SecurityAlertsPolicyStateSchema),
+    disabledAlerts: Schema.optional(Schema.Array(Schema.String)),
+    emailAddresses: Schema.optional(Schema.Array(Schema.String)),
+    emailAccountAdmins: Schema.optional(Schema.Boolean),
+    storageEndpoint: Schema.optional(Schema.String),
+    storageAccountAccessKey: Schema.optional(Schema.String),
+    retentionDays: Schema.optional(Schema.Number),
+    creationTime: Schema.optional(Schema.String),
+  });
+const SecurityAlertsPolicyStateSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Literals(["Enabled", "Disabled"]);
+const ServerConfigurationOptionSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+  });
+const ServerConfigurationOptionPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    serverConfigurationOptionValue: Schema.Number,
+    provisioningState: Schema.optional(
+      Schema.suspend(() => ProvisioningStateSchema),
+    ),
+  });
+const ServerTrustCertificateSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+});
+const ServerTrustCertificatePropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    publicBlob: Schema.optional(Schema.String),
+    thumbprint: Schema.optional(Schema.String),
+    certificateName: Schema.optional(Schema.String),
+  });
+const SqlAgentConfigurationPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    state: Schema.optional(
+      Schema.suspend(() => SqlAgentConfigurationPropertiesStateSchema),
+    ),
+  });
+const SqlAgentConfigurationPropertiesStateSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Literals(["Enabled", "Disabled"]);
+const StartStopManagedInstanceScheduleSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+  });
+const StartStopManagedInstanceSchedulePropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    description: Schema.optional(Schema.String),
+    timeZoneId: Schema.optional(Schema.String),
+    scheduleList: Schema.Array(Schema.suspend(() => ScheduleItemSchema)),
+    nextRunAction: Schema.optional(Schema.String),
+    nextExecutionTime: Schema.optional(Schema.String),
+  });
+const ScheduleItemSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  startDay: Schema.suspend(() => DayOfWeekSchema),
+  startTime: Schema.String,
+  stopDay: Schema.suspend(() => DayOfWeekSchema),
+  stopTime: Schema.String,
+});
+const DayOfWeekSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Sunday",
+  "Monday",
+  "Tuesday",
+  "Wednesday",
+  "Thursday",
+  "Friday",
+  "Saturday",
+]);
+const TdeCertificatePropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    privateBlob: Schema.String,
+    certPassword: Schema.optional(SensitiveOutputString),
+  });
+const TopQueriesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  numberOfQueries: Schema.optional(Schema.Number),
+  aggregationFunction: Schema.optional(Schema.String),
+  observationMetric: Schema.optional(Schema.String),
+  intervalType: Schema.optional(Schema.suspend(() => QueryTimeGrainTypeSchema)),
+  startTime: Schema.optional(Schema.String),
+  endTime: Schema.optional(Schema.String),
+  queries: Schema.optional(
+    Schema.Array(Schema.suspend(() => QueryStatisticsPropertiesSchema)),
+  ),
+});
+const QueryTimeGrainTypeSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "PT1H",
+  "P1D",
+]);
+const QueryStatisticsPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    databaseName: Schema.optional(Schema.String),
+    queryId: Schema.optional(Schema.String),
+    startTime: Schema.optional(Schema.String),
+    endTime: Schema.optional(Schema.String),
+    intervals: Schema.optional(
+      Schema.Array(Schema.suspend(() => QueryMetricIntervalSchema)),
+    ),
+  });
+const QueryMetricIntervalSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  intervalStartTime: Schema.optional(Schema.String),
+  intervalType: Schema.optional(Schema.suspend(() => QueryTimeGrainTypeSchema)),
+  executionCount: Schema.optional(Schema.Number),
+  metrics: Schema.optional(
+    Schema.Array(Schema.suspend(() => QueryMetricPropertiesSchema)),
+  ),
+});
+const QueryMetricPropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  displayName: Schema.optional(Schema.String),
+  unit: Schema.optional(Schema.suspend(() => QueryMetricUnitTypeSchema)),
+  value: Schema.optional(Schema.Number),
+  min: Schema.optional(Schema.Number),
+  max: Schema.optional(Schema.Number),
+  avg: Schema.optional(Schema.Number),
+  sum: Schema.optional(Schema.Number),
+  stdev: Schema.optional(Schema.Number),
+});
+const QueryMetricUnitTypeSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "percentage",
+  "KB",
+  "microseconds",
+  "count",
+]);
+const ManagedInstanceVulnerabilityAssessmentSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+  });
+const ManagedInstanceVulnerabilityAssessmentPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    storageContainerPath: Schema.String,
+    storageContainerSasKey: Schema.optional(Schema.String),
+    storageAccountAccessKey: Schema.optional(Schema.String),
+    recurringScans: Schema.optional(
+      Schema.suspend(
+        () => VulnerabilityAssessmentRecurringScansPropertiesSchema,
+      ),
+    ),
+  });
+const ServerPropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  administratorLogin: Schema.optional(Schema.String),
+  administratorLoginPassword: Schema.optional(SensitiveOutputString),
+  version: Schema.optional(Schema.String),
+  state: Schema.optional(Schema.String),
+  fullyQualifiedDomainName: Schema.optional(Schema.String),
+  privateEndpointConnections: Schema.optional(
+    Schema.Array(Schema.suspend(() => ServerPrivateEndpointConnectionSchema)),
+  ),
+  minimalTlsVersion: Schema.optional(
+    Schema.suspend(() => MinimalTlsVersionSchema),
+  ),
+  publicNetworkAccess: Schema.optional(
+    Schema.suspend(() => ServerPublicNetworkAccessFlagSchema),
+  ),
+  workspaceFeature: Schema.optional(
+    Schema.suspend(() => ServerWorkspaceFeatureSchema),
+  ),
+  primaryUserAssignedIdentityId: Schema.optional(Schema.String),
+  federatedClientId: Schema.optional(
+    Schema.suspend(() => Azure_Core_uuidSchema),
+  ),
+  keyId: Schema.optional(Schema.String),
+  administrators: Schema.optional(
+    Schema.suspend(() => ServerExternalAdministratorSchema),
+  ),
+  restrictOutboundNetworkAccess: Schema.optional(
+    Schema.suspend(() => ServerNetworkAccessFlagSchema),
+  ),
+  isIPv6Enabled: Schema.optional(
+    Schema.suspend(() => ServerNetworkAccessFlagSchema),
+  ),
+  externalGovernanceStatus: Schema.optional(
+    Schema.suspend(() => ExternalGovernanceStatusSchema),
+  ),
+  retentionDays: Schema.optional(Schema.Number),
+  createMode: Schema.optional(Schema.suspend(() => ServerCreateModeSchema)),
+});
+const ServerPrivateEndpointConnectionSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    properties: Schema.optional(
+      Schema.suspend(() => PrivateEndpointConnectionPropertiesSchema),
+    ),
+  });
+const PrivateEndpointConnectionPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    privateEndpoint: Schema.optional(
+      Schema.suspend(() => PrivateEndpointPropertySchema),
+    ),
+    groupIds: Schema.optional(Schema.Array(Schema.String)),
+    privateLinkServiceConnectionState: Schema.optional(
+      Schema.suspend(() => PrivateLinkServiceConnectionStatePropertySchema),
+    ),
+    provisioningState: Schema.optional(
+      Schema.suspend(() => PrivateEndpointProvisioningStateSchema),
+    ),
+  });
+const PrivateEndpointPropertySchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    id: Schema.optional(Schema.String),
+  },
+);
+const PrivateLinkServiceConnectionStatePropertySchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    status: Schema.suspend(() => PrivateLinkServiceConnectionStateStatusSchema),
+    description: Schema.String,
+    actionsRequired: Schema.optional(
+      Schema.suspend(
+        () => PrivateLinkServiceConnectionStateActionsRequireSchema,
+      ),
+    ),
+  });
+const PrivateLinkServiceConnectionStateStatusSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+    "Approved",
+    "Pending",
+    "Rejected",
+    "Disconnected",
+  ]);
+const PrivateLinkServiceConnectionStateActionsRequireSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Literals(["None"]);
+const PrivateEndpointProvisioningStateSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+    "Approving",
+    "Ready",
+    "Dropping",
+    "Failed",
+    "Rejecting",
+  ]);
+const MinimalTlsVersionSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "None",
+  "1.0",
+  "1.1",
+  "1.2",
+  "1.3",
+]);
+const ServerPublicNetworkAccessFlagSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+    "Enabled",
+    "Disabled",
+    "SecuredByPerimeter",
+  ]);
+const ServerWorkspaceFeatureSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Literals(["Connected", "Disconnected"]);
+const ServerExternalAdministratorSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    administratorType: Schema.optional(
+      Schema.suspend(() => AdministratorTypeSchema),
+    ),
+    principalType: Schema.optional(Schema.suspend(() => PrincipalTypeSchema)),
+    login: Schema.optional(Schema.String),
+    sid: Schema.optional(Schema.suspend(() => Azure_Core_uuidSchema)),
+    tenantId: Schema.optional(Schema.suspend(() => Azure_Core_uuidSchema)),
+    azureADOnlyAuthentication: Schema.optional(Schema.Boolean),
+  });
+const ServerNetworkAccessFlagSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Literals(["Enabled", "Disabled"]);
+const ServerCreateModeSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Normal",
+  "Restore",
+]);
+const ServerAzureADAdministratorSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+  });
+const AdministratorPropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    administratorType: Schema.optional(
+      Schema.suspend(() => AdministratorTypeSchema),
+    ),
+    login: Schema.String,
+    sid: Schema.suspend(() => Azure_Core_uuidSchema),
+    tenantId: Schema.optional(Schema.suspend(() => Azure_Core_uuidSchema)),
+    azureADOnlyAuthentication: Schema.optional(Schema.Boolean),
+  },
+);
+const ServerAdvancedThreatProtectionSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+  });
+const AdvisorSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+});
+const AdvisorPropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  advisorStatus: Schema.optional(Schema.suspend(() => AdvisorStatusSchema)),
+  autoExecuteStatus: Schema.suspend(() => AutoExecuteStatusSchema),
+  autoExecuteStatusInheritedFrom: Schema.optional(
+    Schema.suspend(() => AutoExecuteStatusInheritedFromSchema),
+  ),
+  recommendationsStatus: Schema.optional(Schema.String),
+  lastChecked: Schema.optional(Schema.String),
+  recommendedActions: Schema.optional(
+    Schema.Array(Schema.suspend(() => RecommendedActionSchema)),
+  ),
+});
+const AdvisorStatusSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "GA",
+  "PublicPreview",
+  "LimitedPublicPreview",
+  "PrivatePreview",
+]);
+const AutoExecuteStatusSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Enabled",
+  "Disabled",
+  "Default",
+]);
+const AutoExecuteStatusInheritedFromSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+    "Default",
+    "Subscription",
+    "Server",
+    "ElasticPool",
+    "Database",
+  ]);
+const RecommendedActionSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+});
+const ServerBlobAuditingPolicySchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+  });
+const ServerBlobAuditingPolicyPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    isDevopsAuditEnabled: Schema.optional(Schema.Boolean),
+    retentionDays: Schema.optional(Schema.Number),
+    auditActionsAndGroups: Schema.optional(Schema.Array(Schema.String)),
+    isStorageSecondaryKeyInUse: Schema.optional(Schema.Boolean),
+    isAzureMonitorTargetEnabled: Schema.optional(Schema.Boolean),
+    queueDelayMs: Schema.optional(Schema.Number),
+    isManagedIdentityInUse: Schema.optional(Schema.Boolean),
+    state: Schema.suspend(() => BlobAuditingPolicyStateSchema),
+    storageEndpoint: Schema.optional(Schema.String),
+    storageAccountAccessKey: Schema.optional(Schema.String),
+    storageAccountSubscriptionId: Schema.optional(
+      Schema.suspend(() => Azure_Core_uuidSchema),
+    ),
+  });
+const BlobAuditingPolicyStateSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Literals(["Enabled", "Disabled"]);
+const AutomaticTuningServerPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    desiredState: Schema.optional(
+      Schema.suspend(() => AutomaticTuningServerModeSchema),
+    ),
+    actualState: Schema.optional(
+      Schema.suspend(() => AutomaticTuningServerModeSchema),
+    ),
+    options: Schema.optional(
+      Schema.Record(
+        Schema.String,
+        Schema.suspend(() => AutomaticTuningServerOptionsSchema),
+      ),
+    ),
+  });
+const AutomaticTuningServerModeSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+    "Custom",
+    "Auto",
+    "Unspecified",
+  ]);
+const AutomaticTuningServerOptionsSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    desiredState: Schema.optional(
+      Schema.suspend(() => AutomaticTuningOptionModeDesiredSchema),
+    ),
+    actualState: Schema.optional(
+      Schema.suspend(() => AutomaticTuningOptionModeActualSchema),
+    ),
+    reasonCode: Schema.optional(Schema.Number),
+    reasonDesc: Schema.optional(
+      Schema.suspend(() => AutomaticTuningServerReasonSchema),
+    ),
+  });
+const AutomaticTuningOptionModeDesiredSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Literals(["Off", "On", "Default"]);
+const AutomaticTuningOptionModeActualSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Literals(["Off", "On"]);
+const AutomaticTuningServerReasonSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+    "Default",
+    "Disabled",
+    "AutoConfigured",
+  ]);
+const ServerAzureADOnlyAuthenticationSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+  });
+const AzureADOnlyAuthPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    azureADOnlyAuthentication: Schema.Boolean,
+  });
+const ServerConnectionPolicySchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+});
+const ServerConnectionPolicyPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    connectionType: Schema.suspend(() => ServerConnectionTypeSchema),
+  });
+const ServerConnectionTypeSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Default",
+  "Redirect",
+  "Proxy",
+]);
+const DatabaseSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+});
+const DatabasePropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  createMode: Schema.optional(Schema.suspend(() => CreateModeSchema)),
+  collation: Schema.optional(Schema.String),
+  maxSizeBytes: Schema.optional(Schema.Number),
+  sampleName: Schema.optional(Schema.suspend(() => SampleNameSchema)),
+  elasticPoolId: Schema.optional(Schema.String),
+  sourceDatabaseId: Schema.optional(Schema.String),
+  status: Schema.optional(Schema.suspend(() => DatabaseStatusSchema)),
+  databaseId: Schema.optional(Schema.suspend(() => Azure_Core_uuidSchema)),
+  creationDate: Schema.optional(Schema.String),
+  currentServiceObjectiveName: Schema.optional(Schema.String),
+  requestedServiceObjectiveName: Schema.optional(Schema.String),
+  defaultSecondaryLocation: Schema.optional(Schema.String),
+  failoverGroupId: Schema.optional(Schema.String),
+  restorePointInTime: Schema.optional(Schema.String),
+  sourceDatabaseDeletionDate: Schema.optional(Schema.String),
+  recoveryServicesRecoveryPointId: Schema.optional(Schema.String),
+  longTermRetentionBackupResourceId: Schema.optional(Schema.String),
+  recoverableDatabaseId: Schema.optional(Schema.String),
+  restorableDroppedDatabaseId: Schema.optional(Schema.String),
+  catalogCollation: Schema.optional(
+    Schema.suspend(() => CatalogCollationTypeSchema),
+  ),
+  zoneRedundant: Schema.optional(Schema.Boolean),
+  licenseType: Schema.optional(Schema.suspend(() => DatabaseLicenseTypeSchema)),
+  maxLogSizeBytes: Schema.optional(Schema.Number),
+  earliestRestoreDate: Schema.optional(Schema.String),
+  readScale: Schema.optional(Schema.suspend(() => DatabaseReadScaleSchema)),
+  highAvailabilityReplicaCount: Schema.optional(Schema.Number),
+  secondaryType: Schema.optional(Schema.suspend(() => SecondaryTypeSchema)),
+  currentSku: Schema.optional(Schema.suspend(() => SkuSchema)),
+  autoPauseDelay: Schema.optional(Schema.Number),
+  currentBackupStorageRedundancy: Schema.optional(
+    Schema.suspend(() => BackupStorageRedundancySchema),
+  ),
+  requestedBackupStorageRedundancy: Schema.optional(
+    Schema.suspend(() => BackupStorageRedundancySchema),
+  ),
+  minCapacity: Schema.optional(Schema.Number),
+  pausedDate: Schema.optional(Schema.String),
+  resumedDate: Schema.optional(Schema.String),
+  maintenanceConfigurationId: Schema.optional(Schema.String),
+  isLedgerOn: Schema.optional(Schema.Boolean),
+  isInfraEncryptionEnabled: Schema.optional(Schema.Boolean),
+  federatedClientId: Schema.optional(
+    Schema.suspend(() => Azure_Core_uuidSchema),
+  ),
+  keys: Schema.optional(
+    Schema.Record(
+      Schema.String,
+      Schema.suspend(() => DatabaseKeySchema),
+    ),
+  ),
+  encryptionProtector: Schema.optional(Schema.String),
+  preferredEnclaveType: Schema.optional(
+    Schema.suspend(() => AlwaysEncryptedEnclaveTypeSchema),
+  ),
+  useFreeLimit: Schema.optional(Schema.Boolean),
+  freeLimitExhaustionBehavior: Schema.optional(
+    Schema.suspend(() => FreeLimitExhaustionBehaviorSchema),
+  ),
+  sourceResourceId: Schema.optional(Schema.String),
+  manualCutover: Schema.optional(Schema.Boolean),
+  performCutover: Schema.optional(Schema.Boolean),
+  availabilityZone: Schema.optional(
+    Schema.suspend(() => AvailabilityZoneTypeSchema),
+  ),
+  encryptionProtectorAutoRotation: Schema.optional(Schema.Boolean),
+});
+const CreateModeSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Default",
+  "Copy",
+  "Secondary",
+  "PointInTimeRestore",
+  "Restore",
+  "Recovery",
+  "RestoreExternalBackup",
+  "RestoreExternalBackupSecondary",
+  "RestoreLongTermRetentionBackup",
+  "OnlineSecondary",
+]);
+const SampleNameSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "AdventureWorksLT",
+  "WideWorldImportersStd",
+  "WideWorldImportersFull",
+]);
+const DatabaseStatusSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Online",
+  "Restoring",
+  "RecoveryPending",
+  "Recovering",
+  "Suspect",
+  "Offline",
+  "Standby",
+  "Shutdown",
+  "EmergencyMode",
+  "AutoClosed",
+  "Copying",
+  "Creating",
+  "Inaccessible",
+  "OfflineSecondary",
+  "Pausing",
+  "Paused",
+  "Resuming",
+  "Scaling",
+  "OfflineChangingDwPerformanceTiers",
+  "OnlineChangingDwPerformanceTiers",
+  "Disabled",
+  "Stopping",
+  "Stopped",
+  "Starting",
+]);
+const DatabaseLicenseTypeSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "LicenseIncluded",
+  "BasePrice",
+]);
+const DatabaseReadScaleSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Enabled",
+  "Disabled",
+]);
+const SecondaryTypeSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Geo",
+  "Named",
+  "Standby",
+]);
+const DatabaseKeySchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  type: Schema.optional(Schema.suspend(() => DatabaseKeyTypeSchema)),
+  thumbprint: Schema.optional(Schema.String),
+  creationDate: Schema.optional(Schema.String),
+  subregion: Schema.optional(Schema.String),
+  keyVersion: Schema.optional(Schema.String),
+});
+const DatabaseKeyTypeSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "AzureKeyVault",
+]);
+const AlwaysEncryptedEnclaveTypeSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Literals(["Default", "VBS"]);
+const DatabaseIdentitySchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  type: Schema.optional(Schema.suspend(() => DatabaseIdentityTypeSchema)),
+  tenantId: Schema.optional(Schema.suspend(() => Azure_Core_uuidSchema)),
+  userAssignedIdentities: Schema.optional(
+    Schema.Record(
+      Schema.String,
+      Schema.suspend(() => DatabaseUserIdentitySchema),
+    ),
+  ),
+});
+const DatabaseIdentityTypeSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "None",
+  "UserAssigned",
+]);
+const DatabaseUserIdentitySchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  principalId: Schema.optional(Schema.suspend(() => Azure_Core_uuidSchema)),
+  clientId: Schema.optional(Schema.suspend(() => Azure_Core_uuidSchema)),
+});
+const DatabaseUpdatePropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    createMode: Schema.optional(Schema.suspend(() => CreateModeSchema)),
+    collation: Schema.optional(Schema.String),
+    maxSizeBytes: Schema.optional(Schema.Number),
+    sampleName: Schema.optional(Schema.suspend(() => SampleNameSchema)),
+    elasticPoolId: Schema.optional(Schema.String),
+    sourceDatabaseId: Schema.optional(Schema.String),
+    status: Schema.optional(Schema.suspend(() => DatabaseStatusSchema)),
+    databaseId: Schema.optional(Schema.suspend(() => Azure_Core_uuidSchema)),
+    creationDate: Schema.optional(Schema.String),
+    currentServiceObjectiveName: Schema.optional(Schema.String),
+    requestedServiceObjectiveName: Schema.optional(Schema.String),
+    defaultSecondaryLocation: Schema.optional(Schema.String),
+    failoverGroupId: Schema.optional(Schema.String),
+    restorePointInTime: Schema.optional(Schema.String),
+    sourceDatabaseDeletionDate: Schema.optional(Schema.String),
+    recoveryServicesRecoveryPointId: Schema.optional(Schema.String),
+    longTermRetentionBackupResourceId: Schema.optional(Schema.String),
+    recoverableDatabaseId: Schema.optional(Schema.String),
+    restorableDroppedDatabaseId: Schema.optional(Schema.String),
+    catalogCollation: Schema.optional(
+      Schema.suspend(() => CatalogCollationTypeSchema),
+    ),
+    zoneRedundant: Schema.optional(Schema.Boolean),
+    licenseType: Schema.optional(
+      Schema.suspend(() => DatabaseLicenseTypeSchema),
+    ),
+    maxLogSizeBytes: Schema.optional(Schema.Number),
+    earliestRestoreDate: Schema.optional(Schema.String),
+    readScale: Schema.optional(Schema.suspend(() => DatabaseReadScaleSchema)),
+    highAvailabilityReplicaCount: Schema.optional(Schema.Number),
+    secondaryType: Schema.optional(Schema.suspend(() => SecondaryTypeSchema)),
+    currentSku: Schema.optional(Schema.suspend(() => SkuSchema)),
+    autoPauseDelay: Schema.optional(Schema.Number),
+    currentBackupStorageRedundancy: Schema.optional(
+      Schema.suspend(() => BackupStorageRedundancySchema),
+    ),
+    requestedBackupStorageRedundancy: Schema.optional(
+      Schema.suspend(() => BackupStorageRedundancySchema),
+    ),
+    minCapacity: Schema.optional(Schema.Number),
+    pausedDate: Schema.optional(Schema.String),
+    resumedDate: Schema.optional(Schema.String),
+    maintenanceConfigurationId: Schema.optional(Schema.String),
+    isLedgerOn: Schema.optional(Schema.Boolean),
+    isInfraEncryptionEnabled: Schema.optional(Schema.Boolean),
+    federatedClientId: Schema.optional(
+      Schema.suspend(() => Azure_Core_uuidSchema),
+    ),
+    keys: Schema.optional(
+      Schema.Record(
+        Schema.String,
+        Schema.suspend(() => DatabaseKeySchema),
+      ),
+    ),
+    encryptionProtector: Schema.optional(Schema.String),
+    preferredEnclaveType: Schema.optional(
+      Schema.suspend(() => AlwaysEncryptedEnclaveTypeSchema),
+    ),
+    useFreeLimit: Schema.optional(Schema.Boolean),
+    freeLimitExhaustionBehavior: Schema.optional(
+      Schema.suspend(() => FreeLimitExhaustionBehaviorSchema),
+    ),
+    manualCutover: Schema.optional(Schema.Boolean),
+    performCutover: Schema.optional(Schema.Boolean),
+    encryptionProtectorAutoRotation: Schema.optional(Schema.Boolean),
+  });
+const DatabaseAdvancedThreatProtectionSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+  });
+const RecommendedActionPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    recommendationReason: Schema.optional(Schema.String),
+    validSince: Schema.optional(Schema.String),
+    lastRefresh: Schema.optional(Schema.String),
+    state: Schema.suspend(() => RecommendedActionStateInfoSchema),
+    isExecutableAction: Schema.optional(Schema.Boolean),
+    isRevertableAction: Schema.optional(Schema.Boolean),
+    isArchivedAction: Schema.optional(Schema.Boolean),
+    executeActionStartTime: Schema.optional(Schema.String),
+    executeActionDuration: Schema.optional(Schema.String),
+    revertActionStartTime: Schema.optional(Schema.String),
+    revertActionDuration: Schema.optional(Schema.String),
+    executeActionInitiatedBy: Schema.optional(
+      Schema.suspend(() => RecommendedActionInitiatedBySchema),
+    ),
+    executeActionInitiatedTime: Schema.optional(Schema.String),
+    revertActionInitiatedBy: Schema.optional(
+      Schema.suspend(() => RecommendedActionInitiatedBySchema),
+    ),
+    revertActionInitiatedTime: Schema.optional(Schema.String),
+    score: Schema.optional(Schema.Number),
+    implementationDetails: Schema.optional(
+      Schema.suspend(() => RecommendedActionImplementationInfoSchema),
+    ),
+    errorDetails: Schema.optional(
+      Schema.suspend(() => RecommendedActionErrorInfoSchema),
+    ),
+    estimatedImpact: Schema.optional(
+      Schema.Array(Schema.suspend(() => RecommendedActionImpactRecordSchema)),
+    ),
+    observedImpact: Schema.optional(
+      Schema.Array(Schema.suspend(() => RecommendedActionImpactRecordSchema)),
+    ),
+    timeSeries: Schema.optional(
+      Schema.Array(Schema.suspend(() => RecommendedActionMetricInfoSchema)),
+    ),
+    linkedObjects: Schema.optional(Schema.Array(Schema.String)),
+    details: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  });
+const RecommendedActionStateInfoSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    currentValue: Schema.suspend(() => RecommendedActionCurrentStateSchema),
+    actionInitiatedBy: Schema.optional(
+      Schema.suspend(() => RecommendedActionInitiatedBySchema),
+    ),
+    lastModified: Schema.optional(Schema.String),
+  });
+const RecommendedActionCurrentStateSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+    "Active",
+    "Pending",
+    "Executing",
+    "Verifying",
+    "PendingRevert",
+    "RevertCancelled",
+    "Reverting",
+    "Reverted",
+    "Ignored",
+    "Expired",
+    "Monitoring",
+    "Resolved",
+    "Success",
+    "Error",
+  ]);
+const RecommendedActionInitiatedBySchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Literals(["User", "System"]);
+const RecommendedActionImplementationInfoSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    method: Schema.optional(Schema.suspend(() => ImplementationMethodSchema)),
+    script: Schema.optional(Schema.String),
+  });
+const ImplementationMethodSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "TSql",
+  "AzurePowerShell",
+]);
+const RecommendedActionErrorInfoSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    errorCode: Schema.optional(Schema.String),
+    isRetryable: Schema.optional(Schema.suspend(() => IsRetryableSchema)),
+  });
+const IsRetryableSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Yes",
+  "No",
+]);
+const RecommendedActionImpactRecordSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    dimensionName: Schema.optional(Schema.String),
+    unit: Schema.optional(Schema.String),
+    absoluteValue: Schema.optional(Schema.Number),
+    changeValueAbsolute: Schema.optional(Schema.Number),
+    changeValueRelative: Schema.optional(Schema.Number),
+  });
+const RecommendedActionMetricInfoSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    metricName: Schema.optional(Schema.String),
+    unit: Schema.optional(Schema.String),
+    timeGrain: Schema.optional(Schema.String),
+    startTime: Schema.optional(Schema.String),
+    value: Schema.optional(Schema.Number),
+  });
+const DatabaseBlobAuditingPolicySchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+  });
+const DatabaseBlobAuditingPolicyPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    retentionDays: Schema.optional(Schema.Number),
+    auditActionsAndGroups: Schema.optional(Schema.Array(Schema.String)),
+    isStorageSecondaryKeyInUse: Schema.optional(Schema.Boolean),
+    isAzureMonitorTargetEnabled: Schema.optional(Schema.Boolean),
+    queueDelayMs: Schema.optional(Schema.Number),
+    isManagedIdentityInUse: Schema.optional(Schema.Boolean),
+    state: Schema.suspend(() => BlobAuditingPolicyStateSchema),
+    storageEndpoint: Schema.optional(Schema.String),
+    storageAccountAccessKey: Schema.optional(Schema.String),
+    storageAccountSubscriptionId: Schema.optional(
+      Schema.suspend(() => Azure_Core_uuidSchema),
+    ),
+  });
+const DatabaseAutomaticTuningPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    desiredState: Schema.optional(
+      Schema.suspend(() => AutomaticTuningModeSchema),
+    ),
+    actualState: Schema.optional(
+      Schema.suspend(() => AutomaticTuningModeSchema),
+    ),
+    options: Schema.optional(
+      Schema.Record(
+        Schema.String,
+        Schema.suspend(() => AutomaticTuningOptionsSchema),
+      ),
+    ),
+  });
+const AutomaticTuningModeSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Inherit",
+  "Custom",
+  "Auto",
+  "Unspecified",
+]);
+const AutomaticTuningOptionsSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  desiredState: Schema.optional(
+    Schema.suspend(() => AutomaticTuningOptionModeDesiredSchema),
+  ),
+  actualState: Schema.optional(
+    Schema.suspend(() => AutomaticTuningOptionModeActualSchema),
+  ),
+  reasonCode: Schema.optional(Schema.Number),
+  reasonDesc: Schema.optional(
+    Schema.suspend(() => AutomaticTuningDisabledReasonSchema),
+  ),
+});
+const AutomaticTuningDisabledReasonSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+    "Default",
+    "Disabled",
+    "AutoConfigured",
+    "InheritedFromServer",
+    "QueryStoreOff",
+    "QueryStoreReadOnly",
+    "NotSupported",
+  ]);
+const LongTermRetentionPolicySchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+  },
+);
+const LongTermRetentionPolicyPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    timeBasedImmutability: Schema.optional(
+      Schema.suspend(() => TimeBasedImmutabilitySchema),
+    ),
+    timeBasedImmutabilityMode: Schema.optional(
+      Schema.suspend(() => TimeBasedImmutabilityModeSchema),
+    ),
+    weeklyRetention: Schema.optional(Schema.String),
+    monthlyRetention: Schema.optional(Schema.String),
+    yearlyRetention: Schema.optional(Schema.String),
+    weekOfYear: Schema.optional(Schema.Number),
+  });
+const BackupShortTermRetentionPolicySchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+  });
+const BackupShortTermRetentionPolicyPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    retentionDays: Schema.optional(Schema.Number),
+    diffBackupIntervalInHours: Schema.optional(
+      Schema.suspend(() => DiffBackupIntervalInHoursSchema),
+    ),
+  });
+const DiffBackupIntervalInHoursSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([12, 24]);
+const DataMaskingPolicyPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    dataMaskingState: Schema.suspend(() => DataMaskingStateSchema),
+    exemptPrincipals: Schema.optional(Schema.String),
+    applicationPrincipals: Schema.optional(Schema.String),
+    maskingLevel: Schema.optional(Schema.String),
+  });
+const DataMaskingStateSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Enabled",
+  "Disabled",
+]);
+const DataMaskingRuleSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+});
+const DataMaskingRulePropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    ruleState: Schema.optional(
+      Schema.suspend(() => DataMaskingRuleStateSchema),
+    ),
+    schemaName: Schema.String,
+    tableName: Schema.String,
+    columnName: Schema.String,
+    aliasName: Schema.optional(Schema.String),
+    maskingFunction: Schema.suspend(() => DataMaskingFunctionSchema),
+    numberFrom: Schema.optional(Schema.String),
+    numberTo: Schema.optional(Schema.String),
+    prefixSize: Schema.optional(Schema.String),
+    suffixSize: Schema.optional(Schema.String),
+    replacementString: Schema.optional(Schema.String),
+  });
+const DataMaskingRuleStateSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Enabled",
+  "Disabled",
+]);
+const DataMaskingFunctionSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Default",
+  "CCN",
+  "Email",
+  "Number",
+  "SSN",
+  "Text",
+]);
+const DataWarehouseUserActivitiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+  });
+const DataWarehouseUserActivitiesPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    activeQueriesCount: Schema.optional(Schema.Number),
+  });
+const StorageKeyTypeSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "SharedAccessKey",
+  "StorageAccessKey",
+  "ManagedIdentity",
+]);
+const NetworkIsolationSettingsSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    storageAccountResourceId: Schema.optional(Schema.String),
+    sqlServerResourceId: Schema.optional(Schema.String),
+  });
+const ImportExportOperationResultPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    requestId: Schema.optional(Schema.suspend(() => Azure_Core_uuidSchema)),
+    requestType: Schema.optional(Schema.String),
+    queuedTime: Schema.optional(Schema.String),
+    lastModifiedTime: Schema.optional(Schema.String),
+    blobUri: Schema.optional(Schema.String),
+    serverName: Schema.optional(Schema.String),
+    databaseName: Schema.optional(Schema.String),
+    status: Schema.optional(Schema.String),
+    errorMessage: Schema.optional(Schema.String),
+    privateEndpointConnections: Schema.optional(
+      Schema.Array(
+        Schema.suspend(() => PrivateEndpointConnectionRequestStatusSchema),
+      ),
+    ),
+  });
+const PrivateEndpointConnectionRequestStatusSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    privateLinkServiceId: Schema.optional(Schema.String),
+    privateEndpointConnectionName: Schema.optional(Schema.String),
+    status: Schema.optional(Schema.String),
+  });
+const ExtendedDatabaseBlobAuditingPolicySchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+  });
+const ExtendedDatabaseBlobAuditingPolicyPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    predicateExpression: Schema.optional(Schema.String),
+    retentionDays: Schema.optional(Schema.Number),
+    auditActionsAndGroups: Schema.optional(Schema.Array(Schema.String)),
+    isStorageSecondaryKeyInUse: Schema.optional(Schema.Boolean),
+    isAzureMonitorTargetEnabled: Schema.optional(Schema.Boolean),
+    queueDelayMs: Schema.optional(Schema.Number),
+    isManagedIdentityInUse: Schema.optional(Schema.Boolean),
+    state: Schema.suspend(() => BlobAuditingPolicyStateSchema),
+    storageEndpoint: Schema.optional(Schema.String),
+    storageAccountAccessKey: Schema.optional(Schema.String),
+    storageAccountSubscriptionId: Schema.optional(
+      Schema.suspend(() => Azure_Core_uuidSchema),
+    ),
+  });
+const ImportExportExtensionsOperationResultSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+  });
+const DatabaseExtensionsPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    operationMode: Schema.suspend(() => OperationModeSchema),
+    storageKeyType: Schema.suspend(() => StorageKeyTypeSchema),
+    storageKey: Schema.String,
+    storageUri: Schema.String,
+    administratorLogin: Schema.optional(Schema.String),
+    administratorLoginPassword: Schema.optional(SensitiveOutputString),
+    authenticationType: Schema.optional(Schema.String),
+    databaseEdition: Schema.optional(Schema.String),
+    serviceObjectiveName: Schema.optional(Schema.String),
+    maxSizeBytes: Schema.optional(Schema.String),
+    networkIsolation: Schema.optional(
+      Schema.suspend(() => NetworkIsolationSettingsSchema),
+    ),
+  });
+const OperationModeSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "PolybaseImport",
+  "Import",
+  "Export",
+]);
+const ImportExportExtensionsOperationResultPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    requestId: Schema.optional(Schema.suspend(() => Azure_Core_uuidSchema)),
+    requestType: Schema.optional(Schema.String),
+    lastModifiedTime: Schema.optional(Schema.String),
+    serverName: Schema.optional(Schema.String),
+    databaseName: Schema.optional(Schema.String),
+    status: Schema.optional(Schema.String),
+    errorMessage: Schema.optional(Schema.String),
+    queuedTime: Schema.optional(Schema.String),
+    blobUri: Schema.optional(Schema.String),
+    privateEndpointConnections: Schema.optional(
+      Schema.Array(
+        Schema.suspend(() => PrivateEndpointConnectionRequestStatusSchema),
+      ),
+    ),
+  });
+const GeoBackupPolicySchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+});
+const GeoBackupPolicyPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    state: Schema.suspend(() => GeoBackupPolicyStateSchema),
+    storageType: Schema.optional(Schema.String),
+  });
+const GeoBackupPolicyStateSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Enabled",
+  "Disabled",
+]);
+const LedgerDigestUploadsSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+});
+const LedgerDigestUploadsPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    digestStorageEndpoint: Schema.optional(Schema.String),
+    state: Schema.optional(
+      Schema.suspend(() => LedgerDigestUploadsStateSchema),
+    ),
+  });
+const LedgerDigestUploadsStateSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Literals(["Enabled", "Disabled"]);
+const SynapseLinkWorkspaceSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+});
+const MaintenanceWindowOptionsPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    isEnabled: Schema.optional(Schema.Boolean),
+    maintenanceWindowCycles: Schema.optional(
+      Schema.Array(Schema.suspend(() => MaintenanceWindowTimeRangeSchema)),
+    ),
+    minDurationInMinutes: Schema.optional(Schema.Number),
+    defaultDurationInMinutes: Schema.optional(Schema.Number),
+    minCycles: Schema.optional(Schema.Number),
+    timeGranularityInMinutes: Schema.optional(Schema.Number),
+    allowMultipleMaintenanceWindowsPerCycle: Schema.optional(Schema.Boolean),
+  });
+const MaintenanceWindowTimeRangeSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    dayOfWeek: Schema.optional(Schema.suspend(() => DayOfWeekSchema)),
+    startTime: Schema.optional(Schema.String),
+    duration: Schema.optional(Schema.String),
+  });
+const MaintenanceWindowsPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    timeRanges: Schema.optional(
+      Schema.Array(Schema.suspend(() => MaintenanceWindowTimeRangeSchema)),
+    ),
+  });
+const DatabaseOperationSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+});
+const ReplicationLinkSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+});
+const ReplicationLinkPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    partnerServer: Schema.optional(Schema.String),
+    partnerDatabase: Schema.optional(Schema.String),
+    partnerDatabaseId: Schema.optional(Schema.String),
+    partnerLocation: Schema.optional(Schema.String),
+    role: Schema.optional(Schema.suspend(() => ReplicationRoleSchema)),
+    partnerRole: Schema.optional(Schema.suspend(() => ReplicationRoleSchema)),
+    replicationMode: Schema.optional(Schema.String),
+    startTime: Schema.optional(Schema.String),
+    percentComplete: Schema.optional(Schema.Number),
+    replicationState: Schema.optional(
+      Schema.suspend(() => ReplicationStateSchema),
+    ),
+    isTerminationAllowed: Schema.optional(Schema.Boolean),
+    linkType: Schema.optional(Schema.suspend(() => ReplicationLinkTypeSchema)),
+  });
+const ReplicationRoleSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Primary",
+  "Secondary",
+  "NonReadableSecondary",
+  "Source",
+  "Copy",
+]);
+const ReplicationStateSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "PENDING",
+  "SEEDING",
+  "CATCH_UP",
+  "SUSPENDED",
+]);
+const ReplicationLinkTypeSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "GEO",
+  "NAMED",
+  "STANDBY",
+]);
+const ReplicationLinkUpdatePropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    linkType: Schema.optional(Schema.suspend(() => ReplicationLinkTypeSchema)),
+  });
+const RestorePointSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+});
+const RestorePointPropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  restorePointType: Schema.optional(
+    Schema.suspend(() => RestorePointTypeSchema),
+  ),
+  earliestRestoreDate: Schema.optional(Schema.String),
+  restorePointCreationDate: Schema.optional(Schema.String),
+  restorePointLabel: Schema.optional(Schema.String),
+});
+const RestorePointTypeSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "CONTINUOUS",
+  "DISCRETE",
+]);
+const DatabaseSecurityAlertPolicySchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+  });
+const SqlVulnerabilityAssessmentSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+  });
+const SqlVulnerabilityAssessmentPolicyPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    state: Schema.optional(
+      Schema.suspend(() => SqlVulnerabilityAssessmentStateSchema),
+    ),
+  });
+const SqlVulnerabilityAssessmentStateSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Literals(["Enabled", "Disabled"]);
+const DatabaseSqlVulnerabilityAssessmentBaselineSetSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+  });
+const DatabaseSqlVulnerabilityAssessmentBaselineSetPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    results: Schema.Record(
+      Schema.String,
+      Schema.Array(Schema.Array(Schema.String)),
+    ),
+  });
+const DatabaseSqlVulnerabilityAssessmentRuleBaselineListInputPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    latestScan: Schema.Boolean,
+    results: Schema.Record(
+      Schema.String,
+      Schema.Array(Schema.Array(Schema.String)),
+    ),
+  });
+const DatabaseSqlVulnerabilityAssessmentRuleBaselineSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+  });
+const DatabaseSqlVulnerabilityAssessmentRuleBaselinePropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    results: Schema.Array(Schema.Array(Schema.String)),
+  });
+const DatabaseSqlVulnerabilityAssessmentRuleBaselineInputPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    latestScan: Schema.Boolean,
+    results: Schema.Array(Schema.Array(Schema.String)),
+  });
+const SqlVulnerabilityAssessmentScanRecordSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+  });
+const SqlVulnerabilityAssessmentScanRecordPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    scanId: Schema.optional(Schema.String),
+    triggerType: Schema.optional(
+      Schema.suspend(() => VulnerabilityAssessmentScanTriggerTypeSchema),
+    ),
+    state: Schema.optional(
+      Schema.suspend(() => VulnerabilityAssessmentScanStateSchema),
+    ),
+    startTime: Schema.optional(Schema.String),
+    endTime: Schema.optional(Schema.String),
+    errors: Schema.optional(
+      Schema.Array(
+        Schema.suspend(() => SqlVulnerabilityAssessmentScanErrorSchema),
+      ),
+    ),
+    server: Schema.optional(Schema.String),
+    database: Schema.optional(Schema.String),
+    sqlVersion: Schema.optional(Schema.String),
+    highSeverityFailedRulesCount: Schema.optional(Schema.Number),
+    mediumSeverityFailedRulesCount: Schema.optional(Schema.Number),
+    lowSeverityFailedRulesCount: Schema.optional(Schema.Number),
+    totalPassedRulesCount: Schema.optional(Schema.Number),
+    totalFailedRulesCount: Schema.optional(Schema.Number),
+    totalRulesCount: Schema.optional(Schema.Number),
+    isBaselineApplied: Schema.optional(Schema.Boolean),
+    lastScanTime: Schema.optional(Schema.String),
+  });
+const SqlVulnerabilityAssessmentScanErrorSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    code: Schema.optional(Schema.String),
+    message: Schema.optional(Schema.String),
+  });
+const SqlVulnerabilityAssessmentScanResultsSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+  });
+const SqlVulnerabilityAssessmentScanResultPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    ruleId: Schema.optional(Schema.String),
+    status: Schema.optional(Schema.suspend(() => RuleStatusSchema)),
+    errorMessage: Schema.optional(Schema.String),
+    isTrimmed: Schema.optional(Schema.Boolean),
+    queryResults: Schema.optional(Schema.Array(Schema.Array(Schema.String))),
+    remediation: Schema.optional(Schema.suspend(() => RemediationSchema)),
+    baselineAdjustedResult: Schema.optional(
+      Schema.suspend(() => BaselineAdjustedResultSchema),
+    ),
+    ruleMetadata: Schema.optional(Schema.suspend(() => VaRuleSchema)),
+  });
+const RuleStatusSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "NonFinding",
+  "Finding",
+  "InternalError",
+]);
+const RemediationSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  description: Schema.optional(Schema.String),
+  scripts: Schema.optional(Schema.Array(Schema.String)),
+  automated: Schema.optional(Schema.Boolean),
+  portalLink: Schema.optional(Schema.String),
+});
+const BaselineAdjustedResultSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  baseline: Schema.optional(Schema.suspend(() => BaselineSchema)),
+  status: Schema.optional(Schema.suspend(() => RuleStatusSchema)),
+  resultsNotInBaseline: Schema.optional(
+    Schema.Array(Schema.Array(Schema.String)),
+  ),
+  resultsOnlyInBaseline: Schema.optional(
+    Schema.Array(Schema.Array(Schema.String)),
+  ),
+});
+const BaselineSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  expectedResults: Schema.optional(Schema.Array(Schema.Array(Schema.String))),
+  updatedTime: Schema.optional(Schema.String),
+});
+const VaRuleSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  ruleId: Schema.optional(Schema.String),
+  severity: Schema.optional(Schema.suspend(() => RuleSeveritySchema)),
+  category: Schema.optional(Schema.String),
+  ruleType: Schema.optional(Schema.suspend(() => RuleTypeSchema)),
+  title: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+  rationale: Schema.optional(Schema.String),
+  queryCheck: Schema.optional(Schema.suspend(() => QueryCheckSchema)),
+  benchmarkReferences: Schema.optional(
+    Schema.Array(Schema.suspend(() => BenchmarkReferenceSchema)),
+  ),
+});
+const RuleSeveritySchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "High",
+  "Medium",
+  "Low",
+  "Informational",
+  "Obsolete",
+]);
+const RuleTypeSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Binary",
+  "BaselineExpected",
+  "PositiveList",
+  "NegativeList",
+]);
+const QueryCheckSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  query: Schema.optional(Schema.String),
+  expectedResult: Schema.optional(Schema.Array(Schema.Array(Schema.String))),
+  columnNames: Schema.optional(Schema.Array(Schema.String)),
+});
+const BenchmarkReferenceSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  benchmark: Schema.optional(Schema.String),
+  reference: Schema.optional(Schema.String),
+});
+const SyncGroupSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+});
+const SyncGroupPropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  interval: Schema.optional(Schema.Number),
+  lastSyncTime: Schema.optional(Schema.String),
+  conflictResolutionPolicy: Schema.optional(
+    Schema.suspend(() => SyncConflictResolutionPolicySchema),
+  ),
+  syncDatabaseId: Schema.optional(Schema.String),
+  hubDatabaseUserName: Schema.optional(Schema.String),
+  hubDatabasePassword: Schema.optional(SensitiveOutputString),
+  syncState: Schema.optional(Schema.suspend(() => SyncGroupStateSchema)),
+  schema: Schema.optional(Schema.suspend(() => SyncGroupSchemaSchema)),
+  enableConflictLogging: Schema.optional(Schema.Boolean),
+  conflictLoggingRetentionInDays: Schema.optional(Schema.Number),
+  usePrivateLinkConnection: Schema.optional(Schema.Boolean),
+  privateEndpointName: Schema.optional(Schema.String),
+});
+const SyncConflictResolutionPolicySchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Literals(["HubWin", "MemberWin"]);
+const SyncGroupStateSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "NotReady",
+  "Error",
+  "Warning",
+  "Progressing",
+  "Good",
+]);
+const SyncGroupSchemaSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  tables: Schema.optional(
+    Schema.Array(Schema.suspend(() => SyncGroupSchemaTableSchema)),
+  ),
+  masterSyncMemberName: Schema.optional(Schema.String),
+});
+const SyncGroupSchemaTableSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  columns: Schema.optional(
+    Schema.Array(Schema.suspend(() => SyncGroupSchemaTableColumnSchema)),
+  ),
+  quotedName: Schema.optional(Schema.String),
+});
+const SyncGroupSchemaTableColumnSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    quotedName: Schema.optional(Schema.String),
+    dataSize: Schema.optional(Schema.String),
+    dataType: Schema.optional(Schema.String),
+  });
+const SyncFullSchemaPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    tables: Schema.optional(
+      Schema.Array(Schema.suspend(() => SyncFullSchemaTableSchema)),
+    ),
+    lastUpdateTime: Schema.optional(Schema.String),
+  });
+const SyncFullSchemaTableSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  columns: Schema.optional(
+    Schema.Array(Schema.suspend(() => SyncFullSchemaTableColumnSchema)),
+  ),
+  errorId: Schema.optional(Schema.String),
+  hasError: Schema.optional(Schema.Boolean),
+  name: Schema.optional(Schema.String),
+  quotedName: Schema.optional(Schema.String),
+});
+const SyncFullSchemaTableColumnSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    dataSize: Schema.optional(Schema.String),
+    dataType: Schema.optional(Schema.String),
+    errorId: Schema.optional(Schema.String),
+    hasError: Schema.optional(Schema.Boolean),
+    isPrimaryKey: Schema.optional(Schema.Boolean),
+    name: Schema.optional(Schema.String),
+    quotedName: Schema.optional(Schema.String),
+  });
+const SyncGroupLogPropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  timestamp: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.suspend(() => SyncGroupLogTypeSchema)),
+  source: Schema.optional(Schema.String),
+  details: Schema.optional(Schema.String),
+  tracingId: Schema.optional(Schema.suspend(() => Azure_Core_uuidSchema)),
+  operationStatus: Schema.optional(Schema.String),
+});
+const SyncGroupLogTypeSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "All",
+  "Error",
+  "Warning",
+  "Success",
+]);
+const SyncMemberSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+});
+const SyncMemberPropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  databaseType: Schema.optional(Schema.suspend(() => SyncMemberDbTypeSchema)),
+  syncAgentId: Schema.optional(Schema.String),
+  sqlServerDatabaseId: Schema.optional(
+    Schema.suspend(() => Azure_Core_uuidSchema),
+  ),
+  syncMemberAzureDatabaseResourceId: Schema.optional(Schema.String),
+  usePrivateLinkConnection: Schema.optional(Schema.Boolean),
+  privateEndpointName: Schema.optional(Schema.String),
+  serverName: Schema.optional(Schema.String),
+  databaseName: Schema.optional(Schema.String),
+  userName: Schema.optional(Schema.String),
+  password: Schema.optional(SensitiveOutputString),
+  syncDirection: Schema.optional(Schema.suspend(() => SyncDirectionSchema)),
+  syncState: Schema.optional(Schema.suspend(() => SyncMemberStateSchema)),
+});
+const SyncMemberDbTypeSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "AzureSqlDatabase",
+  "SqlServerDatabase",
+]);
+const SyncDirectionSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Bidirectional",
+  "OneWayMemberToHub",
+  "OneWayHubToMember",
+]);
+const SyncMemberStateSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "SyncInProgress",
+  "SyncSucceeded",
+  "SyncFailed",
+  "DisabledTombstoneCleanup",
+  "DisabledBackupRestore",
+  "SyncSucceededWithWarnings",
+  "SyncCancelling",
+  "SyncCancelled",
+  "UnProvisioned",
+  "Provisioning",
+  "Provisioned",
+  "ProvisionFailed",
+  "DeProvisioning",
+  "DeProvisioned",
+  "DeProvisionFailed",
+  "Reprovisioning",
+  "ReprovisionFailed",
+  "UnReprovisioned",
+]);
+const LogicalDatabaseTransparentDataEncryptionSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+  });
+const TransparentDataEncryptionPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    state: Schema.suspend(() => TransparentDataEncryptionStateSchema),
+    scanState: Schema.optional(
+      Schema.suspend(() => TransparentDataEncryptionScanStateSchema),
+    ),
+  });
+const TransparentDataEncryptionScanStateSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+    "None",
+    "Resume",
+    "Running",
+    "Suspend",
+    "Aborted",
+    "Completed",
+  ]);
+const DatabaseUsageSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+});
+const WorkloadGroupSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+});
+const WorkloadGroupPropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    minResourcePercent: Schema.Number,
+    maxResourcePercent: Schema.Number,
+    minResourcePercentPerRequest: Schema.Number,
+    maxResourcePercentPerRequest: Schema.optional(Schema.Number),
+    importance: Schema.optional(Schema.String),
+    queryExecutionTimeout: Schema.optional(Schema.Number),
+  },
+);
+const WorkloadClassifierSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+});
+const WorkloadClassifierPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    memberName: Schema.String,
+    label: Schema.optional(Schema.String),
+    context: Schema.optional(Schema.String),
+    startTime: Schema.optional(Schema.String),
+    endTime: Schema.optional(Schema.String),
+    importance: Schema.optional(Schema.String),
+  });
+const ServerDevOpsAuditingSettingsSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+  });
+const ServerDevOpsAuditSettingsPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    isAzureMonitorTargetEnabled: Schema.optional(Schema.Boolean),
+    isManagedIdentityInUse: Schema.optional(Schema.Boolean),
+    state: Schema.suspend(() => BlobAuditingPolicyStateSchema),
+    storageEndpoint: Schema.optional(Schema.String),
+    storageAccountAccessKey: Schema.optional(Schema.String),
+    storageAccountSubscriptionId: Schema.optional(
+      Schema.suspend(() => Azure_Core_uuidSchema),
+    ),
+  });
+const ServerDnsAliasSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+});
+const ServerDnsAliasPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    azureDnsRecord: Schema.optional(Schema.String),
+  });
+const ElasticPoolSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+});
+const ElasticPoolPropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  state: Schema.optional(Schema.suspend(() => ElasticPoolStateSchema)),
+  creationDate: Schema.optional(Schema.String),
+  maxSizeBytes: Schema.optional(Schema.Number),
+  minCapacity: Schema.optional(Schema.Number),
+  perDatabaseSettings: Schema.optional(
+    Schema.suspend(() => ElasticPoolPerDatabaseSettingsSchema),
+  ),
+  zoneRedundant: Schema.optional(Schema.Boolean),
+  licenseType: Schema.optional(
+    Schema.suspend(() => ElasticPoolLicenseTypeSchema),
+  ),
+  maintenanceConfigurationId: Schema.optional(Schema.String),
+  highAvailabilityReplicaCount: Schema.optional(Schema.Number),
+  autoPauseDelay: Schema.optional(Schema.Number),
+  preferredEnclaveType: Schema.optional(
+    Schema.suspend(() => AlwaysEncryptedEnclaveTypeSchema),
+  ),
+  availabilityZone: Schema.optional(
+    Schema.suspend(() => AvailabilityZoneTypeSchema),
+  ),
+});
+const ElasticPoolStateSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Creating",
+  "Ready",
+  "Disabled",
+]);
+const ElasticPoolPerDatabaseSettingsSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    minCapacity: Schema.optional(Schema.Number),
+    maxCapacity: Schema.optional(Schema.Number),
+    autoPauseDelay: Schema.optional(Schema.Number),
+  });
+const ElasticPoolLicenseTypeSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Literals(["LicenseIncluded", "BasePrice"]);
+const ElasticPoolUpdatePropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    maxSizeBytes: Schema.optional(Schema.Number),
+    minCapacity: Schema.optional(Schema.Number),
+    perDatabaseSettings: Schema.optional(
+      Schema.suspend(() => ElasticPoolPerDatabaseSettingsSchema),
+    ),
+    zoneRedundant: Schema.optional(Schema.Boolean),
+    licenseType: Schema.optional(
+      Schema.suspend(() => ElasticPoolLicenseTypeSchema),
+    ),
+    maintenanceConfigurationId: Schema.optional(Schema.String),
+    highAvailabilityReplicaCount: Schema.optional(Schema.Number),
+    autoPauseDelay: Schema.optional(Schema.Number),
+    preferredEnclaveType: Schema.optional(
+      Schema.suspend(() => AlwaysEncryptedEnclaveTypeSchema),
+    ),
+    availabilityZone: Schema.optional(
+      Schema.suspend(() => AvailabilityZoneTypeSchema),
+    ),
+  });
+const ElasticPoolOperationSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+});
+const EncryptionProtectorSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+});
+const EncryptionProtectorPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subregion: Schema.optional(Schema.String),
+    serverKeyName: Schema.optional(Schema.String),
+    serverKeyType: Schema.suspend(() => ServerKeyTypeSchema),
+    uri: Schema.optional(Schema.String),
+    thumbprint: Schema.optional(Schema.String),
+    autoRotationEnabled: Schema.optional(Schema.Boolean),
+    keyVersion: Schema.optional(Schema.String),
+  });
+const ExtendedServerBlobAuditingPolicySchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+  });
+const ExtendedServerBlobAuditingPolicyPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    isDevopsAuditEnabled: Schema.optional(Schema.Boolean),
+    predicateExpression: Schema.optional(Schema.String),
+    retentionDays: Schema.optional(Schema.Number),
+    auditActionsAndGroups: Schema.optional(Schema.Array(Schema.String)),
+    isStorageSecondaryKeyInUse: Schema.optional(Schema.Boolean),
+    isAzureMonitorTargetEnabled: Schema.optional(Schema.Boolean),
+    queueDelayMs: Schema.optional(Schema.Number),
+    isManagedIdentityInUse: Schema.optional(Schema.Boolean),
+    state: Schema.suspend(() => BlobAuditingPolicyStateSchema),
+    storageEndpoint: Schema.optional(Schema.String),
+    storageAccountAccessKey: Schema.optional(Schema.String),
+    storageAccountSubscriptionId: Schema.optional(
+      Schema.suspend(() => Azure_Core_uuidSchema),
+    ),
+  });
+const FailoverGroupSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+});
+const FailoverGroupPropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    readWriteEndpoint: Schema.suspend(
+      () => FailoverGroupReadWriteEndpointSchema,
+    ),
+    readOnlyEndpoint: Schema.optional(
+      Schema.suspend(() => FailoverGroupReadOnlyEndpointSchema),
+    ),
+    replicationRole: Schema.optional(
+      Schema.suspend(() => FailoverGroupReplicationRoleSchema),
+    ),
+    replicationState: Schema.optional(Schema.String),
+    partnerServers: Schema.Array(Schema.suspend(() => PartnerInfoSchema)),
+    databases: Schema.optional(Schema.Array(Schema.String)),
+    secondaryType: Schema.optional(
+      Schema.suspend(() => FailoverGroupDatabasesSecondaryTypeSchema),
+    ),
+  },
+);
+const FailoverGroupReadWriteEndpointSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    failoverPolicy: Schema.suspend(() => ReadWriteEndpointFailoverPolicySchema),
+    failoverWithDataLossGracePeriodMinutes: Schema.optional(Schema.Number),
+  });
+const FailoverGroupReadOnlyEndpointSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    failoverPolicy: Schema.optional(
+      Schema.suspend(() => ReadOnlyEndpointFailoverPolicySchema),
+    ),
+    targetServer: Schema.optional(Schema.String),
+  });
+const FailoverGroupReplicationRoleSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Literals(["Primary", "Secondary"]);
+const PartnerInfoSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.String,
+  location: Schema.optional(Schema.String),
+  replicationRole: Schema.optional(
+    Schema.suspend(() => FailoverGroupReplicationRoleSchema),
+  ),
+});
+const FailoverGroupDatabasesSecondaryTypeSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Literals(["Geo", "Standby"]);
+const FailoverGroupUpdatePropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    readWriteEndpoint: Schema.optional(
+      Schema.suspend(() => FailoverGroupReadWriteEndpointSchema),
+    ),
+    readOnlyEndpoint: Schema.optional(
+      Schema.suspend(() => FailoverGroupReadOnlyEndpointSchema),
+    ),
+    databases: Schema.optional(Schema.Array(Schema.String)),
+    partnerServers: Schema.optional(
+      Schema.Array(Schema.suspend(() => PartnerInfoSchema)),
+    ),
+    secondaryType: Schema.optional(
+      Schema.suspend(() => FailoverGroupDatabasesSecondaryTypeSchema),
+    ),
+  });
+const FirewallRuleSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
+const ServerFirewallRulePropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    startIpAddress: Schema.optional(Schema.String),
+    endIpAddress: Schema.optional(Schema.String),
+  });
+const IPv6FirewallRuleSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
+const IPv6ServerFirewallRulePropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    startIPv6Address: Schema.optional(Schema.String),
+    endIPv6Address: Schema.optional(Schema.String),
+  });
+const JobAgentSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+});
+const JobAgentPropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  databaseId: Schema.String,
+  state: Schema.optional(Schema.suspend(() => JobAgentStateSchema)),
+});
+const JobAgentStateSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Creating",
+  "Ready",
+  "Updating",
+  "Deleting",
+  "Disabled",
+]);
+const JobAgentIdentitySchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  tenantId: Schema.optional(Schema.suspend(() => Azure_Core_uuidSchema)),
+  type: Schema.suspend(() => JobAgentIdentityTypeSchema),
+  userAssignedIdentities: Schema.optional(
+    Schema.Record(
+      Schema.String,
+      Schema.suspend(() => JobAgentUserAssignedIdentitySchema),
+    ),
+  ),
+});
+const JobAgentIdentityTypeSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "None",
+  "SystemAssigned",
+  "UserAssigned",
+  "SystemAssignedUserAssigned",
+]);
+const JobAgentUserAssignedIdentitySchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    principalId: Schema.optional(Schema.suspend(() => Azure_Core_uuidSchema)),
+    clientId: Schema.optional(Schema.suspend(() => Azure_Core_uuidSchema)),
+  });
+const JobCredentialSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+});
+const JobCredentialPropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    username: Schema.String,
+    password: SensitiveOutputString,
+  },
+);
+const JobExecutionSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+});
+const JobSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+});
+const JobPropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  description: Schema.optional(Schema.String),
+  version: Schema.optional(Schema.Number),
+  schedule: Schema.optional(Schema.suspend(() => JobScheduleSchema)),
+});
+const JobScheduleSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  startTime: Schema.optional(Schema.String),
+  endTime: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.Literals(["Once", "Recurring"])),
+  enabled: Schema.optional(Schema.Boolean),
+  interval: Schema.optional(Schema.String),
+});
+const JobExecutionPropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  jobVersion: Schema.optional(Schema.Number),
+  stepName: Schema.optional(Schema.String),
+  stepId: Schema.optional(Schema.Number),
+  jobExecutionId: Schema.optional(Schema.suspend(() => Azure_Core_uuidSchema)),
+  lifecycle: Schema.optional(Schema.suspend(() => JobExecutionLifecycleSchema)),
+  provisioningState: Schema.optional(
+    Schema.suspend(() => ProvisioningStateSchema),
+  ),
+  createTime: Schema.optional(Schema.String),
+  startTime: Schema.optional(Schema.String),
+  endTime: Schema.optional(Schema.String),
+  currentAttempts: Schema.optional(Schema.Number),
+  currentAttemptStartTime: Schema.optional(Schema.String),
+  lastMessage: Schema.optional(Schema.String),
+  target: Schema.optional(Schema.suspend(() => JobExecutionTargetSchema)),
+});
+const JobExecutionLifecycleSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals(
+  [
+    "Created",
+    "InProgress",
+    "WaitingForChildJobExecutions",
+    "WaitingForRetry",
+    "Succeeded",
+    "SucceededWithSkipped",
+    "Failed",
+    "TimedOut",
+    "Canceled",
+    "Skipped",
+  ],
+);
+const JobExecutionTargetSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  type: Schema.optional(Schema.suspend(() => JobTargetTypeSchema)),
+  serverName: Schema.optional(Schema.String),
+  databaseName: Schema.optional(Schema.String),
+});
+const JobTargetTypeSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "TargetGroup",
+  "SqlDatabase",
+  "SqlElasticPool",
+  "SqlShardMap",
+  "SqlServer",
+]);
+const JobStepSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+});
+const JobStepPropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  stepId: Schema.optional(Schema.Number),
+  targetGroup: Schema.String,
+  credential: Schema.optional(Schema.String),
+  action: Schema.suspend(() => JobStepActionSchema),
+  output: Schema.optional(Schema.suspend(() => JobStepOutputSchema)),
+  executionOptions: Schema.optional(
+    Schema.suspend(() => JobStepExecutionOptionsSchema),
+  ),
+});
+const JobStepActionSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  type: Schema.optional(Schema.Literals(["TSql"])),
+  source: Schema.optional(Schema.Literals(["Inline"])),
+  value: Schema.String,
+});
+const JobStepOutputSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  type: Schema.optional(Schema.Literals(["SqlDatabase"])),
+  subscriptionId: Schema.optional(Schema.suspend(() => Azure_Core_uuidSchema)),
+  resourceGroupName: Schema.optional(Schema.String),
+  serverName: Schema.String,
+  databaseName: Schema.String,
+  schemaName: Schema.optional(Schema.String),
+  tableName: Schema.String,
+  credential: Schema.optional(Schema.String),
+});
+const JobStepExecutionOptionsSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    timeoutSeconds: Schema.optional(Schema.Number),
+    retryAttempts: Schema.optional(Schema.Number),
+    initialRetryIntervalSeconds: Schema.optional(Schema.Number),
+    maximumRetryIntervalSeconds: Schema.optional(Schema.Number),
+    retryIntervalBackoffMultiplier: Schema.optional(Schema.Number),
+  },
+);
+const JobVersionSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+});
+const JobPrivateEndpointSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+});
+const JobPrivateEndpointPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    targetServerAzureResourceId: Schema.String,
+    privateEndpointId: Schema.optional(Schema.String),
+  });
+const JobTargetGroupSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+});
+const JobTargetGroupPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    members: Schema.Array(Schema.suspend(() => JobTargetSchema)),
+  });
+const JobTargetSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  membershipType: Schema.optional(Schema.Literals(["Include", "Exclude"])),
+  type: Schema.suspend(() => JobTargetTypeSchema),
+  serverName: Schema.optional(Schema.String),
+  databaseName: Schema.optional(Schema.String),
+  elasticPoolName: Schema.optional(Schema.String),
+  shardMapName: Schema.optional(Schema.String),
+  refreshCredential: Schema.optional(Schema.String),
+});
+const ServerKeySchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+});
+const ServerKeyPropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subregion: Schema.optional(Schema.String),
+  serverKeyType: Schema.suspend(() => ServerKeyTypeSchema),
+  uri: Schema.optional(Schema.String),
+  thumbprint: Schema.optional(Schema.String),
+  creationDate: Schema.optional(Schema.String),
+  autoRotationEnabled: Schema.optional(Schema.Boolean),
+  keyVersion: Schema.optional(Schema.String),
+});
+const NetworkSecurityPerimeterConfigurationSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+  });
+const NetworkSecurityPerimeterConfigurationPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    provisioningState: Schema.optional(Schema.String),
+    networkSecurityPerimeter: Schema.optional(
+      Schema.suspend(() => NSPConfigPerimeterSchema),
+    ),
+    resourceAssociation: Schema.optional(
+      Schema.suspend(() => NSPConfigAssociationSchema),
+    ),
+    profile: Schema.optional(Schema.suspend(() => NSPConfigProfileSchema)),
+    provisioningIssues: Schema.optional(
+      Schema.Array(Schema.suspend(() => NSPProvisioningIssueSchema)),
+    ),
+  });
+const NSPConfigPerimeterSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  perimeterGuid: Schema.optional(Schema.String),
+  location: Schema.optional(Schema.String),
+});
+const NSPConfigAssociationSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  accessMode: Schema.optional(Schema.String),
+});
+const NSPConfigProfileSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  accessRulesVersion: Schema.optional(Schema.String),
+  accessRules: Schema.optional(
+    Schema.Array(Schema.suspend(() => NSPConfigAccessRuleSchema)),
+  ),
+});
+const NSPConfigAccessRuleSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  properties: Schema.optional(
+    Schema.suspend(() => NSPConfigAccessRulePropertiesSchema),
+  ),
+});
+const NSPConfigAccessRulePropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    direction: Schema.optional(Schema.String),
+    addressPrefixes: Schema.optional(Schema.Array(Schema.String)),
+    fullyQualifiedDomainNames: Schema.optional(Schema.Array(Schema.String)),
+    subscriptions: Schema.optional(Schema.Array(Schema.String)),
+    networkSecurityPerimeters: Schema.optional(
+      Schema.Array(
+        Schema.suspend(() => NSPConfigNetworkSecurityPerimeterRuleSchema),
+      ),
+    ),
+    serviceTags: Schema.optional(Schema.Array(Schema.String)),
+  });
+const NSPConfigNetworkSecurityPerimeterRuleSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    perimeterGuid: Schema.optional(Schema.String),
+    location: Schema.optional(Schema.String),
+  });
+const NSPProvisioningIssueSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  properties: Schema.optional(
+    Schema.suspend(() => NSPProvisioningIssuePropertiesSchema),
+  ),
+});
+const NSPProvisioningIssuePropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    issueType: Schema.optional(Schema.String),
+    severity: Schema.optional(Schema.String),
+    description: Schema.optional(Schema.String),
+    suggestedResourceIds: Schema.optional(Schema.Array(Schema.String)),
+    suggestedAccessRules: Schema.optional(Schema.Array(Schema.String)),
+  });
+const ServerOperationSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+});
+const OutboundFirewallRuleSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+});
+const OutboundFirewallRulePropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    provisioningState: Schema.optional(Schema.String),
+  });
+const PrivateEndpointConnectionSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+  });
+const PrivateLinkResourceSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+});
+const PrivateLinkResourcePropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    groupId: Schema.optional(Schema.String),
+    requiredMembers: Schema.optional(Schema.Array(Schema.String)),
+    requiredZoneNames: Schema.optional(Schema.Array(Schema.String)),
+  });
+const RefreshExternalGovernanceStatusOperationResultPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    requestId: Schema.optional(Schema.suspend(() => Azure_Core_uuidSchema)),
+    requestType: Schema.optional(Schema.String),
+    queuedTime: Schema.optional(Schema.String),
+    serverName: Schema.optional(Schema.String),
+    status: Schema.optional(Schema.String),
+    errorMessage: Schema.optional(Schema.String),
+  });
+const RestorableDroppedDatabaseSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+  });
+const RestorableDroppedDatabasePropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    databaseName: Schema.optional(Schema.String),
+    maxSizeBytes: Schema.optional(Schema.Number),
+    creationDate: Schema.optional(Schema.String),
+    deletionDate: Schema.optional(Schema.String),
+    earliestRestoreDate: Schema.optional(Schema.String),
+    backupStorageRedundancy: Schema.optional(
+      Schema.suspend(() => BackupStorageRedundancySchema),
+    ),
+    keys: Schema.optional(
+      Schema.Record(
+        Schema.String,
+        Schema.suspend(() => DatabaseKeySchema),
+      ),
+    ),
+  });
+const ServerSecurityAlertPolicySchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+  });
+const SyncAgentSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+});
+const SyncAgentPropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  syncDatabaseId: Schema.optional(Schema.String),
+  lastAliveTime: Schema.optional(Schema.String),
+  state: Schema.optional(Schema.suspend(() => SyncAgentStateSchema)),
+  isUpToDate: Schema.optional(Schema.Boolean),
+  expiryTime: Schema.optional(Schema.String),
+  version: Schema.optional(Schema.String),
+});
+const SyncAgentStateSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Online",
+  "Offline",
+  "NeverConnected",
+]);
+const SyncAgentLinkedDatabaseSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+  },
+);
+const VirtualNetworkRuleSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+});
+const VirtualNetworkRulePropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    virtualNetworkSubnetId: Schema.String,
+    ignoreMissingVnetServiceEndpoint: Schema.optional(Schema.Boolean),
+    state: Schema.optional(Schema.suspend(() => VirtualNetworkRuleStateSchema)),
+  });
+const VirtualNetworkRuleStateSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+    "Initializing",
+    "InProgress",
+    "Ready",
+    "Failed",
+    "Deleting",
+    "Unknown",
+  ]);
+const ServerVulnerabilityAssessmentSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+  });
+const ServerVulnerabilityAssessmentPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    storageContainerPath: Schema.String,
+    storageContainerSasKey: Schema.optional(Schema.String),
+    storageAccountAccessKey: Schema.optional(Schema.String),
+    recurringScans: Schema.optional(
+      Schema.suspend(
+        () => VulnerabilityAssessmentRecurringScansPropertiesSchema,
+      ),
+    ),
+  });
+const VirtualClusterPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subnetId: Schema.optional(Schema.String),
+    version: Schema.optional(Schema.String),
+    childResources: Schema.optional(Schema.Array(Schema.String)),
+  });
+const VirtualClusterDnsServersPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    status: Schema.optional(
+      Schema.suspend(() => DNSRefreshOperationStatusSchema),
+    ),
+  });
+const DNSRefreshOperationStatusSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+    "Succeeded",
+    "Failed",
+    "InProgress",
+  ]);
 
 // Input Schema
 export const BackupShortTermRetentionPoliciesCreateOrUpdateInput =
@@ -18,10 +4098,7 @@ export const BackupShortTermRetentionPoliciesCreateOrUpdateInput =
     databaseName: Schema.String.pipe(T.PathParam()),
     policyName: Schema.Literals(["default"]).pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        retentionDays: Schema.optional(Schema.Number),
-        diffBackupIntervalInHours: Schema.optional(Schema.Literals([12, 24])),
-      }),
+      Schema.suspend(() => BackupShortTermRetentionPolicyPropertiesSchema),
     ),
   }).pipe(
     T.Http({
@@ -37,23 +4114,13 @@ export type BackupShortTermRetentionPoliciesCreateOrUpdateInput =
 // Output Schema
 export const BackupShortTermRetentionPoliciesCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => BackupShortTermRetentionPolicyPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type BackupShortTermRetentionPoliciesCreateOrUpdateOutput =
   typeof BackupShortTermRetentionPoliciesCreateOrUpdateOutput.Type;
@@ -95,23 +4162,13 @@ export type BackupShortTermRetentionPoliciesGetInput =
 // Output Schema
 export const BackupShortTermRetentionPoliciesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => BackupShortTermRetentionPolicyPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type BackupShortTermRetentionPoliciesGetOutput =
   typeof BackupShortTermRetentionPoliciesGetOutput.Type;
@@ -153,35 +4210,7 @@ export type BackupShortTermRetentionPoliciesListByDatabaseInput =
 export const BackupShortTermRetentionPoliciesListByDatabaseOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
+      Schema.suspend(() => BackupShortTermRetentionPolicySchema),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -212,10 +4241,7 @@ export const BackupShortTermRetentionPoliciesUpdateInput =
     databaseName: Schema.String.pipe(T.PathParam()),
     policyName: Schema.Literals(["default"]).pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        retentionDays: Schema.optional(Schema.Number),
-        diffBackupIntervalInHours: Schema.optional(Schema.Literals([12, 24])),
-      }),
+      Schema.suspend(() => BackupShortTermRetentionPolicyPropertiesSchema),
     ),
   }).pipe(
     T.Http({
@@ -231,23 +4257,13 @@ export type BackupShortTermRetentionPoliciesUpdateInput =
 // Output Schema
 export const BackupShortTermRetentionPoliciesUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => BackupShortTermRetentionPolicyPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type BackupShortTermRetentionPoliciesUpdateOutput =
   typeof BackupShortTermRetentionPoliciesUpdateOutput.Type;
@@ -298,1011 +4314,18 @@ export const CapabilitiesListByLocationOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     supportedServerVersions: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          name: Schema.optional(Schema.String),
-          supportedEditions: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                name: Schema.optional(Schema.String),
-                supportedServiceLevelObjectives: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      id: Schema.optional(Schema.String),
-                      name: Schema.optional(Schema.String),
-                      supportedMaxSizes: Schema.optional(
-                        Schema.Array(
-                          Schema.Struct({
-                            minValue: Schema.optional(
-                              Schema.Struct({
-                                limit: Schema.optional(Schema.Number),
-                                unit: Schema.optional(
-                                  Schema.Literals([
-                                    "Megabytes",
-                                    "Gigabytes",
-                                    "Terabytes",
-                                    "Petabytes",
-                                  ]),
-                                ),
-                              }),
-                            ),
-                            maxValue: Schema.optional(
-                              Schema.Struct({
-                                limit: Schema.optional(Schema.Number),
-                                unit: Schema.optional(
-                                  Schema.Literals([
-                                    "Megabytes",
-                                    "Gigabytes",
-                                    "Terabytes",
-                                    "Petabytes",
-                                  ]),
-                                ),
-                              }),
-                            ),
-                            scaleSize: Schema.optional(
-                              Schema.Struct({
-                                limit: Schema.optional(Schema.Number),
-                                unit: Schema.optional(
-                                  Schema.Literals([
-                                    "Megabytes",
-                                    "Gigabytes",
-                                    "Terabytes",
-                                    "Petabytes",
-                                  ]),
-                                ),
-                              }),
-                            ),
-                            logSize: Schema.optional(
-                              Schema.Struct({
-                                limit: Schema.optional(Schema.Number),
-                                unit: Schema.optional(
-                                  Schema.Literals([
-                                    "Megabytes",
-                                    "Gigabytes",
-                                    "Terabytes",
-                                    "Petabytes",
-                                    "Percent",
-                                  ]),
-                                ),
-                              }),
-                            ),
-                            status: Schema.optional(
-                              Schema.Literals([
-                                "Visible",
-                                "Available",
-                                "Default",
-                                "Disabled",
-                              ]),
-                            ),
-                            reason: Schema.optional(Schema.String),
-                          }),
-                        ),
-                      ),
-                      performanceLevel: Schema.optional(
-                        Schema.Struct({
-                          value: Schema.optional(Schema.Number),
-                          unit: Schema.optional(
-                            Schema.Literals(["DTU", "VCores"]),
-                          ),
-                        }),
-                      ),
-                      sku: Schema.optional(
-                        Schema.Struct({
-                          name: Schema.String,
-                          tier: Schema.optional(Schema.String),
-                          size: Schema.optional(Schema.String),
-                          family: Schema.optional(Schema.String),
-                          capacity: Schema.optional(Schema.Number),
-                        }),
-                      ),
-                      supportedLicenseTypes: Schema.optional(
-                        Schema.Array(
-                          Schema.Struct({
-                            name: Schema.optional(Schema.String),
-                            status: Schema.optional(
-                              Schema.Literals([
-                                "Visible",
-                                "Available",
-                                "Default",
-                                "Disabled",
-                              ]),
-                            ),
-                            reason: Schema.optional(Schema.String),
-                          }),
-                        ),
-                      ),
-                      includedMaxSize: Schema.optional(
-                        Schema.Struct({
-                          limit: Schema.optional(Schema.Number),
-                          unit: Schema.optional(
-                            Schema.Literals([
-                              "Megabytes",
-                              "Gigabytes",
-                              "Terabytes",
-                              "Petabytes",
-                            ]),
-                          ),
-                        }),
-                      ),
-                      zoneRedundant: Schema.optional(Schema.Boolean),
-                      supportedAutoPauseDelay: Schema.optional(
-                        Schema.Struct({
-                          minValue: Schema.optional(Schema.Number),
-                          maxValue: Schema.optional(Schema.Number),
-                          stepSize: Schema.optional(Schema.Number),
-                          default: Schema.optional(Schema.Number),
-                          unit: Schema.optional(Schema.Literals(["Minutes"])),
-                          doNotPauseValue: Schema.optional(Schema.Number),
-                        }),
-                      ),
-                      supportedMinCapacities: Schema.optional(
-                        Schema.Array(
-                          Schema.Struct({
-                            value: Schema.optional(Schema.Number),
-                            status: Schema.optional(
-                              Schema.Literals([
-                                "Visible",
-                                "Available",
-                                "Default",
-                                "Disabled",
-                              ]),
-                            ),
-                            reason: Schema.optional(Schema.String),
-                          }),
-                        ),
-                      ),
-                      computeModel: Schema.optional(Schema.String),
-                      supportedMaintenanceConfigurations: Schema.optional(
-                        Schema.Array(
-                          Schema.Struct({
-                            name: Schema.optional(Schema.String),
-                            zoneRedundant: Schema.optional(Schema.Boolean),
-                            status: Schema.optional(
-                              Schema.Literals([
-                                "Visible",
-                                "Available",
-                                "Default",
-                                "Disabled",
-                              ]),
-                            ),
-                            reason: Schema.optional(Schema.String),
-                          }),
-                        ),
-                      ),
-                      zonePinning: Schema.optional(Schema.Boolean),
-                      supportedZones: Schema.optional(
-                        Schema.Array(
-                          Schema.Struct({
-                            availabilityZone: Schema.optional(Schema.String),
-                            status: Schema.optional(
-                              Schema.Literals([
-                                "Visible",
-                                "Available",
-                                "Default",
-                                "Disabled",
-                              ]),
-                            ),
-                            reason: Schema.optional(Schema.String),
-                          }),
-                        ),
-                      ),
-                      supportedFreeLimitExhaustionBehaviors: Schema.optional(
-                        Schema.Array(
-                          Schema.Struct({
-                            exhaustionBehaviorType: Schema.optional(
-                              Schema.Literals(["AutoPause", "BillOverUsage"]),
-                            ),
-                            status: Schema.optional(
-                              Schema.Literals([
-                                "Visible",
-                                "Available",
-                                "Default",
-                                "Disabled",
-                              ]),
-                            ),
-                          }),
-                        ),
-                      ),
-                      status: Schema.optional(
-                        Schema.Literals([
-                          "Visible",
-                          "Available",
-                          "Default",
-                          "Disabled",
-                        ]),
-                      ),
-                      reason: Schema.optional(Schema.String),
-                    }),
-                  ),
-                ),
-                zoneRedundant: Schema.optional(Schema.Boolean),
-                readScale: Schema.optional(
-                  Schema.Struct({
-                    maxNumberOfReplicas: Schema.optional(Schema.Number),
-                    status: Schema.optional(
-                      Schema.Literals([
-                        "Visible",
-                        "Available",
-                        "Default",
-                        "Disabled",
-                      ]),
-                    ),
-                    reason: Schema.optional(Schema.String),
-                  }),
-                ),
-                supportedStorageCapabilities: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      storageAccountType: Schema.optional(
-                        Schema.Literals(["GRS", "LRS", "ZRS", "GZRS"]),
-                      ),
-                      status: Schema.optional(
-                        Schema.Literals([
-                          "Visible",
-                          "Available",
-                          "Default",
-                          "Disabled",
-                        ]),
-                      ),
-                      reason: Schema.optional(Schema.String),
-                    }),
-                  ),
-                ),
-                zonePinning: Schema.optional(Schema.Boolean),
-                status: Schema.optional(
-                  Schema.Literals([
-                    "Visible",
-                    "Available",
-                    "Default",
-                    "Disabled",
-                  ]),
-                ),
-                reason: Schema.optional(Schema.String),
-              }),
-            ),
-          ),
-          supportedElasticPoolEditions: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                name: Schema.optional(Schema.String),
-                supportedElasticPoolPerformanceLevels: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      performanceLevel: Schema.optional(
-                        Schema.Struct({
-                          value: Schema.optional(Schema.Number),
-                          unit: Schema.optional(
-                            Schema.Literals(["DTU", "VCores"]),
-                          ),
-                        }),
-                      ),
-                      sku: Schema.optional(
-                        Schema.Struct({
-                          name: Schema.String,
-                          tier: Schema.optional(Schema.String),
-                          size: Schema.optional(Schema.String),
-                          family: Schema.optional(Schema.String),
-                          capacity: Schema.optional(Schema.Number),
-                        }),
-                      ),
-                      supportedLicenseTypes: Schema.optional(
-                        Schema.Array(
-                          Schema.Struct({
-                            name: Schema.optional(Schema.String),
-                            status: Schema.optional(
-                              Schema.Literals([
-                                "Visible",
-                                "Available",
-                                "Default",
-                                "Disabled",
-                              ]),
-                            ),
-                            reason: Schema.optional(Schema.String),
-                          }),
-                        ),
-                      ),
-                      maxDatabaseCount: Schema.optional(Schema.Number),
-                      includedMaxSize: Schema.optional(
-                        Schema.Struct({
-                          limit: Schema.optional(Schema.Number),
-                          unit: Schema.optional(
-                            Schema.Literals([
-                              "Megabytes",
-                              "Gigabytes",
-                              "Terabytes",
-                              "Petabytes",
-                            ]),
-                          ),
-                        }),
-                      ),
-                      supportedMaxSizes: Schema.optional(
-                        Schema.Array(
-                          Schema.Struct({
-                            minValue: Schema.optional(
-                              Schema.Struct({
-                                limit: Schema.optional(Schema.Number),
-                                unit: Schema.optional(
-                                  Schema.Literals([
-                                    "Megabytes",
-                                    "Gigabytes",
-                                    "Terabytes",
-                                    "Petabytes",
-                                  ]),
-                                ),
-                              }),
-                            ),
-                            maxValue: Schema.optional(
-                              Schema.Struct({
-                                limit: Schema.optional(Schema.Number),
-                                unit: Schema.optional(
-                                  Schema.Literals([
-                                    "Megabytes",
-                                    "Gigabytes",
-                                    "Terabytes",
-                                    "Petabytes",
-                                  ]),
-                                ),
-                              }),
-                            ),
-                            scaleSize: Schema.optional(
-                              Schema.Struct({
-                                limit: Schema.optional(Schema.Number),
-                                unit: Schema.optional(
-                                  Schema.Literals([
-                                    "Megabytes",
-                                    "Gigabytes",
-                                    "Terabytes",
-                                    "Petabytes",
-                                  ]),
-                                ),
-                              }),
-                            ),
-                            logSize: Schema.optional(
-                              Schema.Struct({
-                                limit: Schema.optional(Schema.Number),
-                                unit: Schema.optional(
-                                  Schema.Literals([
-                                    "Megabytes",
-                                    "Gigabytes",
-                                    "Terabytes",
-                                    "Petabytes",
-                                    "Percent",
-                                  ]),
-                                ),
-                              }),
-                            ),
-                            status: Schema.optional(
-                              Schema.Literals([
-                                "Visible",
-                                "Available",
-                                "Default",
-                                "Disabled",
-                              ]),
-                            ),
-                            reason: Schema.optional(Schema.String),
-                          }),
-                        ),
-                      ),
-                      supportedPerDatabaseMaxSizes: Schema.optional(
-                        Schema.Array(
-                          Schema.Struct({
-                            minValue: Schema.optional(
-                              Schema.Struct({
-                                limit: Schema.optional(Schema.Number),
-                                unit: Schema.optional(
-                                  Schema.Literals([
-                                    "Megabytes",
-                                    "Gigabytes",
-                                    "Terabytes",
-                                    "Petabytes",
-                                  ]),
-                                ),
-                              }),
-                            ),
-                            maxValue: Schema.optional(
-                              Schema.Struct({
-                                limit: Schema.optional(Schema.Number),
-                                unit: Schema.optional(
-                                  Schema.Literals([
-                                    "Megabytes",
-                                    "Gigabytes",
-                                    "Terabytes",
-                                    "Petabytes",
-                                  ]),
-                                ),
-                              }),
-                            ),
-                            scaleSize: Schema.optional(
-                              Schema.Struct({
-                                limit: Schema.optional(Schema.Number),
-                                unit: Schema.optional(
-                                  Schema.Literals([
-                                    "Megabytes",
-                                    "Gigabytes",
-                                    "Terabytes",
-                                    "Petabytes",
-                                  ]),
-                                ),
-                              }),
-                            ),
-                            logSize: Schema.optional(
-                              Schema.Struct({
-                                limit: Schema.optional(Schema.Number),
-                                unit: Schema.optional(
-                                  Schema.Literals([
-                                    "Megabytes",
-                                    "Gigabytes",
-                                    "Terabytes",
-                                    "Petabytes",
-                                    "Percent",
-                                  ]),
-                                ),
-                              }),
-                            ),
-                            status: Schema.optional(
-                              Schema.Literals([
-                                "Visible",
-                                "Available",
-                                "Default",
-                                "Disabled",
-                              ]),
-                            ),
-                            reason: Schema.optional(Schema.String),
-                          }),
-                        ),
-                      ),
-                      supportedPerDatabaseMaxPerformanceLevels: Schema.optional(
-                        Schema.Array(
-                          Schema.Struct({
-                            limit: Schema.optional(Schema.Number),
-                            unit: Schema.optional(
-                              Schema.Literals(["DTU", "VCores"]),
-                            ),
-                            supportedPerDatabaseMinPerformanceLevels:
-                              Schema.optional(
-                                Schema.Array(
-                                  Schema.Struct({
-                                    limit: Schema.optional(Schema.Number),
-                                    unit: Schema.optional(
-                                      Schema.Literals(["DTU", "VCores"]),
-                                    ),
-                                    status: Schema.optional(
-                                      Schema.Literals([
-                                        "Visible",
-                                        "Available",
-                                        "Default",
-                                        "Disabled",
-                                      ]),
-                                    ),
-                                    reason: Schema.optional(Schema.String),
-                                  }),
-                                ),
-                              ),
-                            status: Schema.optional(
-                              Schema.Literals([
-                                "Visible",
-                                "Available",
-                                "Default",
-                                "Disabled",
-                              ]),
-                            ),
-                            reason: Schema.optional(Schema.String),
-                          }),
-                        ),
-                      ),
-                      zoneRedundant: Schema.optional(Schema.Boolean),
-                      supportedMaintenanceConfigurations: Schema.optional(
-                        Schema.Array(
-                          Schema.Struct({
-                            name: Schema.optional(Schema.String),
-                            zoneRedundant: Schema.optional(Schema.Boolean),
-                            status: Schema.optional(
-                              Schema.Literals([
-                                "Visible",
-                                "Available",
-                                "Default",
-                                "Disabled",
-                              ]),
-                            ),
-                            reason: Schema.optional(Schema.String),
-                          }),
-                        ),
-                      ),
-                      supportedMinCapacities: Schema.optional(
-                        Schema.Array(
-                          Schema.Struct({
-                            value: Schema.optional(Schema.Number),
-                            status: Schema.optional(
-                              Schema.Literals([
-                                "Visible",
-                                "Available",
-                                "Default",
-                                "Disabled",
-                              ]),
-                            ),
-                            reason: Schema.optional(Schema.String),
-                          }),
-                        ),
-                      ),
-                      supportedAutoPauseDelay: Schema.optional(
-                        Schema.Struct({
-                          minValue: Schema.optional(Schema.Number),
-                          maxValue: Schema.optional(Schema.Number),
-                          stepSize: Schema.optional(Schema.Number),
-                          default: Schema.optional(Schema.Number),
-                          unit: Schema.optional(Schema.Literals(["Minutes"])),
-                          doNotPauseValue: Schema.optional(Schema.Number),
-                        }),
-                      ),
-                      supportedPerDatabaseAutoPauseDelay: Schema.optional(
-                        Schema.Struct({
-                          minValue: Schema.optional(Schema.Number),
-                          maxValue: Schema.optional(Schema.Number),
-                          stepSize: Schema.optional(Schema.Number),
-                          default: Schema.optional(Schema.Number),
-                          unit: Schema.optional(Schema.Literals(["Minutes"])),
-                          doNotPauseValue: Schema.optional(Schema.Number),
-                        }),
-                      ),
-                      supportedZones: Schema.optional(
-                        Schema.Array(
-                          Schema.Struct({
-                            availabilityZone: Schema.optional(Schema.String),
-                            status: Schema.optional(
-                              Schema.Literals([
-                                "Visible",
-                                "Available",
-                                "Default",
-                                "Disabled",
-                              ]),
-                            ),
-                            reason: Schema.optional(Schema.String),
-                          }),
-                        ),
-                      ),
-                      status: Schema.optional(
-                        Schema.Literals([
-                          "Visible",
-                          "Available",
-                          "Default",
-                          "Disabled",
-                        ]),
-                      ),
-                      reason: Schema.optional(Schema.String),
-                    }),
-                  ),
-                ),
-                zoneRedundant: Schema.optional(Schema.Boolean),
-                zonePinning: Schema.optional(Schema.Boolean),
-                status: Schema.optional(
-                  Schema.Literals([
-                    "Visible",
-                    "Available",
-                    "Default",
-                    "Disabled",
-                  ]),
-                ),
-                reason: Schema.optional(Schema.String),
-              }),
-            ),
-          ),
-          status: Schema.optional(
-            Schema.Literals(["Visible", "Available", "Default", "Disabled"]),
-          ),
-          reason: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => ServerVersionCapabilitySchema)),
     ),
     supportedManagedInstanceVersions: Schema.optional(
       Schema.Array(
-        Schema.Struct({
-          name: Schema.optional(Schema.String),
-          supportedEditions: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                name: Schema.optional(Schema.String),
-                isGeneralPurposeV2: Schema.optional(Schema.Boolean),
-                supportedFamilies: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      name: Schema.optional(Schema.String),
-                      sku: Schema.optional(Schema.String),
-                      zoneRedundant: Schema.optional(Schema.Boolean),
-                      supportedLicenseTypes: Schema.optional(
-                        Schema.Array(
-                          Schema.Struct({
-                            name: Schema.optional(Schema.String),
-                            status: Schema.optional(
-                              Schema.Literals([
-                                "Visible",
-                                "Available",
-                                "Default",
-                                "Disabled",
-                              ]),
-                            ),
-                            reason: Schema.optional(Schema.String),
-                          }),
-                        ),
-                      ),
-                      supportedVcoresValues: Schema.optional(
-                        Schema.Array(
-                          Schema.Struct({
-                            name: Schema.optional(Schema.String),
-                            value: Schema.optional(Schema.Number),
-                            supportedMemorySizesInGB: Schema.optional(
-                              Schema.Struct({
-                                minValue: Schema.optional(Schema.Number),
-                                maxValue: Schema.optional(Schema.Number),
-                                scaleSize: Schema.optional(Schema.Number),
-                                status: Schema.optional(
-                                  Schema.Literals([
-                                    "Visible",
-                                    "Available",
-                                    "Default",
-                                    "Disabled",
-                                  ]),
-                                ),
-                                reason: Schema.optional(Schema.String),
-                              }),
-                            ),
-                            supportedMemoryLimitsMB: Schema.optional(
-                              Schema.Struct({
-                                minValue: Schema.optional(Schema.Number),
-                                maxValue: Schema.optional(Schema.Number),
-                                scaleSize: Schema.optional(Schema.Number),
-                                status: Schema.optional(
-                                  Schema.Literals([
-                                    "Visible",
-                                    "Available",
-                                    "Default",
-                                    "Disabled",
-                                  ]),
-                                ),
-                                reason: Schema.optional(Schema.String),
-                              }),
-                            ),
-                            includedMaxSize: Schema.optional(
-                              Schema.Struct({
-                                limit: Schema.optional(Schema.Number),
-                                unit: Schema.optional(
-                                  Schema.Literals([
-                                    "Megabytes",
-                                    "Gigabytes",
-                                    "Terabytes",
-                                    "Petabytes",
-                                  ]),
-                                ),
-                              }),
-                            ),
-                            supportedStorageSizes: Schema.optional(
-                              Schema.Array(
-                                Schema.Struct({
-                                  minValue: Schema.optional(
-                                    Schema.Struct({
-                                      limit: Schema.optional(Schema.Number),
-                                      unit: Schema.optional(
-                                        Schema.Literals([
-                                          "Megabytes",
-                                          "Gigabytes",
-                                          "Terabytes",
-                                          "Petabytes",
-                                        ]),
-                                      ),
-                                    }),
-                                  ),
-                                  maxValue: Schema.optional(
-                                    Schema.Struct({
-                                      limit: Schema.optional(Schema.Number),
-                                      unit: Schema.optional(
-                                        Schema.Literals([
-                                          "Megabytes",
-                                          "Gigabytes",
-                                          "Terabytes",
-                                          "Petabytes",
-                                        ]),
-                                      ),
-                                    }),
-                                  ),
-                                  scaleSize: Schema.optional(
-                                    Schema.Struct({
-                                      limit: Schema.optional(Schema.Number),
-                                      unit: Schema.optional(
-                                        Schema.Literals([
-                                          "Megabytes",
-                                          "Gigabytes",
-                                          "Terabytes",
-                                          "Petabytes",
-                                        ]),
-                                      ),
-                                    }),
-                                  ),
-                                  logSize: Schema.optional(
-                                    Schema.Struct({
-                                      limit: Schema.optional(Schema.Number),
-                                      unit: Schema.optional(
-                                        Schema.Literals([
-                                          "Megabytes",
-                                          "Gigabytes",
-                                          "Terabytes",
-                                          "Petabytes",
-                                          "Percent",
-                                        ]),
-                                      ),
-                                    }),
-                                  ),
-                                  status: Schema.optional(
-                                    Schema.Literals([
-                                      "Visible",
-                                      "Available",
-                                      "Default",
-                                      "Disabled",
-                                    ]),
-                                  ),
-                                  reason: Schema.optional(Schema.String),
-                                }),
-                              ),
-                            ),
-                            includedStorageIOps: Schema.optional(Schema.Number),
-                            supportedStorageIOps: Schema.optional(
-                              Schema.Struct({
-                                minValue: Schema.optional(Schema.Number),
-                                maxValue: Schema.optional(Schema.Number),
-                                scaleSize: Schema.optional(Schema.Number),
-                                status: Schema.optional(
-                                  Schema.Literals([
-                                    "Visible",
-                                    "Available",
-                                    "Default",
-                                    "Disabled",
-                                  ]),
-                                ),
-                                reason: Schema.optional(Schema.String),
-                              }),
-                            ),
-                            iopsMinValueOverrideFactorPerSelectedStorageGB:
-                              Schema.optional(Schema.Number),
-                            iopsIncludedValueOverrideFactorPerSelectedStorageGB:
-                              Schema.optional(Schema.Number),
-                            includedStorageThroughputMBps: Schema.optional(
-                              Schema.Number,
-                            ),
-                            supportedStorageThroughputMBps: Schema.optional(
-                              Schema.Struct({
-                                minValue: Schema.optional(Schema.Number),
-                                maxValue: Schema.optional(Schema.Number),
-                                scaleSize: Schema.optional(Schema.Number),
-                                status: Schema.optional(
-                                  Schema.Literals([
-                                    "Visible",
-                                    "Available",
-                                    "Default",
-                                    "Disabled",
-                                  ]),
-                                ),
-                                reason: Schema.optional(Schema.String),
-                              }),
-                            ),
-                            throughputMBpsMinValueOverrideFactorPerSelectedStorageGB:
-                              Schema.optional(Schema.Number),
-                            throughputMBpsIncludedValueOverrideFactorPerSelectedStorageGB:
-                              Schema.optional(Schema.Number),
-                            instancePoolSupported: Schema.optional(
-                              Schema.Boolean,
-                            ),
-                            standaloneSupported: Schema.optional(
-                              Schema.Boolean,
-                            ),
-                            supportedMaintenanceConfigurations: Schema.optional(
-                              Schema.Array(
-                                Schema.Struct({
-                                  name: Schema.optional(Schema.String),
-                                  status: Schema.optional(
-                                    Schema.Literals([
-                                      "Visible",
-                                      "Available",
-                                      "Default",
-                                      "Disabled",
-                                    ]),
-                                  ),
-                                  reason: Schema.optional(Schema.String),
-                                }),
-                              ),
-                            ),
-                            status: Schema.optional(
-                              Schema.Literals([
-                                "Visible",
-                                "Available",
-                                "Default",
-                                "Disabled",
-                              ]),
-                            ),
-                            reason: Schema.optional(Schema.String),
-                          }),
-                        ),
-                      ),
-                      status: Schema.optional(
-                        Schema.Literals([
-                          "Visible",
-                          "Available",
-                          "Default",
-                          "Disabled",
-                        ]),
-                      ),
-                      reason: Schema.optional(Schema.String),
-                    }),
-                  ),
-                ),
-                supportedStorageCapabilities: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      storageAccountType: Schema.optional(
-                        Schema.Literals(["GRS", "LRS", "ZRS", "GZRS"]),
-                      ),
-                      status: Schema.optional(
-                        Schema.Literals([
-                          "Visible",
-                          "Available",
-                          "Default",
-                          "Disabled",
-                        ]),
-                      ),
-                      reason: Schema.optional(Schema.String),
-                    }),
-                  ),
-                ),
-                status: Schema.optional(
-                  Schema.Literals([
-                    "Visible",
-                    "Available",
-                    "Default",
-                    "Disabled",
-                  ]),
-                ),
-                reason: Schema.optional(Schema.String),
-              }),
-            ),
-          ),
-          supportedInstancePoolEditions: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                name: Schema.optional(Schema.String),
-                supportedFamilies: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      name: Schema.optional(Schema.String),
-                      supportedLicenseTypes: Schema.optional(
-                        Schema.Array(
-                          Schema.Struct({
-                            name: Schema.optional(Schema.String),
-                            status: Schema.optional(
-                              Schema.Literals([
-                                "Visible",
-                                "Available",
-                                "Default",
-                                "Disabled",
-                              ]),
-                            ),
-                            reason: Schema.optional(Schema.String),
-                          }),
-                        ),
-                      ),
-                      supportedVcoresValues: Schema.optional(
-                        Schema.Array(
-                          Schema.Struct({
-                            name: Schema.optional(Schema.String),
-                            value: Schema.optional(Schema.Number),
-                            storageLimit: Schema.optional(
-                              Schema.Struct({
-                                limit: Schema.optional(Schema.Number),
-                                unit: Schema.optional(
-                                  Schema.Literals([
-                                    "Megabytes",
-                                    "Gigabytes",
-                                    "Terabytes",
-                                    "Petabytes",
-                                  ]),
-                                ),
-                              }),
-                            ),
-                            status: Schema.optional(
-                              Schema.Literals([
-                                "Visible",
-                                "Available",
-                                "Default",
-                                "Disabled",
-                              ]),
-                            ),
-                            reason: Schema.optional(Schema.String),
-                          }),
-                        ),
-                      ),
-                      status: Schema.optional(
-                        Schema.Literals([
-                          "Visible",
-                          "Available",
-                          "Default",
-                          "Disabled",
-                        ]),
-                      ),
-                      reason: Schema.optional(Schema.String),
-                    }),
-                  ),
-                ),
-                status: Schema.optional(
-                  Schema.Literals([
-                    "Visible",
-                    "Available",
-                    "Default",
-                    "Disabled",
-                  ]),
-                ),
-                reason: Schema.optional(Schema.String),
-              }),
-            ),
-          ),
-          status: Schema.optional(
-            Schema.Literals(["Visible", "Available", "Default", "Disabled"]),
-          ),
-          reason: Schema.optional(Schema.String),
-        }),
+        Schema.suspend(() => ManagedInstanceVersionCapabilitySchema),
       ),
     ),
     supportedJobAgentVersions: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          name: Schema.optional(Schema.String),
-          supportedEditions: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                name: Schema.optional(Schema.String),
-                supportedServiceLevelObjectives: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      name: Schema.optional(Schema.String),
-                      sku: Schema.optional(
-                        Schema.Struct({
-                          name: Schema.String,
-                          tier: Schema.optional(Schema.String),
-                          size: Schema.optional(Schema.String),
-                          family: Schema.optional(Schema.String),
-                          capacity: Schema.optional(Schema.Number),
-                        }),
-                      ),
-                      status: Schema.optional(
-                        Schema.Literals([
-                          "Visible",
-                          "Available",
-                          "Default",
-                          "Disabled",
-                        ]),
-                      ),
-                      reason: Schema.optional(Schema.String),
-                    }),
-                  ),
-                ),
-                status: Schema.optional(
-                  Schema.Literals([
-                    "Visible",
-                    "Available",
-                    "Default",
-                    "Disabled",
-                  ]),
-                ),
-                reason: Schema.optional(Schema.String),
-              }),
-            ),
-          ),
-          status: Schema.optional(
-            Schema.Literals(["Visible", "Available", "Default", "Disabled"]),
-          ),
-          reason: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => JobAgentVersionCapabilitySchema)),
     ),
     isZoneResilientProvisioningAllowed: Schema.optional(Schema.Boolean),
-    status: Schema.optional(
-      Schema.Literals(["Visible", "Available", "Default", "Disabled"]),
-    ),
+    status: Schema.optional(Schema.suspend(() => CapabilityStatusSchema)),
     reason: Schema.optional(Schema.String),
   });
 export type CapabilitiesListByLocationOutput =
@@ -1334,10 +4357,7 @@ export const DatabaseAdvancedThreatProtectionSettingsCreateOrUpdateInput =
       T.PathParam(),
     ),
     properties: Schema.optional(
-      Schema.Struct({
-        state: Schema.Literals(["New", "Enabled", "Disabled"]),
-        creationTime: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(() => AdvancedThreatProtectionPropertiesSchema),
     ),
   }).pipe(
     T.Http({
@@ -1352,23 +4372,13 @@ export type DatabaseAdvancedThreatProtectionSettingsCreateOrUpdateInput =
 // Output Schema
 export const DatabaseAdvancedThreatProtectionSettingsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => AdvancedThreatProtectionPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type DatabaseAdvancedThreatProtectionSettingsCreateOrUpdateOutput =
   typeof DatabaseAdvancedThreatProtectionSettingsCreateOrUpdateOutput.Type;
@@ -1412,23 +4422,13 @@ export type DatabaseAdvancedThreatProtectionSettingsGetInput =
 // Output Schema
 export const DatabaseAdvancedThreatProtectionSettingsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => AdvancedThreatProtectionPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type DatabaseAdvancedThreatProtectionSettingsGetOutput =
   typeof DatabaseAdvancedThreatProtectionSettingsGetOutput.Type;
@@ -1470,35 +4470,7 @@ export type DatabaseAdvancedThreatProtectionSettingsListByDatabaseInput =
 export const DatabaseAdvancedThreatProtectionSettingsListByDatabaseOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
+      Schema.suspend(() => DatabaseAdvancedThreatProtectionSchema),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -1540,23 +4512,13 @@ export type DatabaseAdvisorsGetInput = typeof DatabaseAdvisorsGetInput.Type;
 // Output Schema
 export const DatabaseAdvisorsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(Schema.suspend(() => AdvisorPropertiesSchema)),
+    kind: Schema.optional(Schema.String),
+    location: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type DatabaseAdvisorsGetOutput = typeof DatabaseAdvisorsGetOutput.Type;
 
@@ -1595,27 +4557,7 @@ export type DatabaseAdvisorsListByDatabaseInput =
 
 // Output Schema
 export const DatabaseAdvisorsListByDatabaseOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
-    Schema.Struct({
-      id: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      type: Schema.optional(Schema.String),
-      systemData: Schema.optional(
-        Schema.Struct({
-          createdBy: Schema.optional(Schema.String),
-          createdByType: Schema.optional(
-            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-          ),
-          createdAt: Schema.optional(Schema.String),
-          lastModifiedBy: Schema.optional(Schema.String),
-          lastModifiedByType: Schema.optional(
-            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-          ),
-          lastModifiedAt: Schema.optional(Schema.String),
-        }),
-      ),
-    }),
-  );
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Array(Schema.suspend(() => AdvisorSchema));
 export type DatabaseAdvisorsListByDatabaseOutput =
   typeof DatabaseAdvisorsListByDatabaseOutput.Type;
 
@@ -1643,63 +4585,7 @@ export const DatabaseAdvisorsUpdateInput =
     serverName: Schema.String.pipe(T.PathParam()),
     databaseName: Schema.String.pipe(T.PathParam()),
     advisorName: Schema.String.pipe(T.PathParam()),
-    properties: Schema.optional(
-      Schema.Struct({
-        advisorStatus: Schema.optional(
-          Schema.Literals([
-            "GA",
-            "PublicPreview",
-            "LimitedPublicPreview",
-            "PrivatePreview",
-          ]),
-        ),
-        autoExecuteStatus: Schema.Literals(["Enabled", "Disabled", "Default"]),
-        autoExecuteStatusInheritedFrom: Schema.optional(
-          Schema.Literals([
-            "Default",
-            "Subscription",
-            "Server",
-            "ElasticPool",
-            "Database",
-          ]),
-        ),
-        recommendationsStatus: Schema.optional(Schema.String),
-        lastChecked: Schema.optional(Schema.String),
-        recommendedActions: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              id: Schema.optional(Schema.String),
-              name: Schema.optional(Schema.String),
-              type: Schema.optional(Schema.String),
-              systemData: Schema.optional(
-                Schema.Struct({
-                  createdBy: Schema.optional(Schema.String),
-                  createdByType: Schema.optional(
-                    Schema.Literals([
-                      "User",
-                      "Application",
-                      "ManagedIdentity",
-                      "Key",
-                    ]),
-                  ),
-                  createdAt: Schema.optional(Schema.String),
-                  lastModifiedBy: Schema.optional(Schema.String),
-                  lastModifiedByType: Schema.optional(
-                    Schema.Literals([
-                      "User",
-                      "Application",
-                      "ManagedIdentity",
-                      "Key",
-                    ]),
-                  ),
-                  lastModifiedAt: Schema.optional(Schema.String),
-                }),
-              ),
-            }),
-          ),
-        ),
-      }),
-    ),
+    properties: Schema.optional(Schema.suspend(() => AdvisorPropertiesSchema)),
     kind: Schema.optional(Schema.String),
     location: Schema.optional(Schema.String),
   }).pipe(
@@ -1715,23 +4601,13 @@ export type DatabaseAdvisorsUpdateInput =
 // Output Schema
 export const DatabaseAdvisorsUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(Schema.suspend(() => AdvisorPropertiesSchema)),
+    kind: Schema.optional(Schema.String),
+    location: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type DatabaseAdvisorsUpdateOutput =
   typeof DatabaseAdvisorsUpdateOutput.Type;
@@ -1773,23 +4649,13 @@ export type DatabaseAutomaticTuningGetInput =
 // Output Schema
 export const DatabaseAutomaticTuningGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => DatabaseAutomaticTuningPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type DatabaseAutomaticTuningGetOutput =
   typeof DatabaseAutomaticTuningGetOutput.Type;
@@ -1818,37 +4684,7 @@ export const DatabaseAutomaticTuningUpdateInput =
     serverName: Schema.String.pipe(T.PathParam()),
     databaseName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        desiredState: Schema.optional(
-          Schema.Literals(["Inherit", "Custom", "Auto", "Unspecified"]),
-        ),
-        actualState: Schema.optional(
-          Schema.Literals(["Inherit", "Custom", "Auto", "Unspecified"]),
-        ),
-        options: Schema.optional(
-          Schema.Record(
-            Schema.String,
-            Schema.Struct({
-              desiredState: Schema.optional(
-                Schema.Literals(["Off", "On", "Default"]),
-              ),
-              actualState: Schema.optional(Schema.Literals(["Off", "On"])),
-              reasonCode: Schema.optional(Schema.Number),
-              reasonDesc: Schema.optional(
-                Schema.Literals([
-                  "Default",
-                  "Disabled",
-                  "AutoConfigured",
-                  "InheritedFromServer",
-                  "QueryStoreOff",
-                  "QueryStoreReadOnly",
-                  "NotSupported",
-                ]),
-              ),
-            }),
-          ),
-        ),
-      }),
+      Schema.suspend(() => DatabaseAutomaticTuningPropertiesSchema),
     ),
   }).pipe(
     T.Http({
@@ -1863,23 +4699,13 @@ export type DatabaseAutomaticTuningUpdateInput =
 // Output Schema
 export const DatabaseAutomaticTuningUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => DatabaseAutomaticTuningPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type DatabaseAutomaticTuningUpdateOutput =
   typeof DatabaseAutomaticTuningUpdateOutput.Type;
@@ -1908,18 +4734,7 @@ export const DatabaseBlobAuditingPoliciesCreateOrUpdateInput =
     databaseName: Schema.String.pipe(T.PathParam()),
     blobAuditingPolicyName: Schema.Literals(["default"]).pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        retentionDays: Schema.optional(Schema.Number),
-        auditActionsAndGroups: Schema.optional(Schema.Array(Schema.String)),
-        isStorageSecondaryKeyInUse: Schema.optional(Schema.Boolean),
-        isAzureMonitorTargetEnabled: Schema.optional(Schema.Boolean),
-        queueDelayMs: Schema.optional(Schema.Number),
-        isManagedIdentityInUse: Schema.optional(Schema.Boolean),
-        state: Schema.Literals(["Enabled", "Disabled"]),
-        storageEndpoint: Schema.optional(Schema.String),
-        storageAccountAccessKey: Schema.optional(Schema.String),
-        storageAccountSubscriptionId: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(() => DatabaseBlobAuditingPolicyPropertiesSchema),
     ),
     kind: Schema.optional(Schema.String),
   }).pipe(
@@ -1935,23 +4750,14 @@ export type DatabaseBlobAuditingPoliciesCreateOrUpdateInput =
 // Output Schema
 export const DatabaseBlobAuditingPoliciesCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => DatabaseBlobAuditingPolicyPropertiesSchema),
+    ),
+    kind: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type DatabaseBlobAuditingPoliciesCreateOrUpdateOutput =
   typeof DatabaseBlobAuditingPoliciesCreateOrUpdateOutput.Type;
@@ -1993,23 +4799,14 @@ export type DatabaseBlobAuditingPoliciesGetInput =
 // Output Schema
 export const DatabaseBlobAuditingPoliciesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => DatabaseBlobAuditingPolicyPropertiesSchema),
+    ),
+    kind: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type DatabaseBlobAuditingPoliciesGetOutput =
   typeof DatabaseBlobAuditingPoliciesGetOutput.Type;
@@ -2050,37 +4847,7 @@ export type DatabaseBlobAuditingPoliciesListByDatabaseInput =
 // Output Schema
 export const DatabaseBlobAuditingPoliciesListByDatabaseOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => DatabaseBlobAuditingPolicySchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type DatabaseBlobAuditingPoliciesListByDatabaseOutput =
@@ -2123,23 +4890,13 @@ export type DatabaseColumnsGetInput = typeof DatabaseColumnsGetInput.Type;
 // Output Schema
 export const DatabaseColumnsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => DatabaseColumnPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type DatabaseColumnsGetOutput = typeof DatabaseColumnsGetOutput.Type;
 
@@ -2185,37 +4942,7 @@ export type DatabaseColumnsListByDatabaseInput =
 // Output Schema
 export const DatabaseColumnsListByDatabaseOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => DatabaseColumnSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type DatabaseColumnsListByDatabaseOutput =
@@ -2260,37 +4987,7 @@ export type DatabaseColumnsListByTableInput =
 // Output Schema
 export const DatabaseColumnsListByTableOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => DatabaseColumnSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type DatabaseColumnsListByTableOutput =
@@ -2406,28 +5103,7 @@ export const DatabaseExtensionsCreateOrUpdateInput =
     databaseName: Schema.String.pipe(T.PathParam()),
     extensionName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        operationMode: Schema.Literals(["PolybaseImport", "Import", "Export"]),
-        storageKeyType: Schema.Literals([
-          "SharedAccessKey",
-          "StorageAccessKey",
-          "ManagedIdentity",
-        ]),
-        storageKey: Schema.String,
-        storageUri: Schema.String,
-        administratorLogin: Schema.optional(Schema.String),
-        administratorLoginPassword: Schema.optional(SensitiveString),
-        authenticationType: Schema.optional(Schema.String),
-        databaseEdition: Schema.optional(Schema.String),
-        serviceObjectiveName: Schema.optional(Schema.String),
-        maxSizeBytes: Schema.optional(Schema.String),
-        networkIsolation: Schema.optional(
-          Schema.Struct({
-            storageAccountResourceId: Schema.optional(Schema.String),
-            sqlServerResourceId: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
+      Schema.suspend(() => DatabaseExtensionsPropertiesSchema),
     ),
   }).pipe(
     T.Http({
@@ -2443,23 +5119,15 @@ export type DatabaseExtensionsCreateOrUpdateInput =
 // Output Schema
 export const DatabaseExtensionsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(
+        () => ImportExportExtensionsOperationResultPropertiesSchema,
+      ),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type DatabaseExtensionsCreateOrUpdateOutput =
   typeof DatabaseExtensionsCreateOrUpdateOutput.Type;
@@ -2540,35 +5208,7 @@ export const DatabaseExtensionsListByDatabaseOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.String),
-              createdByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              createdAt: Schema.optional(Schema.String),
-              lastModifiedBy: Schema.optional(Schema.String),
-              lastModifiedByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              lastModifiedAt: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
+        Schema.suspend(() => ImportExportExtensionsOperationResultSchema),
       ),
     ),
     nextLink: Schema.optional(Schema.String),
@@ -2652,37 +5292,7 @@ export type DatabaseOperationsListByDatabaseInput =
 // Output Schema
 export const DatabaseOperationsListByDatabaseOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => DatabaseOperationSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type DatabaseOperationsListByDatabaseOutput =
@@ -2725,23 +5335,15 @@ export type DatabaseRecommendedActionsGetInput =
 // Output Schema
 export const DatabaseRecommendedActionsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => RecommendedActionPropertiesSchema),
+    ),
+    kind: Schema.optional(Schema.String),
+    location: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type DatabaseRecommendedActionsGetOutput =
   typeof DatabaseRecommendedActionsGetOutput.Type;
@@ -2784,25 +5386,7 @@ export type DatabaseRecommendedActionsListByDatabaseAdvisorInput =
 // Output Schema
 export const DatabaseRecommendedActionsListByDatabaseAdvisorOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
-    Schema.Struct({
-      id: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      type: Schema.optional(Schema.String),
-      systemData: Schema.optional(
-        Schema.Struct({
-          createdBy: Schema.optional(Schema.String),
-          createdByType: Schema.optional(
-            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-          ),
-          createdAt: Schema.optional(Schema.String),
-          lastModifiedBy: Schema.optional(Schema.String),
-          lastModifiedByType: Schema.optional(
-            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-          ),
-          lastModifiedAt: Schema.optional(Schema.String),
-        }),
-      ),
-    }),
+    Schema.suspend(() => RecommendedActionSchema),
   );
 export type DatabaseRecommendedActionsListByDatabaseAdvisorOutput =
   typeof DatabaseRecommendedActionsListByDatabaseAdvisorOutput.Type;
@@ -2833,98 +5417,7 @@ export const DatabaseRecommendedActionsUpdateInput =
     advisorName: Schema.String.pipe(T.PathParam()),
     recommendedActionName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        recommendationReason: Schema.optional(Schema.String),
-        validSince: Schema.optional(Schema.String),
-        lastRefresh: Schema.optional(Schema.String),
-        state: Schema.Struct({
-          currentValue: Schema.Literals([
-            "Active",
-            "Pending",
-            "Executing",
-            "Verifying",
-            "PendingRevert",
-            "RevertCancelled",
-            "Reverting",
-            "Reverted",
-            "Ignored",
-            "Expired",
-            "Monitoring",
-            "Resolved",
-            "Success",
-            "Error",
-          ]),
-          actionInitiatedBy: Schema.optional(
-            Schema.Literals(["User", "System"]),
-          ),
-          lastModified: Schema.optional(Schema.String),
-        }),
-        isExecutableAction: Schema.optional(Schema.Boolean),
-        isRevertableAction: Schema.optional(Schema.Boolean),
-        isArchivedAction: Schema.optional(Schema.Boolean),
-        executeActionStartTime: Schema.optional(Schema.String),
-        executeActionDuration: Schema.optional(Schema.String),
-        revertActionStartTime: Schema.optional(Schema.String),
-        revertActionDuration: Schema.optional(Schema.String),
-        executeActionInitiatedBy: Schema.optional(
-          Schema.Literals(["User", "System"]),
-        ),
-        executeActionInitiatedTime: Schema.optional(Schema.String),
-        revertActionInitiatedBy: Schema.optional(
-          Schema.Literals(["User", "System"]),
-        ),
-        revertActionInitiatedTime: Schema.optional(Schema.String),
-        score: Schema.optional(Schema.Number),
-        implementationDetails: Schema.optional(
-          Schema.Struct({
-            method: Schema.optional(
-              Schema.Literals(["TSql", "AzurePowerShell"]),
-            ),
-            script: Schema.optional(Schema.String),
-          }),
-        ),
-        errorDetails: Schema.optional(
-          Schema.Struct({
-            errorCode: Schema.optional(Schema.String),
-            isRetryable: Schema.optional(Schema.Literals(["Yes", "No"])),
-          }),
-        ),
-        estimatedImpact: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              dimensionName: Schema.optional(Schema.String),
-              unit: Schema.optional(Schema.String),
-              absoluteValue: Schema.optional(Schema.Number),
-              changeValueAbsolute: Schema.optional(Schema.Number),
-              changeValueRelative: Schema.optional(Schema.Number),
-            }),
-          ),
-        ),
-        observedImpact: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              dimensionName: Schema.optional(Schema.String),
-              unit: Schema.optional(Schema.String),
-              absoluteValue: Schema.optional(Schema.Number),
-              changeValueAbsolute: Schema.optional(Schema.Number),
-              changeValueRelative: Schema.optional(Schema.Number),
-            }),
-          ),
-        ),
-        timeSeries: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              metricName: Schema.optional(Schema.String),
-              unit: Schema.optional(Schema.String),
-              timeGrain: Schema.optional(Schema.String),
-              startTime: Schema.optional(Schema.String),
-              value: Schema.optional(Schema.Number),
-            }),
-          ),
-        ),
-        linkedObjects: Schema.optional(Schema.Array(Schema.String)),
-        details: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      }),
+      Schema.suspend(() => RecommendedActionPropertiesSchema),
     ),
     kind: Schema.optional(Schema.String),
     location: Schema.optional(Schema.String),
@@ -2941,23 +5434,15 @@ export type DatabaseRecommendedActionsUpdateInput =
 // Output Schema
 export const DatabaseRecommendedActionsUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => RecommendedActionPropertiesSchema),
+    ),
+    kind: Schema.optional(Schema.String),
+    location: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type DatabaseRecommendedActionsUpdateOutput =
   typeof DatabaseRecommendedActionsUpdateOutput.Type;
@@ -3002,20 +5487,7 @@ export const DatabaseSchemasGetOutput =
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type DatabaseSchemasGetOutput = typeof DatabaseSchemasGetOutput.Type;
 
@@ -3055,37 +5527,7 @@ export type DatabaseSchemasListByDatabaseInput =
 // Output Schema
 export const DatabaseSchemasListByDatabaseOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => DatabaseSchemaSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type DatabaseSchemasListByDatabaseOutput =
@@ -3114,165 +5556,11 @@ export const DatabasesCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serverName: Schema.String.pipe(T.PathParam()),
     databaseName: Schema.String.pipe(T.PathParam()),
-    properties: Schema.optional(
-      Schema.Struct({
-        createMode: Schema.optional(
-          Schema.Literals([
-            "Default",
-            "Copy",
-            "Secondary",
-            "PointInTimeRestore",
-            "Restore",
-            "Recovery",
-            "RestoreExternalBackup",
-            "RestoreExternalBackupSecondary",
-            "RestoreLongTermRetentionBackup",
-            "OnlineSecondary",
-          ]),
-        ),
-        collation: Schema.optional(Schema.String),
-        maxSizeBytes: Schema.optional(Schema.Number),
-        sampleName: Schema.optional(
-          Schema.Literals([
-            "AdventureWorksLT",
-            "WideWorldImportersStd",
-            "WideWorldImportersFull",
-          ]),
-        ),
-        elasticPoolId: Schema.optional(Schema.String),
-        sourceDatabaseId: Schema.optional(Schema.String),
-        status: Schema.optional(
-          Schema.Literals([
-            "Online",
-            "Restoring",
-            "RecoveryPending",
-            "Recovering",
-            "Suspect",
-            "Offline",
-            "Standby",
-            "Shutdown",
-            "EmergencyMode",
-            "AutoClosed",
-            "Copying",
-            "Creating",
-            "Inaccessible",
-            "OfflineSecondary",
-            "Pausing",
-            "Paused",
-            "Resuming",
-            "Scaling",
-            "OfflineChangingDwPerformanceTiers",
-            "OnlineChangingDwPerformanceTiers",
-            "Disabled",
-            "Stopping",
-            "Stopped",
-            "Starting",
-          ]),
-        ),
-        databaseId: Schema.optional(Schema.String),
-        creationDate: Schema.optional(Schema.String),
-        currentServiceObjectiveName: Schema.optional(Schema.String),
-        requestedServiceObjectiveName: Schema.optional(Schema.String),
-        defaultSecondaryLocation: Schema.optional(Schema.String),
-        failoverGroupId: Schema.optional(Schema.String),
-        restorePointInTime: Schema.optional(Schema.String),
-        sourceDatabaseDeletionDate: Schema.optional(Schema.String),
-        recoveryServicesRecoveryPointId: Schema.optional(Schema.String),
-        longTermRetentionBackupResourceId: Schema.optional(Schema.String),
-        recoverableDatabaseId: Schema.optional(Schema.String),
-        restorableDroppedDatabaseId: Schema.optional(Schema.String),
-        catalogCollation: Schema.optional(
-          Schema.Literals(["DATABASE_DEFAULT", "SQL_Latin1_General_CP1_CI_AS"]),
-        ),
-        zoneRedundant: Schema.optional(Schema.Boolean),
-        licenseType: Schema.optional(
-          Schema.Literals(["LicenseIncluded", "BasePrice"]),
-        ),
-        maxLogSizeBytes: Schema.optional(Schema.Number),
-        earliestRestoreDate: Schema.optional(Schema.String),
-        readScale: Schema.optional(Schema.Literals(["Enabled", "Disabled"])),
-        highAvailabilityReplicaCount: Schema.optional(Schema.Number),
-        secondaryType: Schema.optional(
-          Schema.Literals(["Geo", "Named", "Standby"]),
-        ),
-        currentSku: Schema.optional(
-          Schema.Struct({
-            name: Schema.String,
-            tier: Schema.optional(Schema.String),
-            size: Schema.optional(Schema.String),
-            family: Schema.optional(Schema.String),
-            capacity: Schema.optional(Schema.Number),
-          }),
-        ),
-        autoPauseDelay: Schema.optional(Schema.Number),
-        currentBackupStorageRedundancy: Schema.optional(
-          Schema.Literals(["Geo", "Local", "Zone", "GeoZone"]),
-        ),
-        requestedBackupStorageRedundancy: Schema.optional(
-          Schema.Literals(["Geo", "Local", "Zone", "GeoZone"]),
-        ),
-        minCapacity: Schema.optional(Schema.Number),
-        pausedDate: Schema.optional(Schema.String),
-        resumedDate: Schema.optional(Schema.String),
-        maintenanceConfigurationId: Schema.optional(Schema.String),
-        isLedgerOn: Schema.optional(Schema.Boolean),
-        isInfraEncryptionEnabled: Schema.optional(Schema.Boolean),
-        federatedClientId: Schema.optional(Schema.String),
-        keys: Schema.optional(
-          Schema.Record(
-            Schema.String,
-            Schema.Struct({
-              type: Schema.optional(Schema.Literals(["AzureKeyVault"])),
-              thumbprint: Schema.optional(Schema.String),
-              creationDate: Schema.optional(Schema.String),
-              subregion: Schema.optional(Schema.String),
-              keyVersion: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        encryptionProtector: Schema.optional(Schema.String),
-        preferredEnclaveType: Schema.optional(
-          Schema.Literals(["Default", "VBS"]),
-        ),
-        useFreeLimit: Schema.optional(Schema.Boolean),
-        freeLimitExhaustionBehavior: Schema.optional(
-          Schema.Literals(["AutoPause", "BillOverUsage"]),
-        ),
-        sourceResourceId: Schema.optional(Schema.String),
-        manualCutover: Schema.optional(Schema.Boolean),
-        performCutover: Schema.optional(Schema.Boolean),
-        availabilityZone: Schema.optional(
-          Schema.Literals(["NoPreference", "1", "2", "3"]),
-        ),
-        encryptionProtectorAutoRotation: Schema.optional(Schema.Boolean),
-      }),
-    ),
-    sku: Schema.optional(
-      Schema.Struct({
-        name: Schema.String,
-        tier: Schema.optional(Schema.String),
-        size: Schema.optional(Schema.String),
-        family: Schema.optional(Schema.String),
-        capacity: Schema.optional(Schema.Number),
-      }),
-    ),
+    properties: Schema.optional(Schema.suspend(() => DatabasePropertiesSchema)),
+    sku: Schema.optional(Schema.suspend(() => SkuSchema)),
     kind: Schema.optional(Schema.String),
     managedBy: Schema.optional(Schema.String),
-    identity: Schema.optional(
-      Schema.Struct({
-        type: Schema.optional(Schema.Literals(["None", "UserAssigned"])),
-        tenantId: Schema.optional(Schema.String),
-        userAssignedIdentities: Schema.optional(
-          Schema.Record(
-            Schema.String,
-            Schema.Struct({
-              principalId: Schema.optional(Schema.String),
-              clientId: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-      }),
-    ),
+    identity: Schema.optional(Schema.suspend(() => DatabaseIdentitySchema)),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     location: Schema.String,
   }).pipe(
@@ -3289,23 +5577,17 @@ export type DatabasesCreateOrUpdateInput =
 // Output Schema
 export const DatabasesCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(Schema.suspend(() => DatabasePropertiesSchema)),
+    sku: Schema.optional(Schema.suspend(() => SkuSchema)),
+    kind: Schema.optional(Schema.String),
+    managedBy: Schema.optional(Schema.String),
+    identity: Schema.optional(Schema.suspend(() => DatabaseIdentitySchema)),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type DatabasesCreateOrUpdateOutput =
   typeof DatabasesCreateOrUpdateOutput.Type;
@@ -3369,16 +5651,7 @@ export const DatabaseSecurityAlertPoliciesCreateOrUpdateInput =
     databaseName: Schema.String.pipe(T.PathParam()),
     securityAlertPolicyName: Schema.Literals(["Default"]).pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        state: Schema.Literals(["Enabled", "Disabled"]),
-        disabledAlerts: Schema.optional(Schema.Array(Schema.String)),
-        emailAddresses: Schema.optional(Schema.Array(Schema.String)),
-        emailAccountAdmins: Schema.optional(Schema.Boolean),
-        storageEndpoint: Schema.optional(Schema.String),
-        storageAccountAccessKey: Schema.optional(Schema.String),
-        retentionDays: Schema.optional(Schema.Number),
-        creationTime: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(() => SecurityAlertsPolicyPropertiesSchema),
     ),
   }).pipe(
     T.Http({
@@ -3393,23 +5666,13 @@ export type DatabaseSecurityAlertPoliciesCreateOrUpdateInput =
 // Output Schema
 export const DatabaseSecurityAlertPoliciesCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => SecurityAlertsPolicyPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type DatabaseSecurityAlertPoliciesCreateOrUpdateOutput =
   typeof DatabaseSecurityAlertPoliciesCreateOrUpdateOutput.Type;
@@ -3451,23 +5714,13 @@ export type DatabaseSecurityAlertPoliciesGetInput =
 // Output Schema
 export const DatabaseSecurityAlertPoliciesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => SecurityAlertsPolicyPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type DatabaseSecurityAlertPoliciesGetOutput =
   typeof DatabaseSecurityAlertPoliciesGetOutput.Type;
@@ -3509,37 +5762,7 @@ export type DatabaseSecurityAlertPoliciesListByDatabaseInput =
 export const DatabaseSecurityAlertPoliciesListByDatabaseOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.String),
-              createdByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              createdAt: Schema.optional(Schema.String),
-              lastModifiedBy: Schema.optional(Schema.String),
-              lastModifiedByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              lastModifiedAt: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => DatabaseSecurityAlertPolicySchema)),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -3567,21 +5790,14 @@ export const DatabasesExportInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   serverName: Schema.String.pipe(T.PathParam()),
   databaseName: Schema.String.pipe(T.PathParam()),
-  storageKeyType: Schema.Literals([
-    "SharedAccessKey",
-    "StorageAccessKey",
-    "ManagedIdentity",
-  ]),
+  storageKeyType: Schema.suspend(() => StorageKeyTypeSchema),
   storageKey: Schema.String,
   storageUri: Schema.String,
   administratorLogin: Schema.String,
   administratorLoginPassword: Schema.optional(SensitiveString),
   authenticationType: Schema.optional(Schema.String),
   networkIsolation: Schema.optional(
-    Schema.Struct({
-      storageAccountResourceId: Schema.optional(Schema.String),
-      sqlServerResourceId: Schema.optional(Schema.String),
-    }),
+    Schema.suspend(() => NetworkIsolationSettingsSchema),
   ),
 }).pipe(
   T.Http({
@@ -3595,23 +5811,13 @@ export type DatabasesExportInput = typeof DatabasesExportInput.Type;
 
 // Output Schema
 export const DatabasesExportOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.optional(
+    Schema.suspend(() => ImportExportOperationResultPropertiesSchema),
+  ),
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
-  systemData: Schema.optional(
-    Schema.Struct({
-      createdBy: Schema.optional(Schema.String),
-      createdByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      createdAt: Schema.optional(Schema.String),
-      lastModifiedBy: Schema.optional(Schema.String),
-      lastModifiedByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      lastModifiedAt: Schema.optional(Schema.String),
-    }),
-  ),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
 });
 export type DatabasesExportOutput = typeof DatabasesExportOutput.Type;
 
@@ -3688,23 +5894,17 @@ export type DatabasesGetInput = typeof DatabasesGetInput.Type;
 
 // Output Schema
 export const DatabasesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.optional(Schema.suspend(() => DatabasePropertiesSchema)),
+  sku: Schema.optional(Schema.suspend(() => SkuSchema)),
+  kind: Schema.optional(Schema.String),
+  managedBy: Schema.optional(Schema.String),
+  identity: Schema.optional(Schema.suspend(() => DatabaseIdentitySchema)),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  location: Schema.String,
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
-  systemData: Schema.optional(
-    Schema.Struct({
-      createdBy: Schema.optional(Schema.String),
-      createdByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      createdAt: Schema.optional(Schema.String),
-      lastModifiedBy: Schema.optional(Schema.String),
-      lastModifiedByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      lastModifiedAt: Schema.optional(Schema.String),
-    }),
-  ),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
 });
 export type DatabasesGetOutput = typeof DatabasesGetOutput.Type;
 
@@ -3730,21 +5930,14 @@ export const DatabasesImportInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   serverName: Schema.String.pipe(T.PathParam()),
   databaseName: Schema.String.pipe(T.PathParam()),
-  storageKeyType: Schema.Literals([
-    "SharedAccessKey",
-    "StorageAccessKey",
-    "ManagedIdentity",
-  ]),
+  storageKeyType: Schema.suspend(() => StorageKeyTypeSchema),
   storageKey: Schema.String,
   storageUri: Schema.String,
   administratorLogin: Schema.String,
   administratorLoginPassword: Schema.optional(SensitiveString),
   authenticationType: Schema.optional(Schema.String),
   networkIsolation: Schema.optional(
-    Schema.Struct({
-      storageAccountResourceId: Schema.optional(Schema.String),
-      sqlServerResourceId: Schema.optional(Schema.String),
-    }),
+    Schema.suspend(() => NetworkIsolationSettingsSchema),
   ),
 }).pipe(
   T.Http({
@@ -3758,23 +5951,13 @@ export type DatabasesImportInput = typeof DatabasesImportInput.Type;
 
 // Output Schema
 export const DatabasesImportOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.optional(
+    Schema.suspend(() => ImportExportOperationResultPropertiesSchema),
+  ),
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
-  systemData: Schema.optional(
-    Schema.Struct({
-      createdBy: Schema.optional(Schema.String),
-      createdByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      createdAt: Schema.optional(Schema.String),
-      lastModifiedBy: Schema.optional(Schema.String),
-      lastModifiedByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      lastModifiedAt: Schema.optional(Schema.String),
-    }),
-  ),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
 });
 export type DatabasesImportOutput = typeof DatabasesImportOutput.Type;
 
@@ -3812,37 +5995,7 @@ export type DatabasesListByElasticPoolInput =
 // Output Schema
 export const DatabasesListByElasticPoolOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => DatabaseSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type DatabasesListByElasticPoolOutput =
@@ -3883,37 +6036,7 @@ export type DatabasesListByServerInput = typeof DatabasesListByServerInput.Type;
 // Output Schema
 export const DatabasesListByServerOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => DatabaseSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type DatabasesListByServerOutput =
@@ -3953,37 +6076,7 @@ export type DatabasesListInaccessibleByServerInput =
 // Output Schema
 export const DatabasesListInaccessibleByServerOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => DatabaseSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type DatabasesListInaccessibleByServerOutput =
@@ -4021,23 +6114,17 @@ export type DatabasesPauseInput = typeof DatabasesPauseInput.Type;
 
 // Output Schema
 export const DatabasesPauseOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.optional(Schema.suspend(() => DatabasePropertiesSchema)),
+  sku: Schema.optional(Schema.suspend(() => SkuSchema)),
+  kind: Schema.optional(Schema.String),
+  managedBy: Schema.optional(Schema.String),
+  identity: Schema.optional(Schema.suspend(() => DatabaseIdentitySchema)),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  location: Schema.String,
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
-  systemData: Schema.optional(
-    Schema.Struct({
-      createdBy: Schema.optional(Schema.String),
-      createdByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      createdAt: Schema.optional(Schema.String),
-      lastModifiedBy: Schema.optional(Schema.String),
-      lastModifiedByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      lastModifiedAt: Schema.optional(Schema.String),
-    }),
-  ),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
 });
 export type DatabasesPauseOutput = typeof DatabasesPauseOutput.Type;
 
@@ -4067,13 +6154,10 @@ export const DatabaseSqlVulnerabilityAssessmentBaselinesCreateOrUpdateInput =
     ),
     baselineName: Schema.Literals(["default"]).pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        latestScan: Schema.Boolean,
-        results: Schema.Record(
-          Schema.String,
-          Schema.Array(Schema.Array(Schema.String)),
-        ),
-      }),
+      Schema.suspend(
+        () =>
+          DatabaseSqlVulnerabilityAssessmentRuleBaselineListInputPropertiesSchema,
+      ),
     ),
   }).pipe(
     T.Http({
@@ -4088,23 +6172,15 @@ export type DatabaseSqlVulnerabilityAssessmentBaselinesCreateOrUpdateInput =
 // Output Schema
 export const DatabaseSqlVulnerabilityAssessmentBaselinesCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(
+        () => DatabaseSqlVulnerabilityAssessmentBaselineSetPropertiesSchema,
+      ),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type DatabaseSqlVulnerabilityAssessmentBaselinesCreateOrUpdateOutput =
   typeof DatabaseSqlVulnerabilityAssessmentBaselinesCreateOrUpdateOutput.Type;
@@ -4150,23 +6226,15 @@ export type DatabaseSqlVulnerabilityAssessmentBaselinesGetInput =
 // Output Schema
 export const DatabaseSqlVulnerabilityAssessmentBaselinesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(
+        () => DatabaseSqlVulnerabilityAssessmentBaselineSetPropertiesSchema,
+      ),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type DatabaseSqlVulnerabilityAssessmentBaselinesGetOutput =
   typeof DatabaseSqlVulnerabilityAssessmentBaselinesGetOutput.Type;
@@ -4211,35 +6279,7 @@ export type DatabaseSqlVulnerabilityAssessmentBaselinesListBySqlVulnerabilityAss
 export const DatabaseSqlVulnerabilityAssessmentBaselinesListBySqlVulnerabilityAssessmentOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
+      Schema.suspend(() => DatabaseSqlVulnerabilityAssessmentBaselineSetSchema),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -4320,10 +6360,10 @@ export const DatabaseSqlVulnerabilityAssessmentRuleBaselinesCreateOrUpdateInput 
     baselineName: Schema.Literals(["default"]).pipe(T.PathParam()),
     ruleId: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        latestScan: Schema.Boolean,
-        results: Schema.Array(Schema.Array(Schema.String)),
-      }),
+      Schema.suspend(
+        () =>
+          DatabaseSqlVulnerabilityAssessmentRuleBaselineInputPropertiesSchema,
+      ),
     ),
   }).pipe(
     T.Http({
@@ -4338,23 +6378,15 @@ export type DatabaseSqlVulnerabilityAssessmentRuleBaselinesCreateOrUpdateInput =
 // Output Schema
 export const DatabaseSqlVulnerabilityAssessmentRuleBaselinesCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(
+        () => DatabaseSqlVulnerabilityAssessmentRuleBaselinePropertiesSchema,
+      ),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type DatabaseSqlVulnerabilityAssessmentRuleBaselinesCreateOrUpdateOutput =
   typeof DatabaseSqlVulnerabilityAssessmentRuleBaselinesCreateOrUpdateOutput.Type;
@@ -4448,23 +6480,15 @@ export type DatabaseSqlVulnerabilityAssessmentRuleBaselinesGetInput =
 // Output Schema
 export const DatabaseSqlVulnerabilityAssessmentRuleBaselinesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(
+        () => DatabaseSqlVulnerabilityAssessmentRuleBaselinePropertiesSchema,
+      ),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type DatabaseSqlVulnerabilityAssessmentRuleBaselinesGetOutput =
   typeof DatabaseSqlVulnerabilityAssessmentRuleBaselinesGetOutput.Type;
@@ -4511,35 +6535,9 @@ export type DatabaseSqlVulnerabilityAssessmentRuleBaselinesListByBaselineInput =
 export const DatabaseSqlVulnerabilityAssessmentRuleBaselinesListByBaselineOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
+      Schema.suspend(
+        () => DatabaseSqlVulnerabilityAssessmentRuleBaselineSchema,
+      ),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -4589,23 +6587,15 @@ export type DatabaseSqlVulnerabilityAssessmentScanResultGetInput =
 // Output Schema
 export const DatabaseSqlVulnerabilityAssessmentScanResultGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(
+        () => SqlVulnerabilityAssessmentScanResultPropertiesSchema,
+      ),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type DatabaseSqlVulnerabilityAssessmentScanResultGetOutput =
   typeof DatabaseSqlVulnerabilityAssessmentScanResultGetOutput.Type;
@@ -4654,35 +6644,7 @@ export const DatabaseSqlVulnerabilityAssessmentScanResultListByScanOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.String),
-              createdByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              createdAt: Schema.optional(Schema.String),
-              lastModifiedBy: Schema.optional(Schema.String),
-              lastModifiedByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              lastModifiedAt: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
+        Schema.suspend(() => SqlVulnerabilityAssessmentScanResultsSchema),
       ),
     ),
     nextLink: Schema.optional(Schema.String),
@@ -4731,23 +6693,15 @@ export type DatabaseSqlVulnerabilityAssessmentScansGetInput =
 // Output Schema
 export const DatabaseSqlVulnerabilityAssessmentScansGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(
+        () => SqlVulnerabilityAssessmentScanRecordPropertiesSchema,
+      ),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type DatabaseSqlVulnerabilityAssessmentScansGetOutput =
   typeof DatabaseSqlVulnerabilityAssessmentScansGetOutput.Type;
@@ -4793,35 +6747,7 @@ export type DatabaseSqlVulnerabilityAssessmentScansListBySqlVulnerabilityAssessm
 export const DatabaseSqlVulnerabilityAssessmentScansListBySqlVulnerabilityAssessmentsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
+      Schema.suspend(() => SqlVulnerabilityAssessmentScanRecordSchema),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -4869,23 +6795,13 @@ export type DatabaseSqlVulnerabilityAssessmentsSettingsGetInput =
 // Output Schema
 export const DatabaseSqlVulnerabilityAssessmentsSettingsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => SqlVulnerabilityAssessmentPolicyPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type DatabaseSqlVulnerabilityAssessmentsSettingsGetOutput =
   typeof DatabaseSqlVulnerabilityAssessmentsSettingsGetOutput.Type;
@@ -4926,37 +6842,7 @@ export type DatabaseSqlVulnerabilityAssessmentsSettingsListByDatabaseInput =
 // Output Schema
 export const DatabaseSqlVulnerabilityAssessmentsSettingsListByDatabaseOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => SqlVulnerabilityAssessmentSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type DatabaseSqlVulnerabilityAssessmentsSettingsListByDatabaseOutput =
@@ -5030,23 +6916,17 @@ export type DatabasesResumeInput = typeof DatabasesResumeInput.Type;
 
 // Output Schema
 export const DatabasesResumeOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.optional(Schema.suspend(() => DatabasePropertiesSchema)),
+  sku: Schema.optional(Schema.suspend(() => SkuSchema)),
+  kind: Schema.optional(Schema.String),
+  managedBy: Schema.optional(Schema.String),
+  identity: Schema.optional(Schema.suspend(() => DatabaseIdentitySchema)),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  location: Schema.String,
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
-  systemData: Schema.optional(
-    Schema.Struct({
-      createdBy: Schema.optional(Schema.String),
-      createdByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      createdAt: Schema.optional(Schema.String),
-      lastModifiedBy: Schema.optional(Schema.String),
-      lastModifiedByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      lastModifiedAt: Schema.optional(Schema.String),
-    }),
-  ),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
 });
 export type DatabasesResumeOutput = typeof DatabasesResumeOutput.Type;
 
@@ -5070,158 +6950,10 @@ export const DatabasesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   serverName: Schema.String.pipe(T.PathParam()),
   databaseName: Schema.String.pipe(T.PathParam()),
-  sku: Schema.optional(
-    Schema.Struct({
-      name: Schema.String,
-      tier: Schema.optional(Schema.String),
-      size: Schema.optional(Schema.String),
-      family: Schema.optional(Schema.String),
-      capacity: Schema.optional(Schema.Number),
-    }),
-  ),
-  identity: Schema.optional(
-    Schema.Struct({
-      type: Schema.optional(Schema.Literals(["None", "UserAssigned"])),
-      tenantId: Schema.optional(Schema.String),
-      userAssignedIdentities: Schema.optional(
-        Schema.Record(
-          Schema.String,
-          Schema.Struct({
-            principalId: Schema.optional(Schema.String),
-            clientId: Schema.optional(Schema.String),
-          }),
-        ),
-      ),
-    }),
-  ),
+  sku: Schema.optional(Schema.suspend(() => SkuSchema)),
+  identity: Schema.optional(Schema.suspend(() => DatabaseIdentitySchema)),
   properties: Schema.optional(
-    Schema.Struct({
-      createMode: Schema.optional(
-        Schema.Literals([
-          "Default",
-          "Copy",
-          "Secondary",
-          "PointInTimeRestore",
-          "Restore",
-          "Recovery",
-          "RestoreExternalBackup",
-          "RestoreExternalBackupSecondary",
-          "RestoreLongTermRetentionBackup",
-          "OnlineSecondary",
-        ]),
-      ),
-      collation: Schema.optional(Schema.String),
-      maxSizeBytes: Schema.optional(Schema.Number),
-      sampleName: Schema.optional(
-        Schema.Literals([
-          "AdventureWorksLT",
-          "WideWorldImportersStd",
-          "WideWorldImportersFull",
-        ]),
-      ),
-      elasticPoolId: Schema.optional(Schema.String),
-      sourceDatabaseId: Schema.optional(Schema.String),
-      status: Schema.optional(
-        Schema.Literals([
-          "Online",
-          "Restoring",
-          "RecoveryPending",
-          "Recovering",
-          "Suspect",
-          "Offline",
-          "Standby",
-          "Shutdown",
-          "EmergencyMode",
-          "AutoClosed",
-          "Copying",
-          "Creating",
-          "Inaccessible",
-          "OfflineSecondary",
-          "Pausing",
-          "Paused",
-          "Resuming",
-          "Scaling",
-          "OfflineChangingDwPerformanceTiers",
-          "OnlineChangingDwPerformanceTiers",
-          "Disabled",
-          "Stopping",
-          "Stopped",
-          "Starting",
-        ]),
-      ),
-      databaseId: Schema.optional(Schema.String),
-      creationDate: Schema.optional(Schema.String),
-      currentServiceObjectiveName: Schema.optional(Schema.String),
-      requestedServiceObjectiveName: Schema.optional(Schema.String),
-      defaultSecondaryLocation: Schema.optional(Schema.String),
-      failoverGroupId: Schema.optional(Schema.String),
-      restorePointInTime: Schema.optional(Schema.String),
-      sourceDatabaseDeletionDate: Schema.optional(Schema.String),
-      recoveryServicesRecoveryPointId: Schema.optional(Schema.String),
-      longTermRetentionBackupResourceId: Schema.optional(Schema.String),
-      recoverableDatabaseId: Schema.optional(Schema.String),
-      restorableDroppedDatabaseId: Schema.optional(Schema.String),
-      catalogCollation: Schema.optional(
-        Schema.Literals(["DATABASE_DEFAULT", "SQL_Latin1_General_CP1_CI_AS"]),
-      ),
-      zoneRedundant: Schema.optional(Schema.Boolean),
-      licenseType: Schema.optional(
-        Schema.Literals(["LicenseIncluded", "BasePrice"]),
-      ),
-      maxLogSizeBytes: Schema.optional(Schema.Number),
-      earliestRestoreDate: Schema.optional(Schema.String),
-      readScale: Schema.optional(Schema.Literals(["Enabled", "Disabled"])),
-      highAvailabilityReplicaCount: Schema.optional(Schema.Number),
-      secondaryType: Schema.optional(
-        Schema.Literals(["Geo", "Named", "Standby"]),
-      ),
-      currentSku: Schema.optional(
-        Schema.Struct({
-          name: Schema.String,
-          tier: Schema.optional(Schema.String),
-          size: Schema.optional(Schema.String),
-          family: Schema.optional(Schema.String),
-          capacity: Schema.optional(Schema.Number),
-        }),
-      ),
-      autoPauseDelay: Schema.optional(Schema.Number),
-      currentBackupStorageRedundancy: Schema.optional(
-        Schema.Literals(["Geo", "Local", "Zone", "GeoZone"]),
-      ),
-      requestedBackupStorageRedundancy: Schema.optional(
-        Schema.Literals(["Geo", "Local", "Zone", "GeoZone"]),
-      ),
-      minCapacity: Schema.optional(Schema.Number),
-      pausedDate: Schema.optional(Schema.String),
-      resumedDate: Schema.optional(Schema.String),
-      maintenanceConfigurationId: Schema.optional(Schema.String),
-      isLedgerOn: Schema.optional(Schema.Boolean),
-      isInfraEncryptionEnabled: Schema.optional(Schema.Boolean),
-      federatedClientId: Schema.optional(Schema.String),
-      keys: Schema.optional(
-        Schema.Record(
-          Schema.String,
-          Schema.Struct({
-            type: Schema.optional(Schema.Literals(["AzureKeyVault"])),
-            thumbprint: Schema.optional(Schema.String),
-            creationDate: Schema.optional(Schema.String),
-            subregion: Schema.optional(Schema.String),
-            keyVersion: Schema.optional(Schema.String),
-          }),
-        ),
-      ),
-      encryptionProtector: Schema.optional(Schema.String),
-      preferredEnclaveType: Schema.optional(
-        Schema.Literals(["Default", "VBS"]),
-      ),
-      useFreeLimit: Schema.optional(Schema.Boolean),
-      freeLimitExhaustionBehavior: Schema.optional(
-        Schema.Literals(["AutoPause", "BillOverUsage"]),
-      ),
-      manualCutover: Schema.optional(Schema.Boolean),
-      performCutover: Schema.optional(Schema.Boolean),
-      encryptionProtectorAutoRotation: Schema.optional(Schema.Boolean),
-    }),
+    Schema.suspend(() => DatabaseUpdatePropertiesSchema),
   ),
   tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
 }).pipe(
@@ -5236,23 +6968,17 @@ export type DatabasesUpdateInput = typeof DatabasesUpdateInput.Type;
 
 // Output Schema
 export const DatabasesUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.optional(Schema.suspend(() => DatabasePropertiesSchema)),
+  sku: Schema.optional(Schema.suspend(() => SkuSchema)),
+  kind: Schema.optional(Schema.String),
+  managedBy: Schema.optional(Schema.String),
+  identity: Schema.optional(Schema.suspend(() => DatabaseIdentitySchema)),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  location: Schema.String,
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
-  systemData: Schema.optional(
-    Schema.Struct({
-      createdBy: Schema.optional(Schema.String),
-      createdByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      createdAt: Schema.optional(Schema.String),
-      lastModifiedBy: Schema.optional(Schema.String),
-      lastModifiedByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      lastModifiedAt: Schema.optional(Schema.String),
-    }),
-  ),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
 });
 export type DatabasesUpdateOutput = typeof DatabasesUpdateOutput.Type;
 
@@ -5331,23 +7057,13 @@ export type DatabaseTablesGetInput = typeof DatabaseTablesGetInput.Type;
 // Output Schema
 export const DatabaseTablesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => DatabaseTablePropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type DatabaseTablesGetOutput = typeof DatabaseTablesGetOutput.Type;
 
@@ -5389,37 +7105,7 @@ export type DatabaseTablesListBySchemaInput =
 // Output Schema
 export const DatabaseTablesListBySchemaOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => DatabaseTableSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type DatabaseTablesListBySchemaOutput =
@@ -5463,37 +7149,7 @@ export type DatabaseUsagesListByDatabaseInput =
 // Output Schema
 export const DatabaseUsagesListByDatabaseOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => DatabaseUsageSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type DatabaseUsagesListByDatabaseOutput =
@@ -5527,13 +7183,9 @@ export const DatabaseVulnerabilityAssessmentRuleBaselinesCreateOrUpdateInput =
     ruleId: Schema.String.pipe(T.PathParam()),
     baselineName: Schema.Literals(["master", "default"]).pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        baselineResults: Schema.Array(
-          Schema.Struct({
-            result: Schema.Array(Schema.String),
-          }),
-        ),
-      }),
+      Schema.suspend(
+        () => DatabaseVulnerabilityAssessmentRuleBaselinePropertiesSchema,
+      ),
     ),
   }).pipe(
     T.Http({
@@ -5548,23 +7200,15 @@ export type DatabaseVulnerabilityAssessmentRuleBaselinesCreateOrUpdateInput =
 // Output Schema
 export const DatabaseVulnerabilityAssessmentRuleBaselinesCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(
+        () => DatabaseVulnerabilityAssessmentRuleBaselinePropertiesSchema,
+      ),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type DatabaseVulnerabilityAssessmentRuleBaselinesCreateOrUpdateOutput =
   typeof DatabaseVulnerabilityAssessmentRuleBaselinesCreateOrUpdateOutput.Type;
@@ -5660,23 +7304,15 @@ export type DatabaseVulnerabilityAssessmentRuleBaselinesGetInput =
 // Output Schema
 export const DatabaseVulnerabilityAssessmentRuleBaselinesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(
+        () => DatabaseVulnerabilityAssessmentRuleBaselinePropertiesSchema,
+      ),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type DatabaseVulnerabilityAssessmentRuleBaselinesGetOutput =
   typeof DatabaseVulnerabilityAssessmentRuleBaselinesGetOutput.Type;
@@ -5723,23 +7359,15 @@ export type DatabaseVulnerabilityAssessmentScansExportInput =
 // Output Schema
 export const DatabaseVulnerabilityAssessmentScansExportOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(
+        () => DatabaseVulnerabilityAssessmentScanExportPropertiesSchema,
+      ),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type DatabaseVulnerabilityAssessmentScansExportOutput =
   typeof DatabaseVulnerabilityAssessmentScansExportOutput.Type;
@@ -5785,23 +7413,13 @@ export type DatabaseVulnerabilityAssessmentScansGetInput =
 // Output Schema
 export const DatabaseVulnerabilityAssessmentScansGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => VulnerabilityAssessmentScanRecordPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type DatabaseVulnerabilityAssessmentScansGetOutput =
   typeof DatabaseVulnerabilityAssessmentScansGetOutput.Type;
@@ -5892,35 +7510,7 @@ export type DatabaseVulnerabilityAssessmentScansListByDatabaseInput =
 export const DatabaseVulnerabilityAssessmentScansListByDatabaseOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
+      Schema.suspend(() => VulnerabilityAssessmentScanRecordSchema),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -5954,18 +7544,7 @@ export const DatabaseVulnerabilityAssessmentsCreateOrUpdateInput =
       T.PathParam(),
     ),
     properties: Schema.optional(
-      Schema.Struct({
-        storageContainerPath: Schema.optional(Schema.String),
-        storageContainerSasKey: Schema.optional(Schema.String),
-        storageAccountAccessKey: Schema.optional(Schema.String),
-        recurringScans: Schema.optional(
-          Schema.Struct({
-            isEnabled: Schema.optional(Schema.Boolean),
-            emailSubscriptionAdmins: Schema.optional(Schema.Boolean),
-            emails: Schema.optional(Schema.Array(Schema.String)),
-          }),
-        ),
-      }),
+      Schema.suspend(() => DatabaseVulnerabilityAssessmentPropertiesSchema),
     ),
   }).pipe(
     T.Http({
@@ -5980,23 +7559,13 @@ export type DatabaseVulnerabilityAssessmentsCreateOrUpdateInput =
 // Output Schema
 export const DatabaseVulnerabilityAssessmentsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => DatabaseVulnerabilityAssessmentPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type DatabaseVulnerabilityAssessmentsCreateOrUpdateOutput =
   typeof DatabaseVulnerabilityAssessmentsCreateOrUpdateOutput.Type;
@@ -6082,23 +7651,13 @@ export type DatabaseVulnerabilityAssessmentsGetInput =
 // Output Schema
 export const DatabaseVulnerabilityAssessmentsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => DatabaseVulnerabilityAssessmentPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type DatabaseVulnerabilityAssessmentsGetOutput =
   typeof DatabaseVulnerabilityAssessmentsGetOutput.Type;
@@ -6140,35 +7699,7 @@ export type DatabaseVulnerabilityAssessmentsListByDatabaseInput =
 export const DatabaseVulnerabilityAssessmentsListByDatabaseOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
+      Schema.suspend(() => DatabaseVulnerabilityAssessmentSchema),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -6199,12 +7730,7 @@ export const DataMaskingPoliciesCreateOrUpdateInput =
     databaseName: Schema.String.pipe(T.PathParam()),
     dataMaskingPolicyName: Schema.Literals(["Default"]).pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        dataMaskingState: Schema.Literals(["Enabled", "Disabled"]),
-        exemptPrincipals: Schema.optional(Schema.String),
-        applicationPrincipals: Schema.optional(Schema.String),
-        maskingLevel: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(() => DataMaskingPolicyPropertiesSchema),
     ),
     location: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
@@ -6221,23 +7747,15 @@ export type DataMaskingPoliciesCreateOrUpdateInput =
 // Output Schema
 export const DataMaskingPoliciesCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => DataMaskingPolicyPropertiesSchema),
+    ),
+    location: Schema.optional(Schema.String),
+    kind: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type DataMaskingPoliciesCreateOrUpdateOutput =
   typeof DataMaskingPoliciesCreateOrUpdateOutput.Type;
@@ -6279,23 +7797,15 @@ export type DataMaskingPoliciesGetInput =
 // Output Schema
 export const DataMaskingPoliciesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => DataMaskingPolicyPropertiesSchema),
+    ),
+    location: Schema.optional(Schema.String),
+    kind: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type DataMaskingPoliciesGetOutput =
   typeof DataMaskingPoliciesGetOutput.Type;
@@ -6329,27 +7839,7 @@ export const DataMaskingRulesCreateOrUpdateInput =
     location: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     properties: Schema.optional(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        ruleState: Schema.optional(Schema.Literals(["Enabled", "Disabled"])),
-        schemaName: Schema.String,
-        tableName: Schema.String,
-        columnName: Schema.String,
-        aliasName: Schema.optional(Schema.String),
-        maskingFunction: Schema.Literals([
-          "Default",
-          "CCN",
-          "Email",
-          "Number",
-          "SSN",
-          "Text",
-        ]),
-        numberFrom: Schema.optional(Schema.String),
-        numberTo: Schema.optional(Schema.String),
-        prefixSize: Schema.optional(Schema.String),
-        suffixSize: Schema.optional(Schema.String),
-        replacementString: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(() => DataMaskingRulePropertiesSchema),
     ),
   }).pipe(
     T.Http({
@@ -6364,23 +7854,15 @@ export type DataMaskingRulesCreateOrUpdateInput =
 // Output Schema
 export const DataMaskingRulesCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    location: Schema.optional(Schema.String),
+    kind: Schema.optional(Schema.String),
+    properties: Schema.optional(
+      Schema.suspend(() => DataMaskingRulePropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type DataMaskingRulesCreateOrUpdateOutput =
   typeof DataMaskingRulesCreateOrUpdateOutput.Type;
@@ -6423,37 +7905,7 @@ export type DataMaskingRulesListByDatabaseInput =
 // Output Schema
 export const DataMaskingRulesListByDatabaseOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => DataMaskingRuleSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type DataMaskingRulesListByDatabaseOutput =
@@ -6498,23 +7950,13 @@ export type DataWarehouseUserActivitiesGetInput =
 // Output Schema
 export const DataWarehouseUserActivitiesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => DataWarehouseUserActivitiesPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type DataWarehouseUserActivitiesGetOutput =
   typeof DataWarehouseUserActivitiesGetOutput.Type;
@@ -6556,35 +7998,7 @@ export type DataWarehouseUserActivitiesListByDatabaseInput =
 export const DataWarehouseUserActivitiesListByDatabaseOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
+      Schema.suspend(() => DataWarehouseUserActivitiesSchema),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -6625,23 +8039,13 @@ export type DeletedServersGetInput = typeof DeletedServersGetInput.Type;
 // Output Schema
 export const DeletedServersGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => DeletedServerPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type DeletedServersGetOutput = typeof DeletedServersGetOutput.Type;
 
@@ -6674,37 +8078,7 @@ export type DeletedServersListInput = typeof DeletedServersListInput.Type;
 // Output Schema
 export const DeletedServersListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => DeletedServerSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type DeletedServersListOutput = typeof DeletedServersListOutput.Type;
@@ -6738,37 +8112,7 @@ export type DeletedServersListByLocationInput =
 // Output Schema
 export const DeletedServersListByLocationOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => DeletedServerSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type DeletedServersListByLocationOutput =
@@ -6806,23 +8150,13 @@ export type DeletedServersRecoverInput = typeof DeletedServersRecoverInput.Type;
 // Output Schema
 export const DeletedServersRecoverOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => DeletedServerPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type DeletedServersRecoverOutput =
   typeof DeletedServersRecoverOutput.Type;
@@ -6850,62 +8184,7 @@ export const DistributedAvailabilityGroupsCreateOrUpdateInput =
     managedInstanceName: Schema.String.pipe(T.PathParam()),
     distributedAvailabilityGroupName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        distributedAvailabilityGroupName: Schema.optional(Schema.String),
-        distributedAvailabilityGroupId: Schema.optional(Schema.String),
-        replicationMode: Schema.optional(Schema.Literals(["Async", "Sync"])),
-        partnerLinkRole: Schema.optional(
-          Schema.Literals(["Primary", "Secondary"]),
-        ),
-        partnerAvailabilityGroupName: Schema.optional(Schema.String),
-        partnerEndpoint: Schema.optional(Schema.String),
-        instanceLinkRole: Schema.optional(
-          Schema.Literals(["Primary", "Secondary"]),
-        ),
-        instanceAvailabilityGroupName: Schema.optional(Schema.String),
-        failoverMode: Schema.optional(Schema.Literals(["None", "Manual"])),
-        seedingMode: Schema.optional(Schema.Literals(["Automatic", "Manual"])),
-        databases: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              databaseName: Schema.optional(Schema.String),
-              instanceReplicaId: Schema.optional(Schema.String),
-              partnerReplicaId: Schema.optional(Schema.String),
-              replicaState: Schema.optional(Schema.String),
-              seedingProgress: Schema.optional(Schema.String),
-              synchronizationHealth: Schema.optional(
-                Schema.Literals([
-                  "NOT_HEALTHY",
-                  "PARTIALLY_HEALTHY",
-                  "HEALTHY",
-                ]),
-              ),
-              connectedState: Schema.optional(
-                Schema.Literals(["DISCONNECTED", "CONNECTED"]),
-              ),
-              lastReceivedLsn: Schema.optional(Schema.String),
-              lastReceivedTime: Schema.optional(Schema.String),
-              lastSentLsn: Schema.optional(Schema.String),
-              lastSentTime: Schema.optional(Schema.String),
-              lastCommitLsn: Schema.optional(Schema.String),
-              lastCommitTime: Schema.optional(Schema.String),
-              lastHardenedLsn: Schema.optional(Schema.String),
-              lastHardenedTime: Schema.optional(Schema.String),
-              lastBackupLsn: Schema.optional(Schema.String),
-              lastBackupTime: Schema.optional(Schema.String),
-              mostRecentLinkError: Schema.optional(Schema.String),
-              partnerAuthCertValidity: Schema.optional(
-                Schema.Struct({
-                  certificateName: Schema.optional(Schema.String),
-                  expiryDate: Schema.optional(Schema.String),
-                }),
-              ),
-              instanceSendReplicationLagSeconds: Schema.optional(Schema.Number),
-              instanceRedoReplicationLagSeconds: Schema.optional(Schema.Number),
-            }),
-          ),
-        ),
-      }),
+      Schema.suspend(() => DistributedAvailabilityGroupPropertiesSchema),
     ),
   }).pipe(
     T.Http({
@@ -6921,23 +8200,13 @@ export type DistributedAvailabilityGroupsCreateOrUpdateInput =
 // Output Schema
 export const DistributedAvailabilityGroupsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => DistributedAvailabilityGroupPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type DistributedAvailabilityGroupsCreateOrUpdateOutput =
   typeof DistributedAvailabilityGroupsCreateOrUpdateOutput.Type;
@@ -7003,7 +8272,7 @@ export const DistributedAvailabilityGroupsFailoverInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     managedInstanceName: Schema.String.pipe(T.PathParam()),
     distributedAvailabilityGroupName: Schema.String.pipe(T.PathParam()),
-    failoverType: Schema.Literals(["ForcedAllowDataLoss", "Planned"]),
+    failoverType: Schema.suspend(() => FailoverTypeSchema),
   }).pipe(
     T.Http({
       method: "POST",
@@ -7018,23 +8287,13 @@ export type DistributedAvailabilityGroupsFailoverInput =
 // Output Schema
 export const DistributedAvailabilityGroupsFailoverOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => DistributedAvailabilityGroupPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type DistributedAvailabilityGroupsFailoverOutput =
   typeof DistributedAvailabilityGroupsFailoverOutput.Type;
@@ -7074,23 +8333,13 @@ export type DistributedAvailabilityGroupsGetInput =
 // Output Schema
 export const DistributedAvailabilityGroupsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => DistributedAvailabilityGroupPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type DistributedAvailabilityGroupsGetOutput =
   typeof DistributedAvailabilityGroupsGetOutput.Type;
@@ -7130,37 +8379,7 @@ export type DistributedAvailabilityGroupsListByInstanceInput =
 export const DistributedAvailabilityGroupsListByInstanceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.String),
-              createdByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              createdAt: Schema.optional(Schema.String),
-              lastModifiedBy: Schema.optional(Schema.String),
-              lastModifiedByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              lastModifiedAt: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => DistributedAvailabilityGroupSchema)),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -7188,8 +8407,8 @@ export const DistributedAvailabilityGroupsSetRoleInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     managedInstanceName: Schema.String.pipe(T.PathParam()),
     distributedAvailabilityGroupName: Schema.String.pipe(T.PathParam()),
-    instanceRole: Schema.Literals(["Primary", "Secondary"]),
-    roleChangeType: Schema.Literals(["Forced", "Planned"]),
+    instanceRole: Schema.suspend(() => InstanceRoleSchema),
+    roleChangeType: Schema.suspend(() => RoleChangeTypeSchema),
   }).pipe(
     T.Http({
       method: "POST",
@@ -7204,23 +8423,13 @@ export type DistributedAvailabilityGroupsSetRoleInput =
 // Output Schema
 export const DistributedAvailabilityGroupsSetRoleOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => DistributedAvailabilityGroupPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type DistributedAvailabilityGroupsSetRoleOutput =
   typeof DistributedAvailabilityGroupsSetRoleOutput.Type;
@@ -7248,62 +8457,7 @@ export const DistributedAvailabilityGroupsUpdateInput =
     managedInstanceName: Schema.String.pipe(T.PathParam()),
     distributedAvailabilityGroupName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        distributedAvailabilityGroupName: Schema.optional(Schema.String),
-        distributedAvailabilityGroupId: Schema.optional(Schema.String),
-        replicationMode: Schema.optional(Schema.Literals(["Async", "Sync"])),
-        partnerLinkRole: Schema.optional(
-          Schema.Literals(["Primary", "Secondary"]),
-        ),
-        partnerAvailabilityGroupName: Schema.optional(Schema.String),
-        partnerEndpoint: Schema.optional(Schema.String),
-        instanceLinkRole: Schema.optional(
-          Schema.Literals(["Primary", "Secondary"]),
-        ),
-        instanceAvailabilityGroupName: Schema.optional(Schema.String),
-        failoverMode: Schema.optional(Schema.Literals(["None", "Manual"])),
-        seedingMode: Schema.optional(Schema.Literals(["Automatic", "Manual"])),
-        databases: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              databaseName: Schema.optional(Schema.String),
-              instanceReplicaId: Schema.optional(Schema.String),
-              partnerReplicaId: Schema.optional(Schema.String),
-              replicaState: Schema.optional(Schema.String),
-              seedingProgress: Schema.optional(Schema.String),
-              synchronizationHealth: Schema.optional(
-                Schema.Literals([
-                  "NOT_HEALTHY",
-                  "PARTIALLY_HEALTHY",
-                  "HEALTHY",
-                ]),
-              ),
-              connectedState: Schema.optional(
-                Schema.Literals(["DISCONNECTED", "CONNECTED"]),
-              ),
-              lastReceivedLsn: Schema.optional(Schema.String),
-              lastReceivedTime: Schema.optional(Schema.String),
-              lastSentLsn: Schema.optional(Schema.String),
-              lastSentTime: Schema.optional(Schema.String),
-              lastCommitLsn: Schema.optional(Schema.String),
-              lastCommitTime: Schema.optional(Schema.String),
-              lastHardenedLsn: Schema.optional(Schema.String),
-              lastHardenedTime: Schema.optional(Schema.String),
-              lastBackupLsn: Schema.optional(Schema.String),
-              lastBackupTime: Schema.optional(Schema.String),
-              mostRecentLinkError: Schema.optional(Schema.String),
-              partnerAuthCertValidity: Schema.optional(
-                Schema.Struct({
-                  certificateName: Schema.optional(Schema.String),
-                  expiryDate: Schema.optional(Schema.String),
-                }),
-              ),
-              instanceSendReplicationLagSeconds: Schema.optional(Schema.Number),
-              instanceRedoReplicationLagSeconds: Schema.optional(Schema.Number),
-            }),
-          ),
-        ),
-      }),
+      Schema.suspend(() => DistributedAvailabilityGroupPropertiesSchema),
     ),
   }).pipe(
     T.Http({
@@ -7319,23 +8473,13 @@ export type DistributedAvailabilityGroupsUpdateInput =
 // Output Schema
 export const DistributedAvailabilityGroupsUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => DistributedAvailabilityGroupPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type DistributedAvailabilityGroupsUpdateOutput =
   typeof DistributedAvailabilityGroupsUpdateOutput.Type;
@@ -7374,13 +8518,7 @@ export type ElasticPoolActivitiesListByElasticPoolInput =
 // Output Schema
 export const ElasticPoolActivitiesListByElasticPoolOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => ElasticPoolActivitySchema)),
   });
 export type ElasticPoolActivitiesListByElasticPoolOutput =
   typeof ElasticPoolActivitiesListByElasticPoolOutput.Type;
@@ -7419,11 +8557,7 @@ export type ElasticPoolDatabaseActivitiesListByElasticPoolInput =
 export const ElasticPoolDatabaseActivitiesListByElasticPoolOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(() => ElasticPoolDatabaseActivitySchema),
     ),
   });
 export type ElasticPoolDatabaseActivitiesListByElasticPoolOutput =
@@ -7504,37 +8638,7 @@ export type ElasticPoolOperationsListByElasticPoolInput =
 // Output Schema
 export const ElasticPoolOperationsListByElasticPoolOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => ElasticPoolOperationSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type ElasticPoolOperationsListByElasticPoolOutput =
@@ -7563,44 +8667,9 @@ export const ElasticPoolsCreateOrUpdateInput =
     serverName: Schema.String.pipe(T.PathParam()),
     elasticPoolName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        state: Schema.optional(
-          Schema.Literals(["Creating", "Ready", "Disabled"]),
-        ),
-        creationDate: Schema.optional(Schema.String),
-        maxSizeBytes: Schema.optional(Schema.Number),
-        minCapacity: Schema.optional(Schema.Number),
-        perDatabaseSettings: Schema.optional(
-          Schema.Struct({
-            minCapacity: Schema.optional(Schema.Number),
-            maxCapacity: Schema.optional(Schema.Number),
-            autoPauseDelay: Schema.optional(Schema.Number),
-          }),
-        ),
-        zoneRedundant: Schema.optional(Schema.Boolean),
-        licenseType: Schema.optional(
-          Schema.Literals(["LicenseIncluded", "BasePrice"]),
-        ),
-        maintenanceConfigurationId: Schema.optional(Schema.String),
-        highAvailabilityReplicaCount: Schema.optional(Schema.Number),
-        autoPauseDelay: Schema.optional(Schema.Number),
-        preferredEnclaveType: Schema.optional(
-          Schema.Literals(["Default", "VBS"]),
-        ),
-        availabilityZone: Schema.optional(
-          Schema.Literals(["NoPreference", "1", "2", "3"]),
-        ),
-      }),
+      Schema.suspend(() => ElasticPoolPropertiesSchema),
     ),
-    sku: Schema.optional(
-      Schema.Struct({
-        name: Schema.String,
-        tier: Schema.optional(Schema.String),
-        size: Schema.optional(Schema.String),
-        family: Schema.optional(Schema.String),
-        capacity: Schema.optional(Schema.Number),
-      }),
-    ),
+    sku: Schema.optional(Schema.suspend(() => SkuSchema)),
     kind: Schema.optional(Schema.String),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     location: Schema.String,
@@ -7618,23 +8687,17 @@ export type ElasticPoolsCreateOrUpdateInput =
 // Output Schema
 export const ElasticPoolsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => ElasticPoolPropertiesSchema),
+    ),
+    sku: Schema.optional(Schema.suspend(() => SkuSchema)),
+    kind: Schema.optional(Schema.String),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type ElasticPoolsCreateOrUpdateOutput =
   typeof ElasticPoolsCreateOrUpdateOutput.Type;
@@ -7745,23 +8808,17 @@ export type ElasticPoolsGetInput = typeof ElasticPoolsGetInput.Type;
 
 // Output Schema
 export const ElasticPoolsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.optional(
+    Schema.suspend(() => ElasticPoolPropertiesSchema),
+  ),
+  sku: Schema.optional(Schema.suspend(() => SkuSchema)),
+  kind: Schema.optional(Schema.String),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  location: Schema.String,
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
-  systemData: Schema.optional(
-    Schema.Struct({
-      createdBy: Schema.optional(Schema.String),
-      createdByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      createdAt: Schema.optional(Schema.String),
-      lastModifiedBy: Schema.optional(Schema.String),
-      lastModifiedByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      lastModifiedAt: Schema.optional(Schema.String),
-    }),
-  ),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
 });
 export type ElasticPoolsGetOutput = typeof ElasticPoolsGetOutput.Type;
 
@@ -7799,37 +8856,7 @@ export type ElasticPoolsListByServerInput =
 // Output Schema
 export const ElasticPoolsListByServerOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => ElasticPoolSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type ElasticPoolsListByServerOutput =
@@ -7858,40 +8885,9 @@ export const ElasticPoolsUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serverName: Schema.String.pipe(T.PathParam()),
     elasticPoolName: Schema.String.pipe(T.PathParam()),
-    sku: Schema.optional(
-      Schema.Struct({
-        name: Schema.String,
-        tier: Schema.optional(Schema.String),
-        size: Schema.optional(Schema.String),
-        family: Schema.optional(Schema.String),
-        capacity: Schema.optional(Schema.Number),
-      }),
-    ),
+    sku: Schema.optional(Schema.suspend(() => SkuSchema)),
     properties: Schema.optional(
-      Schema.Struct({
-        maxSizeBytes: Schema.optional(Schema.Number),
-        minCapacity: Schema.optional(Schema.Number),
-        perDatabaseSettings: Schema.optional(
-          Schema.Struct({
-            minCapacity: Schema.optional(Schema.Number),
-            maxCapacity: Schema.optional(Schema.Number),
-            autoPauseDelay: Schema.optional(Schema.Number),
-          }),
-        ),
-        zoneRedundant: Schema.optional(Schema.Boolean),
-        licenseType: Schema.optional(
-          Schema.Literals(["LicenseIncluded", "BasePrice"]),
-        ),
-        maintenanceConfigurationId: Schema.optional(Schema.String),
-        highAvailabilityReplicaCount: Schema.optional(Schema.Number),
-        autoPauseDelay: Schema.optional(Schema.Number),
-        preferredEnclaveType: Schema.optional(
-          Schema.Literals(["Default", "VBS"]),
-        ),
-        availabilityZone: Schema.optional(
-          Schema.Literals(["NoPreference", "1", "2", "3"]),
-        ),
-      }),
+      Schema.suspend(() => ElasticPoolUpdatePropertiesSchema),
     ),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
@@ -7907,23 +8903,17 @@ export type ElasticPoolsUpdateInput = typeof ElasticPoolsUpdateInput.Type;
 // Output Schema
 export const ElasticPoolsUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => ElasticPoolPropertiesSchema),
+    ),
+    sku: Schema.optional(Schema.suspend(() => SkuSchema)),
+    kind: Schema.optional(Schema.String),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type ElasticPoolsUpdateOutput = typeof ElasticPoolsUpdateOutput.Type;
 
@@ -7949,15 +8939,7 @@ export const EncryptionProtectorsCreateOrUpdateInput =
     serverName: Schema.String.pipe(T.PathParam()),
     encryptionProtectorName: Schema.Literals(["current"]).pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        subregion: Schema.optional(Schema.String),
-        serverKeyName: Schema.optional(Schema.String),
-        serverKeyType: Schema.Literals(["ServiceManaged", "AzureKeyVault"]),
-        uri: Schema.optional(Schema.String),
-        thumbprint: Schema.optional(Schema.String),
-        autoRotationEnabled: Schema.optional(Schema.Boolean),
-        keyVersion: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(() => EncryptionProtectorPropertiesSchema),
     ),
     kind: Schema.optional(Schema.String),
     location: Schema.optional(Schema.String),
@@ -7975,23 +8957,15 @@ export type EncryptionProtectorsCreateOrUpdateInput =
 // Output Schema
 export const EncryptionProtectorsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => EncryptionProtectorPropertiesSchema),
+    ),
+    kind: Schema.optional(Schema.String),
+    location: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type EncryptionProtectorsCreateOrUpdateOutput =
   typeof EncryptionProtectorsCreateOrUpdateOutput.Type;
@@ -8031,23 +9005,15 @@ export type EncryptionProtectorsGetInput =
 // Output Schema
 export const EncryptionProtectorsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => EncryptionProtectorPropertiesSchema),
+    ),
+    kind: Schema.optional(Schema.String),
+    location: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type EncryptionProtectorsGetOutput =
   typeof EncryptionProtectorsGetOutput.Type;
@@ -8087,37 +9053,7 @@ export type EncryptionProtectorsListByServerInput =
 // Output Schema
 export const EncryptionProtectorsListByServerOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => EncryptionProtectorSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type EncryptionProtectorsListByServerOutput =
@@ -8196,23 +9132,13 @@ export type EndpointCertificatesGetInput =
 // Output Schema
 export const EndpointCertificatesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => EndpointCertificatePropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type EndpointCertificatesGetOutput =
   typeof EndpointCertificatesGetOutput.Type;
@@ -8252,37 +9178,7 @@ export type EndpointCertificatesListByInstanceInput =
 // Output Schema
 export const EndpointCertificatesListByInstanceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => EndpointCertificateSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type EndpointCertificatesListByInstanceOutput =
@@ -8311,19 +9207,7 @@ export const ExtendedDatabaseBlobAuditingPoliciesCreateOrUpdateInput =
     databaseName: Schema.String.pipe(T.PathParam()),
     blobAuditingPolicyName: Schema.Literals(["default"]).pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        predicateExpression: Schema.optional(Schema.String),
-        retentionDays: Schema.optional(Schema.Number),
-        auditActionsAndGroups: Schema.optional(Schema.Array(Schema.String)),
-        isStorageSecondaryKeyInUse: Schema.optional(Schema.Boolean),
-        isAzureMonitorTargetEnabled: Schema.optional(Schema.Boolean),
-        queueDelayMs: Schema.optional(Schema.Number),
-        isManagedIdentityInUse: Schema.optional(Schema.Boolean),
-        state: Schema.Literals(["Enabled", "Disabled"]),
-        storageEndpoint: Schema.optional(Schema.String),
-        storageAccountAccessKey: Schema.optional(Schema.String),
-        storageAccountSubscriptionId: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(() => ExtendedDatabaseBlobAuditingPolicyPropertiesSchema),
     ),
   }).pipe(
     T.Http({
@@ -8338,23 +9222,13 @@ export type ExtendedDatabaseBlobAuditingPoliciesCreateOrUpdateInput =
 // Output Schema
 export const ExtendedDatabaseBlobAuditingPoliciesCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => ExtendedDatabaseBlobAuditingPolicyPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type ExtendedDatabaseBlobAuditingPoliciesCreateOrUpdateOutput =
   typeof ExtendedDatabaseBlobAuditingPoliciesCreateOrUpdateOutput.Type;
@@ -8396,23 +9270,13 @@ export type ExtendedDatabaseBlobAuditingPoliciesGetInput =
 // Output Schema
 export const ExtendedDatabaseBlobAuditingPoliciesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => ExtendedDatabaseBlobAuditingPolicyPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type ExtendedDatabaseBlobAuditingPoliciesGetOutput =
   typeof ExtendedDatabaseBlobAuditingPoliciesGetOutput.Type;
@@ -8454,35 +9318,7 @@ export type ExtendedDatabaseBlobAuditingPoliciesListByDatabaseInput =
 export const ExtendedDatabaseBlobAuditingPoliciesListByDatabaseOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
+      Schema.suspend(() => ExtendedDatabaseBlobAuditingPolicySchema),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -8512,20 +9348,7 @@ export const ExtendedServerBlobAuditingPoliciesCreateOrUpdateInput =
     serverName: Schema.String.pipe(T.PathParam()),
     blobAuditingPolicyName: Schema.Literals(["default"]).pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        isDevopsAuditEnabled: Schema.optional(Schema.Boolean),
-        predicateExpression: Schema.optional(Schema.String),
-        retentionDays: Schema.optional(Schema.Number),
-        auditActionsAndGroups: Schema.optional(Schema.Array(Schema.String)),
-        isStorageSecondaryKeyInUse: Schema.optional(Schema.Boolean),
-        isAzureMonitorTargetEnabled: Schema.optional(Schema.Boolean),
-        queueDelayMs: Schema.optional(Schema.Number),
-        isManagedIdentityInUse: Schema.optional(Schema.Boolean),
-        state: Schema.Literals(["Enabled", "Disabled"]),
-        storageEndpoint: Schema.optional(Schema.String),
-        storageAccountAccessKey: Schema.optional(Schema.String),
-        storageAccountSubscriptionId: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(() => ExtendedServerBlobAuditingPolicyPropertiesSchema),
     ),
   }).pipe(
     T.Http({
@@ -8541,23 +9364,13 @@ export type ExtendedServerBlobAuditingPoliciesCreateOrUpdateInput =
 // Output Schema
 export const ExtendedServerBlobAuditingPoliciesCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => ExtendedServerBlobAuditingPolicyPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type ExtendedServerBlobAuditingPoliciesCreateOrUpdateOutput =
   typeof ExtendedServerBlobAuditingPoliciesCreateOrUpdateOutput.Type;
@@ -8597,23 +9410,13 @@ export type ExtendedServerBlobAuditingPoliciesGetInput =
 // Output Schema
 export const ExtendedServerBlobAuditingPoliciesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => ExtendedServerBlobAuditingPolicyPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type ExtendedServerBlobAuditingPoliciesGetOutput =
   typeof ExtendedServerBlobAuditingPoliciesGetOutput.Type;
@@ -8653,35 +9456,7 @@ export type ExtendedServerBlobAuditingPoliciesListByServerInput =
 export const ExtendedServerBlobAuditingPoliciesListByServerOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
+      Schema.suspend(() => ExtendedServerBlobAuditingPolicySchema),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -8710,37 +9485,7 @@ export const FailoverGroupsCreateOrUpdateInput =
     serverName: Schema.String.pipe(T.PathParam()),
     failoverGroupName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        readWriteEndpoint: Schema.Struct({
-          failoverPolicy: Schema.Literals(["Manual", "Automatic"]),
-          failoverWithDataLossGracePeriodMinutes: Schema.optional(
-            Schema.Number,
-          ),
-        }),
-        readOnlyEndpoint: Schema.optional(
-          Schema.Struct({
-            failoverPolicy: Schema.optional(
-              Schema.Literals(["Disabled", "Enabled"]),
-            ),
-            targetServer: Schema.optional(Schema.String),
-          }),
-        ),
-        replicationRole: Schema.optional(
-          Schema.Literals(["Primary", "Secondary"]),
-        ),
-        replicationState: Schema.optional(Schema.String),
-        partnerServers: Schema.Array(
-          Schema.Struct({
-            id: Schema.String,
-            location: Schema.optional(Schema.String),
-            replicationRole: Schema.optional(
-              Schema.Literals(["Primary", "Secondary"]),
-            ),
-          }),
-        ),
-        databases: Schema.optional(Schema.Array(Schema.String)),
-        secondaryType: Schema.optional(Schema.Literals(["Geo", "Standby"])),
-      }),
+      Schema.suspend(() => FailoverGroupPropertiesSchema),
     ),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     location: Schema.optional(Schema.String),
@@ -8758,23 +9503,15 @@ export type FailoverGroupsCreateOrUpdateInput =
 // Output Schema
 export const FailoverGroupsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => FailoverGroupPropertiesSchema),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type FailoverGroupsCreateOrUpdateOutput =
   typeof FailoverGroupsCreateOrUpdateOutput.Type;
@@ -8853,23 +9590,15 @@ export type FailoverGroupsFailoverInput =
 // Output Schema
 export const FailoverGroupsFailoverOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => FailoverGroupPropertiesSchema),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type FailoverGroupsFailoverOutput =
   typeof FailoverGroupsFailoverOutput.Type;
@@ -8911,23 +9640,15 @@ export type FailoverGroupsForceFailoverAllowDataLossInput =
 // Output Schema
 export const FailoverGroupsForceFailoverAllowDataLossOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => FailoverGroupPropertiesSchema),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type FailoverGroupsForceFailoverAllowDataLossOutput =
   typeof FailoverGroupsForceFailoverAllowDataLossOutput.Type;
@@ -8967,23 +9688,15 @@ export type FailoverGroupsGetInput = typeof FailoverGroupsGetInput.Type;
 // Output Schema
 export const FailoverGroupsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => FailoverGroupPropertiesSchema),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type FailoverGroupsGetOutput = typeof FailoverGroupsGetOutput.Type;
 
@@ -9020,37 +9733,7 @@ export type FailoverGroupsListByServerInput =
 // Output Schema
 export const FailoverGroupsListByServerOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => FailoverGroupSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type FailoverGroupsListByServerOutput =
@@ -9092,23 +9775,15 @@ export type FailoverGroupsTryPlannedBeforeForcedFailoverInput =
 // Output Schema
 export const FailoverGroupsTryPlannedBeforeForcedFailoverOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => FailoverGroupPropertiesSchema),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type FailoverGroupsTryPlannedBeforeForcedFailoverOutput =
   typeof FailoverGroupsTryPlannedBeforeForcedFailoverOutput.Type;
@@ -9136,37 +9811,7 @@ export const FailoverGroupsUpdateInput =
     serverName: Schema.String.pipe(T.PathParam()),
     failoverGroupName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        readWriteEndpoint: Schema.optional(
-          Schema.Struct({
-            failoverPolicy: Schema.Literals(["Manual", "Automatic"]),
-            failoverWithDataLossGracePeriodMinutes: Schema.optional(
-              Schema.Number,
-            ),
-          }),
-        ),
-        readOnlyEndpoint: Schema.optional(
-          Schema.Struct({
-            failoverPolicy: Schema.optional(
-              Schema.Literals(["Disabled", "Enabled"]),
-            ),
-            targetServer: Schema.optional(Schema.String),
-          }),
-        ),
-        databases: Schema.optional(Schema.Array(Schema.String)),
-        partnerServers: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              id: Schema.String,
-              location: Schema.optional(Schema.String),
-              replicationRole: Schema.optional(
-                Schema.Literals(["Primary", "Secondary"]),
-              ),
-            }),
-          ),
-        ),
-        secondaryType: Schema.optional(Schema.Literals(["Geo", "Standby"])),
-      }),
+      Schema.suspend(() => FailoverGroupUpdatePropertiesSchema),
     ),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
@@ -9182,23 +9827,15 @@ export type FailoverGroupsUpdateInput = typeof FailoverGroupsUpdateInput.Type;
 // Output Schema
 export const FailoverGroupsUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => FailoverGroupPropertiesSchema),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type FailoverGroupsUpdateOutput = typeof FailoverGroupsUpdateOutput.Type;
 
@@ -9226,10 +9863,7 @@ export const FirewallRulesCreateOrUpdateInput =
     serverName: Schema.String.pipe(T.PathParam()),
     firewallRuleName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        startIpAddress: Schema.optional(Schema.String),
-        endIpAddress: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(() => ServerFirewallRulePropertiesSchema),
     ),
   }).pipe(
     T.Http({
@@ -9244,6 +9878,9 @@ export type FirewallRulesCreateOrUpdateInput =
 // Output Schema
 export const FirewallRulesCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => ServerFirewallRulePropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -9320,6 +9957,9 @@ export type FirewallRulesGetInput = typeof FirewallRulesGetInput.Type;
 // Output Schema
 export const FirewallRulesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
+    properties: Schema.optional(
+      Schema.suspend(() => ServerFirewallRulePropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -9360,13 +10000,7 @@ export type FirewallRulesListByServerInput =
 // Output Schema
 export const FirewallRulesListByServerOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => FirewallRuleSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type FirewallRulesListByServerOutput =
@@ -9394,13 +10028,7 @@ export const FirewallRulesReplaceInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serverName: Schema.String.pipe(T.PathParam()),
     values: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => FirewallRuleSchema)),
     ),
   }).pipe(
     T.Http({
@@ -9414,6 +10042,9 @@ export type FirewallRulesReplaceInput = typeof FirewallRulesReplaceInput.Type;
 // Output Schema
 export const FirewallRulesReplaceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => ServerFirewallRulePropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -9444,10 +10075,7 @@ export const GeoBackupPoliciesCreateOrUpdateInput =
     databaseName: Schema.String.pipe(T.PathParam()),
     geoBackupPolicyName: Schema.Literals(["Default"]).pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        state: Schema.Literals(["Enabled", "Disabled"]),
-        storageType: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(() => GeoBackupPolicyPropertiesSchema),
     ),
     location: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
@@ -9464,23 +10092,15 @@ export type GeoBackupPoliciesCreateOrUpdateInput =
 // Output Schema
 export const GeoBackupPoliciesCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => GeoBackupPolicyPropertiesSchema),
+    ),
+    location: Schema.optional(Schema.String),
+    kind: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type GeoBackupPoliciesCreateOrUpdateOutput =
   typeof GeoBackupPoliciesCreateOrUpdateOutput.Type;
@@ -9521,23 +10141,15 @@ export type GeoBackupPoliciesGetInput = typeof GeoBackupPoliciesGetInput.Type;
 // Output Schema
 export const GeoBackupPoliciesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => GeoBackupPolicyPropertiesSchema),
+    ),
+    location: Schema.optional(Schema.String),
+    kind: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type GeoBackupPoliciesGetOutput = typeof GeoBackupPoliciesGetOutput.Type;
 
@@ -9577,37 +10189,7 @@ export type GeoBackupPoliciesListInput = typeof GeoBackupPoliciesListInput.Type;
 // Output Schema
 export const GeoBackupPoliciesListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => GeoBackupPolicySchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type GeoBackupPoliciesListOutput =
@@ -9637,40 +10219,7 @@ export const InstanceFailoverGroupsCreateOrUpdateInput =
     locationName: Schema.String.pipe(T.PathParam()),
     failoverGroupName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        secondaryType: Schema.optional(Schema.Literals(["Geo", "Standby"])),
-        readWriteEndpoint: Schema.Struct({
-          failoverPolicy: Schema.Literals(["Manual", "Automatic"]),
-          failoverWithDataLossGracePeriodMinutes: Schema.optional(
-            Schema.Number,
-          ),
-        }),
-        readOnlyEndpoint: Schema.optional(
-          Schema.Struct({
-            failoverPolicy: Schema.optional(
-              Schema.Literals(["Disabled", "Enabled"]),
-            ),
-          }),
-        ),
-        replicationRole: Schema.optional(
-          Schema.Literals(["Primary", "Secondary"]),
-        ),
-        replicationState: Schema.optional(Schema.String),
-        partnerRegions: Schema.Array(
-          Schema.Struct({
-            location: Schema.optional(Schema.String),
-            replicationRole: Schema.optional(
-              Schema.Literals(["Primary", "Secondary"]),
-            ),
-          }),
-        ),
-        managedInstancePairs: Schema.Array(
-          Schema.Struct({
-            primaryManagedInstanceId: Schema.optional(Schema.String),
-            partnerManagedInstanceId: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
+      Schema.suspend(() => InstanceFailoverGroupPropertiesSchema),
     ),
   }).pipe(
     T.Http({
@@ -9686,23 +10235,13 @@ export type InstanceFailoverGroupsCreateOrUpdateInput =
 // Output Schema
 export const InstanceFailoverGroupsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => InstanceFailoverGroupPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type InstanceFailoverGroupsCreateOrUpdateOutput =
   typeof InstanceFailoverGroupsCreateOrUpdateOutput.Type;
@@ -9782,23 +10321,13 @@ export type InstanceFailoverGroupsFailoverInput =
 // Output Schema
 export const InstanceFailoverGroupsFailoverOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => InstanceFailoverGroupPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type InstanceFailoverGroupsFailoverOutput =
   typeof InstanceFailoverGroupsFailoverOutput.Type;
@@ -9839,23 +10368,13 @@ export type InstanceFailoverGroupsForceFailoverAllowDataLossInput =
 // Output Schema
 export const InstanceFailoverGroupsForceFailoverAllowDataLossOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => InstanceFailoverGroupPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type InstanceFailoverGroupsForceFailoverAllowDataLossOutput =
   typeof InstanceFailoverGroupsForceFailoverAllowDataLossOutput.Type;
@@ -9895,23 +10414,13 @@ export type InstanceFailoverGroupsGetInput =
 // Output Schema
 export const InstanceFailoverGroupsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => InstanceFailoverGroupPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type InstanceFailoverGroupsGetOutput =
   typeof InstanceFailoverGroupsGetOutput.Type;
@@ -9951,37 +10460,7 @@ export type InstanceFailoverGroupsListByLocationInput =
 // Output Schema
 export const InstanceFailoverGroupsListByLocationOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => InstanceFailoverGroupSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type InstanceFailoverGroupsListByLocationOutput =
@@ -10021,23 +10500,13 @@ export type InstancePoolOperationsGetInput =
 // Output Schema
 export const InstancePoolOperationsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => InstancePoolOperationPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type InstancePoolOperationsGetOutput =
   typeof InstancePoolOperationsGetOutput.Type;
@@ -10076,37 +10545,7 @@ export type InstancePoolOperationsListByInstancePoolInput =
 // Output Schema
 export const InstancePoolOperationsListByInstancePoolOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => InstancePoolOperationSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type InstancePoolOperationsListByInstancePoolOutput =
@@ -10133,23 +10572,9 @@ export const InstancePoolsCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     instancePoolName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        subnetId: Schema.String,
-        vCores: Schema.Number,
-        licenseType: Schema.Literals(["LicenseIncluded", "BasePrice"]),
-        dnsZone: Schema.optional(Schema.String),
-        maintenanceConfigurationId: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(() => InstancePoolPropertiesSchema),
     ),
-    sku: Schema.optional(
-      Schema.Struct({
-        name: Schema.String,
-        tier: Schema.optional(Schema.String),
-        size: Schema.optional(Schema.String),
-        family: Schema.optional(Schema.String),
-        capacity: Schema.optional(Schema.Number),
-      }),
-    ),
+    sku: Schema.optional(Schema.suspend(() => SkuSchema)),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     location: Schema.String,
   }).pipe(
@@ -10166,23 +10591,16 @@ export type InstancePoolsCreateOrUpdateInput =
 // Output Schema
 export const InstancePoolsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => InstancePoolPropertiesSchema),
+    ),
+    sku: Schema.optional(Schema.suspend(() => SkuSchema)),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type InstancePoolsCreateOrUpdateOutput =
   typeof InstancePoolsCreateOrUpdateOutput.Type;
@@ -10253,23 +10671,16 @@ export type InstancePoolsGetInput = typeof InstancePoolsGetInput.Type;
 // Output Schema
 export const InstancePoolsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
+    properties: Schema.optional(
+      Schema.suspend(() => InstancePoolPropertiesSchema),
+    ),
+    sku: Schema.optional(Schema.suspend(() => SkuSchema)),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   },
 );
 export type InstancePoolsGetOutput = typeof InstancePoolsGetOutput.Type;
@@ -10304,37 +10715,7 @@ export type InstancePoolsListInput = typeof InstancePoolsListInput.Type;
 // Output Schema
 export const InstancePoolsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => InstancePoolSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type InstancePoolsListOutput = typeof InstancePoolsListOutput.Type;
@@ -10368,37 +10749,7 @@ export type InstancePoolsListByResourceGroupInput =
 // Output Schema
 export const InstancePoolsListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => InstancePoolSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type InstancePoolsListByResourceGroupOutput =
@@ -10423,23 +10774,9 @@ export const InstancePoolsUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     instancePoolName: Schema.String.pipe(T.PathParam()),
-    sku: Schema.optional(
-      Schema.Struct({
-        name: Schema.String,
-        tier: Schema.optional(Schema.String),
-        size: Schema.optional(Schema.String),
-        family: Schema.optional(Schema.String),
-        capacity: Schema.optional(Schema.Number),
-      }),
-    ),
+    sku: Schema.optional(Schema.suspend(() => SkuSchema)),
     properties: Schema.optional(
-      Schema.Struct({
-        subnetId: Schema.String,
-        vCores: Schema.Number,
-        licenseType: Schema.Literals(["LicenseIncluded", "BasePrice"]),
-        dnsZone: Schema.optional(Schema.String),
-        maintenanceConfigurationId: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(() => InstancePoolPropertiesSchema),
     ),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
@@ -10455,23 +10792,16 @@ export type InstancePoolsUpdateInput = typeof InstancePoolsUpdateInput.Type;
 // Output Schema
 export const InstancePoolsUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => InstancePoolPropertiesSchema),
+    ),
+    sku: Schema.optional(Schema.suspend(() => SkuSchema)),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type InstancePoolsUpdateOutput = typeof InstancePoolsUpdateOutput.Type;
 
@@ -10496,10 +10826,7 @@ export const IPv6FirewallRulesCreateOrUpdateInput =
     serverName: Schema.String.pipe(T.PathParam()),
     firewallRuleName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        startIPv6Address: Schema.optional(Schema.String),
-        endIPv6Address: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(() => IPv6ServerFirewallRulePropertiesSchema),
     ),
   }).pipe(
     T.Http({
@@ -10514,6 +10841,9 @@ export type IPv6FirewallRulesCreateOrUpdateInput =
 // Output Schema
 export const IPv6FirewallRulesCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => IPv6ServerFirewallRulePropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -10594,6 +10924,9 @@ export type IPv6FirewallRulesGetInput = typeof IPv6FirewallRulesGetInput.Type;
 // Output Schema
 export const IPv6FirewallRulesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => IPv6ServerFirewallRulePropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -10635,13 +10968,7 @@ export type IPv6FirewallRulesListByServerInput =
 // Output Schema
 export const IPv6FirewallRulesListByServerOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => IPv6FirewallRuleSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type IPv6FirewallRulesListByServerOutput =
@@ -10668,49 +10995,9 @@ export const JobAgentsCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serverName: Schema.String.pipe(T.PathParam()),
     jobAgentName: Schema.String.pipe(T.PathParam()),
-    properties: Schema.optional(
-      Schema.Struct({
-        databaseId: Schema.String,
-        state: Schema.optional(
-          Schema.Literals([
-            "Creating",
-            "Ready",
-            "Updating",
-            "Deleting",
-            "Disabled",
-          ]),
-        ),
-      }),
-    ),
-    sku: Schema.optional(
-      Schema.Struct({
-        name: Schema.String,
-        tier: Schema.optional(Schema.String),
-        size: Schema.optional(Schema.String),
-        family: Schema.optional(Schema.String),
-        capacity: Schema.optional(Schema.Number),
-      }),
-    ),
-    identity: Schema.optional(
-      Schema.Struct({
-        tenantId: Schema.optional(Schema.String),
-        type: Schema.Literals([
-          "None",
-          "SystemAssigned",
-          "UserAssigned",
-          "SystemAssignedUserAssigned",
-        ]),
-        userAssignedIdentities: Schema.optional(
-          Schema.Record(
-            Schema.String,
-            Schema.Struct({
-              principalId: Schema.optional(Schema.String),
-              clientId: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-      }),
-    ),
+    properties: Schema.optional(Schema.suspend(() => JobAgentPropertiesSchema)),
+    sku: Schema.optional(Schema.suspend(() => SkuSchema)),
+    identity: Schema.optional(Schema.suspend(() => JobAgentIdentitySchema)),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     location: Schema.String,
   }).pipe(
@@ -10727,23 +11014,15 @@ export type JobAgentsCreateOrUpdateInput =
 // Output Schema
 export const JobAgentsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(Schema.suspend(() => JobAgentPropertiesSchema)),
+    sku: Schema.optional(Schema.suspend(() => SkuSchema)),
+    identity: Schema.optional(Schema.suspend(() => JobAgentIdentitySchema)),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type JobAgentsCreateOrUpdateOutput =
   typeof JobAgentsCreateOrUpdateOutput.Type;
@@ -10815,23 +11094,15 @@ export type JobAgentsGetInput = typeof JobAgentsGetInput.Type;
 
 // Output Schema
 export const JobAgentsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.optional(Schema.suspend(() => JobAgentPropertiesSchema)),
+  sku: Schema.optional(Schema.suspend(() => SkuSchema)),
+  identity: Schema.optional(Schema.suspend(() => JobAgentIdentitySchema)),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  location: Schema.String,
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
-  systemData: Schema.optional(
-    Schema.Struct({
-      createdBy: Schema.optional(Schema.String),
-      createdByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      createdAt: Schema.optional(Schema.String),
-      lastModifiedBy: Schema.optional(Schema.String),
-      lastModifiedByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      lastModifiedAt: Schema.optional(Schema.String),
-    }),
-  ),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
 });
 export type JobAgentsGetOutput = typeof JobAgentsGetOutput.Type;
 
@@ -10867,37 +11138,7 @@ export type JobAgentsListByServerInput = typeof JobAgentsListByServerInput.Type;
 // Output Schema
 export const JobAgentsListByServerOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => JobAgentSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type JobAgentsListByServerOutput =
@@ -10924,35 +11165,8 @@ export const JobAgentsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   serverName: Schema.String.pipe(T.PathParam()),
   jobAgentName: Schema.String.pipe(T.PathParam()),
-  identity: Schema.optional(
-    Schema.Struct({
-      tenantId: Schema.optional(Schema.String),
-      type: Schema.Literals([
-        "None",
-        "SystemAssigned",
-        "UserAssigned",
-        "SystemAssignedUserAssigned",
-      ]),
-      userAssignedIdentities: Schema.optional(
-        Schema.Record(
-          Schema.String,
-          Schema.Struct({
-            principalId: Schema.optional(Schema.String),
-            clientId: Schema.optional(Schema.String),
-          }),
-        ),
-      ),
-    }),
-  ),
-  sku: Schema.optional(
-    Schema.Struct({
-      name: Schema.String,
-      tier: Schema.optional(Schema.String),
-      size: Schema.optional(Schema.String),
-      family: Schema.optional(Schema.String),
-      capacity: Schema.optional(Schema.Number),
-    }),
-  ),
+  identity: Schema.optional(Schema.suspend(() => JobAgentIdentitySchema)),
+  sku: Schema.optional(Schema.suspend(() => SkuSchema)),
   tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
 }).pipe(
   T.Http({
@@ -10966,23 +11180,15 @@ export type JobAgentsUpdateInput = typeof JobAgentsUpdateInput.Type;
 
 // Output Schema
 export const JobAgentsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.optional(Schema.suspend(() => JobAgentPropertiesSchema)),
+  sku: Schema.optional(Schema.suspend(() => SkuSchema)),
+  identity: Schema.optional(Schema.suspend(() => JobAgentIdentitySchema)),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  location: Schema.String,
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
-  systemData: Schema.optional(
-    Schema.Struct({
-      createdBy: Schema.optional(Schema.String),
-      createdByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      createdAt: Schema.optional(Schema.String),
-      lastModifiedBy: Schema.optional(Schema.String),
-      lastModifiedByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      lastModifiedAt: Schema.optional(Schema.String),
-    }),
-  ),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
 });
 export type JobAgentsUpdateOutput = typeof JobAgentsUpdateOutput.Type;
 
@@ -11009,10 +11215,7 @@ export const JobCredentialsCreateOrUpdateInput =
     jobAgentName: Schema.String.pipe(T.PathParam()),
     credentialName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        username: Schema.String,
-        password: SensitiveString,
-      }),
+      Schema.suspend(() => JobCredentialPropertiesSchema),
     ),
   }).pipe(
     T.Http({
@@ -11027,23 +11230,13 @@ export type JobCredentialsCreateOrUpdateInput =
 // Output Schema
 export const JobCredentialsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => JobCredentialPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type JobCredentialsCreateOrUpdateOutput =
   typeof JobCredentialsCreateOrUpdateOutput.Type;
@@ -11124,23 +11317,13 @@ export type JobCredentialsGetInput = typeof JobCredentialsGetInput.Type;
 // Output Schema
 export const JobCredentialsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => JobCredentialPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type JobCredentialsGetOutput = typeof JobCredentialsGetOutput.Type;
 
@@ -11179,37 +11362,7 @@ export type JobCredentialsListByAgentInput =
 // Output Schema
 export const JobCredentialsListByAgentOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => JobCredentialSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type JobCredentialsListByAgentOutput =
@@ -11291,23 +11444,13 @@ export type JobExecutionsCreateInput = typeof JobExecutionsCreateInput.Type;
 // Output Schema
 export const JobExecutionsCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => JobExecutionPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type JobExecutionsCreateOutput = typeof JobExecutionsCreateOutput.Type;
 
@@ -11349,23 +11492,13 @@ export type JobExecutionsCreateOrUpdateInput =
 // Output Schema
 export const JobExecutionsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => JobExecutionPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type JobExecutionsCreateOrUpdateOutput =
   typeof JobExecutionsCreateOrUpdateOutput.Type;
@@ -11408,23 +11541,13 @@ export type JobExecutionsGetInput = typeof JobExecutionsGetInput.Type;
 // Output Schema
 export const JobExecutionsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
+    properties: Schema.optional(
+      Schema.suspend(() => JobExecutionPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   },
 );
 export type JobExecutionsGetOutput = typeof JobExecutionsGetOutput.Type;
@@ -11472,37 +11595,7 @@ export type JobExecutionsListByAgentInput =
 // Output Schema
 export const JobExecutionsListByAgentOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => JobExecutionSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type JobExecutionsListByAgentOutput =
@@ -11559,37 +11652,7 @@ export type JobExecutionsListByJobInput =
 // Output Schema
 export const JobExecutionsListByJobOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => JobExecutionSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type JobExecutionsListByJobOutput =
@@ -11628,10 +11691,7 @@ export const JobPrivateEndpointsCreateOrUpdateInput =
     jobAgentName: Schema.String.pipe(T.PathParam()),
     privateEndpointName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        targetServerAzureResourceId: Schema.String,
-        privateEndpointId: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(() => JobPrivateEndpointPropertiesSchema),
     ),
   }).pipe(
     T.Http({
@@ -11647,23 +11707,13 @@ export type JobPrivateEndpointsCreateOrUpdateInput =
 // Output Schema
 export const JobPrivateEndpointsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => JobPrivateEndpointPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type JobPrivateEndpointsCreateOrUpdateOutput =
   typeof JobPrivateEndpointsCreateOrUpdateOutput.Type;
@@ -11747,23 +11797,13 @@ export type JobPrivateEndpointsGetInput =
 // Output Schema
 export const JobPrivateEndpointsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => JobPrivateEndpointPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type JobPrivateEndpointsGetOutput =
   typeof JobPrivateEndpointsGetOutput.Type;
@@ -11805,37 +11845,7 @@ export type JobPrivateEndpointsListByAgentInput =
 // Output Schema
 export const JobPrivateEndpointsListByAgentOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => JobPrivateEndpointSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type JobPrivateEndpointsListByAgentOutput =
@@ -11864,21 +11874,7 @@ export const JobsCreateOrUpdateInput =
     serverName: Schema.String.pipe(T.PathParam()),
     jobAgentName: Schema.String.pipe(T.PathParam()),
     jobName: Schema.String.pipe(T.PathParam()),
-    properties: Schema.optional(
-      Schema.Struct({
-        description: Schema.optional(Schema.String),
-        version: Schema.optional(Schema.Number),
-        schedule: Schema.optional(
-          Schema.Struct({
-            startTime: Schema.optional(Schema.String),
-            endTime: Schema.optional(Schema.String),
-            type: Schema.optional(Schema.Literals(["Once", "Recurring"])),
-            enabled: Schema.optional(Schema.Boolean),
-            interval: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    properties: Schema.optional(Schema.suspend(() => JobPropertiesSchema)),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -11891,23 +11887,11 @@ export type JobsCreateOrUpdateInput = typeof JobsCreateOrUpdateInput.Type;
 // Output Schema
 export const JobsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(Schema.suspend(() => JobPropertiesSchema)),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type JobsCreateOrUpdateOutput = typeof JobsCreateOrUpdateOutput.Type;
 
@@ -11979,23 +11963,11 @@ export type JobsGetInput = typeof JobsGetInput.Type;
 
 // Output Schema
 export const JobsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.optional(Schema.suspend(() => JobPropertiesSchema)),
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
-  systemData: Schema.optional(
-    Schema.Struct({
-      createdBy: Schema.optional(Schema.String),
-      createdByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      createdAt: Schema.optional(Schema.String),
-      lastModifiedBy: Schema.optional(Schema.String),
-      lastModifiedByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      lastModifiedAt: Schema.optional(Schema.String),
-    }),
-  ),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
 });
 export type JobsGetOutput = typeof JobsGetOutput.Type;
 
@@ -12031,27 +12003,7 @@ export type JobsListByAgentInput = typeof JobsListByAgentInput.Type;
 
 // Output Schema
 export const JobsListByAgentOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  value: Schema.Array(
-    Schema.Struct({
-      id: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      type: Schema.optional(Schema.String),
-      systemData: Schema.optional(
-        Schema.Struct({
-          createdBy: Schema.optional(Schema.String),
-          createdByType: Schema.optional(
-            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-          ),
-          createdAt: Schema.optional(Schema.String),
-          lastModifiedBy: Schema.optional(Schema.String),
-          lastModifiedByType: Schema.optional(
-            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-          ),
-          lastModifiedAt: Schema.optional(Schema.String),
-        }),
-      ),
-    }),
-  ),
+  value: Schema.Array(Schema.suspend(() => JobSchema)),
   nextLink: Schema.optional(Schema.String),
 });
 export type JobsListByAgentOutput = typeof JobsListByAgentOutput.Type;
@@ -12092,23 +12044,13 @@ export type JobStepExecutionsGetInput = typeof JobStepExecutionsGetInput.Type;
 // Output Schema
 export const JobStepExecutionsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => JobExecutionPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type JobStepExecutionsGetOutput = typeof JobStepExecutionsGetOutput.Type;
 
@@ -12160,37 +12102,7 @@ export type JobStepExecutionsListByJobExecutionInput =
 // Output Schema
 export const JobStepExecutionsListByJobExecutionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => JobExecutionSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type JobStepExecutionsListByJobExecutionOutput =
@@ -12229,39 +12141,7 @@ export const JobStepsCreateOrUpdateInput =
     jobAgentName: Schema.String.pipe(T.PathParam()),
     jobName: Schema.String.pipe(T.PathParam()),
     stepName: Schema.String.pipe(T.PathParam()),
-    properties: Schema.optional(
-      Schema.Struct({
-        stepId: Schema.optional(Schema.Number),
-        targetGroup: Schema.String,
-        credential: Schema.optional(Schema.String),
-        action: Schema.Struct({
-          type: Schema.optional(Schema.Literals(["TSql"])),
-          source: Schema.optional(Schema.Literals(["Inline"])),
-          value: Schema.String,
-        }),
-        output: Schema.optional(
-          Schema.Struct({
-            type: Schema.optional(Schema.Literals(["SqlDatabase"])),
-            subscriptionId: Schema.optional(Schema.String),
-            resourceGroupName: Schema.optional(Schema.String),
-            serverName: Schema.String,
-            databaseName: Schema.String,
-            schemaName: Schema.optional(Schema.String),
-            tableName: Schema.String,
-            credential: Schema.optional(Schema.String),
-          }),
-        ),
-        executionOptions: Schema.optional(
-          Schema.Struct({
-            timeoutSeconds: Schema.optional(Schema.Number),
-            retryAttempts: Schema.optional(Schema.Number),
-            initialRetryIntervalSeconds: Schema.optional(Schema.Number),
-            maximumRetryIntervalSeconds: Schema.optional(Schema.Number),
-            retryIntervalBackoffMultiplier: Schema.optional(Schema.Number),
-          }),
-        ),
-      }),
-    ),
+    properties: Schema.optional(Schema.suspend(() => JobStepPropertiesSchema)),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -12275,23 +12155,11 @@ export type JobStepsCreateOrUpdateInput =
 // Output Schema
 export const JobStepsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(Schema.suspend(() => JobStepPropertiesSchema)),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type JobStepsCreateOrUpdateOutput =
   typeof JobStepsCreateOrUpdateOutput.Type;
@@ -12370,23 +12238,11 @@ export type JobStepsGetInput = typeof JobStepsGetInput.Type;
 
 // Output Schema
 export const JobStepsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.optional(Schema.suspend(() => JobStepPropertiesSchema)),
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
-  systemData: Schema.optional(
-    Schema.Struct({
-      createdBy: Schema.optional(Schema.String),
-      createdByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      createdAt: Schema.optional(Schema.String),
-      lastModifiedBy: Schema.optional(Schema.String),
-      lastModifiedByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      lastModifiedAt: Schema.optional(Schema.String),
-    }),
-  ),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
 });
 export type JobStepsGetOutput = typeof JobStepsGetOutput.Type;
 
@@ -12428,23 +12284,11 @@ export type JobStepsGetByVersionInput = typeof JobStepsGetByVersionInput.Type;
 // Output Schema
 export const JobStepsGetByVersionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(Schema.suspend(() => JobStepPropertiesSchema)),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type JobStepsGetByVersionOutput = typeof JobStepsGetByVersionOutput.Type;
 
@@ -12488,37 +12332,7 @@ export type JobStepsListByJobInput = typeof JobStepsListByJobInput.Type;
 // Output Schema
 export const JobStepsListByJobOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => JobStepSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type JobStepsListByJobOutput = typeof JobStepsListByJobOutput.Type;
@@ -12559,37 +12373,7 @@ export type JobStepsListByVersionInput = typeof JobStepsListByVersionInput.Type;
 // Output Schema
 export const JobStepsListByVersionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => JobStepSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type JobStepsListByVersionOutput =
@@ -12637,23 +12421,13 @@ export type JobTargetExecutionsGetInput =
 // Output Schema
 export const JobTargetExecutionsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => JobExecutionPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type JobTargetExecutionsGetOutput =
   typeof JobTargetExecutionsGetOutput.Type;
@@ -12707,37 +12481,7 @@ export type JobTargetExecutionsListByJobExecutionInput =
 // Output Schema
 export const JobTargetExecutionsListByJobExecutionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => JobExecutionSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type JobTargetExecutionsListByJobExecutionOutput =
@@ -12797,37 +12541,7 @@ export type JobTargetExecutionsListByStepInput =
 // Output Schema
 export const JobTargetExecutionsListByStepOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => JobExecutionSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type JobTargetExecutionsListByStepOutput =
@@ -12867,27 +12581,7 @@ export const JobTargetGroupsCreateOrUpdateInput =
     jobAgentName: Schema.String.pipe(T.PathParam()),
     targetGroupName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        members: Schema.Array(
-          Schema.Struct({
-            membershipType: Schema.optional(
-              Schema.Literals(["Include", "Exclude"]),
-            ),
-            type: Schema.Literals([
-              "TargetGroup",
-              "SqlDatabase",
-              "SqlElasticPool",
-              "SqlShardMap",
-              "SqlServer",
-            ]),
-            serverName: Schema.optional(Schema.String),
-            databaseName: Schema.optional(Schema.String),
-            elasticPoolName: Schema.optional(Schema.String),
-            shardMapName: Schema.optional(Schema.String),
-            refreshCredential: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
+      Schema.suspend(() => JobTargetGroupPropertiesSchema),
     ),
   }).pipe(
     T.Http({
@@ -12902,23 +12596,13 @@ export type JobTargetGroupsCreateOrUpdateInput =
 // Output Schema
 export const JobTargetGroupsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => JobTargetGroupPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type JobTargetGroupsCreateOrUpdateOutput =
   typeof JobTargetGroupsCreateOrUpdateOutput.Type;
@@ -12999,23 +12683,13 @@ export type JobTargetGroupsGetInput = typeof JobTargetGroupsGetInput.Type;
 // Output Schema
 export const JobTargetGroupsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => JobTargetGroupPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type JobTargetGroupsGetOutput = typeof JobTargetGroupsGetOutput.Type;
 
@@ -13054,37 +12728,7 @@ export type JobTargetGroupsListByAgentInput =
 // Output Schema
 export const JobTargetGroupsListByAgentOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => JobTargetGroupSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type JobTargetGroupsListByAgentOutput =
@@ -13128,20 +12772,7 @@ export const JobVersionsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
-  systemData: Schema.optional(
-    Schema.Struct({
-      createdBy: Schema.optional(Schema.String),
-      createdByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      createdAt: Schema.optional(Schema.String),
-      lastModifiedBy: Schema.optional(Schema.String),
-      lastModifiedByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      lastModifiedAt: Schema.optional(Schema.String),
-    }),
-  ),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
 });
 export type JobVersionsGetOutput = typeof JobVersionsGetOutput.Type;
 
@@ -13181,37 +12812,7 @@ export type JobVersionsListByJobInput = typeof JobVersionsListByJobInput.Type;
 // Output Schema
 export const JobVersionsListByJobOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => JobVersionSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type JobVersionsListByJobOutput = typeof JobVersionsListByJobOutput.Type;
@@ -13242,10 +12843,7 @@ export const LedgerDigestUploadsCreateOrUpdateInput =
     databaseName: Schema.String.pipe(T.PathParam()),
     ledgerDigestUploads: Schema.Literals(["current"]).pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        digestStorageEndpoint: Schema.optional(Schema.String),
-        state: Schema.optional(Schema.Literals(["Enabled", "Disabled"])),
-      }),
+      Schema.suspend(() => LedgerDigestUploadsPropertiesSchema),
     ),
   }).pipe(
     T.Http({
@@ -13261,23 +12859,13 @@ export type LedgerDigestUploadsCreateOrUpdateInput =
 // Output Schema
 export const LedgerDigestUploadsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => LedgerDigestUploadsPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type LedgerDigestUploadsCreateOrUpdateOutput =
   typeof LedgerDigestUploadsCreateOrUpdateOutput.Type;
@@ -13319,23 +12907,13 @@ export type LedgerDigestUploadsDisableInput =
 // Output Schema
 export const LedgerDigestUploadsDisableOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => LedgerDigestUploadsPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type LedgerDigestUploadsDisableOutput =
   typeof LedgerDigestUploadsDisableOutput.Type;
@@ -13377,23 +12955,13 @@ export type LedgerDigestUploadsGetInput =
 // Output Schema
 export const LedgerDigestUploadsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => LedgerDigestUploadsPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type LedgerDigestUploadsGetOutput =
   typeof LedgerDigestUploadsGetOutput.Type;
@@ -13434,37 +13002,7 @@ export type LedgerDigestUploadsListByDatabaseInput =
 // Output Schema
 export const LedgerDigestUploadsListByDatabaseOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => LedgerDigestUploadsSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type LedgerDigestUploadsListByDatabaseOutput =
@@ -13509,23 +13047,13 @@ export type LongTermRetentionBackupsChangeAccessTierInput =
 // Output Schema
 export const LongTermRetentionBackupsChangeAccessTierOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => LongTermRetentionBackupPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type LongTermRetentionBackupsChangeAccessTierOutput =
   typeof LongTermRetentionBackupsChangeAccessTierOutput.Type;
@@ -13571,23 +13099,13 @@ export type LongTermRetentionBackupsChangeAccessTierByResourceGroupInput =
 // Output Schema
 export const LongTermRetentionBackupsChangeAccessTierByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => LongTermRetentionBackupPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type LongTermRetentionBackupsChangeAccessTierByResourceGroupOutput =
   typeof LongTermRetentionBackupsChangeAccessTierByResourceGroupOutput.Type;
@@ -13618,16 +13136,9 @@ export const LongTermRetentionBackupsCopyInput =
     longTermRetentionDatabaseName: Schema.String.pipe(T.PathParam()),
     backupName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        targetSubscriptionId: Schema.optional(Schema.String),
-        targetResourceGroup: Schema.optional(Schema.String),
-        targetServerResourceId: Schema.optional(Schema.String),
-        targetServerFullyQualifiedDomainName: Schema.optional(Schema.String),
-        targetDatabaseName: Schema.optional(Schema.String),
-        targetBackupStorageRedundancy: Schema.optional(
-          Schema.Literals(["Geo", "Local", "Zone", "GeoZone"]),
-        ),
-      }),
+      Schema.suspend(
+        () => CopyLongTermRetentionBackupParametersPropertiesSchema,
+      ),
     ),
   }).pipe(
     T.Http({
@@ -13643,23 +13154,13 @@ export type LongTermRetentionBackupsCopyInput =
 // Output Schema
 export const LongTermRetentionBackupsCopyOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => LongTermRetentionOperationResultPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type LongTermRetentionBackupsCopyOutput =
   typeof LongTermRetentionBackupsCopyOutput.Type;
@@ -13690,16 +13191,9 @@ export const LongTermRetentionBackupsCopyByResourceGroupInput =
     longTermRetentionDatabaseName: Schema.String.pipe(T.PathParam()),
     backupName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        targetSubscriptionId: Schema.optional(Schema.String),
-        targetResourceGroup: Schema.optional(Schema.String),
-        targetServerResourceId: Schema.optional(Schema.String),
-        targetServerFullyQualifiedDomainName: Schema.optional(Schema.String),
-        targetDatabaseName: Schema.optional(Schema.String),
-        targetBackupStorageRedundancy: Schema.optional(
-          Schema.Literals(["Geo", "Local", "Zone", "GeoZone"]),
-        ),
-      }),
+      Schema.suspend(
+        () => CopyLongTermRetentionBackupParametersPropertiesSchema,
+      ),
     ),
   }).pipe(
     T.Http({
@@ -13715,23 +13209,13 @@ export type LongTermRetentionBackupsCopyByResourceGroupInput =
 // Output Schema
 export const LongTermRetentionBackupsCopyByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => LongTermRetentionOperationResultPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type LongTermRetentionBackupsCopyByResourceGroupOutput =
   typeof LongTermRetentionBackupsCopyByResourceGroupOutput.Type;
@@ -13858,23 +13342,13 @@ export type LongTermRetentionBackupsGetInput =
 // Output Schema
 export const LongTermRetentionBackupsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => LongTermRetentionBackupPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type LongTermRetentionBackupsGetOutput =
   typeof LongTermRetentionBackupsGetOutput.Type;
@@ -13918,23 +13392,13 @@ export type LongTermRetentionBackupsGetByResourceGroupInput =
 // Output Schema
 export const LongTermRetentionBackupsGetByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => LongTermRetentionBackupPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type LongTermRetentionBackupsGetByResourceGroupOutput =
   typeof LongTermRetentionBackupsGetByResourceGroupOutput.Type;
@@ -13979,37 +13443,7 @@ export type LongTermRetentionBackupsListByDatabaseInput =
 export const LongTermRetentionBackupsListByDatabaseOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.String),
-              createdByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              createdAt: Schema.optional(Schema.String),
-              lastModifiedBy: Schema.optional(Schema.String),
-              lastModifiedByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              lastModifiedAt: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => LongTermRetentionBackupSchema)),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -14054,37 +13488,7 @@ export type LongTermRetentionBackupsListByLocationInput =
 export const LongTermRetentionBackupsListByLocationOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.String),
-              createdByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              createdAt: Schema.optional(Schema.String),
-              lastModifiedBy: Schema.optional(Schema.String),
-              lastModifiedByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              lastModifiedAt: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => LongTermRetentionBackupSchema)),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -14130,37 +13534,7 @@ export type LongTermRetentionBackupsListByResourceGroupDatabaseInput =
 export const LongTermRetentionBackupsListByResourceGroupDatabaseOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.String),
-              createdByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              createdAt: Schema.optional(Schema.String),
-              lastModifiedBy: Schema.optional(Schema.String),
-              lastModifiedByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              lastModifiedAt: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => LongTermRetentionBackupSchema)),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -14207,37 +13581,7 @@ export type LongTermRetentionBackupsListByResourceGroupLocationInput =
 export const LongTermRetentionBackupsListByResourceGroupLocationOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.String),
-              createdByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              createdAt: Schema.optional(Schema.String),
-              lastModifiedBy: Schema.optional(Schema.String),
-              lastModifiedByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              lastModifiedAt: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => LongTermRetentionBackupSchema)),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -14283,37 +13627,7 @@ export type LongTermRetentionBackupsListByResourceGroupServerInput =
 export const LongTermRetentionBackupsListByResourceGroupServerOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.String),
-              createdByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              createdAt: Schema.optional(Schema.String),
-              lastModifiedBy: Schema.optional(Schema.String),
-              lastModifiedByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              lastModifiedAt: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => LongTermRetentionBackupSchema)),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -14359,37 +13673,7 @@ export type LongTermRetentionBackupsListByServerInput =
 export const LongTermRetentionBackupsListByServerOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.String),
-              createdByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              createdAt: Schema.optional(Schema.String),
-              lastModifiedBy: Schema.optional(Schema.String),
-              lastModifiedByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              lastModifiedAt: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => LongTermRetentionBackupSchema)),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -14434,23 +13718,13 @@ export type LongTermRetentionBackupsLockTimeBasedImmutabilityInput =
 // Output Schema
 export const LongTermRetentionBackupsLockTimeBasedImmutabilityOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => LongTermRetentionBackupPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type LongTermRetentionBackupsLockTimeBasedImmutabilityOutput =
   typeof LongTermRetentionBackupsLockTimeBasedImmutabilityOutput.Type;
@@ -14494,23 +13768,13 @@ export type LongTermRetentionBackupsLockTimeBasedImmutabilityByResourceGroupInpu
 // Output Schema
 export const LongTermRetentionBackupsLockTimeBasedImmutabilityByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => LongTermRetentionBackupPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type LongTermRetentionBackupsLockTimeBasedImmutabilityByResourceGroupOutput =
   typeof LongTermRetentionBackupsLockTimeBasedImmutabilityByResourceGroupOutput.Type;
@@ -14556,23 +13820,13 @@ export type LongTermRetentionBackupsRemoveLegalHoldImmutabilityInput =
 // Output Schema
 export const LongTermRetentionBackupsRemoveLegalHoldImmutabilityOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => LongTermRetentionBackupPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type LongTermRetentionBackupsRemoveLegalHoldImmutabilityOutput =
   typeof LongTermRetentionBackupsRemoveLegalHoldImmutabilityOutput.Type;
@@ -14616,23 +13870,13 @@ export type LongTermRetentionBackupsRemoveLegalHoldImmutabilityByResourceGroupIn
 // Output Schema
 export const LongTermRetentionBackupsRemoveLegalHoldImmutabilityByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => LongTermRetentionBackupPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type LongTermRetentionBackupsRemoveLegalHoldImmutabilityByResourceGroupOutput =
   typeof LongTermRetentionBackupsRemoveLegalHoldImmutabilityByResourceGroupOutput.Type;
@@ -14678,23 +13922,13 @@ export type LongTermRetentionBackupsRemoveTimeBasedImmutabilityInput =
 // Output Schema
 export const LongTermRetentionBackupsRemoveTimeBasedImmutabilityOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => LongTermRetentionBackupPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type LongTermRetentionBackupsRemoveTimeBasedImmutabilityOutput =
   typeof LongTermRetentionBackupsRemoveTimeBasedImmutabilityOutput.Type;
@@ -14738,23 +13972,13 @@ export type LongTermRetentionBackupsRemoveTimeBasedImmutabilityByResourceGroupIn
 // Output Schema
 export const LongTermRetentionBackupsRemoveTimeBasedImmutabilityByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => LongTermRetentionBackupPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type LongTermRetentionBackupsRemoveTimeBasedImmutabilityByResourceGroupOutput =
   typeof LongTermRetentionBackupsRemoveTimeBasedImmutabilityByResourceGroupOutput.Type;
@@ -14800,23 +14024,13 @@ export type LongTermRetentionBackupsSetLegalHoldImmutabilityInput =
 // Output Schema
 export const LongTermRetentionBackupsSetLegalHoldImmutabilityOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => LongTermRetentionBackupPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type LongTermRetentionBackupsSetLegalHoldImmutabilityOutput =
   typeof LongTermRetentionBackupsSetLegalHoldImmutabilityOutput.Type;
@@ -14860,23 +14074,13 @@ export type LongTermRetentionBackupsSetLegalHoldImmutabilityByResourceGroupInput
 // Output Schema
 export const LongTermRetentionBackupsSetLegalHoldImmutabilityByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => LongTermRetentionBackupPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type LongTermRetentionBackupsSetLegalHoldImmutabilityByResourceGroupOutput =
   typeof LongTermRetentionBackupsSetLegalHoldImmutabilityByResourceGroupOutput.Type;
@@ -14909,11 +14113,9 @@ export const LongTermRetentionBackupsUpdateInput =
     longTermRetentionDatabaseName: Schema.String.pipe(T.PathParam()),
     backupName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        requestedBackupStorageRedundancy: Schema.optional(
-          Schema.Literals(["Geo", "Local", "Zone", "GeoZone"]),
-        ),
-      }),
+      Schema.suspend(
+        () => UpdateLongTermRetentionBackupParametersPropertiesSchema,
+      ),
     ),
   }).pipe(
     T.Http({
@@ -14929,23 +14131,13 @@ export type LongTermRetentionBackupsUpdateInput =
 // Output Schema
 export const LongTermRetentionBackupsUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => LongTermRetentionOperationResultPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type LongTermRetentionBackupsUpdateOutput =
   typeof LongTermRetentionBackupsUpdateOutput.Type;
@@ -14976,11 +14168,9 @@ export const LongTermRetentionBackupsUpdateByResourceGroupInput =
     longTermRetentionDatabaseName: Schema.String.pipe(T.PathParam()),
     backupName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        requestedBackupStorageRedundancy: Schema.optional(
-          Schema.Literals(["Geo", "Local", "Zone", "GeoZone"]),
-        ),
-      }),
+      Schema.suspend(
+        () => UpdateLongTermRetentionBackupParametersPropertiesSchema,
+      ),
     ),
   }).pipe(
     T.Http({
@@ -14996,23 +14186,13 @@ export type LongTermRetentionBackupsUpdateByResourceGroupInput =
 // Output Schema
 export const LongTermRetentionBackupsUpdateByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => LongTermRetentionOperationResultPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type LongTermRetentionBackupsUpdateByResourceGroupOutput =
   typeof LongTermRetentionBackupsUpdateByResourceGroupOutput.Type;
@@ -15141,23 +14321,15 @@ export type LongTermRetentionManagedInstanceBackupsGetInput =
 // Output Schema
 export const LongTermRetentionManagedInstanceBackupsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(
+        () => ManagedInstanceLongTermRetentionBackupPropertiesSchema,
+      ),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type LongTermRetentionManagedInstanceBackupsGetOutput =
   typeof LongTermRetentionManagedInstanceBackupsGetOutput.Type;
@@ -15200,23 +14372,15 @@ export type LongTermRetentionManagedInstanceBackupsGetByResourceGroupInput =
 // Output Schema
 export const LongTermRetentionManagedInstanceBackupsGetByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(
+        () => ManagedInstanceLongTermRetentionBackupPropertiesSchema,
+      ),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type LongTermRetentionManagedInstanceBackupsGetByResourceGroupOutput =
   typeof LongTermRetentionManagedInstanceBackupsGetByResourceGroupOutput.Type;
@@ -15262,35 +14426,7 @@ export type LongTermRetentionManagedInstanceBackupsListByDatabaseInput =
 export const LongTermRetentionManagedInstanceBackupsListByDatabaseOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
+      Schema.suspend(() => ManagedInstanceLongTermRetentionBackupSchema),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -15336,35 +14472,7 @@ export type LongTermRetentionManagedInstanceBackupsListByInstanceInput =
 export const LongTermRetentionManagedInstanceBackupsListByInstanceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
+      Schema.suspend(() => ManagedInstanceLongTermRetentionBackupSchema),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -15411,35 +14519,7 @@ export type LongTermRetentionManagedInstanceBackupsListByLocationInput =
 export const LongTermRetentionManagedInstanceBackupsListByLocationOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
+      Schema.suspend(() => ManagedInstanceLongTermRetentionBackupSchema),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -15488,35 +14568,7 @@ export type LongTermRetentionManagedInstanceBackupsListByResourceGroupDatabaseIn
 export const LongTermRetentionManagedInstanceBackupsListByResourceGroupDatabaseOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
+      Schema.suspend(() => ManagedInstanceLongTermRetentionBackupSchema),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -15566,35 +14618,7 @@ export type LongTermRetentionManagedInstanceBackupsListByResourceGroupInstanceIn
 export const LongTermRetentionManagedInstanceBackupsListByResourceGroupInstanceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
+      Schema.suspend(() => ManagedInstanceLongTermRetentionBackupSchema),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -15645,35 +14669,7 @@ export type LongTermRetentionManagedInstanceBackupsListByResourceGroupLocationIn
 export const LongTermRetentionManagedInstanceBackupsListByResourceGroupLocationOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
+      Schema.suspend(() => ManagedInstanceLongTermRetentionBackupSchema),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -15710,18 +14706,7 @@ export const LongTermRetentionPoliciesCreateOrUpdateInput =
     databaseName: Schema.String.pipe(T.PathParam()),
     policyName: Schema.Literals(["default"]).pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        timeBasedImmutability: Schema.optional(
-          Schema.Literals(["Enabled", "Disabled"]),
-        ),
-        timeBasedImmutabilityMode: Schema.optional(
-          Schema.Literals(["Locked", "Unlocked"]),
-        ),
-        weeklyRetention: Schema.optional(Schema.String),
-        monthlyRetention: Schema.optional(Schema.String),
-        yearlyRetention: Schema.optional(Schema.String),
-        weekOfYear: Schema.optional(Schema.Number),
-      }),
+      Schema.suspend(() => LongTermRetentionPolicyPropertiesSchema),
     ),
   }).pipe(
     T.Http({
@@ -15737,23 +14722,13 @@ export type LongTermRetentionPoliciesCreateOrUpdateInput =
 // Output Schema
 export const LongTermRetentionPoliciesCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => LongTermRetentionPolicyPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type LongTermRetentionPoliciesCreateOrUpdateOutput =
   typeof LongTermRetentionPoliciesCreateOrUpdateOutput.Type;
@@ -15795,23 +14770,13 @@ export type LongTermRetentionPoliciesGetInput =
 // Output Schema
 export const LongTermRetentionPoliciesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => LongTermRetentionPolicyPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type LongTermRetentionPoliciesGetOutput =
   typeof LongTermRetentionPoliciesGetOutput.Type;
@@ -15852,37 +14817,7 @@ export type LongTermRetentionPoliciesListByDatabaseInput =
 // Output Schema
 export const LongTermRetentionPoliciesListByDatabaseOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => LongTermRetentionPolicySchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type LongTermRetentionPoliciesListByDatabaseOutput =
@@ -15924,23 +14859,13 @@ export type MaintenanceWindowOptionsGetInput =
 // Output Schema
 export const MaintenanceWindowOptionsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => MaintenanceWindowOptionsPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type MaintenanceWindowOptionsGetOutput =
   typeof MaintenanceWindowOptionsGetOutput.Type;
@@ -15971,27 +14896,7 @@ export const MaintenanceWindowsCreateOrUpdateInput =
     databaseName: Schema.String.pipe(T.PathParam()),
     maintenanceWindowName: Schema.String,
     properties: Schema.optional(
-      Schema.Struct({
-        timeRanges: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              dayOfWeek: Schema.optional(
-                Schema.Literals([
-                  "Sunday",
-                  "Monday",
-                  "Tuesday",
-                  "Wednesday",
-                  "Thursday",
-                  "Friday",
-                  "Saturday",
-                ]),
-              ),
-              startTime: Schema.optional(Schema.String),
-              duration: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-      }),
+      Schema.suspend(() => MaintenanceWindowsPropertiesSchema),
     ),
   }).pipe(
     T.Http({
@@ -16045,23 +14950,13 @@ export type MaintenanceWindowsGetInput = typeof MaintenanceWindowsGetInput.Type;
 // Output Schema
 export const MaintenanceWindowsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => MaintenanceWindowsPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type MaintenanceWindowsGetOutput =
   typeof MaintenanceWindowsGetOutput.Type;
@@ -16092,9 +14987,9 @@ export const ManagedBackupShortTermRetentionPoliciesCreateOrUpdateInput =
     databaseName: Schema.String.pipe(T.PathParam()),
     policyName: Schema.Literals(["default"]).pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        retentionDays: Schema.optional(Schema.Number),
-      }),
+      Schema.suspend(
+        () => ManagedBackupShortTermRetentionPolicyPropertiesSchema,
+      ),
     ),
   }).pipe(
     T.Http({
@@ -16110,23 +15005,15 @@ export type ManagedBackupShortTermRetentionPoliciesCreateOrUpdateInput =
 // Output Schema
 export const ManagedBackupShortTermRetentionPoliciesCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(
+        () => ManagedBackupShortTermRetentionPolicyPropertiesSchema,
+      ),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type ManagedBackupShortTermRetentionPoliciesCreateOrUpdateOutput =
   typeof ManagedBackupShortTermRetentionPoliciesCreateOrUpdateOutput.Type;
@@ -16168,23 +15055,15 @@ export type ManagedBackupShortTermRetentionPoliciesGetInput =
 // Output Schema
 export const ManagedBackupShortTermRetentionPoliciesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(
+        () => ManagedBackupShortTermRetentionPolicyPropertiesSchema,
+      ),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type ManagedBackupShortTermRetentionPoliciesGetOutput =
   typeof ManagedBackupShortTermRetentionPoliciesGetOutput.Type;
@@ -16226,35 +15105,7 @@ export type ManagedBackupShortTermRetentionPoliciesListByDatabaseInput =
 export const ManagedBackupShortTermRetentionPoliciesListByDatabaseOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
+      Schema.suspend(() => ManagedBackupShortTermRetentionPolicySchema),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -16285,9 +15136,9 @@ export const ManagedBackupShortTermRetentionPoliciesUpdateInput =
     databaseName: Schema.String.pipe(T.PathParam()),
     policyName: Schema.Literals(["default"]).pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        retentionDays: Schema.optional(Schema.Number),
-      }),
+      Schema.suspend(
+        () => ManagedBackupShortTermRetentionPolicyPropertiesSchema,
+      ),
     ),
   }).pipe(
     T.Http({
@@ -16303,23 +15154,15 @@ export type ManagedBackupShortTermRetentionPoliciesUpdateInput =
 // Output Schema
 export const ManagedBackupShortTermRetentionPoliciesUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(
+        () => ManagedBackupShortTermRetentionPolicyPropertiesSchema,
+      ),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type ManagedBackupShortTermRetentionPoliciesUpdateOutput =
   typeof ManagedBackupShortTermRetentionPoliciesUpdateOutput.Type;
@@ -16351,10 +15194,7 @@ export const ManagedDatabaseAdvancedThreatProtectionSettingsCreateOrUpdateInput 
       T.PathParam(),
     ),
     properties: Schema.optional(
-      Schema.Struct({
-        state: Schema.Literals(["New", "Enabled", "Disabled"]),
-        creationTime: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(() => AdvancedThreatProtectionPropertiesSchema),
     ),
   }).pipe(
     T.Http({
@@ -16369,23 +15209,13 @@ export type ManagedDatabaseAdvancedThreatProtectionSettingsCreateOrUpdateInput =
 // Output Schema
 export const ManagedDatabaseAdvancedThreatProtectionSettingsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => AdvancedThreatProtectionPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type ManagedDatabaseAdvancedThreatProtectionSettingsCreateOrUpdateOutput =
   typeof ManagedDatabaseAdvancedThreatProtectionSettingsCreateOrUpdateOutput.Type;
@@ -16431,23 +15261,13 @@ export type ManagedDatabaseAdvancedThreatProtectionSettingsGetInput =
 // Output Schema
 export const ManagedDatabaseAdvancedThreatProtectionSettingsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => AdvancedThreatProtectionPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type ManagedDatabaseAdvancedThreatProtectionSettingsGetOutput =
   typeof ManagedDatabaseAdvancedThreatProtectionSettingsGetOutput.Type;
@@ -16489,35 +15309,7 @@ export type ManagedDatabaseAdvancedThreatProtectionSettingsListByDatabaseInput =
 export const ManagedDatabaseAdvancedThreatProtectionSettingsListByDatabaseOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
+      Schema.suspend(() => ManagedDatabaseAdvancedThreatProtectionSchema),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -16564,23 +15356,13 @@ export type ManagedDatabaseColumnsGetInput =
 // Output Schema
 export const ManagedDatabaseColumnsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => DatabaseColumnPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type ManagedDatabaseColumnsGetOutput =
   typeof ManagedDatabaseColumnsGetOutput.Type;
@@ -16629,37 +15411,7 @@ export type ManagedDatabaseColumnsListByDatabaseInput =
 // Output Schema
 export const ManagedDatabaseColumnsListByDatabaseOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => DatabaseColumnSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type ManagedDatabaseColumnsListByDatabaseOutput =
@@ -16704,37 +15456,7 @@ export type ManagedDatabaseColumnsListByTableInput =
 // Output Schema
 export const ManagedDatabaseColumnsListByTableOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => DatabaseColumnSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type ManagedDatabaseColumnsListByTableOutput =
@@ -16778,23 +15500,13 @@ export type ManagedDatabaseMoveOperationsGetInput =
 // Output Schema
 export const ManagedDatabaseMoveOperationsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => ManagedDatabaseMoveOperationResultPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type ManagedDatabaseMoveOperationsGetOutput =
   typeof ManagedDatabaseMoveOperationsGetOutput.Type;
@@ -16837,35 +15549,7 @@ export const ManagedDatabaseMoveOperationsListByLocationOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.String),
-              createdByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              createdAt: Schema.optional(Schema.String),
-              lastModifiedBy: Schema.optional(Schema.String),
-              lastModifiedByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              lastModifiedAt: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
+        Schema.suspend(() => ManagedDatabaseMoveOperationResultSchema),
       ),
     ),
     nextLink: Schema.optional(Schema.String),
@@ -16910,23 +15594,11 @@ export type ManagedDatabaseQueriesGetInput =
 // Output Schema
 export const ManagedDatabaseQueriesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(Schema.suspend(() => QueryPropertiesSchema)),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type ManagedDatabaseQueriesGetOutput =
   typeof ManagedDatabaseQueriesGetOutput.Type;
@@ -16971,37 +15643,7 @@ export type ManagedDatabaseQueriesListByQueryInput =
 // Output Schema
 export const ManagedDatabaseQueriesListByQueryOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => QueryStatisticsSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type ManagedDatabaseQueriesListByQueryOutput =
@@ -17034,35 +15676,7 @@ export const ManagedDatabaseRecommendedSensitivityLabelsUpdateInput =
     databaseName: Schema.String.pipe(T.PathParam()),
     operations: Schema.optional(
       Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.String),
-              createdByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              createdAt: Schema.optional(Schema.String),
-              lastModifiedBy: Schema.optional(Schema.String),
-              lastModifiedByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              lastModifiedAt: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
+        Schema.suspend(() => RecommendedSensitivityLabelUpdateSchema),
       ),
     ),
   }).pipe(
@@ -17117,23 +15731,13 @@ export type ManagedDatabaseRestoreDetailsGetInput =
 // Output Schema
 export const ManagedDatabaseRestoreDetailsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => ManagedDatabaseRestoreDetailsPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type ManagedDatabaseRestoreDetailsGetOutput =
   typeof ManagedDatabaseRestoreDetailsGetOutput.Type;
@@ -17219,20 +15823,7 @@ export const ManagedDatabaseSchemasGetOutput =
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type ManagedDatabaseSchemasGetOutput =
   typeof ManagedDatabaseSchemasGetOutput.Type;
@@ -17275,37 +15866,7 @@ export type ManagedDatabaseSchemasListByDatabaseInput =
 // Output Schema
 export const ManagedDatabaseSchemasListByDatabaseOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => DatabaseSchemaSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type ManagedDatabaseSchemasListByDatabaseOutput =
@@ -17415,71 +15976,7 @@ export const ManagedDatabasesCreateOrUpdateInput =
     managedInstanceName: Schema.String.pipe(T.PathParam()),
     databaseName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        collation: Schema.optional(Schema.String),
-        status: Schema.optional(
-          Schema.Literals([
-            "Online",
-            "Offline",
-            "Shutdown",
-            "Creating",
-            "Inaccessible",
-            "Restoring",
-            "Updating",
-            "Stopping",
-            "Stopped",
-            "Starting",
-            "DbMoving",
-            "DbCopying",
-          ]),
-        ),
-        creationDate: Schema.optional(Schema.String),
-        earliestRestorePoint: Schema.optional(Schema.String),
-        restorePointInTime: Schema.optional(Schema.String),
-        defaultSecondaryLocation: Schema.optional(Schema.String),
-        catalogCollation: Schema.optional(
-          Schema.Literals(["DATABASE_DEFAULT", "SQL_Latin1_General_CP1_CI_AS"]),
-        ),
-        createMode: Schema.optional(
-          Schema.Literals([
-            "Default",
-            "RestoreExternalBackup",
-            "PointInTimeRestore",
-            "Recovery",
-            "RestoreLongTermRetentionBackup",
-          ]),
-        ),
-        storageContainerUri: Schema.optional(Schema.String),
-        sourceDatabaseId: Schema.optional(Schema.String),
-        crossSubscriptionSourceDatabaseId: Schema.optional(Schema.String),
-        restorableDroppedDatabaseId: Schema.optional(Schema.String),
-        crossSubscriptionRestorableDroppedDatabaseId: Schema.optional(
-          Schema.String,
-        ),
-        storageContainerIdentity: Schema.optional(Schema.String),
-        storageContainerSasToken: Schema.optional(Schema.String),
-        failoverGroupId: Schema.optional(Schema.String),
-        recoverableDatabaseId: Schema.optional(Schema.String),
-        longTermRetentionBackupResourceId: Schema.optional(Schema.String),
-        autoCompleteRestore: Schema.optional(Schema.Boolean),
-        lastBackupName: Schema.optional(Schema.String),
-        crossSubscriptionTargetManagedInstanceId: Schema.optional(
-          Schema.String,
-        ),
-        isLedgerOn: Schema.optional(Schema.Boolean),
-        extendedAccessibilityInfo: Schema.optional(
-          Schema.Struct({
-            inaccessibilityReasonErrorCode: Schema.String,
-            inaccessibilityReasonDescription: Schema.String,
-            inaccessibilityReasonKind: Schema.Literals([
-              "Unknown",
-              "TransparentDataEncryption",
-              "DatabaseReplication",
-            ]),
-            inaccessibilityReasonTdeKeyUri: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
+      Schema.suspend(() => ManagedDatabasePropertiesSchema),
     ),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     location: Schema.String,
@@ -17497,23 +15994,15 @@ export type ManagedDatabasesCreateOrUpdateInput =
 // Output Schema
 export const ManagedDatabasesCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => ManagedDatabasePropertiesSchema),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type ManagedDatabasesCreateOrUpdateOutput =
   typeof ManagedDatabasesCreateOrUpdateOutput.Type;
@@ -17582,16 +16071,7 @@ export const ManagedDatabaseSecurityAlertPoliciesCreateOrUpdateInput =
     databaseName: Schema.String.pipe(T.PathParam()),
     securityAlertPolicyName: Schema.Literals(["Default"]).pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        state: Schema.Literals(["New", "Enabled", "Disabled"]),
-        disabledAlerts: Schema.optional(Schema.Array(Schema.String)),
-        emailAddresses: Schema.optional(Schema.Array(Schema.String)),
-        emailAccountAdmins: Schema.optional(Schema.Boolean),
-        storageEndpoint: Schema.optional(Schema.String),
-        storageAccountAccessKey: Schema.optional(Schema.String),
-        retentionDays: Schema.optional(Schema.Number),
-        creationTime: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(() => SecurityAlertPolicyPropertiesSchema),
     ),
   }).pipe(
     T.Http({
@@ -17606,23 +16086,13 @@ export type ManagedDatabaseSecurityAlertPoliciesCreateOrUpdateInput =
 // Output Schema
 export const ManagedDatabaseSecurityAlertPoliciesCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => SecurityAlertPolicyPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type ManagedDatabaseSecurityAlertPoliciesCreateOrUpdateOutput =
   typeof ManagedDatabaseSecurityAlertPoliciesCreateOrUpdateOutput.Type;
@@ -17664,23 +16134,13 @@ export type ManagedDatabaseSecurityAlertPoliciesGetInput =
 // Output Schema
 export const ManagedDatabaseSecurityAlertPoliciesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => SecurityAlertPolicyPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type ManagedDatabaseSecurityAlertPoliciesGetOutput =
   typeof ManagedDatabaseSecurityAlertPoliciesGetOutput.Type;
@@ -17722,35 +16182,7 @@ export type ManagedDatabaseSecurityAlertPoliciesListByDatabaseInput =
 export const ManagedDatabaseSecurityAlertPoliciesListByDatabaseOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
+      Schema.suspend(() => ManagedDatabaseSecurityAlertPolicySchema),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -17796,37 +16228,7 @@ export type ManagedDatabaseSecurityEventsListByDatabaseInput =
 // Output Schema
 export const ManagedDatabaseSecurityEventsListByDatabaseOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => SecurityEventSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type ManagedDatabaseSecurityEventsListByDatabaseOutput =
@@ -17863,22 +16265,7 @@ export const ManagedDatabaseSensitivityLabelsCreateOrUpdateInput =
     columnName: Schema.String.pipe(T.PathParam()),
     sensitivityLabelSource: Schema.Literals(["current"]).pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        schemaName: Schema.optional(Schema.String),
-        tableName: Schema.optional(Schema.String),
-        columnName: Schema.optional(Schema.String),
-        labelName: Schema.optional(Schema.String),
-        labelId: Schema.optional(Schema.String),
-        informationType: Schema.optional(Schema.String),
-        informationTypeId: Schema.optional(Schema.String),
-        isDisabled: Schema.optional(Schema.Boolean),
-        rank: Schema.optional(
-          Schema.Literals(["None", "Low", "Medium", "High", "Critical"]),
-        ),
-        clientClassificationSource: Schema.optional(
-          Schema.Literals(["None", "Native", "Recommended", "MIP"]),
-        ),
-      }),
+      Schema.suspend(() => SensitivityLabelPropertiesSchema),
     ),
     managedBy: Schema.optional(Schema.String),
   }).pipe(
@@ -17894,23 +16281,14 @@ export type ManagedDatabaseSensitivityLabelsCreateOrUpdateInput =
 // Output Schema
 export const ManagedDatabaseSensitivityLabelsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => SensitivityLabelPropertiesSchema),
+    ),
+    managedBy: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type ManagedDatabaseSensitivityLabelsCreateOrUpdateOutput =
   typeof ManagedDatabaseSensitivityLabelsCreateOrUpdateOutput.Type;
@@ -18102,23 +16480,14 @@ export type ManagedDatabaseSensitivityLabelsGetInput =
 // Output Schema
 export const ManagedDatabaseSensitivityLabelsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => SensitivityLabelPropertiesSchema),
+    ),
+    managedBy: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type ManagedDatabaseSensitivityLabelsGetOutput =
   typeof ManagedDatabaseSensitivityLabelsGetOutput.Type;
@@ -18163,37 +16532,7 @@ export type ManagedDatabaseSensitivityLabelsListByDatabaseInput =
 // Output Schema
 export const ManagedDatabaseSensitivityLabelsListByDatabaseOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => SensitivityLabelSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type ManagedDatabaseSensitivityLabelsListByDatabaseOutput =
@@ -18238,37 +16577,7 @@ export type ManagedDatabaseSensitivityLabelsListCurrentByDatabaseInput =
 // Output Schema
 export const ManagedDatabaseSensitivityLabelsListCurrentByDatabaseOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => SensitivityLabelSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type ManagedDatabaseSensitivityLabelsListCurrentByDatabaseOutput =
@@ -18313,37 +16622,7 @@ export type ManagedDatabaseSensitivityLabelsListRecommendedByDatabaseInput =
 // Output Schema
 export const ManagedDatabaseSensitivityLabelsListRecommendedByDatabaseOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => SensitivityLabelSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type ManagedDatabaseSensitivityLabelsListRecommendedByDatabaseOutput =
@@ -18375,37 +16654,7 @@ export const ManagedDatabaseSensitivityLabelsUpdateInput =
     managedInstanceName: Schema.String.pipe(T.PathParam()),
     databaseName: Schema.String.pipe(T.PathParam()),
     operations: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.String),
-              createdByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              createdAt: Schema.optional(Schema.String),
-              lastModifiedBy: Schema.optional(Schema.String),
-              lastModifiedByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              lastModifiedAt: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => SensitivityLabelUpdateSchema)),
     ),
   }).pipe(
     T.Http({
@@ -18457,23 +16706,15 @@ export type ManagedDatabasesGetInput = typeof ManagedDatabasesGetInput.Type;
 // Output Schema
 export const ManagedDatabasesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => ManagedDatabasePropertiesSchema),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type ManagedDatabasesGetOutput = typeof ManagedDatabasesGetOutput.Type;
 
@@ -18510,37 +16751,7 @@ export type ManagedDatabasesListByInstanceInput =
 // Output Schema
 export const ManagedDatabasesListByInstanceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => ManagedDatabaseSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type ManagedDatabasesListByInstanceOutput =
@@ -18579,37 +16790,7 @@ export type ManagedDatabasesListInaccessibleByInstanceInput =
 // Output Schema
 export const ManagedDatabasesListInaccessibleByInstanceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => ManagedDatabaseSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type ManagedDatabasesListInaccessibleByInstanceOutput =
@@ -18650,23 +16831,15 @@ export type ManagedDatabasesReevaluateInaccessibleDatabaseStateInput =
 // Output Schema
 export const ManagedDatabasesReevaluateInaccessibleDatabaseStateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => ManagedDatabasePropertiesSchema),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type ManagedDatabasesReevaluateInaccessibleDatabaseStateOutput =
   typeof ManagedDatabasesReevaluateInaccessibleDatabaseStateOutput.Type;
@@ -18736,71 +16909,7 @@ export const ManagedDatabasesUpdateInput =
     managedInstanceName: Schema.String.pipe(T.PathParam()),
     databaseName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        collation: Schema.optional(Schema.String),
-        status: Schema.optional(
-          Schema.Literals([
-            "Online",
-            "Offline",
-            "Shutdown",
-            "Creating",
-            "Inaccessible",
-            "Restoring",
-            "Updating",
-            "Stopping",
-            "Stopped",
-            "Starting",
-            "DbMoving",
-            "DbCopying",
-          ]),
-        ),
-        creationDate: Schema.optional(Schema.String),
-        earliestRestorePoint: Schema.optional(Schema.String),
-        restorePointInTime: Schema.optional(Schema.String),
-        defaultSecondaryLocation: Schema.optional(Schema.String),
-        catalogCollation: Schema.optional(
-          Schema.Literals(["DATABASE_DEFAULT", "SQL_Latin1_General_CP1_CI_AS"]),
-        ),
-        createMode: Schema.optional(
-          Schema.Literals([
-            "Default",
-            "RestoreExternalBackup",
-            "PointInTimeRestore",
-            "Recovery",
-            "RestoreLongTermRetentionBackup",
-          ]),
-        ),
-        storageContainerUri: Schema.optional(Schema.String),
-        sourceDatabaseId: Schema.optional(Schema.String),
-        crossSubscriptionSourceDatabaseId: Schema.optional(Schema.String),
-        restorableDroppedDatabaseId: Schema.optional(Schema.String),
-        crossSubscriptionRestorableDroppedDatabaseId: Schema.optional(
-          Schema.String,
-        ),
-        storageContainerIdentity: Schema.optional(Schema.String),
-        storageContainerSasToken: Schema.optional(Schema.String),
-        failoverGroupId: Schema.optional(Schema.String),
-        recoverableDatabaseId: Schema.optional(Schema.String),
-        longTermRetentionBackupResourceId: Schema.optional(Schema.String),
-        autoCompleteRestore: Schema.optional(Schema.Boolean),
-        lastBackupName: Schema.optional(Schema.String),
-        crossSubscriptionTargetManagedInstanceId: Schema.optional(
-          Schema.String,
-        ),
-        isLedgerOn: Schema.optional(Schema.Boolean),
-        extendedAccessibilityInfo: Schema.optional(
-          Schema.Struct({
-            inaccessibilityReasonErrorCode: Schema.String,
-            inaccessibilityReasonDescription: Schema.String,
-            inaccessibilityReasonKind: Schema.Literals([
-              "Unknown",
-              "TransparentDataEncryption",
-              "DatabaseReplication",
-            ]),
-            inaccessibilityReasonTdeKeyUri: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
+      Schema.suspend(() => ManagedDatabasePropertiesSchema),
     ),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
@@ -18817,23 +16926,15 @@ export type ManagedDatabasesUpdateInput =
 // Output Schema
 export const ManagedDatabasesUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => ManagedDatabasePropertiesSchema),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type ManagedDatabasesUpdateOutput =
   typeof ManagedDatabasesUpdateOutput.Type;
@@ -18876,23 +16977,13 @@ export type ManagedDatabaseTablesGetInput =
 // Output Schema
 export const ManagedDatabaseTablesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => DatabaseTablePropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type ManagedDatabaseTablesGetOutput =
   typeof ManagedDatabaseTablesGetOutput.Type;
@@ -18937,37 +17028,7 @@ export type ManagedDatabaseTablesListBySchemaInput =
 // Output Schema
 export const ManagedDatabaseTablesListBySchemaOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => DatabaseTableSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type ManagedDatabaseTablesListBySchemaOutput =
@@ -18999,9 +17060,7 @@ export const ManagedDatabaseTransparentDataEncryptionCreateOrUpdateInput =
     databaseName: Schema.String.pipe(T.PathParam()),
     tdeName: Schema.Literals(["current"]).pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        state: Schema.Literals(["Enabled", "Disabled"]),
-      }),
+      Schema.suspend(() => ManagedTransparentDataEncryptionPropertiesSchema),
     ),
   }).pipe(
     T.Http({
@@ -19016,23 +17075,13 @@ export type ManagedDatabaseTransparentDataEncryptionCreateOrUpdateInput =
 // Output Schema
 export const ManagedDatabaseTransparentDataEncryptionCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => ManagedTransparentDataEncryptionPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type ManagedDatabaseTransparentDataEncryptionCreateOrUpdateOutput =
   typeof ManagedDatabaseTransparentDataEncryptionCreateOrUpdateOutput.Type;
@@ -19074,23 +17123,13 @@ export type ManagedDatabaseTransparentDataEncryptionGetInput =
 // Output Schema
 export const ManagedDatabaseTransparentDataEncryptionGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => ManagedTransparentDataEncryptionPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type ManagedDatabaseTransparentDataEncryptionGetOutput =
   typeof ManagedDatabaseTransparentDataEncryptionGetOutput.Type;
@@ -19132,35 +17171,7 @@ export type ManagedDatabaseTransparentDataEncryptionListByDatabaseInput =
 export const ManagedDatabaseTransparentDataEncryptionListByDatabaseOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
+      Schema.suspend(() => ManagedTransparentDataEncryptionSchema),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -19195,13 +17206,9 @@ export const ManagedDatabaseVulnerabilityAssessmentRuleBaselinesCreateOrUpdateIn
     ruleId: Schema.String.pipe(T.PathParam()),
     baselineName: Schema.Literals(["master", "default"]).pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        baselineResults: Schema.Array(
-          Schema.Struct({
-            result: Schema.Array(Schema.String),
-          }),
-        ),
-      }),
+      Schema.suspend(
+        () => DatabaseVulnerabilityAssessmentRuleBaselinePropertiesSchema,
+      ),
     ),
   }).pipe(
     T.Http({
@@ -19216,23 +17223,15 @@ export type ManagedDatabaseVulnerabilityAssessmentRuleBaselinesCreateOrUpdateInp
 // Output Schema
 export const ManagedDatabaseVulnerabilityAssessmentRuleBaselinesCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(
+        () => DatabaseVulnerabilityAssessmentRuleBaselinePropertiesSchema,
+      ),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type ManagedDatabaseVulnerabilityAssessmentRuleBaselinesCreateOrUpdateOutput =
   typeof ManagedDatabaseVulnerabilityAssessmentRuleBaselinesCreateOrUpdateOutput.Type;
@@ -19329,23 +17328,15 @@ export type ManagedDatabaseVulnerabilityAssessmentRuleBaselinesGetInput =
 // Output Schema
 export const ManagedDatabaseVulnerabilityAssessmentRuleBaselinesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(
+        () => DatabaseVulnerabilityAssessmentRuleBaselinePropertiesSchema,
+      ),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type ManagedDatabaseVulnerabilityAssessmentRuleBaselinesGetOutput =
   typeof ManagedDatabaseVulnerabilityAssessmentRuleBaselinesGetOutput.Type;
@@ -19392,23 +17383,15 @@ export type ManagedDatabaseVulnerabilityAssessmentScansExportInput =
 // Output Schema
 export const ManagedDatabaseVulnerabilityAssessmentScansExportOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(
+        () => DatabaseVulnerabilityAssessmentScanExportPropertiesSchema,
+      ),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type ManagedDatabaseVulnerabilityAssessmentScansExportOutput =
   typeof ManagedDatabaseVulnerabilityAssessmentScansExportOutput.Type;
@@ -19454,23 +17437,13 @@ export type ManagedDatabaseVulnerabilityAssessmentScansGetInput =
 // Output Schema
 export const ManagedDatabaseVulnerabilityAssessmentScansGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => VulnerabilityAssessmentScanRecordPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type ManagedDatabaseVulnerabilityAssessmentScansGetOutput =
   typeof ManagedDatabaseVulnerabilityAssessmentScansGetOutput.Type;
@@ -19561,35 +17534,7 @@ export type ManagedDatabaseVulnerabilityAssessmentScansListByDatabaseInput =
 export const ManagedDatabaseVulnerabilityAssessmentScansListByDatabaseOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
+      Schema.suspend(() => VulnerabilityAssessmentScanRecordSchema),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -19624,18 +17569,7 @@ export const ManagedDatabaseVulnerabilityAssessmentsCreateOrUpdateInput =
       T.PathParam(),
     ),
     properties: Schema.optional(
-      Schema.Struct({
-        storageContainerPath: Schema.optional(Schema.String),
-        storageContainerSasKey: Schema.optional(Schema.String),
-        storageAccountAccessKey: Schema.optional(Schema.String),
-        recurringScans: Schema.optional(
-          Schema.Struct({
-            isEnabled: Schema.optional(Schema.Boolean),
-            emailSubscriptionAdmins: Schema.optional(Schema.Boolean),
-            emails: Schema.optional(Schema.Array(Schema.String)),
-          }),
-        ),
-      }),
+      Schema.suspend(() => DatabaseVulnerabilityAssessmentPropertiesSchema),
     ),
   }).pipe(
     T.Http({
@@ -19650,23 +17584,13 @@ export type ManagedDatabaseVulnerabilityAssessmentsCreateOrUpdateInput =
 // Output Schema
 export const ManagedDatabaseVulnerabilityAssessmentsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => DatabaseVulnerabilityAssessmentPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type ManagedDatabaseVulnerabilityAssessmentsCreateOrUpdateOutput =
   typeof ManagedDatabaseVulnerabilityAssessmentsCreateOrUpdateOutput.Type;
@@ -19752,23 +17676,13 @@ export type ManagedDatabaseVulnerabilityAssessmentsGetInput =
 // Output Schema
 export const ManagedDatabaseVulnerabilityAssessmentsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => DatabaseVulnerabilityAssessmentPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type ManagedDatabaseVulnerabilityAssessmentsGetOutput =
   typeof ManagedDatabaseVulnerabilityAssessmentsGetOutput.Type;
@@ -19810,35 +17724,7 @@ export type ManagedDatabaseVulnerabilityAssessmentsListByDatabaseInput =
 export const ManagedDatabaseVulnerabilityAssessmentsListByDatabaseOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
+      Schema.suspend(() => DatabaseVulnerabilityAssessmentSchema),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -19868,12 +17754,7 @@ export const ManagedInstanceAdministratorsCreateOrUpdateInput =
     managedInstanceName: Schema.String.pipe(T.PathParam()),
     administratorName: Schema.Literals(["ActiveDirectory"]).pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        administratorType: Schema.Literals(["ActiveDirectory"]),
-        login: Schema.String,
-        sid: Schema.String,
-        tenantId: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(() => ManagedInstanceAdministratorPropertiesSchema),
     ),
   }).pipe(
     T.Http({
@@ -19889,23 +17770,13 @@ export type ManagedInstanceAdministratorsCreateOrUpdateInput =
 // Output Schema
 export const ManagedInstanceAdministratorsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => ManagedInstanceAdministratorPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type ManagedInstanceAdministratorsCreateOrUpdateOutput =
   typeof ManagedInstanceAdministratorsCreateOrUpdateOutput.Type;
@@ -19982,23 +17853,13 @@ export type ManagedInstanceAdministratorsGetInput =
 // Output Schema
 export const ManagedInstanceAdministratorsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => ManagedInstanceAdministratorPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type ManagedInstanceAdministratorsGetOutput =
   typeof ManagedInstanceAdministratorsGetOutput.Type;
@@ -20037,35 +17898,7 @@ export type ManagedInstanceAdministratorsListByInstanceInput =
 export const ManagedInstanceAdministratorsListByInstanceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
+      Schema.suspend(() => ManagedInstanceAdministratorSchema),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -20096,10 +17929,7 @@ export const ManagedInstanceAdvancedThreatProtectionSettingsCreateOrUpdateInput 
       T.PathParam(),
     ),
     properties: Schema.optional(
-      Schema.Struct({
-        state: Schema.Literals(["New", "Enabled", "Disabled"]),
-        creationTime: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(() => AdvancedThreatProtectionPropertiesSchema),
     ),
   }).pipe(
     T.Http({
@@ -20115,23 +17945,13 @@ export type ManagedInstanceAdvancedThreatProtectionSettingsCreateOrUpdateInput =
 // Output Schema
 export const ManagedInstanceAdvancedThreatProtectionSettingsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => AdvancedThreatProtectionPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type ManagedInstanceAdvancedThreatProtectionSettingsCreateOrUpdateOutput =
   typeof ManagedInstanceAdvancedThreatProtectionSettingsCreateOrUpdateOutput.Type;
@@ -20175,23 +17995,13 @@ export type ManagedInstanceAdvancedThreatProtectionSettingsGetInput =
 // Output Schema
 export const ManagedInstanceAdvancedThreatProtectionSettingsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => AdvancedThreatProtectionPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type ManagedInstanceAdvancedThreatProtectionSettingsGetOutput =
   typeof ManagedInstanceAdvancedThreatProtectionSettingsGetOutput.Type;
@@ -20231,35 +18041,7 @@ export type ManagedInstanceAdvancedThreatProtectionSettingsListByInstanceInput =
 export const ManagedInstanceAdvancedThreatProtectionSettingsListByInstanceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
+      Schema.suspend(() => ManagedInstanceAdvancedThreatProtectionSchema),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -20290,9 +18072,7 @@ export const ManagedInstanceAzureADOnlyAuthenticationsCreateOrUpdateInput =
     managedInstanceName: Schema.String.pipe(T.PathParam()),
     authenticationName: Schema.Literals(["Default"]).pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        azureADOnlyAuthentication: Schema.Boolean,
-      }),
+      Schema.suspend(() => ManagedInstanceAzureADOnlyAuthPropertiesSchema),
     ),
   }).pipe(
     T.Http({
@@ -20308,23 +18088,13 @@ export type ManagedInstanceAzureADOnlyAuthenticationsCreateOrUpdateInput =
 // Output Schema
 export const ManagedInstanceAzureADOnlyAuthenticationsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => ManagedInstanceAzureADOnlyAuthPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type ManagedInstanceAzureADOnlyAuthenticationsCreateOrUpdateOutput =
   typeof ManagedInstanceAzureADOnlyAuthenticationsCreateOrUpdateOutput.Type;
@@ -20403,23 +18173,13 @@ export type ManagedInstanceAzureADOnlyAuthenticationsGetInput =
 // Output Schema
 export const ManagedInstanceAzureADOnlyAuthenticationsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => ManagedInstanceAzureADOnlyAuthPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type ManagedInstanceAzureADOnlyAuthenticationsGetOutput =
   typeof ManagedInstanceAzureADOnlyAuthenticationsGetOutput.Type;
@@ -20460,35 +18220,7 @@ export const ManagedInstanceAzureADOnlyAuthenticationsListByInstanceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.String),
-              createdByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              createdAt: Schema.optional(Schema.String),
-              lastModifiedBy: Schema.optional(Schema.String),
-              lastModifiedByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              lastModifiedAt: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
+        Schema.suspend(() => ManagedInstanceAzureADOnlyAuthenticationSchema),
       ),
     ),
     nextLink: Schema.optional(Schema.String),
@@ -20518,37 +18250,7 @@ export const ManagedInstanceDtcsCreateOrUpdateInput =
     managedInstanceName: Schema.String.pipe(T.PathParam()),
     dtcName: Schema.Literals(["current"]).pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        dtcEnabled: Schema.optional(Schema.Boolean),
-        securitySettings: Schema.optional(
-          Schema.Struct({
-            transactionManagerCommunicationSettings: Schema.optional(
-              Schema.Struct({
-                allowInboundEnabled: Schema.optional(Schema.Boolean),
-                allowOutboundEnabled: Schema.optional(Schema.Boolean),
-                authentication: Schema.optional(Schema.String),
-              }),
-            ),
-            xaTransactionsEnabled: Schema.optional(Schema.Boolean),
-            snaLu6point2TransactionsEnabled: Schema.optional(Schema.Boolean),
-            xaTransactionsDefaultTimeout: Schema.optional(Schema.Number),
-            xaTransactionsMaximumTimeout: Schema.optional(Schema.Number),
-          }),
-        ),
-        externalDnsSuffixSearchList: Schema.optional(
-          Schema.Array(Schema.String),
-        ),
-        dtcHostNameDnsSuffix: Schema.optional(Schema.String),
-        provisioningState: Schema.optional(
-          Schema.Literals([
-            "Created",
-            "InProgress",
-            "Succeeded",
-            "Failed",
-            "Canceled",
-          ]),
-        ),
-      }),
+      Schema.suspend(() => ManagedInstanceDtcPropertiesSchema),
     ),
   }).pipe(
     T.Http({
@@ -20564,23 +18266,13 @@ export type ManagedInstanceDtcsCreateOrUpdateInput =
 // Output Schema
 export const ManagedInstanceDtcsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => ManagedInstanceDtcPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type ManagedInstanceDtcsCreateOrUpdateOutput =
   typeof ManagedInstanceDtcsCreateOrUpdateOutput.Type;
@@ -20620,23 +18312,13 @@ export type ManagedInstanceDtcsGetInput =
 // Output Schema
 export const ManagedInstanceDtcsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => ManagedInstanceDtcPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type ManagedInstanceDtcsGetOutput =
   typeof ManagedInstanceDtcsGetOutput.Type;
@@ -20676,37 +18358,7 @@ export type ManagedInstanceDtcsListByManagedInstanceInput =
 // Output Schema
 export const ManagedInstanceDtcsListByManagedInstanceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => ManagedInstanceDtcSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type ManagedInstanceDtcsListByManagedInstanceOutput =
@@ -20734,13 +18386,7 @@ export const ManagedInstanceEncryptionProtectorsCreateOrUpdateInput =
     managedInstanceName: Schema.String.pipe(T.PathParam()),
     encryptionProtectorName: Schema.Literals(["current"]).pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        serverKeyName: Schema.optional(Schema.String),
-        serverKeyType: Schema.Literals(["ServiceManaged", "AzureKeyVault"]),
-        uri: Schema.optional(Schema.String),
-        thumbprint: Schema.optional(Schema.String),
-        autoRotationEnabled: Schema.optional(Schema.Boolean),
-      }),
+      Schema.suspend(() => ManagedInstanceEncryptionProtectorPropertiesSchema),
     ),
     kind: Schema.optional(Schema.String),
   }).pipe(
@@ -20757,23 +18403,14 @@ export type ManagedInstanceEncryptionProtectorsCreateOrUpdateInput =
 // Output Schema
 export const ManagedInstanceEncryptionProtectorsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => ManagedInstanceEncryptionProtectorPropertiesSchema),
+    ),
+    kind: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type ManagedInstanceEncryptionProtectorsCreateOrUpdateOutput =
   typeof ManagedInstanceEncryptionProtectorsCreateOrUpdateOutput.Type;
@@ -20813,23 +18450,14 @@ export type ManagedInstanceEncryptionProtectorsGetInput =
 // Output Schema
 export const ManagedInstanceEncryptionProtectorsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => ManagedInstanceEncryptionProtectorPropertiesSchema),
+    ),
+    kind: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type ManagedInstanceEncryptionProtectorsGetOutput =
   typeof ManagedInstanceEncryptionProtectorsGetOutput.Type;
@@ -20869,35 +18497,7 @@ export type ManagedInstanceEncryptionProtectorsListByInstanceInput =
 export const ManagedInstanceEncryptionProtectorsListByInstanceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
+      Schema.suspend(() => ManagedInstanceEncryptionProtectorSchema),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -20965,13 +18565,7 @@ export const ManagedInstanceKeysCreateOrUpdateInput =
     managedInstanceName: Schema.String.pipe(T.PathParam()),
     keyName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        serverKeyType: Schema.Literals(["ServiceManaged", "AzureKeyVault"]),
-        uri: Schema.optional(Schema.String),
-        thumbprint: Schema.optional(Schema.String),
-        creationDate: Schema.optional(Schema.String),
-        autoRotationEnabled: Schema.optional(Schema.Boolean),
-      }),
+      Schema.suspend(() => ManagedInstanceKeyPropertiesSchema),
     ),
     kind: Schema.optional(Schema.String),
   }).pipe(
@@ -20988,23 +18582,14 @@ export type ManagedInstanceKeysCreateOrUpdateInput =
 // Output Schema
 export const ManagedInstanceKeysCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => ManagedInstanceKeyPropertiesSchema),
+    ),
+    kind: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type ManagedInstanceKeysCreateOrUpdateOutput =
   typeof ManagedInstanceKeysCreateOrUpdateOutput.Type;
@@ -21084,23 +18669,14 @@ export type ManagedInstanceKeysGetInput =
 // Output Schema
 export const ManagedInstanceKeysGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => ManagedInstanceKeyPropertiesSchema),
+    ),
+    kind: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type ManagedInstanceKeysGetOutput =
   typeof ManagedInstanceKeysGetOutput.Type;
@@ -21141,37 +18717,7 @@ export type ManagedInstanceKeysListByInstanceInput =
 // Output Schema
 export const ManagedInstanceKeysListByInstanceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => ManagedInstanceKeySchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type ManagedInstanceKeysListByInstanceOutput =
@@ -21201,15 +18747,9 @@ export const ManagedInstanceLongTermRetentionPoliciesCreateOrUpdateInput =
     databaseName: Schema.String.pipe(T.PathParam()),
     policyName: Schema.Literals(["default"]).pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        backupStorageAccessTier: Schema.optional(
-          Schema.Literals(["Hot", "Archive"]),
-        ),
-        weeklyRetention: Schema.optional(Schema.String),
-        monthlyRetention: Schema.optional(Schema.String),
-        yearlyRetention: Schema.optional(Schema.String),
-        weekOfYear: Schema.optional(Schema.Number),
-      }),
+      Schema.suspend(
+        () => ManagedInstanceLongTermRetentionPolicyPropertiesSchema,
+      ),
     ),
   }).pipe(
     T.Http({
@@ -21225,23 +18765,15 @@ export type ManagedInstanceLongTermRetentionPoliciesCreateOrUpdateInput =
 // Output Schema
 export const ManagedInstanceLongTermRetentionPoliciesCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(
+        () => ManagedInstanceLongTermRetentionPolicyPropertiesSchema,
+      ),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type ManagedInstanceLongTermRetentionPoliciesCreateOrUpdateOutput =
   typeof ManagedInstanceLongTermRetentionPoliciesCreateOrUpdateOutput.Type;
@@ -21284,23 +18816,15 @@ export type ManagedInstanceLongTermRetentionPoliciesDeleteInput =
 // Output Schema
 export const ManagedInstanceLongTermRetentionPoliciesDeleteOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(
+        () => ManagedInstanceLongTermRetentionPolicyPropertiesSchema,
+      ),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type ManagedInstanceLongTermRetentionPoliciesDeleteOutput =
   typeof ManagedInstanceLongTermRetentionPoliciesDeleteOutput.Type;
@@ -21342,23 +18866,15 @@ export type ManagedInstanceLongTermRetentionPoliciesGetInput =
 // Output Schema
 export const ManagedInstanceLongTermRetentionPoliciesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(
+        () => ManagedInstanceLongTermRetentionPolicyPropertiesSchema,
+      ),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type ManagedInstanceLongTermRetentionPoliciesGetOutput =
   typeof ManagedInstanceLongTermRetentionPoliciesGetOutput.Type;
@@ -21400,35 +18916,7 @@ export type ManagedInstanceLongTermRetentionPoliciesListByDatabaseInput =
 export const ManagedInstanceLongTermRetentionPoliciesListByDatabaseOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
+      Schema.suspend(() => ManagedInstanceLongTermRetentionPolicySchema),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -21507,23 +18995,13 @@ export type ManagedInstanceOperationsGetInput =
 // Output Schema
 export const ManagedInstanceOperationsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => ManagedInstanceOperationPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type ManagedInstanceOperationsGetOutput =
   typeof ManagedInstanceOperationsGetOutput.Type;
@@ -21561,37 +19039,7 @@ export type ManagedInstanceOperationsListByManagedInstanceInput =
 // Output Schema
 export const ManagedInstanceOperationsListByManagedInstanceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => ManagedInstanceOperationSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type ManagedInstanceOperationsListByManagedInstanceOutput =
@@ -21619,21 +19067,9 @@ export const ManagedInstancePrivateEndpointConnectionsCreateOrUpdateInput =
     managedInstanceName: Schema.String.pipe(T.PathParam()),
     privateEndpointConnectionName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        privateEndpoint: Schema.optional(
-          Schema.Struct({
-            id: Schema.optional(Schema.String),
-          }),
-        ),
-        privateLinkServiceConnectionState: Schema.optional(
-          Schema.Struct({
-            status: Schema.String,
-            description: Schema.String,
-            actionsRequired: Schema.optional(Schema.String),
-          }),
-        ),
-        provisioningState: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () => ManagedInstancePrivateEndpointConnectionPropertiesSchema,
+      ),
     ),
   }).pipe(
     T.Http({
@@ -21649,23 +19085,15 @@ export type ManagedInstancePrivateEndpointConnectionsCreateOrUpdateInput =
 // Output Schema
 export const ManagedInstancePrivateEndpointConnectionsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(
+        () => ManagedInstancePrivateEndpointConnectionPropertiesSchema,
+      ),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type ManagedInstancePrivateEndpointConnectionsCreateOrUpdateOutput =
   typeof ManagedInstancePrivateEndpointConnectionsCreateOrUpdateOutput.Type;
@@ -21744,23 +19172,15 @@ export type ManagedInstancePrivateEndpointConnectionsGetInput =
 // Output Schema
 export const ManagedInstancePrivateEndpointConnectionsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(
+        () => ManagedInstancePrivateEndpointConnectionPropertiesSchema,
+      ),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type ManagedInstancePrivateEndpointConnectionsGetOutput =
   typeof ManagedInstancePrivateEndpointConnectionsGetOutput.Type;
@@ -21800,35 +19220,7 @@ export type ManagedInstancePrivateEndpointConnectionsListByManagedInstanceInput 
 export const ManagedInstancePrivateEndpointConnectionsListByManagedInstanceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
+      Schema.suspend(() => ManagedInstancePrivateEndpointConnectionSchema),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -21871,23 +19263,13 @@ export type ManagedInstancePrivateLinkResourcesGetInput =
 // Output Schema
 export const ManagedInstancePrivateLinkResourcesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => ManagedInstancePrivateLinkPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type ManagedInstancePrivateLinkResourcesGetOutput =
   typeof ManagedInstancePrivateLinkResourcesGetOutput.Type;
@@ -21926,37 +19308,7 @@ export type ManagedInstancePrivateLinkResourcesListByManagedInstanceInput =
 // Output Schema
 export const ManagedInstancePrivateLinkResourcesListByManagedInstanceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => ManagedInstancePrivateLinkSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type ManagedInstancePrivateLinkResourcesListByManagedInstanceOutput =
@@ -21984,156 +19336,10 @@ export const ManagedInstancesCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     managedInstanceName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        provisioningState: Schema.optional(
-          Schema.Literals([
-            "Created",
-            "InProgress",
-            "Succeeded",
-            "Failed",
-            "Canceled",
-          ]),
-        ),
-        managedInstanceCreateMode: Schema.optional(
-          Schema.Literals(["Default", "PointInTimeRestore"]),
-        ),
-        fullyQualifiedDomainName: Schema.optional(Schema.String),
-        isGeneralPurposeV2: Schema.optional(Schema.Boolean),
-        administratorLogin: Schema.optional(Schema.String),
-        administratorLoginPassword: Schema.optional(SensitiveString),
-        subnetId: Schema.optional(Schema.String),
-        state: Schema.optional(Schema.String),
-        licenseType: Schema.optional(
-          Schema.Literals(["LicenseIncluded", "BasePrice"]),
-        ),
-        hybridSecondaryUsage: Schema.optional(
-          Schema.Literals(["Active", "Passive"]),
-        ),
-        hybridSecondaryUsageDetected: Schema.optional(
-          Schema.Literals(["Active", "Passive"]),
-        ),
-        vCores: Schema.optional(Schema.Number),
-        storageSizeInGB: Schema.optional(Schema.Number),
-        storageIOps: Schema.optional(Schema.Number),
-        storageThroughputMBps: Schema.optional(Schema.Number),
-        memorySizeInGB: Schema.optional(Schema.Number),
-        collation: Schema.optional(Schema.String),
-        dnsZone: Schema.optional(Schema.String),
-        dnsZonePartner: Schema.optional(Schema.String),
-        publicDataEndpointEnabled: Schema.optional(Schema.Boolean),
-        sourceManagedInstanceId: Schema.optional(Schema.String),
-        restorePointInTime: Schema.optional(Schema.String),
-        proxyOverride: Schema.optional(
-          Schema.Literals(["Proxy", "Redirect", "Default"]),
-        ),
-        timezoneId: Schema.optional(Schema.String),
-        instancePoolId: Schema.optional(Schema.String),
-        maintenanceConfigurationId: Schema.optional(Schema.String),
-        privateEndpointConnections: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              id: Schema.optional(Schema.String),
-              properties: Schema.optional(
-                Schema.Struct({
-                  privateEndpoint: Schema.optional(
-                    Schema.Struct({
-                      id: Schema.optional(Schema.String),
-                    }),
-                  ),
-                  privateLinkServiceConnectionState: Schema.optional(
-                    Schema.Struct({
-                      status: Schema.String,
-                      description: Schema.String,
-                      actionsRequired: Schema.optional(Schema.String),
-                    }),
-                  ),
-                  provisioningState: Schema.optional(Schema.String),
-                }),
-              ),
-            }),
-          ),
-        ),
-        minimalTlsVersion: Schema.optional(Schema.String),
-        currentBackupStorageRedundancy: Schema.optional(
-          Schema.Literals(["Geo", "Local", "Zone", "GeoZone"]),
-        ),
-        requestedBackupStorageRedundancy: Schema.optional(
-          Schema.Literals(["Geo", "Local", "Zone", "GeoZone"]),
-        ),
-        zoneRedundant: Schema.optional(Schema.Boolean),
-        primaryUserAssignedIdentityId: Schema.optional(Schema.String),
-        keyId: Schema.optional(Schema.String),
-        administrators: Schema.optional(
-          Schema.Struct({
-            administratorType: Schema.optional(
-              Schema.Literals(["ActiveDirectory"]),
-            ),
-            principalType: Schema.optional(
-              Schema.Literals(["User", "Group", "Application"]),
-            ),
-            login: Schema.optional(Schema.String),
-            sid: Schema.optional(Schema.String),
-            tenantId: Schema.optional(Schema.String),
-            azureADOnlyAuthentication: Schema.optional(Schema.Boolean),
-          }),
-        ),
-        servicePrincipal: Schema.optional(
-          Schema.Struct({
-            principalId: Schema.optional(Schema.String),
-            clientId: Schema.optional(Schema.String),
-            tenantId: Schema.optional(Schema.String),
-            type: Schema.optional(Schema.Literals(["None", "SystemAssigned"])),
-          }),
-        ),
-        virtualClusterId: Schema.optional(Schema.String),
-        externalGovernanceStatus: Schema.optional(
-          Schema.Literals(["Enabled", "Disabled"]),
-        ),
-        pricingModel: Schema.optional(Schema.Literals(["Regular", "Freemium"])),
-        createTime: Schema.optional(Schema.String),
-        authenticationMetadata: Schema.optional(
-          Schema.Literals(["AzureAD", "Paired", "Windows"]),
-        ),
-        databaseFormat: Schema.optional(
-          Schema.Literals(["AlwaysUpToDate", "SQLServer2022", "SQLServer2025"]),
-        ),
-        requestedLogicalAvailabilityZone: Schema.optional(
-          Schema.Literals(["NoPreference", "1", "2", "3"]),
-        ),
-      }),
+      Schema.suspend(() => ManagedInstancePropertiesSchema),
     ),
-    identity: Schema.optional(
-      Schema.Struct({
-        userAssignedIdentities: Schema.optional(
-          Schema.Record(
-            Schema.String,
-            Schema.Struct({
-              principalId: Schema.optional(Schema.String),
-              clientId: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        principalId: Schema.optional(Schema.String),
-        type: Schema.optional(
-          Schema.Literals([
-            "None",
-            "SystemAssigned",
-            "UserAssigned",
-            "SystemAssigned,UserAssigned",
-          ]),
-        ),
-        tenantId: Schema.optional(Schema.String),
-      }),
-    ),
-    sku: Schema.optional(
-      Schema.Struct({
-        name: Schema.String,
-        tier: Schema.optional(Schema.String),
-        size: Schema.optional(Schema.String),
-        family: Schema.optional(Schema.String),
-        capacity: Schema.optional(Schema.Number),
-      }),
-    ),
+    identity: Schema.optional(Schema.suspend(() => ResourceIdentitySchema)),
+    sku: Schema.optional(Schema.suspend(() => SkuSchema)),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     location: Schema.String,
   }).pipe(
@@ -22150,23 +19356,17 @@ export type ManagedInstancesCreateOrUpdateInput =
 // Output Schema
 export const ManagedInstancesCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => ManagedInstancePropertiesSchema),
+    ),
+    identity: Schema.optional(Schema.suspend(() => ResourceIdentitySchema)),
+    sku: Schema.optional(Schema.suspend(() => SkuSchema)),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type ManagedInstancesCreateOrUpdateOutput =
   typeof ManagedInstancesCreateOrUpdateOutput.Type;
@@ -22284,23 +19484,17 @@ export type ManagedInstancesGetInput = typeof ManagedInstancesGetInput.Type;
 // Output Schema
 export const ManagedInstancesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => ManagedInstancePropertiesSchema),
+    ),
+    identity: Schema.optional(Schema.suspend(() => ResourceIdentitySchema)),
+    sku: Schema.optional(Schema.suspend(() => SkuSchema)),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type ManagedInstancesGetOutput = typeof ManagedInstancesGetOutput.Type;
 
@@ -22335,37 +19529,7 @@ export type ManagedInstancesListInput = typeof ManagedInstancesListInput.Type;
 // Output Schema
 export const ManagedInstancesListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => ManagedInstanceSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type ManagedInstancesListOutput = typeof ManagedInstancesListOutput.Type;
@@ -22404,37 +19568,7 @@ export type ManagedInstancesListByInstancePoolInput =
 // Output Schema
 export const ManagedInstancesListByInstancePoolOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => ManagedInstanceSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type ManagedInstancesListByInstancePoolOutput =
@@ -22485,59 +19619,7 @@ export type ManagedInstancesListByManagedInstanceInput =
 // Output Schema
 export const ManagedInstancesListByManagedInstanceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        numberOfQueries: Schema.optional(Schema.Number),
-        aggregationFunction: Schema.optional(Schema.String),
-        observationMetric: Schema.optional(Schema.String),
-        intervalType: Schema.optional(Schema.Literals(["PT1H", "P1D"])),
-        startTime: Schema.optional(Schema.String),
-        endTime: Schema.optional(Schema.String),
-        queries: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              databaseName: Schema.optional(Schema.String),
-              queryId: Schema.optional(Schema.String),
-              startTime: Schema.optional(Schema.String),
-              endTime: Schema.optional(Schema.String),
-              intervals: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    intervalStartTime: Schema.optional(Schema.String),
-                    intervalType: Schema.optional(
-                      Schema.Literals(["PT1H", "P1D"]),
-                    ),
-                    executionCount: Schema.optional(Schema.Number),
-                    metrics: Schema.optional(
-                      Schema.Array(
-                        Schema.Struct({
-                          name: Schema.optional(Schema.String),
-                          displayName: Schema.optional(Schema.String),
-                          unit: Schema.optional(
-                            Schema.Literals([
-                              "percentage",
-                              "KB",
-                              "microseconds",
-                              "count",
-                            ]),
-                          ),
-                          value: Schema.optional(Schema.Number),
-                          min: Schema.optional(Schema.Number),
-                          max: Schema.optional(Schema.Number),
-                          avg: Schema.optional(Schema.Number),
-                          sum: Schema.optional(Schema.Number),
-                          stdev: Schema.optional(Schema.Number),
-                        }),
-                      ),
-                    ),
-                  }),
-                ),
-              ),
-            }),
-          ),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => TopQueriesSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type ManagedInstancesListByManagedInstanceOutput =
@@ -22583,37 +19665,7 @@ export type ManagedInstancesListByResourceGroupInput =
 // Output Schema
 export const ManagedInstancesListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => ManagedInstanceSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type ManagedInstancesListByResourceGroupOutput =
@@ -22653,23 +19705,7 @@ export type ManagedInstancesListOutboundNetworkDependenciesByManagedInstanceInpu
 export const ManagedInstancesListOutboundNetworkDependenciesByManagedInstanceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
-      Schema.Struct({
-        category: Schema.optional(Schema.String),
-        endpoints: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              domainName: Schema.optional(Schema.String),
-              endpointDetails: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    port: Schema.optional(Schema.Number),
-                  }),
-                ),
-              ),
-            }),
-          ),
-        ),
-      }),
+      Schema.suspend(() => OutboundEnvironmentEndpointSchema),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -22749,23 +19785,15 @@ export type ManagedInstancesRefreshStatusInput =
 // Output Schema
 export const ManagedInstancesRefreshStatusOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(
+        () => RefreshExternalGovernanceStatusOperationResultPropertiesMISchema,
+      ),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type ManagedInstancesRefreshStatusOutput =
   typeof ManagedInstancesRefreshStatusOutput.Type;
@@ -22803,23 +19831,17 @@ export type ManagedInstancesStartInput = typeof ManagedInstancesStartInput.Type;
 // Output Schema
 export const ManagedInstancesStartOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => ManagedInstancePropertiesSchema),
+    ),
+    identity: Schema.optional(Schema.suspend(() => ResourceIdentitySchema)),
+    sku: Schema.optional(Schema.suspend(() => SkuSchema)),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type ManagedInstancesStartOutput =
   typeof ManagedInstancesStartOutput.Type;
@@ -22858,23 +19880,17 @@ export type ManagedInstancesStopInput = typeof ManagedInstancesStopInput.Type;
 // Output Schema
 export const ManagedInstancesStopOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => ManagedInstancePropertiesSchema),
+    ),
+    identity: Schema.optional(Schema.suspend(() => ResourceIdentitySchema)),
+    sku: Schema.optional(Schema.suspend(() => SkuSchema)),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type ManagedInstancesStopOutput = typeof ManagedInstancesStopOutput.Type;
 
@@ -22899,156 +19915,10 @@ export const ManagedInstancesUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     managedInstanceName: Schema.String.pipe(T.PathParam()),
-    sku: Schema.optional(
-      Schema.Struct({
-        name: Schema.String,
-        tier: Schema.optional(Schema.String),
-        size: Schema.optional(Schema.String),
-        family: Schema.optional(Schema.String),
-        capacity: Schema.optional(Schema.Number),
-      }),
-    ),
-    identity: Schema.optional(
-      Schema.Struct({
-        userAssignedIdentities: Schema.optional(
-          Schema.Record(
-            Schema.String,
-            Schema.Struct({
-              principalId: Schema.optional(Schema.String),
-              clientId: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        principalId: Schema.optional(Schema.String),
-        type: Schema.optional(
-          Schema.Literals([
-            "None",
-            "SystemAssigned",
-            "UserAssigned",
-            "SystemAssigned,UserAssigned",
-          ]),
-        ),
-        tenantId: Schema.optional(Schema.String),
-      }),
-    ),
+    sku: Schema.optional(Schema.suspend(() => SkuSchema)),
+    identity: Schema.optional(Schema.suspend(() => ResourceIdentitySchema)),
     properties: Schema.optional(
-      Schema.Struct({
-        provisioningState: Schema.optional(
-          Schema.Literals([
-            "Created",
-            "InProgress",
-            "Succeeded",
-            "Failed",
-            "Canceled",
-          ]),
-        ),
-        managedInstanceCreateMode: Schema.optional(
-          Schema.Literals(["Default", "PointInTimeRestore"]),
-        ),
-        fullyQualifiedDomainName: Schema.optional(Schema.String),
-        isGeneralPurposeV2: Schema.optional(Schema.Boolean),
-        administratorLogin: Schema.optional(Schema.String),
-        administratorLoginPassword: Schema.optional(SensitiveString),
-        subnetId: Schema.optional(Schema.String),
-        state: Schema.optional(Schema.String),
-        licenseType: Schema.optional(
-          Schema.Literals(["LicenseIncluded", "BasePrice"]),
-        ),
-        hybridSecondaryUsage: Schema.optional(
-          Schema.Literals(["Active", "Passive"]),
-        ),
-        hybridSecondaryUsageDetected: Schema.optional(
-          Schema.Literals(["Active", "Passive"]),
-        ),
-        vCores: Schema.optional(Schema.Number),
-        storageSizeInGB: Schema.optional(Schema.Number),
-        storageIOps: Schema.optional(Schema.Number),
-        storageThroughputMBps: Schema.optional(Schema.Number),
-        memorySizeInGB: Schema.optional(Schema.Number),
-        collation: Schema.optional(Schema.String),
-        dnsZone: Schema.optional(Schema.String),
-        dnsZonePartner: Schema.optional(Schema.String),
-        publicDataEndpointEnabled: Schema.optional(Schema.Boolean),
-        sourceManagedInstanceId: Schema.optional(Schema.String),
-        restorePointInTime: Schema.optional(Schema.String),
-        proxyOverride: Schema.optional(
-          Schema.Literals(["Proxy", "Redirect", "Default"]),
-        ),
-        timezoneId: Schema.optional(Schema.String),
-        instancePoolId: Schema.optional(Schema.String),
-        maintenanceConfigurationId: Schema.optional(Schema.String),
-        privateEndpointConnections: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              id: Schema.optional(Schema.String),
-              properties: Schema.optional(
-                Schema.Struct({
-                  privateEndpoint: Schema.optional(
-                    Schema.Struct({
-                      id: Schema.optional(Schema.String),
-                    }),
-                  ),
-                  privateLinkServiceConnectionState: Schema.optional(
-                    Schema.Struct({
-                      status: Schema.String,
-                      description: Schema.String,
-                      actionsRequired: Schema.optional(Schema.String),
-                    }),
-                  ),
-                  provisioningState: Schema.optional(Schema.String),
-                }),
-              ),
-            }),
-          ),
-        ),
-        minimalTlsVersion: Schema.optional(Schema.String),
-        currentBackupStorageRedundancy: Schema.optional(
-          Schema.Literals(["Geo", "Local", "Zone", "GeoZone"]),
-        ),
-        requestedBackupStorageRedundancy: Schema.optional(
-          Schema.Literals(["Geo", "Local", "Zone", "GeoZone"]),
-        ),
-        zoneRedundant: Schema.optional(Schema.Boolean),
-        primaryUserAssignedIdentityId: Schema.optional(Schema.String),
-        keyId: Schema.optional(Schema.String),
-        administrators: Schema.optional(
-          Schema.Struct({
-            administratorType: Schema.optional(
-              Schema.Literals(["ActiveDirectory"]),
-            ),
-            principalType: Schema.optional(
-              Schema.Literals(["User", "Group", "Application"]),
-            ),
-            login: Schema.optional(Schema.String),
-            sid: Schema.optional(Schema.String),
-            tenantId: Schema.optional(Schema.String),
-            azureADOnlyAuthentication: Schema.optional(Schema.Boolean),
-          }),
-        ),
-        servicePrincipal: Schema.optional(
-          Schema.Struct({
-            principalId: Schema.optional(Schema.String),
-            clientId: Schema.optional(Schema.String),
-            tenantId: Schema.optional(Schema.String),
-            type: Schema.optional(Schema.Literals(["None", "SystemAssigned"])),
-          }),
-        ),
-        virtualClusterId: Schema.optional(Schema.String),
-        externalGovernanceStatus: Schema.optional(
-          Schema.Literals(["Enabled", "Disabled"]),
-        ),
-        pricingModel: Schema.optional(Schema.Literals(["Regular", "Freemium"])),
-        createTime: Schema.optional(Schema.String),
-        authenticationMetadata: Schema.optional(
-          Schema.Literals(["AzureAD", "Paired", "Windows"]),
-        ),
-        databaseFormat: Schema.optional(
-          Schema.Literals(["AlwaysUpToDate", "SQLServer2022", "SQLServer2025"]),
-        ),
-        requestedLogicalAvailabilityZone: Schema.optional(
-          Schema.Literals(["NoPreference", "1", "2", "3"]),
-        ),
-      }),
+      Schema.suspend(() => ManagedInstancePropertiesSchema),
     ),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
@@ -23065,23 +19935,17 @@ export type ManagedInstancesUpdateInput =
 // Output Schema
 export const ManagedInstancesUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => ManagedInstancePropertiesSchema),
+    ),
+    identity: Schema.optional(Schema.suspend(() => ResourceIdentitySchema)),
+    sku: Schema.optional(Schema.suspend(() => SkuSchema)),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type ManagedInstancesUpdateOutput =
   typeof ManagedInstancesUpdateOutput.Type;
@@ -23146,10 +20010,7 @@ export const ManagedInstanceTdeCertificatesCreateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     managedInstanceName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        privateBlob: Schema.String,
-        certPassword: Schema.optional(SensitiveString),
-      }),
+      Schema.suspend(() => TdeCertificatePropertiesSchema),
     ),
   }).pipe(
     T.Http({
@@ -23192,18 +20053,9 @@ export const ManagedInstanceVulnerabilityAssessmentsCreateOrUpdateInput =
       T.PathParam(),
     ),
     properties: Schema.optional(
-      Schema.Struct({
-        storageContainerPath: Schema.String,
-        storageContainerSasKey: Schema.optional(Schema.String),
-        storageAccountAccessKey: Schema.optional(Schema.String),
-        recurringScans: Schema.optional(
-          Schema.Struct({
-            isEnabled: Schema.optional(Schema.Boolean),
-            emailSubscriptionAdmins: Schema.optional(Schema.Boolean),
-            emails: Schema.optional(Schema.Array(Schema.String)),
-          }),
-        ),
-      }),
+      Schema.suspend(
+        () => ManagedInstanceVulnerabilityAssessmentPropertiesSchema,
+      ),
     ),
   }).pipe(
     T.Http({
@@ -23218,23 +20070,15 @@ export type ManagedInstanceVulnerabilityAssessmentsCreateOrUpdateInput =
 // Output Schema
 export const ManagedInstanceVulnerabilityAssessmentsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(
+        () => ManagedInstanceVulnerabilityAssessmentPropertiesSchema,
+      ),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type ManagedInstanceVulnerabilityAssessmentsCreateOrUpdateOutput =
   typeof ManagedInstanceVulnerabilityAssessmentsCreateOrUpdateOutput.Type;
@@ -23316,23 +20160,15 @@ export type ManagedInstanceVulnerabilityAssessmentsGetInput =
 // Output Schema
 export const ManagedInstanceVulnerabilityAssessmentsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(
+        () => ManagedInstanceVulnerabilityAssessmentPropertiesSchema,
+      ),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type ManagedInstanceVulnerabilityAssessmentsGetOutput =
   typeof ManagedInstanceVulnerabilityAssessmentsGetOutput.Type;
@@ -23372,35 +20208,7 @@ export type ManagedInstanceVulnerabilityAssessmentsListByInstanceInput =
 export const ManagedInstanceVulnerabilityAssessmentsListByInstanceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
+      Schema.suspend(() => ManagedInstanceVulnerabilityAssessmentSchema),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -23430,10 +20238,7 @@ export const ManagedLedgerDigestUploadsCreateOrUpdateInput =
     databaseName: Schema.String.pipe(T.PathParam()),
     ledgerDigestUploads: Schema.Literals(["current"]).pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        digestStorageEndpoint: Schema.optional(Schema.String),
-        state: Schema.optional(Schema.Literals(["Enabled", "Disabled"])),
-      }),
+      Schema.suspend(() => ManagedLedgerDigestUploadsPropertiesSchema),
     ),
   }).pipe(
     T.Http({
@@ -23449,23 +20254,13 @@ export type ManagedLedgerDigestUploadsCreateOrUpdateInput =
 // Output Schema
 export const ManagedLedgerDigestUploadsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => ManagedLedgerDigestUploadsPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type ManagedLedgerDigestUploadsCreateOrUpdateOutput =
   typeof ManagedLedgerDigestUploadsCreateOrUpdateOutput.Type;
@@ -23507,23 +20302,13 @@ export type ManagedLedgerDigestUploadsDisableInput =
 // Output Schema
 export const ManagedLedgerDigestUploadsDisableOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => ManagedLedgerDigestUploadsPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type ManagedLedgerDigestUploadsDisableOutput =
   typeof ManagedLedgerDigestUploadsDisableOutput.Type;
@@ -23564,23 +20349,13 @@ export type ManagedLedgerDigestUploadsGetInput =
 // Output Schema
 export const ManagedLedgerDigestUploadsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => ManagedLedgerDigestUploadsPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type ManagedLedgerDigestUploadsGetOutput =
   typeof ManagedLedgerDigestUploadsGetOutput.Type;
@@ -23620,37 +20395,7 @@ export type ManagedLedgerDigestUploadsListByDatabaseInput =
 // Output Schema
 export const ManagedLedgerDigestUploadsListByDatabaseOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => ManagedLedgerDigestUploadsSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type ManagedLedgerDigestUploadsListByDatabaseOutput =
@@ -23680,9 +20425,9 @@ export const ManagedRestorableDroppedDatabaseBackupShortTermRetentionPoliciesCre
     restorableDroppedDatabaseId: Schema.String.pipe(T.PathParam()),
     policyName: Schema.Literals(["default"]).pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        retentionDays: Schema.optional(Schema.Number),
-      }),
+      Schema.suspend(
+        () => ManagedBackupShortTermRetentionPolicyPropertiesSchema,
+      ),
     ),
   }).pipe(
     T.Http({
@@ -23698,23 +20443,15 @@ export type ManagedRestorableDroppedDatabaseBackupShortTermRetentionPoliciesCrea
 // Output Schema
 export const ManagedRestorableDroppedDatabaseBackupShortTermRetentionPoliciesCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(
+        () => ManagedBackupShortTermRetentionPolicyPropertiesSchema,
+      ),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type ManagedRestorableDroppedDatabaseBackupShortTermRetentionPoliciesCreateOrUpdateOutput =
   typeof ManagedRestorableDroppedDatabaseBackupShortTermRetentionPoliciesCreateOrUpdateOutput.Type;
@@ -23757,23 +20494,15 @@ export type ManagedRestorableDroppedDatabaseBackupShortTermRetentionPoliciesGetI
 // Output Schema
 export const ManagedRestorableDroppedDatabaseBackupShortTermRetentionPoliciesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(
+        () => ManagedBackupShortTermRetentionPolicyPropertiesSchema,
+      ),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type ManagedRestorableDroppedDatabaseBackupShortTermRetentionPoliciesGetOutput =
   typeof ManagedRestorableDroppedDatabaseBackupShortTermRetentionPoliciesGetOutput.Type;
@@ -23816,35 +20545,7 @@ export type ManagedRestorableDroppedDatabaseBackupShortTermRetentionPoliciesList
 export const ManagedRestorableDroppedDatabaseBackupShortTermRetentionPoliciesListByRestorableDroppedDatabaseOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
+      Schema.suspend(() => ManagedBackupShortTermRetentionPolicySchema),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -23876,9 +20577,9 @@ export const ManagedRestorableDroppedDatabaseBackupShortTermRetentionPoliciesUpd
     restorableDroppedDatabaseId: Schema.String.pipe(T.PathParam()),
     policyName: Schema.Literals(["default"]).pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        retentionDays: Schema.optional(Schema.Number),
-      }),
+      Schema.suspend(
+        () => ManagedBackupShortTermRetentionPolicyPropertiesSchema,
+      ),
     ),
   }).pipe(
     T.Http({
@@ -23894,23 +20595,15 @@ export type ManagedRestorableDroppedDatabaseBackupShortTermRetentionPoliciesUpda
 // Output Schema
 export const ManagedRestorableDroppedDatabaseBackupShortTermRetentionPoliciesUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(
+        () => ManagedBackupShortTermRetentionPolicyPropertiesSchema,
+      ),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type ManagedRestorableDroppedDatabaseBackupShortTermRetentionPoliciesUpdateOutput =
   typeof ManagedRestorableDroppedDatabaseBackupShortTermRetentionPoliciesUpdateOutput.Type;
@@ -23954,23 +20647,13 @@ export type ManagedServerDnsAliasesAcquireInput =
 // Output Schema
 export const ManagedServerDnsAliasesAcquireOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => ManagedServerDnsAliasPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type ManagedServerDnsAliasesAcquireOutput =
   typeof ManagedServerDnsAliasesAcquireOutput.Type;
@@ -24011,23 +20694,13 @@ export type ManagedServerDnsAliasesCreateOrUpdateInput =
 // Output Schema
 export const ManagedServerDnsAliasesCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => ManagedServerDnsAliasPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type ManagedServerDnsAliasesCreateOrUpdateOutput =
   typeof ManagedServerDnsAliasesCreateOrUpdateOutput.Type;
@@ -24104,23 +20777,13 @@ export type ManagedServerDnsAliasesGetInput =
 // Output Schema
 export const ManagedServerDnsAliasesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => ManagedServerDnsAliasPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type ManagedServerDnsAliasesGetOutput =
   typeof ManagedServerDnsAliasesGetOutput.Type;
@@ -24159,37 +20822,7 @@ export type ManagedServerDnsAliasesListByManagedInstanceInput =
 // Output Schema
 export const ManagedServerDnsAliasesListByManagedInstanceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => ManagedServerDnsAliasSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type ManagedServerDnsAliasesListByManagedInstanceOutput =
@@ -24217,16 +20850,7 @@ export const ManagedServerSecurityAlertPoliciesCreateOrUpdateInput =
     managedInstanceName: Schema.String.pipe(T.PathParam()),
     securityAlertPolicyName: Schema.Literals(["Default"]).pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        state: Schema.Literals(["Enabled", "Disabled"]),
-        disabledAlerts: Schema.optional(Schema.Array(Schema.String)),
-        emailAddresses: Schema.optional(Schema.Array(Schema.String)),
-        emailAccountAdmins: Schema.optional(Schema.Boolean),
-        storageEndpoint: Schema.optional(Schema.String),
-        storageAccountAccessKey: Schema.optional(Schema.String),
-        retentionDays: Schema.optional(Schema.Number),
-        creationTime: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(() => SecurityAlertsPolicyPropertiesSchema),
     ),
   }).pipe(
     T.Http({
@@ -24242,23 +20866,13 @@ export type ManagedServerSecurityAlertPoliciesCreateOrUpdateInput =
 // Output Schema
 export const ManagedServerSecurityAlertPoliciesCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => SecurityAlertsPolicyPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type ManagedServerSecurityAlertPoliciesCreateOrUpdateOutput =
   typeof ManagedServerSecurityAlertPoliciesCreateOrUpdateOutput.Type;
@@ -24298,23 +20912,13 @@ export type ManagedServerSecurityAlertPoliciesGetInput =
 // Output Schema
 export const ManagedServerSecurityAlertPoliciesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => SecurityAlertsPolicyPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type ManagedServerSecurityAlertPoliciesGetOutput =
   typeof ManagedServerSecurityAlertPoliciesGetOutput.Type;
@@ -24354,35 +20958,7 @@ export type ManagedServerSecurityAlertPoliciesListByInstanceInput =
 export const ManagedServerSecurityAlertPoliciesListByInstanceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
+      Schema.suspend(() => ManagedServerSecurityAlertPolicySchema),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -24423,23 +20999,15 @@ export type NetworkSecurityPerimeterConfigurationsGetInput =
 // Output Schema
 export const NetworkSecurityPerimeterConfigurationsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(
+        () => NetworkSecurityPerimeterConfigurationPropertiesSchema,
+      ),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type NetworkSecurityPerimeterConfigurationsGetOutput =
   typeof NetworkSecurityPerimeterConfigurationsGetOutput.Type;
@@ -24478,35 +21046,7 @@ export type NetworkSecurityPerimeterConfigurationsListByServerInput =
 export const NetworkSecurityPerimeterConfigurationsListByServerOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
+      Schema.suspend(() => NetworkSecurityPerimeterConfigurationSchema),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -24548,23 +21088,15 @@ export type NetworkSecurityPerimeterConfigurationsReconcileInput =
 // Output Schema
 export const NetworkSecurityPerimeterConfigurationsReconcileOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(
+        () => NetworkSecurityPerimeterConfigurationPropertiesSchema,
+      ),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type NetworkSecurityPerimeterConfigurationsReconcileOutput =
   typeof NetworkSecurityPerimeterConfigurationsReconcileOutput.Type;
@@ -24597,25 +21129,7 @@ export type OperationsListInput = typeof OperationsListInput.Type;
 
 // Output Schema
 export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  value: Schema.optional(
-    Schema.Array(
-      Schema.Struct({
-        name: Schema.optional(Schema.String),
-        display: Schema.optional(
-          Schema.Struct({
-            provider: Schema.optional(Schema.String),
-            resource: Schema.optional(Schema.String),
-            operation: Schema.optional(Schema.String),
-            description: Schema.optional(Schema.String),
-          }),
-        ),
-        origin: Schema.optional(Schema.Literals(["user", "system"])),
-        properties: Schema.optional(
-          Schema.Record(Schema.String, Schema.Unknown),
-        ),
-      }),
-    ),
-  ),
+  value: Schema.optional(Schema.Array(Schema.suspend(() => OperationSchema))),
   nextLink: Schema.optional(Schema.String),
 });
 export type OperationsListOutput = typeof OperationsListOutput.Type;
@@ -24651,23 +21165,13 @@ export type OutboundFirewallRulesCreateOrUpdateInput =
 // Output Schema
 export const OutboundFirewallRulesCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => OutboundFirewallRulePropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type OutboundFirewallRulesCreateOrUpdateOutput =
   typeof OutboundFirewallRulesCreateOrUpdateOutput.Type;
@@ -24745,23 +21249,13 @@ export type OutboundFirewallRulesGetInput =
 // Output Schema
 export const OutboundFirewallRulesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => OutboundFirewallRulePropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type OutboundFirewallRulesGetOutput =
   typeof OutboundFirewallRulesGetOutput.Type;
@@ -24800,37 +21294,7 @@ export type OutboundFirewallRulesListByServerInput =
 // Output Schema
 export const OutboundFirewallRulesListByServerOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => OutboundFirewallRuleSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type OutboundFirewallRulesListByServerOutput =
@@ -24858,35 +21322,7 @@ export const PrivateEndpointConnectionsCreateOrUpdateInput =
     serverName: Schema.String.pipe(T.PathParam()),
     privateEndpointConnectionName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        privateEndpoint: Schema.optional(
-          Schema.Struct({
-            id: Schema.optional(Schema.String),
-          }),
-        ),
-        groupIds: Schema.optional(Schema.Array(Schema.String)),
-        privateLinkServiceConnectionState: Schema.optional(
-          Schema.Struct({
-            status: Schema.Literals([
-              "Approved",
-              "Pending",
-              "Rejected",
-              "Disconnected",
-            ]),
-            description: Schema.String,
-            actionsRequired: Schema.optional(Schema.Literals(["None"])),
-          }),
-        ),
-        provisioningState: Schema.optional(
-          Schema.Literals([
-            "Approving",
-            "Ready",
-            "Dropping",
-            "Failed",
-            "Rejecting",
-          ]),
-        ),
-      }),
+      Schema.suspend(() => PrivateEndpointConnectionPropertiesSchema),
     ),
   }).pipe(
     T.Http({
@@ -24902,23 +21338,13 @@ export type PrivateEndpointConnectionsCreateOrUpdateInput =
 // Output Schema
 export const PrivateEndpointConnectionsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => PrivateEndpointConnectionPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type PrivateEndpointConnectionsCreateOrUpdateOutput =
   typeof PrivateEndpointConnectionsCreateOrUpdateOutput.Type;
@@ -24997,23 +21423,13 @@ export type PrivateEndpointConnectionsGetInput =
 // Output Schema
 export const PrivateEndpointConnectionsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => PrivateEndpointConnectionPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type PrivateEndpointConnectionsGetOutput =
   typeof PrivateEndpointConnectionsGetOutput.Type;
@@ -25052,37 +21468,7 @@ export type PrivateEndpointConnectionsListByServerInput =
 // Output Schema
 export const PrivateEndpointConnectionsListByServerOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => PrivateEndpointConnectionSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type PrivateEndpointConnectionsListByServerOutput =
@@ -25122,23 +21508,13 @@ export type PrivateLinkResourcesGetInput =
 // Output Schema
 export const PrivateLinkResourcesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => PrivateLinkResourcePropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type PrivateLinkResourcesGetOutput =
   typeof PrivateLinkResourcesGetOutput.Type;
@@ -25178,37 +21554,7 @@ export type PrivateLinkResourcesListByServerInput =
 // Output Schema
 export const PrivateLinkResourcesListByServerOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => PrivateLinkResourceSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type PrivateLinkResourcesListByServerOutput =
@@ -25237,35 +21583,7 @@ export const RecommendedSensitivityLabelsUpdateInput =
     databaseName: Schema.String.pipe(T.PathParam()),
     operations: Schema.optional(
       Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.String),
-              createdByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              createdAt: Schema.optional(Schema.String),
-              lastModifiedBy: Schema.optional(Schema.String),
-              lastModifiedByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              lastModifiedAt: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
+        Schema.suspend(() => RecommendedSensitivityLabelUpdateSchema),
       ),
     ),
   }).pipe(
@@ -25318,6 +21636,9 @@ export type RecoverableDatabasesGetInput =
 // Output Schema
 export const RecoverableDatabasesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => RecoverableDatabasePropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -25358,13 +21679,7 @@ export type RecoverableDatabasesListByServerInput =
 // Output Schema
 export const RecoverableDatabasesListByServerOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => RecoverableDatabaseSchema)),
   });
 export type RecoverableDatabasesListByServerOutput =
   typeof RecoverableDatabasesListByServerOutput.Type;
@@ -25402,23 +21717,13 @@ export type RecoverableManagedDatabasesGetInput =
 // Output Schema
 export const RecoverableManagedDatabasesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => RecoverableManagedDatabasePropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type RecoverableManagedDatabasesGetOutput =
   typeof RecoverableManagedDatabasesGetOutput.Type;
@@ -25456,37 +21761,7 @@ export type RecoverableManagedDatabasesListByInstanceInput =
 // Output Schema
 export const RecoverableManagedDatabasesListByInstanceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => RecoverableManagedDatabaseSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type RecoverableManagedDatabasesListByInstanceOutput =
@@ -25515,38 +21790,7 @@ export const ReplicationLinksCreateOrUpdateInput =
     databaseName: Schema.String.pipe(T.PathParam()),
     linkId: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        partnerServer: Schema.optional(Schema.String),
-        partnerDatabase: Schema.optional(Schema.String),
-        partnerDatabaseId: Schema.optional(Schema.String),
-        partnerLocation: Schema.optional(Schema.String),
-        role: Schema.optional(
-          Schema.Literals([
-            "Primary",
-            "Secondary",
-            "NonReadableSecondary",
-            "Source",
-            "Copy",
-          ]),
-        ),
-        partnerRole: Schema.optional(
-          Schema.Literals([
-            "Primary",
-            "Secondary",
-            "NonReadableSecondary",
-            "Source",
-            "Copy",
-          ]),
-        ),
-        replicationMode: Schema.optional(Schema.String),
-        startTime: Schema.optional(Schema.String),
-        percentComplete: Schema.optional(Schema.Number),
-        replicationState: Schema.optional(
-          Schema.Literals(["PENDING", "SEEDING", "CATCH_UP", "SUSPENDED"]),
-        ),
-        isTerminationAllowed: Schema.optional(Schema.Boolean),
-        linkType: Schema.optional(Schema.Literals(["GEO", "NAMED", "STANDBY"])),
-      }),
+      Schema.suspend(() => ReplicationLinkPropertiesSchema),
     ),
   }).pipe(
     T.Http({
@@ -25562,23 +21806,13 @@ export type ReplicationLinksCreateOrUpdateInput =
 // Output Schema
 export const ReplicationLinksCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => ReplicationLinkPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type ReplicationLinksCreateOrUpdateOutput =
   typeof ReplicationLinksCreateOrUpdateOutput.Type;
@@ -25737,23 +21971,13 @@ export type ReplicationLinksGetInput = typeof ReplicationLinksGetInput.Type;
 // Output Schema
 export const ReplicationLinksGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => ReplicationLinkPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type ReplicationLinksGetOutput = typeof ReplicationLinksGetOutput.Type;
 
@@ -25792,37 +22016,7 @@ export type ReplicationLinksListByDatabaseInput =
 // Output Schema
 export const ReplicationLinksListByDatabaseOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => ReplicationLinkSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type ReplicationLinksListByDatabaseOutput =
@@ -25862,37 +22056,7 @@ export type ReplicationLinksListByServerInput =
 // Output Schema
 export const ReplicationLinksListByServerOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => ReplicationLinkSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type ReplicationLinksListByServerOutput =
@@ -25962,9 +22126,7 @@ export const ReplicationLinksUpdateInput =
     databaseName: Schema.String.pipe(T.PathParam()),
     linkId: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        linkType: Schema.optional(Schema.Literals(["GEO", "NAMED", "STANDBY"])),
-      }),
+      Schema.suspend(() => ReplicationLinkUpdatePropertiesSchema),
     ),
   }).pipe(
     T.Http({
@@ -25980,23 +22142,13 @@ export type ReplicationLinksUpdateInput =
 // Output Schema
 export const ReplicationLinksUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => ReplicationLinkPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type ReplicationLinksUpdateOutput =
   typeof ReplicationLinksUpdateOutput.Type;
@@ -26040,23 +22192,16 @@ export type RestorableDroppedDatabasesGetInput =
 // Output Schema
 export const RestorableDroppedDatabasesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => RestorableDroppedDatabasePropertiesSchema),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.optional(Schema.String),
+    sku: Schema.optional(Schema.suspend(() => SkuSchema)),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type RestorableDroppedDatabasesGetOutput =
   typeof RestorableDroppedDatabasesGetOutput.Type;
@@ -26096,37 +22241,7 @@ export type RestorableDroppedDatabasesListByServerInput =
 // Output Schema
 export const RestorableDroppedDatabasesListByServerOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => RestorableDroppedDatabaseSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type RestorableDroppedDatabasesListByServerOutput =
@@ -26166,23 +22281,15 @@ export type RestorableDroppedManagedDatabasesGetInput =
 // Output Schema
 export const RestorableDroppedManagedDatabasesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => RestorableDroppedManagedDatabasePropertiesSchema),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type RestorableDroppedManagedDatabasesGetOutput =
   typeof RestorableDroppedManagedDatabasesGetOutput.Type;
@@ -26221,35 +22328,7 @@ export type RestorableDroppedManagedDatabasesListByInstanceInput =
 export const RestorableDroppedManagedDatabasesListByInstanceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
+      Schema.suspend(() => RestorableDroppedManagedDatabaseSchema),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -26291,23 +22370,14 @@ export type RestorePointsCreateInput = typeof RestorePointsCreateInput.Type;
 // Output Schema
 export const RestorePointsCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => RestorePointPropertiesSchema),
+    ),
+    location: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type RestorePointsCreateOutput = typeof RestorePointsCreateOutput.Type;
 
@@ -26381,23 +22451,14 @@ export type RestorePointsGetInput = typeof RestorePointsGetInput.Type;
 // Output Schema
 export const RestorePointsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
+    properties: Schema.optional(
+      Schema.suspend(() => RestorePointPropertiesSchema),
+    ),
+    location: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   },
 );
 export type RestorePointsGetOutput = typeof RestorePointsGetOutput.Type;
@@ -26437,37 +22498,7 @@ export type RestorePointsListByDatabaseInput =
 // Output Schema
 export const RestorePointsListByDatabaseOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => RestorePointSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type RestorePointsListByDatabaseOutput =
@@ -26501,22 +22532,7 @@ export const SensitivityLabelsCreateOrUpdateInput =
     columnName: Schema.String.pipe(T.PathParam()),
     sensitivityLabelSource: Schema.Literals(["current"]).pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        schemaName: Schema.optional(Schema.String),
-        tableName: Schema.optional(Schema.String),
-        columnName: Schema.optional(Schema.String),
-        labelName: Schema.optional(Schema.String),
-        labelId: Schema.optional(Schema.String),
-        informationType: Schema.optional(Schema.String),
-        informationTypeId: Schema.optional(Schema.String),
-        isDisabled: Schema.optional(Schema.Boolean),
-        rank: Schema.optional(
-          Schema.Literals(["None", "Low", "Medium", "High", "Critical"]),
-        ),
-        clientClassificationSource: Schema.optional(
-          Schema.Literals(["None", "Native", "Recommended", "MIP"]),
-        ),
-      }),
+      Schema.suspend(() => SensitivityLabelPropertiesSchema),
     ),
     managedBy: Schema.optional(Schema.String),
   }).pipe(
@@ -26532,23 +22548,14 @@ export type SensitivityLabelsCreateOrUpdateInput =
 // Output Schema
 export const SensitivityLabelsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => SensitivityLabelPropertiesSchema),
+    ),
+    managedBy: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type SensitivityLabelsCreateOrUpdateOutput =
   typeof SensitivityLabelsCreateOrUpdateOutput.Type;
@@ -26740,23 +22747,14 @@ export type SensitivityLabelsGetInput = typeof SensitivityLabelsGetInput.Type;
 // Output Schema
 export const SensitivityLabelsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => SensitivityLabelPropertiesSchema),
+    ),
+    managedBy: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type SensitivityLabelsGetOutput = typeof SensitivityLabelsGetOutput.Type;
 
@@ -26801,37 +22799,7 @@ export type SensitivityLabelsListByDatabaseInput =
 // Output Schema
 export const SensitivityLabelsListByDatabaseOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => SensitivityLabelSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type SensitivityLabelsListByDatabaseOutput =
@@ -26876,37 +22844,7 @@ export type SensitivityLabelsListCurrentByDatabaseInput =
 // Output Schema
 export const SensitivityLabelsListCurrentByDatabaseOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => SensitivityLabelSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type SensitivityLabelsListCurrentByDatabaseOutput =
@@ -26951,37 +22889,7 @@ export type SensitivityLabelsListRecommendedByDatabaseInput =
 // Output Schema
 export const SensitivityLabelsListRecommendedByDatabaseOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => SensitivityLabelSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type SensitivityLabelsListRecommendedByDatabaseOutput =
@@ -27012,37 +22920,7 @@ export const SensitivityLabelsUpdateInput =
     serverName: Schema.String.pipe(T.PathParam()),
     databaseName: Schema.String.pipe(T.PathParam()),
     operations: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.String),
-              createdByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              createdAt: Schema.optional(Schema.String),
-              lastModifiedBy: Schema.optional(Schema.String),
-              lastModifiedByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              lastModifiedAt: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => SensitivityLabelUpdateSchema)),
     ),
   }).pipe(
     T.Http({
@@ -27086,10 +22964,7 @@ export const ServerAdvancedThreatProtectionSettingsCreateOrUpdateInput =
       T.PathParam(),
     ),
     properties: Schema.optional(
-      Schema.Struct({
-        state: Schema.Literals(["New", "Enabled", "Disabled"]),
-        creationTime: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(() => AdvancedThreatProtectionPropertiesSchema),
     ),
   }).pipe(
     T.Http({
@@ -27105,23 +22980,13 @@ export type ServerAdvancedThreatProtectionSettingsCreateOrUpdateInput =
 // Output Schema
 export const ServerAdvancedThreatProtectionSettingsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => AdvancedThreatProtectionPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type ServerAdvancedThreatProtectionSettingsCreateOrUpdateOutput =
   typeof ServerAdvancedThreatProtectionSettingsCreateOrUpdateOutput.Type;
@@ -27163,23 +23028,13 @@ export type ServerAdvancedThreatProtectionSettingsGetInput =
 // Output Schema
 export const ServerAdvancedThreatProtectionSettingsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => AdvancedThreatProtectionPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type ServerAdvancedThreatProtectionSettingsGetOutput =
   typeof ServerAdvancedThreatProtectionSettingsGetOutput.Type;
@@ -27219,37 +23074,7 @@ export type ServerAdvancedThreatProtectionSettingsListByServerInput =
 export const ServerAdvancedThreatProtectionSettingsListByServerOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.String),
-              createdByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              createdAt: Schema.optional(Schema.String),
-              lastModifiedBy: Schema.optional(Schema.String),
-              lastModifiedByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              lastModifiedAt: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => ServerAdvancedThreatProtectionSchema)),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -27290,23 +23115,13 @@ export type ServerAdvisorsGetInput = typeof ServerAdvisorsGetInput.Type;
 // Output Schema
 export const ServerAdvisorsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(Schema.suspend(() => AdvisorPropertiesSchema)),
+    kind: Schema.optional(Schema.String),
+    location: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type ServerAdvisorsGetOutput = typeof ServerAdvisorsGetOutput.Type;
 
@@ -27343,27 +23158,7 @@ export type ServerAdvisorsListByServerInput =
 
 // Output Schema
 export const ServerAdvisorsListByServerOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
-    Schema.Struct({
-      id: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      type: Schema.optional(Schema.String),
-      systemData: Schema.optional(
-        Schema.Struct({
-          createdBy: Schema.optional(Schema.String),
-          createdByType: Schema.optional(
-            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-          ),
-          createdAt: Schema.optional(Schema.String),
-          lastModifiedBy: Schema.optional(Schema.String),
-          lastModifiedByType: Schema.optional(
-            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-          ),
-          lastModifiedAt: Schema.optional(Schema.String),
-        }),
-      ),
-    }),
-  );
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Array(Schema.suspend(() => AdvisorSchema));
 export type ServerAdvisorsListByServerOutput =
   typeof ServerAdvisorsListByServerOutput.Type;
 
@@ -27390,63 +23185,7 @@ export const ServerAdvisorsUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serverName: Schema.String.pipe(T.PathParam()),
     advisorName: Schema.String.pipe(T.PathParam()),
-    properties: Schema.optional(
-      Schema.Struct({
-        advisorStatus: Schema.optional(
-          Schema.Literals([
-            "GA",
-            "PublicPreview",
-            "LimitedPublicPreview",
-            "PrivatePreview",
-          ]),
-        ),
-        autoExecuteStatus: Schema.Literals(["Enabled", "Disabled", "Default"]),
-        autoExecuteStatusInheritedFrom: Schema.optional(
-          Schema.Literals([
-            "Default",
-            "Subscription",
-            "Server",
-            "ElasticPool",
-            "Database",
-          ]),
-        ),
-        recommendationsStatus: Schema.optional(Schema.String),
-        lastChecked: Schema.optional(Schema.String),
-        recommendedActions: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              id: Schema.optional(Schema.String),
-              name: Schema.optional(Schema.String),
-              type: Schema.optional(Schema.String),
-              systemData: Schema.optional(
-                Schema.Struct({
-                  createdBy: Schema.optional(Schema.String),
-                  createdByType: Schema.optional(
-                    Schema.Literals([
-                      "User",
-                      "Application",
-                      "ManagedIdentity",
-                      "Key",
-                    ]),
-                  ),
-                  createdAt: Schema.optional(Schema.String),
-                  lastModifiedBy: Schema.optional(Schema.String),
-                  lastModifiedByType: Schema.optional(
-                    Schema.Literals([
-                      "User",
-                      "Application",
-                      "ManagedIdentity",
-                      "Key",
-                    ]),
-                  ),
-                  lastModifiedAt: Schema.optional(Schema.String),
-                }),
-              ),
-            }),
-          ),
-        ),
-      }),
-    ),
+    properties: Schema.optional(Schema.suspend(() => AdvisorPropertiesSchema)),
     kind: Schema.optional(Schema.String),
     location: Schema.optional(Schema.String),
   }).pipe(
@@ -27461,23 +23200,13 @@ export type ServerAdvisorsUpdateInput = typeof ServerAdvisorsUpdateInput.Type;
 // Output Schema
 export const ServerAdvisorsUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(Schema.suspend(() => AdvisorPropertiesSchema)),
+    kind: Schema.optional(Schema.String),
+    location: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type ServerAdvisorsUpdateOutput = typeof ServerAdvisorsUpdateOutput.Type;
 
@@ -27516,23 +23245,13 @@ export type ServerAutomaticTuningGetInput =
 // Output Schema
 export const ServerAutomaticTuningGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => AutomaticTuningServerPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type ServerAutomaticTuningGetOutput =
   typeof ServerAutomaticTuningGetOutput.Type;
@@ -27559,29 +23278,7 @@ export const ServerAutomaticTuningUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serverName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        desiredState: Schema.optional(
-          Schema.Literals(["Custom", "Auto", "Unspecified"]),
-        ),
-        actualState: Schema.optional(
-          Schema.Literals(["Custom", "Auto", "Unspecified"]),
-        ),
-        options: Schema.optional(
-          Schema.Record(
-            Schema.String,
-            Schema.Struct({
-              desiredState: Schema.optional(
-                Schema.Literals(["Off", "On", "Default"]),
-              ),
-              actualState: Schema.optional(Schema.Literals(["Off", "On"])),
-              reasonCode: Schema.optional(Schema.Number),
-              reasonDesc: Schema.optional(
-                Schema.Literals(["Default", "Disabled", "AutoConfigured"]),
-              ),
-            }),
-          ),
-        ),
-      }),
+      Schema.suspend(() => AutomaticTuningServerPropertiesSchema),
     ),
   }).pipe(
     T.Http({
@@ -27596,23 +23293,13 @@ export type ServerAutomaticTuningUpdateInput =
 // Output Schema
 export const ServerAutomaticTuningUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => AutomaticTuningServerPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type ServerAutomaticTuningUpdateOutput =
   typeof ServerAutomaticTuningUpdateOutput.Type;
@@ -27640,15 +23327,7 @@ export const ServerAzureADAdministratorsCreateOrUpdateInput =
     serverName: Schema.String.pipe(T.PathParam()),
     administratorName: Schema.Literals(["ActiveDirectory"]).pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        administratorType: Schema.optional(
-          Schema.Literals(["ActiveDirectory"]),
-        ),
-        login: Schema.String,
-        sid: Schema.String,
-        tenantId: Schema.optional(Schema.String),
-        azureADOnlyAuthentication: Schema.optional(Schema.Boolean),
-      }),
+      Schema.suspend(() => AdministratorPropertiesSchema),
     ),
   }).pipe(
     T.Http({
@@ -27664,23 +23343,13 @@ export type ServerAzureADAdministratorsCreateOrUpdateInput =
 // Output Schema
 export const ServerAzureADAdministratorsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => AdministratorPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type ServerAzureADAdministratorsCreateOrUpdateOutput =
   typeof ServerAzureADAdministratorsCreateOrUpdateOutput.Type;
@@ -27759,23 +23428,13 @@ export type ServerAzureADAdministratorsGetInput =
 // Output Schema
 export const ServerAzureADAdministratorsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => AdministratorPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type ServerAzureADAdministratorsGetOutput =
   typeof ServerAzureADAdministratorsGetOutput.Type;
@@ -27815,37 +23474,7 @@ export type ServerAzureADAdministratorsListByServerInput =
 export const ServerAzureADAdministratorsListByServerOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.String),
-              createdByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              createdAt: Schema.optional(Schema.String),
-              lastModifiedBy: Schema.optional(Schema.String),
-              lastModifiedByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              lastModifiedAt: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => ServerAzureADAdministratorSchema)),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -27874,9 +23503,7 @@ export const ServerAzureADOnlyAuthenticationsCreateOrUpdateInput =
     serverName: Schema.String.pipe(T.PathParam()),
     authenticationName: Schema.Literals(["Default"]).pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        azureADOnlyAuthentication: Schema.Boolean,
-      }),
+      Schema.suspend(() => AzureADOnlyAuthPropertiesSchema),
     ),
   }).pipe(
     T.Http({
@@ -27892,23 +23519,13 @@ export type ServerAzureADOnlyAuthenticationsCreateOrUpdateInput =
 // Output Schema
 export const ServerAzureADOnlyAuthenticationsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => AzureADOnlyAuthPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type ServerAzureADOnlyAuthenticationsCreateOrUpdateOutput =
   typeof ServerAzureADOnlyAuthenticationsCreateOrUpdateOutput.Type;
@@ -27987,23 +23604,13 @@ export type ServerAzureADOnlyAuthenticationsGetInput =
 // Output Schema
 export const ServerAzureADOnlyAuthenticationsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => AzureADOnlyAuthPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type ServerAzureADOnlyAuthenticationsGetOutput =
   typeof ServerAzureADOnlyAuthenticationsGetOutput.Type;
@@ -28043,37 +23650,7 @@ export type ServerAzureADOnlyAuthenticationsListByServerInput =
 export const ServerAzureADOnlyAuthenticationsListByServerOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.String),
-              createdByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              createdAt: Schema.optional(Schema.String),
-              lastModifiedBy: Schema.optional(Schema.String),
-              lastModifiedByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              lastModifiedAt: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => ServerAzureADOnlyAuthenticationSchema)),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -28102,19 +23679,7 @@ export const ServerBlobAuditingPoliciesCreateOrUpdateInput =
     serverName: Schema.String.pipe(T.PathParam()),
     blobAuditingPolicyName: Schema.Literals(["default"]).pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        isDevopsAuditEnabled: Schema.optional(Schema.Boolean),
-        retentionDays: Schema.optional(Schema.Number),
-        auditActionsAndGroups: Schema.optional(Schema.Array(Schema.String)),
-        isStorageSecondaryKeyInUse: Schema.optional(Schema.Boolean),
-        isAzureMonitorTargetEnabled: Schema.optional(Schema.Boolean),
-        queueDelayMs: Schema.optional(Schema.Number),
-        isManagedIdentityInUse: Schema.optional(Schema.Boolean),
-        state: Schema.Literals(["Enabled", "Disabled"]),
-        storageEndpoint: Schema.optional(Schema.String),
-        storageAccountAccessKey: Schema.optional(Schema.String),
-        storageAccountSubscriptionId: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(() => ServerBlobAuditingPolicyPropertiesSchema),
     ),
   }).pipe(
     T.Http({
@@ -28130,23 +23695,13 @@ export type ServerBlobAuditingPoliciesCreateOrUpdateInput =
 // Output Schema
 export const ServerBlobAuditingPoliciesCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => ServerBlobAuditingPolicyPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type ServerBlobAuditingPoliciesCreateOrUpdateOutput =
   typeof ServerBlobAuditingPoliciesCreateOrUpdateOutput.Type;
@@ -28186,23 +23741,13 @@ export type ServerBlobAuditingPoliciesGetInput =
 // Output Schema
 export const ServerBlobAuditingPoliciesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => ServerBlobAuditingPolicyPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type ServerBlobAuditingPoliciesGetOutput =
   typeof ServerBlobAuditingPoliciesGetOutput.Type;
@@ -28241,37 +23786,7 @@ export type ServerBlobAuditingPoliciesListByServerInput =
 // Output Schema
 export const ServerBlobAuditingPoliciesListByServerOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => ServerBlobAuditingPolicySchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type ServerBlobAuditingPoliciesListByServerOutput =
@@ -28301,18 +23816,7 @@ export const ServerConfigurationOptionsCreateOrUpdateInput =
       "allowPolybaseExport",
     ]).pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        serverConfigurationOptionValue: Schema.Number,
-        provisioningState: Schema.optional(
-          Schema.Literals([
-            "Created",
-            "InProgress",
-            "Succeeded",
-            "Failed",
-            "Canceled",
-          ]),
-        ),
-      }),
+      Schema.suspend(() => ServerConfigurationOptionPropertiesSchema),
     ),
   }).pipe(
     T.Http({
@@ -28328,23 +23832,13 @@ export type ServerConfigurationOptionsCreateOrUpdateInput =
 // Output Schema
 export const ServerConfigurationOptionsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => ServerConfigurationOptionPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type ServerConfigurationOptionsCreateOrUpdateOutput =
   typeof ServerConfigurationOptionsCreateOrUpdateOutput.Type;
@@ -28386,23 +23880,13 @@ export type ServerConfigurationOptionsGetInput =
 // Output Schema
 export const ServerConfigurationOptionsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => ServerConfigurationOptionPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type ServerConfigurationOptionsGetOutput =
   typeof ServerConfigurationOptionsGetOutput.Type;
@@ -28441,37 +23925,7 @@ export type ServerConfigurationOptionsListByManagedInstanceInput =
 // Output Schema
 export const ServerConfigurationOptionsListByManagedInstanceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => ServerConfigurationOptionSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type ServerConfigurationOptionsListByManagedInstanceOutput =
@@ -28499,9 +23953,7 @@ export const ServerConnectionPoliciesCreateOrUpdateInput =
     serverName: Schema.String.pipe(T.PathParam()),
     connectionPolicyName: Schema.Literals(["default"]).pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        connectionType: Schema.Literals(["Default", "Redirect", "Proxy"]),
-      }),
+      Schema.suspend(() => ServerConnectionPolicyPropertiesSchema),
     ),
     location: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
@@ -28519,23 +23971,15 @@ export type ServerConnectionPoliciesCreateOrUpdateInput =
 // Output Schema
 export const ServerConnectionPoliciesCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => ServerConnectionPolicyPropertiesSchema),
+    ),
+    location: Schema.optional(Schema.String),
+    kind: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type ServerConnectionPoliciesCreateOrUpdateOutput =
   typeof ServerConnectionPoliciesCreateOrUpdateOutput.Type;
@@ -28575,23 +24019,15 @@ export type ServerConnectionPoliciesGetInput =
 // Output Schema
 export const ServerConnectionPoliciesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => ServerConnectionPolicyPropertiesSchema),
+    ),
+    location: Schema.optional(Schema.String),
+    kind: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type ServerConnectionPoliciesGetOutput =
   typeof ServerConnectionPoliciesGetOutput.Type;
@@ -28631,37 +24067,7 @@ export type ServerConnectionPoliciesListByServerInput =
 // Output Schema
 export const ServerConnectionPoliciesListByServerOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => ServerConnectionPolicySchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type ServerConnectionPoliciesListByServerOutput =
@@ -28691,14 +24097,7 @@ export const ServerDevOpsAuditSettingsCreateOrUpdateInput =
       T.PathParam(),
     ),
     properties: Schema.optional(
-      Schema.Struct({
-        isAzureMonitorTargetEnabled: Schema.optional(Schema.Boolean),
-        isManagedIdentityInUse: Schema.optional(Schema.Boolean),
-        state: Schema.Literals(["Enabled", "Disabled"]),
-        storageEndpoint: Schema.optional(Schema.String),
-        storageAccountAccessKey: Schema.optional(Schema.String),
-        storageAccountSubscriptionId: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(() => ServerDevOpsAuditSettingsPropertiesSchema),
     ),
   }).pipe(
     T.Http({
@@ -28714,23 +24113,13 @@ export type ServerDevOpsAuditSettingsCreateOrUpdateInput =
 // Output Schema
 export const ServerDevOpsAuditSettingsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => ServerDevOpsAuditSettingsPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type ServerDevOpsAuditSettingsCreateOrUpdateOutput =
   typeof ServerDevOpsAuditSettingsCreateOrUpdateOutput.Type;
@@ -28771,23 +24160,13 @@ export type ServerDevOpsAuditSettingsGetInput =
 // Output Schema
 export const ServerDevOpsAuditSettingsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => ServerDevOpsAuditSettingsPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type ServerDevOpsAuditSettingsGetOutput =
   typeof ServerDevOpsAuditSettingsGetOutput.Type;
@@ -28826,37 +24205,7 @@ export type ServerDevOpsAuditSettingsListByServerInput =
 export const ServerDevOpsAuditSettingsListByServerOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.String),
-              createdByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              createdAt: Schema.optional(Schema.String),
-              lastModifiedBy: Schema.optional(Schema.String),
-              lastModifiedByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              lastModifiedAt: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => ServerDevOpsAuditingSettingsSchema)),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -28899,23 +24248,13 @@ export type ServerDnsAliasesAcquireInput =
 // Output Schema
 export const ServerDnsAliasesAcquireOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => ServerDnsAliasPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type ServerDnsAliasesAcquireOutput =
   typeof ServerDnsAliasesAcquireOutput.Type;
@@ -28957,23 +24296,13 @@ export type ServerDnsAliasesCreateOrUpdateInput =
 // Output Schema
 export const ServerDnsAliasesCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => ServerDnsAliasPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type ServerDnsAliasesCreateOrUpdateOutput =
   typeof ServerDnsAliasesCreateOrUpdateOutput.Type;
@@ -29052,23 +24381,13 @@ export type ServerDnsAliasesGetInput = typeof ServerDnsAliasesGetInput.Type;
 // Output Schema
 export const ServerDnsAliasesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => ServerDnsAliasPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type ServerDnsAliasesGetOutput = typeof ServerDnsAliasesGetOutput.Type;
 
@@ -29105,37 +24424,7 @@ export type ServerDnsAliasesListByServerInput =
 // Output Schema
 export const ServerDnsAliasesListByServerOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => ServerDnsAliasSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type ServerDnsAliasesListByServerOutput =
@@ -29163,15 +24452,7 @@ export const ServerKeysCreateOrUpdateInput =
     serverName: Schema.String.pipe(T.PathParam()),
     keyName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        subregion: Schema.optional(Schema.String),
-        serverKeyType: Schema.Literals(["ServiceManaged", "AzureKeyVault"]),
-        uri: Schema.optional(Schema.String),
-        thumbprint: Schema.optional(Schema.String),
-        creationDate: Schema.optional(Schema.String),
-        autoRotationEnabled: Schema.optional(Schema.Boolean),
-        keyVersion: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(() => ServerKeyPropertiesSchema),
     ),
     kind: Schema.optional(Schema.String),
     location: Schema.optional(Schema.String),
@@ -29189,23 +24470,15 @@ export type ServerKeysCreateOrUpdateInput =
 // Output Schema
 export const ServerKeysCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => ServerKeyPropertiesSchema),
+    ),
+    kind: Schema.optional(Schema.String),
+    location: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type ServerKeysCreateOrUpdateOutput =
   typeof ServerKeysCreateOrUpdateOutput.Type;
@@ -29277,23 +24550,13 @@ export type ServerKeysGetInput = typeof ServerKeysGetInput.Type;
 
 // Output Schema
 export const ServerKeysGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.optional(Schema.suspend(() => ServerKeyPropertiesSchema)),
+  kind: Schema.optional(Schema.String),
+  location: Schema.optional(Schema.String),
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
-  systemData: Schema.optional(
-    Schema.Struct({
-      createdBy: Schema.optional(Schema.String),
-      createdByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      createdAt: Schema.optional(Schema.String),
-      lastModifiedBy: Schema.optional(Schema.String),
-      lastModifiedByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      lastModifiedAt: Schema.optional(Schema.String),
-    }),
-  ),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
 });
 export type ServerKeysGetOutput = typeof ServerKeysGetOutput.Type;
 
@@ -29330,37 +24593,7 @@ export type ServerKeysListByServerInput =
 // Output Schema
 export const ServerKeysListByServerOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => ServerKeySchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type ServerKeysListByServerOutput =
@@ -29400,37 +24633,7 @@ export type ServerOperationsListByServerInput =
 // Output Schema
 export const ServerOperationsListByServerOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => ServerOperationSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type ServerOperationsListByServerOutput =
@@ -29455,7 +24658,7 @@ export const ServersCheckNameAvailabilityInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     name: Schema.String,
-    type: Schema.Literals(["Microsoft.Sql/servers"]),
+    type: Schema.suspend(() => CheckNameAvailabilityResourceTypeSchema),
   }).pipe(
     T.Http({
       method: "POST",
@@ -29471,7 +24674,9 @@ export const ServersCheckNameAvailabilityOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     available: Schema.optional(Schema.Boolean),
-    reason: Schema.optional(Schema.Literals(["Invalid", "AlreadyExists"])),
+    reason: Schema.optional(
+      Schema.suspend(() => CheckNameAvailabilityReasonSchema),
+    ),
     message: Schema.optional(Schema.String),
   });
 export type ServersCheckNameAvailabilityOutput =
@@ -29495,115 +24700,8 @@ export const ServersCreateOrUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serverName: Schema.String.pipe(T.PathParam()),
-    properties: Schema.optional(
-      Schema.Struct({
-        administratorLogin: Schema.optional(Schema.String),
-        administratorLoginPassword: Schema.optional(SensitiveString),
-        version: Schema.optional(Schema.String),
-        state: Schema.optional(Schema.String),
-        fullyQualifiedDomainName: Schema.optional(Schema.String),
-        privateEndpointConnections: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              id: Schema.optional(Schema.String),
-              properties: Schema.optional(
-                Schema.Struct({
-                  privateEndpoint: Schema.optional(
-                    Schema.Struct({
-                      id: Schema.optional(Schema.String),
-                    }),
-                  ),
-                  groupIds: Schema.optional(Schema.Array(Schema.String)),
-                  privateLinkServiceConnectionState: Schema.optional(
-                    Schema.Struct({
-                      status: Schema.Literals([
-                        "Approved",
-                        "Pending",
-                        "Rejected",
-                        "Disconnected",
-                      ]),
-                      description: Schema.String,
-                      actionsRequired: Schema.optional(
-                        Schema.Literals(["None"]),
-                      ),
-                    }),
-                  ),
-                  provisioningState: Schema.optional(
-                    Schema.Literals([
-                      "Approving",
-                      "Ready",
-                      "Dropping",
-                      "Failed",
-                      "Rejecting",
-                    ]),
-                  ),
-                }),
-              ),
-            }),
-          ),
-        ),
-        minimalTlsVersion: Schema.optional(
-          Schema.Literals(["None", "1.0", "1.1", "1.2", "1.3"]),
-        ),
-        publicNetworkAccess: Schema.optional(
-          Schema.Literals(["Enabled", "Disabled", "SecuredByPerimeter"]),
-        ),
-        workspaceFeature: Schema.optional(
-          Schema.Literals(["Connected", "Disconnected"]),
-        ),
-        primaryUserAssignedIdentityId: Schema.optional(Schema.String),
-        federatedClientId: Schema.optional(Schema.String),
-        keyId: Schema.optional(Schema.String),
-        administrators: Schema.optional(
-          Schema.Struct({
-            administratorType: Schema.optional(
-              Schema.Literals(["ActiveDirectory"]),
-            ),
-            principalType: Schema.optional(
-              Schema.Literals(["User", "Group", "Application"]),
-            ),
-            login: Schema.optional(Schema.String),
-            sid: Schema.optional(Schema.String),
-            tenantId: Schema.optional(Schema.String),
-            azureADOnlyAuthentication: Schema.optional(Schema.Boolean),
-          }),
-        ),
-        restrictOutboundNetworkAccess: Schema.optional(
-          Schema.Literals(["Enabled", "Disabled"]),
-        ),
-        isIPv6Enabled: Schema.optional(
-          Schema.Literals(["Enabled", "Disabled"]),
-        ),
-        externalGovernanceStatus: Schema.optional(
-          Schema.Literals(["Enabled", "Disabled"]),
-        ),
-        retentionDays: Schema.optional(Schema.Number),
-        createMode: Schema.optional(Schema.Literals(["Normal", "Restore"])),
-      }),
-    ),
-    identity: Schema.optional(
-      Schema.Struct({
-        userAssignedIdentities: Schema.optional(
-          Schema.Record(
-            Schema.String,
-            Schema.Struct({
-              principalId: Schema.optional(Schema.String),
-              clientId: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        principalId: Schema.optional(Schema.String),
-        type: Schema.optional(
-          Schema.Literals([
-            "None",
-            "SystemAssigned",
-            "UserAssigned",
-            "SystemAssigned,UserAssigned",
-          ]),
-        ),
-        tenantId: Schema.optional(Schema.String),
-      }),
-    ),
+    properties: Schema.optional(Schema.suspend(() => ServerPropertiesSchema)),
+    identity: Schema.optional(Schema.suspend(() => ResourceIdentitySchema)),
     kind: Schema.optional(Schema.String),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     location: Schema.String,
@@ -29620,23 +24718,15 @@ export type ServersCreateOrUpdateInput = typeof ServersCreateOrUpdateInput.Type;
 // Output Schema
 export const ServersCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(Schema.suspend(() => ServerPropertiesSchema)),
+    identity: Schema.optional(Schema.suspend(() => ResourceIdentitySchema)),
+    kind: Schema.optional(Schema.String),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type ServersCreateOrUpdateOutput =
   typeof ServersCreateOrUpdateOutput.Type;
@@ -29696,16 +24786,7 @@ export const ServerSecurityAlertPoliciesCreateOrUpdateInput =
     serverName: Schema.String.pipe(T.PathParam()),
     securityAlertPolicyName: Schema.Literals(["Default"]).pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        state: Schema.Literals(["Enabled", "Disabled"]),
-        disabledAlerts: Schema.optional(Schema.Array(Schema.String)),
-        emailAddresses: Schema.optional(Schema.Array(Schema.String)),
-        emailAccountAdmins: Schema.optional(Schema.Boolean),
-        storageEndpoint: Schema.optional(Schema.String),
-        storageAccountAccessKey: Schema.optional(Schema.String),
-        retentionDays: Schema.optional(Schema.Number),
-        creationTime: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(() => SecurityAlertsPolicyPropertiesSchema),
     ),
   }).pipe(
     T.Http({
@@ -29721,23 +24802,13 @@ export type ServerSecurityAlertPoliciesCreateOrUpdateInput =
 // Output Schema
 export const ServerSecurityAlertPoliciesCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => SecurityAlertsPolicyPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type ServerSecurityAlertPoliciesCreateOrUpdateOutput =
   typeof ServerSecurityAlertPoliciesCreateOrUpdateOutput.Type;
@@ -29777,23 +24848,13 @@ export type ServerSecurityAlertPoliciesGetInput =
 // Output Schema
 export const ServerSecurityAlertPoliciesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => SecurityAlertsPolicyPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type ServerSecurityAlertPoliciesGetOutput =
   typeof ServerSecurityAlertPoliciesGetOutput.Type;
@@ -29833,37 +24894,7 @@ export type ServerSecurityAlertPoliciesListByServerInput =
 export const ServerSecurityAlertPoliciesListByServerOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.String),
-              createdByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              createdAt: Schema.optional(Schema.String),
-              lastModifiedBy: Schema.optional(Schema.String),
-              lastModifiedByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              lastModifiedAt: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => ServerSecurityAlertPolicySchema)),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -29901,23 +24932,15 @@ export type ServersGetInput = typeof ServersGetInput.Type;
 
 // Output Schema
 export const ServersGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.optional(Schema.suspend(() => ServerPropertiesSchema)),
+  identity: Schema.optional(Schema.suspend(() => ResourceIdentitySchema)),
+  kind: Schema.optional(Schema.String),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  location: Schema.String,
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
-  systemData: Schema.optional(
-    Schema.Struct({
-      createdBy: Schema.optional(Schema.String),
-      createdByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      createdAt: Schema.optional(Schema.String),
-      lastModifiedBy: Schema.optional(Schema.String),
-      lastModifiedByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      lastModifiedAt: Schema.optional(Schema.String),
-    }),
-  ),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
 });
 export type ServersGetOutput = typeof ServersGetOutput.Type;
 
@@ -29945,21 +24968,14 @@ export const ServersImportDatabaseInput =
     edition: Schema.optional(Schema.String),
     serviceObjectiveName: Schema.optional(Schema.String),
     maxSizeBytes: Schema.optional(Schema.String),
-    storageKeyType: Schema.Literals([
-      "SharedAccessKey",
-      "StorageAccessKey",
-      "ManagedIdentity",
-    ]),
+    storageKeyType: Schema.suspend(() => StorageKeyTypeSchema),
     storageKey: Schema.String,
     storageUri: Schema.String,
     administratorLogin: Schema.String,
     administratorLoginPassword: Schema.optional(SensitiveString),
     authenticationType: Schema.optional(Schema.String),
     networkIsolation: Schema.optional(
-      Schema.Struct({
-        storageAccountResourceId: Schema.optional(Schema.String),
-        sqlServerResourceId: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(() => NetworkIsolationSettingsSchema),
     ),
   }).pipe(
     T.Http({
@@ -29974,23 +24990,13 @@ export type ServersImportDatabaseInput = typeof ServersImportDatabaseInput.Type;
 // Output Schema
 export const ServersImportDatabaseOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => ImportExportOperationResultPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type ServersImportDatabaseOutput =
   typeof ServersImportDatabaseOutput.Type;
@@ -30025,27 +25031,7 @@ export type ServersListInput = typeof ServersListInput.Type;
 
 // Output Schema
 export const ServersListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  value: Schema.Array(
-    Schema.Struct({
-      id: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      type: Schema.optional(Schema.String),
-      systemData: Schema.optional(
-        Schema.Struct({
-          createdBy: Schema.optional(Schema.String),
-          createdByType: Schema.optional(
-            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-          ),
-          createdAt: Schema.optional(Schema.String),
-          lastModifiedBy: Schema.optional(Schema.String),
-          lastModifiedByType: Schema.optional(
-            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-          ),
-          lastModifiedAt: Schema.optional(Schema.String),
-        }),
-      ),
-    }),
-  ),
+  value: Schema.Array(Schema.suspend(() => ServerSchema)),
   nextLink: Schema.optional(Schema.String),
 });
 export type ServersListOutput = typeof ServersListOutput.Type;
@@ -30081,37 +25067,7 @@ export type ServersListByResourceGroupInput =
 // Output Schema
 export const ServersListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => ServerSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type ServersListByResourceGroupOutput =
@@ -30151,23 +25107,15 @@ export type ServersRefreshStatusInput = typeof ServersRefreshStatusInput.Type;
 // Output Schema
 export const ServersRefreshStatusOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(
+        () => RefreshExternalGovernanceStatusOperationResultPropertiesSchema,
+      ),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type ServersRefreshStatusOutput = typeof ServersRefreshStatusOutput.Type;
 
@@ -30191,111 +25139,8 @@ export const ServersUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   serverName: Schema.String.pipe(T.PathParam()),
-  identity: Schema.optional(
-    Schema.Struct({
-      userAssignedIdentities: Schema.optional(
-        Schema.Record(
-          Schema.String,
-          Schema.Struct({
-            principalId: Schema.optional(Schema.String),
-            clientId: Schema.optional(Schema.String),
-          }),
-        ),
-      ),
-      principalId: Schema.optional(Schema.String),
-      type: Schema.optional(
-        Schema.Literals([
-          "None",
-          "SystemAssigned",
-          "UserAssigned",
-          "SystemAssigned,UserAssigned",
-        ]),
-      ),
-      tenantId: Schema.optional(Schema.String),
-    }),
-  ),
-  properties: Schema.optional(
-    Schema.Struct({
-      administratorLogin: Schema.optional(Schema.String),
-      administratorLoginPassword: Schema.optional(SensitiveString),
-      version: Schema.optional(Schema.String),
-      state: Schema.optional(Schema.String),
-      fullyQualifiedDomainName: Schema.optional(Schema.String),
-      privateEndpointConnections: Schema.optional(
-        Schema.Array(
-          Schema.Struct({
-            id: Schema.optional(Schema.String),
-            properties: Schema.optional(
-              Schema.Struct({
-                privateEndpoint: Schema.optional(
-                  Schema.Struct({
-                    id: Schema.optional(Schema.String),
-                  }),
-                ),
-                groupIds: Schema.optional(Schema.Array(Schema.String)),
-                privateLinkServiceConnectionState: Schema.optional(
-                  Schema.Struct({
-                    status: Schema.Literals([
-                      "Approved",
-                      "Pending",
-                      "Rejected",
-                      "Disconnected",
-                    ]),
-                    description: Schema.String,
-                    actionsRequired: Schema.optional(Schema.Literals(["None"])),
-                  }),
-                ),
-                provisioningState: Schema.optional(
-                  Schema.Literals([
-                    "Approving",
-                    "Ready",
-                    "Dropping",
-                    "Failed",
-                    "Rejecting",
-                  ]),
-                ),
-              }),
-            ),
-          }),
-        ),
-      ),
-      minimalTlsVersion: Schema.optional(
-        Schema.Literals(["None", "1.0", "1.1", "1.2", "1.3"]),
-      ),
-      publicNetworkAccess: Schema.optional(
-        Schema.Literals(["Enabled", "Disabled", "SecuredByPerimeter"]),
-      ),
-      workspaceFeature: Schema.optional(
-        Schema.Literals(["Connected", "Disconnected"]),
-      ),
-      primaryUserAssignedIdentityId: Schema.optional(Schema.String),
-      federatedClientId: Schema.optional(Schema.String),
-      keyId: Schema.optional(Schema.String),
-      administrators: Schema.optional(
-        Schema.Struct({
-          administratorType: Schema.optional(
-            Schema.Literals(["ActiveDirectory"]),
-          ),
-          principalType: Schema.optional(
-            Schema.Literals(["User", "Group", "Application"]),
-          ),
-          login: Schema.optional(Schema.String),
-          sid: Schema.optional(Schema.String),
-          tenantId: Schema.optional(Schema.String),
-          azureADOnlyAuthentication: Schema.optional(Schema.Boolean),
-        }),
-      ),
-      restrictOutboundNetworkAccess: Schema.optional(
-        Schema.Literals(["Enabled", "Disabled"]),
-      ),
-      isIPv6Enabled: Schema.optional(Schema.Literals(["Enabled", "Disabled"])),
-      externalGovernanceStatus: Schema.optional(
-        Schema.Literals(["Enabled", "Disabled"]),
-      ),
-      retentionDays: Schema.optional(Schema.Number),
-      createMode: Schema.optional(Schema.Literals(["Normal", "Restore"])),
-    }),
-  ),
+  identity: Schema.optional(Schema.suspend(() => ResourceIdentitySchema)),
+  properties: Schema.optional(Schema.suspend(() => ServerPropertiesSchema)),
   tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
 }).pipe(
   T.Http({
@@ -30309,23 +25154,15 @@ export type ServersUpdateInput = typeof ServersUpdateInput.Type;
 
 // Output Schema
 export const ServersUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.optional(Schema.suspend(() => ServerPropertiesSchema)),
+  identity: Schema.optional(Schema.suspend(() => ResourceIdentitySchema)),
+  kind: Schema.optional(Schema.String),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  location: Schema.String,
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
-  systemData: Schema.optional(
-    Schema.Struct({
-      createdBy: Schema.optional(Schema.String),
-      createdByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      createdAt: Schema.optional(Schema.String),
-      lastModifiedBy: Schema.optional(Schema.String),
-      lastModifiedByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      lastModifiedAt: Schema.optional(Schema.String),
-    }),
-  ),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
 });
 export type ServersUpdateOutput = typeof ServersUpdateOutput.Type;
 
@@ -30350,11 +25187,7 @@ export const ServerTrustCertificatesCreateOrUpdateInput =
     managedInstanceName: Schema.String.pipe(T.PathParam()),
     certificateName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        publicBlob: Schema.optional(Schema.String),
-        thumbprint: Schema.optional(Schema.String),
-        certificateName: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(() => ServerTrustCertificatePropertiesSchema),
     ),
   }).pipe(
     T.Http({
@@ -30370,23 +25203,13 @@ export type ServerTrustCertificatesCreateOrUpdateInput =
 // Output Schema
 export const ServerTrustCertificatesCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => ServerTrustCertificatePropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type ServerTrustCertificatesCreateOrUpdateOutput =
   typeof ServerTrustCertificatesCreateOrUpdateOutput.Type;
@@ -30465,23 +25288,13 @@ export type ServerTrustCertificatesGetInput =
 // Output Schema
 export const ServerTrustCertificatesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => ServerTrustCertificatePropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type ServerTrustCertificatesGetOutput =
   typeof ServerTrustCertificatesGetOutput.Type;
@@ -30522,37 +25335,7 @@ export type ServerTrustCertificatesListByInstanceInput =
 export const ServerTrustCertificatesListByInstanceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.String),
-              createdByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              createdAt: Schema.optional(Schema.String),
-              lastModifiedBy: Schema.optional(Schema.String),
-              lastModifiedByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              lastModifiedAt: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => ServerTrustCertificateSchema)),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -30581,16 +25364,7 @@ export const ServerTrustGroupsCreateOrUpdateInput =
     locationName: Schema.String.pipe(T.PathParam()),
     serverTrustGroupName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        groupMembers: Schema.Array(
-          Schema.Struct({
-            serverId: Schema.String,
-          }),
-        ),
-        trustScopes: Schema.Array(
-          Schema.Literals(["GlobalTransactions", "ServiceBroker"]),
-        ),
-      }),
+      Schema.suspend(() => ServerTrustGroupPropertiesSchema),
     ),
   }).pipe(
     T.Http({
@@ -30606,23 +25380,13 @@ export type ServerTrustGroupsCreateOrUpdateInput =
 // Output Schema
 export const ServerTrustGroupsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => ServerTrustGroupPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type ServerTrustGroupsCreateOrUpdateOutput =
   typeof ServerTrustGroupsCreateOrUpdateOutput.Type;
@@ -30701,23 +25465,13 @@ export type ServerTrustGroupsGetInput = typeof ServerTrustGroupsGetInput.Type;
 // Output Schema
 export const ServerTrustGroupsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => ServerTrustGroupPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type ServerTrustGroupsGetOutput = typeof ServerTrustGroupsGetOutput.Type;
 
@@ -30756,37 +25510,7 @@ export type ServerTrustGroupsListByInstanceInput =
 // Output Schema
 export const ServerTrustGroupsListByInstanceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => ServerTrustGroupSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type ServerTrustGroupsListByInstanceOutput =
@@ -30825,37 +25549,7 @@ export type ServerTrustGroupsListByLocationInput =
 // Output Schema
 export const ServerTrustGroupsListByLocationOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => ServerTrustGroupSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type ServerTrustGroupsListByLocationOutput =
@@ -30893,17 +25587,7 @@ export type ServerUsagesListByServerInput =
 // Output Schema
 export const ServerUsagesListByServerOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        name: Schema.optional(Schema.String),
-        resourceName: Schema.optional(Schema.String),
-        displayName: Schema.optional(Schema.String),
-        currentValue: Schema.optional(Schema.Number),
-        limit: Schema.optional(Schema.Number),
-        unit: Schema.optional(Schema.String),
-        nextResetTime: Schema.optional(Schema.String),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => ServerUsageSchema)),
   });
 export type ServerUsagesListByServerOutput =
   typeof ServerUsagesListByServerOutput.Type;
@@ -30932,18 +25616,7 @@ export const ServerVulnerabilityAssessmentsCreateOrUpdateInput =
       T.PathParam(),
     ),
     properties: Schema.optional(
-      Schema.Struct({
-        storageContainerPath: Schema.String,
-        storageContainerSasKey: Schema.optional(Schema.String),
-        storageAccountAccessKey: Schema.optional(Schema.String),
-        recurringScans: Schema.optional(
-          Schema.Struct({
-            isEnabled: Schema.optional(Schema.Boolean),
-            emailSubscriptionAdmins: Schema.optional(Schema.Boolean),
-            emails: Schema.optional(Schema.Array(Schema.String)),
-          }),
-        ),
-      }),
+      Schema.suspend(() => ServerVulnerabilityAssessmentPropertiesSchema),
     ),
   }).pipe(
     T.Http({
@@ -30958,23 +25631,13 @@ export type ServerVulnerabilityAssessmentsCreateOrUpdateInput =
 // Output Schema
 export const ServerVulnerabilityAssessmentsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => ServerVulnerabilityAssessmentPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type ServerVulnerabilityAssessmentsCreateOrUpdateOutput =
   typeof ServerVulnerabilityAssessmentsCreateOrUpdateOutput.Type;
@@ -31056,23 +25719,13 @@ export type ServerVulnerabilityAssessmentsGetInput =
 // Output Schema
 export const ServerVulnerabilityAssessmentsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => ServerVulnerabilityAssessmentPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type ServerVulnerabilityAssessmentsGetOutput =
   typeof ServerVulnerabilityAssessmentsGetOutput.Type;
@@ -31112,35 +25765,7 @@ export type ServerVulnerabilityAssessmentsListByServerInput =
 export const ServerVulnerabilityAssessmentsListByServerOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
+      Schema.suspend(() => ServerVulnerabilityAssessmentSchema),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -31168,9 +25793,7 @@ export const SqlAgentCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     managedInstanceName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        state: Schema.optional(Schema.Literals(["Enabled", "Disabled"])),
-      }),
+      Schema.suspend(() => SqlAgentConfigurationPropertiesSchema),
     ),
   }).pipe(
     T.Http({
@@ -31185,23 +25808,13 @@ export type SqlAgentCreateOrUpdateInput =
 // Output Schema
 export const SqlAgentCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => SqlAgentConfigurationPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type SqlAgentCreateOrUpdateOutput =
   typeof SqlAgentCreateOrUpdateOutput.Type;
@@ -31237,23 +25850,13 @@ export type SqlAgentGetInput = typeof SqlAgentGetInput.Type;
 
 // Output Schema
 export const SqlAgentGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.optional(
+    Schema.suspend(() => SqlAgentConfigurationPropertiesSchema),
+  ),
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
-  systemData: Schema.optional(
-    Schema.Struct({
-      createdBy: Schema.optional(Schema.String),
-      createdByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      createdAt: Schema.optional(Schema.String),
-      lastModifiedBy: Schema.optional(Schema.String),
-      lastModifiedByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      lastModifiedAt: Schema.optional(Schema.String),
-    }),
-  ),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
 });
 export type SqlAgentGetOutput = typeof SqlAgentGetOutput.Type;
 
@@ -31294,23 +25897,15 @@ export type SqlVulnerabilityAssessmentBaselineGetInput =
 // Output Schema
 export const SqlVulnerabilityAssessmentBaselineGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(
+        () => DatabaseSqlVulnerabilityAssessmentBaselineSetPropertiesSchema,
+      ),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type SqlVulnerabilityAssessmentBaselineGetOutput =
   typeof SqlVulnerabilityAssessmentBaselineGetOutput.Type;
@@ -31355,35 +25950,7 @@ export type SqlVulnerabilityAssessmentBaselineListBySqlVulnerabilityAssessmentIn
 export const SqlVulnerabilityAssessmentBaselineListBySqlVulnerabilityAssessmentOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
+      Schema.suspend(() => DatabaseSqlVulnerabilityAssessmentBaselineSetSchema),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -31420,13 +25987,10 @@ export const SqlVulnerabilityAssessmentBaselinesCreateOrUpdateInput =
     baselineName: Schema.Literals(["default"]).pipe(T.PathParam()),
     systemDatabaseName: Schema.Literals(["master"]),
     properties: Schema.optional(
-      Schema.Struct({
-        latestScan: Schema.Boolean,
-        results: Schema.Record(
-          Schema.String,
-          Schema.Array(Schema.Array(Schema.String)),
-        ),
-      }),
+      Schema.suspend(
+        () =>
+          DatabaseSqlVulnerabilityAssessmentRuleBaselineListInputPropertiesSchema,
+      ),
     ),
   }).pipe(
     T.Http({
@@ -31441,23 +26005,15 @@ export type SqlVulnerabilityAssessmentBaselinesCreateOrUpdateInput =
 // Output Schema
 export const SqlVulnerabilityAssessmentBaselinesCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(
+        () => DatabaseSqlVulnerabilityAssessmentBaselineSetPropertiesSchema,
+      ),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type SqlVulnerabilityAssessmentBaselinesCreateOrUpdateOutput =
   typeof SqlVulnerabilityAssessmentBaselinesCreateOrUpdateOutput.Type;
@@ -31534,10 +26090,10 @@ export const SqlVulnerabilityAssessmentRuleBaselineCreateOrUpdateInput =
     ruleId: Schema.String.pipe(T.PathParam()),
     systemDatabaseName: Schema.Literals(["master"]),
     properties: Schema.optional(
-      Schema.Struct({
-        latestScan: Schema.Boolean,
-        results: Schema.Array(Schema.Array(Schema.String)),
-      }),
+      Schema.suspend(
+        () =>
+          DatabaseSqlVulnerabilityAssessmentRuleBaselineInputPropertiesSchema,
+      ),
     ),
   }).pipe(
     T.Http({
@@ -31552,23 +26108,15 @@ export type SqlVulnerabilityAssessmentRuleBaselineCreateOrUpdateInput =
 // Output Schema
 export const SqlVulnerabilityAssessmentRuleBaselineCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(
+        () => DatabaseSqlVulnerabilityAssessmentRuleBaselinePropertiesSchema,
+      ),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type SqlVulnerabilityAssessmentRuleBaselineCreateOrUpdateOutput =
   typeof SqlVulnerabilityAssessmentRuleBaselineCreateOrUpdateOutput.Type;
@@ -31615,23 +26163,15 @@ export type SqlVulnerabilityAssessmentRuleBaselineGetInput =
 // Output Schema
 export const SqlVulnerabilityAssessmentRuleBaselineGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(
+        () => DatabaseSqlVulnerabilityAssessmentRuleBaselinePropertiesSchema,
+      ),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type SqlVulnerabilityAssessmentRuleBaselineGetOutput =
   typeof SqlVulnerabilityAssessmentRuleBaselineGetOutput.Type;
@@ -31678,35 +26218,9 @@ export type SqlVulnerabilityAssessmentRuleBaselineListByBaselineInput =
 export const SqlVulnerabilityAssessmentRuleBaselineListByBaselineOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
+      Schema.suspend(
+        () => DatabaseSqlVulnerabilityAssessmentRuleBaselineSchema,
+      ),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -31799,23 +26313,15 @@ export type SqlVulnerabilityAssessmentScanResultGetInput =
 // Output Schema
 export const SqlVulnerabilityAssessmentScanResultGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(
+        () => SqlVulnerabilityAssessmentScanResultPropertiesSchema,
+      ),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type SqlVulnerabilityAssessmentScanResultGetOutput =
   typeof SqlVulnerabilityAssessmentScanResultGetOutput.Type;
@@ -31864,35 +26370,7 @@ export const SqlVulnerabilityAssessmentScanResultListByScanOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.String),
-              createdByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              createdAt: Schema.optional(Schema.String),
-              lastModifiedBy: Schema.optional(Schema.String),
-              lastModifiedByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              lastModifiedAt: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
+        Schema.suspend(() => SqlVulnerabilityAssessmentScanResultsSchema),
       ),
     ),
     nextLink: Schema.optional(Schema.String),
@@ -31941,23 +26419,15 @@ export type SqlVulnerabilityAssessmentScansGetInput =
 // Output Schema
 export const SqlVulnerabilityAssessmentScansGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(
+        () => SqlVulnerabilityAssessmentScanRecordPropertiesSchema,
+      ),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type SqlVulnerabilityAssessmentScansGetOutput =
   typeof SqlVulnerabilityAssessmentScansGetOutput.Type;
@@ -32002,35 +26472,7 @@ export type SqlVulnerabilityAssessmentScansListBySqlVulnerabilityAssessmentsInpu
 export const SqlVulnerabilityAssessmentScansListBySqlVulnerabilityAssessmentsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
+      Schema.suspend(() => SqlVulnerabilityAssessmentScanRecordSchema),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -32105,9 +26547,7 @@ export const SqlVulnerabilityAssessmentsSettingsCreateOrUpdateInput =
       T.PathParam(),
     ),
     properties: Schema.optional(
-      Schema.Struct({
-        state: Schema.optional(Schema.Literals(["Enabled", "Disabled"])),
-      }),
+      Schema.suspend(() => SqlVulnerabilityAssessmentPolicyPropertiesSchema),
     ),
   }).pipe(
     T.Http({
@@ -32122,23 +26562,13 @@ export type SqlVulnerabilityAssessmentsSettingsCreateOrUpdateInput =
 // Output Schema
 export const SqlVulnerabilityAssessmentsSettingsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => SqlVulnerabilityAssessmentPolicyPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type SqlVulnerabilityAssessmentsSettingsCreateOrUpdateOutput =
   typeof SqlVulnerabilityAssessmentsSettingsCreateOrUpdateOutput.Type;
@@ -32180,23 +26610,13 @@ export type SqlVulnerabilityAssessmentsSettingsGetInput =
 // Output Schema
 export const SqlVulnerabilityAssessmentsSettingsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => SqlVulnerabilityAssessmentPolicyPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type SqlVulnerabilityAssessmentsSettingsGetOutput =
   typeof SqlVulnerabilityAssessmentsSettingsGetOutput.Type;
@@ -32235,37 +26655,7 @@ export type SqlVulnerabilityAssessmentsSettingsListByServerInput =
 // Output Schema
 export const SqlVulnerabilityAssessmentsSettingsListByServerOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => SqlVulnerabilityAssessmentSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type SqlVulnerabilityAssessmentsSettingsListByServerOutput =
@@ -32293,36 +26683,7 @@ export const StartStopManagedInstanceSchedulesCreateOrUpdateInput =
     managedInstanceName: Schema.String.pipe(T.PathParam()),
     startStopScheduleName: Schema.Literals(["default"]).pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        description: Schema.optional(Schema.String),
-        timeZoneId: Schema.optional(Schema.String),
-        scheduleList: Schema.Array(
-          Schema.Struct({
-            startDay: Schema.Literals([
-              "Sunday",
-              "Monday",
-              "Tuesday",
-              "Wednesday",
-              "Thursday",
-              "Friday",
-              "Saturday",
-            ]),
-            startTime: Schema.String,
-            stopDay: Schema.Literals([
-              "Sunday",
-              "Monday",
-              "Tuesday",
-              "Wednesday",
-              "Thursday",
-              "Friday",
-              "Saturday",
-            ]),
-            stopTime: Schema.String,
-          }),
-        ),
-        nextRunAction: Schema.optional(Schema.String),
-        nextExecutionTime: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(() => StartStopManagedInstanceSchedulePropertiesSchema),
     ),
   }).pipe(
     T.Http({
@@ -32337,23 +26698,13 @@ export type StartStopManagedInstanceSchedulesCreateOrUpdateInput =
 // Output Schema
 export const StartStopManagedInstanceSchedulesCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => StartStopManagedInstanceSchedulePropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type StartStopManagedInstanceSchedulesCreateOrUpdateOutput =
   typeof StartStopManagedInstanceSchedulesCreateOrUpdateOutput.Type;
@@ -32431,23 +26782,13 @@ export type StartStopManagedInstanceSchedulesGetInput =
 // Output Schema
 export const StartStopManagedInstanceSchedulesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => StartStopManagedInstanceSchedulePropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type StartStopManagedInstanceSchedulesGetOutput =
   typeof StartStopManagedInstanceSchedulesGetOutput.Type;
@@ -32487,35 +26828,7 @@ export type StartStopManagedInstanceSchedulesListByInstanceInput =
 export const StartStopManagedInstanceSchedulesListByInstanceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
+      Schema.suspend(() => StartStopManagedInstanceScheduleSchema),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -32554,23 +26867,13 @@ export type SubscriptionUsagesGetInput = typeof SubscriptionUsagesGetInput.Type;
 // Output Schema
 export const SubscriptionUsagesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => SubscriptionUsagePropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type SubscriptionUsagesGetOutput =
   typeof SubscriptionUsagesGetOutput.Type;
@@ -32608,37 +26911,7 @@ export type SubscriptionUsagesListByLocationInput =
 // Output Schema
 export const SubscriptionUsagesListByLocationOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => SubscriptionUsageSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type SubscriptionUsagesListByLocationOutput =
@@ -32677,37 +26950,7 @@ export type SynapseLinkWorkspacesListByDatabaseInput =
 // Output Schema
 export const SynapseLinkWorkspacesListByDatabaseOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => SynapseLinkWorkspaceSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type SynapseLinkWorkspacesListByDatabaseOutput =
@@ -32736,17 +26979,7 @@ export const SyncAgentsCreateOrUpdateInput =
     serverName: Schema.String.pipe(T.PathParam()),
     syncAgentName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        name: Schema.optional(Schema.String),
-        syncDatabaseId: Schema.optional(Schema.String),
-        lastAliveTime: Schema.optional(Schema.String),
-        state: Schema.optional(
-          Schema.Literals(["Online", "Offline", "NeverConnected"]),
-        ),
-        isUpToDate: Schema.optional(Schema.Boolean),
-        expiryTime: Schema.optional(Schema.String),
-        version: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(() => SyncAgentPropertiesSchema),
     ),
   }).pipe(
     T.Http({
@@ -32762,23 +26995,13 @@ export type SyncAgentsCreateOrUpdateInput =
 // Output Schema
 export const SyncAgentsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => SyncAgentPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type SyncAgentsCreateOrUpdateOutput =
   typeof SyncAgentsCreateOrUpdateOutput.Type;
@@ -32890,23 +27113,11 @@ export type SyncAgentsGetInput = typeof SyncAgentsGetInput.Type;
 
 // Output Schema
 export const SyncAgentsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.optional(Schema.suspend(() => SyncAgentPropertiesSchema)),
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
-  systemData: Schema.optional(
-    Schema.Struct({
-      createdBy: Schema.optional(Schema.String),
-      createdByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      createdAt: Schema.optional(Schema.String),
-      lastModifiedBy: Schema.optional(Schema.String),
-      lastModifiedByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      lastModifiedAt: Schema.optional(Schema.String),
-    }),
-  ),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
 });
 export type SyncAgentsGetOutput = typeof SyncAgentsGetOutput.Type;
 
@@ -32943,37 +27154,7 @@ export type SyncAgentsListByServerInput =
 // Output Schema
 export const SyncAgentsListByServerOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => SyncAgentSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type SyncAgentsListByServerOutput =
@@ -33014,37 +27195,7 @@ export type SyncAgentsListLinkedDatabasesInput =
 // Output Schema
 export const SyncAgentsListLinkedDatabasesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => SyncAgentLinkedDatabaseSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type SyncAgentsListLinkedDatabasesOutput =
@@ -33113,60 +27264,9 @@ export const SyncGroupsCreateOrUpdateInput =
     databaseName: Schema.String.pipe(T.PathParam()),
     syncGroupName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        interval: Schema.optional(Schema.Number),
-        lastSyncTime: Schema.optional(Schema.String),
-        conflictResolutionPolicy: Schema.optional(
-          Schema.Literals(["HubWin", "MemberWin"]),
-        ),
-        syncDatabaseId: Schema.optional(Schema.String),
-        hubDatabaseUserName: Schema.optional(Schema.String),
-        hubDatabasePassword: Schema.optional(SensitiveString),
-        syncState: Schema.optional(
-          Schema.Literals([
-            "NotReady",
-            "Error",
-            "Warning",
-            "Progressing",
-            "Good",
-          ]),
-        ),
-        schema: Schema.optional(
-          Schema.Struct({
-            tables: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  columns: Schema.optional(
-                    Schema.Array(
-                      Schema.Struct({
-                        quotedName: Schema.optional(Schema.String),
-                        dataSize: Schema.optional(Schema.String),
-                        dataType: Schema.optional(Schema.String),
-                      }),
-                    ),
-                  ),
-                  quotedName: Schema.optional(Schema.String),
-                }),
-              ),
-            ),
-            masterSyncMemberName: Schema.optional(Schema.String),
-          }),
-        ),
-        enableConflictLogging: Schema.optional(Schema.Boolean),
-        conflictLoggingRetentionInDays: Schema.optional(Schema.Number),
-        usePrivateLinkConnection: Schema.optional(Schema.Boolean),
-        privateEndpointName: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(() => SyncGroupPropertiesSchema),
     ),
-    sku: Schema.optional(
-      Schema.Struct({
-        name: Schema.String,
-        tier: Schema.optional(Schema.String),
-        size: Schema.optional(Schema.String),
-        family: Schema.optional(Schema.String),
-        capacity: Schema.optional(Schema.Number),
-      }),
-    ),
+    sku: Schema.optional(Schema.suspend(() => SkuSchema)),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -33181,23 +27281,14 @@ export type SyncGroupsCreateOrUpdateInput =
 // Output Schema
 export const SyncGroupsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => SyncGroupPropertiesSchema),
+    ),
+    sku: Schema.optional(Schema.suspend(() => SkuSchema)),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type SyncGroupsCreateOrUpdateOutput =
   typeof SyncGroupsCreateOrUpdateOutput.Type;
@@ -33273,23 +27364,12 @@ export type SyncGroupsGetInput = typeof SyncGroupsGetInput.Type;
 
 // Output Schema
 export const SyncGroupsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.optional(Schema.suspend(() => SyncGroupPropertiesSchema)),
+  sku: Schema.optional(Schema.suspend(() => SkuSchema)),
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
-  systemData: Schema.optional(
-    Schema.Struct({
-      createdBy: Schema.optional(Schema.String),
-      createdByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      createdAt: Schema.optional(Schema.String),
-      lastModifiedBy: Schema.optional(Schema.String),
-      lastModifiedByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      lastModifiedAt: Schema.optional(Schema.String),
-    }),
-  ),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
 });
 export type SyncGroupsGetOutput = typeof SyncGroupsGetOutput.Type;
 
@@ -33328,37 +27408,7 @@ export type SyncGroupsListByDatabaseInput =
 // Output Schema
 export const SyncGroupsListByDatabaseOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => SyncGroupSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type SyncGroupsListByDatabaseOutput =
@@ -33401,34 +27451,7 @@ export type SyncGroupsListHubSchemasInput =
 // Output Schema
 export const SyncGroupsListHubSchemasOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        tables: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              columns: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    dataSize: Schema.optional(Schema.String),
-                    dataType: Schema.optional(Schema.String),
-                    errorId: Schema.optional(Schema.String),
-                    hasError: Schema.optional(Schema.Boolean),
-                    isPrimaryKey: Schema.optional(Schema.Boolean),
-                    name: Schema.optional(Schema.String),
-                    quotedName: Schema.optional(Schema.String),
-                  }),
-                ),
-              ),
-              errorId: Schema.optional(Schema.String),
-              hasError: Schema.optional(Schema.Boolean),
-              name: Schema.optional(Schema.String),
-              quotedName: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        lastUpdateTime: Schema.optional(Schema.String),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => SyncFullSchemaPropertiesSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type SyncGroupsListHubSchemasOutput =
@@ -33475,18 +27498,7 @@ export type SyncGroupsListLogsInput = typeof SyncGroupsListLogsInput.Type;
 // Output Schema
 export const SyncGroupsListLogsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        timestamp: Schema.optional(Schema.String),
-        type: Schema.optional(
-          Schema.Literals(["All", "Error", "Warning", "Success"]),
-        ),
-        source: Schema.optional(Schema.String),
-        details: Schema.optional(Schema.String),
-        tracingId: Schema.optional(Schema.String),
-        operationStatus: Schema.optional(Schema.String),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => SyncGroupLogPropertiesSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type SyncGroupsListLogsOutput = typeof SyncGroupsListLogsOutput.Type;
@@ -33528,11 +27540,7 @@ export type SyncGroupsListSyncDatabaseIdsInput =
 // Output Schema
 export const SyncGroupsListSyncDatabaseIdsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => SyncDatabaseIdPropertiesSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type SyncGroupsListSyncDatabaseIdsOutput =
@@ -33640,61 +27648,8 @@ export const SyncGroupsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   serverName: Schema.String.pipe(T.PathParam()),
   databaseName: Schema.String.pipe(T.PathParam()),
   syncGroupName: Schema.String.pipe(T.PathParam()),
-  properties: Schema.optional(
-    Schema.Struct({
-      interval: Schema.optional(Schema.Number),
-      lastSyncTime: Schema.optional(Schema.String),
-      conflictResolutionPolicy: Schema.optional(
-        Schema.Literals(["HubWin", "MemberWin"]),
-      ),
-      syncDatabaseId: Schema.optional(Schema.String),
-      hubDatabaseUserName: Schema.optional(Schema.String),
-      hubDatabasePassword: Schema.optional(SensitiveString),
-      syncState: Schema.optional(
-        Schema.Literals([
-          "NotReady",
-          "Error",
-          "Warning",
-          "Progressing",
-          "Good",
-        ]),
-      ),
-      schema: Schema.optional(
-        Schema.Struct({
-          tables: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                columns: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      quotedName: Schema.optional(Schema.String),
-                      dataSize: Schema.optional(Schema.String),
-                      dataType: Schema.optional(Schema.String),
-                    }),
-                  ),
-                ),
-                quotedName: Schema.optional(Schema.String),
-              }),
-            ),
-          ),
-          masterSyncMemberName: Schema.optional(Schema.String),
-        }),
-      ),
-      enableConflictLogging: Schema.optional(Schema.Boolean),
-      conflictLoggingRetentionInDays: Schema.optional(Schema.Number),
-      usePrivateLinkConnection: Schema.optional(Schema.Boolean),
-      privateEndpointName: Schema.optional(Schema.String),
-    }),
-  ),
-  sku: Schema.optional(
-    Schema.Struct({
-      name: Schema.String,
-      tier: Schema.optional(Schema.String),
-      size: Schema.optional(Schema.String),
-      family: Schema.optional(Schema.String),
-      capacity: Schema.optional(Schema.Number),
-    }),
-  ),
+  properties: Schema.optional(Schema.suspend(() => SyncGroupPropertiesSchema)),
+  sku: Schema.optional(Schema.suspend(() => SkuSchema)),
 }).pipe(
   T.Http({
     method: "PATCH",
@@ -33708,23 +27663,14 @@ export type SyncGroupsUpdateInput = typeof SyncGroupsUpdateInput.Type;
 // Output Schema
 export const SyncGroupsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
+    properties: Schema.optional(
+      Schema.suspend(() => SyncGroupPropertiesSchema),
+    ),
+    sku: Schema.optional(Schema.suspend(() => SkuSchema)),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   },
 );
 export type SyncGroupsUpdateOutput = typeof SyncGroupsUpdateOutput.Type;
@@ -33754,49 +27700,7 @@ export const SyncMembersCreateOrUpdateInput =
     syncGroupName: Schema.String.pipe(T.PathParam()),
     syncMemberName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        databaseType: Schema.optional(
-          Schema.Literals(["AzureSqlDatabase", "SqlServerDatabase"]),
-        ),
-        syncAgentId: Schema.optional(Schema.String),
-        sqlServerDatabaseId: Schema.optional(Schema.String),
-        syncMemberAzureDatabaseResourceId: Schema.optional(Schema.String),
-        usePrivateLinkConnection: Schema.optional(Schema.Boolean),
-        privateEndpointName: Schema.optional(Schema.String),
-        serverName: Schema.optional(Schema.String),
-        databaseName: Schema.optional(Schema.String),
-        userName: Schema.optional(Schema.String),
-        password: Schema.optional(SensitiveString),
-        syncDirection: Schema.optional(
-          Schema.Literals([
-            "Bidirectional",
-            "OneWayMemberToHub",
-            "OneWayHubToMember",
-          ]),
-        ),
-        syncState: Schema.optional(
-          Schema.Literals([
-            "SyncInProgress",
-            "SyncSucceeded",
-            "SyncFailed",
-            "DisabledTombstoneCleanup",
-            "DisabledBackupRestore",
-            "SyncSucceededWithWarnings",
-            "SyncCancelling",
-            "SyncCancelled",
-            "UnProvisioned",
-            "Provisioning",
-            "Provisioned",
-            "ProvisionFailed",
-            "DeProvisioning",
-            "DeProvisioned",
-            "DeProvisionFailed",
-            "Reprovisioning",
-            "ReprovisionFailed",
-            "UnReprovisioned",
-          ]),
-        ),
-      }),
+      Schema.suspend(() => SyncMemberPropertiesSchema),
     ),
   }).pipe(
     T.Http({
@@ -33812,23 +27716,13 @@ export type SyncMembersCreateOrUpdateInput =
 // Output Schema
 export const SyncMembersCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => SyncMemberPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type SyncMembersCreateOrUpdateOutput =
   typeof SyncMembersCreateOrUpdateOutput.Type;
@@ -33910,23 +27804,11 @@ export type SyncMembersGetInput = typeof SyncMembersGetInput.Type;
 
 // Output Schema
 export const SyncMembersGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.optional(Schema.suspend(() => SyncMemberPropertiesSchema)),
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
-  systemData: Schema.optional(
-    Schema.Struct({
-      createdBy: Schema.optional(Schema.String),
-      createdByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      createdAt: Schema.optional(Schema.String),
-      lastModifiedBy: Schema.optional(Schema.String),
-      lastModifiedByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      lastModifiedAt: Schema.optional(Schema.String),
-    }),
-  ),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
 });
 export type SyncMembersGetOutput = typeof SyncMembersGetOutput.Type;
 
@@ -33967,37 +27849,7 @@ export type SyncMembersListBySyncGroupInput =
 // Output Schema
 export const SyncMembersListBySyncGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => SyncMemberSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type SyncMembersListBySyncGroupOutput =
@@ -34042,34 +27894,7 @@ export type SyncMembersListMemberSchemasInput =
 // Output Schema
 export const SyncMembersListMemberSchemasOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        tables: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              columns: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    dataSize: Schema.optional(Schema.String),
-                    dataType: Schema.optional(Schema.String),
-                    errorId: Schema.optional(Schema.String),
-                    hasError: Schema.optional(Schema.Boolean),
-                    isPrimaryKey: Schema.optional(Schema.Boolean),
-                    name: Schema.optional(Schema.String),
-                    quotedName: Schema.optional(Schema.String),
-                  }),
-                ),
-              ),
-              errorId: Schema.optional(Schema.String),
-              hasError: Schema.optional(Schema.Boolean),
-              name: Schema.optional(Schema.String),
-              quotedName: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        lastUpdateTime: Schema.optional(Schema.String),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => SyncFullSchemaPropertiesSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type SyncMembersListMemberSchemasOutput =
@@ -34145,49 +27970,7 @@ export const SyncMembersUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     syncGroupName: Schema.String.pipe(T.PathParam()),
     syncMemberName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        databaseType: Schema.optional(
-          Schema.Literals(["AzureSqlDatabase", "SqlServerDatabase"]),
-        ),
-        syncAgentId: Schema.optional(Schema.String),
-        sqlServerDatabaseId: Schema.optional(Schema.String),
-        syncMemberAzureDatabaseResourceId: Schema.optional(Schema.String),
-        usePrivateLinkConnection: Schema.optional(Schema.Boolean),
-        privateEndpointName: Schema.optional(Schema.String),
-        serverName: Schema.optional(Schema.String),
-        databaseName: Schema.optional(Schema.String),
-        userName: Schema.optional(Schema.String),
-        password: Schema.optional(SensitiveString),
-        syncDirection: Schema.optional(
-          Schema.Literals([
-            "Bidirectional",
-            "OneWayMemberToHub",
-            "OneWayHubToMember",
-          ]),
-        ),
-        syncState: Schema.optional(
-          Schema.Literals([
-            "SyncInProgress",
-            "SyncSucceeded",
-            "SyncFailed",
-            "DisabledTombstoneCleanup",
-            "DisabledBackupRestore",
-            "SyncSucceededWithWarnings",
-            "SyncCancelling",
-            "SyncCancelled",
-            "UnProvisioned",
-            "Provisioning",
-            "Provisioned",
-            "ProvisionFailed",
-            "DeProvisioning",
-            "DeProvisioned",
-            "DeProvisionFailed",
-            "Reprovisioning",
-            "ReprovisionFailed",
-            "UnReprovisioned",
-          ]),
-        ),
-      }),
+      Schema.suspend(() => SyncMemberPropertiesSchema),
     ),
   },
 ).pipe(
@@ -34203,23 +27986,13 @@ export type SyncMembersUpdateInput = typeof SyncMembersUpdateInput.Type;
 // Output Schema
 export const SyncMembersUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => SyncMemberPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type SyncMembersUpdateOutput = typeof SyncMembersUpdateOutput.Type;
 
@@ -34246,10 +28019,7 @@ export const TdeCertificatesCreateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serverName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        privateBlob: Schema.String,
-        certPassword: Schema.optional(SensitiveString),
-      }),
+      Schema.suspend(() => TdeCertificatePropertiesSchema),
     ),
   }).pipe(
     T.Http({
@@ -34298,23 +28068,11 @@ export type TimeZonesGetInput = typeof TimeZonesGetInput.Type;
 
 // Output Schema
 export const TimeZonesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.optional(Schema.suspend(() => TimeZonePropertiesSchema)),
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
-  systemData: Schema.optional(
-    Schema.Struct({
-      createdBy: Schema.optional(Schema.String),
-      createdByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      createdAt: Schema.optional(Schema.String),
-      lastModifiedBy: Schema.optional(Schema.String),
-      lastModifiedByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      lastModifiedAt: Schema.optional(Schema.String),
-    }),
-  ),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
 });
 export type TimeZonesGetOutput = typeof TimeZonesGetOutput.Type;
 
@@ -34349,37 +28107,7 @@ export type TimeZonesListByLocationInput =
 // Output Schema
 export const TimeZonesListByLocationOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => TimeZoneSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type TimeZonesListByLocationOutput =
@@ -34408,19 +28136,7 @@ export const TransparentDataEncryptionsCreateOrUpdateInput =
     databaseName: Schema.String.pipe(T.PathParam()),
     tdeName: Schema.Literals(["current"]).pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        state: Schema.Literals(["Enabled", "Disabled"]),
-        scanState: Schema.optional(
-          Schema.Literals([
-            "None",
-            "Resume",
-            "Running",
-            "Suspend",
-            "Aborted",
-            "Completed",
-          ]),
-        ),
-      }),
+      Schema.suspend(() => TransparentDataEncryptionPropertiesSchema),
     ),
   }).pipe(
     T.Http({
@@ -34436,23 +28152,13 @@ export type TransparentDataEncryptionsCreateOrUpdateInput =
 // Output Schema
 export const TransparentDataEncryptionsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => TransparentDataEncryptionPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type TransparentDataEncryptionsCreateOrUpdateOutput =
   typeof TransparentDataEncryptionsCreateOrUpdateOutput.Type;
@@ -34494,23 +28200,13 @@ export type TransparentDataEncryptionsGetInput =
 // Output Schema
 export const TransparentDataEncryptionsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => TransparentDataEncryptionPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type TransparentDataEncryptionsGetOutput =
   typeof TransparentDataEncryptionsGetOutput.Type;
@@ -34552,35 +28248,7 @@ export type TransparentDataEncryptionsListByDatabaseInput =
 export const TransparentDataEncryptionsListByDatabaseOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
+      Schema.suspend(() => LogicalDatabaseTransparentDataEncryptionSchema),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -34624,23 +28292,13 @@ export type TransparentDataEncryptionsResumeInput =
 // Output Schema
 export const TransparentDataEncryptionsResumeOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => TransparentDataEncryptionPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type TransparentDataEncryptionsResumeOutput =
   typeof TransparentDataEncryptionsResumeOutput.Type;
@@ -34683,23 +28341,13 @@ export type TransparentDataEncryptionsSuspendInput =
 // Output Schema
 export const TransparentDataEncryptionsSuspendOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => TransparentDataEncryptionPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type TransparentDataEncryptionsSuspendOutput =
   typeof TransparentDataEncryptionsSuspendOutput.Type;
@@ -34740,22 +28388,7 @@ export type UsagesListByInstancePoolInput =
 // Output Schema
 export const UsagesListByInstancePoolOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(
-          Schema.Struct({
-            value: Schema.optional(Schema.String),
-            localizedValue: Schema.optional(Schema.String),
-          }),
-        ),
-        type: Schema.optional(Schema.String),
-        unit: Schema.optional(Schema.String),
-        currentValue: Schema.optional(Schema.Number),
-        limit: Schema.optional(Schema.Number),
-        requestedLimit: Schema.optional(Schema.Number),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => UsageSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type UsagesListByInstancePoolOutput =
@@ -34784,11 +28417,7 @@ export const VirtualClustersCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     virtualClusterName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        subnetId: Schema.optional(Schema.String),
-        version: Schema.optional(Schema.String),
-        childResources: Schema.optional(Schema.Array(Schema.String)),
-      }),
+      Schema.suspend(() => VirtualClusterPropertiesSchema),
     ),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     location: Schema.String,
@@ -34806,23 +28435,15 @@ export type VirtualClustersCreateOrUpdateInput =
 // Output Schema
 export const VirtualClustersCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => VirtualClusterPropertiesSchema),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type VirtualClustersCreateOrUpdateOutput =
   typeof VirtualClustersCreateOrUpdateOutput.Type;
@@ -34896,23 +28517,15 @@ export type VirtualClustersGetInput = typeof VirtualClustersGetInput.Type;
 // Output Schema
 export const VirtualClustersGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => VirtualClusterPropertiesSchema),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type VirtualClustersGetOutput = typeof VirtualClustersGetOutput.Type;
 
@@ -34945,37 +28558,7 @@ export type VirtualClustersListInput = typeof VirtualClustersListInput.Type;
 // Output Schema
 export const VirtualClustersListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => VirtualClusterSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type VirtualClustersListOutput = typeof VirtualClustersListOutput.Type;
@@ -35009,37 +28592,7 @@ export type VirtualClustersListByResourceGroupInput =
 // Output Schema
 export const VirtualClustersListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => VirtualClusterSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type VirtualClustersListByResourceGroupOutput =
@@ -35065,11 +28618,7 @@ export const VirtualClustersUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     virtualClusterName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        subnetId: Schema.optional(Schema.String),
-        version: Schema.optional(Schema.String),
-        childResources: Schema.optional(Schema.Array(Schema.String)),
-      }),
+      Schema.suspend(() => VirtualClusterPropertiesSchema),
     ),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
@@ -35085,23 +28634,15 @@ export type VirtualClustersUpdateInput = typeof VirtualClustersUpdateInput.Type;
 // Output Schema
 export const VirtualClustersUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => VirtualClusterPropertiesSchema),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type VirtualClustersUpdateOutput =
   typeof VirtualClustersUpdateOutput.Type;
@@ -35141,23 +28682,13 @@ export type VirtualClustersUpdateDnsServersInput =
 // Output Schema
 export const VirtualClustersUpdateDnsServersOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => VirtualClusterDnsServersPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type VirtualClustersUpdateDnsServersOutput =
   typeof VirtualClustersUpdateDnsServersOutput.Type;
@@ -35184,20 +28715,7 @@ export const VirtualNetworkRulesCreateOrUpdateInput =
     serverName: Schema.String.pipe(T.PathParam()),
     virtualNetworkRuleName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        virtualNetworkSubnetId: Schema.String,
-        ignoreMissingVnetServiceEndpoint: Schema.optional(Schema.Boolean),
-        state: Schema.optional(
-          Schema.Literals([
-            "Initializing",
-            "InProgress",
-            "Ready",
-            "Failed",
-            "Deleting",
-            "Unknown",
-          ]),
-        ),
-      }),
+      Schema.suspend(() => VirtualNetworkRulePropertiesSchema),
     ),
   }).pipe(
     T.Http({
@@ -35213,23 +28731,13 @@ export type VirtualNetworkRulesCreateOrUpdateInput =
 // Output Schema
 export const VirtualNetworkRulesCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => VirtualNetworkRulePropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type VirtualNetworkRulesCreateOrUpdateOutput =
   typeof VirtualNetworkRulesCreateOrUpdateOutput.Type;
@@ -35309,23 +28817,13 @@ export type VirtualNetworkRulesGetInput =
 // Output Schema
 export const VirtualNetworkRulesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => VirtualNetworkRulePropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type VirtualNetworkRulesGetOutput =
   typeof VirtualNetworkRulesGetOutput.Type;
@@ -35365,37 +28863,7 @@ export type VirtualNetworkRulesListByServerInput =
 // Output Schema
 export const VirtualNetworkRulesListByServerOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => VirtualNetworkRuleSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type VirtualNetworkRulesListByServerOutput =
@@ -35425,14 +28893,7 @@ export const WorkloadClassifiersCreateOrUpdateInput =
     workloadGroupName: Schema.String.pipe(T.PathParam()),
     workloadClassifierName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        memberName: Schema.String,
-        label: Schema.optional(Schema.String),
-        context: Schema.optional(Schema.String),
-        startTime: Schema.optional(Schema.String),
-        endTime: Schema.optional(Schema.String),
-        importance: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(() => WorkloadClassifierPropertiesSchema),
     ),
   }).pipe(
     T.Http({
@@ -35448,23 +28909,13 @@ export type WorkloadClassifiersCreateOrUpdateInput =
 // Output Schema
 export const WorkloadClassifiersCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => WorkloadClassifierPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type WorkloadClassifiersCreateOrUpdateOutput =
   typeof WorkloadClassifiersCreateOrUpdateOutput.Type;
@@ -35552,23 +29003,13 @@ export type WorkloadClassifiersGetInput =
 // Output Schema
 export const WorkloadClassifiersGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => WorkloadClassifierPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type WorkloadClassifiersGetOutput =
   typeof WorkloadClassifiersGetOutput.Type;
@@ -35612,37 +29053,7 @@ export type WorkloadClassifiersListByWorkloadGroupInput =
 // Output Schema
 export const WorkloadClassifiersListByWorkloadGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => WorkloadClassifierSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type WorkloadClassifiersListByWorkloadGroupOutput =
@@ -35673,14 +29084,7 @@ export const WorkloadGroupsCreateOrUpdateInput =
     databaseName: Schema.String.pipe(T.PathParam()),
     workloadGroupName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        minResourcePercent: Schema.Number,
-        maxResourcePercent: Schema.Number,
-        minResourcePercentPerRequest: Schema.Number,
-        maxResourcePercentPerRequest: Schema.optional(Schema.Number),
-        importance: Schema.optional(Schema.String),
-        queryExecutionTimeout: Schema.optional(Schema.Number),
-      }),
+      Schema.suspend(() => WorkloadGroupPropertiesSchema),
     ),
   }).pipe(
     T.Http({
@@ -35696,23 +29100,13 @@ export type WorkloadGroupsCreateOrUpdateInput =
 // Output Schema
 export const WorkloadGroupsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => WorkloadGroupPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type WorkloadGroupsCreateOrUpdateOutput =
   typeof WorkloadGroupsCreateOrUpdateOutput.Type;
@@ -35794,23 +29188,13 @@ export type WorkloadGroupsGetInput = typeof WorkloadGroupsGetInput.Type;
 // Output Schema
 export const WorkloadGroupsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => WorkloadGroupPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type WorkloadGroupsGetOutput = typeof WorkloadGroupsGetOutput.Type;
 
@@ -35849,37 +29233,7 @@ export type WorkloadGroupsListByDatabaseInput =
 // Output Schema
 export const WorkloadGroupsListByDatabaseOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => WorkloadGroupSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type WorkloadGroupsListByDatabaseOutput =

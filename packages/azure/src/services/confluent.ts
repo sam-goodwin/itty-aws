@@ -9,6 +9,476 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 import { SensitiveOutputString } from "../sensitive.ts";
 
+// Shared schemas
+const OperationResultSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  display: Schema.optional(Schema.suspend(() => OperationDisplaySchema)),
+  isDataAction: Schema.optional(Schema.Boolean),
+});
+const OperationDisplaySchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  provider: Schema.optional(Schema.String),
+  resource: Schema.optional(Schema.String),
+  operation: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+});
+const ConfluentAgreementResourceSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+    properties: Schema.optional(
+      Schema.suspend(() => ConfluentAgreementPropertiesSchema),
+    ),
+  });
+const ConfluentAgreementPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    publisher: Schema.optional(Schema.String),
+    product: Schema.optional(Schema.String),
+    plan: Schema.optional(Schema.String),
+    licenseTextLink: Schema.optional(Schema.String),
+    privacyPolicyLink: Schema.optional(Schema.String),
+    retrieveDatetime: Schema.optional(Schema.String),
+    signature: Schema.optional(Schema.String),
+    accepted: Schema.optional(Schema.Boolean),
+  });
+const OrganizationResourceSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+});
+const systemDataSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  createdBy: Schema.optional(Schema.String),
+  createdByType: Schema.optional(
+    Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+  ),
+  createdAt: Schema.optional(Schema.String),
+  lastModifiedBy: Schema.optional(Schema.String),
+  lastModifiedByType: Schema.optional(
+    Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+  ),
+  lastModifiedAt: Schema.optional(Schema.String),
+});
+const OrganizationResourcePropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    createdTime: Schema.optional(Schema.String),
+    provisioningState: Schema.optional(
+      Schema.suspend(() => ProvisionStateSchema),
+    ),
+    organizationId: Schema.optional(Schema.String),
+    ssoUrl: Schema.optional(Schema.String),
+    offerDetail: Schema.suspend(() => OfferDetailSchema),
+    userDetail: Schema.suspend(() => UserDetailSchema),
+    linkOrganization: Schema.optional(
+      Schema.suspend(() => LinkOrganizationSchema),
+    ),
+  });
+const ProvisionStateSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Accepted",
+  "Creating",
+  "Updating",
+  "Deleting",
+  "Succeeded",
+  "Failed",
+  "Canceled",
+  "Deleted",
+  "NotSpecified",
+]);
+const OfferDetailSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  publisherId: Schema.String,
+  id: Schema.String,
+  planId: Schema.String,
+  planName: Schema.String,
+  termUnit: Schema.String,
+  termId: Schema.optional(Schema.String),
+  privateOfferId: Schema.optional(Schema.String),
+  privateOfferIds: Schema.optional(Schema.Array(Schema.String)),
+  status: Schema.optional(Schema.suspend(() => SaaSOfferStatusSchema)),
+});
+const SaaSOfferStatusSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Started",
+  "PendingFulfillmentStart",
+  "InProgress",
+  "Subscribed",
+  "Suspended",
+  "Reinstated",
+  "Succeeded",
+  "Failed",
+  "Unsubscribed",
+  "Updating",
+]);
+const UserDetailSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  firstName: Schema.optional(Schema.String),
+  lastName: Schema.optional(Schema.String),
+  emailAddress: Schema.String,
+  userPrincipalName: Schema.optional(Schema.String),
+  aadEmail: Schema.optional(Schema.String),
+});
+const LinkOrganizationSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  token: Schema.String,
+});
+const AccessInvitedUserDetailsSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    invitedEmail: Schema.optional(Schema.String),
+    auth_type: Schema.optional(Schema.String),
+  });
+const MetadataEntitySchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  self: Schema.optional(Schema.String),
+  resource_name: Schema.optional(Schema.String),
+  created_at: Schema.optional(Schema.String),
+  updated_at: Schema.optional(Schema.String),
+  deleted_at: Schema.optional(Schema.String),
+});
+const ConfluentListMetadataSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  first: Schema.optional(Schema.String),
+  last: Schema.optional(Schema.String),
+  prev: Schema.optional(Schema.String),
+  next: Schema.optional(Schema.String),
+  total_size: Schema.optional(Schema.Number),
+});
+const ClusterRecordSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  kind: Schema.optional(Schema.String),
+  id: Schema.optional(Schema.String),
+  metadata: Schema.optional(Schema.suspend(() => MetadataEntitySchema)),
+  display_name: Schema.optional(Schema.String),
+  spec: Schema.optional(Schema.suspend(() => ClusterSpecEntitySchema)),
+  status: Schema.optional(Schema.suspend(() => ClusterStatusEntitySchema)),
+});
+const ClusterSpecEntitySchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  display_name: Schema.optional(Schema.String),
+  availability: Schema.optional(Schema.String),
+  cloud: Schema.optional(Schema.String),
+  zone: Schema.optional(Schema.String),
+  region: Schema.optional(Schema.String),
+  kafka_bootstrap_endpoint: Schema.optional(Schema.String),
+  http_endpoint: Schema.optional(Schema.String),
+  api_endpoint: Schema.optional(Schema.String),
+  config: Schema.optional(Schema.suspend(() => ClusterConfigEntitySchema)),
+  environment: Schema.optional(
+    Schema.suspend(() => ClusterEnvironmentEntitySchema),
+  ),
+  network: Schema.optional(Schema.suspend(() => ClusterNetworkEntitySchema)),
+  byok: Schema.optional(Schema.suspend(() => ClusterByokEntitySchema)),
+});
+const ClusterConfigEntitySchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  kind: Schema.optional(Schema.String),
+});
+const ClusterEnvironmentEntitySchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    environment: Schema.optional(Schema.String),
+    related: Schema.optional(Schema.String),
+    resource_name: Schema.optional(Schema.String),
+  });
+const ClusterNetworkEntitySchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  environment: Schema.optional(Schema.String),
+  related: Schema.optional(Schema.String),
+  resource_name: Schema.optional(Schema.String),
+});
+const ClusterByokEntitySchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  related: Schema.optional(Schema.String),
+  resource_name: Schema.optional(Schema.String),
+});
+const ClusterStatusEntitySchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  phase: Schema.optional(Schema.String),
+  cku: Schema.optional(Schema.Number),
+});
+const EnvironmentRecordSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  kind: Schema.optional(Schema.String),
+  id: Schema.optional(Schema.String),
+  metadata: Schema.optional(Schema.suspend(() => MetadataEntitySchema)),
+  display_name: Schema.optional(Schema.String),
+});
+const InvitationRecordSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  kind: Schema.optional(Schema.String),
+  id: Schema.optional(Schema.String),
+  metadata: Schema.optional(Schema.suspend(() => MetadataEntitySchema)),
+  email: Schema.optional(Schema.String),
+  auth_type: Schema.optional(Schema.String),
+  status: Schema.optional(Schema.String),
+  accepted_at: Schema.optional(Schema.String),
+  expires_at: Schema.optional(Schema.String),
+});
+const RoleBindingRecordSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  kind: Schema.optional(Schema.String),
+  id: Schema.optional(Schema.String),
+  metadata: Schema.optional(Schema.suspend(() => MetadataEntitySchema)),
+  principal: Schema.optional(Schema.String),
+  role_name: Schema.optional(Schema.String),
+  crn_pattern: Schema.optional(Schema.String),
+});
+const ServiceAccountRecordSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  kind: Schema.optional(Schema.String),
+  id: Schema.optional(Schema.String),
+  metadata: Schema.optional(Schema.suspend(() => MetadataEntitySchema)),
+  display_name: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+});
+const UserRecordSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  kind: Schema.optional(Schema.String),
+  id: Schema.optional(Schema.String),
+  metadata: Schema.optional(Schema.suspend(() => MetadataEntitySchema)),
+  email: Schema.optional(Schema.String),
+  full_name: Schema.optional(Schema.String),
+  auth_type: Schema.optional(Schema.String),
+});
+const APIKeyPropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  metadata: Schema.optional(Schema.suspend(() => SCMetadataEntitySchema)),
+  spec: Schema.optional(Schema.suspend(() => APIKeySpecEntitySchema)),
+});
+const SCMetadataEntitySchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  self: Schema.optional(Schema.String),
+  resourceName: Schema.optional(Schema.String),
+  createdTimestamp: Schema.optional(Schema.String),
+  updatedTimestamp: Schema.optional(Schema.String),
+  deletedTimestamp: Schema.optional(Schema.String),
+});
+const APIKeySpecEntitySchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  description: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  secret: Schema.optional(SensitiveOutputString),
+  resource: Schema.optional(Schema.suspend(() => APIKeyResourceEntitySchema)),
+  owner: Schema.optional(Schema.suspend(() => APIKeyOwnerEntitySchema)),
+});
+const APIKeyResourceEntitySchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  environment: Schema.optional(Schema.String),
+  related: Schema.optional(Schema.String),
+  resourceName: Schema.optional(Schema.String),
+  kind: Schema.optional(Schema.String),
+});
+const APIKeyOwnerEntitySchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  related: Schema.optional(Schema.String),
+  resourceName: Schema.optional(Schema.String),
+  kind: Schema.optional(Schema.String),
+});
+const SCEnvironmentRecordSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+});
+const EnvironmentPropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  streamGovernanceConfig: Schema.optional(
+    Schema.suspend(() => StreamGovernanceConfigSchema),
+  ),
+  metadata: Schema.optional(Schema.suspend(() => SCMetadataEntitySchema)),
+});
+const StreamGovernanceConfigSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  package: Schema.optional(Schema.suspend(() => PackageSchema)),
+});
+const PackageSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "ESSENTIALS",
+  "ADVANCED",
+]);
+const SCClusterRecordSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+});
+const ClusterPropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  metadata: Schema.optional(Schema.suspend(() => SCMetadataEntitySchema)),
+  spec: Schema.optional(Schema.suspend(() => SCClusterSpecEntitySchema)),
+  status: Schema.optional(Schema.suspend(() => ClusterStatusEntitySchema)),
+});
+const SCClusterSpecEntitySchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  availability: Schema.optional(Schema.String),
+  cloud: Schema.optional(Schema.String),
+  zone: Schema.optional(Schema.String),
+  package: Schema.optional(Schema.suspend(() => PackageSchema)),
+  region: Schema.optional(Schema.String),
+  kafkaBootstrapEndpoint: Schema.optional(Schema.String),
+  httpEndpoint: Schema.optional(Schema.String),
+  apiEndpoint: Schema.optional(Schema.String),
+  config: Schema.optional(Schema.suspend(() => ClusterConfigEntitySchema)),
+  environment: Schema.optional(
+    Schema.suspend(() => SCClusterNetworkEnvironmentEntitySchema),
+  ),
+  network: Schema.optional(
+    Schema.suspend(() => SCClusterNetworkEnvironmentEntitySchema),
+  ),
+  byok: Schema.optional(Schema.suspend(() => SCClusterByokEntitySchema)),
+});
+const SCClusterNetworkEnvironmentEntitySchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    environment: Schema.optional(Schema.String),
+    related: Schema.optional(Schema.String),
+    resourceName: Schema.optional(Schema.String),
+  });
+const SCClusterByokEntitySchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  related: Schema.optional(Schema.String),
+  resourceName: Schema.optional(Schema.String),
+});
+const ConnectorResourceSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+});
+const ConnectorResourcePropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    connectorBasicInfo: Schema.optional(
+      Schema.suspend(() => ConnectorInfoBaseSchema),
+    ),
+    connectorServiceTypeInfo: Schema.optional(
+      Schema.suspend(() => ConnectorServiceTypeInfoBaseSchema),
+    ),
+    partnerConnectorInfo: Schema.optional(
+      Schema.suspend(() => PartnerInfoBaseSchema),
+    ),
+  });
+const ConnectorInfoBaseSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  connectorType: Schema.optional(Schema.suspend(() => ConnectorTypeSchema)),
+  connectorClass: Schema.optional(Schema.suspend(() => ConnectorClassSchema)),
+  connectorName: Schema.optional(Schema.String),
+  connectorId: Schema.optional(Schema.String),
+  connectorState: Schema.optional(Schema.suspend(() => ConnectorStatusSchema)),
+});
+const ConnectorTypeSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "SINK",
+  "SOURCE",
+]);
+const ConnectorClassSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "AZUREBLOBSOURCE",
+  "AZUREBLOBSINK",
+]);
+const ConnectorStatusSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "PROVISIONING",
+  "RUNNING",
+  "PAUSED",
+  "FAILED",
+]);
+const ConnectorServiceTypeInfoBaseSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    connectorServiceType: Schema.suspend(() => ConnectorServiceTypeSchema),
+  });
+const ConnectorServiceTypeSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "AzureBlobStorageSinkConnector",
+  "AzureBlobStorageSourceConnector",
+  "AzureCosmosDBSinkConnector",
+  "AzureCosmosDBSourceConnector",
+  "AzureSynapseAnalyticsSinkConnector",
+]);
+const PartnerInfoBaseSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  partnerConnectorType: Schema.suspend(() => PartnerConnectorTypeSchema),
+});
+const PartnerConnectorTypeSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "KafkaAzureBlobStorageSource",
+  "KafkaAzureBlobStorageSink",
+  "KafkaAzureCosmosDBSource",
+  "KafkaAzureCosmosDBSink",
+  "KafkaAzureSynapseAnalyticsSink",
+]);
+const TopicRecordSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+});
+const TopicPropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  kind: Schema.optional(Schema.String),
+  topicId: Schema.optional(Schema.String),
+  metadata: Schema.optional(Schema.suspend(() => TopicMetadataEntitySchema)),
+  partitions: Schema.optional(Schema.suspend(() => TopicsRelatedLinkSchema)),
+  configs: Schema.optional(Schema.suspend(() => TopicsRelatedLinkSchema)),
+  inputConfigs: Schema.optional(
+    Schema.Array(Schema.suspend(() => TopicsInputConfigSchema)),
+  ),
+  partitionsReassignments: Schema.optional(
+    Schema.suspend(() => TopicsRelatedLinkSchema),
+  ),
+  partitionsCount: Schema.optional(Schema.String),
+  replicationFactor: Schema.optional(Schema.String),
+});
+const TopicMetadataEntitySchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  self: Schema.optional(Schema.String),
+  resourceName: Schema.optional(Schema.String),
+});
+const TopicsRelatedLinkSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  related: Schema.optional(Schema.String),
+});
+const TopicsInputConfigSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  value: Schema.optional(Schema.String),
+});
+const SchemaRegistryClusterRecordSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    kind: Schema.optional(Schema.String),
+    id: Schema.optional(Schema.String),
+    properties: Schema.optional(
+      Schema.suspend(() => SchemaRegistryClusterPropertiesSchema),
+    ),
+  });
+const SchemaRegistryClusterPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    metadata: Schema.optional(Schema.suspend(() => SCMetadataEntitySchema)),
+    spec: Schema.optional(
+      Schema.suspend(() => SchemaRegistryClusterSpecEntitySchema),
+    ),
+    status: Schema.optional(
+      Schema.suspend(() => SchemaRegistryClusterStatusEntitySchema),
+    ),
+  });
+const SchemaRegistryClusterSpecEntitySchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    httpEndpoint: Schema.optional(Schema.String),
+    package: Schema.optional(Schema.String),
+    region: Schema.optional(
+      Schema.suspend(() => SchemaRegistryClusterEnvironmentRegionEntitySchema),
+    ),
+    environment: Schema.optional(
+      Schema.suspend(() => SchemaRegistryClusterEnvironmentRegionEntitySchema),
+    ),
+    cloud: Schema.optional(Schema.String),
+  });
+const SchemaRegistryClusterEnvironmentRegionEntitySchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    related: Schema.optional(Schema.String),
+    resourceName: Schema.optional(Schema.String),
+  });
+const SchemaRegistryClusterStatusEntitySchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    phase: Schema.optional(Schema.String),
+  });
+const RegionRecordSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  kind: Schema.optional(Schema.String),
+  id: Schema.optional(Schema.String),
+  properties: Schema.optional(Schema.suspend(() => RegionPropertiesSchema)),
+});
+const RegionPropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  metadata: Schema.optional(Schema.suspend(() => SCMetadataEntitySchema)),
+  spec: Schema.optional(Schema.suspend(() => RegionSpecEntitySchema)),
+});
+const RegionSpecEntitySchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  cloud: Schema.optional(Schema.String),
+  regionName: Schema.optional(Schema.String),
+  packages: Schema.optional(Schema.Array(Schema.String)),
+});
+
 // Input Schema
 export const AccessCreateRoleBindingInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -33,15 +503,7 @@ export const AccessCreateRoleBindingOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
-    metadata: Schema.optional(
-      Schema.Struct({
-        self: Schema.optional(Schema.String),
-        resource_name: Schema.optional(Schema.String),
-        created_at: Schema.optional(Schema.String),
-        updated_at: Schema.optional(Schema.String),
-        deleted_at: Schema.optional(Schema.String),
-      }),
-    ),
+    metadata: Schema.optional(Schema.suspend(() => MetadataEntitySchema)),
     principal: Schema.optional(Schema.String),
     role_name: Schema.optional(Schema.String),
     crn_pattern: Schema.optional(Schema.String),
@@ -112,10 +574,7 @@ export const AccessInviteUserInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   email: Schema.optional(Schema.String),
   upn: Schema.optional(Schema.String),
   invitedUserDetails: Schema.optional(
-    Schema.Struct({
-      invitedEmail: Schema.optional(Schema.String),
-      auth_type: Schema.optional(Schema.String),
-    }),
+    Schema.suspend(() => AccessInvitedUserDetailsSchema),
   ),
 }).pipe(
   T.Http({
@@ -131,15 +590,7 @@ export const AccessInviteUserOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     kind: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
-    metadata: Schema.optional(
-      Schema.Struct({
-        self: Schema.optional(Schema.String),
-        resource_name: Schema.optional(Schema.String),
-        created_at: Schema.optional(Schema.String),
-        updated_at: Schema.optional(Schema.String),
-        deleted_at: Schema.optional(Schema.String),
-      }),
-    ),
+    metadata: Schema.optional(Schema.suspend(() => MetadataEntitySchema)),
     email: Schema.optional(Schema.String),
     auth_type: Schema.optional(Schema.String),
     status: Schema.optional(Schema.String),
@@ -183,77 +634,10 @@ export const AccessListClustersOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        first: Schema.optional(Schema.String),
-        last: Schema.optional(Schema.String),
-        prev: Schema.optional(Schema.String),
-        next: Schema.optional(Schema.String),
-        total_size: Schema.optional(Schema.Number),
-      }),
+      Schema.suspend(() => ConfluentListMetadataSchema),
     ),
     data: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          kind: Schema.optional(Schema.String),
-          id: Schema.optional(Schema.String),
-          metadata: Schema.optional(
-            Schema.Struct({
-              self: Schema.optional(Schema.String),
-              resource_name: Schema.optional(Schema.String),
-              created_at: Schema.optional(Schema.String),
-              updated_at: Schema.optional(Schema.String),
-              deleted_at: Schema.optional(Schema.String),
-            }),
-          ),
-          display_name: Schema.optional(Schema.String),
-          spec: Schema.optional(
-            Schema.Struct({
-              display_name: Schema.optional(Schema.String),
-              availability: Schema.optional(Schema.String),
-              cloud: Schema.optional(Schema.String),
-              zone: Schema.optional(Schema.String),
-              region: Schema.optional(Schema.String),
-              kafka_bootstrap_endpoint: Schema.optional(Schema.String),
-              http_endpoint: Schema.optional(Schema.String),
-              api_endpoint: Schema.optional(Schema.String),
-              config: Schema.optional(
-                Schema.Struct({
-                  kind: Schema.optional(Schema.String),
-                }),
-              ),
-              environment: Schema.optional(
-                Schema.Struct({
-                  id: Schema.optional(Schema.String),
-                  environment: Schema.optional(Schema.String),
-                  related: Schema.optional(Schema.String),
-                  resource_name: Schema.optional(Schema.String),
-                }),
-              ),
-              network: Schema.optional(
-                Schema.Struct({
-                  id: Schema.optional(Schema.String),
-                  environment: Schema.optional(Schema.String),
-                  related: Schema.optional(Schema.String),
-                  resource_name: Schema.optional(Schema.String),
-                }),
-              ),
-              byok: Schema.optional(
-                Schema.Struct({
-                  id: Schema.optional(Schema.String),
-                  related: Schema.optional(Schema.String),
-                  resource_name: Schema.optional(Schema.String),
-                }),
-              ),
-            }),
-          ),
-          status: Schema.optional(
-            Schema.Struct({
-              phase: Schema.optional(Schema.String),
-              cku: Schema.optional(Schema.Number),
-            }),
-          ),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => ClusterRecordSchema)),
     ),
   });
 export type AccessListClustersOutput = typeof AccessListClustersOutput.Type;
@@ -293,31 +677,10 @@ export const AccessListEnvironmentsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        first: Schema.optional(Schema.String),
-        last: Schema.optional(Schema.String),
-        prev: Schema.optional(Schema.String),
-        next: Schema.optional(Schema.String),
-        total_size: Schema.optional(Schema.Number),
-      }),
+      Schema.suspend(() => ConfluentListMetadataSchema),
     ),
     data: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          kind: Schema.optional(Schema.String),
-          id: Schema.optional(Schema.String),
-          metadata: Schema.optional(
-            Schema.Struct({
-              self: Schema.optional(Schema.String),
-              resource_name: Schema.optional(Schema.String),
-              created_at: Schema.optional(Schema.String),
-              updated_at: Schema.optional(Schema.String),
-              deleted_at: Schema.optional(Schema.String),
-            }),
-          ),
-          display_name: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => EnvironmentRecordSchema)),
     ),
   });
 export type AccessListEnvironmentsOutput =
@@ -359,35 +722,10 @@ export const AccessListInvitationsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        first: Schema.optional(Schema.String),
-        last: Schema.optional(Schema.String),
-        prev: Schema.optional(Schema.String),
-        next: Schema.optional(Schema.String),
-        total_size: Schema.optional(Schema.Number),
-      }),
+      Schema.suspend(() => ConfluentListMetadataSchema),
     ),
     data: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          kind: Schema.optional(Schema.String),
-          id: Schema.optional(Schema.String),
-          metadata: Schema.optional(
-            Schema.Struct({
-              self: Schema.optional(Schema.String),
-              resource_name: Schema.optional(Schema.String),
-              created_at: Schema.optional(Schema.String),
-              updated_at: Schema.optional(Schema.String),
-              deleted_at: Schema.optional(Schema.String),
-            }),
-          ),
-          email: Schema.optional(Schema.String),
-          auth_type: Schema.optional(Schema.String),
-          status: Schema.optional(Schema.String),
-          accepted_at: Schema.optional(Schema.String),
-          expires_at: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => InvitationRecordSchema)),
     ),
   });
 export type AccessListInvitationsOutput =
@@ -430,13 +768,7 @@ export const AccessListRoleBindingNameListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        first: Schema.optional(Schema.String),
-        last: Schema.optional(Schema.String),
-        prev: Schema.optional(Schema.String),
-        next: Schema.optional(Schema.String),
-        total_size: Schema.optional(Schema.Number),
-      }),
+      Schema.suspend(() => ConfluentListMetadataSchema),
     ),
     data: Schema.optional(Schema.Array(Schema.String)),
   });
@@ -479,33 +811,10 @@ export const AccessListRoleBindingsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        first: Schema.optional(Schema.String),
-        last: Schema.optional(Schema.String),
-        prev: Schema.optional(Schema.String),
-        next: Schema.optional(Schema.String),
-        total_size: Schema.optional(Schema.Number),
-      }),
+      Schema.suspend(() => ConfluentListMetadataSchema),
     ),
     data: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          kind: Schema.optional(Schema.String),
-          id: Schema.optional(Schema.String),
-          metadata: Schema.optional(
-            Schema.Struct({
-              self: Schema.optional(Schema.String),
-              resource_name: Schema.optional(Schema.String),
-              created_at: Schema.optional(Schema.String),
-              updated_at: Schema.optional(Schema.String),
-              deleted_at: Schema.optional(Schema.String),
-            }),
-          ),
-          principal: Schema.optional(Schema.String),
-          role_name: Schema.optional(Schema.String),
-          crn_pattern: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => RoleBindingRecordSchema)),
     ),
   });
 export type AccessListRoleBindingsOutput =
@@ -548,32 +857,10 @@ export const AccessListServiceAccountsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        first: Schema.optional(Schema.String),
-        last: Schema.optional(Schema.String),
-        prev: Schema.optional(Schema.String),
-        next: Schema.optional(Schema.String),
-        total_size: Schema.optional(Schema.Number),
-      }),
+      Schema.suspend(() => ConfluentListMetadataSchema),
     ),
     data: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          kind: Schema.optional(Schema.String),
-          id: Schema.optional(Schema.String),
-          metadata: Schema.optional(
-            Schema.Struct({
-              self: Schema.optional(Schema.String),
-              resource_name: Schema.optional(Schema.String),
-              created_at: Schema.optional(Schema.String),
-              updated_at: Schema.optional(Schema.String),
-              deleted_at: Schema.optional(Schema.String),
-            }),
-          ),
-          display_name: Schema.optional(Schema.String),
-          description: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => ServiceAccountRecordSchema)),
     ),
   });
 export type AccessListServiceAccountsOutput =
@@ -612,35 +899,8 @@ export type AccessListUsersInput = typeof AccessListUsersInput.Type;
 // Output Schema
 export const AccessListUsersOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   kind: Schema.optional(Schema.String),
-  metadata: Schema.optional(
-    Schema.Struct({
-      first: Schema.optional(Schema.String),
-      last: Schema.optional(Schema.String),
-      prev: Schema.optional(Schema.String),
-      next: Schema.optional(Schema.String),
-      total_size: Schema.optional(Schema.Number),
-    }),
-  ),
-  data: Schema.optional(
-    Schema.Array(
-      Schema.Struct({
-        kind: Schema.optional(Schema.String),
-        id: Schema.optional(Schema.String),
-        metadata: Schema.optional(
-          Schema.Struct({
-            self: Schema.optional(Schema.String),
-            resource_name: Schema.optional(Schema.String),
-            created_at: Schema.optional(Schema.String),
-            updated_at: Schema.optional(Schema.String),
-            deleted_at: Schema.optional(Schema.String),
-          }),
-        ),
-        email: Schema.optional(Schema.String),
-        full_name: Schema.optional(Schema.String),
-        auth_type: Schema.optional(Schema.String),
-      }),
-    ),
-  ),
+  metadata: Schema.optional(Schema.suspend(() => ConfluentListMetadataSchema)),
+  data: Schema.optional(Schema.Array(Schema.suspend(() => UserRecordSchema))),
 });
 export type AccessListUsersOutput = typeof AccessListUsersOutput.Type;
 
@@ -666,68 +926,7 @@ export const ClusterCreateOrUpdateInput =
     environmentId: Schema.String.pipe(T.PathParam()),
     clusterId: Schema.String.pipe(T.PathParam()),
     kind: Schema.optional(Schema.String),
-    properties: Schema.optional(
-      Schema.Struct({
-        metadata: Schema.optional(
-          Schema.Struct({
-            self: Schema.optional(Schema.String),
-            resourceName: Schema.optional(Schema.String),
-            createdTimestamp: Schema.optional(Schema.String),
-            updatedTimestamp: Schema.optional(Schema.String),
-            deletedTimestamp: Schema.optional(Schema.String),
-          }),
-        ),
-        spec: Schema.optional(
-          Schema.Struct({
-            name: Schema.optional(Schema.String),
-            availability: Schema.optional(Schema.String),
-            cloud: Schema.optional(Schema.String),
-            zone: Schema.optional(Schema.String),
-            package: Schema.optional(
-              Schema.Literals(["ESSENTIALS", "ADVANCED"]),
-            ),
-            region: Schema.optional(Schema.String),
-            kafkaBootstrapEndpoint: Schema.optional(Schema.String),
-            httpEndpoint: Schema.optional(Schema.String),
-            apiEndpoint: Schema.optional(Schema.String),
-            config: Schema.optional(
-              Schema.Struct({
-                kind: Schema.optional(Schema.String),
-              }),
-            ),
-            environment: Schema.optional(
-              Schema.Struct({
-                id: Schema.optional(Schema.String),
-                environment: Schema.optional(Schema.String),
-                related: Schema.optional(Schema.String),
-                resourceName: Schema.optional(Schema.String),
-              }),
-            ),
-            network: Schema.optional(
-              Schema.Struct({
-                id: Schema.optional(Schema.String),
-                environment: Schema.optional(Schema.String),
-                related: Schema.optional(Schema.String),
-                resourceName: Schema.optional(Schema.String),
-              }),
-            ),
-            byok: Schema.optional(
-              Schema.Struct({
-                id: Schema.optional(Schema.String),
-                related: Schema.optional(Schema.String),
-                resourceName: Schema.optional(Schema.String),
-              }),
-            ),
-          }),
-        ),
-        status: Schema.optional(
-          Schema.Struct({
-            phase: Schema.optional(Schema.String),
-            cku: Schema.optional(Schema.Number),
-          }),
-        ),
-      }),
-    ),
+    properties: Schema.optional(Schema.suspend(() => ClusterPropertiesSchema)),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -740,23 +939,12 @@ export type ClusterCreateOrUpdateInput = typeof ClusterCreateOrUpdateInput.Type;
 // Output Schema
 export const ClusterCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    kind: Schema.optional(Schema.String),
+    properties: Schema.optional(Schema.suspend(() => ClusterPropertiesSchema)),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type ClusterCreateOrUpdateOutput =
   typeof ClusterCreateOrUpdateOutput.Type;
@@ -823,43 +1011,7 @@ export const ConnectorCreateOrUpdateInput =
     environmentId: Schema.String.pipe(T.PathParam()),
     clusterId: Schema.String.pipe(T.PathParam()),
     connectorName: Schema.String.pipe(T.PathParam()),
-    properties: Schema.Struct({
-      connectorBasicInfo: Schema.optional(
-        Schema.Struct({
-          connectorType: Schema.optional(Schema.Literals(["SINK", "SOURCE"])),
-          connectorClass: Schema.optional(
-            Schema.Literals(["AZUREBLOBSOURCE", "AZUREBLOBSINK"]),
-          ),
-          connectorName: Schema.optional(Schema.String),
-          connectorId: Schema.optional(Schema.String),
-          connectorState: Schema.optional(
-            Schema.Literals(["PROVISIONING", "RUNNING", "PAUSED", "FAILED"]),
-          ),
-        }),
-      ),
-      connectorServiceTypeInfo: Schema.optional(
-        Schema.Struct({
-          connectorServiceType: Schema.Literals([
-            "AzureBlobStorageSinkConnector",
-            "AzureBlobStorageSourceConnector",
-            "AzureCosmosDBSinkConnector",
-            "AzureCosmosDBSourceConnector",
-            "AzureSynapseAnalyticsSinkConnector",
-          ]),
-        }),
-      ),
-      partnerConnectorInfo: Schema.optional(
-        Schema.Struct({
-          partnerConnectorType: Schema.Literals([
-            "KafkaAzureBlobStorageSource",
-            "KafkaAzureBlobStorageSink",
-            "KafkaAzureCosmosDBSource",
-            "KafkaAzureCosmosDBSink",
-            "KafkaAzureSynapseAnalyticsSink",
-          ]),
-        }),
-      ),
-    }),
+    properties: Schema.suspend(() => ConnectorResourcePropertiesSchema),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -873,23 +1025,11 @@ export type ConnectorCreateOrUpdateInput =
 // Output Schema
 export const ConnectorCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.suspend(() => ConnectorResourcePropertiesSchema),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type ConnectorCreateOrUpdateOutput =
   typeof ConnectorCreateOrUpdateOutput.Type;
@@ -969,23 +1109,11 @@ export type ConnectorGetInput = typeof ConnectorGetInput.Type;
 
 // Output Schema
 export const ConnectorGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.suspend(() => ConnectorResourcePropertiesSchema),
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
-  systemData: Schema.optional(
-    Schema.Struct({
-      createdBy: Schema.optional(Schema.String),
-      createdByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      createdAt: Schema.optional(Schema.String),
-      lastModifiedBy: Schema.optional(Schema.String),
-      lastModifiedByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      lastModifiedAt: Schema.optional(Schema.String),
-    }),
-  ),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
 });
 export type ConnectorGetOutput = typeof ConnectorGetOutput.Type;
 
@@ -1025,27 +1153,7 @@ export type ConnectorListInput = typeof ConnectorListInput.Type;
 
 // Output Schema
 export const ConnectorListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  value: Schema.Array(
-    Schema.Struct({
-      id: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      type: Schema.optional(Schema.String),
-      systemData: Schema.optional(
-        Schema.Struct({
-          createdBy: Schema.optional(Schema.String),
-          createdByType: Schema.optional(
-            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-          ),
-          createdAt: Schema.optional(Schema.String),
-          lastModifiedBy: Schema.optional(Schema.String),
-          lastModifiedByType: Schema.optional(
-            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-          ),
-          lastModifiedAt: Schema.optional(Schema.String),
-        }),
-      ),
-    }),
-  ),
+  value: Schema.Array(Schema.suspend(() => ConnectorResourceSchema)),
   nextLink: Schema.optional(Schema.String),
 });
 export type ConnectorListOutput = typeof ConnectorListOutput.Type;
@@ -1076,24 +1184,7 @@ export const EnvironmentCreateOrUpdateInput =
     environmentId: Schema.String.pipe(T.PathParam()),
     kind: Schema.optional(Schema.String),
     properties: Schema.optional(
-      Schema.Struct({
-        streamGovernanceConfig: Schema.optional(
-          Schema.Struct({
-            package: Schema.optional(
-              Schema.Literals(["ESSENTIALS", "ADVANCED"]),
-            ),
-          }),
-        ),
-        metadata: Schema.optional(
-          Schema.Struct({
-            self: Schema.optional(Schema.String),
-            resourceName: Schema.optional(Schema.String),
-            createdTimestamp: Schema.optional(Schema.String),
-            updatedTimestamp: Schema.optional(Schema.String),
-            deletedTimestamp: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
+      Schema.suspend(() => EnvironmentPropertiesSchema),
     ),
   }).pipe(
     T.Http({
@@ -1108,23 +1199,14 @@ export type EnvironmentCreateOrUpdateInput =
 // Output Schema
 export const EnvironmentCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    kind: Schema.optional(Schema.String),
+    properties: Schema.optional(
+      Schema.suspend(() => EnvironmentPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type EnvironmentCreateOrUpdateOutput =
   typeof EnvironmentCreateOrUpdateOutput.Type;
@@ -1203,16 +1285,7 @@ export const MarketplaceAgreementsCreateInput =
       }),
     ),
     properties: Schema.optional(
-      Schema.Struct({
-        publisher: Schema.optional(Schema.String),
-        product: Schema.optional(Schema.String),
-        plan: Schema.optional(Schema.String),
-        licenseTextLink: Schema.optional(Schema.String),
-        privacyPolicyLink: Schema.optional(Schema.String),
-        retrieveDatetime: Schema.optional(Schema.String),
-        signature: Schema.optional(Schema.String),
-        accepted: Schema.optional(Schema.Boolean),
-      }),
+      Schema.suspend(() => ConfluentAgreementPropertiesSchema),
     ),
   }).pipe(
     T.Http({
@@ -1245,16 +1318,7 @@ export const MarketplaceAgreementsCreateOutput =
       }),
     ),
     properties: Schema.optional(
-      Schema.Struct({
-        publisher: Schema.optional(Schema.String),
-        product: Schema.optional(Schema.String),
-        plan: Schema.optional(Schema.String),
-        licenseTextLink: Schema.optional(Schema.String),
-        privacyPolicyLink: Schema.optional(Schema.String),
-        retrieveDatetime: Schema.optional(Schema.String),
-        signature: Schema.optional(Schema.String),
-        accepted: Schema.optional(Schema.Boolean),
-      }),
+      Schema.suspend(() => ConfluentAgreementPropertiesSchema),
     ),
   });
 export type MarketplaceAgreementsCreateOutput =
@@ -1290,49 +1354,7 @@ export type MarketplaceAgreementsListInput =
 // Output Schema
 export const MarketplaceAgreementsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-        properties: Schema.optional(
-          Schema.Struct({
-            publisher: Schema.optional(Schema.String),
-            product: Schema.optional(Schema.String),
-            plan: Schema.optional(Schema.String),
-            licenseTextLink: Schema.optional(Schema.String),
-            privacyPolicyLink: Schema.optional(Schema.String),
-            retrieveDatetime: Schema.optional(Schema.String),
-            signature: Schema.optional(Schema.String),
-            accepted: Schema.optional(Schema.Boolean),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => ConfluentAgreementResourceSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type MarketplaceAgreementsListOutput =
@@ -1357,60 +1379,7 @@ export const OrganizationCreateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     organizationName: Schema.String.pipe(T.PathParam()),
-    properties: Schema.Struct({
-      createdTime: Schema.optional(Schema.String),
-      provisioningState: Schema.optional(
-        Schema.Literals([
-          "Accepted",
-          "Creating",
-          "Updating",
-          "Deleting",
-          "Succeeded",
-          "Failed",
-          "Canceled",
-          "Deleted",
-          "NotSpecified",
-        ]),
-      ),
-      organizationId: Schema.optional(Schema.String),
-      ssoUrl: Schema.optional(Schema.String),
-      offerDetail: Schema.Struct({
-        publisherId: Schema.String,
-        id: Schema.String,
-        planId: Schema.String,
-        planName: Schema.String,
-        termUnit: Schema.String,
-        termId: Schema.optional(Schema.String),
-        privateOfferId: Schema.optional(Schema.String),
-        privateOfferIds: Schema.optional(Schema.Array(Schema.String)),
-        status: Schema.optional(
-          Schema.Literals([
-            "Started",
-            "PendingFulfillmentStart",
-            "InProgress",
-            "Subscribed",
-            "Suspended",
-            "Reinstated",
-            "Succeeded",
-            "Failed",
-            "Unsubscribed",
-            "Updating",
-          ]),
-        ),
-      }),
-      userDetail: Schema.Struct({
-        firstName: Schema.optional(Schema.String),
-        lastName: Schema.optional(Schema.String),
-        emailAddress: Schema.String,
-        userPrincipalName: Schema.optional(Schema.String),
-        aadEmail: Schema.optional(Schema.String),
-      }),
-      linkOrganization: Schema.optional(
-        Schema.Struct({
-          token: Schema.String,
-        }),
-      ),
-    }),
+    properties: Schema.suspend(() => OrganizationResourcePropertiesSchema),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     location: Schema.String,
   }).pipe(
@@ -1426,23 +1395,13 @@ export type OrganizationCreateInput = typeof OrganizationCreateInput.Type;
 // Output Schema
 export const OrganizationCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.suspend(() => OrganizationResourcePropertiesSchema),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type OrganizationCreateOutput = typeof OrganizationCreateOutput.Type;
 
@@ -1484,43 +1443,7 @@ export const OrganizationCreateAPIKeyOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
-    properties: Schema.optional(
-      Schema.Struct({
-        metadata: Schema.optional(
-          Schema.Struct({
-            self: Schema.optional(Schema.String),
-            resourceName: Schema.optional(Schema.String),
-            createdTimestamp: Schema.optional(Schema.String),
-            updatedTimestamp: Schema.optional(Schema.String),
-            deletedTimestamp: Schema.optional(Schema.String),
-          }),
-        ),
-        spec: Schema.optional(
-          Schema.Struct({
-            description: Schema.optional(Schema.String),
-            name: Schema.optional(Schema.String),
-            secret: Schema.optional(SensitiveOutputString),
-            resource: Schema.optional(
-              Schema.Struct({
-                id: Schema.optional(Schema.String),
-                environment: Schema.optional(Schema.String),
-                related: Schema.optional(Schema.String),
-                resourceName: Schema.optional(Schema.String),
-                kind: Schema.optional(Schema.String),
-              }),
-            ),
-            owner: Schema.optional(
-              Schema.Struct({
-                id: Schema.optional(Schema.String),
-                related: Schema.optional(Schema.String),
-                resourceName: Schema.optional(Schema.String),
-                kind: Schema.optional(Schema.String),
-              }),
-            ),
-          }),
-        ),
-      }),
-    ),
+    properties: Schema.optional(Schema.suspend(() => APIKeyPropertiesSchema)),
   });
 export type OrganizationCreateAPIKeyOutput =
   typeof OrganizationCreateAPIKeyOutput.Type;
@@ -1629,23 +1552,13 @@ export type OrganizationGetInput = typeof OrganizationGetInput.Type;
 
 // Output Schema
 export const OrganizationGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.suspend(() => OrganizationResourcePropertiesSchema),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  location: Schema.String,
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
-  systemData: Schema.optional(
-    Schema.Struct({
-      createdBy: Schema.optional(Schema.String),
-      createdByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      createdAt: Schema.optional(Schema.String),
-      lastModifiedBy: Schema.optional(Schema.String),
-      lastModifiedByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      lastModifiedAt: Schema.optional(Schema.String),
-    }),
-  ),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
 });
 export type OrganizationGetOutput = typeof OrganizationGetOutput.Type;
 
@@ -1684,43 +1597,7 @@ export const OrganizationGetClusterAPIKeyOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
-    properties: Schema.optional(
-      Schema.Struct({
-        metadata: Schema.optional(
-          Schema.Struct({
-            self: Schema.optional(Schema.String),
-            resourceName: Schema.optional(Schema.String),
-            createdTimestamp: Schema.optional(Schema.String),
-            updatedTimestamp: Schema.optional(Schema.String),
-            deletedTimestamp: Schema.optional(Schema.String),
-          }),
-        ),
-        spec: Schema.optional(
-          Schema.Struct({
-            description: Schema.optional(Schema.String),
-            name: Schema.optional(Schema.String),
-            secret: Schema.optional(SensitiveOutputString),
-            resource: Schema.optional(
-              Schema.Struct({
-                id: Schema.optional(Schema.String),
-                environment: Schema.optional(Schema.String),
-                related: Schema.optional(Schema.String),
-                resourceName: Schema.optional(Schema.String),
-                kind: Schema.optional(Schema.String),
-              }),
-            ),
-            owner: Schema.optional(
-              Schema.Struct({
-                id: Schema.optional(Schema.String),
-                related: Schema.optional(Schema.String),
-                resourceName: Schema.optional(Schema.String),
-                kind: Schema.optional(Schema.String),
-              }),
-            ),
-          }),
-        ),
-      }),
-    ),
+    properties: Schema.optional(Schema.suspend(() => APIKeyPropertiesSchema)),
   });
 export type OrganizationGetClusterAPIKeyOutput =
   typeof OrganizationGetClusterAPIKeyOutput.Type;
@@ -1761,23 +1638,12 @@ export type OrganizationGetClusterByIdInput =
 // Output Schema
 export const OrganizationGetClusterByIdOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    kind: Schema.optional(Schema.String),
+    properties: Schema.optional(Schema.suspend(() => ClusterPropertiesSchema)),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type OrganizationGetClusterByIdOutput =
   typeof OrganizationGetClusterByIdOutput.Type;
@@ -1819,23 +1685,14 @@ export type OrganizationGetEnvironmentByIdInput =
 // Output Schema
 export const OrganizationGetEnvironmentByIdOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    kind: Schema.optional(Schema.String),
+    properties: Schema.optional(
+      Schema.suspend(() => EnvironmentPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type OrganizationGetEnvironmentByIdOutput =
   typeof OrganizationGetEnvironmentByIdOutput.Type;
@@ -1879,44 +1736,7 @@ export const OrganizationGetSchemaRegistryClusterByIdOutput =
     kind: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
     properties: Schema.optional(
-      Schema.Struct({
-        metadata: Schema.optional(
-          Schema.Struct({
-            self: Schema.optional(Schema.String),
-            resourceName: Schema.optional(Schema.String),
-            createdTimestamp: Schema.optional(Schema.String),
-            updatedTimestamp: Schema.optional(Schema.String),
-            deletedTimestamp: Schema.optional(Schema.String),
-          }),
-        ),
-        spec: Schema.optional(
-          Schema.Struct({
-            name: Schema.optional(Schema.String),
-            httpEndpoint: Schema.optional(Schema.String),
-            package: Schema.optional(Schema.String),
-            region: Schema.optional(
-              Schema.Struct({
-                id: Schema.optional(Schema.String),
-                related: Schema.optional(Schema.String),
-                resourceName: Schema.optional(Schema.String),
-              }),
-            ),
-            environment: Schema.optional(
-              Schema.Struct({
-                id: Schema.optional(Schema.String),
-                related: Schema.optional(Schema.String),
-                resourceName: Schema.optional(Schema.String),
-              }),
-            ),
-            cloud: Schema.optional(Schema.String),
-          }),
-        ),
-        status: Schema.optional(
-          Schema.Struct({
-            phase: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
+      Schema.suspend(() => SchemaRegistryClusterPropertiesSchema),
     ),
   });
 export type OrganizationGetSchemaRegistryClusterByIdOutput =
@@ -1956,37 +1776,7 @@ export type OrganizationListByResourceGroupInput =
 // Output Schema
 export const OrganizationListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => OrganizationResourceSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type OrganizationListByResourceGroupOutput =
@@ -2022,37 +1812,7 @@ export type OrganizationListBySubscriptionInput =
 // Output Schema
 export const OrganizationListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => OrganizationResourceSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type OrganizationListBySubscriptionOutput =
@@ -2092,37 +1852,7 @@ export type OrganizationListClustersInput =
 // Output Schema
 export const OrganizationListClustersOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => SCClusterRecordSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type OrganizationListClustersOutput =
@@ -2167,37 +1897,7 @@ export type OrganizationListEnvironmentsInput =
 // Output Schema
 export const OrganizationListEnvironmentsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => SCEnvironmentRecordSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type OrganizationListEnvironmentsOutput =
@@ -2240,33 +1940,7 @@ export type OrganizationListRegionsInput =
 export const OrganizationListRegionsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     data: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          kind: Schema.optional(Schema.String),
-          id: Schema.optional(Schema.String),
-          properties: Schema.optional(
-            Schema.Struct({
-              metadata: Schema.optional(
-                Schema.Struct({
-                  self: Schema.optional(Schema.String),
-                  resourceName: Schema.optional(Schema.String),
-                  createdTimestamp: Schema.optional(Schema.String),
-                  updatedTimestamp: Schema.optional(Schema.String),
-                  deletedTimestamp: Schema.optional(Schema.String),
-                }),
-              ),
-              spec: Schema.optional(
-                Schema.Struct({
-                  name: Schema.optional(Schema.String),
-                  cloud: Schema.optional(Schema.String),
-                  regionName: Schema.optional(Schema.String),
-                  packages: Schema.optional(Schema.Array(Schema.String)),
-                }),
-              ),
-            }),
-          ),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => RegionRecordSchema)),
     ),
   });
 export type OrganizationListRegionsOutput =
@@ -2310,50 +1984,7 @@ export type OrganizationListSchemaRegistryClustersInput =
 export const OrganizationListSchemaRegistryClustersOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
-      Schema.Struct({
-        kind: Schema.optional(Schema.String),
-        id: Schema.optional(Schema.String),
-        properties: Schema.optional(
-          Schema.Struct({
-            metadata: Schema.optional(
-              Schema.Struct({
-                self: Schema.optional(Schema.String),
-                resourceName: Schema.optional(Schema.String),
-                createdTimestamp: Schema.optional(Schema.String),
-                updatedTimestamp: Schema.optional(Schema.String),
-                deletedTimestamp: Schema.optional(Schema.String),
-              }),
-            ),
-            spec: Schema.optional(
-              Schema.Struct({
-                name: Schema.optional(Schema.String),
-                httpEndpoint: Schema.optional(Schema.String),
-                package: Schema.optional(Schema.String),
-                region: Schema.optional(
-                  Schema.Struct({
-                    id: Schema.optional(Schema.String),
-                    related: Schema.optional(Schema.String),
-                    resourceName: Schema.optional(Schema.String),
-                  }),
-                ),
-                environment: Schema.optional(
-                  Schema.Struct({
-                    id: Schema.optional(Schema.String),
-                    related: Schema.optional(Schema.String),
-                    resourceName: Schema.optional(Schema.String),
-                  }),
-                ),
-                cloud: Schema.optional(Schema.String),
-              }),
-            ),
-            status: Schema.optional(
-              Schema.Struct({
-                phase: Schema.optional(Schema.String),
-              }),
-            ),
-          }),
-        ),
-      }),
+      Schema.suspend(() => SchemaRegistryClusterRecordSchema),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -2392,20 +2023,7 @@ export type OrganizationOperationsListInput =
 // Output Schema
 export const OrganizationOperationsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        name: Schema.optional(Schema.String),
-        display: Schema.optional(
-          Schema.Struct({
-            provider: Schema.optional(Schema.String),
-            resource: Schema.optional(Schema.String),
-            operation: Schema.optional(Schema.String),
-            description: Schema.optional(Schema.String),
-          }),
-        ),
-        isDataAction: Schema.optional(Schema.Boolean),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => OperationResultSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type OrganizationOperationsListOutput =
@@ -2442,23 +2060,13 @@ export type OrganizationUpdateInput = typeof OrganizationUpdateInput.Type;
 // Output Schema
 export const OrganizationUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.suspend(() => OrganizationResourcePropertiesSchema),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type OrganizationUpdateOutput = typeof OrganizationUpdateOutput.Type;
 
@@ -2483,43 +2091,7 @@ export const TopicsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   environmentId: Schema.String.pipe(T.PathParam()),
   clusterId: Schema.String.pipe(T.PathParam()),
   topicName: Schema.String.pipe(T.PathParam()),
-  properties: Schema.optional(
-    Schema.Struct({
-      kind: Schema.optional(Schema.String),
-      topicId: Schema.optional(Schema.String),
-      metadata: Schema.optional(
-        Schema.Struct({
-          self: Schema.optional(Schema.String),
-          resourceName: Schema.optional(Schema.String),
-        }),
-      ),
-      partitions: Schema.optional(
-        Schema.Struct({
-          related: Schema.optional(Schema.String),
-        }),
-      ),
-      configs: Schema.optional(
-        Schema.Struct({
-          related: Schema.optional(Schema.String),
-        }),
-      ),
-      inputConfigs: Schema.optional(
-        Schema.Array(
-          Schema.Struct({
-            name: Schema.optional(Schema.String),
-            value: Schema.optional(Schema.String),
-          }),
-        ),
-      ),
-      partitionsReassignments: Schema.optional(
-        Schema.Struct({
-          related: Schema.optional(Schema.String),
-        }),
-      ),
-      partitionsCount: Schema.optional(Schema.String),
-      replicationFactor: Schema.optional(Schema.String),
-    }),
-  ),
+  properties: Schema.optional(Schema.suspend(() => TopicPropertiesSchema)),
 }).pipe(
   T.Http({
     method: "PUT",
@@ -2531,23 +2103,11 @@ export type TopicsCreateInput = typeof TopicsCreateInput.Type;
 
 // Output Schema
 export const TopicsCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.optional(Schema.suspend(() => TopicPropertiesSchema)),
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
-  systemData: Schema.optional(
-    Schema.Struct({
-      createdBy: Schema.optional(Schema.String),
-      createdByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      createdAt: Schema.optional(Schema.String),
-      lastModifiedBy: Schema.optional(Schema.String),
-      lastModifiedByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      lastModifiedAt: Schema.optional(Schema.String),
-    }),
-  ),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
 });
 export type TopicsCreateOutput = typeof TopicsCreateOutput.Type;
 
@@ -2624,23 +2184,11 @@ export type TopicsGetInput = typeof TopicsGetInput.Type;
 
 // Output Schema
 export const TopicsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.optional(Schema.suspend(() => TopicPropertiesSchema)),
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
-  systemData: Schema.optional(
-    Schema.Struct({
-      createdBy: Schema.optional(Schema.String),
-      createdByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      createdAt: Schema.optional(Schema.String),
-      lastModifiedBy: Schema.optional(Schema.String),
-      lastModifiedByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      lastModifiedAt: Schema.optional(Schema.String),
-    }),
-  ),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
 });
 export type TopicsGetOutput = typeof TopicsGetOutput.Type;
 
@@ -2680,27 +2228,7 @@ export type TopicsListInput = typeof TopicsListInput.Type;
 
 // Output Schema
 export const TopicsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  value: Schema.Array(
-    Schema.Struct({
-      id: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      type: Schema.optional(Schema.String),
-      systemData: Schema.optional(
-        Schema.Struct({
-          createdBy: Schema.optional(Schema.String),
-          createdByType: Schema.optional(
-            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-          ),
-          createdAt: Schema.optional(Schema.String),
-          lastModifiedBy: Schema.optional(Schema.String),
-          lastModifiedByType: Schema.optional(
-            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-          ),
-          lastModifiedAt: Schema.optional(Schema.String),
-        }),
-      ),
-    }),
-  ),
+  value: Schema.Array(Schema.suspend(() => TopicRecordSchema)),
   nextLink: Schema.optional(Schema.String),
 });
 export type TopicsListOutput = typeof TopicsListOutput.Type;
@@ -2728,60 +2256,7 @@ export const ValidationsValidateOrganizationInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     organizationName: Schema.String.pipe(T.PathParam()),
-    properties: Schema.Struct({
-      createdTime: Schema.optional(Schema.String),
-      provisioningState: Schema.optional(
-        Schema.Literals([
-          "Accepted",
-          "Creating",
-          "Updating",
-          "Deleting",
-          "Succeeded",
-          "Failed",
-          "Canceled",
-          "Deleted",
-          "NotSpecified",
-        ]),
-      ),
-      organizationId: Schema.optional(Schema.String),
-      ssoUrl: Schema.optional(Schema.String),
-      offerDetail: Schema.Struct({
-        publisherId: Schema.String,
-        id: Schema.String,
-        planId: Schema.String,
-        planName: Schema.String,
-        termUnit: Schema.String,
-        termId: Schema.optional(Schema.String),
-        privateOfferId: Schema.optional(Schema.String),
-        privateOfferIds: Schema.optional(Schema.Array(Schema.String)),
-        status: Schema.optional(
-          Schema.Literals([
-            "Started",
-            "PendingFulfillmentStart",
-            "InProgress",
-            "Subscribed",
-            "Suspended",
-            "Reinstated",
-            "Succeeded",
-            "Failed",
-            "Unsubscribed",
-            "Updating",
-          ]),
-        ),
-      }),
-      userDetail: Schema.Struct({
-        firstName: Schema.optional(Schema.String),
-        lastName: Schema.optional(Schema.String),
-        emailAddress: Schema.String,
-        userPrincipalName: Schema.optional(Schema.String),
-        aadEmail: Schema.optional(Schema.String),
-      }),
-      linkOrganization: Schema.optional(
-        Schema.Struct({
-          token: Schema.String,
-        }),
-      ),
-    }),
+    properties: Schema.suspend(() => OrganizationResourcePropertiesSchema),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     location: Schema.String,
   }).pipe(
@@ -2797,23 +2272,13 @@ export type ValidationsValidateOrganizationInput =
 // Output Schema
 export const ValidationsValidateOrganizationOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.suspend(() => OrganizationResourcePropertiesSchema),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type ValidationsValidateOrganizationOutput =
   typeof ValidationsValidateOrganizationOutput.Type;
@@ -2838,60 +2303,7 @@ export const ValidationsValidateOrganizationV2Input =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     organizationName: Schema.String.pipe(T.PathParam()),
-    properties: Schema.Struct({
-      createdTime: Schema.optional(Schema.String),
-      provisioningState: Schema.optional(
-        Schema.Literals([
-          "Accepted",
-          "Creating",
-          "Updating",
-          "Deleting",
-          "Succeeded",
-          "Failed",
-          "Canceled",
-          "Deleted",
-          "NotSpecified",
-        ]),
-      ),
-      organizationId: Schema.optional(Schema.String),
-      ssoUrl: Schema.optional(Schema.String),
-      offerDetail: Schema.Struct({
-        publisherId: Schema.String,
-        id: Schema.String,
-        planId: Schema.String,
-        planName: Schema.String,
-        termUnit: Schema.String,
-        termId: Schema.optional(Schema.String),
-        privateOfferId: Schema.optional(Schema.String),
-        privateOfferIds: Schema.optional(Schema.Array(Schema.String)),
-        status: Schema.optional(
-          Schema.Literals([
-            "Started",
-            "PendingFulfillmentStart",
-            "InProgress",
-            "Subscribed",
-            "Suspended",
-            "Reinstated",
-            "Succeeded",
-            "Failed",
-            "Unsubscribed",
-            "Updating",
-          ]),
-        ),
-      }),
-      userDetail: Schema.Struct({
-        firstName: Schema.optional(Schema.String),
-        lastName: Schema.optional(Schema.String),
-        emailAddress: Schema.String,
-        userPrincipalName: Schema.optional(Schema.String),
-        aadEmail: Schema.optional(Schema.String),
-      }),
-      linkOrganization: Schema.optional(
-        Schema.Struct({
-          token: Schema.String,
-        }),
-      ),
-    }),
+    properties: Schema.suspend(() => OrganizationResourcePropertiesSchema),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     location: Schema.String,
   }).pipe(

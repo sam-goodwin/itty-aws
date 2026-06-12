@@ -9,6 +9,287 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 import { SensitiveString } from "../sensitive.ts";
 
+// Shared schemas
+const OperationSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  isDataAction: Schema.optional(Schema.Boolean),
+  display: Schema.optional(
+    Schema.Struct({
+      provider: Schema.optional(Schema.String),
+      resource: Schema.optional(Schema.String),
+      operation: Schema.optional(Schema.String),
+      description: Schema.optional(Schema.String),
+    }),
+  ),
+  origin: Schema.optional(Schema.Literals(["user", "system", "user,system"])),
+  actionType: Schema.optional(Schema.Literals(["Internal"])),
+});
+const CommunicationServiceResourceSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+  });
+const systemDataSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  createdBy: Schema.optional(Schema.String),
+  createdByType: Schema.optional(
+    Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+  ),
+  createdAt: Schema.optional(Schema.String),
+  lastModifiedBy: Schema.optional(Schema.String),
+  lastModifiedByType: Schema.optional(
+    Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+  ),
+  lastModifiedAt: Schema.optional(Schema.String),
+});
+const EmailServiceResourceSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+});
+const CommunicationServicePropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    provisioningState: Schema.optional(
+      Schema.suspend(() => CommunicationServices_ProvisioningStateSchema),
+    ),
+    hostName: Schema.optional(Schema.String),
+    dataLocation: Schema.String,
+    notificationHubId: Schema.optional(Schema.String),
+    version: Schema.optional(Schema.String),
+    immutableResourceId: Schema.optional(Schema.String),
+    linkedDomains: Schema.optional(
+      Schema.suspend(() => DomainsResourceListSchema),
+    ),
+    publicNetworkAccess: Schema.optional(
+      Schema.Literals(["Enabled", "Disabled", "SecuredByPerimeter"]),
+    ),
+    disableLocalAuth: Schema.optional(Schema.Boolean),
+  });
+const CommunicationServices_ProvisioningStateSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+    "Unknown",
+    "Succeeded",
+    "Failed",
+    "Canceled",
+    "Running",
+    "Creating",
+    "Updating",
+    "Deleting",
+    "Moving",
+  ]);
+const DomainsResourceListSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
+  Schema.String,
+);
+const ManagedServiceIdentityTypeSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+    "None",
+    "SystemAssigned",
+    "UserAssigned",
+    "SystemAssigned,UserAssigned",
+  ]);
+const UserAssignedIdentitySchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  principalId: Schema.optional(Schema.String),
+  clientId: Schema.optional(Schema.String),
+});
+const CommunicationServiceUpdatePropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    linkedDomains: Schema.optional(
+      Schema.suspend(() => DomainsResourceListSchema),
+    ),
+    publicNetworkAccess: Schema.optional(
+      Schema.Literals(["Enabled", "Disabled", "SecuredByPerimeter"]),
+    ),
+    disableLocalAuth: Schema.optional(Schema.Boolean),
+  });
+const KeyTypeSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Primary",
+  "Secondary",
+]);
+const SmtpUsernameResourceSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+});
+const SmtpUsernamePropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  username: Schema.String,
+  entraApplicationId: Schema.String,
+  tenantId: Schema.String,
+});
+const EmailServicePropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  provisioningState: Schema.optional(
+    Schema.suspend(() => EmailServices_ProvisioningStateSchema),
+  ),
+  dataLocation: Schema.String,
+});
+const EmailServices_ProvisioningStateSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+    "Unknown",
+    "Succeeded",
+    "Failed",
+    "Canceled",
+    "Running",
+    "Creating",
+    "Updating",
+    "Deleting",
+    "Moving",
+  ]);
+const DomainResourceSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+});
+const DomainPropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  provisioningState: Schema.optional(
+    Schema.suspend(() => Domains_ProvisioningStateSchema),
+  ),
+  dataLocation: Schema.optional(Schema.String),
+  fromSenderDomain: Schema.optional(Schema.String),
+  mailFromSenderDomain: Schema.optional(Schema.String),
+  domainManagement: Schema.suspend(() => DomainManagementSchema),
+  verificationStates: Schema.optional(
+    Schema.suspend(() => DomainPropertiesVerificationStatesSchema),
+  ),
+  verificationRecords: Schema.optional(
+    Schema.suspend(() => DomainPropertiesVerificationRecordsSchema),
+  ),
+  userEngagementTracking: Schema.optional(
+    Schema.suspend(() => UserEngagementTrackingSchema),
+  ),
+});
+const Domains_ProvisioningStateSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+    "Unknown",
+    "Succeeded",
+    "Failed",
+    "Canceled",
+    "Running",
+    "Creating",
+    "Updating",
+    "Deleting",
+    "Moving",
+  ]);
+const DomainManagementSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "AzureManaged",
+  "CustomerManaged",
+  "CustomerManagedInExchangeOnline",
+]);
+const DomainPropertiesVerificationStatesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    Domain: Schema.optional(
+      Schema.suspend(() => VerificationStatusRecordSchema),
+    ),
+    SPF: Schema.optional(Schema.suspend(() => VerificationStatusRecordSchema)),
+    DKIM: Schema.optional(Schema.suspend(() => VerificationStatusRecordSchema)),
+    DKIM2: Schema.optional(
+      Schema.suspend(() => VerificationStatusRecordSchema),
+    ),
+    DMARC: Schema.optional(
+      Schema.suspend(() => VerificationStatusRecordSchema),
+    ),
+  });
+const VerificationStatusRecordSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    status: Schema.optional(Schema.suspend(() => VerificationStatusSchema)),
+    errorCode: Schema.optional(Schema.String),
+  });
+const VerificationStatusSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "NotStarted",
+  "VerificationRequested",
+  "VerificationInProgress",
+  "VerificationFailed",
+  "Verified",
+  "CancellationRequested",
+]);
+const DomainPropertiesVerificationRecordsSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    Domain: Schema.optional(Schema.suspend(() => DnsRecordSchema)),
+    SPF: Schema.optional(Schema.suspend(() => DnsRecordSchema)),
+    DKIM: Schema.optional(Schema.suspend(() => DnsRecordSchema)),
+    DKIM2: Schema.optional(Schema.suspend(() => DnsRecordSchema)),
+    DMARC: Schema.optional(Schema.suspend(() => DnsRecordSchema)),
+  });
+const DnsRecordSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  type: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  value: Schema.optional(Schema.String),
+  ttl: Schema.optional(Schema.Number),
+});
+const UserEngagementTrackingSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Literals(["Disabled", "Enabled"]);
+const UpdateDomainPropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  userEngagementTracking: Schema.optional(
+    Schema.suspend(() => UserEngagementTrackingSchema),
+  ),
+});
+const VerificationTypeSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Domain",
+  "SPF",
+  "DKIM",
+  "DKIM2",
+  "DMARC",
+]);
+const SenderUsernameResourceSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+});
+const SenderUsernamePropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    dataLocation: Schema.optional(Schema.String),
+    username: Schema.String,
+    displayName: Schema.optional(Schema.String),
+    provisioningState: Schema.optional(
+      Schema.suspend(() => ProvisioningStateSchema),
+    ),
+  });
+const ProvisioningStateSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Unknown",
+  "Succeeded",
+  "Failed",
+  "Canceled",
+  "Running",
+  "Creating",
+  "Updating",
+  "Deleting",
+  "Moving",
+]);
+const SuppressionListResourceSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+  },
+);
+const SuppressionListPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    listName: Schema.optional(Schema.String),
+    lastUpdatedTimeStamp: Schema.optional(Schema.String),
+    createdTimeStamp: Schema.optional(Schema.String),
+    dataLocation: Schema.optional(Schema.String),
+  });
+const SuppressionListAddressResourceSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+  });
+const SuppressionListAddressPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    email: Schema.String,
+    firstName: Schema.optional(Schema.String),
+    lastName: Schema.optional(Schema.String),
+    notes: Schema.optional(Schema.String),
+    lastModified: Schema.optional(Schema.String),
+    dataLocation: Schema.optional(Schema.String),
+  });
+
 // Input Schema
 export const CommunicationServicesCheckNameAvailabilityInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -56,49 +337,17 @@ export const CommunicationServicesCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     communicationServiceName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        provisioningState: Schema.optional(
-          Schema.Literals([
-            "Unknown",
-            "Succeeded",
-            "Failed",
-            "Canceled",
-            "Running",
-            "Creating",
-            "Updating",
-            "Deleting",
-            "Moving",
-          ]),
-        ),
-        hostName: Schema.optional(Schema.String),
-        dataLocation: Schema.String,
-        notificationHubId: Schema.optional(Schema.String),
-        version: Schema.optional(Schema.String),
-        immutableResourceId: Schema.optional(Schema.String),
-        linkedDomains: Schema.optional(Schema.Array(Schema.String)),
-        publicNetworkAccess: Schema.optional(
-          Schema.Literals(["Enabled", "Disabled", "SecuredByPerimeter"]),
-        ),
-        disableLocalAuth: Schema.optional(Schema.Boolean),
-      }),
+      Schema.suspend(() => CommunicationServicePropertiesSchema),
     ),
     identity: Schema.optional(
       Schema.Struct({
         principalId: Schema.optional(Schema.String),
         tenantId: Schema.optional(Schema.String),
-        type: Schema.Literals([
-          "None",
-          "SystemAssigned",
-          "UserAssigned",
-          "SystemAssigned,UserAssigned",
-        ]),
+        type: Schema.suspend(() => ManagedServiceIdentityTypeSchema),
         userAssignedIdentities: Schema.optional(
           Schema.Record(
             Schema.String,
-            Schema.Struct({
-              principalId: Schema.optional(Schema.String),
-              clientId: Schema.optional(Schema.String),
-            }),
+            Schema.suspend(() => UserAssignedIdentitySchema),
           ),
         ),
       }),
@@ -119,23 +368,28 @@ export type CommunicationServicesCreateOrUpdateInput =
 // Output Schema
 export const CommunicationServicesCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => CommunicationServicePropertiesSchema),
+    ),
+    identity: Schema.optional(
+      Schema.Struct({
+        principalId: Schema.optional(Schema.String),
+        tenantId: Schema.optional(Schema.String),
+        type: Schema.suspend(() => ManagedServiceIdentityTypeSchema),
+        userAssignedIdentities: Schema.optional(
+          Schema.Record(
+            Schema.String,
+            Schema.suspend(() => UserAssignedIdentitySchema),
+          ),
+        ),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type CommunicationServicesCreateOrUpdateOutput =
   typeof CommunicationServicesCreateOrUpdateOutput.Type;
@@ -215,23 +469,28 @@ export type CommunicationServicesGetInput =
 // Output Schema
 export const CommunicationServicesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => CommunicationServicePropertiesSchema),
+    ),
+    identity: Schema.optional(
+      Schema.Struct({
+        principalId: Schema.optional(Schema.String),
+        tenantId: Schema.optional(Schema.String),
+        type: Schema.suspend(() => ManagedServiceIdentityTypeSchema),
+        userAssignedIdentities: Schema.optional(
+          Schema.Record(
+            Schema.String,
+            Schema.suspend(() => UserAssignedIdentitySchema),
+          ),
+        ),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type CommunicationServicesGetOutput =
   typeof CommunicationServicesGetOutput.Type;
@@ -314,35 +573,7 @@ export type CommunicationServicesListByResourceGroupInput =
 export const CommunicationServicesListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
+      Schema.suspend(() => CommunicationServiceResourceSchema),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -382,35 +613,7 @@ export type CommunicationServicesListBySubscriptionInput =
 export const CommunicationServicesListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
+      Schema.suspend(() => CommunicationServiceResourceSchema),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -480,7 +683,7 @@ export const CommunicationServicesRegenerateKeyInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     communicationServiceName: Schema.String.pipe(T.PathParam()),
-    keyType: Schema.optional(Schema.Literals(["Primary", "Secondary"])),
+    keyType: Schema.optional(Schema.suspend(() => KeyTypeSchema)),
   }).pipe(
     T.Http({
       method: "POST",
@@ -525,31 +728,17 @@ export const CommunicationServicesUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     communicationServiceName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        linkedDomains: Schema.optional(Schema.Array(Schema.String)),
-        publicNetworkAccess: Schema.optional(
-          Schema.Literals(["Enabled", "Disabled", "SecuredByPerimeter"]),
-        ),
-        disableLocalAuth: Schema.optional(Schema.Boolean),
-      }),
+      Schema.suspend(() => CommunicationServiceUpdatePropertiesSchema),
     ),
     identity: Schema.optional(
       Schema.Struct({
         principalId: Schema.optional(Schema.String),
         tenantId: Schema.optional(Schema.String),
-        type: Schema.Literals([
-          "None",
-          "SystemAssigned",
-          "UserAssigned",
-          "SystemAssigned,UserAssigned",
-        ]),
+        type: Schema.suspend(() => ManagedServiceIdentityTypeSchema),
         userAssignedIdentities: Schema.optional(
           Schema.Record(
             Schema.String,
-            Schema.Struct({
-              principalId: Schema.optional(Schema.String),
-              clientId: Schema.optional(Schema.String),
-            }),
+            Schema.suspend(() => UserAssignedIdentitySchema),
           ),
         ),
       }),
@@ -568,23 +757,28 @@ export type CommunicationServicesUpdateInput =
 // Output Schema
 export const CommunicationServicesUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => CommunicationServicePropertiesSchema),
+    ),
+    identity: Schema.optional(
+      Schema.Struct({
+        principalId: Schema.optional(Schema.String),
+        tenantId: Schema.optional(Schema.String),
+        type: Schema.suspend(() => ManagedServiceIdentityTypeSchema),
+        userAssignedIdentities: Schema.optional(
+          Schema.Record(
+            Schema.String,
+            Schema.suspend(() => UserAssignedIdentitySchema),
+          ),
+        ),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type CommunicationServicesUpdateOutput =
   typeof CommunicationServicesUpdateOutput.Type;
@@ -613,13 +807,7 @@ export const DomainsCancelVerificationInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     emailServiceName: Schema.String.pipe(T.PathParam()),
     domainName: Schema.String.pipe(T.PathParam()),
-    verificationType: Schema.Literals([
-      "Domain",
-      "SPF",
-      "DKIM",
-      "DKIM2",
-      "DMARC",
-    ]),
+    verificationType: Schema.suspend(() => VerificationTypeSchema),
   }).pipe(
     T.Http({
       method: "POST",
@@ -662,157 +850,7 @@ export const DomainsCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     emailServiceName: Schema.String.pipe(T.PathParam()),
     domainName: Schema.String.pipe(T.PathParam()),
-    properties: Schema.optional(
-      Schema.Struct({
-        provisioningState: Schema.optional(
-          Schema.Literals([
-            "Unknown",
-            "Succeeded",
-            "Failed",
-            "Canceled",
-            "Running",
-            "Creating",
-            "Updating",
-            "Deleting",
-            "Moving",
-          ]),
-        ),
-        dataLocation: Schema.optional(Schema.String),
-        fromSenderDomain: Schema.optional(Schema.String),
-        mailFromSenderDomain: Schema.optional(Schema.String),
-        domainManagement: Schema.Literals([
-          "AzureManaged",
-          "CustomerManaged",
-          "CustomerManagedInExchangeOnline",
-        ]),
-        verificationStates: Schema.optional(
-          Schema.Struct({
-            Domain: Schema.optional(
-              Schema.Struct({
-                status: Schema.optional(
-                  Schema.Literals([
-                    "NotStarted",
-                    "VerificationRequested",
-                    "VerificationInProgress",
-                    "VerificationFailed",
-                    "Verified",
-                    "CancellationRequested",
-                  ]),
-                ),
-                errorCode: Schema.optional(Schema.String),
-              }),
-            ),
-            SPF: Schema.optional(
-              Schema.Struct({
-                status: Schema.optional(
-                  Schema.Literals([
-                    "NotStarted",
-                    "VerificationRequested",
-                    "VerificationInProgress",
-                    "VerificationFailed",
-                    "Verified",
-                    "CancellationRequested",
-                  ]),
-                ),
-                errorCode: Schema.optional(Schema.String),
-              }),
-            ),
-            DKIM: Schema.optional(
-              Schema.Struct({
-                status: Schema.optional(
-                  Schema.Literals([
-                    "NotStarted",
-                    "VerificationRequested",
-                    "VerificationInProgress",
-                    "VerificationFailed",
-                    "Verified",
-                    "CancellationRequested",
-                  ]),
-                ),
-                errorCode: Schema.optional(Schema.String),
-              }),
-            ),
-            DKIM2: Schema.optional(
-              Schema.Struct({
-                status: Schema.optional(
-                  Schema.Literals([
-                    "NotStarted",
-                    "VerificationRequested",
-                    "VerificationInProgress",
-                    "VerificationFailed",
-                    "Verified",
-                    "CancellationRequested",
-                  ]),
-                ),
-                errorCode: Schema.optional(Schema.String),
-              }),
-            ),
-            DMARC: Schema.optional(
-              Schema.Struct({
-                status: Schema.optional(
-                  Schema.Literals([
-                    "NotStarted",
-                    "VerificationRequested",
-                    "VerificationInProgress",
-                    "VerificationFailed",
-                    "Verified",
-                    "CancellationRequested",
-                  ]),
-                ),
-                errorCode: Schema.optional(Schema.String),
-              }),
-            ),
-          }),
-        ),
-        verificationRecords: Schema.optional(
-          Schema.Struct({
-            Domain: Schema.optional(
-              Schema.Struct({
-                type: Schema.optional(Schema.String),
-                name: Schema.optional(Schema.String),
-                value: Schema.optional(Schema.String),
-                ttl: Schema.optional(Schema.Number),
-              }),
-            ),
-            SPF: Schema.optional(
-              Schema.Struct({
-                type: Schema.optional(Schema.String),
-                name: Schema.optional(Schema.String),
-                value: Schema.optional(Schema.String),
-                ttl: Schema.optional(Schema.Number),
-              }),
-            ),
-            DKIM: Schema.optional(
-              Schema.Struct({
-                type: Schema.optional(Schema.String),
-                name: Schema.optional(Schema.String),
-                value: Schema.optional(Schema.String),
-                ttl: Schema.optional(Schema.Number),
-              }),
-            ),
-            DKIM2: Schema.optional(
-              Schema.Struct({
-                type: Schema.optional(Schema.String),
-                name: Schema.optional(Schema.String),
-                value: Schema.optional(Schema.String),
-                ttl: Schema.optional(Schema.Number),
-              }),
-            ),
-            DMARC: Schema.optional(
-              Schema.Struct({
-                type: Schema.optional(Schema.String),
-                name: Schema.optional(Schema.String),
-                value: Schema.optional(Schema.String),
-                ttl: Schema.optional(Schema.Number),
-              }),
-            ),
-          }),
-        ),
-        userEngagementTracking: Schema.optional(
-          Schema.Literals(["Disabled", "Enabled"]),
-        ),
-      }),
-    ),
+    properties: Schema.optional(Schema.suspend(() => DomainPropertiesSchema)),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     location: Schema.String,
   }).pipe(
@@ -828,23 +866,13 @@ export type DomainsCreateOrUpdateInput = typeof DomainsCreateOrUpdateInput.Type;
 // Output Schema
 export const DomainsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(Schema.suspend(() => DomainPropertiesSchema)),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type DomainsCreateOrUpdateOutput =
   typeof DomainsCreateOrUpdateOutput.Type;
@@ -920,23 +948,13 @@ export type DomainsGetInput = typeof DomainsGetInput.Type;
 
 // Output Schema
 export const DomainsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.optional(Schema.suspend(() => DomainPropertiesSchema)),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  location: Schema.String,
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
-  systemData: Schema.optional(
-    Schema.Struct({
-      createdBy: Schema.optional(Schema.String),
-      createdByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      createdAt: Schema.optional(Schema.String),
-      lastModifiedBy: Schema.optional(Schema.String),
-      lastModifiedByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      lastModifiedAt: Schema.optional(Schema.String),
-    }),
-  ),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
 });
 export type DomainsGetOutput = typeof DomainsGetOutput.Type;
 
@@ -963,13 +981,7 @@ export const DomainsInitiateVerificationInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     emailServiceName: Schema.String.pipe(T.PathParam()),
     domainName: Schema.String.pipe(T.PathParam()),
-    verificationType: Schema.Literals([
-      "Domain",
-      "SPF",
-      "DKIM",
-      "DKIM2",
-      "DMARC",
-    ]),
+    verificationType: Schema.suspend(() => VerificationTypeSchema),
   }).pipe(
     T.Http({
       method: "POST",
@@ -1024,37 +1036,7 @@ export type DomainsListByEmailServiceResourceInput =
 // Output Schema
 export const DomainsListByEmailServiceResourceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => DomainResourceSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type DomainsListByEmailServiceResourceOutput =
@@ -1083,11 +1065,7 @@ export const DomainsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   emailServiceName: Schema.String.pipe(T.PathParam()),
   domainName: Schema.String.pipe(T.PathParam()),
   properties: Schema.optional(
-    Schema.Struct({
-      userEngagementTracking: Schema.optional(
-        Schema.Literals(["Disabled", "Enabled"]),
-      ),
-    }),
+    Schema.suspend(() => UpdateDomainPropertiesSchema),
   ),
   tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
 }).pipe(
@@ -1102,23 +1080,13 @@ export type DomainsUpdateInput = typeof DomainsUpdateInput.Type;
 
 // Output Schema
 export const DomainsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.optional(Schema.suspend(() => DomainPropertiesSchema)),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  location: Schema.String,
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
-  systemData: Schema.optional(
-    Schema.Struct({
-      createdBy: Schema.optional(Schema.String),
-      createdByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      createdAt: Schema.optional(Schema.String),
-      lastModifiedBy: Schema.optional(Schema.String),
-      lastModifiedByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      lastModifiedAt: Schema.optional(Schema.String),
-    }),
-  ),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
 });
 export type DomainsUpdateOutput = typeof DomainsUpdateOutput.Type;
 
@@ -1145,22 +1113,7 @@ export const EmailServicesCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     emailServiceName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        provisioningState: Schema.optional(
-          Schema.Literals([
-            "Unknown",
-            "Succeeded",
-            "Failed",
-            "Canceled",
-            "Running",
-            "Creating",
-            "Updating",
-            "Deleting",
-            "Moving",
-          ]),
-        ),
-        dataLocation: Schema.String,
-      }),
+      Schema.suspend(() => EmailServicePropertiesSchema),
     ),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     location: Schema.String,
@@ -1178,23 +1131,15 @@ export type EmailServicesCreateOrUpdateInput =
 // Output Schema
 export const EmailServicesCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => EmailServicePropertiesSchema),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type EmailServicesCreateOrUpdateOutput =
   typeof EmailServicesCreateOrUpdateOutput.Type;
@@ -1269,23 +1214,15 @@ export type EmailServicesGetInput = typeof EmailServicesGetInput.Type;
 // Output Schema
 export const EmailServicesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
+    properties: Schema.optional(
+      Schema.suspend(() => EmailServicePropertiesSchema),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   },
 );
 export type EmailServicesGetOutput = typeof EmailServicesGetOutput.Type;
@@ -1323,37 +1260,7 @@ export type EmailServicesListByResourceGroupInput =
 // Output Schema
 export const EmailServicesListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => EmailServiceResourceSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type EmailServicesListByResourceGroupOutput =
@@ -1391,37 +1298,7 @@ export type EmailServicesListBySubscriptionInput =
 // Output Schema
 export const EmailServicesListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => EmailServiceResourceSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type EmailServicesListBySubscriptionOutput =
@@ -1495,23 +1372,15 @@ export type EmailServicesUpdateInput = typeof EmailServicesUpdateInput.Type;
 // Output Schema
 export const EmailServicesUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => EmailServicePropertiesSchema),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type EmailServicesUpdateOutput = typeof EmailServicesUpdateOutput.Type;
 
@@ -1544,26 +1413,7 @@ export type OperationsListInput = typeof OperationsListInput.Type;
 
 // Output Schema
 export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  value: Schema.optional(
-    Schema.Array(
-      Schema.Struct({
-        name: Schema.optional(Schema.String),
-        isDataAction: Schema.optional(Schema.Boolean),
-        display: Schema.optional(
-          Schema.Struct({
-            provider: Schema.optional(Schema.String),
-            resource: Schema.optional(Schema.String),
-            operation: Schema.optional(Schema.String),
-            description: Schema.optional(Schema.String),
-          }),
-        ),
-        origin: Schema.optional(
-          Schema.Literals(["user", "system", "user,system"]),
-        ),
-        actionType: Schema.optional(Schema.Literals(["Internal"])),
-      }),
-    ),
-  ),
+  value: Schema.optional(Schema.Array(Schema.suspend(() => OperationSchema))),
   nextLink: Schema.optional(Schema.String),
 });
 export type OperationsListOutput = typeof OperationsListOutput.Type;
@@ -1589,24 +1439,7 @@ export const SenderUsernamesCreateOrUpdateInput =
     domainName: Schema.String.pipe(T.PathParam()),
     senderUsername: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        dataLocation: Schema.optional(Schema.String),
-        username: Schema.String,
-        displayName: Schema.optional(Schema.String),
-        provisioningState: Schema.optional(
-          Schema.Literals([
-            "Unknown",
-            "Succeeded",
-            "Failed",
-            "Canceled",
-            "Running",
-            "Creating",
-            "Updating",
-            "Deleting",
-            "Moving",
-          ]),
-        ),
-      }),
+      Schema.suspend(() => SenderUsernamePropertiesSchema),
     ),
   }).pipe(
     T.Http({
@@ -1621,23 +1454,13 @@ export type SenderUsernamesCreateOrUpdateInput =
 // Output Schema
 export const SenderUsernamesCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => SenderUsernamePropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type SenderUsernamesCreateOrUpdateOutput =
   typeof SenderUsernamesCreateOrUpdateOutput.Type;
@@ -1722,23 +1545,13 @@ export type SenderUsernamesGetInput = typeof SenderUsernamesGetInput.Type;
 // Output Schema
 export const SenderUsernamesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => SenderUsernamePropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type SenderUsernamesGetOutput = typeof SenderUsernamesGetOutput.Type;
 
@@ -1779,37 +1592,7 @@ export type SenderUsernamesListByDomainsInput =
 // Output Schema
 export const SenderUsernamesListByDomainsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => SenderUsernameResourceSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type SenderUsernamesListByDomainsOutput =
@@ -1840,11 +1623,7 @@ export const SmtpUsernamesCreateOrUpdateInput =
     communicationServiceName: Schema.String.pipe(T.PathParam()),
     smtpUsername: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        username: Schema.String,
-        entraApplicationId: Schema.String,
-        tenantId: Schema.String,
-      }),
+      Schema.suspend(() => SmtpUsernamePropertiesSchema),
     ),
   }).pipe(
     T.Http({
@@ -1859,23 +1638,13 @@ export type SmtpUsernamesCreateOrUpdateInput =
 // Output Schema
 export const SmtpUsernamesCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => SmtpUsernamePropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type SmtpUsernamesCreateOrUpdateOutput =
   typeof SmtpUsernamesCreateOrUpdateOutput.Type;
@@ -1953,23 +1722,13 @@ export type SmtpUsernamesGetInput = typeof SmtpUsernamesGetInput.Type;
 // Output Schema
 export const SmtpUsernamesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
+    properties: Schema.optional(
+      Schema.suspend(() => SmtpUsernamePropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   },
 );
 export type SmtpUsernamesGetOutput = typeof SmtpUsernamesGetOutput.Type;
@@ -2009,37 +1768,7 @@ export type SmtpUsernamesListInput = typeof SmtpUsernamesListInput.Type;
 // Output Schema
 export const SmtpUsernamesListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => SmtpUsernameResourceSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type SmtpUsernamesListOutput = typeof SmtpUsernamesListOutput.Type;
@@ -2069,14 +1798,7 @@ export const SuppressionListAddressesCreateOrUpdateInput =
     suppressionListName: Schema.String.pipe(T.PathParam()),
     addressId: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        email: Schema.String,
-        firstName: Schema.optional(Schema.String),
-        lastName: Schema.optional(Schema.String),
-        notes: Schema.optional(Schema.String),
-        lastModified: Schema.optional(Schema.String),
-        dataLocation: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(() => SuppressionListAddressPropertiesSchema),
     ),
   }).pipe(
     T.Http({
@@ -2091,23 +1813,13 @@ export type SuppressionListAddressesCreateOrUpdateInput =
 // Output Schema
 export const SuppressionListAddressesCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => SuppressionListAddressPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type SuppressionListAddressesCreateOrUpdateOutput =
   typeof SuppressionListAddressesCreateOrUpdateOutput.Type;
@@ -2197,23 +1909,13 @@ export type SuppressionListAddressesGetInput =
 // Output Schema
 export const SuppressionListAddressesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => SuppressionListAddressPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type SuppressionListAddressesGetOutput =
   typeof SuppressionListAddressesGetOutput.Type;
@@ -2260,35 +1962,7 @@ export type SuppressionListAddressesListInput =
 export const SuppressionListAddressesListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
+      Schema.suspend(() => SuppressionListAddressResourceSchema),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -2322,12 +1996,7 @@ export const SuppressionListsCreateOrUpdateInput =
     domainName: Schema.String.pipe(T.PathParam()),
     suppressionListName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        listName: Schema.optional(Schema.String),
-        lastUpdatedTimeStamp: Schema.optional(Schema.String),
-        createdTimeStamp: Schema.optional(Schema.String),
-        dataLocation: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(() => SuppressionListPropertiesSchema),
     ),
   }).pipe(
     T.Http({
@@ -2342,23 +2011,13 @@ export type SuppressionListsCreateOrUpdateInput =
 // Output Schema
 export const SuppressionListsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => SuppressionListPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type SuppressionListsCreateOrUpdateOutput =
   typeof SuppressionListsCreateOrUpdateOutput.Type;
@@ -2444,23 +2103,13 @@ export type SuppressionListsGetInput = typeof SuppressionListsGetInput.Type;
 // Output Schema
 export const SuppressionListsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => SuppressionListPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type SuppressionListsGetOutput = typeof SuppressionListsGetOutput.Type;
 
@@ -2501,37 +2150,7 @@ export type SuppressionListsListByDomainInput =
 // Output Schema
 export const SuppressionListsListByDomainOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => SuppressionListResourceSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type SuppressionListsListByDomainOutput =

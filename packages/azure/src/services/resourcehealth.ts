@@ -8,6 +8,229 @@ import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
+// Shared schemas
+const availabilityStatusSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  location: Schema.optional(Schema.String),
+  properties: Schema.optional(
+    Schema.Struct({
+      availabilityState: Schema.optional(
+        Schema.Literals(["Available", "Unavailable", "Degraded", "Unknown"]),
+      ),
+      title: Schema.optional(Schema.String),
+      summary: Schema.optional(Schema.String),
+      detailedStatus: Schema.optional(Schema.String),
+      reasonType: Schema.optional(Schema.String),
+      context: Schema.optional(Schema.String),
+      category: Schema.optional(Schema.String),
+      articleId: Schema.optional(Schema.String),
+      rootCauseAttributionTime: Schema.optional(Schema.String),
+      healthEventType: Schema.optional(Schema.String),
+      healthEventCause: Schema.optional(Schema.String),
+      healthEventCategory: Schema.optional(Schema.String),
+      healthEventId: Schema.optional(Schema.String),
+      resolutionETA: Schema.optional(Schema.String),
+      occuredTime: Schema.optional(Schema.String),
+      reasonChronicity: Schema.optional(
+        Schema.Literals(["Transient", "Persistent"]),
+      ),
+      reportedTime: Schema.optional(Schema.String),
+      recentlyResolved: Schema.optional(
+        Schema.Struct({
+          unavailableOccuredTime: Schema.optional(Schema.String),
+          resolvedTime: Schema.optional(Schema.String),
+          unavailableSummary: Schema.optional(Schema.String),
+        }),
+      ),
+      recommendedActions: Schema.optional(
+        Schema.Array(Schema.suspend(() => recommendedActionSchema)),
+      ),
+      serviceImpactingEvents: Schema.optional(
+        Schema.Array(Schema.suspend(() => serviceImpactingEventSchema)),
+      ),
+    }),
+  ),
+});
+const recommendedActionSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  action: Schema.optional(Schema.String),
+  actionUrl: Schema.optional(Schema.String),
+  "_ActionUrl.Comment": Schema.optional(Schema.String),
+  actionUrlText: Schema.optional(Schema.String),
+});
+const serviceImpactingEventSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  eventStartTime: Schema.optional(Schema.String),
+  eventStatusLastModifiedTime: Schema.optional(Schema.String),
+  correlationId: Schema.optional(Schema.String),
+  status: Schema.optional(
+    Schema.Struct({
+      value: Schema.optional(Schema.String),
+    }),
+  ),
+  incidentProperties: Schema.optional(
+    Schema.Struct({
+      title: Schema.optional(Schema.String),
+      service: Schema.optional(Schema.String),
+      region: Schema.optional(Schema.String),
+      incidentType: Schema.optional(Schema.String),
+    }),
+  ),
+});
+const operationSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  display: Schema.optional(
+    Schema.Struct({
+      provider: Schema.optional(Schema.String),
+      resource: Schema.optional(Schema.String),
+      operation: Schema.optional(Schema.String),
+      description: Schema.optional(Schema.String),
+    }),
+  ),
+});
+const MetadataEntitySchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+});
+const systemDataSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  createdBy: Schema.optional(Schema.String),
+  createdByType: Schema.optional(
+    Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+  ),
+  createdAt: Schema.optional(Schema.String),
+  lastModifiedBy: Schema.optional(Schema.String),
+  lastModifiedByType: Schema.optional(
+    Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+  ),
+  lastModifiedAt: Schema.optional(Schema.String),
+});
+const MetadataEntityPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    displayName: Schema.optional(Schema.String),
+    dependsOn: Schema.optional(Schema.Array(Schema.String)),
+    applicableScenarios: Schema.optional(
+      Schema.Array(Schema.Literals(["Alerts"])),
+    ),
+    supportedValues: Schema.optional(
+      Schema.Array(Schema.suspend(() => MetadataSupportedValueDetailSchema)),
+    ),
+  });
+const MetadataSupportedValueDetailSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    previousId: Schema.optional(Schema.String),
+    serviceGuid: Schema.optional(Schema.String),
+    displayName: Schema.optional(Schema.String),
+    resourceTypes: Schema.optional(Schema.Array(Schema.String)),
+    priority: Schema.optional(Schema.Number),
+  });
+const eventImpactedResourceSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+});
+const keyValueItemSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  key: Schema.optional(Schema.String),
+  value: Schema.optional(Schema.String),
+});
+const eventSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+});
+const linkSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  type: Schema.optional(Schema.Literals(["Button", "Hyperlink"])),
+  displayText: Schema.optional(
+    Schema.Struct({
+      value: Schema.optional(Schema.String),
+      localizedValue: Schema.optional(Schema.String),
+    }),
+  ),
+  extensionName: Schema.optional(Schema.String),
+  bladeName: Schema.optional(Schema.String),
+  parameters: Schema.optional(Schema.Unknown),
+});
+const impactSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  impactedService: Schema.optional(Schema.String),
+  impactedServiceGuid: Schema.optional(Schema.String),
+  impactedRegions: Schema.optional(
+    Schema.Array(Schema.suspend(() => impactedServiceRegionSchema)),
+  ),
+});
+const impactedServiceRegionSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  impactedRegion: Schema.optional(Schema.String),
+  status: Schema.optional(Schema.Literals(["Active", "Resolved"])),
+  impactedSubscriptions: Schema.optional(Schema.Array(Schema.String)),
+  impactedTenants: Schema.optional(Schema.Array(Schema.String)),
+  lastUpdateTime: Schema.optional(Schema.String),
+  updates: Schema.optional(Schema.Array(Schema.suspend(() => updateSchema))),
+});
+const updateSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  summary: Schema.optional(Schema.String),
+  updateDateTime: Schema.optional(Schema.String),
+  eventTags: Schema.optional(Schema.suspend(() => eventTagsSchema)),
+});
+const eventTagsSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Array(Schema.String);
+const faqSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  question: Schema.optional(Schema.String),
+  answer: Schema.optional(Schema.String),
+  localeCode: Schema.optional(Schema.String),
+});
+const emergingIssuesGetResultSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+  },
+);
+const emergingIssueSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  refreshTimestamp: Schema.optional(Schema.String),
+  statusBanners: Schema.optional(
+    Schema.Array(Schema.suspend(() => statusBannerSchema)),
+  ),
+  statusActiveEvents: Schema.optional(
+    Schema.Array(Schema.suspend(() => statusActiveEventSchema)),
+  ),
+});
+const statusBannerSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  title: Schema.optional(Schema.String),
+  message: Schema.optional(Schema.String),
+  cloud: Schema.optional(Schema.String),
+  lastModifiedTime: Schema.optional(Schema.String),
+});
+const statusActiveEventSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  title: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+  trackingId: Schema.optional(Schema.String),
+  startTime: Schema.optional(Schema.String),
+  cloud: Schema.optional(Schema.String),
+  severity: Schema.optional(
+    Schema.Literals(["Information", "Warning", "Error"]),
+  ),
+  stage: Schema.optional(Schema.Literals(["Active", "Resolve", "Archived"])),
+  published: Schema.optional(Schema.Boolean),
+  lastModifiedTime: Schema.optional(Schema.String),
+  impacts: Schema.optional(
+    Schema.Array(Schema.suspend(() => emergingIssueImpactSchema)),
+  ),
+});
+const emergingIssueImpactSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  regions: Schema.optional(
+    Schema.Array(Schema.suspend(() => impactedRegionSchema)),
+  ),
+});
+const impactedRegionSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+});
+
 // Input Schema
 export const AvailabilityStatusesGetByResourceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -60,36 +283,10 @@ export const AvailabilityStatusesGetByResourceOutput =
           }),
         ),
         recommendedActions: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              action: Schema.optional(Schema.String),
-              actionUrl: Schema.optional(Schema.String),
-              "_ActionUrl.Comment": Schema.optional(Schema.String),
-              actionUrlText: Schema.optional(Schema.String),
-            }),
-          ),
+          Schema.Array(Schema.suspend(() => recommendedActionSchema)),
         ),
         serviceImpactingEvents: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              eventStartTime: Schema.optional(Schema.String),
-              eventStatusLastModifiedTime: Schema.optional(Schema.String),
-              correlationId: Schema.optional(Schema.String),
-              status: Schema.optional(
-                Schema.Struct({
-                  value: Schema.optional(Schema.String),
-                }),
-              ),
-              incidentProperties: Schema.optional(
-                Schema.Struct({
-                  title: Schema.optional(Schema.String),
-                  service: Schema.optional(Schema.String),
-                  region: Schema.optional(Schema.String),
-                  incidentType: Schema.optional(Schema.String),
-                }),
-              ),
-            }),
-          ),
+          Schema.Array(Schema.suspend(() => serviceImpactingEventSchema)),
         ),
       }),
     ),
@@ -126,83 +323,7 @@ export type AvailabilityStatusesListInput =
 // Output Schema
 export const AvailabilityStatusesListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        location: Schema.optional(Schema.String),
-        properties: Schema.optional(
-          Schema.Struct({
-            availabilityState: Schema.optional(
-              Schema.Literals([
-                "Available",
-                "Unavailable",
-                "Degraded",
-                "Unknown",
-              ]),
-            ),
-            title: Schema.optional(Schema.String),
-            summary: Schema.optional(Schema.String),
-            detailedStatus: Schema.optional(Schema.String),
-            reasonType: Schema.optional(Schema.String),
-            context: Schema.optional(Schema.String),
-            category: Schema.optional(Schema.String),
-            articleId: Schema.optional(Schema.String),
-            rootCauseAttributionTime: Schema.optional(Schema.String),
-            healthEventType: Schema.optional(Schema.String),
-            healthEventCause: Schema.optional(Schema.String),
-            healthEventCategory: Schema.optional(Schema.String),
-            healthEventId: Schema.optional(Schema.String),
-            resolutionETA: Schema.optional(Schema.String),
-            occuredTime: Schema.optional(Schema.String),
-            reasonChronicity: Schema.optional(
-              Schema.Literals(["Transient", "Persistent"]),
-            ),
-            reportedTime: Schema.optional(Schema.String),
-            recentlyResolved: Schema.optional(
-              Schema.Struct({
-                unavailableOccuredTime: Schema.optional(Schema.String),
-                resolvedTime: Schema.optional(Schema.String),
-                unavailableSummary: Schema.optional(Schema.String),
-              }),
-            ),
-            recommendedActions: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  action: Schema.optional(Schema.String),
-                  actionUrl: Schema.optional(Schema.String),
-                  "_ActionUrl.Comment": Schema.optional(Schema.String),
-                  actionUrlText: Schema.optional(Schema.String),
-                }),
-              ),
-            ),
-            serviceImpactingEvents: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  eventStartTime: Schema.optional(Schema.String),
-                  eventStatusLastModifiedTime: Schema.optional(Schema.String),
-                  correlationId: Schema.optional(Schema.String),
-                  status: Schema.optional(
-                    Schema.Struct({
-                      value: Schema.optional(Schema.String),
-                    }),
-                  ),
-                  incidentProperties: Schema.optional(
-                    Schema.Struct({
-                      title: Schema.optional(Schema.String),
-                      service: Schema.optional(Schema.String),
-                      region: Schema.optional(Schema.String),
-                      incidentType: Schema.optional(Schema.String),
-                    }),
-                  ),
-                }),
-              ),
-            ),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => availabilityStatusSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type AvailabilityStatusesListOutput =
@@ -239,83 +360,7 @@ export type AvailabilityStatusesListByResourceGroupInput =
 // Output Schema
 export const AvailabilityStatusesListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        location: Schema.optional(Schema.String),
-        properties: Schema.optional(
-          Schema.Struct({
-            availabilityState: Schema.optional(
-              Schema.Literals([
-                "Available",
-                "Unavailable",
-                "Degraded",
-                "Unknown",
-              ]),
-            ),
-            title: Schema.optional(Schema.String),
-            summary: Schema.optional(Schema.String),
-            detailedStatus: Schema.optional(Schema.String),
-            reasonType: Schema.optional(Schema.String),
-            context: Schema.optional(Schema.String),
-            category: Schema.optional(Schema.String),
-            articleId: Schema.optional(Schema.String),
-            rootCauseAttributionTime: Schema.optional(Schema.String),
-            healthEventType: Schema.optional(Schema.String),
-            healthEventCause: Schema.optional(Schema.String),
-            healthEventCategory: Schema.optional(Schema.String),
-            healthEventId: Schema.optional(Schema.String),
-            resolutionETA: Schema.optional(Schema.String),
-            occuredTime: Schema.optional(Schema.String),
-            reasonChronicity: Schema.optional(
-              Schema.Literals(["Transient", "Persistent"]),
-            ),
-            reportedTime: Schema.optional(Schema.String),
-            recentlyResolved: Schema.optional(
-              Schema.Struct({
-                unavailableOccuredTime: Schema.optional(Schema.String),
-                resolvedTime: Schema.optional(Schema.String),
-                unavailableSummary: Schema.optional(Schema.String),
-              }),
-            ),
-            recommendedActions: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  action: Schema.optional(Schema.String),
-                  actionUrl: Schema.optional(Schema.String),
-                  "_ActionUrl.Comment": Schema.optional(Schema.String),
-                  actionUrlText: Schema.optional(Schema.String),
-                }),
-              ),
-            ),
-            serviceImpactingEvents: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  eventStartTime: Schema.optional(Schema.String),
-                  eventStatusLastModifiedTime: Schema.optional(Schema.String),
-                  correlationId: Schema.optional(Schema.String),
-                  status: Schema.optional(
-                    Schema.Struct({
-                      value: Schema.optional(Schema.String),
-                    }),
-                  ),
-                  incidentProperties: Schema.optional(
-                    Schema.Struct({
-                      title: Schema.optional(Schema.String),
-                      service: Schema.optional(Schema.String),
-                      region: Schema.optional(Schema.String),
-                      incidentType: Schema.optional(Schema.String),
-                    }),
-                  ),
-                }),
-              ),
-            ),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => availabilityStatusSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type AvailabilityStatusesListByResourceGroupOutput =
@@ -351,83 +396,7 @@ export type AvailabilityStatusesListBySubscriptionIdInput =
 // Output Schema
 export const AvailabilityStatusesListBySubscriptionIdOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        location: Schema.optional(Schema.String),
-        properties: Schema.optional(
-          Schema.Struct({
-            availabilityState: Schema.optional(
-              Schema.Literals([
-                "Available",
-                "Unavailable",
-                "Degraded",
-                "Unknown",
-              ]),
-            ),
-            title: Schema.optional(Schema.String),
-            summary: Schema.optional(Schema.String),
-            detailedStatus: Schema.optional(Schema.String),
-            reasonType: Schema.optional(Schema.String),
-            context: Schema.optional(Schema.String),
-            category: Schema.optional(Schema.String),
-            articleId: Schema.optional(Schema.String),
-            rootCauseAttributionTime: Schema.optional(Schema.String),
-            healthEventType: Schema.optional(Schema.String),
-            healthEventCause: Schema.optional(Schema.String),
-            healthEventCategory: Schema.optional(Schema.String),
-            healthEventId: Schema.optional(Schema.String),
-            resolutionETA: Schema.optional(Schema.String),
-            occuredTime: Schema.optional(Schema.String),
-            reasonChronicity: Schema.optional(
-              Schema.Literals(["Transient", "Persistent"]),
-            ),
-            reportedTime: Schema.optional(Schema.String),
-            recentlyResolved: Schema.optional(
-              Schema.Struct({
-                unavailableOccuredTime: Schema.optional(Schema.String),
-                resolvedTime: Schema.optional(Schema.String),
-                unavailableSummary: Schema.optional(Schema.String),
-              }),
-            ),
-            recommendedActions: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  action: Schema.optional(Schema.String),
-                  actionUrl: Schema.optional(Schema.String),
-                  "_ActionUrl.Comment": Schema.optional(Schema.String),
-                  actionUrlText: Schema.optional(Schema.String),
-                }),
-              ),
-            ),
-            serviceImpactingEvents: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  eventStartTime: Schema.optional(Schema.String),
-                  eventStatusLastModifiedTime: Schema.optional(Schema.String),
-                  correlationId: Schema.optional(Schema.String),
-                  status: Schema.optional(
-                    Schema.Struct({
-                      value: Schema.optional(Schema.String),
-                    }),
-                  ),
-                  incidentProperties: Schema.optional(
-                    Schema.Struct({
-                      title: Schema.optional(Schema.String),
-                      service: Schema.optional(Schema.String),
-                      region: Schema.optional(Schema.String),
-                      incidentType: Schema.optional(Schema.String),
-                    }),
-                  ),
-                }),
-              ),
-            ),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => availabilityStatusSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type AvailabilityStatusesListBySubscriptionIdOutput =
@@ -497,36 +466,10 @@ export const ChildAvailabilityStatusesGetByResourceOutput =
           }),
         ),
         recommendedActions: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              action: Schema.optional(Schema.String),
-              actionUrl: Schema.optional(Schema.String),
-              "_ActionUrl.Comment": Schema.optional(Schema.String),
-              actionUrlText: Schema.optional(Schema.String),
-            }),
-          ),
+          Schema.Array(Schema.suspend(() => recommendedActionSchema)),
         ),
         serviceImpactingEvents: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              eventStartTime: Schema.optional(Schema.String),
-              eventStatusLastModifiedTime: Schema.optional(Schema.String),
-              correlationId: Schema.optional(Schema.String),
-              status: Schema.optional(
-                Schema.Struct({
-                  value: Schema.optional(Schema.String),
-                }),
-              ),
-              incidentProperties: Schema.optional(
-                Schema.Struct({
-                  title: Schema.optional(Schema.String),
-                  service: Schema.optional(Schema.String),
-                  region: Schema.optional(Schema.String),
-                  incidentType: Schema.optional(Schema.String),
-                }),
-              ),
-            }),
-          ),
+          Schema.Array(Schema.suspend(() => serviceImpactingEventSchema)),
         ),
       }),
     ),
@@ -563,83 +506,7 @@ export type ChildAvailabilityStatusesListInput =
 // Output Schema
 export const ChildAvailabilityStatusesListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        location: Schema.optional(Schema.String),
-        properties: Schema.optional(
-          Schema.Struct({
-            availabilityState: Schema.optional(
-              Schema.Literals([
-                "Available",
-                "Unavailable",
-                "Degraded",
-                "Unknown",
-              ]),
-            ),
-            title: Schema.optional(Schema.String),
-            summary: Schema.optional(Schema.String),
-            detailedStatus: Schema.optional(Schema.String),
-            reasonType: Schema.optional(Schema.String),
-            context: Schema.optional(Schema.String),
-            category: Schema.optional(Schema.String),
-            articleId: Schema.optional(Schema.String),
-            rootCauseAttributionTime: Schema.optional(Schema.String),
-            healthEventType: Schema.optional(Schema.String),
-            healthEventCause: Schema.optional(Schema.String),
-            healthEventCategory: Schema.optional(Schema.String),
-            healthEventId: Schema.optional(Schema.String),
-            resolutionETA: Schema.optional(Schema.String),
-            occuredTime: Schema.optional(Schema.String),
-            reasonChronicity: Schema.optional(
-              Schema.Literals(["Transient", "Persistent"]),
-            ),
-            reportedTime: Schema.optional(Schema.String),
-            recentlyResolved: Schema.optional(
-              Schema.Struct({
-                unavailableOccuredTime: Schema.optional(Schema.String),
-                resolvedTime: Schema.optional(Schema.String),
-                unavailableSummary: Schema.optional(Schema.String),
-              }),
-            ),
-            recommendedActions: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  action: Schema.optional(Schema.String),
-                  actionUrl: Schema.optional(Schema.String),
-                  "_ActionUrl.Comment": Schema.optional(Schema.String),
-                  actionUrlText: Schema.optional(Schema.String),
-                }),
-              ),
-            ),
-            serviceImpactingEvents: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  eventStartTime: Schema.optional(Schema.String),
-                  eventStatusLastModifiedTime: Schema.optional(Schema.String),
-                  correlationId: Schema.optional(Schema.String),
-                  status: Schema.optional(
-                    Schema.Struct({
-                      value: Schema.optional(Schema.String),
-                    }),
-                  ),
-                  incidentProperties: Schema.optional(
-                    Schema.Struct({
-                      title: Schema.optional(Schema.String),
-                      service: Schema.optional(Schema.String),
-                      region: Schema.optional(Schema.String),
-                      incidentType: Schema.optional(Schema.String),
-                    }),
-                  ),
-                }),
-              ),
-            ),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => availabilityStatusSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type ChildAvailabilityStatusesListOutput =
@@ -673,83 +540,7 @@ export type ChildResourcesListInput = typeof ChildResourcesListInput.Type;
 // Output Schema
 export const ChildResourcesListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        location: Schema.optional(Schema.String),
-        properties: Schema.optional(
-          Schema.Struct({
-            availabilityState: Schema.optional(
-              Schema.Literals([
-                "Available",
-                "Unavailable",
-                "Degraded",
-                "Unknown",
-              ]),
-            ),
-            title: Schema.optional(Schema.String),
-            summary: Schema.optional(Schema.String),
-            detailedStatus: Schema.optional(Schema.String),
-            reasonType: Schema.optional(Schema.String),
-            context: Schema.optional(Schema.String),
-            category: Schema.optional(Schema.String),
-            articleId: Schema.optional(Schema.String),
-            rootCauseAttributionTime: Schema.optional(Schema.String),
-            healthEventType: Schema.optional(Schema.String),
-            healthEventCause: Schema.optional(Schema.String),
-            healthEventCategory: Schema.optional(Schema.String),
-            healthEventId: Schema.optional(Schema.String),
-            resolutionETA: Schema.optional(Schema.String),
-            occuredTime: Schema.optional(Schema.String),
-            reasonChronicity: Schema.optional(
-              Schema.Literals(["Transient", "Persistent"]),
-            ),
-            reportedTime: Schema.optional(Schema.String),
-            recentlyResolved: Schema.optional(
-              Schema.Struct({
-                unavailableOccuredTime: Schema.optional(Schema.String),
-                resolvedTime: Schema.optional(Schema.String),
-                unavailableSummary: Schema.optional(Schema.String),
-              }),
-            ),
-            recommendedActions: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  action: Schema.optional(Schema.String),
-                  actionUrl: Schema.optional(Schema.String),
-                  "_ActionUrl.Comment": Schema.optional(Schema.String),
-                  actionUrlText: Schema.optional(Schema.String),
-                }),
-              ),
-            ),
-            serviceImpactingEvents: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  eventStartTime: Schema.optional(Schema.String),
-                  eventStatusLastModifiedTime: Schema.optional(Schema.String),
-                  correlationId: Schema.optional(Schema.String),
-                  status: Schema.optional(
-                    Schema.Struct({
-                      value: Schema.optional(Schema.String),
-                    }),
-                  ),
-                  incidentProperties: Schema.optional(
-                    Schema.Struct({
-                      title: Schema.optional(Schema.String),
-                      service: Schema.optional(Schema.String),
-                      region: Schema.optional(Schema.String),
-                      incidentType: Schema.optional(Schema.String),
-                    }),
-                  ),
-                }),
-              ),
-            ),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => availabilityStatusSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type ChildResourcesListOutput = typeof ChildResourcesListOutput.Type;
@@ -780,23 +571,11 @@ export type EmergingIssuesGetInput = typeof EmergingIssuesGetInput.Type;
 // Output Schema
 export const EmergingIssuesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(Schema.suspend(() => emergingIssueSchema)),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type EmergingIssuesGetOutput = typeof EmergingIssuesGetOutput.Type;
 
@@ -825,37 +604,7 @@ export type EmergingIssuesListInput = typeof EmergingIssuesListInput.Type;
 export const EmergingIssuesListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.String),
-              createdByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              createdAt: Schema.optional(Schema.String),
-              lastModifiedBy: Schema.optional(Schema.String),
-              lastModifiedByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              lastModifiedAt: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => emergingIssuesGetResultSchema)),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -888,23 +637,99 @@ export type EventFetchBilllingCommunicationDetailsBySubscriptionIdAndTrackingIdI
 // Output Schema
 export const EventFetchBilllingCommunicationDetailsBySubscriptionIdAndTrackingIdOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.Struct({
+        eventType: Schema.optional(
+          Schema.Literals([
+            "ServiceIssue",
+            "PlannedMaintenance",
+            "HealthAdvisory",
+            "RCA",
+            "EmergingIssues",
+            "SecurityAdvisory",
+            "Billing",
+          ]),
+        ),
+        eventSubType: Schema.optional(
+          Schema.Literals([
+            "Retirement",
+            "ForeignExchangeRateChange",
+            "Underbilling",
+            "Overbilling",
+            "PriceChanges",
+            "TaxChanges",
+            "MeterIDChanges",
+            "UnauthorizedPartyAbuse",
+          ]),
+        ),
+        eventSource: Schema.optional(
+          Schema.Literals(["ResourceHealth", "ServiceHealth"]),
+        ),
+        status: Schema.optional(Schema.Literals(["Active", "Resolved"])),
+        title: Schema.optional(Schema.String),
+        summary: Schema.optional(Schema.String),
+        header: Schema.optional(Schema.String),
+        level: Schema.optional(Schema.Literals(["Critical", "Warning"])),
+        eventLevel: Schema.optional(
+          Schema.Literals(["Critical", "Error", "Warning", "Informational"]),
+        ),
+        isEventSensitive: Schema.optional(Schema.Boolean),
+        externalIncidentId: Schema.optional(Schema.String),
+        reason: Schema.optional(Schema.String),
+        article: Schema.optional(
+          Schema.Struct({
+            articleContent: Schema.optional(Schema.String),
+            articleId: Schema.optional(Schema.String),
+            parameters: Schema.optional(Schema.Unknown),
+          }),
+        ),
+        links: Schema.optional(Schema.Array(Schema.suspend(() => linkSchema))),
+        impactStartTime: Schema.optional(Schema.String),
+        impactMitigationTime: Schema.optional(Schema.String),
+        impact: Schema.optional(
+          Schema.Array(Schema.suspend(() => impactSchema)),
+        ),
+        recommendedActions: Schema.optional(
+          Schema.Struct({
+            message: Schema.optional(Schema.String),
+            actions: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  groupId: Schema.optional(Schema.Number),
+                  actionText: Schema.optional(Schema.String),
+                }),
+              ),
+            ),
+            localeCode: Schema.optional(Schema.String),
+          }),
+        ),
+        faqs: Schema.optional(Schema.Array(Schema.suspend(() => faqSchema))),
+        isHIR: Schema.optional(Schema.Boolean),
+        enableMicrosoftSupport: Schema.optional(Schema.Boolean),
+        description: Schema.optional(Schema.String),
+        platformInitiated: Schema.optional(Schema.Boolean),
+        enableChatWithUs: Schema.optional(Schema.Boolean),
+        priority: Schema.optional(Schema.Number),
+        lastUpdateTime: Schema.optional(Schema.String),
+        hirStage: Schema.optional(Schema.String),
+        additionalInformation: Schema.optional(
+          Schema.Struct({
+            message: Schema.optional(Schema.String),
+          }),
+        ),
+        duration: Schema.optional(Schema.Number),
+        impactType: Schema.optional(Schema.String),
+        eventTags: Schema.optional(Schema.suspend(() => eventTagsSchema)),
+        newRate: Schema.optional(Schema.Number),
+        oldRate: Schema.optional(Schema.Number),
+        currencyType: Schema.optional(Schema.String),
+        billingId: Schema.optional(Schema.String),
+      }),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type EventFetchBilllingCommunicationDetailsBySubscriptionIdAndTrackingIdOutput =
   typeof EventFetchBilllingCommunicationDetailsBySubscriptionIdAndTrackingIdOutput.Type;
@@ -940,23 +765,99 @@ export type EventFetchDetailsBySubscriptionIdAndTrackingIdInput =
 // Output Schema
 export const EventFetchDetailsBySubscriptionIdAndTrackingIdOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.Struct({
+        eventType: Schema.optional(
+          Schema.Literals([
+            "ServiceIssue",
+            "PlannedMaintenance",
+            "HealthAdvisory",
+            "RCA",
+            "EmergingIssues",
+            "SecurityAdvisory",
+            "Billing",
+          ]),
+        ),
+        eventSubType: Schema.optional(
+          Schema.Literals([
+            "Retirement",
+            "ForeignExchangeRateChange",
+            "Underbilling",
+            "Overbilling",
+            "PriceChanges",
+            "TaxChanges",
+            "MeterIDChanges",
+            "UnauthorizedPartyAbuse",
+          ]),
+        ),
+        eventSource: Schema.optional(
+          Schema.Literals(["ResourceHealth", "ServiceHealth"]),
+        ),
+        status: Schema.optional(Schema.Literals(["Active", "Resolved"])),
+        title: Schema.optional(Schema.String),
+        summary: Schema.optional(Schema.String),
+        header: Schema.optional(Schema.String),
+        level: Schema.optional(Schema.Literals(["Critical", "Warning"])),
+        eventLevel: Schema.optional(
+          Schema.Literals(["Critical", "Error", "Warning", "Informational"]),
+        ),
+        isEventSensitive: Schema.optional(Schema.Boolean),
+        externalIncidentId: Schema.optional(Schema.String),
+        reason: Schema.optional(Schema.String),
+        article: Schema.optional(
+          Schema.Struct({
+            articleContent: Schema.optional(Schema.String),
+            articleId: Schema.optional(Schema.String),
+            parameters: Schema.optional(Schema.Unknown),
+          }),
+        ),
+        links: Schema.optional(Schema.Array(Schema.suspend(() => linkSchema))),
+        impactStartTime: Schema.optional(Schema.String),
+        impactMitigationTime: Schema.optional(Schema.String),
+        impact: Schema.optional(
+          Schema.Array(Schema.suspend(() => impactSchema)),
+        ),
+        recommendedActions: Schema.optional(
+          Schema.Struct({
+            message: Schema.optional(Schema.String),
+            actions: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  groupId: Schema.optional(Schema.Number),
+                  actionText: Schema.optional(Schema.String),
+                }),
+              ),
+            ),
+            localeCode: Schema.optional(Schema.String),
+          }),
+        ),
+        faqs: Schema.optional(Schema.Array(Schema.suspend(() => faqSchema))),
+        isHIR: Schema.optional(Schema.Boolean),
+        enableMicrosoftSupport: Schema.optional(Schema.Boolean),
+        description: Schema.optional(Schema.String),
+        platformInitiated: Schema.optional(Schema.Boolean),
+        enableChatWithUs: Schema.optional(Schema.Boolean),
+        priority: Schema.optional(Schema.Number),
+        lastUpdateTime: Schema.optional(Schema.String),
+        hirStage: Schema.optional(Schema.String),
+        additionalInformation: Schema.optional(
+          Schema.Struct({
+            message: Schema.optional(Schema.String),
+          }),
+        ),
+        duration: Schema.optional(Schema.Number),
+        impactType: Schema.optional(Schema.String),
+        eventTags: Schema.optional(Schema.suspend(() => eventTagsSchema)),
+        newRate: Schema.optional(Schema.Number),
+        oldRate: Schema.optional(Schema.Number),
+        currencyType: Schema.optional(Schema.String),
+        billingId: Schema.optional(Schema.String),
+      }),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type EventFetchDetailsBySubscriptionIdAndTrackingIdOutput =
   typeof EventFetchDetailsBySubscriptionIdAndTrackingIdOutput.Type;
@@ -988,23 +889,99 @@ export type EventFetchDetailsByTenantIdAndTrackingIdInput =
 // Output Schema
 export const EventFetchDetailsByTenantIdAndTrackingIdOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.Struct({
+        eventType: Schema.optional(
+          Schema.Literals([
+            "ServiceIssue",
+            "PlannedMaintenance",
+            "HealthAdvisory",
+            "RCA",
+            "EmergingIssues",
+            "SecurityAdvisory",
+            "Billing",
+          ]),
+        ),
+        eventSubType: Schema.optional(
+          Schema.Literals([
+            "Retirement",
+            "ForeignExchangeRateChange",
+            "Underbilling",
+            "Overbilling",
+            "PriceChanges",
+            "TaxChanges",
+            "MeterIDChanges",
+            "UnauthorizedPartyAbuse",
+          ]),
+        ),
+        eventSource: Schema.optional(
+          Schema.Literals(["ResourceHealth", "ServiceHealth"]),
+        ),
+        status: Schema.optional(Schema.Literals(["Active", "Resolved"])),
+        title: Schema.optional(Schema.String),
+        summary: Schema.optional(Schema.String),
+        header: Schema.optional(Schema.String),
+        level: Schema.optional(Schema.Literals(["Critical", "Warning"])),
+        eventLevel: Schema.optional(
+          Schema.Literals(["Critical", "Error", "Warning", "Informational"]),
+        ),
+        isEventSensitive: Schema.optional(Schema.Boolean),
+        externalIncidentId: Schema.optional(Schema.String),
+        reason: Schema.optional(Schema.String),
+        article: Schema.optional(
+          Schema.Struct({
+            articleContent: Schema.optional(Schema.String),
+            articleId: Schema.optional(Schema.String),
+            parameters: Schema.optional(Schema.Unknown),
+          }),
+        ),
+        links: Schema.optional(Schema.Array(Schema.suspend(() => linkSchema))),
+        impactStartTime: Schema.optional(Schema.String),
+        impactMitigationTime: Schema.optional(Schema.String),
+        impact: Schema.optional(
+          Schema.Array(Schema.suspend(() => impactSchema)),
+        ),
+        recommendedActions: Schema.optional(
+          Schema.Struct({
+            message: Schema.optional(Schema.String),
+            actions: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  groupId: Schema.optional(Schema.Number),
+                  actionText: Schema.optional(Schema.String),
+                }),
+              ),
+            ),
+            localeCode: Schema.optional(Schema.String),
+          }),
+        ),
+        faqs: Schema.optional(Schema.Array(Schema.suspend(() => faqSchema))),
+        isHIR: Schema.optional(Schema.Boolean),
+        enableMicrosoftSupport: Schema.optional(Schema.Boolean),
+        description: Schema.optional(Schema.String),
+        platformInitiated: Schema.optional(Schema.Boolean),
+        enableChatWithUs: Schema.optional(Schema.Boolean),
+        priority: Schema.optional(Schema.Number),
+        lastUpdateTime: Schema.optional(Schema.String),
+        hirStage: Schema.optional(Schema.String),
+        additionalInformation: Schema.optional(
+          Schema.Struct({
+            message: Schema.optional(Schema.String),
+          }),
+        ),
+        duration: Schema.optional(Schema.Number),
+        impactType: Schema.optional(Schema.String),
+        eventTags: Schema.optional(Schema.suspend(() => eventTagsSchema)),
+        newRate: Schema.optional(Schema.Number),
+        oldRate: Schema.optional(Schema.Number),
+        currencyType: Schema.optional(Schema.String),
+        billingId: Schema.optional(Schema.String),
+      }),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type EventFetchDetailsByTenantIdAndTrackingIdOutput =
   typeof EventFetchDetailsByTenantIdAndTrackingIdOutput.Type;
@@ -1037,23 +1014,99 @@ export type EventGetBySubscriptionIdAndTrackingIdInput =
 // Output Schema
 export const EventGetBySubscriptionIdAndTrackingIdOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.Struct({
+        eventType: Schema.optional(
+          Schema.Literals([
+            "ServiceIssue",
+            "PlannedMaintenance",
+            "HealthAdvisory",
+            "RCA",
+            "EmergingIssues",
+            "SecurityAdvisory",
+            "Billing",
+          ]),
+        ),
+        eventSubType: Schema.optional(
+          Schema.Literals([
+            "Retirement",
+            "ForeignExchangeRateChange",
+            "Underbilling",
+            "Overbilling",
+            "PriceChanges",
+            "TaxChanges",
+            "MeterIDChanges",
+            "UnauthorizedPartyAbuse",
+          ]),
+        ),
+        eventSource: Schema.optional(
+          Schema.Literals(["ResourceHealth", "ServiceHealth"]),
+        ),
+        status: Schema.optional(Schema.Literals(["Active", "Resolved"])),
+        title: Schema.optional(Schema.String),
+        summary: Schema.optional(Schema.String),
+        header: Schema.optional(Schema.String),
+        level: Schema.optional(Schema.Literals(["Critical", "Warning"])),
+        eventLevel: Schema.optional(
+          Schema.Literals(["Critical", "Error", "Warning", "Informational"]),
+        ),
+        isEventSensitive: Schema.optional(Schema.Boolean),
+        externalIncidentId: Schema.optional(Schema.String),
+        reason: Schema.optional(Schema.String),
+        article: Schema.optional(
+          Schema.Struct({
+            articleContent: Schema.optional(Schema.String),
+            articleId: Schema.optional(Schema.String),
+            parameters: Schema.optional(Schema.Unknown),
+          }),
+        ),
+        links: Schema.optional(Schema.Array(Schema.suspend(() => linkSchema))),
+        impactStartTime: Schema.optional(Schema.String),
+        impactMitigationTime: Schema.optional(Schema.String),
+        impact: Schema.optional(
+          Schema.Array(Schema.suspend(() => impactSchema)),
+        ),
+        recommendedActions: Schema.optional(
+          Schema.Struct({
+            message: Schema.optional(Schema.String),
+            actions: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  groupId: Schema.optional(Schema.Number),
+                  actionText: Schema.optional(Schema.String),
+                }),
+              ),
+            ),
+            localeCode: Schema.optional(Schema.String),
+          }),
+        ),
+        faqs: Schema.optional(Schema.Array(Schema.suspend(() => faqSchema))),
+        isHIR: Schema.optional(Schema.Boolean),
+        enableMicrosoftSupport: Schema.optional(Schema.Boolean),
+        description: Schema.optional(Schema.String),
+        platformInitiated: Schema.optional(Schema.Boolean),
+        enableChatWithUs: Schema.optional(Schema.Boolean),
+        priority: Schema.optional(Schema.Number),
+        lastUpdateTime: Schema.optional(Schema.String),
+        hirStage: Schema.optional(Schema.String),
+        additionalInformation: Schema.optional(
+          Schema.Struct({
+            message: Schema.optional(Schema.String),
+          }),
+        ),
+        duration: Schema.optional(Schema.Number),
+        impactType: Schema.optional(Schema.String),
+        eventTags: Schema.optional(Schema.suspend(() => eventTagsSchema)),
+        newRate: Schema.optional(Schema.Number),
+        oldRate: Schema.optional(Schema.Number),
+        currencyType: Schema.optional(Schema.String),
+        billingId: Schema.optional(Schema.String),
+      }),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type EventGetBySubscriptionIdAndTrackingIdOutput =
   typeof EventGetBySubscriptionIdAndTrackingIdOutput.Type;
@@ -1085,23 +1138,99 @@ export type EventGetByTenantIdAndTrackingIdInput =
 // Output Schema
 export const EventGetByTenantIdAndTrackingIdOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.Struct({
+        eventType: Schema.optional(
+          Schema.Literals([
+            "ServiceIssue",
+            "PlannedMaintenance",
+            "HealthAdvisory",
+            "RCA",
+            "EmergingIssues",
+            "SecurityAdvisory",
+            "Billing",
+          ]),
+        ),
+        eventSubType: Schema.optional(
+          Schema.Literals([
+            "Retirement",
+            "ForeignExchangeRateChange",
+            "Underbilling",
+            "Overbilling",
+            "PriceChanges",
+            "TaxChanges",
+            "MeterIDChanges",
+            "UnauthorizedPartyAbuse",
+          ]),
+        ),
+        eventSource: Schema.optional(
+          Schema.Literals(["ResourceHealth", "ServiceHealth"]),
+        ),
+        status: Schema.optional(Schema.Literals(["Active", "Resolved"])),
+        title: Schema.optional(Schema.String),
+        summary: Schema.optional(Schema.String),
+        header: Schema.optional(Schema.String),
+        level: Schema.optional(Schema.Literals(["Critical", "Warning"])),
+        eventLevel: Schema.optional(
+          Schema.Literals(["Critical", "Error", "Warning", "Informational"]),
+        ),
+        isEventSensitive: Schema.optional(Schema.Boolean),
+        externalIncidentId: Schema.optional(Schema.String),
+        reason: Schema.optional(Schema.String),
+        article: Schema.optional(
+          Schema.Struct({
+            articleContent: Schema.optional(Schema.String),
+            articleId: Schema.optional(Schema.String),
+            parameters: Schema.optional(Schema.Unknown),
+          }),
+        ),
+        links: Schema.optional(Schema.Array(Schema.suspend(() => linkSchema))),
+        impactStartTime: Schema.optional(Schema.String),
+        impactMitigationTime: Schema.optional(Schema.String),
+        impact: Schema.optional(
+          Schema.Array(Schema.suspend(() => impactSchema)),
+        ),
+        recommendedActions: Schema.optional(
+          Schema.Struct({
+            message: Schema.optional(Schema.String),
+            actions: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  groupId: Schema.optional(Schema.Number),
+                  actionText: Schema.optional(Schema.String),
+                }),
+              ),
+            ),
+            localeCode: Schema.optional(Schema.String),
+          }),
+        ),
+        faqs: Schema.optional(Schema.Array(Schema.suspend(() => faqSchema))),
+        isHIR: Schema.optional(Schema.Boolean),
+        enableMicrosoftSupport: Schema.optional(Schema.Boolean),
+        description: Schema.optional(Schema.String),
+        platformInitiated: Schema.optional(Schema.Boolean),
+        enableChatWithUs: Schema.optional(Schema.Boolean),
+        priority: Schema.optional(Schema.Number),
+        lastUpdateTime: Schema.optional(Schema.String),
+        hirStage: Schema.optional(Schema.String),
+        additionalInformation: Schema.optional(
+          Schema.Struct({
+            message: Schema.optional(Schema.String),
+          }),
+        ),
+        duration: Schema.optional(Schema.Number),
+        impactType: Schema.optional(Schema.String),
+        eventTags: Schema.optional(Schema.suspend(() => eventTagsSchema)),
+        newRate: Schema.optional(Schema.Number),
+        oldRate: Schema.optional(Schema.Number),
+        currencyType: Schema.optional(Schema.String),
+        billingId: Schema.optional(Schema.String),
+      }),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type EventGetByTenantIdAndTrackingIdOutput =
   typeof EventGetByTenantIdAndTrackingIdOutput.Type;
@@ -1134,37 +1263,7 @@ export type EventsListBySingleResourceInput =
 // Output Schema
 export const EventsListBySingleResourceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => eventSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type EventsListBySingleResourceOutput =
@@ -1200,37 +1299,7 @@ export type EventsListBySubscriptionIdInput =
 // Output Schema
 export const EventsListBySubscriptionIdOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => eventSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type EventsListBySubscriptionIdOutput =
@@ -1263,37 +1332,7 @@ export type EventsListByTenantIdInput = typeof EventsListByTenantIdInput.Type;
 // Output Schema
 export const EventsListByTenantIdOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => eventSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type EventsListByTenantIdOutput = typeof EventsListByTenantIdOutput.Type;
@@ -1326,23 +1365,20 @@ export type ImpactedResourcesGetInput = typeof ImpactedResourcesGetInput.Type;
 // Output Schema
 export const ImpactedResourcesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.Struct({
+        targetResourceType: Schema.optional(Schema.String),
+        targetResourceId: Schema.optional(Schema.String),
+        targetRegion: Schema.optional(Schema.String),
+        info: Schema.optional(
+          Schema.Array(Schema.suspend(() => keyValueItemSchema)),
+        ),
+      }),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type ImpactedResourcesGetOutput = typeof ImpactedResourcesGetOutput.Type;
 
@@ -1374,23 +1410,20 @@ export type ImpactedResourcesGetByTenantIdInput =
 // Output Schema
 export const ImpactedResourcesGetByTenantIdOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.Struct({
+        targetResourceType: Schema.optional(Schema.String),
+        targetResourceId: Schema.optional(Schema.String),
+        targetRegion: Schema.optional(Schema.String),
+        info: Schema.optional(
+          Schema.Array(Schema.suspend(() => keyValueItemSchema)),
+        ),
+      }),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type ImpactedResourcesGetByTenantIdOutput =
   typeof ImpactedResourcesGetByTenantIdOutput.Type;
@@ -1423,37 +1456,7 @@ export type ImpactedResourcesListBySubscriptionIdAndEventIdInput =
 // Output Schema
 export const ImpactedResourcesListBySubscriptionIdAndEventIdOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => eventImpactedResourceSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type ImpactedResourcesListBySubscriptionIdAndEventIdOutput =
@@ -1486,37 +1489,7 @@ export type ImpactedResourcesListByTenantIdAndEventIdInput =
 // Output Schema
 export const ImpactedResourcesListByTenantIdAndEventIdOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => eventImpactedResourceSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type ImpactedResourcesListByTenantIdAndEventIdOutput =
@@ -1550,23 +1523,13 @@ export type MetadataGetEntityInput = typeof MetadataGetEntityInput.Type;
 // Output Schema
 export const MetadataGetEntityOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => MetadataEntityPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type MetadataGetEntityOutput = typeof MetadataGetEntityOutput.Type;
 
@@ -1596,37 +1559,7 @@ export type MetadataListInput = typeof MetadataListInput.Type;
 // Output Schema
 export const MetadataListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.optional(
-    Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    Schema.Array(Schema.suspend(() => MetadataEntitySchema)),
   ),
   nextLink: Schema.optional(Schema.String),
 });
@@ -1656,19 +1589,7 @@ export type OperationsListInput = typeof OperationsListInput.Type;
 
 // Output Schema
 export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  value: Schema.Array(
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      display: Schema.optional(
-        Schema.Struct({
-          provider: Schema.optional(Schema.String),
-          resource: Schema.optional(Schema.String),
-          operation: Schema.optional(Schema.String),
-          description: Schema.optional(Schema.String),
-        }),
-      ),
-    }),
-  ),
+  value: Schema.Array(Schema.suspend(() => operationSchema)),
 });
 export type OperationsListOutput = typeof OperationsListOutput.Type;
 
@@ -1699,37 +1620,7 @@ export type SecurityAdvisoryImpactedResourcesListBySubscriptionIdAndEventIdInput
 // Output Schema
 export const SecurityAdvisoryImpactedResourcesListBySubscriptionIdAndEventIdOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => eventImpactedResourceSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type SecurityAdvisoryImpactedResourcesListBySubscriptionIdAndEventIdOutput =
@@ -1764,37 +1655,7 @@ export type SecurityAdvisoryImpactedResourcesListByTenantIdAndEventIdInput =
 // Output Schema
 export const SecurityAdvisoryImpactedResourcesListByTenantIdAndEventIdOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => eventImpactedResourceSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type SecurityAdvisoryImpactedResourcesListByTenantIdAndEventIdOutput =

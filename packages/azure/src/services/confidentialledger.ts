@@ -8,6 +8,126 @@ import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
+// Shared schemas
+const ResourceProviderOperationDefinitionSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    isDataAction: Schema.optional(Schema.Boolean),
+    display: Schema.optional(
+      Schema.suspend(() => ResourceProviderOperationDisplaySchema),
+    ),
+  });
+const ResourceProviderOperationDisplaySchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    provider: Schema.optional(Schema.String),
+    resource: Schema.optional(Schema.String),
+    operation: Schema.optional(Schema.String),
+    description: Schema.optional(Schema.String),
+  });
+const LedgerPropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  ledgerName: Schema.optional(Schema.String),
+  ledgerUri: Schema.optional(Schema.String),
+  identityServiceUri: Schema.optional(Schema.String),
+  ledgerInternalNamespace: Schema.optional(Schema.String),
+  ledgerType: Schema.optional(
+    Schema.suspend(() => ConfidentialLedgerTypeSchema),
+  ),
+  provisioningState: Schema.optional(
+    Schema.suspend(() => ProvisioningStateSchema),
+  ),
+  aadBasedSecurityPrincipals: Schema.optional(
+    Schema.Array(Schema.suspend(() => AADBasedSecurityPrincipalSchema)),
+  ),
+  certBasedSecurityPrincipals: Schema.optional(
+    Schema.Array(Schema.suspend(() => CertBasedSecurityPrincipalSchema)),
+  ),
+});
+const ConfidentialLedgerTypeSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Literals(["Unknown", "Public", "Private"]);
+const ProvisioningStateSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Unknown",
+  "Succeeded",
+  "Failed",
+  "Canceled",
+  "Creating",
+  "Deleting",
+  "Updating",
+]);
+const AADBasedSecurityPrincipalSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    principalId: Schema.optional(Schema.String),
+    tenantId: Schema.optional(Schema.String),
+    ledgerRoleName: Schema.optional(Schema.suspend(() => LedgerRoleNameSchema)),
+  });
+const LedgerRoleNameSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Reader",
+  "Contributor",
+  "Administrator",
+]);
+const CertBasedSecurityPrincipalSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    cert: Schema.optional(Schema.String),
+    ledgerRoleName: Schema.optional(Schema.suspend(() => LedgerRoleNameSchema)),
+  });
+const ConfidentialLedgerSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  id: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+  location: Schema.optional(Schema.String),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+});
+const systemDataSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  createdBy: Schema.optional(Schema.String),
+  createdByType: Schema.optional(
+    Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+  ),
+  createdAt: Schema.optional(Schema.String),
+  lastModifiedBy: Schema.optional(Schema.String),
+  lastModifiedByType: Schema.optional(
+    Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+  ),
+  lastModifiedAt: Schema.optional(Schema.String),
+});
+const RunningStateSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Active",
+  "Paused",
+  "Unknown",
+  "Pausing",
+  "Resuming",
+]);
+const LedgerTypeSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Unknown",
+  "Public",
+  "Private",
+]);
+const LedgerSkuSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Standard",
+  "Basic",
+  "Unknown",
+]);
+const EnclavePlatformSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "IntelSgx",
+  "AmdSevSnp",
+]);
+const ApplicationTypeSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "ConfidentialLedger",
+  "CodeTransparency",
+]);
+
 // Input Schema
 export const CheckNameAvailabilityInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -46,49 +166,7 @@ export const CheckNameAvailability = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const LedgerCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  properties: Schema.optional(
-    Schema.Struct({
-      ledgerName: Schema.optional(Schema.String),
-      ledgerUri: Schema.optional(Schema.String),
-      identityServiceUri: Schema.optional(Schema.String),
-      ledgerInternalNamespace: Schema.optional(Schema.String),
-      ledgerType: Schema.optional(
-        Schema.Literals(["Unknown", "Public", "Private"]),
-      ),
-      provisioningState: Schema.optional(
-        Schema.Literals([
-          "Unknown",
-          "Succeeded",
-          "Failed",
-          "Canceled",
-          "Creating",
-          "Deleting",
-          "Updating",
-        ]),
-      ),
-      aadBasedSecurityPrincipals: Schema.optional(
-        Schema.Array(
-          Schema.Struct({
-            principalId: Schema.optional(Schema.String),
-            tenantId: Schema.optional(Schema.String),
-            ledgerRoleName: Schema.optional(
-              Schema.Literals(["Reader", "Contributor", "Administrator"]),
-            ),
-          }),
-        ),
-      ),
-      certBasedSecurityPrincipals: Schema.optional(
-        Schema.Array(
-          Schema.Struct({
-            cert: Schema.optional(Schema.String),
-            ledgerRoleName: Schema.optional(
-              Schema.Literals(["Reader", "Contributor", "Administrator"]),
-            ),
-          }),
-        ),
-      ),
-    }),
-  ),
+  properties: Schema.optional(Schema.suspend(() => LedgerPropertiesSchema)),
   name: Schema.optional(Schema.String),
   id: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -120,6 +198,7 @@ export type LedgerCreateInput = typeof LedgerCreateInput.Type;
 
 // Output Schema
 export const LedgerCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.optional(Schema.suspend(() => LedgerPropertiesSchema)),
   name: Schema.optional(Schema.String),
   id: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -232,6 +311,7 @@ export type LedgerGetInput = typeof LedgerGetInput.Type;
 
 // Output Schema
 export const LedgerGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.optional(Schema.suspend(() => LedgerPropertiesSchema)),
   name: Schema.optional(Schema.String),
   id: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -282,39 +362,7 @@ export type LedgerListByResourceGroupInput =
 export const LedgerListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          name: Schema.optional(Schema.String),
-          id: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.String),
-              createdByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              createdAt: Schema.optional(Schema.String),
-              lastModifiedBy: Schema.optional(Schema.String),
-              lastModifiedByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              lastModifiedAt: Schema.optional(Schema.String),
-            }),
-          ),
-          location: Schema.optional(Schema.String),
-          tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => ConfidentialLedgerSchema)),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -353,39 +401,7 @@ export type LedgerListBySubscriptionInput =
 export const LedgerListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          name: Schema.optional(Schema.String),
-          id: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.String),
-              createdByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              createdAt: Schema.optional(Schema.String),
-              lastModifiedBy: Schema.optional(Schema.String),
-              lastModifiedByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              lastModifiedAt: Schema.optional(Schema.String),
-            }),
-          ),
-          location: Schema.optional(Schema.String),
-          tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => ConfidentialLedgerSchema)),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -408,49 +424,7 @@ export const LedgerListBySubscription = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const LedgerUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  properties: Schema.optional(
-    Schema.Struct({
-      ledgerName: Schema.optional(Schema.String),
-      ledgerUri: Schema.optional(Schema.String),
-      identityServiceUri: Schema.optional(Schema.String),
-      ledgerInternalNamespace: Schema.optional(Schema.String),
-      ledgerType: Schema.optional(
-        Schema.Literals(["Unknown", "Public", "Private"]),
-      ),
-      provisioningState: Schema.optional(
-        Schema.Literals([
-          "Unknown",
-          "Succeeded",
-          "Failed",
-          "Canceled",
-          "Creating",
-          "Deleting",
-          "Updating",
-        ]),
-      ),
-      aadBasedSecurityPrincipals: Schema.optional(
-        Schema.Array(
-          Schema.Struct({
-            principalId: Schema.optional(Schema.String),
-            tenantId: Schema.optional(Schema.String),
-            ledgerRoleName: Schema.optional(
-              Schema.Literals(["Reader", "Contributor", "Administrator"]),
-            ),
-          }),
-        ),
-      ),
-      certBasedSecurityPrincipals: Schema.optional(
-        Schema.Array(
-          Schema.Struct({
-            cert: Schema.optional(Schema.String),
-            ledgerRoleName: Schema.optional(
-              Schema.Literals(["Reader", "Contributor", "Administrator"]),
-            ),
-          }),
-        ),
-      ),
-    }),
-  ),
+  properties: Schema.optional(Schema.suspend(() => LedgerPropertiesSchema)),
   name: Schema.optional(Schema.String),
   id: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -482,6 +456,7 @@ export type LedgerUpdateInput = typeof LedgerUpdateInput.Type;
 
 // Output Schema
 export const LedgerUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.optional(Schema.suspend(() => LedgerPropertiesSchema)),
   name: Schema.optional(Schema.String),
   id: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -530,18 +505,7 @@ export type OperationsListInput = typeof OperationsListInput.Type;
 export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
-      Schema.Struct({
-        name: Schema.optional(Schema.String),
-        isDataAction: Schema.optional(Schema.Boolean),
-        display: Schema.optional(
-          Schema.Struct({
-            provider: Schema.optional(Schema.String),
-            resource: Schema.optional(Schema.String),
-            operation: Schema.optional(Schema.String),
-            description: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
+      Schema.suspend(() => ResourceProviderOperationDefinitionSchema),
     ),
   ),
   nextLink: Schema.optional(Schema.String),

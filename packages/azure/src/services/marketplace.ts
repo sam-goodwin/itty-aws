@@ -8,6 +8,355 @@ import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
+// Shared schemas
+const SingleOperationSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  isDataAction: Schema.optional(Schema.Boolean),
+  display: Schema.optional(Schema.suspend(() => SingleOperationDisplaySchema)),
+  origin: Schema.optional(Schema.String),
+  properties: Schema.optional(Schema.Unknown),
+});
+const SingleOperationDisplaySchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  provider: Schema.optional(Schema.String),
+  resource: Schema.optional(Schema.String),
+  operation: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+});
+const PrivateStoreSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(Schema.suspend(() => SystemDataSchema)),
+});
+const SystemDataSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  createdBy: Schema.optional(Schema.String),
+  createdByType: Schema.optional(Schema.suspend(() => IdentityTypeSchema)),
+  createdAt: Schema.optional(Schema.String),
+  lastModifiedBy: Schema.optional(Schema.String),
+  lastModifiedByType: Schema.optional(Schema.suspend(() => IdentityTypeSchema)),
+  lastModifiedAt: Schema.optional(Schema.String),
+});
+const IdentityTypeSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "User",
+  "Application",
+  "ManagedIdentity",
+  "Key",
+]);
+const PrivateStorePropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  availability: Schema.optional(Schema.suspend(() => AvailabilitySchema)),
+  privateStoreId: Schema.optional(Schema.String),
+  eTag: Schema.optional(Schema.String),
+  privateStoreName: Schema.optional(Schema.String),
+  tenantId: Schema.optional(Schema.String),
+  isGov: Schema.optional(Schema.Boolean),
+  collectionIds: Schema.optional(Schema.Array(Schema.String)),
+  branding: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  notificationsSettings: Schema.optional(
+    Schema.suspend(() => NotificationsSettingsPropertiesSchema),
+  ),
+});
+const AvailabilitySchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "enabled",
+  "disabled",
+]);
+const NotificationsSettingsPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    recipients: Schema.optional(
+      Schema.Array(Schema.suspend(() => RecipientSchema)),
+    ),
+    sendToAllMarketplaceAdmins: Schema.optional(Schema.Boolean),
+  });
+const RecipientSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  principalId: Schema.optional(Schema.String),
+  emailAddress: Schema.optional(Schema.String),
+  displayName: Schema.optional(Schema.String),
+});
+const AdminRequestApprovalsResourceSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(Schema.suspend(() => SystemDataSchema)),
+  });
+const AdminRequestApprovalPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    offerId: Schema.optional(Schema.String),
+    displayName: Schema.optional(Schema.String),
+    publisherId: Schema.optional(Schema.String),
+    adminAction: Schema.optional(Schema.suspend(() => AdminActionSchema)),
+    approvedPlans: Schema.optional(Schema.Array(Schema.String)),
+    comment: Schema.optional(Schema.String),
+    administrator: Schema.optional(Schema.String),
+    plans: Schema.optional(
+      Schema.Array(Schema.suspend(() => PlanRequesterDetailsSchema)),
+    ),
+    collectionIds: Schema.optional(Schema.Array(Schema.String)),
+    icon: Schema.optional(Schema.String),
+  });
+const AdminActionSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Approved",
+  "Rejected",
+]);
+const PlanRequesterDetailsSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  planId: Schema.optional(Schema.String),
+  planDisplayName: Schema.optional(Schema.String),
+  requesters: Schema.optional(
+    Schema.Array(Schema.suspend(() => UserRequestDetailsSchema)),
+  ),
+});
+const UserRequestDetailsSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  user: Schema.optional(Schema.String),
+  date: Schema.optional(Schema.String),
+  justification: Schema.optional(Schema.String),
+  subscriptionId: Schema.optional(Schema.String),
+  subscriptionName: Schema.optional(Schema.String),
+});
+const BulkCollectionsDetailsSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  collectionIds: Schema.optional(Schema.Array(Schema.String)),
+  action: Schema.optional(Schema.String),
+});
+const CollectionsDetailsSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  collectionName: Schema.optional(Schema.String),
+  collectionId: Schema.optional(Schema.String),
+});
+const CollectionSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(Schema.suspend(() => SystemDataSchema)),
+});
+const CollectionPropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  collectionId: Schema.optional(Schema.String),
+  collectionName: Schema.optional(Schema.String),
+  claim: Schema.optional(Schema.String),
+  allSubscriptions: Schema.optional(Schema.Boolean),
+  approveAllItems: Schema.optional(Schema.Boolean),
+  approveAllItemsModifiedAt: Schema.optional(Schema.String),
+  subscriptionsList: Schema.optional(Schema.Array(Schema.String)),
+  enabled: Schema.optional(Schema.Boolean),
+  numberOfOffers: Schema.optional(Schema.Number),
+  appliedRules: Schema.optional(Schema.Array(Schema.suspend(() => RuleSchema))),
+});
+const RuleSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  type: Schema.optional(Schema.suspend(() => RuleTypeSchema)),
+  value: Schema.optional(Schema.Array(Schema.String)),
+});
+const RuleTypeSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "PrivateProducts",
+  "TermsAndCondition",
+]);
+const CollectionOffersByAllContextsPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionIds: Schema.optional(Schema.Array(Schema.String)),
+  });
+const CollectionOffersByContextSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    context: Schema.optional(Schema.String),
+    offers: Schema.optional(
+      Schema.suspend(() => CollectionOffersByContextOffersSchema),
+    ),
+  });
+const CollectionOffersByContextOffersSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    value: Schema.optional(
+      Schema.Array(Schema.suspend(() => OfferPropertiesSchema)),
+    ),
+  });
+const OfferPropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  uniqueOfferId: Schema.optional(Schema.String),
+  offerDisplayName: Schema.optional(Schema.String),
+  publisherDisplayName: Schema.optional(Schema.String),
+  eTag: Schema.optional(Schema.String),
+  privateStoreId: Schema.optional(Schema.String),
+  createdAt: Schema.optional(Schema.String),
+  modifiedAt: Schema.optional(Schema.String),
+  specificPlanIdsLimitation: Schema.optional(Schema.Array(Schema.String)),
+  updateSuppressedDueIdempotence: Schema.optional(Schema.Boolean),
+  iconFileUris: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  isStopSell: Schema.optional(Schema.Boolean),
+  plans: Schema.optional(Schema.Array(Schema.suspend(() => PlanSchema))),
+});
+const PlanSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  skuId: Schema.optional(Schema.String),
+  planId: Schema.optional(Schema.String),
+  planDisplayName: Schema.optional(Schema.String),
+  accessibility: Schema.optional(Schema.suspend(() => AccessibilitySchema)),
+  altStackReference: Schema.optional(Schema.String),
+  stackType: Schema.optional(Schema.String),
+  isStopSell: Schema.optional(Schema.Boolean),
+});
+const AccessibilitySchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Unknown",
+  "Public",
+  "PrivateTenantOnLevel",
+  "PrivateSubscriptionOnLevel",
+]);
+const OfferSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(Schema.suspend(() => SystemDataSchema)),
+});
+const MultiContextAndPlansPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    offerId: Schema.optional(Schema.String),
+    eTag: Schema.optional(Schema.String),
+    plansContext: Schema.optional(
+      Schema.Array(Schema.suspend(() => ContextAndPlansDetailsSchema)),
+    ),
+  });
+const ContextAndPlansDetailsSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  context: Schema.optional(Schema.String),
+  planIds: Schema.optional(Schema.Array(Schema.String)),
+});
+const TransferOffersDetailsSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  targetCollections: Schema.optional(Schema.Array(Schema.String)),
+  operation: Schema.optional(Schema.String),
+  offerIdsList: Schema.optional(Schema.Array(Schema.String)),
+});
+const CollectionsToSubscriptionsMappingPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionIds: Schema.optional(Schema.Array(Schema.String)),
+  });
+const collectionsSubscriptionsMappingDetailsSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    collectionName: Schema.optional(Schema.String),
+    subscriptions: Schema.optional(Schema.Array(Schema.String)),
+  });
+const SubscriptionSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  subscriptionId: Schema.optional(Schema.String),
+  displayName: Schema.optional(Schema.String),
+  state: Schema.optional(Schema.suspend(() => SubscriptionStateSchema)),
+});
+const SubscriptionStateSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Enabled",
+  "Warned",
+  "PastDue",
+  "Disabled",
+  "Deleted",
+]);
+const NewNotificationsSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  offerId: Schema.optional(Schema.String),
+  displayName: Schema.optional(Schema.String),
+  isFuturePlansEnabled: Schema.optional(Schema.Boolean),
+  messageCode: Schema.optional(Schema.Number),
+  icon: Schema.optional(Schema.String),
+  plans: Schema.optional(
+    Schema.Array(Schema.suspend(() => PlanNotificationDetailsSchema)),
+  ),
+});
+const PlanNotificationDetailsSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    planId: Schema.optional(Schema.String),
+    planDisplayName: Schema.optional(Schema.String),
+  },
+);
+const StopSellOffersPlansNotificationsListPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    offerId: Schema.optional(Schema.String),
+    displayName: Schema.optional(Schema.String),
+    isEntire: Schema.optional(Schema.Boolean),
+    messageCode: Schema.optional(Schema.Number),
+    icon: Schema.optional(Schema.String),
+    plans: Schema.optional(
+      Schema.Array(Schema.suspend(() => PlanNotificationDetailsSchema)),
+    ),
+    publicContext: Schema.optional(Schema.Boolean),
+    subscriptionsIds: Schema.optional(Schema.Array(Schema.String)),
+  });
+const AcknowledgeOfferNotificationDetailsSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    acknowledge: Schema.optional(Schema.Boolean),
+    dismiss: Schema.optional(Schema.Boolean),
+    removeOffer: Schema.optional(Schema.Boolean),
+    addPlans: Schema.optional(Schema.Array(Schema.String)),
+    removePlans: Schema.optional(Schema.Array(Schema.String)),
+  });
+const QueryApprovedPlansSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  offerId: Schema.optional(Schema.String),
+  planIds: Schema.optional(Schema.Array(Schema.String)),
+  subscriptionIds: Schema.optional(Schema.Array(Schema.String)),
+});
+const QueryApprovedPlansDetailsSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    planId: Schema.optional(Schema.String),
+    subscriptionIds: Schema.optional(Schema.Array(Schema.String)),
+    allSubscriptions: Schema.optional(Schema.Boolean),
+  });
+const StopSellNotificationsSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  offerId: Schema.optional(Schema.String),
+  displayName: Schema.optional(Schema.String),
+  isEntire: Schema.optional(Schema.Boolean),
+  messageCode: Schema.optional(Schema.Number),
+  icon: Schema.optional(Schema.String),
+  plans: Schema.optional(
+    Schema.Array(Schema.suspend(() => PlanNotificationDetailsSchema)),
+  ),
+});
+const RequestApprovalsDetailsSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    offerId: Schema.optional(Schema.String),
+    displayName: Schema.optional(Schema.String),
+    publisherId: Schema.optional(Schema.String),
+    messageCode: Schema.optional(Schema.Number),
+    icon: Schema.optional(Schema.String),
+    plans: Schema.optional(
+      Schema.Array(Schema.suspend(() => PlanNotificationDetailsSchema)),
+    ),
+  },
+);
+const QueryUserOffersDetailsSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  offerIds: Schema.optional(Schema.Array(Schema.String)),
+  subscriptionIds: Schema.optional(Schema.Array(Schema.String)),
+});
+const QueryUserRulesDetailsSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionIds: Schema.optional(Schema.Array(Schema.String)),
+});
+const RequestApprovalResourceSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(Schema.suspend(() => SystemDataSchema)),
+  },
+);
+const RequestApprovalPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    offerId: Schema.optional(Schema.String),
+    offerDisplayName: Schema.optional(Schema.String),
+    publisherId: Schema.optional(Schema.String),
+    plansDetails: Schema.optional(
+      Schema.Array(Schema.suspend(() => planDetailsSchema)),
+    ),
+    isClosed: Schema.optional(Schema.Boolean),
+    messageCode: Schema.optional(Schema.Number),
+  });
+const planDetailsSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  planId: Schema.optional(Schema.String),
+  status: Schema.optional(Schema.suspend(() => StatusSchema)),
+  requestDate: Schema.optional(Schema.Unknown),
+  justification: Schema.optional(Schema.String),
+  subscriptionId: Schema.optional(Schema.String),
+  subscriptionName: Schema.optional(Schema.String),
+});
+const StatusSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Pending",
+  "Rejected",
+  "Approved",
+  "None",
+]);
+const RequestDetailsSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  publisherId: Schema.optional(Schema.String),
+  planIds: Schema.optional(Schema.Array(Schema.String)),
+  subscriptionId: Schema.optional(Schema.String),
+});
+const WithdrawDetailsSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  planId: Schema.optional(Schema.String),
+  publisherId: Schema.optional(Schema.String),
+});
+
 // Input Schema
 export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {},
@@ -23,23 +372,7 @@ export type OperationsListInput = typeof OperationsListInput.Type;
 // Output Schema
 export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.optional(
-    Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        isDataAction: Schema.optional(Schema.Boolean),
-        display: Schema.optional(
-          Schema.Struct({
-            provider: Schema.optional(Schema.String),
-            resource: Schema.optional(Schema.String),
-            operation: Schema.optional(Schema.String),
-            description: Schema.optional(Schema.String),
-          }),
-        ),
-        origin: Schema.optional(Schema.String),
-        properties: Schema.optional(Schema.Unknown),
-      }),
-    ),
+    Schema.Array(Schema.suspend(() => SingleOperationSchema)),
   ),
   nextLink: Schema.optional(Schema.String),
 });
@@ -61,13 +394,7 @@ export const PrivateStoreAcknowledgeOfferNotificationInput =
     privateStoreId: Schema.String.pipe(T.PathParam()),
     offerId: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        acknowledge: Schema.optional(Schema.Boolean),
-        dismiss: Schema.optional(Schema.Boolean),
-        removeOffer: Schema.optional(Schema.Boolean),
-        addPlans: Schema.optional(Schema.Array(Schema.String)),
-        removePlans: Schema.optional(Schema.Array(Schema.String)),
-      }),
+      Schema.suspend(() => AcknowledgeOfferNotificationDetailsSchema),
     ),
   }).pipe(
     T.Http({
@@ -116,37 +443,7 @@ export type PrivateStoreAdminRequestApprovalsListInput =
 export const PrivateStoreAdminRequestApprovalsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.String),
-              createdByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              createdAt: Schema.optional(Schema.String),
-              lastModifiedBy: Schema.optional(Schema.String),
-              lastModifiedByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              lastModifiedAt: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => AdminRequestApprovalsResourceSchema)),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -239,10 +536,7 @@ export const PrivateStoreBulkCollectionsActionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     privateStoreId: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        collectionIds: Schema.optional(Schema.Array(Schema.String)),
-        action: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(() => BulkCollectionsDetailsSchema),
     ),
   }).pipe(
     T.Http({
@@ -258,20 +552,10 @@ export type PrivateStoreBulkCollectionsActionInput =
 export const PrivateStoreBulkCollectionsActionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     succeeded: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          collectionName: Schema.optional(Schema.String),
-          collectionId: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => CollectionsDetailsSchema)),
     ),
     failed: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          collectionName: Schema.optional(Schema.String),
-          collectionId: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => CollectionsDetailsSchema)),
     ),
   });
 export type PrivateStoreBulkCollectionsActionOutput =
@@ -307,23 +591,13 @@ export type PrivateStoreCollectionApproveAllItemsInput =
 // Output Schema
 export const PrivateStoreCollectionApproveAllItemsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => CollectionPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => SystemDataSchema)),
   });
 export type PrivateStoreCollectionApproveAllItemsOutput =
   typeof PrivateStoreCollectionApproveAllItemsOutput.Type;
@@ -347,27 +621,7 @@ export const PrivateStoreCollectionCreateOrUpdateInput =
     privateStoreId: Schema.String.pipe(T.PathParam()),
     collectionId: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        collectionId: Schema.optional(Schema.String),
-        collectionName: Schema.optional(Schema.String),
-        claim: Schema.optional(Schema.String),
-        allSubscriptions: Schema.optional(Schema.Boolean),
-        approveAllItems: Schema.optional(Schema.Boolean),
-        approveAllItemsModifiedAt: Schema.optional(Schema.String),
-        subscriptionsList: Schema.optional(Schema.Array(Schema.String)),
-        enabled: Schema.optional(Schema.Boolean),
-        numberOfOffers: Schema.optional(Schema.Number),
-        appliedRules: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              type: Schema.optional(
-                Schema.Literals(["PrivateProducts", "TermsAndCondition"]),
-              ),
-              value: Schema.optional(Schema.Array(Schema.String)),
-            }),
-          ),
-        ),
-      }),
+      Schema.suspend(() => CollectionPropertiesSchema),
     ),
   }).pipe(
     T.Http({
@@ -382,23 +636,13 @@ export type PrivateStoreCollectionCreateOrUpdateInput =
 // Output Schema
 export const PrivateStoreCollectionCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => CollectionPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => SystemDataSchema)),
   });
 export type PrivateStoreCollectionCreateOrUpdateOutput =
   typeof PrivateStoreCollectionCreateOrUpdateOutput.Type;
@@ -468,23 +712,13 @@ export type PrivateStoreCollectionDisableApproveAllItemsInput =
 // Output Schema
 export const PrivateStoreCollectionDisableApproveAllItemsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => CollectionPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => SystemDataSchema)),
   });
 export type PrivateStoreCollectionDisableApproveAllItemsOutput =
   typeof PrivateStoreCollectionDisableApproveAllItemsOutput.Type;
@@ -520,23 +754,13 @@ export type PrivateStoreCollectionGetInput =
 // Output Schema
 export const PrivateStoreCollectionGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => CollectionPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => SystemDataSchema)),
   });
 export type PrivateStoreCollectionGetOutput =
   typeof PrivateStoreCollectionGetOutput.Type;
@@ -573,37 +797,7 @@ export type PrivateStoreCollectionListInput =
 export const PrivateStoreCollectionListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.String),
-              createdByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              createdAt: Schema.optional(Schema.String),
-              lastModifiedBy: Schema.optional(Schema.String),
-              lastModifiedByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              lastModifiedAt: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => CollectionSchema)),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -630,9 +824,7 @@ export const PrivateStoreCollectionOfferContextsViewInput =
     collectionId: Schema.String.pipe(T.PathParam()),
     offerId: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        subscriptionIds: Schema.optional(Schema.Array(Schema.String)),
-      }),
+      Schema.suspend(() => CollectionOffersByAllContextsPropertiesSchema),
     ),
   }).pipe(
     T.Http({
@@ -647,23 +839,11 @@ export type PrivateStoreCollectionOfferContextsViewInput =
 // Output Schema
 export const PrivateStoreCollectionOfferContextsViewOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(Schema.suspend(() => OfferPropertiesSchema)),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => SystemDataSchema)),
   });
 export type PrivateStoreCollectionOfferContextsViewOutput =
   typeof PrivateStoreCollectionOfferContextsViewOutput.Type;
@@ -688,43 +868,7 @@ export const PrivateStoreCollectionOfferCreateOrUpdateInput =
     privateStoreId: Schema.String.pipe(T.PathParam()),
     collectionId: Schema.String.pipe(T.PathParam()),
     offerId: Schema.String.pipe(T.PathParam()),
-    properties: Schema.optional(
-      Schema.Struct({
-        uniqueOfferId: Schema.optional(Schema.String),
-        offerDisplayName: Schema.optional(Schema.String),
-        publisherDisplayName: Schema.optional(Schema.String),
-        eTag: Schema.optional(Schema.String),
-        privateStoreId: Schema.optional(Schema.String),
-        createdAt: Schema.optional(Schema.String),
-        modifiedAt: Schema.optional(Schema.String),
-        specificPlanIdsLimitation: Schema.optional(Schema.Array(Schema.String)),
-        updateSuppressedDueIdempotence: Schema.optional(Schema.Boolean),
-        iconFileUris: Schema.optional(
-          Schema.Record(Schema.String, Schema.String),
-        ),
-        isStopSell: Schema.optional(Schema.Boolean),
-        plans: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              skuId: Schema.optional(Schema.String),
-              planId: Schema.optional(Schema.String),
-              planDisplayName: Schema.optional(Schema.String),
-              accessibility: Schema.optional(
-                Schema.Literals([
-                  "Unknown",
-                  "Public",
-                  "PrivateTenantOnLevel",
-                  "PrivateSubscriptionOnLevel",
-                ]),
-              ),
-              altStackReference: Schema.optional(Schema.String),
-              stackType: Schema.optional(Schema.String),
-              isStopSell: Schema.optional(Schema.Boolean),
-            }),
-          ),
-        ),
-      }),
-    ),
+    properties: Schema.optional(Schema.suspend(() => OfferPropertiesSchema)),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -738,23 +882,11 @@ export type PrivateStoreCollectionOfferCreateOrUpdateInput =
 // Output Schema
 export const PrivateStoreCollectionOfferCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(Schema.suspend(() => OfferPropertiesSchema)),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => SystemDataSchema)),
   });
 export type PrivateStoreCollectionOfferCreateOrUpdateOutput =
   typeof PrivateStoreCollectionOfferCreateOrUpdateOutput.Type;
@@ -828,23 +960,11 @@ export type PrivateStoreCollectionOfferGetInput =
 // Output Schema
 export const PrivateStoreCollectionOfferGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(Schema.suspend(() => OfferPropertiesSchema)),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => SystemDataSchema)),
   });
 export type PrivateStoreCollectionOfferGetOutput =
   typeof PrivateStoreCollectionOfferGetOutput.Type;
@@ -881,37 +1001,7 @@ export type PrivateStoreCollectionOfferListInput =
 // Output Schema
 export const PrivateStoreCollectionOfferListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => OfferSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type PrivateStoreCollectionOfferListOutput =
@@ -936,9 +1026,7 @@ export const PrivateStoreCollectionOfferListByContextsInput =
     privateStoreId: Schema.String.pipe(T.PathParam()),
     collectionId: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        subscriptionIds: Schema.optional(Schema.Array(Schema.String)),
-      }),
+      Schema.suspend(() => CollectionOffersByAllContextsPropertiesSchema),
     ),
   }).pipe(
     T.Http({
@@ -954,58 +1042,7 @@ export type PrivateStoreCollectionOfferListByContextsInput =
 export const PrivateStoreCollectionOfferListByContextsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          context: Schema.optional(Schema.String),
-          offers: Schema.optional(
-            Schema.Struct({
-              value: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    uniqueOfferId: Schema.optional(Schema.String),
-                    offerDisplayName: Schema.optional(Schema.String),
-                    publisherDisplayName: Schema.optional(Schema.String),
-                    eTag: Schema.optional(Schema.String),
-                    privateStoreId: Schema.optional(Schema.String),
-                    createdAt: Schema.optional(Schema.String),
-                    modifiedAt: Schema.optional(Schema.String),
-                    specificPlanIdsLimitation: Schema.optional(
-                      Schema.Array(Schema.String),
-                    ),
-                    updateSuppressedDueIdempotence: Schema.optional(
-                      Schema.Boolean,
-                    ),
-                    iconFileUris: Schema.optional(
-                      Schema.Record(Schema.String, Schema.String),
-                    ),
-                    isStopSell: Schema.optional(Schema.Boolean),
-                    plans: Schema.optional(
-                      Schema.Array(
-                        Schema.Struct({
-                          skuId: Schema.optional(Schema.String),
-                          planId: Schema.optional(Schema.String),
-                          planDisplayName: Schema.optional(Schema.String),
-                          accessibility: Schema.optional(
-                            Schema.Literals([
-                              "Unknown",
-                              "Public",
-                              "PrivateTenantOnLevel",
-                              "PrivateSubscriptionOnLevel",
-                            ]),
-                          ),
-                          altStackReference: Schema.optional(Schema.String),
-                          stackType: Schema.optional(Schema.String),
-                          isStopSell: Schema.optional(Schema.Boolean),
-                        }),
-                      ),
-                    ),
-                  }),
-                ),
-              ),
-            }),
-          ),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => CollectionOffersByContextSchema)),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -1068,18 +1105,7 @@ export const PrivateStoreCollectionOfferUpsertOfferWithMultiContextInput =
     collectionId: Schema.String.pipe(T.PathParam()),
     offerId: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        offerId: Schema.optional(Schema.String),
-        eTag: Schema.optional(Schema.String),
-        plansContext: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              context: Schema.optional(Schema.String),
-              planIds: Schema.optional(Schema.Array(Schema.String)),
-            }),
-          ),
-        ),
-      }),
+      Schema.suspend(() => MultiContextAndPlansPropertiesSchema),
     ),
   }).pipe(
     T.Http({
@@ -1094,23 +1120,11 @@ export type PrivateStoreCollectionOfferUpsertOfferWithMultiContextInput =
 // Output Schema
 export const PrivateStoreCollectionOfferUpsertOfferWithMultiContextOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(Schema.suspend(() => OfferPropertiesSchema)),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => SystemDataSchema)),
   });
 export type PrivateStoreCollectionOfferUpsertOfferWithMultiContextOutput =
   typeof PrivateStoreCollectionOfferUpsertOfferWithMultiContextOutput.Type;
@@ -1169,9 +1183,7 @@ export const PrivateStoreCollectionsToSubscriptionsMappingInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     privateStoreId: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        subscriptionIds: Schema.optional(Schema.Array(Schema.String)),
-      }),
+      Schema.suspend(() => CollectionsToSubscriptionsMappingPropertiesSchema),
     ),
   }).pipe(
     T.Http({
@@ -1189,10 +1201,7 @@ export const PrivateStoreCollectionsToSubscriptionsMappingOutput =
     details: Schema.optional(
       Schema.Record(
         Schema.String,
-        Schema.Struct({
-          collectionName: Schema.optional(Schema.String),
-          subscriptions: Schema.optional(Schema.Array(Schema.String)),
-        }),
+        Schema.suspend(() => collectionsSubscriptionsMappingDetailsSchema),
       ),
     ),
   });
@@ -1217,11 +1226,7 @@ export const PrivateStoreCollectionTransferOffersInput =
     privateStoreId: Schema.String.pipe(T.PathParam()),
     collectionId: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        targetCollections: Schema.optional(Schema.Array(Schema.String)),
-        operation: Schema.optional(Schema.String),
-        offerIdsList: Schema.optional(Schema.Array(Schema.String)),
-      }),
+      Schema.suspend(() => TransferOffersDetailsSchema),
     ),
   }).pipe(
     T.Http({
@@ -1237,20 +1242,10 @@ export type PrivateStoreCollectionTransferOffersInput =
 export const PrivateStoreCollectionTransferOffersOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     succeeded: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          collectionName: Schema.optional(Schema.String),
-          collectionId: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => CollectionsDetailsSchema)),
     ),
     failed: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          collectionName: Schema.optional(Schema.String),
-          collectionId: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => CollectionsDetailsSchema)),
     ),
   });
 export type PrivateStoreCollectionTransferOffersOutput =
@@ -1275,27 +1270,7 @@ export const PrivateStoreCreateApprovalRequestInput =
     privateStoreId: Schema.String.pipe(T.PathParam()),
     requestApprovalId: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        offerId: Schema.optional(Schema.String),
-        offerDisplayName: Schema.optional(Schema.String),
-        publisherId: Schema.optional(Schema.String),
-        plansDetails: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              planId: Schema.optional(Schema.String),
-              status: Schema.optional(
-                Schema.Literals(["Pending", "Rejected", "Approved", "None"]),
-              ),
-              requestDate: Schema.optional(Schema.Unknown),
-              justification: Schema.optional(Schema.String),
-              subscriptionId: Schema.optional(Schema.String),
-              subscriptionName: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        isClosed: Schema.optional(Schema.Boolean),
-        messageCode: Schema.optional(Schema.Number),
-      }),
+      Schema.suspend(() => RequestApprovalPropertiesSchema),
     ),
   }).pipe(
     T.Http({
@@ -1310,23 +1285,13 @@ export type PrivateStoreCreateApprovalRequestInput =
 // Output Schema
 export const PrivateStoreCreateApprovalRequestOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => RequestApprovalPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => SystemDataSchema)),
   });
 export type PrivateStoreCreateApprovalRequestOutput =
   typeof PrivateStoreCreateApprovalRequestOutput.Type;
@@ -1349,30 +1314,7 @@ export const PrivateStoreCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     privateStoreId: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        availability: Schema.optional(Schema.Literals(["enabled", "disabled"])),
-        privateStoreId: Schema.optional(Schema.String),
-        eTag: Schema.optional(Schema.String),
-        privateStoreName: Schema.optional(Schema.String),
-        tenantId: Schema.optional(Schema.String),
-        isGov: Schema.optional(Schema.Boolean),
-        collectionIds: Schema.optional(Schema.Array(Schema.String)),
-        branding: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        notificationsSettings: Schema.optional(
-          Schema.Struct({
-            recipients: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  principalId: Schema.optional(Schema.String),
-                  emailAddress: Schema.optional(Schema.String),
-                  displayName: Schema.optional(Schema.String),
-                }),
-              ),
-            ),
-            sendToAllMarketplaceAdmins: Schema.optional(Schema.Boolean),
-          }),
-        ),
-      }),
+      Schema.suspend(() => PrivateStorePropertiesSchema),
     ),
   }).pipe(
     T.Http({
@@ -1449,22 +1391,7 @@ export type PrivateStoreFetchAllSubscriptionsInTenantInput =
 export const PrivateStoreFetchAllSubscriptionsInTenantOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          subscriptionId: Schema.optional(Schema.String),
-          displayName: Schema.optional(Schema.String),
-          state: Schema.optional(
-            Schema.Literals([
-              "Enabled",
-              "Warned",
-              "PastDue",
-              "Disabled",
-              "Deleted",
-            ]),
-          ),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => SubscriptionSchema)),
     ),
     skipToken: Schema.optional(Schema.String),
     count: Schema.optional(Schema.Number),
@@ -1499,23 +1426,13 @@ export type PrivateStoreGetInput = typeof PrivateStoreGetInput.Type;
 
 // Output Schema
 export const PrivateStoreGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.optional(
+    Schema.suspend(() => PrivateStorePropertiesSchema),
+  ),
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
-  systemData: Schema.optional(
-    Schema.Struct({
-      createdBy: Schema.optional(Schema.String),
-      createdByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      createdAt: Schema.optional(Schema.String),
-      lastModifiedBy: Schema.optional(Schema.String),
-      lastModifiedByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      lastModifiedAt: Schema.optional(Schema.String),
-    }),
-  ),
+  systemData: Schema.optional(Schema.suspend(() => SystemDataSchema)),
 });
 export type PrivateStoreGetOutput = typeof PrivateStoreGetOutput.Type;
 
@@ -1549,23 +1466,13 @@ export type PrivateStoreGetAdminRequestApprovalInput =
 // Output Schema
 export const PrivateStoreGetAdminRequestApprovalOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => AdminRequestApprovalPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => SystemDataSchema)),
   });
 export type PrivateStoreGetAdminRequestApprovalOutput =
   typeof PrivateStoreGetAdminRequestApprovalOutput.Type;
@@ -1602,37 +1509,7 @@ export type PrivateStoreGetApprovalRequestsListInput =
 export const PrivateStoreGetApprovalRequestsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.String),
-              createdByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              createdAt: Schema.optional(Schema.String),
-              lastModifiedBy: Schema.optional(Schema.String),
-              lastModifiedByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              lastModifiedAt: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => RequestApprovalResourceSchema)),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -1669,23 +1546,13 @@ export type PrivateStoreGetRequestApprovalInput =
 // Output Schema
 export const PrivateStoreGetRequestApprovalOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => RequestApprovalPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => SystemDataSchema)),
   });
 export type PrivateStoreGetRequestApprovalOutput =
   typeof PrivateStoreGetRequestApprovalOutput.Type;
@@ -1718,37 +1585,7 @@ export type PrivateStoreListInput = typeof PrivateStoreListInput.Type;
 // Output Schema
 export const PrivateStoreListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => PrivateStoreSchema)),
     nextLink: Schema.optional(Schema.String),
   },
 );
@@ -1783,23 +1620,7 @@ export type PrivateStoreListNewPlansNotificationsInput =
 export const PrivateStoreListNewPlansNotificationsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     newPlansNotifications: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          offerId: Schema.optional(Schema.String),
-          displayName: Schema.optional(Schema.String),
-          isFuturePlansEnabled: Schema.optional(Schema.Boolean),
-          messageCode: Schema.optional(Schema.Number),
-          icon: Schema.optional(Schema.String),
-          plans: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                planId: Schema.optional(Schema.String),
-                planDisplayName: Schema.optional(Schema.String),
-              }),
-            ),
-          ),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => NewNotificationsSchema)),
     ),
   });
 export type PrivateStoreListNewPlansNotificationsOutput =
@@ -1837,23 +1658,9 @@ export const PrivateStoreListStopSellOffersPlansNotificationsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     stopSellNotifications: Schema.optional(
       Schema.Array(
-        Schema.Struct({
-          offerId: Schema.optional(Schema.String),
-          displayName: Schema.optional(Schema.String),
-          isEntire: Schema.optional(Schema.Boolean),
-          messageCode: Schema.optional(Schema.Number),
-          icon: Schema.optional(Schema.String),
-          plans: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                planId: Schema.optional(Schema.String),
-                planDisplayName: Schema.optional(Schema.String),
-              }),
-            ),
-          ),
-          publicContext: Schema.optional(Schema.Boolean),
-          subscriptionsIds: Schema.optional(Schema.Array(Schema.String)),
-        }),
+        Schema.suspend(
+          () => StopSellOffersPlansNotificationsListPropertiesSchema,
+        ),
       ),
     ),
   });
@@ -1910,13 +1717,7 @@ export const PrivateStoreListSubscriptionsContext =
 export const PrivateStoreQueryApprovedPlansInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     privateStoreId: Schema.String.pipe(T.PathParam()),
-    properties: Schema.optional(
-      Schema.Struct({
-        offerId: Schema.optional(Schema.String),
-        planIds: Schema.optional(Schema.Array(Schema.String)),
-        subscriptionIds: Schema.optional(Schema.Array(Schema.String)),
-      }),
-    ),
+    properties: Schema.optional(Schema.suspend(() => QueryApprovedPlansSchema)),
   }).pipe(
     T.Http({
       method: "POST",
@@ -1931,13 +1732,7 @@ export type PrivateStoreQueryApprovedPlansInput =
 export const PrivateStoreQueryApprovedPlansOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     details: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          planId: Schema.optional(Schema.String),
-          subscriptionIds: Schema.optional(Schema.Array(Schema.String)),
-          allSubscriptions: Schema.optional(Schema.Boolean),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => QueryApprovedPlansDetailsSchema)),
     ),
   });
 export type PrivateStoreQueryApprovedPlansOutput =
@@ -1973,61 +1768,13 @@ export type PrivateStoreQueryNotificationsStateInput =
 export const PrivateStoreQueryNotificationsStateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     stopSellNotifications: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          offerId: Schema.optional(Schema.String),
-          displayName: Schema.optional(Schema.String),
-          isEntire: Schema.optional(Schema.Boolean),
-          messageCode: Schema.optional(Schema.Number),
-          icon: Schema.optional(Schema.String),
-          plans: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                planId: Schema.optional(Schema.String),
-                planDisplayName: Schema.optional(Schema.String),
-              }),
-            ),
-          ),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => StopSellNotificationsSchema)),
     ),
     newNotifications: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          offerId: Schema.optional(Schema.String),
-          displayName: Schema.optional(Schema.String),
-          isFuturePlansEnabled: Schema.optional(Schema.Boolean),
-          messageCode: Schema.optional(Schema.Number),
-          icon: Schema.optional(Schema.String),
-          plans: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                planId: Schema.optional(Schema.String),
-                planDisplayName: Schema.optional(Schema.String),
-              }),
-            ),
-          ),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => NewNotificationsSchema)),
     ),
     approvalRequests: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          offerId: Schema.optional(Schema.String),
-          displayName: Schema.optional(Schema.String),
-          publisherId: Schema.optional(Schema.String),
-          messageCode: Schema.optional(Schema.Number),
-          icon: Schema.optional(Schema.String),
-          plans: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                planId: Schema.optional(Schema.String),
-                planDisplayName: Schema.optional(Schema.String),
-              }),
-            ),
-          ),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => RequestApprovalsDetailsSchema)),
     ),
   });
 export type PrivateStoreQueryNotificationsStateOutput =
@@ -2063,45 +1810,7 @@ export type PrivateStoreQueryOffersInput =
 export const PrivateStoreQueryOffersOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          uniqueOfferId: Schema.optional(Schema.String),
-          offerDisplayName: Schema.optional(Schema.String),
-          publisherDisplayName: Schema.optional(Schema.String),
-          eTag: Schema.optional(Schema.String),
-          privateStoreId: Schema.optional(Schema.String),
-          createdAt: Schema.optional(Schema.String),
-          modifiedAt: Schema.optional(Schema.String),
-          specificPlanIdsLimitation: Schema.optional(
-            Schema.Array(Schema.String),
-          ),
-          updateSuppressedDueIdempotence: Schema.optional(Schema.Boolean),
-          iconFileUris: Schema.optional(
-            Schema.Record(Schema.String, Schema.String),
-          ),
-          isStopSell: Schema.optional(Schema.Boolean),
-          plans: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                skuId: Schema.optional(Schema.String),
-                planId: Schema.optional(Schema.String),
-                planDisplayName: Schema.optional(Schema.String),
-                accessibility: Schema.optional(
-                  Schema.Literals([
-                    "Unknown",
-                    "Public",
-                    "PrivateTenantOnLevel",
-                    "PrivateSubscriptionOnLevel",
-                  ]),
-                ),
-                altStackReference: Schema.optional(Schema.String),
-                stackType: Schema.optional(Schema.String),
-                isStopSell: Schema.optional(Schema.Boolean),
-              }),
-            ),
-          ),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => OfferPropertiesSchema)),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -2126,13 +1835,7 @@ export const PrivateStoreQueryRequestApprovalInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     privateStoreId: Schema.String.pipe(T.PathParam()),
     requestApprovalId: Schema.String.pipe(T.PathParam()),
-    properties: Schema.optional(
-      Schema.Struct({
-        publisherId: Schema.optional(Schema.String),
-        planIds: Schema.optional(Schema.Array(Schema.String)),
-        subscriptionId: Schema.optional(Schema.String),
-      }),
-    ),
+    properties: Schema.optional(Schema.suspend(() => RequestDetailsSchema)),
   }).pipe(
     T.Http({
       method: "POST",
@@ -2150,16 +1853,7 @@ export const PrivateStoreQueryRequestApprovalOutput =
     plansDetails: Schema.optional(
       Schema.Record(
         Schema.String,
-        Schema.Struct({
-          planId: Schema.optional(Schema.String),
-          status: Schema.optional(
-            Schema.Literals(["Pending", "Rejected", "Approved", "None"]),
-          ),
-          requestDate: Schema.optional(Schema.Unknown),
-          justification: Schema.optional(Schema.String),
-          subscriptionId: Schema.optional(Schema.String),
-          subscriptionName: Schema.optional(Schema.String),
-        }),
+        Schema.suspend(() => planDetailsSchema),
       ),
     ),
     etag: Schema.optional(Schema.String),
@@ -2186,10 +1880,7 @@ export const PrivateStoreQueryUserOffersInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     privateStoreId: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        offerIds: Schema.optional(Schema.Array(Schema.String)),
-        subscriptionIds: Schema.optional(Schema.Array(Schema.String)),
-      }),
+      Schema.suspend(() => QueryUserOffersDetailsSchema),
     ),
   }).pipe(
     T.Http({
@@ -2205,45 +1896,7 @@ export type PrivateStoreQueryUserOffersInput =
 export const PrivateStoreQueryUserOffersOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          uniqueOfferId: Schema.optional(Schema.String),
-          offerDisplayName: Schema.optional(Schema.String),
-          publisherDisplayName: Schema.optional(Schema.String),
-          eTag: Schema.optional(Schema.String),
-          privateStoreId: Schema.optional(Schema.String),
-          createdAt: Schema.optional(Schema.String),
-          modifiedAt: Schema.optional(Schema.String),
-          specificPlanIdsLimitation: Schema.optional(
-            Schema.Array(Schema.String),
-          ),
-          updateSuppressedDueIdempotence: Schema.optional(Schema.Boolean),
-          iconFileUris: Schema.optional(
-            Schema.Record(Schema.String, Schema.String),
-          ),
-          isStopSell: Schema.optional(Schema.Boolean),
-          plans: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                skuId: Schema.optional(Schema.String),
-                planId: Schema.optional(Schema.String),
-                planDisplayName: Schema.optional(Schema.String),
-                accessibility: Schema.optional(
-                  Schema.Literals([
-                    "Unknown",
-                    "Public",
-                    "PrivateTenantOnLevel",
-                    "PrivateSubscriptionOnLevel",
-                  ]),
-                ),
-                altStackReference: Schema.optional(Schema.String),
-                stackType: Schema.optional(Schema.String),
-                isStopSell: Schema.optional(Schema.Boolean),
-              }),
-            ),
-          ),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => OfferPropertiesSchema)),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -2269,36 +1922,7 @@ export const PrivateStoreUpdateAdminRequestApprovalInput =
     privateStoreId: Schema.String.pipe(T.PathParam()),
     adminRequestApprovalId: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        offerId: Schema.optional(Schema.String),
-        displayName: Schema.optional(Schema.String),
-        publisherId: Schema.optional(Schema.String),
-        adminAction: Schema.optional(Schema.Literals(["Approved", "Rejected"])),
-        approvedPlans: Schema.optional(Schema.Array(Schema.String)),
-        comment: Schema.optional(Schema.String),
-        administrator: Schema.optional(Schema.String),
-        plans: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              planId: Schema.optional(Schema.String),
-              planDisplayName: Schema.optional(Schema.String),
-              requesters: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    user: Schema.optional(Schema.String),
-                    date: Schema.optional(Schema.String),
-                    justification: Schema.optional(Schema.String),
-                    subscriptionId: Schema.optional(Schema.String),
-                    subscriptionName: Schema.optional(Schema.String),
-                  }),
-                ),
-              ),
-            }),
-          ),
-        ),
-        collectionIds: Schema.optional(Schema.Array(Schema.String)),
-        icon: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(() => AdminRequestApprovalPropertiesSchema),
     ),
   }).pipe(
     T.Http({
@@ -2313,23 +1937,13 @@ export type PrivateStoreUpdateAdminRequestApprovalInput =
 // Output Schema
 export const PrivateStoreUpdateAdminRequestApprovalOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => AdminRequestApprovalPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => SystemDataSchema)),
   });
 export type PrivateStoreUpdateAdminRequestApprovalOutput =
   typeof PrivateStoreUpdateAdminRequestApprovalOutput.Type;
@@ -2352,12 +1966,7 @@ export const PrivateStoreWithdrawPlanInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     privateStoreId: Schema.String.pipe(T.PathParam()),
     requestApprovalId: Schema.String.pipe(T.PathParam()),
-    properties: Schema.optional(
-      Schema.Struct({
-        planId: Schema.optional(Schema.String),
-        publisherId: Schema.optional(Schema.String),
-      }),
-    ),
+    properties: Schema.optional(Schema.suspend(() => WithdrawDetailsSchema)),
   }).pipe(
     T.Http({
       method: "POST",
@@ -2403,16 +2012,7 @@ export type QueryRulesInput = typeof QueryRulesInput.Type;
 
 // Output Schema
 export const QueryRulesOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  value: Schema.optional(
-    Schema.Array(
-      Schema.Struct({
-        type: Schema.optional(
-          Schema.Literals(["PrivateProducts", "TermsAndCondition"]),
-        ),
-        value: Schema.optional(Schema.Array(Schema.String)),
-      }),
-    ),
-  ),
+  value: Schema.optional(Schema.Array(Schema.suspend(() => RuleSchema))),
   nextLink: Schema.optional(Schema.String),
 });
 export type QueryRulesOutput = typeof QueryRulesOutput.Type;
@@ -2433,9 +2033,7 @@ export const QueryRules = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const QueryUserRulesInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   privateStoreId: Schema.String.pipe(T.PathParam()),
   properties: Schema.optional(
-    Schema.Struct({
-      subscriptionIds: Schema.optional(Schema.Array(Schema.String)),
-    }),
+    Schema.suspend(() => QueryUserRulesDetailsSchema),
   ),
 }).pipe(
   T.Http({
@@ -2448,16 +2046,7 @@ export type QueryUserRulesInput = typeof QueryUserRulesInput.Type;
 
 // Output Schema
 export const QueryUserRulesOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  value: Schema.optional(
-    Schema.Array(
-      Schema.Struct({
-        type: Schema.optional(
-          Schema.Literals(["PrivateProducts", "TermsAndCondition"]),
-        ),
-        value: Schema.optional(Schema.Array(Schema.String)),
-      }),
-    ),
-  ),
+  value: Schema.optional(Schema.Array(Schema.suspend(() => RuleSchema))),
   nextLink: Schema.optional(Schema.String),
 });
 export type QueryUserRulesOutput = typeof QueryUserRulesOutput.Type;
@@ -2478,16 +2067,7 @@ export const SetCollectionRulesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     privateStoreId: Schema.String.pipe(T.PathParam()),
     collectionId: Schema.String.pipe(T.PathParam()),
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          type: Schema.optional(
-            Schema.Literals(["PrivateProducts", "TermsAndCondition"]),
-          ),
-          value: Schema.optional(Schema.Array(Schema.String)),
-        }),
-      ),
-    ),
+    value: Schema.optional(Schema.Array(Schema.suspend(() => RuleSchema))),
     nextLink: Schema.optional(Schema.String),
   }).pipe(
     T.Http({

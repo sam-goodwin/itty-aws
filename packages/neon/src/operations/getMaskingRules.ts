@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { MaskingRuleSchema } from "./_schemas.ts";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
@@ -16,16 +17,7 @@ export type GetMaskingRulesInput = typeof GetMaskingRulesInput.Type;
 
 // Output Schema
 export const GetMaskingRulesOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  masking_rules: Schema.Array(
-    Schema.Struct({
-      database_name: Schema.String,
-      schema_name: Schema.String,
-      table_name: Schema.String,
-      column_name: Schema.String,
-      masking_function: Schema.optional(Schema.String),
-      masking_value: Schema.optional(Schema.String),
-    }),
-  ),
+  masking_rules: Schema.Array(Schema.suspend(() => MaskingRuleSchema)),
 });
 export type GetMaskingRulesOutput = typeof GetMaskingRulesOutput.Type;
 

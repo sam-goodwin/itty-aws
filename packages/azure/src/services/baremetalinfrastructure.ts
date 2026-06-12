@@ -8,6 +8,174 @@ import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
+// Shared schemas
+const AzureBareMetalInstanceSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
+const OperationSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  display: Schema.optional(Schema.suspend(() => DisplaySchema)),
+  isDataAction: Schema.optional(Schema.Boolean),
+});
+const DisplaySchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  provider: Schema.optional(Schema.String),
+  resource: Schema.optional(Schema.String),
+  operation: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+});
+const AzureBareMetalInstancePropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    hardwareProfile: Schema.optional(
+      Schema.suspend(() => HardwareProfileSchema),
+    ),
+    storageProfile: Schema.optional(Schema.suspend(() => StorageProfileSchema)),
+    osProfile: Schema.optional(Schema.suspend(() => OSProfileSchema)),
+    networkProfile: Schema.optional(Schema.suspend(() => NetworkProfileSchema)),
+    azureBareMetalInstanceId: Schema.optional(Schema.String),
+    powerState: Schema.optional(
+      Schema.Literals([
+        "starting",
+        "started",
+        "stopping",
+        "stopped",
+        "restarting",
+        "unknown",
+      ]),
+    ),
+    proximityPlacementGroup: Schema.optional(Schema.String),
+    hwRevision: Schema.optional(Schema.String),
+    partnerNodeId: Schema.optional(Schema.String),
+    provisioningState: Schema.optional(
+      Schema.Literals([
+        "Accepted",
+        "Creating",
+        "Updating",
+        "Failed",
+        "Succeeded",
+        "Deleting",
+        "Migrating",
+      ]),
+    ),
+  });
+const HardwareProfileSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  hardwareType: Schema.optional(Schema.Literals(["Cisco_UCS", "HPE"])),
+  azureBareMetalInstanceSize: Schema.optional(
+    Schema.Literals([
+      "S72m",
+      "S144m",
+      "S72",
+      "S144",
+      "S192",
+      "S192m",
+      "S192xm",
+      "S96",
+      "S112",
+      "S224",
+      "S224m",
+      "S224om",
+      "S224oo",
+      "S224oom",
+      "S224ooo",
+      "S384",
+      "S384m",
+      "S384xm",
+      "S384xxm",
+      "S448",
+      "S448m",
+      "S448om",
+      "S448oo",
+      "S448oom",
+      "S448ooo",
+      "S576m",
+      "S576xm",
+      "S672",
+      "S672m",
+      "S672om",
+      "S672oo",
+      "S672oom",
+      "S672ooo",
+      "S768",
+      "S768m",
+      "S768xm",
+      "S896",
+      "S896m",
+      "S896om",
+      "S896oo",
+      "S896oom",
+      "S896ooo",
+      "S960m",
+    ]),
+  ),
+});
+const StorageProfileSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  nfsIpAddress: Schema.optional(Schema.String),
+  osDisks: Schema.optional(Schema.Array(Schema.suspend(() => DiskSchema))),
+});
+const DiskSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  diskSizeGB: Schema.optional(Schema.Number),
+  lun: Schema.optional(Schema.Number),
+});
+const OSProfileSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  computerName: Schema.optional(Schema.String),
+  osType: Schema.optional(Schema.String),
+  version: Schema.optional(Schema.String),
+  sshPublicKey: Schema.optional(Schema.String),
+});
+const NetworkProfileSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  networkInterfaces: Schema.optional(
+    Schema.Array(Schema.suspend(() => IpAddressSchema)),
+  ),
+  circuitId: Schema.optional(Schema.String),
+});
+const IpAddressSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  ipAddress: Schema.optional(Schema.String),
+});
+const AzureBareMetalStorageInstanceSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
+const AzureBareMetalStorageInstancePropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    azureBareMetalStorageInstanceUniqueIdentifier: Schema.optional(
+      Schema.String,
+    ),
+    storageProperties: Schema.optional(
+      Schema.suspend(() => StoragePropertiesSchema),
+    ),
+  });
+const StoragePropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  provisioningState: Schema.optional(
+    Schema.Literals([
+      "Accepted",
+      "Creating",
+      "Updating",
+      "Failed",
+      "Succeeded",
+      "Deleting",
+      "Canceled",
+      "Migrating",
+    ]),
+  ),
+  offeringType: Schema.optional(Schema.String),
+  storageType: Schema.optional(Schema.String),
+  generation: Schema.optional(Schema.String),
+  hardwareType: Schema.optional(Schema.String),
+  workloadType: Schema.optional(Schema.String),
+  storageBillingProperties: Schema.optional(
+    Schema.suspend(() => StorageBillingPropertiesSchema),
+  ),
+});
+const StorageBillingPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    billingMode: Schema.optional(Schema.String),
+    azureBareMetalStorageInstanceSize: Schema.optional(Schema.String),
+  });
+
 // Input Schema
 export const AzureBareMetalInstancesGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -26,6 +194,25 @@ export type AzureBareMetalInstancesGetInput =
 // Output Schema
 export const AzureBareMetalInstancesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => AzureBareMetalInstancePropertiesSchema),
+    ),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -68,13 +255,7 @@ export type AzureBareMetalInstancesListByResourceGroupInput =
 export const AzureBareMetalInstancesListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => AzureBareMetalInstanceSchema)),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -114,13 +295,7 @@ export type AzureBareMetalInstancesListBySubscriptionInput =
 export const AzureBareMetalInstancesListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => AzureBareMetalInstanceSchema)),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -159,6 +334,25 @@ export type AzureBareMetalInstancesUpdateInput =
 // Output Schema
 export const AzureBareMetalInstancesUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => AzureBareMetalInstancePropertiesSchema),
+    ),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -187,40 +381,7 @@ export const AzureBareMetalStorageInstancesCreateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        azureBareMetalStorageInstanceUniqueIdentifier: Schema.optional(
-          Schema.String,
-        ),
-        storageProperties: Schema.optional(
-          Schema.Struct({
-            provisioningState: Schema.optional(
-              Schema.Literals([
-                "Accepted",
-                "Creating",
-                "Updating",
-                "Failed",
-                "Succeeded",
-                "Deleting",
-                "Canceled",
-                "Migrating",
-              ]),
-            ),
-            offeringType: Schema.optional(Schema.String),
-            storageType: Schema.optional(Schema.String),
-            generation: Schema.optional(Schema.String),
-            hardwareType: Schema.optional(Schema.String),
-            workloadType: Schema.optional(Schema.String),
-            storageBillingProperties: Schema.optional(
-              Schema.Struct({
-                billingMode: Schema.optional(Schema.String),
-                azureBareMetalStorageInstanceSize: Schema.optional(
-                  Schema.String,
-                ),
-              }),
-            ),
-          }),
-        ),
-      }),
+      Schema.suspend(() => AzureBareMetalStorageInstancePropertiesSchema),
     ),
     systemData: Schema.optional(
       Schema.Struct({
@@ -251,6 +412,25 @@ export type AzureBareMetalStorageInstancesCreateInput =
 // Output Schema
 export const AzureBareMetalStorageInstancesCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => AzureBareMetalStorageInstancePropertiesSchema),
+    ),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -323,6 +503,25 @@ export type AzureBareMetalStorageInstancesGetInput =
 // Output Schema
 export const AzureBareMetalStorageInstancesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => AzureBareMetalStorageInstancePropertiesSchema),
+    ),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -364,13 +563,7 @@ export type AzureBareMetalStorageInstancesListByResourceGroupInput =
 export const AzureBareMetalStorageInstancesListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => AzureBareMetalStorageInstanceSchema)),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -410,13 +603,7 @@ export type AzureBareMetalStorageInstancesListBySubscriptionInput =
 export const AzureBareMetalStorageInstancesListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => AzureBareMetalStorageInstanceSchema)),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -455,6 +642,25 @@ export type AzureBareMetalStorageInstancesUpdateInput =
 // Output Schema
 export const AzureBareMetalStorageInstancesUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => AzureBareMetalStorageInstancePropertiesSchema),
+    ),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -491,22 +697,7 @@ export type OperationsListInput = typeof OperationsListInput.Type;
 
 // Output Schema
 export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  value: Schema.optional(
-    Schema.Array(
-      Schema.Struct({
-        name: Schema.optional(Schema.String),
-        display: Schema.optional(
-          Schema.Struct({
-            provider: Schema.optional(Schema.String),
-            resource: Schema.optional(Schema.String),
-            operation: Schema.optional(Schema.String),
-            description: Schema.optional(Schema.String),
-          }),
-        ),
-        isDataAction: Schema.optional(Schema.Boolean),
-      }),
-    ),
-  ),
+  value: Schema.optional(Schema.Array(Schema.suspend(() => OperationSchema))),
 });
 export type OperationsListOutput = typeof OperationsListOutput.Type;
 

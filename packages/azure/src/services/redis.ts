@@ -8,6 +8,340 @@ import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
+// Shared schemas
+const OperationSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  display: Schema.optional(Schema.suspend(() => OperationDisplaySchema)),
+});
+const OperationDisplaySchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  provider: Schema.optional(Schema.String),
+  operation: Schema.optional(Schema.String),
+  resource: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+});
+const OperationStatusResultSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  status: Schema.String,
+  percentComplete: Schema.optional(Schema.Number),
+  startTime: Schema.optional(Schema.String),
+  endTime: Schema.optional(Schema.String),
+  operations: Schema.optional(Schema.Array(Schema.Unknown)),
+  error: Schema.optional(Schema.suspend(() => ErrorDetailSchema)),
+});
+const ErrorDetailSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  code: Schema.optional(Schema.String),
+  message: Schema.optional(Schema.String),
+  target: Schema.optional(Schema.String),
+  details: Schema.optional(Schema.Array(Schema.Unknown)),
+  additionalInfo: Schema.optional(
+    Schema.Array(Schema.suspend(() => ErrorAdditionalInfoSchema)),
+  ),
+});
+const ErrorAdditionalInfoSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  type: Schema.optional(Schema.String),
+  info: Schema.optional(Schema.Unknown),
+});
+const RedisResourceSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+});
+const systemDataSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  createdBy: Schema.optional(Schema.String),
+  createdByType: Schema.optional(
+    Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+  ),
+  createdAt: Schema.optional(Schema.String),
+  lastModifiedBy: Schema.optional(Schema.String),
+  lastModifiedByType: Schema.optional(
+    Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+  ),
+  lastModifiedAt: Schema.optional(Schema.String),
+});
+const RedisPropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  redisConfiguration: Schema.optional(
+    Schema.suspend(() => RedisCommonPropertiesRedisConfigurationSchema),
+  ),
+  redisVersion: Schema.optional(Schema.String),
+  enableNonSslPort: Schema.optional(Schema.Boolean),
+  replicasPerMaster: Schema.optional(Schema.Number),
+  replicasPerPrimary: Schema.optional(Schema.Number),
+  tenantSettings: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  shardCount: Schema.optional(Schema.Number),
+  minimumTlsVersion: Schema.optional(Schema.suspend(() => TlsVersionSchema)),
+  publicNetworkAccess: Schema.optional(
+    Schema.suspend(() => PublicNetworkAccessSchema),
+  ),
+  updateChannel: Schema.optional(Schema.suspend(() => UpdateChannelSchema)),
+  disableAccessKeyAuthentication: Schema.optional(Schema.Boolean),
+  zonalAllocationPolicy: Schema.optional(
+    Schema.suspend(() => ZonalAllocationPolicySchema),
+  ),
+});
+const RedisCommonPropertiesRedisConfigurationSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    "rdb-backup-enabled": Schema.optional(Schema.String),
+    "rdb-backup-frequency": Schema.optional(Schema.String),
+    "rdb-backup-max-snapshot-count": Schema.optional(Schema.String),
+    "rdb-storage-connection-string": Schema.optional(Schema.String),
+    "aof-backup-enabled": Schema.optional(Schema.String),
+    "aof-storage-connection-string-0": Schema.optional(Schema.String),
+    "aof-storage-connection-string-1": Schema.optional(Schema.String),
+    "maxfragmentationmemory-reserved": Schema.optional(Schema.String),
+    "maxmemory-policy": Schema.optional(Schema.String),
+    "maxmemory-reserved": Schema.optional(Schema.String),
+    "maxmemory-delta": Schema.optional(Schema.String),
+    maxclients: Schema.optional(Schema.String),
+    "notify-keyspace-events": Schema.optional(Schema.String),
+    "preferred-data-archive-auth-method": Schema.optional(Schema.String),
+    "preferred-data-persistence-auth-method": Schema.optional(Schema.String),
+    "zonal-configuration": Schema.optional(Schema.String),
+    authnotrequired: Schema.optional(Schema.String),
+    "storage-subscription-id": Schema.optional(Schema.String),
+    "aad-enabled": Schema.optional(Schema.String),
+  });
+const TlsVersionSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "1.0",
+  "1.1",
+  "1.2",
+]);
+const PublicNetworkAccessSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Enabled",
+  "Disabled",
+]);
+const UpdateChannelSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Stable",
+  "Preview",
+]);
+const ZonalAllocationPolicySchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals(
+  ["Automatic", "UserDefined", "NoZones"],
+);
+const ManagedServiceIdentityTypeSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+    "None",
+    "SystemAssigned",
+    "UserAssigned",
+    "SystemAssigned, UserAssigned",
+  ]);
+const UserAssignedIdentitiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Record(
+  Schema.String,
+  Schema.suspend(() => UserAssignedIdentitySchema),
+);
+const UserAssignedIdentitySchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  principalId: Schema.optional(Schema.String),
+  clientId: Schema.optional(Schema.String),
+});
+const RedisCreatePropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  redisConfiguration: Schema.optional(
+    Schema.suspend(() => RedisCommonPropertiesRedisConfigurationSchema),
+  ),
+  redisVersion: Schema.optional(Schema.String),
+  enableNonSslPort: Schema.optional(Schema.Boolean),
+  replicasPerMaster: Schema.optional(Schema.Number),
+  replicasPerPrimary: Schema.optional(Schema.Number),
+  tenantSettings: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  shardCount: Schema.optional(Schema.Number),
+  minimumTlsVersion: Schema.optional(Schema.suspend(() => TlsVersionSchema)),
+  publicNetworkAccess: Schema.optional(
+    Schema.suspend(() => PublicNetworkAccessSchema),
+  ),
+  updateChannel: Schema.optional(Schema.suspend(() => UpdateChannelSchema)),
+  disableAccessKeyAuthentication: Schema.optional(Schema.Boolean),
+  zonalAllocationPolicy: Schema.optional(
+    Schema.suspend(() => ZonalAllocationPolicySchema),
+  ),
+});
+const RedisUpdatePropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  redisConfiguration: Schema.optional(
+    Schema.suspend(() => RedisCommonPropertiesRedisConfigurationSchema),
+  ),
+  redisVersion: Schema.optional(Schema.String),
+  enableNonSslPort: Schema.optional(Schema.Boolean),
+  replicasPerMaster: Schema.optional(Schema.Number),
+  replicasPerPrimary: Schema.optional(Schema.Number),
+  tenantSettings: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  shardCount: Schema.optional(Schema.Number),
+  minimumTlsVersion: Schema.optional(Schema.suspend(() => TlsVersionSchema)),
+  publicNetworkAccess: Schema.optional(
+    Schema.suspend(() => PublicNetworkAccessSchema),
+  ),
+  updateChannel: Schema.optional(Schema.suspend(() => UpdateChannelSchema)),
+  disableAccessKeyAuthentication: Schema.optional(Schema.Boolean),
+  zonalAllocationPolicy: Schema.optional(
+    Schema.suspend(() => ZonalAllocationPolicySchema),
+  ),
+});
+const RedisCacheAccessPolicySchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+});
+const RedisCacheAccessPolicyPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    provisioningState: Schema.optional(
+      Schema.suspend(() => AccessPolicyProvisioningStateSchema),
+    ),
+    type: Schema.optional(Schema.suspend(() => AccessPolicyTypeSchema)),
+    permissions: Schema.String,
+  });
+const AccessPolicyProvisioningStateSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+    "Updating",
+    "Succeeded",
+    "Deleting",
+    "Deleted",
+    "Canceled",
+    "Failed",
+  ]);
+const AccessPolicyTypeSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Custom",
+  "BuiltIn",
+]);
+const RedisCacheAccessPolicyAssignmentSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+  });
+const RedisCacheAccessPolicyAssignmentPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    provisioningState: Schema.optional(
+      Schema.suspend(() => AccessPolicyAssignmentProvisioningStateSchema),
+    ),
+    objectId: Schema.String,
+    objectIdAlias: Schema.String,
+    accessPolicyName: Schema.String,
+  });
+const AccessPolicyAssignmentProvisioningStateSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+    "Updating",
+    "Succeeded",
+    "Deleting",
+    "Deleted",
+    "Canceled",
+    "Failed",
+  ]);
+const RedisFirewallRuleSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+});
+const RedisFirewallRulePropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    startIP: Schema.String,
+    endIP: Schema.String,
+  });
+const RebootTypeSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "PrimaryNode",
+  "SecondaryNode",
+  "AllNodes",
+]);
+const RedisLinkedServerWithPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+  });
+const RedisLinkedServerPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    linkedRedisCacheId: Schema.String,
+    linkedRedisCacheLocation: Schema.String,
+    serverRole: Schema.suspend(() => ReplicationRoleSchema),
+    geoReplicatedPrimaryHostName: Schema.optional(Schema.String),
+    primaryHostName: Schema.optional(Schema.String),
+  });
+const ReplicationRoleSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Primary",
+  "Secondary",
+]);
+const RedisLinkedServerCreatePropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    linkedRedisCacheId: Schema.String,
+    linkedRedisCacheLocation: Schema.String,
+    serverRole: Schema.suspend(() => ReplicationRoleSchema),
+    geoReplicatedPrimaryHostName: Schema.optional(Schema.String),
+    primaryHostName: Schema.optional(Schema.String),
+  });
+const UpgradeNotificationSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  timestamp: Schema.optional(Schema.String),
+  upsellNotification: Schema.optional(
+    Schema.Record(Schema.String, Schema.String),
+  ),
+});
+const RedisPatchScheduleSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+});
+const ScheduleEntriesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  scheduleEntries: Schema.Array(Schema.suspend(() => ScheduleEntrySchema)),
+});
+const ScheduleEntrySchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  dayOfWeek: Schema.suspend(() => DayOfWeekSchema),
+  startHourUtc: Schema.Number,
+  maintenanceWindow: Schema.optional(Schema.String),
+});
+const DayOfWeekSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Monday",
+  "Tuesday",
+  "Wednesday",
+  "Thursday",
+  "Friday",
+  "Saturday",
+  "Sunday",
+  "Everyday",
+  "Weekend",
+]);
+const PrivateEndpointConnectionPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    groupIds: Schema.optional(Schema.Array(Schema.String)),
+    privateEndpoint: Schema.optional(
+      Schema.suspend(() => PrivateEndpointSchema),
+    ),
+    privateLinkServiceConnectionState: Schema.suspend(
+      () => PrivateLinkServiceConnectionStateSchema,
+    ),
+    provisioningState: Schema.optional(
+      Schema.suspend(() => PrivateEndpointConnectionProvisioningStateSchema),
+    ),
+  });
+const PrivateEndpointSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+});
+const PrivateLinkServiceConnectionStateSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    status: Schema.optional(
+      Schema.suspend(() => PrivateEndpointServiceConnectionStatusSchema),
+    ),
+    description: Schema.optional(Schema.String),
+    actionsRequired: Schema.optional(Schema.String),
+  });
+const PrivateEndpointServiceConnectionStatusSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+    "Pending",
+    "Approved",
+    "Rejected",
+  ]);
+const PrivateEndpointConnectionProvisioningStateSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+    "Succeeded",
+    "Creating",
+    "Deleting",
+    "Failed",
+  ]);
+const RedisKeyTypeSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Primary",
+  "Secondary",
+]);
+
 // Input Schema
 export const AccessPolicyAssignmentCreateUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -16,21 +350,7 @@ export const AccessPolicyAssignmentCreateUpdateInput =
     cacheName: Schema.String.pipe(T.PathParam()),
     accessPolicyAssignmentName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        provisioningState: Schema.optional(
-          Schema.Literals([
-            "Updating",
-            "Succeeded",
-            "Deleting",
-            "Deleted",
-            "Canceled",
-            "Failed",
-          ]),
-        ),
-        objectId: Schema.String,
-        objectIdAlias: Schema.String,
-        accessPolicyName: Schema.String,
-      }),
+      Schema.suspend(() => RedisCacheAccessPolicyAssignmentPropertiesSchema),
     ),
   }).pipe(
     T.Http({
@@ -46,23 +366,13 @@ export type AccessPolicyAssignmentCreateUpdateInput =
 // Output Schema
 export const AccessPolicyAssignmentCreateUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => RedisCacheAccessPolicyAssignmentPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type AccessPolicyAssignmentCreateUpdateOutput =
   typeof AccessPolicyAssignmentCreateUpdateOutput.Type;
@@ -141,23 +451,13 @@ export type AccessPolicyAssignmentGetInput =
 // Output Schema
 export const AccessPolicyAssignmentGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => RedisCacheAccessPolicyAssignmentPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type AccessPolicyAssignmentGetOutput =
   typeof AccessPolicyAssignmentGetOutput.Type;
@@ -198,35 +498,7 @@ export type AccessPolicyAssignmentListInput =
 export const AccessPolicyAssignmentListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
+      Schema.suspend(() => RedisCacheAccessPolicyAssignmentSchema),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -256,20 +528,7 @@ export const AccessPolicyCreateUpdateInput =
     cacheName: Schema.String.pipe(T.PathParam()),
     accessPolicyName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        provisioningState: Schema.optional(
-          Schema.Literals([
-            "Updating",
-            "Succeeded",
-            "Deleting",
-            "Deleted",
-            "Canceled",
-            "Failed",
-          ]),
-        ),
-        type: Schema.optional(Schema.Literals(["Custom", "BuiltIn"])),
-        permissions: Schema.String,
-      }),
+      Schema.suspend(() => RedisCacheAccessPolicyPropertiesSchema),
     ),
   }).pipe(
     T.Http({
@@ -285,23 +544,13 @@ export type AccessPolicyCreateUpdateInput =
 // Output Schema
 export const AccessPolicyCreateUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => RedisCacheAccessPolicyPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type AccessPolicyCreateUpdateOutput =
   typeof AccessPolicyCreateUpdateOutput.Type;
@@ -374,23 +623,13 @@ export type AccessPolicyGetInput = typeof AccessPolicyGetInput.Type;
 
 // Output Schema
 export const AccessPolicyGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.optional(
+    Schema.suspend(() => RedisCacheAccessPolicyPropertiesSchema),
+  ),
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
-  systemData: Schema.optional(
-    Schema.Struct({
-      createdBy: Schema.optional(Schema.String),
-      createdByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      createdAt: Schema.optional(Schema.String),
-      lastModifiedBy: Schema.optional(Schema.String),
-      lastModifiedByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      lastModifiedAt: Schema.optional(Schema.String),
-    }),
-  ),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
 });
 export type AccessPolicyGetOutput = typeof AccessPolicyGetOutput.Type;
 
@@ -425,37 +664,7 @@ export type AccessPolicyListInput = typeof AccessPolicyListInput.Type;
 // Output Schema
 export const AccessPolicyListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => RedisCacheAccessPolicySchema)),
     nextLink: Schema.optional(Schema.String),
   },
 );
@@ -493,6 +702,7 @@ export type AsyncOperationStatusGetInput =
 // Output Schema
 export const AsyncOperationStatusGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     status: Schema.String,
@@ -500,50 +710,9 @@ export const AsyncOperationStatusGetOutput =
     startTime: Schema.optional(Schema.String),
     endTime: Schema.optional(Schema.String),
     operations: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          status: Schema.String,
-          percentComplete: Schema.optional(Schema.Number),
-          startTime: Schema.optional(Schema.String),
-          endTime: Schema.optional(Schema.String),
-          operations: Schema.optional(Schema.Array(Schema.Unknown)),
-          error: Schema.optional(
-            Schema.Struct({
-              code: Schema.optional(Schema.String),
-              message: Schema.optional(Schema.String),
-              target: Schema.optional(Schema.String),
-              details: Schema.optional(Schema.Array(Schema.Unknown)),
-              additionalInfo: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    type: Schema.optional(Schema.String),
-                    info: Schema.optional(Schema.Unknown),
-                  }),
-                ),
-              ),
-            }),
-          ),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => OperationStatusResultSchema)),
     ),
-    error: Schema.optional(
-      Schema.Struct({
-        code: Schema.optional(Schema.String),
-        message: Schema.optional(Schema.String),
-        target: Schema.optional(Schema.String),
-        details: Schema.optional(Schema.Array(Schema.Unknown)),
-        additionalInfo: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              type: Schema.optional(Schema.String),
-              info: Schema.optional(Schema.Unknown),
-            }),
-          ),
-        ),
-      }),
-    ),
+    error: Schema.optional(Schema.suspend(() => ErrorDetailSchema)),
   });
 export type AsyncOperationStatusGetOutput =
   typeof AsyncOperationStatusGetOutput.Type;
@@ -570,10 +739,7 @@ export const FirewallRulesCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     cacheName: Schema.String.pipe(T.PathParam()),
     ruleName: Schema.String.pipe(T.PathParam()),
-    properties: Schema.Struct({
-      startIP: Schema.String,
-      endIP: Schema.String,
-    }),
+    properties: Schema.suspend(() => RedisFirewallRulePropertiesSchema),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -587,23 +753,11 @@ export type FirewallRulesCreateOrUpdateInput =
 // Output Schema
 export const FirewallRulesCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.suspend(() => RedisFirewallRulePropertiesSchema),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type FirewallRulesCreateOrUpdateOutput =
   typeof FirewallRulesCreateOrUpdateOutput.Type;
@@ -677,23 +831,11 @@ export type FirewallRulesGetInput = typeof FirewallRulesGetInput.Type;
 // Output Schema
 export const FirewallRulesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
+    properties: Schema.suspend(() => RedisFirewallRulePropertiesSchema),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   },
 );
 export type FirewallRulesGetOutput = typeof FirewallRulesGetOutput.Type;
@@ -731,37 +873,7 @@ export type FirewallRulesListInput = typeof FirewallRulesListInput.Type;
 // Output Schema
 export const FirewallRulesListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => RedisFirewallRuleSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type FirewallRulesListOutput = typeof FirewallRulesListOutput.Type;
@@ -786,13 +898,7 @@ export const LinkedServerCreateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
     linkedServerName: Schema.String.pipe(T.PathParam()),
-    properties: Schema.Struct({
-      linkedRedisCacheId: Schema.String,
-      linkedRedisCacheLocation: Schema.String,
-      serverRole: Schema.Literals(["Primary", "Secondary"]),
-      geoReplicatedPrimaryHostName: Schema.optional(Schema.String),
-      primaryHostName: Schema.optional(Schema.String),
-    }),
+    properties: Schema.suspend(() => RedisLinkedServerCreatePropertiesSchema),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -806,23 +912,13 @@ export type LinkedServerCreateInput = typeof LinkedServerCreateInput.Type;
 // Output Schema
 export const LinkedServerCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => RedisLinkedServerPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type LinkedServerCreateOutput = typeof LinkedServerCreateOutput.Type;
 
@@ -892,23 +988,13 @@ export type LinkedServerGetInput = typeof LinkedServerGetInput.Type;
 
 // Output Schema
 export const LinkedServerGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.optional(
+    Schema.suspend(() => RedisLinkedServerPropertiesSchema),
+  ),
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
-  systemData: Schema.optional(
-    Schema.Struct({
-      createdBy: Schema.optional(Schema.String),
-      createdByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      createdAt: Schema.optional(Schema.String),
-      lastModifiedBy: Schema.optional(Schema.String),
-      lastModifiedByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      lastModifiedAt: Schema.optional(Schema.String),
-    }),
-  ),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
 });
 export type LinkedServerGetOutput = typeof LinkedServerGetOutput.Type;
 
@@ -944,35 +1030,7 @@ export type LinkedServerListInput = typeof LinkedServerListInput.Type;
 export const LinkedServerListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
+      Schema.suspend(() => RedisLinkedServerWithPropertiesSchema),
     ),
     nextLink: Schema.optional(Schema.String),
   },
@@ -1006,19 +1064,7 @@ export type OperationsListInput = typeof OperationsListInput.Type;
 
 // Output Schema
 export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  value: Schema.Array(
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      display: Schema.optional(
-        Schema.Struct({
-          provider: Schema.optional(Schema.String),
-          operation: Schema.optional(Schema.String),
-          resource: Schema.optional(Schema.String),
-          description: Schema.optional(Schema.String),
-        }),
-      ),
-    }),
-  ),
+  value: Schema.Array(Schema.suspend(() => OperationSchema)),
   nextLink: Schema.optional(Schema.String),
 });
 export type OperationsListOutput = typeof OperationsListOutput.Type;
@@ -1040,25 +1086,7 @@ export const PatchSchedulesCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
     default: Schema.Literals(["default"]).pipe(T.PathParam()),
-    properties: Schema.Struct({
-      scheduleEntries: Schema.Array(
-        Schema.Struct({
-          dayOfWeek: Schema.Literals([
-            "Monday",
-            "Tuesday",
-            "Wednesday",
-            "Thursday",
-            "Friday",
-            "Saturday",
-            "Sunday",
-            "Everyday",
-            "Weekend",
-          ]),
-          startHourUtc: Schema.Number,
-          maintenanceWindow: Schema.optional(Schema.String),
-        }),
-      ),
-    }),
+    properties: Schema.suspend(() => ScheduleEntriesSchema),
     location: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
@@ -1073,23 +1101,12 @@ export type PatchSchedulesCreateOrUpdateInput =
 // Output Schema
 export const PatchSchedulesCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.suspend(() => ScheduleEntriesSchema),
+    location: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type PatchSchedulesCreateOrUpdateOutput =
   typeof PatchSchedulesCreateOrUpdateOutput.Type;
@@ -1166,23 +1183,12 @@ export type PatchSchedulesGetInput = typeof PatchSchedulesGetInput.Type;
 // Output Schema
 export const PatchSchedulesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.suspend(() => ScheduleEntriesSchema),
+    location: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type PatchSchedulesGetOutput = typeof PatchSchedulesGetOutput.Type;
 
@@ -1219,37 +1225,7 @@ export type PatchSchedulesListByRedisResourceInput =
 // Output Schema
 export const PatchSchedulesListByRedisResourceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => RedisPatchScheduleSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type PatchSchedulesListByRedisResourceOutput =
@@ -1327,23 +1303,13 @@ export type PrivateEndpointConnectionsGetInput =
 // Output Schema
 export const PrivateEndpointConnectionsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => PrivateEndpointConnectionPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type PrivateEndpointConnectionsGetOutput =
   typeof PrivateEndpointConnectionsGetOutput.Type;
@@ -1387,30 +1353,7 @@ export const PrivateEndpointConnectionsListOutput =
         id: Schema.optional(Schema.String),
         name: Schema.optional(Schema.String),
         type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
+        systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
       }),
     ),
     nextLink: Schema.optional(Schema.String),
@@ -1440,42 +1383,12 @@ export const PrivateEndpointConnectionsPutInput =
     cacheName: Schema.String.pipe(T.PathParam()),
     privateEndpointConnectionName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        groupIds: Schema.optional(Schema.Array(Schema.String)),
-        privateEndpoint: Schema.optional(
-          Schema.Struct({
-            id: Schema.optional(Schema.String),
-          }),
-        ),
-        privateLinkServiceConnectionState: Schema.Struct({
-          status: Schema.optional(
-            Schema.Literals(["Pending", "Approved", "Rejected"]),
-          ),
-          description: Schema.optional(Schema.String),
-          actionsRequired: Schema.optional(Schema.String),
-        }),
-        provisioningState: Schema.optional(
-          Schema.Literals(["Succeeded", "Creating", "Deleting", "Failed"]),
-        ),
-      }),
+      Schema.suspend(() => PrivateEndpointConnectionPropertiesSchema),
     ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -1490,23 +1403,13 @@ export type PrivateEndpointConnectionsPutInput =
 // Output Schema
 export const PrivateEndpointConnectionsPutOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => PrivateEndpointConnectionPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type PrivateEndpointConnectionsPutOutput =
   typeof PrivateEndpointConnectionsPutOutput.Type;
@@ -1551,30 +1454,7 @@ export const PrivateLinkResourcesListByRedisCacheOutput =
         id: Schema.optional(Schema.String),
         name: Schema.optional(Schema.String),
         type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
+        systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
       }),
     ),
     nextLink: Schema.optional(Schema.String),
@@ -1636,50 +1516,7 @@ export const RedisCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   name: Schema.String.pipe(T.PathParam()),
-  properties: Schema.Struct({
-    redisConfiguration: Schema.optional(
-      Schema.Struct({
-        "rdb-backup-enabled": Schema.optional(Schema.String),
-        "rdb-backup-frequency": Schema.optional(Schema.String),
-        "rdb-backup-max-snapshot-count": Schema.optional(Schema.String),
-        "rdb-storage-connection-string": Schema.optional(Schema.String),
-        "aof-backup-enabled": Schema.optional(Schema.String),
-        "aof-storage-connection-string-0": Schema.optional(Schema.String),
-        "aof-storage-connection-string-1": Schema.optional(Schema.String),
-        "maxfragmentationmemory-reserved": Schema.optional(Schema.String),
-        "maxmemory-policy": Schema.optional(Schema.String),
-        "maxmemory-reserved": Schema.optional(Schema.String),
-        "maxmemory-delta": Schema.optional(Schema.String),
-        maxclients: Schema.optional(Schema.String),
-        "notify-keyspace-events": Schema.optional(Schema.String),
-        "preferred-data-archive-auth-method": Schema.optional(Schema.String),
-        "preferred-data-persistence-auth-method": Schema.optional(
-          Schema.String,
-        ),
-        "zonal-configuration": Schema.optional(Schema.String),
-        authnotrequired: Schema.optional(Schema.String),
-        "storage-subscription-id": Schema.optional(Schema.String),
-        "aad-enabled": Schema.optional(Schema.String),
-      }),
-    ),
-    redisVersion: Schema.optional(Schema.String),
-    enableNonSslPort: Schema.optional(Schema.Boolean),
-    replicasPerMaster: Schema.optional(Schema.Number),
-    replicasPerPrimary: Schema.optional(Schema.Number),
-    tenantSettings: Schema.optional(
-      Schema.Record(Schema.String, Schema.String),
-    ),
-    shardCount: Schema.optional(Schema.Number),
-    minimumTlsVersion: Schema.optional(Schema.Literals(["1.0", "1.1", "1.2"])),
-    publicNetworkAccess: Schema.optional(
-      Schema.Literals(["Enabled", "Disabled"]),
-    ),
-    updateChannel: Schema.optional(Schema.Literals(["Stable", "Preview"])),
-    disableAccessKeyAuthentication: Schema.optional(Schema.Boolean),
-    zonalAllocationPolicy: Schema.optional(
-      Schema.Literals(["Automatic", "UserDefined", "NoZones"]),
-    ),
-  }),
+  properties: Schema.suspend(() => RedisCreatePropertiesSchema),
   zones: Schema.optional(Schema.Array(Schema.String)),
   location: Schema.String,
   tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
@@ -1687,20 +1524,9 @@ export const RedisCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     Schema.Struct({
       principalId: Schema.optional(Schema.String),
       tenantId: Schema.optional(Schema.String),
-      type: Schema.Literals([
-        "None",
-        "SystemAssigned",
-        "UserAssigned",
-        "SystemAssigned, UserAssigned",
-      ]),
+      type: Schema.suspend(() => ManagedServiceIdentityTypeSchema),
       userAssignedIdentities: Schema.optional(
-        Schema.Record(
-          Schema.String,
-          Schema.Struct({
-            principalId: Schema.optional(Schema.String),
-            clientId: Schema.optional(Schema.String),
-          }),
-        ),
+        Schema.suspend(() => UserAssignedIdentitiesSchema),
       ),
     }),
   ),
@@ -1716,23 +1542,24 @@ export type RedisCreateInput = typeof RedisCreateInput.Type;
 
 // Output Schema
 export const RedisCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.suspend(() => RedisPropertiesSchema),
+  zones: Schema.optional(Schema.Array(Schema.String)),
+  identity: Schema.optional(
+    Schema.Struct({
+      principalId: Schema.optional(Schema.String),
+      tenantId: Schema.optional(Schema.String),
+      type: Schema.suspend(() => ManagedServiceIdentityTypeSchema),
+      userAssignedIdentities: Schema.optional(
+        Schema.suspend(() => UserAssignedIdentitiesSchema),
+      ),
+    }),
+  ),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  location: Schema.String,
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
-  systemData: Schema.optional(
-    Schema.Struct({
-      createdBy: Schema.optional(Schema.String),
-      createdByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      createdAt: Schema.optional(Schema.String),
-      lastModifiedBy: Schema.optional(Schema.String),
-      lastModifiedByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      lastModifiedAt: Schema.optional(Schema.String),
-    }),
-  ),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
 });
 export type RedisCreateOutput = typeof RedisCreateOutput.Type;
 
@@ -1842,50 +1669,9 @@ export const RedisFlushCacheOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   startTime: Schema.optional(Schema.String),
   endTime: Schema.optional(Schema.String),
   operations: Schema.optional(
-    Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        status: Schema.String,
-        percentComplete: Schema.optional(Schema.Number),
-        startTime: Schema.optional(Schema.String),
-        endTime: Schema.optional(Schema.String),
-        operations: Schema.optional(Schema.Array(Schema.Unknown)),
-        error: Schema.optional(
-          Schema.Struct({
-            code: Schema.optional(Schema.String),
-            message: Schema.optional(Schema.String),
-            target: Schema.optional(Schema.String),
-            details: Schema.optional(Schema.Array(Schema.Unknown)),
-            additionalInfo: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  type: Schema.optional(Schema.String),
-                  info: Schema.optional(Schema.Unknown),
-                }),
-              ),
-            ),
-          }),
-        ),
-      }),
-    ),
+    Schema.Array(Schema.suspend(() => OperationStatusResultSchema)),
   ),
-  error: Schema.optional(
-    Schema.Struct({
-      code: Schema.optional(Schema.String),
-      message: Schema.optional(Schema.String),
-      target: Schema.optional(Schema.String),
-      details: Schema.optional(Schema.Array(Schema.Unknown)),
-      additionalInfo: Schema.optional(
-        Schema.Array(
-          Schema.Struct({
-            type: Schema.optional(Schema.String),
-            info: Schema.optional(Schema.Unknown),
-          }),
-        ),
-      ),
-    }),
-  ),
+  error: Schema.optional(Schema.suspend(() => ErrorDetailSchema)),
 });
 export type RedisFlushCacheOutput = typeof RedisFlushCacheOutput.Type;
 
@@ -1907,9 +1693,7 @@ export const RedisForceRebootInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   name: Schema.String.pipe(T.PathParam()),
-  rebootType: Schema.optional(
-    Schema.Literals(["PrimaryNode", "SecondaryNode", "AllNodes"]),
-  ),
+  rebootType: Schema.optional(Schema.suspend(() => RebootTypeSchema)),
   shardId: Schema.optional(Schema.Number),
   ports: Schema.optional(Schema.Array(Schema.Number)),
 }).pipe(
@@ -1958,23 +1742,24 @@ export type RedisGetInput = typeof RedisGetInput.Type;
 
 // Output Schema
 export const RedisGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.suspend(() => RedisPropertiesSchema),
+  zones: Schema.optional(Schema.Array(Schema.String)),
+  identity: Schema.optional(
+    Schema.Struct({
+      principalId: Schema.optional(Schema.String),
+      tenantId: Schema.optional(Schema.String),
+      type: Schema.suspend(() => ManagedServiceIdentityTypeSchema),
+      userAssignedIdentities: Schema.optional(
+        Schema.suspend(() => UserAssignedIdentitiesSchema),
+      ),
+    }),
+  ),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  location: Schema.String,
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
-  systemData: Schema.optional(
-    Schema.Struct({
-      createdBy: Schema.optional(Schema.String),
-      createdByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      createdAt: Schema.optional(Schema.String),
-      lastModifiedBy: Schema.optional(Schema.String),
-      lastModifiedByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      lastModifiedAt: Schema.optional(Schema.String),
-    }),
-  ),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
 });
 export type RedisGetOutput = typeof RedisGetOutput.Type;
 
@@ -2045,37 +1830,7 @@ export type RedisListByResourceGroupInput =
 // Output Schema
 export const RedisListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => RedisResourceSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type RedisListByResourceGroupOutput =
@@ -2112,37 +1867,7 @@ export type RedisListBySubscriptionInput =
 // Output Schema
 export const RedisListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => RedisResourceSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type RedisListBySubscriptionOutput =
@@ -2215,15 +1940,7 @@ export type RedisListUpgradeNotificationsInput =
 // Output Schema
 export const RedisListUpgradeNotificationsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        name: Schema.optional(Schema.String),
-        timestamp: Schema.optional(Schema.String),
-        upsellNotification: Schema.optional(
-          Schema.Record(Schema.String, Schema.String),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => UpgradeNotificationSchema)),
     nextLink: Schema.optional(Schema.String),
   });
 export type RedisListUpgradeNotificationsOutput =
@@ -2250,7 +1967,7 @@ export const RedisRegenerateKeyInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    keyType: Schema.Literals(["Primary", "Secondary"]),
+    keyType: Schema.suspend(() => RedisKeyTypeSchema),
   }).pipe(
     T.Http({
       method: "POST",
@@ -2287,72 +2004,16 @@ export const RedisUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   name: Schema.String.pipe(T.PathParam()),
   properties: Schema.optional(
-    Schema.Struct({
-      redisConfiguration: Schema.optional(
-        Schema.Struct({
-          "rdb-backup-enabled": Schema.optional(Schema.String),
-          "rdb-backup-frequency": Schema.optional(Schema.String),
-          "rdb-backup-max-snapshot-count": Schema.optional(Schema.String),
-          "rdb-storage-connection-string": Schema.optional(Schema.String),
-          "aof-backup-enabled": Schema.optional(Schema.String),
-          "aof-storage-connection-string-0": Schema.optional(Schema.String),
-          "aof-storage-connection-string-1": Schema.optional(Schema.String),
-          "maxfragmentationmemory-reserved": Schema.optional(Schema.String),
-          "maxmemory-policy": Schema.optional(Schema.String),
-          "maxmemory-reserved": Schema.optional(Schema.String),
-          "maxmemory-delta": Schema.optional(Schema.String),
-          maxclients: Schema.optional(Schema.String),
-          "notify-keyspace-events": Schema.optional(Schema.String),
-          "preferred-data-archive-auth-method": Schema.optional(Schema.String),
-          "preferred-data-persistence-auth-method": Schema.optional(
-            Schema.String,
-          ),
-          "zonal-configuration": Schema.optional(Schema.String),
-          authnotrequired: Schema.optional(Schema.String),
-          "storage-subscription-id": Schema.optional(Schema.String),
-          "aad-enabled": Schema.optional(Schema.String),
-        }),
-      ),
-      redisVersion: Schema.optional(Schema.String),
-      enableNonSslPort: Schema.optional(Schema.Boolean),
-      replicasPerMaster: Schema.optional(Schema.Number),
-      replicasPerPrimary: Schema.optional(Schema.Number),
-      tenantSettings: Schema.optional(
-        Schema.Record(Schema.String, Schema.String),
-      ),
-      shardCount: Schema.optional(Schema.Number),
-      minimumTlsVersion: Schema.optional(
-        Schema.Literals(["1.0", "1.1", "1.2"]),
-      ),
-      publicNetworkAccess: Schema.optional(
-        Schema.Literals(["Enabled", "Disabled"]),
-      ),
-      updateChannel: Schema.optional(Schema.Literals(["Stable", "Preview"])),
-      disableAccessKeyAuthentication: Schema.optional(Schema.Boolean),
-      zonalAllocationPolicy: Schema.optional(
-        Schema.Literals(["Automatic", "UserDefined", "NoZones"]),
-      ),
-    }),
+    Schema.suspend(() => RedisUpdatePropertiesSchema),
   ),
   tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   identity: Schema.optional(
     Schema.Struct({
       principalId: Schema.optional(Schema.String),
       tenantId: Schema.optional(Schema.String),
-      type: Schema.Literals([
-        "None",
-        "SystemAssigned",
-        "UserAssigned",
-        "SystemAssigned, UserAssigned",
-      ]),
+      type: Schema.suspend(() => ManagedServiceIdentityTypeSchema),
       userAssignedIdentities: Schema.optional(
-        Schema.Record(
-          Schema.String,
-          Schema.Struct({
-            principalId: Schema.optional(Schema.String),
-            clientId: Schema.optional(Schema.String),
-          }),
-        ),
+        Schema.suspend(() => UserAssignedIdentitiesSchema),
       ),
     }),
   ),
@@ -2368,23 +2029,24 @@ export type RedisUpdateInput = typeof RedisUpdateInput.Type;
 
 // Output Schema
 export const RedisUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.suspend(() => RedisPropertiesSchema),
+  zones: Schema.optional(Schema.Array(Schema.String)),
+  identity: Schema.optional(
+    Schema.Struct({
+      principalId: Schema.optional(Schema.String),
+      tenantId: Schema.optional(Schema.String),
+      type: Schema.suspend(() => ManagedServiceIdentityTypeSchema),
+      userAssignedIdentities: Schema.optional(
+        Schema.suspend(() => UserAssignedIdentitiesSchema),
+      ),
+    }),
+  ),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  location: Schema.String,
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
-  systemData: Schema.optional(
-    Schema.Struct({
-      createdBy: Schema.optional(Schema.String),
-      createdByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      createdAt: Schema.optional(Schema.String),
-      lastModifiedBy: Schema.optional(Schema.String),
-      lastModifiedByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      lastModifiedAt: Schema.optional(Schema.String),
-    }),
-  ),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
 });
 export type RedisUpdateOutput = typeof RedisUpdateOutput.Type;
 

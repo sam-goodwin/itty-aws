@@ -1,7 +1,7 @@
 import * as Schema from "effect/Schema";
+import { NeonAuthOauthProviderSchema } from "./_schemas.ts";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
-import { SensitiveString } from "../sensitive.ts";
 
 // Input Schema
 export const ListBranchNeonAuthOauthProvidersInput =
@@ -20,14 +20,7 @@ export type ListBranchNeonAuthOauthProvidersInput =
 // Output Schema
 export const ListBranchNeonAuthOauthProvidersOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    providers: Schema.Array(
-      Schema.Struct({
-        id: Schema.Literals(["google", "github", "microsoft", "vercel"]),
-        type: Schema.Literals(["standard", "shared"]),
-        client_id: Schema.optional(Schema.String),
-        client_secret: Schema.optional(SensitiveString),
-      }),
-    ),
+    providers: Schema.Array(Schema.suspend(() => NeonAuthOauthProviderSchema)),
   });
 export type ListBranchNeonAuthOauthProvidersOutput =
   typeof ListBranchNeonAuthOauthProvidersOutput.Type;

@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { OrganizationSchema } from "./_schemas.ts";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
@@ -13,19 +14,7 @@ export type GetCurrentUserOrganizationsInput =
 // Output Schema
 export const GetCurrentUserOrganizationsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    organizations: Schema.Array(
-      Schema.Struct({
-        id: Schema.String,
-        name: Schema.String,
-        handle: Schema.String,
-        plan: Schema.String,
-        created_at: Schema.String,
-        managed_by: Schema.String,
-        updated_at: Schema.String,
-        allow_hipaa_projects: Schema.optional(Schema.Boolean),
-        require_mfa: Schema.optional(Schema.Boolean),
-      }),
-    ),
+    organizations: Schema.Array(Schema.suspend(() => OrganizationSchema)),
   });
 export type GetCurrentUserOrganizationsOutput =
   typeof GetCurrentUserOrganizationsOutput.Type;

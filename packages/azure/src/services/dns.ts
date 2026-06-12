@@ -8,19 +8,134 @@ import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
+// Shared schemas
+const RecordSetPropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  metadata: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  TTL: Schema.optional(Schema.Number),
+  fqdn: Schema.optional(Schema.String),
+  provisioningState: Schema.optional(Schema.String),
+  targetResource: Schema.optional(Schema.suspend(() => SubResourceSchema)),
+  ARecords: Schema.optional(Schema.Array(Schema.suspend(() => ARecordSchema))),
+  AAAARecords: Schema.optional(
+    Schema.Array(Schema.suspend(() => AaaaRecordSchema)),
+  ),
+  MXRecords: Schema.optional(
+    Schema.Array(Schema.suspend(() => MxRecordSchema)),
+  ),
+  NSRecords: Schema.optional(
+    Schema.Array(Schema.suspend(() => NsRecordSchema)),
+  ),
+  PTRRecords: Schema.optional(
+    Schema.Array(Schema.suspend(() => PtrRecordSchema)),
+  ),
+  SRVRecords: Schema.optional(
+    Schema.Array(Schema.suspend(() => SrvRecordSchema)),
+  ),
+  TXTRecords: Schema.optional(
+    Schema.Array(Schema.suspend(() => TxtRecordSchema)),
+  ),
+  CNAMERecord: Schema.optional(Schema.suspend(() => CnameRecordSchema)),
+  SOARecord: Schema.optional(Schema.suspend(() => SoaRecordSchema)),
+  caaRecords: Schema.optional(
+    Schema.Array(Schema.suspend(() => CaaRecordSchema)),
+  ),
+});
+const SubResourceSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+});
+const ARecordSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  ipv4Address: Schema.optional(Schema.String),
+});
+const AaaaRecordSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  ipv6Address: Schema.optional(Schema.String),
+});
+const MxRecordSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  preference: Schema.optional(Schema.Number),
+  exchange: Schema.optional(Schema.String),
+});
+const NsRecordSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  nsdname: Schema.optional(Schema.String),
+});
+const PtrRecordSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  ptrdname: Schema.optional(Schema.String),
+});
+const SrvRecordSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  priority: Schema.optional(Schema.Number),
+  weight: Schema.optional(Schema.Number),
+  port: Schema.optional(Schema.Number),
+  target: Schema.optional(Schema.String),
+});
+const TxtRecordSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  value: Schema.optional(Schema.Array(Schema.String)),
+});
+const CnameRecordSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  cname: Schema.optional(Schema.String),
+});
+const SoaRecordSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  host: Schema.optional(Schema.String),
+  email: Schema.optional(Schema.String),
+  serialNumber: Schema.optional(Schema.Number),
+  refreshTime: Schema.optional(Schema.Number),
+  retryTime: Schema.optional(Schema.Number),
+  expireTime: Schema.optional(Schema.Number),
+  minimumTTL: Schema.optional(Schema.Number),
+});
+const CaaRecordSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  flags: Schema.optional(Schema.Number),
+  tag: Schema.optional(Schema.String),
+  value: Schema.optional(Schema.String),
+});
+const RecordSetSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  etag: Schema.optional(Schema.String),
+  properties: Schema.optional(Schema.suspend(() => RecordSetPropertiesSchema)),
+});
+const ZonePropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  maxNumberOfRecordSets: Schema.optional(Schema.Number),
+  maxNumberOfRecordsPerRecordSet: Schema.optional(Schema.Number),
+  numberOfRecordSets: Schema.optional(Schema.Number),
+  nameServers: Schema.optional(Schema.Array(Schema.String)),
+  zoneType: Schema.optional(Schema.Literals(["Public", "Private"])),
+  registrationVirtualNetworks: Schema.optional(
+    Schema.Array(Schema.suspend(() => SubResourceSchema)),
+  ),
+  resolutionVirtualNetworks: Schema.optional(
+    Schema.Array(Schema.suspend(() => SubResourceSchema)),
+  ),
+});
+const ZoneSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  location: Schema.String,
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+});
+const DnsResourceReferenceRequestPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    targetResources: Schema.optional(
+      Schema.Array(Schema.suspend(() => SubResourceSchema)),
+    ),
+  });
+const DnsResourceReferenceResultPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    dnsResourceReferences: Schema.optional(
+      Schema.Array(Schema.suspend(() => DnsResourceReferenceSchema)),
+    ),
+  });
+const DnsResourceReferenceSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  dnsResources: Schema.optional(
+    Schema.Array(Schema.suspend(() => SubResourceSchema)),
+  ),
+  targetResource: Schema.optional(Schema.suspend(() => SubResourceSchema)),
+});
+
 // Input Schema
 export const DnsResourceReferenceGetByTargetResourcesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     properties: Schema.optional(
-      Schema.Struct({
-        targetResources: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              id: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-      }),
+      Schema.suspend(() => DnsResourceReferenceRequestPropertiesSchema),
     ),
   }).pipe(
     T.Http({
@@ -36,26 +151,7 @@ export type DnsResourceReferenceGetByTargetResourcesInput =
 export const DnsResourceReferenceGetByTargetResourcesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     properties: Schema.optional(
-      Schema.Struct({
-        dnsResourceReferences: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              dnsResources: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    id: Schema.optional(Schema.String),
-                  }),
-                ),
-              ),
-              targetResource: Schema.optional(
-                Schema.Struct({
-                  id: Schema.optional(Schema.String),
-                }),
-              ),
-            }),
-          ),
-        ),
-      }),
+      Schema.suspend(() => DnsResourceReferenceResultPropertiesSchema),
     ),
   });
 export type DnsResourceReferenceGetByTargetResourcesOutput =
@@ -93,95 +189,7 @@ export const RecordSetsCreateOrUpdateInput =
     type: Schema.optional(Schema.String),
     etag: Schema.optional(Schema.String),
     properties: Schema.optional(
-      Schema.Struct({
-        metadata: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        TTL: Schema.optional(Schema.Number),
-        fqdn: Schema.optional(Schema.String),
-        provisioningState: Schema.optional(Schema.String),
-        targetResource: Schema.optional(
-          Schema.Struct({
-            id: Schema.optional(Schema.String),
-          }),
-        ),
-        ARecords: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              ipv4Address: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        AAAARecords: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              ipv6Address: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        MXRecords: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              preference: Schema.optional(Schema.Number),
-              exchange: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        NSRecords: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              nsdname: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        PTRRecords: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              ptrdname: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        SRVRecords: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              priority: Schema.optional(Schema.Number),
-              weight: Schema.optional(Schema.Number),
-              port: Schema.optional(Schema.Number),
-              target: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        TXTRecords: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              value: Schema.optional(Schema.Array(Schema.String)),
-            }),
-          ),
-        ),
-        CNAMERecord: Schema.optional(
-          Schema.Struct({
-            cname: Schema.optional(Schema.String),
-          }),
-        ),
-        SOARecord: Schema.optional(
-          Schema.Struct({
-            host: Schema.optional(Schema.String),
-            email: Schema.optional(Schema.String),
-            serialNumber: Schema.optional(Schema.Number),
-            refreshTime: Schema.optional(Schema.Number),
-            retryTime: Schema.optional(Schema.Number),
-            expireTime: Schema.optional(Schema.Number),
-            minimumTTL: Schema.optional(Schema.Number),
-          }),
-        ),
-        caaRecords: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              flags: Schema.optional(Schema.Number),
-              tag: Schema.optional(Schema.String),
-              value: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-      }),
+      Schema.suspend(() => RecordSetPropertiesSchema),
     ),
   }).pipe(
     T.Http({
@@ -201,95 +209,7 @@ export const RecordSetsCreateOrUpdateOutput =
     type: Schema.optional(Schema.String),
     etag: Schema.optional(Schema.String),
     properties: Schema.optional(
-      Schema.Struct({
-        metadata: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        TTL: Schema.optional(Schema.Number),
-        fqdn: Schema.optional(Schema.String),
-        provisioningState: Schema.optional(Schema.String),
-        targetResource: Schema.optional(
-          Schema.Struct({
-            id: Schema.optional(Schema.String),
-          }),
-        ),
-        ARecords: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              ipv4Address: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        AAAARecords: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              ipv6Address: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        MXRecords: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              preference: Schema.optional(Schema.Number),
-              exchange: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        NSRecords: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              nsdname: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        PTRRecords: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              ptrdname: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        SRVRecords: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              priority: Schema.optional(Schema.Number),
-              weight: Schema.optional(Schema.Number),
-              port: Schema.optional(Schema.Number),
-              target: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        TXTRecords: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              value: Schema.optional(Schema.Array(Schema.String)),
-            }),
-          ),
-        ),
-        CNAMERecord: Schema.optional(
-          Schema.Struct({
-            cname: Schema.optional(Schema.String),
-          }),
-        ),
-        SOARecord: Schema.optional(
-          Schema.Struct({
-            host: Schema.optional(Schema.String),
-            email: Schema.optional(Schema.String),
-            serialNumber: Schema.optional(Schema.Number),
-            refreshTime: Schema.optional(Schema.Number),
-            retryTime: Schema.optional(Schema.Number),
-            expireTime: Schema.optional(Schema.Number),
-            minimumTTL: Schema.optional(Schema.Number),
-          }),
-        ),
-        caaRecords: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              flags: Schema.optional(Schema.Number),
-              tag: Schema.optional(Schema.String),
-              value: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-      }),
+      Schema.suspend(() => RecordSetPropertiesSchema),
     ),
   });
 export type RecordSetsCreateOrUpdateOutput =
@@ -388,97 +308,7 @@ export const RecordSetsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
   etag: Schema.optional(Schema.String),
-  properties: Schema.optional(
-    Schema.Struct({
-      metadata: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      TTL: Schema.optional(Schema.Number),
-      fqdn: Schema.optional(Schema.String),
-      provisioningState: Schema.optional(Schema.String),
-      targetResource: Schema.optional(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-        }),
-      ),
-      ARecords: Schema.optional(
-        Schema.Array(
-          Schema.Struct({
-            ipv4Address: Schema.optional(Schema.String),
-          }),
-        ),
-      ),
-      AAAARecords: Schema.optional(
-        Schema.Array(
-          Schema.Struct({
-            ipv6Address: Schema.optional(Schema.String),
-          }),
-        ),
-      ),
-      MXRecords: Schema.optional(
-        Schema.Array(
-          Schema.Struct({
-            preference: Schema.optional(Schema.Number),
-            exchange: Schema.optional(Schema.String),
-          }),
-        ),
-      ),
-      NSRecords: Schema.optional(
-        Schema.Array(
-          Schema.Struct({
-            nsdname: Schema.optional(Schema.String),
-          }),
-        ),
-      ),
-      PTRRecords: Schema.optional(
-        Schema.Array(
-          Schema.Struct({
-            ptrdname: Schema.optional(Schema.String),
-          }),
-        ),
-      ),
-      SRVRecords: Schema.optional(
-        Schema.Array(
-          Schema.Struct({
-            priority: Schema.optional(Schema.Number),
-            weight: Schema.optional(Schema.Number),
-            port: Schema.optional(Schema.Number),
-            target: Schema.optional(Schema.String),
-          }),
-        ),
-      ),
-      TXTRecords: Schema.optional(
-        Schema.Array(
-          Schema.Struct({
-            value: Schema.optional(Schema.Array(Schema.String)),
-          }),
-        ),
-      ),
-      CNAMERecord: Schema.optional(
-        Schema.Struct({
-          cname: Schema.optional(Schema.String),
-        }),
-      ),
-      SOARecord: Schema.optional(
-        Schema.Struct({
-          host: Schema.optional(Schema.String),
-          email: Schema.optional(Schema.String),
-          serialNumber: Schema.optional(Schema.Number),
-          refreshTime: Schema.optional(Schema.Number),
-          retryTime: Schema.optional(Schema.Number),
-          expireTime: Schema.optional(Schema.Number),
-          minimumTTL: Schema.optional(Schema.Number),
-        }),
-      ),
-      caaRecords: Schema.optional(
-        Schema.Array(
-          Schema.Struct({
-            flags: Schema.optional(Schema.Number),
-            tag: Schema.optional(Schema.String),
-            value: Schema.optional(Schema.String),
-          }),
-        ),
-      ),
-    }),
-  ),
+  properties: Schema.optional(Schema.suspend(() => RecordSetPropertiesSchema)),
 });
 export type RecordSetsGetOutput = typeof RecordSetsGetOutput.Type;
 
@@ -515,109 +345,7 @@ export type RecordSetsListAllByDnsZoneInput =
 // Output Schema
 export const RecordSetsListAllByDnsZoneOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          etag: Schema.optional(Schema.String),
-          properties: Schema.optional(
-            Schema.Struct({
-              metadata: Schema.optional(
-                Schema.Record(Schema.String, Schema.String),
-              ),
-              TTL: Schema.optional(Schema.Number),
-              fqdn: Schema.optional(Schema.String),
-              provisioningState: Schema.optional(Schema.String),
-              targetResource: Schema.optional(
-                Schema.Struct({
-                  id: Schema.optional(Schema.String),
-                }),
-              ),
-              ARecords: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    ipv4Address: Schema.optional(Schema.String),
-                  }),
-                ),
-              ),
-              AAAARecords: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    ipv6Address: Schema.optional(Schema.String),
-                  }),
-                ),
-              ),
-              MXRecords: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    preference: Schema.optional(Schema.Number),
-                    exchange: Schema.optional(Schema.String),
-                  }),
-                ),
-              ),
-              NSRecords: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    nsdname: Schema.optional(Schema.String),
-                  }),
-                ),
-              ),
-              PTRRecords: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    ptrdname: Schema.optional(Schema.String),
-                  }),
-                ),
-              ),
-              SRVRecords: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    priority: Schema.optional(Schema.Number),
-                    weight: Schema.optional(Schema.Number),
-                    port: Schema.optional(Schema.Number),
-                    target: Schema.optional(Schema.String),
-                  }),
-                ),
-              ),
-              TXTRecords: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    value: Schema.optional(Schema.Array(Schema.String)),
-                  }),
-                ),
-              ),
-              CNAMERecord: Schema.optional(
-                Schema.Struct({
-                  cname: Schema.optional(Schema.String),
-                }),
-              ),
-              SOARecord: Schema.optional(
-                Schema.Struct({
-                  host: Schema.optional(Schema.String),
-                  email: Schema.optional(Schema.String),
-                  serialNumber: Schema.optional(Schema.Number),
-                  refreshTime: Schema.optional(Schema.Number),
-                  retryTime: Schema.optional(Schema.Number),
-                  expireTime: Schema.optional(Schema.Number),
-                  minimumTTL: Schema.optional(Schema.Number),
-                }),
-              ),
-              caaRecords: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    flags: Schema.optional(Schema.Number),
-                    tag: Schema.optional(Schema.String),
-                    value: Schema.optional(Schema.String),
-                  }),
-                ),
-              ),
-            }),
-          ),
-        }),
-      ),
-    ),
+    value: Schema.optional(Schema.Array(Schema.suspend(() => RecordSetSchema))),
     nextLink: Schema.optional(Schema.String),
   });
 export type RecordSetsListAllByDnsZoneOutput =
@@ -658,109 +386,7 @@ export type RecordSetsListByDnsZoneInput =
 // Output Schema
 export const RecordSetsListByDnsZoneOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          etag: Schema.optional(Schema.String),
-          properties: Schema.optional(
-            Schema.Struct({
-              metadata: Schema.optional(
-                Schema.Record(Schema.String, Schema.String),
-              ),
-              TTL: Schema.optional(Schema.Number),
-              fqdn: Schema.optional(Schema.String),
-              provisioningState: Schema.optional(Schema.String),
-              targetResource: Schema.optional(
-                Schema.Struct({
-                  id: Schema.optional(Schema.String),
-                }),
-              ),
-              ARecords: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    ipv4Address: Schema.optional(Schema.String),
-                  }),
-                ),
-              ),
-              AAAARecords: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    ipv6Address: Schema.optional(Schema.String),
-                  }),
-                ),
-              ),
-              MXRecords: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    preference: Schema.optional(Schema.Number),
-                    exchange: Schema.optional(Schema.String),
-                  }),
-                ),
-              ),
-              NSRecords: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    nsdname: Schema.optional(Schema.String),
-                  }),
-                ),
-              ),
-              PTRRecords: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    ptrdname: Schema.optional(Schema.String),
-                  }),
-                ),
-              ),
-              SRVRecords: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    priority: Schema.optional(Schema.Number),
-                    weight: Schema.optional(Schema.Number),
-                    port: Schema.optional(Schema.Number),
-                    target: Schema.optional(Schema.String),
-                  }),
-                ),
-              ),
-              TXTRecords: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    value: Schema.optional(Schema.Array(Schema.String)),
-                  }),
-                ),
-              ),
-              CNAMERecord: Schema.optional(
-                Schema.Struct({
-                  cname: Schema.optional(Schema.String),
-                }),
-              ),
-              SOARecord: Schema.optional(
-                Schema.Struct({
-                  host: Schema.optional(Schema.String),
-                  email: Schema.optional(Schema.String),
-                  serialNumber: Schema.optional(Schema.Number),
-                  refreshTime: Schema.optional(Schema.Number),
-                  retryTime: Schema.optional(Schema.Number),
-                  expireTime: Schema.optional(Schema.Number),
-                  minimumTTL: Schema.optional(Schema.Number),
-                }),
-              ),
-              caaRecords: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    flags: Schema.optional(Schema.Number),
-                    tag: Schema.optional(Schema.String),
-                    value: Schema.optional(Schema.String),
-                  }),
-                ),
-              ),
-            }),
-          ),
-        }),
-      ),
-    ),
+    value: Schema.optional(Schema.Array(Schema.suspend(() => RecordSetSchema))),
     nextLink: Schema.optional(Schema.String),
   });
 export type RecordSetsListByDnsZoneOutput =
@@ -812,109 +438,7 @@ export type RecordSetsListByTypeInput = typeof RecordSetsListByTypeInput.Type;
 // Output Schema
 export const RecordSetsListByTypeOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          etag: Schema.optional(Schema.String),
-          properties: Schema.optional(
-            Schema.Struct({
-              metadata: Schema.optional(
-                Schema.Record(Schema.String, Schema.String),
-              ),
-              TTL: Schema.optional(Schema.Number),
-              fqdn: Schema.optional(Schema.String),
-              provisioningState: Schema.optional(Schema.String),
-              targetResource: Schema.optional(
-                Schema.Struct({
-                  id: Schema.optional(Schema.String),
-                }),
-              ),
-              ARecords: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    ipv4Address: Schema.optional(Schema.String),
-                  }),
-                ),
-              ),
-              AAAARecords: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    ipv6Address: Schema.optional(Schema.String),
-                  }),
-                ),
-              ),
-              MXRecords: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    preference: Schema.optional(Schema.Number),
-                    exchange: Schema.optional(Schema.String),
-                  }),
-                ),
-              ),
-              NSRecords: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    nsdname: Schema.optional(Schema.String),
-                  }),
-                ),
-              ),
-              PTRRecords: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    ptrdname: Schema.optional(Schema.String),
-                  }),
-                ),
-              ),
-              SRVRecords: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    priority: Schema.optional(Schema.Number),
-                    weight: Schema.optional(Schema.Number),
-                    port: Schema.optional(Schema.Number),
-                    target: Schema.optional(Schema.String),
-                  }),
-                ),
-              ),
-              TXTRecords: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    value: Schema.optional(Schema.Array(Schema.String)),
-                  }),
-                ),
-              ),
-              CNAMERecord: Schema.optional(
-                Schema.Struct({
-                  cname: Schema.optional(Schema.String),
-                }),
-              ),
-              SOARecord: Schema.optional(
-                Schema.Struct({
-                  host: Schema.optional(Schema.String),
-                  email: Schema.optional(Schema.String),
-                  serialNumber: Schema.optional(Schema.Number),
-                  refreshTime: Schema.optional(Schema.Number),
-                  retryTime: Schema.optional(Schema.Number),
-                  expireTime: Schema.optional(Schema.Number),
-                  minimumTTL: Schema.optional(Schema.Number),
-                }),
-              ),
-              caaRecords: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    flags: Schema.optional(Schema.Number),
-                    tag: Schema.optional(Schema.String),
-                    value: Schema.optional(Schema.String),
-                  }),
-                ),
-              ),
-            }),
-          ),
-        }),
-      ),
-    ),
+    value: Schema.optional(Schema.Array(Schema.suspend(() => RecordSetSchema))),
     nextLink: Schema.optional(Schema.String),
   });
 export type RecordSetsListByTypeOutput = typeof RecordSetsListByTypeOutput.Type;
@@ -956,97 +480,7 @@ export const RecordSetsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
   etag: Schema.optional(Schema.String),
-  properties: Schema.optional(
-    Schema.Struct({
-      metadata: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      TTL: Schema.optional(Schema.Number),
-      fqdn: Schema.optional(Schema.String),
-      provisioningState: Schema.optional(Schema.String),
-      targetResource: Schema.optional(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-        }),
-      ),
-      ARecords: Schema.optional(
-        Schema.Array(
-          Schema.Struct({
-            ipv4Address: Schema.optional(Schema.String),
-          }),
-        ),
-      ),
-      AAAARecords: Schema.optional(
-        Schema.Array(
-          Schema.Struct({
-            ipv6Address: Schema.optional(Schema.String),
-          }),
-        ),
-      ),
-      MXRecords: Schema.optional(
-        Schema.Array(
-          Schema.Struct({
-            preference: Schema.optional(Schema.Number),
-            exchange: Schema.optional(Schema.String),
-          }),
-        ),
-      ),
-      NSRecords: Schema.optional(
-        Schema.Array(
-          Schema.Struct({
-            nsdname: Schema.optional(Schema.String),
-          }),
-        ),
-      ),
-      PTRRecords: Schema.optional(
-        Schema.Array(
-          Schema.Struct({
-            ptrdname: Schema.optional(Schema.String),
-          }),
-        ),
-      ),
-      SRVRecords: Schema.optional(
-        Schema.Array(
-          Schema.Struct({
-            priority: Schema.optional(Schema.Number),
-            weight: Schema.optional(Schema.Number),
-            port: Schema.optional(Schema.Number),
-            target: Schema.optional(Schema.String),
-          }),
-        ),
-      ),
-      TXTRecords: Schema.optional(
-        Schema.Array(
-          Schema.Struct({
-            value: Schema.optional(Schema.Array(Schema.String)),
-          }),
-        ),
-      ),
-      CNAMERecord: Schema.optional(
-        Schema.Struct({
-          cname: Schema.optional(Schema.String),
-        }),
-      ),
-      SOARecord: Schema.optional(
-        Schema.Struct({
-          host: Schema.optional(Schema.String),
-          email: Schema.optional(Schema.String),
-          serialNumber: Schema.optional(Schema.Number),
-          refreshTime: Schema.optional(Schema.Number),
-          retryTime: Schema.optional(Schema.Number),
-          expireTime: Schema.optional(Schema.Number),
-          minimumTTL: Schema.optional(Schema.Number),
-        }),
-      ),
-      caaRecords: Schema.optional(
-        Schema.Array(
-          Schema.Struct({
-            flags: Schema.optional(Schema.Number),
-            tag: Schema.optional(Schema.String),
-            value: Schema.optional(Schema.String),
-          }),
-        ),
-      ),
-    }),
-  ),
+  properties: Schema.optional(Schema.suspend(() => RecordSetPropertiesSchema)),
 }).pipe(
   T.Http({
     method: "PATCH",
@@ -1064,95 +498,7 @@ export const RecordSetsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     type: Schema.optional(Schema.String),
     etag: Schema.optional(Schema.String),
     properties: Schema.optional(
-      Schema.Struct({
-        metadata: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        TTL: Schema.optional(Schema.Number),
-        fqdn: Schema.optional(Schema.String),
-        provisioningState: Schema.optional(Schema.String),
-        targetResource: Schema.optional(
-          Schema.Struct({
-            id: Schema.optional(Schema.String),
-          }),
-        ),
-        ARecords: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              ipv4Address: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        AAAARecords: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              ipv6Address: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        MXRecords: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              preference: Schema.optional(Schema.Number),
-              exchange: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        NSRecords: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              nsdname: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        PTRRecords: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              ptrdname: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        SRVRecords: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              priority: Schema.optional(Schema.Number),
-              weight: Schema.optional(Schema.Number),
-              port: Schema.optional(Schema.Number),
-              target: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        TXTRecords: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              value: Schema.optional(Schema.Array(Schema.String)),
-            }),
-          ),
-        ),
-        CNAMERecord: Schema.optional(
-          Schema.Struct({
-            cname: Schema.optional(Schema.String),
-          }),
-        ),
-        SOARecord: Schema.optional(
-          Schema.Struct({
-            host: Schema.optional(Schema.String),
-            email: Schema.optional(Schema.String),
-            serialNumber: Schema.optional(Schema.Number),
-            refreshTime: Schema.optional(Schema.Number),
-            retryTime: Schema.optional(Schema.Number),
-            expireTime: Schema.optional(Schema.Number),
-            minimumTTL: Schema.optional(Schema.Number),
-          }),
-        ),
-        caaRecords: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              flags: Schema.optional(Schema.Number),
-              tag: Schema.optional(Schema.String),
-              value: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-      }),
+      Schema.suspend(() => RecordSetPropertiesSchema),
     ),
   },
 );
@@ -1178,29 +524,7 @@ export const ZonesCreateOrUpdateInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     zoneName: Schema.String.pipe(T.PathParam()),
     etag: Schema.optional(Schema.String),
-    properties: Schema.optional(
-      Schema.Struct({
-        maxNumberOfRecordSets: Schema.optional(Schema.Number),
-        maxNumberOfRecordsPerRecordSet: Schema.optional(Schema.Number),
-        numberOfRecordSets: Schema.optional(Schema.Number),
-        nameServers: Schema.optional(Schema.Array(Schema.String)),
-        zoneType: Schema.optional(Schema.Literals(["Public", "Private"])),
-        registrationVirtualNetworks: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              id: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        resolutionVirtualNetworks: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              id: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-      }),
-    ),
+    properties: Schema.optional(Schema.suspend(() => ZonePropertiesSchema)),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1218,6 +542,8 @@ export type ZonesCreateOrUpdateInput = typeof ZonesCreateOrUpdateInput.Type;
 // Output Schema
 export const ZonesCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    etag: Schema.optional(Schema.String),
+    properties: Schema.optional(Schema.suspend(() => ZonePropertiesSchema)),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1284,6 +610,8 @@ export type ZonesGetInput = typeof ZonesGetInput.Type;
 
 // Output Schema
 export const ZonesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  etag: Schema.optional(Schema.String),
+  properties: Schema.optional(Schema.suspend(() => ZonePropertiesSchema)),
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -1317,17 +645,7 @@ export type ZonesListInput = typeof ZonesListInput.Type;
 
 // Output Schema
 export const ZonesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  value: Schema.optional(
-    Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        location: Schema.String,
-        tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      }),
-    ),
-  ),
+  value: Schema.optional(Schema.Array(Schema.suspend(() => ZoneSchema))),
   nextLink: Schema.optional(Schema.String),
 });
 export type ZonesListOutput = typeof ZonesListOutput.Type;
@@ -1360,17 +678,7 @@ export type ZonesListByResourceGroupInput =
 // Output Schema
 export const ZonesListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          location: Schema.String,
-          tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        }),
-      ),
-    ),
+    value: Schema.optional(Schema.Array(Schema.suspend(() => ZoneSchema))),
     nextLink: Schema.optional(Schema.String),
   });
 export type ZonesListByResourceGroupOutput =
@@ -1405,6 +713,8 @@ export type ZonesUpdateInput = typeof ZonesUpdateInput.Type;
 
 // Output Schema
 export const ZonesUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  etag: Schema.optional(Schema.String),
+  properties: Schema.optional(Schema.suspend(() => ZonePropertiesSchema)),
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),

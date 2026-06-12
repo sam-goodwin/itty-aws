@@ -8,24 +8,144 @@ import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
+// Shared schemas
+const OperationSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  isDataAction: Schema.optional(Schema.Boolean),
+  display: Schema.optional(
+    Schema.Struct({
+      provider: Schema.optional(Schema.String),
+      resource: Schema.optional(Schema.String),
+      operation: Schema.optional(Schema.String),
+      description: Schema.optional(Schema.String),
+    }),
+  ),
+});
+const SubscriptionAliasResponsePropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.optional(Schema.String),
+    displayName: Schema.optional(Schema.String),
+    provisioningState: Schema.optional(
+      Schema.Literals(["Accepted", "Succeeded", "Failed"]),
+    ),
+    acceptOwnershipUrl: Schema.optional(Schema.String),
+    acceptOwnershipState: Schema.optional(
+      Schema.suspend(() => AcceptOwnershipStateSchema),
+    ),
+    billingScope: Schema.optional(Schema.suspend(() => BillingScopeSchema)),
+    workload: Schema.optional(Schema.suspend(() => WorkloadSchema)),
+    resellerId: Schema.optional(Schema.String),
+    subscriptionOwnerId: Schema.optional(Schema.String),
+    managementGroupId: Schema.optional(Schema.String),
+    createdTime: Schema.optional(Schema.String),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  });
+const AcceptOwnershipStateSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Pending",
+  "Completed",
+  "Expired",
+]);
+const BillingScopeSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.String;
+const WorkloadSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Production",
+  "DevTest",
+]);
+const PutAliasRequestPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    displayName: Schema.optional(Schema.String),
+    workload: Schema.optional(Schema.suspend(() => WorkloadSchema)),
+    billingScope: Schema.optional(Schema.suspend(() => BillingScopeSchema)),
+    subscriptionId: Schema.optional(Schema.String),
+    resellerId: Schema.optional(Schema.String),
+    additionalProperties: Schema.optional(
+      Schema.suspend(() => PutAliasRequestAdditionalPropertiesSchema),
+    ),
+  });
+const PutAliasRequestAdditionalPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    managementGroupId: Schema.optional(Schema.String),
+    subscriptionTenantId: Schema.optional(Schema.String),
+    subscriptionOwnerId: Schema.optional(Schema.String),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  });
+const SubscriptionAliasResponseSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    properties: Schema.optional(
+      Schema.suspend(() => SubscriptionAliasResponsePropertiesSchema),
+    ),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+  });
+const AcceptOwnershipRequestPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    displayName: Schema.String,
+    managementGroupId: Schema.optional(Schema.String),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  });
+const ProvisioningStateSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Pending",
+  "Accepted",
+  "Succeeded",
+]);
+const TenantPolicySchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  policyId: Schema.optional(Schema.String),
+  blockSubscriptionsLeavingTenant: Schema.optional(Schema.Boolean),
+  blockSubscriptionsIntoTenant: Schema.optional(Schema.Boolean),
+  exemptedPrincipals: Schema.optional(Schema.Array(Schema.String)),
+});
+const GetTenantPolicyResponseSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    properties: Schema.optional(Schema.suspend(() => TenantPolicySchema)),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+  },
+);
+const BillingAccountPoliciesResponsePropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    serviceTenants: Schema.optional(
+      Schema.Array(Schema.suspend(() => ServiceTenantResponseSchema)),
+    ),
+    allowTransfers: Schema.optional(Schema.Boolean),
+  });
+const ServiceTenantResponseSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  tenantId: Schema.optional(Schema.String),
+  tenantName: Schema.optional(Schema.String),
+});
+
 // Input Schema
 export const AliasCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   properties: Schema.optional(
-    Schema.Struct({
-      displayName: Schema.optional(Schema.String),
-      workload: Schema.optional(Schema.Literals(["Production", "DevTest"])),
-      billingScope: Schema.optional(Schema.String),
-      subscriptionId: Schema.optional(Schema.String),
-      resellerId: Schema.optional(Schema.String),
-      additionalProperties: Schema.optional(
-        Schema.Struct({
-          managementGroupId: Schema.optional(Schema.String),
-          subscriptionTenantId: Schema.optional(Schema.String),
-          subscriptionOwnerId: Schema.optional(Schema.String),
-          tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        }),
-      ),
-    }),
+    Schema.suspend(() => PutAliasRequestPropertiesSchema),
   ),
 }).pipe(
   T.Http({
@@ -43,24 +163,7 @@ export const AliasCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
   properties: Schema.optional(
-    Schema.Struct({
-      subscriptionId: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      provisioningState: Schema.optional(
-        Schema.Literals(["Accepted", "Succeeded", "Failed"]),
-      ),
-      acceptOwnershipUrl: Schema.optional(Schema.String),
-      acceptOwnershipState: Schema.optional(
-        Schema.Literals(["Pending", "Completed", "Expired"]),
-      ),
-      billingScope: Schema.optional(Schema.String),
-      workload: Schema.optional(Schema.Literals(["Production", "DevTest"])),
-      resellerId: Schema.optional(Schema.String),
-      subscriptionOwnerId: Schema.optional(Schema.String),
-      managementGroupId: Schema.optional(Schema.String),
-      createdTime: Schema.optional(Schema.String),
-      tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    }),
+    Schema.suspend(() => SubscriptionAliasResponsePropertiesSchema),
   ),
   systemData: Schema.optional(
     Schema.Struct({
@@ -127,24 +230,7 @@ export const AliasGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
   properties: Schema.optional(
-    Schema.Struct({
-      subscriptionId: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      provisioningState: Schema.optional(
-        Schema.Literals(["Accepted", "Succeeded", "Failed"]),
-      ),
-      acceptOwnershipUrl: Schema.optional(Schema.String),
-      acceptOwnershipState: Schema.optional(
-        Schema.Literals(["Pending", "Completed", "Expired"]),
-      ),
-      billingScope: Schema.optional(Schema.String),
-      workload: Schema.optional(Schema.Literals(["Production", "DevTest"])),
-      resellerId: Schema.optional(Schema.String),
-      subscriptionOwnerId: Schema.optional(Schema.String),
-      managementGroupId: Schema.optional(Schema.String),
-      createdTime: Schema.optional(Schema.String),
-      tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    }),
+    Schema.suspend(() => SubscriptionAliasResponsePropertiesSchema),
   ),
   systemData: Schema.optional(
     Schema.Struct({
@@ -186,59 +272,7 @@ export type AliasListInput = typeof AliasListInput.Type;
 // Output Schema
 export const AliasListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.optional(
-    Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        properties: Schema.optional(
-          Schema.Struct({
-            subscriptionId: Schema.optional(Schema.String),
-            displayName: Schema.optional(Schema.String),
-            provisioningState: Schema.optional(
-              Schema.Literals(["Accepted", "Succeeded", "Failed"]),
-            ),
-            acceptOwnershipUrl: Schema.optional(Schema.String),
-            acceptOwnershipState: Schema.optional(
-              Schema.Literals(["Pending", "Completed", "Expired"]),
-            ),
-            billingScope: Schema.optional(Schema.String),
-            workload: Schema.optional(
-              Schema.Literals(["Production", "DevTest"]),
-            ),
-            resellerId: Schema.optional(Schema.String),
-            subscriptionOwnerId: Schema.optional(Schema.String),
-            managementGroupId: Schema.optional(Schema.String),
-            createdTime: Schema.optional(Schema.String),
-            tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-          }),
-        ),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    Schema.Array(Schema.suspend(() => SubscriptionAliasResponseSchema)),
   ),
   nextLink: Schema.optional(Schema.String),
 });
@@ -271,17 +305,7 @@ export const BillingAccountGetPolicyOutput =
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
     properties: Schema.optional(
-      Schema.Struct({
-        serviceTenants: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              tenantId: Schema.optional(Schema.String),
-              tenantName: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        allowTransfers: Schema.optional(Schema.Boolean),
-      }),
+      Schema.suspend(() => BillingAccountPoliciesResponsePropertiesSchema),
     ),
     systemData: Schema.optional(
       Schema.Struct({
@@ -325,22 +349,7 @@ export type OperationsListInput = typeof OperationsListInput.Type;
 
 // Output Schema
 export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  value: Schema.optional(
-    Schema.Array(
-      Schema.Struct({
-        name: Schema.optional(Schema.String),
-        isDataAction: Schema.optional(Schema.Boolean),
-        display: Schema.optional(
-          Schema.Struct({
-            provider: Schema.optional(Schema.String),
-            resource: Schema.optional(Schema.String),
-            operation: Schema.optional(Schema.String),
-            description: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
-  ),
+  value: Schema.optional(Schema.Array(Schema.suspend(() => OperationSchema))),
   nextLink: Schema.optional(Schema.String),
 });
 export type OperationsListOutput = typeof OperationsListOutput.Type;
@@ -357,11 +366,7 @@ export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const SubscriptionAcceptOwnershipInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     properties: Schema.optional(
-      Schema.Struct({
-        displayName: Schema.String,
-        managementGroupId: Schema.optional(Schema.String),
-        tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      }),
+      Schema.suspend(() => AcceptOwnershipRequestPropertiesSchema),
     ),
   }).pipe(
     T.Http({
@@ -407,10 +412,10 @@ export const SubscriptionAcceptOwnershipStatusOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.optional(Schema.String),
     acceptOwnershipState: Schema.optional(
-      Schema.Literals(["Pending", "Completed", "Expired"]),
+      Schema.suspend(() => AcceptOwnershipStateSchema),
     ),
     provisioningState: Schema.optional(
-      Schema.Literals(["Pending", "Accepted", "Succeeded"]),
+      Schema.suspend(() => ProvisioningStateSchema),
     ),
     billingOwner: Schema.optional(Schema.String),
     subscriptionTenantId: Schema.optional(Schema.String),
@@ -537,14 +542,7 @@ export const SubscriptionPolicyAddUpdatePolicyForTenantOutput =
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    properties: Schema.optional(
-      Schema.Struct({
-        policyId: Schema.optional(Schema.String),
-        blockSubscriptionsLeavingTenant: Schema.optional(Schema.Boolean),
-        blockSubscriptionsIntoTenant: Schema.optional(Schema.Boolean),
-        exemptedPrincipals: Schema.optional(Schema.Array(Schema.String)),
-      }),
-    ),
+    properties: Schema.optional(Schema.suspend(() => TenantPolicySchema)),
     systemData: Schema.optional(
       Schema.Struct({
         createdBy: Schema.optional(Schema.String),
@@ -590,14 +588,7 @@ export const SubscriptionPolicyGetPolicyForTenantOutput =
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    properties: Schema.optional(
-      Schema.Struct({
-        policyId: Schema.optional(Schema.String),
-        blockSubscriptionsLeavingTenant: Schema.optional(Schema.Boolean),
-        blockSubscriptionsIntoTenant: Schema.optional(Schema.Boolean),
-        exemptedPrincipals: Schema.optional(Schema.Array(Schema.String)),
-      }),
-    ),
+    properties: Schema.optional(Schema.suspend(() => TenantPolicySchema)),
     systemData: Schema.optional(
       Schema.Struct({
         createdBy: Schema.optional(Schema.String),
@@ -641,45 +632,7 @@ export type SubscriptionPolicyListPolicyForTenantInput =
 export const SubscriptionPolicyListPolicyForTenantOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          properties: Schema.optional(
-            Schema.Struct({
-              policyId: Schema.optional(Schema.String),
-              blockSubscriptionsLeavingTenant: Schema.optional(Schema.Boolean),
-              blockSubscriptionsIntoTenant: Schema.optional(Schema.Boolean),
-              exemptedPrincipals: Schema.optional(Schema.Array(Schema.String)),
-            }),
-          ),
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.String),
-              createdByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              createdAt: Schema.optional(Schema.String),
-              lastModifiedBy: Schema.optional(Schema.String),
-              lastModifiedByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              lastModifiedAt: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => GetTenantPolicyResponseSchema)),
     ),
     nextLink: Schema.optional(Schema.String),
   });

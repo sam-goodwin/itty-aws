@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { NeonAuthEmailVerificationMethodSchema } from "./_schemas.ts";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
@@ -20,7 +21,9 @@ export type GetNeonAuthEmailAndPasswordConfigInput =
 export const GetNeonAuthEmailAndPasswordConfigOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     enabled: Schema.Boolean,
-    email_verification_method: Schema.Literals(["link", "otp"]),
+    email_verification_method: Schema.suspend(
+      () => NeonAuthEmailVerificationMethodSchema,
+    ),
     require_email_verification: Schema.Boolean,
     auto_sign_in_after_verification: Schema.Boolean,
     send_verification_email_on_sign_up: Schema.Boolean,

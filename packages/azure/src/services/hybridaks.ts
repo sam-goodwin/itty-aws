@@ -8,74 +8,430 @@ import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
-// Input Schema
-export const AgentPoolCreateOrUpdateInput =
+// Shared schemas
+const virtualNetworkPropertiesSchema =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    properties: Schema.optional(
+    infraVnetProfile: Schema.optional(
       Schema.Struct({
-        osType: Schema.optional(Schema.Literals(["Linux", "Windows"])),
-        osSKU: Schema.optional(
-          Schema.Literals(["CBLMariner", "Windows2019", "Windows2022"]),
-        ),
-        nodeLabels: Schema.optional(
-          Schema.Record(Schema.String, Schema.String),
-        ),
-        nodeTaints: Schema.optional(Schema.Array(Schema.String)),
-        maxCount: Schema.optional(Schema.Number),
-        minCount: Schema.optional(Schema.Number),
-        enableAutoScaling: Schema.optional(Schema.Boolean),
-        maxPods: Schema.optional(Schema.Number),
-        count: Schema.optional(Schema.Number),
-        vmSize: Schema.optional(Schema.String),
-        kubernetesVersion: Schema.optional(Schema.String),
-        provisioningState: Schema.optional(
-          Schema.Literals([
-            "Succeeded",
-            "Failed",
-            "Canceled",
-            "Pending",
-            "Creating",
-            "Deleting",
-            "Updating",
-            "Upgrading",
-            "Accepted",
-          ]),
-        ),
-        status: Schema.optional(
+        hci: Schema.optional(
           Schema.Struct({
-            currentState: Schema.optional(
-              Schema.Literals([
-                "Succeeded",
-                "Failed",
-                "Canceled",
-                "Pending",
-                "Creating",
-                "Deleting",
-                "Updating",
-                "Upgrading",
-                "Accepted",
-              ]),
-            ),
-            errorMessage: Schema.optional(Schema.String),
-            readyReplicas: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  count: Schema.optional(Schema.Number),
-                  vmSize: Schema.optional(Schema.String),
-                  kubernetesVersion: Schema.optional(Schema.String),
-                }),
-              ),
-            ),
+            mocGroup: Schema.optional(Schema.String),
+            mocLocation: Schema.optional(Schema.String),
+            mocVnetName: Schema.optional(Schema.String),
           }),
         ),
       }),
     ),
+    vipPool: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          endIP: Schema.optional(Schema.String),
+          startIP: Schema.optional(Schema.String),
+        }),
+      ),
+    ),
+    vmipPool: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          endIP: Schema.optional(Schema.String),
+          startIP: Schema.optional(Schema.String),
+        }),
+      ),
+    ),
+    dnsServers: Schema.optional(Schema.Array(Schema.String)),
+    gateway: Schema.optional(Schema.String),
+    ipAddressPrefix: Schema.optional(Schema.String),
+    vlanID: Schema.optional(Schema.Number),
+    provisioningState: Schema.optional(
+      Schema.Literals([
+        "Succeeded",
+        "Failed",
+        "Canceled",
+        "Pending",
+        "Creating",
+        "Deleting",
+        "Updating",
+        "Accepted",
+      ]),
+    ),
+    status: Schema.optional(
+      Schema.Struct({
+        operationStatus: Schema.optional(
+          Schema.Struct({
+            error: Schema.optional(
+              Schema.Struct({
+                code: Schema.optional(Schema.String),
+                message: Schema.optional(Schema.String),
+              }),
+            ),
+            operationId: Schema.optional(Schema.String),
+            status: Schema.optional(Schema.String),
+          }),
+        ),
+      }),
+    ),
+  });
+const systemDataSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  createdBy: Schema.optional(Schema.String),
+  createdByType: Schema.optional(
+    Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+  ),
+  createdAt: Schema.optional(Schema.String),
+  lastModifiedBy: Schema.optional(Schema.String),
+  lastModifiedByType: Schema.optional(
+    Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+  ),
+  lastModifiedAt: Schema.optional(Schema.String),
+});
+const virtualNetworkSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+});
+const provisionedClusterPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    linuxProfile: Schema.optional(
+      Schema.suspend(() => LinuxProfilePropertiesSchema),
+    ),
+    controlPlane: Schema.optional(
+      Schema.suspend(() => ControlPlaneProfileSchema),
+    ),
+    kubernetesVersion: Schema.optional(Schema.String),
+    networkProfile: Schema.optional(Schema.suspend(() => NetworkProfileSchema)),
+    storageProfile: Schema.optional(Schema.suspend(() => StorageProfileSchema)),
+    clusterVMAccessProfile: Schema.optional(
+      Schema.suspend(() => ClusterVMAccessProfileSchema),
+    ),
+    agentPoolProfiles: Schema.optional(
+      Schema.Array(Schema.suspend(() => NamedAgentPoolProfileSchema)),
+    ),
+    cloudProviderProfile: Schema.optional(
+      Schema.suspend(() => CloudProviderProfileSchema),
+    ),
+    provisioningState: Schema.optional(
+      Schema.suspend(() => ProvisioningStateSchema),
+    ),
+    status: Schema.optional(
+      Schema.Struct({
+        controlPlaneStatus: Schema.optional(
+          Schema.Array(Schema.suspend(() => AddonStatusProfileSchema)),
+        ),
+        currentState: Schema.optional(
+          Schema.suspend(() => ProvisioningStateSchema),
+        ),
+        errorMessage: Schema.optional(Schema.String),
+      }),
+    ),
+    licenseProfile: Schema.optional(
+      Schema.suspend(() => ProvisionedClusterLicenseProfileSchema),
+    ),
+    autoScalerProfile: Schema.optional(
+      Schema.Struct({
+        "balance-similar-node-groups": Schema.optional(Schema.String),
+        expander: Schema.optional(
+          Schema.Literals(["least-waste", "most-pods", "priority", "random"]),
+        ),
+        "max-empty-bulk-delete": Schema.optional(Schema.String),
+        "max-graceful-termination-sec": Schema.optional(Schema.String),
+        "max-node-provision-time": Schema.optional(Schema.String),
+        "max-total-unready-percentage": Schema.optional(Schema.String),
+        "new-pod-scale-up-delay": Schema.optional(Schema.String),
+        "ok-total-unready-count": Schema.optional(Schema.String),
+        "scan-interval": Schema.optional(Schema.String),
+        "scale-down-delay-after-add": Schema.optional(Schema.String),
+        "scale-down-delay-after-delete": Schema.optional(Schema.String),
+        "scale-down-delay-after-failure": Schema.optional(Schema.String),
+        "scale-down-unneeded-time": Schema.optional(Schema.String),
+        "scale-down-unready-time": Schema.optional(Schema.String),
+        "scale-down-utilization-threshold": Schema.optional(Schema.String),
+        "skip-nodes-with-local-storage": Schema.optional(Schema.String),
+        "skip-nodes-with-system-pods": Schema.optional(Schema.String),
+      }),
+    ),
+  });
+const LinuxProfilePropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  ssh: Schema.optional(
+    Schema.Struct({
+      publicKeys: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            keyData: Schema.optional(Schema.String),
+          }),
+        ),
+      ),
+    }),
+  ),
+});
+const ControlPlaneProfileSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  count: Schema.optional(Schema.Number),
+  vmSize: Schema.optional(Schema.String),
+  controlPlaneEndpoint: Schema.optional(
+    Schema.Struct({
+      hostIP: Schema.optional(Schema.String),
+    }),
+  ),
+});
+const NetworkProfileSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  loadBalancerProfile: Schema.optional(
+    Schema.Struct({
+      count: Schema.optional(Schema.Number),
+    }),
+  ),
+  networkPolicy: Schema.optional(Schema.Literals(["calico"])),
+  podCidr: Schema.optional(Schema.String),
+});
+const StorageProfileSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  smbCsiDriver: Schema.optional(
+    Schema.suspend(() => StorageProfileSmbCSIDriverSchema),
+  ),
+  nfsCsiDriver: Schema.optional(
+    Schema.suspend(() => StorageProfileNfsCSIDriverSchema),
+  ),
+});
+const StorageProfileSmbCSIDriverSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    enabled: Schema.optional(Schema.Boolean),
+  });
+const StorageProfileNfsCSIDriverSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    enabled: Schema.optional(Schema.Boolean),
+  });
+const ClusterVMAccessProfileSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  authorizedIPRanges: Schema.optional(Schema.String),
+});
+const NamedAgentPoolProfileSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  osType: Schema.optional(Schema.suspend(() => OSTypeSchema)),
+  osSKU: Schema.optional(Schema.suspend(() => OSSKUSchema)),
+  nodeLabels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  nodeTaints: Schema.optional(Schema.Array(Schema.String)),
+  maxCount: Schema.optional(Schema.Number),
+  minCount: Schema.optional(Schema.Number),
+  enableAutoScaling: Schema.optional(Schema.Boolean),
+  maxPods: Schema.optional(Schema.Number),
+  count: Schema.optional(Schema.Number),
+  vmSize: Schema.optional(Schema.String),
+  kubernetesVersion: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+});
+const OSTypeSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Linux",
+  "Windows",
+]);
+const OSSKUSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "CBLMariner",
+  "Windows2019",
+  "Windows2022",
+]);
+const CloudProviderProfileSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  infraNetworkProfile: Schema.optional(
+    Schema.Struct({
+      vnetSubnetIds: Schema.optional(Schema.Array(Schema.String)),
+    }),
+  ),
+});
+const ProvisioningStateSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Succeeded",
+  "Failed",
+  "Canceled",
+  "Pending",
+  "Creating",
+  "Deleting",
+  "Updating",
+  "Upgrading",
+  "Accepted",
+]);
+const AddonStatusProfileSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  phase: Schema.optional(
+    Schema.Literals([
+      "pending",
+      "provisioning",
+      "provisioning {HelmChartInstalled}",
+      "provisioning {MSICertificateDownloaded}",
+      "provisioned",
+      "deleting",
+      "failed",
+      "upgrading",
+    ]),
+  ),
+  ready: Schema.optional(Schema.Boolean),
+  errorMessage: Schema.optional(Schema.String),
+});
+const ProvisionedClusterLicenseProfileSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    azureHybridBenefit: Schema.optional(
+      Schema.Literals(["True", "False", "NotApplicable"]),
+    ),
+  });
+const ExtendedLocationSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  type: Schema.optional(Schema.Literals(["CustomLocation"])),
+  name: Schema.optional(Schema.String),
+});
+const provisionedClusterSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+});
+const ProvisionedClusterUpgradeProfilePropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    provisioningState: Schema.optional(
+      Schema.suspend(() => ProvisioningStateSchema),
+    ),
+    controlPlaneProfile: Schema.suspend(
+      () => ProvisionedClusterPoolUpgradeProfileSchema,
+    ),
+  });
+const ProvisionedClusterPoolUpgradeProfileSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    kubernetesVersion: Schema.optional(Schema.String),
+    osType: Schema.optional(Schema.suspend(() => OSTypeSchema)),
+    upgrades: Schema.optional(
+      Schema.Array(
+        Schema.suspend(
+          () => ProvisionedClusterPoolUpgradeProfilePropertiesSchema,
+        ),
+      ),
+    ),
+  });
+const ProvisionedClusterPoolUpgradeProfilePropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    kubernetesVersion: Schema.optional(Schema.String),
+    isPreview: Schema.optional(Schema.Boolean),
+  });
+const hybridIdentityMetadataPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resourceUid: Schema.optional(Schema.String),
+    publicKey: Schema.optional(Schema.String),
+    provisioningState: Schema.optional(
+      Schema.suspend(() => ProvisioningStateSchema),
+    ),
+  });
+const hybridIdentityMetadataSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+});
+const agentPoolPropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  osType: Schema.optional(Schema.suspend(() => OSTypeSchema)),
+  osSKU: Schema.optional(Schema.suspend(() => OSSKUSchema)),
+  nodeLabels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  nodeTaints: Schema.optional(Schema.Array(Schema.String)),
+  maxCount: Schema.optional(Schema.Number),
+  minCount: Schema.optional(Schema.Number),
+  enableAutoScaling: Schema.optional(Schema.Boolean),
+  maxPods: Schema.optional(Schema.Number),
+  count: Schema.optional(Schema.Number),
+  vmSize: Schema.optional(Schema.String),
+  kubernetesVersion: Schema.optional(Schema.String),
+  provisioningState: Schema.optional(
+    Schema.suspend(() => ProvisioningStateSchema),
+  ),
+  status: Schema.optional(
+    Schema.Struct({
+      currentState: Schema.optional(
+        Schema.suspend(() => ProvisioningStateSchema),
+      ),
+      errorMessage: Schema.optional(Schema.String),
+      readyReplicas: Schema.optional(
+        Schema.Array(Schema.suspend(() => AgentPoolUpdateProfileSchema)),
+      ),
+    }),
+  ),
+});
+const AgentPoolUpdateProfileSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  count: Schema.optional(Schema.Number),
+  vmSize: Schema.optional(Schema.String),
+  kubernetesVersion: Schema.optional(Schema.String),
+});
+const agentPoolSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+});
+const CredentialResultSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  value: Schema.optional(Schema.String),
+});
+const KubernetesVersionPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    version: Schema.optional(Schema.String),
+    isPreview: Schema.optional(Schema.Boolean),
+    patchVersions: Schema.optional(
+      Schema.Record(
+        Schema.String,
+        Schema.suspend(() => KubernetesPatchVersionsSchema),
+      ),
+    ),
+  });
+const KubernetesPatchVersionsSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    readiness: Schema.optional(
+      Schema.Array(Schema.suspend(() => KubernetesVersionReadinessSchema)),
+    ),
+    upgrades: Schema.optional(Schema.Array(Schema.String)),
+  },
+);
+const KubernetesVersionReadinessSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    osType: Schema.optional(Schema.Literals(["Windows", "Linux"])),
+    osSku: Schema.optional(Schema.suspend(() => OSSKUSchema)),
+    ready: Schema.optional(Schema.Boolean),
+    errorMessage: Schema.optional(Schema.String),
+  });
+const KubernetesVersionProfileSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+  });
+const VmSkuPropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  resourceType: Schema.optional(Schema.String),
+  capabilities: Schema.optional(
+    Schema.Array(Schema.suspend(() => VmSkuCapabilitiesSchema)),
+  ),
+  name: Schema.optional(Schema.String),
+  tier: Schema.optional(Schema.String),
+  size: Schema.optional(Schema.String),
+});
+const VmSkuCapabilitiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  value: Schema.optional(Schema.String),
+});
+const VmSkuProfileSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+});
+const OperationSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  isDataAction: Schema.optional(Schema.Boolean),
+  display: Schema.optional(
+    Schema.Struct({
+      provider: Schema.optional(Schema.String),
+      resource: Schema.optional(Schema.String),
+      operation: Schema.optional(Schema.String),
+      description: Schema.optional(Schema.String),
+    }),
+  ),
+  origin: Schema.optional(Schema.Literals(["user", "system", "user,system"])),
+  actionType: Schema.optional(Schema.Literals(["Internal"])),
+});
+
+// Input Schema
+export const AgentPoolCreateOrUpdateInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => agentPoolPropertiesSchema),
+    ),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     extendedLocation: Schema.optional(
-      Schema.Struct({
-        type: Schema.optional(Schema.Literals(["CustomLocation"])),
-        name: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(() => ExtendedLocationSchema),
     ),
   }).pipe(
     T.Http({
@@ -91,23 +447,17 @@ export type AgentPoolCreateOrUpdateInput =
 // Output Schema
 export const AgentPoolCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => agentPoolPropertiesSchema),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    extendedLocation: Schema.optional(
+      Schema.suspend(() => ExtendedLocationSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type AgentPoolCreateOrUpdateOutput =
   typeof AgentPoolCreateOrUpdateOutput.Type;
@@ -165,23 +515,15 @@ export type AgentPoolGetInput = typeof AgentPoolGetInput.Type;
 
 // Output Schema
 export const AgentPoolGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.optional(Schema.suspend(() => agentPoolPropertiesSchema)),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  extendedLocation: Schema.optional(
+    Schema.suspend(() => ExtendedLocationSchema),
+  ),
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
-  systemData: Schema.optional(
-    Schema.Struct({
-      createdBy: Schema.optional(Schema.String),
-      createdByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      createdAt: Schema.optional(Schema.String),
-      lastModifiedBy: Schema.optional(Schema.String),
-      lastModifiedByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      lastModifiedAt: Schema.optional(Schema.String),
-    }),
-  ),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
 });
 export type AgentPoolGetOutput = typeof AgentPoolGetOutput.Type;
 
@@ -210,39 +552,7 @@ export type AgentPoolListByProvisionedClusterInput =
 // Output Schema
 export const AgentPoolListByProvisionedClusterOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.String),
-              createdByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              createdAt: Schema.optional(Schema.String),
-              lastModifiedBy: Schema.optional(Schema.String),
-              lastModifiedByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              lastModifiedAt: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
-    ),
+    value: Schema.optional(Schema.Array(Schema.suspend(() => agentPoolSchema))),
     nextLink: Schema.optional(Schema.String),
   });
 export type AgentPoolListByProvisionedClusterOutput =
@@ -333,23 +643,23 @@ export type GetKubernetesVersionsInput = typeof GetKubernetesVersionsInput.Type;
 // Output Schema
 export const GetKubernetesVersionsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    extendedLocation: Schema.optional(
+      Schema.suspend(() => ExtendedLocationSchema),
+    ),
+    properties: Schema.optional(
+      Schema.Struct({
+        provisioningState: Schema.optional(
+          Schema.suspend(() => ProvisioningStateSchema),
+        ),
+        values: Schema.optional(
+          Schema.Array(Schema.suspend(() => KubernetesVersionPropertiesSchema)),
+        ),
+      }),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type GetKubernetesVersionsOutput =
   typeof GetKubernetesVersionsOutput.Type;
@@ -382,23 +692,23 @@ export type GetVMSkusInput = typeof GetVMSkusInput.Type;
 
 // Output Schema
 export const GetVMSkusOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  extendedLocation: Schema.optional(
+    Schema.suspend(() => ExtendedLocationSchema),
+  ),
+  properties: Schema.optional(
+    Schema.Struct({
+      provisioningState: Schema.optional(
+        Schema.suspend(() => ProvisioningStateSchema),
+      ),
+      values: Schema.optional(
+        Schema.Array(Schema.suspend(() => VmSkuPropertiesSchema)),
+      ),
+    }),
+  ),
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
-  systemData: Schema.optional(
-    Schema.Struct({
-      createdBy: Schema.optional(Schema.String),
-      createdByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      createdAt: Schema.optional(Schema.String),
-      lastModifiedBy: Schema.optional(Schema.String),
-      lastModifiedByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      lastModifiedAt: Schema.optional(Schema.String),
-    }),
-  ),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
 });
 export type GetVMSkusOutput = typeof GetVMSkusOutput.Type;
 
@@ -461,23 +771,11 @@ export type HybridIdentityMetadataGetInput =
 // Output Schema
 export const HybridIdentityMetadataGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.suspend(() => hybridIdentityMetadataPropertiesSchema),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
   });
 export type HybridIdentityMetadataGetOutput =
   typeof HybridIdentityMetadataGetOutput.Type;
@@ -512,37 +810,7 @@ export type HybridIdentityMetadataListByClusterInput =
 export const HybridIdentityMetadataListByClusterOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    value: Schema.Array(Schema.suspend(() => hybridIdentityMetadataSchema)),
   });
 export type HybridIdentityMetadataListByClusterOutput =
   typeof HybridIdentityMetadataListByClusterOutput.Type;
@@ -563,23 +831,7 @@ export const HybridIdentityMetadataListByCluster =
 // Input Schema
 export const HybridIdentityMetadataPutInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    properties: Schema.Struct({
-      resourceUid: Schema.optional(Schema.String),
-      publicKey: Schema.optional(Schema.String),
-      provisioningState: Schema.optional(
-        Schema.Literals([
-          "Succeeded",
-          "Failed",
-          "Canceled",
-          "Pending",
-          "Creating",
-          "Deleting",
-          "Updating",
-          "Upgrading",
-          "Accepted",
-        ]),
-      ),
-    }),
+    properties: Schema.suspend(() => hybridIdentityMetadataPropertiesSchema),
     systemData: Schema.optional(
       Schema.Struct({
         createdBy: Schema.optional(Schema.String),
@@ -607,23 +859,11 @@ export type HybridIdentityMetadataPutInput =
 // Output Schema
 export const HybridIdentityMetadataPutOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.suspend(() => hybridIdentityMetadataPropertiesSchema),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
   });
 export type HybridIdentityMetadataPutOutput =
   typeof HybridIdentityMetadataPutOutput.Type;
@@ -658,37 +898,7 @@ export type KubernetesVersionsListInput =
 export const KubernetesVersionsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.String),
-              createdByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              createdAt: Schema.optional(Schema.String),
-              lastModifiedBy: Schema.optional(Schema.String),
-              lastModifiedByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              lastModifiedAt: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => KubernetesVersionProfileSchema)),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -723,26 +933,7 @@ export type OperationsListInput = typeof OperationsListInput.Type;
 
 // Output Schema
 export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  value: Schema.optional(
-    Schema.Array(
-      Schema.Struct({
-        name: Schema.optional(Schema.String),
-        isDataAction: Schema.optional(Schema.Boolean),
-        display: Schema.optional(
-          Schema.Struct({
-            provider: Schema.optional(Schema.String),
-            resource: Schema.optional(Schema.String),
-            operation: Schema.optional(Schema.String),
-            description: Schema.optional(Schema.String),
-          }),
-        ),
-        origin: Schema.optional(
-          Schema.Literals(["user", "system", "user,system"]),
-        ),
-        actionType: Schema.optional(Schema.Literals(["Internal"])),
-      }),
-    ),
-  ),
+  value: Schema.optional(Schema.Array(Schema.suspend(() => OperationSchema))),
   nextLink: Schema.optional(Schema.String),
 });
 export type OperationsListOutput = typeof OperationsListOutput.Type;
@@ -761,189 +952,10 @@ export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const ProvisionedClusterInstancesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     properties: Schema.optional(
-      Schema.Struct({
-        linuxProfile: Schema.optional(
-          Schema.Struct({
-            ssh: Schema.optional(
-              Schema.Struct({
-                publicKeys: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      keyData: Schema.optional(Schema.String),
-                    }),
-                  ),
-                ),
-              }),
-            ),
-          }),
-        ),
-        controlPlane: Schema.optional(
-          Schema.Struct({
-            count: Schema.optional(Schema.Number),
-            vmSize: Schema.optional(Schema.String),
-            controlPlaneEndpoint: Schema.optional(
-              Schema.Struct({
-                hostIP: Schema.optional(Schema.String),
-              }),
-            ),
-          }),
-        ),
-        kubernetesVersion: Schema.optional(Schema.String),
-        networkProfile: Schema.optional(
-          Schema.Struct({
-            loadBalancerProfile: Schema.optional(
-              Schema.Struct({
-                count: Schema.optional(Schema.Number),
-              }),
-            ),
-            networkPolicy: Schema.optional(Schema.Literals(["calico"])),
-            podCidr: Schema.optional(Schema.String),
-          }),
-        ),
-        storageProfile: Schema.optional(
-          Schema.Struct({
-            smbCsiDriver: Schema.optional(
-              Schema.Struct({
-                enabled: Schema.optional(Schema.Boolean),
-              }),
-            ),
-            nfsCsiDriver: Schema.optional(
-              Schema.Struct({
-                enabled: Schema.optional(Schema.Boolean),
-              }),
-            ),
-          }),
-        ),
-        clusterVMAccessProfile: Schema.optional(
-          Schema.Struct({
-            authorizedIPRanges: Schema.optional(Schema.String),
-          }),
-        ),
-        agentPoolProfiles: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              osType: Schema.optional(Schema.Literals(["Linux", "Windows"])),
-              osSKU: Schema.optional(
-                Schema.Literals(["CBLMariner", "Windows2019", "Windows2022"]),
-              ),
-              nodeLabels: Schema.optional(
-                Schema.Record(Schema.String, Schema.String),
-              ),
-              nodeTaints: Schema.optional(Schema.Array(Schema.String)),
-              maxCount: Schema.optional(Schema.Number),
-              minCount: Schema.optional(Schema.Number),
-              enableAutoScaling: Schema.optional(Schema.Boolean),
-              maxPods: Schema.optional(Schema.Number),
-              count: Schema.optional(Schema.Number),
-              vmSize: Schema.optional(Schema.String),
-              kubernetesVersion: Schema.optional(Schema.String),
-              name: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        cloudProviderProfile: Schema.optional(
-          Schema.Struct({
-            infraNetworkProfile: Schema.optional(
-              Schema.Struct({
-                vnetSubnetIds: Schema.optional(Schema.Array(Schema.String)),
-              }),
-            ),
-          }),
-        ),
-        provisioningState: Schema.optional(
-          Schema.Literals([
-            "Succeeded",
-            "Failed",
-            "Canceled",
-            "Pending",
-            "Creating",
-            "Deleting",
-            "Updating",
-            "Upgrading",
-            "Accepted",
-          ]),
-        ),
-        status: Schema.optional(
-          Schema.Struct({
-            controlPlaneStatus: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  name: Schema.optional(Schema.String),
-                  phase: Schema.optional(
-                    Schema.Literals([
-                      "pending",
-                      "provisioning",
-                      "provisioning {HelmChartInstalled}",
-                      "provisioning {MSICertificateDownloaded}",
-                      "provisioned",
-                      "deleting",
-                      "failed",
-                      "upgrading",
-                    ]),
-                  ),
-                  ready: Schema.optional(Schema.Boolean),
-                  errorMessage: Schema.optional(Schema.String),
-                }),
-              ),
-            ),
-            currentState: Schema.optional(
-              Schema.Literals([
-                "Succeeded",
-                "Failed",
-                "Canceled",
-                "Pending",
-                "Creating",
-                "Deleting",
-                "Updating",
-                "Upgrading",
-                "Accepted",
-              ]),
-            ),
-            errorMessage: Schema.optional(Schema.String),
-          }),
-        ),
-        licenseProfile: Schema.optional(
-          Schema.Struct({
-            azureHybridBenefit: Schema.optional(
-              Schema.Literals(["True", "False", "NotApplicable"]),
-            ),
-          }),
-        ),
-        autoScalerProfile: Schema.optional(
-          Schema.Struct({
-            "balance-similar-node-groups": Schema.optional(Schema.String),
-            expander: Schema.optional(
-              Schema.Literals([
-                "least-waste",
-                "most-pods",
-                "priority",
-                "random",
-              ]),
-            ),
-            "max-empty-bulk-delete": Schema.optional(Schema.String),
-            "max-graceful-termination-sec": Schema.optional(Schema.String),
-            "max-node-provision-time": Schema.optional(Schema.String),
-            "max-total-unready-percentage": Schema.optional(Schema.String),
-            "new-pod-scale-up-delay": Schema.optional(Schema.String),
-            "ok-total-unready-count": Schema.optional(Schema.String),
-            "scan-interval": Schema.optional(Schema.String),
-            "scale-down-delay-after-add": Schema.optional(Schema.String),
-            "scale-down-delay-after-delete": Schema.optional(Schema.String),
-            "scale-down-delay-after-failure": Schema.optional(Schema.String),
-            "scale-down-unneeded-time": Schema.optional(Schema.String),
-            "scale-down-unready-time": Schema.optional(Schema.String),
-            "scale-down-utilization-threshold": Schema.optional(Schema.String),
-            "skip-nodes-with-local-storage": Schema.optional(Schema.String),
-            "skip-nodes-with-system-pods": Schema.optional(Schema.String),
-          }),
-        ),
-      }),
+      Schema.suspend(() => provisionedClusterPropertiesSchema),
     ),
     extendedLocation: Schema.optional(
-      Schema.Struct({
-        type: Schema.optional(Schema.Literals(["CustomLocation"])),
-        name: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(() => ExtendedLocationSchema),
     ),
   }).pipe(
     T.Http({
@@ -959,23 +971,16 @@ export type ProvisionedClusterInstancesCreateOrUpdateInput =
 // Output Schema
 export const ProvisionedClusterInstancesCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => provisionedClusterPropertiesSchema),
+    ),
+    extendedLocation: Schema.optional(
+      Schema.suspend(() => ExtendedLocationSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type ProvisionedClusterInstancesCreateOrUpdateOutput =
   typeof ProvisionedClusterInstancesCreateOrUpdateOutput.Type;
@@ -1036,23 +1041,16 @@ export type ProvisionedClusterInstancesGetInput =
 // Output Schema
 export const ProvisionedClusterInstancesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => provisionedClusterPropertiesSchema),
+    ),
+    extendedLocation: Schema.optional(
+      Schema.suspend(() => ExtendedLocationSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type ProvisionedClusterInstancesGetOutput =
   typeof ProvisionedClusterInstancesGetOutput.Type;
@@ -1083,23 +1081,13 @@ export type ProvisionedClusterInstancesGetUpgradeProfileInput =
 // Output Schema
 export const ProvisionedClusterInstancesGetUpgradeProfileOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.suspend(
+      () => ProvisionedClusterUpgradeProfilePropertiesSchema,
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type ProvisionedClusterInstancesGetUpgradeProfileOutput =
   typeof ProvisionedClusterInstancesGetUpgradeProfileOutput.Type;
@@ -1131,37 +1119,7 @@ export type ProvisionedClusterInstancesListInput =
 export const ProvisionedClusterInstancesListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.String),
-              createdByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              createdAt: Schema.optional(Schema.String),
-              lastModifiedBy: Schema.optional(Schema.String),
-              lastModifiedByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              lastModifiedAt: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => provisionedClusterSchema)),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -1198,19 +1156,7 @@ export const ProvisionedClusterInstancesListAdminKubeconfigOutput =
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     resourceId: Schema.optional(Schema.String),
-    status: Schema.optional(
-      Schema.Literals([
-        "Succeeded",
-        "Failed",
-        "Canceled",
-        "Pending",
-        "Creating",
-        "Deleting",
-        "Updating",
-        "Upgrading",
-        "Accepted",
-      ]),
-    ),
+    status: Schema.optional(Schema.suspend(() => ProvisioningStateSchema)),
     error: Schema.optional(
       Schema.Struct({
         code: Schema.optional(Schema.String),
@@ -1220,12 +1166,7 @@ export const ProvisionedClusterInstancesListAdminKubeconfigOutput =
     properties: Schema.optional(
       Schema.Struct({
         kubeconfigs: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              name: Schema.optional(Schema.String),
-              value: Schema.optional(Schema.String),
-            }),
-          ),
+          Schema.Array(Schema.suspend(() => CredentialResultSchema)),
         ),
       }),
     ),
@@ -1263,19 +1204,7 @@ export const ProvisionedClusterInstancesListUserKubeconfigOutput =
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     resourceId: Schema.optional(Schema.String),
-    status: Schema.optional(
-      Schema.Literals([
-        "Succeeded",
-        "Failed",
-        "Canceled",
-        "Pending",
-        "Creating",
-        "Deleting",
-        "Updating",
-        "Upgrading",
-        "Accepted",
-      ]),
-    ),
+    status: Schema.optional(Schema.suspend(() => ProvisioningStateSchema)),
     error: Schema.optional(
       Schema.Struct({
         code: Schema.optional(Schema.String),
@@ -1285,12 +1214,7 @@ export const ProvisionedClusterInstancesListUserKubeconfigOutput =
     properties: Schema.optional(
       Schema.Struct({
         kubeconfigs: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              name: Schema.optional(Schema.String),
-              value: Schema.optional(Schema.String),
-            }),
-          ),
+          Schema.Array(Schema.suspend(() => CredentialResultSchema)),
         ),
       }),
     ),
@@ -1313,59 +1237,15 @@ export const provisionedClusterInstancesListUserKubeconfig =
 export const PutKubernetesVersionsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     extendedLocation: Schema.optional(
-      Schema.Struct({
-        type: Schema.optional(Schema.Literals(["CustomLocation"])),
-        name: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(() => ExtendedLocationSchema),
     ),
     properties: Schema.optional(
       Schema.Struct({
         provisioningState: Schema.optional(
-          Schema.Literals([
-            "Succeeded",
-            "Failed",
-            "Canceled",
-            "Pending",
-            "Creating",
-            "Deleting",
-            "Updating",
-            "Upgrading",
-            "Accepted",
-          ]),
+          Schema.suspend(() => ProvisioningStateSchema),
         ),
         values: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              version: Schema.optional(Schema.String),
-              isPreview: Schema.optional(Schema.Boolean),
-              patchVersions: Schema.optional(
-                Schema.Record(
-                  Schema.String,
-                  Schema.Struct({
-                    readiness: Schema.optional(
-                      Schema.Array(
-                        Schema.Struct({
-                          osType: Schema.optional(
-                            Schema.Literals(["Windows", "Linux"]),
-                          ),
-                          osSku: Schema.optional(
-                            Schema.Literals([
-                              "CBLMariner",
-                              "Windows2019",
-                              "Windows2022",
-                            ]),
-                          ),
-                          ready: Schema.optional(Schema.Boolean),
-                          errorMessage: Schema.optional(Schema.String),
-                        }),
-                      ),
-                    ),
-                    upgrades: Schema.optional(Schema.Array(Schema.String)),
-                  }),
-                ),
-              ),
-            }),
-          ),
+          Schema.Array(Schema.suspend(() => KubernetesVersionPropertiesSchema)),
         ),
       }),
     ),
@@ -1382,23 +1262,23 @@ export type PutKubernetesVersionsInput = typeof PutKubernetesVersionsInput.Type;
 // Output Schema
 export const PutKubernetesVersionsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    extendedLocation: Schema.optional(
+      Schema.suspend(() => ExtendedLocationSchema),
+    ),
+    properties: Schema.optional(
+      Schema.Struct({
+        provisioningState: Schema.optional(
+          Schema.suspend(() => ProvisioningStateSchema),
+        ),
+        values: Schema.optional(
+          Schema.Array(Schema.suspend(() => KubernetesVersionPropertiesSchema)),
+        ),
+      }),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type PutKubernetesVersionsOutput =
   typeof PutKubernetesVersionsOutput.Type;
@@ -1418,43 +1298,15 @@ export const PutKubernetesVersions = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const PutVMSkusInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   extendedLocation: Schema.optional(
-    Schema.Struct({
-      type: Schema.optional(Schema.Literals(["CustomLocation"])),
-      name: Schema.optional(Schema.String),
-    }),
+    Schema.suspend(() => ExtendedLocationSchema),
   ),
   properties: Schema.optional(
     Schema.Struct({
       provisioningState: Schema.optional(
-        Schema.Literals([
-          "Succeeded",
-          "Failed",
-          "Canceled",
-          "Pending",
-          "Creating",
-          "Deleting",
-          "Updating",
-          "Upgrading",
-          "Accepted",
-        ]),
+        Schema.suspend(() => ProvisioningStateSchema),
       ),
       values: Schema.optional(
-        Schema.Array(
-          Schema.Struct({
-            resourceType: Schema.optional(Schema.String),
-            capabilities: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  name: Schema.optional(Schema.String),
-                  value: Schema.optional(Schema.String),
-                }),
-              ),
-            ),
-            name: Schema.optional(Schema.String),
-            tier: Schema.optional(Schema.String),
-            size: Schema.optional(Schema.String),
-          }),
-        ),
+        Schema.Array(Schema.suspend(() => VmSkuPropertiesSchema)),
       ),
     }),
   ),
@@ -1470,23 +1322,23 @@ export type PutVMSkusInput = typeof PutVMSkusInput.Type;
 
 // Output Schema
 export const PutVMSkusOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  extendedLocation: Schema.optional(
+    Schema.suspend(() => ExtendedLocationSchema),
+  ),
+  properties: Schema.optional(
+    Schema.Struct({
+      provisioningState: Schema.optional(
+        Schema.suspend(() => ProvisioningStateSchema),
+      ),
+      values: Schema.optional(
+        Schema.Array(Schema.suspend(() => VmSkuPropertiesSchema)),
+      ),
+    }),
+  ),
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
-  systemData: Schema.optional(
-    Schema.Struct({
-      createdBy: Schema.optional(Schema.String),
-      createdByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      createdAt: Schema.optional(Schema.String),
-      lastModifiedBy: Schema.optional(Schema.String),
-      lastModifiedByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      lastModifiedAt: Schema.optional(Schema.String),
-    }),
-  ),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
 });
 export type PutVMSkusOutput = typeof PutVMSkusOutput.Type;
 
@@ -1506,67 +1358,7 @@ export const VirtualNetworksCreateOrUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        infraVnetProfile: Schema.optional(
-          Schema.Struct({
-            hci: Schema.optional(
-              Schema.Struct({
-                mocGroup: Schema.optional(Schema.String),
-                mocLocation: Schema.optional(Schema.String),
-                mocVnetName: Schema.optional(Schema.String),
-              }),
-            ),
-          }),
-        ),
-        vipPool: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              endIP: Schema.optional(Schema.String),
-              startIP: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        vmipPool: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              endIP: Schema.optional(Schema.String),
-              startIP: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        dnsServers: Schema.optional(Schema.Array(Schema.String)),
-        gateway: Schema.optional(Schema.String),
-        ipAddressPrefix: Schema.optional(Schema.String),
-        vlanID: Schema.optional(Schema.Number),
-        provisioningState: Schema.optional(
-          Schema.Literals([
-            "Succeeded",
-            "Failed",
-            "Canceled",
-            "Pending",
-            "Creating",
-            "Deleting",
-            "Updating",
-            "Accepted",
-          ]),
-        ),
-        status: Schema.optional(
-          Schema.Struct({
-            operationStatus: Schema.optional(
-              Schema.Struct({
-                error: Schema.optional(
-                  Schema.Struct({
-                    code: Schema.optional(Schema.String),
-                    message: Schema.optional(Schema.String),
-                  }),
-                ),
-                operationId: Schema.optional(Schema.String),
-                status: Schema.optional(Schema.String),
-              }),
-            ),
-          }),
-        ),
-      }),
+      Schema.suspend(() => virtualNetworkPropertiesSchema),
     ),
     extendedLocation: Schema.optional(
       Schema.Struct({
@@ -1590,23 +1382,21 @@ export type VirtualNetworksCreateOrUpdateInput =
 // Output Schema
 export const VirtualNetworksCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => virtualNetworkPropertiesSchema),
+    ),
+    extendedLocation: Schema.optional(
+      Schema.Struct({
+        type: Schema.optional(Schema.Literals(["CustomLocation"])),
+        name: Schema.optional(Schema.String),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type VirtualNetworksCreateOrUpdateOutput =
   typeof VirtualNetworksCreateOrUpdateOutput.Type;
@@ -1678,37 +1468,7 @@ export type VirtualNetworksListByResourceGroupInput =
 export const VirtualNetworksListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.String),
-              createdByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              createdAt: Schema.optional(Schema.String),
-              lastModifiedBy: Schema.optional(Schema.String),
-              lastModifiedByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              lastModifiedAt: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => virtualNetworkSchema)),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -1746,37 +1506,7 @@ export type VirtualNetworksListBySubscriptionInput =
 export const VirtualNetworksListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.String),
-              createdByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              createdAt: Schema.optional(Schema.String),
-              lastModifiedBy: Schema.optional(Schema.String),
-              lastModifiedByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              lastModifiedAt: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => virtualNetworkSchema)),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -1813,23 +1543,21 @@ export type VirtualNetworksRetrieveInput =
 // Output Schema
 export const VirtualNetworksRetrieveOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => virtualNetworkPropertiesSchema),
+    ),
+    extendedLocation: Schema.optional(
+      Schema.Struct({
+        type: Schema.optional(Schema.Literals(["CustomLocation"])),
+        name: Schema.optional(Schema.String),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type VirtualNetworksRetrieveOutput =
   typeof VirtualNetworksRetrieveOutput.Type;
@@ -1867,23 +1595,21 @@ export type VirtualNetworksUpdateInput = typeof VirtualNetworksUpdateInput.Type;
 // Output Schema
 export const VirtualNetworksUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => virtualNetworkPropertiesSchema),
+    ),
+    extendedLocation: Schema.optional(
+      Schema.Struct({
+        type: Schema.optional(Schema.Literals(["CustomLocation"])),
+        name: Schema.optional(Schema.String),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type VirtualNetworksUpdateOutput =
   typeof VirtualNetworksUpdateOutput.Type;
@@ -1917,37 +1643,7 @@ export type VMSkusListInput = typeof VMSkusListInput.Type;
 // Output Schema
 export const VMSkusListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.optional(
-    Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    Schema.Array(Schema.suspend(() => VmSkuProfileSchema)),
   ),
   nextLink: Schema.optional(Schema.String),
 });

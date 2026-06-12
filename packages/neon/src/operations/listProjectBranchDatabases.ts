@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { DatabaseSchema } from "./_schemas.ts";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 import { NotFound } from "../errors.ts";
@@ -20,16 +21,7 @@ export type ListProjectBranchDatabasesInput =
 // Output Schema
 export const ListProjectBranchDatabasesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    databases: Schema.Array(
-      Schema.Struct({
-        id: Schema.Number,
-        branch_id: Schema.String,
-        name: Schema.String,
-        owner_name: Schema.String,
-        created_at: Schema.String,
-        updated_at: Schema.String,
-      }),
-    ),
+    databases: Schema.Array(Schema.suspend(() => DatabaseSchema)),
   });
 export type ListProjectBranchDatabasesOutput =
   typeof ListProjectBranchDatabasesOutput.Type;

@@ -8,16 +8,150 @@ import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
+// Shared schemas
+const SkuSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.Literals(["S0", "S1", "G2"]),
+  tier: Schema.optional(Schema.String),
+});
+const KindSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Gen1",
+  "Gen2",
+]);
+const ManagedServiceIdentityTypeSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+    "None",
+    "SystemAssigned",
+    "UserAssigned",
+    "SystemAssigned, UserAssigned",
+  ]);
+const UserAssignedIdentitiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Record(
+  Schema.String,
+  Schema.suspend(() => UserAssignedIdentitySchema),
+);
+const UserAssignedIdentitySchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  principalId: Schema.optional(Schema.String),
+  clientId: Schema.optional(Schema.String),
+});
+const MapsAccountPropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  uniqueId: Schema.optional(Schema.String),
+  disableLocalAuth: Schema.optional(Schema.Boolean),
+  provisioningState: Schema.optional(Schema.String),
+  linkedResources: Schema.optional(Schema.suspend(() => LinkedResourcesSchema)),
+  cors: Schema.optional(Schema.suspend(() => CorsRulesSchema)),
+  encryption: Schema.optional(
+    Schema.Struct({
+      infrastructureEncryption: Schema.optional(
+        Schema.Literals(["enabled", "disabled"]),
+      ),
+      customerManagedKeyEncryption: Schema.optional(
+        Schema.suspend(() => customerManagedKeyEncryptionSchema),
+      ),
+    }),
+  ),
+});
+const LinkedResourcesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
+  Schema.suspend(() => LinkedResourceSchema),
+);
+const LinkedResourceSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  uniqueName: Schema.String,
+  id: Schema.String,
+});
+const CorsRulesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  corsRules: Schema.optional(
+    Schema.Array(Schema.suspend(() => CorsRuleSchema)),
+  ),
+});
+const CorsRuleSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  allowedOrigins: Schema.Array(Schema.String),
+});
+const customerManagedKeyEncryptionSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    keyEncryptionKeyIdentity: Schema.optional(
+      Schema.Struct({
+        identityType: Schema.optional(
+          Schema.Literals([
+            "systemAssignedIdentity",
+            "userAssignedIdentity",
+            "delegatedResourceIdentity",
+          ]),
+        ),
+        userAssignedIdentityResourceId: Schema.optional(Schema.String),
+        delegatedIdentityClientId: Schema.optional(Schema.String),
+      }),
+    ),
+    keyEncryptionKeyUrl: Schema.optional(Schema.String),
+  });
+const MapsAccountSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
+const OperationDetailSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  isDataAction: Schema.optional(Schema.Boolean),
+  display: Schema.optional(Schema.suspend(() => OperationDisplaySchema)),
+  origin: Schema.optional(Schema.String),
+  properties: Schema.optional(Schema.suspend(() => OperationPropertiesSchema)),
+});
+const OperationDisplaySchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  provider: Schema.optional(Schema.String),
+  resource: Schema.optional(Schema.String),
+  operation: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+});
+const OperationPropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  serviceSpecification: Schema.optional(
+    Schema.suspend(() => ServiceSpecificationSchema),
+  ),
+});
+const ServiceSpecificationSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  metricSpecifications: Schema.optional(
+    Schema.Array(Schema.suspend(() => MetricSpecificationSchema)),
+  ),
+});
+const MetricSpecificationSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  displayName: Schema.optional(Schema.String),
+  displayDescription: Schema.optional(Schema.String),
+  unit: Schema.optional(Schema.String),
+  dimensions: Schema.optional(
+    Schema.Array(Schema.suspend(() => DimensionSchema)),
+  ),
+  aggregationType: Schema.optional(Schema.String),
+  fillGapWithZero: Schema.optional(Schema.Boolean),
+  category: Schema.optional(Schema.String),
+  resourceIdDimensionNameOverride: Schema.optional(Schema.String),
+  sourceMdmAccount: Schema.optional(Schema.String),
+  internalMetricName: Schema.optional(Schema.String),
+  lockAggregationType: Schema.optional(Schema.String),
+  sourceMdmNamespace: Schema.optional(Schema.String),
+  supportedAggregationTypes: Schema.optional(Schema.String),
+});
+const DimensionSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  displayName: Schema.optional(Schema.String),
+  internalName: Schema.optional(Schema.String),
+  internalMetricName: Schema.optional(Schema.String),
+  sourceMdmNamespace: Schema.optional(Schema.String),
+  toBeExportedToShoebox: Schema.optional(Schema.Boolean),
+});
+const CreatorSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
+const CreatorPropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  provisioningState: Schema.optional(Schema.String),
+  storageUnits: Schema.Number,
+});
+
 // Input Schema
 export const AccountsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    sku: Schema.Struct({
-      name: Schema.Literals(["S0", "S1", "G2"]),
-      tier: Schema.optional(Schema.String),
-    }),
-    kind: Schema.optional(Schema.Literals(["Gen1", "Gen2"])),
+    sku: Schema.suspend(() => SkuSchema),
+    kind: Schema.optional(Schema.suspend(() => KindSchema)),
     systemData: Schema.optional(
       Schema.Struct({
         createdBy: Schema.optional(Schema.String),
@@ -36,75 +170,14 @@ export const AccountsCreateOrUpdateInput =
       Schema.Struct({
         principalId: Schema.optional(Schema.String),
         tenantId: Schema.optional(Schema.String),
-        type: Schema.Literals([
-          "None",
-          "SystemAssigned",
-          "UserAssigned",
-          "SystemAssigned, UserAssigned",
-        ]),
+        type: Schema.suspend(() => ManagedServiceIdentityTypeSchema),
         userAssignedIdentities: Schema.optional(
-          Schema.Record(
-            Schema.String,
-            Schema.Struct({
-              principalId: Schema.optional(Schema.String),
-              clientId: Schema.optional(Schema.String),
-            }),
-          ),
+          Schema.suspend(() => UserAssignedIdentitiesSchema),
         ),
       }),
     ),
     properties: Schema.optional(
-      Schema.Struct({
-        uniqueId: Schema.optional(Schema.String),
-        disableLocalAuth: Schema.optional(Schema.Boolean),
-        provisioningState: Schema.optional(Schema.String),
-        linkedResources: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              uniqueName: Schema.String,
-              id: Schema.String,
-            }),
-          ),
-        ),
-        cors: Schema.optional(
-          Schema.Struct({
-            corsRules: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  allowedOrigins: Schema.Array(Schema.String),
-                }),
-              ),
-            ),
-          }),
-        ),
-        encryption: Schema.optional(
-          Schema.Struct({
-            infrastructureEncryption: Schema.optional(
-              Schema.Literals(["enabled", "disabled"]),
-            ),
-            customerManagedKeyEncryption: Schema.optional(
-              Schema.Struct({
-                keyEncryptionKeyIdentity: Schema.optional(
-                  Schema.Struct({
-                    identityType: Schema.optional(
-                      Schema.Literals([
-                        "systemAssignedIdentity",
-                        "userAssignedIdentity",
-                        "delegatedResourceIdentity",
-                      ]),
-                    ),
-                    userAssignedIdentityResourceId: Schema.optional(
-                      Schema.String,
-                    ),
-                    delegatedIdentityClientId: Schema.optional(Schema.String),
-                  }),
-                ),
-                keyEncryptionKeyUrl: Schema.optional(Schema.String),
-              }),
-            ),
-          }),
-        ),
-      }),
+      Schema.suspend(() => MapsAccountPropertiesSchema),
     ),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     location: Schema.String,
@@ -121,6 +194,37 @@ export type AccountsCreateOrUpdateInput =
 // Output Schema
 export const AccountsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    sku: Schema.suspend(() => SkuSchema),
+    kind: Schema.optional(Schema.suspend(() => KindSchema)),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+    identity: Schema.optional(
+      Schema.Struct({
+        principalId: Schema.optional(Schema.String),
+        tenantId: Schema.optional(Schema.String),
+        type: Schema.suspend(() => ManagedServiceIdentityTypeSchema),
+        userAssignedIdentities: Schema.optional(
+          Schema.suspend(() => UserAssignedIdentitiesSchema),
+        ),
+      }),
+    ),
+    properties: Schema.optional(
+      Schema.suspend(() => MapsAccountPropertiesSchema),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -186,6 +290,37 @@ export type AccountsGetInput = typeof AccountsGetInput.Type;
 
 // Output Schema
 export const AccountsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  sku: Schema.suspend(() => SkuSchema),
+  kind: Schema.optional(Schema.suspend(() => KindSchema)),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+  identity: Schema.optional(
+    Schema.Struct({
+      principalId: Schema.optional(Schema.String),
+      tenantId: Schema.optional(Schema.String),
+      type: Schema.suspend(() => ManagedServiceIdentityTypeSchema),
+      userAssignedIdentities: Schema.optional(
+        Schema.suspend(() => UserAssignedIdentitiesSchema),
+      ),
+    }),
+  ),
+  properties: Schema.optional(
+    Schema.suspend(() => MapsAccountPropertiesSchema),
+  ),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  location: Schema.String,
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -223,13 +358,7 @@ export type AccountsListByResourceGroupInput =
 export const AccountsListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => MapsAccountSchema)),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -268,13 +397,7 @@ export type AccountsListBySubscriptionInput =
 export const AccountsListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => MapsAccountSchema)),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -420,86 +543,20 @@ export const AccountsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-  kind: Schema.optional(Schema.Literals(["Gen1", "Gen2"])),
-  sku: Schema.optional(
-    Schema.Struct({
-      name: Schema.Literals(["S0", "S1", "G2"]),
-      tier: Schema.optional(Schema.String),
-    }),
-  ),
+  kind: Schema.optional(Schema.suspend(() => KindSchema)),
+  sku: Schema.optional(Schema.suspend(() => SkuSchema)),
   identity: Schema.optional(
     Schema.Struct({
       principalId: Schema.optional(Schema.String),
       tenantId: Schema.optional(Schema.String),
-      type: Schema.Literals([
-        "None",
-        "SystemAssigned",
-        "UserAssigned",
-        "SystemAssigned, UserAssigned",
-      ]),
+      type: Schema.suspend(() => ManagedServiceIdentityTypeSchema),
       userAssignedIdentities: Schema.optional(
-        Schema.Record(
-          Schema.String,
-          Schema.Struct({
-            principalId: Schema.optional(Schema.String),
-            clientId: Schema.optional(Schema.String),
-          }),
-        ),
+        Schema.suspend(() => UserAssignedIdentitiesSchema),
       ),
     }),
   ),
   properties: Schema.optional(
-    Schema.Struct({
-      uniqueId: Schema.optional(Schema.String),
-      disableLocalAuth: Schema.optional(Schema.Boolean),
-      provisioningState: Schema.optional(Schema.String),
-      linkedResources: Schema.optional(
-        Schema.Array(
-          Schema.Struct({
-            uniqueName: Schema.String,
-            id: Schema.String,
-          }),
-        ),
-      ),
-      cors: Schema.optional(
-        Schema.Struct({
-          corsRules: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                allowedOrigins: Schema.Array(Schema.String),
-              }),
-            ),
-          ),
-        }),
-      ),
-      encryption: Schema.optional(
-        Schema.Struct({
-          infrastructureEncryption: Schema.optional(
-            Schema.Literals(["enabled", "disabled"]),
-          ),
-          customerManagedKeyEncryption: Schema.optional(
-            Schema.Struct({
-              keyEncryptionKeyIdentity: Schema.optional(
-                Schema.Struct({
-                  identityType: Schema.optional(
-                    Schema.Literals([
-                      "systemAssignedIdentity",
-                      "userAssignedIdentity",
-                      "delegatedResourceIdentity",
-                    ]),
-                  ),
-                  userAssignedIdentityResourceId: Schema.optional(
-                    Schema.String,
-                  ),
-                  delegatedIdentityClientId: Schema.optional(Schema.String),
-                }),
-              ),
-              keyEncryptionKeyUrl: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
-    }),
+    Schema.suspend(() => MapsAccountPropertiesSchema),
   ),
 }).pipe(
   T.Http({
@@ -512,6 +569,37 @@ export type AccountsUpdateInput = typeof AccountsUpdateInput.Type;
 
 // Output Schema
 export const AccountsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  sku: Schema.suspend(() => SkuSchema),
+  kind: Schema.optional(Schema.suspend(() => KindSchema)),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+  identity: Schema.optional(
+    Schema.Struct({
+      principalId: Schema.optional(Schema.String),
+      tenantId: Schema.optional(Schema.String),
+      type: Schema.suspend(() => ManagedServiceIdentityTypeSchema),
+      userAssignedIdentities: Schema.optional(
+        Schema.suspend(() => UserAssignedIdentitiesSchema),
+      ),
+    }),
+  ),
+  properties: Schema.optional(
+    Schema.suspend(() => MapsAccountPropertiesSchema),
+  ),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  location: Schema.String,
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -535,10 +623,7 @@ export const CreatorsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    properties: Schema.Struct({
-      provisioningState: Schema.optional(Schema.String),
-      storageUnits: Schema.Number,
-    }),
+    properties: Schema.suspend(() => CreatorPropertiesSchema),
     systemData: Schema.optional(
       Schema.Struct({
         createdBy: Schema.optional(Schema.String),
@@ -568,6 +653,23 @@ export type CreatorsCreateOrUpdateInput =
 // Output Schema
 export const CreatorsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.suspend(() => CreatorPropertiesSchema),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -633,6 +735,23 @@ export type CreatorsGetInput = typeof CreatorsGetInput.Type;
 
 // Output Schema
 export const CreatorsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.suspend(() => CreatorPropertiesSchema),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  location: Schema.String,
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -668,15 +787,7 @@ export type CreatorsListByAccountInput = typeof CreatorsListByAccountInput.Type;
 // Output Schema
 export const CreatorsListByAccountOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
-    ),
+    value: Schema.optional(Schema.Array(Schema.suspend(() => CreatorSchema))),
     nextLink: Schema.optional(Schema.String),
   });
 export type CreatorsListByAccountOutput =
@@ -701,12 +812,7 @@ export const CreatorsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-  properties: Schema.optional(
-    Schema.Struct({
-      provisioningState: Schema.optional(Schema.String),
-      storageUnits: Schema.Number,
-    }),
-  ),
+  properties: Schema.optional(Schema.suspend(() => CreatorPropertiesSchema)),
 }).pipe(
   T.Http({
     method: "PATCH",
@@ -718,6 +824,23 @@ export type CreatorsUpdateInput = typeof CreatorsUpdateInput.Type;
 
 // Output Schema
 export const CreatorsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.suspend(() => CreatorPropertiesSchema),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  location: Schema.String,
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -751,70 +874,7 @@ export type MapsListOperationsInput = typeof MapsListOperationsInput.Type;
 export const MapsListOperationsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          name: Schema.optional(Schema.String),
-          isDataAction: Schema.optional(Schema.Boolean),
-          display: Schema.optional(
-            Schema.Struct({
-              provider: Schema.optional(Schema.String),
-              resource: Schema.optional(Schema.String),
-              operation: Schema.optional(Schema.String),
-              description: Schema.optional(Schema.String),
-            }),
-          ),
-          origin: Schema.optional(Schema.String),
-          properties: Schema.optional(
-            Schema.Struct({
-              serviceSpecification: Schema.optional(
-                Schema.Struct({
-                  metricSpecifications: Schema.optional(
-                    Schema.Array(
-                      Schema.Struct({
-                        name: Schema.optional(Schema.String),
-                        displayName: Schema.optional(Schema.String),
-                        displayDescription: Schema.optional(Schema.String),
-                        unit: Schema.optional(Schema.String),
-                        dimensions: Schema.optional(
-                          Schema.Array(
-                            Schema.Struct({
-                              name: Schema.optional(Schema.String),
-                              displayName: Schema.optional(Schema.String),
-                              internalName: Schema.optional(Schema.String),
-                              internalMetricName: Schema.optional(
-                                Schema.String,
-                              ),
-                              sourceMdmNamespace: Schema.optional(
-                                Schema.String,
-                              ),
-                              toBeExportedToShoebox: Schema.optional(
-                                Schema.Boolean,
-                              ),
-                            }),
-                          ),
-                        ),
-                        aggregationType: Schema.optional(Schema.String),
-                        fillGapWithZero: Schema.optional(Schema.Boolean),
-                        category: Schema.optional(Schema.String),
-                        resourceIdDimensionNameOverride: Schema.optional(
-                          Schema.String,
-                        ),
-                        sourceMdmAccount: Schema.optional(Schema.String),
-                        internalMetricName: Schema.optional(Schema.String),
-                        lockAggregationType: Schema.optional(Schema.String),
-                        sourceMdmNamespace: Schema.optional(Schema.String),
-                        supportedAggregationTypes: Schema.optional(
-                          Schema.String,
-                        ),
-                      }),
-                    ),
-                  ),
-                }),
-              ),
-            }),
-          ),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => OperationDetailSchema)),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -848,70 +908,7 @@ export type MapsListSubscriptionOperationsInput =
 export const MapsListSubscriptionOperationsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          name: Schema.optional(Schema.String),
-          isDataAction: Schema.optional(Schema.Boolean),
-          display: Schema.optional(
-            Schema.Struct({
-              provider: Schema.optional(Schema.String),
-              resource: Schema.optional(Schema.String),
-              operation: Schema.optional(Schema.String),
-              description: Schema.optional(Schema.String),
-            }),
-          ),
-          origin: Schema.optional(Schema.String),
-          properties: Schema.optional(
-            Schema.Struct({
-              serviceSpecification: Schema.optional(
-                Schema.Struct({
-                  metricSpecifications: Schema.optional(
-                    Schema.Array(
-                      Schema.Struct({
-                        name: Schema.optional(Schema.String),
-                        displayName: Schema.optional(Schema.String),
-                        displayDescription: Schema.optional(Schema.String),
-                        unit: Schema.optional(Schema.String),
-                        dimensions: Schema.optional(
-                          Schema.Array(
-                            Schema.Struct({
-                              name: Schema.optional(Schema.String),
-                              displayName: Schema.optional(Schema.String),
-                              internalName: Schema.optional(Schema.String),
-                              internalMetricName: Schema.optional(
-                                Schema.String,
-                              ),
-                              sourceMdmNamespace: Schema.optional(
-                                Schema.String,
-                              ),
-                              toBeExportedToShoebox: Schema.optional(
-                                Schema.Boolean,
-                              ),
-                            }),
-                          ),
-                        ),
-                        aggregationType: Schema.optional(Schema.String),
-                        fillGapWithZero: Schema.optional(Schema.Boolean),
-                        category: Schema.optional(Schema.String),
-                        resourceIdDimensionNameOverride: Schema.optional(
-                          Schema.String,
-                        ),
-                        sourceMdmAccount: Schema.optional(Schema.String),
-                        internalMetricName: Schema.optional(Schema.String),
-                        lockAggregationType: Schema.optional(Schema.String),
-                        sourceMdmNamespace: Schema.optional(Schema.String),
-                        supportedAggregationTypes: Schema.optional(
-                          Schema.String,
-                        ),
-                      }),
-                    ),
-                  ),
-                }),
-              ),
-            }),
-          ),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => OperationDetailSchema)),
     ),
     nextLink: Schema.optional(Schema.String),
   });

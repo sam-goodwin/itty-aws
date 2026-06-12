@@ -1,4 +1,8 @@
 import * as Schema from "effect/Schema";
+import {
+  NeonAuthDeleteDomainFromRedirectURIWhitelistItemSchema,
+  NeonAuthSupportedAuthProviderSchema,
+} from "./_schemas.ts";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
@@ -7,16 +11,11 @@ export const DeleteBranchNeonAuthTrustedDomainInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
     branch_id: Schema.String.pipe(T.PathParam()),
-    auth_provider: Schema.Literals([
-      "mock",
-      "stack",
-      "stack_v2",
-      "better_auth",
-    ]),
+    auth_provider: Schema.suspend(() => NeonAuthSupportedAuthProviderSchema),
     domains: Schema.Array(
-      Schema.Struct({
-        domain: Schema.String,
-      }),
+      Schema.suspend(
+        () => NeonAuthDeleteDomainFromRedirectURIWhitelistItemSchema,
+      ),
     ),
   }).pipe(
     T.Http({

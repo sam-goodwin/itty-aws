@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { VPCEndpointSchema } from "./_schemas.ts";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
@@ -19,12 +20,7 @@ export type ListOrganizationVPCEndpointsInput =
 // Output Schema
 export const ListOrganizationVPCEndpointsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    endpoints: Schema.Array(
-      Schema.Struct({
-        vpc_endpoint_id: Schema.String,
-        label: Schema.String,
-      }),
-    ),
+    endpoints: Schema.Array(Schema.suspend(() => VPCEndpointSchema)),
   });
 export type ListOrganizationVPCEndpointsOutput =
   typeof ListOrganizationVPCEndpointsOutput.Type;

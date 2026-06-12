@@ -8,6 +8,415 @@ import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
+// Shared schemas
+const OperationSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  isDataAction: Schema.optional(Schema.Boolean),
+  display: Schema.optional(Schema.suspend(() => OperationDisplaySchema)),
+  origin: Schema.optional(Schema.String),
+  properties: Schema.optional(Schema.suspend(() => OperationPropertiesSchema)),
+});
+const OperationDisplaySchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  provider: Schema.optional(Schema.String),
+  resource: Schema.optional(Schema.String),
+  operation: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+});
+const OperationPropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  serviceSpecification: Schema.optional(
+    Schema.suspend(() => ServiceSpecificationSchema),
+  ),
+});
+const ServiceSpecificationSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  metricSpecifications: Schema.optional(
+    Schema.Array(Schema.suspend(() => MetricSpecificationSchema)),
+  ),
+  logSpecifications: Schema.optional(
+    Schema.Array(Schema.suspend(() => LogSpecificationSchema)),
+  ),
+});
+const MetricSpecificationSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  displayName: Schema.optional(Schema.String),
+  displayDescription: Schema.optional(Schema.String),
+  unit: Schema.optional(Schema.String),
+  aggregationType: Schema.optional(Schema.String),
+  fillGapWithZero: Schema.optional(Schema.String),
+  category: Schema.optional(Schema.String),
+  dimensions: Schema.optional(
+    Schema.Array(Schema.suspend(() => DimensionSchema)),
+  ),
+});
+const DimensionSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  displayName: Schema.optional(Schema.String),
+  internalName: Schema.optional(Schema.String),
+  toBeExportedForShoebox: Schema.optional(Schema.Boolean),
+});
+const LogSpecificationSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  displayName: Schema.optional(Schema.String),
+});
+const SignalRUsageSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  currentValue: Schema.optional(Schema.Number),
+  limit: Schema.optional(Schema.Number),
+  name: Schema.optional(Schema.suspend(() => SignalRUsageNameSchema)),
+  unit: Schema.optional(Schema.String),
+});
+const SignalRUsageNameSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  value: Schema.optional(Schema.String),
+  localizedValue: Schema.optional(Schema.String),
+});
+const SignalRResourceSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+});
+const systemDataSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  createdBy: Schema.optional(Schema.String),
+  createdByType: Schema.optional(
+    Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+  ),
+  createdAt: Schema.optional(Schema.String),
+  lastModifiedBy: Schema.optional(Schema.String),
+  lastModifiedByType: Schema.optional(
+    Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+  ),
+  lastModifiedAt: Schema.optional(Schema.String),
+});
+const ResourceSkuSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.String,
+  tier: Schema.optional(Schema.suspend(() => SignalRSkuTierSchema)),
+  size: Schema.optional(Schema.String),
+  family: Schema.optional(Schema.String),
+  capacity: Schema.optional(Schema.Number),
+});
+const SignalRSkuTierSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Free",
+  "Basic",
+  "Standard",
+  "Premium",
+]);
+const SignalRPropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  provisioningState: Schema.optional(
+    Schema.suspend(() => ProvisioningStateSchema),
+  ),
+  externalIP: Schema.optional(Schema.String),
+  hostName: Schema.optional(Schema.String),
+  publicPort: Schema.optional(Schema.Number),
+  serverPort: Schema.optional(Schema.Number),
+  version: Schema.optional(Schema.String),
+  privateEndpointConnections: Schema.optional(
+    Schema.Array(Schema.suspend(() => PrivateEndpointConnectionSchema)),
+  ),
+  sharedPrivateLinkResources: Schema.optional(
+    Schema.Array(Schema.suspend(() => SharedPrivateLinkResourceSchema)),
+  ),
+  tls: Schema.optional(Schema.suspend(() => SignalRTlsSettingsSchema)),
+  hostNamePrefix: Schema.optional(Schema.String),
+  features: Schema.optional(
+    Schema.Array(Schema.suspend(() => SignalRFeatureSchema)),
+  ),
+  liveTraceConfiguration: Schema.optional(
+    Schema.suspend(() => LiveTraceConfigurationSchema),
+  ),
+  resourceLogConfiguration: Schema.optional(
+    Schema.suspend(() => ResourceLogConfigurationSchema),
+  ),
+  cors: Schema.optional(Schema.suspend(() => SignalRCorsSettingsSchema)),
+  serverless: Schema.optional(Schema.suspend(() => ServerlessSettingsSchema)),
+  upstream: Schema.optional(
+    Schema.suspend(() => ServerlessUpstreamSettingsSchema),
+  ),
+  networkACLs: Schema.optional(Schema.suspend(() => SignalRNetworkACLsSchema)),
+  publicNetworkAccess: Schema.optional(Schema.String),
+  disableLocalAuth: Schema.optional(Schema.Boolean),
+  disableAadAuth: Schema.optional(Schema.Boolean),
+  regionEndpointEnabled: Schema.optional(Schema.String),
+  resourceStopped: Schema.optional(Schema.String),
+});
+const ProvisioningStateSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Unknown",
+  "Succeeded",
+  "Failed",
+  "Canceled",
+  "Running",
+  "Creating",
+  "Updating",
+  "Deleting",
+  "Moving",
+]);
+const PrivateEndpointConnectionSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+  });
+const SharedPrivateLinkResourceSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+  });
+const SignalRTlsSettingsSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  clientCertEnabled: Schema.optional(Schema.Boolean),
+});
+const SignalRFeatureSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  flag: Schema.suspend(() => FeatureFlagsSchema),
+  value: Schema.String,
+  properties: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+});
+const FeatureFlagsSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "ServiceMode",
+  "EnableConnectivityLogs",
+  "EnableMessagingLogs",
+  "EnableLiveTrace",
+]);
+const LiveTraceConfigurationSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  enabled: Schema.optional(Schema.String),
+  categories: Schema.optional(
+    Schema.Array(Schema.suspend(() => LiveTraceCategorySchema)),
+  ),
+});
+const LiveTraceCategorySchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  enabled: Schema.optional(Schema.String),
+});
+const ResourceLogConfigurationSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    categories: Schema.optional(
+      Schema.Array(Schema.suspend(() => ResourceLogCategorySchema)),
+    ),
+  });
+const ResourceLogCategorySchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  enabled: Schema.optional(Schema.String),
+});
+const SignalRCorsSettingsSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  allowedOrigins: Schema.optional(Schema.Array(Schema.String)),
+});
+const ServerlessSettingsSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  connectionTimeoutInSeconds: Schema.optional(Schema.Number),
+});
+const ServerlessUpstreamSettingsSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    templates: Schema.optional(
+      Schema.Array(Schema.suspend(() => UpstreamTemplateSchema)),
+    ),
+  });
+const UpstreamTemplateSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  hubPattern: Schema.optional(Schema.String),
+  eventPattern: Schema.optional(Schema.String),
+  categoryPattern: Schema.optional(Schema.String),
+  urlTemplate: Schema.String,
+  auth: Schema.optional(Schema.suspend(() => UpstreamAuthSettingsSchema)),
+});
+const UpstreamAuthSettingsSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  type: Schema.optional(Schema.suspend(() => UpstreamAuthTypeSchema)),
+  managedIdentity: Schema.optional(
+    Schema.suspend(() => ManagedIdentitySettingsSchema),
+  ),
+});
+const UpstreamAuthTypeSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "None",
+  "ManagedIdentity",
+]);
+const ManagedIdentitySettingsSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    resource: Schema.optional(Schema.String),
+  },
+);
+const SignalRNetworkACLsSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  defaultAction: Schema.optional(Schema.suspend(() => ACLActionSchema)),
+  publicNetwork: Schema.optional(Schema.suspend(() => NetworkACLSchema)),
+  privateEndpoints: Schema.optional(
+    Schema.Array(Schema.suspend(() => PrivateEndpointACLSchema)),
+  ),
+  ipRules: Schema.optional(Schema.Array(Schema.suspend(() => IPRuleSchema))),
+});
+const ACLActionSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Allow",
+  "Deny",
+]);
+const NetworkACLSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  allow: Schema.optional(
+    Schema.Array(Schema.suspend(() => SignalRRequestTypeSchema)),
+  ),
+  deny: Schema.optional(
+    Schema.Array(Schema.suspend(() => SignalRRequestTypeSchema)),
+  ),
+});
+const SignalRRequestTypeSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "ClientConnection",
+  "ServerConnection",
+  "RESTAPI",
+  "Trace",
+]);
+const PrivateEndpointACLSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  allow: Schema.optional(
+    Schema.Array(Schema.suspend(() => SignalRRequestTypeSchema)),
+  ),
+  deny: Schema.optional(
+    Schema.Array(Schema.suspend(() => SignalRRequestTypeSchema)),
+  ),
+});
+const IPRuleSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  value: Schema.optional(Schema.String),
+  action: Schema.optional(Schema.suspend(() => ACLActionSchema)),
+});
+const ServiceKindSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "SignalR",
+  "RawWebSockets",
+]);
+const ManagedIdentitySchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  type: Schema.optional(Schema.suspend(() => ManagedIdentityTypeSchema)),
+  userAssignedIdentities: Schema.optional(
+    Schema.Record(
+      Schema.String,
+      Schema.suspend(() => UserAssignedIdentityPropertySchema),
+    ),
+  ),
+  principalId: Schema.optional(Schema.String),
+  tenantId: Schema.optional(Schema.String),
+});
+const ManagedIdentityTypeSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "None",
+  "SystemAssigned",
+  "UserAssigned",
+]);
+const UserAssignedIdentityPropertySchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    principalId: Schema.optional(Schema.String),
+    clientId: Schema.optional(Schema.String),
+  });
+const CustomCertificateSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+});
+const CustomCertificatePropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    provisioningState: Schema.optional(
+      Schema.suspend(() => ProvisioningStateSchema),
+    ),
+    keyVaultBaseUri: Schema.String,
+    keyVaultSecretName: Schema.String,
+    keyVaultSecretVersion: Schema.optional(Schema.String),
+  });
+const CustomDomainSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+});
+const CustomDomainPropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  provisioningState: Schema.optional(
+    Schema.suspend(() => ProvisioningStateSchema),
+  ),
+  domainName: Schema.String,
+  customCertificate: Schema.suspend(() => ResourceReferenceSchema),
+});
+const ResourceReferenceSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+});
+const PrivateEndpointConnectionPropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    provisioningState: Schema.optional(
+      Schema.suspend(() => ProvisioningStateSchema),
+    ),
+    privateEndpoint: Schema.optional(
+      Schema.suspend(() => PrivateEndpointSchema),
+    ),
+    groupIds: Schema.optional(Schema.Array(Schema.String)),
+    privateLinkServiceConnectionState: Schema.optional(
+      Schema.suspend(() => PrivateLinkServiceConnectionStateSchema),
+    ),
+  });
+const PrivateEndpointSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+});
+const PrivateLinkServiceConnectionStateSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    status: Schema.optional(
+      Schema.suspend(() => PrivateLinkServiceConnectionStatusSchema),
+    ),
+    description: Schema.optional(Schema.String),
+    actionsRequired: Schema.optional(Schema.String),
+  });
+const PrivateLinkServiceConnectionStatusSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+    "Pending",
+    "Approved",
+    "Rejected",
+    "Disconnected",
+  ]);
+const PrivateLinkResourceSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+});
+const KeyTypeSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "Primary",
+  "Secondary",
+  "Salt",
+]);
+const ReplicaSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
+});
+const ReplicaPropertiesSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  provisioningState: Schema.optional(
+    Schema.suspend(() => ProvisioningStateSchema),
+  ),
+  regionEndpointEnabled: Schema.optional(Schema.String),
+  resourceStopped: Schema.optional(Schema.String),
+});
+const SharedPrivateLinkResourcePropertiesSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    groupId: Schema.String,
+    privateLinkResourceId: Schema.String,
+    provisioningState: Schema.optional(
+      Schema.suspend(() => ProvisioningStateSchema),
+    ),
+    requestMessage: Schema.optional(Schema.String),
+    status: Schema.optional(
+      Schema.suspend(() => SharedPrivateLinkResourceStatusSchema),
+    ),
+  });
+const SharedPrivateLinkResourceStatusSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+    "Pending",
+    "Approved",
+    "Rejected",
+    "Disconnected",
+    "Timeout",
+  ]);
+const SkuSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  resourceType: Schema.optional(Schema.String),
+  sku: Schema.optional(Schema.suspend(() => ResourceSkuSchema)),
+  capacity: Schema.optional(Schema.suspend(() => SkuCapacitySchema)),
+});
+const SkuCapacitySchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  minimum: Schema.optional(Schema.Number),
+  maximum: Schema.optional(Schema.Number),
+  default: Schema.optional(Schema.Number),
+  allowedValues: Schema.optional(Schema.Array(Schema.Number)),
+  scaleType: Schema.optional(Schema.suspend(() => ScaleTypeSchema)),
+});
+const ScaleTypeSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "None",
+  "Manual",
+  "Automatic",
+]);
+
 // Input Schema
 export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {},
@@ -22,64 +431,7 @@ export type OperationsListInput = typeof OperationsListInput.Type;
 
 // Output Schema
 export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  value: Schema.optional(
-    Schema.Array(
-      Schema.Struct({
-        name: Schema.optional(Schema.String),
-        isDataAction: Schema.optional(Schema.Boolean),
-        display: Schema.optional(
-          Schema.Struct({
-            provider: Schema.optional(Schema.String),
-            resource: Schema.optional(Schema.String),
-            operation: Schema.optional(Schema.String),
-            description: Schema.optional(Schema.String),
-          }),
-        ),
-        origin: Schema.optional(Schema.String),
-        properties: Schema.optional(
-          Schema.Struct({
-            serviceSpecification: Schema.optional(
-              Schema.Struct({
-                metricSpecifications: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      name: Schema.optional(Schema.String),
-                      displayName: Schema.optional(Schema.String),
-                      displayDescription: Schema.optional(Schema.String),
-                      unit: Schema.optional(Schema.String),
-                      aggregationType: Schema.optional(Schema.String),
-                      fillGapWithZero: Schema.optional(Schema.String),
-                      category: Schema.optional(Schema.String),
-                      dimensions: Schema.optional(
-                        Schema.Array(
-                          Schema.Struct({
-                            name: Schema.optional(Schema.String),
-                            displayName: Schema.optional(Schema.String),
-                            internalName: Schema.optional(Schema.String),
-                            toBeExportedForShoebox: Schema.optional(
-                              Schema.Boolean,
-                            ),
-                          }),
-                        ),
-                      ),
-                    }),
-                  ),
-                ),
-                logSpecifications: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      name: Schema.optional(Schema.String),
-                      displayName: Schema.optional(Schema.String),
-                    }),
-                  ),
-                ),
-              }),
-            ),
-          }),
-        ),
-      }),
-    ),
-  ),
+  value: Schema.optional(Schema.Array(Schema.suspend(() => OperationSchema))),
   nextLink: Schema.optional(Schema.String),
 });
 export type OperationsListOutput = typeof OperationsListOutput.Type;
@@ -139,275 +491,10 @@ export const SignalRCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    sku: Schema.optional(
-      Schema.Struct({
-        name: Schema.String,
-        tier: Schema.optional(
-          Schema.Literals(["Free", "Basic", "Standard", "Premium"]),
-        ),
-        size: Schema.optional(Schema.String),
-        family: Schema.optional(Schema.String),
-        capacity: Schema.optional(Schema.Number),
-      }),
-    ),
-    properties: Schema.optional(
-      Schema.Struct({
-        provisioningState: Schema.optional(
-          Schema.Literals([
-            "Unknown",
-            "Succeeded",
-            "Failed",
-            "Canceled",
-            "Running",
-            "Creating",
-            "Updating",
-            "Deleting",
-            "Moving",
-          ]),
-        ),
-        externalIP: Schema.optional(Schema.String),
-        hostName: Schema.optional(Schema.String),
-        publicPort: Schema.optional(Schema.Number),
-        serverPort: Schema.optional(Schema.Number),
-        version: Schema.optional(Schema.String),
-        privateEndpointConnections: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              id: Schema.optional(Schema.String),
-              name: Schema.optional(Schema.String),
-              type: Schema.optional(Schema.String),
-              systemData: Schema.optional(
-                Schema.Struct({
-                  createdBy: Schema.optional(Schema.String),
-                  createdByType: Schema.optional(
-                    Schema.Literals([
-                      "User",
-                      "Application",
-                      "ManagedIdentity",
-                      "Key",
-                    ]),
-                  ),
-                  createdAt: Schema.optional(Schema.String),
-                  lastModifiedBy: Schema.optional(Schema.String),
-                  lastModifiedByType: Schema.optional(
-                    Schema.Literals([
-                      "User",
-                      "Application",
-                      "ManagedIdentity",
-                      "Key",
-                    ]),
-                  ),
-                  lastModifiedAt: Schema.optional(Schema.String),
-                }),
-              ),
-            }),
-          ),
-        ),
-        sharedPrivateLinkResources: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              id: Schema.optional(Schema.String),
-              name: Schema.optional(Schema.String),
-              type: Schema.optional(Schema.String),
-              systemData: Schema.optional(
-                Schema.Struct({
-                  createdBy: Schema.optional(Schema.String),
-                  createdByType: Schema.optional(
-                    Schema.Literals([
-                      "User",
-                      "Application",
-                      "ManagedIdentity",
-                      "Key",
-                    ]),
-                  ),
-                  createdAt: Schema.optional(Schema.String),
-                  lastModifiedBy: Schema.optional(Schema.String),
-                  lastModifiedByType: Schema.optional(
-                    Schema.Literals([
-                      "User",
-                      "Application",
-                      "ManagedIdentity",
-                      "Key",
-                    ]),
-                  ),
-                  lastModifiedAt: Schema.optional(Schema.String),
-                }),
-              ),
-            }),
-          ),
-        ),
-        tls: Schema.optional(
-          Schema.Struct({
-            clientCertEnabled: Schema.optional(Schema.Boolean),
-          }),
-        ),
-        hostNamePrefix: Schema.optional(Schema.String),
-        features: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              flag: Schema.Literals([
-                "ServiceMode",
-                "EnableConnectivityLogs",
-                "EnableMessagingLogs",
-                "EnableLiveTrace",
-              ]),
-              value: Schema.String,
-              properties: Schema.optional(
-                Schema.Record(Schema.String, Schema.String),
-              ),
-            }),
-          ),
-        ),
-        liveTraceConfiguration: Schema.optional(
-          Schema.Struct({
-            enabled: Schema.optional(Schema.String),
-            categories: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  name: Schema.optional(Schema.String),
-                  enabled: Schema.optional(Schema.String),
-                }),
-              ),
-            ),
-          }),
-        ),
-        resourceLogConfiguration: Schema.optional(
-          Schema.Struct({
-            categories: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  name: Schema.optional(Schema.String),
-                  enabled: Schema.optional(Schema.String),
-                }),
-              ),
-            ),
-          }),
-        ),
-        cors: Schema.optional(
-          Schema.Struct({
-            allowedOrigins: Schema.optional(Schema.Array(Schema.String)),
-          }),
-        ),
-        serverless: Schema.optional(
-          Schema.Struct({
-            connectionTimeoutInSeconds: Schema.optional(Schema.Number),
-          }),
-        ),
-        upstream: Schema.optional(
-          Schema.Struct({
-            templates: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  hubPattern: Schema.optional(Schema.String),
-                  eventPattern: Schema.optional(Schema.String),
-                  categoryPattern: Schema.optional(Schema.String),
-                  urlTemplate: Schema.String,
-                  auth: Schema.optional(
-                    Schema.Struct({
-                      type: Schema.optional(
-                        Schema.Literals(["None", "ManagedIdentity"]),
-                      ),
-                      managedIdentity: Schema.optional(
-                        Schema.Struct({
-                          resource: Schema.optional(Schema.String),
-                        }),
-                      ),
-                    }),
-                  ),
-                }),
-              ),
-            ),
-          }),
-        ),
-        networkACLs: Schema.optional(
-          Schema.Struct({
-            defaultAction: Schema.optional(Schema.Literals(["Allow", "Deny"])),
-            publicNetwork: Schema.optional(
-              Schema.Struct({
-                allow: Schema.optional(
-                  Schema.Array(
-                    Schema.Literals([
-                      "ClientConnection",
-                      "ServerConnection",
-                      "RESTAPI",
-                      "Trace",
-                    ]),
-                  ),
-                ),
-                deny: Schema.optional(
-                  Schema.Array(
-                    Schema.Literals([
-                      "ClientConnection",
-                      "ServerConnection",
-                      "RESTAPI",
-                      "Trace",
-                    ]),
-                  ),
-                ),
-              }),
-            ),
-            privateEndpoints: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  allow: Schema.optional(
-                    Schema.Array(
-                      Schema.Literals([
-                        "ClientConnection",
-                        "ServerConnection",
-                        "RESTAPI",
-                        "Trace",
-                      ]),
-                    ),
-                  ),
-                  deny: Schema.optional(
-                    Schema.Array(
-                      Schema.Literals([
-                        "ClientConnection",
-                        "ServerConnection",
-                        "RESTAPI",
-                        "Trace",
-                      ]),
-                    ),
-                  ),
-                }),
-              ),
-            ),
-            ipRules: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  value: Schema.optional(Schema.String),
-                  action: Schema.optional(Schema.Literals(["Allow", "Deny"])),
-                }),
-              ),
-            ),
-          }),
-        ),
-        publicNetworkAccess: Schema.optional(Schema.String),
-        disableLocalAuth: Schema.optional(Schema.Boolean),
-        disableAadAuth: Schema.optional(Schema.Boolean),
-        regionEndpointEnabled: Schema.optional(Schema.String),
-        resourceStopped: Schema.optional(Schema.String),
-      }),
-    ),
-    kind: Schema.optional(Schema.Literals(["SignalR", "RawWebSockets"])),
-    identity: Schema.optional(
-      Schema.Struct({
-        type: Schema.optional(
-          Schema.Literals(["None", "SystemAssigned", "UserAssigned"]),
-        ),
-        userAssignedIdentities: Schema.optional(
-          Schema.Record(
-            Schema.String,
-            Schema.Struct({
-              principalId: Schema.optional(Schema.String),
-              clientId: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        principalId: Schema.optional(Schema.String),
-        tenantId: Schema.optional(Schema.String),
-      }),
-    ),
+    sku: Schema.optional(Schema.suspend(() => ResourceSkuSchema)),
+    properties: Schema.optional(Schema.suspend(() => SignalRPropertiesSchema)),
+    kind: Schema.optional(Schema.suspend(() => ServiceKindSchema)),
+    identity: Schema.optional(Schema.suspend(() => ManagedIdentitySchema)),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     location: Schema.String,
   }).pipe(
@@ -423,23 +510,16 @@ export type SignalRCreateOrUpdateInput = typeof SignalRCreateOrUpdateInput.Type;
 // Output Schema
 export const SignalRCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    sku: Schema.optional(Schema.suspend(() => ResourceSkuSchema)),
+    properties: Schema.optional(Schema.suspend(() => SignalRPropertiesSchema)),
+    kind: Schema.optional(Schema.suspend(() => ServiceKindSchema)),
+    identity: Schema.optional(Schema.suspend(() => ManagedIdentitySchema)),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type SignalRCreateOrUpdateOutput =
   typeof SignalRCreateOrUpdateOutput.Type;
@@ -464,24 +544,7 @@ export const SignalRCustomCertificatesCreateOrUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     certificateName: Schema.String.pipe(T.PathParam()),
-    properties: Schema.Struct({
-      provisioningState: Schema.optional(
-        Schema.Literals([
-          "Unknown",
-          "Succeeded",
-          "Failed",
-          "Canceled",
-          "Running",
-          "Creating",
-          "Updating",
-          "Deleting",
-          "Moving",
-        ]),
-      ),
-      keyVaultBaseUri: Schema.String,
-      keyVaultSecretName: Schema.String,
-      keyVaultSecretVersion: Schema.optional(Schema.String),
-    }),
+    properties: Schema.suspend(() => CustomCertificatePropertiesSchema),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -496,23 +559,11 @@ export type SignalRCustomCertificatesCreateOrUpdateInput =
 // Output Schema
 export const SignalRCustomCertificatesCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.suspend(() => CustomCertificatePropertiesSchema),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type SignalRCustomCertificatesCreateOrUpdateOutput =
   typeof SignalRCustomCertificatesCreateOrUpdateOutput.Type;
@@ -586,23 +637,11 @@ export type SignalRCustomCertificatesGetInput =
 // Output Schema
 export const SignalRCustomCertificatesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.suspend(() => CustomCertificatePropertiesSchema),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type SignalRCustomCertificatesGetOutput =
   typeof SignalRCustomCertificatesGetOutput.Type;
@@ -640,37 +679,7 @@ export type SignalRCustomCertificatesListInput =
 export const SignalRCustomCertificatesListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.String),
-              createdByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              createdAt: Schema.optional(Schema.String),
-              lastModifiedBy: Schema.optional(Schema.String),
-              lastModifiedByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              lastModifiedAt: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => CustomCertificateSchema)),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -696,25 +705,7 @@ export const SignalRCustomDomainsCreateOrUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
-    properties: Schema.Struct({
-      provisioningState: Schema.optional(
-        Schema.Literals([
-          "Unknown",
-          "Succeeded",
-          "Failed",
-          "Canceled",
-          "Running",
-          "Creating",
-          "Updating",
-          "Deleting",
-          "Moving",
-        ]),
-      ),
-      domainName: Schema.String,
-      customCertificate: Schema.Struct({
-        id: Schema.optional(Schema.String),
-      }),
-    }),
+    properties: Schema.suspend(() => CustomDomainPropertiesSchema),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -729,23 +720,11 @@ export type SignalRCustomDomainsCreateOrUpdateInput =
 // Output Schema
 export const SignalRCustomDomainsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.suspend(() => CustomDomainPropertiesSchema),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type SignalRCustomDomainsCreateOrUpdateOutput =
   typeof SignalRCustomDomainsCreateOrUpdateOutput.Type;
@@ -821,23 +800,11 @@ export type SignalRCustomDomainsGetInput =
 // Output Schema
 export const SignalRCustomDomainsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.suspend(() => CustomDomainPropertiesSchema),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type SignalRCustomDomainsGetOutput =
   typeof SignalRCustomDomainsGetOutput.Type;
@@ -876,37 +843,7 @@ export type SignalRCustomDomainsListInput =
 export const SignalRCustomDomainsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.String),
-              createdByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              createdAt: Schema.optional(Schema.String),
-              lastModifiedBy: Schema.optional(Schema.String),
-              lastModifiedByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              lastModifiedAt: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => CustomDomainSchema)),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -972,23 +909,16 @@ export type SignalRGetInput = typeof SignalRGetInput.Type;
 
 // Output Schema
 export const SignalRGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  sku: Schema.optional(Schema.suspend(() => ResourceSkuSchema)),
+  properties: Schema.optional(Schema.suspend(() => SignalRPropertiesSchema)),
+  kind: Schema.optional(Schema.suspend(() => ServiceKindSchema)),
+  identity: Schema.optional(Schema.suspend(() => ManagedIdentitySchema)),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  location: Schema.String,
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
-  systemData: Schema.optional(
-    Schema.Struct({
-      createdBy: Schema.optional(Schema.String),
-      createdByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      createdAt: Schema.optional(Schema.String),
-      lastModifiedBy: Schema.optional(Schema.String),
-      lastModifiedByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      lastModifiedAt: Schema.optional(Schema.String),
-    }),
-  ),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
 });
 export type SignalRGetOutput = typeof SignalRGetOutput.Type;
 
@@ -1023,37 +953,7 @@ export type SignalRListByResourceGroupInput =
 export const SignalRListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.String),
-              createdByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              createdAt: Schema.optional(Schema.String),
-              lastModifiedBy: Schema.optional(Schema.String),
-              lastModifiedByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              lastModifiedAt: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => SignalRResourceSchema)),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -1092,37 +992,7 @@ export type SignalRListBySubscriptionInput =
 export const SignalRListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.String),
-              createdByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              createdAt: Schema.optional(Schema.String),
-              lastModifiedBy: Schema.optional(Schema.String),
-              lastModifiedByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              lastModifiedAt: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => SignalRResourceSchema)),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -1194,35 +1064,7 @@ export type SignalRListReplicaSkusInput =
 // Output Schema
 export const SignalRListReplicaSkusOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          resourceType: Schema.optional(Schema.String),
-          sku: Schema.optional(
-            Schema.Struct({
-              name: Schema.String,
-              tier: Schema.optional(
-                Schema.Literals(["Free", "Basic", "Standard", "Premium"]),
-              ),
-              size: Schema.optional(Schema.String),
-              family: Schema.optional(Schema.String),
-              capacity: Schema.optional(Schema.Number),
-            }),
-          ),
-          capacity: Schema.optional(
-            Schema.Struct({
-              minimum: Schema.optional(Schema.Number),
-              maximum: Schema.optional(Schema.Number),
-              default: Schema.optional(Schema.Number),
-              allowedValues: Schema.optional(Schema.Array(Schema.Number)),
-              scaleType: Schema.optional(
-                Schema.Literals(["None", "Manual", "Automatic"]),
-              ),
-            }),
-          ),
-        }),
-      ),
-    ),
+    value: Schema.optional(Schema.Array(Schema.suspend(() => SkuSchema))),
     nextLink: Schema.optional(Schema.String),
   });
 export type SignalRListReplicaSkusOutput =
@@ -1257,35 +1099,7 @@ export type SignalRListSkusInput = typeof SignalRListSkusInput.Type;
 
 // Output Schema
 export const SignalRListSkusOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  value: Schema.optional(
-    Schema.Array(
-      Schema.Struct({
-        resourceType: Schema.optional(Schema.String),
-        sku: Schema.optional(
-          Schema.Struct({
-            name: Schema.String,
-            tier: Schema.optional(
-              Schema.Literals(["Free", "Basic", "Standard", "Premium"]),
-            ),
-            size: Schema.optional(Schema.String),
-            family: Schema.optional(Schema.String),
-            capacity: Schema.optional(Schema.Number),
-          }),
-        ),
-        capacity: Schema.optional(
-          Schema.Struct({
-            minimum: Schema.optional(Schema.Number),
-            maximum: Schema.optional(Schema.Number),
-            default: Schema.optional(Schema.Number),
-            allowedValues: Schema.optional(Schema.Array(Schema.Number)),
-            scaleType: Schema.optional(
-              Schema.Literals(["None", "Manual", "Automatic"]),
-            ),
-          }),
-        ),
-      }),
-    ),
-  ),
+  value: Schema.optional(Schema.Array(Schema.suspend(() => SkuSchema))),
   nextLink: Schema.optional(Schema.String),
 });
 export type SignalRListSkusOutput = typeof SignalRListSkusOutput.Type;
@@ -1358,23 +1172,13 @@ export type SignalRPrivateEndpointConnectionsGetInput =
 // Output Schema
 export const SignalRPrivateEndpointConnectionsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => PrivateEndpointConnectionPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type SignalRPrivateEndpointConnectionsGetOutput =
   typeof SignalRPrivateEndpointConnectionsGetOutput.Type;
@@ -1412,37 +1216,7 @@ export type SignalRPrivateEndpointConnectionsListInput =
 export const SignalRPrivateEndpointConnectionsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.String),
-              createdByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              createdAt: Schema.optional(Schema.String),
-              lastModifiedBy: Schema.optional(Schema.String),
-              lastModifiedByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              lastModifiedAt: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => PrivateEndpointConnectionSchema)),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -1469,41 +1243,7 @@ export const SignalRPrivateEndpointConnectionsUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        provisioningState: Schema.optional(
-          Schema.Literals([
-            "Unknown",
-            "Succeeded",
-            "Failed",
-            "Canceled",
-            "Running",
-            "Creating",
-            "Updating",
-            "Deleting",
-            "Moving",
-          ]),
-        ),
-        privateEndpoint: Schema.optional(
-          Schema.Struct({
-            id: Schema.optional(Schema.String),
-          }),
-        ),
-        groupIds: Schema.optional(Schema.Array(Schema.String)),
-        privateLinkServiceConnectionState: Schema.optional(
-          Schema.Struct({
-            status: Schema.optional(
-              Schema.Literals([
-                "Pending",
-                "Approved",
-                "Rejected",
-                "Disconnected",
-              ]),
-            ),
-            description: Schema.optional(Schema.String),
-            actionsRequired: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
+      Schema.suspend(() => PrivateEndpointConnectionPropertiesSchema),
     ),
   }).pipe(
     T.Http({
@@ -1518,23 +1258,13 @@ export type SignalRPrivateEndpointConnectionsUpdateInput =
 // Output Schema
 export const SignalRPrivateEndpointConnectionsUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => PrivateEndpointConnectionPropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type SignalRPrivateEndpointConnectionsUpdateOutput =
   typeof SignalRPrivateEndpointConnectionsUpdateOutput.Type;
@@ -1572,37 +1302,7 @@ export type SignalRPrivateLinkResourcesListInput =
 export const SignalRPrivateLinkResourcesListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.String),
-              createdByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              createdAt: Schema.optional(Schema.String),
-              lastModifiedBy: Schema.optional(Schema.String),
-              lastModifiedByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              lastModifiedAt: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => PrivateLinkResourceSchema)),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -1627,7 +1327,7 @@ export const SignalRRegenerateKeyInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    keyType: Schema.optional(Schema.Literals(["Primary", "Secondary", "Salt"])),
+    keyType: Schema.optional(Schema.suspend(() => KeyTypeSchema)),
   }).pipe(
     T.Http({
       method: "POST",
@@ -1667,36 +1367,8 @@ export const SignalRReplicasCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    sku: Schema.optional(
-      Schema.Struct({
-        name: Schema.String,
-        tier: Schema.optional(
-          Schema.Literals(["Free", "Basic", "Standard", "Premium"]),
-        ),
-        size: Schema.optional(Schema.String),
-        family: Schema.optional(Schema.String),
-        capacity: Schema.optional(Schema.Number),
-      }),
-    ),
-    properties: Schema.optional(
-      Schema.Struct({
-        provisioningState: Schema.optional(
-          Schema.Literals([
-            "Unknown",
-            "Succeeded",
-            "Failed",
-            "Canceled",
-            "Running",
-            "Creating",
-            "Updating",
-            "Deleting",
-            "Moving",
-          ]),
-        ),
-        regionEndpointEnabled: Schema.optional(Schema.String),
-        resourceStopped: Schema.optional(Schema.String),
-      }),
-    ),
+    sku: Schema.optional(Schema.suspend(() => ResourceSkuSchema)),
+    properties: Schema.optional(Schema.suspend(() => ReplicaPropertiesSchema)),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     location: Schema.String,
   }).pipe(
@@ -1713,23 +1385,14 @@ export type SignalRReplicasCreateOrUpdateInput =
 // Output Schema
 export const SignalRReplicasCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    sku: Schema.optional(Schema.suspend(() => ResourceSkuSchema)),
+    properties: Schema.optional(Schema.suspend(() => ReplicaPropertiesSchema)),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type SignalRReplicasCreateOrUpdateOutput =
   typeof SignalRReplicasCreateOrUpdateOutput.Type;
@@ -1798,23 +1461,14 @@ export type SignalRReplicasGetInput = typeof SignalRReplicasGetInput.Type;
 // Output Schema
 export const SignalRReplicasGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    sku: Schema.optional(Schema.suspend(() => ResourceSkuSchema)),
+    properties: Schema.optional(Schema.suspend(() => ReplicaPropertiesSchema)),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type SignalRReplicasGetOutput = typeof SignalRReplicasGetOutput.Type;
 
@@ -1836,33 +1490,7 @@ export const SignalRReplicaSharedPrivateLinkResourcesCreateOrUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        groupId: Schema.String,
-        privateLinkResourceId: Schema.String,
-        provisioningState: Schema.optional(
-          Schema.Literals([
-            "Unknown",
-            "Succeeded",
-            "Failed",
-            "Canceled",
-            "Running",
-            "Creating",
-            "Updating",
-            "Deleting",
-            "Moving",
-          ]),
-        ),
-        requestMessage: Schema.optional(Schema.String),
-        status: Schema.optional(
-          Schema.Literals([
-            "Pending",
-            "Approved",
-            "Rejected",
-            "Disconnected",
-            "Timeout",
-          ]),
-        ),
-      }),
+      Schema.suspend(() => SharedPrivateLinkResourcePropertiesSchema),
     ),
   }).pipe(
     T.Http({
@@ -1878,23 +1506,13 @@ export type SignalRReplicaSharedPrivateLinkResourcesCreateOrUpdateInput =
 // Output Schema
 export const SignalRReplicaSharedPrivateLinkResourcesCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => SharedPrivateLinkResourcePropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type SignalRReplicaSharedPrivateLinkResourcesCreateOrUpdateOutput =
   typeof SignalRReplicaSharedPrivateLinkResourcesCreateOrUpdateOutput.Type;
@@ -1930,23 +1548,13 @@ export type SignalRReplicaSharedPrivateLinkResourcesGetInput =
 // Output Schema
 export const SignalRReplicaSharedPrivateLinkResourcesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => SharedPrivateLinkResourcePropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type SignalRReplicaSharedPrivateLinkResourcesGetOutput =
   typeof SignalRReplicaSharedPrivateLinkResourcesGetOutput.Type;
@@ -1983,37 +1591,7 @@ export type SignalRReplicaSharedPrivateLinkResourcesListInput =
 export const SignalRReplicaSharedPrivateLinkResourcesListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.String),
-              createdByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              createdAt: Schema.optional(Schema.String),
-              lastModifiedBy: Schema.optional(Schema.String),
-              lastModifiedByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              lastModifiedAt: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => SharedPrivateLinkResourceSchema)),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -2050,39 +1628,7 @@ export type SignalRReplicasListInput = typeof SignalRReplicasListInput.Type;
 // Output Schema
 export const SignalRReplicasListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.String),
-              createdByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              createdAt: Schema.optional(Schema.String),
-              lastModifiedBy: Schema.optional(Schema.String),
-              lastModifiedByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              lastModifiedAt: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
-    ),
+    value: Schema.optional(Schema.Array(Schema.suspend(() => ReplicaSchema))),
     nextLink: Schema.optional(Schema.String),
   });
 export type SignalRReplicasListOutput = typeof SignalRReplicasListOutput.Type;
@@ -2140,36 +1686,8 @@ export const SignalRReplicasUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    sku: Schema.optional(
-      Schema.Struct({
-        name: Schema.String,
-        tier: Schema.optional(
-          Schema.Literals(["Free", "Basic", "Standard", "Premium"]),
-        ),
-        size: Schema.optional(Schema.String),
-        family: Schema.optional(Schema.String),
-        capacity: Schema.optional(Schema.Number),
-      }),
-    ),
-    properties: Schema.optional(
-      Schema.Struct({
-        provisioningState: Schema.optional(
-          Schema.Literals([
-            "Unknown",
-            "Succeeded",
-            "Failed",
-            "Canceled",
-            "Running",
-            "Creating",
-            "Updating",
-            "Deleting",
-            "Moving",
-          ]),
-        ),
-        regionEndpointEnabled: Schema.optional(Schema.String),
-        resourceStopped: Schema.optional(Schema.String),
-      }),
-    ),
+    sku: Schema.optional(Schema.suspend(() => ResourceSkuSchema)),
+    properties: Schema.optional(Schema.suspend(() => ReplicaPropertiesSchema)),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     location: Schema.String,
   }).pipe(
@@ -2185,23 +1703,14 @@ export type SignalRReplicasUpdateInput = typeof SignalRReplicasUpdateInput.Type;
 // Output Schema
 export const SignalRReplicasUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    sku: Schema.optional(Schema.suspend(() => ResourceSkuSchema)),
+    properties: Schema.optional(Schema.suspend(() => ReplicaPropertiesSchema)),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type SignalRReplicasUpdateOutput =
   typeof SignalRReplicasUpdateOutput.Type;
@@ -2256,33 +1765,7 @@ export const SignalRSharedPrivateLinkResourcesCreateOrUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
-      Schema.Struct({
-        groupId: Schema.String,
-        privateLinkResourceId: Schema.String,
-        provisioningState: Schema.optional(
-          Schema.Literals([
-            "Unknown",
-            "Succeeded",
-            "Failed",
-            "Canceled",
-            "Running",
-            "Creating",
-            "Updating",
-            "Deleting",
-            "Moving",
-          ]),
-        ),
-        requestMessage: Schema.optional(Schema.String),
-        status: Schema.optional(
-          Schema.Literals([
-            "Pending",
-            "Approved",
-            "Rejected",
-            "Disconnected",
-            "Timeout",
-          ]),
-        ),
-      }),
+      Schema.suspend(() => SharedPrivateLinkResourcePropertiesSchema),
     ),
   }).pipe(
     T.Http({
@@ -2298,23 +1781,13 @@ export type SignalRSharedPrivateLinkResourcesCreateOrUpdateInput =
 // Output Schema
 export const SignalRSharedPrivateLinkResourcesCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => SharedPrivateLinkResourcePropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type SignalRSharedPrivateLinkResourcesCreateOrUpdateOutput =
   typeof SignalRSharedPrivateLinkResourcesCreateOrUpdateOutput.Type;
@@ -2385,23 +1858,13 @@ export type SignalRSharedPrivateLinkResourcesGetInput =
 // Output Schema
 export const SignalRSharedPrivateLinkResourcesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.suspend(() => SharedPrivateLinkResourcePropertiesSchema),
+    ),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
   });
 export type SignalRSharedPrivateLinkResourcesGetOutput =
   typeof SignalRSharedPrivateLinkResourcesGetOutput.Type;
@@ -2438,37 +1901,7 @@ export type SignalRSharedPrivateLinkResourcesListInput =
 export const SignalRSharedPrivateLinkResourcesListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.String),
-              createdByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              createdAt: Schema.optional(Schema.String),
-              lastModifiedBy: Schema.optional(Schema.String),
-              lastModifiedByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              lastModifiedAt: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => SharedPrivateLinkResourceSchema)),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -2492,275 +1925,10 @@ export const SignalRSharedPrivateLinkResourcesList =
 export const SignalRUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
-  sku: Schema.optional(
-    Schema.Struct({
-      name: Schema.String,
-      tier: Schema.optional(
-        Schema.Literals(["Free", "Basic", "Standard", "Premium"]),
-      ),
-      size: Schema.optional(Schema.String),
-      family: Schema.optional(Schema.String),
-      capacity: Schema.optional(Schema.Number),
-    }),
-  ),
-  properties: Schema.optional(
-    Schema.Struct({
-      provisioningState: Schema.optional(
-        Schema.Literals([
-          "Unknown",
-          "Succeeded",
-          "Failed",
-          "Canceled",
-          "Running",
-          "Creating",
-          "Updating",
-          "Deleting",
-          "Moving",
-        ]),
-      ),
-      externalIP: Schema.optional(Schema.String),
-      hostName: Schema.optional(Schema.String),
-      publicPort: Schema.optional(Schema.Number),
-      serverPort: Schema.optional(Schema.Number),
-      version: Schema.optional(Schema.String),
-      privateEndpointConnections: Schema.optional(
-        Schema.Array(
-          Schema.Struct({
-            id: Schema.optional(Schema.String),
-            name: Schema.optional(Schema.String),
-            type: Schema.optional(Schema.String),
-            systemData: Schema.optional(
-              Schema.Struct({
-                createdBy: Schema.optional(Schema.String),
-                createdByType: Schema.optional(
-                  Schema.Literals([
-                    "User",
-                    "Application",
-                    "ManagedIdentity",
-                    "Key",
-                  ]),
-                ),
-                createdAt: Schema.optional(Schema.String),
-                lastModifiedBy: Schema.optional(Schema.String),
-                lastModifiedByType: Schema.optional(
-                  Schema.Literals([
-                    "User",
-                    "Application",
-                    "ManagedIdentity",
-                    "Key",
-                  ]),
-                ),
-                lastModifiedAt: Schema.optional(Schema.String),
-              }),
-            ),
-          }),
-        ),
-      ),
-      sharedPrivateLinkResources: Schema.optional(
-        Schema.Array(
-          Schema.Struct({
-            id: Schema.optional(Schema.String),
-            name: Schema.optional(Schema.String),
-            type: Schema.optional(Schema.String),
-            systemData: Schema.optional(
-              Schema.Struct({
-                createdBy: Schema.optional(Schema.String),
-                createdByType: Schema.optional(
-                  Schema.Literals([
-                    "User",
-                    "Application",
-                    "ManagedIdentity",
-                    "Key",
-                  ]),
-                ),
-                createdAt: Schema.optional(Schema.String),
-                lastModifiedBy: Schema.optional(Schema.String),
-                lastModifiedByType: Schema.optional(
-                  Schema.Literals([
-                    "User",
-                    "Application",
-                    "ManagedIdentity",
-                    "Key",
-                  ]),
-                ),
-                lastModifiedAt: Schema.optional(Schema.String),
-              }),
-            ),
-          }),
-        ),
-      ),
-      tls: Schema.optional(
-        Schema.Struct({
-          clientCertEnabled: Schema.optional(Schema.Boolean),
-        }),
-      ),
-      hostNamePrefix: Schema.optional(Schema.String),
-      features: Schema.optional(
-        Schema.Array(
-          Schema.Struct({
-            flag: Schema.Literals([
-              "ServiceMode",
-              "EnableConnectivityLogs",
-              "EnableMessagingLogs",
-              "EnableLiveTrace",
-            ]),
-            value: Schema.String,
-            properties: Schema.optional(
-              Schema.Record(Schema.String, Schema.String),
-            ),
-          }),
-        ),
-      ),
-      liveTraceConfiguration: Schema.optional(
-        Schema.Struct({
-          enabled: Schema.optional(Schema.String),
-          categories: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                name: Schema.optional(Schema.String),
-                enabled: Schema.optional(Schema.String),
-              }),
-            ),
-          ),
-        }),
-      ),
-      resourceLogConfiguration: Schema.optional(
-        Schema.Struct({
-          categories: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                name: Schema.optional(Schema.String),
-                enabled: Schema.optional(Schema.String),
-              }),
-            ),
-          ),
-        }),
-      ),
-      cors: Schema.optional(
-        Schema.Struct({
-          allowedOrigins: Schema.optional(Schema.Array(Schema.String)),
-        }),
-      ),
-      serverless: Schema.optional(
-        Schema.Struct({
-          connectionTimeoutInSeconds: Schema.optional(Schema.Number),
-        }),
-      ),
-      upstream: Schema.optional(
-        Schema.Struct({
-          templates: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                hubPattern: Schema.optional(Schema.String),
-                eventPattern: Schema.optional(Schema.String),
-                categoryPattern: Schema.optional(Schema.String),
-                urlTemplate: Schema.String,
-                auth: Schema.optional(
-                  Schema.Struct({
-                    type: Schema.optional(
-                      Schema.Literals(["None", "ManagedIdentity"]),
-                    ),
-                    managedIdentity: Schema.optional(
-                      Schema.Struct({
-                        resource: Schema.optional(Schema.String),
-                      }),
-                    ),
-                  }),
-                ),
-              }),
-            ),
-          ),
-        }),
-      ),
-      networkACLs: Schema.optional(
-        Schema.Struct({
-          defaultAction: Schema.optional(Schema.Literals(["Allow", "Deny"])),
-          publicNetwork: Schema.optional(
-            Schema.Struct({
-              allow: Schema.optional(
-                Schema.Array(
-                  Schema.Literals([
-                    "ClientConnection",
-                    "ServerConnection",
-                    "RESTAPI",
-                    "Trace",
-                  ]),
-                ),
-              ),
-              deny: Schema.optional(
-                Schema.Array(
-                  Schema.Literals([
-                    "ClientConnection",
-                    "ServerConnection",
-                    "RESTAPI",
-                    "Trace",
-                  ]),
-                ),
-              ),
-            }),
-          ),
-          privateEndpoints: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                allow: Schema.optional(
-                  Schema.Array(
-                    Schema.Literals([
-                      "ClientConnection",
-                      "ServerConnection",
-                      "RESTAPI",
-                      "Trace",
-                    ]),
-                  ),
-                ),
-                deny: Schema.optional(
-                  Schema.Array(
-                    Schema.Literals([
-                      "ClientConnection",
-                      "ServerConnection",
-                      "RESTAPI",
-                      "Trace",
-                    ]),
-                  ),
-                ),
-              }),
-            ),
-          ),
-          ipRules: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                value: Schema.optional(Schema.String),
-                action: Schema.optional(Schema.Literals(["Allow", "Deny"])),
-              }),
-            ),
-          ),
-        }),
-      ),
-      publicNetworkAccess: Schema.optional(Schema.String),
-      disableLocalAuth: Schema.optional(Schema.Boolean),
-      disableAadAuth: Schema.optional(Schema.Boolean),
-      regionEndpointEnabled: Schema.optional(Schema.String),
-      resourceStopped: Schema.optional(Schema.String),
-    }),
-  ),
-  kind: Schema.optional(Schema.Literals(["SignalR", "RawWebSockets"])),
-  identity: Schema.optional(
-    Schema.Struct({
-      type: Schema.optional(
-        Schema.Literals(["None", "SystemAssigned", "UserAssigned"]),
-      ),
-      userAssignedIdentities: Schema.optional(
-        Schema.Record(
-          Schema.String,
-          Schema.Struct({
-            principalId: Schema.optional(Schema.String),
-            clientId: Schema.optional(Schema.String),
-          }),
-        ),
-      ),
-      principalId: Schema.optional(Schema.String),
-      tenantId: Schema.optional(Schema.String),
-    }),
-  ),
+  sku: Schema.optional(Schema.suspend(() => ResourceSkuSchema)),
+  properties: Schema.optional(Schema.suspend(() => SignalRPropertiesSchema)),
+  kind: Schema.optional(Schema.suspend(() => ServiceKindSchema)),
+  identity: Schema.optional(Schema.suspend(() => ManagedIdentitySchema)),
   tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   location: Schema.String,
 }).pipe(
@@ -2775,23 +1943,16 @@ export type SignalRUpdateInput = typeof SignalRUpdateInput.Type;
 
 // Output Schema
 export const SignalRUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  sku: Schema.optional(Schema.suspend(() => ResourceSkuSchema)),
+  properties: Schema.optional(Schema.suspend(() => SignalRPropertiesSchema)),
+  kind: Schema.optional(Schema.suspend(() => ServiceKindSchema)),
+  identity: Schema.optional(Schema.suspend(() => ManagedIdentitySchema)),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  location: Schema.String,
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
-  systemData: Schema.optional(
-    Schema.Struct({
-      createdBy: Schema.optional(Schema.String),
-      createdByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      createdAt: Schema.optional(Schema.String),
-      lastModifiedBy: Schema.optional(Schema.String),
-      lastModifiedByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      lastModifiedAt: Schema.optional(Schema.String),
-    }),
-  ),
+  systemData: Schema.optional(Schema.suspend(() => systemDataSchema)),
 });
 export type SignalRUpdateOutput = typeof SignalRUpdateOutput.Type;
 
@@ -2823,20 +1984,7 @@ export type UsagesListInput = typeof UsagesListInput.Type;
 // Output Schema
 export const UsagesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.optional(
-    Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        currentValue: Schema.optional(Schema.Number),
-        limit: Schema.optional(Schema.Number),
-        name: Schema.optional(
-          Schema.Struct({
-            value: Schema.optional(Schema.String),
-            localizedValue: Schema.optional(Schema.String),
-          }),
-        ),
-        unit: Schema.optional(Schema.String),
-      }),
-    ),
+    Schema.Array(Schema.suspend(() => SignalRUsageSchema)),
   ),
   nextLink: Schema.optional(Schema.String),
 });

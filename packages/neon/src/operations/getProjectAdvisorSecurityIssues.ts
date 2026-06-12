@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { AdvisorIssueSchema } from "./_schemas.ts";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
@@ -17,20 +18,7 @@ export type GetProjectAdvisorSecurityIssuesInput =
 // Output Schema
 export const GetProjectAdvisorSecurityIssuesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    issues: Schema.Array(
-      Schema.Struct({
-        name: Schema.String,
-        title: Schema.String,
-        level: Schema.String,
-        facing: Schema.Literals(["EXTERNAL", "INTERNAL"]),
-        categories: Schema.Array(Schema.Literals(["SECURITY", "PERFORMANCE"])),
-        description: Schema.String,
-        detail: Schema.String,
-        remediation: Schema.String,
-        metadata: Schema.Record(Schema.String, Schema.Unknown),
-        cache_key: Schema.String,
-      }),
-    ),
+    issues: Schema.Array(Schema.suspend(() => AdvisorIssueSchema)),
   });
 export type GetProjectAdvisorSecurityIssuesOutput =
   typeof GetProjectAdvisorSecurityIssuesOutput.Type;

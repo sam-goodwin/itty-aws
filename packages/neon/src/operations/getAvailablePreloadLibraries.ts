@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { AvailablePreloadLibrarySchema } from "./_schemas.ts";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
@@ -19,15 +20,7 @@ export type GetAvailablePreloadLibrariesInput =
 export const GetAvailablePreloadLibrariesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     libraries: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          library_name: Schema.String,
-          description: Schema.String,
-          is_default: Schema.Boolean,
-          is_experimental: Schema.Boolean,
-          version: Schema.String,
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => AvailablePreloadLibrarySchema)),
     ),
   });
 export type GetAvailablePreloadLibrariesOutput =
