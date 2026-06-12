@@ -1,0 +1,6 @@
+{
+  "errors": {
+    "RiskScoringIntegrationNotFound": [{ "status": 404 }],
+    "Forbidden": [{ "status": 403 }]
+  }
+}

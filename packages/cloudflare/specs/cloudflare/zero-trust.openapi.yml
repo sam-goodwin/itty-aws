@@ -215,6 +215,9 @@ paths:
                   - name
                   - servers
       x-distilled-pagination-class: PortalListResponsesV4PagePaginationArray
+      x-distilled-errors:
+        Forbidden:
+          - status: 403
     post:
       operationId: createAccessAiControlMcpPortal
       description: "Creates a new MCP portal for managing AI tool access through
@@ -484,6 +487,9 @@ paths:
                   - name
                   - servers
       x-distilled-response-path: result
+      x-distilled-errors:
+        Forbidden:
+          - status: 403
   /accounts/{account_id}/access/ai-controls/mcp/portals/{id}:
     put:
       operationId: updateAccessAiControlMcpPortal
@@ -751,6 +757,11 @@ paths:
                   - name
                   - servers
       x-distilled-response-path: result
+      x-distilled-errors:
+        McpPortalNotFound:
+          - status: 404
+        Forbidden:
+          - status: 403
     delete:
       operationId: deleteAccessAiControlMcpPortal
       description: "Deletes an MCP portal from the account.  @example ```ts const
@@ -804,6 +815,11 @@ paths:
                   - hostname
                   - name
       x-distilled-response-path: result
+      x-distilled-errors:
+        McpPortalNotFound:
+          - status: 404
+        Forbidden:
+          - status: 403
     get:
       operationId: readAccessAiControlMcpPortal
       description: "Read details of an MCP Portal  @example ```ts const response =
@@ -999,6 +1015,11 @@ paths:
                   - name
                   - servers
       x-distilled-response-path: result
+      x-distilled-errors:
+        McpPortalNotFound:
+          - status: 404
+        Forbidden:
+          - status: 403
   /accounts/{account_id}/access/ai-controls/mcp/servers:
     get:
       operationId: listAccessAiControlMcpServers
@@ -119952,6 +119973,11 @@ paths:
                       - custom_s2s
                     description: The type of device posture integration.
       x-distilled-response-path: result
+      x-distilled-errors:
+        DevicePostureIntegrationNotFound:
+          - status: 404
+        Forbidden:
+          - status: 403
     patch:
       operationId: patchDevicePostureIntegration
       description: "Updates a configured device posture integration.  @example ```ts
@@ -120188,6 +120214,15 @@ paths:
                       - custom_s2s
                     description: The type of device posture integration.
       x-distilled-response-path: result
+      x-distilled-errors:
+        DevicePostureIntegrationNotFound:
+          - status: 404
+        InvalidPostureIntegrationConfig:
+          - status: 400
+            message:
+              includes: invalid posture integration request
+        Forbidden:
+          - status: 403
     delete:
       operationId: deleteDevicePostureIntegration
       description: "Delete a configured device posture integration.  @example ```ts
@@ -120213,6 +120248,11 @@ paths:
             application/json:
               schema: {}
       x-distilled-response-path: result
+      x-distilled-errors:
+        DevicePostureIntegrationNotFound:
+          - status: 404
+        Forbidden:
+          - status: 403
   /accounts/{account_id}/devices/posture/integration:
     get:
       operationId: listDevicePostureIntegrations
@@ -120279,6 +120319,9 @@ paths:
                       - custom_s2s
                     description: The type of device posture integration.
       x-distilled-pagination-class: IntegrationsSinglePage
+      x-distilled-errors:
+        Forbidden:
+          - status: 403
     post:
       operationId: createDevicePostureIntegration
       description: "Create a new device posture integration.  @example ```ts const
@@ -120518,6 +120561,13 @@ paths:
                       - custom_s2s
                     description: The type of device posture integration.
       x-distilled-response-path: result
+      x-distilled-errors:
+        InvalidPostureIntegrationConfig:
+          - status: 400
+            message:
+              includes: invalid posture integration request
+        Forbidden:
+          - status: 403
   /accounts/{account_id}/devices/registrations/{registrationId}:
     get:
       operationId: getDeviceRegistration
@@ -127352,6 +127402,11 @@ paths:
             application/json:
               schema: {}
       x-distilled-response-path: result
+      x-distilled-errors:
+        DlpEntryNotFound:
+          - status: 404
+        Forbidden:
+          - status: 403
   /accounts/{account_id}/dlp/entries:
     get:
       operationId: listDlpEntryPredefineds
@@ -127788,6 +127843,9 @@ paths:
                   - pattern
                   - updated_at
       x-distilled-response-path: result
+      x-distilled-errors:
+        Forbidden:
+          - status: 403
   /accounts/{account_id}/dlp/entries/custom/{entryId}:
     put:
       operationId: updateDlpEntryCustom
@@ -127890,6 +127948,11 @@ paths:
                   - pattern
                   - updated_at
       x-distilled-response-path: result
+      x-distilled-errors:
+        DlpEntryNotFound:
+          - status: 404
+        Forbidden:
+          - status: 403
   /accounts/{account_id}/dlp/entries/integration:
     post:
       operationId: createDlpEntryIntegration
@@ -133004,6 +133067,11 @@ paths:
                       - type
                       - updated_at
       x-distilled-response-path: result
+      x-distilled-errors:
+        DlpProfileNotFound:
+          - status: 404
+        Forbidden:
+          - status: 403
     put:
       operationId: updateDlpProfileCustom
       description: "Updates a DLP custom profile.  @example ```ts const profile =
@@ -134664,6 +134732,11 @@ paths:
                       - type
                       - updated_at
       x-distilled-response-path: result
+      x-distilled-errors:
+        DlpProfileNotFound:
+          - status: 404
+        Forbidden:
+          - status: 403
     delete:
       operationId: deleteDlpProfileCustom
       description: "Deletes a DLP custom profile.  @example ```ts const custom = await
@@ -134688,6 +134761,11 @@ paths:
             application/json:
               schema: {}
       x-distilled-response-path: result
+      x-distilled-errors:
+        DlpProfileNotFound:
+          - status: 404
+        Forbidden:
+          - status: 403
   /accounts/{account_id}/dlp/profiles/custom:
     post:
       operationId: createDlpProfileCustom
@@ -136316,6 +136394,9 @@ paths:
                       - type
                       - updated_at
       x-distilled-response-path: result
+      x-distilled-errors:
+        Forbidden:
+          - status: 403
   /accounts/{account_id}/dlp/profiles/predefined/{profileId}/config:
     get:
       operationId: getDlpProfilePredefined
@@ -160936,6 +161017,11 @@ paths:
                   - tenant_url
                   - well_known_url
       x-distilled-response-path: result
+      x-distilled-errors:
+        RiskScoringIntegrationNotFound:
+          - status: 404
+        Forbidden:
+          - status: 403
     put:
       operationId: updateRiskScoringIntegration
       description: "Overwrite the reference_id, tenant_url, and active values with the
@@ -161031,6 +161117,11 @@ paths:
                   - tenant_url
                   - well_known_url
       x-distilled-response-path: result
+      x-distilled-errors:
+        RiskScoringIntegrationNotFound:
+          - status: 404
+        Forbidden:
+          - status: 403
     delete:
       operationId: deleteRiskScoringIntegration
       description: "Removes a Zero Trust risk score integration, disconnecting the
@@ -161056,6 +161147,11 @@ paths:
             application/json:
               schema: {}
       x-distilled-response-path: result
+      x-distilled-errors:
+        RiskScoringIntegrationNotFound:
+          - status: 404
+        Forbidden:
+          - status: 403
   /accounts/{account_id}/zt_risk_scoring/integrations:
     get:
       operationId: listRiskScoringIntegrations
@@ -161119,6 +161215,9 @@ paths:
                   - tenant_url
                   - well_known_url
       x-distilled-pagination-class: IntegrationListResponsesSinglePage
+      x-distilled-errors:
+        Forbidden:
+          - status: 403
     post:
       operationId: createRiskScoringIntegration
       description: "Creates a new Zero Trust risk score integration, connecting
@@ -161211,6 +161310,9 @@ paths:
                   - tenant_url
                   - well_known_url
       x-distilled-response-path: result
+      x-distilled-errors:
+        Forbidden:
+          - status: 403
   /accounts/{account_id}/zt_risk_scoring/integrations/reference_id/{referenceId}:
     get:
       operationId: getRiskScoringIntegrationReference

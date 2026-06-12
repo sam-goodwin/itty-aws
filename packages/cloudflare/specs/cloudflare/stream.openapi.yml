@@ -2005,6 +2005,11 @@ paths:
                     type: string
                     description: The URL an output uses to restream.
       x-distilled-pagination-class: OutputsSinglePage
+      x-distilled-errors:
+        LiveInputNotFound:
+          - code: 10003
+        Forbidden:
+          - status: 403
     post:
       operationId: createLiveInputOutput
       description: "Creates a new output that can be used to simulcast or restream
@@ -2079,6 +2084,11 @@ paths:
                     type: string
                     description: The URL an output uses to restream.
       x-distilled-response-path: result
+      x-distilled-errors:
+        LiveInputNotFound:
+          - code: 10003
+        Forbidden:
+          - status: 403
   /accounts/{account_id}/stream/live_inputs/{liveInputIdentifier}/outputs/{outputIdentifier}:
     put:
       operationId: updateLiveInputOutput
@@ -2147,6 +2157,11 @@ paths:
                     type: string
                     description: The URL an output uses to restream.
       x-distilled-response-path: result
+      x-distilled-errors:
+        OutputNotFound:
+          - code: 10003
+        Forbidden:
+          - status: 403
     delete:
       operationId: deleteLiveInputOutput
       description: "Deletes an output and removes it from the associated live
@@ -2173,6 +2188,11 @@ paths:
       responses:
         "200":
           description: Success
+      x-distilled-errors:
+        OutputNotFound:
+          - code: 10003
+        Forbidden:
+          - status: 403
   /accounts/{account_id}/stream/{identifier}:
     get:
       operationId: getStream

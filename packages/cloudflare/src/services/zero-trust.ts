@@ -106,11 +106,29 @@ export class DevicePolicyNotFound extends Schema.TaggedErrorClass<DevicePolicyNo
 ) {}
 T.applyErrorMatchers(DevicePolicyNotFound, [{ code: 2052 }]);
 
+export class DevicePostureIntegrationNotFound extends Schema.TaggedErrorClass<DevicePostureIntegrationNotFound>()(
+  "DevicePostureIntegrationNotFound",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(DevicePostureIntegrationNotFound, [{ status: 404 }]);
+
 export class DexTestNotFound extends Schema.TaggedErrorClass<DexTestNotFound>()(
   "DexTestNotFound",
   { code: Schema.Number, message: Schema.String },
 ) {}
 T.applyErrorMatchers(DexTestNotFound, [{ status: 404 }]);
+
+export class DlpEntryNotFound extends Schema.TaggedErrorClass<DlpEntryNotFound>()(
+  "DlpEntryNotFound",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(DlpEntryNotFound, [{ status: 404 }]);
+
+export class DlpProfileNotFound extends Schema.TaggedErrorClass<DlpProfileNotFound>()(
+  "DlpProfileNotFound",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(DlpProfileNotFound, [{ status: 404 }]);
 
 export class DuplicateTunnelName extends Schema.TaggedErrorClass<DuplicateTunnelName>()(
   "DuplicateTunnelName",
@@ -154,11 +172,25 @@ export class HostnameRouteNotFound extends Schema.TaggedErrorClass<HostnameRoute
 ) {}
 T.applyErrorMatchers(HostnameRouteNotFound, [{ status: 404 }]);
 
+export class InvalidPostureIntegrationConfig extends Schema.TaggedErrorClass<InvalidPostureIntegrationConfig>()(
+  "InvalidPostureIntegrationConfig",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(InvalidPostureIntegrationConfig, [
+  { status: 400, message: { includes: "invalid posture integration request" } },
+]);
+
 export class IpProxyEndpointsRequireEnterprise extends Schema.TaggedErrorClass<IpProxyEndpointsRequireEnterprise>()(
   "IpProxyEndpointsRequireEnterprise",
   { code: Schema.Number, message: Schema.String },
 ) {}
 T.applyErrorMatchers(IpProxyEndpointsRequireEnterprise, [{ code: 2009 }]);
+
+export class McpPortalNotFound extends Schema.TaggedErrorClass<McpPortalNotFound>()(
+  "McpPortalNotFound",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(McpPortalNotFound, [{ status: 404 }]);
 
 export class OrganizationAlreadyExists extends Schema.TaggedErrorClass<OrganizationAlreadyExists>()(
   "OrganizationAlreadyExists",
@@ -183,6 +215,12 @@ export class ProxyEndpointNotFound extends Schema.TaggedErrorClass<ProxyEndpoint
   { code: Schema.Number, message: Schema.String },
 ) {}
 T.applyErrorMatchers(ProxyEndpointNotFound, [{ code: 2002 }]);
+
+export class RiskScoringIntegrationNotFound extends Schema.TaggedErrorClass<RiskScoringIntegrationNotFound>()(
+  "RiskScoringIntegrationNotFound",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(RiskScoringIntegrationNotFound, [{ status: 404 }]);
 
 export class TargetNotFound extends Schema.TaggedErrorClass<TargetNotFound>()(
   "TargetNotFound",
@@ -551,7 +589,7 @@ export const ListAccessAiControlMcpPortalsResponse =
     Schema.encodeKeys({ result: "result", resultInfo: "result_info" }),
   ) as unknown as Schema.Schema<ListAccessAiControlMcpPortalsResponse>;
 
-export type ListAccessAiControlMcpPortalsError = DefaultErrors;
+export type ListAccessAiControlMcpPortalsError = DefaultErrors | Forbidden;
 
 export const listAccessAiControlMcpPortals: API.PaginatedOperationMethod<
   ListAccessAiControlMcpPortalsRequest,
@@ -561,7 +599,7 @@ export const listAccessAiControlMcpPortals: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListAccessAiControlMcpPortalsRequest,
   output: ListAccessAiControlMcpPortalsResponse,
-  errors: [],
+  errors: [Forbidden],
   pagination: {
     mode: "page",
     inputToken: "page",
@@ -933,7 +971,7 @@ export const CreateAccessAiControlMcpPortalResponse =
       T.ResponsePath("result"),
     ) as unknown as Schema.Schema<CreateAccessAiControlMcpPortalResponse>;
 
-export type CreateAccessAiControlMcpPortalError = DefaultErrors;
+export type CreateAccessAiControlMcpPortalError = DefaultErrors | Forbidden;
 
 export const createAccessAiControlMcpPortal: API.OperationMethod<
   CreateAccessAiControlMcpPortalRequest,
@@ -943,7 +981,7 @@ export const createAccessAiControlMcpPortal: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateAccessAiControlMcpPortalRequest,
   output: CreateAccessAiControlMcpPortalResponse,
-  errors: [],
+  errors: [Forbidden],
 }));
 
 export interface UpdateAccessAiControlMcpPortalRequest {
@@ -1306,7 +1344,10 @@ export const UpdateAccessAiControlMcpPortalResponse =
       T.ResponsePath("result"),
     ) as unknown as Schema.Schema<UpdateAccessAiControlMcpPortalResponse>;
 
-export type UpdateAccessAiControlMcpPortalError = DefaultErrors;
+export type UpdateAccessAiControlMcpPortalError =
+  | DefaultErrors
+  | McpPortalNotFound
+  | Forbidden;
 
 export const updateAccessAiControlMcpPortal: API.OperationMethod<
   UpdateAccessAiControlMcpPortalRequest,
@@ -1316,7 +1357,7 @@ export const updateAccessAiControlMcpPortal: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateAccessAiControlMcpPortalRequest,
   output: UpdateAccessAiControlMcpPortalResponse,
-  errors: [],
+  errors: [McpPortalNotFound, Forbidden],
 }));
 
 export interface DeleteAccessAiControlMcpPortalRequest {
@@ -1384,7 +1425,10 @@ export const DeleteAccessAiControlMcpPortalResponse =
       T.ResponsePath("result"),
     ) as unknown as Schema.Schema<DeleteAccessAiControlMcpPortalResponse>;
 
-export type DeleteAccessAiControlMcpPortalError = DefaultErrors;
+export type DeleteAccessAiControlMcpPortalError =
+  | DefaultErrors
+  | McpPortalNotFound
+  | Forbidden;
 
 export const deleteAccessAiControlMcpPortal: API.OperationMethod<
   DeleteAccessAiControlMcpPortalRequest,
@@ -1394,7 +1438,7 @@ export const deleteAccessAiControlMcpPortal: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteAccessAiControlMcpPortalRequest,
   output: DeleteAccessAiControlMcpPortalResponse,
-  errors: [],
+  errors: [McpPortalNotFound, Forbidden],
 }));
 
 export interface ReadAccessAiControlMcpPortalRequest {
@@ -1675,7 +1719,10 @@ export const ReadAccessAiControlMcpPortalResponse =
       T.ResponsePath("result"),
     ) as unknown as Schema.Schema<ReadAccessAiControlMcpPortalResponse>;
 
-export type ReadAccessAiControlMcpPortalError = DefaultErrors;
+export type ReadAccessAiControlMcpPortalError =
+  | DefaultErrors
+  | McpPortalNotFound
+  | Forbidden;
 
 export const readAccessAiControlMcpPortal: API.OperationMethod<
   ReadAccessAiControlMcpPortalRequest,
@@ -1685,7 +1732,7 @@ export const readAccessAiControlMcpPortal: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ReadAccessAiControlMcpPortalRequest,
   output: ReadAccessAiControlMcpPortalResponse,
-  errors: [],
+  errors: [McpPortalNotFound, Forbidden],
 }));
 
 // =============================================================================
@@ -96325,7 +96372,10 @@ export const GetDevicePostureIntegrationResponse =
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<GetDevicePostureIntegrationResponse>;
 
-export type GetDevicePostureIntegrationError = DefaultErrors;
+export type GetDevicePostureIntegrationError =
+  | DefaultErrors
+  | DevicePostureIntegrationNotFound
+  | Forbidden;
 
 export const getDevicePostureIntegration: API.OperationMethod<
   GetDevicePostureIntegrationRequest,
@@ -96335,7 +96385,7 @@ export const getDevicePostureIntegration: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetDevicePostureIntegrationRequest,
   output: GetDevicePostureIntegrationResponse,
-  errors: [],
+  errors: [DevicePostureIntegrationNotFound, Forbidden],
 }));
 
 export interface ListDevicePostureIntegrationsRequest {
@@ -96417,7 +96467,7 @@ export const ListDevicePostureIntegrationsResponse =
     ),
   }) as unknown as Schema.Schema<ListDevicePostureIntegrationsResponse>;
 
-export type ListDevicePostureIntegrationsError = DefaultErrors;
+export type ListDevicePostureIntegrationsError = DefaultErrors | Forbidden;
 
 export const listDevicePostureIntegrations: API.PaginatedOperationMethod<
   ListDevicePostureIntegrationsRequest,
@@ -96427,7 +96477,7 @@ export const listDevicePostureIntegrations: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListDevicePostureIntegrationsRequest,
   output: ListDevicePostureIntegrationsResponse,
-  errors: [],
+  errors: [Forbidden],
   pagination: {
     mode: "single",
     items: "result",
@@ -96666,7 +96716,10 @@ export const CreateDevicePostureIntegrationResponse =
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<CreateDevicePostureIntegrationResponse>;
 
-export type CreateDevicePostureIntegrationError = DefaultErrors;
+export type CreateDevicePostureIntegrationError =
+  | DefaultErrors
+  | InvalidPostureIntegrationConfig
+  | Forbidden;
 
 export const createDevicePostureIntegration: API.OperationMethod<
   CreateDevicePostureIntegrationRequest,
@@ -96676,7 +96729,7 @@ export const createDevicePostureIntegration: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateDevicePostureIntegrationRequest,
   output: CreateDevicePostureIntegrationResponse,
-  errors: [],
+  errors: [InvalidPostureIntegrationConfig, Forbidden],
 }));
 
 export interface PatchDevicePostureIntegrationRequest {
@@ -96920,7 +96973,11 @@ export const PatchDevicePostureIntegrationResponse =
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<PatchDevicePostureIntegrationResponse>;
 
-export type PatchDevicePostureIntegrationError = DefaultErrors;
+export type PatchDevicePostureIntegrationError =
+  | DefaultErrors
+  | DevicePostureIntegrationNotFound
+  | InvalidPostureIntegrationConfig
+  | Forbidden;
 
 export const patchDevicePostureIntegration: API.OperationMethod<
   PatchDevicePostureIntegrationRequest,
@@ -96930,7 +96987,11 @@ export const patchDevicePostureIntegration: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchDevicePostureIntegrationRequest,
   output: PatchDevicePostureIntegrationResponse,
-  errors: [],
+  errors: [
+    DevicePostureIntegrationNotFound,
+    InvalidPostureIntegrationConfig,
+    Forbidden,
+  ],
 }));
 
 export interface DeleteDevicePostureIntegrationRequest {
@@ -96956,7 +97017,10 @@ export const DeleteDevicePostureIntegrationResponse =
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<DeleteDevicePostureIntegrationResponse>;
 
-export type DeleteDevicePostureIntegrationError = DefaultErrors;
+export type DeleteDevicePostureIntegrationError =
+  | DefaultErrors
+  | DevicePostureIntegrationNotFound
+  | Forbidden;
 
 export const deleteDevicePostureIntegration: API.OperationMethod<
   DeleteDevicePostureIntegrationRequest,
@@ -96966,7 +97030,7 @@ export const deleteDevicePostureIntegration: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteDevicePostureIntegrationRequest,
   output: DeleteDevicePostureIntegrationResponse,
-  errors: [],
+  errors: [DevicePostureIntegrationNotFound, Forbidden],
 }));
 
 // =============================================================================
@@ -105769,7 +105833,10 @@ export const GetDlpEntryCustomResponse =
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<GetDlpEntryCustomResponse>;
 
-export type GetDlpEntryCustomError = DefaultErrors;
+export type GetDlpEntryCustomError =
+  | DefaultErrors
+  | DlpEntryNotFound
+  | Forbidden;
 
 export const getDlpEntryCustom: API.OperationMethod<
   GetDlpEntryCustomRequest,
@@ -105779,7 +105846,7 @@ export const getDlpEntryCustom: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetDlpEntryCustomRequest,
   output: GetDlpEntryCustomResponse,
-  errors: [],
+  errors: [DlpEntryNotFound, Forbidden],
 }));
 
 export interface ListDlpEntryCustomsRequest {
@@ -106347,7 +106414,7 @@ export const CreateDlpEntryCustomResponse =
       T.ResponsePath("result"),
     ) as unknown as Schema.Schema<CreateDlpEntryCustomResponse>;
 
-export type CreateDlpEntryCustomError = DefaultErrors;
+export type CreateDlpEntryCustomError = DefaultErrors | Forbidden;
 
 export const createDlpEntryCustom: API.OperationMethod<
   CreateDlpEntryCustomRequest,
@@ -106357,7 +106424,7 @@ export const createDlpEntryCustom: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateDlpEntryCustomRequest,
   output: CreateDlpEntryCustomResponse,
-  errors: [],
+  errors: [Forbidden],
 }));
 
 export interface UpdateDlpEntryCustomRequest {
@@ -106437,7 +106504,10 @@ export const UpdateDlpEntryCustomResponse =
       T.ResponsePath("result"),
     ) as unknown as Schema.Schema<UpdateDlpEntryCustomResponse>;
 
-export type UpdateDlpEntryCustomError = DefaultErrors;
+export type UpdateDlpEntryCustomError =
+  | DefaultErrors
+  | DlpEntryNotFound
+  | Forbidden;
 
 export const updateDlpEntryCustom: API.OperationMethod<
   UpdateDlpEntryCustomRequest,
@@ -106447,7 +106517,7 @@ export const updateDlpEntryCustom: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateDlpEntryCustomRequest,
   output: UpdateDlpEntryCustomResponse,
-  errors: [],
+  errors: [DlpEntryNotFound, Forbidden],
 }));
 
 export interface DeleteDlpEntryCustomRequest {
@@ -106473,7 +106543,10 @@ export const DeleteDlpEntryCustomResponse =
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<DeleteDlpEntryCustomResponse>;
 
-export type DeleteDlpEntryCustomError = DefaultErrors;
+export type DeleteDlpEntryCustomError =
+  | DefaultErrors
+  | DlpEntryNotFound
+  | Forbidden;
 
 export const deleteDlpEntryCustom: API.OperationMethod<
   DeleteDlpEntryCustomRequest,
@@ -106483,7 +106556,7 @@ export const deleteDlpEntryCustom: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteDlpEntryCustomRequest,
   output: DeleteDlpEntryCustomResponse,
-  errors: [],
+  errors: [DlpEntryNotFound, Forbidden],
 }));
 
 // =============================================================================
@@ -113991,7 +114064,10 @@ export const GetDlpProfileCustomResponse =
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<GetDlpProfileCustomResponse>;
 
-export type GetDlpProfileCustomError = DefaultErrors;
+export type GetDlpProfileCustomError =
+  | DefaultErrors
+  | DlpProfileNotFound
+  | Forbidden;
 
 export const getDlpProfileCustom: API.OperationMethod<
   GetDlpProfileCustomRequest,
@@ -114001,7 +114077,7 @@ export const getDlpProfileCustom: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetDlpProfileCustomRequest,
   output: GetDlpProfileCustomResponse,
-  errors: [],
+  errors: [DlpProfileNotFound, Forbidden],
 }));
 
 export interface CreateDlpProfileCustomRequest {
@@ -115656,7 +115732,7 @@ export const CreateDlpProfileCustomResponse =
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<CreateDlpProfileCustomResponse>;
 
-export type CreateDlpProfileCustomError = DefaultErrors;
+export type CreateDlpProfileCustomError = DefaultErrors | Forbidden;
 
 export const createDlpProfileCustom: API.OperationMethod<
   CreateDlpProfileCustomRequest,
@@ -115666,7 +115742,7 @@ export const createDlpProfileCustom: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateDlpProfileCustomRequest,
   output: CreateDlpProfileCustomResponse,
-  errors: [],
+  errors: [Forbidden],
 }));
 
 export interface UpdateDlpProfileCustomRequest {
@@ -117358,7 +117434,10 @@ export const UpdateDlpProfileCustomResponse =
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<UpdateDlpProfileCustomResponse>;
 
-export type UpdateDlpProfileCustomError = DefaultErrors;
+export type UpdateDlpProfileCustomError =
+  | DefaultErrors
+  | DlpProfileNotFound
+  | Forbidden;
 
 export const updateDlpProfileCustom: API.OperationMethod<
   UpdateDlpProfileCustomRequest,
@@ -117368,7 +117447,7 @@ export const updateDlpProfileCustom: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateDlpProfileCustomRequest,
   output: UpdateDlpProfileCustomResponse,
-  errors: [],
+  errors: [DlpProfileNotFound, Forbidden],
 }));
 
 export interface DeleteDlpProfileCustomRequest {
@@ -117394,7 +117473,10 @@ export const DeleteDlpProfileCustomResponse =
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<DeleteDlpProfileCustomResponse>;
 
-export type DeleteDlpProfileCustomError = DefaultErrors;
+export type DeleteDlpProfileCustomError =
+  | DefaultErrors
+  | DlpProfileNotFound
+  | Forbidden;
 
 export const deleteDlpProfileCustom: API.OperationMethod<
   DeleteDlpProfileCustomRequest,
@@ -117404,7 +117486,7 @@ export const deleteDlpProfileCustom: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteDlpProfileCustomRequest,
   output: DeleteDlpProfileCustomResponse,
-  errors: [],
+  errors: [DlpProfileNotFound, Forbidden],
 }));
 
 // =============================================================================
@@ -145155,7 +145237,10 @@ export const GetRiskScoringIntegrationResponse =
       T.ResponsePath("result"),
     ) as unknown as Schema.Schema<GetRiskScoringIntegrationResponse>;
 
-export type GetRiskScoringIntegrationError = DefaultErrors;
+export type GetRiskScoringIntegrationError =
+  | DefaultErrors
+  | RiskScoringIntegrationNotFound
+  | Forbidden;
 
 export const getRiskScoringIntegration: API.OperationMethod<
   GetRiskScoringIntegrationRequest,
@@ -145165,7 +145250,7 @@ export const getRiskScoringIntegration: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetRiskScoringIntegrationRequest,
   output: GetRiskScoringIntegrationResponse,
-  errors: [],
+  errors: [RiskScoringIntegrationNotFound, Forbidden],
 }));
 
 export interface ListRiskScoringIntegrationsRequest {
@@ -145222,7 +145307,7 @@ export const ListRiskScoringIntegrationsResponse =
     ),
   }) as unknown as Schema.Schema<ListRiskScoringIntegrationsResponse>;
 
-export type ListRiskScoringIntegrationsError = DefaultErrors;
+export type ListRiskScoringIntegrationsError = DefaultErrors | Forbidden;
 
 export const listRiskScoringIntegrations: API.PaginatedOperationMethod<
   ListRiskScoringIntegrationsRequest,
@@ -145232,7 +145317,7 @@ export const listRiskScoringIntegrations: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListRiskScoringIntegrationsRequest,
   output: ListRiskScoringIntegrationsResponse,
-  errors: [],
+  errors: [Forbidden],
   pagination: {
     mode: "single",
     items: "result",
@@ -145313,7 +145398,7 @@ export const CreateRiskScoringIntegrationResponse =
       T.ResponsePath("result"),
     ) as unknown as Schema.Schema<CreateRiskScoringIntegrationResponse>;
 
-export type CreateRiskScoringIntegrationError = DefaultErrors;
+export type CreateRiskScoringIntegrationError = DefaultErrors | Forbidden;
 
 export const createRiskScoringIntegration: API.OperationMethod<
   CreateRiskScoringIntegrationRequest,
@@ -145323,7 +145408,7 @@ export const createRiskScoringIntegration: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateRiskScoringIntegrationRequest,
   output: CreateRiskScoringIntegrationResponse,
-  errors: [],
+  errors: [Forbidden],
 }));
 
 export interface UpdateRiskScoringIntegrationRequest {
@@ -145402,7 +145487,10 @@ export const UpdateRiskScoringIntegrationResponse =
       T.ResponsePath("result"),
     ) as unknown as Schema.Schema<UpdateRiskScoringIntegrationResponse>;
 
-export type UpdateRiskScoringIntegrationError = DefaultErrors;
+export type UpdateRiskScoringIntegrationError =
+  | DefaultErrors
+  | RiskScoringIntegrationNotFound
+  | Forbidden;
 
 export const updateRiskScoringIntegration: API.OperationMethod<
   UpdateRiskScoringIntegrationRequest,
@@ -145412,7 +145500,7 @@ export const updateRiskScoringIntegration: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateRiskScoringIntegrationRequest,
   output: UpdateRiskScoringIntegrationResponse,
-  errors: [],
+  errors: [RiskScoringIntegrationNotFound, Forbidden],
 }));
 
 export interface DeleteRiskScoringIntegrationRequest {
@@ -145438,7 +145526,10 @@ export const DeleteRiskScoringIntegrationResponse =
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<DeleteRiskScoringIntegrationResponse>;
 
-export type DeleteRiskScoringIntegrationError = DefaultErrors;
+export type DeleteRiskScoringIntegrationError =
+  | DefaultErrors
+  | RiskScoringIntegrationNotFound
+  | Forbidden;
 
 export const deleteRiskScoringIntegration: API.OperationMethod<
   DeleteRiskScoringIntegrationRequest,
@@ -145448,7 +145539,7 @@ export const deleteRiskScoringIntegration: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteRiskScoringIntegrationRequest,
   output: DeleteRiskScoringIntegrationResponse,
-  errors: [],
+  errors: [RiskScoringIntegrationNotFound, Forbidden],
 }));
 
 // =============================================================================

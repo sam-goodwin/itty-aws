@@ -28,6 +28,12 @@ export class LiveInputNotFound extends Schema.TaggedErrorClass<LiveInputNotFound
 ) {}
 T.applyErrorMatchers(LiveInputNotFound, [{ code: 10003 }]);
 
+export class OutputNotFound extends Schema.TaggedErrorClass<OutputNotFound>()(
+  "OutputNotFound",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(OutputNotFound, [{ code: 10003 }]);
+
 export class SigningKeyNotFound extends Schema.TaggedErrorClass<SigningKeyNotFound>()(
   "SigningKeyNotFound",
   { code: Schema.Number, message: Schema.String },
@@ -2078,7 +2084,10 @@ export const ListLiveInputOutputsResponse =
     ),
   }) as unknown as Schema.Schema<ListLiveInputOutputsResponse>;
 
-export type ListLiveInputOutputsError = DefaultErrors;
+export type ListLiveInputOutputsError =
+  | DefaultErrors
+  | LiveInputNotFound
+  | Forbidden;
 
 export const listLiveInputOutputs: API.PaginatedOperationMethod<
   ListLiveInputOutputsRequest,
@@ -2088,7 +2097,7 @@ export const listLiveInputOutputs: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListLiveInputOutputsRequest,
   output: ListLiveInputOutputsResponse,
-  errors: [],
+  errors: [LiveInputNotFound, Forbidden],
   pagination: {
     mode: "single",
     items: "result",
@@ -2142,7 +2151,10 @@ export const CreateLiveInputOutputResponse =
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<CreateLiveInputOutputResponse>;
 
-export type CreateLiveInputOutputError = DefaultErrors;
+export type CreateLiveInputOutputError =
+  | DefaultErrors
+  | LiveInputNotFound
+  | Forbidden;
 
 export const createLiveInputOutput: API.OperationMethod<
   CreateLiveInputOutputRequest,
@@ -2152,7 +2164,7 @@ export const createLiveInputOutput: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateLiveInputOutputRequest,
   output: CreateLiveInputOutputResponse,
-  errors: [],
+  errors: [LiveInputNotFound, Forbidden],
 }));
 
 export interface UpdateLiveInputOutputRequest {
@@ -2198,7 +2210,10 @@ export const UpdateLiveInputOutputResponse =
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<UpdateLiveInputOutputResponse>;
 
-export type UpdateLiveInputOutputError = DefaultErrors;
+export type UpdateLiveInputOutputError =
+  | DefaultErrors
+  | OutputNotFound
+  | Forbidden;
 
 export const updateLiveInputOutput: API.OperationMethod<
   UpdateLiveInputOutputRequest,
@@ -2208,7 +2223,7 @@ export const updateLiveInputOutput: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateLiveInputOutputRequest,
   output: UpdateLiveInputOutputResponse,
-  errors: [],
+  errors: [OutputNotFound, Forbidden],
 }));
 
 export interface DeleteLiveInputOutputRequest {
@@ -2235,7 +2250,10 @@ export type DeleteLiveInputOutputResponse = unknown;
 export const DeleteLiveInputOutputResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown as unknown as Schema.Schema<DeleteLiveInputOutputResponse>;
 
-export type DeleteLiveInputOutputError = DefaultErrors;
+export type DeleteLiveInputOutputError =
+  | DefaultErrors
+  | OutputNotFound
+  | Forbidden;
 
 export const deleteLiveInputOutput: API.OperationMethod<
   DeleteLiveInputOutputRequest,
@@ -2245,7 +2263,7 @@ export const deleteLiveInputOutput: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteLiveInputOutputRequest,
   output: DeleteLiveInputOutputResponse,
-  errors: [],
+  errors: [OutputNotFound, Forbidden],
 }));
 
 // =============================================================================

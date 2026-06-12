@@ -1,0 +1,6 @@
+{
+  "errors": {
+    "McpPortalNotFound": [{ "status": 404 }],
+    "Forbidden": [{ "status": 403 }]
+  }
+}

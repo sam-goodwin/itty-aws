@@ -1,0 +1,9 @@
+{
+  "errors": {
+    "DevicePostureIntegrationNotFound": [{ "status": 404 }],
+    "InvalidPostureIntegrationConfig": [
+      { "status": 400, "message": { "includes": "invalid posture integration request" } }
+    ],
+    "Forbidden": [{ "status": 403 }]
+  }
+}
